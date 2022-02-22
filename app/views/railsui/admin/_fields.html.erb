@@ -1,0 +1,70 @@
+<h3 class="font-bold text-2xl mb-6">Application preferences</h3>
+
+<div class="mb-8">
+  <%= f.label :application_name, class: "block mb-2 font-medium" %>
+  <%= f.text_field :application_name, class: "#{input_classes} lg:w-1/2 w-full" %>
+</div>
+
+<div class="mb-8">
+  <%= f.label :css_framework, "What CSS framework would you like to use?", class: "block mb-2 font-medium" %>
+  <%= f.select :css_framework, Railsui::Default::CSS_FRAMEWORKS, {}, { class: "#{select_classes} lg:w-1/2 w-full" } %>
+</div>
+
+<div class="mb-24">
+  <%= f.label :font_family, "What base font-family would you like to use?", class: "block mb-2 font-medium" %>
+  <%= f.select :font_family, Railsui::Default::FONTS.map {|key, value | [key.to_s.capitalize.humanize, value] }, {}, { class: "#{select_classes} lg:w-1/2 w-full" } %>
+</div>
+
+<h3 class="font-bold text-2xl mb-1">Color palette</h3>
+<p class="mb-6 max-w-3xl">A three-tone color palette is at your displosal. We'll use some other sound defaults for other styles in the app all of which can be customized.</p>
+
+<div class="grid grid-cols-3 gap-6 max-w-3xl mb-24">
+  <div class="relative">
+    <%= f.label :primary_color, class: "block mb-2 font-medium" %>
+    <%= f.hidden_field :primary_color %>
+    <hex-color-picker class="w-[170px] h-[170px]" color="<%= f.object.primary_color %>"></hex-color-picker >
+    <hex-input class="font-mono focus:outline-none" color="<%= f.object.primary_color %>"></hex-input>
+    <span class="absolute bottom-px left-px dark:text-gray-300 text-gray-500 w-8 h-[36px] flex border-r border-neutral-200 dark:border-neutral-700 items-center justify-center text-center dark:bg-neutral-700 bg-gray-50 rounded-l-sm">#</span>
+  </div>
+
+  <div class="relative">
+    <%= f.label :secondary_color, class: "block mb-2 font-medium" %>
+    <%= f.hidden_field :secondary_color %>
+    <hex-color-picker color="<%= f.object.secondary_color %>" class="w-[170px] h-[170px]"></hex-color-picker >
+    <hex-input color="<%= f.object.secondary_color %>" class="font-mono focus:outline-none"></hex-input>
+    <span class="absolute bottom-px left-px dark:text-gray-300 text-gray-500 w-8 h-[36px] flex border-r border-neutral-200 dark:border-neutral-700 items-center justify-center text-center dark:bg-neutral-700 bg-gray-50 rounded-l-sm">#</span>
+  </div>
+
+  <div class="relative">
+    <%= f.label :tertiary_color, class: "block mb-2 font-medium" %>
+    <%= f.hidden_field :tertiary_color %>
+    <hex-color-picker class="w-[170px] h-[170px]" color="<%= f.object.tertiary_color %>"></hex-color-picker >
+    <hex-input color="<%= f.object.tertiary_color %>" class="font-mono focus:outline-none"></hex-input>
+    <span class="absolute bottom-px left-px dark:text-gray-300 text-gray-500 w-8 h-[36px] flex border-r border-neutral-200 dark:border-neutral-700 items-center justify-center text-center dark:bg-neutral-700 bg-gray-50 rounded-l-sm">#</span>
+  </div>
+</div>
+
+<h3 class="font-bold text-2xl mb-1">Pages &amp; content</h3>
+<p class="mb-3 max-w-3xl">Enabling any option below will automatically create themed views (using the CSS framework you chose above). These will contain minimal logic with clean HTML(erb) for you to take and run with.</p>
+
+<ul class="leading-loose">
+  <li class="py-1">
+    <%= f.label :about do %>
+      <%= f.check_box :about, class: "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-neutral-100 dark:focus:ring-neutral-800 dark:focus:ring-opacity-20 mr-2 border-neutral-500 w-5 h-5", value: Railsui.config.about, checked: Railsui.config.about? %>
+      <span>Create about page</span>
+    <% end %>
+  </li>
+
+  <li class="py-1">
+    <%= f.label :pricing do %>
+      <%= f.check_box :pricing, class: "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-neutral-100 dark:focus:ring-neutral-800 dark:focus:ring-opacity-20 mr-2 border-neutral-500 w-5 h-5", value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
+      <span>Create pricing page</span><span class="text-neutral-500 text-sm"> &mdash; placeholder markup for SaaS-like pricing; 3 plans types.</span>
+    <% end %>
+  </li>
+  <li class="py-1">
+    <%= f.label :blog do %>
+      <%= f.check_box :blog, class: "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-neutral-100 dark:focus:ring-neutral-800 dark:focus:ring-opacity-20 mr-2 border-neutral-500 w-5 h-5", value: Railsui.config.blog, checked: Railsui.config.blog?  %>
+      <span>Create blog</span><span class="text-neutral-500 text-sm"> &mdash; generates a themed very minimal blog.</span>
+    <% end %>
+  </li>
+</ul>

@@ -1,0 +1,70 @@
+<% content_for :head do %>
+  <script type="module">
+    import 'https://cdn.skypack.dev/vanilla-colorful';
+    import 'https://cdn.skypack.dev/vanilla-colorful/hex-input.js';
+
+      const pickers = document.querySelectorAll('hex-color-picker');
+      const inputs = document.querySelectorAll('hex-input');
+
+      pickers.forEach(p => {
+        p.addEventListener('color-changed', (event) => {
+          p.previousElementSibling.value = event.detail.value
+          p.nextElementSibling.color = event.detail.value
+          p.color = event.detail.value;
+          p.value = event.detail.value
+        });
+
+        p.nextElementSibling.addEventListener('color-changed', event => {
+          p.color = event.detail.value
+        })
+      })
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let urlParams = new URLSearchParams(window.location.search);
+      let reload = urlParams.get('reload');
+      if (reload) {
+        setTimeout(function(){ window.location.href = '/railsui'; }, 4000)
+      }
+        let btn = document.querySelector('button')
+
+        btn.addEventListener('click', (e) => {
+          btn.classList.add('pointer-events-none', 'opacity-50')
+          btn.textContent = 'Saving...'
+        })
+      })
+  </script>
+<% end %>
+
+<%= form_with model: @config, url: configuration_path, class: "h-full block" do |f| %>
+  <div class="grid col-span-1 lg:grid-cols-12 lg:h-full">
+    <div class="col-span-3 p-6 dark:border-gray-800 border-r">
+      <%= link_to  main_app.root_path, class: "block" do %>
+        <div class="flex items-center">
+          <%= render_svg "chevron-left", styles: "stroke-current text-neutral-500 w-4 h-4 mr-2" %>
+          <span>Back to main app</span>
+        </div>
+      <% end %>
+
+      <div class="bg-gray-50 dark:bg-neutral-800 p-8 rounded-xl mt-6">
+        <h3 class="font-bold text-lg mb-2">Rails UI config</h3>
+        <p class="font-bold mb-2 text-pink-500">For new Rails apps only:</p>
+        <p class="mb-6">Customize everything from your choice in CSS-framework to generating one-off pages for common web-app needs.</p>
+        <p>Saving your changes generates a file in your app's config folder called <code class="dark:text-yellow-500 text-red-400 text-sm">railsui.yml</code>. This also reloads the app to install and configure any dependencies.</p>
+      </div>
+    </div>
+
+    <div class="col-span-9 lg:px-20 lg:py-16 px-4">
+      <div class="mb-10">
+        <%= render "fields", f: f %>
+      </div>
+
+      <%= f.button class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
+        <%= tag.span "Save changes" %>
+      <% end %>
+
+      <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
+
+    </div>
+  <% end %>

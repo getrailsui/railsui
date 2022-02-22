@@ -1,0 +1,15 @@
+<%%= content_for :title, t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>") %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "text-black" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      <%%= t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>") %>
+    </h1>
+  </div>
+
+  <div class="p-8 bg-white rounded shadow">
+    <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+  </div>
+</div>

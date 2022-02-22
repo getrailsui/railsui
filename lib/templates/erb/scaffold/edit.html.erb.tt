@@ -1,0 +1,16 @@
+<%%= content_for :title, t("shared.scaffold.edit.title", model: "<%= singular_table_name.titleize %>") %>
+
+<div class="container mx-auto px-4 my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "text-black" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      <%%= t("shared.scaffold.edit.title", model: "<%= singular_table_name.titleize %>") %>
+    </h1>
+    <%%= button_to t("delete"), @<%= singular_table_name %>, method: :delete, class: "btn btn-white", form: { data: { turbo_confirm: t("are_you_sure") } } %>
+  </div>
+
+  <div class="p-8 bg-white rounded shadow">
+    <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+  </div>
+</div>

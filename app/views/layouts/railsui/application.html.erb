@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html class="h-full antialiased">
+  <head>
+    <title>
+      <% if content_for?(:title ) %>
+        <%= yield :title %>
+      <% else %>
+        Rails UI
+      <% end %>
+    </title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css">
+
+    <%= javascript_include_tag 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio' %>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
+    <script>
+      document.addEventListener("turbo:load", function() {
+        var snippets = document.querySelectorAll('pre code')
+        snippets.forEach(function(snippet) {
+          hljs.highlightBlock(snippet);
+        })
+      });
+    </script>
+
+    <%= render "layouts/railsui/custom_tailwind" %>
+
+    <%= yield :head %>
+  </head>
+
+  <body class="h-full overflow-x-hidden font-sans font-normal leading-normal dark:bg-neutral-900 dark:text-white bg-white text-neutral-800">
+    <%= render "railsui/shared/nav" %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<%%= content_for :title, "<%= plural_table_name.titleize %> ##{@<%= singular_table_name %>.id}" %>
+<%%= turbo_stream_from @<%= singular_table_name %> %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "text-black" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      <%= singular_table_name.titleize %> #<%%= @<%= singular_table_name %>.id %>
+    </h1>
+    <%%= link_to t("edit"), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-white" %>
+  </div>
+
+  <div class="p-8 bg-white rounded shadow">
+    <%%= render @<%= singular_table_name %> %>
+  </div>
+</div>
