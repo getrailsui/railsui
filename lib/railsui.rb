@@ -8,11 +8,6 @@ module Railsui
   mattr_accessor :config
   @@config = {}
 
-  def self.save_preferences
-    set_framework
-    install_pages_and_content
-  end
-
   def self.restart
     run_command "rails restart"
   end

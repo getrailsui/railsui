@@ -65,7 +65,7 @@ module Railsui
         options['c'] == "bulma"
       end
 
-      def no_?
+      def none?
         !options['c'] || options['c'] == nil
       end
     end
