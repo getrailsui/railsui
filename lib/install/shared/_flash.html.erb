@@ -1,0 +1,13 @@
+<div id="flash">
+  <% if notice %>
+    <div class="notice notice-info" role="alert">
+      <p><%= sanitize notice %></p>
+    </div>
+  <% end %>
+
+  <% if alert %>
+    <div class="notice notice-warning" role="alert">
+      <p><%= sanitize alert %></p>
+    </div>
+  <% end %>
+</div>
