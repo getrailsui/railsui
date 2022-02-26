@@ -118,4 +118,9 @@ rails_command "db:migrate"
 
 say
 say "Rails UI installation successful! 👍", :green
-say "Visit localhost:3000/railsui to configure your app 👩‍💻", :blue
+say
+say "👩‍💻 Be sure to visit http://localhost:3000/railsui to configure your app", :yellow
+say
+say
+say "⚡️ Booting up server", :green
+rails_command "server"

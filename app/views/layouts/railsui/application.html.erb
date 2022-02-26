@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css">
 
     <%= javascript_include_tag 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio' %>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
     <script>
       document.addEventListener("turbo:load", function() {
@@ -27,6 +26,7 @@
     </script>
 
     <%= render "layouts/railsui/custom_tailwind" %>
+    <%= render "railsui/shared/flash" %>
 
     <%= yield :head %>
   </head>

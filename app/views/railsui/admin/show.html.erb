@@ -48,23 +48,33 @@
       <% end %>
 
       <div class="bg-gray-50 dark:bg-neutral-800 p-8 rounded-xl mt-6">
-        <h3 class="font-bold text-lg mb-2">Rails UI config</h3>
         <p class="font-bold mb-2 text-pink-500">For new Rails apps only:</p>
         <p class="mb-6">Customize everything from your choice in CSS-framework to generating one-off pages for common web-app needs.</p>
         <p>Saving your changes generates a file in your app's config folder called <code class="dark:text-yellow-500 text-red-400 text-sm">railsui.yml</code>. This also reloads the app to install and configure any dependencies.</p>
       </div>
     </div>
 
-    <div class="col-span-9 lg:px-20 lg:py-16 px-4">
-      <div class="mb-10">
-        <%= render "fields", f: f %>
+    <div class="col-span-9 lg:px-20 lg:py-12 px-4">
+      <h3 class="font-bold text-3xl mb-6">Rails UI configuration</h3>
+
+      <div class="prose prose-lg prose-indigo mb-6">
+        <p>Customize your new rails application using the fields below. Once a configuration is saved Rails UI will generate, install, and pre-configure any assets and templates.</p>
+
+        <p><%= link_to "Read the docs", docs_path %> to learn more about what comes in a default Rails UI configuration as well as how you can extend it.</p>
       </div>
 
-      <%= f.button class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
-        <%= tag.span "Save changes" %>
-      <% end %>
+      <div class="mb-10">
+        <%= render "railsui/admin/fields/application_preferences", f: f %>
+        <%= render "railsui/admin/fields/color", f: f %>
+        <%= render "railsui/admin/fields/pages", f: f %>
+      </div>
 
-      <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
+      <div class="border-t pt-10">
+        <%= f.button class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
+          <%= tag.span "Save changes" %>
+        <% end %>
 
+        <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
+      </div>
     </div>
   <% end %>

@@ -1,0 +1,30 @@
+<div class="p-10 rounded-xl border border-neutral-200 shadow-sm mb-16">
+  <h3 class="font-bold text-2xl mb-3">Color palette</h3>
+  <p class="prose prose-lg prose-indigo mb-6">A three-tone color palette is at your displosal. Rails UI leverages other sound defaults for other styles supplied by the CSS framework of your choice.</p>
+
+  <div class="grid grid-cols-3 gap-6 max-w-3xl">
+    <div class="relative">
+      <%= f.label :primary_color, class: "block mb-2 font-medium" %>
+      <%= f.hidden_field :primary_color %>
+      <hex-color-picker class="w-[170px] h-[170px]" color="<%= f.object.primary_color %>"></hex-color-picker >
+      <hex-input class="font-mono focus:outline-none" color="<%= f.object.primary_color %>"></hex-input>
+      <span class="absolute bottom-px left-px dark:text-gray-300 text-gray-500 w-8 h-[36px] flex border-r border-neutral-200 dark:border-neutral-700 items-center justify-center text-center dark:bg-neutral-700 bg-gray-50 rounded-l-sm">#</span>
+    </div>
+
+    <div class="relative">
+      <%= f.label :secondary_color, class: "block mb-2 font-medium" %>
+      <%= f.hidden_field :secondary_color %>
+      <hex-color-picker color="<%= f.object.secondary_color %>" class="w-[170px] h-[170px]"></hex-color-picker >
+      <hex-input color="<%= f.object.secondary_color %>" class="font-mono focus:outline-none"></hex-input>
+      <span class="absolute bottom-px left-px dark:text-gray-300 text-gray-500 w-8 h-[36px] flex border-r border-neutral-200 dark:border-neutral-700 items-center justify-center text-center dark:bg-neutral-700 bg-gray-50 rounded-l-sm">#</span>
+    </div>
+
+    <div class="relative">
+      <%= f.label :tertiary_color, class: "block mb-2 font-medium" %>
+      <%= f.hidden_field :tertiary_color %>
+      <hex-color-picker class="w-[170px] h-[170px]" color="<%= f.object.tertiary_color %>"></hex-color-picker >
+      <hex-input color="<%= f.object.tertiary_color %>" class="font-mono focus:outline-none"></hex-input>
+      <span class="absolute bottom-px left-px dark:text-gray-300 text-gray-500 w-8 h-[36px] flex border-r border-neutral-200 dark:border-neutral-700 items-center justify-center text-center dark:bg-neutral-700 bg-gray-50 rounded-l-sm">#</span>
+    </div>
+  </div>
+</div>

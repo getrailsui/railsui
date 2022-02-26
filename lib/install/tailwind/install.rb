@@ -2,7 +2,7 @@
 say "🔥 Install Tailwind (+PostCSS w/ autoprefixer)"
 copy_file "#{__dir__}/tailwind.config.js", "tailwind.config.js"
 copy_file "#{__dir__}/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css"
-run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting --latest"
+run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography --latest"
 
 say "Add build:css script"
 build_script = "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"

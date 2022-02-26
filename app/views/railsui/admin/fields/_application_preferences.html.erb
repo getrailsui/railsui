@@ -1,0 +1,33 @@
+<div class="p-10 rounded-xl border border-neutral-200 mb-16 shadow-sm">
+  <h3 class="font-bold text-2xl mb-3">Application preferences</h3>
+  <div class="prose prose-lg prose-indigo mb-6">
+    Set your app's name, install a CSS-framework, and base font-family.
+  </div>
+
+  <div class="mb-8">
+    <%= f.label :application_name, class: "block mb-2 font-medium" %>
+    <%= f.text_field :application_name, class: "#{input_classes} w-full" %>
+  </div>
+
+  <div class="mb-8">
+    <% if Railsui.no_framework_set? %>
+      <%= f.label :css_framework, "What CSS framework would you like to use?", class: "block mb-2 font-medium" %>
+      <%= f.select :css_framework, options_for_select(Railsui::Default::CSS_FRAMEWORKS, Railsui.config.css_framework), { prompt: "Select one" }, { class:"#{select_classes} w-full" } %>
+
+    <% else %>
+      <p>This app configured to use: <span class="border px-3 py-1 rounded-full border-indigo-600 text-indigo-700 text-sm select-none"><%= Railsui.config.css_framework %></span></p>
+    <% end %>
+    <div class="text-sm mt-4 flex items-start">
+      <div class="bg-indigo-50 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
+        <%= render_svg "warning", styles: "stroke-current text-indigo-500 w-5 h-5 flex-shrink-0" %>
+      </div>
+      <p class="text-neutral-800">This choice <span class="font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_css_frameworks_path, class: "text-indigo-700" %>.
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :font_family, "What base font-family would you like to use?", class: "block mb-2 font-medium" %>
+    <%= f.select :font_family, Railsui::Default::FONTS.map {|key, value | [key.to_s.capitalize.humanize, value] }, {}, { class: "#{select_classes} w-full" } %>
+  </div>
+</div>

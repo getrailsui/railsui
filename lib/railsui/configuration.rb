@@ -19,7 +19,7 @@ module Railsui
     def initialize(options = {})
       assign_attributes(options)
       self.application_name ||= "Rails UI"
-      self.css_framework ||= "Tailwind CSS"
+      self.css_framework ||= ""
       self.primary_color ||= "4338CA"
       self.secondary_color ||= "FF8C69"
       self.tertiary_color ||= "333333"
@@ -100,7 +100,7 @@ module Railsui
       when Railsui::Default::BULMA
         install_bulma
       else
-        # no framework
+        # no framework => None
       end
     end
 
@@ -117,15 +117,15 @@ module Railsui
     end
 
     def install_tailwind_css
-      Railsui.run_command "rails framework:install:tailwind"
+      Railsui.run_command "rails railsui:framework:install:tailwind"
     end
 
     def intall_bootstrap
-      Railsui.run_command "rails framework:install:bootstrap"
+      Railsui.run_command "rails railsui:framework:install:bootstrap"
     end
 
     def install_bulma
-      Railsui.run_command "rails framework:install:bulma"
+      Railsui.run_command "rails railsui:framework:install:bulma"
     end
 
     private
