@@ -55,7 +55,7 @@
     </div>
 
     <div class="col-span-9 lg:px-20 lg:py-12 px-4">
-      <h3 class="font-bold text-3xl mb-6">Rails UI configuration</h3>
+      <h3 class="font-bold text-4xl mb-6">Rails UI configuration</h3>
 
       <div class="prose prose-lg prose-indigo mb-6">
         <p>Customize your new rails application using the fields below. Once a configuration is saved Rails UI will generate, install, and pre-configure any assets and templates.</p>
@@ -65,6 +65,7 @@
 
       <div class="mb-10">
         <%= render "railsui/admin/fields/application_preferences", f: f %>
+        <%= render "railsui/admin/fields/theme", f: f %>
         <%= render "railsui/admin/fields/color", f: f %>
         <%= render "railsui/admin/fields/pages", f: f %>
       </div>
