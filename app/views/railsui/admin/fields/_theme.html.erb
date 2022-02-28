@@ -1,66 +1,66 @@
-<div class="p-10 rounded-xl border border-neutral-200 shadow-sm mb-16">
-  <h3 class="font-bold text-2xl mb-3">Choose a theme</h3>
-  <div class="prose prose-lg prose-indigo mb-6">
-    <p>A theme acts as a starting point for the design of the app and the bundled design system which gets generated. We currently feature two themes per framework with more on the horizon.</p>
-    <p>Each theme will be used to generate static pages, scaffolded resources, UI components, layout patterns, useful partials, and more.</p>
-  </div>
+<div data-framework-list class="hidden">
+  <div class="p-10 rounded-xl border border-neutral-200 shadow-sm mb-16">
+    <h3 class="font-bold text-2xl mb-3">Choose a theme</h3>
+    <div class="prose prose-lg prose-indigo mb-6">
+      <p>A theme acts as a starting point for the design of the app and the bundled design system which gets generated. We currently feature two themes per framework with more on the horizon.</p>
+      <p>Each theme will be used to generate static pages, scaffolded resources, UI components, layout patterns, useful partials, and more. If you don't choose a theme we'll generate a more primative default.</p>
+    </div>
 
-  <%# TODO: Based on css_framework selection hide themes in this section that don't related to the selection %>
+    <div class="mb-10 hidden" data-bootstrap data-framework>
+      <h4 class="font-bold text-xl mb-3">Bootstrap</h4>
+      <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-6">
+        <li>
+          <label for="bootstrap_1" class="bg-gray-100 rounded-lg p-6 block">
+            <p>Boostrap theme 1</p>
+            <input type="radio" id="bootstrap_1" name="bootstrap" checked>
+          </label>
+        </li>
 
-  <div class="mb-10">
-    <h4 class="font-bold text-xl mb-3">Bootstrap</h4>
-    <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-6">
-      <li>
-        <label for="bootstrap_1" class="bg-gray-100 rounded-lg p-6 block">
-          <p>Boostrap theme 1</p>
-          <input type="radio" id="bootstrap_1" name="bootstrap" checked>
-        </label>
-      </li>
+        <li>
+          <label for="bootstrap_2" class="bg-gray-100 rounded-lg p-6 block">
+            <p>Boostrap theme 2</p>
+            <input type="radio" id="bootstrap_2" name="bootstrap">
+          </label>
+        </li>
+      </ul>
+    </div>
 
-      <li>
-        <label for="bootstrap_2" class="bg-gray-100 rounded-lg p-6 block">
-          <p>Boostrap theme 2</p>
-          <input type="radio" id="bootstrap_2" name="bootstrap">
-        </label>
-      </li>
-    </ul>
-  </div>
+    <div class="mb-10 hidden" data-bulma data-framework>
+      <h4 class="font-bold text-xl mb-3">Bulma</h4>
+      <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-6">
+        <li>
+          <label for="bulma_1" class="bg-gray-100 rounded-lg p-6 block">
+            <p>Bulma 1</p>
+            <input type="radio" id="bulma_1" name="bulma" checked>
+          </label>
+        </li>
 
-  <div class="mb-10">
-    <h4 class="font-bold text-xl mb-3">Bulma</h4>
-    <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-6">
-      <li>
-        <label for="bulma_1" class="bg-gray-100 rounded-lg p-6 block">
-          <p>Bulma 1</p>
-          <input type="radio" id="bulma_1" name="bulma" checked>
-        </label>
-      </li>
+        <li>
+          <label for="bulma_2" class="bg-gray-100 rounded-lg p-6 block">
+            <p>Bulma 2</p>
+            <input type="radio" id="bulma_2" name="bulma">
+          </label>
+        </li>
+      </ul>
+    </div>
 
-      <li>
-        <label for="bulma_2" class="bg-gray-100 rounded-lg p-6 block">
-          <p>Bulma 2</p>
-          <input type="radio" id="bulma_2" name="bulma">
-        </label>
-      </li>
-    </ul>
-  </div>
+    <div class="mb-10 hidden" data-tailwind data-framework>
+      <h4 class="font-bold text-xl mb-3">Tailwind CSS</h4>
+      <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-6">
+        <li>
+          <label for="tailwind_1" class="bg-gray-100 rounded-lg p-6 block">
+            <p>Tailwind 1</p>
+            <input type="radio" id="tailwind_1" name="tailwind" checked>
+          </label>
+        </li>
 
-  <div class="mb-10">
-    <h4 class="font-bold text-xl mb-3">Tailwind CSS</h4>
-    <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-6">
-      <li>
-        <label for="tailwind_1" class="bg-gray-100 rounded-lg p-6 block">
-          <p>Tailwind 1</p>
-          <input type="radio" id="tailwind_1" name="tailwind" checked>
-        </label>
-      </li>
-
-      <li>
-        <label for="tailwind_2" class="bg-gray-100 rounded-lg p-6 block">
-          <p>Tailwind 2</p>
-          <input type="radio" id="tailwind_2" name="tailwind">
-        </label>
-      </li>
-    </ul>
+        <li>
+          <label for="tailwind_2" class="bg-gray-100 rounded-lg p-6 block">
+            <p>Tailwind 2</p>
+            <input type="radio" id="tailwind_2" name="tailwind">
+          </label>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

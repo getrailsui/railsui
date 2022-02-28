@@ -53,9 +53,9 @@ end
 
 def add_static_assets
   say "⚡️ Generate StaticController"
-  generate "controller", "static index --skip-test-framework --skip-assets --skip-helper --skip-routes"
+  generate "controller", "static index --skip-test-framework --skip-assets --skip-helper --skip-routes --skip-template-engine"
 
-  # TODO: Copy content to index view
+  # Note: this roots to static/index in gem as front page when first booting
 
   say "⚡️ Add default RailsUI routing and engine"
   content = <<-RUBY
@@ -89,6 +89,13 @@ def extend_layout_and_views
       before:/\s*<\/head>/
     )
 
+    say "⚡️ Add :head yield"
+    insert_into_file(
+      app_layout_path.to_s,
+      %(\n    <%= yield :head %>),
+      before:/\s*<\/head>/
+    )
+
     say "⚡️ Add flash and nav partials"
     insert_into_file(
       app_layout_path.to_s,
@@ -102,14 +109,24 @@ def extend_layout_and_views
 end
 
 # Add the gems!
+say "Adding gems..."
 add_gems
 
 run "bundle install"
 
+say "Configuring Devise..."
 add_users
+
+say "Adding ActiveStorage and ActionText dependencies..."
 add_storage_and_rich_text
+
+say "Adding static assets..."
 add_static_assets
+
+say "Adding sidekiq..."
 add_sidekiq
+
+say "Extending layout and views..."
 extend_layout_and_views
 
 # Migrate
@@ -119,8 +136,4 @@ rails_command "db:migrate"
 say
 say "Rails UI installation successful! 👍", :green
 say
-say "👩‍💻 Be sure to visit http://localhost:3000/railsui to configure your app", :yellow
-say
-say
-say "⚡️ Booting up server", :green
-rails_command "server"
+say "Next, run '$ rails server'", :yellow

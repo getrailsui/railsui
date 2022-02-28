@@ -16,6 +16,8 @@
 
     <%= javascript_include_tag 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio' %>
 
+    <%= javascript_include_tag 'railsui' %>
+
     <script>
       document.addEventListener("turbo:load", function() {
         var snippets = document.querySelectorAll('pre code')
@@ -32,7 +34,21 @@
   </head>
 
   <body class="h-full overflow-x-hidden font-sans font-normal leading-normal dark:bg-neutral-900 dark:text-white bg-white text-neutral-800">
-    <%= render "railsui/shared/nav" %>
-    <%= yield %>
+    <div class="grid lg:grid-cols-12 lg:h-full">
+      <div class="col-span-3 p-6 dark:border-gray-800 border-r">
+        <%= link_to  main_app.root_path, class: "block mb-6" do %>
+          <div class="flex items-center">
+            <%= render_svg "chevron-left", styles: "stroke-current text-neutral-500 w-4 h-4 mr-2" %>
+            <span>Back to main app</span>
+          </div>
+        <% end %>
+
+        <%= render "railsui/shared/nav"%>
+      </div>
+
+      <div class="col-span-9 lg:px-32 lg:py-16 px-4">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

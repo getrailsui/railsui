@@ -12,3 +12,6 @@ else
   run %(npm set-script build:css "#{build_script}")
   run %(yarn build:css)
 end
+
+say "Update .gitignore"
+inject_into_file ".gitignore", "node_modules\n"

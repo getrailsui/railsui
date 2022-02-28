@@ -1,22 +1,18 @@
-<div class="dark:bg-neutral-900 dark:text-white bg-white dark:border-neutral-700 border-b py-3 border-neutral-100 px-6">
-  <div class="flex flex-wrap items-center">
-    <div class="flex-1">
-      <%= render "railsui/shared/logo" %>
-    </div>
-
-    <%= link_to design_system_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
-      <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
-      <span>Design system</span>
-    <% end %>
-
-    <%= link_to root_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
-      <%= render_svg "settings", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
-      <span>Configuration</span>
-    <% end %>
-
-    <%= link_to docs_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
-      <%= render_svg "book", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
-      <span>Docs</span>
-    <% end %>
-  </div>
+<div class="mb-6 flex justify-center">
+  <%= render "railsui/shared/logo" %>
 </div>
+
+<%= link_to design_system_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
+  <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
+  <span>Design system</span>
+<% end %>
+
+<%= link_to root_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
+  <%= render_svg "settings", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
+  <span>Configuration</span>
+<% end %>
+
+<%= link_to docs_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
+  <%= render_svg "book", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
+  <span>Docs</span>
+<% end %>

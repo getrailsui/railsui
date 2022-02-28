@@ -16,6 +16,8 @@ else
   say %(Add import * as bootstrap from "bootstrap" to your entry point JavaScript file), :red
 end
 
+copy_file("#{__dir__}/manifest.js", "app/assets/config/manifest.js", force: true)
+
 say "Add build:css script"
 build_script = "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
 
@@ -25,3 +27,6 @@ else
   run %(npm set-script build:css "#{build_script}")
   run %(yarn build:css)
 end
+
+say "Update .gitignore"
+inject_into_file ".gitignore", "node_modules\n"

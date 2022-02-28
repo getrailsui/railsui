@@ -120,7 +120,7 @@ module Railsui
       Railsui.run_command "rails railsui:framework:install:tailwind"
     end
 
-    def intall_bootstrap
+    def install_bootstrap
       Railsui.run_command "rails railsui:framework:install:bootstrap"
     end
 

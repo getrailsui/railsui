@@ -38,44 +38,38 @@
 <% end %>
 
 <%= form_with model: @config, url: configuration_path, class: "h-full block" do |f| %>
-  <div class="grid col-span-1 lg:grid-cols-12 lg:h-full">
-    <div class="col-span-3 p-6 dark:border-gray-800 border-r">
-      <%= link_to  main_app.root_path, class: "block" do %>
-        <div class="flex items-center">
-          <%= render_svg "chevron-left", styles: "stroke-current text-neutral-500 w-4 h-4 mr-2" %>
-          <span>Back to main app</span>
-        </div>
-      <% end %>
 
-      <div class="bg-gray-50 dark:bg-neutral-800 p-8 rounded-xl mt-6">
-        <p class="font-bold mb-2 text-pink-500">For new Rails apps only:</p>
-        <p class="mb-6">Customize everything from your choice in CSS-framework to generating one-off pages for common web-app needs.</p>
-        <p>Saving your changes generates a file in your app's config folder called <code class="dark:text-yellow-500 text-red-400 text-sm">railsui.yml</code>. This also reloads the app to install and configure any dependencies.</p>
-      </div>
+  <h3 class="font-bold text-4xl mb-6">Configuration</h3>
+
+  <div class="mb-6 leading-relaxed text-lg">
+    <p class="mb-6 text-2xl">Customize your new rails application using the options below.</p>
+
+    <p class="mb-6">Saving a new configuration generates a file in your app's <code class="text-base dark:text-yellow-500 text-red-400">config</code> folder called <code class="text-base dark:text-yellow-500 text-red-400">railsui.yml</code>. This also reloads the app after installing and configuring any required dependencies.</p>
+
+    <p><%= link_to "Read the docs", docs_path %> to learn more about what comes in a default Rails UI configuration as well as how you can extend it.</p>
+  </div>
+
+  <div class="flex items-center mb-6">
+    <div class="bg-red-50 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
+      <%= render_svg "warning", styles: "stroke-current text-red-500 w-5 h-5 flex-shrink-0" %>
+
     </div>
+    <p class="text-lg text-red-800">Rails UI is only for <span class="font-bold">new</span> Rails applications at this time</p>
+  </div>
 
-    <div class="col-span-9 lg:px-20 lg:py-12 px-4">
-      <h3 class="font-bold text-4xl mb-6">Rails UI configuration</h3>
+  <div class="mb-10">
+    <%= render "railsui/admin/fields/application_preferences", f: f %>
+    <%= render "railsui/admin/fields/theme", f: f %>
+    <%= render "railsui/admin/fields/color", f: f %>
+    <%= render "railsui/admin/fields/pages", f: f %>
+  </div>
 
-      <div class="prose prose-lg prose-indigo mb-6">
-        <p>Customize your new rails application using the fields below. Once a configuration is saved Rails UI will generate, install, and pre-configure any assets and templates.</p>
+  <div class="border-t pt-10">
+    <%= f.button class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
+      <%= tag.span "Save changes" %>
+    <% end %>
 
-        <p><%= link_to "Read the docs", docs_path %> to learn more about what comes in a default Rails UI configuration as well as how you can extend it.</p>
-      </div>
+    <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
+  </div>
 
-      <div class="mb-10">
-        <%= render "railsui/admin/fields/application_preferences", f: f %>
-        <%= render "railsui/admin/fields/theme", f: f %>
-        <%= render "railsui/admin/fields/color", f: f %>
-        <%= render "railsui/admin/fields/pages", f: f %>
-      </div>
-
-      <div class="border-t pt-10">
-        <%= f.button class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
-          <%= tag.span "Save changes" %>
-        <% end %>
-
-        <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
-      </div>
-    </div>
-  <% end %>
+<% end %>
