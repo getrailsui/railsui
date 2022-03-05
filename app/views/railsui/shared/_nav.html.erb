@@ -2,9 +2,31 @@
   <%= render "railsui/shared/logo" %>
 </div>
 
-<%= link_to design_system_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
-  <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
-  <span>Design system</span>
+<% if Railsui.config.css_framework %>
+
+  <%= link_to systems_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group lg:w-auto w-full" do %>
+    <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
+    <span>Design system</span>
+  <% end %>
+
+  <ul class="ml-9">
+    <li>
+      <%= link_to "Content", systems_content_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+    </li>
+    <li>
+      <%= link_to "Forms", systems_forms_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+    </li>
+    <li>
+      <%= link_to "Components", systems_components_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+    </li>
+    <li>
+      <%= link_to "Layout", systems_layout_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+    </li>
+    <li>
+      <%= link_to "Utilities", systems_utilities_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+    </li>
+  </ul>
+
 <% end %>
 
 <%= link_to root_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
@@ -15,4 +37,13 @@
 <%= link_to docs_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
   <%= render_svg "book", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
   <span>Docs</span>
+<% end %>
+
+<% if Railsui.config.css_framework.present? %>
+  <div class="border-t px-4 py-2 rounded mt-6">
+    <span class="uppercase bg-emerald-50 text-emerald-700 px-1 inline-flex items-center rounded text-[10px] tracking-wide font-bold relative -left-1 mb-2">Active Theme</span>
+    <span class="font-mono text-xs block">
+      Bootstrap - Retriever
+    </span>
+  </div>
 <% end %>
