@@ -10,42 +10,16 @@
     </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css">
-
-    <%= javascript_include_tag 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio' %>
-
-    <%= javascript_include_tag 'railsui' %>
-
-    <script>
-      document.addEventListener("turbo:load", function() {
-        var snippets = document.querySelectorAll('pre code')
-        snippets.forEach(function(snippet) {
-          hljs.highlightBlock(snippet);
-        })
-      });
-    </script>
-
-    <%= render "layouts/railsui/custom_tailwind" %>
-
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-             colors: {
-              salmon: {
-                500: '#FA8072'
-              }
-            }
-          }
-        }
-      }
-    </script>
+    <%= javascript_include_tag "//unpkg.com/alpinejs", defer: true %>
+    <%= javascript_include_tag "railsui" %>
+    <%= stylesheet_link_tag "railsui/application" %>
 
     <%= yield :head %>
   </head>
   <%= render "railsui/shared/flash" %>
+
   <body class="h-full overflow-x-hidden font-sans font-normal leading-normal dark:bg-neutral-900 dark:text-white bg-white text-neutral-800">
     <div class="grid lg:grid-cols-12 lg:h-full">
       <div class="col-span-3 p-6 dark:border-gray-800 lg:border-r">

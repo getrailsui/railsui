@@ -6,10 +6,27 @@ Railsui::Engine.routes.draw do
 
   namespace :systems do
     get :layout
-    get :content
+
     get :forms
     get :components
     get :utilities
+    get :content
+
+    namespace :content do
+      get :typography
+      get :tables
+      get :images
+    end
+
+    namespace :forms do
+      get :inputs
+      get :input_groups
+      get :selects
+      get :boxes_and_radios
+      get :layout
+      get :validation
+      get :scaffolding
+    end
   end
 
   namespace :docs do

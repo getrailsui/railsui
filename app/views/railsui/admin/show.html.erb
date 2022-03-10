@@ -27,7 +27,7 @@
       if (reload) {
         setTimeout(function(){ window.location.href = '/railsui'; }, 4000)
       }
-        let btn = document.querySelector('button')
+        let btn = document.querySelector('#config_button')
 
         btn.addEventListener('click', (e) => {
           btn.classList.add('pointer-events-none', 'opacity-50')
@@ -65,7 +65,7 @@
   </div>
 
   <div class="border-t pt-10">
-    <%= f.button class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
+    <%= f.button id: "config_button", class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
       <%= tag.span "Save changes" %>
     <% end %>
 

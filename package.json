@@ -1,0 +1,20 @@
+{
+  "name": "railsui",
+  "version": "1.0.0",
+  "description": "A Rails engine with pre-built UI/UX using popular CSS frameworks",
+  "repository": "git@github.com:justalever/railsui.git",
+  "author": "Andy Leverenz <andy@justalever.com>",
+  "private": true,
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.2",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.8",
+    "tailwindcss": "^3.0.23"
+  },
+  "scripts": {
+    "build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/railsui/application.tailwind.css -o ./app/assets/builds/railsui/application.css --minify"
+  }
+}

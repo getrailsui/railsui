@@ -1,198 +1,40 @@
 <% content_for :head do %>
-  <%= javascript_include_tag 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio' %>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-       var c = document.getElementById('canvas'),
-    		ctx = c.getContext('2d'),
-    		cw = c.width = window.innerWidth,
-    		ch = c.height = window.innerHeight,
-    		points = [],
-    		tick = 0,
-    		opt = {
-    		count: 8,
-    		range: {
-    		  x: 40,
-    		  y: 80
-    		},
-    		duration: {
-    		  min: 40,
-    		  max: 100
-    		},
-    		thickness: 0,
-    		strokeColor: 'transparent',
-    		level: .65,
-    		curved: true
-    		},
-    		rand = function(min, max){
-    			return Math.floor( (Math.random() * (max - min + 1) ) + min);
-    		},
-    		ease = function (t, b, c, d) {
-    			if (( t/=d/2) < 1) return c/2*t*t + b;
-    			return -c/2 * ((--t)*(t-2) - 1) + b;
-    		};
-
-        ctx.lineJoin = 'round';
-
-        ctx.lineWidth = opt.thickness;
-
-        ctx.strokeStyle = opt.strokeColor;
-
-        var Point = function(config){
-          this.anchorX = config.x;
-          this.anchorY = config.y;
-          this.x = config.x;
-          this.y = config.y;
-          this.setTarget();
-        };
-
-
-        Point.prototype.setTarget = function(){
-          this.initialX = this.x;
-          this.initialY = this.y;
-          this.targetX = this.anchorX + rand(0, opt.range.x * 2) - opt.range.x;
-          this.targetY = this.anchorY + rand(0, opt.range.y * 2) - opt.range.y;
-          this.tick = 0;
-          this.duration = rand(opt.duration.min, opt.duration.max);
-        }
-
-        Point.prototype.update = function(){
-          var dx = this.targetX - this.x;
-          var dy = this.targetY - this.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if(Math.abs(dist) <= 0){
-          this.setTarget();
-        } else {
-            var t = this.tick;
-            var b = this.initialY;
-            var c = this.targetY - this.initialY;
-            var d = this.duration;
-            this.y = ease(t, b, c, d);
-            b = this.initialX;
-            c = this.targetX - this.initialX;
-            d = this.duration;
-            this.x = ease(t, b, c, d);
-            this.tick++;
-        }
-        };
-        Point.prototype.render = function(){
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false);
-          ctx.fillStyle = '#000';
-          ctx.fill();
-        };
-
-        var updatePoints = function(){
-          var i = points.length;
-          while(i--){
-          points[i].update();
-        }
-        };
-        var renderPoints = function(){
-          var i = points.length;
-          while(i--){
-          points[i].render();
-        }
-
-        };
-
-        var renderShape = function(){
-          ctx.beginPath();
-          var pointCount = points.length;
-          ctx.moveTo(points[0].x, points[0].y);
-          var i;
-          for (i = 0; i < pointCount - 1; i++) {
-          var c = (points[i].x + points[i + 1].x) / 2;
-          var d = (points[i].y + points[i + 1].y) / 2;
-          ctx.quadraticCurveTo(points[i].x, points[i].y, c, d);
-        }
-          ctx.lineTo(-opt.range.x - opt.thickness, ch + opt.thickness);
-
-          ctx.lineTo(cw + opt.range.x + opt.thickness, ch + opt.thickness);
-
-          ctx.closePath();
-
-          var gradient = ctx.createLinearGradient(20,300, 240,0);
-
-          gradient.addColorStop(1, '#4338CA');
-          gradient.addColorStop(.2, 'salmon');
-
-          ctx.fillStyle = gradient;
-
-          ctx.fill();
-
-          ctx.stroke();
-
-        };
-
-        var clear = function(){
-          ctx.clearRect(0, 0, cw, ch);
-        };
-
-        var loop = function(){
-          window.requestAnimFrame(loop, c);
-          tick++;
-          clear();
-          updatePoints();
-          renderShape();
-        };
-        var i = opt.count + 2;
-        var spacing = (cw + (opt.range.x * 2)) / (opt.count-1);
-
-        while(i--){
-          points.push(new Point({
-          x: (spacing * (i - 1)) - opt.range.x,
-          y: ch - (ch * opt.level)
-          }));
-        }
-
-        window.requestAnimFrame = function(){
-          return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){
-            window.setTimeout(a,1E3/60)
-          }}();
-
-        loop();
-      })
-  </script>
-  <style>
-    .static-header {
-      transform: matrix(1, -0.212557, 0, 1, 0, 0);
-      min-width: 1000px;
-      min-height: 1200px;
-      transform-origin: 170.4px 545.417px;
-      z-index: -1;
-      left: 0;
-      bottom: -350px;
-      width: 100%;
-      overflow: hidden;
-      position: absolute;
-    }
-  </style>
+  <%= stylesheet_link_tag "railsui/application" %>
+  <%= javascript_include_tag "canvas" %>
 <% end %>
 <div class="absolute w-full h-full overflow-hidden bg-indigo-600">
   <canvas class="static-header z-10" id="canvas"></canvas>
-  <div class="max-w-3xl mx-auto my-24 bg-white rounded-xl p-16 shadow-xl relative z-20">
-    <h1 class="text-lg italic text-gray-600">Welcome to <span class="sr-only">Rails UI</span></h1>
+  <div class="flex flex-col justify-center items-center h-full p-4">
+    <div class="max-w-2xl mx-auto bg-gradient-to-br from-pink-100 via-white to-indigo-200 rounded-3xl shadow-lg relative z-20 text-center border-black border">
+      <div class="px-16 pt-16 pb-4">
+        <%= link_to root_path, class:"link text-xl tracking-tight font-black group transition ease-in-out duration-300 hover:-rotate-2 hover:scale-105 transform flex items-center justify-center" do %>
+          <span class="sr-only">RailsUI</span>
+          <svg fill="none" height="34" viewBox="0 0 113 34" width="113" class="w-56 h-auto" xmlns="http://www.w3.org/2000/svg"><g class="fill-current"><path d="m31.1987 28.8915-.5402-.5403-.9905.7654c-.9904-.9454-1.7557-2.296-2.341-4.0068-.8104-2.386-1.4406-3.9617-1.8908-4.7271-1.1255-1.8458-2.7913-3.4215-5.0873-4.8171l6.3028-4.502-2.296-3.15134c-1.6207-2.20597-2.9263-3.96174-3.8717-5.17727l-8.0135 5.31233c-.3152-3.06135-2.206-5.13226-5.22232-5.13226-2.07091 0-4.00676.76534-5.76253 2.25099v.58526c1.21554-.31514 2.16095-.49522 2.88127-.49522 2.5211 0 3.73664 1.39562 3.69162 4.18684l-.04502 1.93587-7.293204 5.4474c4.952174 2.431 7.428264 5.5824 7.428264 9.4541-3.33146 1.0355-6.03265 2.9263-8.14858 5.7175l.0450198.2251c3.4665202-1.3055 6.3477902-1.9358 8.7338402-1.9358.58525 0 1.17051.045 1.66574.09 1.2155.1351 2.5211.5403 3.8267 1.2606.4952.2701 1.3055.7653 2.5211 1.4856l4.592-4.637-.5853-.5853-.9454.8554c-1.3056-.7653-2.7012-1.3956-4.1418-1.8908v-7.7884c2.0709 0 3.7366.9004 4.9522 2.7462.4502.6753 1.3055 2.6111 2.6111 5.8075 1.0355 2.5661 2.161 4.2769 3.3765 5.2223h.4502zm-9.004-15.7569-6.4828 4.772v-10.93975l1.3956-.94542zm-7.4282 13.4158c-.6303-.18-1.3056-.2701-2.0259-.2701v-17.24254l2.0259-1.3506zm-6.798-9.0039-3.37648-2.7012 3.37648-2.251z"/><path d="m47.6207 29.2516-.4952-.4051-.8104.4051c-.5852-.18-1.0354-.6302-1.2605-1.3956v-11.7952c.3151-1.2155.8103-2.341 1.5307-3.4665l-.0901-.1801-1.2605.9905-6.3928-2.116c-1.3956 1.3056-2.9713 1.8909-4.6371 1.7558l-.5852-.045 2.1609 5.6275c-2.9713 2.6561-4.4569 5.3573-4.4569 8.1485 0 1.8459 1.0804 3.7817 3.1964 5.7626h.2251l6.1227-4.9072c0 2.206.9454 3.8267 2.8812 4.8622zm-6.7529-8.4637-4.6371-2.251-1.8908-5.1322 6.5279 2.431zm.045 5.6725-3.3765 2.8813c-1.7558-1.7558-2.6112-3.6466-2.6112-5.6725 0-1.3956.4502-2.8813 1.3056-4.412l4.6821 2.3411z"/><path d="m54.9357 4.71586h-3.3314l-1.0805 4.59201h.5852zm1.1705 24.53574-.4502-.4051-.8103.5402c-.7203-.3602-1.1255-.8554-1.2606-1.4406v-12.4705l1.1255-1.2606-3.4665-2.8812-3.3315 2.7462 1.3056 1.3956v11.7501l-.045.8104c-.1351 1.9358.8104 3.4665 2.8362 4.547z"/><path d="m67.1301 28.9815-.5402-.5852-1.0805.8103-3.2865-2.0709v-18.95332c0-1.66573.7204-3.01633 2.206-4.0968-1.6657.2251-3.2414.99044-4.637 2.29601l-.4952.04502c-.8554-.6753-1.8458-1.17052-2.9713-1.44064.9904 1.03546 1.4856 1.98088 1.4856 2.88127v17.96286c0 1.3056-.4052 2.3861-1.1705 3.2415 2.8362 1.0354 4.9522 2.1609 6.3928 3.4215z"/><path d="m83.5894 10.1632c0-1.12544-.4502-1.66568-1.3506-1.66568-.7203 0-1.0805.2251-1.0805.72031l.2251.40518c.6753.85539.9905 1.39559.9905 1.71079 0 .8553-.8554 1.5757-1.7108 1.5757l-1.1705.135c-1.3956 0-3.2864-.6303-5.7625-1.8458-1.6658 1.5757-3.5116 2.8362-5.5375 3.7366v6.9331l4.3219 2.386-5.3573 7.6534.5852.4052c1.5757-.6753 3.0614-1.0355 4.547-1.0355 1.4857 0 3.0164.4052 4.547 1.1705 1.2606-.8553 2.161-1.3956 2.6562-1.7107.9454-.5853 1.9359-1.0355 2.9263-1.3506v-8.2836l-4.2319-2.6112 4.0968-5.5374c.8554-1.1705 1.3056-2.116 1.3056-2.7913zm-4.3669 5.3574-4.3669 5.7625-2.7012-1.3956.045-5.1773c1.6657.6753 3.1514.9905 4.502.9905.9454 0 1.8008-.045 2.5211-.1801zm-.5403 7.5183-.045 5.9876c-1.6657-.8103-3.2864-1.2155-4.8621-1.2155-1.1255 0-2.1159.09-2.9263.2701l4.9972-6.4828z"/></g><path clip-rule="evenodd" d="m94.9636 2.1103h10.5514c2.72 0 4.924 2.20457 4.924 4.92404v11.25496c0 2.7195-2.204 4.924-4.924 4.924h-10.5514c-2.7195 0-4.924-2.2045-4.924-4.924v-11.25496c0-2.71947 2.2045-4.92404 4.924-4.92404zm-7.0343 4.92404c0-3.88496 3.1493-7.03434 7.0343-7.03434h10.5514c3.885 0 7.034 3.14938 7.034 7.03434v11.25496c0 3.8849-3.149 7.0343-7.034 7.0343h-10.5514c-3.885 0-7.0343-3.1494-7.0343-7.0343zm12.2237 7.41676v-6.52975h1.854v6.68465c0 2.1982-1.659 3.702-4.1517 3.702-2.503 0-4.1517-1.5038-4.1517-3.702v-6.68465h1.8536v6.52975c0 1.284.8892 2.2032 2.2981 2.2032 1.4039 0 2.2977-.9192 2.2977-2.2032zm3.658-6.52975h1.853v10.23175h-1.853z" class="fill-current dark:text-white text-gray-800 group-hover:text-orange-600 transition ease-in-out duration-300 group-hover:animate-pulse" fill-rule="evenodd"/></svg>
+        <% end %>
 
-    <%= link_to root_path, class:"link text-xl tracking-tight font-black group transition ease-in-out duration-300 hover:-rotate-2 hover:scale-105 transform" do %>
-      <span class="sr-only">RailsUI</span>
-      <svg fill="none" height="34" viewBox="0 0 113 34" width="113" class="w-56 h-auto" xmlns="http://www.w3.org/2000/svg"><g class="fill-current"><path d="m31.1987 28.8915-.5402-.5403-.9905.7654c-.9904-.9454-1.7557-2.296-2.341-4.0068-.8104-2.386-1.4406-3.9617-1.8908-4.7271-1.1255-1.8458-2.7913-3.4215-5.0873-4.8171l6.3028-4.502-2.296-3.15134c-1.6207-2.20597-2.9263-3.96174-3.8717-5.17727l-8.0135 5.31233c-.3152-3.06135-2.206-5.13226-5.22232-5.13226-2.07091 0-4.00676.76534-5.76253 2.25099v.58526c1.21554-.31514 2.16095-.49522 2.88127-.49522 2.5211 0 3.73664 1.39562 3.69162 4.18684l-.04502 1.93587-7.293204 5.4474c4.952174 2.431 7.428264 5.5824 7.428264 9.4541-3.33146 1.0355-6.03265 2.9263-8.14858 5.7175l.0450198.2251c3.4665202-1.3055 6.3477902-1.9358 8.7338402-1.9358.58525 0 1.17051.045 1.66574.09 1.2155.1351 2.5211.5403 3.8267 1.2606.4952.2701 1.3055.7653 2.5211 1.4856l4.592-4.637-.5853-.5853-.9454.8554c-1.3056-.7653-2.7012-1.3956-4.1418-1.8908v-7.7884c2.0709 0 3.7366.9004 4.9522 2.7462.4502.6753 1.3055 2.6111 2.6111 5.8075 1.0355 2.5661 2.161 4.2769 3.3765 5.2223h.4502zm-9.004-15.7569-6.4828 4.772v-10.93975l1.3956-.94542zm-7.4282 13.4158c-.6303-.18-1.3056-.2701-2.0259-.2701v-17.24254l2.0259-1.3506zm-6.798-9.0039-3.37648-2.7012 3.37648-2.251z"/><path d="m47.6207 29.2516-.4952-.4051-.8104.4051c-.5852-.18-1.0354-.6302-1.2605-1.3956v-11.7952c.3151-1.2155.8103-2.341 1.5307-3.4665l-.0901-.1801-1.2605.9905-6.3928-2.116c-1.3956 1.3056-2.9713 1.8909-4.6371 1.7558l-.5852-.045 2.1609 5.6275c-2.9713 2.6561-4.4569 5.3573-4.4569 8.1485 0 1.8459 1.0804 3.7817 3.1964 5.7626h.2251l6.1227-4.9072c0 2.206.9454 3.8267 2.8812 4.8622zm-6.7529-8.4637-4.6371-2.251-1.8908-5.1322 6.5279 2.431zm.045 5.6725-3.3765 2.8813c-1.7558-1.7558-2.6112-3.6466-2.6112-5.6725 0-1.3956.4502-2.8813 1.3056-4.412l4.6821 2.3411z"/><path d="m54.9357 4.71586h-3.3314l-1.0805 4.59201h.5852zm1.1705 24.53574-.4502-.4051-.8103.5402c-.7203-.3602-1.1255-.8554-1.2606-1.4406v-12.4705l1.1255-1.2606-3.4665-2.8812-3.3315 2.7462 1.3056 1.3956v11.7501l-.045.8104c-.1351 1.9358.8104 3.4665 2.8362 4.547z"/><path d="m67.1301 28.9815-.5402-.5852-1.0805.8103-3.2865-2.0709v-18.95332c0-1.66573.7204-3.01633 2.206-4.0968-1.6657.2251-3.2414.99044-4.637 2.29601l-.4952.04502c-.8554-.6753-1.8458-1.17052-2.9713-1.44064.9904 1.03546 1.4856 1.98088 1.4856 2.88127v17.96286c0 1.3056-.4052 2.3861-1.1705 3.2415 2.8362 1.0354 4.9522 2.1609 6.3928 3.4215z"/><path d="m83.5894 10.1632c0-1.12544-.4502-1.66568-1.3506-1.66568-.7203 0-1.0805.2251-1.0805.72031l.2251.40518c.6753.85539.9905 1.39559.9905 1.71079 0 .8553-.8554 1.5757-1.7108 1.5757l-1.1705.135c-1.3956 0-3.2864-.6303-5.7625-1.8458-1.6658 1.5757-3.5116 2.8362-5.5375 3.7366v6.9331l4.3219 2.386-5.3573 7.6534.5852.4052c1.5757-.6753 3.0614-1.0355 4.547-1.0355 1.4857 0 3.0164.4052 4.547 1.1705 1.2606-.8553 2.161-1.3956 2.6562-1.7107.9454-.5853 1.9359-1.0355 2.9263-1.3506v-8.2836l-4.2319-2.6112 4.0968-5.5374c.8554-1.1705 1.3056-2.116 1.3056-2.7913zm-4.3669 5.3574-4.3669 5.7625-2.7012-1.3956.045-5.1773c1.6657.6753 3.1514.9905 4.502.9905.9454 0 1.8008-.045 2.5211-.1801zm-.5403 7.5183-.045 5.9876c-1.6657-.8103-3.2864-1.2155-4.8621-1.2155-1.1255 0-2.1159.09-2.9263.2701l4.9972-6.4828z"/></g><path clip-rule="evenodd" d="m94.9636 2.1103h10.5514c2.72 0 4.924 2.20457 4.924 4.92404v11.25496c0 2.7195-2.204 4.924-4.924 4.924h-10.5514c-2.7195 0-4.924-2.2045-4.924-4.924v-11.25496c0-2.71947 2.2045-4.92404 4.924-4.92404zm-7.0343 4.92404c0-3.88496 3.1493-7.03434 7.0343-7.03434h10.5514c3.885 0 7.034 3.14938 7.034 7.03434v11.25496c0 3.8849-3.149 7.0343-7.034 7.0343h-10.5514c-3.885 0-7.0343-3.1494-7.0343-7.0343zm12.2237 7.41676v-6.52975h1.854v6.68465c0 2.1982-1.659 3.702-4.1517 3.702-2.503 0-4.1517-1.5038-4.1517-3.702v-6.68465h1.8536v6.52975c0 1.284.8892 2.2032 2.2981 2.2032 1.4039 0 2.2977-.9192 2.2977-2.2032zm3.658-6.52975h1.853v10.23175h-1.853z" class="fill-current dark:text-white text-gray-800 group-hover:text-orange-600 transition ease-in-out duration-300 group-hover:animate-pulse" fill-rule="evenodd"/></svg>
-    <% end %>
+        <div class="max-w-2xl mx-auto">
+          <p class="lg:text-2xl text-xl mt-6 text-neutral-700 mb-4">UI components and templates for Ruby on Rails.</p>
 
-    <div class="max-w-2xl">
-      <p class="text-3xl  mt-6 text-gray-800 mb-6">Professionally designed UI components and templates for Ruby on Rails applications.</p>
+          <p class="lg:text-lg text-lg leading-relaxed text-neutral-600 mb-6">Save time creating views, scaffolds, components, and making tough design decisions with the help of Rails UI.</p>
+        </div>
+      </div>
 
-      <p class="text-xl leading-relaxed text-gray-500 mb-6">Save time creating views, scaffolds, components, and making tough design decisions with the help of Rails UI.</p>
+      <div class="border-t border-black py-6 flex items-center justify-between px-6">
+        <%= link_to railsui.docs_path, class: "bg-white py-3 px-4 text-center inline-flex items-center text-gray-800 border border-black shadow-lg hover:shadow-none group rounded-3xl" do %>
+          <svg class="stroke-current w-6 h-6 mr-2 group-hover:text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>book</title><g fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 5.75a1 1 0 0 0-1-1H14a2 2 0 0 0-2 2v12.5l.828-.828a4 4 0 0 1 2.829-1.172h2.593a1 1 0 0 0 1-1V5.75z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.75 5.75a1 1 0 0 1 1-1H10a2 2 0 0 1 2 2v12.5l-.828-.828a4 4 0 0 0-2.829-1.172H5.75a1 1 0 0 1-1-1V5.75z"></path></g></svg>
+          <span class="font-medium">Read the docs</span>
+        <% end %>
+
+        <%= link_to railsui.root_path, class: "bg-white py-3 pl-4 pr-3 text-center flex items-center rounded text-gray-800 border border-black shadow-lg hover:shadow-none group bg-gradient-to-br from-indigo-700 text-white to-indigo-600 rounded-3xl" do %>
+          <svg class="stroke-current w-6 h-6 mr-2 group-hover:text-indigo-100 font-medium" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>settings</title><g fill="none"><path  stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.12 5.613a1 1 0 0 0-.991-.863h-.258a1 1 0 0 0-.99.863l-.087.632c-.056.403-.354.724-.732.874a5.225 5.225 0 0 0-.167.07c-.373.163-.81.15-1.136-.095l-.308-.23a1 1 0 0 0-1.307.092l-.188.188a1 1 0 0 0-.092 1.307l.23.308c.244.325.258.763.095 1.136a5.225 5.225 0 0 0-.07.167c-.15.378-.47.676-.874.732l-.632.087a1 1 0 0 0-.863.99v.258a1 1 0 0 0 .863.99l.632.087c.403.056.724.354.874.732l.07.167c.163.373.15.81-.095 1.136l-.23.308a1 1 0 0 0 .092 1.307l.188.188a1 1 0 0 0 1.307.093l.308-.231c.325-.244.763-.258 1.136-.095a5.4 5.4 0 0 0 .167.07c.378.15.676.47.732.874l.087.632a1 1 0 0 0 .99.863h.258a1 1 0 0 0 .99-.863l.087-.632c.056-.403.354-.724.732-.874a5.12 5.12 0 0 0 .167-.07c.373-.163.81-.15 1.136.095l.308.23a1 1 0 0 0 1.307-.092l.188-.188a1 1 0 0 0 .093-1.307l-.231-.308c-.244-.325-.258-.763-.095-1.136l.07-.167c.15-.378.47-.676.874-.732l.632-.087a1 1 0 0 0 .863-.99v-.258a1 1 0 0 0-.863-.99l-.632-.087c-.403-.056-.724-.354-.874-.732a5.168 5.168 0 0 0-.07-.167c-.163-.373-.15-.81.095-1.136l.23-.308a1 1 0 0 0-.092-1.307l-.188-.188a1 1 0 0 0-1.307-.092l-.308.23c-.325.244-.763.258-1.136.095a5.185 5.185 0 0 0-.167-.07c-.378-.15-.676-.47-.732-.874l-.087-.632z"></path><path  stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.25 12a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"></path></g></svg>
+
+          <span class="font-medium">Configure your app</span>
+          <svg class="stroke-current w-auto h-7 text-neutral-100 transform group-hover:translate-x-1 transition ease-linear duration-200 relative top-px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>chevron-right</title><g fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.75 8.75l3.5 3.25-3.5 3.25"></path></g></svg>
+        <% end %>
+      </div>
     </div>
-
-    <%= link_to railsui.root_path, class: "bg-white py-3 px-4 text-center inline-flex items-center rounded text-gray-800 mr-3 border shadow-sm hover:shadow-none" do %>
-      <svg class="stroke-current w-6 h-6 mr-2 font-medium" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>settings</title><g fill="none"><path  stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.12 5.613a1 1 0 0 0-.991-.863h-.258a1 1 0 0 0-.99.863l-.087.632c-.056.403-.354.724-.732.874a5.225 5.225 0 0 0-.167.07c-.373.163-.81.15-1.136-.095l-.308-.23a1 1 0 0 0-1.307.092l-.188.188a1 1 0 0 0-.092 1.307l.23.308c.244.325.258.763.095 1.136a5.225 5.225 0 0 0-.07.167c-.15.378-.47.676-.874.732l-.632.087a1 1 0 0 0-.863.99v.258a1 1 0 0 0 .863.99l.632.087c.403.056.724.354.874.732l.07.167c.163.373.15.81-.095 1.136l-.23.308a1 1 0 0 0 .092 1.307l.188.188a1 1 0 0 0 1.307.093l.308-.231c.325-.244.763-.258 1.136-.095a5.4 5.4 0 0 0 .167.07c.378.15.676.47.732.874l.087.632a1 1 0 0 0 .99.863h.258a1 1 0 0 0 .99-.863l.087-.632c.056-.403.354-.724.732-.874a5.12 5.12 0 0 0 .167-.07c.373-.163.81-.15 1.136.095l.308.23a1 1 0 0 0 1.307-.092l.188-.188a1 1 0 0 0 .093-1.307l-.231-.308c-.244-.325-.258-.763-.095-1.136l.07-.167c.15-.378.47-.676.874-.732l.632-.087a1 1 0 0 0 .863-.99v-.258a1 1 0 0 0-.863-.99l-.632-.087c-.403-.056-.724-.354-.874-.732a5.168 5.168 0 0 0-.07-.167c-.163-.373-.15-.81.095-1.136l.23-.308a1 1 0 0 0-.092-1.307l-.188-.188a1 1 0 0 0-1.307-.092l-.308.23c-.325.244-.763.258-1.136.095a5.185 5.185 0 0 0-.167-.07c-.378-.15-.676-.47-.732-.874l-.087-.632z"></path><path  stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.25 12a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"></path></g></svg>
-
-      <span class="font-medium">Configure your app</span>
-    <% end %>
-    <%= link_to railsui.docs_path, class: "bg-white py-3 px-4 text-center inline-flex items-center rounded text-gray-800 mr-3 border shadow-sm hover:shadow-none" do %>
-      <svg class="stroke-current w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>book</title><g fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 5.75a1 1 0 0 0-1-1H14a2 2 0 0 0-2 2v12.5l.828-.828a4 4 0 0 1 2.829-1.172h2.593a1 1 0 0 0 1-1V5.75z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.75 5.75a1 1 0 0 1 1-1H10a2 2 0 0 1 2 2v12.5l-.828-.828a4 4 0 0 0-2.829-1.172H5.75a1 1 0 0 1-1-1V5.75z"></path></g></svg>
-      <span class="font-medium">Read the docs</span>
-    <% end %>
+  </div>
+  <div class="absolute bottom-3 left-3 z-50 text-xs font-mono text-white text-opacity-50">
+    Made by <%= link_to "@justalever", "https://twitter.com/justalever", target: :_blank %>
   </div>
 </div>
