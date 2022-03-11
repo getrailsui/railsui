@@ -1,0 +1,23 @@
+[x-cloak] {
+  display: none;
+}
+
+.rui-primary-nav ul a {
+  @apply block pr-3 pl-10 rounded py-1 hover:bg-indigo-50 hover:bg-opacity-50 transition-colors duration-200 ease-linear relative;
+}
+
+.rui-primary-nav ul a.active {
+  @apply bg-indigo-700 text-white;
+}
+
+.rui-primary-nav ul a.active::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.8;
+}

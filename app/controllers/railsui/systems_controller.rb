@@ -5,19 +5,16 @@ module Railsui
     def show
     end
 
-    def layout
-    end
-
     def content
     end
 
     def forms
     end
 
-    def components
+    def elements
     end
 
-    def utilities
+    def marketing
     end
   end
 end

@@ -1,8 +1,8 @@
-<h1 class="font-bold text-3xl mb-6">Design system</h1>
+<h1 class="font-bold text-4xl mb-6">Design system</h1>
 <div class="prose prose-lg prose-indigo">
   <p>A design system is a pre-configured set of standards and patterns to follow as you iterate on the application building process.</p>
 
-  <p>Use the framework as a guide but not necessarily a source of truth for exact use cases. It's meant to solve those repeatable problems aimed to help you increase speed and developer happiness.</p>
+  <p>Use this system as a guide but not necessarily a source of truth for exact use cases. It's meant to solve those repeatable problems aimed to help you increase speed and developer happiness.</p>
 </div>
 
 <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-10">
@@ -23,25 +23,17 @@
     <% end %>
   </li>
   <li>
-    <%= link_to systems_components_path, class: "border p-4 rounded-lg bg-white block hover:shadow-lg transition ease-in-out duration" do %>
-      <h3 class="font-semibold text-lg">Components</h3>
-      <p class="mb-3 text-gray-600">Combined UI patterns ready for your latest app.</p>
+    <%= link_to systems_elements_path, class: "border p-4 rounded-lg bg-white block hover:shadow-lg transition ease-in-out duration" do %>
+      <h3 class="font-semibold text-lg">Elements</h3>
+      <p class="mb-3 text-gray-600">Atomic UI elements ready for your latest app.</p>
 
       <span class="text-indigo-600">View more</span>
     <% end %>
   </li>
   <li>
-    <%= link_to systems_layout_path, class: "border p-4 rounded-lg bg-white block hover:shadow-lg transition ease-in-out duration" do %>
-      <h3 class="font-semibold text-lg">Layout</h3>
-      <p class="mb-3 text-gray-600">Useful patterns to follow for both common and unique layouts.</p>
-
-      <span class="text-indigo-600">View more</span>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to systems_utilities_path, class: "border p-4 rounded-lg bg-white block hover:shadow-lg transition ease-in-out duration" do %>
-      <h3 class="font-semibold text-lg">Utilities</h3>
-      <p class="mb-3 text-gray-600">Handy CSS classes for those odds and ends.</p>
+    <%= link_to systems_marketing_path, class: "border p-4 rounded-lg bg-white block hover:shadow-lg transition ease-in-out duration" do %>
+      <h3 class="font-semibold text-lg">Marketing</h3>
+      <p class="mb-3 text-gray-600">Ready-to-use marketing components.</p>
 
       <span class="text-indigo-600">View more</span>
     <% end %>

@@ -1,46 +1,10 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-.static-header {
-  transform: matrix(1, -0.212557, 0, 1, 0, 0);
-  min-width: 1000px;
-  min-height: 1200px;
-  transform-origin: 170.4px 545.417px;
-  z-index: -1;
-  left: 0;
-  bottom: -350px;
-  width: 100%;
-  overflow: hidden;
-  position: absolute;
-}
-
-hex-input::part(input) ::selection,
-::selection {
-  background: #e0e7ff;
-}
-
-hex-input::part(input) {
-  display: block;
-  box-sizing: border-box;
-  width: 170px;
-  margin: 20px 0 0;
-  padding: 6px 6px 6px 34px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #fff;
-  outline: none;
-  font: inherit;
-  text-transform: uppercase;
-  text-align: center;
-  position: relative;
-}
-
-hex-input::part(input):focus {
-  border-color: #4338ca;
-}
-
-[x-cloak] {
-  display: none;
-}
+@import "canvas.css";
+@import "configuration.css";
+@import "nav.css";
 
 @import "tailwindcss/utilities";
+
+@import "tippy.js/dist/tippy.css";

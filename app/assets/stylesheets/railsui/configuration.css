@@ -1,0 +1,24 @@
+hex-input::part(input) ::selection,
+::selection {
+  background: #e0e7ff;
+}
+
+hex-input::part(input) {
+  display: block;
+  box-sizing: border-box;
+  width: 170px;
+  margin: 20px 0 0;
+  padding: 6px 6px 6px 34px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  outline: none;
+  font: inherit;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+}
+
+hex-input::part(input):focus {
+  border-color: #4338ca;
+}

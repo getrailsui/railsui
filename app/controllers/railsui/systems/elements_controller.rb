@@ -2,8 +2,8 @@ require_dependency "railsui/application_controller"
 
 module Railsui
   module Systems
-    class FormsController < ApplicationController
-      # pages = %w[inputs input_groups selects boxes_and_radios layout validation scaffolding]
+    class ElementsController < ApplicationController
+      # pages = %w[accordions alerts badges breadcrumbs buttons cards dropdowns modals navigation tabs pagination tooltips]
 
       # pages.each do |page|
       #   define_method(page) do

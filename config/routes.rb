@@ -5,12 +5,10 @@ Railsui::Engine.routes.draw do
   resource :systems, only: :show
 
   namespace :systems do
-    get :layout
-
     get :forms
-    get :components
-    get :utilities
+    get :elements
     get :content
+    get :marketing
 
     namespace :content do
       get :typography
@@ -26,6 +24,28 @@ Railsui::Engine.routes.draw do
       get :layout
       get :validation
       get :scaffolding
+    end
+
+    namespace :marketing do
+      get :ctas
+      get :footers
+      get :headers
+      get :longform
+    end
+
+    namespace :elements do
+      get :accordions
+      get :alerts
+      get :badges
+      get :breadcrumbs
+      get :buttons
+      get :cards
+      get :dropdowns
+      get :modals
+      get :navigation
+      get :pagination
+      get :tabs
+      get :tooltips
     end
   end
 

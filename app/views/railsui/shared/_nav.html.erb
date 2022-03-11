@@ -3,14 +3,23 @@
     <%= render "railsui/shared/logo" %>
   </div>
 
-  <% if Railsui.config.css_framework %>
+  <% unless Railsui.config.css_framework.present? %>
+    <div class="relative" data-controller="tooltip" data-tooltip-content-value="A design system will be generated once you choose and save a CSS framework in the configuration form.">
+      <div class="font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-opacity-50 flex items-center group lg:w-auto w-full bg-gray-50 hover:cursor-not-allowed" >
+        <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0 opacity-50 " %>
+        <span class="opacity-50">Design system</span>
+      </div>
+      <%= render_svg "question-mark", styles: "w-6 h-6 stroke-current absolute right-2 bottom-3 text-gray-600" %>
+    </div>
+  <% end %>
 
+  <% if Railsui.config.css_framework.present? %>
     <%= link_to systems_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group lg:w-auto w-full" do %>
       <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
       <span>Design system</span>
     <% end %>
 
-    <ul class="ml-3">
+    <ul class="ml-3 rui-primary-nav">
       <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
         <button @click="open = !open" aria-expanded="false" class="p-1 rounded  text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-2 transition ease-in-out duration-300 flex items-center w-full" :class="{'bg-indigo-50 text-indigo-800' : open}">
           <div :class="open ? 'rotate-180' : ''" class="transform">
@@ -18,17 +27,16 @@
           </div>
           Content
         </button>
-        <ul x-show="open" class="ml-9 leading-loose">
+        <ul x-show="open" class="leading-loose">
           <li>
-            <%= link_to "Typography", systems_content_typography_path %>
+            <%= nav_link_to "Typography", systems_content_typography_path %>
           </li>
           <li>
-            <%= link_to "Tables", systems_content_tables_path %>
+            <%= nav_link_to "Tables", systems_content_tables_path %>
           </li>
           <li>
-            <%= link_to "Images", systems_content_images_path %>
+            <%= nav_link_to "Images", systems_content_images_path %>
           </li>
-
         </ul>
       </li>
       <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
@@ -39,74 +47,106 @@
           Forms
         </button>
 
-        <ul x-show="open" class="ml-9 leading-loose">
+        <ul x-show="open" class="leading-loose">
           <li>
-            <%= link_to "Overview", systems_forms_path %>
+            <%= nav_link_to "Overview", systems_forms_path %>
           </li>
           <li>
-            <%= link_to "Inputs", systems_forms_inputs_path %>
+            <%= nav_link_to "Inputs", systems_forms_inputs_path %>
           </li>
           <li>
-            <%= link_to "Input Groups", systems_forms_input_groups_path %>
+            <%= nav_link_to "Input Groups", systems_forms_input_groups_path %>
           </li>
           <li>
-            <%= link_to "Selects", systems_forms_selects_path %>
+            <%= nav_link_to "Selects", systems_forms_selects_path %>
           </li>
           <li>
-            <%= link_to "Checkboxes & Radios", systems_forms_boxes_and_radios_path %>
+            <%= nav_link_to "Checkboxes & Radios", systems_forms_boxes_and_radios_path %>
           </li>
           <li>
-            <%= link_to "Layout", systems_forms_layout_path %>
+            <%= nav_link_to "Layout", systems_forms_layout_path %>
           </li>
           <li>
-            <%= link_to "Validation", systems_forms_validation_path %>
+            <%= nav_link_to "Validation", systems_forms_validation_path %>
           </li>
           <li>
-            <%= link_to "Scaffolding", systems_forms_scaffolding_path %>
+            <%= nav_link_to "Scaffolding", systems_forms_scaffolding_path %>
           </li>
         </ul>
       </li>
-      <li x-data="{open: window.location.pathname.includes('components')}" x-cloak>
+      <li x-data="{open: window.location.pathname.includes('elements')}" x-cloak>
         <button @click="open = !open" aria-expanded="false" class="p-1 rounded  text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-2 transition ease-in-out duration-300 flex items-center w-full" :class="{'bg-indigo-50 text-indigo-800' : open}">
           <div :class="open ? 'rotate-180' : ''" class="transform">
             <%= render_svg "chevron-down", styles: "w-8 h-8 stroke-current" %>
           </div>
-          Components
+          Elements
         </button>
 
-        <ul x-show="open" class="ml-9 leading-loose">
+        <ul x-show="open" class="leading-loose">
           <li>
-            <%= link_to "Overview", systems_forms_path %>
+            <%= nav_link_to "Accordions", systems_elements_accordions_path %>
           </li>
           <li>
-            <%= link_to "Inputs", systems_forms_inputs_path %>
+            <%= nav_link_to "Alerts", systems_elements_alerts_path %>
           </li>
           <li>
-            <%= link_to "Input Groups", systems_forms_input_groups_path %>
+            <%= nav_link_to "Badges", systems_elements_badges_path %>
           </li>
           <li>
-            <%= link_to "Selects", systems_forms_selects_path %>
+            <%= nav_link_to "Breadcrumbs", systems_elements_breadcrumbs_path %>
           </li>
           <li>
-            <%= link_to "Checkboxes & Radios", systems_forms_boxes_and_radios_path %>
+            <%= nav_link_to "Buttons", systems_elements_buttons_path %>
           </li>
           <li>
-            <%= link_to "Layout", systems_forms_layout_path %>
+            <%= nav_link_to "Cards",systems_elements_cards_path %>
           </li>
           <li>
-            <%= link_to "Validation", systems_forms_validation_path %>
+            <%= nav_link_to "Dropdowns", systems_elements_dropdowns_path %>
           </li>
           <li>
-            <%= link_to "Scaffolding", systems_forms_scaffolding_path %>
+            <%= nav_link_to "Modals", systems_elements_modals_path %>
+          </li>
+          <li>
+            <%= nav_link_to "Navigation", systems_elements_navigation_path %>
+          </li>
+          <li>
+            <%= nav_link_to "Tabs", systems_elements_tabs_path %>
+          </li>
+          <li>
+            <%= nav_link_to "Pagination", systems_elements_pagination_path %>
+          </li>
+          <li>
+            <%= nav_link_to "Tooltips", systems_elements_tooltips_path %>
           </li>
         </ul>
       </li>
-      <li>
-        <%= link_to "Layout", systems_layout_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+      <li x-data="{open: window.location.pathname.includes('marketing')}" x-cloak>
+        <button @click="open = !open" aria-expanded="false" class="p-1 rounded  text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-2 transition ease-in-out duration-300 flex items-center w-full" :class="{'bg-indigo-50 text-indigo-800' : open}">
+          <div :class="open ? 'rotate-180' : ''" class="transform">
+            <%= render_svg "chevron-down", styles: "w-8 h-8 stroke-current" %>
+          </div>
+          Marketing
+        </button>
+        <ul x-show="open" class="leading-loose">
+          <li>
+            <%= nav_link_to "Overview", systems_marketing_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          </li>
+          <li>
+            <%= nav_link_to "CTAs", systems_marketing_ctas_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          </li>
+          <li>
+            <%= nav_link_to "Footers", systems_marketing_footers_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          </li>
+          <li>
+            <%= nav_link_to "Headers", systems_marketing_headers_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          </li>
+          <li>
+            <%= nav_link_to "Longform content", systems_marketing_longform_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          </li>
+        </ul>
       </li>
-      <li>
-        <%= link_to "Utilities", systems_utilities_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
-      </li>
+
     </ul>
   <% end %>
 

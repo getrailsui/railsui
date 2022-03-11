@@ -1,8 +1,9 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag "railsui/application" %>
-  <%= javascript_include_tag "canvas" %>
+  <%= javascript_include_tag "railsui/application" %>
 <% end %>
-<div class="absolute w-full h-full overflow-hidden bg-indigo-600">
+
+<div class="absolute w-full h-full overflow-hidden bg-indigo-600" data-controller="canvas">
   <canvas class="static-header z-10" id="canvas"></canvas>
   <div class="flex flex-col justify-center items-center h-full p-4">
     <div class="max-w-2xl mx-auto bg-gradient-to-br from-pink-100 via-white to-indigo-200 rounded-3xl shadow-lg relative z-20 text-center border-black border">

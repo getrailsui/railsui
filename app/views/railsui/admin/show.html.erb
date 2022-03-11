@@ -37,7 +37,7 @@
   </script>
 <% end %>
 
-<%= form_with model: @config, url: configuration_path, class: "h-full block" do |f| %>
+<%= form_with model: @config, url: configuration_path, class: "h-full block", data: { controller: "configuration" } do |f| %>
 
   <h3 class="font-bold text-4xl mb-6">Configuration</h3>
 
