@@ -25,7 +25,8 @@ module Railsui
           :font_family,
           :about,
           :pricing,
-          :blog
+          :blog,
+          :theme
         )
     end
   end

@@ -6,20 +6,13 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
      # Attributes
-    attr_accessor :application_name
-    attr_accessor :css_framework
-    attr_accessor :primary_color
-    attr_accessor :secondary_color
-    attr_accessor :tertiary_color
-    attr_accessor :font_family
-    attr_accessor :about
-    attr_accessor :pricing
-    attr_accessor :blog
+    attr_accessor :application_name, :css_framework, :primary_color, :secondary_color, :tertiary_color, :font_family, :about, :pricing, :blog, :theme
 
     def initialize(options = {})
       assign_attributes(options)
       self.application_name ||= "Rails UI"
       self.css_framework ||= ""
+      self.theme ||= ""
       self.primary_color ||= "4338CA"
       self.secondary_color ||= "FF8C69"
       self.tertiary_color ||= "333333"

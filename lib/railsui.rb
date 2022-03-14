@@ -32,6 +32,10 @@ module Railsui
     self.config.css_framework == "" # not yet configured
   end
 
+  def self.theme
+    self.config.theme
+  end
+
   def self.run_command(command)
     Bundler.with_original_env do
       system command

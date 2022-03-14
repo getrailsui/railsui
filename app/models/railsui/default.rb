@@ -1,11 +1,17 @@
 module Railsui
   class Default
-    BOOTSTRAP = "Bootstrap"
-    BULMA = "Bulma"
-    TAILWIND_CSS = "Tailwind CSS"
-    NONE = "None"
+    BOOTSTRAP = "bootstrap"
+    BULMA = "bulma"
+    TAILWIND_CSS = "tailwind"
+    NONE = "none"
 
-    CSS_FRAMEWORKS = [BOOTSTRAP, BULMA, TAILWIND_CSS, NONE]
+    CSS_FRAMEWORKS = [
+      ["Bootstrap", BOOTSTRAP],
+      ["Bulma", BULMA],
+      ["Tailwind CSS", TAILWIND_CSS],
+      ["None", NONE]
+    ]
+
     SYSTEM_FONTS  = 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
 
     DEFAULT_PRIMARY_COLOR = "4338CA"
@@ -15,12 +21,23 @@ module Railsui
 
     FONTS = {
       inter: "Inter, #{SYSTEM_FONTS}",
-      lato: "Lato, #{SYSTEM_FONTS}",
-      open_sans: "Open Sans, #{SYSTEM_FONTS}",
-      roboto: "Roboto, #{SYSTEM_FONTS}",
       mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-      serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
       system: SYSTEM_FONTS
+    }
+
+    THEMES = {
+      bootstrap: {
+        retriever: "Retriever",
+        setter: "Setter"
+      },
+      tailwind: {
+        hound: "Hound",
+        shepherd: "Shepherd"
+      },
+      bulma: {
+        collie: "collie",
+        terrier: "terrier"
+      }
     }
   end
 end
