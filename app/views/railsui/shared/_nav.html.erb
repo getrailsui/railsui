@@ -161,11 +161,21 @@
   <% end %>
 
   <% if Railsui.config.css_framework.present? %>
-    <div class="border-t px-4 py-2 rounded mt-6">
-      <span class="uppercase bg-emerald-50 text-emerald-700 px-1 inline-flex items-center rounded text-[10px] tracking-wide font-bold relative -left-1 mb-2">Active Theme</span>
-      <span class="font-mono text-xs block">
-        <%= Railsui.config.css_framework.humanize %> &mdash; <%= Railsui.config.theme.humanize %>
-      </span>
+    <div class="mt-3 pt-6 border-t">
+      <div class="flex items-center">
+        <div class="flex items-center flex-1">
+          <div class="mr-3">
+            <%= render_svg "#{Railsui.config.css_framework}", styles: "fill-current text-indigo-800 w-6 h-6" %>
+          </div>
+
+          <h4 class="font-semibold"><%= Railsui.config.css_framework.humanize %></h4>
+        </div>
+
+        <div class="bg-emerald-50 uppercase tracking-wide text-emerald-700 font-bold rounded px-1 inline-flex items-center text-[10px]" data-controller="tooltip" data-tippy-content="Active theme">
+          <%= render_svg "paw", styles: "w-4 h-4 fill-current" %>
+          <%= Railsui.config.theme.humanize %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

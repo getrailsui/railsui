@@ -1,8 +1,11 @@
-<div class="p-10 rounded-xl border border-neutral-200 mb-16 shadow-sm">
+<div class="p-10 rounded-xl border border-neutral-200 mb-10 shadow-sm">
   <h3 class="font-bold text-2xl mb-3">Application preferences</h3>
-  <div class="prose prose-lg prose-indigo mb-6">
-    Set your app's name, install a CSS-framework, and base font-family.
-  </div>
+
+  <% if !Railsui.config.css_framework.present? %>
+    <div class="prose prose-lg prose-indigo mb-6">
+      Set your app's name, install a CSS-framework, and base font-family.
+    </div>
+  <% end %>
 
   <div class="mb-8">
     <%= f.label :application_name, class: "block mb-2 font-medium" %>
@@ -10,12 +13,17 @@
   </div>
 
   <div class="mb-8">
+
+    <%= f.label :font_family, "What base font-family would you like to use?", class: "block mb-2 font-medium" %>
+    <%= f.select :font_family, Railsui::Default::FONTS.map {|key, value | [key.to_s.capitalize.humanize, value] }, {}, { class: "#{select_classes} w-full" } %>
+  </div>
+  <div>
     <% if Railsui.no_framework_set? %>
       <%= f.label :css_framework, "What CSS framework would you like to use?", class: "block mb-2 font-medium" %>
       <%= f.select :css_framework, options_for_select(Railsui::Default::CSS_FRAMEWORKS, Railsui.config.css_framework), { prompt: "Select one" }, { class:"#{select_classes} w-full", data: { action: "change->configuration#toggleTheme"} }%>
 
     <% else %>
-      <p>This app configured to use: <span class="border px-3 py-1 rounded-full border-indigo-600 text-indigo-700 text-sm select-none"><%= Railsui.config.css_framework %></span></p>
+      <p>This app configured to use: <span class="border px-3 py-1 rounded-full border-indigo-600 text-indigo-700 text-sm select-none"><%= Railsui.config.css_framework.humanize %></span></p>
     <% end %>
     <div class="text-sm mt-4 flex items-start">
       <div class="bg-indigo-50 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
@@ -26,8 +34,4 @@
     </div>
   </div>
 
-  <div>
-    <%= f.label :font_family, "What base font-family would you like to use?", class: "block mb-2 font-medium" %>
-    <%= f.select :font_family, Railsui::Default::FONTS.map {|key, value | [key.to_s.capitalize.humanize, value] }, {}, { class: "#{select_classes} w-full" } %>
-  </div>
 </div>

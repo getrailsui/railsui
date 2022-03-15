@@ -9,7 +9,7 @@ module Railsui
       Railsui.bundle
       Railsui.restart
 
-      redirect_to root_path(reload: true), notice: "App is restarting with updated configuration..."
+      redirect_to root_path, notice: "Your app successfully restarted with an updated configuration"
     end
 
     private

@@ -8,3 +8,6 @@ application.register("canvas", CanvasController)
 
 import ConfigurationController from "./configuration_controller.js"
 application.register("configuration", ConfigurationController)
+
+import FlashController from "./flash_controller.js"
+application.register("flash", FlashController)

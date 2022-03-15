@@ -19,25 +19,13 @@
         })
       })
   </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      let urlParams = new URLSearchParams(window.location.search);
-      let reload = urlParams.get('reload');
-      if (reload) {
-        setTimeout(function(){ window.location.href = '/railsui'; }, 4000)
-      }
-        let btn = document.querySelector('#config_button')
-
-        btn.addEventListener('click', (e) => {
-          btn.classList.add('pointer-events-none', 'opacity-50')
-          btn.textContent = 'Saving...'
-        })
-      })
-  </script>
 <% end %>
 
-<%= form_with model: @config, url: configuration_path, class: "h-full block", data: { controller: "configuration", configuration_chosen_theme_value: Railsui.config.css_framework } do |f| %>
+<%= form_with model: @config, url: configuration_path, class: "h-full block", data: {
+  action: "submit->configuration#saveChanges",
+  controller: "configuration",
+  configuration_chosen_theme_value: Railsui.config.css_framework
+  } do |f| %>
 
   <h3 class="font-bold text-4xl mb-6">Configuration</h3>
 
@@ -65,11 +53,21 @@
   </div>
 
   <div class="border-t pt-10">
-    <%= f.button id: "config_button", class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white" do %>
+    <%= f.button id: "config_button", class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white", data: {configuration_target: "submit" } do %>
       <%= tag.span "Save changes" %>
     <% end %>
 
     <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
   </div>
 
+  <div data-configuration-target="saving" class="hidden fixed inset-0 w-full h-full bg-indigo-800 z-50">
+    <div class="flex flex-col justify-center h-full items-center relative z-50">
+      <div class="mb-6">
+        <%= render "railsui/shared/logo_light" %>
+      </div>
+      <h3 class="text-xl text-white font-bold text-center mb-3">Saving changes...</h3>
+      <%= render_svg "loading", styles: "w-10 h-10" %>
+    </div>
+    <canvas id="canvas" data-controller="canvas" class="fixed inset-0 w-full h-full"></canvas>
+  </div>
 <% end %>
