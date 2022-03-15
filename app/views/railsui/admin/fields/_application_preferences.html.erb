@@ -31,6 +31,8 @@
       </div>
       <p class="text-neutral-800">This choice <span class="font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_css_frameworks_path, class: "text-indigo-700" %>.
       </p>
+      <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
+
     </div>
   </div>
 

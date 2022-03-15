@@ -1,9 +1,0 @@
-<% if tailwind? %>
-  Tailwind
-<% elsif bootstrap? %>
-  Bootstrap
-<% elsif bulma? %>
-  Bulma
-<% else %>
-  None
-<% end %>

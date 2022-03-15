@@ -3,7 +3,6 @@ require "railsui/engine"
 
 module Railsui
   autoload :Configuration, "railsui/configuration"
-  autoload :Controller, "railsui/controller"
 
   mattr_accessor :config
   @@config = {}

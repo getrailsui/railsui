@@ -16,6 +16,7 @@
           <%= Railsui.config.theme.humanize %>
         </div>
       </div>
+      <%= f.hidden_field :theme, value: Railsui.config.theme %>
     <% else %>
       <h3 class="font-bold text-2xl mb-3">Choose a theme</h3>
       <div class="prose prose-lg prose-indigo mb-6">

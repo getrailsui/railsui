@@ -73,11 +73,19 @@ module Railsui
       Railsui.config = self
 
       # Install and configure framework of choice
-      set_framework
+      unless Railsui.config.css_framework.present?
+        set_framework
+        create_blog if Railsui.config.blog?
+      end
 
       # Install any static pages
-      create_about_page
-      create_pricing_page
+      unless Railsui.config.about?
+        create_about_page
+      end
+
+      unless Railsui.config.pricing?
+        create_pricing_page
+      end
     end
 
     def chosen_framework
@@ -106,7 +114,10 @@ module Railsui
     end
 
     def create_blog
-      # Do stuff if Railsui.config.blog?
+      # See lib/templates/erb/scaffold <- Defaults
+      # Need conditional logic per framework + theme
+      # How?
+      # Railsui.run_command "rails generate scaffold Post -framework #{Railsui.config.css_framework} -theme #{Railsui.config.theme}"
     end
 
     def install_tailwind_css
