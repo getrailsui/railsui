@@ -1,6 +1,6 @@
 Railsui::Engine.routes.draw do
   resource :admin, only: :show
-  resource :configuration, only: :create
+  resource :configuration, only: [:create, :update]
   resource :docs, only: :show
   resource :systems, only: :show
 

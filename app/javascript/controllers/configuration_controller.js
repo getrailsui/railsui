@@ -13,6 +13,7 @@ export default class extends Controller {
     "frameworks",
     "submit",
     "saving",
+    "theme",
   ]
   static values = {
     chosenTheme: String,
@@ -71,16 +72,21 @@ export default class extends Controller {
         this._toggleAllThemes()
         this.frameworksTarget.classList.remove("hidden")
         this.bootstrapTarget.classList.remove("hidden")
+        this.bootstrapTarget.querySelector("label").control.checked = true
+
         break
       case "tailwind":
         this._toggleAllThemes()
         this.frameworksTarget.classList.remove("hidden")
         this.tailwindTarget.classList.remove("hidden")
+        this.tailwindTarget.querySelector("label").control.checked = true
         break
       case "bulma":
         this._toggleAllThemes()
         this.frameworksTarget.classList.remove("hidden")
         this.bulmaTarget.classList.remove("hidden")
+        this.bulmaTarget.querySelector("label").control.checked = true
+
         break
       default:
         this._toggleAllThemes()

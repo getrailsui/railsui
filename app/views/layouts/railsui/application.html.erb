@@ -22,19 +22,22 @@
   <%= render "railsui/shared/flash" %>
 
   <body class="h-full overflow-x-hidden font-sans font-normal leading-normal dark:bg-neutral-900 dark:text-white bg-white text-neutral-800">
-    <div class="grid lg:grid-cols-12 lg:h-full">
-      <div class="col-span-3 p-6 dark:border-gray-800 lg:border-r">
-        <%= link_to  main_app.root_path, class: "block mb-6" do %>
-          <div class="flex items-center">
-            <%= render_svg "chevron-left", styles: "stroke-current text-neutral-500 w-4 h-4 mr-2" %>
-            <span>Back to main app</span>
-          </div>
-        <% end %>
+    <div class="flex lg:screen">
+      <div class="w-[280px] p-6 border-r dark:border-gray-100">
+        <div class="sticky top-3">
+          <%= link_to  main_app.root_path, class: "block mb-6" do %>
+            <div class="flex items-center">
+              <%= render_svg "chevron-left", styles: "stroke-current text-neutral-500 w-4 h-4 mr-2" %>
+              <span>Back to main app</span>
+            </div>
+          <% end %>
 
-        <%= render "railsui/shared/nav" %>
+          <%= render "railsui/shared/nav" %>
+        </div>
+
       </div>
 
-      <div class="col-span-9 lg:px-10 lg:py-16 px-4">
+      <div class="flex-1 max-w-4xl mx-auto lg:py-16 px-4">
         <%= yield %>
       </div>
     </div>

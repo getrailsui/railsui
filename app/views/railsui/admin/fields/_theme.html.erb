@@ -20,9 +20,9 @@
     <% else %>
       <h3 class="font-bold text-2xl mb-3">Choose a theme</h3>
       <div class="prose prose-lg prose-indigo mb-6">
-        <p>A theme acts as a starting point for the design of the app and the bundled design system which gets generated. We currently feature two themes per framework with more on the horizon.</p>
+        <p>A theme acts as a starting point for the design of the app. Rails UI currently features two themes per CSS framework.</p>
 
-        <p>Each theme will be used to generate static pages, scaffolded resources, UI components, layout patterns, useful partials, and more. If you choose "None" for your CSS framework selection, Rails UI generates some useful defaults.</p>
+        <p>Each theme provides pre-designed static pages, scaffolded resources, UI components, layout patterns, partials, and more. If you choose "None" for your CSS framework selection, Rails UI generates some useful defaults.</p>
       </div>
 
       <% Railsui::Default::THEMES.each do |framework, themes| %>
@@ -34,15 +34,19 @@
             <% themes.each do |theme| %>
 
               <li>
-                <label for="configuration_theme_<%= theme.first %>" class="bg-gray-100 rounded-lg p-6 block">
-                  <input type="radio" id="configuration_theme_<%= theme.first %>" value="<%= theme.first %>" name="configuration[theme]" <% if f.to_s == Railsui.config.css_framework && theme.first.to_s == Railsui.config.theme %>checked <% end %>">
-                  <span class="ml-2"><%= theme.last.humanize %></span>
-                </label>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+                <label for="configuration_theme_<%= theme.first %>" class="bg-gray-100 rounded-lg p-6 block" data-configuration-target="theme">
+                  <input
+                    type="radio"
+                    id="configuration_theme_<%= theme.first %>"
+                    value="<%= theme.first %>"
+                    name="configuration[theme]">
+                    <span class="ml-2"><%= theme.last.humanize %></span>
+                  </label>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>

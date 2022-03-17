@@ -18,12 +18,13 @@
     <%= f.select :font_family, Railsui::Default::FONTS.map {|key, value | [key.to_s.capitalize.humanize, value] }, {}, { class: "#{select_classes} w-full" } %>
   </div>
   <div>
-    <% if Railsui.no_framework_set? %>
+    <% if Railsui.no_framework_set? || !Railsui.config.css_framework.present? %>
       <%= f.label :css_framework, "What CSS framework would you like to use?", class: "block mb-2 font-medium" %>
       <%= f.select :css_framework, options_for_select(Railsui::Default::CSS_FRAMEWORKS, Railsui.config.css_framework), { prompt: "Select one" }, { class:"#{select_classes} w-full", data: { action: "change->configuration#toggleTheme"} }%>
 
     <% else %>
       <p>This app configured to use: <span class="border px-3 py-1 rounded-full border-indigo-600 text-indigo-700 text-sm select-none"><%= Railsui.config.css_framework.humanize %></span></p>
+      <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
     <% end %>
     <div class="text-sm mt-4 flex items-start">
       <div class="bg-indigo-50 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
@@ -31,8 +32,6 @@
       </div>
       <p class="text-neutral-800">This choice <span class="font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_css_frameworks_path, class: "text-indigo-700" %>.
       </p>
-      <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
-
     </div>
   </div>
 

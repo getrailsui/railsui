@@ -12,6 +12,7 @@ module Railsui
       redirect_to root_path, notice: "Your app successfully restarted with an updated configuration"
     end
 
+
     private
 
     def configuration_params

@@ -1,0 +1,51 @@
+<%= form_with model: @config, url: configuration_path, class: "h-full block", data: {
+  action: "submit->configuration#saveChanges",
+  controller: "configuration",
+  configuration_chosen_theme_value: Railsui.config.css_framework
+  } do |f| %>
+
+  <h3 class="font-bold text-4xl mb-6">Configuration</h3>
+
+  <div class="mb-6 leading-relaxed text-lg">
+    <p class="mb-6 text-2xl">Customize your new rails application using the options below.</p>
+
+    <p class="mb-6">Saving a new configuration generates a file in your app's <code class="text-base dark:text-yellow-500 text-red-400">config</code> folder called <code class="text-base dark:text-yellow-500 text-red-400">railsui.yml</code>. This also reloads the app after installing and configuring any required dependencies.</p>
+
+    <p><%= link_to "Read the docs", docs_path %> to learn more about what comes in a default Rails UI configuration as well as how you can extend it.</p>
+  </div>
+
+  <div class="flex items-center mb-6">
+    <div class="bg-red-50 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
+      <%= render_svg "warning", styles: "stroke-current text-red-500 w-5 h-5 flex-shrink-0" %>
+
+    </div>
+    <p class="text-lg text-red-800">Rails UI is only for <span class="font-bold">new</span> Rails applications at this time</p>
+  </div>
+
+  <div class="mb-10">
+    <%= render "railsui/admin/fields/application_preferences", f: f %>
+    <%= render "railsui/admin/fields/theme", f: f %>
+    <%= render "railsui/admin/fields/color", f: f %>
+    <%= render "railsui/admin/fields/pages", f: f %>
+  </div>
+
+  <div class="border-t pt-10">
+
+    <%= f.button id: "config_button", class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white", data: {configuration_target: "submit" } do %>
+      <%= tag.span "Save changes" %>
+    <% end %>
+
+    <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
+  </div>
+
+  <div data-configuration-target="saving" class="hidden fixed inset-0 w-full h-full bg-indigo-800 z-50">
+    <div class="flex flex-col justify-center h-full items-center relative z-50">
+      <div class="mb-6">
+        <%= render "railsui/shared/logo_light" %>
+      </div>
+      <h3 class="text-xl text-white font-bold text-center mb-3">Saving changes...</h3>
+      <%= render_svg "loading", styles: "w-10 h-10" %>
+    </div>
+    <canvas id="canvas" data-controller="canvas" class="fixed inset-0 w-full h-full"></canvas>
+  </div>
+<% end %>

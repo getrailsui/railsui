@@ -15,20 +15,26 @@ module Railsui
     run_command "bundle"
   end
 
-  def self.tailwind?
-    self.config.css_framework == self::Default::TAILWIND_CSS
-  end
-
-  def self.bootstrap?
-    self.config.css_framework == self::Default::BOOTSTRAP
-  end
-
-  def self.bulma?
-    self.config.css_framework == self::Default::BULMA
-  end
-
   def self.no_framework_set?
     self.config.css_framework == "" # not yet configured
+  end
+
+  def self.bootstrap_installed?
+    Rails.root.join("app/assets/stylesheets/application.bootstrap.scss").exist?
+  end
+
+  def self.tailwind_installed?
+    Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
+  end
+
+  def self.bulma_installed?
+    Rails.root.join("app/assets/stylesheets/application.bulma.scss").exist?
+  end
+
+  def self.framework_installed?
+    self.bootstrap_installed? ||
+    self.tailwind_installed? ||
+    self.bulma_installed?
   end
 
   def self.theme

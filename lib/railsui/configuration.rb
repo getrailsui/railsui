@@ -37,10 +37,6 @@ module Railsui
       Rails.root.join("config", "railsui.yml")
     end
 
-    def self.create_default_config
-      FileUtils.cp File.join(File.dirname(__FILE__), "../templates/railsui.yml"), config_path
-    end
-
     def about=(value)
       @about = ActiveModel::Type::Boolean.new.cast(value)
     end
@@ -73,9 +69,10 @@ module Railsui
       Railsui.config = self
 
       # Install and configure framework of choice
-      unless Railsui.config.css_framework.present?
-        set_framework
-        create_blog if Railsui.config.blog?
+      set_framework unless Railsui.framework_installed?
+
+      if Railsui.config.blog?
+        create_blog
       end
 
       # Install any static pages
@@ -88,22 +85,20 @@ module Railsui
       end
     end
 
-    def chosen_framework
-      Railsui.config.css_framework
+    def create_blog
+      # See lib/templates/erb/scaffold <- Defaults
+      # Need conditional logic per framework + theme
+      # How?
+      # Railsui.run_command "rails generate scaffold Post -framework #{Railsui.config.css_framework} -theme #{Railsui.config.theme}"
     end
 
-    def set_framework
-      case Railsui.config.css_framework
-      when Railsui::Default::BOOTSTRAP
-        install_bootstrap
-      when Railsui::Default::TAILWIND_CSS
-        install_tailwind_css
-      when Railsui::Default::BULMA
-        install_bulma
-      else
-        # no framework => None
-      end
+    private
+
+    def update_framework
+      Railsui.config.css_framework = self.css_framework
+      Railsui.config.theme = self.theme
     end
+
 
     def create_about_page
       Railsui.run_command "rails generate railsui:static about -c #{chosen_framework}" if Railsui.config.about?
@@ -113,26 +108,19 @@ module Railsui
       Railsui.run_command "rails generate railsui:static pricing -c #{chosen_framework}" if Railsui.config.pricing?
     end
 
-    def create_blog
-      # See lib/templates/erb/scaffold <- Defaults
-      # Need conditional logic per framework + theme
-      # How?
-      # Railsui.run_command "rails generate scaffold Post -framework #{Railsui.config.css_framework} -theme #{Railsui.config.theme}"
+    def set_framework
+      case Railsui.config.css_framework
+      when Railsui::Default::BOOTSTRAP
+        Railsui.run_command "rails railsui:framework:install:bootstrap"
+      when Railsui::Default::TAILWIND_CSS
+        Railsui.run_command "rails railsui:framework:install:tailwind"
+      when Railsui::Default::BULMA
+        Railsui.run_command "bundle add sass-rails"
+        Railsui.run_command "rails railsui:framework:install:bulma"
+      else
+        # no framework => None
+      end
     end
-
-    def install_tailwind_css
-      Railsui.run_command "rails railsui:framework:install:tailwind"
-    end
-
-    def install_bootstrap
-      Railsui.run_command "rails railsui:framework:install:bootstrap"
-    end
-
-    def install_bulma
-      Railsui.run_command "rails railsui:framework:install:bulma"
-    end
-
-    private
 
     def copy_template(filename)
       # Safely copy template, so we don't blow away any customizations you made
