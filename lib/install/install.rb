@@ -73,6 +73,17 @@ def add_static_assets
   insert_into_file "#{Rails.root}/config/routes.rb", "#{content}\n", after: "Rails.application.routes.draw do\n"
 end
 
+def add_custom_template_engine
+  content = <<-RUBY
+    config.generators do |g|
+      g.template_engine :railsui
+      g.fallbacks[:railsui] = :erb
+    end
+  RUBY
+
+  insert_into_file "#{Rails.root}/config/application.rb", "#{content}\n", after: "class Application < Rails::Application\n"
+end
+
 def extend_layout_and_views
   if Rails.root.join("app/views/shared").exist?
   say "🛑 app/views/shared already exists. Files can't be copied. Refer to the gem source for reference."
@@ -147,6 +158,9 @@ add_sidekiq
 
 say "Extending layout and views..."
 extend_layout_and_views
+
+say "Configuring template engine with fallbacks..."
+add_custom_template_engine
 
 # Migrate
 rails_command "db:create"
