@@ -101,11 +101,11 @@ module Railsui
 
 
     def create_about_page
-      Railsui.run_command "rails generate railsui:static about -c #{chosen_framework}" if Railsui.config.about?
+      Railsui.run_command "rails generate railsui:static about -css #{chosen_framework}" if Railsui.config.about?
     end
 
     def create_pricing_page
-      Railsui.run_command "rails generate railsui:static pricing -c #{chosen_framework}" if Railsui.config.pricing?
+      Railsui.run_command "rails generate railsui:static pricing -css #{chosen_framework}" if Railsui.config.pricing?
     end
 
     def set_framework

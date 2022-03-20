@@ -37,9 +37,9 @@
     <%%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
 
     <%% if form.object.new_record? %>
-      <%%= link_to t("cancel"), <%= index_helper(type: :path) %>, class: "btn btn-white" %>
+      <%%= link_to t("cancel"), <%= index_helper(type: :path) %>, class: "btn btn-default" %>
     <%% else %>
-      <%%= link_to t("cancel"), <%= show_helper(type: :path) %>, class: "btn btn-white" %>
+      <%%= link_to t("cancel"), <%= show_helper(type: :path) %>, class: "btn btn-default" %>
     <%% end %>
   </div>
 <%% end %>

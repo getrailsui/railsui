@@ -6,7 +6,7 @@ module Railsui
       include Railsui::Generators::GeneratorHelpers
       hook_for :test_framework, as: :controller
       source_root File.expand_path('../templates', __FILE__)
-      class_option :c, type: :string, default: nil, desc: "Pass CSS framework of choice"
+      class_option :css, type: :string, default: nil, desc: "Pass CSS framework of choice"
 
       desc "Adds additional routing and views for the StaticController"
 

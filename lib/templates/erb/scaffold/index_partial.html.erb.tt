@@ -1,6 +1,0 @@
-<div id="<%%= dom_id(<%= singular_name %>, :index) %>">
-  <%%= turbo_stream_from <%= singular_name %> %>
-  <%%= render <%= singular_name %> %>
-  <%%= link_to "View", <%= singular_name %>, class: "btn btn-white" %>
-</div>
-
