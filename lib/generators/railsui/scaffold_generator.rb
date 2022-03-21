@@ -36,12 +36,9 @@ module Railsui # :nodoc:
       def copy_view_files
         available_views.each do |view|
           filename = filename_with_extensions(view)
-          if css == Railsui::Default::BOOTSTRAP
-            template_path = "bootstrap/#{filename}"
-          elsif css == Railsui::Default::BULMA
-            template_path = "bulma/#{filename}"
-          elsif css == Railsui::Default::TAILWIND_CSS
-            template_path = "tailwind/#{filename}"
+          # dynamically choose a template
+          if Railsui.config.css_framework.present?
+            template_path = "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{filename}"
           else
             template_path = "none/#{filename}"
           end
@@ -51,10 +48,6 @@ module Railsui # :nodoc:
       end
 
     protected
-      def css
-        options[:css]
-      end
-
       def available_views
         %w(index edit show new _form)
       end

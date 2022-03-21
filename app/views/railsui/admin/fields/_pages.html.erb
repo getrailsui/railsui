@@ -1,6 +1,6 @@
 <div class="p-10 rounded-xl border border-neutral-200 shadow-sm mb-10">
   <h3 class="font-bold text-2xl mb-3">Pages &amp; content</h3>
-  <p class="prose prose-lg prose-indigo mb-6">Enabling any option below will automatically generate themed views using the CSS framework chosen. These will contain minimal logic with clean HTML(erb) for you to take and run with.</p>
+  <p class="prose prose-lg prose-indigo mb-6">Enabling any option below will automatically generate themed views using the CSS framework chosen. These will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
 
   <ul class="leading-loose">
     <li class="py-1">
@@ -13,14 +13,9 @@
     <li class="py-1">
       <%= f.label :pricing do %>
         <%= f.check_box :pricing, class: "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-neutral-100 dark:focus:ring-neutral-800 dark:focus:ring-opacity-20 mr-2 border-neutral-500 w-5 h-5", value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
-        <span>Create pricing page</span><span class="text-neutral-500 text-sm"> &mdash; placeholder markup for SaaS-like pricing; 3 plans types.</span>
+        <span>Create pricing page</span><span class="text-neutral-500 text-sm"> &mdash; placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
       <% end %>
     </li>
-    <li class="py-1">
-      <%= f.label :blog do %>
-        <%= f.check_box :blog, class: "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-neutral-100 dark:focus:ring-neutral-800 dark:focus:ring-opacity-20 mr-2 border-neutral-500 w-5 h-5", value: Railsui.config.blog, checked: Railsui.config.blog?  %>
-        <span>Create blog</span><span class="text-neutral-500 text-sm"> &mdash; generates a themed very minimal blog.</span>
-      <% end %>
-    </li>
+
   </ul>
 </div>

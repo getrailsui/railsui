@@ -6,7 +6,7 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
      # Attributes
-    attr_accessor :application_name, :css_framework, :primary_color, :secondary_color, :tertiary_color, :font_family, :about, :pricing, :blog, :theme
+    attr_accessor :application_name, :css_framework, :primary_color, :secondary_color, :tertiary_color, :font_family, :about, :pricing, :theme
 
     def initialize(options = {})
       assign_attributes(options)
@@ -19,7 +19,6 @@ module Railsui
       self.font_family ||= "Inter, sans-serif"
       self.about ||= false
       self.pricing ||= false
-      self.blog ||= false
     end
 
 
@@ -53,13 +52,6 @@ module Railsui
       @pricing.nil? ? false : ActiveModel::Type::Boolean.new.cast(@pricing)
     end
 
-    def blog=(value)
-      @blog = ActiveModel::Type::Boolean.new.cast(value)
-    end
-
-    def blog?
-      @blog.nil? ? false : ActiveModel::Type::Boolean.new.cast(@blog)
-    end
 
     def save
       # Creates config/railsui.yml
@@ -71,10 +63,6 @@ module Railsui
       # Install and configure framework of choice
       set_framework unless Railsui.framework_installed?
 
-      if Railsui.config.blog?
-        create_blog
-      end
-
       # Install any static pages
       unless Railsui.config.about?
         create_about_page
@@ -85,12 +73,6 @@ module Railsui
       end
     end
 
-    def create_blog
-      # See lib/templates/erb/scaffold <- Defaults
-      # Need conditional logic per framework + theme
-      # How?
-      # Railsui.run_command "rails generate scaffold Post -framework #{Railsui.config.css_framework} -theme #{Railsui.config.theme}"
-    end
 
     private
 
