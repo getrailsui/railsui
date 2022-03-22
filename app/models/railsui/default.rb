@@ -3,13 +3,11 @@ module Railsui
     BOOTSTRAP = "bootstrap"
     BULMA = "bulma"
     TAILWIND_CSS = "tailwind"
-    NONE = "none"
 
     CSS_FRAMEWORKS = [
       ["Bootstrap", BOOTSTRAP],
       ["Bulma", BULMA],
       ["Tailwind CSS", TAILWIND_CSS],
-      ["None", NONE]
     ]
 
     SYSTEM_FONTS  = 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'

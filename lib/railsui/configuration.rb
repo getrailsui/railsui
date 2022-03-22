@@ -5,7 +5,7 @@ module Railsui
   class Configuration
     include ActiveModel::Model
     include Thor::Actions
-     # Attributes
+
     attr_accessor :application_name, :css_framework, :primary_color, :secondary_color, :tertiary_color, :font_family, :about, :pricing, :theme
 
     def initialize(options = {})
@@ -20,7 +20,6 @@ module Railsui
       self.about ||= false
       self.pricing ||= false
     end
-
 
     def self.load!
       if File.exist?(config_path)
@@ -52,7 +51,6 @@ module Railsui
       @pricing.nil? ? false : ActiveModel::Type::Boolean.new.cast(@pricing)
     end
 
-
     def save
       # Creates config/railsui.yml
       File.write(self.class.config_path, to_yaml)
@@ -64,15 +62,14 @@ module Railsui
       set_framework unless Railsui.framework_installed?
 
       # Install any static pages
-      unless Railsui.config.about?
+      if !about_page_exists? && Railsui.config.about?
         create_about_page
       end
 
-      unless Railsui.config.pricing?
+      if !pricing_page_exists? && Railsui.config.pricing?
         create_pricing_page
       end
     end
-
 
     private
 
@@ -81,13 +78,12 @@ module Railsui
       Railsui.config.theme = self.theme
     end
 
-
     def create_about_page
-      Railsui.run_command "rails generate railsui:static about -css #{chosen_framework}" if Railsui.config.about?
+      Railsui.run_command "rails g railsui:static about"
     end
 
     def create_pricing_page
-      Railsui.run_command "rails generate railsui:static pricing -css #{chosen_framework}" if Railsui.config.pricing?
+      Railsui.run_command "rails g railsui:static pricing"
     end
 
     def set_framework
@@ -99,8 +95,6 @@ module Railsui
       when Railsui::Default::BULMA
         Railsui.run_command "bundle add sass-rails"
         Railsui.run_command "rails railsui:framework:install:bulma"
-      else
-        # no framework => None
       end
     end
 
@@ -113,6 +107,14 @@ module Railsui
 
     def template_path(filename)
       Rails.root.join("lib/templates", filename)
+    end
+
+    def about_page_exists?
+      Rails.root.join("app/views/static/about.html.erb").exist?
+    end
+
+    def pricing_page_exists?
+      Rails.root.join("app/views/static/pricing.html.erb").exist?
     end
 
   end

@@ -9,6 +9,13 @@ else
   say "Add build:css script"
   build_script = "sass ./app/assets/stylesheets/application.bulma.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
 
+  if Rails.root.join("app/views/devise").exist?
+    say "🛑 app/views/devise already exists. Files can't be copied. Refer to the gem source for reference."
+  else
+    say "Add themed Devise views"
+    directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
+  end
+
   if (`npx -v`.to_f < 7.1 rescue "Missing")
     say %(Add "scripts": { "build:css": "#{build_script}" } to your package.json), :red
   else

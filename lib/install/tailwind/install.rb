@@ -7,6 +7,13 @@ else
   copy_file "#{__dir__}/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css"
   run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography --latest"
 
+  if Rails.root.join("app/views/devise").exist?
+    say "🛑 app/views/devise already exists. Files can't be copied. Refer to the gem source for reference."
+  else
+    say "Add themed Devise views"
+    directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
+  end
+
   say "Add build:css script"
   build_script = "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
 

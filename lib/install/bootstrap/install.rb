@@ -12,6 +12,13 @@ else
     RUBY
   end
 
+  if Rails.root.join("app/views/devise").exist?
+    say "🛑 app/views/devise already exists. Files can't be copied. Refer to the gem source for reference."
+  else
+    say "Add themed Devise views"
+    directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
+  end
+
   if Rails.root.join("app/javascript/application.js").exist?
     say "Appending Bootstrap JavaScript import to default entry point"
     append_to_file "app/javascript/application.js", %(import * as bootstrap from "bootstrap"\n)
