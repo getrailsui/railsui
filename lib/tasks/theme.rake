@@ -27,19 +27,5 @@ namespace :railsui do
         system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../install/bootstrap/retriever/install.rb",  __dir__)}"
       end
     end
-
-    namespace :bulma do
-      desc "Install Rails UI Bulma 'Collie' theme"
-      task :collie do
-        system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../install/bulma/collie/install.rb",  __dir__)}"
-      end
-    end
-
-    namespace :bulma do
-      desc "Install Rails UI Bulma 'Terrier' theme"
-      task :terrier do
-        system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../install/bulma/terrier/install.rb",  __dir__)}"
-      end
-    end
   end
 end

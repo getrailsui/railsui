@@ -24,13 +24,12 @@
 
   <div class="mb-10">
     <%= render "railsui/admin/fields/application_preferences", f: f %>
-    <%= render "railsui/admin/fields/theme", f: f %>
+    
     <%= render "railsui/admin/fields/color", f: f %>
     <%= render "railsui/admin/fields/pages", f: f %>
   </div>
 
   <div class="border-t pt-10">
-
     <%= f.button id: "config_button", class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white", data: {configuration_target: "submit" } do %>
       <%= tag.span "Save changes" %>
     <% end %>

@@ -27,14 +27,9 @@ module Railsui
     Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
   end
 
-  def self.bulma_installed?
-    Rails.root.join("app/assets/stylesheets/application.bulma.scss").exist?
-  end
-
   def self.framework_installed?
     self.bootstrap_installed? ||
-    self.tailwind_installed? ||
-    self.bulma_installed?
+    self.tailwind_installed?
   end
 
   def self.theme

@@ -15,11 +15,6 @@ namespace :railsui do
       task :bootstrap do
         system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../install/bootstrap/install.rb",  __dir__)}"
       end
-
-      desc "Install Bulma for Rails UI"
-      task :bulma do
-        system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../install/bulma/install.rb",  __dir__)}"
-      end
     end
   end
 end

@@ -1,12 +1,10 @@
 module Railsui
   class Default
     BOOTSTRAP = "bootstrap"
-    BULMA = "bulma"
     TAILWIND_CSS = "tailwind"
 
     CSS_FRAMEWORKS = [
       ["Bootstrap", BOOTSTRAP],
-      ["Bulma", BULMA],
       ["Tailwind CSS", TAILWIND_CSS],
     ]
 
@@ -32,10 +30,6 @@ module Railsui
         hound: "Hound",
         shepherd: "Shepherd"
       },
-      bulma: {
-        collie: "collie",
-        terrier: "terrier"
-      }
     }
   end
 end

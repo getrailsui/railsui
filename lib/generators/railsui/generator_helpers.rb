@@ -61,10 +61,6 @@ module Railsui
         options['c'] == "bootstrap"
       end
 
-      def bulma?
-        options['c'] == "bulma"
-      end
-
       def none?
         !options['c'] || options['c'] == nil
       end

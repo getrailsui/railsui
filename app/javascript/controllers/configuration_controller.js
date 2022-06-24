@@ -1,6 +1,5 @@
 const BOOTSTRAP = "Bootstrap"
 const TAILWIND = "Tailwind CSS"
-const BULMA = "Bulma"
 const NONE = "None"
 
 import { Controller } from "@hotwired/stimulus"
@@ -8,7 +7,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [
     "bootstrap",
-    "bulma",
     "tailwind",
     "frameworks",
     "submit",
@@ -33,12 +31,6 @@ export default class extends Controller {
           this.frameworksTarget.classList.remove("hidden")
           if (this.hasTailwindTarget) {
             this.tailwindTarget.classList.remove("hidden")
-          }
-          break
-        case "bulma":
-          this.frameworksTarget.classList.remove("hidden")
-          if (this.hasBulmaTarget) {
-            this.bulmaTarget.classList.remove("hidden")
           }
           break
         default:
@@ -81,25 +73,13 @@ export default class extends Controller {
         this.tailwindTarget.classList.remove("hidden")
         this.tailwindTarget.querySelector("label").control.checked = true
         break
-      case "bulma":
-        this._toggleAllThemes()
-        this.frameworksTarget.classList.remove("hidden")
-        this.bulmaTarget.classList.remove("hidden")
-        this.bulmaTarget.querySelector("label").control.checked = true
-
-        break
       default:
         this._toggleAllThemes()
     }
   }
 
   _toggleAllThemes() {
-    let all = [
-      this.bootstrapTarget,
-      this.bulmaTarget,
-      this.tailwindTarget,
-      this.frameworksTarget,
-    ]
+    let all = [this.bootstrapTarget, this.tailwindTarget, this.frameworksTarget]
     all.forEach((t) => t.classList.add("hidden"))
   }
 }

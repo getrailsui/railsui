@@ -92,9 +92,6 @@ module Railsui
         Railsui.run_command "rails railsui:framework:install:bootstrap"
       when Railsui::Default::TAILWIND_CSS
         Railsui.run_command "rails railsui:framework:install:tailwind"
-      when Railsui::Default::BULMA
-        Railsui.run_command "bundle add sass-rails"
-        Railsui.run_command "rails railsui:framework:install:bulma"
       end
     end
 
