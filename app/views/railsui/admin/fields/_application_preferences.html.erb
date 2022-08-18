@@ -12,11 +12,6 @@
     <%= f.text_field :application_name, class: "#{input_classes} w-full" %>
   </div>
 
-  <div class="mb-8">
-
-    <%= f.label :font_family, "What base font-family would you like to use?", class: "block mb-2 font-medium" %>
-    <%= f.select :font_family, Railsui::Default::FONTS.map {|key, value | [key.to_s.capitalize.humanize, value] }, {}, { class: "#{select_classes} w-full" } %>
-  </div>
   <div>
     <% if Railsui.no_framework_set? || !Railsui.config.css_framework.present? %>
       <%= f.label :css_framework, "What CSS framework would you like to use?", class: "block mb-2 font-medium" %>

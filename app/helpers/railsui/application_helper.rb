@@ -50,5 +50,20 @@ module Railsui
 
       link_to name, url, html_options
     end
+
+    def theme_preview_link(theme)
+      case theme
+      when Railsui::Default::THEMES[:bootstrap][:retriever]
+        Railsui::Default::THEME_PREVIEW_LINK[:retriever]
+      when Railsui::Default::THEMES[:bootstrap][:setter]
+        Railsui::Default::THEME_PREVIEW_LINK[:setter]
+      when Railsui::Default::THEMES[:tailwind][:hound]
+        Railsui::Default::THEME_PREVIEW_LINK[:hound]
+      when Railsui::Default::THEMES[:bootstrap][:shepherd]
+        Railsui::Default::THEME_PREVIEW_LINK[:shepherd]
+      else
+        nil
+      end
+    end
   end
 end
