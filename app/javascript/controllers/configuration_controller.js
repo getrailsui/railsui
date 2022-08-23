@@ -22,15 +22,15 @@ export default class extends Controller {
 
       switch (value) {
         case "bootstrap":
-          this.frameworksTarget.classList.remove("hidden")
+          this.frameworksTarget.classList.remove("tw-hidden")
           if (this.hasBootstrapTarget) {
-            this.bootstrapTarget.classList.remove("hidden")
+            this.bootstrapTarget.classList.remove("tw-hidden")
           }
           break
         case "tailwind":
-          this.frameworksTarget.classList.remove("hidden")
+          this.frameworksTarget.classList.remove("tw-hidden")
           if (this.hasTailwindTarget) {
-            this.tailwindTarget.classList.remove("hidden")
+            this.tailwindTarget.classList.remove("tw-hidden")
           }
           break
         default:
@@ -43,7 +43,7 @@ export default class extends Controller {
   saveChanges(event) {
     event.preventDefault()
     // Show loading state
-    this.savingTarget.classList.remove("hidden")
+    this.savingTarget.classList.remove("tw-hidden")
     // Disable button
     this.submitTarget.setAttribute("disabled", true)
     // Continue submission
@@ -62,15 +62,15 @@ export default class extends Controller {
     switch (event.target.value) {
       case "bootstrap":
         this._toggleAllThemes()
-        this.frameworksTarget.classList.remove("hidden")
-        this.bootstrapTarget.classList.remove("hidden")
+        this.frameworksTarget.classList.remove("tw-hidden")
+        this.bootstrapTarget.classList.remove("tw-hidden")
         this.bootstrapTarget.querySelector("label").control.checked = true
 
         break
       case "tailwind":
         this._toggleAllThemes()
-        this.frameworksTarget.classList.remove("hidden")
-        this.tailwindTarget.classList.remove("hidden")
+        this.frameworksTarget.classList.remove("tw-hidden")
+        this.tailwindTarget.classList.remove("tw-hidden")
         this.tailwindTarget.querySelector("label").control.checked = true
         break
       default:
@@ -80,6 +80,6 @@ export default class extends Controller {
 
   _toggleAllThemes() {
     let all = [this.bootstrapTarget, this.tailwindTarget, this.frameworksTarget]
-    all.forEach((t) => t.classList.add("hidden"))
+    all.forEach((t) => t.classList.add("tw-hidden"))
   }
 }
