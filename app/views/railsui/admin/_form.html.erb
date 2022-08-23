@@ -1,30 +1,30 @@
-<div class="flex items-center mb-6 p-3 rounded bg-red-50">
-  <div class="bg-red-100 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
-    <%= render_svg "warning", styles: "stroke-current text-red-500 w-5 h-5 flex-shrink-0" %>
+<div class="tw-flex tw-items-center tw-mb-6 tw-p-3 tw-rounded tw-bg-red-50">
+  <div class="tw-bg-red-100 tw-mr-4 tw-w-10 tw-h-10 tw-rounded tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+    <%= render_svg "warning", styles: "tw-stroke-current tw-text-red-500 tw-w-5 tw-h-5 tw-flex-shrink-0" %>
 
   </div>
-  <p class="text-lg text-red-800">Rails UI only supports <span class="font-bold">new</span> Ruby on Rails applications at this time</p>
+  <p class="tw-text-lg tw-text-red-800">Rails UI only supports <span class="tw-font-bold">new</span> Ruby on Rails applications at this time</p>
 </div>
 
-<%= form_with model: @config, url: configuration_path, class: "h-full block", data: {
+<%= form_with model: @config, url: configuration_path, class: "tw-h-full tw-block", data: {
   action: "submit->configuration#saveChanges",
   controller: "configuration",
   configuration_chosen_theme_value: Railsui.config.css_framework
   } do |f| %>
 
-  <h3 class="font-bold text-4xl mb-6">Configuration</h3>
+  <h3 class="tw-font-bold tw-text-4xl tw-mb-6">Configuration</h3>
 
-  <div class="mb-6 leading-relaxed text-lg">
-    <p class="mb-6 text-2xl">Customize your new Rails application with the help of Rails UI.</p>
+  <div class="tw-mb-6 tw-leading-relaxed tw-text-lg">
+    <p class="tw-mb-6 tw-text-2xl">Customize your new Rails application with the help of Rails UI.</p>
 
-    <details class="border py-3 px-6 rounded-lg border-slate-200 bg-slate-50">
+    <details class="tw-border tw-py-3 tw-px-6 tw-rounded-lg tw-border-slate-200 tw-bg-slate-50">
       <summary>
-        <span class="font-semibold text-base">What happens when I configure my app?</span>
+        <span class="tw-font-semibold tw-text-base">What happens when I configure my app?</span>
       </summary>
-      <div class="prose prose-indigo">
+      <div class="tw-prose tw-prose-indigo">
         <p>Once configured Rails UI will:</p>
         <ol>
-          <li>Generate a custom configuration yaml file <code class="text-base dark:text-yellow-500 text-red-400">railsui.yml</code> that's required to theme your new app.</li>
+          <li>Generate a custom configuration yaml file <code class="tw-text-base dark:tw-text-yellow-500 tw-text-red-400">railsui.yml</code> that's required to theme your new app.</li>
           <li>Install dependencies and any necessary assets.</li>
           <li>Generate a custom tailored design system for repeatable web elements. Use this system as a design direction when creating new features. This includes typography, font elements, and SVG icons.</li>
           <li>
@@ -38,29 +38,27 @@
     </details>
   </div>
 
-  <div class="mb-10">
+  <div class="tw-mb-10">
     <%= render "railsui/admin/fields/application_preferences", f: f %>
-
-    <%= render "railsui/admin/fields/color", f: f %>
     <%= render "railsui/admin/fields/pages", f: f %>
   </div>
 
-  <div class="border-t pt-10">
-    <%= f.button id: "config_button", class: "dark:bg-neutral-600 dark:hover:bg-neutral-800 bg-neutral-800 hover:bg-black py-3 px-6 rounded-full font-medium text-white", data: {configuration_target: "submit" } do %>
+  <div class="tw-border-t tw-pt-10">
+    <%= f.button id: "config_button", class: "dark:tw-bg-neutral-600 dark:hover:tw-bg-neutral-800 tw-bg-neutral-800 hover:tw-bg-black tw-py-3 tw-px-6 tw-rounded-full tw-font-medium tw-text-white", data: {configuration_target: "submit" } do %>
       <%= tag.span "Save changes" %>
     <% end %>
 
-    <p class="text-sm mt-3 dark:text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
+    <p class="tw-text-sm tw-mt-3 dark:tw-text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
   </div>
 
-  <div data-configuration-target="saving" class="hidden fixed inset-0 w-full h-ful l bg-indigo-800 z-50">
-    <div class="flex flex-col justify-center h-full items-center relative z-50">
-      <div class="mb-6">
+  <div data-configuration-target="saving" class="tw-hidden tw-fixed tw-inset-0 tw-w-full tw-h-full tw-bg-indigo-800 tw-z-50">
+    <div class="tw-flex tw-flex-col tw-justify-center tw-h-full tw-items-center tw-relative tw-z-50">
+      <div class="tw-mb-6">
         <%= render "railsui/shared/logo_light" %>
       </div>
-      <h3 class="text-xl text-white font-bold text-center mb-3">Saving changes...</h3>
-      <%= render_svg "loading", styles: "w-10 h-10" %>
+      <h3 class="tw-text-xl tw-text-white tw-font-bold tw-text-center tw-mb-3">Saving changes...</h3>
+      <%= render_svg "loading", styles: "tw-w-10 tw-h-10" %>
     </div>
-    <canvas id="canvas" data-controller="canvas" class="fixed inset-0 w-full h-full"></canvas>
+    <canvas id="canvas" data-controller="canvas" class="tw-fixed tw-inset-0 tw-w-full tw-h-full"></canvas>
   </div>
 <% end %>

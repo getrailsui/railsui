@@ -1,60 +1,62 @@
-<div class="hidden" data-configuration-target="frameworks">
-  <div class="mt-6 pt-6 border-t">
+<div class="tw-hidden" data-configuration-target="frameworks">
+  <div class="tw-mt-6 tw-pt-6 tw-border-t">
     <% if Railsui.config.theme.present? %>
-      <h3 class="font-bold text-2xl mb-3">Active theme</h3>
-      <div class="border flex items-center justify-between rounded shadow-sm overflow-hidden bg-gradient-to-br from-white to-slate-50">
-        <div class="flex-1">
-          <div class="flex justify-center items-center">
-            <div class="mr-3">
-              <%= render_svg "#{Railsui.config.css_framework}", styles: "fill-current text-indigo-800 w-12 h-12" %>
+      <h3 class="tw-font-bold tw-text-2xl tw-mb-3">Active theme</h3>
+      <div class="tw-border tw-flex tw-items-center tw-justify-between tw-rounded tw-shadow-sm tw-overflow-hidden tw-bg-gradient-to-br tw-from-white to-slate-50">
+        <div class="tw-flex-1">
+          <div class="tw-flex tw-justify-center tw-items-center">
+            <div class="tw-mr-3">
+              <%= render_svg "#{Railsui.config.css_framework}", styles: "tw-fill-current tw-text-indigo-800 tw-w-12 tw-h-12" %>
             </div>
 
-            <h4 class="font-semibold text-xl"><%= Railsui.config.css_framework.humanize %></h4>
+            <h4 class="tw-font-semibold tw-text-xl"><%= Railsui.config.css_framework.humanize %></h4>
           </div>
 
-          <div class="flex justify-center mt-3">
-            <div class="bg-emerald-50 uppercase tracking-wide text-emerald-700 font-bold px-3 py-px rounded-full inline-flex items-center text-xs">
-              <%= render_svg "paw", styles: "w-6 h-6 fill-current" %>
+          <div class="tw-flex tw-justify-center tw-mt-3">
+            <div class="tw-bg-emerald-50 tw-uppercase tw-tracking-wide tw-text-emerald-700 tw-font-bold tw-px-3 tw-py-px tw-rounded-full tw-inline-flex tw-items-center tw-text-xs">
+              <%= render_svg "paw", styles: "tw-w-6 tw-h-6 tw-fill-current" %>
               <%= Railsui.config.theme.humanize %>
             </div>
           </div>
         </div>
-        <%= image_tag "#{Railsui.config.css_framework.parameterize}-#{Railsui.config.theme.parameterize}-thumbnail.jpg", class: "max-w-md mx-auto border-l" %>
+        <%= image_tag "#{Railsui.config.css_framework.parameterize}-#{Railsui.config.theme.parameterize}-thumbnail.jpg", class: "tw-max-w-md tw-mx-auto tw-border-l" %>
       </div>
       <%= f.hidden_field :theme, value: Railsui.config.theme %>
 
     <% else %>
-      <h3 class="font-bold text-2xl mb-3 font-rui">Select a theme</h3>
-      <div class="prose prose-sm prose-indigo mb-6">
+      <h3 class="tw-font-bold tw-text-2xl tw-mb-3 font-rui">Select a theme</h3>
+      <div class="tw-prose tw-prose-indigo tw-mb-6">
         <p>A theme acts as a starting point for the design of the app.</p>
 
-        <p>Each theme provides pre-designed static pages, scaffolded resources, UI components, layout patterns, partials, and more. If you choose "None" for your CSS framework selection, Rails UI generates some useful defaults.</p>
+        <p>Each theme provides pre-designed static pages, scaffolded resources, UI components, layout patterns, partials, and more.</p>
+
+        <p class="tw-font-bold">🔨 More themes to come!</p>
       </div>
 
       <% Railsui::Default::THEMES.each do |framework, themes| %>
         <% f = framework.to_s.parameterize %>
 
-        <div class="mb-6 hidden" data-configuration-target="<%= f %>">
-          <h4 class="font-bold text-xl mb-3"><%= f.humanize %></h4>
-          <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-6">
+        <div class="tw-mb-6 tw-hidden" data-configuration-target="<%= f %>">
+          <h4 class="tw-font-bold tw-text-xl tw-mb-3"><%= f.humanize %></h4>
+          <ul class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-max-w-3xl tw-gap-6">
             <% themes.each do |theme| %>
               <li>
-                <label for="configuration_theme_<%= theme.first %>" class="bg-white rounded-lg p-4 block border border-slate-300 focus:ring-4 focus:ring-slate-100" data-configuration-target="theme">
-                  <%= image_tag "#{f}-#{theme.first}-thumbnail.jpg", alt: "#{theme.last.humanize} theme", class: "border border-slate-200 rounded" %>
-                  <div class="px-4 mt-4 flex justify-center">
+                <label for="configuration_theme_<%= theme.first %>" class="tw-bg-white tw-rounded-lg tw-p-4 tw-block tw-border tw-border-slate-300 focus:tw-ring-4 focus:tw-ring-slate-100" data-configuration-target="theme">
+                  <%= image_tag "#{f}-#{theme.first}-thumbnail.jpg", alt: "#{theme.last.humanize} theme", class: "tw-border tw-border-slate-200 tw-rounded" %>
+                  <div class="tw-px-4 tw-mt-4 tw-flex tw-justify-center">
                     <input
                     type="radio"
                     id="configuration_theme_<%= theme.first %>"
                     value="<%= theme.first %>"
                     name="configuration[theme]"
-                    class="w-6 h-6"
+                    class="tw-w-6 tw-h-6"
                     >
 
-                      <span class="ml-2 font-"><%= theme.last.humanize %></span>
+                      <span class="tw-ml-2"><%= theme.last.humanize %></span>
                     </div>
                   </label>
 
-                  <%= link_to "Preview theme", theme_preview_link(theme.last.humanize), class: "py-3 px-4 text-center justify-center w-full text-slate-700 bg-slate-100 hover:bg-slate-200 transition ease-in-out duration rounded-lg block mt-3" %>
+                  <%= link_to "Preview theme", theme_preview_link(theme.last.humanize), target: :_blank, class: "tw-py-3 tw-px-4 tw-text-center tw-justify-center tw-w-full tw-text-slate-700 tw-bg-slate-100 hover:tw-bg-slate-200 tw-transition ease-in-out tw-duration tw-rounded-lg tw-block tw-mt-3" %>
                 </li>
               <% end %>
             </ul>

@@ -8,10 +8,6 @@ module Railsui
       ["Tailwind CSS", TAILWIND_CSS],
     ]
 
-    DEFAULT_PRIMARY_COLOR = "4338CA"
-    DEFAULT_SECONDARY_COLOR = "FF8C69"
-    DEFAULT_TERTIARY_COLOR = "333333"
-
     THEMES = {
       bootstrap: {
         retriever: "Retriever",
@@ -24,10 +20,10 @@ module Railsui
     }
 
     THEME_PREVIEW_LINK = {
-      retriever: "https://retriever.com",
-      setter: "https://setter.com",
-      hound: "https://hound.com",
-      shepherd: "https://shepherd.com"
+      retriever: "https://retriever.pages.dev/",
+      setter: "https://setter-7xa.pages.dev/",
+      hound: "https://hound.pages.dev/",
+      shepherd: "https://shepherd-a4r.pages.dev/"
     }
   end
 end

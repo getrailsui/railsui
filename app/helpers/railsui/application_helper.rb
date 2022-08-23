@@ -4,14 +4,14 @@ module Railsui
       options[:title] ||= name.underscore.humanize
       options[:aria] = true
       options[:nocomment] = true
-      options[:class] = options.fetch(:styles, "fill-current text-neutral-500")
+      options[:class] = options.fetch(:styles, "tw-fill-current tw-text-neutral-500")
 
       filename = "#{name}.svg"
       inline_svg_tag(filename, options)
     end
 
     def form_input
-      "border-gray-300 rounded focus:border-indigo-300 focus:outline-none focus:shadow-none focus:ring-indigo-50 focus:ring-4 ring-transparent ring-2 dark:text-neutral-100 dark:focus:ring-neutral-600 dark:bg-neutral-800 dark:border-neutral-500 dark:focus:border-neutral-300"
+      "tw-border-gray-300 tw-rounded focus:tw-border-indigo-300 focus:tw-outline-none focus:tw-shadow-none focus:tw-ring-indigo-50 focus:tw-ring-4 tw-ring-transparent tw-ring-2 dark:tw-text-neutral-100 dark:focus:tw-ring-neutral-600 dark:tw-bg-neutral-800 dark:tw-border-neutral-500 dark:focus:tw-border-neutral-300"
     end
 
     def select_classes
@@ -59,11 +59,15 @@ module Railsui
         Railsui::Default::THEME_PREVIEW_LINK[:setter]
       when Railsui::Default::THEMES[:tailwind][:hound]
         Railsui::Default::THEME_PREVIEW_LINK[:hound]
-      when Railsui::Default::THEMES[:bootstrap][:shepherd]
+      when Railsui::Default::THEMES[:tailwind][:shepherd]
         Railsui::Default::THEME_PREVIEW_LINK[:shepherd]
       else
         nil
       end
+    end
+
+    def code_inline(code)
+      content_tag :span, html_escape(code), class: "tw-text-red-600 tw-font-mono tw-text-base"
     end
   end
 end

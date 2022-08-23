@@ -3,11 +3,11 @@
 }
 
 .rui-primary-nav ul a {
-  @apply block pr-3 pl-10 rounded py-1 hover:bg-indigo-50 hover:bg-opacity-50 transition-colors duration-200 ease-linear relative;
+  @apply tw-block tw-pr-3 tw-pl-10 tw-rounded tw-py-1 hover:tw-bg-indigo-50 hover:tw-bg-opacity-50 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative;
 }
 
 .rui-primary-nav ul a.active {
-  @apply bg-indigo-700 text-white;
+  @apply tw-bg-indigo-700 tw-text-white;
 }
 
 .rui-primary-nav ul a.active::before {

@@ -1,32 +1,32 @@
-<div class="mb-6 flex justify-center">
+<div class="tw-mb-6 tw-flex tw-justify-center">
   <%= render "railsui/shared/logo" %>
 </div>
 
 <% unless Railsui.config.css_framework.present? %>
-  <div class="relative" data-controller="tooltip" data-tooltip-content-value="A design system will be generated once you choose and save a CSS framework in the configuration form.">
-    <div class="font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-opacity-50 flex items-center group lg:w-auto w-full bg-gray-50 hover:cursor-not-allowed" >
-      <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0 opacity-50 " %>
-      <span class="opacity-50">Design system</span>
+  <div class="tw-relative" data-controller="tooltip" data-tooltip-content-value="A design system will be generated once you choose and save a CSS framework in the configuration form.">
+    <div class="tw-font-medium tw-text-[15px] tw-py-3 tw-px-4 tw-rounded-lg hover:tw-bg-opacity-50 tw-flex tw-items-center tw-group lg:tw-w-auto tw-w-full tw-bg-gray-50 hover:tw-cursor-not-allowed" >
+      <%= render_svg "map", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-2 tw-flex-shrink-0 tw-opacity-50 " %>
+      <span class="tw-opacity-50">Design system</span>
     </div>
-    <%= render_svg "question-mark", styles: "w-6 h-6 stroke-current absolute right-2 bottom-3 text-gray-600" %>
+    <%= render_svg "question-mark", styles: "tw-w-6 tw-h-6 tw-stroke-current tw-absolute tw-right-2 tw-bottom-3 tw-text-gray-600" %>
   </div>
 <% end %>
 
 <% if Railsui.config.css_framework.present? %>
-  <%= link_to systems_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group lg:w-auto w-full" do %>
-    <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
+  <%= link_to systems_path, class: "tw-block tw-font-medium tw-text-[15px] tw-py-3 tw-px-4 tw-rounded-lg hover:tw-bg-indigo-50 hover:tw-text-indigo-600 dark:hover:tw-bg-neutral-700 hover:tw-bg-opacity-50 tw-flex tw-items-center tw-group lg:tw-w-auto tw-w-full" do %>
+    <%= render_svg "map", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-2 tw-flex-shrink-0" %>
     <span>Design system</span>
   <% end %>
 
-  <ul class="ml-3 rui-primary-nav">
+  <ul class="tw-ml-3 rui-primary-nav">
     <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="p-1 rounded  text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-2 transition ease-in-out duration-300 flex items-center w-full" :class="{'bg-indigo-50 text-indigo-800' : open}">
-        <div :class="open ? 'rotate-180' : ''" class="transform">
-          <%= render_svg "chevron-down", styles: "w-8 h-8 stroke-current" %>
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+        <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
+          <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>
         Content
       </button>
-      <ul x-show="open" class="leading-loose">
+      <ul x-show="open" class="tw-leading-loose">
         <li>
           <%= nav_link_to "Typography", systems_content_typography_path %>
         </li>
@@ -39,9 +39,9 @@
       </ul>
     </li>
     <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="p-1 rounded  text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-2 transition ease-in-out duration-300 flex items-center w-full" :class="{'bg-indigo-50 text-indigo-800' : open}">
-        <div :class="open ? 'rotate-180' : ''" class="transform">
-          <%= render_svg "chevron-down", styles: "w-8 h-8 stroke-current" %>
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+        <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
+          <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>
         Forms
       </button>
@@ -74,14 +74,14 @@
       </ul>
     </li>
     <li x-data="{open: window.location.pathname.includes('elements')}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="p-1 rounded  text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-2 transition ease-in-out duration-300 flex items-center w-full" :class="{'bg-indigo-50 text-indigo-800' : open}">
-        <div :class="open ? 'rotate-180' : ''" class="transform">
-          <%= render_svg "chevron-down", styles: "w-8 h-8 stroke-current" %>
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 tw-hover:bg-indigo-50 tw-hover:text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+        <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
+          <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>
         Elements
       </button>
 
-      <ul x-show="open" class="leading-loose">
+      <ul x-show="open" class="tw-leading-loose">
         <li>
           <%= nav_link_to "Accordions", systems_elements_accordions_path %>
         </li>
@@ -121,27 +121,27 @@
       </ul>
     </li>
     <li x-data="{open: window.location.pathname.includes('marketing')}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="p-1 rounded  text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-2 transition ease-in-out duration-300 flex items-center w-full" :class="{'bg-indigo-50 text-indigo-800' : open}">
-        <div :class="open ? 'rotate-180' : ''" class="transform">
-          <%= render_svg "chevron-down", styles: "w-8 h-8 stroke-current" %>
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+        <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
+          <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>
         Marketing
       </button>
-      <ul x-show="open" class="leading-loose">
+      <ul x-show="open" class="tw-leading-loose">
         <li>
-          <%= nav_link_to "Overview", systems_marketing_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          <%= nav_link_to "Overview", systems_marketing_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
         </li>
         <li>
-          <%= nav_link_to "CTAs", systems_marketing_ctas_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          <%= nav_link_to "CTAs", systems_marketing_ctas_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
         </li>
         <li>
-          <%= nav_link_to "Footers", systems_marketing_footers_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          <%= nav_link_to "Footers", systems_marketing_footers_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
         </li>
         <li>
-          <%= nav_link_to "Headers", systems_marketing_headers_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          <%= nav_link_to "Headers", systems_marketing_headers_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
         </li>
         <li>
-          <%= nav_link_to "Longform content", systems_marketing_longform_path, class: "p-1 rounded block text-neutral-700 hover:bg-indigo-50 hover:text-indigo-800 px-3 transition ease-in-out duration-300" %>
+          <%= nav_link_to "Longform content", systems_marketing_longform_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
         </li>
       </ul>
     </li>
@@ -149,29 +149,29 @@
   </ul>
 <% end %>
 
-<%= link_to root_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
-  <%= render_svg "settings", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
+<%= link_to root_path, class: "tw-block tw-font-medium tw-text-[15px] tw-py-3 tw-px-4 tw-rounded-lg hover:tw-bg-indigo-50 hover:tw-text-indigo-600 dark:hover:tw-bg-neutral-700 hover:tw-bg-opacity-50 tw-flex tw-items-center tw-group" do %>
+  <%= render_svg "settings", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-2 tw-flex-shrink-0" %>
   <span>Configuration</span>
 <% end %>
 
-<%= link_to docs_path, class: "block font-medium text-[15px] py-3 px-4 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-neutral-700 hover:bg-opacity-50 flex items-center group" do %>
-  <%= render_svg "book", styles: "stroke-current w-6 h-6 mr-2 flex-shrink-0" %>
+<%= link_to docs_path, class: "tw-block tw-font-medium tw-text-[15px] tw-py-3 tw-px-4 tw-rounded-lg hover:tw-bg-indigo-50 hover:tw-text-indigo-600 dark:hover:tw-bg-neutral-700 hover:tw-bg-opacity-50 tw-flex tw-items-center tw-group" do %>
+  <%= render_svg "book", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-2 tw-flex-shrink-0" %>
   <span>Docs</span>
 <% end %>
 
 <% if Railsui.config.css_framework.present? %>
-  <div class="mt-3 pt-6 border-t">
-    <div class="flex items-center">
-      <div class="flex items-center flex-1">
-        <div class="mr-3">
-          <%= render_svg "#{Railsui.config.css_framework}", styles: "fill-current text-indigo-800 w-6 h-6" %>
+  <div class="tw-mt-3 tw-pt-6 tw-border-t">
+    <div class="tw-flex tw-items-center">
+      <div class="tw-flex tw-items-center tw-flex-1">
+        <div class="tw-mr-3">
+          <%= render_svg "#{Railsui.config.css_framework}", styles: "tw-fill-current tw-text-indigo-800 tw-w-6 tw-h-6" %>
         </div>
 
-        <h4 class="font-semibold"><%= Railsui.config.css_framework.humanize %></h4>
+        <h4 class="tw-font-semibold"><%= Railsui.config.css_framework.humanize %></h4>
       </div>
 
-      <div class="bg-emerald-50 uppercase tracking-wide text-emerald-700 font-bold rounded px-1 inline-flex items-center text-[10px]" data-controller="tooltip" data-tippy-content="Active theme">
-        <%= render_svg "paw", styles: "w-4 h-4 fill-current" %>
+      <div class="tw-bg-emerald-50 tw-uppercase tw-tracking-wide tw-text-emerald-700 tw-font-bold tw-rounded tw-px-1 tw-inline-flex tw-items-center tw-text-[10px]" data-controller="tooltip" data-tippy-content="Active theme">
+        <%= render_svg "paw", styles: "tw-w-4 tw-h-4 tw-fill-current" %>
         <%= Railsui.config.theme.humanize %>
       </div>
     </div>

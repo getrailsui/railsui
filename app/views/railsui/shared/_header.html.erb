@@ -1,0 +1,12 @@
+<h1 class="tw-text-5xl tw-font-bold"><%= params[:action].titleize %></h1>
+
+<div class="tw-grid tw-grid-cols-3 tw-gap-10 tw-mt-8 tw-pb-8 tw-border-b tw-border-gray-200">
+  <div>
+    <p class="tw-text-gray-600">Theme</p>
+    <p class="tw-font-light tw-text-gray-900 tw-text-2xl"><%= Railsui::config.theme.humanize %></p>
+  </div>
+  <div>
+    <p class="tw-text-gray-600">Framework</p>
+    <p class="tw-font-light tw-text-gray-900 tw-text-2xl"><%= Railsui::config.css_framework.humanize %></p>
+  </div>
+</div>

@@ -1,19 +1,19 @@
-<div class="p-10 rounded-xl border border-neutral-200 shadow-sm mb-10">
-  <h3 class="font-bold text-2xl mb-3">Pages &amp; content</h3>
-  <p class="prose prose-lg prose-indigo mb-6">Enabling any option below will automatically generate themed views using the CSS framework chosen. These will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
+<div class="tw-p-10 tw-rounded-xl tw-border tw-border-neutral-200 tw-shadow-sm tw-mb-10">
+  <h3 class="tw-font-bold tw-text-2xl tw-mb-3">Pages &amp; content</h3>
+  <p class="tw-prose tw-prose-lg tw-prose-indigo tw-mb-6">Enabling any option below will automatically generate themed views using the CSS framework chosen. These will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
 
-  <ul class="leading-loose">
-    <li class="py-1">
+  <ul class="tw-leading-loose">
+    <li class="tw-py-1">
       <%= f.label :about do %>
-        <%= f.check_box :about, class: "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-neutral-100 dark:focus:ring-neutral-800 dark:focus:ring-opacity-20 mr-2 border-neutral-500 w-5 h-5", value: Railsui.config.about, checked: Railsui.config.about? %>
+        <%= f.check_box :about, class: "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-neutral-100 dark:focus:tw-ring-neutral-800 dark:focus:tw-ring-opacity-20 tw-mr-2 tw-border-neutral-500 tw-w-5 tw-h-5", value: Railsui.config.about, checked: Railsui.config.about? %>
         <span>Create about page</span>
       <% end %>
     </li>
 
-    <li class="py-1">
+    <li class="tw-py-1">
       <%= f.label :pricing do %>
-        <%= f.check_box :pricing, class: "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-neutral-100 dark:focus:ring-neutral-800 dark:focus:ring-opacity-20 mr-2 border-neutral-500 w-5 h-5", value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
-        <span>Create pricing page</span><span class="text-neutral-500 text-sm"> &mdash; placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
+        <%= f.check_box :pricing, class: "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-neutral-100 dark:focus:tw-ring-neutral-800 dark:focus:tw-ring-opacity-20 tw-mr-2 tw-border-neutral-500 tw-w-5 tw-h-5", value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
+        <span>Create pricing page</span><span class="tw-text-neutral-500 tw-text-sm"> &mdash; placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
       <% end %>
     </li>
 

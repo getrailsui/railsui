@@ -20,10 +20,6 @@ module Railsui
         .permit(
           :application_name,
           :css_framework,
-          :primary_color,
-          :secondary_color,
-          :tertiary_color,
-          :font_family,
           :about,
           :pricing,
           :theme

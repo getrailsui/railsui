@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased">
+<html class="tw-h-full tw-antialiased">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -13,21 +13,22 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <%= favicon_link_tag "favicon.svg" %>
     <%= javascript_include_tag "//unpkg.com/alpinejs", defer: true %>
     <%= javascript_include_tag "railsui/application" %>
-    <%= stylesheet_link_tag "railsui/application" %>
+    <%= stylesheet_link_tag "railsui/application" , "application" %>
 
     <%= yield :head %>
   </head>
   <%= render "railsui/shared/flash" %>
 
-  <body class="h-full overflow-x-hidden font-sans font-normal leading-normal dark:bg-neutral-900 dark:text-white bg-white text-neutral-800">
-    <div class="flex lg:screen">
-      <div class="w-[280px] p-6 border-r dark:border-slate-100 bg-slate-50">
-        <div class="sticky top-3">
-          <%= link_to  main_app.root_path, class: "block mb-6" do %>
-            <div class="flex items-center">
-              <%= render_svg "chevron-left", styles: "stroke-current text-neutral-500 w-4 h-4 mr-2" %>
+  <body class="tw-h-full tw-overflow-x-hidden tw-font-sans tw-font-normal tw-leading-normal dark:tw-bg-neutral-900 dark:tw-text-white tw-bg-white tw-text-neutral-800">
+    <div class="tw-flex lg:tw-h-screen">
+      <div class="tw-w-[280px] tw-p-6 tw-border-r dark:tw-border-slate-100 tw-bg-slate-50">
+        <div class="tw-sticky tw-top-3">
+          <%= link_to  main_app.root_path, class: "tw-block tw-mb-6" do %>
+            <div class="tw-flex tw-items-center">
+              <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-neutral-500 tw-w-4 tw-h-4 tw-mr-2" %>
               <span>Back to main app</span>
             </div>
           <% end %>
@@ -37,7 +38,7 @@
 
       </div>
 
-      <div class="flex-1 max-w-4xl mx-auto lg:py-16 px-4">
+      <div class="tw-flex-1 tw-max-w-4xl tw-mx-auto lg:tw-py-16 tw-px-4">
         <%= yield %>
       </div>
     </div>
