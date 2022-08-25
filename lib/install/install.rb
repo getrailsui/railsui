@@ -1,4 +1,3 @@
-require 'fileutils'
 source_root = File.expand_path('../templates', __FILE__)
 
 def add_css_bundling_setup
