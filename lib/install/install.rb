@@ -1,7 +1,82 @@
+require 'fileutils'
 source_root = File.expand_path('../templates', __FILE__)
 
+def add_css_bundling_setup
+  say "Build into app/assets/builds"
+  empty_directory "app/assets/builds", force: true
+  keep_file "app/assets/builds"
+
+  if Rails.root.join(".gitignore").exist?
+    append_to_file(".gitignore", %(\n/app/assets/builds/*\n!/app/assets/builds/.keep\n))
+    append_to_file(".gitignore", %(\n/node_modules\n))
+  end
+
+  if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
+    say "Add stylesheet link tag in application layout"
+    insert_into_file(
+      app_layout_path.to_s,
+      defined?(Turbo) ?
+        %(\n    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>) :
+        %(\n    <%= stylesheet_link_tag "application" %>),
+      before: /\s*<\/head>/
+    )
+  else
+    say "Default application.html.erb is missing!", :red
+    if defined?(Turbo)
+      say %(        Add <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> within the <head> tag in your custom layout.)
+    else
+      say %(        Add <%= stylesheet_link_tag "application" %> within the <head> tag in your custom layout.)
+    end
+  end
+
+  unless Rails.root.join("package.json").exist?
+    say "Add default package.json"
+    copy_file "#{__dir__}/package.json", "package.json"
+  end
+
+  return if Rails.root.join("Procfile.dev").exist?
+  say "Add default Procfile.dev"
+  copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"
+
+  say "Ensure foreman is installed"
+  run "gem install foreman"
+
+  say "Add bin/dev to start foreman"
+  copy_file "#{__dir__}/dev", "bin/dev"
+  chmod "bin/dev", 0755, verbose: false
+end
+
+def remove_importmaps
+  if Rails.root.join("config/importmap.rb").exist?
+    run "bundle remove importmap-rails"
+    remove_file Rails.root.join("config/importmap.rb")
+    remove_file Rails.root.join("app/javascript/application.js")
+    remove_file Rails.root.join("app/javascript/controllers/index.js")
+    remove_file Rails.root.join("app/javascript/controllers/application.js")
+    remove_file Rails.root.join("app/javascript/controllers/hello_controller.js")
+
+    copy_file "#{__dir__}/application.js", "app/javascript/application.js"
+
+    say "Remove javascript_import_tags helper"
+    gsub_file Rails.root.join("app/views/layouts/application.html.erb"), "<%= javascript_importmap_tags %>", ""
+
+    say "Remove bin/importmap"
+    remove_file Rails.root.join("bin/importmap")
+  end
+end
+
+def add_esbuild
+  rails_command "javascript:install:esbuild", force: true
+end
+
+def add_stimulus
+  rails_command "stimulus:install:node"
+end
+
 def add_gems
-  gem 'devise', '~> 4.8', '>= 4.8.1'
+  gem "cssbundling-rails"
+  gem 'devise'
+  gem "jsbundling-rails"
   gem 'name_of_person'
   gem 'sidekiq'
 end
@@ -139,6 +214,9 @@ def extend_layout_and_views
 end
 
 # Add the gems!
+say "Remove importmaps"
+remove_importmaps
+
 say "Adding gems..."
 add_gems
 
@@ -147,8 +225,14 @@ run "bundle install"
 say "Configuring Devise..."
 add_users
 
-say "Adding ActiveStorage and ActionText dependencies..."
-add_storage_and_rich_text
+say "Add ESBuild"
+add_esbuild
+
+say "Add Stimulus.js"
+add_stimulus
+
+say "Add custom css-bundling setup"
+add_css_bundling_setup
 
 say "Adding static assets..."
 add_static_assets
@@ -161,6 +245,9 @@ extend_layout_and_views
 
 say "Configuring template engine with fallbacks..."
 add_custom_template_engine
+
+say "Adding ActiveStorage and ActionText dependencies..."
+add_storage_and_rich_text
 
 # Migrate
 rails_command "db:create"
@@ -192,11 +279,6 @@ MMMMMMMMMWWMMMMMMMMMMMMMMMMMW0kkKWMMMMMMMMWKONMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 "
 say
-say
 say "Rails UI installation successful! 👍", :green
-
-say "Booting/restarting rails"
-
-rails_command "restart"
-
-say "Next, run $ bin/rails server", :yellow
+say
+say "Run bin/dev to boot the rails server", :yellow

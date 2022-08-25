@@ -7,8 +7,12 @@ module Railsui
   mattr_accessor :config
   @@config = {}
 
+  def self.clear
+    run_command "rails tmp:clear"
+  end
+
   def self.restart
-    run_command "rails restart"
+    run_command "bin/dev"
   end
 
   def self.bundle

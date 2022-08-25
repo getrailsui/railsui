@@ -7,11 +7,10 @@ module Railsui
 
       # Install deps
       Railsui.bundle
-      Railsui.restart
+      Railsui.clear
 
-      redirect_to root_path, notice: "Your app successfully restarted with an updated configuration"
+      redirect_to root_path, notice: "Your app  configuration updated successfully"
     end
-
 
     private
 
