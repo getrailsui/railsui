@@ -18,22 +18,28 @@
     <%= javascript_include_tag "railsui/application" %>
     <%= stylesheet_link_tag "railsui/application" , "application" %>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
     <%= yield :head %>
   </head>
   <%= render "railsui/shared/flash" %>
 
   <body class="tw-h-full tw-overflow-x-hidden tw-font-sans tw-font-normal tw-leading-normal dark:tw-bg-neutral-900 dark:tw-text-white tw-bg-white tw-text-neutral-800">
-    <div class="tw-flex lg:tw-h-screen">
+    <div class="tw-flex">
       <div class="tw-w-[280px] tw-p-6 tw-border-r dark:tw-border-slate-100 tw-bg-slate-50">
-        <div class="tw-sticky tw-top-3">
-          <%= link_to  main_app.root_path, class: "tw-block tw-mb-6" do %>
-            <div class="tw-flex tw-items-center">
-              <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-neutral-500 tw-w-4 tw-h-4 tw-mr-2" %>
-              <span>Back to main app</span>
-            </div>
-          <% end %>
+        <div class="lg:tw-h-full">
+          <div class="tw-sticky tw-top-3">
+            <%= link_to  main_app.root_path, class: "tw-block tw-mb-6" do %>
+              <div class="tw-flex tw-items-center">
+                <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-neutral-500 tw-w-4 tw-h-4 tw-mr-2" %>
+                <span>Back to main app</span>
+              </div>
+            <% end %>
 
-          <%= render "railsui/shared/nav" %>
+            <%= render "railsui/shared/nav" %>
+          </div>
         </div>
 
       </div>

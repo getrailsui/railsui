@@ -11,3 +11,6 @@ application.register("configuration", ConfigurationController)
 
 import FlashController from "./flash_controller.js"
 application.register("flash", FlashController)
+
+import CodeController from "./code_controller.js"
+application.register("code", CodeController)

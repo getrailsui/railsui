@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mono: ["Fira Code", "monospace"]
+      },
       colors: {
         salmon: {
           500: "#FA8072",

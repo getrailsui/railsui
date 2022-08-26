@@ -1,5 +1,5 @@
 <div class="tw-my-6">
-  <p class="tw-text-gray-600 tw-font-light tw-text-xl tw-mb-4">Headings</p>
+  <h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-4">Headings</h2>
 
   <div class="rui-bs tw-mb-16">
     <div class="mb-4">
@@ -27,19 +27,97 @@
       <p class="text-muted">h5(.h5) &mdash; 20px (1.25rem) / 24px (1.2)</p>
     </div>
 
-    <div class="mb-4">
+    <div>
       <h6>A quick brown fox jumps over the lazy dog.</h6>
       <p class="text-muted">h6(.h6) &mdash; 16px (1rem) / 19.2px (1.2)</p>
     </div>
   </div>
 
-  <p class="tw-text-gray-600 tw-font-light tw-text-xl">Display</p>
+<%= render "railsui/shared/snippet" do %>
+<h1 class="h1">A quick brown fox jumps over the lazy dog.</h1>
+<h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
+<h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
+<h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
+<h5 class="h5">A quick brown fox jumps over the lazy dog.</h5>
+<h6 class="h6">A quick brown fox jumps over the lazy dog.</h6>
+<% end %>
+
+  <hr class="tw-my-6"/>
+
+  <h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-2">Display headings</h2>
+  <p class="tw-text-gray-700 tw-mb-4">Useful for very large titles and high pixel-density screens (mobile and tablet devices)</p>
 
   <div class="rui-bs">
     <div class="mb-4">
       <h1 class="display-1">A quick brown fox jumps over the lazy dog.</h1>
-      <p class="text-muted">h1(.h1) &mdash; 80px (5rem) / 96px (1.2)</p>
+      <p class="text-muted">h1.display-1 &mdash; 80px (5rem) / 96px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="display-2">A quick brown fox jumps over the lazy dog.</h2>
+      <p class="text-muted">h2.display-2 &mdash; 72px (4.5rem) / 86.4px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h3 class="display-3">A quick brown fox jumps over the lazy dog.</h3>
+      <p class="text-muted">h3.display-3 &mdash; 64px (4.5rem) / 76.8px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h4 class="display-4">A quick brown fox jumps over the lazy dog.</h4>
+      <p class="text-muted">h4.display-4 &mdash; 56px (3.5rem) / 67.2px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h5 class="display-5">A quick brown fox jumps over the lazy dog.</h5>
+      <p class="text-muted">h5(.display-5) &mdash; 48px (3rem) / 57.6px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h6 class="display-6">A quick brown fox jumps over the lazy dog.</h6>
+      <p class="text-muted">h6(.display-6) &mdash; 40px (2.5rem) / 48px (1.2)</p>
     </div>
   </div>
+</div>
 
+<%= render "railsui/shared/snippet" do %>
+<h1 class="display-h1">A quick brown fox jumps over the lazy dog.</h1>
+<h2 class="display-h2">A quick brown fox jumps over the lazy dog.</h2>
+<h3 class="display-h3">A quick brown fox jumps over the lazy dog.</h3>
+<h4 class="display-h4">A quick brown fox jumps over the lazy dog.</h4>
+<h5 class="display-h5">A quick brown fox jumps over the lazy dog.</h5>
+<h6 class="display-h6">A quick brown fox jumps over the lazy dog.</h6>
+<% end %>
+
+<hr class="tw-my-6"/>
+
+<h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-4">General content</h2>
+
+<div class="tw-my-6">
+  <p class="tw-font-bold tw-text-gray-900">Lead paragraph</p>
+  <div class="rui-bs">
+    <p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
+    <p class="text-muted">20px (1.25rem) / 30px (1.2)</p>
+  </div>
+
+  <%= render "railsui/shared/snippet", lang: "html" do %>
+  <p class="lead">A lead paragraph stands out from regular paragraphs.</p>
+  <% end %>
+</div>
+
+
+<div class="tw-my-6">
+  <p class="tw-font-bold tw-text-gray-900">Blockquote</p>
+  <div class="rui-bs">
+    <figure>
+      <blockquote class="blockquote"><p>A well-known quote, contained in a blockquote element.</p></blockquote>
+      <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+      </figcaption>
+    </figure>
+  </div>
+
+  <%= render "railsui/shared/snippet", lang: "html" do %>
+  <p class="lead">A lead paragraph stands out from regular paragraphs.</p>
+  <% end %>
 </div>
