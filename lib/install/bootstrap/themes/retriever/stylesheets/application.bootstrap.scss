@@ -61,16 +61,30 @@ Buttons
   // 6. Include any optional Bootstrap CSS as needed
   @import "bootstrap/scss/utilities";
   @import "bootstrap/scss/reboot";
-  @import "bootstrap/scss/type";
-  @import "bootstrap/scss/images";
+  @import "bootstrap/scss/accordion";
+  @import "bootstrap/scss/alert";
+  @import "bootstrap/scss/badge";
+  @import "bootstrap/scss/button-group";
+  @import "bootstrap/scss/buttons";
+  @import "bootstrap/scss/card";
+  @import "bootstrap/scss/close";
   @import "bootstrap/scss/containers";
+  @import "bootstrap/scss/dropdown";
+  @import "bootstrap/scss/forms";
   @import "bootstrap/scss/grid";
   @import "bootstrap/scss/helpers";
-  @import "bootstrap/scss/buttons";
+  @import "bootstrap/scss/images";
+  @import "bootstrap/scss/images";
+  @import "bootstrap/scss/list-group";
+  @import "bootstrap/scss/modal";
   @import "bootstrap/scss/nav";
   @import "bootstrap/scss/navbar";
-  @import "bootstrap/scss/forms";
+  @import "bootstrap/scss/popover";
+  @import "bootstrap/scss/tables";
+  @import "bootstrap/scss/toasts";
+  @import "bootstrap/scss/tooltip";
   @import "bootstrap/scss/transitions";
+  @import "bootstrap/scss/type";
 
   // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
   @import "bootstrap/scss/utilities/api";
