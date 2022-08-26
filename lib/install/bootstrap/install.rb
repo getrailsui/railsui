@@ -23,8 +23,6 @@ else
     say "🛑 app/views/devise already exists. Files can't be copied. Refer to the gem source for reference."
   else
     say "Add themed Devise views"
-    directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
+    directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise"), force: true
   end
-
-
 end

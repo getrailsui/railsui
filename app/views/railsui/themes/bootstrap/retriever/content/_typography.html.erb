@@ -94,7 +94,7 @@
 <h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-4">General content</h2>
 
 <div class="tw-my-6">
-  <p class="tw-font-bold tw-text-gray-900">Lead paragraph</p>
+  <p class="tw-font-bold tw-text-gray-900 tw-mb-2">Lead paragraph</p>
   <div class="rui-bs">
     <p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
     <p class="text-muted">20px (1.25rem) / 30px (1.2)</p>
@@ -105,9 +105,8 @@
   <% end %>
 </div>
 
-
 <div class="tw-my-6">
-  <p class="tw-font-bold tw-text-gray-900">Blockquote</p>
+  <p class="tw-font-bold tw-text-gray-900 tw-mb-2">Blockquote</p>
   <div class="rui-bs">
     <figure>
       <blockquote class="blockquote"><p>A well-known quote, contained in a blockquote element.</p></blockquote>
@@ -117,7 +116,43 @@
     </figure>
   </div>
 
-  <%= render "railsui/shared/snippet", lang: "html" do %>
-  <p class="lead">A lead paragraph stands out from regular paragraphs.</p>
-  <% end %>
+<%= render "railsui/shared/snippet", lang: "html" do %>
+<figure>
+  <blockquote class="blockquote"><p>A well-known quote, contained in a blockquote element.</p></blockquote>
+  <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
+<% end %>
+</div>
+
+<div class="tw-my-6">
+  <p class="tw-font-bold tw-text-gray-900 tw-mb-2">Lists</p>
+
+  <div class="rui-bs">
+    <div class="row">
+      <div class="col">
+        <ul class="list-disc">
+          <li>A quick brown</li>
+          <li>fox jumps over</li>
+          <li>the lazy dog</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <ul class="list-unsyled">
+          <li>A quick brown</li>
+          <li>fox jumps over</li>
+          <li>the lazy dog</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <ol class="list-decimal">
+          <li>A quick brown</li>
+          <li>fox jumps over</li>
+          <li>the lazy dog</li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </div>
