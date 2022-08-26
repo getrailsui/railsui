@@ -1,5 +1,71 @@
+<div class="tw-mb-16 tw-mt-6 relative">
+ <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Bordered" %>
+  <div class="rui-bs">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Andy</td>
+          <td>L.</td>
+          <td>@railsui_</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Web</td>
+          <td>Crunch</td>
+          <td>@webcrunchblog</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">justalever</td>
+          <td>@justalever</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<%= render "railsui/shared/snippet" do %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Andy</td>
+      <td>L.</td>
+      <td>@railsui_</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Web</td>
+      <td>Crunch</td>
+      <td>@webcrunchblog</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">justalever</td>
+      <td>@justalever</td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+</div>
+
 <div class="tw-my-6">
-  <h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-4">Borderless</h2>
+  <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Borderless" %>
   <div class="rui-bs">
     <table class="table table-borderless">
       <thead>
@@ -31,10 +97,41 @@
       </tbody>
     </table>
   </div>
+<%= render "railsui/shared/snippet" do %>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Andy</td>
+      <td>L.</td>
+      <td>@railsui_</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Web</td>
+      <td>Crunch</td>
+      <td>@webcrunchblog</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">justalever</td>
+      <td>@justalever</td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
 </div>
 
-<div class="tw-my-6">
-  <h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-4"></h2>
+<div class="tw-my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Light" %>
   <div class="rui-bs">
     <table class="table">
       <thead class="table-light">
@@ -66,4 +163,102 @@
       </tbody>
     </table>
   </div>
+
+<%= render "railsui/shared/snippet" do %>
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Andy</td>
+      <td>L.</td>
+      <td>@railsui_</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Web</td>
+      <td>Crunch</td>
+      <td>@webcrunchblog</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">justalever</td>
+      <td>@justalever</td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+</div>
+
+<div class="tw-my-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Dark" %>
+  <div class="rui-bs">
+    <table class="table table-dark">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Andy</td>
+          <td>L.</td>
+          <td>@railsui_</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Web</td>
+          <td>Crunch</td>
+          <td>@webcrunchblog</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">justalever</td>
+          <td>@justalever</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<%= render "railsui/shared/snippet" do %>
+<table class="table table-dark">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Andy</td>
+      <td>L.</td>
+      <td>@railsui_</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Web</td>
+      <td>Crunch</td>
+      <td>@webcrunchblog</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">justalever</td>
+      <td>@justalever</td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
 </div>

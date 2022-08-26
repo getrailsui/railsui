@@ -1,7 +1,7 @@
 <div class="tw-my-6">
-  <h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-4">Headings</h2>
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Headings" %>
 
-  <div class="rui-bs tw-mb-16">
+  <div class="rui-bs tw-mb-16 tw-mt-6">
     <div class="mb-4">
       <h1>A quick brown fox jumps over the lazy dog.</h1>
       <p class="text-muted">h1(.h1) &mdash; 40px (2.5rem) / 48px (1.2)</p>
@@ -44,8 +44,9 @@
 
   <hr class="tw-my-6"/>
 
-  <h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold tw-mb-2">Display headings</h2>
-  <p class="tw-text-gray-700 tw-mb-4">Useful for very large titles and high pixel-density screens (mobile and tablet devices)</p>
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Display headings" do %>
+    <p>Useful for very large titles and high pixel-density screens (mobile and tablet devices)</p>
+  <% end %>
 
   <div class="rui-bs">
     <div class="mb-4">
@@ -91,9 +92,8 @@
 
 <hr class="tw-my-6"/>
 
-<h2 class="tw-text-gray-900 tw-text-2xl tw-font-bold">General content</h2>
 <div class="tw-mb-16 tw-mt-8">
-  <p class="tw-font-bold tw-text-gray-900 tw-mb-2 tw-text-lg">Lead paragraph</p>
+   <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lead paragraph" %>
   <div class="rui-bs">
     <p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
     <p class="text-muted">20px (1.25rem) / 30px (1.2)</p>
@@ -105,7 +105,7 @@
 </div>
 
 <div class="tw-my-16">
-  <p class="tw-font-bold tw-text-gray-900 tw-mb-2 tw-text-lg">Blockquote</p>
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Blockquote" %>
   <div class="rui-bs">
     <figure>
       <blockquote class="blockquote"><p>A well-known quote, contained in a blockquote element.</p></blockquote>
@@ -125,7 +125,7 @@
 </div>
 
 <div class="tw-my-16">
-  <p class="tw-font-bold tw-text-lg tw-text-gray-900 tw-mb-2">Lists</p>
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lists" %>
 
   <div class="rui-bs">
     <div class="row">
@@ -182,7 +182,7 @@
 </div>
 
 <div class="tw-my-16">
-  <p class="tw-font-bold tw-text-gray-900 tw-mb-2 tw-text-lg">Body</p>
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Body copy" %>
 
   <div class="rui-bs">
     <div class="row">
@@ -206,7 +206,7 @@
 </div>
 
 <div class="tw-my-16">
-  <p class="tw-font-bold tw-text-gray-900 tw-mb-2 tw-text-lg">Inline text elements</p>
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Inline text elements" %>
   <div class="rui-bs">
     <p class="pb-1">You can use the mark tag to <mark>highlight</mark> text.</p>
     <p class="pb-1"><del>This line of text is meant to be treated as deleted text.</del></p>
