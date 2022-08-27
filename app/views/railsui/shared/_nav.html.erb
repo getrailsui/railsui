@@ -46,10 +46,7 @@
         Forms
       </button>
 
-      <ul x-show="open" class="leading-loose">
-        <li>
-          <%= nav_link_to "Overview", systems_forms_path %>
-        </li>
+      <ul x-show="open" class="tw-leading-loose">
         <li>
           <%= nav_link_to "Inputs", systems_forms_inputs_path %>
         </li>
@@ -128,9 +125,6 @@
         Marketing
       </button>
       <ul x-show="open" class="tw-leading-loose">
-        <li>
-          <%= nav_link_to "Overview", systems_marketing_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-        </li>
         <li>
           <%= nav_link_to "CTAs", systems_marketing_ctas_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
         </li>

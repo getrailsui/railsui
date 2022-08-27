@@ -1,7 +1,15 @@
 <% content = yield %>
 
-<div data-controller="code" class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-ring-1 dark:ring-white/10 dark:tw-ring-inset selection:tw-bg-salmon-500 selection:tw-bg-opacity-25">
-  <pre><code data-code-target="snippet"
+<div data-controller="code clipboard" class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-ring-1 dark:ring-white/10 dark:tw-ring-inset selection:tw-bg-salmon-500 selection:tw-bg-opacity-25 tw-relative">
+  <button
+    data-action="click->clipboard#copy"
+    class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2"
+    type="button">
+    <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none" %>
+  </button>
+  <pre><code
+    data-code-target="snippet"
+    data-clipboard-target="source"
     <% if local_assigns[:lang].present? %>
     class="language-<%= local_assigns[:lang] %>"
     <% end %>><%= content.to_param.strip %></code></pre>

@@ -27,10 +27,10 @@
   <%= render "railsui/shared/flash" %>
 
   <body class="tw-h-full tw-overflow-x-hidden tw-font-sans tw-font-normal tw-leading-normal dark:tw-bg-neutral-900 dark:tw-text-white tw-bg-white tw-text-neutral-800">
-    <div class="tw-flex">
+    <div class="tw-flex tw-h-full">
       <div class="tw-w-[280px] tw-p-6 tw-border-r dark:tw-border-slate-100 tw-bg-slate-50">
-        <div class="lg:tw-h-full">
-          <div class="tw-sticky tw-top-3">
+        <div class="lg:tw-h-full tw-flex tw-flex-col">
+          <div class="tw-sticky tw-top-3 tw-flex-1">
             <%= link_to  main_app.root_path, class: "tw-block tw-mb-6" do %>
               <div class="tw-flex tw-items-center">
                 <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-neutral-500 tw-w-4 tw-h-4 tw-mr-2" %>

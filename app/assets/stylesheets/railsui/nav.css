@@ -2,15 +2,15 @@
   display: none;
 }
 
-.rui-primary-nav ul a {
+.rui-primary-nav a {
   @apply tw-block tw-pr-3 tw-pl-10 tw-rounded tw-py-1 hover:tw-bg-indigo-50 hover:tw-bg-opacity-50 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative;
 }
 
-.rui-primary-nav ul a.active {
+.rui-primary-nav a.active {
   @apply tw-bg-indigo-700 tw-text-white;
 }
 
-.rui-primary-nav ul a.active::before {
+.rui-primary-nav a.active::before {
   content: "";
   width: 6px;
   height: 6px;

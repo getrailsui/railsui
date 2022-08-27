@@ -14,3 +14,6 @@ application.register("flash", FlashController)
 
 import CodeController from "./code_controller.js"
 application.register("code", CodeController)
+
+import ClipboardController from "./clipboard_controller.js"
+application.register("clipboard", ClipboardController)

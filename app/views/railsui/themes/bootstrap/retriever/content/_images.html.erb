@@ -1,0 +1,45 @@
+<div class="tw-my-6">
+<%= render "railsui/shared/sticky_subhead", title: "Images", subtitle: "Responsive images" %>
+
+<div class="rui-bs">
+  <svg style="font-size: calc(1.475rem + 2.7vw); text-anchor: middle;" class="img-fluid" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Responsive image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#cbd5e1"></rect><text x="50%" y="50%" fill="#334155" dy=".3em" class=" fw-bold">Responsive image</text></svg>
+</div>
+
+<%= render "railsui/shared/snippet", lang: "html" do %>
+<img src="..." class="img-fluid" alt="...">
+<% end %>
+</div>
+
+<div class="tw-my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Images", subtitle: "Alignment - Floats" %>
+
+<div class="rui-bs">
+  <div class="clearfix">
+    <svg style="font-size: 1.125rem; text-anchor: middle;" class="rounded float-start" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Responsive image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder: 200x200</title><rect width="100%" height="100%" fill="#cbd5e1"></rect><text x="50%" y="50%" fill="#334155" dy=".3em" class=" fw-bold">200x200</text></svg>
+
+    <svg style="font-size: 1.125rem; text-anchor: middle;" class="rounded float-end" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Responsive image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder: 200x200</title><rect width="100%" height="100%" fill="#cbd5e1"></rect><text x="50%" y="50%" fill="#334155" dy=".3em" class=" fw-bold">200x200</text></svg>
+  </div>
+</div>
+
+<%= render "railsui/shared/snippet", lang: "html" do %>
+<div class="clearfix">
+  <img src="..." class="rounded float-start" alt="...">
+  <img src="..." class="rounded float-end" alt="...">
+</div>
+<% end %>
+</div>
+
+
+<div class="tw-my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Images", subtitle: "Alignment - Centered" %>
+
+<div class="rui-bs">
+  <svg style="font-size: 1.125rem; text-anchor: middle;" class="rounded mx-auto d-block" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Responsive image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder: 200x200</title><rect width="100%" height="100%" fill="#cbd5e1"></rect><text x="50%" y="50%" fill="#334155" dy=".3em" class=" fw-bold">200x200</text></svg>
+</div>
+
+<%= render "railsui/shared/snippet", lang: "html" do %>
+<div class="clearfix">
+  <img src="..." class="rounded mx-auto d-block" alt="...">
+</div>
+<% end %>
+</div>

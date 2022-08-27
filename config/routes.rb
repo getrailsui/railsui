@@ -5,11 +5,6 @@ Railsui::Engine.routes.draw do
   resource :systems, only: :show
 
   namespace :systems do
-    get :forms
-    get :elements
-    get :content
-    get :marketing
-
     namespace :content do
       get :typography
       get :tables
