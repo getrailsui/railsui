@@ -40,12 +40,6 @@ code.hljs {
 .hljs-string {
   color: theme('colors.sky.300');
 }
-.hljs-subst {
-  color: #d3423e;
-}
-.hljs-symbol {
-  color: #82aaff;
-}
 .hljs-class {
   color: #ffcb8b;
 }
@@ -76,6 +70,9 @@ code.hljs {
 .hljs-section {
   color: #82b1ff;
 }
+.hljs-selector-tag,
+.hljs-symbol,
+.hljs-subst,
 .hljs-name{
   color: theme('colors.pink.400');
 }
@@ -109,14 +106,11 @@ code.hljs {
   color: #697098;
   font-style: italic;
 }
-.hljs-selector-tag {
-  color: #ff6363;
-}
 .hljs-selector-id {
   color: #fad430;
 }
 .hljs-selector-class {
-  color: #addb67;
+  color: theme('colors.sky.400');
   font-style: italic;
 }
 .hljs-selector-attr,

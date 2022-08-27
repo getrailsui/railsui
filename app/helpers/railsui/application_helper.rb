@@ -69,5 +69,9 @@ module Railsui
     def code_inline(code)
       content_tag :span, html_escape(code), class: "tw-text-red-600 tw-font-mono tw-text-base"
     end
+
+    def render_snippet
+      render partial: "railsui/shared/snippet"
+    end
   end
 end
