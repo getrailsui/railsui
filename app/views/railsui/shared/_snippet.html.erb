@@ -1,6 +1,23 @@
 <% content = yield %>
 
 <div data-controller="code clipboard" class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-ring-1 dark:ring-white/10 dark:tw-ring-inset selection:tw-bg-salmon-500 selection:tw-bg-opacity-25 tw-relative">
+  <div class="tw-bg-slate-800">
+    <ul class="tw-flex tw-items-center tw-justify-start tw-space-x-2 tw-border-b tw-border-slate-700 tw-px-3">
+      <li class="tw-flex tw-items-center">
+        <button class="-tw-ml-2 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-white/90 tw-text-sm tw-border-b tw-border-transparent tw-text-pink-400  tw-border-pink-400">.html</button>
+
+        <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+      </li>
+      <li class="tw-flex tw-items-center">
+        <button class="-tw-ml-3 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-white/90 tw-text-sm tw-border-b tw-border-transparent hover:tw-text-salmon-500 hover:tw-border-b hover:tw-border-salmon-500">.erb</button>
+        <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+      </li>
+      <li class="tw-flex tw-items-center">
+        <button class="-tw-ml-3 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-white/90 tw-text-sm tw-border-b tw-border-transparent hover:tw-text-sky-400 hover:tw-border-b hover:tw-border-sky-400">.haml</button>
+        <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+      </li>
+    </ul>
+  </div>
   <button
     data-action="click->clipboard#copy"
     class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2"

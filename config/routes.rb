@@ -5,6 +5,11 @@ Railsui::Engine.routes.draw do
   resource :systems, only: :show
 
   namespace :systems do
+    get :forms
+    get :elements
+    get :content
+    get :scaffolds
+
     namespace :content do
       get :typography
       get :tables
@@ -15,10 +20,9 @@ Railsui::Engine.routes.draw do
       get :inputs
       get :input_groups
       get :selects
-      get :boxes_and_radios
+      get :checkboxes_and_radios
       get :layout
       get :validation
-      get :scaffolding
     end
 
     namespace :marketing do

@@ -3,12 +3,12 @@ require_dependency "railsui/application_controller"
 module Railsui
   module Systems
     class FormsController < ApplicationController
-      # pages = %w[inputs input_groups selects boxes_and_radios layout validation scaffolding]
+      pages = %w[inputs input_groups selects checkboxes_and_radios layout validation scaffolding]
 
-      # pages.each do |page|
-      #   define_method(page) do
-      #   end
-      # end
+      pages.each do |page|
+        define_method(page) do
+        end
+      end
     end
   end
 end

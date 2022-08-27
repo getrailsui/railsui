@@ -18,7 +18,7 @@
     <span>Design system</span>
   <% end %>
 
-  <ul class="tw-ml-3 rui-primary-nav">
+  <ul class="tw-ml-3 rui-primary-nav tw-leading-loose">
     <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
       <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
         <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
@@ -27,6 +27,9 @@
         Content
       </button>
       <ul x-show="open" class="tw-leading-loose">
+        <li>
+          <%= nav_link_to "Overview", systems_content_path %>
+        </li>
         <li>
           <%= nav_link_to "Typography", systems_content_typography_path %>
         </li>
@@ -48,6 +51,9 @@
 
       <ul x-show="open" class="tw-leading-loose">
         <li>
+          <%= nav_link_to "Overview", systems_forms_path %>
+        </li>
+        <li>
           <%= nav_link_to "Inputs", systems_forms_inputs_path %>
         </li>
         <li>
@@ -57,16 +63,13 @@
           <%= nav_link_to "Selects", systems_forms_selects_path %>
         </li>
         <li>
-          <%= nav_link_to "Checkboxes & Radios", systems_forms_boxes_and_radios_path %>
+          <%= nav_link_to "Checkboxes & Radios", systems_forms_checkboxes_and_radios_path %>
         </li>
         <li>
           <%= nav_link_to "Layout", systems_forms_layout_path %>
         </li>
         <li>
           <%= nav_link_to "Validation", systems_forms_validation_path %>
-        </li>
-        <li>
-          <%= nav_link_to "Scaffolding", systems_forms_scaffolding_path %>
         </li>
       </ul>
     </li>
@@ -139,7 +142,9 @@
         </li>
       </ul>
     </li>
-
+    <li>
+      <%= nav_link_to "Scaffolds", systems_scaffolds_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
+    </li>
   </ul>
 <% end %>
 
