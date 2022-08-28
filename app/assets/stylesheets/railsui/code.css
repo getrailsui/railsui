@@ -80,7 +80,7 @@ code.hljs {
   color: #80cbc4;
 }
 .hljs-variable {
-  color: #addb67;
+  color: theme('colors.teal.400');
 }
 .hljs-bullet {
   color: #d9f5dd;
@@ -122,7 +122,7 @@ code.hljs {
   color: #c792ea;
 }
 .hljs-template-variable {
-  color: #addb67;
+  color: theme('colors.teal.400');
 }
 .hljs-addition {
   color: #addb67ff;

@@ -1,3 +1,5 @@
+<% framework = Railsui::config.css_framework.downcase %>
+
 <% unless params[:controller] == "railsui/systems" %>
   <p class="text-slate-500"><%= params[:controller].gsub("railsui/systems/", "").titleize %></p>
 <% end %>
@@ -10,6 +12,9 @@
   </div>
   <div>
     <p class="tw-text-slate-600">Framework</p>
-    <p class="tw-font-light tw-text-slate-900 tw-text-2xl"><%= Railsui::config.css_framework.humanize %></p>
+    <div class="tw-flex tw-items-center tw-justify-start tw-space-x-3">
+      <%= render_svg "#{framework.downcase}", title: "#{framework} logo", styles: "#{framework == "bootstrap" ? "tw-text-indigo-600" : "tw-text-teal-500" } tw-fill-current" %>
+      <p class="tw-font-light tw-text-slate-900 tw-text-2xl"><%= framework.humanize %></p>
+    </div>
   </div>
 </div>

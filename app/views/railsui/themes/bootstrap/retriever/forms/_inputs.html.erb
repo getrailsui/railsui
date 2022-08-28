@@ -1,4 +1,152 @@
 <div class="tw-my-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Input fields" %>
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Input field" %>
 
+  <div class="rui-bs">
+    <div class="mb-3">
+      <label for="input_1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="input_1" placeholder="name@example.com">
+    </div>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="mb-3">
+  <label for="input_1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="input_1" placeholder="name@example.com">
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+ <!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.div class: "mb-3" do %>
+  <%%= label_tag :input_1, "Email address", class: "form-label" %>
+  <%%= email_field_tag "input_1", "name@example.com", class: "form-control" %>
+<%% end %>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with @form do |f| %>
+  <%%= f.label :input_1, "File input example", class: "form-label" %>
+  <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormTagHelper
+.mb-3
+  = label_tag :input_1, "Email address", class: "form-label"
+  = email_field_tag :input_1, "name@example.com", class: "form-control"
+
+
+/ ActionView::Helpers::FormHelper
+= form_with @form do |f|
+  = f.label :input_1, "Email address", class: "form-label"
+  = f.email_field :input_1, placeholder: "name@example.com", class: "form-control"
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+<%#### %>
+
+<div class="tw-my-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Textarea" %>
+
+  <div class="rui-bs">
+    <div class="mb-3">
+      <label for="input_2" class="form-label">Speak your mind</label>
+      <textarea class="form-control" id="input_2" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
+    </div>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="mb-3">
+  <label for="input_2" class="form-label">Speak your mind</label>
+  <textarea class="form-control" id="input_2" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+ <!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.div class: "mb-3" do %>
+  <%%= label_tag :input_2, "Speak your mind", class: "form-label" %>
+  <%%= text_area_tag "input_2", nil, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control" %>
+<%% end %>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with @form do |f| %>
+  <%%= f.label :input_3, "File input example", class: "form-label" %>
+  <%%= f.text_area :input_3, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormTagHelper
+.mb-3
+  = label_tag :input_2, "Speak your mind", class: "form-label"
+  = text_area_tag :input_2, nil, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control"
+
+/ ActionView::Helpers::FormHelper
+= form_with @form do |f|
+  = f.label :input_2, "Email address", class: "form-label"
+  = f.text_area :input_2, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control"
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+
+<%#### %>
+
+<div class="tw-my-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "File input" %>
+
+  <div class="rui-bs">
+    <div class="mb-3">
+      <label for="input_3" class="form-label">File input example</label>
+      <input class="form-control" type="file" id="input_3">
+    </div>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="mb-3">
+  <label for="input_3" class="form-label">File input example</label>
+  <input class="form-control" type="file" id="input_3">
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+ <!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.div class: "mb-3" do %>
+  <%%= label_tag :input_3, "File input example", class: "form-label" %>
+  <%%= file_field_tag "input_2", nil, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control" %>
+<%% end %>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_for @form do |f| %>
+  <%%= f.label :input_3, "File input example", class: "form-label" %>
+  <%%= f.file_field :input_3, class: "form-label" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormTagHelper
+.mb-3
+  = label_tag :input_3, "File input label", class: "form-label"
+  = file_field :input_3, class: "form-control"
+
+/ ActionView::Helpers::FormHelper
+= form_with @form do |f|
+  = label_tag :input_3, "File input label", class: "form-label"
+  = file_field :input_3, class: "form-control"
+<% end %>
+
+<%= render_snippet %>
 </div>
