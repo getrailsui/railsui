@@ -212,48 +212,55 @@ def extend_layout_and_views
   end
 end
 
+def copy_hero_icons
+  directory "#{__dir__}/icons", Rails.root.join("app/assets/images/icons")
+end
+
 # Add the gems!
-say "Remove importmaps"
+say "⚡️ Remove importmaps"
 remove_importmaps
 
-say "Adding gems..."
+say "⚡️ Adding gems..."
 add_gems
 
 run "bundle install"
 
-say "Configuring Devise..."
+say "⚡️ Configuring Devise..."
 add_users
 
-say "Add ESBuild"
+say "⚡️ Add ESBuild"
 add_esbuild
 
-say "Add Stimulus.js"
+say "⚡️ Add Stimulus.js"
 add_stimulus
 
-say "Add custom css-bundling setup"
+say "⚡️ Add custom css-bundling setup"
 add_css_bundling_setup
 
-say "Adding static assets..."
+say "⚡️ Adding static assets..."
 add_static_assets
 
-say "Adding sidekiq..."
+say "⚡️ Adding sidekiq..."
 add_sidekiq
 
-say "Extending layout and views..."
+say "⚡️ Extending layout and views..."
 extend_layout_and_views
 
-say "Configuring template engine with fallbacks..."
+say "⚡️ Configuring template engine with fallbacks..."
 add_custom_template_engine
 
-say "Adding ActiveStorage and ActionText dependencies..."
+say "⚡️ Adding ActiveStorage and ActionText dependencies..."
 add_storage_and_rich_text
+
+say "⚡️ Copy hero icon library"
+copy_hero_icons
 
 # Migrate
 rails_command "db:create"
 rails_command "db:migrate"
 
-say "
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMWXOxooodOXMMMMMMMMMMWXxxXMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMXd:,..     'dXMMMMWWKx:.  ,OWMMMMMMMMMMMMMMMMMMMM
