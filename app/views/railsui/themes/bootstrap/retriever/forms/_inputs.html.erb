@@ -25,9 +25,12 @@
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
-<%%= form_with @form do |f| %>
-  <%%= f.label :input_1, "File input example", class: "form-label" %>
-  <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
+<%%= form_with model: @form do |f| %>
+  <%% tag.div class: "mb-3" do %>
+    <%%= f.label :input_1, "File input example", class: "form-label" %>
+    <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
+  <%% end %>
+  <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
 <% end %>
 
@@ -40,80 +43,11 @@
 
 
 / ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  = f.label :input_1, "Email address", class: "form-label"
-  = f.email_field :input_1, placeholder: "name@example.com", class: "form-control"
-  = f.submit.btn.btn-primary
-<% end %>
-<%= render_snippet %>
-</div>
-
-<%#### input w/ icon %>
-<div class="tw-my-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Input group w/ icon" %>
-
-  <div class="rui-bs">
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="envelope">
-        <%= icon("envelope") %>
-      </span>
-      <input type="email" class="form-control" placeholder="john.doe@example.com" aria-label="Email" aria-describedby="envelope">
-    </div>
-  </div>
-
-<div class="tw-text-lg tw-text-slate-700">
-  <p class="tw-mb-3">Input groups come in a variety of applications. Refer to the official <%= link_to "Bootstrap documentation", "https://getbootstrap.com/docs/5.2/forms/input-group/#basic-example", target: :_blank, class: "rui-link" %> for additional usage documentation.</p>
-
-  <p class="tw-mb-3">Read the <%= link_to "Rails UI documentation", docs_path, class: "rui-link", target: :_blank %> for the <code class="tw-font-mono tw-text-rose-600 tw-text-sm">icon</code> view helper as shown in the following snippets.</p>
-</div>
-
-<%# .html %>
-<% content_for :html, flush: true do %>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="envelope">
-    <%%= icon("envelope") %>
-  </span>
-  <input type="email" class="form-control" placeholder="john.doe@example.com" aria-label="Email" aria-describedby="envelope">
-</div>
-<% end %>
-
-<%# .erb %>
-<% content_for :erb, flush: true do %>
- <!-- ActionView::Helpers::FormTagHelper -->
-<%%= tag.div class: "input-group mb-3" do %>
-  <%%= tag.span class: "input-group-text", id: "envelope" do %>
-    <%%= icon("envelope") %>
-  <%% end %>
-  <%%= email_field_tag "envelope", nil, class: "form-control", "aria-describedby": "envelope", "aria-label": "Email", placeholder: "john.doe@example.com" %>
-<%% end %>
-
-<!-- ActionView::Helpers::FormHelper -->
-<%%= form_with @form do |f| %>
-  <%%= tag.div class: "input-group mb-3" do %>
-    <%%= tag.span class: "input-group-text", id: "envelope" do %>
-      <%%= icon("envelope") %>
-    <%% end %>
-    <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
-  <%% end %>
-<%% end %>
-<% end %>
-
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.input-group mb-3
-  span.input-group-text#envelope
-   = icon "envelope"
-   = email_field_tag "envelope", nil, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
-
-
-/ ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  .input-group mb-3
-    span.input-group-text#envelope
-    = icon "envelope"
-    = f.email_field :my_input, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
-  = f.submit.btn.btn-primary
+= form_with model: @form do |f|
+  .mb-3
+    = f.label :input_1, "Email address", class: "form-label"
+    = f.email_field :input_1, placeholder: "name@example.com", class: "form-control"
+  = f.submit class: "btn btn-primary"
 <% end %>
 <%= render_snippet %>
 </div>
@@ -126,16 +60,16 @@
 
   <div class="rui-bs">
     <div class="mb-3">
-      <label for="input_2" class="form-label">Speak your mind</label>
-      <textarea class="form-control" id="input_2" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
+      <label for="textarea" class="form-label">Speak your mind</label>
+      <textarea class="form-control" id="textarea" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
     </div>
   </div>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
 <div class="mb-3">
-  <label for="input_2" class="form-label">Speak your mind</label>
-  <textarea class="form-control" id="input_2" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
+  <label for="textarea" class="form-label">Speak your mind</label>
+  <textarea class="form-control" id="textarea" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
 </div>
 <% end %>
 
@@ -143,14 +77,17 @@
 <% content_for :erb, flush: true do %>
  <!-- ActionView::Helpers::FormTagHelper -->
 <%%= tag.div class: "mb-3" do %>
-  <%%= label_tag :input_2, "Speak your mind", class: "form-label" %>
-  <%%= text_area_tag "input_2", nil, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control" %>
+  <%%= label_tag :textarea, "Speak your mind", class: "form-label" %>
+  <%%= text_area_tag "textarea", class: "form-control" %>
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
-<%%= form_with @form do |f| %>
-  <%%= f.label :input_3, "File input example", class: "form-label" %>
-  <%%= f.text_area :input_3, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
+<%%= form_with with: @form do |f| %>
+  <%% tag.div class: "mb-3" do %>
+    <%%= f.label :textarea, "Speak your mind", class: "form-label" %>
+    <%%= f.text_area :textarea, class: "form-label" %>
+  <%% end %>
+  <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
 <% end %>
 
@@ -158,18 +95,20 @@
 <% content_for :haml, flush: true do %>
 / ActionView::Helpers::FormTagHelper
 .mb-3
-  = label_tag :input_2, "Speak your mind", class: "form-label"
-  = text_area_tag :input_2, nil, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control"
+  = label_tag :textarea, "Speak your mind", class: "form-label"
+  = text_area_tag :textarea, class: "form-control"
 
 / ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  = f.label :input_2, "Email address", class: "form-label"
-  = f.text_area :input_2, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control"
-  = f.submit.btn.btn-primary
+= form_with model: @form do |f|
+  .mb-3
+    = f.label :textarea, "Speak your mind", class: "form-label"
+    = f.text_area :textarea, class: "form-control"
+  = f.submit class: "btn btn-primary"
 <% end %>
 
 <%= render_snippet %>
 </div>
+
 
 <%#### input[type=file] %>
 
@@ -195,14 +134,17 @@
 <% content_for :erb, flush: true do %>
  <!-- ActionView::Helpers::FormTagHelper -->
 <%%= tag.div class: "mb-3" do %>
-  <%%= label_tag :input_3, "File input example", class: "form-label" %>
-  <%%= file_field_tag :input_2, nil, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-control" %>
+  <%%= label_tag :file, "File input example", class: "form-label" %>
+  <%%= file_field_tag :file, class: "form-control" %>
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
-<%%= form_for @form do |f| %>
-  <%%= f.label :input_3, "File input example", class: "form-label" %>
-  <%%= f.file_field :input_3, class: "form-label" %>
+<%%= form_with model: @form do |f| %>
+  <%%= tag.div class: "mb-3" do %>
+    <%%= f.label :file, "File input example", class: "form-label" %>
+    <%%= f.file_field :file, class: "form-control" %>
+  <%% end %>
+  <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
 <% end %>
 
@@ -210,14 +152,15 @@
 <% content_for :haml, flush: true do %>
 / ActionView::Helpers::FormTagHelper
 .mb-3
-  = label_tag :input_3, "File input label", class: "form-label"
-  = file_field_tag :input_3, class: "form-control"
+  = label_tag :file, "File input label", class: "form-label"
+  = file_field_tag :file, class: "form-control"
 
 / ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  = f.label :input_3, "File input label", class: "form-label"
-  = f.file_field :input_3, class: "form-control"
-  = f.submit.btn.btn-primary
+= form_with model: @form do |f|
+  .mb-3
+    = f.label :file, "File input label", class: "form-control"
+    = f.file_field :file, class: "form-control"
+  = f.submit class: "btn btn-primary"
 <% end %>
 
 <%= render_snippet %>
@@ -229,16 +172,16 @@
 
   <div class="rui-bs">
     <div class="mb-3">
-      <label for="input_4" class="form-label">Color picker</label>
-      <input class="form-control form-control-color" type="color" id="input_4" value="#fb7185" title="Color picker">
+      <label for="color" class="form-label">Choose a color</label>
+      <input class="form-control form-control-color" type="color" id="color" value="#fb7185" title="Color picker">
     </div>
   </div>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
 <div class="mb-3">
-  <label for="input_4" class="form-label">Color picker</label>
-  <input class="form-control form-control-color" type="color" id="input_4" value="#fb7185" title="Color picker">
+  <label for="color" class="form-label">Choose a color</label>
+  <input class="form-control form-control-color" type="color" id="color" value="#fb7185" title="Color picker">
 </div>
 <% end %>
 
@@ -246,14 +189,17 @@
 <% content_for :erb, flush: true do %>
  <!-- ActionView::Helpers::FormTagHelper -->
 <%%= tag.div class: "mb-3" do %>
-  <%%= label_tag :input_4, "Color picker", class: "form-label" %>
-  <%%= color_field_tag :input_4, "#fb7185", class: "form-control form-control-color" %>
+  <%%= label_tag :color, "Choose a color", class: "form-label" %>
+  <%%= color_field_tag :color, "#fb7185", class: "form-control form-control-color" %>
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
-<%%= form_for @form do |f| %>
-  <%%= f.label :input_4, "Color picker", class: "form-label" %>
-  <%%= f.color_field :input_4, value: "#fb7185", class: "form-control form-control-color" %>
+<%%= form_for model: @form do |f| %>
+  <%% tag.div class: "mb-3" do %>
+    <%%= f.label :color, "Choose a color", class: "form-label" %>
+    <%%= f.color_field :color, value: "#fb7185", class: "form-control form-control-color" %>
+  <%% end %>
+  <%% f.submit class: "btn btn-primary" %>
 <%% end %>
 <% end %>
 
@@ -261,14 +207,15 @@
 <% content_for :haml, flush: true do %>
 / ActionView::Helpers::FormTagHelper
 .mb-3
-  = label_tag :input_4, "File input label", class: "form-label"
-  = color_field_tag :input_4, "#fb7185", class: "form-control form-control-color"
+  = label_tag :color, "Choose a color", class: "form-label"
+  = color_field_tag :color, "#fb7185", class: "form-control form-control-color"
 
 / ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  = f.label :input_3, "File input label", class: "form-label"
-  = f.color_field :input_4, value: "#fb7185", class: "form-control form-control-color"
-  = f.submit.btn.btn-primary
+= form_with model: @form do |f|
+  .mb-3
+    = f.label :color, "Choose a color", class: "form-label"
+    = f.color_field :color, value: "#fb7185", class: "form-control form-control-color"
+  = f.submit class: "btn btn-primary"
 <% end %>
 
 <%= render_snippet %>
@@ -281,8 +228,8 @@
 
   <div class="rui-bs">
     <div class="mb-3">
-      <label for="input_5" class="form-label">Datalist example</label>
-      <input class="form-control" list="datalistOptions" placeholder="Type to search" id="input_5" >
+      <label for="datalist" class="form-label">Datalist example</label>
+      <input class="form-control" list="datalistOptions" placeholder="Type to search" id="datalist" >
       <datalist id="datalistOptions">
         <option value="San Francisco">
         <option value="New York">
@@ -296,8 +243,8 @@
 <%# .html %>
 <% content_for :html, flush: true do %>
 <div class="mb-3">
-  <label for="input_5" class="form-label">Datalist example</label>
-  <input class="form-control" list="datalistOptions" placeholder="Type to search" id="input_5" >
+  <label for="datalist" class="form-label">Datalist example</label>
+  <input class="form-control" list="datalistOptions" placeholder="Type to search" id="datalist" >
   <datalist id="datalistOptions">
     <option value="San Francisco">
     <option value="New York">
@@ -313,8 +260,8 @@
 <% content_for :erb, flush: true do %>
  <!-- ActionView::Helpers::FormTagHelper -->
 <%%= tag.div class: "mb-3" do %>
-  <%%= label_tag :input_5, "Datalist example", class: "form-label" %>
-  <%%= text_field_tag :input_5, "Type to search", class: "form-control", list: "datalistOptions" %>
+  <%%= label_tag :datalist, "Datalist example", class: "form-label" %>
+  <%%= text_field_tag :datalist, "Type to search", class: "form-control", list: "datalistOptions" %>
   <datalist id="datalistOptions">
     <option value="San Francisco">
     <option value="New York">
@@ -326,8 +273,8 @@
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_for @form do |f| %>
-   <%%= f.label :input_5, "Datalist example", class: "form-label" %>
-  <%%= f.text_field :input_5, "Type to search", class: "form-control", list: "datalistOptions" %>
+  <%%= f.label :datalist, "Datalist example", class: "form-label" %>
+  <%%= f.text_field :datalist, "Type to search", class: "form-control", list: "datalistOptions" %>
   <datalist id="datalistOptions">
     <option value="San Francisco">
     <option value="New York">
@@ -335,6 +282,7 @@
     <option value="Los Angeles">
     <option value="Chicago">
   </datalist>
+  <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
 <% end %>
 
@@ -342,8 +290,8 @@
 <% content_for :haml, flush: true do %>
 / ActionView::Helpers::FormTagHelper
 .mb-3
-  %label.form-label{:for => "input_5"} Datalist example
-  %input#input_5.form-control{:list => "datalistOptions", :placeholder => "Type to search"}/
+  %label.form-label{:for => "datalist"} Datalist example
+  %input#datalist.form-control{:list => "datalistOptions", :placeholder => "Type to search"}/
   %datalist#datalistOptions
     %option{:value => "San Francisco"}
     %option{:value => "New York"}
@@ -353,15 +301,15 @@
 
 / ActionView::Helpers::FormHelper
 = form_with @form do |f|
-  = f.label :input_5, "Datalist example", class: "form-label"
-  = f.text_field :input_5, class: "form-control", list: "datalistOptions", placeholder: "Type to search"
+  = f.label :datalist, "Datalist example", class: "form-label"
+  = f.text_field :datalist, class: "form-control", list: "datalistOptions", placeholder: "Type to search"
   %datalist#datalistOptions
     %option{:value => "San Francisco"}
     %option{:value => "New York"}
     %option{:value => "Seattle"}
     %option{:value => "Los Angeles"}
     %option{:value => "Chicago"}
-  = f.submit.btn.btn-primary
+  = f.submit class: "btn btn-primary"
 <% end %>
 
 <%= render_snippet %>

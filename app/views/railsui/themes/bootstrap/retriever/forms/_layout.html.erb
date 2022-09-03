@@ -1,0 +1,62 @@
+<div class="tw-mb-16 tw-mt-6">
+  <p class="tw-text-xl tw-text-slate-700 tw-mb-6">Form elements need some breathing room. Inline, block, and grid layouts help improve usability and readbility. Below are some examples to take and run with.</p>
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Spacing" %>
+
+<div class="tw-prose tw-mb-6">
+  <p>Use Bootstrap's built in <%= link_to "spacing utilties", "https://getbootstrap.com/docs/5.2/utilities/spacing/", target: :_blank, class: "rui-link" %> to shift each form grouping apart from each other.</p>
+</div>
+
+  <div class="rui-bs">
+    <div class="mb-3">
+      <label for="form_group_1" class="form-label">Example label</label>
+      <input type="text" class="form-control" id="form_group_1" placeholder="Example input placeholder">
+    </div>
+    <div class="mb-3">
+      <label for="form_group_2" class="form-label">Another label</label>
+      <input type="text" class="form-control" id="form_group_2" placeholder="Another input placeholder">
+    </div>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="mb-3">
+  <label for="form_group_1" class="form-label">Example label</label>
+  <input type="text" class="form-control" id="form_group_1" placeholder="Example input placeholder">
+</div>
+<div class="mb-3">
+  <label for="form_group_2" class="form-label">Another label</label>
+  <input type="text" class="form-control" id="form_group_2" placeholder="Another input placeholder">
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <div class="mb-3">
+    <%%= f.label :form_group_1, "Example label", class: "form-label" %>
+    <%%= f.text_field :form_group_1, class: "form-control", placeholder: "Example input placeholder" %>
+  </div>
+  <div class="mb-3">
+    <%%= f.label :form_group_2, "Another label", class: "form-label" %>
+    <%%= f.text_field :form_group_2, class: "form-control", placeholder: "Another input placeholder" %>
+  </div>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .mb-3
+    = f.label :form_group_1, "Example label", class: "form-label"
+    = f.text_field :form_group_1, class: "form-control", placeholder: "Example input placeholder"
+  .mb-3
+    = f.label :form_group_2, "Another label", class: "form-label"
+    = f.text_field :form_group_2, class: "form-control", placeholder: "Another input placeholder"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
