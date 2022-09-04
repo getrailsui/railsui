@@ -20,7 +20,7 @@
 
   <ul class="tw-ml-3 rui-primary-nav tw-leading-loose">
     <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800 tw-font-semibold' : open}">
         <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
           <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>
@@ -42,7 +42,7 @@
       </ul>
     </li>
     <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800 tw-font-semibold' : open}">
         <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
           <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>
@@ -73,55 +73,55 @@
         </li>
       </ul>
     </li>
-    <li x-data="{open: window.location.pathname.includes('elements')}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 tw-hover:bg-indigo-50 tw-hover:text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+    <li x-data="{open: window.location.pathname.includes('components')}" x-cloak>
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 tw-hover:bg-indigo-50 tw-hover:text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800 tw-font-semibold' : open}">
         <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
           <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>
-        Elements
+        Components
       </button>
 
       <ul x-show="open" class="tw-leading-loose">
         <li>
-          <%= nav_link_to "Accordions", systems_elements_accordions_path %>
+          <%= nav_link_to "Accordions", systems_components_accordions_path %>
         </li>
         <li>
-          <%= nav_link_to "Alerts", systems_elements_alerts_path %>
+          <%= nav_link_to "Alerts", systems_components_alerts_path %>
         </li>
         <li>
-          <%= nav_link_to "Badges", systems_elements_badges_path %>
+          <%= nav_link_to "Badges", systems_components_badges_path %>
         </li>
         <li>
-          <%= nav_link_to "Breadcrumbs", systems_elements_breadcrumbs_path %>
+          <%= nav_link_to "Breadcrumbs", systems_components_breadcrumbs_path %>
         </li>
         <li>
-          <%= nav_link_to "Buttons", systems_elements_buttons_path %>
+          <%= nav_link_to "Buttons", systems_components_buttons_path %>
         </li>
         <li>
-          <%= nav_link_to "Cards",systems_elements_cards_path %>
+          <%= nav_link_to "Cards",systems_components_cards_path %>
         </li>
         <li>
-          <%= nav_link_to "Dropdowns", systems_elements_dropdowns_path %>
+          <%= nav_link_to "Dropdowns", systems_components_dropdowns_path %>
         </li>
         <li>
-          <%= nav_link_to "Modals", systems_elements_modals_path %>
+          <%= nav_link_to "Modals", systems_components_modals_path %>
         </li>
         <li>
-          <%= nav_link_to "Navigation", systems_elements_navigation_path %>
+          <%= nav_link_to "Navigation", systems_components_navigation_path %>
         </li>
         <li>
-          <%= nav_link_to "Tabs", systems_elements_tabs_path %>
+          <%= nav_link_to "Tabs", systems_components_tabs_path %>
         </li>
         <li>
-          <%= nav_link_to "Pagination", systems_elements_pagination_path %>
+          <%= nav_link_to "Pagination", systems_components_pagination_path %>
         </li>
         <li>
-          <%= nav_link_to "Tooltips", systems_elements_tooltips_path %>
+          <%= nav_link_to "Tooltips", systems_components_tooltips_path %>
         </li>
       </ul>
     </li>
     <li x-data="{open: window.location.pathname.includes('marketing')}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800' : open}">
+      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800 tw-font-semibold' : open}">
         <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
           <%= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
         </div>

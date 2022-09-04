@@ -6,7 +6,7 @@ Railsui::Engine.routes.draw do
 
   namespace :systems do
     get :forms
-    get :elements
+    get :components
     get :content
     get :scaffolds
 
@@ -32,7 +32,7 @@ Railsui::Engine.routes.draw do
       get :longform
     end
 
-    namespace :elements do
+    namespace :components do
       get :accordions
       get :alerts
       get :badges

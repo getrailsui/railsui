@@ -11,7 +11,7 @@ module Railsui
     def forms
     end
 
-    def elements
+    def components
     end
 
     def marketing

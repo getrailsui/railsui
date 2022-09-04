@@ -1,8 +1,9 @@
 <% html_content = yield :html %>
 <% erb_content = yield :erb %>
 <% haml_content = yield :haml %>
+<% js_content = yield :js %>
 
-<div data-controller="code" class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-ring-1 dark:ring-white/10 dark:tw-ring-inset selection:tw-bg-salmon-500 selection:tw-bg-opacity-25 tw-relative"  x-data="{ active: 'html' }">
+<div data-controller="code" class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-ring-1 dark:ring-white/10 dark:tw-ring-inset selection:tw-bg-salmon-500 selection:tw-bg-opacity-25 tw-relative"  x-data="{ active: '<%= content_for?(:html).present? ? "html" : "erb" %>' }">
   <div class="tw-bg-slate-800">
     <ul class="tw-flex tw-items-center tw-justify-start tw-space-x-2 tw-border-b tw-border-slate-700 tw-px-3">
       <% if content_for?(:html) %>
@@ -30,6 +31,16 @@
           @click="active = 'haml'"
           :class="active == 'haml' ? 'tw-text-sky-400 tw-border-sky-400' : 'tw-border-transparent tw-text-white/90'"
           class="-tw-ml-3 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-sm tw-border-b-2 hover:tw-text-sky-400 hover:tw-border-sky-400">.haml</a>
+          <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+        </li>
+      <% end %>
+
+      <% if content_for(:js) %>
+        <li class="tw-flex tw-items-center">
+          <a href="#js"
+          @click="active = 'js'"
+          :class="active == 'js' ? 'tw-text-amber-400 tw-border-amber-400' : 'tw-border-transparent tw-text-white/90'"
+          class="-tw-ml-3 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-sm tw-border-b-2 hover:tw-text-amber-400 hover:tw-border-amber-400">.js</a>
           <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
         </li>
       <% end %>
@@ -76,6 +87,20 @@
           <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none", title: "Copy HAML code" %>
         </button>
         <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-haml"><%= haml_content.to_param.strip %></code></pre>
+      </div>
+    <% end %>
+    <% if content_for(:js) %>
+      <div
+        role="tabpanel"
+        x-show="active == 'js'"
+        data-controller="clipboard"
+        >
+        <button data-action="click->clipboard#copy"
+          class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2 hover:tw-bg-gradient-to-br hover:tw-to-amber-600 hover:tw-from-amber-400 tw-transition tw-ease-in-out w-duration-200"
+          type="button">
+          <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none", title: "Copy JavaScript code" %>
+        </button>
+        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-javascript"><%= js_content.to_param.strip %></code></pre>
       </div>
     <% end %>
   </div>

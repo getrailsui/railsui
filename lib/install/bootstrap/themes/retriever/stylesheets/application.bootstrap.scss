@@ -58,6 +58,11 @@ Buttons
     9: $spacer * 11,
   );
 
+  /*
+  Alerts
+  */
+  $alert-bg-scale: -90%;
+
   // 5. Include remainder of required Bootstrap stylesheets
   @import "bootstrap/scss/maps";
   @import "bootstrap/scss/mixins";
