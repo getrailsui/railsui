@@ -1,3 +1,3 @@
 .rui-link {
-  @apply tw-text-indigo-600 tw-underline hover:tw-text-indigo-600;
+  @apply tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium;
 }

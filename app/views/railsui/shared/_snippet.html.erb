@@ -3,7 +3,7 @@
 <% haml_content = yield :haml %>
 
 <div data-controller="code" class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-ring-1 dark:ring-white/10 dark:tw-ring-inset selection:tw-bg-salmon-500 selection:tw-bg-opacity-25 tw-relative"  x-data="{ active: 'html' }">
-  <div class="tw-bg-slate-800" >
+  <div class="tw-bg-slate-800">
     <ul class="tw-flex tw-items-center tw-justify-start tw-space-x-2 tw-border-b tw-border-slate-700 tw-px-3">
       <% if content_for?(:html) %>
         <li class="tw-flex tw-items-center">
