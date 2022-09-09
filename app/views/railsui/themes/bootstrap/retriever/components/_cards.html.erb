@@ -1,0 +1,57 @@
+<div class="tw-mb-16 tw-mt-6">
+  <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
+    <p>Flexible and extensible content containers with multiple variants and options.</p>
+  </div>
+
+  <div class="tw-prose tw-mb-6">
+    <p>A <strong>card</strong> is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you're familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.</p>
+  </div>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Base" %>
+
+<div class="rui-bs">
+  <div class="card" style="width: 18rem;">
+    <img src="https://placeholder.pics/svg/400x300/DEDEDE/777777" class="card-img-top" alt="Placeholder image">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+
+<% content_for :html, flush: true do %>
+<div class="card" style="width: 18rem;">
+  <img src="#" class="card-img-top" alt="Placeholder image">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="card" style="width: 18rem;">
+  <%%= image_tag "#", class: "card-img-top", alt: "Placeholder image" %>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%%= link_to "Go somewhere", "#", class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.card{:style => "width: 18rem;"}
+  = image_tag "#", class: "card-img-top", alt: "Placeholder image"
+  .card-body
+    %h5.card-title Card title
+    %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+    = link_to "Go somewhere", "#", class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+
+</div>
+
+<%= render "railsui/shared/read_more", subject: "cards", link: "https://getbootstrap.com/docs/5.2/components/card/" %>

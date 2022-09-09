@@ -76,6 +76,7 @@ Buttons
   @import "bootstrap/scss/badge";
   @import "bootstrap/scss/button-group";
   @import "bootstrap/scss/buttons";
+  @import "bootstrap/scss/breadcrumb";
   @import "bootstrap/scss/card";
   @import "bootstrap/scss/close";
   @import "bootstrap/scss/containers";
@@ -89,12 +90,14 @@ Buttons
   @import "bootstrap/scss/modal";
   @import "bootstrap/scss/nav";
   @import "bootstrap/scss/navbar";
+  @import "bootstrap/scss/pagination";
   @import "bootstrap/scss/popover";
   @import "bootstrap/scss/tables";
   @import "bootstrap/scss/toasts";
   @import "bootstrap/scss/tooltip";
   @import "bootstrap/scss/transitions";
   @import "bootstrap/scss/type";
+
 
   // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
   @import "bootstrap/scss/utilities/api";
