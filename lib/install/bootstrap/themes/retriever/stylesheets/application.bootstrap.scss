@@ -63,6 +63,13 @@ Buttons
   */
   $alert-bg-scale: -90%;
 
+ /*
+  Dropdowns
+  */
+  $dropdown-link-hover-color: $gray-900;
+  $dropdown-link-hover-bg: $gray-100;
+  $dropdown-item-padding-y: $spacer * .5;
+
   // 5. Include remainder of required Bootstrap stylesheets
   @import "bootstrap/scss/maps";
   @import "bootstrap/scss/mixins";
