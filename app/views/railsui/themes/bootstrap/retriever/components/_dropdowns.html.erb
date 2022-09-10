@@ -333,4 +333,68 @@
 </div>
 
 
+<%# Buttons - Split %>
+
+<div class="tw-my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Dropdowns", subtitle: "Drop up" %>
+
+  <div class="rui-bs">
+    <div class="btn-group dropup">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropup
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="btn-group dropup">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropup
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="btn-group dropup">
+  <%%= button_tag "Dropup", type: "button", class: "btn btn-secondary dropdown-toggle", data: { bs_toggle: "dropdown" }, "aria-expanded": "false" %>
+  <ul class="dropdown-menu">
+    <li>
+      <%%= link_to "Action", "#", class: "dropdown-item" %>
+    </li>
+    <li>
+      <%%= link_to "Another action", "#", class: "dropdown-item" %>
+    </li>
+    <li>
+      <%%= link_to "Something else", "#", class: "dropdown-item" %>
+    </li>
+  </ul>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.btn-group.dropup
+  = button_tag "Dropup", type: "button", class: "btn btn-secondary dropdown-toggle", data: { bs_toggle: "dropdown" }, "aria-expanded": "false"
+  %ul.dropdown-menu
+    %li
+      = link_to "Action", "#", class: "dropdown-item"
+    %li
+      = link_to "Another action", "#", class: "dropdown-item"
+    %li
+      = link_to "Something else here", "#", class: "dropdown-item"
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+
 <%= render "railsui/shared/read_more", subject: "dropdowns", link: "https://getbootstrap.com/docs/5.2/components/dropdowns/" %>
