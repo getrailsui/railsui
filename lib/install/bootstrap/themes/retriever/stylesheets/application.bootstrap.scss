@@ -1,13 +1,16 @@
 .rui-bs {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
   // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
   @import "bootstrap/scss/functions";
 
   // 2. Include any default variable overrides
   $royalblue-500: #062c65;
   $secondary: $royalblue-500;
-  $font-family-sans-serif: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  $font-family-sans-serif: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   $input-btn-padding-y: 0.5rem;
 
   // 3. Include default variables
