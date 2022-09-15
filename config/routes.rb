@@ -9,6 +9,7 @@ Railsui::Engine.routes.draw do
     get :components
     get :content
     get :scaffolds
+    get :marketing
 
     namespace :content do
       get :typography
@@ -25,12 +26,12 @@ Railsui::Engine.routes.draw do
       get :validation
     end
 
-    namespace :marketing do
-      get :ctas
-      get :footers
-      get :headers
-      get :longform
-    end
+    # namespace :marketing do
+    #   get :ctas
+    #   get :footers
+    #   get :headers
+    #   get :longform
+    # end
 
     namespace :components do
       get :accordions

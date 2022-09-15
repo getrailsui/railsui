@@ -1,15 +1,15 @@
-<%# Modals - Example %>
+<%# Navigation - Example %>
 <div class="tw-mb-16 tw-mt-6">
   <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
     <p>A responsive navigation header includes support for branding, navigation, and more.</p>
   </div>
 
-  <%= render "railsui/shared/sticky_subhead", title: "Navbar", subtitle: "Light" %>
+  <%= render "railsui/shared/sticky_subhead", title: "Navbar", subtitle: "Base" %>
   <div class="rui-bs">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/retriever/logo.svg" %>
+          <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/#{Railsui.config.theme.parameterize}/logo.svg" %>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -47,10 +47,10 @@
   </div>
 
 <% content_for :html, flush: true do %>
- <nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <%= image_tag "logo.svg" %>
+      <%= Railsui.config.theme.humanize %>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -87,11 +87,39 @@
 </nav>
 <% end %>
 
-<% content_for :haml, flush: true do %>
+  <% content_for :haml, flush: true do %>
+%nav.navbar.navbar-expand-lg.navbar-light
+  .container-fluid
+    %a.navbar-brand{:href => "#"}
+      <%= Railsui.config.theme.humanize %>
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        %li.nav-item
+          %a.nav-link.active{"aria-current" => "page", :href => "#"} Home
+        %li.nav-item
+          %a.nav-link{:href => "#"} Link
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+            Dropdown
+          %ul.dropdown-menu
+            %li
+              %a.dropdown-item{:href => "#"} Action
+            %li
+              %a.dropdown-item{:href => "#"} Another action
+            %li
+              %hr.dropdown-divider/
+            %li
+              %a.dropdown-item{:href => "#"} Something else here
+        %li.nav-item
+          %a.nav-link.disabled Disabled
+      %form.d-flex{:role => "search"}
+        %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+        %button.btn.btn-outline-secondary{:type => "submit"} Search
+  <% end %>
 
-<% end %>
-
-<%= render_snippet %>
+  <%= render_snippet %>
 </div>
 
 <%= render "railsui/shared/read_more", subject: "navbars", link: "https://getbootstrap.com/docs/5.2/components/navbar/" %>
