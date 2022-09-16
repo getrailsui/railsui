@@ -1,117 +1,84 @@
-.rui-bs {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-  "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-  @import "bootstrap/scss/functions";
+@import "bootstrap/scss/functions";
 
-  // 2. Include any default variable overrides
-  $royalblue-500: #062c65;
-  $secondary: $royalblue-500;
-  $font-family-sans-serif: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto,
+// Global
+$royalblue-500: #062c65;
+$secondary: $royalblue-500;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
   "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  $input-btn-padding-y: 0.5rem;
+$input-btn-padding-y: 0.5rem;
 
-  // 3. Include default variables
-  @import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
 
-  // 4. Extend existing variables
-  /*
-  Global
-*/
-  $body-color: $gray-700;
+$body-color: $gray-700;
 
-  /*
-Buttons
-*/
+// Buttons
+$btn-font-size-lg: 1.15rem;
 
-  $btn-font-size-lg: 1.15rem;
+// Navigation
+$nav-link-color: $gray-600;
+$navbar-nav-link-padding-x: 1rem;
 
-  /*
-  Navigation
-*/
-  $nav-link-color: $gray-600;
-  $navbar-nav-link-padding-x: 1rem;
+// Typography
+$display-font-weight: 600;
+$headings-color: $secondary;
 
-  /*
-  Typography
-*/
-  $display-font-weight: 600;
-  $headings-color: $secondary;
+// Tables
+$table-border-color: $gray-300;
 
-  /*
-  Tables
-*/
-  $table-border-color: $gray-300;
+//Utilities
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 5,
+  7: $spacer * 7,
+  8: $spacer * 9,
+  9: $spacer * 11,
+);
 
-  /*
-  Utilities
-*/
-  $spacers: (
-    0: 0,
-    1: $spacer * 0.25,
-    2: $spacer * 0.5,
-    3: $spacer,
-    4: $spacer * 1.5,
-    5: $spacer * 3,
-    6: $spacer * 5,
-    7: $spacer * 7,
-    8: $spacer * 9,
-    9: $spacer * 11,
-  );
+// Alerts
+$alert-bg-scale: -90%;
 
-  /*
-  Alerts
-  */
-  $alert-bg-scale: -90%;
+// Dropdowns
+$dropdown-link-hover-color: $gray-900;
+$dropdown-link-hover-bg: $gray-100;
+$dropdown-item-padding-y: $spacer * 0.5;
 
- /*
-  Dropdowns
-  */
-  $dropdown-link-hover-color: $gray-900;
-  $dropdown-link-hover-bg: $gray-100;
-  $dropdown-item-padding-y: $spacer * .5;
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/toasts";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/utilities/api";
 
-  // 5. Include remainder of required Bootstrap stylesheets
-  @import "bootstrap/scss/maps";
-  @import "bootstrap/scss/mixins";
-  @import "bootstrap/scss/root";
-
-  // 6. Include any optional Bootstrap CSS as needed
-  @import "bootstrap/scss/utilities";
-  @import "bootstrap/scss/reboot";
-  @import "bootstrap/scss/accordion";
-  @import "bootstrap/scss/alert";
-  @import "bootstrap/scss/badge";
-  @import "bootstrap/scss/button-group";
-  @import "bootstrap/scss/buttons";
-  @import "bootstrap/scss/breadcrumb";
-  @import "bootstrap/scss/card";
-  @import "bootstrap/scss/close";
-  @import "bootstrap/scss/containers";
-  @import "bootstrap/scss/dropdown";
-  @import "bootstrap/scss/forms";
-  @import "bootstrap/scss/grid";
-  @import "bootstrap/scss/helpers";
-  @import "bootstrap/scss/images";
-  @import "bootstrap/scss/images";
-  @import "bootstrap/scss/list-group";
-  @import "bootstrap/scss/modal";
-  @import "bootstrap/scss/nav";
-  @import "bootstrap/scss/navbar";
-  @import "bootstrap/scss/pagination";
-  @import "bootstrap/scss/popover";
-  @import "bootstrap/scss/tables";
-  @import "bootstrap/scss/toasts";
-  @import "bootstrap/scss/tooltip";
-  @import "bootstrap/scss/transitions";
-  @import "bootstrap/scss/type";
-
-
-  // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
-  @import "bootstrap/scss/utilities/api";
-
-  // 8. Additional custom code
-  @import "custom";
-}
+@import "custom";

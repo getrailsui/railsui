@@ -1,7 +1,13 @@
-<div class="tw-sticky tw-top-0 tw-left-0 tw-px-4 -tw-mx-4 tw-py-1 tw-mb-4 tw-bg-white tw-z-50">
-  <p class="tw-text-sm tw-text-slate-600"><%= local_assigns[:title] %></p>
-  <h2 id="<%= ("#{local_assigns[:title]}-#{local_assigns[:subtitle]}").parameterize %>" class="tw-text-slay-900 tw-text-2xl tw-font-bold"><%= local_assigns[:subtitle] %></h2>
-  <div class="tw-prose">
-    <%= yield %>
+<div class="tw-sticky tw-top-0 tw-left-0 tw-px-4 -tw-mx-4 tw-py-1 tw-mb-4 tw-bg-white tw-z-50 tw-flex tw-items-center tw-justify-between">
+  <div class="tw-flex-1">
+    <p class="tw-text-sm tw-text-slate-600"><%= local_assigns[:title] %></p>
+    <h2 id="<%= ("#{local_assigns[:title]}-#{local_assigns[:subtitle]}").parameterize %>" class="tw-text-slay-900 tw-text-2xl tw-font-bold"><%= local_assigns[:subtitle] %></h2>
+    <div class="tw-prose">
+      <%= yield %>
+    </div>
   </div>
+
+  <% if local_assigns[:preview_link] %>
+    <%= link_to "Preview", local_assigns[:preview_link], class: "rui-btn", target: :_blank %>
+  <%end %>
 </div>
