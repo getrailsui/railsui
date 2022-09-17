@@ -1,0 +1,118 @@
+<div class="tw-my-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Notice" %>
+
+  <div class="rui-bs">
+    <div id="flash">
+      <div class="notice" role="alert">
+        <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
+      </div>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div id="flash">
+  <div class="notice" role="alert">
+    <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div id="flash">
+  <%% if notice %>
+    <div class="notice" role="alert">
+      <p><%= sanitize notice %></p>
+    </div>
+  <%% end %>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+#flash
+  - if notice
+    .notice{:role => "alert"}
+      %p= sanitize notice
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+<div class="tw-my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Warning" %>
+  <div class="rui-bs">
+    <div id="flash">
+      <div class="notice notice-warning" role="alert">
+        <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps when an error or exception occurs.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tw-my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Hide notice after delay" %>
+
+  <div class="tw-prose tw-mb-6">If you wanted to make use of JavaScript you could hide a notice after some time.</div>
+
+  <p class="rui-js-pill">Vanilla JavaScript</p>
+
+<% content_for :html, flush: true do %>
+<div id="flash">
+  <div class="notice" role="alert">
+    <p>...</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+
+<% end %>
+
+
+<% content_for :js, flush: true do %>
+// app/javascript/application.js
+document.addEventListener('turbo:load', () => {
+  const notice = document.querySelector('#notice')
+
+  // After 5 seconds use Bootstrap's d-none class to hide the notice.
+  setTimeout(() => {
+    notice.classList.add('d-none')
+  }, 5000)
+})
+  <% end %>
+<%= render_snippet(active_tab: "js") %>
+
+  <p class="rui-js-pill">Vanilla JavaScript</p>
+
+  <% content_for :html, flush: true do %>
+<div id="flash" data-controller="notice">
+  <div class="notice" role="alert">
+    <p>...</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+
+<% end %>
+<% content_for :js, flush: true do %>
+// app/javascript/controllers/notice_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  connect() {
+    setTimeout(() => {
+      this.element.classList.add('d-none');
+    }, 5000)
+  }
+}
+<% end %>
+<%= render_snippet(active_tab: "js") %>
+</div>

@@ -70,8 +70,9 @@ module Railsui
       content_tag :span, html_escape(code), class: "tw-text-red-600 tw-font-mono tw-text-base"
     end
 
-    def render_snippet
-      render partial: "railsui/shared/snippet"
+    def render_snippet(options={})
+      active_tab = options[:active_tab] ||= "html"
+      render partial: "railsui/shared/snippet", locals: { active_tab: active_tab }
     end
 
     def icon(name, options={})

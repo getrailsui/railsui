@@ -10,6 +10,7 @@ Railsui::Engine.routes.draw do
     get :content
     get :scaffolds
     get :marketing
+    get :flash
 
     namespace :content do
       get :typography

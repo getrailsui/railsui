@@ -128,26 +128,29 @@
       <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800 tw-font-semibold' : open}">
         <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
           <%#= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
-        <%# </div>
+    <%# </div>
         Marketing
       </button>
       <ul x-show="open" class="tw-leading-loose">
         <li>
           <%#= nav_link_to "CTAs", systems_marketing_ctas_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-        <%#</li>
+    <%#</li>
         <li>
           <%#= nav_link_to "Footers", systems_marketing_footers_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-        <%#</li>
+    <%#</li>
         <li>
           <%#= nav_link_to "Headers", systems_marketing_headers_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-       <%# </li>
+    <%# </li>
         <li>
           <%#= nav_link_to "Longform content", systems_marketing_longform_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-        <%#</li>
+    <%#</li>
       </ul>
     <%# </li>%>
     <li>
       <%= nav_link_to "Scaffolds", systems_scaffolds_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
+    </li>
+    <li>
+      <%= nav_link_to "Flash", systems_flash_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
     </li>
   </ul>
 <% end %>

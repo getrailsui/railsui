@@ -1,13 +1,9 @@
-/*
-  Navigation
-*/
+// Navigation
 .navbar-nav .nav-link.active {
   color: $primary;
 }
 
-/*
-  Typography
-*/
+// Typography
 .display-1,
 .display-2,
 .display-3,
@@ -56,10 +52,8 @@ mark {
     color: $body-color;
   }
 }
-/*
- Misc.
-*/
 
+// Misc.
 .fill-current {
   fill: currentColor;
 }
@@ -80,17 +74,17 @@ mark {
   z-index: 10;
 }
 
-/* Dropdowns */
+// Dropdowns
 .dropdown-menu {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* Modals */
+// Modals
 .modal {
-  background: rgba(darken($secondary, 14%), .5);
+  background: rgba(darken($secondary, 14%), 0.5);
 }
 
-/* Icons */
+// Icons
 .icon-outline {
   stroke: currentColor;
 }
@@ -114,9 +108,29 @@ mark {
   height: 1.75rem;
 }
 
-/*
-  About us / Company
-*/
+// Notice
+.notice {
+  background-color: $primary;
+  color: $white;
+  padding: $spacer;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: $white;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+
+  &-warning {
+    background: $danger;
+  }
+}
+
+// Marking pages
 .retriever-hiring-callout {
   background: linear-gradient(to right, $gray-100, transparent);
   max-width: 340px;
@@ -225,4 +239,8 @@ mark {
 
 .retriever-footer ul {
   line-height: 34px;
+}
+
+.bg-primary {
+  background-color: $primary !important;
 }
