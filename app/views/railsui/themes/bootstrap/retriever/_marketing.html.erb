@@ -1,4 +1,11 @@
 <div class="tw-my-6">
+  <div class="tw-prose-xl tw-mb-6">
+    <p>Rails UI comes with some pre-design marketing page templates with plenty more individual components to come.</p>
+  </div>
+  <div class="tw-bg-indigo-100 tw-p-3 tw-rounded-xl tw-text-indigo-800 tw-mb-6 tw-absolute tw-top-4 tw-right-4">
+    Invididual marketing components coming soon!
+  </div>
+
   <%= render "railsui/shared/sticky_subhead", title: "Pages", subtitle: "About", preview_link: Railsui::Default::THEME_PREVIEW_LINK[:retriever] %>
 
   <%= link_to Railsui::Default::THEME_PREVIEW_LINK[:retriever], target: :_blank do %>
@@ -8,7 +15,7 @@
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Pages", subtitle: "Pricing", preview_link: "#{Railsui::Default::THEME_PREVIEW_LINK[:retriever]}/pricing" %>
   <%# Show pricing page somehow %>
-   <%= link_to "#{Railsui::Default::THEME_PREVIEW_LINK[:retriever]}/pricing", target: :_blank do %>
+  <%= link_to "#{Railsui::Default::THEME_PREVIEW_LINK[:retriever]}/pricing", target: :_blank do %>
     <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/retriever/pricing.jpg", alt: "Pricing page for #{Railsui.config.theme.humanize} theme", class: "tw-max-w-full tw-h-auto tw-border tw-rounded-lg tw-shadow-xl" %>
   <% end %>
 
