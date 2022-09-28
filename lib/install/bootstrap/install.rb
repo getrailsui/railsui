@@ -25,4 +25,8 @@ else
     say "Add themed Devise views"
     directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise"), force: true
   end
+
+  say "Add Bootstrap-themed scaffold .erb templates"
+  directory "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold", Rails.root.join("lib/templates/erb/scaffold")
+
 end

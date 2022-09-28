@@ -1,0 +1,499 @@
+<div class="tw-mb-16 tw-mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Index" %>
+
+<div class="rui-bs">
+<div class="container mt-5">
+  <div class="row justify-content-between">
+    <div class="col">
+      <h1>Posts</h1>
+    </div>
+    <div class="col text-end">
+      <a class="btn btn-primary" href="/posts/new">New post</a>
+    </div>
+  </div>
+
+  <div id="posts" class="mt-3">
+    <div id="post_1" class="mb-4">
+      <a class="text-decoration-none text-reset" href="/posts/1">
+        <p class="lead mb-0">Title</p>
+        <p class="mb-0">test</p>
+        <p class="lead mb-0">Body</p>
+        <p class="mb-0">test</p>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between">
+    <div class="col">
+      <h1>Posts</h1>
+    </div>
+    <div class="col text-end">
+      <a href="#" class="btn btn-primary">New post</a>
+    </div>
+  </div>
+
+  <div id="posts" class="mt-3">
+    <!-- render your posts here -->
+  </div>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between">
+    <div class="col">
+      <h1>Posts</h1>
+    </div>
+    <div class="col text-end">
+      <%%= link_to "New post", new_post_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div id="posts" class="mt-3">
+    <%%= render @posts %>
+  </div>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.container.mt-5
+  .row.justify-content-between
+    .col
+      %h1 Posts
+    .col.text-end
+      = link_to "New post", new_post_path, class: "btn btn-primary"
+  #posts.mt-3
+    = render @posts
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+<div class="tw-my-16 tw-mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Show" %>
+
+<div class="rui-bs">
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>Post #1</h1>
+    </div>
+    <div class="col text-end">
+      <a class="btn btn-primary" href="/posts/new">New Post</a>
+    </div>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/posts">Posts</a></li>
+      <li class="breadcrumb-item active">Post #1</li>
+    </ol>
+  </nav>
+
+  <div id="post_1" class="mb-4">
+ <a class="text-decoration-none text-reset" href="/posts/1">
+  <p class="lead mb-0">Title</p>
+  <p class="mb-0">test</p>
+  <p class="lead mb-0">Body</p>
+  <p class="mb-0">test</p>
+</a></div>
+
+
+  <div class="d-flex justify-content-start align-items-center">
+    <a class="btn btn-primary me-3" href="#">Edit</a>
+
+    <form data-turbo-confirm="Are you sure?" class="button_to" method="post" action="#"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="btn btn-outline-danger" type="submit" disabled>Delete</button><input type="hidden" name="authenticity_token" value="xxxxxx" autocomplete="off"></form>
+  </div>
+</div>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>Post #1</h1>
+    </div>
+    <div class="col text-end">
+      <a class="btn btn-primary" href="/posts/new">New Post</a>
+    </div>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/posts">Posts</a></li>
+      <li class="breadcrumb-item active">Post #1</li>
+    </ol>
+  </nav>
+
+  <div id="post_1" class="mb-4">
+ <a class="text-decoration-none text-reset" href="/posts/1">
+  <p class="lead mb-0">Title</p>
+  <p class="mb-0">test</p>
+  <p class="lead mb-0">Body</p>
+  <p class="mb-0">test</p>
+</a></div>
+
+
+  <div class="d-flex justify-content-start align-items-center">
+    <a class="btn btn-primary me-3" href="/posts/1/edit">Edit</a>
+
+    <form data-turbo-confirm="Are you sure?" class="button_to" method="post" action="/posts/1"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="btn btn-outline-danger" type="submit">Delete</button><input type="hidden" name="authenticity_token" value="s4h-28btuONWi5CxpYwgpshVTf4PKdMfwRrI7JnocOjDGsUD4-rDXslnyJfmPqGdNyDXcYsjyvUetm1QuxWeug" autocomplete="off"></form>
+  </div>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>Post #<%%= @post.id %></h1>
+    </div>
+    <div class="col text-end">
+      <%%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%%= link_to "Posts", posts_path %></li>
+      <li class="breadcrumb-item active">Post #<%%= @post.id %></li>
+    </ol>
+  </nav>
+
+  <%%= render @post %>
+
+  <div class="d-flex justify-content-start align-items-center">
+    <%%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary me-3" %>
+
+    <%%= button_to "Delete", @post, method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
+  </div>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.container.mt-5
+  .row.justify-content-between.mb-3
+    .col
+      %h1
+        Post ##{@post.id}
+    .col.text-end
+      = link_to "New Post", new_post_path, class: "btn btn-primary"
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item= link_to "Posts", posts_path
+      %li.breadcrumb-item.active
+        Post ##{@post.id}
+  = render @post
+  .d-flex.justify-content-start.align-items-center
+    = link_to "Edit", edit_post_path(@post), class: "btn btn-primary me-3"
+    = button_to "Delete", @post, method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "Are you sure?" } }
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+<div class="tw-my-16 tw-mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "New" %>
+
+<div class="rui-bs">
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>New post</h1>
+    </div>
+    <div class="col text-end">
+      <a class="btn btn-primary" href="#">New Post</a>
+    </div>
+  </div>
+ <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Posts</a></li>
+      <li class="breadcrumb-item active">New post</li>
+    </ol>
+  </nav>
+  <div class="mt-4 col-md-6">
+    <form action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="xxxxxx" autocomplete="off">
+
+
+  <div class="mb-3">
+    <label class="form-label" for="post_title">Title</label>
+    <input class="form-control" type="text" name="post[title]" id="post_title">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="post_body">Body</label>
+    <textarea class="form-control" name="post[body]" id="post_body"></textarea>
+  </div>
+
+  <div>
+    <a href="#" class="btn btn-primary">Create Post</a>
+  </div>
+</form>
+  </div>
+</div>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>New post</h1>
+    </div>
+    <div class="col text-end">
+      <a class="btn btn-primary" href="/posts/new">New Post</a>
+    </div>
+  </div>
+ <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/posts">Posts</a></li>
+      <li class="breadcrumb-item active">New post</li>
+    </ol>
+  </nav>
+  <div class="mt-4 col-md-6">
+    <form action="/posts" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="xxxxxx" autocomplete="off">
+
+
+  <div class="mb-3">
+    <label class="form-label" for="post_title">Title</label>
+    <input class="form-control" type="text" name="post[title]" id="post_title">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="post_body">Body</label>
+    <textarea class="form-control" name="post[body]" id="post_body"></textarea>
+  </div>
+
+  <div>
+    <input type="submit" name="commit" value="Create Post" class="btn btn-primary" data-disable-with="Create Post">
+  </div>
+</form>
+  </div>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>New post</h1>
+    </div>
+    <div class="col text-end">
+      <%%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+ <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%%= link_to "Posts", posts_path %></li>
+      <li class="breadcrumb-item active">New post</li>
+    </ol>
+  </nav>
+  <div class="mt-4 col-md-6">
+    <%%= render "form", post: @post %>
+  </div>
+</div>
+
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.container.mt-5
+  .row.justify-content-between.mb-3
+    .col
+      %h1 New post
+    .col.text-end
+      = link_to "New Post", new_post_path, class: "btn btn-primary"
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item= link_to "Posts", posts_path
+      %li.breadcrumb-item.active New post
+  .mt-4.col-md-6
+    = render "form", post: @post
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+<div class="tw-my-16 tw-mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Edit" %>
+
+<div class="rui-bs">
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>Edit post</h1>
+    </div>
+    <div class="col text-end">
+      <a class="btn btn-primary" href="#">New Post</a>
+    </div>
+  </div>
+ <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Posts</a></li>
+      <li class="breadcrumb-item active">Edit post</li>
+    </ol>
+  </nav>
+  <div class="mt-4 col-md-6">
+    <form action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="xxxxxx" autocomplete="off">
+
+
+  <div class="mb-3">
+    <label class="form-label" for="post_title">Title</label>
+    <input class="form-control" type="text" value="test" name="post[title]" id="post_title">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="post_body">Body</label>
+    <textarea class="form-control" name="post[body]" id="post_body">test</textarea>
+  </div>
+
+  <div>
+    <a href="#" class="btn btn-primary">Update Post</a>
+  </div>
+</form>
+  </div>
+</div>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>Edit post</h1>
+    </div>
+    <div class="col text-end">
+      <a class="btn btn-primary" href="#">New Post</a>
+    </div>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Posts</a></li>
+      <li class="breadcrumb-item active">Edit post</li>
+    </ol>
+  </nav>
+  <div class="mt-4 col-md-6">
+    <form action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="xxxxxx" autocomplete="off">
+
+      <div class="mb-3">
+        <label class="form-label" for="post_title">Title</label>
+        <input class="form-control" type="text" value="test" name="post[title]" id="post_title">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="post_body">Body</label>
+        <textarea class="form-control" name="post[body]" id="post_body">test</textarea>
+      </div>
+
+      <div>
+        <input type="submit" name="commit" value="Update Post" class="btn btn-primary" data-disable-with="Update Post">
+      </div>
+    </form>
+  </div>
+</div>
+
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>Edit post</h1>
+    </div>
+    <div class="col text-end">
+      <%%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+ <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%%= link_to "Posts", posts_path %></li>
+      <li class="breadcrumb-item active">Edit post</li>
+    </ol>
+  </nav>
+  <div class="mt-4 col-md-6">
+    <%%= render "form", post: @post %>
+  </div>
+</div>
+
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.container.mt-5
+  .row.justify-content-between.mb-3
+    .col
+      %h1 Edit post
+    .col.text-end
+      = link_to "New Post", new_post_path, class: "btn btn-primary"
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item= link_to "Posts", posts_path
+      %li.breadcrumb-item.active Edit post
+  .mt-4.col-md-6
+    = render "form", post: @post
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+
+
+<div class="tw-my-16 tw-mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Partial" %>
+
+<div class="rui-bs">
+<div id="post_1" class="mb-4">
+  <a href="#" class="text-decoration-none text-reset">
+    <p class="lead mb-0">Title</p>
+    <p class="mb-0">Test</p>
+    <p class="lead mb-0">Body</p>
+    <p class="mb-0">Test</p>
+  </a>
+</div>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div id="post_1" class="mb-4">
+  <a href="#" class="text-decoration-none text-reset">
+    <p class="lead mb-0">Title</p>
+    <p class="mb-0">Test</p>
+    <p class="lead mb-0">Body</p>
+    <p class="mb-0">Test</p>
+  </a>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div id="<%%= dom_id post %>" class="mb-4">
+  <%%= link_to post, class: "text-decoration-none text-reset" do %>
+    <p class="lead mb-0">Title</p>
+    <p class="mb-0"><%%= post.title %></p>
+    <p class="lead mb-0">Body</p>
+    <p class="mb-0"><%%= post.body %></p>
+  <%% end %>
+</div>
+
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.mb-4{:id => dom_id post}
+  = link_to post, class: "text-decoration-none text-reset" do
+    %p.lead.mb-0 Title
+    %p.mb-0= post.title
+    %p.lead.mb-0 Body
+    %p.mb-0= post.body
+<% end %>
+<%= render_snippet %>
+</div>
