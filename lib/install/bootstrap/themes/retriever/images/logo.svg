@@ -1,0 +1,10 @@
+<svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="23.5" cy="23.5" rx="23.5" ry="23.5" transform="rotate(-90 23.5 23.5)" fill="#062C65"/>
+<path d="M40.4469 19.0241C42.9803 28.4786 37.3749 38.1951 27.9271 40.7267C18.4793 43.2582 8.76665 37.6461 6.23333 28.1916C3.70001 18.7371 14.2728 27.5594 23.7206 25.0279C33.1684 22.4963 37.9136 9.56963 40.4469 19.0241Z" fill="url(#retriever_logo)"/>
+<defs>
+<linearGradient id="retriever_logo" x1="40.7642" y1="26.0428" x2="0.251682" y2="36.7829" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0D6EFD"/>
+<stop offset="1" stop-color="#031633"/>
+</linearGradient>
+</defs>
+</svg>

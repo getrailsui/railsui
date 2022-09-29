@@ -1,84 +1,110 @@
-@import "bootstrap/scss/functions";
+// Reset browser
+body {
+  margin: 0;
+}
 
-// Global
-$royalblue-500: #062c65;
-$secondary: $royalblue-500;
-$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-  "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$input-btn-padding-y: 0.5rem;
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/root";
+// Scope to namespace. Add to <body> tag
+.rui-bs {
+  @import "bootstrap/scss/functions";
 
-$body-color: $gray-700;
+  // Global
+  $royalblue-500: #062c65;
+  $secondary: $royalblue-500;
+  $font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  $input-btn-padding-y: 0.5rem;
 
-// Buttons
-$btn-font-size-lg: 1.15rem;
+  @import "bootstrap/scss/variables";
+  @import "bootstrap/scss/maps";
+  @import "bootstrap/scss/mixins";
+  @import "bootstrap/scss/root";
 
-// Navigation
-$nav-link-color: $gray-600;
-$navbar-nav-link-padding-x: 1rem;
+  // Bootstrap normally scopes this to the body element but because we are namespacing it needs to be adjusted with the cascade.
+  margin: 0;
+  font-family: $font-family-sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: $gray-700;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba($black, 0);
 
-// Typography
-$display-font-weight: 600;
-$headings-color: $secondary;
+  // Body text color
+  $body-color: $gray-700;
 
-// Tables
-$table-border-color: $gray-300;
+  // Buttons
+  $btn-font-size-lg: 1.15rem;
 
-//Utilities
-$spacers: (
-  0: 0,
-  1: $spacer * 0.25,
-  2: $spacer * 0.5,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
-  6: $spacer * 5,
-  7: $spacer * 7,
-  8: $spacer * 9,
-  9: $spacer * 11,
-);
+  // Navigation
+  $nav-link-color: $gray-600;
+  $navbar-nav-link-padding-x: 1rem;
 
-// Alerts
-$alert-bg-scale: -90%;
+  // Typography
+  $display-font-weight: 600;
+  $headings-color: $secondary;
 
-// Dropdowns
-$dropdown-link-hover-color: $gray-900;
-$dropdown-link-hover-bg: $gray-100;
-$dropdown-item-padding-y: $spacer * 0.5;
+  // Tables
+  $table-border-color: $gray-300;
 
-@import "bootstrap/scss/utilities";
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/accordion";
-@import "bootstrap/scss/alert";
-@import "bootstrap/scss/badge";
-@import "bootstrap/scss/button-group";
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/breadcrumb";
-@import "bootstrap/scss/card";
-@import "bootstrap/scss/close";
-@import "bootstrap/scss/containers";
-@import "bootstrap/scss/dropdown";
-@import "bootstrap/scss/forms";
-@import "bootstrap/scss/grid";
-@import "bootstrap/scss/helpers";
-@import "bootstrap/scss/images";
-@import "bootstrap/scss/images";
-@import "bootstrap/scss/list-group";
-@import "bootstrap/scss/modal";
-@import "bootstrap/scss/nav";
-@import "bootstrap/scss/navbar";
-@import "bootstrap/scss/pagination";
-@import "bootstrap/scss/popover";
-@import "bootstrap/scss/tables";
-@import "bootstrap/scss/toasts";
-@import "bootstrap/scss/tooltip";
-@import "bootstrap/scss/transitions";
-@import "bootstrap/scss/type";
-@import "bootstrap/scss/utilities/api";
+  // Utilities
+  $spacers: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+    6: $spacer * 5,
+    7: $spacer * 7,
+    8: $spacer * 9,
+    9: $spacer * 11,
+  );
 
-@import "custom";
+  // Alerts
+  $alert-bg-scale: -90%;
+
+  // Dropdowns
+  $dropdown-link-hover-color: $gray-900;
+  $dropdown-link-hover-bg: $gray-100;
+  $dropdown-item-padding-y: $spacer * 0.5;
+
+  // Use namespace class only for Rails UI docs as it ////conflicts with Tailwind this is in use in the configuration
+  // Remove before copying to the Rails UI engine
+
+  @import "bootstrap/scss/utilities";
+  @import "bootstrap/scss/reboot";
+  @import "bootstrap/scss/accordion";
+  @import "bootstrap/scss/alert";
+  @import "bootstrap/scss/badge";
+  @import "bootstrap/scss/button-group";
+  @import "bootstrap/scss/buttons";
+  @import "bootstrap/scss/breadcrumb";
+  @import "bootstrap/scss/card";
+  @import "bootstrap/scss/close";
+  @import "bootstrap/scss/containers";
+  @import "bootstrap/scss/dropdown";
+  @import "bootstrap/scss/forms";
+  @import "bootstrap/scss/grid";
+  @import "bootstrap/scss/helpers";
+  @import "bootstrap/scss/images";
+  @import "bootstrap/scss/images";
+  @import "bootstrap/scss/list-group";
+  @import "bootstrap/scss/modal";
+  @import "bootstrap/scss/nav";
+  @import "bootstrap/scss/navbar";
+  @import "bootstrap/scss/pagination";
+  @import "bootstrap/scss/popover";
+  @import "bootstrap/scss/tables";
+  @import "bootstrap/scss/toasts";
+  @import "bootstrap/scss/tooltip";
+  @import "bootstrap/scss/transitions";
+  @import "bootstrap/scss/type";
+  @import "bootstrap/scss/utilities/api";
+
+  @import "custom";
+}

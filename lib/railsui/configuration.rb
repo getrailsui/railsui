@@ -31,6 +31,7 @@ module Railsui
       end
     end
 
+
     def self.config_path
       Rails.root.join("config", "railsui.yml")
     end

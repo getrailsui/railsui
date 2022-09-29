@@ -10,7 +10,7 @@
 
     <p class="tw-text-slate-600">Theme</p>
     <div class="tw-flex tw-items-center tw-mt-1">
-      <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/#{Railsui::config.theme.parameterize}/logo.svg", class: "tw-w-8 tw-h-auto tw-mr-2" %>
+      <%= image_tag Railsui.theme_logo_url, class: "tw-w-8 tw-h-auto tw-mr-2" %>
       <p class="tw-font-light tw-text-slate-900 tw-text-2xl"><%= Railsui::config.theme.humanize %></p>
     </div>
   </div>

@@ -45,7 +45,7 @@
 
     </div>
 
-    <div class="tw-flex-1 tw-max-w-4xl tw-mx-auto lg:tw-py-16 tw-px-4">
+    <div class="tw-flex-1 tw-mx-auto lg:tw-py-16 tw-px-4 <%= content_for?(:fullwidth).present? ? "tw-w-full" : "tw-max-w-4xl" %>">
       <%= yield %>
 
     </div>

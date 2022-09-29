@@ -9,8 +9,16 @@ Railsui::Engine.routes.draw do
     get :components
     get :content
     get :scaffolds
+    get :authentication
     get :marketing
     get :flash
+
+    namespace :authentication do
+      get :signup
+      get :signin
+      get :reset_password
+      get :confirmation
+    end
 
     namespace :content do
       get :typography

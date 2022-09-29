@@ -1,0 +1,95 @@
+<div class="rui-bs tw-full">
+  <div class="row g-0 vh-100 align-items-center">
+    <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
+      <div class="col-md-8 col-12 mx-auto">
+        <a href="#">
+          <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
+        </a>
+        <h1 class="display-5 mb-4 mt-6">Sign up</h1>
+
+        <p>Or <a href="#" class="text-decoration-none">sign in</a> to your account</p>
+        <form action="#">
+          <div class="mb-4">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" type="email" placeholder="Jane Doe" class="form-control">
+          </div>
+          <div class="mb-4">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" placeholder="jane.doe@example.com" class="form-control">
+          </div>
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" type="password" class="form-control">
+          </div>
+          <div class="mb-4">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input id="confirm_password" type="password" class="form-control">
+          </div>
+          <div class="d-grid">
+            <input type="submit" value="Sign in" class="btn btn-primary btn-lg" />
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <div class="col-md-6 retriever-auth-bg vh-100 d-flex align-items-center justify-content-center">
+      <%= image_tag "sample-tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid" %>
+    </div>
+  </div>
+</div>
+
+<div class="tw-max-w-4xl tw-mx-auto tw-my-16">
+  <div class="tw-prose tw-prose-xl">
+    <p>Rails UI authentication templates map to the Devise gem templates at this time. There may be future support for different authentication libraries in the future. Stay tuned for updates.</p>
+  </div>
+  <% content_for :html, flush: true do %>
+    <div class="row g-0 vh-100 align-items-center">
+      <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
+        <div class="col-md-8 col-12 mx-auto">
+          <a href="#">
+            <img src="logo.svg" alt="Logo">
+          </a>
+          <h1 class="display-5 mb-4 mt-6">Sign up</h1>
+
+          <p>Or <a href="#" class="text-decoration-none">sign in</a> to your account</p>
+          <form action="#">
+            <div class="mb-4">
+              <label for="name" class="form-label">Name</label>
+              <input id="name" type="email" placeholder="Jane Doe" class="form-control">
+            </div>
+            <div class="mb-4">
+              <label for="email" class="form-label">Email</label>
+              <input id="email" type="email" placeholder="jane.doe@example.com" class="form-control">
+            </div>
+            <div class="mb-4">
+              <label for="password" class="form-label">Password</label>
+              <input id="password" type="password" class="form-control">
+            </div>
+            <div class="mb-4">
+              <label for="confirm_password" class="form-label">Confirm Password</label>
+              <input id="confirm_password" type="password" class="form-control">
+            </div>
+            <div class="d-grid">
+              <input type="submit" value="Sign in" class="btn btn-primary btn-lg" />
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="col-md-6 retriever-auth-bg vh-100 d-flex align-items-center justify-content-center">
+        <img src="sample-tweet.svg" alt="A sample tweet to use for a testimonial" class="img-fluid" />
+      </div>
+    </div>
+  <% end %>
+
+  <% content_for :erb, flush: true do %>
+    <%# Devise gem %>
+
+  <% end %>
+
+  <% content_for :haml, flush: true do %>
+
+  <% end %>
+
+  <%= render_snippet %>
+</div>

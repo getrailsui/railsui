@@ -19,6 +19,10 @@ module Railsui
     run_command "bundle"
   end
 
+  def self.theme_logo_url
+    "https://f001.backblazeb2.com/file/railsui/themes/#{self.config.theme.parameterize}/logo.svg"
+  end
+
   def self.no_framework_set?
     self.config.css_framework == "" # not yet configured
   end
