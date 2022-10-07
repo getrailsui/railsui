@@ -54,7 +54,9 @@ Railsui::Engine.routes.draw do
       get :modals
       get :navigation
       get :pagination
+      get :popovers
       get :tabs
+      get :toasts
       get :tooltips
     end
   end
