@@ -1,37 +1,30 @@
 <div class="tw-my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Notice" %>
 
-  <div class="rui-bs">
-    <div id="flash">
-      <div class="notice" role="alert">
-        <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
-      </div>
-    </div>
-  </div>
-
-<% content_for :html, flush: true do %>
-<div id="flash">
-  <div class="notice" role="alert">
+<div class="rui">
+  <div class="flash" role="alert">
     <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
   </div>
+</div>
+
+<% content_for :html, flush: true do %>
+<div class="flash" role="alert">
+  <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
 </div>
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div id="flash">
-  <%% if notice %>
-    <div class="notice" role="alert">
-      <p><%= sanitize notice %></p>
-    </div>
-  <%% end %>
+<%% if notice %>
+<div class="flash" role="alert">
+  <p><%%= sanitize notice %></p>
 </div>
+<%% end %>
 <% end %>
 
 <% content_for :haml, flush: true do %>
-#flash
   - if notice
-    .notice{:role => "alert"}
-      %p= sanitize notice
+  .flash{:role => "alert"}
+    %p= sanitize notice
 <% end %>
 
 <%= render_snippet %>
@@ -39,11 +32,9 @@
 
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Warning" %>
-  <div class="rui-bs">
-    <div id="flash">
-      <div class="notice notice-warning" role="alert">
-        <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps when an error or exception occurs.</p>
-      </div>
+  <div class="rui">
+    <div class="flash flash-warning" role="alert">
+      <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps when an error or exception occurs.</p>
     </div>
   </div>
 </div>
@@ -56,10 +47,8 @@
   <p class="rui-js-pill">Vanilla JavaScript</p>
 
 <% content_for :html, flush: true do %>
-<div id="flash">
-  <div class="notice" role="alert">
-    <p>...</p>
-  </div>
+<div class="flash flash-warning" role="alert">
+  <p>...</p>
 </div>
 <% end %>
 
@@ -71,28 +60,25 @@
 
 <% end %>
 
-
 <% content_for :js, flush: true do %>
-// app/javascript/application.js
-document.addEventListener('turbo:load', () => {
-  const notice = document.querySelector('#notice')
+  // app/javascript/application.js
+  document.addEventListener('turbo:load', () => {
+  const flash = document.querySelector('.flash')
 
   // After 5 seconds use Bootstrap's d-none class to hide the notice.
   setTimeout(() => {
-    notice.classList.add('d-none')
+    flash.classList.add('d-none')
   }, 5000)
-})
-  <% end %>
+  })
+<% end %>
 <%= render_snippet(active_tab: "js") %>
 
-  <p class="rui-js-pill">Vanilla JavaScript</p>
+<p class="rui-js-pill">Stimulus.js</p>
 
-  <% content_for :html, flush: true do %>
-<div id="flash" data-controller="notice">
-  <div class="notice" role="alert">
+<% content_for :html, flush: true do %>
+  <div class="notice" role="alert" data-controller="flash">
     <p>...</p>
   </div>
-</div>
 <% end %>
 
 <% content_for :erb, flush: true do %>
@@ -103,7 +89,7 @@ document.addEventListener('turbo:load', () => {
 
 <% end %>
 <% content_for :js, flush: true do %>
-// app/javascript/controllers/notice_controller.js
+// app/javascript/controllers/flash_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {

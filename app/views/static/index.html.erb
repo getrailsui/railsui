@@ -1,6 +1,13 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag "railsui/application" %>
   <%= javascript_include_tag "railsui/application" %>
+
+  <%# Dumb hack to avoid CSS collision %>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.remove('rui');
+  })
+  </script>
 <% end %>
 
 <div class="tw-absolute tw-w-full tw-h-full tw-overflow-hidden tw-bg-indigo-600" data-controller="canvas">

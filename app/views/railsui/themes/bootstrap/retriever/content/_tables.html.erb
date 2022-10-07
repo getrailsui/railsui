@@ -1,6 +1,6 @@
 <div class="tw-mb-16 tw-mt-6 relative">
- <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Bordered" %>
-  <div class="rui-bs">
+  <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Bordered" %>
+  <div class="rui">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -31,7 +31,7 @@
       </tbody>
     </table>
   </div>
-<%# .html %>
+  <%# .html %>
 <% content_for :html, flush: true do %>
 <table class="table table-bordered">
   <thead>
@@ -64,35 +64,34 @@
 </table>
 <% end %>
 
-<%# .erb %>
+  <%# .erb %>
 <% content_for :erb, flush: true do %>
 <%%= tag.table class: "table table-bordered" do %>
   <%%= tag.thead do %>
     <%%= tag.tr do %>
       <%%= tag.th "#", scope: "col" %>
       <%%= tag.th "First", scope: "col" %>
-        <%%= tag.th "Last", scope: "col" %>
-        <%%= tag.th "Handle", scope: "col" %>
-      <%% end %>
+      <%%= tag.th "Last", scope: "col" %>
+      <%%= tag.th "Handle", scope: "col" %>
     <%% end %>
-    <%%= tag.tbody do %>
-      <%%= tag.tr do %>
-        <%%= tag.th "1", scope: "row" %>
-        <%%= tag.td "Andy" %>
-        <%%= tag.td "L." %>
-        <%%= tag.td "@railsui_" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "2", scope: "row" %>
-        <%%= tag.td "Web" %>
-        <%%= tag.td "Crunch" %>
-        <%%= tag.td "@webcrunchblog" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "3", scope: "row" %>
-        <%%= tag.td "justalever", colspan: "2" %>
-        <%%= tag.td "@justalever" %>
-      <%% end %>
+  <%% end %>
+  <%%= tag.tbody do %>
+    <%%= tag.tr do %>
+      <%%= tag.th "1", scope: "row" %>
+      <%%= tag.td "Andy" %>
+      <%%= tag.td "L." %>
+      <%%= tag.td "@railsui_" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "2", scope: "row" %>
+      <%%= tag.td "Web" %>
+      <%%= tag.td "Crunch" %>
+      <%%= tag.td "@webcrunchblog" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "3", scope: "row" %>
+      <%%= tag.td "justalever", colspan: "2" %>
+      <%%= tag.td "@justalever" %>
     <%% end %>
   <%% end %>
 <%% end %>
@@ -127,38 +126,38 @@
 </div>
 
 <div class="tw-my-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Borderless" %>
-  <div class="rui-bs">
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Andy</td>
-          <td>L.</td>
-          <td>@railsui_</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Web</td>
-          <td>Crunch</td>
-          <td>@webcrunchblog</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">justalever</td>
-          <td>@justalever</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Borderless" %>
+<div class="rui">
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Andy</td>
+      <td>L.</td>
+      <td>@railsui_</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Web</td>
+      <td>Crunch</td>
+      <td>@webcrunchblog</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">justalever</td>
+      <td>@justalever</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <%# .html %>
 <% content_for :html, flush: true do %>
 <table class="table table-borderless">
@@ -199,28 +198,27 @@
     <%%= tag.tr do %>
       <%%= tag.th "#", scope: "col" %>
       <%%= tag.th "First", scope: "col" %>
-        <%%= tag.th "Last", scope: "col" %>
-        <%%= tag.th "Handle", scope: "col" %>
-      <%% end %>
+      <%%= tag.th "Last", scope: "col" %>
+      <%%= tag.th "Handle", scope: "col" %>
     <%% end %>
-    <%%= tag.tbody do %>
-      <%%= tag.tr do %>
-        <%%= tag.th "1", scope: "row" %>
-        <%%= tag.td "Andy" %>
-        <%%= tag.td "L." %>
-        <%%= tag.td "@railsui_" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "2", scope: "row" %>
-        <%%= tag.td "Web" %>
-        <%%= tag.td "Crunch" %>
-        <%%= tag.td "@webcrunchblog" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "3", scope: "row" %>
-        <%%= tag.td "justalever", colspan: "2" %>
-        <%%= tag.td "@justalever" %>
-      <%% end %>
+  <%% end %>
+  <%%= tag.tbody do %>
+    <%%= tag.tr do %>
+      <%%= tag.th "1", scope: "row" %>
+      <%%= tag.td "Andy" %>
+      <%%= tag.td "L." %>
+      <%%= tag.td "@railsui_" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "2", scope: "row" %>
+      <%%= tag.td "Web" %>
+      <%%= tag.td "Crunch" %>
+      <%%= tag.td "@webcrunchblog" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "3", scope: "row" %>
+      <%%= tag.td "justalever", colspan: "2" %>
+      <%%= tag.td "@justalever" %>
     <%% end %>
   <%% end %>
 <%% end %>
@@ -255,38 +253,38 @@
 </div>
 
 <div class="tw-my-16">
-  <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Light" %>
-  <div class="rui-bs">
-    <table class="table">
-      <thead class="table-light">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Andy</td>
-          <td>L.</td>
-          <td>@railsui_</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Web</td>
-          <td>Crunch</td>
-          <td>@webcrunchblog</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">justalever</td>
-          <td>@justalever</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Light" %>
+<div class="rui">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Andy</td>
+      <td>L.</td>
+      <td>@railsui_</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Web</td>
+      <td>Crunch</td>
+      <td>@webcrunchblog</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">justalever</td>
+      <td>@justalever</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
@@ -328,28 +326,27 @@
     <%%= tag.tr do %>
       <%%= tag.th "#", scope: "col" %>
       <%%= tag.th "First", scope: "col" %>
-        <%%= tag.th "Last", scope: "col" %>
-        <%%= tag.th "Handle", scope: "col" %>
-      <%% end %>
+      <%%= tag.th "Last", scope: "col" %>
+      <%%= tag.th "Handle", scope: "col" %>
     <%% end %>
-    <%%= tag.tbody do %>
-      <%%= tag.tr do %>
-        <%%= tag.th "1", scope: "row" %>
-        <%%= tag.td "Andy" %>
-        <%%= tag.td "L." %>
-        <%%= tag.td "@railsui_" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "2", scope: "row" %>
-        <%%= tag.td "Web" %>
-        <%%= tag.td "Crunch" %>
-        <%%= tag.td "@webcrunchblog" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "3", scope: "row" %>
-        <%%= tag.td "justalever", colspan: "2" %>
-        <%%= tag.td "@justalever" %>
-      <%% end %>
+  <%% end %>
+  <%%= tag.tbody do %>
+    <%%= tag.tr do %>
+      <%%= tag.th "1", scope: "row" %>
+      <%%= tag.td "Andy" %>
+      <%%= tag.td "L." %>
+      <%%= tag.td "@railsui_" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "2", scope: "row" %>
+      <%%= tag.td "Web" %>
+      <%%= tag.td "Crunch" %>
+      <%%= tag.td "@webcrunchblog" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "3", scope: "row" %>
+      <%%= tag.td "justalever", colspan: "2" %>
+      <%%= tag.td "@justalever" %>
     <%% end %>
   <%% end %>
 <%% end %>
@@ -384,40 +381,8 @@
 </div>
 
 <div class="tw-my-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Dark" %>
-  <div class="rui-bs">
-    <table class="table table-dark">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Andy</td>
-          <td>L.</td>
-          <td>@railsui_</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Web</td>
-          <td>Crunch</td>
-          <td>@webcrunchblog</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">justalever</td>
-          <td>@justalever</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-<%# .html %>
-<% content_for :html, flush: true do %>
+<%= render "railsui/shared/sticky_subhead", title: "Tables", subtitle: "Dark" %>
+<div class="rui">
 <table class="table table-dark">
   <thead class="table-dark">
     <tr>
@@ -447,6 +412,39 @@
     </tr>
   </tbody>
 </table>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<table class="table table-dark">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Andy</td>
+      <td>L.</td>
+      <td>@railsui_</td>
+    </tr>
+    <tr>
+    <th scope="row">2</th>
+      <td>Web</td>
+      <td>Crunch</td>
+      <td>@webcrunchblog</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">justalever</td>
+      <td>@justalever</td>
+    </tr>
+  </tbody>
+</table>
 <% end %>
 
 <%# .erb %>
@@ -456,35 +454,34 @@
     <%%= tag.tr do %>
       <%%= tag.th "#", scope: "col" %>
       <%%= tag.th "First", scope: "col" %>
-        <%%= tag.th "Last", scope: "col" %>
-        <%%= tag.th "Handle", scope: "col" %>
-      <%% end %>
+      <%%= tag.th "Last", scope: "col" %>
+      <%%= tag.th "Handle", scope: "col" %>
     <%% end %>
-    <%%= tag.tbody do %>
-      <%%= tag.tr do %>
-        <%%= tag.th "1", scope: "row" %>
-        <%%= tag.td "Andy" %>
-        <%%= tag.td "L." %>
-        <%%= tag.td "@railsui_" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "2", scope: "row" %>
-        <%%= tag.td "Web" %>
-        <%%= tag.td "Crunch" %>
-        <%%= tag.td "@webcrunchblog" %>
-      <%% end %>
-      <%%= tag.tr do %>
-        <%%= tag.th "3", scope: "row" %>
-        <%%= tag.td "justalever", colspan: "2" %>
-        <%%= tag.td "@justalever" %>
-      <%% end %>
+  <%% end %>
+  <%%= tag.tbody do %>
+    <%%= tag.tr do %>
+      <%%= tag.th "1", scope: "row" %>
+      <%%= tag.td "Andy" %>
+      <%%= tag.td "L." %>
+      <%%= tag.td "@railsui_" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "2", scope: "row" %>
+      <%%= tag.td "Web" %>
+      <%%= tag.td "Crunch" %>
+      <%%= tag.td "@webcrunchblog" %>
+    <%% end %>
+    <%%= tag.tr do %>
+      <%%= tag.th "3", scope: "row" %>
+      <%%= tag.td "justalever", colspan: "2" %>
+      <%%= tag.td "@justalever" %>
     <%% end %>
   <%% end %>
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
+  <%# .haml %>
+  <% content_for :haml, flush: true do %>
 %table.table.table-dark
   %thead.table-dark
     %tr
@@ -492,23 +489,23 @@
       %th{:scope => "col"} First
       %th{:scope => "col"} Last
       %th{:scope => "col"} Handle
-  %tbody
-    %tr
-      %th{:scope => "row"} 1
-      %td Andy
-      %td L.
-      %td @railsui_
-    %tr
-      %th{:scope => "row"} 2
-      %td Web
-      %td Crunch
-      %td @webcrunchblog
-    %tr
-      %th{:scope => "row"} 3
-      %td{:colspan => "2"} justalever
-      %td @justalever
+    %tbody
+      %tr
+        %th{:scope => "row"} 1
+        %td Andy
+        %td L.
+        %td @railsui_
+      %tr
+        %th{:scope => "row"} 2
+        %td Web
+        %td Crunch
+        %td @webcrunchblog
+      %tr
+        %th{:scope => "row"} 3
+        %td{:colspan => "2"} justalever
+        %td @justalever
 <% end %>
-<%= render_snippet %>
+  <%= render_snippet %>
 </div>
 
 <%= render "railsui/shared/read_more", subject: "tables", link: "https://getbootstrap.com/docs/5.2/content/tables/" %>

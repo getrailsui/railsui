@@ -1,11 +1,11 @@
 <div class="tw-mb-16 tw-mt-6">
- <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
+  <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
     <p>Provide contextual feedback messages for typical user actions with the handful of flexible alert messages.</p>
   </div>
 
-  <%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "Options" %>
+<%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "Options" %>
 
-<div class="rui-bs">
+<div class="rui">
 <div class="alert alert-primary" role="alert">
   A simple primary alert—check it out!
 </div>
@@ -72,43 +72,43 @@
 <%= render_snippet %>
 </div>
 
-<%# Alerts - Embedded links %>
+  <%# Alerts - Embedded links %>
 
-<div class="tw-mb-16 tw-mt-6">
-  <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
-    <p>Provide contextual feedback messages for typical user actions with the handful of flexible alert messages.</p>
-  </div>
+  <div class="tw-mb-16 tw-mt-6">
+    <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
+      <p>Provide contextual feedback messages for typical user actions with the handful of flexible alert messages.</p>
+    </div>
 
-  <%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "Embedded links" %>
+    <%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "Embedded links" %>
 
-<div class="tw-mb-6 tw-text-slate-700">Use the <code class="tw-text-rose-500">.alert-link</code> utility class to quickly provide matching colored links within any alert.</div>
+    <div class="tw-mb-6 tw-text-slate-700">Use the <code class="tw-text-rose-500">.alert-link</code> utility class to quickly provide matching colored links within any alert.</div>
 
-<div class="rui-bs">
-<div class="alert alert-primary" role="alert">
-  A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-secondary" role="alert">
-  A simple secondary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-success" role="alert">
-  A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-danger" role="alert">
-  A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-warning" role="alert">
-  A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-info" role="alert">
-  A simple info alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-light" role="alert">
-  A simple light alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-dark" role="alert">
-  A simple dark alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-</div>
+    <div class="rui">
+      <div class="alert alert-primary" role="alert">
+        A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+      <div class="alert alert-secondary" role="alert">
+        A simple secondary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+      <div class="alert alert-success" role="alert">
+        A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+      <div class="alert alert-danger" role="alert">
+        A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+      <div class="alert alert-warning" role="alert">
+        A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+      <div class="alert alert-info" role="alert">
+        A simple info alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+      <div class="alert alert-light" role="alert">
+        A simple light alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+      <div class="alert alert-dark" role="alert">
+        A simple dark alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </div>
+    </div>
 
 <% content_for :html, flush: true do %>
 <div class="alert alert-primary" role="alert">
@@ -128,6 +128,5 @@
 <% end %>
 <%= render_snippet %>
 </div>
-
 
 <%= render "railsui/shared/read_more", subject: "alerts", link: "https://getbootstrap.com/docs/5.2/components/alerts/" %>

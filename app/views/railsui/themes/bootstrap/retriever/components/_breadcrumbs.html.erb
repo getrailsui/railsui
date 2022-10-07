@@ -3,7 +3,7 @@
     <p>Breadcrumbs help with everything from search engine optimization to easier navigation.</p>
   </div>
 
-  <div class="rui-bs">
+  <div class="rui">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page">Home</li>
@@ -25,7 +25,6 @@
       </ol>
     </nav>
   </div>
-
 
 <% content_for :html, flush: true do %>
 <nav aria-label="breadcrumb">
@@ -83,11 +82,13 @@
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item.active{"aria-current" => "page"} Home
+
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
       = link_to "Home", "#"
     %li.breadcrumb-item.active{"aria-current" => "page"} Library
+
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item

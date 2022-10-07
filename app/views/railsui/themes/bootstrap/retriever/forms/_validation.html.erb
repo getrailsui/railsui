@@ -1,14 +1,13 @@
 <div class="tw-mb-16 tw-mt-6">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Validation" %>
 
-
   <div class="tw-prose tw-prose-indigo tw-mb-6">
     <p>Extend form errors to leverage Rails UI + Bootstrap error alerts.</p>
   </div>
 
   <div class="tw-my-6">
     <p class="tw-font-semibold tw-mb-3">Example errors</p>
-    <div class="rui-bs">
+    <div class="rui">
       <form action="#">
         <div class="alert alert-danger" role="alert">
           <p class="fw-bold">3 errors prohibited this post from being saved:</p>
@@ -26,32 +25,32 @@
     </div>
   </div>
 
-<% content_for :erb, flush: true do %>
-<!-- app/views/shared/error_messages.html.erb -->
+  <% content_for :erb, flush: true do %>
+    <!-- app/views/shared/error_messages.html.erb -->
 
-<%% if resource.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <p class="fw-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+    <%% if resource.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <p class="fw-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
 
-    <ul class="list-disc">
-      <%% resource.errors.each do |error| %>
-        <li><%%= error.full_message %></li>
+      <ul class="list-disc">
+        <%% resource.errors.each do |error| %>
+          <li><%%= error.full_message %></li>
+          <%% end %>
+        </ul>
+      </div>
       <%% end %>
-    </ul>
-  </div>
-<%% end %>
-<% end %>
+    <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/shared/error_messages.haml.erb
+    <% content_for :haml, flush: true do %>
+      / app/views/shared/error_messages.haml.erb
 
-- if resources.errors.any?
-  .alert.alert-danger{:role=> "alert"}
-    %p.fw-bold= #{pluralize(resource.errors.count, "error")} prohibited this post from being saved:
-    %ul.list-disc
+      - if resources.errors.any?
+      .alert.alert-danger{:role=> "alert"}
+      %p.fw-bold= #{pluralize(resource.errors.count, "error")} prohibited this post from being saved:
+      %ul.list-disc
       - resource.errors.each do |error|
-        %li
-          = error.full_message
-<% end %>
-<%= render_snippet %>
-</div>
+      %li
+      = error.full_message
+    <% end %>
+    <%= render_snippet %>
+  </div>

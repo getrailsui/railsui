@@ -50,6 +50,7 @@ Railsui::Engine.routes.draw do
       get :buttons
       get :cards
       get :dropdowns
+      get :flash
       get :modals
       get :navigation
       get :pagination

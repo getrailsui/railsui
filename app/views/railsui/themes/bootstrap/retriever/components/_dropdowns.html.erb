@@ -6,7 +6,7 @@
 
   <%= render "railsui/shared/sticky_subhead", title: "Dropdowns", subtitle: "Base" %>
 
-  <div class="rui-bs tw-mb-6">
+  <div class="rui tw-mb-6">
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Dropdown button
@@ -50,9 +50,8 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-
 .dropdown
-  = button_tag "Dropdown button", type: "button", class: "btn btn-primary dropdown-toggle", data: { bs_toggle: "dropdown" }, "aria-expanded": "false"
+  = button_tag "Dropdown button", type: "button", class: "btn   btn-primary dropdown-toggle", data: { bs_toggle: "dropdown" }, "aria-expanded": "false"
   %ul.dropdown-menu
     %li
       = link_to "Action", "#", class: "dropdown-item"
@@ -70,7 +69,7 @@
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Dropdowns", subtitle: "Variants" %>
 
-  <div class="rui-bs">
+  <div class="rui">
     <div class="btn-group">
       <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Primary</button>
       <ul class="dropdown-menu">
@@ -186,13 +185,12 @@
 <%= render_snippet %>
 </div>
 
-
 <%# Buttons - Split %>
 
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Dropdowns", subtitle: "Split" %>
 
-  <div class="rui-bs">
+  <div class="rui">
     <div class="btn-group">
       <button type="button" class="btn btn-primary">Primary</button>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -208,7 +206,7 @@
     </div>
 
     <div class="btn-group">
-       <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-secondary">Secondary</button>
       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="visually-hidden">Toggle Dropdown</span>
       </button>
@@ -296,9 +294,9 @@
 <% content_for :erb, flush: true do %>
 <!-- Secondary split button -->
 <div class="btn-group">
-  <%%= button_tag "Action", type: "button", class: "btn btn-secondary" %>
+  <%%= button_tag "Action", type: "button", class: "btn   btn-secondary" %>
   <%%= button_tag type: "button", class: "btn btn-secondary dropdown-toggle dropdown-toggle-split", data: { bs_toggle: "dropdown" }, "aria-expanded": "false" do %>
-    <%%= tag.span "Toggle Dropdown", class: "visually-hidden" %>
+  <%%= tag.span "Toggle Dropdown", class: "visually-hidden" %>
   <%% end %>
   <ul class="dropdown-menu">
     <li>
@@ -332,24 +330,23 @@
 <%= render_snippet %>
 </div>
 
+  <%# Buttons - Split %>
 
-<%# Buttons - Split %>
+  <div class="tw-my-16">
+    <%= render "railsui/shared/sticky_subhead", title: "Dropdowns", subtitle: "Drop up" %>
 
-<div class="tw-my-16">
-  <%= render "railsui/shared/sticky_subhead", title: "Dropdowns", subtitle: "Drop up" %>
-
-  <div class="rui-bs">
-    <div class="btn-group dropup">
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropup
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
+    <div class="rui">
+      <div class="btn-group dropup">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropup
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
 
 <% content_for :html, flush: true do %>
 <div class="btn-group dropup">
@@ -395,6 +392,5 @@
 
 <%= render_snippet %>
 </div>
-
 
 <%= render "railsui/shared/read_more", subject: "dropdowns", link: "https://getbootstrap.com/docs/5.2/components/dropdowns/" %>

@@ -1,7 +1,7 @@
 <div class="tw-my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Select" %>
 
-  <div class="rui-bs">
+  <div class="rui">
     <select class="form-select" aria-label="Default select example">
       <option selected>Open this select menu</option>
       <option value="1">One</option>
@@ -10,50 +10,48 @@
     </select>
   </div>
 
+  <%# .html %>
+  <% content_for :html, flush: true do %>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  <% end %>
 
-<%# .html %>
-<% content_for :html, flush: true do %>
-<select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-<% end %>
+  <%# .erb %>
+  <% content_for :erb, flush: true do %>
+    <!-- ActionView::Helpers::FormTagHelper -->
+    <%%= tag.select class: "form-select", "aria-label": "Default select example" do %>
+      <%%= tag.option "Open this select menu", selected: true %>
+      <%%= tag.option "One", value: "1" %>
+      <%%= tag.option "Two", value: "2" %>
+      <%%= tag.option "Three", value: "3" %>
+      <%% end %>
 
-<%# .erb %>
-<% content_for :erb, flush: true do %>
- <!-- ActionView::Helpers::FormTagHelper -->
-<%%= tag.select class: "form-select", "aria-label": "Default select example" do %>
-  <%%= tag.option "Open this select menu", selected: true %>
-  <%%= tag.option "One", value: "1" %>
-  <%%= tag.option "Two", value: "2" %>
-  <%%= tag.option "Three", value: "3" %>
-<%% end %>
+      <!-- ActionView::Helpers::FormHelper -->
+      <%%= form_with model: @form do |f| %>
+        <%%= f.label :select_1, "Default select example", class: "form-label" %>
+        <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" } %>
+        <%% end %>
+      <% end %>
 
+      <%# .haml %>
+      <% content_for :haml, flush: true do %>
+        / ActionView::Helpers::FormHelper
+        = form_with model: @form do |f|
+        .mb-3
+        = f.label :select_1, "Default select example", class:  "form-label"
+        = f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" }
+        = f.submit class: "btn btn-primary"
+      <% end %>
+      <%= render_snippet %>
+    </div>
 
-<!-- ActionView::Helpers::FormHelper -->
-<%%= form_with model: @form do |f| %>
-  <%%= f.label :select_1, "Default select example", class: "form-label" %>
-  <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" } %>
-<%% end %>
-<% end %>
-
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .mb-3
-    = f.label :select_1, "Default select example", class:  "form-label"
-    = f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" }
-  = f.submit class: "btn btn-primary"
-<% end %>
-<%= render_snippet %>
-</div>
-
-<div class="tw-mt-16">
-  <div class="tw-bg-gray-100 tw-px-6 tw-py-10 tw-rounded-xl tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-mx-auto tw-text-slate-500">
-  <%= render_svg "book", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-text-slate-400 tw-mr-2" %>
-  <p>Refer to the <%= link_to "official Boostrap documentation", "https://getbootstrap.com/docs/5.2/forms/select/", target: :_blank, class: "rui-link" %> for more select field usage.</p>
-  </div>
-</div>
+    <div class="tw-mt-16">
+      <div class="tw-bg-gray-100 tw-px-6 tw-py-10 tw-rounded-xl tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-mx-auto tw-text-slate-500">
+        <%= render_svg "book", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-text-slate-400 tw-mr-2" %>
+        <p>Refer to the <%= link_to "official Boostrap documentation", "https://getbootstrap.com/docs/5.2/forms/select/", target: :_blank, class: "rui-link" %> for more select field usage.</p>
+      </div>
+    </div>

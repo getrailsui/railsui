@@ -1,12 +1,7 @@
-// Reset
-body {
-  margin: 0;
-}
-
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+$secondary: #062c65;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+"Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
@@ -14,27 +9,10 @@ body {
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 
-
 // Scope to namespace. Add to <body> tag
-.rui-bs {
+.rui {
   // Global
-  $royalblue-500: #062c65;
-  $secondary: $royalblue-500;
-  $font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
   $input-btn-padding-y: 0.5rem;
-
-  // Bootstrap normally scopes this to the body element but because we are namespacing it needs to be adjusted with the cascade.
-
-  margin: 0;
-  font-family: $font-family-sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  color: $gray-700;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba($black, 0);
 
   // Body text color
   $body-color: $gray-700;
@@ -74,7 +52,6 @@ body {
   $dropdown-link-hover-color: $gray-900;
   $dropdown-link-hover-bg: $gray-100;
   $dropdown-item-padding-y: $spacer * 0.5;
-
 
   @import "bootstrap/scss/utilities";
   @import "bootstrap/scss/reboot";

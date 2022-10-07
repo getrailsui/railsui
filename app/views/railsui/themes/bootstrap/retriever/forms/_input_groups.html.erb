@@ -2,7 +2,7 @@
 <div class="tw-my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Input group w/ icon" %>
 
-  <div class="rui-bs">
+  <div class="rui">
     <div class="input-group mb-3">
       <span class="input-group-text" id="envelope">
         <%= icon("envelope") %>
@@ -11,60 +11,59 @@
     </div>
   </div>
 
-<div class="tw-text-lg tw-text-slate-700">
-  <p class="tw-mb-3">Read the <%= link_to "Rails UI documentation", docs_path, class: "rui-link", target: :_blank %> for the <code class="tw-font-mono tw-text-rose-600 tw-text-sm">icon</code> view helper as shown in the following snippet(s).</p>
-</div>
+  <div class="tw-text-lg tw-text-slate-700">
+    <p class="tw-mb-3">Read the <%= link_to "Rails UI documentation", docs_path, class: "rui-link", target: :_blank %> for the <code class="tw-font-mono tw-text-rose-600 tw-text-sm">icon</code> view helper as shown in the following snippet(s).</p>
+  </div>
 
-<%# .html %>
-<% content_for :html, flush: true do %>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="envelope">
-    <%%= icon("envelope") %>
-  </span>
-  <input type="email" class="form-control" placeholder="john.doe@example.com" aria-label="Email" aria-describedby="envelope">
-</div>
-<% end %>
+  <%# .html %>
+  <% content_for :html, flush: true do %>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="envelope">
+        <%%= icon("envelope") %>
+      </span>
+      <input type="email" class="form-control" placeholder="john.doe@example.com" aria-label="Email" aria-describedby="envelope">
+    </div>
+  <% end %>
 
-<%# .erb %>
-<% content_for :erb, flush: true do %>
- <!-- ActionView::Helpers::FormTagHelper -->
-<%%= tag.div class: "input-group mb-3" do %>
-  <%%= tag.span class: "input-group-text", id: "envelope" do %>
-    <%%= icon("envelope") %>
-  <%% end %>
-  <%%= email_field_tag "envelope", nil, class: "form-control", "aria-describedby": "envelope", "aria-label": "Email", placeholder: "john.doe@example.com" %>
-<%% end %>
+  <%# .erb %>
+  <% content_for :erb, flush: true do %>
+    <!-- ActionView::Helpers::FormTagHelper -->
+    <%%= tag.div class: "input-group mb-3" do %>
+      <%%= tag.span class: "input-group-text", id: "envelope" do %>
+        <%%= icon("envelope") %>
+        <%% end %>
+        <%%= email_field_tag "envelope", nil, class: "form-control", "aria-describedby": "envelope", "aria-label": "Email", placeholder: "john.doe@example.com" %>
+        <%% end %>
 
-<!-- ActionView::Helpers::FormHelper -->
-<%%= form_with model: @form do |f| %>
-  <%%= tag.div class: "input-group mb-3" do %>
-    <%%= tag.span class: "input-group-text", id: "envelope" do %>
-      <%%= icon("envelope") %>
-    <%% end %>
-    <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
-  <%% end %>
-  <%%= f.submit class: "btn btn-primary" %>
-<%% end %>
-<% end %>
+        <!-- ActionView::Helpers::FormHelper -->
+        <%%= form_with model: @form do |f| %>
+          <%%= tag.div class: "input-group mb-3" do %>
+            <%%= tag.span class: "input-group-text", id: "envelope" do %>
+              <%%= icon("envelope") %>
+              <%% end %>
+              <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
+              <%% end %>
+              <%%= f.submit class: "btn btn-primary" %>
+              <%% end %>
+            <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.input-group.mb-3
-  span.input-group-text#envelope
-   = icon "envelope"
-   = email_field_tag "envelope", nil, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
+            <%# .haml %>
+            <% content_for :haml, flush: true do %>
+              / ActionView::Helpers::FormTagHelper
+              .input-group.mb-3
+              span.input-group-text#envelope
+              = icon "envelope"
+              = email_field_tag "envelope", nil, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
 
+              / ActionView::Helpers::FormHelper
+              = form_with model: @form do |f|
+              .input-group.mb-3
+              span.input-group-text#envelope
+              = icon "envelope"
+              = f.email_field :my_input, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
+              = f.submit class: "btn btn-primary"
+            <% end %>
+            <%= render_snippet %>
+          </div>
 
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .input-group.mb-3
-    span.input-group-text#envelope
-    = icon "envelope"
-    = f.email_field :my_input, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
-  = f.submit class: "btn btn-primary"
-<% end %>
-<%= render_snippet %>
-</div>
-
-<%= render "railsui/shared/read_more", subject: "input groups", link: "https://getbootstrap.com/docs/5.2/forms/input-group/" %>
+          <%= render "railsui/shared/read_more", subject: "input groups", link: "https://getbootstrap.com/docs/5.2/forms/input-group/" %>

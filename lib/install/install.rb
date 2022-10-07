@@ -181,33 +181,32 @@ def extend_layout_and_views
       before:/\s*<\/head>/
     )
 
-    say "⚡️ Add flash and nav partials"
+    say "⚡️ Add flash partial"
     insert_into_file(
       app_layout_path.to_s,
       %(
     <%= render "shared/flash" %>
-    <%= render "shared/nav" %>
       ),
       after:"<body>"
     )
 
-    say "⚡️ Add stylesheet link"
+    # say "⚡️ Add stylesheet link"
 
-    stylesheet_link = '<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>'
+    # stylesheet_link = '<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>'
 
-    insert_into_file(
-      app_layout_path.to_s,
-      %(
-    <% if current_page?(root_path) && !Railsui.config.css_framework.present? %>
-      ), before: stylesheet_link
-    )
+    # insert_into_file(
+    #   app_layout_path.to_s,
+    #   %(
+    # <% if current_page?(root_path) && !Railsui.config.css_framework.present? %>
+    #   ), before: stylesheet_link
+    # )
 
-    insert_into_file(
-      app_layout_path.to_s,
-      %(
-    <% end %>
-      ), after: stylesheet_link
-    )
+    # insert_into_file(
+    #   app_layout_path.to_s,
+    #   %(
+    # <% end %>
+    #   ), after: stylesheet_link
+    # )
 
   end
 end

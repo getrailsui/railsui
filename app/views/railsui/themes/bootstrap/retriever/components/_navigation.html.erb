@@ -5,7 +5,7 @@
   </div>
 
   <%= render "railsui/shared/sticky_subhead", title: "Navbar", subtitle: "Base" %>
-  <div class="rui-bs">
+  <div class="rui">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -87,17 +87,58 @@
 </nav>
 <% end %>
 
-  <% content_for :haml, flush: true do %>
-%nav.navbar.navbar-expand-lg.navbar-light
+<% content_for :erb, flush: true do %>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <%%= Railsui.config.theme.humanize %>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%%= link_to "Home", root_path, class: "nav-link active", "aria-current": "page" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <%%%= form_tag my_search_path, class: "d-flex", role: "search" do %>
+        <%%= text_field_tag :search, nil, class: "form-control me-2", "aria-label": "Search", placeholder: "Search" %>
+        <%%= button_tag "Search", type: :submit, class: "btn btn-outline-secondary" %>
+      <%% end %>
+    </div>
+  </div>
+</nav>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav.navbar.navbar-expand-lg
   .container-fluid
     %a.navbar-brand{:href => "#"}
-      <%= Railsui.config.theme.humanize %>
+      = Railsui.config.theme.humanize %>
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
         %li.nav-item
-          %a.nav-link.active{"aria-current" => "page", :href => "#"} Home
+          \%= link_to "Home", root_path, class: "nav-link active", "aria-current": "page" %>
         %li.nav-item
           %a.nav-link{:href => "#"} Link
         %li.nav-item.dropdown
@@ -110,16 +151,17 @@
               %a.dropdown-item{:href => "#"} Another action
             %li
               %hr.dropdown-divider/
-            %li
-              %a.dropdown-item{:href => "#"} Something else here
-        %li.nav-item
-          %a.nav-link.disabled Disabled
-      %form.d-flex{:role => "search"}
-        %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-        %button.btn.btn-outline-secondary{:type => "submit"} Search
-  <% end %>
+              %li
+                %a.dropdown-item{:href => "#"} Something else here
+          %li.nav-item
+            %a.nav-link.disabled Disabled
+          = form_tag my_search_path, class: "d-flex", role: "search" do %>
+            = text_field_tag :search, nil, class: "form-control me-2", "aria-label": "Search", placeholder: "Search" %>
+            = button_tag "Search", type: :submit, class: "btn btn-outline-secondary" %>
 
-  <%= render_snippet %>
+<% end %>
+
+<%= render_snippet %>
 </div>
 
 <%= render "railsui/shared/read_more", subject: "navbars", link: "https://getbootstrap.com/docs/5.2/components/navbar/" %>

@@ -4,17 +4,16 @@
   </div>
 
   <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Base" %>
-<div class="rui-bs">
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
-
-<button type="button" class="btn btn-link">Link</button>
+<div class="rui">
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-secondary">Secondary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+  <button type="button" class="btn btn-link">Link</button>
 </div>
 
 <% content_for :html, flush: true do %>
@@ -52,15 +51,15 @@
 = button_tag "Dark", type: "button", class: "btn btn-dark"
 = button_tag "Link", type: "button", class: "btn btn-link"
 <% end %>
-  <%= render_snippet %>
+<%= render_snippet %>
 </div>
 
 <div class="tw-my-16">
-<%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Outline" %>
+  <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Outline" %>
 
-<div class="tw-prose tw-mb-6">Use outline buttons for less bold treatment and areas that benefit from a dark or lighter background color.</div>
+  <div class="tw-prose tw-mb-6">Use outline buttons for less bold treatment and areas that benefit from a dark or lighter background color.</div>
 
-<div class="rui-bs">
+<div class="rui">
 <button type="button" class="btn btn-outline-primary">Primary</button>
 <button type="button" class="btn btn-outline-secondary">Secondary</button>
 <button type="button" class="btn btn-outline-success">Success</button>
@@ -105,28 +104,27 @@
 = button_tag "Dark", type: "button", class: "btn btn-outline-dark"
 = button_tag "Link", type: "button", class: "btn btn-outline-link"
 <% end %>
-  <%= render_snippet %>
+<%= render_snippet %>
 </div>
 
-
 <div class="tw-my-16">
-<%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Sizes" %>
+  <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Sizes" %>
 
   <div class="tw-prose tw-mb-6">Choose from three default buttons sizes or customize with inline styles.</div>
 
-  <div class="rui-bs">
-    <button type="button" class="btn btn-primary btn-lg">Large button</button>
-    <button type="button" class="btn btn-secondary">Button</button>
-    <button type="button" class="btn btn-primary btn-sm">Small button</button>
-    <button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Custom button</button>
-  </div>
-
-  <% content_for :html, flush: true do %>
+<div class="rui">
 <button type="button" class="btn btn-primary btn-lg">Large button</button>
 <button type="button" class="btn btn-secondary">Button</button>
 <button type="button" class="btn btn-primary btn-sm">Small button</button>
 <button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Custom button</button>
-  <% end %>
+</div>
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-primary btn-lg">Large button</button>
+<button type="button" class="btn btn-secondary">Button</button>
+<button type="button" class="btn btn-primary btn-sm">Small button</button>
+<button type="button" class="btn btn-secondary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Custom button</button>
+<% end %>
 
 <% content_for :erb, flush: true do %>
 <%%= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg" %>
@@ -141,21 +139,21 @@
 = button_tag "Small button", type: "button", class: "btn btn-primary btn-sm"
 = button_tag "Custom", type: "button", class: "btn btn-secondary", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
 <% end %>
-  <%= render_snippet %>
+<%= render_snippet %>
 </div>
 
 <div class="tw-my-16">
-<%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Expanded display" %>
+  <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Expanded display" %>
 
   <div class="tw-prose tw-mb-6">
     <p>Create responsive stacks of full-width buttons with a mix of display and gap utilities.</p>
   </div>
 
-<div class="rui-bs">
-  <div class="d-grid gap-2">
-    <button class="btn btn-primary" type="button">Button</button>
-    <button class="btn btn-secondary" type="button">Button</button>
-  </div>
+<div class="rui">
+<div class="d-grid gap-2">
+  <button class="btn btn-primary" type="button">Button</button>
+  <button class="btn btn-secondary" type="button">Button</button>
+</div>
 </div>
 
 <% content_for :html, flush: true do %>
@@ -180,4 +178,4 @@
 <%= render_snippet %>
 </div>
 
-<%= render "railsui/shared/read_more", subject: "buttons", link: "https://getbootstrap.com/docs/5.2/components/buttons/" %>
+  <%= render "railsui/shared/read_more", subject: "buttons", link: "https://getbootstrap.com/docs/5.2/components/buttons/" %>

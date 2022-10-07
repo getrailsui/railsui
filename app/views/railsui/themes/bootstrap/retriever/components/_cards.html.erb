@@ -3,22 +3,22 @@
     <p>Flexible and extensible content containers with multiple variants and options.</p>
   </div>
 
-  <div class="tw-prose tw-mb-6">
-    <p>A <strong>card</strong> is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you're familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.</p>
+  <div class="tw-prose tw-prose-lg tw-mb-6">
+    <p>Cards include options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.</p>
   </div>
 
   <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Base" %>
 
-<div class="rui-bs">
-  <div class="card" style="width: 18rem;">
-    <img src="https://placeholder.pics/svg/400x300/DEDEDE/777777" class="card-img-top" alt="Placeholder image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="rui">
+    <div class="card" style="width: 18rem;">
+      <img src="https://placeholder.pics/svg/400x300/DEDEDE/FFFFFF" class="card-img-top" alt="Placeholder image">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
   </div>
-</div>
 
 <% content_for :html, flush: true do %>
 <div class="card" style="width: 18rem;">
@@ -58,7 +58,7 @@
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Header" %>
 
-  <div class="rui-bs">
+  <div class="rui">
     <div class="card">
       <div class="card-header">Featured</div>
       <div class="card-body">
@@ -94,10 +94,10 @@
 <% content_for :haml, flush: true do %>
 .card
   .card-header Featured
-  .card-body
-    %h5.card-title Special title treatment
-    %p.card-text With supporting text below as a natural lead-in to additional content.
-    = link_to "Go somewhere", "#", class: "btn btn-primary"
+    .card-body
+      %h5.card-title Special title treatment
+      %p.card-text With supporting text below as a natural lead-in to additional content.
+      = link_to "Go somewhere", "#", class: "btn btn-primary"
 <% end %>
 <%= render_snippet %>
 </div>
@@ -106,7 +106,7 @@
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Styles" %>
 
-  <div class="rui-bs">
+  <div class="rui">
     <div class="row g-3">
       <div class="col-md-6">
         <div class="card text-bg-primary mb-3">
@@ -182,7 +182,6 @@
       </div>
     </div>
   </div>
-
 
 <% content_for :html, flush: true do %>
 <div class="row g-3">
@@ -276,69 +275,68 @@
 </div>
 <% end %>
 
-
 <% content_for :erb, flush: true do %>
 
 <% end %>
 
-<% content_for :haml, flush: true do %>
+  <% content_for :haml, flush: true do %>
 .row.g-3
-  / Primary
-  .col-md-6
-    .card.text-bg-primary.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-title.text-white Primary card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-  / Secondary
-  .col-md-6
-    .card.text-bg-secondary.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-title.text-white Secondary card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-  / Success
-  .col-md-6
-    .card.text-bg-success.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-title.text-white Success card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-  / Danger
-  .col-md-6
-    .card.text-bg-danger.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-title.text-white Danger card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-  / Warning
-  .col-md-6
-    .card.text-bg-warning.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-title.text-dark Warning card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-  / Info
-  .col-md-6
-    .card.text-bg-info.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-title.text-dark Info card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-  / Light
-  .col-md-6
-    .card.text-bg-light.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-titlek Light card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-  / Dark
-  .col-md-6
-    .card.text-bg-dark.mb-3
-      .card-header Header
-      .card-body
-        %h5.card-title.text-white Dark card title
-        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Primary
+.col-md-6
+  .card.text-bg-primary.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title.text-white Primary card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Secondary
+.col-md-6
+  .card.text-bg-secondary.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title.text-white Secondary card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Success
+.col-md-6
+  .card.text-bg-success.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title.text-white Success card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Danger
+.col-md-6
+  .card.text-bg-danger.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title.text-white Danger card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Warning
+.col-md-6
+  .card.text-bg-warning.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title.text-dark Warning card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Info
+.col-md-6
+  .card.text-bg-info.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title.text-dark Info card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Light
+.col-md-6
+  .card.text-bg-light.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title Light card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+/ Dark
+.col-md-6
+  .card.text-bg-dark.mb-3
+    .card-header Header
+    .card-body
+      %h5.card-title.text-white Dark card title
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
 <% end %>
 
 <%= render_snippet %>
