@@ -1,0 +1,110 @@
+<%# Tooltips - Initalization %>
+<div class="tw-mb-16 tw-mt-6">
+  <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
+    <p>Add contextual content with tooltips.</p>
+  </div>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Enabling tooltips" %>
+
+  <div class="tw-prose">
+    <p>Tooltips require intitialization with JavaScript before use. The easiest way is by targeting by the <%= code_inline("data-bs-toggle") %> attribute Bootstrap commonly utilizies.</p>
+  </div>
+
+<% content_for :js, flush: true do %>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+<% end %>
+
+<%= render_snippet active_tab: "js" %>
+</div>
+
+<%# Tooltips - Usage %>
+<div class="tw-my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Usage" %>
+
+  <div class="tw-prose">
+    <p>Using the <%= code_inline('data-bs-toggle="tooltip"') %> attribute you can enable tooltips on nearly any element. Pass tooltip content to an additional data attribute titled <%= code_inline('data-bs-title="My copy here"') %>.</p>
+  </div>
+
+  <div class="tw-p-6 tw-border tw-rounded-xl tw-mt-6">
+    <div class="rui">
+      <p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" data-bs-title="Default tooltip">inline links</a> with tooltips.</p>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" data-bs-title="Default tooltip">inline links</a> with tooltips.
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<p class="muted">Placeholder text to demonstrate some <%= link_to "inline links", "#", data: { bs_toggle: "tooltip", bs_title: "Default tooltip" } %> with tooltips.</p>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%p.muted
+  Placeholder text to demonstrate some #{link_to "inline links", "#", data: { bs_toggle: "tooltip", bs_title: "Default tooltip" }} with tooltips.
+<% end %>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+<%= render_snippet %>
+</div>
+
+<%# Tooltips - Direction %>
+<div class="tw-my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Directions" %>
+
+  <div class="tw-prose">
+    <p>Use an additional data attribute called <%= code_inline("data-bs-placement") %> to denote what side of a given element the tooltip will appear.</p>
+  </div>
+
+  <div class="rui tw-my-6">
+    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+      Tooltip on top
+    </button>
+    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
+      Tooltip on right
+    </button>
+    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom">
+      Tooltip on bottom
+    </button>
+    <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Tooltip on left">
+      Tooltip on left
+    </button>
+  </div>
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+  Tooltip on top
+</button>
+<button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
+  Tooltip on right
+</button>
+<button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom">
+  Tooltip on bottom
+</button>
+<button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Tooltip on left">
+  Tooltip on left
+</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Tooltip on top", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "top", bs_title: "Tooltip on top"} %>
+<%%= button_tag "Tooltip on right", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "right", bs_title: "Tooltip on right"} %>
+<%%= button_tag "Tooltip on bottom", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "bottom", bs_title: "Tooltip on bottom"} %>
+<%%= button_tag "Tooltip on left", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "left", bs_title: "Tooltip on left"} %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Tooltip on top", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "top", bs_title: "Tooltip on top"}
+= button_tag "Tooltip on right", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "right", bs_title: "Tooltip on right"}
+= button_tag "Tooltip on bottom", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "bottom", bs_title: "Tooltip on bottom"}
+= button_tag "Tooltip on left", type: :button, class: "btn btn-light", data: { bs_toggle: "tooltip", bs_placement: "left", bs_title: "Tooltip on left"} %>
+<% end %>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+<%= render_snippet %>
+</div>

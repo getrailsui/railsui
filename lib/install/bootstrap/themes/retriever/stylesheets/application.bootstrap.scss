@@ -3,13 +3,13 @@ $font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
 "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
 "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
+
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 
-// Scope to namespace. Add to <body> tag
 .rui {
   // Global
   $input-btn-padding-y: 0.5rem;
@@ -69,19 +69,20 @@ $font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
   @import "bootstrap/scss/grid";
   @import "bootstrap/scss/helpers";
   @import "bootstrap/scss/images";
-  @import "bootstrap/scss/images";
   @import "bootstrap/scss/list-group";
   @import "bootstrap/scss/modal";
   @import "bootstrap/scss/nav";
   @import "bootstrap/scss/navbar";
   @import "bootstrap/scss/pagination";
-  @import "bootstrap/scss/popover";
   @import "bootstrap/scss/tables";
-  @import "bootstrap/scss/toasts";
-  @import "bootstrap/scss/tooltip";
   @import "bootstrap/scss/transitions";
   @import "bootstrap/scss/type";
   @import "bootstrap/scss/utilities/api";
 
   @import "custom";
 }
+
+// Code gets generated dynamically so we remove from scoped .rui class.
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/toasts";
