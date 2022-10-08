@@ -3,7 +3,7 @@
   <div class="row g-0 vh-100 align-items-center">
     <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
       <div class="col-md-8 col-12 mx-auto">
-        <a href="/">
+        <a href="/" class="tw-pointer-events-none">
           <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
         </a>
 
@@ -50,7 +50,7 @@
 <div class="tw-max-w-4xl tw-mx-auto tw-my-16">
 
 <% content_for :erb, flush: true do %>
-<!-- render auth_layout partial with block -->
+<!-- app/views/devise/sessions/new.html.erb-->
 <%%= render "auth_layout" do %>
 
   <!-- Choose what content to feature on the right side of the design -->
@@ -91,7 +91,8 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-/ render auth_layout partial with block
+/ app/views/devise/sessions/new.html.haml
+
 = render "auth_layout" do
   / Choose what content to feature on the right side of the design
   - content_for :featured_block do

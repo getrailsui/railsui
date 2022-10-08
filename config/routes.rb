@@ -18,6 +18,8 @@ Railsui::Engine.routes.draw do
       get :signup
       get :signin
       get :reset_password
+      get :edit_password
+      get :edit
       get :confirmation
     end
 

@@ -4,7 +4,7 @@
   <div class="row g-0 vh-100 align-items-center">
     <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
       <div class="col-md-8 col-12 mx-auto">
-        <a href="#">
+        <a href="/" class="tw-pointer-events-none">
           <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
         </a>
         <h1 class="display-5 mb-4 mt-6">Sign up</h1>
@@ -44,6 +44,7 @@
 <div class="tw-max-w-4xl tw-mx-auto tw-my-16">
 
 <% content_for :erb, flush: true do %>
+<!-- app/views/devise/registrations/new.html.erb -->
 <%%= render "auth_layout" do %>
   <%% content_for :featured_block do %>
     <%%= image_tag "tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid" %>
@@ -84,6 +85,8 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
+/ app/views/devise/registrations/new.html.haml
+
 = render "auth_layout" do
   - content_for :featured_block do
     = image_tag "tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid"

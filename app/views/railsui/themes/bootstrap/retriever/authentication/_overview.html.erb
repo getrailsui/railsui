@@ -8,14 +8,24 @@
     <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Sign up</h3>
   <% end %>
 
+   <%= link_to systems_authentication_edit_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Edit</h3>
+  <% end %>
+
   <%= link_to systems_authentication_reset_password_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
     <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Reset password</h3>
   <% end %>
 
-  <%= link_to systems_authentication_reset_password_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
+  <%= link_to systems_authentication_edit_password_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Edit password</h3>
+  <% end %>
+
+
+  <%= link_to systems_authentication_confirmation_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
     <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Confirmation</h3>
   <% end %>
 </div>
+
 
 
 <div class="tw-my-10">
@@ -49,7 +59,7 @@
 <%= render_snippet(active_tab: "erb") %>
 
   <div class="tw-prose">
-    <p>Each corresponding view makes use of the layout partial as a means to keep code DRY. From there you can simply swap out forms and featured content as it often changes.</p>
+    <p>Each corresponding view makes use of the layout partial as a means to keep code DRY. From there you can simply swap out forms and featured content relative to the Rails UI theme you choose.</p>
   </div>
 
 <% content_for :html, flush: true do %>
@@ -62,12 +72,14 @@
   <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
     <div class="col-md-8 col-12 mx-auto">
       <%%= link_to root_path do %>
-        <%%= image_tag "logo.svg" alt: "logo" %>
+        <%%= image_tag "your-logo.svg" alt: "logo" %>
       <%% end %>
 
       <%%= yield %>
 
-      <%%= render "devise/shared/links" %>
+      <div class="mt-4">
+        <%%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
   <div class="retriever-auth-bg col-md-6 vh-100 d-flex align-items-center justify-content-center">
