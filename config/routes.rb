@@ -14,6 +14,7 @@ Railsui::Engine.routes.draw do
     get :flash
 
     namespace :authentication do
+      get :overview
       get :signup
       get :signin
       get :reset_password

@@ -1,0 +1,152 @@
+
+<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-gap-6 tw-my-8">
+  <%= link_to systems_authentication_signin_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 text" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Sign in</h3>
+  <% end %>
+
+  <%= link_to systems_authentication_signup_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Sign up</h3>
+  <% end %>
+
+  <%= link_to systems_authentication_reset_password_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Reset password</h3>
+  <% end %>
+
+  <%= link_to systems_authentication_reset_password_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Confirmation</h3>
+  <% end %>
+</div>
+
+
+<div class="tw-my-10">
+  <h2 class="tw-text-3xl tw-mb-6">Rails UI authentication design patterns.</h2>
+
+  <div class="tw-prose tw-mb-6 tw-bg-indigo-50 tw-p-4 tw-rounded-lg tw-max-w-full tw-text-indigo-900">
+   <p>Rails UI authentication templates map to the <a href="https://rubygems.org/gems/devise/" target="_blank" class="tw-font-medium tw-text-indigo-600">Devise</a> gem's <a href="https://github.com/heartcombo/devise/tree/main/app/views/devise" target="_blank" class="tw-font-medium tw-text-indigo-600">view templates</a> at this time. There may be future support for different authentication libraries or a solution built from scratch in the future.</p>
+  </div>
+
+  <div class="tw-prose tw-mb-6">
+    <p>Before diving into your Rails UI configuration there are some patterns in use for more efficient front-end development. Most of those patterns involve abstractions where it makes sense and others are a bit more opinionated.</p>
+
+    <h2>Use a global authentication layout partial</h2>
+    <p>Rails UI uses a reusable partial with a block pattern designed to repeat the existing authentication design. Because Devise ships with many different authentication strategies and forms it makes sense to extract repeatable code away.</p>
+  </div>
+
+
+<% content_for :erb, flush: true do %>
+<!-- render auth_layout partial with block (app/views/devise/_auth_layout.html.erb) -->
+<%%= render "auth_layout" do %>
+
+  <!-- Choose what content to feature  -->
+  <%% content_for :featured_block do %>
+
+  <%% end %>
+
+  <!-- other code -->
+<%% end %>
+<% end %>
+
+<%= render_snippet(active_tab: "erb") %>
+
+  <div class="tw-prose">
+    <p>Each corresponding view makes use of the layout partial as a means to keep code DRY. From there you can simply swap out forms and featured content as it often changes.</p>
+  </div>
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/_auth_layout.html.erb -->
+<div class="row g-0 vh-100 align-items-center">
+  <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
+    <div class="col-md-8 col-12 mx-auto">
+      <%%= link_to root_path do %>
+        <%%= image_tag "logo.svg" alt: "logo" %>
+      <%% end %>
+
+      <%%= yield %>
+
+      <%%= render "devise/shared/links" %>
+    </div>
+  </div>
+  <div class="retriever-auth-bg col-md-6 vh-100 d-flex align-items-center justify-content-center">
+    <%%= yield :featured_block %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/devise/_auth_layout.html.erb
+.row.g-0.vh-100.align-items-center
+  .col-lg-6.col-md-12.vh-100.d-flex.align-items-center.px-3.px-lg-6
+    .col-md-8.col-12.mx-auto
+      = link_to root_path do
+        = image_tag "logo.svg" alt: "logo"
+      = yield
+      = render "devise/shared/links"
+  .retriever-auth-bg.col-md-6.vh-100.d-flex.align-items-center.justify-content-center
+    = yield :featured_block
+<% end %>
+
+<%= render_snippet(active_tab: "erb") %>
+
+  <div class="tw-prose tw-mb-6">
+    <h2>Modified devise links partial</h2>
+    <p>Rails UI modifies the default <%= code_inline("app/views/devise/shared/_links.html.erb") %> partial supplied by the Devise gem for a more improved user experience. During the configuration phase of installing Rails UI the modified partial is copied over to your app so you needn't worry about updating this manually.</p>
+    <p>If you were to ever reinstall devise or use their supplied view template generator this would be overwritten.</p>
+  </div>
+
+  <% content_for :erb, flush: true do %>
+<!-- app/views/devise/shared/_links -->
+<%%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <p class="mb-3">
+    <%%= link_to "Forgot password?", new_password_path(resource_name), class: "text-muted text-decoration-underline" %>
+  </p>
+<#% end %>
+
+<%%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <p class="mb-3">
+    <%%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-muted text-decoration-underline" %>
+  </p>
+<%% end %>
+
+<%%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <p class="mb-3">
+    <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-muted text-decoration-underline" %>
+  </p>
+<%% end %>
+
+<%%- if devise_mapping.omniauthable? %>
+  <%%- resource_class.omniauth_providers.each do |provider| %>
+    <p class="mb-3">
+      <%%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %>
+    </p>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+  %p.mb-3
+    = link_to "Forgot password?", new_password_path(resource_name), class: "text-muted text-decoration-underline"
+
+- if devise_mapping.confirmable? &&  controller_name != 'confirmations'
+  %p.mb-3
+    = link_to Didn't receive confirmation instructions?, new_confirmation_path(resource_name), class: text-muted text-decoration-underline
+
+- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  %p.mb-3
+    = link_to Didn't receive unlock instructions?, new_unlock_path(resource_name), class: text-muted text-decoration-underline
+
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    %p.mb-3
+      = link_to Sign in with "#{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post
+<% end %>
+
+<%= render_snippet(active_tab: "erb") %>
+
+<div class="tw-prose tw-mb-6">
+  <p>Future versions of Rails UI will support themed and branded Omniauth provider links/buttons.</p>
+</div>
