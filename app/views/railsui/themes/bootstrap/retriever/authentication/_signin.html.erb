@@ -1,8 +1,8 @@
 <div class="tw-border-b">
 <div class="rui">
   <div class="row g-0 vh-100 align-items-center">
-    <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
-      <div class="col-md-8 col-12 mx-auto">
+    <div class="col-lg-5 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
+      <div class="rui-auth-form-wrap">
         <a href="/" class="tw-pointer-events-none">
           <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
         </a>
@@ -39,7 +39,7 @@
 
       </div>
     </div>
-    <div class="retriever-auth-bg col-md-6 vh-100 d-flex align-items-center justify-content-center">
+    <div class="rui-auth-feature-bg col-md-7 vh-100 d-flex align-items-center justify-content-center">
       <%= image_tag "sample-tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid" %>
     </div>
   </div>
@@ -79,7 +79,7 @@
     <%% if devise_mapping.rememberable? %>
       <div class="form-check mb-4">
         <%%= f.label :remember_me, class: "form-check-label" %>
-        <%%= f.check_box :remember_me, class: "form-check-input" %>
+        <%%= f.check_box :remember_me, class: "form-check-input", style: "margin-top: 2px;" %>
       </div>
     <%% end %>
 
@@ -111,7 +111,7 @@
     - if devise_mapping.rememberable?
       .form-check.mb-4
         = f.label :remember_me, class: "form-check-label"
-        = f.check_box :remember_me, class: "form-check-input"
+        = f.check_box :remember_me, class: "form-check-input", style: "margin-top: 2px;"
     .d-grid.mb-4
       = f.submit "Sign in", class: "btn btn-primary btn-lg"
 <% end %>

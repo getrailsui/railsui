@@ -1,42 +1,42 @@
 <div class="tw-border-b">
 <div class="rui">
 <div class="row g-0 vh-100 align-items-center">
-  <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
-    <div class="col-md-8 col-12 mx-auto">
-      <a href="#" class="tw-pointer-events-none">
+  <div class="col-lg-5 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
+    <div class="rui-auth-form-wrap">
+      <a href="/">
         <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
       </a>
 
-  <h1 class="h5 mb-4 mt-6">Resend confirmation instructions</h1>
+        <h1 class="h5 mb-3 mt-6">Resend confirmation instructions</h1>
 
-  <p class="text-muted mb-3">Enter your email to receive instructions on how to confirm your account.</p>
+        <p class="text-muted mb-4">Enter your email to receive instructions on how to confirm your account.</p>
 
-  <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="put" autocomplete="off">
-  <input type="hidden" name="authenticity_token" value="#" autocomplete="off">
-    <div class="mb-4">
-      <label class="form-label" for="user_email">Email</label>
-      <input value="" class="form-control" type="email" name="user[email]" id="user_email">
-    </div>
+        <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post">
+          <input type="hidden" name="_method" value="put" autocomplete="off"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
 
-    <div class="d-grid">
-      <input type="submit" name="commit" value="Resend confirmation instructions" class="btn btn-primary btn-lg tw-pointer-events-none">
-    </div>
-  </form>
+          <div class="mb-4">
+            <label class="form-label" for="user_email">Email</label>
+            <input autofocus="autofocus" autocomplete="email" value="" class="form-control" type="email" name="user[email]" id="user_email">
+          </div>
+
+          <div class="d-grid">
+            <input type="submit" name="commit" value="Resend confirmation instructions" class="btn btn-primary btn-lg" data-disable-with="Resend confirmation instructions">
+          </div>
+      </form>
 
       <div class="mt-4">
-        <p class="mb-3">
-          <a class="text-muted text-decoration-underline tw-pointer-events-none" href="#">Forgot password?</a>
+          <p class="mb-3">
+          <a class="text-muted text-decoration-underline" href="/users/password/new">Forgot password?</a>
         </p>
       </div>
     </div>
   </div>
-  <div class="retriever-auth-bg col-md-6 vh-100 d-flex align-items-center justify-content-center">
+  <div class="rui-auth-feature-bg col-md-7 vh-100 d-flex align-items-center justify-content-center">
     <%= image_tag "sample-tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid" %>
   </div>
 </div>
 </div>
 </div>
-
 <div class="tw-max-w-4xl tw-mx-auto tw-my-16">
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/confirmations/new.html.erb-->
@@ -46,9 +46,9 @@
     <%%= image_tag "tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid" %>
   <%% end %>
 
-  <h1 class="h5 mb-4 mt-6">Resend confirmation instructions</h1>
+  <h1 class="h5 mb-3 mt-6">Resend confirmation instructions</h1>
 
-  <p class="text-muted mb-3">Enter your email to receive instructions on how to confirm your account.</p>
+  <p class="text-muted mb-4">Enter your email to receive instructions on how to confirm your account.</p>
 
   <%%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%%= render "devise/shared/error_messages", resource: resource %>
@@ -73,9 +73,9 @@
   content_for :featured_block do
     = image_tag "tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid"
 
-  %h1.h5.mb-4.mt-6 Resend confirmation instructions
+  %h1.h5.mb-3.mt-6 Resend confirmation instructions
 
-  %p.text-muted.mb-3 Enter your email to receive instructions on how to confirm your account.
+  %p.text-muted.mb-4 Enter your email to receive instructions on how to confirm your account.
 
   = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
 

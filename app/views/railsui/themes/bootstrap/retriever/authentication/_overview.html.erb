@@ -9,7 +9,7 @@
   <% end %>
 
    <%= link_to systems_authentication_edit_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
-    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Edit</h3>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Edit Account</h3>
   <% end %>
 
   <%= link_to systems_authentication_reset_password_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200" do %>
@@ -69,10 +69,10 @@
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/_auth_layout.html.erb -->
 <div class="row g-0 vh-100 align-items-center">
-  <div class="col-lg-6 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
-    <div class="col-md-8 col-12 mx-auto">
+  <div class="col-lg-5 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
+    <div class="rui-auth-form-wrap">
       <%%= link_to root_path do %>
-        <%%= image_tag "your-logo.svg" alt: "logo" %>
+        <%%= image_tag "logo.svg", alt: "logo" %>
       <%% end %>
 
       <%%= yield %>
@@ -82,7 +82,7 @@
       </div>
     </div>
   </div>
-  <div class="retriever-auth-bg col-md-6 vh-100 d-flex align-items-center justify-content-center">
+  <div class="rui-auth-feature-bg col-md-7 vh-100 d-flex align-items-center justify-content-center">
     <%%= yield :featured_block %>
   </div>
 </div>
@@ -91,13 +91,13 @@
 <% content_for :haml, flush: true do %>
 / app/views/devise/_auth_layout.html.erb
 .row.g-0.vh-100.align-items-center
-  .col-lg-6.col-md-12.vh-100.d-flex.align-items-center.px-3.px-lg-6
-    .col-md-8.col-12.mx-auto
+  .col-lg-5.col-md-12.vh-100.d-flex.align-items-center.px-3.px-lg-6
+    .rui-auth-form-wrap
       = link_to root_path do
         = image_tag "logo.svg" alt: "logo"
       = yield
       = render "devise/shared/links"
-  .retriever-auth-bg.col-md-6.vh-100.d-flex.align-items-center.justify-content-center
+  .rui-auth-feature-bg.col-md-7.vh-100.d-flex.align-items-center.justify-content-center
     = yield :featured_block
 <% end %>
 
@@ -109,13 +109,13 @@
     <p>If you were to ever reinstall devise or use their supplied view template generator this would be overwritten.</p>
   </div>
 
-  <% content_for :erb, flush: true do %>
+<% content_for :erb, flush: true do %>
 <!-- app/views/devise/shared/_links -->
 <%%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <p class="mb-3">
     <%%= link_to "Forgot password?", new_password_path(resource_name), class: "text-muted text-decoration-underline" %>
   </p>
-<#% end %>
+<%% end %>
 
 <%%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <p class="mb-3">
