@@ -93,5 +93,18 @@ module Railsui
       filename = "icons/#{options[:variant]}/#{name}.svg"
       inline_svg_tag(filename, options)
     end
+
+    def heading(options={})
+      text = options[:text] || "Enter some text"
+      tag = options[:tag] || :h2
+      id = options[:id]
+      classes = options[:class]
+
+      content_tag tag.to_sym, text, id: id, class: classes, data: {
+        action: "click->anchor#copy",
+        controller: "anchor",
+        anchor_url_value: url_for(only_path: false)
+      }
+    end
   end
 end

@@ -46,8 +46,7 @@
 </div>
 </div>
 
-
-<div class="tw-max-w-4xl tw-mx-auto tw-my-16">
+<div class="tw-max-w-3xl tw-mx-auto tw-my-16">
 
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/sessions/new.html.erb-->
@@ -62,7 +61,7 @@
 
   <p class="mb-4">Or <%%= link_to "Sign up", new_user_registration_path %> for an account.</p>
 
-  <%%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false }}) do |f| %>
 
     <%%= render "devise/shared/error_messages", resource: resource %>
 
@@ -100,7 +99,7 @@
   %h1.display-5.mb-4.mt-6 Sign in
   %p.mb-4
     Or #{link_to "Sign up", new_user_registration_path} for an account.
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false }}) do |f|
     = render "devise/shared/error_messages", resource: resource
     .mb-4
       = f.label :email, class: "form-label"
@@ -117,7 +116,4 @@
 <% end %>
 
 <%= render_snippet(active_tab: "erb") %>
-
-
-
 </div>

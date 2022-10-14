@@ -9,3 +9,16 @@
 .rui-js-pill {
   @apply tw-bg-gradient-to-br tw-from-yellow-300 tw-to-yellow-500 tw-text-black tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs;
 }
+
+[data-controller=anchor] {
+  @apply tw-relative tw-cursor-pointer;
+}
+
+[data-controller=anchor]::before {
+  content: "#";
+  @apply tw-absolute tw-transition tw-text-slate-400 tw-font-mono tw-font-semibold tw-text-xl -tw-left-4 tw-top-0 tw-opacity-0 tw-duration-300;
+}
+
+[data-controller=anchor]:hover::before {
+  @apply tw-opacity-100;
+}

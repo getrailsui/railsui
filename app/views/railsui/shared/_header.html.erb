@@ -1,9 +1,10 @@
 <% framework = Railsui::config.css_framework.downcase %>
 
 <% unless params[:controller] == "railsui/systems" %>
-  <p class="text-slate-500"><%= params[:controller].gsub("railsui/systems/", "").titleize %></p>
+  <%= heading text: params[:controller].gsub("railsui/systems/", "").titleize, id: params[:controller].gsub("railsui/systems/", ""), tag: "p", class: "text-slate-500" %>
 <% end %>
-<h1 class="tw-text-5xl text-slate-800 tw-font-bold"><%= params[:action].titleize %></h1>
+
+<%= heading text: params[:action].titleize, id: params[:action], tag: "h1", class: "tw-text-5xl text-slate-800 tw-font-bold" %>
 
 <div class="tw-grid tw-grid-cols-3 tw-gap-10 tw-mt-8 tw-pb-8 tw-border-b tw-border-slate-200">
   <div>

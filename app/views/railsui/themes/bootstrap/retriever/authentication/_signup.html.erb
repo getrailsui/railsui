@@ -60,7 +60,7 @@
 
   <p class="mb-4">Or <%%= link_to "Sign in", new_session_path(resource_name) %> to your account.</p>
 
-  <%%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false }}) do |f| %>
 
     <%%= render "devise/shared/error_messages", resource: resource %>
 
@@ -98,7 +98,7 @@
   %h1.display-5.mb-4.mt-6 Sign up
   %p.mb-4
     Or #{link_to "Sign in", new_session_path(resource_name)} to your account.
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false }}) do |f|
     = render "devise/shared/error_messages", resource: resource
     .mb-4
       = f.label :email, class: "form-label"
