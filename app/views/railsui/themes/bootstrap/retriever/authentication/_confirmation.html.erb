@@ -2,7 +2,7 @@
 <div class="rui">
 <div class="row g-0 vh-100 align-items-center">
   <div class="col-lg-5 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
-    <div class="rui-auth-form-wrap">
+    <div class="rui-auth-form-wrap tw-pointer-events-none tw-select-none">
       <a href="/">
         <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
       </a>
@@ -16,7 +16,7 @@
 
           <div class="mb-4">
             <label class="form-label" for="user_email">Email</label>
-            <input autofocus="autofocus" autocomplete="email" value="" class="form-control" type="email" name="user[email]" id="user_email">
+            <input  value="" class="form-control" type="email" name="user[email]" id="user_email">
           </div>
 
           <div class="d-grid">

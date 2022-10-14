@@ -1,26 +1,36 @@
-<h2>Log in</h2>
+<%= render "auth_layout" do %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
+  <% content_for :featured_block do %>
+    <%= image_tag "sample-tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid" %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  <h1 class="display-5 mb-4 mt-6">Sign in</h1>
 
-<%= render "devise/shared/links" %>
+  <p class="mb-4">Or <%= link_to "Sign up", new_user_registration_path %> for an account.</p>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false }}) do |f| %>
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="mb-4">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password, class: "form-label" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-check mb-4">
+        <%= f.label :remember_me, class: "form-check-label", style: "margin-top: 2px;" %>
+        <%= f.check_box :remember_me, class: "form-check-input" %>
+      </div>
+    <% end %>
+
+    <div class="d-grid mb-4">
+      <%= f.submit "Sign in", class: "btn btn-primary btn-lg" %>
+    </div>
+  <% end %>
+<% end %>

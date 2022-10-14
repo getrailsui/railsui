@@ -6,19 +6,19 @@
         <p class="text-muted">Manage personal details and login credentials.</p>
       </div>
       <div class="col-md-7">
-        <div class="border p-5 rounded">
-          <form class="edit_user" id="edit_user" action="#" accept-charset="UTF-8" method="#" class="tw-pointer-events-none">
+        <div class="border p-5 rounded tw-pointer-events-none tw-select-none">
+          <form class="edit_user" id="edit_user" action="#" accept-charset="UTF-8" method="#" class="tw-pointer-events-none tw-select-none">
             <input type="hidden" name="_method" value="put" autocomplete="off">
             <input type="hidden" name="authenticity_token" value="#" autocomplete="off">
 
             <div class="mb-4">
               <label class="form-label" for="user_email">Email</label>
-              <input autofocus="autofocus" autocomplete="email" class="form-control" type="email" value="admin@example.com" name="user[email]" id="user_email">
+              <input class="form-control" type="email" value="admin@example.com" name="user[email]" id="user_email">
             </div>
 
             <div class="mb-4">
               <label class="form-label" for="user_password">Password</label>
-              <input autocomplete="new-password" class="form-control" type="password" name="user[password]" id="user_password">
+              <input class="form-control" type="password" name="user[password]" id="user_password">
               <span class="form-text">Leave blank if you don't want wish to change it.</span>
               <span class="form-text">6 characters minimum</span>
             </div>

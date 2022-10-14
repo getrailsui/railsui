@@ -1,29 +1,37 @@
-<h2>Sign up</h2>
+<%= render "auth_layout" do %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <% content_for :featured_block do %>
+    <%= image_tag "sample-tweet.svg", alt: "A sample tweet to use for a testimonial", class: "img-fluid" %>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <h1 class="display-5 mb-4 mt-6">Sign up</h1>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <p class="mb-4">Or <%= link_to "Sign in", new_session_path(resource_name) %> to your account.</p>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false }}) do |f| %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="mb-4">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password, class: "form-label" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <% if @minimum_password_length %>
+        <div class="form-text">(<%= @minimum_password_length %> characters minimum)</div>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :password_confirmation, class: "form-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+
+    <div class="d-grid">
+      <%= f.submit "Sign up", class: "btn btn-primary btn-lg" %>
+    </div>
+  <% end %>
 <% end %>
-
-<%= render "devise/shared/links" %>

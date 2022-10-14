@@ -2,20 +2,20 @@
 <div class="rui">
   <div class="row g-0 vh-100 align-items-center">
     <div class="col-lg-5 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
-      <div class="rui-auth-form-wrap">
-        <a href="/" class="tw-pointer-events-none">
+      <div class="rui-auth-form-wrap tw-pointer-events-none tw-select-none">
+        <a href="/">
           <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
         </a>
 
         <h1 class="display-5 mb-4 mt-6">Sign in</h1>
 
-        <p class="mb-4">Or <a href="#" class="tw-pointer-events-none">Sign up</a> for an account.</p>
+        <p class="mb-4">Or <a href="#">Sign up</a> for an account.</p>
 
         <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
 
           <div class="mb-4">
             <label class="form-label" for="user_email">Email</label>
-            <input autofocus="autofocus"  class="form-control" type="email" value="" name="user[email]" id="user_email">
+            <input class="form-control" type="email" value="" name="user[email]" id="user_email">
           </div>
 
           <div class="mb-4">
@@ -29,12 +29,12 @@
           </div>
 
           <div class="d-grid mb-4">
-            <input type="submit" name="commit" value="Sign in" class="btn btn-primary btn-lg tw-pointer-events-none">
+            <input type="submit" name="commit" value="Sign in" class="btn btn-primary btn-lg">
           </div>
         </form>
 
         <p class="mb-3">
-          <a class="text-muted text-decoration-underline tw-pointer-events-none" href="#">Forgot password?</a>
+          <a class="text-muted text-decoration-underline" href="#">Forgot password?</a>
         </p>
 
       </div>

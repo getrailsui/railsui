@@ -1,7 +1,7 @@
 <div class="rui tw-border-b">
   <div class="row g-0 vh-100 align-items-center">
     <div class="col-lg-5 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
-      <div class="rui-auth-form-wrap">
+      <div class="rui-auth-form-wrap tw-select-none tw-pointer-events-none">
         <a href="/">
           <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
         </a>
@@ -14,17 +14,18 @@
 
           <div class="mb-4">
             <label class="form-label" for="user_email">Email</label>
-            <input autofocus="autofocus" autocomplete="email" class="form-control" type="email" value="" name="user[email]" id="user_email">
+            <input class="form-control" type="email" value="" name="user[email]" id="user_email">
           </div>
 
           <div class="d-grid">
-            <input type="submit" name="commit" value="Resend unlock instructions" class="btn btn-primary btn-lg tw-pointer-events-none">
+            <input type="submit" name="commit" value="Resend unlock instructions" class="btn btn-primary btn-lg">
           </div>
         </form>
 
         <div class="mt-4">
           <p class="mb-3">
-            <a class="text-muted text-decoration-underline" href="/users/password/new">Forgot password?</a>
+            <a class="text-muted text-decoration-underline" href=
+            "#">Forgot password?</a>
           </p>
 
         </div>
