@@ -25,32 +25,32 @@
     </div>
   </div>
 
-  <% content_for :erb, flush: true do %>
-    <!-- app/views/shared/error_messages.html.erb -->
+<% content_for :erb, flush: true do %>
+<!-- app/views/shared/error_messages.html.erb -->
 
-    <%% if resource.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <p class="fw-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+<%% if resource.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  <p class="fw-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
 
-      <ul class="list-disc">
-        <%% resource.errors.each do |error| %>
-          <li><%%= error.full_message %></li>
-          <%% end %>
-        </ul>
-      </div>
+  <ul class="list-disc">
+    <%% resource.errors.each do |error| %>
+      <li><%%= error.full_message %></li>
       <%% end %>
-    <% end %>
+    </ul>
+  </div>
+<%% end %>
+<% end %>
 
-    <% content_for :haml, flush: true do %>
-      / app/views/shared/error_messages.haml.erb
+<% content_for :haml, flush: true do %>
+/ app/views/shared/error_messages.haml.erb
 
-      - if resources.errors.any?
-      .alert.alert-danger{:role=> "alert"}
-      %p.fw-bold= #{pluralize(resource.errors.count, "error")} prohibited this post from being saved:
-      %ul.list-disc
+- if resources.errors.any?
+  .alert.alert-danger{:role=> "alert"}
+    %p.fw-bold= #{pluralize(resource.errors.count, "error")} prohibited this post from being saved:
+    %ul.list-disc
       - resource.errors.each do |error|
-      %li
-      = error.full_message
-    <% end %>
-    <%= render_snippet %>
+        %li
+          = error.full_message
+<% end %>
+<%= render_snippet active_tab: "erb" %>
   </div>

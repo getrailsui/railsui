@@ -4,10 +4,6 @@
   <div class="rui">
     <svg style="font-size: calc(1.475rem + 2.7vw); text-anchor: middle;" class="img-fluid" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Responsive image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#cbd5e1"></rect><text x="50%" y="50%" fill="#334155" dy=".3em" class=" fw-bold">Responsive image</text></svg>
   </div>
-
-<%= render "railsui/shared/snippet", lang: "html" do %>
-  <img src="..." class="img-fluid" alt="...">
-<% end %>
 </div>
 
 <%# .html %>
@@ -22,7 +18,7 @@
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-  %img.img-fluid{:alt => "...", :src => "..."}/
+  %img.img-fluid{:alt => "...", :src => "..."}
 <% end %>
 <%= render_snippet %>
 
@@ -39,10 +35,10 @@
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-  <div class="clearfix">
-    <img src="..." class="rounded float-start" alt="...">
-    <img src="..." class="rounded float-end" alt="...">
-  </div>
+<div class="clearfix">
+  <img src="..." class="rounded float-start" alt="...">
+  <img src="..." class="rounded float-end" alt="...">
+</div>
 <% end %>
 
 <%# .erb %>
@@ -50,14 +46,14 @@
 <%% tag.div class: "clearfix" do %>
   <%%= image_tag "...", class: "rounded float-start", alt: "..."%>
   <%%= image_tag "...", class: "rounded float-end", alt: "..."%>
-  <%% end %>
+<%% end %>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-  .clearfix
-  %img.rounded.float-start{:alt => "...", :src => "..."}/
-  %img.rounded.float-end{:alt => "...", :src => "..."}/
+.clearfix
+  %img.rounded.float-start{:alt => "...", :src => "..."}
+  %img.rounded.float-end{:alt => "...", :src => "..."}
 <% end %>
 <%= render_snippet %>
 </div>
@@ -80,13 +76,13 @@
 <% content_for :erb, flush: true do %>
 <%%= tag.div class: "clearfix" do %>
   <%%= image_tag "...", class: "rounded mx-auto d-block", alt: "..."%>
-  <%% end %>
+<%% end %>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-  .clearfix
-  %img.rounded.mx-auto.d-block{:alt => "...", :src => "..."}/
+.clearfix
+  %img.rounded.mx-auto.d-block{:alt => "...", :src => "..."}
 <% end %>
 <%= render_snippet %>
 </div>

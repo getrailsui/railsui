@@ -12,6 +12,7 @@ Railsui::Engine.routes.draw do
     get :authentication
     get :marketing
     get :flash
+    get :icons
 
     namespace :authentication do
       get :overview

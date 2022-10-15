@@ -55,11 +55,11 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Directions" %>
 
-  <div class="tw-prose">
+  <div class="tw-prose tw-mb-6">
     <p>Use an additional data attribute called <%= code_inline("data-bs-placement") %> to denote what side of a given element the tooltip will appear.</p>
   </div>
 
-  <div class="rui tw-my-6">
+  <div class="rui">
     <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
       Tooltip on top
     </button>

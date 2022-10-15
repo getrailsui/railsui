@@ -19,46 +19,46 @@
     </div>
   </div>
 
-  <%# .html %>
-  <% content_for :html, flush: true do %>
-    <div class="mb-3">
-      <label for="form_group_1" class="form-label">Example label</label>
-      <input type="text" class="form-control" id="form_group_1" placeholder="Example input placeholder">
-    </div>
-    <div class="mb-3">
-      <label for="form_group_2" class="form-label">Another label</label>
-      <input type="text" class="form-control" id="form_group_2" placeholder="Another input placeholder">
-    </div>
-  <% end %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="mb-3">
+  <label for="form_group_1" class="form-label">Example label</label>
+  <input type="text" class="form-control" id="form_group_1" placeholder="Example input placeholder">
+</div>
+<div class="mb-3">
+  <label for="form_group_2" class="form-label">Another label</label>
+  <input type="text" class="form-control" id="form_group_2" placeholder="Another input placeholder">
+</div>
+<% end %>
 
-  <%# .erb %>
-  <% content_for :erb, flush: true do %>
-    <%%= form_with model: @form do |f| %>
-      <div class="mb-3">
-        <%%= f.label :form_group_1, "Example label", class: "form-label" %>
-        <%%= f.text_field :form_group_1, class: "form-control", placeholder: "Example input placeholder" %>
-      </div>
-      <div class="mb-3">
-        <%%= f.label :form_group_2, "Another label", class: "form-label" %>
-        <%%= f.text_field :form_group_2, class: "form-control", placeholder: "Another input placeholder" %>
-      </div>
-      <%%= f.submit class: "btn btn-primary" %>
-      <%% end %>
-    <% end %>
-
-    <%# .haml %>
-    <% content_for :haml, flush: true do %>
-      = form_with model: @form do |f|
-      .mb-3
-      = f.label :form_group_1, "Example label", class: "form-label"
-      = f.text_field :form_group_1, class: "form-control", placeholder: "Example input placeholder"
-      .mb-3
-      = f.label :form_group_2, "Another label", class: "form-label"
-      = f.text_field :form_group_2, class: "form-control", placeholder: "Another input placeholder"
-      = f.submit class: "btn btn-primary"
-    <% end %>
-    <%= render_snippet %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="mb-3">
+    <%%= f.label :form_group_1, "Example label", class: "form-label" %>
+    <%%= f.text_field :form_group_1, class: "form-control", placeholder: "Example input placeholder" %>
   </div>
+  <div class="mb-3">
+    <%%= f.label :form_group_2, "Another label", class: "form-label" %>
+    <%%= f.text_field :form_group_2, class: "form-control", placeholder: "Another input placeholder" %>
+  </div>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .mb-3
+    = f.label :form_group_1, "Example label", class: "form-label"
+    = f.text_field :form_group_1, class: "form-control", placeholder: "Example input placeholder"
+  .mb-3
+    = f.label :form_group_2, "Another label", class: "form-label"
+    = f.text_field :form_group_2, class: "form-control", placeholder: "Another input placeholder"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
 
   <%# Forms - Grid %>
   <div class="tw-my-16">
@@ -81,51 +81,51 @@
       </div>
     </div>
 
-    <%# .html %>
-    <% content_for :html, flush: true do %>
-      <div class="row">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-        </div>
-        <div class="col">
-          <input type="submit" class="btn btn-primary" value="Submit" />
-        </div>
-      </div>
-    <% end %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="row">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+  </div>
+  <div class="col">
+    <input type="submit" class="btn btn-primary" value="Submit" />
+  </div>
+</div>
+<% end %>
 
     <%# .erb %>
-    <% content_for :erb, flush: true do %>
-      <%%= form_with model: @form do |f| %>
-        <div class="row">
-          <div class="col">
-            <%%= f.text_field :first_name, class: "form-control", placeholder: "First name", "aria-label": "First name" %>
-          </div>
-          <div class="col">
-            <%%= f.text_field :last_name, class: "form-control", placeholder: "Last name", "aria-label": "Last name" %>
-          </div>
-          <div class="col">
-            <%%= f.submit class: "btn btn-primary" %>
-          </div>
-        </div>
-        <%% end %>
-      <% end %>
-
-      <%# .haml %>
-      <% content_for :haml, flush: true do %>
-        = form_with model: @form do |f|
-        .row
-        .col
-        = f.text_field :first_name, class: "form-control", "aria-label": "First name"
-        .col
-        = f.text_field :last_name, class: "form-control", "aria-label": "Last name"
-        .col
-        = f.submit class: "btn btn-primary"
-      <% end %>
-      <%= render_snippet %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="row">
+    <div class="col">
+      <%%= f.text_field :first_name, class: "form-control", placeholder: "First name", "aria-label": "First name" %>
     </div>
+    <div class="col">
+      <%%= f.text_field :last_name, class: "form-control", placeholder: "Last name", "aria-label": "Last name" %>
+    </div>
+    <div class="col">
+      <%%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .row
+    .col
+      = f.text_field :first_name, class: "form-control", "aria-label": "First name"
+    .col
+      = f.text_field :last_name, class: "form-control", "aria-label": "Last name"
+    .col
+      = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
 
     <%# Forms - Horizontal %>
     <div class="tw-my-16">
@@ -154,58 +154,58 @@
         </form>
       </div>
 
-      <%# .html %>
-      <% content_for :html, flush: true do %>
-        <form>
-          <div class="row mb-3">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="email">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="password">
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-      <% end %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<form>
+  <div class="row mb-3">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="password" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="password">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+<% end %>
 
-      <%# .erb %>
-      <% content_for :erb, flush: true do %>
-        <%%= form_with model: @form do |f| %>
-          <div class="row mb-3">
-            <%%= f.label :email, class: "col-md-2 col-form-label" %>
-            <div class="col-sm-10">
-              <%%= f.email_field :email, class: "form-control" %>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <%%= f.label :password, class: "col-md-2 col-form-label" %>
-            <div class="col-sm-10">
-              <%%= f.password_field :password, class: "form-control" %>
-            </div>
-          </div>
-          <%%= f.submit class: "btn btn-primary" %>
-          <%% end %>
-        <% end %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="row mb-3">
+    <%%= f.label :email, class: "col-md-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%%= f.email_field :email, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%%= f.label :password, class: "col-md-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%%= f.password_field :password, class: "form-control" %>
+    </div>
+  </div>
+  <%%= f.submit class: "btn btn-primary" %>
+  <%% end %>
+<% end %>
 
-        <%# .haml %>
-        <% content_for :haml, flush: true do %>
-          = form_with model: @form do |f|
-          .row.mb-3
-          = f.label :email, class: "col-md-2 col-form-label"
-          .col-sm-10
-          = f.email_field :email, class: "form-control"
-          .row.mb-3
-          = f.label :email, class: "col-md-2 col-form-label"
-          .col-sm-10
-          = f.password_field :password, clsas: "form-control"
-          = f.submit class: "btn btn-primary"
-        <% end %>
-        <%= render_snippet %>
-      </div>
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .row.mb-3
+    = f.label :email, class: "col-md-2 col-form-label"
+    .col-sm-10
+      = f.email_field :email, class: "form-control"
+  .row.mb-3
+    = f.label :email, class: "col-md-2 col-form-label"
+    .col-sm-10
+      = f.password_field :password, clsas: "form-control"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
 
-      <%= render "railsui/shared/read_more", subject: "form layout", link: "https://getbootstrap.com/docs/5.2/forms/layout/" %>
+<%= render "railsui/shared/read_more", subject: "form layout", link: "https://getbootstrap.com/docs/5.2/forms/layout/" %>

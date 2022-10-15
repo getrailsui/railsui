@@ -11,173 +11,173 @@
 
   </div>
   <%# .html %>
-  <% content_for :html, flush: true do %>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="check_default">
-      <label class="form-check-label" for="check_default">
-        Default checkbox
-      </label>
-    </div>
-  <% end %>
+<% content_for :html, flush: true do %>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="check_default">
+  <label class="form-check-label" for="check_default">
+    Default checkbox
+  </label>
+</div>
+<% end %>
 
-  <%# .erb %>
-  <% content_for :erb, flush: true do %>
-    <!-- ActionView::Helpers::FormTagHelper -->
-    <%%= tag.div class: "form-check" do %>
-      <%%= check_box_tag :check_default, nil, false, class: "form-check-input" %>
-      <%%= label_tag :check_default, "Default checkbox", class: "form-check-label" %>
-      <%% end %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.div class: "form-check" do %>
+  <%%= check_box_tag :check_default, nil, false, class: "form-check-input" %>
+  <%%= label_tag :check_default, "Default checkbox", class: "form-check-label" %>
+<%% end %>
 
-      <!-- ActionView::Helpers::FormHelper -->
-      <%%= form_with model: @form do |f| %>
-        <%% tag.div class: "form-check" do %>
-          <%%= f.check_box :check_default, class: "form-check-input" %>
-          <%%= f.label :check_default, "Default checkbox", class: "form-check-label" %>
-          <%% end %>
-          <%%= f.submit class: "btn btn-primary" %>
-          <%% end %>
-        <% end %>
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <%% tag.div class: "form-check" do %>
+    <%%= f.check_box :check_default, class: "form-check-input" %>
+    <%%= f.label :check_default, "Default checkbox", class: "form-check-label" %>
+  <%% end %>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
 
-        <%# .haml %>
-        <% content_for :haml, flush: true do %>
-          / ActionView::Helpers::FormHelper
-          = form_with model: @form do |f|
-          .form-check
-          = f.check_box :check_default, class: "form-check-input"
-          = f.label :check_default, "Default checkbox", class: "form-label"
-          = f.submit class: "btn btn-primary"
-        <% end %>
-        <%= render_snippet %>
-      </div>
+    <%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-check
+    = f.check_box :check_default, class: "form-check-input"
+    = f.label :check_default, "Default checkbox", class: "form-label"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
 
-      <%#### Radios %>
+<%#### Radios %>
 
-      <div class="tw-my-16">
-        <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Radios" %>
+<div class="tw-my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Radios" %>
 
-        <div class="rui">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radio_default" id="radio_default_1">
-            <label class="form-check-label" for="radio_default_1">
-              Default radio
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radio_default" id="radio_default_2" checked>
-            <label class="form-check-label" for="radio_default_2">
-              Default checked radio
-            </label>
-          </div>
-        </div>
+<div class="rui">
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="radio_default" id="radio_default_1">
+    <label class="form-check-label" for="radio_default_1">
+      Default radio
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="radio_default" id="radio_default_2" checked>
+    <label class="form-check-label" for="radio_default_2">
+      Default checked radio
+    </label>
+  </div>
+</div>
 
-        <%# .html %>
-        <% content_for :html, flush: true do %>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radio_default" id="radio_default_1">
-            <label class="form-check-label" for="radio_default_1">
-              Default radio
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radio_default" id="radio_default_2" checked>
-            <label class="form-check-label" for="radio_default_2">
-              Default checked radio
-            </label>
-          </div>
-        <% end %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="radio_default" id="radio_default_1">
+  <label class="form-check-label" for="radio_default_1">
+    Default radio
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="radio_default" id="radio_default_2" checked>
+  <label class="form-check-label" for="radio_default_2">
+    Default checked radio
+  </label>
+</div>
+<% end %>
 
-        <%# .erb %>
-        <% content_for :erb, flush: true do %>
-          <!-- ActionView::Helpers::FormTagHelper -->
-          <%%= tag.div class: "form-check" do %>
-            <%%= radio_button_tag "radio_default", "1", false, class: "form-check-input" %>
-            <%%= label_tag "radio_default_1", "Default radio", class: "form-check-label" %>
-            <%% end %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.div class: "form-check" do %>
+  <%%= radio_button_tag "radio_default", "1", false, class: "form-check-input" %>
+  <%%= label_tag "radio_default_1", "Default radio", class: "form-check-label" %>
+<%% end %>
 
-            <%%= tag.div class: "form-check" do %>
-              <%%= radio_button_tag "radio_default", "2", true, class: "form-check-input" %>
-              <%%= label_tag "radio_default_2", "Default checked radio", class: "form-check-label" %>
-              <%% end %>
+<%%= tag.div class: "form-check" do %>
+  <%%= radio_button_tag "radio_default", "2", true, class: "form-check-input" %>
+  <%%= label_tag "radio_default_2", "Default checked radio", class: "form-check-label" %>
+<%% end %>
 
-              <!-- ActionView::Helpers::FormHelper -->
-              <%%= form_with model: @form do |f| %>
-                <%%= tag.div class: "form-check" do %>
-                  <%%= f.radio_button_tag "radio_default", "1", false, class: "form-check-input" %>
-                  <%%= f.label :radio_default_1, "Default radio", class: "form-check-label" %>
-                  <%% end %>
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <%%= tag.div class: "form-check" do %>
+    <%%= f.radio_button_tag "radio_default", "1", false, class: "form-check-input" %>
+    <%%= f.label :radio_default_1, "Default radio", class: "form-check-label" %>
+  <%% end %>
 
-                  <%%= tag.div class: "form-check" do %>
-                    <%%= f.radio_button_tag "radio_default", "2", true, class: "form-check-input" %>
-                    <%%= f.label :radio_default_2, "Default checked radio", class: "form-check-label" %>
-                    <%% end %>
+  <%%= tag.div class: "form-check" do %>
+    <%%= f.radio_button_tag "radio_default", "2", true, class: "form-check-input" %>
+    <%%= f.label :radio_default_2, "Default checked radio", class: "form-check-label" %>
+  <%% end %>
 
-                    <%%= f.submit class: "btn btn-primary" %>
-                    <%% end %>
-                  <% end %>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
 
-                  <%# .haml %>
-                  <% content_for :haml, flush: true do %>
-                    / ActionView::Helpers::FormHelper
-                    = form_with model: @form do |f|
-                    .form-check
-                    = f.radio_button_tag "radio_default", "1", false, class: "form-check-input"
-                    = f.label :radio_default_1, "Default radio", class: "form-check-label"
-                    .form-check
-                    = f.radio_button_tag "radio_default", "2", true, class: "form-check-input"
-                    = f.label :radio_default_2, "Default checked radio", class: "form-check-label"
-                    = f.submit class: "btn btn-primary"
-                  <% end %>
-                  <%= render_snippet %>
-                </div>
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-check
+    = f.radio_button_tag "radio_default", "1", false, class: "form-check-input"
+    = f.label :radio_default_1, "Default radio", class: "form-check-label"
+  .form-check
+    = f.radio_button_tag "radio_default", "2", true, class: "form-check-input"
+    = f.label :radio_default_2, "Default checked radio", class: "form-check-label"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
 
-                <%#### Switches %>
+<%#### Switches %>
 
-                <div class="tw-my-16">
-                  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Switches" %>
+<div class="tw-my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Switches" %>
 
-                  <div class="rui">
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" id="switch_default">
-                      <label class="form-check-label" for="switch_default">Default switch checkbox input</label>
-                    </div>
-                  </div>
+<div class="rui">
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="switch_default">
+    <label class="form-check-label" for="switch_default">Default switch checkbox input</label>
+  </div>
+</div>
 
-                  <%# .html %>
-                  <% content_for :html, flush: true do %>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" id="switch_default">
-                      <label class="form-check-label" for="switch_default">Default switch checkbox input</label>
-                    </div>
-                  <% end %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="switch_default">
+  <label class="form-check-label" for="switch_default">Default switch checkbox input</label>
+</div>
+<% end %>
 
-                  <%# .erb %>
-                  <% content_for :erb, flush: true do %>
-                    <!-- ActionView::Helpers::FormTagHelper -->
-                    <%%= tag.div class: "form-check form-switch" do %>
-                      <%%= check_box_tag "switch_default", "1", false, class: "form-check-input" %>
-                      <%%= label_tag "switch_default", nil, class: "form-check-label" %>
-                      <%% end %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.div class: "form-check form-switch" do %>
+  <%%= check_box_tag "switch_default", "1", false, class: "form-check-input" %>
+  <%%= label_tag "switch_default", nil, class: "form-check-label" %>
+<%% end %>
 
-                      <!-- ActionView::Helpers::FormHelper -->
-                      <%%= form_with model: @form do |f| %>
-                        <%%= tag.div class: "form-check form-switch" do %>
-                          <%%= f.check_box :switch_default, class: "form-check-input" %>
-                          <%%= f.label :switch_default, class: "form-check-label" %>
-                          <%% end %>
-                          <%%= f.submit class: "btn btn-primary" %>
-                          <%% end %>
-                        <% end %>
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <%%= tag.div class: "form-check form-switch" do %>
+    <%%= f.check_box :switch_default, class: "form-check-input" %>
+    <%%= f.label :switch_default, class: "form-check-label" %>
+  <%% end %>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
 
-                        <%# .haml %>
-                        <% content_for :haml, flush: true do %>
-                          / ActionView::Helpers::FormHelper
-                          = form_with model: @form do |f|
-                          .form-check
-                          = f.check_box :switch_default, class: "form-check-input"
-                          = f.label :switch_default, class: "form-check-label"
-                          = f.submit class: "btn btn-primary"
-                        <% end %>
-                        <%= render_snippet %>
-                      </div>
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-check
+    = f.check_box :switch_default, class: "form-check-input"
+    = f.label :switch_default, class: "form-check-label"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
 
-                      <%= render "railsui/shared/read_more", subject: "checkboxes and radios", link: "https://getbootstrap.com/docs/5.2/forms/checks-radios/" %>
+<%= render "railsui/shared/read_more", subject: "checkboxes and radios", link: "https://getbootstrap.com/docs/5.2/forms/checks-radios/" %>
