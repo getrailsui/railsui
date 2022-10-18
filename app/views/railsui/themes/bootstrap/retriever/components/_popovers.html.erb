@@ -1,0 +1,106 @@
+<%# Popovers - Example %>
+<div class="tw-mb-16 tw-mt-6">
+
+  <%= render "railsui/shared/sticky_subhead", title: "Popovers", subtitle: "Enable" %>
+
+<div class="tw-prose tw-mb-6 tw-prose-indigo">
+  <p>To use popovers you must first intiitlaize them with JavaScript. Bootstrap makes this easy by combining another library called <%= link_to "Popper", "https://popper.js.org/", target: :_blank %>.</p>
+</div>
+
+
+<div class="tw-mb-16">
+<% content_for :js, flush: true do %>
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+<% end %>
+
+  <%= render_snippet active_tab: "js" %>
+</div>
+
+<div class="tw-mb-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Popovers", subtitle: "Example" %>
+
+<div class="tw-prose tw-mb-6 tw-prose-indigo">
+  <p>Use JavaScript similar to the snippet above to render the following live popover. Titles are set via <%= code_inline("data-bs-title") %> and body content is set via <%= code_inline("data-bs-content") %>.</p>
+</div>
+
+<div class="rui">
+  <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+</div>
+
+<p class="tw-mt-3 tw-text-sm tw-text-gray-700">Note: This example will only work if the JS snippet above is initialized in your app.</p>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Click to toggle popover", type: :button, class: "btn btn-lg btn-danger", data: { bs_toggle: "popover", bs_title: "Popover title", bs_content: "And here's some amazing content. It's very engaging. Right?" } %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Click to toggle popover", type: :button, class: "btn btn-lg btn-danger", data: { bs_toggle: "popover", bs_title: "Popover title", bs_content: "And here's some amazing content. It's very engaging. Right?" }
+<% end %>
+<%= render_snippet %>
+</div>
+</div>
+
+
+<div class="tw-mb-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Popovers", subtitle: "Directions" %>
+
+<div class="tw-prose tw-mb-6">
+  <p>There are four directions to choose from include top, right, bottom, and left. Set <%= code_inline("data-bs-placement") %> to customize the direction.</p>
+</div>
+
+<div class="rui">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+  Popover on top
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+  Popover on right
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+  Popover on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
+  Popover on left
+</button>
+</div>
+
+<p class="tw-mt-3 tw-text-sm tw-text-gray-700">Note: This example will only work if the JS snippet above is initialized in your app.</p>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+  Popover on top
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+  Popover on right
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+  Popover on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
+  Popover on left
+</button>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Click to toggle popover", type: :button, class: "btn btn-lg btn-danger", data: { bs_toggle: "popover", bs_title: "Popover title", bs_content: "And here's some amazing content. It's very engaging. Right?", bs_placement: "left" } %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Click to toggle popover", type: :button, class: "btn btn-lg btn-danger", data: { bs_toggle: "popover", bs_title: "Popover title", bs_content: "And here's some amazing content. It's very engaging. Right?", bs_placement: "left" }
+<% end %>
+<%= render_snippet %>
+</div>
+</div>
