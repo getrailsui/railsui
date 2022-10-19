@@ -1,0 +1,11 @@
+<% if notice %>
+  <div class="flash flash-notice" role="alert">
+    <p><%= sanitize notice %></p>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="flash flash-alert" role="alert">
+    <p><%= sanitize alert %></p>
+  </div>
+<% end %>

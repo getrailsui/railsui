@@ -1,10 +1,18 @@
 # Tailwind requires more finesse to have ability to make use of more advanced PostCSS features. We're borrowing from the cssbundling-rails gem install pattern here to accomodate.
 if Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
-  say "Tailwind CSS is already installed 👍"
+  say "Tailwind CSS is already installed. For best results uninstall it and re-run the Rails UI installer"
 else
   say "🔥 Install Tailwind (+PostCSS w/ autoprefixer)"
-  copy_file "#{__dir__}/tailwind.config.js", "tailwind.config.js"
-  copy_file "#{__dir__}/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css"
+  # tailwind.config.js
+  copy_file "#{__dir__}/themes/#{Railsui.config.theme}/tailwind.config.js",
+  "tailwind.config.js"
+
+  # application.tailwind.css
+  copy_file "#{__dir__}/themes/#{Railsui.config.theme}/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true
+
+  # postcss.config.js
+  copy_file "#{__dir__}/themes/#{Railsui.config.theme}/postcss.config.js", "postcss.config.js", force: true
+
   run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography --latest"
 
   if Rails.root.join("app/views/devise").exist?
@@ -13,6 +21,9 @@ else
     say "Add themed Devise views"
     directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
   end
+
+  say "Add Tailwind-themed scaffold .erb templates"
+  directory "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold", Rails.root.join("lib/templates/erb/scaffold")
 
   say "Add build:css script"
   build_script = "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"

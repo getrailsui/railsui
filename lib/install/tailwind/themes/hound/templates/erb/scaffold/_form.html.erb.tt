@@ -1,0 +1,45 @@
+<%%= form_with(model: <%= model_resource_name %>) do |form| %>
+  <%% if <%= singular_table_name %>.errors.any? %>
+    <div class="alert alert-danger mb-3" role="alert">
+      <h4>
+        <%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:
+      </h4>
+      <ul class="list-disc">
+        <%% <%= singular_table_name %>.errors.each do |error| %>
+          <li><%%= error.full_message %></li>
+        <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+
+
+<%- attributes.each do |attribute| -%>
+  <div class="mb-3">
+<%- if attribute.password_digest? -%>
+    <%%= form.label :password %>
+    <%%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%%= form.label :password_confirmation, class: "form-label" %>
+    <%%= form.password_field :password_confirmation, class: "form-control" %>
+<%- elsif attribute.attachments? -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true, class: "form-control" %>
+<%- elsif attribute.rich_text? -%>
+    <%%= form.label :<%= attribute.column_name %> %>, class: "form-label"
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %> %>, class: "form-control"
+<%- elsif attribute.field_type == :check_box -%>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-check-input" %>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-check-label" %>
+<%- else -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-control" %>
+<%- end -%>
+  </div>
+
+<%- end -%>
+  <div>
+    <%%= form.submit class: "btn btn-primary" %>
+  </div>
+<%% end %>

@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="row justify-content-between">
+    <div class="col">
+      <h1><%= plural_table_name.titleize %></h1>
+    </div>
+    <div class="col text-end">
+      <%%= link_to "New <%= singular_table_name.downcase %>", new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div id="posts" class="mt-3">
+    <%%= render @<%= plural_table_name %> %>
+  </div>
+</div>

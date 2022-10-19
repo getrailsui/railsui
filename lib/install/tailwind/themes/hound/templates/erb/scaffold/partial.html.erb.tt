@@ -1,0 +1,16 @@
+<div id="<%%= dom_id <%= singular_name %> %>" class="mb-4">
+ <%%= link_to <%= singular_name %>, class: "text-decoration-none text-reset" do %>
+<%- attributes.reject(&:password_digest?).each do |attribute| -%>
+  <p class="lead mb-0"><%= attribute.human_name %></p>
+<%- if attribute.attachment? -%>
+  <%= singular_name %>.<%= attribute.column_name %>.filename, <%= singular_name %>.<%= attribute.column_name %> if <%= singular_name %>.<%= attribute.column_name %>.attached? %>
+<%- elsif attribute.attachments? -%>
+  <%% <%= singular_name %>.<%= attribute.column_name %>.each do |<%= attribute.singular_name %>| %>
+  <div><%= attribute.singular_name %>.filename, <%= attribute.singular_name %> </div>
+  <%% end %>
+<%- else -%>
+  <p class="mb-0"><%%= <%= singular_name %>.<%= attribute.column_name %> %></p>
+  <%- end -%>
+<%- end -%>
+<%% end %>
+</div>
