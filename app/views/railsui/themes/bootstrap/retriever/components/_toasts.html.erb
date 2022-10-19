@@ -1,0 +1,241 @@
+<% content_for :demo_scripts do %>
+  <%= framework_cdn_script %>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toastTrigger = document.getElementById('liveToastBtn')
+      const toastLiveExample = document.getElementById('liveToast')
+      if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+        const toast = new bootstrap.Toast(toastLiveExample)
+
+        toast.show()
+      })
+    }
+    })
+  </script>
+<% end %>
+
+<%# Toasts - Base Example %>
+<div class="tw-mb-24 tw-mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Toasts", subtitle: "Base example" %>
+
+  <div class="tw-prose tw-mb-6">
+    <p>Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.</p>
+  </div>
+
+  <div class="rui">
+    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Rails UI</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# Toasts - Live example %>
+<div class="tw-my-24">
+  <%= render "railsui/shared/sticky_subhead", title: "Toasts", subtitle: "Live example" %>
+
+  <div class="tw-prose tw-mb-6">
+    <p>This live example displays the toast in the bottom right of the browser.</p>
+  </div>
+
+  <div class="rui">
+    <button type="button" class="btn btn-primary" id="liveToastBtn">Give me some toast</button>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Rails UI</strong>
+          <small>11 mins ago</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Hello, world! This is a toast message.
+        </div>
+      </div>
+    </div>
+  </div>
+<%= content_for :html, flush: true do %>
+<button type="button" class="btn btn-primary" id="liveToastBtn">Give me some toast</button>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Rails UI</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :js, flush: true do %>
+const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+if (toastTrigger) {
+  toastTrigger.addEventListener('click', () => {
+    const toast = new bootstrap.Toast(toastLiveExample)
+    toast.show()
+  })
+}
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%button#liveToastBtn.btn.btn-primary{:type => "button"} Give me some toast
+.toast-container.position-fixed.bottom-0.end-0.p-3
+  #liveToast.toast{"aria-atomic" => "true", "aria-live" => "assertive", :role => "alert"}
+    .toast-header
+      %strong.me-auto Rails UI
+      %small 11 mins ago
+      %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "toast", :type => "button"}
+    .toast-body
+      Hello, world! This is a toast message.
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+<%# Toasts - Additional controls %>
+<div class="tw-my-24">
+  <%= render "railsui/shared/sticky_subhead", title: "Toasts", subtitle: "Additional controls" %>
+
+  <div class="tw-prose tw-mb-6">
+    <p>Add additional controls if you need user input or some form of prompt action.</p>
+  </div>
+
+  <div class="rui">
+    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Rails UI</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        More toast is on the way!
+        <div class="mt-2 pt-2 border-top">
+          <button type="button" class="btn btn-primary btn-sm">Take action</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="me-auto">Rails UI</strong>
+    <small>11 mins ago</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    More toast is on the way!
+    <div class="mt-2 pt-2 border-top">
+      <button type="button" class="btn btn-primary btn-sm">Take action</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.toast{"aria-atomic" => "true", "aria-live" => "assertive", :role => "alert"}
+  .toast-header
+    %strong.me-auto Rails UI
+    %small 11 mins ago
+    %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "toast", :type => "button"}
+  .toast-body
+    More toast is on the way!
+    .mt-2.pt-2.border-top
+      %button.btn.btn-primary.btn-sm{:type => "button"} Take action
+      %button.btn.btn-secondary.btn-sm{"data-bs-dismiss" => "toast", :type => "button"} Close
+<% end %>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+<%# Toasts - Color schemes %>
+<div class="tw-my-24">
+  <%= render "railsui/shared/sticky_subhead", title: "Toasts", subtitle: "Color Schemes" %>
+
+  <div class="tw-prose tw-mb-6">
+    <p>Use the built in Bootstrap utility classes to change color on the fly.</p>
+  </div>
+
+  <div class="rui">
+      <div class="toast-container position-relative">
+        <div class="toast align-items-center text-bg-primary border-0 text-white show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              This toast makes use of the primary color.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+
+        <div class="toast align-items-center text-bg-success border-0 text-white show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              This toast makes use of the success color.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="toast-container">
+  <div class="toast align-items-center text-bg-primary border-0 text-white show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        This toast makes use of the primary color.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div class="toast align-items-center text-bg-success border-0 text-white show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        This toast makes use of the success color.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.toast-container
+  .toast.align-items-center.text-bg-primary.border-0.text-white.show{"aria-atomic" => "true", "aria-live" => "assertive", :role => "alert"}
+    .d-flex
+      .toast-body
+        This toast makes use of the primary color.
+      %button.btn-close.btn-close-white.me-2.m-auto{"aria-label" => "Close", "data-bs-dismiss" => "toast", :type => "button"}
+  .toast.align-items-center.text-bg-success.border-0.text-white.show{"aria-atomic" => "true", "aria-live" => "assertive", :role => "alert"}
+    .d-flex
+      .toast-body
+        This toast makes use of the success color.
+      %button.btn-close.btn-close-white.me-2.m-auto{"aria-label" => "Close", "data-bs-dismiss" => "toast", :type => "button"}
+<% end %>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+</div>
+<%= render_snippet %>
