@@ -106,5 +106,6 @@ module Railsui
         anchor_url_value: url_for(only_path: false)
       }
     end
+
   end
 end

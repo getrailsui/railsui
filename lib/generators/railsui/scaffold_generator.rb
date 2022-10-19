@@ -37,11 +37,7 @@ module Railsui # :nodoc:
         available_views.each do |view|
           filename = filename_with_extensions(view)
           # dynamically choose a template
-          if Railsui.config.css_framework.present?
-            template_path = "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{filename}"
-          else
-            template_path = "none/#{filename}"
-          end
+          template_path = "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{filename}"
 
           template template_path, File.join("app/views",controller_file_path, filename)
         end

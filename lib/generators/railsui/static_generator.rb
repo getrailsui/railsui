@@ -22,9 +22,9 @@ module Railsui
       end
 
       def copy_view_files
-        # only return files if we support at the moment = [about, pricing]
+        # only return supported files [about, pricing]
         return unless display_name == "about" || display_name == "pricing"
-        template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/static/#{display_name}.html.erb", File.join("app/views/static", "#{display_name}.html.erb")
+        template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{display_name}.html.erb.tt", File.join("app/views/static", "#{display_name}.html.erb")
       end
 
       def add_routes
