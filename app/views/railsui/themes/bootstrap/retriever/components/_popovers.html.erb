@@ -1,3 +1,14 @@
+<% content_for :demo_scripts do %>
+<%= framework_cdn_script %>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Popover
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+});
+</script>
+<% end %>
+
 <%# Popovers - Example %>
 <div class="tw-mb-16 tw-mt-6">
 
