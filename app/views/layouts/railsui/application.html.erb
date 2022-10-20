@@ -26,26 +26,58 @@
     <%= yield :head %>
   </head>
 
-  <body class="tw-font-normal tw-leading-normal dark:tw-bg-slate-900 dark:tw-text-white tw-bg-white tw-text-slate-800 tw-h-screen">
-    <div class="tw-flex-1 tw-w-full tw-overflow-hidden">
-      <%= render "railsui/shared/flash" %>
-    </div>
-    <div class="tw-min-h-full tw-flex">
-      <div class="tw-flex tw-flex-col tw-w-[238px] tw-p-4 tw-border-r dark:tw-border-slate-100 tw-bg-slate-50 tw-overflow-y-auto tw-min-h-full">
-        <div class="tw-flex-1">
-          <div class="tw-sticky tw-top-1 tw-flex-1">
-            <%= link_to  main_app.root_path, class: "tw-flex tw-border tw-bg-white tw-w-8 tw-h-8 tw-items-center tw-justify-center tw-rounded-lg hover:tw-shadow-sm tw-group hover:tw-shadow-indigo tw-mb-4", data: {tippy_content: "Back to main app", controller: "tooltip"} do %>
-              <div class="tw-flex tw-items-center  tw-text-sm">
-                <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-slate-500 group-hover:tw-text-indigo-400 tw-w-4 tw-h-4" %>
-              </div>
-            <% end %>
+  <body class="tw-font-normal tw-leading-normal dark:tw-bg-slate-900 dark:tw-text-white tw-bg-white tw-text-slate-800 tw-h-screen tw-relative">
 
-            <%= render "railsui/shared/nav" %>
+    <%= render "railsui/shared/flash" %>
+    <div class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-backdrop-blur tw-flex-none transition-colors tw-duration-500 tw-z-50 lg:tw-border-b lg:tw-border-slate-900/10 dark:tw-border-slate-50/[0.06] tw-bg-white/60 supports-backdrop-blur:tw-bg-white/60 dark:tw-bg-transparent">
+      <div class="tw-py-4 tw-border-b tw-border-slate-900/10 lg:tw-px-6 lg:tw-border-0 dark:tw-border-slate-300/10 tw-mx-4 lg:tw-mx-0 tw-flex tw-items-center">
+        <%= link_to  main_app.root_path, class: "tw-flex tw-border tw-bg-white tw-w-8 tw-h-8 tw-items-center tw-justify-center tw-rounded-lg hover:tw-shadow-sm tw-group hover:tw-shadow-indigo", data: {tippy_content: "Back to main app", controller: "tooltip"} do %>
+          <div class="tw-flex tw-items-center  tw-text-sm">
+            <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-slate-500 group-hover:tw-text-indigo-400 tw-w-4 tw-h-4" %>
           </div>
+        <% end %>
+        <div class="tw-ml-5 tw-flex tw-justify-between tw-items-center tw-w-full">
+          <div class="tw-flex-1 tw-flex tw-space-x-6">
+            <%= render "railsui/shared/logo" %>
+            <% if Railsui.config.css_framework.present? %>
+              <%= render "railsui/shared/theme_label" %>
+            <% end %>
+          </div>
+          <nav role="primary nav" class="tw-text-sm">
+            <ul class="tw-flex tw-items-center tw-space-x-3">
+              <li>
+                <%= link_to docs_path, class: "tw-p-2 tw-font-semibold tw-slate-800 hover:tw-text-indigo-600 tw-flex tw-items-center" do %>
+                  <%= render_svg "book", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-mr-2 tw-flex-shrink-0" %>
+                  <span>Docs</span>
+                <% end %>
+              </li>
+              <% if Railsui.config.css_framework.present? %>
+                <li>
+                  <%= link_to systems_path, class: "tw-p-2 tw-font-semibold tw-slate-800 hover:tw-text-indigo-600 tw-flex tw-items-center tw-justify-center" do %>
+                    <%= render_svg "map", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-[4px] tw-flex-shrink-0" %>
+                    <span>Design system</span>
+                  <% end %>
+                </li>
+              <% end %>
+              <li>
+                <%= link_to  root_path, class: "tw-p-2 tw-font-semibold tw-slate-800 tw-flex tw-items-center tw-justify-center hover:tw-text-indigo-600" do %>
+                  <%= render_svg "settings", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-[4px] tw-flex-shrink-0" %>
+                  <span>Configuration</span>
+                <% end %>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
+    </div>
 
-      <div class="tw-flex-1 tw-mx-auto lg:tw-py-16 tw-px-4 <%= content_for?(:fullwidth).present? ? "tw-w-full" : "tw-max-w-4xl" %>">
+    <div class="tw-flex">
+      <div class="tw-flex tw-flex-col tw-w-[300px]  tw-border-r dark:tw-border-slate-100 tw-bg-white tw-h-full lg:tw-fixed tw-top-[72px] tw-left-0 tw-overflow-y-auto">
+        <div class="tw-flex-1">
+          <%= render "railsui/shared/nav" %>
+        </div>
+      </div>
+      <div class="tw-top-[72px] tw-relative tw-left-[125px] tw-flex-1 tw-mx-auto lg:tw-py-16 tw-px-4 <%= content_for?(:fullwidth).present? ? "tw-w-full" : "tw-max-w-4xl" %>">
         <%= yield %>
       </div>
     </div>
