@@ -1,15 +1,19 @@
-<%%= content_for :title, singular_table_name.titleize) %>
-
-<div class="container px-4 mx-auto my-8">
-  <div class="flex items-center justify-between mb-4">
-    <h1>
-      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "text-black" %>
-      <span class="text-gray-400 font-light mx-2">\</span>
-      <%%= singular_table_name.titleize %>
-    </h1>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1>New <%= singular_table_name.downcase %></h1>
+    </div>
+    <div class="col text-end">
+      <%%= link_to "New <%= singular_table_name.titleize %>", new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
+    </div>
   </div>
-
-  <div>
+ <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper(type: :path) %> %></li>
+      <li class="breadcrumb-item active">New <%= singular_table_name.downcase %></li>
+    </ol>
+  </nav>
+  <div class="mt-4 col-md-6">
     <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
   </div>
 </div>

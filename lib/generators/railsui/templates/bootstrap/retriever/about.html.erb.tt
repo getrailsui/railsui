@@ -21,7 +21,6 @@
           </li>
           <li class="nav-item">
             <%%= link_to "Company", about_path, class: "nav-link active" %>
-
           </li>
         </ul>
 
@@ -370,7 +369,7 @@
   <p>
     Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
   </p>
-  <%% link_To new_user_registration_path, class: "btn btn-primary" %>
+  <%%= link_to new_user_registration_path, class: "btn btn-primary" do %>
     Start now
     <svg style="width: 6px; height: auto;" class="fill-current ms-1" width="8" height="12" viewBox="0 0 8 12"
       xmlns="http://www.w3.org/2000/svg">

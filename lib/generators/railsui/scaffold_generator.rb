@@ -1,6 +1,9 @@
 require 'rails/generators/named_base'
 require 'rails/generators/resource_helpers'
 
+# Inspiration
+# https://github.com/rails/rails/blob/main/railties/lib/rails/generators/erb/scaffold/scaffold_generator.rb
+
 module Railsui # :nodoc:
   module Generators # :nodoc:
     class Base < Rails::Generators::NamedBase #:nodoc:
@@ -41,6 +44,8 @@ module Railsui # :nodoc:
 
           template template_path, File.join("app/views",controller_file_path, filename)
         end
+
+        template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/partial.html.erb", File.join("app/views", controller_file_path, "_#{singular_name}.html.erb")
       end
 
     protected

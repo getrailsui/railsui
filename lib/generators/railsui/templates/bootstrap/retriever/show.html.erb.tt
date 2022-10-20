@@ -1,16 +1,24 @@
-<%%= content_for :title, "<%= plural_table_name.titleize %> ##{@<%= singular_table_name %>.id}" %>
-
-<div class="container px-4 mx-auto my-8">
-  <div class="flex items-center justify-between mb-4">
-    <h1>
-      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "text-black" %>
-      <span class="text-gray-400 font-light mx-2">\</span>
-      <%= singular_table_name.titleize %> #<%%= @<%= singular_table_name %>.id %>
-    </h1>
-    <%%= link_to "Edit", edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-default" %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-3">
+    <div class="col">
+      <h1><%= singular_table_name.titleize %> #<%%= @<%= singular_table_name %>.id %></h1>
+    </div>
+    <div class="col text-end">
+      <%%= link_to "New <%= singular_table_name.titleize %>", new_<%= singular_table_name %>_path, class: "btn btn-primary" %>
+    </div>
   </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper(type: :path) %> %></li>
+      <li class="breadcrumb-item active"><%= singular_table_name.titleize %> #<%%= @<%=  singular_table_name %>.id %></li>
+    </ol>
+  </nav>
 
-  <div>
-    <%%= render @<%= singular_table_name %> %>
+  <%%= render @<%= singular_table_name %> %>
+
+  <div class="d-flex justify-content-start align-items-center">
+    <%%= link_to "Edit", <%= edit_helper(type: :path) %>, class: "btn btn-primary me-3" %>
+
+    <%%= button_to "Delete", <%= model_resource_name(prefix: "@") %>, method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>
 </div>
