@@ -12,6 +12,7 @@ module Railsui
     end
 
     def components
+
     end
 
     def marketing

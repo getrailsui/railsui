@@ -1,11 +1,8 @@
-<div class="tw-text-sm tw-pb-24">
+<div class="lg:tw-text-sm text-base tw-pb-24">
   <ul class="rui-primary-nav tw-leading-loose">
     <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
-      <%= link_to "Content", systems_content_path, class:"tw-font-semibold tw-px-6 tw-py-2 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full mr-px" %>
-      <ul class="lg:tw-space-y-1 tw-space-y-6">
-        <li>
-          <%= nav_link_to "Overview", systems_content_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
-        </li>
+      <%= link_to "Content", systems_content_path, class:"tw-font-semibold tw-px-6 tw-py-2 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full mr-px hover:tw-text-indigo-800" %>
+      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
         <li>
           <%= nav_link_to "Typography", systems_content_typography_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>
@@ -25,12 +22,9 @@
     </li>
     <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
 
-      <%= link_to "Forms", systems_forms_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full" %>
+      <%= link_to "Forms", systems_forms_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full hover:tw-text-indigo-800" %>
 
-      <ul class="lg:tw-space-y-1 tw-space-y-6">
-        <li>
-          <%= nav_link_to "Overview", systems_forms_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
-        </li>
+      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
         <li>
           <%= nav_link_to "Inputs", systems_forms_inputs_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>
@@ -53,9 +47,9 @@
     </li>
     <li x-data="{open: window.location.pathname.includes('components')}" x-cloak>
 
-      <%= link_to "Components", systems_forms_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full" %>
+      <%= link_to "Components", systems_forms_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full hover:tw-text-indigo-800" %>
 
-      <ul class="lg:tw-space-y-1 tw-space-y-6">
+      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
         <li>
           <%= nav_link_to "Accordions", systems_components_accordions_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>
@@ -104,37 +98,11 @@
       </ul>
     </li>
 
-    <%#
-    <li x-data="{open: window.location.pathname.includes('marketing')}" x-cloak>
-      <button @click="open = !open" aria-expanded="false" class="tw-p-1 tw-rounded  tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-2 tw-transition tw-ease-in-out tw-duration-300 tw-flex tw-items-center tw-w-full" :class="{'tw-bg-indigo-50 tw-text-indigo-800 tw-font-semibold' : open}">
-        <div :class="open ? 'tw-rotate-180' : ''" class="tw-transform">
-          <%#= render_svg "chevron-down", styles: "tw-w-8 tw-h-8 tw-stroke-current" %>
-    <%# </div>
-        Marketing
-      </button>
-      <ul x-show="open" class="tw-leading-loose">
-        <li>
-          <%#= nav_link_to "CTAs", systems_marketing_ctas_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-    <%#</li>
-        <li>
-          <%#= nav_link_to "Footers", systems_marketing_footers_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-    <%#</li>
-        <li>
-          <%#= nav_link_to "Headers", systems_marketing_headers_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-    <%# </li>
-        <li>
-          <%#= nav_link_to "Longform content", systems_marketing_longform_path, class: "tw-p-1 tw-rounded tw-block tw-text-neutral-700 hover:tw-bg-indigo-50 hover:tw-text-indigo-800 tw-px-3 tw-transition tw-ease-in-out tw-duration-300" %>
-    <%#</li>
-      </ul>
-    <%# </li>%>
     <li x-data="{open: window.location.pathname.includes('authentication')}" x-cloak>
 
-      <%= link_to "Authentication",systems_authentication_overview_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full" %>
+      <%= link_to "Authentication",systems_authentication_overview_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full hover:tw-text-indigo-800" %>
 
-      <ul class="lg:tw-space-y-1 tw-space-y-6">
-        <li>
-          <%= nav_link_to "Overview", systems_authentication_overview_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
-        </li>
+      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
         <li>
           <%= nav_link_to "Sign up", systems_authentication_signup_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>

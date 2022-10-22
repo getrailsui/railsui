@@ -20,3 +20,6 @@ application.register("anchor", AnchorController)
 
 import ClipboardController from "./clipboard_controller.js"
 application.register("clipboard", ClipboardController)
+
+import ToggleController from "./toggle_controller.js"
+application.register("toggle", ToggleController)
