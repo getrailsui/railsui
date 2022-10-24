@@ -56,18 +56,8 @@
       </div>
     </div>
 
-    <div class="lg:tw-flex">
-      <div class="lg:tw-flex tw-hidden tw-flex-col lg:tw-w-[300px] w-full tw-border-r dark:tw-border-slate-100 tw-bg-white tw-h-full lg:tw-fixed tw-top-[72px] tw-left-0 tw-overflow-y-auto tw-z-50" data-toggle-target="toggleable">
-        <div class="tw-flex-1">
-          <div class="lg:tw-py-0 tw-py-2 lg:tw-border-b-0 tw-border-b tw-border-slate-200 lg:tw-hidden lg:tw-px-0 tw-px-3 lg:tw-shadow-none tw-shadow-sm">
-            <%= render "railsui/shared/top_nav" %>
-          </div>
-          <%= render "railsui/shared/nav" %>
-        </div>
-      </div>
-      <div class="lg:tw-top-[72px] tw-relative lg:tw-left-[150px] tw-flex-1 tw-mx-auto lg:tw-py-16 tw-px-4 tw-py-8 <%= content_for?(:fullwidth).present? ? "tw-w-full" : "tw-max-w-4xl" %> ">
-        <%= yield %>
-      </div>
+    <div class="tw-mx-auto lg:tw-py-32 tw-px-4 tw-py-8 tw-max-w-6xl">
+      <%= yield %>
     </div>
 
     <%= yield :demo_scripts %>

@@ -1,10 +1,7 @@
-<div class="tw-flex tw-items-center tw-mb-6 tw-p-3 tw-rounded tw-bg-red-50">
-  <div class="tw-bg-red-100 tw-mr-4 tw-w-10 tw-h-10 tw-rounded tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
-    <%= render_svg "warning", styles: "tw-stroke-current tw-text-red-500 tw-w-5 tw-h-5 tw-flex-shrink-0" %>
+<% content_for :bg_theme, "tw-bg-slate-50" %>
+<% framework = Railsui::config.css_framework.downcase %>
 
-  </div>
-  <p class="tw-text-lg tw-text-red-800">Rails UI only supports <span class="tw-font-bold">new</span> Ruby on Rails applications at this time</p>
-</div>
+<%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:tw-text-4xl tw-text-3xl text-slate-800 tw-font-bold tw-pb-6 tw-border-b tw-border-slate-200" %>
 
 <%= form_with model: @config, url: configuration_path, class: "tw-h-full tw-block", data: {
   action: "submit->configuration#saveChanges",
@@ -12,53 +9,9 @@
   configuration_chosen_theme_value: Railsui.config.css_framework
   } do |f| %>
 
-  <h3 class="tw-font-bold tw-text-4xl tw-mb-6">Configuration</h3>
-
-  <div class="tw-mb-6 tw-leading-relaxed tw-text-lg">
-    <p class="tw-mb-6 tw-text-2xl">Customize your new Rails application with the help of Rails UI.</p>
-
-    <details class="tw-border tw-py-3 tw-px-6 tw-rounded-lg tw-border-slate-200 tw-bg-slate-50">
-      <summary>
-        <span class="tw-font-semibold tw-text-base">What happens when I configure my app?</span>
-      </summary>
-      <div class="tw-prose tw-prose-indigo">
-        <p>Once configured Rails UI will:</p>
-        <ol>
-          <li>Generate a custom configuration yaml file <code class="tw-text-base dark:tw-text-yellow-500 tw-text-red-400">railsui.yml</code> that's required to theme your new app.</li>
-          <li>Install dependencies and any necessary assets.</li>
-          <li>Generate a custom tailored design system for repeatable web elements. Use this system as a design direction when creating new features. This includes typography, font elements, and SVG icons.</li>
-          <li>
-            Optionally install marketing templates like an about or pricing page. Use these as a starting point.
-          </li>
-          <li>
-            Install scaffold templates that follow the theme and CSS framework you chose
-          </li>
-        </ol>
-      </div>
-    </details>
-  </div>
-
-  <div class="tw-mb-10">
-    <%= render "railsui/admin/fields/application_preferences", f: f %>
-    <%= render "railsui/admin/fields/pages", f: f %>
-  </div>
-
-  <div class="tw-border-t tw-pt-10">
-    <%= f.button id: "config_button", class: "dark:tw-bg-neutral-600 dark:hover:tw-bg-neutral-800 tw-bg-neutral-800 hover:tw-bg-black tw-py-3 tw-px-6 tw-rounded-full tw-font-medium tw-text-white", data: {configuration_target: "submit" } do %>
-      <%= tag.span "Save changes" %>
-    <% end %>
-
-    <p class="tw-text-sm tw-mt-3 dark:tw-text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
-  </div>
-
-  <div data-configuration-target="saving" class="tw-hidden tw-fixed tw-inset-0 tw-w-full tw-h-full tw-bg-indigo-800 tw-z-50">
-    <div class="tw-flex tw-flex-col tw-justify-center tw-h-full tw-items-center tw-relative">
-      <div class="tw-mb-6">
-        <%= render "railsui/shared/logo_light" %>
-      </div>
-      <h3 class="tw-text-xl tw-text-white tw-font-bold tw-text-center tw-mb-3">Saving changes...</h3>
-      <%= render_svg "loading", styles: "tw-w-10 tw-h-10" %>
-    </div>
-    <canvas id="canvas" data-controller="canvas" class="tw-fixed tw-inset-0 tw-w-full tw-h-full"></canvas>
-  </div>
+  <%= render "railsui/admin/fields/config_overview" %>
+  <%= render "railsui/admin/fields/app_preferences", f: f %>
+  <%= render "railsui/admin/fields/theme", f: f %>
+  <%= render "railsui/admin/fields/pages", f: f %>
+  <%= render "railsui/admin/fields/commit", f: f %>
 <% end %>

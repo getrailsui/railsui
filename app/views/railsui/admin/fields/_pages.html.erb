@@ -1,21 +1,34 @@
-<div class="tw-p-10 tw-rounded-xl tw-border tw-border-neutral-200 tw-shadow-sm tw-mb-10">
-  <h3 class="tw-font-bold tw-text-2xl tw-mb-3">Pages &amp; content</h3>
-  <p class="tw-prose tw-prose-lg tw-prose-indigo tw-mb-6">Enabling any option below will automatically generate themed views using the CSS framework chosen. These will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
+<%= render "railsui/admin/field_layout" do %>
 
-  <ul class="tw-leading-loose">
-    <li class="tw-py-1">
-      <%= f.label :about do %>
-        <%= f.check_box :about, class: "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-neutral-100 dark:focus:tw-ring-neutral-800 dark:focus:tw-ring-opacity-20 tw-mr-2 tw-border-neutral-500 tw-w-5 tw-h-5", value: Railsui.config.about, checked: Railsui.config.about? %>
-        <span>Create about page</span>
-      <% end %>
-    </li>
+  <% content_for :explainer, flush: true do %>
+    <%= heading text: "Pages", id: "configuration_overview", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
+    <p class="text-sm text-slate-700">Add pre-designed marketing pages to the app.</p>
+    <p class="tw-text-sm tw-bg-slate-500 tw-text-white tw-rounded tw-inline-block tw-mt-4 tw-px-1 tw-py-px">Components coming soon</p>
+  <% end %>
 
-    <li class="tw-py-1">
-      <%= f.label :pricing do %>
-        <%= f.check_box :pricing, class: "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-neutral-100 dark:focus:tw-ring-neutral-800 dark:focus:tw-ring-opacity-20 tw-mr-2 tw-border-neutral-500 tw-w-5 tw-h-5", value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
-        <span>Create pricing page</span><span class="tw-text-neutral-500 tw-text-sm"> &mdash; placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
-      <% end %>
-    </li>
+  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-100 tw-shadow-sm">
+    <p class="tw-prose tw-prose-indigo tw-mb-6">Enabling any option below will automatically generate themed views using the CSS framework chosen. These views will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
+    <%# TODO: Check if templates already exist in app and adjust UI %>
+    <ul class="tw-leading-loose tw-space-y-4">
+      <li class="tw-relative">
+        <%= f.label :about, class: "tw-p-4 tw-rounded-xl tw-bg-white tw-shadow-sm tw-border tw-border-slate-200 tw-block tw-select-none hover:tw-shadow-none tw-group" do %>
+          <%= f.check_box :about, class: "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-neutral-100 dark:focus:tw-ring-neutral-800 dark:focus:tw-ring-opacity-20 tw-mr-2 tw-border-neutral-500 tw-w-5 tw-h-5", value: Railsui.config.about, checked: Railsui.config.about? %>
+          <span class="group-hover:tw-text-indigo-600">Create about page</span><span class="tw-text-neutral-500 tw-text-sm tw-block tw-pl-8">Placeholder markup for company or organization about page.</span>
+        <% end %>
+        <% if Railsui.config.about? %>
+          <%= link_to "Preview", main_app.about_path, class: "tw-text-slate-700 tw-ml-2 tw-block tw-absolute tw-right-4 tw-top-5 tw-px-3 tw-py-px tw-text-[15px] tw-bg-slate-50 tw-rounded hover:tw-bg-slate-100 tw-transition tw-ease-in-out tw-duration-300 tw-border-slate-300 tw-border hover:tw-shadow-none tw-shadow-sm hover:tw-text-slate-900", target: :_blank %>
+        <% end  %>
+      </li>
 
-  </ul>
-</div>
+      <li class="tw-relative">
+        <%= f.label :pricing, class: "tw-p-4 tw-rounded-xl tw-bg-white tw-shadow-sm tw-border tw-border-slate-200 tw-block tw-select-none hover:tw-shadow-none tw-group" do %>
+          <%= f.check_box :pricing, class: "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-neutral-100 dark:focus:tw-ring-neutral-800 dark:focus:tw-ring-opacity-20 tw-mr-2 tw-border-neutral-500 tw-w-5 tw-h-5", value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
+          <span class="group-hover:tw-text-indigo-600">Create pricing page</span><span class="tw-text-neutral-500 tw-text-sm tw-block tw-pl-8">Placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
+        <% end %>
+        <% if Railsui.config.pricing? %>
+          <%= link_to "Preview", main_app.pricing_path, class: "tw-text-slate-700 tw-ml-2 tw-block tw-absolute tw-right-4 tw-top-5 tw-px-3 tw-py-px tw-text-[15px] tw-bg-slate-50 tw-rounded hover:tw-bg-slate-100 tw-transition tw-ease-in-out tw-duration-300 tw-border-slate-300 tw-border hover:tw-shadow-none tw-shadow-sm hover:tw-text-slate-900", target: :_blank %>
+        <% end  %>
+      </li>
+    </ul>
+  </div>
+<% end %>

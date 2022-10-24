@@ -1,67 +1,22 @@
-<div class="tw-hidden" data-configuration-target="frameworks">
-  <div class="tw-mt-6 tw-pt-6 tw-border-t">
+<%= render "railsui/admin/field_layout" do %>
+  <% content_for :explainer, flush: true do %>
+    <%= heading text: "Theme", id: "application_preferences", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
     <% if Railsui.config.theme.present? %>
-      <h3 class="tw-font-bold tw-text-2xl tw-mb-3">Active theme</h3>
-      <div class="tw-border tw-flex tw-items-center tw-justify-between tw-rounded tw-shadow-sm tw-overflow-hidden tw-bg-gradient-to-br tw-from-white to-slate-50">
-        <div class="tw-flex-1">
-          <div class="tw-flex tw-justify-center tw-items-center">
-            <div class="tw-mr-3">
-              <%= render_svg "#{Railsui.config.css_framework}", styles: "tw-fill-current tw-text-indigo-800 tw-w-12 tw-h-12" %>
-            </div>
+      <p class="tw-text-slate-700 tw-text-sm">Active theme: <%= Railsui.config.theme.humanize %></p>
 
-            <h4 class="tw-font-semibold tw-text-xl"><%= Railsui.config.css_framework.humanize %></h4>
-          </div>
-
-          <div class="tw-flex tw-justify-center tw-mt-3">
-            <div class="tw-bg-emerald-50 tw-uppercase tw-tracking-wide tw-text-emerald-700 tw-font-bold tw-px-3 tw-py-px tw-rounded-full tw-inline-flex tw-items-center tw-text-xs">
-              <%= render_svg "paw", styles: "tw-w-6 tw-h-6 tw-fill-current" %>
-              <%= Railsui.config.theme.humanize %>
-            </div>
-          </div>
-        </div>
-        <%= image_tag "#{Railsui.config.css_framework.parameterize}-#{Railsui.config.theme.parameterize}-thumbnail.jpg", class: "tw-max-w-md tw-mx-auto tw-border-l" %>
-      </div>
-      <%= f.hidden_field :theme, value: Railsui.config.theme %>
-
+      <p class="tw-text-slate-700 tw-text-sm">CSS Framework: <%= Railsui.config.css_framework.humanize %></p>
     <% else %>
-      <h3 class="tw-font-bold tw-text-2xl tw-mb-3 font-rui">Select a theme</h3>
-      <div class="tw-prose tw-prose-indigo tw-mb-6">
-        <p>A theme acts as a starting point for the design of the app.</p>
+      <p class="tw-text-slate-700 tw-text-sm">Select a theme to base your application off of.</p>
+    <% end %>
+  <% end %>
 
-        <p>Each theme provides pre-designed static pages, scaffolded resources, UI components, layout patterns, partials, and more.</p>
-
-        <p class="tw-font-bold">🔨 More themes to come!</p>
-      </div>
-
-      <% Railsui::Default::THEMES.each do |framework, themes| %>
-        <% f = framework.to_s.parameterize %>
-
-        <div class="tw-mb-6 tw-hidden" data-configuration-target="<%= f %>">
-          <h4 class="tw-font-bold tw-text-xl tw-mb-3"><%= f.humanize %></h4>
-          <ul class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-max-w-3xl tw-gap-6">
-            <% themes.each do |theme| %>
-              <li>
-                <label for="configuration_theme_<%= theme.first %>" class="tw-bg-white tw-rounded-lg tw-p-4 tw-block tw-border tw-border-slate-300 focus:tw-ring-4 focus:tw-ring-slate-100" data-configuration-target="theme">
-                  <%= image_tag "#{f}-#{theme.first}-thumbnail.jpg", alt: "#{theme.last.humanize} theme", class: "tw-border tw-border-slate-200 tw-rounded" %>
-                  <div class="tw-px-4 tw-mt-4 tw-flex tw-justify-center">
-                    <input
-                    type="radio"
-                    id="configuration_theme_<%= theme.first %>"
-                    value="<%= theme.first %>"
-                    name="configuration[theme]"
-                    class="tw-w-6 tw-h-6"
-                    >
-
-                      <span class="tw-ml-2"><%= theme.last.humanize %></span>
-                    </div>
-                  </label>
-
-                  <%= link_to "Preview theme", theme_preview_link(theme.last.humanize), target: :_blank, class: "tw-py-3 tw-px-4 tw-text-center tw-justify-center tw-w-full tw-text-slate-700 tw-bg-slate-100 hover:tw-bg-slate-200 tw-transition ease-in-out tw-duration tw-rounded-lg tw-block tw-mt-3" %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-100 tw-shadow-sm">
+    <div class="tw-hidden" data-configuration-target="frameworks">
+      <% if Railsui.config.theme.present? %>
+        <%= render "railsui/admin/fields/theme_active", f: f %>
+      <% else %>
+        <%= render "railsui/admin/fields/theme_setup", f: f %>
       <% end %>
     </div>
   </div>
+<% end %>

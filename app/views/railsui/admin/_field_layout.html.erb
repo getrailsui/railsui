@@ -1,0 +1,10 @@
+<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-12 lg:tw-gap-10 tw-items-start tw-pt-10 tw-gap-4">
+  <% yield # WTF!? https://stackoverflow.com/a/65580115 %>
+
+  <div class="lg:tw-col-span-4">
+    <%= yield :explainer %>
+  </div>
+  <div class="lg:tw-col-span-8">
+    <%= yield %>
+  </div>
+</div>

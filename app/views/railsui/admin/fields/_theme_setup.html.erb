@@ -1,0 +1,39 @@
+<h3 class="tw-font-bold tw-text-2xl tw-mb-3 font-rui">Select a theme</h3>
+<div class="tw-prose tw-prose-indigo tw-mb-6 tw-max-w-full">
+  <p>The theme you chose acts as a starting point for the design of the app. Rails UI builds customized components based off this team which you can full customize after configuration.</p>
+
+  <p>Each theme provides pre-designed static pages, scaffolded resources, UI components, layout patterns, partials, and more.</p>
+
+</div>
+
+<div class="tw-font-semibold tw-p-6 tw-rounded tw-mb-6 tw-bg-yellow-300/20 tw-text-black tw-w-full tw-text-center">🔨 More themes to come in future versions!</div>
+
+<% Railsui::Default::THEMES.each do |framework, themes| %>
+  <% f = framework.to_s.parameterize %>
+
+  <div class="tw-mb-6 tw-hidden" data-configuration-target="<%= f %>">
+    <h4 class="tw-font-bold tw-text-xl tw-mb-3"><%= f.humanize %></h4>
+    <ul class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-max-w-3xl tw-gap-6">
+      <% themes.each do |theme| %>
+        <li>
+          <label for="configuration_theme_<%= theme.first %>" class="tw-bg-white tw-rounded-lg tw-p-4 tw-block tw-border tw-border-slate-200 focus:tw-ring-4 focus:tw-ring-slate-100 hover:tw-shadow-xl tw-transition tw-duration-300" data-configuration-target="theme">
+            <%= image_tag "#{f}-#{theme.first}-thumbnail.jpg", alt: "#{theme.last.humanize} theme", class: "tw-border tw-border-slate-200 tw-rounded" %>
+            <div class="tw-px-4 tw-mt-4 tw-flex tw-justify-center">
+              <input
+                    type="radio"
+                    id="configuration_theme_<%= theme.first %>"
+                    value="<%= theme.first %>"
+                    name="configuration[theme]"
+                    class="tw-w-6 tw-h-6"
+                    >
+
+                <span class="tw-ml-2"><%= theme.last.humanize %></span>
+              </div>
+            </label>
+
+            <%= link_to "Preview theme", theme_preview_link(theme.last.humanize), target: :_blank, class: "tw-py-3 tw-px-4 tw-text-center tw-justify-center tw-w-full tw-text-slate-700 tw-bg-slate-100 hover:tw-bg-slate-200 tw-transition ease-in-out tw-duration tw-rounded-lg tw-block tw-mt-3" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
