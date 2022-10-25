@@ -2,15 +2,13 @@
   <% content_for :explainer, flush: true do %>
     <%= heading text: "Theme", id: "application_preferences", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
     <% if Railsui.config.theme.present? %>
-      <p class="tw-text-slate-700 tw-text-sm">Active theme: <%= Railsui.config.theme.humanize %></p>
-
-      <p class="tw-text-slate-700 tw-text-sm">CSS Framework: <%= Railsui.config.css_framework.humanize %></p>
+      <p class="tw-text-slate-700 lg:tw-text-sm tw-text-base">Your active theme is <%= Railsui.config.theme.humanize %> which uses <%= Railsui.config.css_framework.humanize %></p>
     <% else %>
       <p class="tw-text-slate-700 tw-text-sm">Select a theme to base your application off of.</p>
     <% end %>
   <% end %>
 
-  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-100 tw-shadow-sm">
+  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200 tw-shadow-sm">
     <div class="tw-hidden" data-configuration-target="frameworks">
       <% if Railsui.config.theme.present? %>
         <%= render "railsui/admin/fields/theme_active", f: f %>

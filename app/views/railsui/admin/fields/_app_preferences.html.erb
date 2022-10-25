@@ -3,10 +3,10 @@
 <%= render "railsui/admin/field_layout" do %>
   <%= content_for :explainer, flush: true do %>
     <%= heading text: "Application preferences", id: "application_preferences", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
-    <p class="tw-text-slate-700 tw-text-sm">Set your application name and choose your preferred CSS framework.</p>
+    <p class="tw-text-slate-700 lg:tw-text-sm tw-text-base">Set your application name and choose your preferred CSS framework.</p>
   <% end %>
 
-  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-100 tw-shadow-sm">
+  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200 tw-shadow-sm">
     <div class="tw-mb-8">
       <%= f.label :application_name, class: "tw-block tw-mb-2 tw-font-medium" %>
       <%= f.text_field :application_name, class: "#{input_classes} tw-w-full" %>

@@ -1,0 +1,10 @@
+<li class="tw-relative">
+  <div class="tw-pt-2 tw-px-4 tw-pb-4 tw-rounded-lg tw-bg-white tw-shadow-sm tw-border tw-border-slate-200 tw-block tw-select-none hover:tw-shadow-none tw-group">
+    <div class="tw-rounded tw-bg-emerald-500 tw-text-white tw-text-[11px] tw-uppercase tw-font-bold tw-font-system tw-tracking-wide tw-px-1 tw-inline-flex tw-items-center tw-py-0 tw-h-4">Installed</div>
+    <p class="tw-leading-tight tw-block"><%= local_assigns[:label] %></p>
+
+    <p class="tw-text-neutral-500 tw-text-sm tw-block lg:tw-mb-0 tw-mt-1 tw-mb-3"><%= local_assigns[:description] %></p>
+
+    <%= link_to "Preview", local_assigns [:preview_link], class: "tw-text-slate-700 lg:tw-ml-2 lg:tw-ml-8 tw-mt-2 lg:tw-mt-0 lg:tw-block lg:tw-absolute tw-right-4 tw-top-5 tw-px-3 lg:tw-py-px tw-py-2 tw-text-[15px] tw-bg-slate-50 tw-rounded hover:tw-bg-slate-100 tw-transition tw-ease-in-out tw-duration-300 tw-border-slate-300 tw-border hover:tw-shadow-none tw-shadow-sm hover:tw-text-slate-900", target: :_blank %>
+  </div>
+</li>

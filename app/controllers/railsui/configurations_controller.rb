@@ -4,12 +4,9 @@ module Railsui
   class ConfigurationsController < ApplicationController
     def create
       Railsui::Configuration.new(configuration_params).save
-
-      # Install deps
       Railsui.bundle
-      Railsui.clear
 
-      redirect_to root_path, notice: "Your app  configuration updated successfully"
+      redirect_to root_path, notice: "Your app configuration updated successfully"
     end
 
     private

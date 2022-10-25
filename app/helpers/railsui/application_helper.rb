@@ -107,5 +107,12 @@ module Railsui
       }
     end
 
+    def about_page_exists?
+      Rails.root.join("app/views/static/about.html.erb").exist? && Railsui.config.about?
+    end
+
+    def pricing_page_exists?
+      Rails.root.join("app/views/static/pricing.html.erb").exist? && Railsui.config.pricing?
+    end
   end
 end

@@ -1,8 +1,13 @@
 <div class="lg:tw-text-sm text-base tw-pb-24">
   <ul class="rui-primary-nav tw-leading-loose">
     <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
-      <%= link_to "Content", systems_content_path, class:"tw-font-semibold tw-px-6 tw-py-2 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full mr-px hover:tw-text-indigo-800" %>
-      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
+      <%= link_to systems_content_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-300 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-indigo-800 tw-group"  do %>
+        <div class="tw-bg-white tw-w-7 tw-h-7 tw-rounded-lg tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200 group-hover:tw-shadow-indigo-200">
+          <%= render_svg "content", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-indigo-500 group-hover:tw-text-indigo-700" %>
+        </div>
+        <span>Content</span>
+      <% end %>
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100">
         <li>
           <%= nav_link_to "Typography", systems_content_typography_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>
@@ -22,9 +27,14 @@
     </li>
     <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
 
-      <%= link_to "Forms", systems_forms_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full hover:tw-text-indigo-800" %>
+      <%= link_to systems_forms_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-teal-800 tw-group tw-border-t"  do %>
+        <div class="tw-bg-white tw-w-7 tw-h-7 tw-rounded tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200">
+          <%= render_svg "forms", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-teal-500" %>
+        </div>
+        <span>Forms</span>
+      <% end %>
 
-      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100">
         <li>
           <%= nav_link_to "Inputs", systems_forms_inputs_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>
@@ -47,9 +57,14 @@
     </li>
     <li x-data="{open: window.location.pathname.includes('components')}" x-cloak>
 
-      <%= link_to "Components", systems_components_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full hover:tw-text-indigo-800" %>
+      <%= link_to systems_components_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-rose-700 tw-group tw-border-t"  do %>
+        <div class="tw-bg-white tw-w-7 tw-h-7 tw-rounded tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200">
+          <%= render_svg "components", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-rose-500" %>
+        </div>
+        <span>Components</span>
+      <% end %>
 
-      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100">
         <li>
           <%= nav_link_to "Accordions", systems_components_accordions_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>
@@ -100,9 +115,14 @@
 
     <li x-data="{open: window.location.pathname.includes('authentication')}" x-cloak>
 
-      <%= link_to "Authentication",systems_authentication_overview_path, class: "tw-font-semibold tw-px-6 tw-py-2 tw-border-t tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-block tw-w-full hover:tw-text-indigo-800" %>
+      <%= link_to systems_authentication_overview_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-amber-700 tw-group tw-border-t"  do %>
+        <div class="tw-bg-white tw-w-7 tw-h-7 tw-rounded tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200">
+          <%= render_svg "components", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-amber-500" %>
+        </div>
+        <span>Authentication</span>
+      <% end %>
 
-      <ul class="lg:tw-space-y-1 tw-space-y-3 lg:tw-pb-0 tw-pb-4">
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100">
         <li>
           <%= nav_link_to "Sign up", systems_authentication_signup_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
         </li>

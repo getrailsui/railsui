@@ -28,7 +28,7 @@
 
   <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-white" %>" data-controller="toggle">
     <%= render "railsui/shared/flash" %>
-    <div class="lg:tw-fixed tw-top-0 tw-left-0 tw-w-full tw-backdrop-blur tw-flex-none transition-colors tw-duration-500 tw-z-50 lg:tw-border-b lg:tw-border-slate-900/10 dark:tw-border-slate-50/[0.06] tw-bg-white/60 supports-backdrop-blur:tw-bg-white/60 dark:tw-bg-transparent">
+    <div class="lg:tw-fixed tw-top-0 tw-left-0 tw-w-full tw-backdrop-blur tw-flex-none transition-colors tw-duration-500 tw-z-30 lg:tw-border-b lg:tw-border-slate-900/10 dark:tw-border-slate-50/[0.06] tw-bg-white/60 supports-backdrop-blur:tw-bg-white/60 dark:tw-bg-transparent">
       <div class="tw-py-4 tw-px-4 tw-border-b tw-border-slate-900/10 lg:tw-px-6  lg:tw-border-0 dark:tw-border-slate-300/10 lg:tw-mx-0 tw-flex tw-items-center">
         <%= link_to  main_app.root_path, class: "tw-flex tw-flex-shrink-0 lg:tw-border tw-bg-white tw-w-8 tw-h-8 tw-items-center tw-justify-center tw-rounded-lg hover:tw-shadow-sm tw-group hover:tw-shadow-indigo focus:tw-ring-4 focus:tw-ring-indigo-300 focus:tw-ring-opacity-50 tw-rounded-lg", data: {tippy_content: "Back to main app", controller: "tooltip"} do %>
           <div class="tw-flex tw-items-center  tw-text-sm">
@@ -57,7 +57,7 @@
     </div>
 
     <div class="lg:tw-flex">
-      <div class="lg:tw-flex tw-hidden tw-flex-col lg:tw-w-[300px] w-full tw-border-r dark:tw-border-slate-100 tw-bg-white tw-h-full lg:tw-fixed tw-top-[72px] tw-left-0 tw-overflow-y-auto tw-z-50" data-toggle-target="toggleable">
+      <div class="lg:tw-flex tw-hidden tw-flex-col lg:tw-w-[300px] w-full tw-border-r dark:tw-border-slate-100 tw-bg-white tw-h-full lg:tw-fixed tw-top-[73px] tw-left-0 tw-overflow-y-auto tw-z-50" data-toggle-target="toggleable">
         <div class="tw-flex-1">
           <div class="lg:tw-py-0 tw-py-2 lg:tw-border-b-0 tw-border-b tw-border-slate-200 lg:tw-hidden lg:tw-px-0 tw-px-3 lg:tw-shadow-none tw-shadow-sm">
             <%= render "railsui/shared/top_nav" %>
