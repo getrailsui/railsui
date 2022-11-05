@@ -189,25 +189,6 @@ def extend_layout_and_views
       ),
       after:"<body>"
     )
-
-    # say "⚡️ Add stylesheet link"
-
-    # stylesheet_link = '<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>'
-
-    # insert_into_file(
-    #   app_layout_path.to_s,
-    #   %(
-    # <% if current_page?(root_path) && !Railsui.config.css_framework.present? %>
-    #   ), before: stylesheet_link
-    # )
-
-    # insert_into_file(
-    #   app_layout_path.to_s,
-    #   %(
-    # <% end %>
-    #   ), after: stylesheet_link
-    # )
-
   end
 end
 
@@ -215,14 +196,25 @@ def copy_hero_icons
   directory "#{__dir__}/icons", Rails.root.join("app/assets/images/icons")
 end
 
-# Add the gems!
-say "⚡️ Remove importmaps"
-remove_importmaps
+def copy_application_mailer
+   copy_file "#{__dir__}/application_mailer.rb", Rails.root.join("app/mailers/application_mailer.rb"), force: true
+end
 
+def scope_body_class
+  gsub_file Rails.root.join("app/views/layouts/application.html.erb"), "<body>", "<body class='rui'>"
+end
+
+# Add all the things!
 say "⚡️ Adding gems..."
 add_gems
 
 run "bundle install"
+
+say "⚡️ Remove importmaps"
+remove_importmaps
+
+say "⚡️ Copy optimized application_mailer.rb file"
+copy_application_mailer
 
 say "⚡️ Configuring Devise..."
 add_users
@@ -244,6 +236,9 @@ add_sidekiq
 
 say "⚡️ Extending layout and views..."
 extend_layout_and_views
+
+say "⚡️ Scope styles to body"
+scope_body_class
 
 say "⚡️ Configuring template engine with fallbacks..."
 add_custom_template_engine

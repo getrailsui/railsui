@@ -10,18 +10,22 @@
       </button>
       <div class="navbar-collapse collapse" id="retrieverNav">
         <ul class="navbar-nav justify-content-start flex-grow-1">
-          <li class="nav-item">
+           <li class="nav-item">
             <%%= link_to "Product", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%%= link_to "Features", "#", class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%%= link_to "Pricing", pricing_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%%= link_to "Company", about_path, class: "nav-link active" %>
-          </li>
+          <%% if Railsui.config.pricing? %>
+            <li class="nav-item">
+              <%%= link_to "Pricing", pricing_path, class: "nav-link #{current_page?(pricing_path) ? "active" : nil}" %>
+            </li>
+          <%% end %>
+          <%% if Railsui.config.about? %>
+            <li class="nav-item">
+              <%%= link_to "Company", about_path, class: "nav-link #{current_page?(about_path) ? "active" : nil}" %>
+            </li>
+          <%% end %>
         </ul>
 
         <ul class="navbar-nav justify-content-end">

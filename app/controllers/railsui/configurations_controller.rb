@@ -16,6 +16,8 @@ module Railsui
         .permit(
           :application_name,
           :css_framework,
+          :primary_color,
+          :secondary_color,
           :about,
           :pricing,
           :theme

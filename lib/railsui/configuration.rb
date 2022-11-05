@@ -6,7 +6,7 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
 
-    attr_accessor :application_name, :css_framework, :primary_color, :secondary_color, :tertiary_color, :font_family, :about, :pricing, :theme
+    attr_accessor :application_name, :css_framework, :primary_color, :secondary_color, :about, :pricing, :theme
 
     def initialize(options = {})
       assign_attributes(options)
@@ -15,8 +15,6 @@ module Railsui
       self.theme ||= ""
       self.primary_color ||= "4338CA"
       self.secondary_color ||= "FF8C69"
-      self.tertiary_color ||= "333333"
-      self.font_family ||= "Inter, sans-serif"
       self.about ||= false
       self.pricing ||= false
     end
@@ -60,7 +58,9 @@ module Railsui
       Railsui.config = self
 
       # Install and configure framework of choice
-      set_framework unless Railsui.framework_installed?
+      if Railsui.config.theme.present?
+        set_framework unless Railsui.framework_installed?
+      end
 
       # Install any static pages
       if !about_page_exists? && Railsui.config.about?

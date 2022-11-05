@@ -1,0 +1,16 @@
+<% action_brand_color ||= "primary" %>
+<% align ||= "center" %>
+
+<table class="action" align="<%= align %>">
+  <tr>
+    <td align="<%= align %>">
+      <a href="<%= action_path %>" class="action__link  action__link--<%= action_brand_color %>" target="_blank"><%= action %></a>
+      <div itemscope itemtype="http://schema.org/EmailMessage">
+        <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
+          <link itemprop="target" href="<%= action_path %>"/>
+          <meta itemprop="name" content="<%= action %>"/>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

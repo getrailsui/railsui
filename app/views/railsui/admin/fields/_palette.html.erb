@@ -1,0 +1,27 @@
+<%= render "railsui/admin/field_layout" do %>
+
+  <% content_for :explainer, flush: true do %>
+    <%= heading text: "Color palette", id: "color_palette", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
+    <p class="text-sm text-slate-700">A two-tone color palette is at your displosal. Once configured you can customize every color directly in the CSS/SCSS if you prefer.</p>
+  <% end %>
+
+  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200 tw-shadow-sm" data-controller="color">
+    <div class="tw-grid tw-grid-cols-2 tw-gap-6">
+      <div class="tw-relative">
+        <%= f.label :primary_color, class: "tw-block tw-mb-2 tw-font-medium" %>
+        <%= f.hidden_field :primary_color %>
+        <hex-color-picker class="tw-w-full tw-h-[200px]" color="<%= f.object.primary_color %>"></hex-color-picker >
+        <hex-input class="tw-font-mono focus:tw-outline-none tw-full" color="<%= f.object.primary_color %>"></hex-input>
+        <span class="tw-absolute tw-bottom-px tw-left-px dark:tw-text-gray-300 tw-text-gray-500 tw-w-8 tw-h-[36px] tw-flex tw-border-r tw-border-neutral-200 dark:tw-border-neutral-700 tw-items-center tw-justify-center tw-text-center dark:tw-bg-neutral-700 tw-bg-gray-50 tw-rounded-l-sm">#</span>
+      </div>
+
+      <div class="tw-relative">
+        <%= f.label :secondary_color, class: "tw-block tw-mb-2 tw-font-medium" %>
+        <%= f.hidden_field :secondary_color %>
+        <hex-color-picker color="<%= f.object.secondary_color %>" class="tw-w-full tw-h-[200px]"></hex-color-picker >
+        <hex-input color="<%= f.object.secondary_color %>" class="tw-font-mono tw-w-full focus:tw-outline-none"></hex-input>
+        <span class="tw-absolute tw-bottom-px tw-left-px dark:tw-text-gray-300 tw-text-gray-500 tw-w-8 tw-h-[36px] tw-flex tw-border-r tw-border-neutral-200 dark:tw-border-neutral-700 tw-items-center tw-justify-center tw-text-center dark:tw-bg-neutral-700 tw-bg-gray-50 tw-rounded-l-sm">#</span>
+      </div>
+    </div>
+  </div>
+<% end %>

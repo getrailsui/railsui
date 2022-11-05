@@ -236,11 +236,7 @@ mark {
   line-height: 34px;
 }
 
-.bg-primary {
-  background-color: $primary !important;
-}
-
-.retriever-auth-bg {
+.rui-auth-feature-bg {
   background-image: url("retriever-auth-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;

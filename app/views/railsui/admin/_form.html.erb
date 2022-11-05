@@ -11,7 +11,11 @@
 
   <%= render "railsui/admin/fields/config_overview" %>
   <%= render "railsui/admin/fields/app_preferences", f: f %>
-  <%= render "railsui/admin/fields/theme", f: f %>
-  <%= render "railsui/admin/fields/pages", f: f %>
+  <% if Railsui.config.css_framework.present? %>
+    <%= render "railsui/admin/fields/palette", f: f %>
+
+    <%= render "railsui/admin/fields/theme", f: f %>
+    <%= render "railsui/admin/fields/pages", f: f %>
+  <% end %>
   <%= render "railsui/admin/fields/commit", f: f %>
 <% end %>

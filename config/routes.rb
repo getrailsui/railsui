@@ -5,46 +5,40 @@ Railsui::Engine.routes.draw do
   resource :systems, only: :show
 
   namespace :systems do
-    get :forms
+    get :authentication
     get :components
     get :content
-    get :scaffolds
-    get :authentication
-    get :marketing
     get :flash
+    get :forms
     get :icons
+    get :mailers
+    get :marketing
+    get :scaffolds
 
     namespace :authentication do
-      get :overview
-      get :signup
-      get :signin
-      get :reset_password
-      get :edit
       get :confirmation
+      get :edit
+      get :overview
+      get :reset_password
+      get :signin
+      get :signup
       get :unlocks
     end
 
     namespace :content do
-      get :typography
-      get :tables
       get :images
+      get :tables
+      get :typography
     end
 
     namespace :forms do
-      get :inputs
-      get :input_groups
-      get :selects
       get :checkboxes_and_radios
+      get :input_groups
+      get :inputs
       get :layout
+      get :selects
       get :validation
     end
-
-    # namespace :marketing do
-    #   get :ctas
-    #   get :footers
-    #   get :headers
-    #   get :longform
-    # end
 
     namespace :components do
       get :accordions
@@ -63,12 +57,19 @@ Railsui::Engine.routes.draw do
       get :toasts
       get :tooltips
     end
+
+    namespace :mailers do
+      get :layout
+      get :minimal
+      get :promotion
+      get :transactional
+    end
   end
 
   namespace :docs do
-    get :installation
     get :configuration
     get :css_frameworks, path: "css-frameworks"
+    get :installation
   end
 
   root to: "admin#show"
