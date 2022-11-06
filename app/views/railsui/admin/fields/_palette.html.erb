@@ -10,16 +10,16 @@
       <div class="tw-relative">
         <%= f.label :primary_color, class: "tw-block tw-mb-2 tw-font-medium" %>
         <%= f.hidden_field :primary_color %>
-        <hex-color-picker class="tw-w-full tw-h-[200px]" color="<%= f.object.primary_color %>"></hex-color-picker >
-        <hex-input class="tw-font-mono focus:tw-outline-none tw-full" color="<%= f.object.primary_color %>"></hex-input>
+        <hex-color-picker class="tw-w-full tw-h-[200px]" color="<%= f.object.primary_color %>" data-color-target="picker"></hex-color-picker >
+        <hex-input class="tw-font-mono focus:tw-outline-none tw-full" color="#<%= f.object.primary_color %>"></hex-input>
         <span class="tw-absolute tw-bottom-px tw-left-px dark:tw-text-gray-300 tw-text-gray-500 tw-w-8 tw-h-[36px] tw-flex tw-border-r tw-border-neutral-200 dark:tw-border-neutral-700 tw-items-center tw-justify-center tw-text-center dark:tw-bg-neutral-700 tw-bg-gray-50 tw-rounded-l-sm">#</span>
       </div>
 
       <div class="tw-relative">
         <%= f.label :secondary_color, class: "tw-block tw-mb-2 tw-font-medium" %>
         <%= f.hidden_field :secondary_color %>
-        <hex-color-picker color="<%= f.object.secondary_color %>" class="tw-w-full tw-h-[200px]"></hex-color-picker >
-        <hex-input color="<%= f.object.secondary_color %>" class="tw-font-mono tw-w-full focus:tw-outline-none"></hex-input>
+        <hex-color-picker color="<%= f.object.secondary_color %>" class="tw-w-full tw-h-[200px]" data-color-target="picker"></hex-color-picker >
+        <hex-input color="#<%= f.object.secondary_color %>" class="tw-font-mono tw-w-full focus:tw-outline-none" ></hex-input>
         <span class="tw-absolute tw-bottom-px tw-left-px dark:tw-text-gray-300 tw-text-gray-500 tw-w-8 tw-h-[36px] tw-flex tw-border-r tw-border-neutral-200 dark:tw-border-neutral-700 tw-items-center tw-justify-center tw-text-center dark:tw-bg-neutral-700 tw-bg-gray-50 tw-rounded-l-sm">#</span>
       </div>
     </div>

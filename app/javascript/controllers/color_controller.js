@@ -1,5 +1,5 @@
 import "vanilla-colorful"
-import 'vanilla-colorful/hex-input.js';
+import "vanilla-colorful/hex-input.js"
 
 import { Controller } from "@hotwired/stimulus"
 
@@ -8,14 +8,10 @@ export default class extends Controller {
   connect() {
     this.pickerTargets.forEach((picker) => {
       picker.addEventListener("color-changed", (event) => {
-        p.previousElementSibling.value = event.detail.value
-        p.nextElementSibling.color = event.detail.value
-        p.color = event.detail.value
-        p.value = event.detail.value
-      })
-
-      p.nextElementSibling.addEventListener("color-changed", (event) => {
-        p.color = event.detail.value
+        picker.previousElementSibling.value = event.detail.value
+        picker.nextElementSibling.color = event.detail.value
+        picker.color = event.detail.value
+        picker.value = event.detail.value
       })
     })
   }

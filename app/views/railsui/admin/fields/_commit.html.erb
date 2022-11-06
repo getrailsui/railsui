@@ -3,12 +3,16 @@
 
   <% end %>
 
-  <div class="tw-py-6">
+  <div class="tw-py-2">
     <%= f.button id: "config_button", class: "rui-btn", data: {configuration_target: "submit" } do %>
-      <%= tag.span "Save changes" %>
+      <% if Railsui.config.css_framework.present? %>
+        <%= tag.span "Save changes" %>
+      <% else %>
+        <%= tag.span "Continue setup" %>
+      <% end %>
     <% end %>
 
-    <p class="tw-text-sm tw-mt-3 tw-text-slate-600 dark:tw-text-neutral-400">Saving will automatically restart your app and install/configure any dependencies.</p>
+    <p class="tw-text-sm tw-mt-3 tw-text-slate-500 dark:tw-text-neutral-400">Saving will automatically restart your app and install any dependencies.</p>
   </div>
 
   <div data-configuration-target="saving" class="tw-hidden tw-fixed tw-inset-0 tw-w-full tw-h-full tw-bg-indigo-800 tw-z-40">

@@ -115,5 +115,7 @@ module Railsui
       Rails.root.join("app/views/static/pricing.html.erb").exist?
     end
 
+
+
   end
 end

@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
     <%= yield :head %>
+
   </head>
 
   <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-white" %>" data-controller="toggle">

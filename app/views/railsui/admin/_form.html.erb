@@ -3,7 +3,7 @@
 
 <%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:tw-text-4xl tw-text-2xl text-slate-800 tw-font-bold lg:tw-pb-6 tw-pb-3 tw-border-b tw-border-slate-200" %>
 
-<%= form_with model: @config, url: configuration_path, class: "tw-h-full tw-block", data: {
+<%= form_with model: @config, url: configuration_path, class: "tw-h-full tw-block relative", data: {
   action: "submit->configuration#saveChanges",
   controller: "configuration",
   configuration_chosen_theme_value: Railsui.config.css_framework
@@ -12,8 +12,6 @@
   <%= render "railsui/admin/fields/config_overview" %>
   <%= render "railsui/admin/fields/app_preferences", f: f %>
   <% if Railsui.config.css_framework.present? %>
-    <%= render "railsui/admin/fields/palette", f: f %>
-
     <%= render "railsui/admin/fields/theme", f: f %>
     <%= render "railsui/admin/fields/pages", f: f %>
   <% end %>

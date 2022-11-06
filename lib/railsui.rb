@@ -23,6 +23,14 @@ module Railsui
     "https://f001.backblazeb2.com/file/railsui/themes/#{self.config.theme.parameterize}/logo.svg"
   end
 
+  def self.tailwind?
+    Railsui.config.css_framework == Railsui::Default::TAILWIND_CSS
+  end
+
+  def self.bootstrap?
+    Railsui.config.css_framework == Railsui::Default::BOOTSTRAP
+  end
+
   def self.no_framework_set?
     self.config.css_framework == "" # not yet configured
   end
