@@ -114,5 +114,10 @@ module Railsui
     def pricing_page_exists?
       Rails.root.join("app/views/static/pricing.html.erb").exist? && Railsui.config.pricing?
     end
+
+    def design_system_navgiation_state
+      return false if params["controller"].include?("authentication")
+      true
+    end
   end
 end
