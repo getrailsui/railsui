@@ -24,5 +24,5 @@ application.register("clipboard", ClipboardController)
 import ToggleController from "./toggle_controller.js"
 application.register("toggle", ToggleController)
 
-import ColorController from "./color_controller.js"
-application.register("color", ColorController)
+import ScrollController from "./scroll_controller.js"
+application.register("scroll", ScrollController)

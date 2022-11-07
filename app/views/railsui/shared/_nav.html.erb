@@ -113,6 +113,31 @@
       </ul>
     </li>
 
+    <li x-data="{open: window.location.pathname.includes('mailers')}" x-cloak>
+
+      <%= link_to systems_mailers_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-blue-700 tw-group tw-border-t"  do %>
+        <div class="tw-bg-white tw-w-7 tw-h-7 tw-rounded tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200">
+          <%= render_svg "mail", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-blue-500" %>
+        </div>
+        <span>Mailers</span>
+      <% end %>
+
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100">
+        <li>
+          <%= nav_link_to "Layout", systems_mailers_layout_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Minimal", systems_mailers_minimal_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Promotion", systems_mailers_promotion_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Transactional", systems_mailers_transactional_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+      </ul>
+    </li>
+
     <li x-data="{open: window.location.pathname.includes('authentication')}" x-cloak>
 
       <%= link_to systems_authentication_overview_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-200 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-amber-700 tw-group tw-border-t"  do %>

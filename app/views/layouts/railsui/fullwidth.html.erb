@@ -25,7 +25,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-white" %>" data-controller="toggle">
+  <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-white" %>" data-controller="toggle scroll">
     <%= render "railsui/shared/flash" %>
     <div class="lg:tw-fixed tw-top-0 tw-left-0 tw-w-full tw-backdrop-blur tw-flex-none transition-colors tw-duration-500 tw-z-30 lg:tw-border-b lg:tw-border-slate-900/10 dark:tw-border-slate-50/[0.06] tw-bg-white/60 supports-backdrop-blur:tw-bg-white/60 dark:tw-bg-transparent">
       <div class="tw-py-4 tw-px-4 tw-border-b tw-border-slate-900/10 lg:tw-px-6  lg:tw-border-0 dark:tw-border-slate-300/10 lg:tw-mx-0 tw-flex tw-items-center">
