@@ -1,6 +1,112 @@
+<div class="tw-mb-16 tw-mt-6">
+  <div class="tw-prose-lg tw-prose-indigo tw-mb-16">
+     <p>Email templates are included by default with Rails UI. They are a starting point for you to tweak as the content you send your users evolves.</p>
+
+    <p>There are many email clients out in the wild, and each has different areas of support regarding CSS and HTML. Rails UI includes essential support with some clever hacks you can use to do more with your templates.</p>
+  </div>
+
+  <div class="tw-mb-16">
+    <%= render "railsui/shared/sticky_subhead", title:
+  "Mailers", subtitle: "Styling considerations" %>
+
+    <div class="tw-prose tw-prose-indigo">
+      <p>It's recommended that CSS be inlined for it to work best inside any email, <%= Railsui.config.css_framework.humanize %> will not work well inside the templates. All included CSS resides inside the <%= link_to "mailer layout template",  systems_mailers_layout_path %> for this reason.</p>
+
+      <p>If you prefer to write your CSS in another stylesheet and include it in your layout, we recommend using something like <%= link_to "premailer", "https://github.com/premailer/premailer" %> to ensure any additional styles you might render correctly.</p>
+    </div>
+  </div>
+
+  <div class="tw-mb-16">
+    <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Helpers" %>
+    <div class="tw-prose tw-prose-indigo tw-mb-10">
+      <p>Bundled with Rails UI is a small <%= code_inline("MailHelper") %> module which is included in the <%= code_inline("ApplicationHelper") %> module after configuring Rails UI. This is useful for displaying buttons and adding dependable spacing between HTML elements in a given template.</p>
+
+      <p>HTML emails require tables  to layout a given design. It's a chore to write these but they do work if done properly. I hope these helpers should save you time and headache.</p>
+    </div>
+
+<h3 class="tw-font-bold tw-text-xl tw-mb-3">Spacers</h3>
+<div class="tw-prose tw-prose-indigo">
+  <p>The spacer helper is an extraction for rendering a new table between elements inside an email template. Emails and margin/padding don't always behave across mail clients, so this is more of a sure way to get that extra space between elements.</p>
+
+  <p>The helper renders an empty table with some inline styles and height attributes intact. Rather than write this HTML by hand, the spacer helper makes it easy.</p>
+
+  <p>Pass an amount to the helper for more or less space to suit your needs. The amount passed will render in pixel units.</p>
+</div>
+<% content_for :html, flush: true do %>
+<table class="spacer">
+  <tbody>
+    <tr>
+      <td height="16" style="font-size:16px;line-height:16px;">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+<% content_for :erb, flush: true do %>
+<p>Some text....</p>
+<%%= spacer(16) %>
+<p>Another paragraph</p>
+<% end %>
+<%= render_snippet(active_tab: "erb") %>
+
+
+
+<h3 class="tw-font-bold tw-text-xl tw-mb-3">Actions</h3>
+<div class="tw-prose tw-prose-indigo">
+  <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code_inline("mail_action") %>. The helper accepts two arguments and an options hash for further customization.</p>
+
+  <p>Rails UI supports two themes (primary, secondary) which can be customized on the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
+  <h4>Options</h4>
+  <ul>
+    <li><%= code_inline('action') %> - The button label - Required</li>
+    <li><%= code_inline('path') %> - The url for the button. Be sure to use url helpers and not path helpers in an email - Required</li>
+    <li><%= code_inline('theme') %> - Primary or Secondary. Modify those styles <%= link_to "here", systems_mailers_layout_path %> Default: "primary".</li>
+    <li><%= code_inline('align') %> - center, left, right</li>
+  </ul>
+</div>
+<% content_for :erb, flush: true do %>
+<!-- all available options shown in use -->
+<%%= mail_action("View notification", root_url, theme: "primary", align: "center") %>
+<% end %>
+
+<% content_for :html, flush: true do %>
+<!-- what outputs from mail_action -->
+<table class="action" align="center">
+  <tr>
+    <td align="center">
+      <a href="#" class="action__link  action__link--primary" target="_blank">View notification</a>
+      <div itemscope itemtype="http://schema.org/EmailMessage">
+        <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
+          <link itemprop="target" href="#"/>
+          <meta itemprop="name" content="View notification"/>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<% end %>
+
+<%= render_snippet(active_tab: "erb" ) %>
+</div>
+
+<%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Additional templates" %>
+
 <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-my-8">
-  <%= link_to systems_forms_validation_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200  hover:tw-text-slate-800" do %>
-    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Validation</h3>
-    <p>Error handling UI is taken care of with Rails UI.</p>
+  <%= link_to systems_mailers_layout_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200  hover:tw-text-slate-800" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Layout</h3>
+    <p>The backbone of your mailers</p>
   <% end %>
+  <%= link_to systems_mailers_minimal_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200  hover:tw-text-slate-800" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Minimal</h3>
+    <p>A simple starting point for HTML-based email templates</p>
+  <% end %>
+  <%= link_to systems_mailers_promotion_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200  hover:tw-text-slate-800" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Promotion</h3>
+    <p>Our take on a promotional email template design</p>
+  <% end %>
+
+  <%= link_to systems_mailers_transactional_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200  hover:tw-text-slate-800" do %>
+    <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Transactional</h3>
+    <p>The core use case for most SaaS app email templates</p>
+  <% end %>
+
 </div>
