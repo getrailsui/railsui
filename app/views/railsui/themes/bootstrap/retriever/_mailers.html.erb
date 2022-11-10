@@ -1,6 +1,6 @@
 <div class="tw-mb-16 tw-mt-6">
   <div class="tw-prose-lg tw-prose-indigo tw-mb-16">
-     <p>Email templates are included by default with Rails UI. They are a starting point for you to tweak as the content you send your users evolves.</p>
+     <p>Email templates are ready for use with Rails UI. They are a starting point for you to tweak as the content you send your users evolves.</p>
 
     <p>There are many email clients out in the wild, and each has different areas of support regarding CSS and HTML. Rails UI includes essential support with some clever hacks you can use to do more with your templates.</p>
   </div>
@@ -12,7 +12,7 @@
     <div class="tw-prose tw-prose-indigo">
       <p>It's recommended that CSS be inlined for it to work best inside any email, <%= Railsui.config.css_framework.humanize %> will not work well inside the templates. All included CSS resides inside the <%= link_to "mailer layout template",  systems_mailers_layout_path %> for this reason.</p>
 
-      <p>If you prefer to write your CSS in another stylesheet and include it in your layout, we recommend using something like <%= link_to "premailer", "https://github.com/premailer/premailer" %> to ensure any additional styles you might render correctly.</p>
+      <p>If you prefer to write your CSS in another stylesheet and include it in your layout, we recommend using something like <%= link_to "premailer", "https://github.com/premailer/premailer" %> to ensure any additional styles you include render correctly inline.</p>
     </div>
   </div>
 
@@ -21,7 +21,7 @@
     <div class="tw-prose tw-prose-indigo tw-mb-10">
       <p>Bundled with Rails UI is a small <%= code_inline("MailHelper") %> module which is included in the <%= code_inline("ApplicationHelper") %> module after configuring Rails UI. This is useful for displaying buttons and adding dependable spacing between HTML elements in a given template.</p>
 
-      <p>HTML emails require tables  to layout a given design. It's a chore to write these but they do work if done properly. I hope these helpers should save you time and headache.</p>
+      <p>HTML emails require tables  to layout a given design. It's a chore to write these but they are more dependable across clients if authored properly. I hope these helpers should save you time and headache!</p>
     </div>
 
 <h3 class="tw-font-bold tw-text-xl tw-mb-3">Spacers</h3>
@@ -33,6 +33,8 @@
   <p>Pass an amount to the helper for more or less space to suit your needs. The amount passed will render in pixel units.</p>
 </div>
 <% content_for :html, flush: true do %>
+<!-- compiled output -->
+<p>Some text...</p>
 <table class="spacer">
   <tbody>
     <tr>
@@ -40,6 +42,7 @@
     </tr>
   </tbody>
 </table>
+<p>Another paragraph</p>
 <% end %>
 <% content_for :erb, flush: true do %>
 <p>Some text....</p>
@@ -54,7 +57,7 @@
 <div class="tw-prose tw-prose-indigo">
   <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code_inline("mail_action") %>. The helper accepts two arguments and an options hash for further customization.</p>
 
-  <p>Rails UI supports two themes (primary, secondary) which can be customized on the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
+  <p>Rails UI supports two themes (primary, secondary) which can be customized in the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
   <h4>Options</h4>
   <ul>
     <li><%= code_inline('action') %> - The button label - Required</li>
@@ -73,7 +76,7 @@
 <table class="action" align="center">
   <tr>
     <td align="center">
-      <a href="#" class="action__link  action__link--primary" target="_blank">View notification</a>
+      <a href="https://railsui.com" class="action__link  action__link--primary" target="_blank">View notification</a>
       <div itemscope itemtype="http://schema.org/EmailMessage">
         <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
           <link itemprop="target" href="#"/>

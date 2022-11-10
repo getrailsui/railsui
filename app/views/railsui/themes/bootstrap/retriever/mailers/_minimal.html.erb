@@ -1,0 +1,49 @@
+<div class="tw-mb-16 tw-mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Overview" %>
+
+  <div class="tw-prose tw-prose-indigo">
+    <p>Copy the template markup below to use it in your next minimally designed mailer. The Rails UI minimal template gives you a good starting point for an HTML email that is primarily text.</p>
+  </div>
+
+<div class="tw-relative tw-border tw-rounded-lg tw-p-3 tw-my-10 rui-mailer">
+  <div class="rui-pill tw-absolute tw-top-4 tw-right-4">Email preview</div>
+  <%= render layout: "railsui/shared/mailer_preview" do %>
+    <h1>This is a heading</h1>
+    <%= spacer(16) %>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+    <%= spacer(16) %>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ul>
+    <%= spacer(16) %>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+    <%= spacer(16) %>
+
+    <%= link_to "Learn more", "https://railsui.com" %>
+  <% end %>
+</div>
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/some_mailer/minimal.html.erb -->
+
+<h1>This is a heading</h1>
+<%%= spacer(16) %>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+<%%= spacer(16) %>
+<ul>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ul>
+<%%= spacer(16) %>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+
+<%%= spacer(16) %>
+
+<%%= link_to "Learn more", "https://railsui.com" %>
+<% end %>
+
+  <%= render_snippet active_tab: "erb" %>
+</div>

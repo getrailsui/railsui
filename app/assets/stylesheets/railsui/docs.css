@@ -10,6 +10,10 @@
   @apply tw-bg-gradient-to-br tw-from-yellow-300 tw-to-yellow-500 tw-text-black tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs;
 }
 
+.rui-pill {
+  @apply tw-bg-gradient-to-br tw-from-indigo-400 tw-to-indigo-600 tw-text-white tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs;
+}
+
 [data-controller=anchor] {
   @apply tw-relative tw-cursor-pointer;
 }

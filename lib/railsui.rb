@@ -23,6 +23,10 @@ module Railsui
     "https://f001.backblazeb2.com/file/railsui/themes/#{self.config.theme.parameterize}/logo.svg"
   end
 
+  def self.parameterized_app_name
+    Railsui.config.application_name.parameterize(separator:"")
+  end
+
   def self.tailwind?
     Railsui.config.css_framework == Railsui::Default::TAILWIND_CSS
   end

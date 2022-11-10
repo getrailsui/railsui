@@ -2,12 +2,14 @@
   <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Overview" %>
 
   <div class="tw-prose tw-prose-indigo">
-    <p>The main layout we add to <%= code_inline("mailer.html.erb") %> inside <%= code_inline("app/views/layouts") %>. It's a bear of a file since CSS needs to be inline for email templates.</p>
+    <p>The main <%= code_inline("mailer.html.erb") %> layout comes ready to rock and roll inside <%= code_inline("app/views/layouts") %>. Be warned that it's a bear of a file. Bundled inside the layout is some CSS used to cover the basics of any HTML template.</p>
 
-    <p>Unfortunately, <%= Railsui.config.css_framework.humanize %> can't be dependably leveraged inside emails, so with Rails UI, the approach for emails is entirely custom.</p>
+    <p>Embedded in the layout is the dummy logo for the <%= Railsui.config.theme %> theme logo. Be sure to swap this for your own logo and/or plain text.</p>
+
+    <p>Unfortunately, <%= Railsui.config.css_framework.humanize %> can't be dependably leveraged inside emails, so with Rails UI, the approach for emails is entirely custom as of today.</p>
   </div>
 
-  <% content_for :html, flush: true do %>
+  <% content_for :erb, flush: true do %>
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html>
       <head>
@@ -37,8 +39,6 @@
             border-radius: 99999px;
             width: 20px;
             height: 20px;
-            margin-bottom: -2px;
-            margin-bottom: -2px;
           }
 
           body {
@@ -78,26 +78,20 @@
             vertical-align: top;
           }
 
-          /* -------------------------------------
-          BODY & CONTAINER
-          ------------------------------------- */
           .body {
             background-color: #fff;
             width: 100%;
             color: #334155;
           }
 
-          /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone */
           .container {
             display: block;
             margin: 0 auto !important;
-            /* makes it centered */
             max-width: 600px;
             padding: 10px;
             width: 600px;
           }
 
-          /* This should be a block element, so that it will fill 100% of the .container */
           .content {
             box-sizing: border-box;
             display: block;
@@ -121,9 +115,6 @@
             text-decoration: none;
           }
 
-          /* -------------------------------------
-          HEADER, FOOTER, MAIN
-          ------------------------------------- */
           .main {
             background: #ffffff;
             width: 100%;
@@ -244,14 +235,6 @@
             margin: 0;
           }
 
-          .footer p,
-          .footer a {
-
-          }
-
-          /* -------------------------------------
-          OTHER STYLES THAT MIGHT BE USEFUL
-          ------------------------------------- */
           .last {
             margin-bottom: 0;
           }
@@ -272,11 +255,11 @@
             text-align: left;
           }
 
-          .mt0 {
+          .mt-0 {
             margin-top: 0;
           }
 
-          .mb0 {
+          .mb-0 {
             margin-bottom: 0;
           }
 
@@ -328,62 +311,6 @@
             text-align: center;
             display: block;
           }
-
-          /* -------------------------------------
-          TABLE LISTS
-          ---------------------------------------*/
-          .table-list tr td {
-            padding-bottom: 24px;
-            line-height: 130%;
-          }
-
-          .table-list a {
-            color: #059669;
-            font-weight: bold;
-            text-decoration: none;
-            margin: 0;
-            font-size: 16px;
-          }
-
-          /* -------------------------------------
-          ISSUE SPECIFIC STYLES
-          ---------------------------------------*/
-          .article-title {
-            font-size: 21px;
-          }
-
-          .article-title a {
-            color: #333333;
-          }
-
-          .article-title a:hover {
-            text-decoration: none;
-          }
-
-          .article-link {
-            font-size: 14px;
-          }
-
-          .article-body {
-            color: #777;
-            font-size: 15px;
-          }
-
-          .article-image {
-            width: 40px;
-            height: auto;
-            max-width: 100%;
-          }
-
-          .tags {
-            font-size: 14px;
-            display: inline;
-            color: #aaa;
-          }
-
-          .tags a {
-            color: #aaa;
-          }
           /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
           ------------------------------------- */
@@ -426,21 +353,7 @@
               line-height: 150%;
             }
 
-            table[class="body"] .table-list td {
-              padding-bottom: 40px !important;
-            }
-
-            table[class="body"] .table-list a {
-              line-height: 130%;
-              font-size: 18px !important;
-              color: #1c726f;
-              font-weight: bold;
-              text-decoration: none;
-              margin: 0;
-            }
-
-            .wrapper,
-            .article {
+            .wrapper {
               padding: 20px 10px !important;
             }
 
@@ -472,7 +385,6 @@
             }
           }
 
-          /* Action buttons */
           .action__link {
             display: inline-block;
             text-decoration: none !important;
@@ -533,11 +445,11 @@
                           <div>
                             <%%= spacer(12) %>
 
-                            <%%= link_to root_url, class: "logo", target: :_blank do %>
-                              <%%= image_tag Railsui.theme_logo_url, style: "width: 60px; max-width: 60px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.config.theme} logo" %>
+                              <%%= link_to root_url, class: "logo", target: :_blank do %>
+                                <%%= image_tag Railsui.theme_logo_url, style: "width: 60px; max-width: 60px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.application_name} logo" %>
                               <%% end %>
 
-                              <%%= spacer(16) %>
+                              <%%= spacer(24) %>
                             </div>
 
                             <%%= yield %>
@@ -552,7 +464,7 @@
                   <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        Please contact <%%= mail_to "support@#{Railsui.config.application_name.parameterize(separator:"")}.com", "support@#{ Railsui.config.application_name.parameterize(separator:"")}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
+                        Please contact <%%= mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
                       </td>
                     </tr>
                   </table>
@@ -565,5 +477,5 @@
       </body>
     </html>
   <% end %>
-  <%= render_snippet %>
+  <%= render_snippet active_tab: "erb" %>
 </div>
