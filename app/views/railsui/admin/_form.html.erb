@@ -9,9 +9,12 @@
   configuration_chosen_theme_value: Railsui.config.css_framework
   } do |f| %>
 
-  <%= render "railsui/admin/fields/config_overview" %>
+  <% unless Railsui.framework? %>
+    <%= render "railsui/admin/fields/config_overview" %>
+  <% end %>
+
   <%= render "railsui/admin/fields/app_preferences", f: f %>
-  <% if Railsui.config.css_framework.present? %>
+  <% if Railsui.framework? %>
     <%= render "railsui/admin/fields/theme", f: f %>
     <%= render "railsui/admin/fields/pages", f: f %>
   <% end %>

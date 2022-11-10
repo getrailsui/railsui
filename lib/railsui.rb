@@ -47,10 +47,11 @@ module Railsui
     Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
   end
 
-  def self.framework_installed?
+  def self.framework?
     self.bootstrap_installed? ||
     self.tailwind_installed?
   end
+
 
   def self.theme
     self.config.theme

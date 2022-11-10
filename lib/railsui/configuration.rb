@@ -59,7 +59,7 @@ module Railsui
 
       # Install and configure framework of choice
       if Railsui.config.theme.present?
-        set_framework unless Railsui.framework_installed?
+        set_framework unless Railsui.framework?
       end
 
       # Install any static pages
