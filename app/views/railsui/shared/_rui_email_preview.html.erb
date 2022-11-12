@@ -1,0 +1,22 @@
+<div class="tw-relative tw-border tw-rounded-lg tw-my-10">
+  <div class="tw-flex tw-text-sm tw-text-slate-700 tw-space-x-2 tw-py-4 tw-px-6 tw-border-b tw-bg-gradient-to-b tw-rounded-t-lg tw-from-slate-50 tw-to-white">
+    <ul class="tw-text-right">
+      <li>From:</li>
+      <li>To:</li>
+      <li>Date:</li>
+      <li>Subject:</li>
+    </ul>
+    <ul>
+      <li><%= Railsui.config.application_name %><%= "@#{Railsui.parameterized_app_name}.com" %></li>
+      <li>andy@railsui.com</li>
+      <li><%= Date.today.to_formatted_s(:long) %></li>
+      <li class="tw-font-semibold"><%= local_assigns[:subject] %></li>
+    </ul>
+  </div>
+
+  <div class="rui-mailer tw-p-3 tw-shadow-sm">
+    <div class="rui-pill tw-absolute tw-top-4 tw-right-4">Email preview</div>
+
+    <%= capture(&block) %>
+  </div>
+</div>

@@ -66,7 +66,7 @@
         max-width: 600px;
         padding: 20px;
         line-height: 1.6;
-        color: #333;
+        color: <%= local_assigns[:body_text_color] %>;
       }
 
       /* For a text based logo */
@@ -106,7 +106,7 @@
       .rui-mailer .footer p,
       .rui-mailer .footer span,
       .rui-mailer .footer a {
-        color: #999999;
+        color: <%= local_assigns[:footer_text_color] %>;
         font-size: 13px;
         line-height: 150%;
         margin: 0;
@@ -120,7 +120,7 @@
       .rui-mailer h2,
       .rui-mailer h3,
       .rui-mailer h4 {
-        color: #222;
+        color: <%= local_assigns[:heading_text_color] %>;
         font-family: 'system-ui',
         '-apple-system',
         'BlinkMacSystemFont',
@@ -183,7 +183,7 @@
       }
 
       .rui-mailer a {
-        color: #334155;
+        color: <%= local_assigns[:primary] %>;
         text-decoration: underline;
       }
 
@@ -229,11 +229,11 @@
         text-align: left;
       }
 
-      .rui-mailer .mt0 {
+      .rui-mailer .mt-0 {
         margin-top: 0;
       }
 
-      .rui-mailer .mb0 {
+      .rui-mailer .mb-0 {
         margin-bottom: 0;
       }
 
@@ -259,23 +259,11 @@
         margin: 20px 0;
       }
 
-      .rui-mailer .actions {
-        font-size: 14px;
-      }
-
-      .rui-mailer .actions a {
-        color: #059669;
-      }
-
       .rui-mailer table.callout td {
         background-color: #EBF8FF;
         border: 1px solid #90CDF4;
         padding: 10px;
         border-radius: 6px;
-      }
-
-      .rui-mailer table.callout td p {
-        margin-bottom: 16px;
       }
 
       .rui-mailer .view-in-browser {
@@ -286,61 +274,6 @@
         display: block;
       }
 
-      /* -------------------------------------
-      TABLE LISTS
-      ---------------------------------------*/
-      .rui-mailer .table-list tr td {
-        padding-bottom: 24px;
-        line-height: 130%;
-      }
-
-      .rui-mailer .table-list a {
-        color: #059669;
-        font-weight: bold;
-        text-decoration: none;
-        margin: 0;
-        font-size: 16px;
-      }
-
-      /* -------------------------------------
-      ISSUE SPECIFIC STYLES
-      ---------------------------------------*/
-      .rui-mailer .article-title {
-        font-size: 21px;
-      }
-
-      .rui-mailer .article-title a {
-        color: #333333;
-      }
-
-      .rui-mailer .article-title a:hover {
-        text-decoration: none;
-      }
-
-      .rui-mailer .article-link {
-        font-size: 14px;
-      }
-
-      .rui-mailer .article-body {
-        color: #777;
-        font-size: 15px;
-      }
-
-      .rui-mailer .article-image {
-        width: 40px;
-        height: auto;
-        max-width: 100%;
-      }
-
-      .rui-mailer .tags {
-        font-size: 14px;
-        display: inline;
-        color: #aaa;
-      }
-
-      .rui-mailer .tags a {
-        color: #aaa;
-      }
       /* -------------------------------------
       RESPONSIVE AND MOBILE FRIENDLY STYLES
       ------------------------------------- */
@@ -377,21 +310,7 @@
           line-height: 150%;
         }
 
-        .rui-mailer table[class="body"] .table-list td {
-          padding-bottom: 40px !important;
-        }
-
-        .rui-mailer table[class="body"] .table-list a {
-          line-height: 130%;
-          font-size: 18px !important;
-          color: #1c726f;
-          font-weight: bold;
-          text-decoration: none;
-          margin: 0;
-        }
-
-        .rui-mailer .wrapper,
-        .rui-mailer .article {
+        .rui-mailer .wrapper {
           padding: 20px 10px !important;
         }
 
@@ -435,20 +354,20 @@
       }
       /* Update your brand colors here */
       .rui-mailer .action__link--primary {
-        background-color: #059669;
-        border-top: 10px solid #059669;
-        border-right: 18px solid #059669;
-        border-bottom: 10px solid #059669;
-        border-left: 18px solid #059669;
+        background-color: <%= local_assigns[:primary] %>;
+        border-top: 10px solid  <%= local_assigns[:primary] %>;
+        border-right: 18px solid <%= local_assigns[:primary] %>;
+        border-bottom: 10px solid <%= local_assigns[:primary] %>;
+        border-left: 18px solid <%= local_assigns[:primary] %>;
       }
 
       .rui-mailer .action__link--secondary {
         color: white;
-        background-color: #b91c1c;
-        border-top: 10px solid #b91c1c;
-        border-right: 18px solid #b91c1c;
-        border-bottom: 10px solid #b91c1c;
-        border-left: 18px solid #b91c1c;
+        background-color: <%= local_assigns[:secondary] %>;
+        border-top: 10px solid <%= local_assigns[:secondary] %>;
+        border-right: 18px solid <%= local_assigns[:secondary] %>;
+        border-bottom: 10px solid <%= local_assigns[:secondary] %>;
+        border-left: 18px solid <%= local_assigns[:secondary] %>;
       }
 
       .rui-mailer .action {
@@ -457,10 +376,13 @@
         text-align: center;
       }
 
+      .rui-mailer .action__link--expanded {
+        width: 100%;
+      }
+
       .rui-mailer .action td {
         padding: 0 !important;
         border: none;
-        text-align: left;
       }
 
       @media only screen and (max-width: 600px) {
@@ -481,16 +403,17 @@
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td class="wrapper">
-                      <div>
-                        <%= spacer(12) %>
-
-                        <%= link_to root_url, class: "logo", target: :_blank do %>
-                          <%= image_tag Railsui.theme_logo_url, style: "width: 60px; max-width: 60px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.config.theme} logo" %>
-                        <% end %>
-
-                        <%= spacer(24) %>
-                      </div>
-
+                      <table align="<%= local_assigns[:align_logo] ||= "left" %>">
+                        <tr>
+                          <td align="<%= local_assigns[:align_logo] ||= "left" %>">
+                            <%= spacer(12) %>
+                            <%= link_to root_url, class: "logo", target: :_blank do %>
+                              <%= image_tag Railsui.theme_logo_url, style: "width: 60px; max-width: 60px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.config.application_name} logo" %>
+                            <% end %>
+                            <%= spacer(24) %>
+                          </td>
+                        </tr>
+                      </table>
                       <%= yield %>
                     </td>
                   </tr>
@@ -499,16 +422,48 @@
             </tr>
           </table>
           <%= spacer(8) %>
-          <div class="footer">
-            <table border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td>
-                  Please contact <%= mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
-                </td>
-              </tr>
-            </table>
-          </div>
+          <table class="footer" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                Please contact <%= mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
+              </td>
+            </tr>
+          </table>
         </div>
+        <table align="center" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="center">
+              <%= link_to "https://twitter.com/" do %>
+                <%= image_tag "mailers/twitter.png", width: 24, height: 24, alt: "Twitter logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://facebook.com/" do %>
+                <%= image_tag "mailers/facebook.png", width: 24, height: 24, alt: "Facebook logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://linkedin.com/" do %>
+                <%= image_tag "mailers/linkedin.png", width: 24, height: 24, alt: "LinkedIn logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://instagram.com/" do %>
+                <%= image_tag "mailers/instagram.png", width: 24, height: 24, alt: "Instagram logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://youtube.com/" do %>
+                <%= image_tag "mailers/youtube.png", width: 24, height: 24, alt: "YouTube logo" %>
+              <% end %>
+            </td>
+             <td align="center">
+              <%= link_to "https://github.com/" do %>
+                <%= image_tag "mailers/github.png", width: 24, height: 24, alt: "Github logo" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
       </td>
       <td>&nbsp;</td>
     </tr>

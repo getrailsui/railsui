@@ -119,5 +119,9 @@ module Railsui
       return false if params["controller"].include?("authentication")
       true
     end
+
+    def email_viewer(subject="A sample subject", &block)
+      render "railsui/shared/rui_email_preview", subject: subject, block: block, flush: true
+    end
   end
 end

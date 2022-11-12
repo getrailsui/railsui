@@ -1,7 +1,9 @@
-<table class="action" align="<%= align %>">
+<%# modify defaults/fallbacks inside app/helpers/railsui/mail_helper.rb %>
+
+<table class="action" align="<%= local_assigns[:align] %>">
   <tr>
-    <td align="<%= align %>">
-      <a href="<%= path %>" class="action__link  action__link--<%= theme %>" target="_blank"><%= action %></a>
+    <td align="<%= local_assigns[:align] %>">
+      <a href="<%= path %>" class="action__link  action__link--<%= local_assigns[:theme] %> <%= local_assigns[:fullwidth] == true ? "action__link--expanded" : nil %>" target="_blank"><%= action %></a>
       <div itemscope itemtype="http://schema.org/EmailMessage">
         <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
           <link itemprop="target" href="<%= path %>"/>

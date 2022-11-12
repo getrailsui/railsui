@@ -2,46 +2,35 @@
   <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Overview" %>
 
   <div class="tw-prose tw-prose-indigo">
-    <p>Copy the template markup below to use it in your next minimally designed mailer. The Rails UI minimal template gives you a good starting point for an HTML email that is primarily text.</p>
+    <p>The <%= Railsui.config.theme.humanize %> theme minimal template gives you a good starting point for an HTML email that is primarily text. The template features basic <%= link_to "email-supported HTML markup", "https://www.caniemail.com/features/", target: :_blank %>.</p>
   </div>
 
-<div class="tw-relative tw-border tw-rounded-lg tw-my-10">
-  <div class="tw-flex tw-text-sm tw-text-slate-700 tw-space-x-2 tw-py-4 tw-px-6 tw-border-b tw-bg-gradient-to-b tw-rounded-t-lg tw-from-slate-50 tw-to-white">
-  <ul class="tw-text-right">
-    <li>From:</li>
-    <li>To:</li>
-    <li>Date:</li>
-    <li>Subject:</li>
-  </ul>
-  <ul>
-    <li><%= Railsui.config.application_name %><%= "@#{Railsui.parameterized_app_name}.com" %></li>
-    <li>andy@railsui.com</li>
-    <li><%= Date.today.to_formatted_s(:long) %></li>
-    <li class="tw-font-semibold">Minimal template example</li>
-  </ul>
-  </div>
+<%= email_viewer("A minimal template") do %>
+  <%= render layout: "railsui/shared/mailer_preview", locals: {
+    primary: "var(--bs-primary)",
+    secondary: "var(--bs-secondary)",
+    heading_text_color: "#1e293b",
+    footer_text_color: "#94a3b8",
+    body_text_color: "#334155",
+  } do %>
+    <h1>This is a heading</h1>
+    <%= spacer(16) %>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+    <%= spacer(16) %>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ul>
+    <%= spacer(16) %>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+    <%= spacer(16) %>
+
+    <%= link_to "Learn more", "https://railsui.com" %>
+  <% end %>
+<% end %>
 
 
-  <div class="rui-mailer tw-p-3 tw-shadow-sm">
-    <div class="rui-pill tw-absolute tw-top-4 tw-right-4">Email preview</div>
-    <%= render layout: "railsui/shared/mailer_preview" do %>
-      <h1>This is a heading</h1>
-      <%= spacer(16) %>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
-      <%= spacer(16) %>
-      <ul>
-        <li>List item 1</li>
-        <li>List item 2</li>
-        <li>List item 3</li>
-      </ul>
-      <%= spacer(16) %>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
-      <%= spacer(16) %>
-
-      <%= link_to "Learn more", "https://railsui.com" %>
-    <% end %>
-    </div>
-</div>
 
 <% content_for :erb, flush: true do %>
 <!-- app/views/some_mailer/minimal.html.erb -->

@@ -136,7 +136,7 @@
           .footer p,
           .footer span,
           .footer a {
-            color: #999999;
+            color: #94a3b8;
             font-size: 13px;
             line-height: 150%;
             margin: 0;
@@ -300,10 +300,6 @@
             border-radius: 6px;
           }
 
-          table.callout td p {
-            margin-bottom: 16px;
-          }
-
           .view-in-browser {
             font-size: 12px;
             color: #999;
@@ -418,6 +414,10 @@
             text-align: center;
           }
 
+          .action__link--expanded {
+            width: 100%;
+          }
+
           .action td {
             padding: 0 !important;
             border: none;
@@ -442,15 +442,18 @@
                     <table border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td class="wrapper">
-                          <div>
-                            <%%= spacer(12) %>
-
-                              <%%= link_to root_url, class: "logo", target: :_blank do %>
-                                <%%= image_tag Railsui.theme_logo_url, style: "width: 60px; max-width: 60px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.application_name} logo" %>
-                              <%% end %>
-
-                              <%%= spacer(24) %>
-                            </div>
+                            <!-- Customize logo placement (left, center, right) -->
+                            <table align="left">
+                              <tr>
+                                <td align="left">
+                                  <%%= spacer(12) %>
+                                  <%%= link_to root_url, class: "logo", target: :_blank do %>
+                                  <!-- Swap to your logo or change to text -->
+                                  <%%= image_tag Railsui.theme_logo_url, style: "width: 60px; max-width: 60px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.application_name} logo" %>
+                                  <%%= spacer(24) %>
+                                </td>
+                              </tr>
+                            </table>
 
                             <%%= yield %>
                           </td>
@@ -464,6 +467,7 @@
                   <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
+                        <!-- Change to your contact info -->
                         Please contact <%%= mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
                       </td>
                     </tr>

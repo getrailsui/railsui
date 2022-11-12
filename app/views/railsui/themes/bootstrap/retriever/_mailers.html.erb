@@ -53,22 +53,50 @@
 
 
 
-<h3 class="tw-font-bold tw-text-xl tw-mb-3">Actions</h3>
+<h3 class="tw-font-bold tw-text-xl tw-mb-3">Buttons</h3>
 <div class="tw-prose tw-prose-indigo">
-  <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code_inline("mail_action") %>. The helper accepts two arguments and an options hash for further customization.</p>
+  <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code_inline("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
 
   <p>Rails UI supports two themes (primary, secondary) which can be customized in the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
-  <h4>Options</h4>
-  <ul>
-    <li><%= code_inline('action') %> - The button label - Required</li>
-    <li><%= code_inline('path') %> - The url for the button. Be sure to use url helpers and not path helpers in an email - Required</li>
-    <li><%= code_inline('theme') %> - Primary or Secondary. Modify those styles <%= link_to "here", systems_mailers_layout_path %> Default: "primary".</li>
-    <li><%= code_inline('align') %> - center, left, right</li>
-  </ul>
 </div>
+ <div class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-ring-1 dark:ring-white/10 dark:tw-ring-inset selection:tw-bg-salmon-500 selection:tw-bg-opacity-25 tw-relative tw-text-slate-200 tw-p-6">
+    <code class="tw-text-white tw-text-lg">email_action(action, path, options)</code>
+    <h4 class="tw-uppercase tw-text-xs tw-text-slate-400 tw-font-semibold tw-tracking-wider tw-my-4 tw-pb-2 tw-border-b tw-border-slate-700">Required parameters</h4>
+     <ul class="tw-space-y-2">
+      <li>
+        <p><code class="tw-text-pink-400 tw-font-mono tw-font-semibold">action</code>  <em class="tw-text-slate-400">- required</em></p>
+        <p>The button label</p>
+      </li>
+      <li>
+        <p><code class="tw-text-pink-400 tw-font-mono tw-font-semibold">path</code> <em class="tw-text-slate-400">- required</em></p>
+        <p>The url for the button. Be sure to use url helpers and not path helpers in an email </p>
+      </li>
+      </ul>
+    <h4 class="tw-uppercase tw-text-xs tw-text-slate-400 tw-font-semibold tw-tracking-wider tw-my-4 tw-pb-2 tw-border-b tw-border-slate-700">Additional options</h4>
+    <ul class="tw-space-y-2">
+      <li>
+        <p><code class="tw-text-pink-400 tw-font-mono tw-font-semibold">theme</code></p>
+        <p>
+          <span class="tw-font-medium tw-text-sky-400 tw-font-mono">primary</span> or <span class="tw-font-medium tw-text-sky-400 tw-font-mono">secondary</span>. Default: <span class="tw-font-medium tw-text-sky-400 tw-font-mono">primary</span>.
+        </p>
+      </li>
+      <li>
+        <p><code class="tw-text-pink-400 tw-font-mono tw-font-semibold">align</code></p>
+        <p>Align button to
+          <span class="tw-font-medium tw-text-sky-400 tw-font-mono">center</span>, <span class="tw-font-medium tw-text-sky-400 tw-font-mono">left</span>, or <span class="tw-font-medium tw-text-sky-400 tw-font-mono">right</span>.
+          Default: <span class="tw-font-medium tw-text-sky-400 tw-font-mono">left</span>
+          </p>
+        </li>
+      <li>
+        <p><code class="tw-text-pink-400 tw-font-mono tw-font-semibold">fullwidth</code></p>
+        <p>(boolean) <span class="tw-font-medium tw-text-sky-400 tw-font-mono">true</span> / <span class="tw-font-medium tw-text-sky-400 tw-font-mono">false</span>
+        </p>
+      </li>
+    </ul>
+  </div>
 <% content_for :erb, flush: true do %>
 <!-- all available options shown in use -->
-<%%= mail_action("View notification", root_url, theme: "primary", align: "center") %>
+<%%= email_action("View notification", root_url, theme: "primary", align: "center") %>
 <% end %>
 
 <% content_for :html, flush: true do %>
@@ -90,6 +118,25 @@
 
 <%= render_snippet(active_tab: "erb" ) %>
 </div>
+
+<div class="tw-mb-16">
+  <h3 class="tw-font-bold tw-text-xl tw-mb-3">Callouts</h3>
+  <div class="tw-prose tw-prose-indigo">
+    Highlight important content in an email with a callout. Rails UI offers a simple view helper that accepts a block. Add your content and any basic HTML for formatted results. Customize color and more inside the <%= link_to "mailer layout", systems_mailers_layout_path %> CSS.
+  </div>
+
+  <div class="rui-mailer tw-p-3 tw-shadow-sm">
+    <div class="rui-pill tw-absolute tw-top-4 tw-right-4">Email preview</div>
+    <%= render layout: "railsui/shared/mailer_preview", locals: { primary: "var(--bs-primary)", secondary: "var(--bs-secondary)" } do %>
+      <%= email_callout do %>
+        <p>This is my neato email callout.</p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
 
 <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Additional templates" %>
 

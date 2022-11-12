@@ -4,11 +4,16 @@ module Railsui
       render "railsui/shared/email_spacer", amount: amount
     end
 
-    def mail_action(action, url, options={})
-      align = options[:align] ||= "center"
+    def email_action(action, url, options={})
+      align = options[:align] ||= "left"
       theme = options[:theme] ||= "primary"
       path = options[:path] ||= "#"
-      render "railsui/shared/email_action", align: align, theme: theme, action: action, path: path
+      fullwidth = options[:fullwidth] ||= false
+      render "railsui/shared/email_action", align: align, theme: theme, action: action, path: path, fullwidth: fullwidth
+    end
+
+    def email_callout(&block)
+      render "railsui/shared/email_callout", block: block
     end
   end
 end
