@@ -7,9 +7,8 @@ module Railsui
     def email_action(action, url, options={})
       align = options[:align] ||= "left"
       theme = options[:theme] ||= "primary"
-      path = options[:path] ||= "#"
       fullwidth = options[:fullwidth] ||= false
-      render "railsui/shared/email_action", align: align, theme: theme, action: action, path: path, fullwidth: fullwidth
+      render "railsui/shared/email_action", align: align, theme: theme, action: action, url: url, fullwidth: fullwidth
     end
 
     def email_callout(&block)

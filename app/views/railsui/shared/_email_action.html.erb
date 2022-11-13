@@ -3,11 +3,11 @@
 <table class="action" align="<%= local_assigns[:align] %>">
   <tr>
     <td align="<%= local_assigns[:align] %>">
-      <a href="<%= path %>" class="action__link  action__link--<%= local_assigns[:theme] %> <%= local_assigns[:fullwidth] == true ? "action__link--expanded" : nil %>" target="_blank"><%= action %></a>
+      <a href="<%= local_assigns[:url] %>" class="action__link  action__link--<%= local_assigns[:theme] %> <%= local_assigns[:fullwidth] == true ? "action__link--expanded" : nil %>" target="_blank"><%= local_assigns[:action ]%></a>
       <div itemscope itemtype="http://schema.org/EmailMessage">
         <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
-          <link itemprop="target" href="<%= path %>"/>
-          <meta itemprop="name" content="<%= action %>"/>
+          <link itemprop="target" href="<%= local_assigns[:url] %>"/>
+          <meta itemprop="name" content="<%= local_assigns[:action] %>"/>
         </div>
       </div>
     </td>

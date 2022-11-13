@@ -1,0 +1,83 @@
+<!--
+  # confirmation_instructions.html.erb
+  # email_changed.html.erb
+  # password_change.html.erb
+  # reset_password_instructions.html.erb
+  # unlock_instructions.html.erb
+-->
+
+<div class="tw-mb-16 tw-mt-6">
+  <div class="tw-prose tw-prose-indigo tw-mb-10">
+    <p>Devise ships with optional views you can generate on command. Most of these should work out of the box with Rails UI. The generated views in <code>app/views/devise/mailer/</code> have the <%= Railsui.config.theme.humanize %> theme applied. Save time without reinventing the wheel!</p>
+  </div>
+
+<%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Confirmation instructions" %>
+
+<%= email_viewer("Confirmation instructions") do %>
+  <%= render layout: "railsui/shared/mailer_preview", locals: {
+    primary: "var(--bs-primary)",
+    secondary: "var(--bs-secondary)",
+    heading_text_color: "#1e293b",
+    footer_text_color: "#94a3b8",
+    body_text_color: "#334155",
+    light_text_color: "#94a3b8"
+  } do %>
+
+    <p>Hi john.doe@example.com,</p>
+
+    <p>Thanks for signing up at ACME.xyz! Before you access your new account we want to make sure it's really you.</p>
+
+    <p>Confirm your account by clicking the button below.</p>
+
+    <%= email_action "Confirm my account", "#", fullwidth: true %>
+  <% end %>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/mailer/confirmation_instructions.html.erb -->
+<p>Hi <%%= @email %>,</p>
+
+<p>Thanks for signing up at ACME.xyz! Before you access your new account we want to make sure it's really you.</p>
+
+<p>Confirm your account by clicking the button below.</p>
+
+<%%= email_action "Confirm my account", confirmation_url(@resource, confirmation_token: @token), fullwidth: true %>
+<% end %>
+
+<%= render_snippet(active_tab: "erb") %>
+
+
+
+<%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Email changed" %>
+
+<%= email_viewer("Email changed") do %>
+  <%= render layout: "railsui/shared/mailer_preview", locals: {
+    primary: "var(--bs-primary)",
+    secondary: "var(--bs-secondary)",
+    heading_text_color: "#1e293b",
+    footer_text_color: "#94a3b8",
+    body_text_color: "#334155",
+    light_text_color: "#94a3b8"
+  } do %>
+
+    <p>Hi john.doe@example.com</p>
+
+    <p>We're contacting you to notify you that your email has been changed to saasquatch@railsui.com.</p>
+
+    <%= email_action "View account", "#", fullwidth: true %>
+  <% end %>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/mailer/email_changed.html.erb -->
+<p>Hello <%%= @email %>!</p>
+
+<%% if @resource.try(:unconfirmed_email?) %>
+  <p>We're contacting you to notify you that your email is being changed to <%%= @resource.unconfirmed_email %>.</p>
+<%% else %>
+  <p>We're contacting you to notify you that your email has been changed to <%%= @resource.email %>.</p>
+<%% end %>
+<% end %>
+<%= render_snippet(active_tab: "erb") %>

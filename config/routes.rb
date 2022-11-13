@@ -59,6 +59,7 @@ Railsui::Engine.routes.draw do
     end
 
     namespace :mailers do
+      get :devise
       get :layout
       get :minimal
       get :promotion

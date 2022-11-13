@@ -2,7 +2,7 @@
   <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Promotion" %>
 
   <div class="tw-prose tw-prose-indigo">
-    <p>The Rails UI promotionl template gives you a good starting point for a sales-based email template.</p>
+    <p>The Rails UI promotional template gives you a good starting point for a sales-based email template. Using a short and sweet heading, callouts, and larger buttons incentivizes users to take more action.</p>
   </div>
 
 <%= email_viewer("A promotional template") do %>
@@ -11,50 +11,54 @@
     secondary: "var(--bs-secondary)",
     heading_text_color: "#1e293b",
     footer_text_color: "#94a3b8",
-    body_text_color: "#334155"
+    body_text_color: "#334155",
+    light_text_color: "#94a3b8"
   } do %>
 
     <%= image_tag "https://f001.backblazeb2.com/file/railsui/system/promotion-image.jpg", alt: "Promotional image example" %>
+
     <%= spacer(16) %>
+
     <h1>Limited time offer!</h1>
-    <%= spacer(16) %>
 
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
-
-    <%= spacer(16) %>
 
     <%= email_callout do %>
       <p>For a limited time use the coupon code <strong>50OFF</strong> for 50% off your first purchase.</p>
     <% end %>
 
-    <%= spacer(16) %>
-
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
-
-    <%= spacer(16) %>
 
     <%= email_action "Start shopping", "#", align: "center", fullwidth: true %>
   <% end %>
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/some_mailer/minimal.html.erb -->
-
-<h1>This is a heading</h1>
-<%%= spacer(16) %>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
-<%%= spacer(16) %>
-<ul>
-  <li>List item 1</li>
-  <li>List item 2</li>
-  <li>List item 3</li>
-</ul>
-<%%= spacer(16) %>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+<!-- app/views/some_mailer/promotion.html.erb -->
+<%%= image_tag "your/promotion/image.jpg", alt: "Promotional image example" %>
 
 <%%= spacer(16) %>
 
-<%%= link_to "Learn more", "https://railsui.com" %>
+<h1>Limited time offer!</h1>
+
+<%%= spacer(16) %>
+
+<p>Lorem ipsum dolor...</p>
+
+<%%= spacer(16) %>
+
+<%%= email_callout do %>
+  <p>For a limited time use the coupon code <strong>50OFF</strong> for 50% off your first purchase.</p>
+<%% end %>
+
+<%%= spacer(16) %>
+
+<p>Lorem ipsum dolor...</p>
+
+<%%= spacer(16) %>
+
+<%%= email_action "Start shopping", "#", align: "center", fullwidth: true %>
+
 <% end %>
 
   <%= render_snippet active_tab: "erb" %>
