@@ -1,5 +1,5 @@
 <h1 class="tw-font-bold tw-text-4xl tw-mb-6">Design system</h1>
-<div class="tw-prose tw-prose-lg tw-prose-indigo">
+<div class="tw-prose tw-prose-lg tw-prose-indigo dark:tw-prose-invert">
   <p>A design system is a pre-configured set of standards and patterns to follow as you iterate on the application building process.</p>
 
   <p>Use this system as a guide but not necessarily a source of truth for exact use cases. It's meant to solve those repeatable problems aimed to help you increase speed and developer happiness.</p>
@@ -7,46 +7,29 @@
 
 <ul class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-4 tw-mt-10">
   <li>
-    <%= link_to systems_content_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 tw-block" do %>
-      <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Content</h3>
-      <p>Design patterns for everyday markup and content.</p>
-    <% end %>
+    <%= render "railsui/shared/grid_item", path: systems_content_path, title: "Content", description: "Design patterns for everyday markup and content." %>
   </li>
   <li>
-    <%= link_to systems_forms_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 tw-block" do %>
-      <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Forms</h3>
-      <p>Inputs, controls, buttons, and more ready for quick use.</p>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to systems_components_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 tw-block" do %>
-      <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Components</h3>
-      <p>Atomic UI components ready for your latest app.</p>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to systems_marketing_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 tw-block" do %>
-      <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Marketing</h3>
-      <p>Ready-to-use marketing pages <em>(components coming soon)</em></p>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to systems_scaffolds_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 tw-block" do %>
-      <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Scaffolds</h3>
-      <p>Rails scaffold templates ready for your generator magic.</p>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to systems_authentication_overview_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 tw-block" do %>
-      <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Authentication</h3>
-      <p>An authentication form design ready for use.</p>
-    <% end %>
+    <%= render "railsui/shared/grid_item", path: systems_content_path, title: "Forms", description: "Inputs, controls, buttons, and more ready for quick use." %>
   </li>
 
-    <li>
-    <%= link_to systems_mailers_path, class: "tw-border tw-border-slate-200 tw-rounded-lg tw-shadow-sm tw-p-5 tw-group hover:tw-shadow-lg tw-shadow-indigo-50 hover:tw-shadow-indigo-50 tw-transition tw-ease-in-out tw-duration-200 tw-block" do %>
-      <h3 class="tw-font-bold tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tl tw-from-salmon-500 tw-to-indigo-600 tw-block tw-mb-1 tw-text-lg">Mailers</h3>
-      <p>Some help getting those pesky email templates in good shape.</p>
-    <% end %>
+  <li>
+    <%= render "railsui/shared/grid_item", path: systems_components_path, title: "Components", description: "Scale with greater ease with the bundled component library." %>
+  </li>
+
+  <li>
+    <%= render "railsui/shared/grid_item", path: systems_marketing_path, title: "Marketing", description: "Pre-built static marketing pages ready for your content." %>
+  </li>
+
+  <li>
+    <%= render "railsui/shared/grid_item", path: systems_components_path, title: "Scaffolds", description: "Pre-themed Rails scaffold templates" %>
+  </li>
+
+  <li>
+    <%= render "railsui/shared/grid_item", path: systems_authentication_overview_path, title: "Authentication", description: "An authentication experience ready for use." %>
+  </li>
+
+  <li>
+    <%= render "railsui/shared/grid_item", path: systems_mailers_path, title: "Mailers", description: "Some help getting those pesky email templates in good shape." %>
   </li>
 </ul>

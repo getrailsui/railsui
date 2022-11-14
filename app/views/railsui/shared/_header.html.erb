@@ -6,20 +6,20 @@
 
 <%= heading text: params[:action].titleize, id: params[:action], tag: "h1", class: "tw-text-5xl text-slate-800 tw-font-bold" %>
 
-<div class="tw-grid tw-grid-cols-3 tw-gap-10 tw-mt-8 tw-pb-8 tw-border-b tw-border-slate-200">
+<div class="tw-grid tw-grid-cols-3 tw-gap-10 tw-mt-8 tw-pb-8 tw-border-b tw-border-slate-200 dark:tw-border-slate-700">
   <div>
 
-    <p class="tw-text-slate-600">Theme</p>
+    <p class="tw-text-slate-600 dark:tw-text-slate-400">Theme</p>
     <div class="tw-flex tw-items-center tw-mt-1">
       <%= image_tag Railsui.theme_logo_url, class: "tw-w-8 tw-h-auto tw-mr-2" %>
-      <p class="tw-font-light tw-text-slate-900 tw-text-2xl"><%= Railsui::config.theme.humanize %></p>
+      <p class="tw-font-light tw-text-slate-900 dark:tw-text-white tw-text-2xl"><%= Railsui::config.theme.humanize %></p>
     </div>
   </div>
   <div>
-    <p class="tw-text-slate-600">Framework</p>
+    <p class="tw-text-slate-600 dark:tw-text-slate-400">Framework</p>
     <div class="tw-flex tw-items-center tw-justify-start tw-space-x-3 tw-mt-1">
-      <%= render_svg "#{framework.downcase}", title: "#{framework} logo", styles: "#{framework == "bootstrap" ? "tw-text-indigo-600" : "tw-text-teal-500" } tw-fill-current" %>
-      <p class="tw-font-light tw-text-slate-900 tw-text-2xl"><%= framework.humanize %></p>
+      <%= render_svg "#{framework.downcase}", title: "#{framework} logo", styles: "#{framework == "bootstrap" ? "dark:tw-text-indigo-300 tw-text-indigo-600" : "dark:tw-text-teal-400 tw-text-teal-500" } tw-fill-current" %>
+      <p class="tw-font-light tw-text-slate-900 tw-text-2xl dark:tw-text-white"><%= framework.humanize %></p>
     </div>
   </div>
 </div>

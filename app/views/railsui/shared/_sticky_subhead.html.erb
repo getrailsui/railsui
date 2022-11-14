@@ -1,8 +1,8 @@
-<div class="tw-px-4 -tw-mx-4 tw-py-1 tw-mb-4 tw-bg-white tw-flex tw-items-center tw-justify-between">
+<div class="tw-px-4 -tw-mx-4 tw-py-1 tw-mb-4 tw-bg-white tw-flex tw-items-center tw-justify-between dark:tw-bg-slate-900 dark:tw-text-slate-100">
   <div class="tw-flex-1">
-    <p class="tw-text-sm tw-text-slate-600"><%= local_assigns[:title] %></p>
-    <%= heading id: ("#{local_assigns[:title]}-#{local_assigns[:subtitle]}").parameterize, text: local_assigns[:subtitle], class: "tw-text-slay-900 tw-text-2xl tw-font-bold" %>
-    <div class="tw-prose">
+    <p class="tw-text-sm tw-text-slate-600 dark:tw-text-slate-200"><%= local_assigns[:title] %></p>
+    <%= heading id: ("#{local_assigns[:title]}-#{local_assigns[:subtitle]}").parameterize, text: local_assigns[:subtitle], class: "tw-text-slate-900 tw-text-2xl tw-font-bold dark:tw-text-white" %>
+    <div class="tw-prose dark:tw-prose-invert">
       <%= yield %>
     </div>
   </div>

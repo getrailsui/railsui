@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <%# Tooltips - Initalization %>
 <div class="tw-mb-16 tw-mt-6">
-  <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6">
+  <div class="tw-prose-2xl tw-font-light tw-prose-indigo tw-mb-6 dark:tw-prose-invert">
     <p>Add contextual content with tooltips.</p>
   </div>
 
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Enabling tooltips" %>
 
-  <div class="tw-prose">
+  <div class="tw-prose dark:tw-prose-invert">
     <p>Tooltips require intitialization with JavaScript before use. The easiest way is by targeting by the <%= code_inline("data-bs-toggle") %> attribute Bootstrap commonly utilizies.</p>
   </div>
 
@@ -33,7 +33,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Usage" %>
 
-  <div class="tw-prose">
+  <div class="tw-prose dark:tw-prose-invert">
     <p>Using the <%= code_inline('data-bs-toggle="tooltip"') %> attribute you can enable tooltips on nearly any element. Pass tooltip content to an additional data attribute titled <%= code_inline('data-bs-title="My copy here"') %>.</p>
   </div>
 
@@ -66,7 +66,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Directions" %>
 
-  <div class="tw-prose tw-mb-6">
+  <div class="tw-prose dark:tw-prose-invert tw-mb-6">
     <p>Use an additional data attribute called <%= code_inline("data-bs-placement") %> to denote what side of a given element the tooltip will appear.</p>
   </div>
 

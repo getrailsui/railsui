@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <%= render "railsui/shared/sticky_subhead", title: "Popovers", subtitle: "Enable" %>
 
-<div class="tw-prose tw-mb-6 tw-prose-indigo">
+<div class="tw-prose dark:tw-prose-invert tw-mb-6 tw-prose-indigo">
   <p>To use popovers you must first intiitlaize them with JavaScript. Bootstrap makes this easy by combining another library called <%= link_to "Popper", "https://popper.js.org/", target: :_blank %>.</p>
 </div>
 
@@ -31,7 +31,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
 <div class="tw-mb-16">
   <%= render "railsui/shared/sticky_subhead", title: "Popovers", subtitle: "Example" %>
 
-<div class="tw-prose tw-mb-6 tw-prose-indigo">
+<div class="tw-prose tw-mb-6 tw-prose-indigo dark:tw-prose-invert">
   <p>Use JavaScript similar to the snippet above to render the following live popover. Titles are set via <%= code_inline("data-bs-title") %> and body content is set via <%= code_inline("data-bs-content") %>.</p>
 </div>
 
@@ -64,7 +64,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
 <div class="tw-mb-16">
   <%= render "railsui/shared/sticky_subhead", title: "Popovers", subtitle: "Directions" %>
 
-<div class="tw-prose tw-mb-6">
+<div class="tw-prose tw-mb-6 dark:tw-prose-invert">
   <p>There are four directions to choose from include top, right, bottom, and left. Set <%= code_inline("data-bs-placement") %> to customize the direction.</p>
 </div>
 

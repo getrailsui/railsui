@@ -27,13 +27,13 @@
 
   </head>
 
-  <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-white" %>" data-controller="toggle scroll">
+  <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-slate-100" %>" data-controller="toggle scroll">
     <%= render "railsui/shared/flash" %>
-    <div class="lg:tw-fixed tw-top-0 tw-left-0 tw-w-full tw-backdrop-blur tw-flex-none transition-colors tw-duration-500 tw-z-30 lg:tw-border-b lg:tw-border-slate-900/10 dark:tw-border-slate-50/[0.06] tw-bg-white/60 supports-backdrop-blur:tw-bg-white/60 dark:tw-bg-transparent">
-      <div class="tw-py-4 tw-px-4 tw-border-b tw-border-slate-900/10 lg:tw-px-6  lg:tw-border-0 dark:tw-border-slate-300/10 lg:tw-mx-0 tw-flex tw-items-center">
-        <%= link_to  main_app.root_path, class: "tw-flex tw-flex-shrink-0 lg:tw-border tw-bg-white tw-w-8 tw-h-8 tw-items-center tw-justify-center tw-rounded-lg hover:tw-shadow-sm tw-group hover:tw-shadow-indigo focus:tw-ring-4 focus:tw-ring-indigo-300 focus:tw-ring-opacity-50 tw-rounded-lg", data: {tippy_content: "Back to main app", controller: "tooltip"} do %>
+    <div class="lg:tw-fixed tw-top-0 tw-left-0 tw-w-full tw-backdrop-blur tw-flex-none transition-colors tw-duration-500 tw-z-30 lg:tw-border-b lg:tw-border-slate-900/10 dark:tw-border-slate-100 tw-bg-white/60 supports-backdrop-blur:tw-bg-white/60 dark:tw-bg-transparent">
+      <div class="tw-py-4 tw-px-4 tw-border-b lg:tw-px-6 lg:tw-border-0 lg:tw-mx-0 tw-flex tw-items-center dark:lg:tw-border-b dark:tw-border-slate-700">
+        <%= link_to  main_app.root_path, class: "tw-flex tw-flex-shrink-0 lg:tw-border tw-bg-white tw-w-8 tw-h-8 tw-items-center tw-justify-center tw-rounded-lg hover:tw-shadow-sm tw-group hover:tw-shadow-indigo focus:tw-ring-4 focus:tw-ring-indigo-300 focus:tw-ring-opacity-50 tw-rounded-lg dark:tw-bg-slate-700/50 dark:tw-border-slate-500/70", data: {tippy_content: "Back to main app", controller: "tooltip"} do %>
           <div class="tw-flex tw-items-center  tw-text-sm">
-            <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-slate-500 group-hover:tw-text-indigo-400 lg:tw-w-4 tw-h-7 lg:tw-h-4 tw-w-7" %>
+            <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-slate-500 group-hover:tw-text-indigo-400 lg:tw-w-4 tw-h-7 lg:tw-h-4 tw-w-7 dark:tw-text-slate-300 group-hover:dark:tw-text-indigo-300" %>
           </div>
         <% end %>
         <div class="lg:tw-ml-8 tw-flex tw-justify-between tw-items-center tw-w-full tw-flex-wrap" >
@@ -69,13 +69,13 @@
           <%= render_svg "eye-open", styles: "tw-w-4 tw-h-4 tw-stroke-current tw-text-slate-400 group-hover:tw-text-indigo-600" %>
         </span>
       </button>
-      <div id="system-nav" class="lg:tw-flex tw-hidden tw-flex-col lg:tw-w-[300px] w-full tw-border-r dark:tw-border-slate-100 tw-bg-white tw-h-full lg:tw-fixed tw-top-[73px] tw-left-0 tw-overflow-y-auto tw-z-50"
+      <div id="system-nav" class="lg:tw-flex tw-hidden tw-flex-col lg:tw-w-[300px] w-full tw-border-r dark:tw-border-slate-100 tw-bg-white tw-h-full lg:tw-fixed tw-top-[73px] tw-left-0 tw-overflow-y-auto tw-z-50 dark:tw-bg-slate-900"
        x-show="navOpen"
        data-toggle-target="toggleable"
        data-scroll-target="scrollitem"
        >
         <div class="tw-flex-1">
-          <div class="lg:tw-py-0 tw-py-2 lg:tw-border-b-0 tw-border-b tw-border-slate-200 lg:tw-hidden lg:tw-px-0 tw-px-3 lg:tw-shadow-none tw-shadow-sm">
+          <div class="lg:tw-py-0 tw-py-2 lg:tw-border-b-0 tw-border-b tw-border-slate-200 dark:tw-border-slate-700 lg:tw-hidden lg:tw-px-0 tw-px-3 lg:tw-shadow-none tw-shadow-sm">
             <%= render "railsui/shared/top_nav" %>
           </div>
 

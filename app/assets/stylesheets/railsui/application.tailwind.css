@@ -6,6 +6,7 @@
 @import "nav.css";
 @import "code.css";
 @import "docs.css";
+@import "scrollbars.css";
 
 @import "tailwindcss/utilities";
 @import "tippy.js/dist/tippy.css";
