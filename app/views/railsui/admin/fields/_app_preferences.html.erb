@@ -1,12 +1,10 @@
-<% framework = Railsui::config.css_framework.downcase %>
-
 <%= render "railsui/admin/field_layout" do %>
   <%= content_for :explainer, flush: true do %>
     <%= heading text: "Application preferences", id: "application_preferences", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
-    <p class="tw-text-slate-700 lg:tw-text-sm tw-text-base">Set your application name and choose your preferred CSS framework.</p>
+    <p class="tw-text-slate-700 lg:tw-text-sm tw-text-base dark:tw-text-slate-300">Set your application name and choose your preferred CSS framework.</p>
   <% end %>
 
-  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200 tw-shadow-sm">
+  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200 tw-shadow-sm dark:tw-bg-slate-800 dark:tw-border-slate-700">
     <div class="tw-mb-8">
       <%= f.label :application_name, class: "tw-block tw-mb-2 tw-font-medium" %>
       <%= f.text_field :application_name, class: "#{input_classes} tw-w-full" %>
@@ -20,16 +18,16 @@
       <% else %>
         This app configured to use:
         <div class="tw-flex tw-items-center tw-justify-start tw-space-x-3 tw-mt-1">
-          <%= render_svg "#{framework.downcase}", title: "#{framework} logo", styles: "#{framework == "bootstrap" ? "tw-text-indigo-600" : "tw-text-teal-500" } tw-fill-current" %>
-          <p class="tw-font-light tw-text-slate-800 tw-text-2xl"><%= framework.humanize %></p>
+          <%= render_svg "#{framework_name.downcase}", title: "#{framework_name.humanize} logo", styles: "#{framework_name.downcase == "bootstrap" ? "tw-text-indigo-600 dark:tw-text-indigo-400" : "tw-text-teal-500" } tw-fill-current" %>
+          <p class="tw-font-light tw-text-slate-800 dark:tw-text-slate-300 tw-text-2xl"><%= framework_name.humanize %></p>
         </div>
         <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
       <% end %>
-      <div class="tw-text-sm tw-mt-4 tw-pt-4 tw-border-t tw-border-slate-200 tw-flex tw-items-start">
+      <div class="tw-text-sm tw-mt-4 tw-pt-4 tw-border-t tw-border-slate-200 tw-flex tw-items-start dark:tw-border-slate-700">
         <div class="tw-bg-indigo-50 tw-mr-4 tw-w-10 tw-h-10 tw-rounded tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
           <%= render_svg "warning", styles: "tw-stroke-current tw-text-indigo-500 tw-w-5 tw-h-5 tw-flex-shrink-0" %>
         </div>
-        <p class="tw-text-neutral-800">Note: This choice <span class="tw-font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_css_frameworks_path, class: "tw-text-indigo-700" %>.
+        <p class="tw-text-slate-800 dark:tw-text-slate-300">Note: This choice <span class="tw-font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_css_frameworks_path, class: "tw-text-indigo-700 dark:tw-text-indigo-400" %>.
         </p>
       </div>
     </div>

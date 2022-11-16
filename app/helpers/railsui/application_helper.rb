@@ -11,7 +11,7 @@ module Railsui
     end
 
     def form_input
-      "tw-border-gray-300 tw-rounded focus:tw-border-indigo-300 focus:tw-outline-none focus:tw-shadow-none focus:tw-ring-indigo-50 focus:tw-ring-4 tw-ring-transparent tw-ring-2 dark:tw-text-neutral-100 dark:focus:tw-ring-neutral-600 dark:tw-bg-neutral-800 dark:tw-border-neutral-500 dark:focus:tw-border-neutral-300"
+      "tw-border-gray-300 tw-rounded focus:tw-border-indigo-300 focus:tw-outline-none focus:tw-shadow-none focus:tw-ring-indigo-50 focus:tw-ring-4 tw-ring-transparent tw-ring-2 dark:tw-text-slate-100 dark:focus:tw-ring-indigo-600/50 dark:tw-bg-slate-900 dark:tw-border-slate-600 dark:focus:tw-border-slate-300"
     end
 
     def select_classes
@@ -73,6 +73,14 @@ module Railsui
     def render_snippet(options={})
       active_tab = options[:active_tab] ||= "html"
       render partial: "railsui/shared/snippet", locals: { active_tab: active_tab }
+    end
+
+    def framework_name
+      Railsui.config.css_framework
+    end
+
+    def theme_name
+      Railsui.config.theme
     end
 
     def icon(name, options={})
