@@ -35,11 +35,11 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
   <p>Use JavaScript similar to the snippet above to render the following live popover. Titles are set via <%= code_inline("data-bs-title") %> and body content is set via <%= code_inline("data-bs-content") %>.</p>
 </div>
 
-<div class="rui">
+<div class="rui dark:tw-p-6 dark:tw-rounded-lg">
   <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 </div>
 
-<p class="tw-mt-3 tw-text-sm tw-text-gray-700">Note: This example will only work if the JS snippet above is initialized in your app.</p>
+<p class="tw-mt-3 tw-text-sm tw-text-gray-700 dark:tw-text-slate-500">Note: This example will only work if the JS snippet above is initialized in your app.</p>
 
 <% content_for :js, flush: true do %>
 
@@ -68,7 +68,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
   <p>There are four directions to choose from include top, right, bottom, and left. Set <%= code_inline("data-bs-placement") %> to customize the direction.</p>
 </div>
 
-<div class="rui">
+<div class="rui dark:tw-p-6 dark:tw-rounded-lg">
 <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
   Popover on top
 </button>
@@ -83,7 +83,7 @@ const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstra
 </button>
 </div>
 
-<p class="tw-mt-3 tw-text-sm tw-text-gray-700">Note: This example will only work if the JS snippet above is initialized in your app.</p>
+<p class="tw-mt-3 tw-text-sm tw-text-gray-700 dark:tw-text-slate-500">Note: This example will only work if the JS snippet above is initialized in your app.</p>
 
 <% content_for :js, flush: true do %>
 

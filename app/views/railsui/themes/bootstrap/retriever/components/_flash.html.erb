@@ -62,23 +62,23 @@
 
 <% content_for :js, flush: true do %>
   // app/javascript/application.js
-  document.addEventListener('turbo:load', () => {
+document.addEventListener('turbo:load', () => {
   const flash = document.querySelector('.flash')
 
   // After 5 seconds use Bootstrap's d-none class to hide the notice.
   setTimeout(() => {
     flash.classList.add('d-none')
   }, 5000)
-  })
+})
 <% end %>
 <%= render_snippet(active_tab: "js") %>
 
 <p class="rui-js-pill">Stimulus.js</p>
 
 <% content_for :html, flush: true do %>
-  <div class="notice" role="alert" data-controller="flash">
-    <p>...</p>
-  </div>
+<div class="notice" role="alert" data-controller="flash">
+  <p>...</p>
+</div>
 <% end %>
 
 <% content_for :erb, flush: true do %>

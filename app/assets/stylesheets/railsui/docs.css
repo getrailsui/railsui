@@ -1,5 +1,5 @@
 .rui-link {
-  @apply tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium;
+  @apply tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium dark:tw-text-indigo-500 dark:hover:tw-text-indigo-500;
 }
 
 .rui-btn {
@@ -14,15 +14,15 @@
   @apply tw-bg-gradient-to-br tw-from-indigo-400 tw-to-indigo-600 tw-text-white tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs;
 }
 
-[data-controller=anchor] {
+[data-controller="anchor"] {
   @apply tw-relative tw-cursor-pointer;
 }
 
-[data-controller=anchor]::before {
+[data-controller="anchor"]::before {
   content: "#";
   @apply tw-absolute tw-transition tw-text-slate-400 tw-font-mono tw-font-semibold tw-text-xl -tw-left-4 tw-top-0 tw-opacity-0 tw-duration-300;
 }
 
-[data-controller=anchor]:hover::before {
+[data-controller="anchor"]:hover::before {
   @apply tw-opacity-100;
 }

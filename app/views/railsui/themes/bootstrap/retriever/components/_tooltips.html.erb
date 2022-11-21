@@ -33,14 +33,12 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 <div class="tw-my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Usage" %>
 
-  <div class="tw-prose dark:tw-prose-invert">
+  <div class="tw-prose dark:tw-prose-invert tw-mb-6">
     <p>Using the <%= code_inline('data-bs-toggle="tooltip"') %> attribute you can enable tooltips on nearly any element. Pass tooltip content to an additional data attribute titled <%= code_inline('data-bs-title="My copy here"') %>.</p>
   </div>
 
-  <div class="tw-p-6 tw-border tw-rounded-xl tw-mt-6">
-    <div class="rui">
-      <p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" data-bs-title="Default tooltip">inline links</a> with tooltips.</p>
-    </div>
+  <div class="rui dark:tw-p-6 dark:tw-rounded-lg">
+    <p class="muted mb-0">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" data-bs-title="Default tooltip">inline links</a> with tooltips.</p>
   </div>
 
 <% content_for :html, flush: true do %>
@@ -70,7 +68,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
     <p>Use an additional data attribute called <%= code_inline("data-bs-placement") %> to denote what side of a given element the tooltip will appear.</p>
   </div>
 
-  <div class="rui">
+  <div class="rui dark:tw-p-6 dark:tw-rounded-lg">
     <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
       Tooltip on top
     </button>

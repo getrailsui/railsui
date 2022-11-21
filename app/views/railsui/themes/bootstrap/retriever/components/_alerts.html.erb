@@ -5,7 +5,7 @@
 
 <%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "Options" %>
 
-<div class="rui">
+<div class="rui dark:tw-p-6 dark:tw-rounded-lg">
 <div class="alert alert-primary" role="alert">
   A simple primary alert—check it out!
 </div>
@@ -75,15 +75,15 @@
   <%# Alerts - Embedded links %>
 
   <div class="tw-mb-16 tw-mt-6">
-    <div class="tw-prose-2xl dark:tw-prose-invert tw-font-light tw-prose-indigo tw-mb-6">
+    <div class="tw-prose-2xl dark:tw-prose-invert tw-font-light tw-prose-indigo tw-mb-6 tw-max-w-full">
       <p>Provide contextual feedback messages for typical user actions with the handful of flexible alert messages.</p>
     </div>
 
     <%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "Embedded links" %>
 
-    <div class="tw-mb-6 tw-text-slate-700">Use the <code class="tw-text-rose-500">.alert-link</code> utility class to quickly provide matching colored links within any alert.</div>
+    <div class="tw-mb-6 tw-prose dark:tw-prose-invert tw-max-w-full">Use the<%= code_inline('.alert-link') %>. utility class to quickly provide matching colored links within any alert.</div>
 
-    <div class="rui">
+    <div class="rui dark:tw-p-6 dark:tw-rounded-lg">
       <div class="alert alert-primary" role="alert">
         A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
       </div>

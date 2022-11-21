@@ -1,7 +1,7 @@
 <div class="tw-my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Select" %>
 
-  <div class="rui">
+  <div class="rui dark:tw-p-6 dark:tw-rounded-lg">
     <select class="form-select" aria-label="Default select example">
       <option selected>Open this select menu</option>
       <option value="1">One</option>
@@ -49,9 +49,4 @@
 <%= render_snippet %>
 </div>
 
-    <div class="tw-mt-16">
-      <div class="tw-bg-gray-100 tw-px-6 tw-py-10 tw-rounded-xl tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-mx-auto tw-text-slate-500">
-        <%= render_svg "book", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-text-slate-400 tw-mr-2" %>
-        <p>Refer to the <%= link_to "official Boostrap documentation", "https://getbootstrap.com/docs/5.2/forms/select/", target: :_blank, class: "rui-link" %> for more select field usage.</p>
-      </div>
-    </div>
+<%= render "railsui/shared/read_more", subject: "selects", link: "https://getbootstrap.com/docs/5.2/forms/select/" %>
