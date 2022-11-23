@@ -1,1 +1,36 @@
-Docs
+<div class="tw-prose tw-prose-lg tw-prose-indigo tw-mb-10">
+  <div class="tw-border-b tw-pb-6">
+    <h1 class="tw-text-sm tw-uppercase tw-text-indigo-600 tw-font-medium">Weclome</h1>
+
+    <div class="-tw-mt-px">
+      <%= render "railsui/shared/logo", effects: false, size: "tw-w-48" %>
+    </div>
+  </div>
+
+<p class="tw-text-xl tw-leading-relaxed">Rails UI is a means to bring professional product design to Ruby on Rails applications that are integrated and functional from the moment you install.</p>
+
+  <h3>Who is this for?</h3>
+
+  <p>Rails UI is for developers looking to bring their ideas to life with more professional design standards. Bundled with Rails UI is a complete design system crafted into theme form to fit the most popular CSS frameworks today.</p>
+
+  <h3>Why would I use Rails UI?</h3>
+  <p>Simply put, to save loads of time on design and make your application look and function as if you had a product designer on staff.</p>
+
+  <p>Having access to ongoing additional Rails UI themes under the hood gives you multiple avenues to explore branding and design for your next application.</p>
+
+  <p>Additionally, other UI libraries in the market aren't catered to the Ruby on Rails ecosystem, so this is an attempt to bridge that gap.</p>
+
+  <h3>What's included?</h3>
+  <p>Rails UI takes a theme-based approach to design for a given Ruby on Rails application.</p>
+
+  <p>Starting with a theme as a source of truth and general aesthetic, I fcompile all the components that make up a successful web application and present those in a design system for atomic use cases.</p>
+
+  <p> The final form includes everything from static marketing pages to integrated components like flash messages, mailer templates, scaffold templates, helpers, and more. This list will keep growing as the number of themes and Rails UI as a whole scale.</p>
+
+
+  <% if Railsui.framework? %>
+    <p>Check out your current <%= link_to "design system", systems_path %> to get a glimpse these aspects.</p>
+  <% end %>
+</div>
+
+<%= render "railsui/docs/pagination", next: docs_installation_path, next_label: "Installation" %>

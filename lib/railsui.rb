@@ -48,8 +48,7 @@ module Railsui
   end
 
   def self.framework?
-    self.bootstrap_installed? ||
-    self.tailwind_installed?
+    Railsui.config.css_framework.present?
   end
 
 

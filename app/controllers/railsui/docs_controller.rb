@@ -2,6 +2,8 @@ require_dependency "railsui/application_controller"
 
 module Railsui
   class DocsController < ApplicationController
+    layout "railsui/docs"
+
     def show
     end
 
@@ -11,7 +13,13 @@ module Railsui
     def configuration
     end
 
-    def css_frameworks
+    def themes
+    end
+
+    def design_system
+    end
+
+    def updates
     end
   end
 end

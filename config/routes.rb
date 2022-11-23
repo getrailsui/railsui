@@ -68,9 +68,11 @@ Railsui::Engine.routes.draw do
   end
 
   namespace :docs do
-    get :configuration
-    get :css_frameworks, path: "css-frameworks"
     get :installation
+    get :configuration
+    get :themes
+    get :design_system
+    get :updates
   end
 
   root to: "admin#show"

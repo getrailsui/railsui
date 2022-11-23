@@ -1,0 +1,18 @@
+<div class="tw-py-3 tw-border-t tw-border-slate tw-flex  <%= local_assigns[:back].present? ? "tw-justify-between" : "tw-justify-end" %>">
+  <% if local_assigns[:back].present? %>
+    <%= link_to local_assigns[:back], class: "rui-link tw-flex tw-items-center tw-group" do %>
+      <div class="tw-w-8 tw-h-8 tw-rounded tw-bg-transparent group-hover:tw-bg-indigo-50 tw-flex tw-items-center tw-justify-center group-hover:-tw-translate-x-1 group-hover:tw-transition group-hover:tw-transform">
+        <%= render_svg "arrow-left", styles: "tw-stroke-current tw-w-5 tw-h-5" %>
+      </div>
+      <span class="tw-ml-2"><%= local_assigns[:back_label] %></span>
+    <% end %>
+  <% end %>
+  <% if local_assigns[:next].present? %>
+    <%= link_to local_assigns[:next], class: "rui-link tw-flex tw-items-center tw-group" do %>
+      <span class="tw-mr-2"><%= local_assigns[:next_label]%></span>
+      <div class="tw-w-8 tw-h-8 tw-rounded tw-bg-transparent group-hover:tw-bg-indigo-50 tw-flex tw-items-center tw-justify-center group-hover:tw-translate-x-1 group-hover:tw-transition group-hover:tw-transform">
+        <%= render_svg "arrow-right", styles: "tw-stroke-current tw-w-5 tw-h-5" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

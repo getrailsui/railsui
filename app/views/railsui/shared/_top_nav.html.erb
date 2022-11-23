@@ -1,21 +1,22 @@
  <nav role="primary nav" class="tw-text-sm lg:tw-auto tw-full">
   <ul class="tw-flex tw-items-center lg:tw-space-x-3 tw-space-x-3">
     <li>
-      <%= link_to docs_path, class: "lg:tw-p-2 tw-font-semibold tw-slate-800 hover:tw-text-indigo-600 tw-flex tw-items-center hover:dark:tw-text-indigo-400" do %>
+      <%= nav_link_to docs_path, class: "lg:tw-p-2 tw-font-semibold hover:tw-text-indigo-600 tw-flex tw-items-center hover:dark:tw-text-indigo-400 #{params[:controller].include?("docs") ? "tw-text-indigo-600" : "tw-text-slate-800" }", active_class: "tw-text-indigo-600" do %>
         <%= render_svg "book", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-mr-2 tw-flex-shrink-0" %>
         <span>Docs</span>
       <% end %>
     </li>
+
     <% if Railsui.config.css_framework.present? %>
       <li>
-        <%= link_to systems_path, class: "lg:tw-p-2 tw-font-semibold tw-slate-800 hover:tw-text-indigo-600 hover:dark:tw-text-indigo-400 tw-flex tw-items-center tw-justify-center" do %>
+        <%= nav_link_to systems_path, class: "lg:tw-p-2 tw-font-semibold hover:tw-text-indigo-600 hover:dark:tw-text-indigo-400 tw-flex tw-items-center tw-justify-center tw-text-slate-800", active_class: "tw-text-indigo-600" do %>
           <%= render_svg "map", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-[4px] tw-flex-shrink-0" %>
           <span>Design system</span>
         <% end %>
       </li>
     <% end %>
     <li>
-      <%= link_to  root_path, class: "lg:tw-p-2 tw-font-semibold tw-slate-800 tw-flex tw-items-center tw-justify-center hover:tw-text-indigo-600 hover:dark:tw-text-indigo-400" do %>
+      <%= nav_link_to root_path, class: "lg:tw-p-2 tw-font-semibold tw-text-slate-800 tw-flex tw-items-center tw-justify-center hover:tw-text-indigo-600 hover:dark:tw-text-indigo-400", active_class: "tw-text-indigo-600" do %>
         <%= render_svg "settings", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-[4px] tw-flex-shrink-0" %>
         <span>Configuration</span>
       <% end %>
