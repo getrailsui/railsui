@@ -1,38 +1,35 @@
 <div class="tw-prose tw-prose-lg tw-prose-indigo prose-h1:tw-font-bold tw-mb-10">
-  <h1>Configuration</h1>
+  <%= heading text: "Configuration", tag: "h1", id: "docs_configuration" %>
 
-  <p>After installing the Rails UI gem and running the installer, you can configure your application.</p>
+  <p>After installing the Rails UI gem and running the installer, you may configure your application preferences.</p>
 
   <p>This is a simple process that first prompts you for an application name and preferred CSS framework.</p>
 
   <p>Rails UI currently ships with support for <%= link_to "Bootstrap", "https://getbootstrap.com/", target: :_blank %> and <%= link_to "Tailwind CSS", "https://tailwindcss.com", target: :_blank %>.</p>
 
+  <%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/Rails-UI-Step1.jpg", alt: "Step 1 - Rails UI Configuration", class: "tw-rounded tw-border tw-border-slate-200 tw-shadow-sm" %>
 
+  <h2>Select a theme</h2>
 
-<%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/Rails-UI-Step1.jpg", alt: "Step 1 - Rails UI Configuration", class: "tw-rounded tw-border tw-border-slate-200 tw-shadow-sm" %>
+  <p>After selecting and saving the CSS framework, new sections appear for further tweaking.</p>
 
-<h2>Select a theme</h2>
+  <p>The first section is a theme gallery. This section is a place to choose a starting point for the overarching design of your application. Each theme includes a preview to get a feel for the design and layout.</p>
 
-<p>After selecting and saving the CSS framework, new sections appear for further configuration. </p>
+  <%= render "railsui/docs/callout" do %>
+    Additional themes will be added as Rails UI evolve with a future goal to offer dozens of ready-to-use themes for different styles of applications.
+  <% end %>
 
-<p>The first section is a theme gallery. This section is a place to choose a starting point for the overarching design of your application. Each theme includes a preview to get a feel for the design and layout.</p>
+  <%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/Rails-UI-Step2.jpg", alt: "Step 2 - Rails UI Configuration", class: "tw-rounded tw-border tw-border-slate-200 tw-shadow-sm" %>
 
-<div class="tw-bg-teal-50 tw-text-teal-700 tw-p-4 tw-rounded tw-text-base tw-flex tw-items-start tw-space-x-3 tw-border tw-border-teal-500/20">
-  <%= render_svg "paw", styles: "tw-w-10 tw-h-10 tw-text-teal-500 tw-fill-current tw-flex-shrink-0" %>
-<p class="tw-m-0">I will add additional themes as Rails UI evolves. My goal is to offer dozens of ready-to-use themes for different styles of applications.</p>
-</div>
+  <h2>Bonus: Install pre-built pages</h2>
 
-<%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/Rails-UI-Step2.jpg", alt: "Step 2 - Rails UI Configuration", class: "tw-rounded tw-border tw-border-slate-200 tw-shadow-sm" %>
+  <p>Because each theme is built from scratch, you may optionally configure Rails UI to generate a theme with additional pages automatically.</p>
 
-<h2>Bonus: Install pre-built pages</h2>
+  <p>Once installed may preview these pages right inside your application.</p>
 
-<p>Because we design each theme from scratch, you may optionally configure Rails UI to generate a theme with additional pages automatically.</p>
+  <p>Additional pages and templates will follow as Rails UI ages.</p>
 
-<p>Once installed may preview these pages right inside your application.</p>
-
-<p>Additional pages and templates will follow as Rails UI ages.</p>
-
-<%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/Rails-UI-Step3.jpg", alt: "Step 3 - Rails UI Configuration", class: "tw-rounded tw-border tw-border-slate-200 tw-shadow-sm" %>
+  <%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/Rails-UI-Step3.jpg", alt: "Step 3 - Rails UI Configuration", class: "tw-rounded tw-border tw-border-slate-200 tw-shadow-sm" %>
 
 </div>
 

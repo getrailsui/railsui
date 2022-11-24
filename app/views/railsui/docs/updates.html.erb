@@ -1,6 +1,9 @@
 <div class="tw-prose tw-prose-lg tw-prose-indigo prose-h1:tw-font-bold tw-mb-10">
-  <h1>Updates</h1>
+  <%= heading text: "Updates", tag: "h1", id: "docs_updates" %>
+
+  <p>Rails UI ships as an gem. To gain ongoing access to additional themes, components, and support you'll need a pro subscription. In the Alpha stage Rails UI is free to use and trial.</p>
+
+  <p>Updates to the gem will be pushed and available in batched releases.</p>
 </div>
 
-
-<%= render "railsui/docs/pagination", back: docs_design_system_path, back_label: "Design system" %>
+<%= render "railsui/docs/pagination", back: docs_interaction_path, back_label: "Interaction", next: docs_faqs_path, next_label: "FAQs" %>

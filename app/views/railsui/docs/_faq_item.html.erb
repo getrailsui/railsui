@@ -1,0 +1,7 @@
+<details class="tw-group tw-py-4 marker:tw-content-['']"><summary class="tw-flex tw-w-full tw-cursor-pointer tw-select-none tw-justify-between tw-text-left tw-text-base tw-font-semibold tw-leading-7 tw-text-slate-900 group-open:tw-text-indigo-600 [&amp;::-webkit-details-marker]:tw-hidden"><%= local_assigns[:question] %><svg class="tw-mt-0.5 tw-ml-4 tw-h-6 tw-w-6 flex-none tw-stroke-slate-700 group-open:tw-stroke-indigo-500" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:tw-hidden" d="M12 6v12"></path></svg></summary>
+  <div class="pt-6 pb-6">
+    <div class="tw-prose tw-prose-slate tw-max-w-none prose-a:tw-font-semibold prose-a:tw-text-indigo-600 hover:tw-prose-a:tw-text-indigo-500 prose-ol:tw-list-decimal">
+      <%= yield %>
+    </div>
+  </div>
+</details>

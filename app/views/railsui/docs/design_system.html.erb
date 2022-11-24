@@ -1,10 +1,18 @@
-
 <div class="tw-prose tw-prose-lg tw-prose-indigo prose-h1:tw-font-bold tw-mb-6">
-  <h1>Design system</h1>
+  <%= heading text: "Design system", tag: "h1", id: "docs_design_system" %>
 
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi corrupti inventore rerum eligendi ex provident, dolores obcaecati nemo possimus, pariatur iusto veritatis beatae recusandae qui dignissimos expedita. Quidem, obcaecati facere!</p>
+  <p>Bundled with your Rails UI theme is a complete <% if Railsui.config.theme.present? %><%= link_to "design system", systems_path %><% else %>design system<% end %>. Think of the system as documented design patterns for repeatable elements and content within your application.</p>
+
+  <p>Each theme contains different elements, styles, and standards, all of which are customizable depending on the CSS framework your Rails UI configuration leverages.</p>
+
+  <h3>Origins</h3>
+
+  <p>When we create new themes most design systems a created first. To develop atomic patterns, we use this exercise to be more efficient in an application with many views. In the software world, you can think of this as practicing the D.R.Y. (don't repeat yourself) principle.</p>
+
+  <%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/figma-ss.png", alt: "Screenshot of Rails UI theme design inside Figma", class: "tw-border tw-border-slate-200 tw-rounded tw-shadow-sm" %>
+
+  <p>Much of the initial work begins in a tool called <%= link_to "Figma", "https://figma.com", target: :_blank %> where we move quickly finding balance in color, scale, typography, imagery, and more.</p>
+
 </div>
-
-
 
 <%= render "railsui/docs/pagination", back: docs_themes_path, back_label: "Themes", next: docs_updates_path, next_label: "Updates" %>

@@ -21,5 +21,11 @@ module Railsui
 
     def updates
     end
+
+    def faqs
+    end
+
+    def interaction
+    end
   end
 end

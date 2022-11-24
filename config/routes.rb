@@ -68,11 +68,13 @@ Railsui::Engine.routes.draw do
   end
 
   namespace :docs do
-    get :installation
     get :configuration
-    get :themes
     get :design_system
+    get :installation
+    get :interaction
+    get :themes
     get :updates
+    get :faqs
   end
 
   root to: "admin#show"

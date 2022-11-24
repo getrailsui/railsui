@@ -1,10 +1,11 @@
 <div class="tw-prose tw-prose-lg tw-prose-indigo prose-h1:tw-font-bold tw-mb-6">
-  <h1>Installation</h1>
+
+  <%= heading text: "Installation", tag: "h1", id: "docs_installation" %>
 
   <p>Installing Rails UI begins by creating a new vanilla Rails application. At this time, Rails UI requires all applications to be new apps.</p>
 </div>
 <% content_for :bash, flush: true do %>
-rails new my_app_name
+  rails new my_app_name
 <% end %>
 
 <%= render_snippet active_tab: "bash" %>
@@ -17,7 +18,6 @@ rails new my_app_name
   <p>During <%= link_to "configuration", docs_configuration_path %>, Rails UI automatically installs the CSS framework of your choice (in a similar manner as the <%= link_to "cssbundling-rails", "https://github.com/rails/cssbundling-rails", target: :_blank %> and <%= link_to "jsbundling-rails", "https://github.com/rails/jsbundling-rails", target: :_blank %> Ruby gems) thus making the optional flags unecessary. <%= link_to "esbuild", "https://esbuild.github.io/", target: :_blank %> is the default solution for JavaScript.</p>
 </div>
 
-
 <% content_for :bash, flush: true do %>
 
 <% end %>
@@ -28,8 +28,8 @@ rails new my_app_name
 </div>
 
 <% content_for :ruby, flush: true do %>
-# Gemfile
-gem "railsui"
+  # Gemfile
+  gem "railsui"
 <% end %>
 
 <%= render_snippet active_tab: "ruby" %>
@@ -39,15 +39,15 @@ gem "railsui"
     <p>Run the bundle install command to fetch the new gem and its assets</p>
   </div>
 
-<% content_for :bash, flush: true do %>
-bundle install
-<% end %>
+  <% content_for :bash, flush: true do %>
+    bundle install
+  <% end %>
 
-<% content_for :ruby, flush: true do %>
+  <% content_for :ruby, flush: true do %>
 
-<% end %>
+  <% end %>
 
-<%= render_snippet active_tab: "bash" %>
+  <%= render_snippet active_tab: "bash" %>
 </div>
 
 <div class="tw-my-10">
@@ -58,15 +58,15 @@ bundle install
     <p>This generator will fetch the foundation for Rails UI, which includes assets, templates, theme-specific templates, and more. Additionally, it installs and configures a few other handy gems Rails UI leverages inside most views.</p>
   </div>
 
-<% content_for :bash, flush: true do %>
-rails railsui:install
-<% end %>
+  <% content_for :bash, flush: true do %>
+    rails railsui:install
+  <% end %>
 
-<% content_for :ruby, flush: true do %>
+  <% content_for :ruby, flush: true do %>
 
-<% end %>
+  <% end %>
 
-<%= render_snippet active_tab: "bash" %>
+  <%= render_snippet active_tab: "bash" %>
 </div>
 
 <div class="tw-my-10">
@@ -75,15 +75,15 @@ rails railsui:install
     <p>Boot the new app and visit the root path (localhost:3000). This should present a new page with some actions to areas related to Rails UI.</p>
   </div>
 
-<% content_for :bash, flush: true do %>
-bin/dev
-<% end %>
+  <% content_for :bash, flush: true do %>
+    bin/dev
+  <% end %>
 
-<% content_for :ruby, flush: true do %>
+  <% content_for :ruby, flush: true do %>
 
-<% end %>
+  <% end %>
 
-<%= render_snippet active_tab: "bash" %>
+  <%= render_snippet active_tab: "bash" %>
 
   <div class="tw-prose tw-prose-lg">
     <p>From there you may proceed to configuring the app.</p>

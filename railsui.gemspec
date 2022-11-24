@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.name = "railsui"
   spec.version = Railsui::VERSION
   spec.authors = ["Andy Leverenz"]
-  spec.email = ["andy@justalever.com"]
-  spec.summary = "Ready-to-use UI for Rails"
+  spec.email = ["railsui@justalever.com"]
+  spec.summary = "Plug and play UI for Rails"
   spec.description = "Professionally designed UI components and views for Ruby on Rails."
   spec.homepage = "https://railsui.com"
   spec.metadata["homepage_uri"] = spec.homepage
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   #   end
   # end
   # spec.require_paths = ["lib"]
-
+  gem.license = "LGPL-3.0"
   spec.files = Dir["lib/**/*", "README.md"]
 
   spec.add_dependency "rails"
