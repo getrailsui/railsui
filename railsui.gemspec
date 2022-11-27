@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   #   end
   # end
   # spec.require_paths = ["lib"]
-  gem.license = "LGPL-3.0"
+  spec.license = "TBD"
   spec.files = Dir["lib/**/*", "README.md"]
 
   spec.add_dependency "rails"
