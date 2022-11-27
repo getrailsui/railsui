@@ -45,6 +45,7 @@ def add_css_bundling_setup
   chmod "bin/dev", 0755, verbose: false
 end
 
+
 def remove_importmaps
   if Rails.root.join("config/importmap.rb").exist?
     run "bundle remove importmap-rails"
@@ -253,8 +254,8 @@ copy_hero_icons
 rails_command "db:create"
 rails_command "db:migrate"
 
-
-"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+say "
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMWXOxooodOXMMMMMMMMMMWXxxXMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMXd:,..     'dXMMMMWWKx:.  ,OWMMMMMMMMMMMMMMMMMMMM

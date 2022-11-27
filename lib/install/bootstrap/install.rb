@@ -13,6 +13,10 @@ else
 
   theme_stylesheet_path = "themes/#{Railsui.config.theme}/stylesheets"
 
+  # remove application.css
+  say "Remove app/assets/stylesheets/application.css so build output can take over"
+  remove_file "app/assets/stylesheets/application.css"
+
   copy_file "#{__dir__}/#{theme_stylesheet_path}/application.bootstrap.scss",
     "app/assets/stylesheets/application.bootstrap.scss", force: true
   copy_file "#{__dir__}/#{theme_stylesheet_path}/custom.scss", "app/assets/stylesheets/custom.scss"

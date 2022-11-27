@@ -1,6 +1,8 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+.rui {
+  @import "tailwindcss/base";
+  @import "tailwindcss/components";
 
-/* Custom components */
+  /* Custom components */
 
-@import "tailwindcss/utilities";
+  @import "tailwindcss/utilities";
+}

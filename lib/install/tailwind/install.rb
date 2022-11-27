@@ -7,7 +7,11 @@ else
   copy_file "#{__dir__}/themes/#{Railsui.config.theme}/tailwind.config.js",
   "tailwind.config.js"
 
-  # application.tailwind.css
+  # remove application.css
+  say "Remove app/assets/stylesheets/application.css so build output can take over"
+  remove_file "app/assets/stylesheets/application.css"
+
+  # add application.tailwind.css
   copy_file "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true
 
   # postcss.config.js
@@ -42,6 +46,16 @@ else
   else
     run %(npm set-script build:css "#{build_script}")
     run %(yarn build:css)
+  end
+
+  if Rails.root.join("Procfile.dev").exist?
+    append_to_file "Procfile.dev", "css: yarn build:css --watch\n"
+  else
+    say "Add default Procfile.dev"
+    copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"
+
+    say "Ensure foreman is installed"
+    run "gem install foreman"
   end
 
   say "Update .gitignore"
