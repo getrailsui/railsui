@@ -78,8 +78,11 @@
           <div class="lg:tw-py-0 tw-py-2 lg:tw-border-b-0 tw-border-b tw-border-slate-200 dark:tw-border-slate-700 lg:tw-hidden lg:tw-px-0 tw-px-3 lg:tw-shadow-none tw-shadow-sm">
             <%= render "railsui/shared/top_nav" %>
           </div>
-
-          <%= render "railsui/shared/nav" %>
+          <% if Railsui.config.css_framework.present? %>
+            <%= render "railsui/themes/#{Railsui.config.css_framework}/#{Railsui.config.theme}/nav" %>
+          <% else %>
+            <%= render "railsui/shared/nav" %>
+          <% end %>
         </div>
       </div>
       <div

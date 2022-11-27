@@ -8,7 +8,7 @@ else
   "tailwind.config.js"
 
   # application.tailwind.css
-  copy_file "#{__dir__}/themes/#{Railsui.config.theme}/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true
+  copy_file "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true
 
   # postcss.config.js
   copy_file "#{__dir__}/themes/#{Railsui.config.theme}/postcss.config.js", "postcss.config.js", force: true
@@ -22,8 +22,17 @@ else
     directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
   end
 
+  # TODO: Figure out why this won't copy
   say "Add Tailwind-themed scaffold .erb templates"
-  directory "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold", Rails.root.join("lib/templates/erb/scaffold")
+  # directory "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold", Rails.root.join("lib/templates/erb/scaffold"), force: true
+  file_names = ["_form.html.erb.tt", "edit.html.erb.tt", "index.html.erb.tt", "new.html.erb.tt", "partial.html.erb.tt", "show.html.erb.tt"]
+
+  file_names.each do |name|
+    copy_file "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold/#{name}", Rails.root.join("lib/templates/erb/scaffold/#{name}")
+  end
+
+  say "Copy images/assets"
+  directory "#{__dir__}/themes/#{Railsui.config.theme}/images", Rails.root.join("app/assets/images"), force: true
 
   say "Add build:css script"
   build_script = "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
@@ -37,4 +46,6 @@ else
 
   say "Update .gitignore"
   inject_into_file ".gitignore", "node_modules\n"
+
+  say "Tailwind CSS theme installed 👍", :green
 end

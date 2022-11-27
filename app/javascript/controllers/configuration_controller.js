@@ -12,6 +12,7 @@ export default class extends Controller {
     "submit",
     "saving",
     "theme",
+    "themeCopy",
   ]
   static values = {
     chosenTheme: String,
@@ -23,12 +24,14 @@ export default class extends Controller {
       switch (value) {
         case "bootstrap":
           this.frameworksTarget.classList.remove("tw-hidden")
+          this.themeCopyTarget.classList.remove("tw-hidden")
           if (this.hasBootstrapTarget) {
             this.bootstrapTarget.classList.remove("tw-hidden")
           }
           break
         case "tailwind":
           this.frameworksTarget.classList.remove("tw-hidden")
+          this.themeCopyTarget.classList.remove("tw-hidden")
           if (this.hasTailwindTarget) {
             this.tailwindTarget.classList.remove("tw-hidden")
           }
@@ -63,6 +66,7 @@ export default class extends Controller {
       case "bootstrap":
         this._toggleAllThemes()
         this.frameworksTarget.classList.remove("tw-hidden")
+        this.themeCopyTarget.classList.remove("tw-hidden")
         this.bootstrapTarget.classList.remove("tw-hidden")
         this.bootstrapTarget.querySelector("label").control.checked = true
 
@@ -70,6 +74,7 @@ export default class extends Controller {
       case "tailwind":
         this._toggleAllThemes()
         this.frameworksTarget.classList.remove("tw-hidden")
+        this.themeCopyTarget.classList.remove("tw-hidden")
         this.tailwindTarget.classList.remove("tw-hidden")
         this.tailwindTarget.querySelector("label").control.checked = true
         break
@@ -79,7 +84,12 @@ export default class extends Controller {
   }
 
   _toggleAllThemes() {
-    let all = [this.bootstrapTarget, this.tailwindTarget, this.frameworksTarget]
+    let all = [
+      this.bootstrapTarget,
+      this.tailwindTarget,
+      this.frameworksTarget,
+      this.themeCopyTarget,
+    ]
     all.forEach((t) => t.classList.add("tw-hidden"))
   }
 }

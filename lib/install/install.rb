@@ -174,13 +174,6 @@ def extend_layout_and_views
       before:/\s*<\/head>/
     )
 
-    say "⚡️ Add color palette styles"
-    insert_into_file(
-      app_layout_path.to_s,
-      %(\n    <%= render "shared/palette" %>),
-      before:/\s*<\/head>/
-    )
-
     say "⚡️ Add :head yield"
     insert_into_file(
       app_layout_path.to_s,

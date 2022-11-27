@@ -1,0 +1,175 @@
+<div class="lg:tw-text-sm tw-relative tw-text-base tw-pb-24">
+  <ul class="rui-primary-nav tw-leading-loose">
+    <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
+      <%= link_to systems_content_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-300 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent dark:tw-from-slate-800 dark:tw-to-slate-900 tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-indigo-800 dark:hover:tw-text-indigo-300 tw-group"  do %>
+        <div class="tw-bg-white dark:tw-bg-slate-800 dark:tw-border-slate-700 tw-w-7 tw-h-7 tw-rounded-lg tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200 group-hover:tw-shadow-indigo-200 dark:group-hover:tw-shadow-none group-hover:tw-border-slate-600">
+          <%= render_svg "content", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-indigo-500 group-hover:tw-text-indigo-700 dark:group-hover:tw-text-indigo-300" %>
+        </div>
+        <span>Content</span>
+      <% end %>
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100 dark:tw-border-slate-700">
+        <li>
+          <%= nav_link_to "Typography", systems_content_typography_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Tables", systems_content_tables_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Images", systems_content_images_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Marketing", systems_marketing_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Scaffolds", systems_scaffolds_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+      </ul>
+    </li>
+    <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
+
+      <%= link_to systems_forms_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-300 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent dark:tw-from-slate-800 dark:tw-to-slate-900 tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-indigo-800 dark:hover:tw-text-indigo-300 tw-group tw-border-t dark:tw-border-slate-700"  do %>
+        <div class="tw-bg-white dark:tw-bg-slate-800 dark:tw-border-slate-700 tw-w-7 tw-h-7 tw-rounded-lg tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200 group-hover:tw-shadow-indigo-200 dark:group-hover:tw-shadow-none group-hover:tw-border-slate-600">
+          <%= render_svg "forms", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-teal-500" %>
+        </div>
+        <span>Forms</span>
+      <% end %>
+
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100 dark:tw-border-slate-700">
+        <li>
+          <%= nav_link_to "Inputs", systems_forms_inputs_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Input Groups", systems_forms_input_groups_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Selects", systems_forms_selects_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Checkboxes & Radios", systems_forms_checkboxes_and_radios_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Layout", systems_forms_layout_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Validation", systems_forms_validation_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+      </ul>
+    </li>
+    <li x-data="{open: window.location.pathname.includes('components')}" x-cloak>
+
+      <%= link_to systems_components_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-300 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent dark:tw-from-slate-800 dark:tw-to-slate-900 tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-indigo-800 dark:hover:tw-text-indigo-300 tw-group tw-border-t dark:tw-border-slate-700"  do %>
+        <div class="tw-bg-white dark:tw-bg-slate-800 dark:tw-border-slate-700 tw-w-7 tw-h-7 tw-rounded-lg tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200 group-hover:tw-shadow-indigo-200 dark:group-hover:tw-shadow-none group-hover:tw-border-slate-600">
+          <%= render_svg "components", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-rose-500" %>
+        </div>
+        <span>Components</span>
+      <% end %>
+
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100 dark:tw-border-slate-700">
+        <li>
+          <%= nav_link_to "Accordions", systems_components_accordions_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Alerts", systems_components_alerts_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Badges", systems_components_badges_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Breadcrumbs", systems_components_breadcrumbs_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Buttons", systems_components_buttons_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Cards",systems_components_cards_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Dropdowns", systems_components_dropdowns_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Flash", systems_components_flash_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Modals", systems_components_modals_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Navigation", systems_components_navigation_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Pagination", systems_components_pagination_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Popovers", systems_components_popovers_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Tabs", systems_components_tabs_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Toasts", systems_components_toasts_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Tooltips", systems_components_tooltips_path, class:"tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+      </ul>
+    </li>
+
+    <li x-data="{open: window.location.pathname.includes('mailers')}" x-cloak>
+
+      <%= link_to systems_mailers_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-300 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent dark:tw-from-slate-800 dark:tw-to-slate-900 tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-indigo-800 dark:hover:tw-text-indigo-300 tw-group tw-border-t dark:tw-border-slate-700"  do %>
+        <div class="tw-bg-white dark:tw-bg-slate-800 dark:tw-border-slate-700 tw-w-7 tw-h-7 tw-rounded-lg tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200 group-hover:tw-shadow-indigo-200 dark:group-hover:tw-shadow-none group-hover:tw-border-slate-600">
+          <%= render_svg "mail", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-blue-500" %>
+        </div>
+        <span>Mailers</span>
+      <% end %>
+
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100 dark:tw-border-slate-700">
+        <li>
+          <%= nav_link_to "Layout", systems_mailers_layout_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Minimal", systems_mailers_minimal_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Promotion", systems_mailers_promotion_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Transactional", systems_mailers_transactional_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Devise", systems_mailers_devise_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+      </ul>
+    </li>
+
+    <li x-data="{open: window.location.pathname.includes('authentication')}" x-cloak>
+
+      <%= link_to systems_authentication_overview_path, class:"tw-font-semibold tw-px-4 tw-pb-2 tw-pt-4 tw-border-slate-300 tw-bg-gradient-to-b tw-from-slate-50 tw-to-transparent dark:tw-from-slate-800 dark:tw-to-slate-900 tw-flex tw-items-center tw-space-x-2 tw-w-full mr-px hover:tw-text-indigo-800 dark:hover:tw-text-indigo-300 tw-group tw-border-t dark:tw-border-slate-700"  do %>
+        <div class="tw-bg-white dark:tw-bg-slate-800 dark:tw-border-slate-700 tw-w-7 tw-h-7 tw-rounded-lg tw-shadow-sm tw-flex tw-items-center tw-justify-center tw-border tw-border-slate-200 group-hover:tw-shadow-indigo-200 dark:group-hover:tw-shadow-none group-hover:tw-border-slate-600">
+          <%= render_svg "components", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-text-amber-500" %>
+        </div>
+        <span>Authentication</span>
+      <% end %>
+
+      <ul class="lg:tw-space-y-1 tw-space-y-3 tw-pb-3 tw-ml-7 tw-border-l tw-border-slate-100 dark:tw-border-slate-700">
+        <li>
+          <%= nav_link_to "Sign up", systems_authentication_signup_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Sign in", systems_authentication_signin_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Reset password", systems_authentication_reset_password_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Confirmation", systems_authentication_confirmation_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Edit account", systems_authentication_edit_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Unlock", systems_authentication_unlocks_path, class: "tw-block tw-px-6 tw-py-1 tw-transition-colors tw-duration-200 tw-ease-linear tw-relative tw-border-r tw-border-transparent" %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -58,9 +58,7 @@ module Railsui
       Railsui.config = self
 
       # Install and configure framework of choice
-      if Railsui.config.theme.present?
-        set_framework unless Railsui.framework?
-      end
+      set_framework
 
       # Install any static pages
       if !about_page_exists? && Railsui.config.about?
@@ -88,6 +86,7 @@ module Railsui
     end
 
     def set_framework
+      return unless Railsui.config.theme.present?
       case Railsui.config.css_framework
       when Railsui::Default::BOOTSTRAP
         Railsui.run_command "rails railsui:framework:install:bootstrap"

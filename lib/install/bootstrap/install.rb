@@ -37,4 +37,6 @@ else
   file_names.each do |name|
     copy_file "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold/#{name}", Rails.root.join("lib/templates/erb/scaffold/#{name}")
   end
+
+  say "Bootstrap theme installed 👍", :green
 end
