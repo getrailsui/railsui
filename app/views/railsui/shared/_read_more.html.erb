@@ -1,6 +1,6 @@
 <div class="tw-mt-16">
   <div class="tw-bg-gray-100 dark:tw-bg-slate-800 dark:tw-text-slate-300 tw-px-6 tw-py-10 tw-rounded-xl tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-mx-auto tw-text-slate-500">
     <%= render_svg "book", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-text-slate-400 tw-mr-2" %>
-    <p>Refer to the <%= link_to "official #{Railsui::config.css_framework.humanize} documentation", local_assigns[:link], target: :_blank, class: "rui-link" %> for more help with <%= local_assigns[:subject] %>.</p>
+    <p>Refer to the <%= link_to "official #{Railsui::config.css_framework.humanize} documentation", local_assigns[:link], target: :_blank, class: "tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium dark:tw-text-indigo-500 dark:hover:tw-text-indigo-500" %> for more help with <%= local_assigns[:subject] %>.</p>
   </div>
 </div>

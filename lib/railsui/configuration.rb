@@ -6,15 +6,13 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
 
-    attr_accessor :application_name, :css_framework, :primary_color, :secondary_color, :about, :pricing, :theme
+    attr_accessor :application_name, :css_framework, :about, :pricing, :theme
 
     def initialize(options = {})
       assign_attributes(options)
       self.application_name ||= "Rails UI"
       self.css_framework ||= ""
       self.theme ||= ""
-      self.primary_color ||= "4338CA"
-      self.secondary_color ||= "FF8C69"
       self.about ||= false
       self.pricing ||= false
     end
@@ -58,9 +56,8 @@ module Railsui
       Railsui.config = self
 
       # Install and configure framework of choice
-      if Railsui.config.theme.present?
-        set_framework unless Railsui.framework?
-      end
+      set_framework unless Railsui.config.css_framework.present?
+
 
       # Install any static pages
       if !about_page_exists? && Railsui.config.about?
@@ -114,8 +111,5 @@ module Railsui
     def pricing_page_exists?
       Rails.root.join("app/views/static/pricing.html.erb").exist?
     end
-
-
-
   end
 end

@@ -4,13 +4,7 @@
   <% end %>
 
   <div class="tw-py-2">
-    <%= f.button id: "config_button", class: "rui-btn", data: {configuration_target: "submit" } do %>
-      <% if Railsui.config.css_framework.present? %>
-        <%= tag.span "Save changes" %>
-      <% else %>
-        <%= tag.span "Continue setup" %>
-      <% end %>
-    <% end %>
+    <%= f.button "Save changes", id: "config_button", class: "tw-px-4 tw-py-2 tw-text-white tw-bg-gradient-to-br tw-from-indigo-800 tw-via-indigo-600 tw-to-salmon-500 tw-font-semibold tw-text-center tw-rounded tw-transform tw-shadow tw-inline-block hover:tw-bg-gradient-to-tl hover:-tw-translate-y-px tw-transition tw-ease-in-out tw-duration-300 tw-text-[15px]", data: {configuration_target: "submit" } %>
 
     <p class="tw-text-sm tw-mt-3 tw-text-slate-500 dark:tw-text-slate-300">Saving will automatically restart your app and install any dependencies.</p>
   </div>

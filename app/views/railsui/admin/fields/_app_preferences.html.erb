@@ -24,8 +24,8 @@
         <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
       <% end %>
       <div class="tw-text-sm tw-mt-4 tw-pt-4 tw-border-t tw-border-slate-200 tw-flex tw-items-start dark:tw-border-slate-700">
-        <div class="tw-bg-indigo-50 tw-mr-4 tw-w-10 tw-h-10 tw-rounded tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
-          <%= render_svg "warning", styles: "tw-stroke-current tw-text-indigo-500 tw-w-5 tw-h-5 tw-flex-shrink-0" %>
+        <div class="tw-bg-indigo-50 dark:tw-bg-slate-600 tw-mr-4 tw-w-10 tw-h-10 tw-rounded tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+          <%= render_svg "warning", styles: "tw-stroke-current tw-text-indigo-500 tw-w-5 tw-h-5 tw-flex-shrink-0 dark:tw-text-rose-100" %>
         </div>
         <p class="tw-text-slate-800 dark:tw-text-slate-300">Note: This choice <span class="tw-font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_path, class: "tw-text-indigo-700 dark:tw-text-indigo-400" %>.
         </p>

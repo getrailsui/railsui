@@ -1,25 +1,25 @@
 <%= render "railsui/admin/field_layout" do %>
   <% content_for :explainer, flush: true do %>
-    <%= heading text: "Theme", id: "application_preferences", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
-    <% if Railsui.config.theme.present? %>
-      <p class="tw-text-slate-700 dark:tw-text-slate-300 lg:tw-text-sm tw-text-base">Your active theme is <%= Railsui.config.theme.humanize %> which uses <%= Railsui.config.css_framework.humanize %>.
-
-        <% if Railsui.bootstrap? %>All colors and theming conventions can be customized in the Bootstrap SCSS files.<% end %>
-
-        <% if Railsui.tailwind? %>All colors and theming conventions can be customized inside the tailwind.config.js file.<% end %>
-      </p>
-    <% else %>
-      <p class="tw-text-slate-700 dark:tw-text-slate-300 tw-text-sm">Select a theme to base your application off of.</p>
-    <% end %>
-  <% end %>
-
-  <div class="tw-p-6 tw-rounded-lg tw-bg-white dark:tw-bg-slate-800 tw-border tw-border-slate-200 tw-shadow-sm dark:tw-border-slate-700">
-    <div class="tw-hidden" data-configuration-target="frameworks">
+    <div class="tw-hidden" data-configuration-target="themeCopy">
+      <%= heading text: "Theme", id: "theme", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
       <% if Railsui.config.theme.present? %>
-        <%= render "railsui/admin/fields/theme_active", f: f %>
+        <p class="tw-text-slate-700 dark:tw-text-slate-300 lg:tw-text-sm tw-text-base">Your active theme is <%= Railsui.config.theme.humanize %> which uses <%= Railsui.config.css_framework.humanize %>.
+
+          <% if Railsui.bootstrap? %>All colors and theming conventions can be customized in the Bootstrap SCSS files.<% end %>
+
+          <% if Railsui.tailwind? %>All colors and theming conventions can be customized inside the tailwind.config.js file.<% end %>
+        </p>
       <% else %>
-        <%= render "railsui/admin/fields/theme_setup", f: f %>
+        <p class="tw-text-slate-700 dark:tw-text-slate-300 tw-text-sm">Select a theme to base your application off of.</p>
       <% end %>
     </div>
+  <% end %>
+
+  <div class="tw-p-6 tw-rounded-lg tw-bg-white dark:tw-bg-slate-800 tw-border tw-border-slate-200 tw-shadow-sm dark:tw-border-slate-700"  class="tw-hidden" data-configuration-target="frameworks">
+    <% if Railsui.config.theme.present? %>
+      <%= render "railsui/admin/fields/theme_active", f: f %>
+    <% else %>
+      <%= render "railsui/admin/fields/theme_setup", f: f %>
+    <% end %>
   </div>
 <% end %>

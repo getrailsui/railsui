@@ -45,6 +45,7 @@ def add_css_bundling_setup
   chmod "bin/dev", 0755, verbose: false
 end
 
+
 def remove_importmaps
   if Rails.root.join("config/importmap.rb").exist?
     run "bundle remove importmap-rails"
@@ -174,13 +175,6 @@ def extend_layout_and_views
       before:/\s*<\/head>/
     )
 
-    say "⚡️ Add color palette styles"
-    insert_into_file(
-      app_layout_path.to_s,
-      %(\n    <%= render "shared/palette" %>),
-      before:/\s*<\/head>/
-    )
-
     say "⚡️ Add :head yield"
     insert_into_file(
       app_layout_path.to_s,
@@ -260,8 +254,8 @@ copy_hero_icons
 rails_command "db:create"
 rails_command "db:migrate"
 
-
-"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+say "
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMWXOxooodOXMMMMMMMMMMWXxxXMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMXd:,..     'dXMMMMWWKx:.  ,OWMMMMMMMMMMMMMMMMMMMM

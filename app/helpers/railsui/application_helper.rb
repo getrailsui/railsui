@@ -131,5 +131,17 @@ module Railsui
     def email_viewer(subject="A sample subject", &block)
       render "railsui/shared/rui_email_preview", subject: subject, block: block, flush: true
     end
+
+    def box_label_classes(options={})
+      "tw-rounded-lg tw-bg-white tw-shadow-sm tw-border tw-border-slate-200 tw-block tw-select-none hover:tw-shadow-none tw-group tw-bg-gradient-to-br tw-from-white to-slate-50 dark:tw-from-slate-700 dark:tw-to-slate-800 dark:tw-border-slate-600 dark:shadow-sm #{options[:offset] == false ? "tw-px-4 tw-pb-4 tw-pt-1" : "tw-p-4" }"
+    end
+
+    def box_check_classes
+      "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-slate-100  tw-mr-2 tw-border-slate-500 tw-w-5 tw-h-5
+      focus:dark:tw-ring-slate-700
+      focus:dark:tw-ring-opacity-20
+      focus:dark:tw-bg-slate-600  dark:tw-bg-slate-700
+      dark:tw-ring-transparent"
+    end
   end
 end

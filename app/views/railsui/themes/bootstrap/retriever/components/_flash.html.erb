@@ -1,17 +1,17 @@
 <div class="tw-my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Notice" %>
 
-<div class="rui">
-  <div class="flash" role="alert">
-    <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
+  <div class="rui">
+    <div class="flash" role="alert">
+      <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
+    </div>
   </div>
-</div>
 
-<% content_for :html, flush: true do %>
-<div class="flash" role="alert">
-  <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
-</div>
-<% end %>
+  <% content_for :html, flush: true do %>
+    <div class="flash" role="alert">
+      <p>A message commonly displayed at the top of the viewport on <a href="https://rubyonrails.org">Rails</a> apps after something changes.</p>
+    </div>
+  <% end %>
 
 <% content_for :erb, flush: true do %>
 <%% if notice %>
@@ -22,12 +22,12 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-  - if notice
+- if notice
   .flash{:role => "alert"}
     %p= sanitize notice
 <% end %>
 
-<%= render_snippet %>
+  <%= render_snippet %>
 </div>
 
 <div class="tw-my-16">
@@ -44,7 +44,7 @@
 
   <div class="tw-prose dark:tw-prose-invert tw-mb-6">If you wanted to make use of JavaScript you could hide a notice after some time.</div>
 
-  <p class="rui-js-pill">Vanilla JavaScript</p>
+  <p class="tw-bg-gradient-to-br tw-from-yellow-300 tw-to-yellow-500 tw-text-black tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs">Vanilla JavaScript</p>
 
 <% content_for :html, flush: true do %>
 <div class="flash flash-warning" role="alert">
@@ -61,7 +61,7 @@
 <% end %>
 
 <% content_for :js, flush: true do %>
-  // app/javascript/application.js
+// app/javascript/application.js
 document.addEventListener('turbo:load', () => {
   const flash = document.querySelector('.flash')
 
@@ -73,7 +73,7 @@ document.addEventListener('turbo:load', () => {
 <% end %>
 <%= render_snippet(active_tab: "js") %>
 
-<p class="rui-js-pill">Stimulus.js</p>
+<p class="tw-bg-gradient-to-br tw-from-yellow-300 tw-to-yellow-500 tw-text-black tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs">Stimulus.js</p>
 
 <% content_for :html, flush: true do %>
 <div class="notice" role="alert" data-controller="flash">
@@ -88,6 +88,7 @@ document.addEventListener('turbo:load', () => {
 <% content_for :haml, flush: true do %>
 
 <% end %>
+
 <% content_for :js, flush: true do %>
 // app/javascript/controllers/flash_controller.js
 import { Controller } from "@hotwired/stimulus"
@@ -100,5 +101,5 @@ export default class extends Controller {
   }
 }
 <% end %>
-<%= render_snippet(active_tab: "js") %>
+  <%= render_snippet(active_tab: "js") %>
 </div>
