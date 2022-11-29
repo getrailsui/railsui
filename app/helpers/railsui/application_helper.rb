@@ -143,5 +143,11 @@ module Railsui
       focus:dark:bg-slate-600  dark:bg-slate-700
       dark:ring-transparent"
     end
+
+    def help_text &block
+      content_tag :div, class: "prose prose-sm dark:prose-invert prose-indigo max-w-full my-2" do
+        yield
+      end
+    end
   end
 end

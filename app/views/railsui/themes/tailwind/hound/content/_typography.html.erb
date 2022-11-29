@@ -1,25 +1,37 @@
 <div class="my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Headings" %>
 
+  <div class="prose prose-lg prose-indigo dark:prose-invert">
+    <p>Headings are componentized for easier use and better consistency accross your design. Use the associatied class name to format headings as necessary.</p>
+  </div>
+
   <div class="mb-16 mt-6 dark:p-6 dark:rounded-lg">
     <div class="mb-4">
-      <h1 class="text-5xl font-extrabold tracking-tight">A quick brown fox jumps over <br /> the lazy dog.</h1>
-      <p class="text-sm text-slate-600 mt-2">h1 &mdash; 48px (3rem) / line-height: 1</p>
+      <h1 class="h1">A quick brown fox jumps over <br /> the lazy dog.</h1>
+      <%= help_text do %>
+        <p>h1.h1 &mdash; 48px (3rem) / line-height: 1</p>
+      <% end %>
     </div>
 
     <div class="mb-4">
-      <h2 class="text-4xl font-extrabold">A quick brown fox jumps over the lazy dog.</h2>
-      <p class="text-sm text-slate-600 mt-2">h2 &mdash; 36px (2.25rem) / 40px (2.5rem)</p>
+      <h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
+      <%= help_text do %>
+        <p>h2.h2 &mdash; 36px (2.25rem) / 40px (2.5rem)</p>
+      <% end %>
     </div>
 
     <div class="mb-4">
-      <h3 class="text-3xl font-extrabold">A quick brown fox jumps over the lazy dog.</h3>
-      <p class="text-sm text-slate-600 mt-2">h3 &mdash; 30px (1.875rem) / 36px (2.25rem)</p>
+      <h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
+      <%= help_text do %>
+        <p>h3.h3 &mdash; 30px (1.875rem) / 36px (2.25rem)</p>
+      <% end %>
     </div>
 
     <div class="mb-4">
-      <h4 class="text-2xl font-extrabold">A quick brown fox jumps over the lazy dog.</h4>
-      <p class="text-sm text-slate-600 mt-2">h4 &mdash; 24px (1.5rem) / 32px (2rem)</p>
+      <h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
+      <%= help_text do %>
+        <p>h4.h4 &mdash; 24px (1.5rem) / 32px (2rem)</p>
+      <% end %>
     </div>
 
     <div class="mb-4">
@@ -28,36 +40,36 @@
     </div>
 
     <div>
-      <h6 class="text-lg font-extrabold">A quick brown fox jumps over the lazy dog.</h6>
-      <p class="text-sm text-slate-600 mt-2">h6 &mdash; 16px (1rem) / 19.2px (1.5rem)</p>
+      <h6 class="h-6">A quick brown fox jumps over the lazy dog.</h6>
+      <p class="text-sm text-slate-600 mt-2">h6.h6 &mdash; 16px (1rem) / 19.2px (1.5rem)</p>
     </div>
   </div>
   <%# snippet content :html %>
 <% content_for :html, flush: true do %>
-<h1 class="text-5xl font-extrabold tracking-tight">A quick brown fox jumps over the lazy dog.</h1>
-<h2 class="text-4xl font-extrabold">A quick brown fox jumps over the lazy dog.</h2>
-<h3 class="text-3xl font-extrabold">A quick brown fox jumps over the lazy dog.</h3>
-<h4 class="text-2xl font-extrabold">A quick brown fox jumps over the lazy dog.</h4>
-<h5 class="text-xl font-extrabold">A quick brown fox jumps over the lazy dog.</h5>
-<h6 class="text-lg font-extrabold">A quick brown fox jumps over the lazy dog.</h6>
+<h1 class="h1">A quick brown fox jumps over the lazy dog.</h1>
+<h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
+<h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
+<h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
+<h5 class="h5">A quick brown fox jumps over the lazy dog.</h5>
+<h6 class="h6">A quick brown fox jumps over the lazy dog.</h6>
 <% end %>
 <%# snippet content :erb %>
 <% content_for :erb, flush: true do %>
-<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "text-5xl font-extrabold tracking-tight" %>
-<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "text-4xl font-extrabold" %>
-<%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "text-3xl font-extrabold" %>
-<%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "text-2xl font-extrabold" %>
-<%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "text-xl font-extrabold" %>
-<%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "text-lg font-extrabold" %>
+<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "h1" %>
+<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "h2" %>
+<%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "h3" %>
+<%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "h4" %>
+<%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "h5" %>
+<%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "h6" %>
 <% end %>
   <%# snippet content :haml %>
 <% content_for :haml, flush: true do %>
-%h1.text-5xl.font-extrabold.tracking-tight A quick brown fox jumps over the lazy dog
-%h2.text-4xl.font-extrabold A quick brown fox jumps over the lazy dog
-%h3.text-3xl.font-extrabold A quick brown fox jumps over the lazy dog
-%h4.text-2xl.font-extrabold A quick brown fox jumps over the lazy dog
-%h5.text-xl.font-extrabold A quick brown fox jumps over the lazy dog
-%h6.text-lg.font-extrabold A quick brown fox jumps over the lazy dog
+%h1.h1 A quick brown fox jumps over the lazy dog
+%h2.h2 A quick brown fox jumps over the lazy dog
+%h3.h3 A quick brown fox jumps over the lazy dog
+%h4.h4 A quick brown fox jumps over the lazy dog
+%h5.h5 A quick brown fox jumps over the lazy dog
+%h6.h6 A quick brown fox jumps over the lazy dog
 <% end %>
 <%= render_snippet %>
 
@@ -70,32 +82,40 @@
   <div class="rui dark:p-6 dark:rounded-lg">
     <div class="mb-4">
       <h1 class="display-1">A quick brown fox jumps over the lazy dog.</h1>
-      <p class="text-muted">h1.display-1 &mdash; 80px (5rem) / 96px (1.2)</p>
+      <%= help_text do %>
+        <p>h1.display-1 &mdash; 96px (6rem)</p>
+      <% end %>
     </div>
 
     <div class="mb-4">
       <h2 class="display-2">A quick brown fox jumps over the lazy dog.</h2>
-      <p class="text-muted">h2.display-2 &mdash; 72px (4.5rem) / 86.4px (1.2)</p>
+      <p class="text-sm text-slate-600 mt-2">h2.display-2 &mdash; 72px (4.5rem)</p>
     </div>
 
     <div class="mb-4">
       <h3 class="display-3">A quick brown fox jumps over the lazy dog.</h3>
-      <p class="text-muted">h3.display-3 &mdash; 64px (4.5rem) / 76.8px (1.2)</p>
+      <p class="text-sm text-slate-600 mt-2">h3.display-3 &mdash; 60px (3.75rem)</p>
     </div>
 
     <div class="mb-4">
       <h4 class="display-4">A quick brown fox jumps over the lazy dog.</h4>
-      <p class="text-muted">h4.display-4 &mdash; 56px (3.5rem) / 67.2px (1.2)</p>
+      <%= help_text do %>
+        <p>h4.display-4 &mdash; 48px (3rem)</p>
+      <% end %>
     </div>
 
     <div class="mb-4">
       <h5 class="display-5">A quick brown fox jumps over the lazy dog.</h5>
-      <p class="text-muted">h5(.display-5) &mdash; 48px (3rem) / 57.6px (1.2)</p>
+      <%= help_text do %>
+        <p>h5.display-5 &mdash; 36px (2.25rem)</p>
+      <% end %>
     </div>
 
     <div class="mb-4">
       <h6 class="display-6">A quick brown fox jumps over the lazy dog.</h6>
-      <p class="text-muted">h6(.display-6) &mdash; 40px (2.5rem) / 48px (1.2)</p>
+      <%= help_text do %>
+        <p>h6.display-6 &mdash; 30px (1.875rem)</p>
+      <% end %>
     </div>
   </div>
 </div>
@@ -122,12 +142,12 @@
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-  %h1.display-h1 A quick brown fox jumps over the lazy dog
-  %h2.display-h2 A quick brown fox jumps over the lazy dog
-  %h3.display-h3 A quick brown fox jumps over the lazy dog
-  %h4.display-h4 A quick brown fox jumps over the lazy dog
-  %h5.display-h5 A quick brown fox jumps over the lazy dog
-  %h6.display-h6 A quick brown fox jumps over the lazy dog
+%h1.display-h1 A quick brown fox jumps over the lazy dog
+%h2.display-h2 A quick brown fox jumps over the lazy dog
+%h3.display-h3 A quick brown fox jumps over the lazy dog
+%h4.display-h4 A quick brown fox jumps over the lazy dog
+%h5.display-h5 A quick brown fox jumps over the lazy dog
+%h6.display-h6 A quick brown fox jumps over the lazy dog
 <% end %>
 
 <%= render_snippet %>
@@ -137,13 +157,19 @@
 <div class="mb-16 mt-8">
   <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lead paragraph" %>
   <div class="rui dark:p-6 dark:rounded-lg">
-    <p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
-    <p class="text-muted">20px (1.25rem) / 30px (1.2)</p>
+    <div class="prose prose-xl prose-indigo dark:prose-invert">
+      <p>This is a lead paragraph. It stands out from regular paragraphs.</p>
+    </div>
+    <%= help_text do %>
+      <p>20px (1.25rem) - Leverage Tailwind's <%= link_to "typography plugin", "https://tailwindcss.com/docs/typography-plugin", target: :_blank %> using the <%= code_inline('prose') %> classes with dark-mode support.</p>
+    <% end %>
   </div>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<p class="lead">A lead paragraph stands out from regular paragraphs.</p>
+<div class="prose prose-xl prose-indigo dark:prose-invert">
+  <p>A lead paragraph stands out from regular paragraphs.</p>
+</div>
 <% end %>
 
 <%# .erb %>
@@ -214,7 +240,7 @@
 <div class="rui dark:p-6 dark:rounded-lg">
 <div class="row">
 <div class="col">
-<p class="text-muted">Standard</p>
+<p class="text-sm text-slate-600 mt-2">Standard</p>
 <ul class="list-disc">
   <li>A quick brown</li>
   <li>fox jumps over</li>
@@ -223,7 +249,7 @@
 </div>
 
 <div class="col">
-<p class="text-muted">Unstyled</p>
+<p class="text-sm text-slate-600 mt-2">Unstyled</p>
 <ul class="list-unsyled">
   <li>A quick brown</li>
   <li>fox jumps over</li>
@@ -232,7 +258,7 @@
 </div>
 
 <div class="col">
-<p class="text-muted">Decimal</p>
+<p class="text-sm text-slate-600 mt-2">Decimal</p>
 <ol class="list-decimal">
   <li>A quick brown</li>
   <li>fox jumps over</li>
