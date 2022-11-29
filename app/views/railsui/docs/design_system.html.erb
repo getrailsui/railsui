@@ -1,4 +1,4 @@
-<div class="tw-prose tw-prose-lg tw-prose-indigo prose-h1:tw-font-bold tw-mb-6">
+<div class="tw-prose tw-prose-lg tw-prose-indigo prose-h1:tw-font-bold tw-mb-6 dark:tw-prose-invert dark:prose-a:tw-text-indigo-400">
   <%= heading text: "Design system", tag: "h1", id: "docs_design_system" %>
 
   <p>Bundled with your Rails UI theme is a complete <% if Railsui.config.theme.present? %><%= link_to "design system", systems_path %><% else %>design system<% end %>. Think of the system as documented design patterns for repeatable elements and content within your application.</p>
@@ -9,7 +9,7 @@
 
   <p>When we create new themes most design systems a created first. To develop atomic patterns, we use this exercise to be more efficient in an application with many views. In the software world, you can think of this as practicing the D.R.Y. (don't repeat yourself) principle.</p>
 
-  <%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/figma-ss.png", alt: "Screenshot of Rails UI theme design inside Figma", class: "tw-border tw-border-slate-200 tw-rounded tw-shadow-sm" %>
+  <%= image_tag "https://f001.backblazeb2.com/file/railsui/docs/figma-ss.png", alt: "Screenshot of Rails UI theme design inside Figma", class: "tw-border tw-border-slate-200 tw-rounded tw-shadow-sm dark:tw-border-slate-700" %>
 
   <p>Much of the initial work begins in a tool called <%= link_to "Figma", "https://figma.com", target: :_blank %> where we move quickly finding balance in color, scale, typography, imagery, and more.</p>
 

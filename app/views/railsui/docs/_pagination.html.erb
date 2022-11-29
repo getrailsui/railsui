@@ -1,16 +1,16 @@
-<div class="tw-py-3 tw-border-t tw-border-slate tw-flex  <%= local_assigns[:back].present? ? "tw-justify-between" : "tw-justify-end" %>">
+<div class="tw-py-3 tw-border-t tw-border-slate dark:tw-border-slate-700 tw-flex  <%= local_assigns[:back].present? ? "tw-justify-between" : "tw-justify-end" %>">
   <% if local_assigns[:back].present? %>
-    <%= link_to local_assigns[:back], class: "tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium dark:tw-text-indigo-500 dark:hover:tw-text-indigo-500 tw-flex tw-items-center tw-group" do %>
-      <div class="tw-w-8 tw-h-8 tw-rounded tw-bg-transparent group-hover:tw-bg-indigo-50 tw-flex tw-items-center tw-justify-center group-hover:-tw-translate-x-1 group-hover:tw-transition group-hover:tw-transform">
+    <%= link_to local_assigns[:back], class: "tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium dark:tw-text-indigo-400 dark:hover:tw-text-indigo-300 tw-flex tw-items-center tw-group" do %>
+      <div class="tw-w-8 tw-h-8 tw-rounded tw-bg-transparent group-hover:tw-bg-indigo-50 tw-flex tw-items-center tw-justify-center group-hover:-tw-translate-x-1 group-hover:tw-transition group-hover:tw-transform group-hover:dark:tw-bg-slate-700/50 dark:tw-border dark:tw-border-transparent group-hover:dark:tw-border-slate-600 group-hover:dark:tw-text-indigo-200">
         <%= render_svg "arrow-left", styles: "tw-stroke-current tw-w-5 tw-h-5" %>
       </div>
       <span class="tw-ml-2"><%= local_assigns[:back_label] %></span>
     <% end %>
   <% end %>
   <% if local_assigns[:next].present? %>
-    <%= link_to local_assigns[:next], class: "tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium dark:tw-text-indigo-500 dark:hover:tw-text-indigo-500 tw-flex tw-items-center tw-group" do %>
+    <%= link_to local_assigns[:next], class: "tw-text-indigo-600 tw-underline hover:tw-text-indigo-600 tw-font-medium dark:tw-text-indigo-400 dark:hover:tw-text-indigo-300 tw-flex tw-items-center tw-group" do %>
       <span class="tw-mr-2"><%= local_assigns[:next_label]%></span>
-      <div class="tw-w-8 tw-h-8 tw-rounded tw-bg-transparent group-hover:tw-bg-indigo-50 tw-flex tw-items-center tw-justify-center group-hover:tw-translate-x-1 group-hover:tw-transition group-hover:tw-transform">
+      <div class="tw-w-8 tw-h-8 tw-rounded tw-bg-transparent group-hover:tw-bg-indigo-50 tw-flex tw-items-center tw-justify-center group-hover:tw-translate-x-1 group-hover:tw-transition group-hover:tw-transform group-hover:dark:tw-bg-slate-700/50 dark:tw-border dark:tw-border-transparent group-hover:dark:tw-border-slate-600 group-hover:dark:tw-text-indigo-200">
         <%= render_svg "arrow-right", styles: "tw-stroke-current tw-w-5 tw-h-5" %>
       </div>
     <% end %>

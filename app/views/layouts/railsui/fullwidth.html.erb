@@ -27,33 +27,7 @@
 
   <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-white" %>" data-controller="toggle scroll">
     <%= render "railsui/shared/flash" %>
-    <div class="lg:tw-fixed tw-top-0 tw-left-0 tw-w-full tw-backdrop-blur tw-flex-none transition-colors tw-duration-500 tw-z-30 lg:tw-border-b lg:tw-border-slate-900/10 dark:tw-border-slate-50/[0.06] tw-bg-white/60 supports-backdrop-blur:tw-bg-white/60 dark:tw-bg-transparent">
-      <div class="tw-py-4 tw-px-4 tw-border-b tw-border-slate-900/10 lg:tw-px-6  lg:tw-border-0 dark:tw-border-slate-300/10 lg:tw-mx-0 tw-flex tw-items-center">
-        <%= link_to  main_app.root_path, class: "tw-flex tw-flex-shrink-0 lg:tw-border tw-bg-white tw-w-8 tw-h-8 tw-items-center tw-justify-center tw-rounded-lg hover:tw-shadow-sm tw-group hover:tw-shadow-indigo focus:tw-ring-4 focus:tw-ring-indigo-300 focus:tw-ring-opacity-50 tw-rounded-lg", data: {tippy_content: "Back to main app", controller: "tooltip"} do %>
-          <div class="tw-flex tw-items-center  tw-text-sm">
-            <%= render_svg "chevron-left", styles: "tw-stroke-current tw-text-slate-500 group-hover:tw-text-indigo-400 lg:tw-w-4 tw-h-7 lg:tw-h-4 tw-w-7" %>
-          </div>
-        <% end %>
-        <div class="lg:tw-ml-8 tw-flex tw-justify-between tw-items-center tw-w-full tw-flex-wrap">
-          <div class="tw-flex-1 tw-flex-wrap tw-justify-center lg:tw-justify-start tw-flex lg:tw-space-x-6 tw-items-center">
-            <div class="lg:tw-w-auto tw-w-full tw-flex-1 lg:tw-flex-grow-0">
-              <%= render "railsui/shared/logo" %>
-            </div>
-            <% if Railsui.config.css_framework.present? %>
-              <div class="lg:tw-block tw-hidden">
-                <%= render "railsui/shared/theme_label" %>
-              </div>
-            <% end %>
-            <button role="toggle nav" class="lg:tw-hidden tw-block tw-p-1 focus:tw-ring-indigo-300 focus:tw-ring-4 tw-rounded-lg focus:tw-ring-opacity-50" data-action="click->toggle#toggle">
-              <%= render_svg "menu", styles: "tw-stroke-current tw-w-7 tw-h-7 tw-text-slate-600" %>
-            </button>
-          </div>
-          <div class="lg:tw-block tw-hidden">
-            <%= render "railsui/shared/top_nav" %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "layouts/railsui/masthead" %>
 
     <div class="tw-mx-auto lg:tw-py-32 tw-px-4 tw-py-8 tw-max-w-6xl">
       <%= yield %>
