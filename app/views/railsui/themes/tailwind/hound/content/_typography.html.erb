@@ -3,61 +3,61 @@
 
   <div class="mb-16 mt-6 dark:p-6 dark:rounded-lg">
     <div class="mb-4">
-      <h1 class="text-4xl font-extrabold leading-tight">A quick brown fox jumps over the lazy dog.</h1>
-      <p class="text-sm text-slate-600">h1(.h1) &mdash; 40px (2.5rem) / 48px (1.2)</p>
+      <h1 class="text-5xl font-extrabold tracking-tight">A quick brown fox jumps over <br /> the lazy dog.</h1>
+      <p class="text-sm text-slate-600 mt-2">h1 &mdash; 48px (3rem) / line-height: 1</p>
     </div>
 
     <div class="mb-4">
-      <h2>A quick brown fox jumps over the lazy dog.</h2>
-      <p class="text-muted">h2(.h2) &mdash; 32px (2rem) / 38.4px (1.2)</p>
+      <h2 class="text-4xl font-extrabold">A quick brown fox jumps over the lazy dog.</h2>
+      <p class="text-sm text-slate-600 mt-2">h2 &mdash; 36px (2.25rem) / 40px (2.5rem)</p>
     </div>
 
     <div class="mb-4">
-      <h3>A quick brown fox jumps over the lazy dog.</h3>
-      <p class="text-muted">h3(.h3) &mdash; 28px (1.75rem) / 33.6px (1.2)</p>
+      <h3 class="text-3xl font-extrabold">A quick brown fox jumps over the lazy dog.</h3>
+      <p class="text-sm text-slate-600 mt-2">h3 &mdash; 30px (1.875rem) / 36px (2.25rem)</p>
     </div>
 
     <div class="mb-4">
-      <h4>A quick brown fox jumps over the lazy dog.</h4>
-      <p class="text-muted">h4(.h4) &mdash; 24px (1.5rem) / 28.8px (1.2)</p>
+      <h4 class="text-2xl font-extrabold">A quick brown fox jumps over the lazy dog.</h4>
+      <p class="text-sm text-slate-600 mt-2">h4 &mdash; 24px (1.5rem) / 32px (2rem)</p>
     </div>
 
     <div class="mb-4">
-      <h5>A quick brown fox jumps over the lazy dog.</h5>
-      <p class="text-muted">h5(.h5) &mdash; 20px (1.25rem) / 24px (1.2)</p>
+      <h5 class="text-xl font-extrabold">A quick brown fox jumps over the lazy dog.</h5>
+      <p class="text-sm text-slate-600 mt-2">h5 &mdash; 20px (1.25rem) / 28px (1.75)</p>
     </div>
 
     <div>
-      <h6>A quick brown fox jumps over the lazy dog.</h6>
-      <p class="text-muted">h6(.h6) &mdash; 16px (1rem) / 19.2px (1.2)</p>
+      <h6 class="text-lg font-extrabold">A quick brown fox jumps over the lazy dog.</h6>
+      <p class="text-sm text-slate-600 mt-2">h6 &mdash; 16px (1rem) / 19.2px (1.5rem)</p>
     </div>
   </div>
   <%# snippet content :html %>
 <% content_for :html, flush: true do %>
-<h1 class="h1">A quick brown fox jumps over the lazy dog.</h1>
-<h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
-<h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
-<h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
-<h5 class="h5">A quick brown fox jumps over the lazy dog.</h5>
-<h6 class="h6">A quick brown fox jumps over the lazy dog.</h6>
+<h1 class="text-5xl font-extrabold tracking-tight">A quick brown fox jumps over the lazy dog.</h1>
+<h2 class="text-4xl font-extrabold">A quick brown fox jumps over the lazy dog.</h2>
+<h3 class="text-3xl font-extrabold">A quick brown fox jumps over the lazy dog.</h3>
+<h4 class="text-2xl font-extrabold">A quick brown fox jumps over the lazy dog.</h4>
+<h5 class="text-xl font-extrabold">A quick brown fox jumps over the lazy dog.</h5>
+<h6 class="text-lg font-extrabold">A quick brown fox jumps over the lazy dog.</h6>
 <% end %>
 <%# snippet content :erb %>
 <% content_for :erb, flush: true do %>
-<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "h1" %>
-<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "h2" %>
-<%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "h3" %>
-<%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "h4" %>
-<%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "h5" %>
-<%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "h6" %>
+<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "text-5xl font-extrabold tracking-tight" %>
+<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "text-4xl font-extrabold" %>
+<%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "text-3xl font-extrabold" %>
+<%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "text-2xl font-extrabold" %>
+<%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "text-xl font-extrabold" %>
+<%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "text-lg font-extrabold" %>
 <% end %>
   <%# snippet content :haml %>
 <% content_for :haml, flush: true do %>
-%h1.h1 A quick brown fox jumps over the lazy dog
-%h2.h2 A quick brown fox jumps over the lazy dog
-%h3.h3 A quick brown fox jumps over the lazy dog
-%h4.h4 A quick brown fox jumps over the lazy dog
-%h5.h5 A quick brown fox jumps over the lazy dog
-%h6.h6 A quick brown fox jumps over the lazy dog
+%h1.text-5xl.font-extrabold.tracking-tight A quick brown fox jumps over the lazy dog
+%h2.text-4xl.font-extrabold A quick brown fox jumps over the lazy dog
+%h3.text-3xl.font-extrabold A quick brown fox jumps over the lazy dog
+%h4.text-2xl.font-extrabold A quick brown fox jumps over the lazy dog
+%h5.text-xl.font-extrabold A quick brown fox jumps over the lazy dog
+%h6.text-lg.font-extrabold A quick brown fox jumps over the lazy dog
 <% end %>
 <%= render_snippet %>
 
