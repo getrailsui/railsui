@@ -1,12 +1,12 @@
 [data-controller="anchor"] {
-  @apply tw-relative tw-cursor-pointer;
+  @apply relative cursor-pointer;
 }
 
 [data-controller="anchor"]::before {
   content: "#";
-  @apply tw-absolute tw-transition tw-text-slate-400 tw-font-mono tw-font-semibold tw-text-xl -tw-left-4 tw-top-0 tw-opacity-0 tw-duration-300;
+  @apply absolute transition text-slate-400 font-mono font-semibold text-xl -left-4 top-0 opacity-0 duration-300;
 }
 
 [data-controller="anchor"]:hover::before {
-  @apply tw-opacity-100;
+  @apply opacity-100;
 }

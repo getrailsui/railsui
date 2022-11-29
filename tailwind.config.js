@@ -1,5 +1,4 @@
 module.exports = {
-  prefix: "tw-",
   content: [
     "./app/helpers/**/*.rb",
     "./app/assets/stylesheets/**/*.css",

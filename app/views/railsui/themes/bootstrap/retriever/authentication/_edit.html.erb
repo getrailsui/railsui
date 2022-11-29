@@ -1,4 +1,4 @@
-<div class="rui dark:tw-p-6 dark:tw-rounded-lg">
+<div class="rui dark:p-6 dark:rounded-lg">
   <div class="container mt-6">
     <div class="row">
       <div class="col-md-5">
@@ -6,8 +6,8 @@
         <p class="text-muted">Manage personal details and login credentials.</p>
       </div>
       <div class="col-md-7">
-        <div class="border p-5 rounded tw-pointer-events-none tw-select-none">
-          <form class="edit_user" id="edit_user" action="#" accept-charset="UTF-8" method="#" class="tw-pointer-events-none tw-select-none">
+        <div class="border p-5 rounded pointer-events-none select-none">
+          <form class="edit_user" id="edit_user" action="#" accept-charset="UTF-8" method="#" class="pointer-events-none select-none">
             <input type="hidden" name="_method" value="put" autocomplete="off">
             <input type="hidden" name="authenticity_token" value="#" autocomplete="off">
 
@@ -35,18 +35,18 @@
             </div>
 
             <div class="mb-4">
-              <input type="submit" name="commit" value="Update" class="btn btn-primary btn-lg tw-pointer-events-none">
+              <input type="submit" name="commit" value="Update" class="btn btn-primary btn-lg pointer-events-none">
             </div>
           </form>
           <div>
-            <form class="button_to" method="post" action="/users"><input type="hidden" name="_method" value="delete" autocomplete="off"><button data-confirm="Are you sure?" class="btn btn-link text-muted p-0 tw-pointer-events-none" type="submit">Cancel account</button><input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
+            <form class="button_to" method="post" action="/users"><input type="hidden" name="_method" value="delete" autocomplete="off"><button data-confirm="Are you sure?" class="btn btn-link text-muted p-0 pointer-events-none" type="submit">Cancel account</button><input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="tw-max-w-3xl tw-mx-auto tw-my-16">
+<div class="max-w-3xl mx-auto my-16">
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/registrations/edit.html.erb-->
 <div class="container mt-6">

@@ -7,65 +7,65 @@
   ruby_content = yield :ruby
 %>
 
-<div data-controller="code" class="tw-mt-5 tw-mb-8 first:tw-mt-0 last:tw-mb-0 tw-bg-gradient-to-br tw-from-slate-700 tw-to-slate-800 tw-rounded-xl tw-shadow-lg tw-overflow-hidden dark:tw-border dark:tw-border-slate-700 selection:tw-bg-salmon-500 selection:tw-bg-opacity-25 tw-relative"  x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
-  <div class="tw-bg-slate-800">
-    <ul class="tw-flex tw-items-center tw-justify-start tw-space-x-2 tw-border-b tw-border-slate-700 tw-px-3">
+<div data-controller="code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl shadow-lg overflow-hidden dark:border dark:border-slate-700 selection:bg-salmon-500 selection:bg-opacity-25 relative"  x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
+  <div class="bg-slate-800">
+    <ul class="flex items-center justify-start space-x-2 border-b border-slate-700 px-3">
       <% if content_for?(:html) %>
-        <li class="tw-flex tw-items-center">
+        <li class="flex items-center">
           <a href="#html"
           @click.prevent="active = 'html'"
-          :class="active == 'html' ? 'tw-text-pink-400 tw-border-pink-400' : 'tw-border-transparent tw-text-white/90'"
-          class="-tw-ml-2 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono  tw-text-sm tw-border-b-2 hover:tw-text-pink-400  hover:tw-border-pink-400">.html</a>
-          <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+          :class="active == 'html' ? 'text-pink-400 border-pink-400' : 'border-transparent text-white/90'"
+          class="-ml-2 pl-5 pr-3 py-3 font-mono  text-sm border-b-2 hover:text-pink-400  hover:border-pink-400">.html</a>
+          <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
       <% if content_for?(:erb) %>
-        <li class="tw-flex tw-items-center">
+        <li class="flex items-center">
           <a href="#erb"
           @click.prevent="active = 'erb'"
-          :class="active == 'erb' ? 'tw-text-amber-400 tw-border-amber-400' : 'tw-border-transparent tw-text-white/90'"
-          class="-tw-ml-3 tw-pl-6 tw-pr-4 tw-py-3 tw-font-mono tw-text-sm tw-border-b-2 hover:tw-text-amber-400 hover:tw-border-amber-400">.erb</a>
-          <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+          :class="active == 'erb' ? 'text-amber-400 border-amber-400' : 'border-transparent text-white/90'"
+          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-amber-400 hover:border-amber-400">.erb</a>
+          <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for(:haml) %>
-        <li class="tw-flex tw-items-center">
+        <li class="flex items-center">
           <a href="#haml"
           @click.prevent="active = 'haml'"
-          :class="active == 'haml' ? 'tw-text-sky-400 tw-border-sky-400' : 'tw-border-transparent tw-text-white/90'"
-          class="-tw-ml-3 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-sm tw-border-b-2 hover:tw-text-sky-400 hover:tw-border-sky-400">.haml</a>
-          <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+          :class="active == 'haml' ? 'text-sky-400 border-sky-400' : 'border-transparent text-white/90'"
+          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-sky-400 hover:border-sky-400">.haml</a>
+          <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for?(:bash) %>
-        <li class="tw-flex tw-items-center">
+        <li class="flex items-center">
           <a href="#bash"
           @click.prevent="active = 'bash'"
-          :class="active == 'bash' ? 'tw-text-cyan-400 tw-border-cyan-400' : 'tw-border-transparent tw-text-white/90'"
-          class="-tw-ml-2 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono  tw-text-sm tw-border-b-2 hover:tw-text-cyan-400  hover:tw-border-cyan-400">bash</a>
-          <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+          :class="active == 'bash' ? 'text-cyan-400 border-cyan-400' : 'border-transparent text-white/90'"
+          class="-ml-2 pl-5 pr-3 py-3 font-mono  text-sm border-b-2 hover:text-cyan-400  hover:border-cyan-400">bash</a>
+          <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for(:js) %>
-        <li class="tw-flex tw-items-center">
+        <li class="flex items-center">
           <a href="#js"
           @click.prevent="active = 'js'"
-          :class="active == 'js' ? 'tw-text-amber-400 tw-border-amber-400' : 'tw-border-transparent tw-text-white/90'"
-          class="-tw-ml-3 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-sm tw-border-b-2 hover:tw-text-amber-400 hover:tw-border-amber-400">.js</a>
-          <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+          :class="active == 'js' ? 'text-amber-400 border-amber-400' : 'border-transparent text-white/90'"
+          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-amber-400 hover:border-amber-400">.js</a>
+          <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for(:ruby) %>
-        <li class="tw-flex tw-items-center">
+        <li class="flex items-center">
           <a href="#ruby"
           @click.prevent="active = 'ruby'"
-          :class="active == 'ruby' ? 'tw-text-rose-400 tw-border-rose-400' : 'tw-border-transparent tw-text-white/90'"
-          class="-tw-ml-3 tw-pl-5 tw-pr-3 tw-py-3 tw-font-mono tw-text-sm tw-border-b-2 hover:tw-text-rose-400 hover:tw-border-rose-400">.rb</a>
-          <span class="tw-w-px tw-h-11 tw-bg-gradient-to-b tw-from-slate-600 tw-to-slate-700 tw-transform tw-rotate-[20deg] tw-block tw-ml-2"></span>
+          :class="active == 'ruby' ? 'text-rose-400 border-rose-400' : 'border-transparent text-white/90'"
+          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400">.rb</a>
+          <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
     </ul>
@@ -78,9 +78,9 @@
       >
         <button
     data-action="click->clipboard#copy"
-          class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2 hover:tw-bg-gradient-to-br hover:tw-to-pink-600 hover:tw-from-pink-400 tw-transition tw-ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-pink-600 hover:from-pink-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none", title: "Copy HTML code" %>
+          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HTML code" %>
         </button>
         <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-html"><%= html_content.to_param.strip %></code></pre>
       </div>
@@ -92,9 +92,9 @@
         data-controller="clipboard"
         >
         <button data-action="click->clipboard#copy"
-          class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2 hover:tw-bg-gradient-to-br hover:tw-to-amber-600 hover:tw-from-amber-400 tw-transition tw-ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-amber-600 hover:from-amber-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none" %>
+          <%= render_svg "clipboard", styles: "stroke-current text-white select-none" %>
         </button>
         <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-erb"><%= erb_content.to_param.strip %></code></pre>
       </div>
@@ -106,9 +106,9 @@
         data-controller="clipboard"
         >
         <button data-action="click->clipboard#copy"
-          class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2 hover:tw-bg-gradient-to-br hover:tw-to-sky-600 hover:tw-from-sky-400 tw-transition tw-ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-sky-600 hover:from-sky-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none", title: "Copy HAML code" %>
+          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HAML code" %>
         </button>
         <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-haml"><%= haml_content.to_param.strip %></code></pre>
       </div>
@@ -120,9 +120,9 @@
         data-controller="clipboard"
         >
         <button data-action="click->clipboard#copy"
-          class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2 hover:tw-bg-gradient-to-br hover:tw-to-cyan-600 hover:tw-from-cyan-400 tw-transition tw-ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-cyan-600 hover:from-cyan-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none", title: "Copy JavaScript code" %>
+          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
         <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-bash"><%= bash_content.to_param.strip %></code></pre>
       </div>
@@ -134,9 +134,9 @@
         data-controller="clipboard"
         >
         <button data-action="click->clipboard#copy"
-          class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2 hover:tw-bg-gradient-to-br hover:tw-to-amber-600 hover:tw-from-amber-400 tw-transition tw-ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-amber-600 hover:from-amber-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none", title: "Copy JavaScript code" %>
+          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
         <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-javascript"><%= js_content.to_param.strip %></code></pre>
       </div>
@@ -148,9 +148,9 @@
         data-controller="clipboard"
         >
         <button data-action="click->clipboard#copy"
-          class="tw-bg-white/10 tw-backdrop-blur-sm tw-p-1 tw-rounded-lg tw-absolute tw-right-2 tw-top-2 hover:tw-bg-gradient-to-br hover:tw-to-rose-600 hover:tw-from-rose-400 tw-transition tw-ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "tw-stroke-current tw-text-white tw-select-none", title: "Copy Ruby code" %>
+          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy Ruby code" %>
         </button>
         <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-ruby"><%= ruby_content.to_param.strip %></code></pre>
       </div>

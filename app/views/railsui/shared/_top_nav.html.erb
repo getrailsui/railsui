@@ -1,23 +1,23 @@
- <nav role="primary nav" class="tw-text-sm lg:tw-auto tw-full">
-  <ul class="tw-flex tw-items-center lg:tw-space-x-3 tw-space-x-3">
+ <nav role="primary nav" class="text-sm lg:auto full">
+  <ul class="flex items-center lg:space-x-3 space-x-3">
     <li>
-      <%= nav_link_to docs_path, class: "lg:tw-p-2 tw-font-semibold hover:tw-text-indigo-600 tw-flex tw-items-center hover:dark:tw-text-indigo-400 #{params[:controller].include?("docs") ? "tw-text-indigo-600 dark:tw-text-indigo-300" : "tw-text-slate-800 dark:tw-text-slate-300" }", active_class: "tw-text-indigo-600" do %>
-        <%= render_svg "book", styles: "tw-stroke-current tw-w-5 tw-h-5 tw-mr-2 tw-flex-shrink-0" %>
+      <%= nav_link_to docs_path, class: "lg:p-2 font-semibold hover:text-indigo-600 flex items-center hover:dark:text-indigo-400 #{params[:controller].include?("docs") ? "text-indigo-600 dark:text-indigo-300" : "text-slate-800 dark:text-slate-300" }", active_class: "text-indigo-600" do %>
+        <%= render_svg "book", styles: "stroke-current w-5 h-5 mr-2 flex-shrink-0" %>
         <span>Docs</span>
       <% end %>
     </li>
 
     <% if Railsui.config.css_framework.present? %>
       <li>
-        <%= nav_link_to systems_path, class: "lg:tw-p-2 tw-font-semibold hover:tw-text-indigo-600 hover:dark:tw-text-indigo-400 tw-flex tw-items-center tw-justify-center tw-text-slate-800 dark:tw-text-slate-300", active_class: "tw-text-indigo-600 dark:tw-text-indigo-300" do %>
-          <%= render_svg "map", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-[4px] tw-flex-shrink-0" %>
+        <%= nav_link_to systems_path, class: "lg:p-2 font-semibold hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center justify-center text-slate-800 dark:text-slate-300", active_class: "text-indigo-600 dark:text-indigo-300" do %>
+          <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>
           <span>Design system</span>
         <% end %>
       </li>
     <% end %>
     <li>
-      <%= nav_link_to root_path, class: "lg:tw-p-2 tw-font-semibold tw-text-slate-800 tw-flex tw-items-center tw-justify-center hover:tw-text-indigo-600 hover:dark:tw-text-indigo-400 tw-text-slate-800 dark:tw-text-slate-300", active_class: "tw-text-indigo-600" do %>
-        <%= render_svg "settings", styles: "tw-stroke-current tw-w-6 tw-h-6 tw-mr-[4px] tw-flex-shrink-0" %>
+      <%= nav_link_to root_path, class: "lg:p-2 font-semibold text-slate-800 flex items-center justify-center hover:text-indigo-600 hover:dark:text-indigo-400 text-slate-800 dark:text-slate-300", active_class: "text-indigo-600" do %>
+        <%= render_svg "settings", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>
         <span>Configuration</span>
       <% end %>
     </li>

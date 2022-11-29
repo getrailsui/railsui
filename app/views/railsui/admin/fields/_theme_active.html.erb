@@ -1,24 +1,24 @@
-<div class="tw-border tw-flex tw-items-center tw-justify-between tw-rounded tw-shadow-sm tw-overflow-hidden tw-bg-gradient-to-br tw-from-white to-slate-50 dark:tw-from-slate-700 dark:tw-to-slate-900 dark:tw-border-slate-600">
-  <div class="tw-flex-1">
-    <div class="tw-flex tw-justify-center tw-items-center">
-      <div class="tw-mr-3">
+<div class="border flex items-center justify-between rounded shadow-sm overflow-hidden bg-gradient-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-900 dark:border-slate-600">
+  <div class="flex-1">
+    <div class="flex justify-center items-center">
+      <div class="mr-3">
         <% if Railsui.bootstrap? %>
-        <%= render_svg "bootstrap", styles: "tw-fill-current tw-text-indigo-800 dark:tw-text-indigo-400 tw-w-12 tw-h-12" %>
+        <%= render_svg "bootstrap", styles: "fill-current text-indigo-800 dark:text-indigo-400 w-12 h-12" %>
         <% else %>
-         <%= render_svg "tailwind", styles: "tw-fill-current tw-text-teal-500 tw-w-12 tw-h-12" %>
+         <%= render_svg "tailwind", styles: "fill-current text-teal-500 w-12 h-12" %>
         <% end %>
       </div>
 
-      <h4 class="tw-font-semibold tw-text-xl"><%= framework_name.humanize %></h4>
+      <h4 class="font-semibold text-xl"><%= framework_name.humanize %></h4>
     </div>
 
-    <div class="tw-flex tw-justify-center tw-mt-3">
-      <div class="tw-bg-emerald-50 tw-uppercase tw-tracking-wide tw-text-emerald-700 tw-font-bold tw-px-3 tw-py-px tw-rounded-full tw-inline-flex tw-items-center tw-text-xs">
-        <%= render_svg "paw", styles: "tw-w-6 tw-h-6 tw-fill-current" %>
+    <div class="flex justify-center mt-3">
+      <div class="bg-emerald-50 uppercase tracking-wide text-emerald-700 font-bold px-3 py-px rounded-full inline-flex items-center text-xs">
+        <%= render_svg "paw", styles: "w-6 h-6 fill-current" %>
         <%= theme_name.humanize %>
       </div>
     </div>
   </div>
-  <%= image_tag "#{framework_name.parameterize}-#{theme_name.parameterize}-thumbnail.jpg", class: "tw-max-w-md tw-mx-auto tw-border-l dark:tw-border-slate-500" %>
+  <%= image_tag "#{framework_name.parameterize}-#{theme_name.parameterize}-thumbnail.jpg", class: "max-w-md mx-auto border-l dark:border-slate-500" %>
 </div>
 <%= f.hidden_field :theme, value: Railsui.config.theme %>

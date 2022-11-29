@@ -1,10 +1,10 @@
-<li class="tw-relative">
+<li class="relative">
   <div class="<%= box_label_classes(offset: false) %>">
-    <div class="tw-rounded tw-bg-emerald-500 tw-text-white tw-text-[11px] tw-uppercase tw-font-bold tw-font-system tw-tracking-wide tw-px-1 tw-inline-flex tw-items-center tw-py-0 tw-h-4">Installed</div>
-    <p class="tw-leading-tight tw-block"><%= local_assigns[:label] %></p>
+    <div class="rounded bg-emerald-500 text-white text-[11px] uppercase font-bold font-system tracking-wide px-1 inline-flex items-center py-0 h-4">Installed</div>
+    <p class="leading-tight block"><%= local_assigns[:label] %></p>
 
-    <p class="tw-text-slate-500 tw-text-sm tw-block lg:tw-mb-0 tw-mt-1 tw-mb-3 dark:tw-text-slate-300"><%= local_assigns[:description] %></p>
+    <p class="text-slate-500 text-sm block lg:mb-0 mt-1 mb-3 dark:text-slate-300"><%= local_assigns[:description] %></p>
 
-    <%= link_to "Preview", local_assigns [:preview_link], class: "tw-text-slate-700 lg:tw-ml-2 lg:tw-ml-8 tw-mt-2 lg:tw-mt-0 lg:tw-block lg:tw-absolute tw-right-4 tw-top-5 tw-px-3 lg:tw-py-px tw-py-2 tw-text-[15px] tw-bg-slate-50 tw-rounded hover:tw-bg-slate-100 tw-transition tw-ease-in-out tw-duration-300 tw-border-slate-300 tw-border hover:tw-shadow-none tw-shadow-sm hover:tw-text-slate-900 dark:tw-bg-indigo-500 dark:tw-border-indigo-500 dark:tw-text-white hover:dark:tw-bg-indigo-600 hover:dark:tw-text-white", target: :_blank %>
+    <%= link_to "Preview", local_assigns [:preview_link], class: "text-slate-700 lg:ml-2 lg:ml-8 mt-2 lg:mt-0 lg:block lg:absolute right-4 top-5 px-3 lg:py-px py-2 text-[15px] bg-slate-50 rounded hover:bg-slate-100 transition ease-in-out duration-300 border-slate-300 border hover:shadow-none shadow-sm hover:text-slate-900 dark:bg-indigo-500 dark:border-indigo-500 dark:text-white hover:dark:bg-indigo-600 hover:dark:text-white", target: :_blank %>
   </div>
 </li>

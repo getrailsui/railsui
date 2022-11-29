@@ -3,20 +3,20 @@
 }
 
 .rui-primary-nav {
-  @apply tw-relative;
+  @apply relative;
 }
 
 .rui-primary-nav ul li a.active,
 .rui-primary-nav ul li a:hover {
-  @apply tw-text-indigo-800 tw-border-r-2 tw-border-indigo-800 dark:tw-border-yellow-300 dark:tw-text-indigo-300;
+  @apply text-indigo-800 border-r-2 border-indigo-800 dark:border-yellow-300 dark:text-indigo-300;
 }
 
 .rui-primary-nav ul li a:hover {
-  @apply dark:tw-bg-slate-800;
+  @apply dark:bg-slate-800;
 }
 
 .rui-primary-nav ul li a.active {
-  @apply tw-font-semibold tw-bg-indigo-50 dark:tw-bg-slate-800 dark:tw-text-white;
+  @apply font-semibold bg-indigo-50 dark:bg-slate-800 dark:text-white;
 }
 
 /* .rui-primary-nav a.active::before {

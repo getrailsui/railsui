@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="tw-h-full tw-antialiased">
+<html class="h-full antialiased">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -25,11 +25,11 @@
     <%= yield :head %>
   </head>
 
-  <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-white" %>" data-controller="toggle scroll">
+  <body class="font-normal leading-normal text-slate-800 lg:h-screen relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-white" %>" data-controller="toggle scroll">
     <%= render "railsui/shared/flash" %>
     <%= render "layouts/railsui/masthead" %>
 
-    <div class="tw-mx-auto lg:tw-py-32 tw-px-4 tw-py-8 tw-max-w-6xl">
+    <div class="mx-auto lg:py-32 px-4 py-8 max-w-6xl">
       <%= yield %>
     </div>
 

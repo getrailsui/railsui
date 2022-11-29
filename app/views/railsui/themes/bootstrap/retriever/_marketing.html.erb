@@ -1,19 +1,19 @@
-<div class="tw-my-6">
-  <div class="tw-prose-xl dark:tw-prose-invert tw-mb-6">
+<div class="my-6">
+  <div class="prose-xl dark:prose-invert mb-6">
     <p>Rails UI comes with some pre-design marketing page templates with plenty more individual components to come.</p>
   </div>
 
   <%= render "railsui/shared/sticky_subhead", title: "Pages", subtitle: "About", preview_link: Railsui::Default::THEME_PREVIEW_LINK[:retriever] %>
 
   <%= link_to Railsui::Default::THEME_PREVIEW_LINK[:retriever], target: :_blank do %>
-    <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/retriever/about.jpg", alt: "About page for #{Railsui.config.theme.humanize} theme", class: "tw-max-w-full tw-h-auto tw-border tw-rounded-lg tw-shadow-xl" %>
+    <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/retriever/about.jpg", alt: "About page for #{Railsui.config.theme.humanize} theme", class: "max-w-full h-auto border rounded-lg shadow-xl" %>
   <% end %>
 </div>
-<div class="tw-my-16">
+<div class="my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Pages", subtitle: "Pricing", preview_link: "#{Railsui::Default::THEME_PREVIEW_LINK[:retriever]}/pricing" %>
   <%# Show pricing page somehow %>
   <%= link_to "#{Railsui::Default::THEME_PREVIEW_LINK[:retriever]}/pricing", target: :_blank do %>
-    <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/retriever/pricing.jpg", alt: "Pricing page for #{Railsui.config.theme.humanize} theme", class: "tw-max-w-full tw-h-auto tw-border tw-rounded-lg tw-shadow-xl" %>
+    <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/retriever/pricing.jpg", alt: "Pricing page for #{Railsui.config.theme.humanize} theme", class: "max-w-full h-auto border rounded-lg shadow-xl" %>
   <% end %>
 
 </div>

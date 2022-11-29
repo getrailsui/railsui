@@ -6,16 +6,16 @@
   # unlock_instructions.html.erb
 -->
 
-<div class="tw-mb-16 tw-mt-6">
-  <div class="tw-prose tw-prose-indigo dark:tw-prose-invert tw-mb-10">
+<div class="mb-16 mt-6">
+  <div class="prose prose-indigo dark:prose-invert mb-10">
     <p>Devise ships with optional views you can generate on command. Most of these should work out of the box with Rails UI. The generated views in <%= code_inline("app/views/devise/mailer/") %> have the <%= Railsui.config.theme.humanize %> theme applied. Save time without reinventing the wheel!</p>
   </div>
 
-  <div class="tw-bg-indigo-50 tw-text-indigo-800 tw-p-3 tw-rounded-lg">
+  <div class="bg-indigo-50 text-indigo-800 p-3 rounded-lg">
     <p>When you configured your app Rails UI generated and copied these mailer templates over automatically so there is no need to generate the views.</p>
   </div>
 
-<div class="tw-my-16">
+<div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Confirmation instructions" %>
 
 <%= email_viewer("Confirmation instructions") do %>
@@ -54,7 +54,7 @@
 
 </div>
 
-<div class="tw-my-16">
+<div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Email changed" %>
 
 <%= email_viewer("Email changed") do %>
@@ -89,7 +89,7 @@
 <%= render_snippet(active_tab: "erb") %>
 </div>
 
-<div class="tw-my-16">
+<div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Password change" %>
 
 <%= email_viewer("Password changed") do %>
@@ -119,7 +119,7 @@
 <%= render_snippet(active_tab: "erb") %>
 </div>
 
-<div class="tw-my-16">
+<div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Reset password instructions" %>
 
 <%= email_viewer("Reset password instructions") do %>
@@ -154,7 +154,7 @@
 </div>
 
 
-<div class="tw-my-16">
+<div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Unlock instructions" %>
 
 <%= email_viewer("Unlock instructions") do %>

@@ -1,4 +1,4 @@
-<div class="tw-my-6">
+<div class="my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Notice" %>
 
   <div class="rui">
@@ -30,7 +30,7 @@
   <%= render_snippet %>
 </div>
 
-<div class="tw-my-16">
+<div class="my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Warning" %>
   <div class="rui">
     <div class="flash flash-warning" role="alert">
@@ -39,12 +39,12 @@
   </div>
 </div>
 
-<div class="tw-my-16">
+<div class="my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Hide notice after delay" %>
 
-  <div class="tw-prose dark:tw-prose-invert tw-mb-6">If you wanted to make use of JavaScript you could hide a notice after some time.</div>
+  <div class="prose dark:prose-invert mb-6">If you wanted to make use of JavaScript you could hide a notice after some time.</div>
 
-  <p class="tw-bg-gradient-to-br tw-from-yellow-300 tw-to-yellow-500 tw-text-black tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs">Vanilla JavaScript</p>
+  <p class="bg-gradient-to-br from-yellow-300 to-yellow-500 text-black rounded-full px-3 py-1 font-semibold inline-block text-xs">Vanilla JavaScript</p>
 
 <% content_for :html, flush: true do %>
 <div class="flash flash-warning" role="alert">
@@ -73,7 +73,7 @@ document.addEventListener('turbo:load', () => {
 <% end %>
 <%= render_snippet(active_tab: "js") %>
 
-<p class="tw-bg-gradient-to-br tw-from-yellow-300 tw-to-yellow-500 tw-text-black tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs">Stimulus.js</p>
+<p class="bg-gradient-to-br from-yellow-300 to-yellow-500 text-black rounded-full px-3 py-1 font-semibold inline-block text-xs">Stimulus.js</p>
 
 <% content_for :html, flush: true do %>
 <div class="notice" role="alert" data-controller="flash">

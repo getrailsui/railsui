@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="tw-h-full tw-antialiased">
+<html class="h-full antialiased">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -27,29 +27,29 @@
 
   </head>
 
-  <body class="tw-font-normal tw-leading-normal tw-text-slate-800 lg:tw-h-screen tw-relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "tw-bg-white dark:tw-bg-slate-900 dark:tw-text-slate-100" %>" data-controller="toggle scroll">
+  <body class="font-normal leading-normal text-slate-800 lg:h-screen relative <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll">
     <%= render "railsui/shared/flash" %>
     <%= render "layouts/railsui/masthead" %>
 
-    <div class="lg:tw-flex" x-data="{navOpen: <%= design_system_navgiation_state %>}">
+    <div class="lg:flex" x-data="{navOpen: <%= design_system_navgiation_state %>}">
       <button
-        class="lg:tw-top-[80px] tw-fixed tw-z-50 tw-px-3 tw-py-2 tw-rounded-r-lg tw-shadow-sm tw-left-2 tw-top-2 tw-bg-white tw-border tw-border-slate-200 hover:tw-bg-slate-50 tw-group lg:tw-block tw-hidden dark:tw-bg-slate-700 dark:tw-border-slate-600 hover:dark:tw-bg-slate-800"
-        :class="navOpen ? 'lg:tw-left-[299px]' : 'lg:tw-left-0'"
+        class="lg:top-[80px] fixed z-50 px-3 py-2 rounded-r-lg shadow-sm left-2 top-2 bg-white border border-slate-200 hover:bg-slate-50 group lg:block hidden dark:bg-slate-700 dark:border-slate-600 hover:dark:bg-slate-800"
+        :class="navOpen ? 'lg:left-[299px]' : 'lg:left-0'"
         @click.prevent="navOpen = ! navOpen">
         <span x-show="navOpen">
-          <%= render_svg "eye-close", styles: "tw-w-4 tw-h-4 tw-stroke-current tw-text-slate-400 dark:tw-text-slate-200 group-hover:tw-text-indigo-600 group-hover:dark:tw-text-indigo-400" %>
+          <%= render_svg "eye-close", styles: "w-4 h-4 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
         </span>
         <span x-show="!navOpen">
-          <%= render_svg "eye-open", styles: "tw-w-4 tw-h-4 tw-stroke-current tw-text-slate-400 dark:tw-text-slate-200 group-hover:tw-text-indigo-600 group-hover:dark:tw-text-indigo-400" %>
+          <%= render_svg "eye-open", styles: "w-4 h-4 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
         </span>
       </button>
-      <div id="system-nav" class="lg:tw-flex tw-hidden tw-flex-col lg:tw-w-[300px] w-full tw-border-r  tw-bg-white tw-h-full lg:tw-fixed tw-top-[73px] tw-left-0 tw-overflow-y-auto tw-z-50 dark:tw-bg-slate-900 dark:tw-border-slate-700"
+      <div id="system-nav" class="lg:flex hidden flex-col lg:w-[300px] w-full border-r  bg-white h-full lg:fixed top-[73px] left-0 overflow-y-auto z-50 dark:bg-slate-900 dark:border-slate-700"
        x-show="navOpen"
        data-toggle-target="toggleable"
        data-scroll-target="scrollitem"
        >
-        <div class="tw-flex-1">
-          <div class="lg:tw-py-0 tw-py-2 lg:tw-border-b-0 tw-border-b tw-border-slate-200 dark:tw-border-slate-700 lg:tw-hidden lg:tw-px-0 tw-px-3 lg:tw-shadow-none tw-shadow-sm">
+        <div class="flex-1">
+          <div class="lg:py-0 py-2 lg:border-b-0 border-b border-slate-200 dark:border-slate-700 lg:hidden lg:px-0 px-3 lg:shadow-none shadow-sm">
             <%= render "railsui/shared/top_nav" %>
           </div>
           <% if Railsui.config.css_framework.present? %>
@@ -60,8 +60,8 @@
         </div>
       </div>
       <div
-      :class="navOpen ? 'lg:tw-left-[150px]' : ''"
-      class="lg:tw-top-[72px]  tw-flex-1 tw-mx-auto lg:tw-py-16 tw-px-4 tw-py-8 tw-relative <%= content_for?(:fullwidth).present? ? "tw-w-full" : "tw-max-w-4xl" %> ">
+      :class="navOpen ? 'lg:left-[150px]' : ''"
+      class="lg:top-[72px]  flex-1 mx-auto lg:py-16 px-4 py-8 relative <%= content_for?(:fullwidth).present? ? "w-full" : "max-w-4xl" %> ">
 
         <%= yield %>
       </div>

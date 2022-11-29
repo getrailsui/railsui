@@ -1,9 +1,9 @@
-<div class="tw-prose tw-prose-lg tw-prose-indigo prose-h1:tw-font-bold tw-mb-10 dark:tw-prose-invert">
+<div class="prose prose-lg prose-indigo prose-h1:font-bold mb-10 dark:prose-invert">
   <%= heading text: "Frequently asked questions", tag: "h1", id: "docs_faqs" %>
 
-  <h3 class="tw-font-semibold tw-text-lg tw-text-slate-400">General</h3>
+  <h3 class="font-semibold text-lg text-slate-400">General</h3>
 
-  <dl class="tw-mt-2 tw-divide-y tw-divide-slate-100 dark:tw-divide-slate-700">
+  <dl class="mt-2 divide-y divide-slate-100 dark:divide-slate-700">
     <%= render "railsui/docs/faq_item", question: "Can I share Rails UI with my team?" do  %>
       <p>For now yes, but eventually once we start charging for Rails UI, you would need a team license</p>
       <p>Once officially for sale we predict Rails UI will be sold as two different licenses. A solo developer license and a team license. A team license gives you access up to 25 people. If you require more than 25 people we recommend purchasing additional team licenses or contacting us for a more customized quote.</p>
@@ -23,13 +23,13 @@
 
       <p>There are a couple reasons:</p>
 
-      <div class="tw-not-prose">
-        <ol class="tw-list-decimal tw-space-y-6 tw-pl-4">
-          <li class="marker:tw-content-['1.']">
-            <p class="tw-pl-2">The same reason you might hire a designer. It's often hard to be a good programmer and a designer at the same time. Rails UI fills the design gap for Rails developers looking to save time and headache.</p>
+      <div class="not-prose">
+        <ol class="list-decimal space-y-6 pl-4">
+          <li class="marker:content-['1.']">
+            <p class="pl-2">The same reason you might hire a designer. It's often hard to be a good programmer and a designer at the same time. Rails UI fills the design gap for Rails developers looking to save time and headache.</p>
           </li>
-          <li class="marker:tw-content-['2.']">
-            <p class="tw-pl-2">As time progresses more themes and components will get added to Rails UI so you gain ongoing access to all of those which might benefit that next big idea you or your team is working on.</p>
+          <li class="marker:content-['2.']">
+            <p class="pl-2">As time progresses more themes and components will get added to Rails UI so you gain ongoing access to all of those which might benefit that next big idea you or your team is working on.</p>
           </li>
         </ol>
       </div>
@@ -41,9 +41,9 @@
 
   </dl>
 
-  <h3 class="tw-font-semibold tw-text-lg tw-text-slate-400">Themes</h3>
+  <h3 class="font-semibold text-lg text-slate-400">Themes</h3>
 
-  <dl class="tw-mt-2 tw-divide-y tw-divide-slate-100 dark:tw-divide-slate-700">
+  <dl class="mt-2 divide-y divide-slate-100 dark:divide-slate-700">
 
     <%= render "railsui/docs/faq_item", question: "Why are there so few themes?" do  %>
       <p>Rails UI is brand spanking new! We just kicked off the project so as time allows more themes will be added. A goal is to offer multiple themes per industry/niche.</p>
@@ -72,17 +72,17 @@
     <% end %>
   </dl>
 
-  <h3 class="tw-font-semibold tw-text-lg tw-text-slate-400">Components</h3>
+  <h3 class="font-semibold text-lg text-slate-400">Components</h3>
 
-  <dl class="tw-mt-2 tw-divide-y tw-divide-slate-100 dark:tw-divide-slate-700">
+  <dl class="mt-2 divide-y divide-slate-100 dark:divide-slate-700">
     <%= render "railsui/docs/faq_item", question: "What about ViewComponent or my favorte component framework?" do  %>
       <p>This is on our radar and likely part of the longer term roadmap for Rails UI. To start, Rails UI will support <%= code_inline("HTML") %>, <%= code_inline "ERB" %>, and <%= code_inline "HAML" %> code snippets. Let us know what we should look into adding!</p>
     <% end %>
   </dl>
 
-  <h3 class="tw-font-semibold tw-text-lg tw-text-slate-400">Support</h3>
+  <h3 class="font-semibold text-lg text-slate-400">Support</h3>
 
-  <dl class="tw-mt-2 tw-divide-y tw-divide-slate-100 dark:tw-divide-slate-700">
+  <dl class="mt-2 divide-y divide-slate-100 dark:divide-slate-700">
     <%= render "railsui/docs/faq_item", question: "Do you offer technical/creative support?" do  %>
       <p>Rails UI is a self-serve product. We offer support for account management, billing, and licensing related concerns.</p>
 

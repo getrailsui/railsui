@@ -23,17 +23,17 @@ export default class extends Controller {
 
       switch (value) {
         case "bootstrap":
-          this.frameworksTarget.classList.remove("tw-hidden")
-          this.themeCopyTarget.classList.remove("tw-hidden")
+          this.frameworksTarget.classList.remove("hidden")
+          this.themeCopyTarget.classList.remove("hidden")
           if (this.hasBootstrapTarget) {
-            this.bootstrapTarget.classList.remove("tw-hidden")
+            this.bootstrapTarget.classList.remove("hidden")
           }
           break
         case "tailwind":
-          this.frameworksTarget.classList.remove("tw-hidden")
-          this.themeCopyTarget.classList.remove("tw-hidden")
+          this.frameworksTarget.classList.remove("hidden")
+          this.themeCopyTarget.classList.remove("hidden")
           if (this.hasTailwindTarget) {
-            this.tailwindTarget.classList.remove("tw-hidden")
+            this.tailwindTarget.classList.remove("hidden")
           }
           break
         default:
@@ -46,7 +46,7 @@ export default class extends Controller {
   saveChanges(event) {
     event.preventDefault()
     // Show loading state
-    this.savingTarget.classList.remove("tw-hidden")
+    this.savingTarget.classList.remove("hidden")
     // Disable button
     this.submitTarget.setAttribute("disabled", true)
     // Continue submission
@@ -65,17 +65,17 @@ export default class extends Controller {
     switch (event.target.value) {
       case "bootstrap":
         this._toggleAllThemes()
-        this.frameworksTarget.classList.remove("tw-hidden")
-        this.themeCopyTarget.classList.remove("tw-hidden")
-        this.bootstrapTarget.classList.remove("tw-hidden")
+        this.frameworksTarget.classList.remove("hidden")
+        this.themeCopyTarget.classList.remove("hidden")
+        this.bootstrapTarget.classList.remove("hidden")
         this.bootstrapTarget.querySelector("label").control.checked = true
 
         break
       case "tailwind":
         this._toggleAllThemes()
-        this.frameworksTarget.classList.remove("tw-hidden")
-        this.themeCopyTarget.classList.remove("tw-hidden")
-        this.tailwindTarget.classList.remove("tw-hidden")
+        this.frameworksTarget.classList.remove("hidden")
+        this.themeCopyTarget.classList.remove("hidden")
+        this.tailwindTarget.classList.remove("hidden")
         this.tailwindTarget.querySelector("label").control.checked = true
         break
       default:
@@ -90,6 +90,6 @@ export default class extends Controller {
       this.frameworksTarget,
       this.themeCopyTarget,
     ]
-    all.forEach((t) => t.classList.add("tw-hidden"))
+    all.forEach((t) => t.classList.add("hidden"))
   }
 }

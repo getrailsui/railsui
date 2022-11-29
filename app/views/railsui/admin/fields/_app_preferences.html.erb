@@ -1,33 +1,33 @@
 <%= render "railsui/admin/field_layout" do %>
   <%= content_for :explainer, flush: true do %>
-    <%= heading text: "Application preferences", id: "application_preferences", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
-    <p class="tw-text-slate-700 lg:tw-text-sm tw-text-base dark:tw-text-slate-300">Set your application name and choose your preferred CSS framework.</p>
+    <%= heading text: "Application preferences", id: "application_preferences", tag: "h3", class: "font-semibold text-xl mb-3" %>
+    <p class="text-slate-700 lg:text-sm text-base dark:text-slate-300">Set your application name and choose your preferred CSS framework.</p>
   <% end %>
 
-  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200 tw-shadow-sm dark:tw-bg-slate-800 dark:tw-border-slate-700">
-    <div class="tw-mb-8">
-      <%= f.label :application_name, class: "tw-block tw-mb-2 tw-font-medium" %>
-      <%= f.text_field :application_name, class: "#{input_classes} tw-w-full" %>
+  <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
+    <div class="mb-8">
+      <%= f.label :application_name, class: "block mb-2 font-medium" %>
+      <%= f.text_field :application_name, class: "#{input_classes} w-full" %>
     </div>
 
     <div>
       <% if Railsui.no_framework_set? || !Railsui.config.css_framework.present? %>
-        <%= f.label :css_framework, "What CSS framework would you like to use?", class: "tw-block tw-mb-2 tw-font-medium" %>
-        <%= f.select :css_framework, options_for_select(Railsui::Default::CSS_FRAMEWORKS, Railsui.config.css_framework), { prompt: "Select one" }, { class:"#{select_classes} tw-w-full", data: { action: "change->configuration#toggleTheme"} }%>
+        <%= f.label :css_framework, "What CSS framework would you like to use?", class: "block mb-2 font-medium" %>
+        <%= f.select :css_framework, options_for_select(Railsui::Default::CSS_FRAMEWORKS, Railsui.config.css_framework), { prompt: "Select one" }, { class:"#{select_classes} w-full", data: { action: "change->configuration#toggleTheme"} }%>
 
       <% else %>
         This app configured to use:
-        <div class="tw-flex tw-items-center tw-justify-start tw-space-x-3 tw-mt-1">
-          <%= render_svg "#{framework_name.downcase}", title: "#{framework_name.humanize} logo", styles: "#{framework_name.downcase == "bootstrap" ? "tw-text-indigo-600 dark:tw-text-indigo-400" : "tw-text-teal-500" } tw-fill-current" %>
-          <p class="tw-font-light tw-text-slate-800 dark:tw-text-slate-300 tw-text-2xl"><%= framework_name.humanize %></p>
+        <div class="flex items-center justify-start space-x-3 mt-1">
+          <%= render_svg "#{framework_name.downcase}", title: "#{framework_name.humanize} logo", styles: "#{framework_name.downcase == "bootstrap" ? "text-indigo-600 dark:text-indigo-400" : "text-teal-500" } fill-current" %>
+          <p class="font-light text-slate-800 dark:text-slate-300 text-2xl"><%= framework_name.humanize %></p>
         </div>
         <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
       <% end %>
-      <div class="tw-text-sm tw-mt-4 tw-pt-4 tw-border-t tw-border-slate-200 tw-flex tw-items-start dark:tw-border-slate-700">
-        <div class="tw-bg-indigo-50 dark:tw-bg-slate-600 tw-mr-4 tw-w-10 tw-h-10 tw-rounded tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
-          <%= render_svg "warning", styles: "tw-stroke-current tw-text-indigo-500 tw-w-5 tw-h-5 tw-flex-shrink-0 dark:tw-text-rose-100" %>
+      <div class="text-sm mt-4 pt-4 border-t border-slate-200 flex items-start dark:border-slate-700">
+        <div class="bg-indigo-50 dark:bg-slate-600 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
+          <%= render_svg "warning", styles: "stroke-current text-indigo-500 w-5 h-5 flex-shrink-0 dark:text-rose-100" %>
         </div>
-        <p class="tw-text-slate-800 dark:tw-text-slate-300">Note: This choice <span class="tw-font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_path, class: "tw-text-indigo-700 dark:tw-text-indigo-400" %>.
+        <p class="text-slate-800 dark:text-slate-300">Note: This choice <span class="font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_path, class: "text-indigo-700 dark:text-indigo-400" %>.
         </p>
       </div>
     </div>

@@ -1,13 +1,13 @@
-<div class="tw-px-4 -tw-mx-4 tw-py-1 tw-mb-4 tw-bg-white tw-flex tw-items-center tw-justify-between dark:tw-bg-slate-900 dark:tw-text-slate-100">
-  <div class="tw-flex-1">
-    <p class="tw-text-sm tw-text-slate-600 dark:tw-text-slate-200"><%= local_assigns[:title] %></p>
-    <%= heading id: ("#{local_assigns[:title]}-#{local_assigns[:subtitle]}").parameterize, text: local_assigns[:subtitle], class: "tw-text-slate-900 tw-text-2xl tw-font-bold dark:tw-text-white" %>
-    <div class="tw-prose dark:tw-prose-invert">
+<div class="px-4 -mx-4 py-1 mb-4 bg-white flex items-center justify-between dark:bg-slate-900 dark:text-slate-100">
+  <div class="flex-1">
+    <p class="text-sm text-slate-600 dark:text-slate-200"><%= local_assigns[:title] %></p>
+    <%= heading id: ("#{local_assigns[:title]}-#{local_assigns[:subtitle]}").parameterize, text: local_assigns[:subtitle], class: "text-slate-900 text-2xl font-bold dark:text-white" %>
+    <div class="prose dark:prose-invert">
       <%= yield %>
     </div>
   </div>
 
   <% if local_assigns[:preview_link] %>
-    <%= link_to "Preview", local_assigns[:preview_link], class: "tw-px-4 tw-py-2 tw-text-white tw-bg-gradient-to-br tw-from-indigo-800 tw-via-indigo-600 tw-to-salmon-500 tw-font-semibold tw-text-center tw-rounded tw-transform tw-shadow tw-inline-block hover:tw-bg-gradient-to-tl hover:-tw-translate-y-px tw-transition tw-ease-in-out tw-duration-300 tw-text-[15px]", target: :_blank %>
+    <%= link_to "Preview", local_assigns[:preview_link], class: "px-4 py-2 text-white bg-gradient-to-br from-indigo-800 via-indigo-600 to-salmon-500 font-semibold text-center rounded transform shadow inline-block hover:bg-gradient-to-tl hover:-translate-y-px transition ease-in-out duration-300 text-[15px]", target: :_blank %>
   <%end %>
 </div>

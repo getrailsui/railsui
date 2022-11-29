@@ -1,0 +1,410 @@
+<div class="my-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Headings" %>
+
+  <div class="mb-16 mt-6 dark:p-6 dark:rounded-lg">
+    <div class="mb-4">
+      <h1 class="text-4xl font-extrabold leading-tight">A quick brown fox jumps over the lazy dog.</h1>
+      <p class="text-sm text-slate-600">h1(.h1) &mdash; 40px (2.5rem) / 48px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h2>A quick brown fox jumps over the lazy dog.</h2>
+      <p class="text-muted">h2(.h2) &mdash; 32px (2rem) / 38.4px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h3>A quick brown fox jumps over the lazy dog.</h3>
+      <p class="text-muted">h3(.h3) &mdash; 28px (1.75rem) / 33.6px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h4>A quick brown fox jumps over the lazy dog.</h4>
+      <p class="text-muted">h4(.h4) &mdash; 24px (1.5rem) / 28.8px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h5>A quick brown fox jumps over the lazy dog.</h5>
+      <p class="text-muted">h5(.h5) &mdash; 20px (1.25rem) / 24px (1.2)</p>
+    </div>
+
+    <div>
+      <h6>A quick brown fox jumps over the lazy dog.</h6>
+      <p class="text-muted">h6(.h6) &mdash; 16px (1rem) / 19.2px (1.2)</p>
+    </div>
+  </div>
+  <%# snippet content :html %>
+<% content_for :html, flush: true do %>
+<h1 class="h1">A quick brown fox jumps over the lazy dog.</h1>
+<h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
+<h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
+<h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
+<h5 class="h5">A quick brown fox jumps over the lazy dog.</h5>
+<h6 class="h6">A quick brown fox jumps over the lazy dog.</h6>
+<% end %>
+<%# snippet content :erb %>
+<% content_for :erb, flush: true do %>
+<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "h1" %>
+<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "h2" %>
+<%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "h3" %>
+<%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "h4" %>
+<%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "h5" %>
+<%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "h6" %>
+<% end %>
+  <%# snippet content :haml %>
+<% content_for :haml, flush: true do %>
+%h1.h1 A quick brown fox jumps over the lazy dog
+%h2.h2 A quick brown fox jumps over the lazy dog
+%h3.h3 A quick brown fox jumps over the lazy dog
+%h4.h4 A quick brown fox jumps over the lazy dog
+%h5.h5 A quick brown fox jumps over the lazy dog
+%h6.h6 A quick brown fox jumps over the lazy dog
+<% end %>
+<%= render_snippet %>
+
+  <hr class="my-6"/>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Display headings" do %>
+    <p>Useful for very large titles and high pixel-density screens (mobile and tablet devices)</p>
+  <% end %>
+
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <div class="mb-4">
+      <h1 class="display-1">A quick brown fox jumps over the lazy dog.</h1>
+      <p class="text-muted">h1.display-1 &mdash; 80px (5rem) / 96px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="display-2">A quick brown fox jumps over the lazy dog.</h2>
+      <p class="text-muted">h2.display-2 &mdash; 72px (4.5rem) / 86.4px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h3 class="display-3">A quick brown fox jumps over the lazy dog.</h3>
+      <p class="text-muted">h3.display-3 &mdash; 64px (4.5rem) / 76.8px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h4 class="display-4">A quick brown fox jumps over the lazy dog.</h4>
+      <p class="text-muted">h4.display-4 &mdash; 56px (3.5rem) / 67.2px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h5 class="display-5">A quick brown fox jumps over the lazy dog.</h5>
+      <p class="text-muted">h5(.display-5) &mdash; 48px (3rem) / 57.6px (1.2)</p>
+    </div>
+
+    <div class="mb-4">
+      <h6 class="display-6">A quick brown fox jumps over the lazy dog.</h6>
+      <p class="text-muted">h6(.display-6) &mdash; 40px (2.5rem) / 48px (1.2)</p>
+    </div>
+  </div>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<h1 class="display-h1">A quick brown fox jumps over the lazy dog.</h1>
+<h2 class="display-h2">A quick brown fox jumps over the lazy dog.</h2>
+<h3 class="display-h3">A quick brown fox jumps over the lazy dog.</h3>
+<h4 class="display-h4">A quick brown fox jumps over the lazy dog.</h4>
+<h5 class="display-h5">A quick brown fox jumps over the lazy dog.</h5>
+<h6 class="display-h6">A quick brown fox jumps over the lazy dog.</h6>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "display-h1" %>
+<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "display-h2" %>
+<%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "display-h3" %>
+<%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "display-h4" %>
+<%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "display-h5" %>
+<%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "display-h6" %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+  %h1.display-h1 A quick brown fox jumps over the lazy dog
+  %h2.display-h2 A quick brown fox jumps over the lazy dog
+  %h3.display-h3 A quick brown fox jumps over the lazy dog
+  %h4.display-h4 A quick brown fox jumps over the lazy dog
+  %h5.display-h5 A quick brown fox jumps over the lazy dog
+  %h6.display-h6 A quick brown fox jumps over the lazy dog
+<% end %>
+
+<%= render_snippet %>
+
+<hr class="my-6"/>
+
+<div class="mb-16 mt-8">
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lead paragraph" %>
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
+    <p class="text-muted">20px (1.25rem) / 30px (1.2)</p>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<p class="lead">A lead paragraph stands out from regular paragraphs.</p>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= tag.p "A lead paragraph stands out from regular paragraphs.", class: "lead" %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+%p.lead A lead paragraph stands out from regular paragraphs.
+<% end %>
+<%= render_snippet %>
+</div>
+
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Blockquote" %>
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <figure>
+      <blockquote class="blockquote">
+        <p>A well-known quote, contained in a blockquote element.</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Someone famous in <cite title="Source Title">Source Title</cite>
+      </figcaption>
+    </figure>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<figure>
+  <blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= tag.figure do %>
+  <%%= tag.blockquote class: "blockquote" do %>
+    <%%= tag.p "A well-known quote, contained in a blockquote element." %>
+  <%% end %>
+  <%%= tag.figcaption class: "blockquote-footer" do %>
+  Someone famous in
+  <%%= tag.cite "Source Title", title: "Source Title" %>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+%figure
+  %blockquote.blockquote
+    %p A well-known quote, contained in a blockquote element.
+    %figcaption.blockquote-footer
+      Someone famous in
+      %cite{:title => "Source Title"} Source Title
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+<div class="my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lists" %>
+
+<div class="rui dark:p-6 dark:rounded-lg">
+<div class="row">
+<div class="col">
+<p class="text-muted">Standard</p>
+<ul class="list-disc">
+  <li>A quick brown</li>
+  <li>fox jumps over</li>
+  <li>the lazy dog</li>
+</ul>
+</div>
+
+<div class="col">
+<p class="text-muted">Unstyled</p>
+<ul class="list-unsyled">
+  <li>A quick brown</li>
+  <li>fox jumps over</li>
+  <li>the lazy dog</li>
+</ul>
+</div>
+
+<div class="col">
+<p class="text-muted">Decimal</p>
+<ol class="list-decimal">
+  <li>A quick brown</li>
+  <li>fox jumps over</li>
+  <li>the lazy dog</li>
+</ol>
+</div>
+</div>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<ul class="list-disc">
+<li>A quick brown</li>
+<li>fox jumps over</li>
+<li>the lazy dog</li>
+</ul>
+
+<!--Unstyled-->
+<ul class="list-unstyled">
+<li>A quick brown</li>
+<li>fox jumps over</li>
+<li>the lazy dog</li>
+</ul>
+
+<!--Decimal-->
+<ol class="list-decimal">
+<li>A quick brown</li>
+<li>fox jumps over</li>
+<li>the lazy dog</li>
+</ol>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!--Standard-->
+<%%= tag.ul class:"list-disc" do %>
+  <%%= tag.li "A quick brown" %>
+  <%%= tag.li "fox jumps over" %>
+  <%%= tag.li "the lazy dog" %>
+<%% end %>
+
+<!--Unstyled-->
+<%%= tag.ul class:"list-unstyled" do %>
+  <%%= tag.li "A quick brown" %>
+  <%%= tag.li "fox jumps over" %>
+  <%%= tag.li "the lazy dog" %>
+<%% end %>
+
+<!--Decimal-->
+<%%= tag.ol class:"list-decimal" do %>
+  <%%= tag.li "A quick brown" %>
+  <%%= tag.li "fox jumps over" %>
+  <%%= tag.li "the lazy dog" %>
+  <%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+%ul.list-disc
+  %li A quick brown
+  %li fox jumps over
+  %li the lazy dog
+/ Unstyled
+%ul.list-unstyled
+  %li A quick brown
+  %li fox jumps over
+  %li the lazy dog
+/ Decimal
+%ol.list-decimal
+  %li A quick brown
+  %li fox jumps over
+  %li the lazy dog
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+<div class="my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Body copy" %>
+
+<div class="rui dark:p-6 dark:rounded-lg">
+  <div class="row">
+    <div class="col-md-6">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
+
+      <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
+    </div>
+    <div class="col-md-6">
+      <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
+    </div>
+  </div>
+</div>
+
+<%# .html %>
+<%= content_for :html, flush: true do %>
+<p>Lorem ipsum...</p>
+<% end %>
+
+<%# .html %>
+<%= content_for :erb, flush: true do %>
+<%%= tag.p "Lorem ipsum" %>
+<% end %>
+
+<%# .haml %>
+<%= content_for :haml, flush: true do %>
+%p Lorem ipsum...
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+<div class="my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Inline text elements" %>
+<div class="rui dark:p-6 dark:rounded-lg">
+  <p class="pb-1">You can use the mark tag to <mark>highlight</mark> text.</p>
+  <p class="pb-1"><del>This line of text is meant to be treated as deleted text.</del></p>
+  <p class="pb-1"><s>This line of text is meant to be treated as no longer accurate.</s></p>
+  <p class="pb-1"><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+  <p class="pb-1"><u>This line of text will render as underlined.</u></p>
+  <p class="pb-1"><small>This line of text is meant to be treated as fine print.</small></p>
+  <p class="pb-1"><strong>This line rendered as bold text.</strong></p>
+  <p class="pb-1"><em>This line rendered as italicized text.</em></p>
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<p>You can use the mark tag to <mark>highlight</mark> text.</p>
+<p><del>This line of text is meant to be treated as deleted text.</del></p>
+<p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+<p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+<p><u>This line of text will render as underlined.</u></p>
+<p><small>This line of text is meant to be treated as fine print.</small></p>
+<p><strong>This line rendered as bold text.</strong></p>
+<p><em>This line rendered as italicized text.</em></p>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= tag.p "You can use the mark tag to #{tag.mark 'highlight'} text." %>
+<%%= tag.p tag.del "This line of text is meant to be treated as deleted text." %>
+<%%= tag.p tag.s "This line of text is meant to be treated as no longer accurate." %>
+<%%= tag.p tag.ins "This line of text is meant to be treated as an addition to the document." %>
+<%%= tag.p tag.u "This line of text will render as underlined." %>
+<%%= tag.p tag.small "This line of text is meant to be treated as fine print." %>
+<%%= tag.p tag.strong "This line rendered as bold text." %>
+<%%= tag.p tag.em "This line rendered as italicized text." %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+%p
+  You can use the mark tag to
+  %mark highlight
+  text.
+%p
+  %del This line of text is meant to be treated as deleted text.
+%p
+  %s This line of text is meant to be treated as no longer accurate.
+%p
+  %ins This line of text is meant to be treated as an addition to the document.
+%p
+  %u This line of text will render as underlined.
+%p
+  %small This line of text is meant to be treated as fine print.
+%p
+  %strong This line rendered as bold text.
+%p
+  %em This line rendered as italicized text.
+<% end %>
+<%= render_snippet %>
+</div>
+
+<%= render "railsui/shared/read_more", subject: "typography", link: "https://getbootstrap.com/docs/5.2/content/typography/" %>

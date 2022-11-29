@@ -1,6 +1,6 @@
-<div class="tw-relative tw-border dark:tw-border-slate-700 tw-rounded-lg tw-my-10">
-  <div class="tw-flex tw-text-sm tw-text-slate-700 tw-space-x-2 tw-py-4 tw-px-6 tw-border-b tw-bg-gradient-to-b tw-rounded-t-lg tw-from-slate-50 tw-to-white dark:tw-from-slate-800 dark:tw-to-slate-900 dark:tw-border-slate-700 dark:tw-text-slate-300">
-    <ul class="tw-text-right">
+<div class="relative border dark:border-slate-700 rounded-lg my-10">
+  <div class="flex text-sm text-slate-700 space-x-2 py-4 px-6 border-b bg-gradient-to-b rounded-t-lg from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 dark:border-slate-700 dark:text-slate-300">
+    <ul class="text-right">
       <li>From:</li>
       <li>To:</li>
       <li>Date:</li>
@@ -10,12 +10,12 @@
       <li>andy<%= "@#{Railsui.parameterized_app_name}.com" %></li>
       <li>saasquatch@railsui.com</li>
       <li><%= Date.today.to_formatted_s(:long) %></li>
-      <li class="tw-font-semibold"><%= local_assigns[:subject] %></li>
+      <li class="font-semibold"><%= local_assigns[:subject] %></li>
     </ul>
   </div>
 
-  <div class="rui-mailer tw-p-3 tw-shadow-sm">
-    <div class="tw-bg-gradient-to-br tw-from-indigo-400 tw-to-indigo-600 tw-text-white tw-rounded-full tw-px-3 tw-py-1 tw-font-semibold tw-inline-block tw-text-xs tw-absolute tw-top-4 tw-right-4">Email preview</div>
+  <div class="rui-mailer p-3 shadow-sm">
+    <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs absolute top-4 right-4">Email preview</div>
 
     <%= capture(&block) %>
   </div>

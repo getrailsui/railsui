@@ -4,14 +4,14 @@ module Railsui
       options[:title] ||= name.underscore.humanize
       options[:aria] = true
       options[:nocomment] = true
-      options[:class] = options.fetch(:styles, "tw-fill-current tw-text-neutral-500")
+      options[:class] = options.fetch(:styles, "fill-current text-neutral-500")
 
       filename = "#{name}.svg"
       inline_svg_tag(filename, options)
     end
 
     def form_input
-      "tw-border-gray-300 tw-rounded focus:tw-border-indigo-300 focus:tw-outline-none focus:tw-shadow-none focus:tw-ring-indigo-50 focus:tw-ring-4 tw-ring-transparent tw-ring-2 dark:tw-text-slate-100 dark:focus:tw-ring-indigo-600/50 dark:tw-bg-slate-900 dark:tw-border-slate-600 dark:focus:tw-border-slate-300"
+      "border-gray-300 rounded focus:border-indigo-300 focus:outline-none focus:shadow-none focus:ring-indigo-50 focus:ring-4 ring-transparent ring-2 dark:text-slate-100 dark:focus:ring-indigo-600/50 dark:bg-slate-900 dark:border-slate-600 dark:focus:border-slate-300"
     end
 
     def select_classes
@@ -67,7 +67,7 @@ module Railsui
     end
 
     def code_inline(code)
-      content_tag :span, html_escape(code), class: "tw-text-red-600 tw-font-mono tw-text-base dark:tw-text-rose-400"
+      content_tag :span, html_escape(code), class: "text-red-600 font-mono text-base dark:text-rose-400"
     end
 
     def render_snippet(options={})
@@ -133,15 +133,15 @@ module Railsui
     end
 
     def box_label_classes(options={})
-      "tw-rounded-lg tw-bg-white tw-shadow-sm tw-border tw-border-slate-200 tw-block tw-select-none hover:tw-shadow-none tw-group tw-bg-gradient-to-br tw-from-white to-slate-50 dark:tw-from-slate-700 dark:tw-to-slate-800 dark:tw-border-slate-600 dark:shadow-sm #{options[:offset] == false ? "tw-px-4 tw-pb-4 tw-pt-1" : "tw-p-4" }"
+      "rounded-lg bg-white shadow-sm border border-slate-200 block select-none hover:shadow-none group bg-gradient-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-800 dark:border-slate-600 dark:shadow-sm #{options[:offset] == false ? "px-4 pb-4 pt-1" : "p-4" }"
     end
 
     def box_check_classes
-      "tw-text-indigo-600 form-checkbox tw-rounded focus:tw-outline-none tw-ring-2 tw-ring-transparent focus:tw-ring-slate-100  tw-mr-2 tw-border-slate-500 tw-w-5 tw-h-5
-      focus:dark:tw-ring-slate-700
-      focus:dark:tw-ring-opacity-20
-      focus:dark:tw-bg-slate-600  dark:tw-bg-slate-700
-      dark:tw-ring-transparent"
+      "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 w-5 h-5
+      focus:dark:ring-slate-700
+      focus:dark:ring-opacity-20
+      focus:dark:bg-slate-600  dark:bg-slate-700
+      dark:ring-transparent"
     end
   end
 end

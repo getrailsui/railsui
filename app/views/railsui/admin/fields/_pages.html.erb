@@ -1,13 +1,13 @@
 <%= render "railsui/admin/field_layout" do %>
 
   <% content_for :explainer, flush: true do %>
-    <%= heading text: "Pages", id: "configuration_overview", tag: "h3", class: "tw-font-semibold tw-text-xl tw-mb-3" %>
-    <p class="tw-text-base lg:tw-text-sm tw-text-slate-700 dark:tw-text-slate-300">Add pre-designed marketing pages with sample content to the app.</p>
+    <%= heading text: "Pages", id: "configuration_overview", tag: "h3", class: "font-semibold text-xl mb-3" %>
+    <p class="text-base lg:text-sm text-slate-700 dark:text-slate-300">Add pre-designed marketing pages with sample content to the app.</p>
   <% end %>
 
-  <div class="tw-p-6 tw-rounded-lg tw-bg-white tw-border tw-border-slate-200 tw-shadow-sm dark:tw-bg-slate-800 dark:tw-border-slate-700">
-    <p class="tw-prose tw-prose-indigo tw-mb-6 dark:tw-prose-invert">Enabling any option below will automatically generate themed views using the CSS framework chosen. These views will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
-    <ul class="tw-leading-loose tw-space-y-4">
+  <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
+    <p class="prose prose-indigo mb-6 dark:prose-invert">Enabling any option below will automatically generate themed views using the CSS framework chosen. These views will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
+    <ul class="leading-loose space-y-4">
       <% if about_page_exists? %>
         <%= render "railsui/admin/fields/pages/page_present",
           label: "About page",
@@ -16,10 +16,10 @@
         %>
         <%= f.hidden_field :about, value: "1" %>
       <% else %>
-        <li class="tw-relative">
+        <li class="relative">
           <%= f.label :about, class: box_label_classes do %>
             <%= f.check_box :about, class: box_check_classes, value: Railsui.config.about, checked: Railsui.config.about? %>
-            <span class="group-hover:tw-text-indigo-600">Create about page</span><span class="tw-text-slate-500 tw-text-sm tw-block tw-pl-8 lg:tw-mb-0 tw-mb-3 dark:tw-text-slate-300">Placeholder markup for company or organization about page.</span>
+            <span class="group-hover:text-indigo-600">Create about page</span><span class="text-slate-500 text-sm block pl-8 lg:mb-0 mb-3 dark:text-slate-300">Placeholder markup for company or organization about page.</span>
           <% end %>
         </li>
       <% end %>
@@ -31,10 +31,10 @@
         %>
         <%= f.hidden_field :pricing, value: "1" %>
       <% else %>
-        <li class="tw-relative">
+        <li class="relative">
           <%= f.label :pricing, class: box_label_classes do %>
             <%= f.check_box :pricing, class: box_check_classes, value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
-            <span class="group-hover:tw-text-indigo-600 group-hover:dark:tw-text-slate-200">Create pricing page</span><span class="tw-text-slate-500 tw-text-sm tw-block tw-pl-8 lg:tw-mb-0 tw-mb-3 dark:tw-text-slate-300">Placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
+            <span class="group-hover:text-indigo-600 group-hover:dark:text-slate-200">Create pricing page</span><span class="text-slate-500 text-sm block pl-8 lg:mb-0 mb-3 dark:text-slate-300">Placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
           <% end %>
         </li>
       <% end %>

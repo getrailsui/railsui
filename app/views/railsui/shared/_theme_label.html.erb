@@ -1,15 +1,15 @@
-<div class="tw-flex tw-items-center">
-  <div class="tw-flex tw-items-center tw-flex-1">
-    <div class="tw-mr-2">
-      <%= render_svg "#{Railsui.config.css_framework}", styles: "tw-fill-current tw-w-5 tw-h-5 #{Railsui.tailwind? ? "tw-text-teal-500" : "tw-text-indigo-800"}" %>
+<div class="flex items-center">
+  <div class="flex items-center flex-1">
+    <div class="mr-2">
+      <%= render_svg "#{Railsui.config.css_framework}", styles: "fill-current w-5 h-5 #{Railsui.tailwind? ? "text-teal-500" : "text-indigo-800"}" %>
     </div>
 
-    <h4 class="tw-font-semibold tw-text-sm"><%= Railsui.config.css_framework.humanize %></h4>
+    <h4 class="font-semibold text-sm"><%= Railsui.config.css_framework.humanize %></h4>
   </div>
 
   <% if Railsui.config.theme.present? %>
-    <div class="tw-ml-2 tw-bg-emerald-50 tw-uppercase tw-tracking-wide tw-text-emerald-700 tw-font-bold tw-rounded tw-px-1 tw-inline-flex tw-items-center tw-text-[10px]" data-controller="tooltip" data-tippy-content="Active theme">
-      <%= render_svg "paw", styles: "tw-w-4 tw-h-4 tw-fill-current" %>
+    <div class="ml-2 bg-emerald-50 uppercase tracking-wide text-emerald-700 font-bold rounded px-1 inline-flex items-center text-[10px]" data-controller="tooltip" data-tippy-content="Active theme">
+      <%= render_svg "paw", styles: "w-4 h-4 fill-current" %>
       <%= Railsui.config.theme.humanize %>
     </div>
   <% end %>

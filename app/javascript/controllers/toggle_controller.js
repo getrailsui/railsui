@@ -4,6 +4,6 @@ export default class extends Controller {
   static targets = ["toggleable"]
 
   toggle() {
-    this.toggleableTarget.classList.toggle("tw-hidden")
+    this.toggleableTarget.classList.toggle("hidden")
   }
 }
