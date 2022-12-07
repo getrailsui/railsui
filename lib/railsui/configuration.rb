@@ -56,8 +56,12 @@ module Railsui
       Railsui.config = self
 
       # Install and configure framework of choice
-      set_framework unless Railsui.config.css_framework.present?
-
+      case self.css_framework
+      when Railsui::Default::BOOTSTRAP
+        Railsui.run_command "rails railsui:framework:install:bootstrap"
+      when Railsui::Default::TAILWIND_CSS
+        Railsui.run_command "rails railsui:framework:install:tailwind"
+      end
 
       # Install any static pages
       if !about_page_exists? && Railsui.config.about?
@@ -82,15 +86,6 @@ module Railsui
 
     def create_pricing_page
       Railsui.run_command "rails g railsui:static pricing"
-    end
-
-    def set_framework
-      case Railsui.config.css_framework
-      when Railsui::Default::BOOTSTRAP
-        Railsui.run_command "rails railsui:framework:install:bootstrap"
-      when Railsui::Default::TAILWIND_CSS
-        Railsui.run_command "rails railsui:framework:install:tailwind"
-      end
     end
 
     def copy_template(filename)
