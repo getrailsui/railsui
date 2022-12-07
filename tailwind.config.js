@@ -1,4 +1,5 @@
 module.exports = {
+  important: true,
   content: [
     "./app/helpers/**/*.rb",
     "./app/assets/stylesheets/**/*.css",
