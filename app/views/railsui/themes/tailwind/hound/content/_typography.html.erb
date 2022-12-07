@@ -183,59 +183,62 @@
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<%%= tag.p "A lead paragraph stands out from regular paragraphs.", class: "lead" %>
+<%%= tag.div, class: "prose prose-xl prose-indigo dark:prose-invert" do %>
+  <%%= tag.p "A lead paragraph stands out from regular paragraphs.", class: "lead" %>
+<%% end %>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-%p.lead A lead paragraph stands out from regular paragraphs.
+.prose.prose-xl.prose-indigo.dark:prose-invert
+  %p A lead paragraph stands out from regular paragraphs.
 <% end %>
 <%= render_snippet %>
 </div>
 
 <div class="my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Blockquote" %>
-  <div class="rui dark:p-6 dark:rounded-lg">
-    <figure>
-      <blockquote class="blockquote">
-        <p>A well-known quote, contained in a blockquote element.</p>
-      </blockquote>
-      <figcaption class="blockquote-footer">
-        Someone famous in <cite title="Source Title">Source Title</cite>
-      </figcaption>
-    </figure>
-  </div>
+
+  <figure class="pl-6 border-l-2 border-slate-200 py-1">
+    <blockquote class="text-xl font-light mb-1 text-slate-700">
+      <p>A well-known quote, contained in a blockquote element.</p>
+    </blockquote>
+    <figcaption class="text-slate-500 text-sm">
+      Someone famous in <cite title="Source Title">Source Title</cite>
+    </figcaption>
+  </figure>
+
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<figure>
-  <blockquote class="blockquote">
+<figure class="pl-6 border-l-2 border-slate-400 py-1">
+  <blockquote class="text-xl font-light mb-1 text-slate-700">
     <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>
-  <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+  <figcaption class="text-slate-500 text-sm">Someone famous in <cite title="Source Title">Source Title</cite>
   </figcaption>
 </figure>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<%%= tag.figure do %>
-  <%%= tag.blockquote class: "blockquote" do %>
+<%% tag.figure, class: "pl-6 border-l-2 border-slate-200 py-1" do %>
+  <%%= tag.blockquote class: "text-xl font-light mb-1 text-slate-700" do %>
     <%%= tag.p "A well-known quote, contained in a blockquote element." %>
   <%% end %>
-  <%%= tag.figcaption class: "blockquote-footer" do %>
-  Someone famous in
-  <%%= tag.cite "Source Title", title: "Source Title" %>
+  <%%= tag.figcaption class: "text-slate-500 text-sm" do %>
+Someone famous in
+    <%%= tag.cite "Source Title", title: "Source Title" %>
   <%% end %>
 <%% end %>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-%figure
-  %blockquote.blockquote
+%figure.pl-6.border-l-2.border-slate-200.py-1
+  %blockquote.text-xl.font-light.mb-1.text-slate-700
     %p A well-known quote, contained in a blockquote element.
-    %figcaption.blockquote-footer
+    %figcaption.text-slate-500.text-sm
       Someone famous in
       %cite{:title => "Source Title"} Source Title
 <% end %>
@@ -246,57 +249,57 @@
 <div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lists" %>
 
-<div class="rui dark:p-6 dark:rounded-lg">
-<div class="row">
-<div class="col">
-<p class="text-sm text-slate-600 mt-2">Standard</p>
-<ul class="list-disc">
-  <li>A quick brown</li>
-  <li>fox jumps over</li>
-  <li>the lazy dog</li>
-</ul>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <div>
+    <p class="text-sm text-slate-600 mt-2">Standard</p>
+    <ul class="list-disc">
+      <li>A quick brown</li>
+      <li>fox jumps over</li>
+      <li>the lazy dog</li>
+    </ul>
+  </div>
+
+  <div>
+    <p class="text-sm text-slate-600 mt-2">Unstyled</p>
+    <ul class="list-reset">
+      <li>A quick brown</li>
+      <li>fox jumps over</li>
+      <li>the lazy dog</li>
+    </ul>
+  </div>
+
+  <div>
+    <p class="text-sm text-slate-600 mt-2">Decimal</p>
+    <ol class="list-decimal">
+      <li>A quick brown</li>
+      <li>fox jumps over</li>
+      <li>the lazy dog</li>
+    </ol>
+  </div>
 </div>
 
-<div class="col">
-<p class="text-sm text-slate-600 mt-2">Unstyled</p>
-<ul class="list-unsyled">
-  <li>A quick brown</li>
-  <li>fox jumps over</li>
-  <li>the lazy dog</li>
-</ul>
-</div>
-
-<div class="col">
-<p class="text-sm text-slate-600 mt-2">Decimal</p>
-<ol class="list-decimal">
-  <li>A quick brown</li>
-  <li>fox jumps over</li>
-  <li>the lazy dog</li>
-</ol>
-</div>
-</div>
-</div>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
 <ul class="list-disc">
-<li>A quick brown</li>
-<li>fox jumps over</li>
-<li>the lazy dog</li>
+  <li>A quick brown</li>
+  <li>fox jumps over</li>
+  <li>the lazy dog</li>
 </ul>
 
-<!--Unstyled-->
-<ul class="list-unstyled">
-<li>A quick brown</li>
-<li>fox jumps over</li>
-<li>the lazy dog</li>
+<!--Reset-->
+<ul class="list-reset">
+  <li>A quick brown</li>
+  <li>fox jumps over</li>
+  <li>the lazy dog</li>
 </ul>
 
 <!--Decimal-->
 <ol class="list-decimal">
-<li>A quick brown</li>
-<li>fox jumps over</li>
-<li>the lazy dog</li>
+  <li>A quick brown</li>
+  <li>fox jumps over</li>
+  <li>the lazy dog</li>
 </ol>
 <% end %>
 
@@ -309,8 +312,8 @@
   <%%= tag.li "the lazy dog" %>
 <%% end %>
 
-<!--Unstyled-->
-<%%= tag.ul class:"list-unstyled" do %>
+<!--reset-->
+<%%= tag.ul class:"list-reset" do %>
   <%%= tag.li "A quick brown" %>
   <%%= tag.li "fox jumps over" %>
   <%%= tag.li "the lazy dog" %>
@@ -330,8 +333,8 @@
   %li A quick brown
   %li fox jumps over
   %li the lazy dog
-/ Unstyled
-%ul.list-unstyled
+/ Reset
+%ul.list-reset
   %li A quick brown
   %li fox jumps over
   %li the lazy dog
@@ -348,34 +351,37 @@
 <div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Body copy" %>
 
-<div class="rui dark:p-6 dark:rounded-lg">
-  <div class="row">
-    <div class="col-md-6">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 prose prose-indigo dark:prose-invert max-w-full">
+  <div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
 
-      <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
-    </div>
-    <div class="col-md-6">
-      <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
+    <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
+  </div>
+  <div>
+    <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
-    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
   </div>
 </div>
 
 <%# .html %>
 <%= content_for :html, flush: true do %>
-<p>Lorem ipsum...</p>
+<div class="prose prose-indigo dark:prose-invert">
+  <p>Lorem ipsum...</p>
+</div>
 <% end %>
 
 <%# .html %>
 <%= content_for :erb, flush: true do %>
-<%%= tag.p "Lorem ipsum" %>
+<%%= tag.div class: "prose prose-indigo dark:prose-invert" do %>
+  <%%= tag.p "Lorem ipsum" %>
+<%% end %>
 <% end %>
 
 <%# .haml %>
 <%= content_for :haml, flush: true do %>
-%p Lorem ipsum...
+.prose.prose-indigo.dark:prose-invert
+  %p Lorem ipsum...
 <% end %>
 
 <%= render_snippet %>
