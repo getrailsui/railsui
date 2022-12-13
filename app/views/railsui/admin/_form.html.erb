@@ -1,6 +1,6 @@
 <% framework = Railsui::config.css_framework.downcase %>
 
-<%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-4xl text-2xl text-slate-800 font-bold lg:pb-6 pb-3 border-b border-slate-200 dark:border-slate-700" %>
+<%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-4xl text-2xl text-slate-800 font-bold lg:pb-6 pb-3 border-b border-slate-200 dark:border-slate-700 dark:text-white" %>
 
 <%= form_with model: @config, url: configuration_path, class: "h-full block relative", data: {
   action: "submit->configuration#saveChanges",

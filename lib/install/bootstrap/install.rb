@@ -1,3 +1,5 @@
+theme_stylesheet_path = "themes/#{Railsui.config.theme}/stylesheets"
+
 if Rails.root.join("app/assets/stylesheets/application.bootstrap.scss").exist?
   say "Bootstrap is already installed 👍"
 else
@@ -9,9 +11,34 @@ else
   end
 
   say "🔥 Installing Bootstrap"
-  rails_command "css:install:bootstrap", force: true
+  # source: https://github.com/rails/cssbundling-rails/blob/main/lib/install/bootstrap/install.rb
 
-  theme_stylesheet_path = "themes/#{Railsui.config.theme}/stylesheets"
+  copy_file "#{__dir__}/#{theme_stylesheet_path}/application.bootstrap.scss",
+    "app/assets/stylesheets/application.bootstrap.scss"
+  run "yarn add sass bootstrap bootstrap-icons @popperjs/core"
+
+  inject_into_file "config/initializers/assets.rb", after: /.*Rails.application.config.assets.paths.*\n/ do
+    <<~RUBY
+      Rails.application.config.assets.paths << Rails.root.join("node_modules/bootstrap-icons/font")
+    RUBY
+  end
+
+  if Rails.root.join("app/javascript/application.js").exist?
+    say "Appending Bootstrap JavaScript import to default entry point"
+    append_to_file "app/javascript/application.js", %(import * as bootstrap from "bootstrap"\n)
+  else
+    say %(Add import * as bootstrap from "bootstrap" to your entry point JavaScript file), :red
+  end
+
+  say "Add build:css script"
+  build_script = "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+
+  if (`npx -v`.to_f < 7.1 rescue "Missing")
+    say %(Add "scripts": { "build:css": "#{build_script}" } to your package.json), :red
+  else
+    run %(npm set-script build:css "#{build_script}")
+    run %(yarn build:css)
+  end
 
   # remove application.css
   say "Remove app/assets/stylesheets/application.css so build output can take over"

@@ -35,13 +35,13 @@ def add_css_bundling_setup
 
   return if Rails.root.join("Procfile.dev").exist?
   say "Add default Procfile.dev"
-  copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"
+  copy_file "#{__dir__}/Procfile.dev", "Procfile.dev", force: true
 
   say "Ensure foreman is installed"
   run "gem install foreman"
 
   say "Add bin/dev to start foreman"
-  copy_file "#{__dir__}/dev", "bin/dev"
+  copy_file "#{__dir__}/dev", "bin/dev", force: true
   chmod "bin/dev", 0755, verbose: false
 end
 
