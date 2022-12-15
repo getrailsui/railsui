@@ -1,0 +1,18 @@
+<div class="my-6">
+  <div class="prose-xl dark:prose-invert mb-6">
+    <p>Rails UI comes with some pre-design marketing page templates with plenty more individual components to come.</p>
+  </div>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Pages", subtitle: "About", preview_link: Railsui::Default::THEME_PREVIEW_LINK[:hound] %>
+
+  <%= link_to Railsui::Default::THEME_PREVIEW_LINK[:hound], target: :_blank do %>
+    <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/hound/about.jpg", alt: "About page for #{Railsui.config.theme.humanize} theme", class: "max-w-full h-auto border rounded-lg shadow-xl" %>
+  <% end %>
+</div>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Pages", subtitle: "Pricing", preview_link: "#{Railsui::Default::THEME_PREVIEW_LINK[:hound]}/pricing" %>
+  <%# Show pricing page somehow %>
+  <%= link_to "#{Railsui::Default::THEME_PREVIEW_LINK[:hound]}/pricing", target: :_blank do %>
+    <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/hound/pricing.jpg", alt: "Pricing page for #{Railsui.config.theme.humanize} theme", class: "max-w-full h-auto border rounded-lg shadow-xl" %>
+  <% end %>
+</div>

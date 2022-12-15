@@ -5,22 +5,22 @@
     <p>Display images that scale proportionally relative to browser widths.</p>
   </div>
 
-  <img src="https://source.unsplash.com/random/300×300/?dog" class="max-w-full h-[300px]">
+  <img src="https://source.unsplash.com/random/1600x900" class="max-w-full h-auto">
 </div>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-  <img src="#" class="max-w-full h-[300px]">
+  <img src="#" class="max-w-full h-auto">
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-  <%%= image_tag "...", class: "max-w-full h-[300px]", alt:"..." %>
+  <%%= image_tag "...", class: "max-w-full", alt:"..." %>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-  %img.max-w-full.h-[300px]{:alt => "...", :src => "..."}
+  %img.max-w-full{:alt => "...", :src => "..."}
 <% end %>
 <%= render_snippet %>
 
@@ -31,28 +31,28 @@
   <p>Resize an element's content to cover it's container using <%= code_inline(".object-cover") %></p>
 </div>
 
-<div class="bg-salmon-500 flex items-center justify-center p-6 rounded-lg">
-  <img src="https://source.unsplash.com/random/900×700/?fruit" alt="fruit" class="object-cover h-48 w-96 rounded-lg shadow-xl">
+<div class="bg-slate-50 flex items-center justify-center p-6 rounded-lg border border-slate-200">
+  <img src="https://source.unsplash.com/random/900×700/?dog" alt="dog" class="object-cover h-48 w-96 rounded-lg shadow-xl">
 </div>
 
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-50...">
   <img src="#" class="object-cover h-48 w-96">
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-50...">
   <%%= image_tag "#", class: "object-cover h-48 w-96" %>
 </div>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-.bg-indigo-500
+.bg-slate-50
   image_tag "#", class: "object-cover h-48 w-96"
 <% end %>
 <%= render_snippet %>
@@ -66,28 +66,28 @@
   <p>Resize an element’s content to stay contained within its container using <%= code_inline(".object-contain") %>.</p>
 </div>
 
-<div class="bg-salmon-500 flex items-center justify-center p-6 rounded-lg">
-  <img src="https://source.unsplash.com/random/900×700/?fruit" alt="fruit" class="object-contain h-48 w-96 rounded-lg shadow-xl bg-green-100">
+<div class="bg-slate-50 flex items-center justify-center p-6 rounded-lg border border-slate-200">
+  <img src="https://source.unsplash.com/random/900×700/?dog" alt="fruit" class="object-contain h-48 w-96 rounded-lg shadow-xl bg-blue-100">
 </div>
 
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-50...">
   <img src="#" class="object-contain h-48 w-96">
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-50...">
   <%%= image_tag "#", class: "object-contain h-48 w-96" %>
 </div>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-.bg-indigo-500
+.bg-slate-50
   image_tag "#", class: "object-contain h-48 w-96"
 <% end %>
 <%= render_snippet %>
@@ -100,28 +100,28 @@
   <p>Stretch an element's content to fit its container <%= code_inline(".object-fill") %>.</p>
 </div>
 
-<div class="bg-salmon-500 flex items-center justify-center p-6 rounded-lg">
-  <img src="https://source.unsplash.com/random/900×700/?fruit" alt="fruit" class="object-fill h-48 w-96 rounded-lg shadow-xl bg-green-100">
+<div class="bg-slate-50 flex items-center justify-center p-6 rounded-lg border border-slate-200">
+  <img src="https://source.unsplash.com/random/900×700/?dog" alt="dog" class="object-fill h-48 w-96 rounded-lg shadow-xl bg-blue-100">
 </div>
 
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-50...">
   <img src="#" class="object-fill h-48 w-96">
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-500...">
   <%%= image_tag "#", class: "object-fill h-48 w-96" %>
 </div>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-.bg-indigo-500
+.bg-slate-50
   image_tag "#", class: "object-fill h-48 w-96"
 <% end %>
 <%= render_snippet %>
@@ -134,28 +134,28 @@
   <p>Display an element’s content at its original size but scale it down to fit its container if necessary using <%= code_inline(".object-scale-down") %>.</p>
 </div>
 
-<div class="bg-salmon-500 flex items-center justify-center p-6 rounded-lg">
-  <img src="https://source.unsplash.com/random/900×700/?fruit" alt="fruit" class="object-scale-down h-48 w-96 rounded-xl shadow-xl bg-green-100">
+<div class="bg-slate-50 flex items-center justify-center p-6 rounded-lg border border-slate-200">
+  <img src="https://source.unsplash.com/random/900×700/?dog" alt="fruit" class="object-scale-down h-48 w-96 rounded-xl shadow-xl bg-blue-100">
 </div>
 
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-50...">
   <img src="#" class="object-scale-down h-48 w-96">
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<div class="bg-indigo-500...">
+<div class="bg-slate-50...">
   <%%= image_tag "#", class: "object-scale-down h-48 w-96" %>
 </div>
 <% end %>
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-.bg-indigo-500
+.bg-slate-50
   image_tag "#", class: "object-scale-down h-48 w-96"
 <% end %>
 <%= render_snippet %>
