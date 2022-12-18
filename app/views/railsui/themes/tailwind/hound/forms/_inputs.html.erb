@@ -74,14 +74,14 @@
 <!-- ActionView::Helpers::FormTagHelper -->
 <%%= tag.div class: "form-group" do %>
   <%%= label_tag :textarea, "Speak your mind", class: "form-label" %>
-  <%%= text_area_tag "textarea", class: "form-control" %>
+  <%%= text_area_tag "textarea", class: "form-input" %>
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_with with: @form do |f| %>
   <%% tag.div class: "form-group" do %>
     <%%= f.label :textarea, "Speak your mind", class: "form-label" %>
-    <%%= f.text_area :textarea, class: "form-label" %>
+    <%%= f.text_area :textarea, class: "form-input" %>
   <%% end %>
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
