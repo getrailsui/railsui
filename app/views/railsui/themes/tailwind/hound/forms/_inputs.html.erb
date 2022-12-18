@@ -90,9 +90,9 @@
 <%# .haml %>
 <% content_for :haml, flush: true do %>
 / ActionView::Helpers::FormTagHelper
-  .form-group
-    = label_tag :textarea, "Speak your mind", class: "form-label"
-    = text_area_tag :textarea, class: "form-input"
+.form-group
+  = label_tag :textarea, "Speak your mind", class: "form-label"
+  = text_area_tag :textarea, class: "form-input"
 
 / ActionView::Helpers::FormHelper
 = form_with model: @form do |f|
