@@ -172,34 +172,32 @@
 <div class="my-6">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Color input" %>
 
-<div class="rui dark:p-6 dark:rounded-lg">
-<div class="mb-3">
+<div class="form-group">
   <label for="color" class="form-label">Choose a color</label>
-  <input class="form-control form-control-color" type="color" id="color" value="#fb7185" title="Color picker">
-</div>
+  <input class="form-input-color" type="color" id="color" value="#fb7185" title="Color picker">
 </div>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="mb-3">
+<div class="form-group">
   <label for="color" class="form-label">Choose a color</label>
-  <input class="form-control form-control-color" type="color" id="color" value="#fb7185" title="Color picker">
+  <input class="form-input-color" type="color" id="color" value="#fb7185" title="Color picker">
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <!-- ActionView::Helpers::FormTagHelper -->
-<%%= tag.div class: "mb-3" do %>
+<%%= tag.div class: "form-group" do %>
   <%%= label_tag :color, "Choose a color", class: "form-label" %>
-  <%%= color_field_tag :color, "#fb7185", class: "form-control form-control-color" %>
+  <%%= color_field_tag :color, "#fb7185", class: "form-input-color" %>
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_for model: @form do |f| %>
-  <%% tag.div class: "mb-3" do %>
+  <%% tag.div class: "form-group" do %>
     <%%= f.label :color, "Choose a color", class: "form-label" %>
-    <%%= f.color_field :color, value: "#fb7185", class: "form-control form-control-color" %>
+    <%%= f.color_field :color, value: "#fb7185", class: "form-input-color %>
   <%% end %>
   <%% f.submit class: "btn btn-primary" %>
 <%% end %>
@@ -208,15 +206,15 @@
 <%# .haml %>
 <% content_for :haml, flush: true do %>
   / ActionView::Helpers::FormTagHelper
-.mb-3
+.form-group
   = label_tag :color, "Choose a color", class: "form-label"
-  = color_field_tag :color, "#fb7185", class: "form-control form-control-color"
+  = color_field_tag :color, "#fb7185", class: "form-input-color"
 
 / ActionView::Helpers::FormHelper
 = form_with model: @form do |f|
-  .mb-3
+  .form-group
     = f.label :color, "Choose a color", class: "form-label"
-    = f.color_field :color, value: "#fb7185", class: "form-control form-control-color"
+    = f.color_field :color, value: "#fb7185", class: "form-input-color"
   = f.submit class: "btn btn-primary"
 <% end %>
 
@@ -227,25 +225,30 @@
 <div class="my-6">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Datalists" %>
 
-<div class="rui dark:p-6 dark:rounded-lg">
-  <div class="mb-3">
-    <label for="datalist" class="form-label">Datalist example</label>
-    <input class="form-control" list="datalistOptions" placeholder="Type to search" id="datalist" >
-    <datalist id="datalistOptions">
-      <option value="San Francisco">
-      <option value="New York">
-      <option value="Seattle">
-      <option value="Los Angeles">
-      <option value="Chicago">
-    </datalist>
+<div class="form-group">
+  <label for="datalist" class="form-label">Datalist example</label>
+  <div class="relative">
+    <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >
+    <%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
   </div>
+  <datalist id="datalistOptions">
+    <option value="San Francisco">
+    <option value="New York">
+    <option value="Seattle">
+    <option value="Los Angeles">
+    <option value="Chicago">
+  </datalist>
 </div>
+
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="mb-3">
+<div class="form-group">
   <label for="datalist" class="form-label">Datalist example</label>
-  <input class="form-control" list="datalistOptions" placeholder="Type to search" id="datalist" >
+  <div class="relative">
+    <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >
+    <%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+  </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
     <option value="New York">
@@ -259,9 +262,12 @@
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <!-- ActionView::Helpers::FormTagHelper -->
-<%%= tag.div class: "mb-3" do %>
+<%%= tag.div class: "form-group" do %>
   <%%= label_tag :datalist, "Datalist example", class: "form-label" %>
-  <%%= text_field_tag :datalist, "Type to search", class: "form-control", list: "datalistOptions" %>
+  <div class="relative">
+    <%%= text_field_tag :datalist, "Type to search", class: "form-input form-input-data-list", list: "datalistOptions" %>
+    <%%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+  </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
     <option value="New York">
@@ -273,8 +279,12 @@
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_for @form do |f| %>
-  <%%= f.label :datalist, "Datalist example", class: "form-label" %>
-  <%%= f.text_field :datalist, "Type to search", class: "form-control", list: "datalistOptions" %>
+  <div class="form-group">
+    <%%= f.label :datalist, "Datalist example", class: "form-label" %>
+    <div class="relative">
+      <%%= f.text_field :datalist, "Type to search", class: "form-control", list: "datalistOptions" %>
+      <%%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+    </div>
     <datalist id="datalistOptions">
       <option value="San Francisco">
       <option value="New York">
@@ -282,37 +292,85 @@
       <option value="Los Angeles">
       <option value="Chicago">
     </datalist>
-    <%%= f.submit class: "btn btn-primary" %>
-  <%% end %>
+  </div>
+
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
 <% end %>
 
   <%# .haml %>
 <% content_for :haml, flush: true do %>
 / ActionView::Helpers::FormTagHelper
-.mb-3
+.form-group
   %label.form-label{:for => "datalist"} Datalist example
-  %input#datalist.form-control{:list => "datalistOptions", :placeholder => "Type to search"}/
-    %datalist#datalistOptions
-      %option{:value => "San Francisco"}
-      %option{:value => "New York"}
-      %option{:value => "Seattle"}
-      %option{:value => "Los Angeles"}
-      %option{:value => "Chicago"}
-
-/ ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  = f.label :datalist, "Datalist example", class: "form-label"
-  = f.text_field :datalist, class: "form-control", list: "datalistOptions", placeholder: "Type to search"
+  .relative
+    %input#datalist.form-input.form-input-datalist{:list => "datalistOptions", :placeholder => "Type to search"}/
+    = icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500"
   %datalist#datalistOptions
     %option{:value => "San Francisco"}
     %option{:value => "New York"}
     %option{:value => "Seattle"}
     %option{:value => "Los Angeles"}
     %option{:value => "Chicago"}
+
+/ ActionView::Helpers::FormHelper
+= form_with @form do |f|
+  .form-group
+    = f.label :datalist, "Datalist example", class: "form-label"
+    .relative
+      = f.text_field :datalist, class: "form-input form-input-datalist", list: "datalistOptions", placeholder: "Type to search"
+      = icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500"
+    %datalist#datalistOptions
+      %option{:value => "San Francisco"}
+      %option{:value => "New York"}
+      %option{:value => "Seattle"}
+      %option{:value => "Los Angeles"}
+      %option{:value => "Chicago"}
   = f.submit class: "btn btn-primary"
 <% end %>
 
   <%= render_snippet %>
 </div>
+
+
+
+<%#### range %>
+<div class="my-6">
+<%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Range" %>
+
+<div class="form-group">
+  <label for="volume" class="form-label">Volume</label>
+  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" />
+</div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="volume" class="form-label">Volume</label>
+  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" />
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :volume, class: "form-label" %>
+    <%%= f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25" %>
+  </div>
+<%% end %>
+<% end %>
+
+  <%# .haml %>
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .form-group
+    = f.label.form-label, class: "form-label"
+    = f.range_field :volume, class: "form-input-range", max: "100", min: "2", value: "25"
+<% end %>
+
+  <%= render_snippet %>
+</div>
+
 
 <%= render "railsui/shared/read_more", subject: "form inputs", link: "https://getbootstrap.com/docs/5.2/forms/form-control/" %>
