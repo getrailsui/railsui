@@ -1,0 +1,95 @@
+<div class="my-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Select" %>
+
+<select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+<% end %>
+
+  <%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.select class: "form-select", "aria-label": "Default select example" do %>
+  <%%= tag.option "Open this select menu", selected: true %>
+  <%%= tag.option "One", value: "1" %>
+  <%%= tag.option "Two", value: "2" %>
+  <%%= tag.option "Three", value: "3" %>
+<%% end %>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <%%= f.label :select_1, "Default select example", class: "form-label" %>
+  <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" } %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+.mb-3
+  = f.label :select_1, "Default select example", class:  "form-label"
+  = f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" }
+= f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Dates" %>
+
+  <div class="flex items-center space-x-3">
+    <%= select_day Date.today.day, {}, { class: "form-select" }  %>
+    <%= select_month Date.today.month, {}, { class: "form-select" }%>
+    <%= select_year Date.today.year, {}, { class: "form-select" } %>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="flex items-center space-x-3">
+  <select id="date_month" name="data[month]" class="form-select">
+      <!-- options -->
+  </select>
+  <select id="date_day" name="data[day]" class="form-select">
+      <!-- options -->
+  </select>
+  <select id="date_year" name="data[year]" class="form-select">
+      <!-- options -->
+  </select>
+</div>
+<% end %>
+
+  <%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="form-group flex items-center space-x-3">
+  <%%= select_day Date.today.day, {}, { class: "form-select" }  %>
+  <%%= select_month Date.today.month, {}, { class: "form-select" }%>
+  <%%= select_year Date.today.year, {}, { class: "form-select" } %>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.form-group.flex.items-center.space-x-3
+  = select_day Date.today.day, {}, { class: "form-select" }  %>
+  = select_month Date.today.month, {}, { class: "form-select" }%>
+  = select_year Date.today.year, {}, { class: "form-select" } %>
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+

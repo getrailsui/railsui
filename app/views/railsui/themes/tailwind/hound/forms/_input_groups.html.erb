@@ -1,0 +1,434 @@
+
+<%### input w/ label %>
+<div class="my-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Input with label" %>
+
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email">
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="email" class="form-label">Email</label>
+  <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email">
+</div>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :email, class: "form-label" %>
+    <%%= f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email" %>
+  </div>
+<%% end %>
+<% end %>
+
+
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .form-group
+    = f.label :email, class: "form-label"
+    = f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email"
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+
+<%### input w/ label + help text %>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Input with label and help text" %>
+
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email">
+    <p class="text-sm text-slate-600 leading-relaxed mt-1">This text helps you, right?</p>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="email" class="form-label">Email</label>
+  <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email">
+  <p class="text-sm text-slate-600 leading-relaxed mt-1">This text helps you, right?</p>
+</div>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :email, class: "form-label" %>
+    <%%= f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email" %>
+    <p class="text-sm text-slate-600 leading-relaxed mt-1">This text helps you, right?</p>
+  </div>
+<%% end %>
+<% end %>
+
+
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .form-group
+    = f.label :email, class: "form-label"
+    = f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email"
+    %p.text-sm.text-slate-600.leading-relaxed.mt-1 This text helps you, right?
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+
+<%#### Input with dynamic error messages %>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Input with dynamic error messages" %>
+
+  <span class="rounded-full bg-yellow-300 px-3 py-1 text-sm text-black font-medium">JavaScript</span> or <span class="rounded-full bg-teal-300 text-black px-3 py-1 text-sm font-medium">Turbo</span> required.
+
+  <div class="prose dark:prose-invert my-6 max-w-full">
+    <p>Add the class <%= code_inline(".form-input-error") %> dynamically to display an invalid state. The icon and helper text is hidden by default but is displayed when the class gets appended.</p>
+    <p>Read the <%= link_to "Icon documentation", systems_icons_path, class: "text-indigo-600 underline hover:text-indigo-600 font-medium dark:text-indigo-500 dark:hover:text-indigo-500", target: :_blank %> for the <%= code_inline("icon") %> view helper as shown in the following snippet(s).</p>
+  </div>
+
+  <div class="form-group relative">
+    <input type="email" class="form-input form-input-error pr-10" placeholder="john.doe@example.com" aria-label="Email" value="john.doe@">
+
+    <%= icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-red-600 absolute right-3 top-3" %>
+    <p class="hidden mt-1 text-sm text-red-700">Please enter a valid email</p>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-group relative">
+  <input type="email" class="form-input form-input-error pr-10" placeholder="john.doe@example.com" aria-label="Email">
+
+  <%%= icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-red-600 absolute right-3 top-3" %>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<div class="form-group relative">
+  <%%= email_field_tag "email", nil, class: "form-input form-input-error pr-10", placeholder: "Email", "aria-label": "Email" %>
+  <%%= icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-red-600 absolute right-3 top-3" %>
+</div>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <div class="form-group relative">
+    <%%= f.email_field :email, class: "form-input form-input-error pr-10", placeholder: "Email", "aria-label": "Email" %>
+    <%%= icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-red-600 absolute right-3 top-3" %>
+  </div>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+        <%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormTagHelper
+.form-group.relative
+  = email_field_tag "email", nil, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
+  = icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-slate-400 absolute left-3 top-3"
+
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-group.relative
+    = f.email_field :email, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
+    = icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-slate-400 absolute left-3 top-3"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
+
+<%#### Input with browser-based error messages %>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Input with browser-based error messages" %>
+
+  <div class="prose dark:prose-invert my-6 max-w-full">
+    <p>Most modern browsers have invalid properties and states you can customize the design for. This type of validation uses those in lieu of reaching for JavaScript.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <div class="relative">
+      <input type="email" class="form-input peer pr-10 invalid:border-red-700 invalid:text-red-700 invalid:ring-red-50" placeholder="john.doe@example.com" aria-label="Email" value="john.doe@">
+
+      <%= icon "exclamation-circle", styles: "w-5 h-5 stroke-current text-red-700 absolute right-3 top-3 invisible peer-invalid:visible" %>
+      <p class="mt-1 text-sm text-red-700 invisible peer-invalid:visible">Please enter a valid email</p>
+    </div>
+  </div>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="email" class="form-label">Email</label>
+  <div class="relative">
+    <input type="email" class="form-input peer pr-10 invalid:border-red-700 invalid:text-red-700" placeholder="john.doe@example.com" aria-label="Email" value="john.doe@">
+
+    <%%= icon "exclamation-circle", styles: "invisible peer-invalid:visible w-5 h-5 stroke-current text-red-600 absolute right-3 top-3" %>
+    <p class="mt-1 text-sm text-red-700 invisible peer-invalid:visible">Please enter a valid email</p>
+  </div>
+</div>
+<% end %>
+
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<div class="form-group">
+  <%%= label_tag "email", "Email", class: "form-label" %>
+  <div class="relative">
+    <%%= email_field_tag "email", "john.doe@", class: "form-input peer pr-10 invalid:border-red-700 invalid:text-red-700", placeholder: "john.doe@example.com", "aria-label": "Email" %>
+
+    <%%= icon "exclamation-circle", styles: "w-5 h-5 stroke-current text-red-600 absolute right-3 top-3 invisible peer-invalid:visible" %>
+    <p class="mt-1 text-sm text-red-700 invisible peer-invalid:visible">Please enter a valid email</p>
+  </div>
+</div>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :email, class: "form-label" %>
+    <div class="relative">
+      <%%= f.email_field :email, class: "form-input peer pr-10 invalid:border-red-700 invalid:text-red-700", placeholder: "john.doe@example.com", "aria-label": "Email" %>
+      <%%= icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-red-600 absolute right-3 top-3 invisible peer-invalid:visible" %>
+      <p class="mt-1 text-sm text-red-700 invisible peer-invalid:visible">Please enter a valid email</p>
+    </div>
+  </div>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+        <%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormTagHelper
+.form-group
+  = label_tag "email", "Email", class: "form-label"
+  .relative
+    = email_field_tag "email", "john.doe@", class: "form-input peer pr-10 invalid:border-red-700 invalid:text-red-700", "aria-label": "Email", placeholder: "john.doe@example.com"
+    = icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-slate-400 absolute left-3 top-3 invisible peer-invalid:visible"
+    %p.mt-1.text-sm.text-red-700.invisible.peer-invalid:visible Please enter a valid email
+
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-group
+    .relative
+      = f.email_field :email, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
+      = icon "exclamation-circle", styles: "hidden w-5 h-5 stroke-current text-slate-400 absolute left-3 top-3 invisible peer-invalid:visible"
+      %p.mt-1.text-sm.text-red-700.invisible.peer-invalid:visible Please enter a valid email
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
+
+
+<%### disabled input w/ label %>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Disabled input with label" %>
+
+  <div class="prose prose-indigo mb-6">
+    <p>Adding a <%= code_inline("disabled") %> attribute to the input field will automatically style disabled inputs</p>
+  </div>
+
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email" disabled>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="email" class="form-label">Email</label>
+  <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email" disabled>
+</div>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :email, class: "form-label" %>
+    <%%= f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email", disabled: true %>
+  </div>
+<%% end %>
+<% end %>
+
+
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .form-group
+    = f.label :email, class: "form-label"
+    = f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email", disabled: true
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+
+<%### Input with add-on %>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Input with add-on" %>
+
+  <div class="prose prose-indigo mb-6 max-w-full">
+    <p>Using custom offsets you can add an add-on to the beginning or end of an input. Modify the <%= code_inline('w-[40px]') %> class of the add-on to account for its content. Do the same for the input padding <%= code_inline('pl-[90px]') %> to adjust offset proportionally.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="website" class="form-label">Website</label>
+    <div class="relative">
+      <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+      <input type="text" id="website" class="form-input pl-[90px]" placeholder="example.com" aria-label="Website">
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="website" class="form-label">Website</label>
+  <div class="relative">
+    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+    <input type="text" id="website" class="form-input pl-[90px]" placeholder="example.com" aria-label="Website">
+  </div>
+</div>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :website, class: "form-label" %>
+    <div class="relative">
+      <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+      <%%= f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website" %>
+    </div>
+  </div>
+<%% end %>
+<% end %>
+
+
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .form-group
+    = f.label :website, class: "form-label"
+    .relative
+      .absolute.left-px.border-r.border-slate-300.top-px bg-slate-100.h-[40px].text-base.rounded-l.flex .items-center.justify-center.px-3.text-slate-700.select-none https://
+      = f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website"
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+<%### Input with leading inline and trailing add-ons %>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Input with leading inline and trailing add-ons" %>
+
+  <div class="form-group">
+    <label for="amount" class="form-label">Enter amount</label>
+    <div class="relative">
+      <span class="absolute left-3 top-[9px] text-slate-500">$</span>
+      <input type="text" id="amount" class="form-input pl-7" placeholder="5.00" aria-label="Website">
+      <span class="absolute right-3 top-[11px] text-slate-500 text-sm">USD</span>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="amount" class="form-label">Enter amount</label>
+  <div class="relative">
+    <span class="absolute left-3 top-[9px] text-slate-500">$</span>
+    <input type="text" id="amount" class="form-input pl-7" placeholder="5.00" aria-label="Enter amount">
+    <span class="absolute right-3 top-[11px] text-slate-500 text-sm">USD</span>
+  </div>
+</div>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :amount, "Enter amount", class: "form-label" %>
+    <div class="relative">
+      <span class="absolute left-3 top-[9px] text-slate-500">$</span>
+      <%%= f.text_field :amount, class: "form-input pl-7", placeholder: "5.00", "aria-label": "Enter amount" %>
+      <span class="absolute right-3 top-[11px] text-slate-500 text-sm">USD</span>
+    </div>
+  </div>
+<%% end %>
+<% end %>
+
+
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .form-group
+    = f.label :amount, "Enter amount", class: "form-label"
+    .relative
+      %span.absolute.left-3.top-[9px].text-slate-500" $
+      = f.text_field :amount, class: "form-input pl-7", placeholder: "5.00", "aria-label": "Enter amount"
+      %span.absolute.right-3.top-[11px].text-slate-500.text-sm USD
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+
+<%### Input with add-on and trailing button %>
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms &bull; Input Groups", subtitle: "Input with leading icon and trailing button" %>
+
+
+
+  <div class="form-group">
+    <label for="users" class="form-label">Search users</label>
+    <div class="relative">
+      <%= icon "users", styles: "w-5 h-5 stroke-current text-slate-500 absolute left-3 top-3" %>
+      <input type="search" id="users" class="form-input pl-10" placeholder="John Doe" aria-label="Search users" />
+      <button class="rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400">Search</button>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <label for="users" class="form-label">Search users</label>
+  <div class="relative">
+    <%= icon "users", styles: "w-5 h-5 stroke-current text-slate-500 absolute left-3 top-3" %>
+    <input type="search" id="users" class="form-input pl-10" placeholder="John Doe" aria-label="Search users" />
+    <button class="rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400">Search</button>
+  </div>
+</div>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.label :users, "Search users", class: "form-label" %>
+    <div class="relative">
+      <%%= icon "users", styles: "w-5 h-5 stroke-current text-slate-500 absolute left-3 top-3" %>
+      <%%= f.search_field :users, class: "form-input pl-10", placeholder: "John Doe", "aria-label": "Search users" %>
+      <%%= f.submit class: "rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400" %>
+    </div>
+  </div>
+<%% end %>
+<% end %>
+
+
+<% content_for :haml, flush: true do %>
+= form_with model: @form do |f|
+  .form-group
+    = f.label :users, "Search users", class: "form-label"
+    .relative
+      = icon "users", styles: "w-5 h-5 stroke-current text-slate-500 absolute left-3 top-3"
+      = f.search_field :users, class: "form-input pl-10", placeholder: "John Doe", "aria-label": "Search users"
+      = f.submit class: "rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400"
+<% end %>
+
+<%= render_snippet %>
+</div>
+
+
+
+
+
+
+
+
+
