@@ -1,0 +1,97 @@
+@layer components {
+  /***************************************
+    Forms
+  ****************************************/
+
+  .form-group {
+    @apply mb-6;
+  }
+
+  .form-label {
+    @apply block mb-2;
+  }
+
+  .form-input {
+    @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 text-slate-900;
+
+    &[disabled] {
+      @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed;
+    }
+  }
+
+  .form-input-error {
+    @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-500;
+
+    + svg {
+      @apply block !important;
+
+      + p {
+        @apply block !important;
+      }
+    }
+  }
+
+  .form-file {
+    @apply block w-full text-sm text-slate-500
+    file:mr-4 file:py-2 file:px-4
+    file:rounded-full file:border-0
+    file:text-sm file:font-semibold
+    file:bg-indigo-50 file:text-indigo-700
+    hover:file:bg-indigo-100;
+  }
+
+  .form-select {
+    @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 text-slate-900 shadow-sm;
+  }
+
+  .form-input-color {
+    @apply appearance-none rounded-full w-8 h-8 border border-slate-200 focus:border-slate-400 focus:shadow transition focus:ring-4 focus:ring-indigo-500/10;
+
+    &::-webkit-color-swatch-wrapper,
+    &::-webkit-color-swatch {
+      @apply p-0 rounded-full border-2 border-white;
+    }
+  }
+
+  .form-input-datalist {
+    &::-webkit-calendar-picker-indicator {
+      @apply hidden !important;
+    }
+  }
+
+  .form-input-range {
+    @apply appearance-none bg-transparent focus:outline-none;
+
+    &::-webkit-slider-thumb {
+      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-slate-300 focus:ring-4 focus:outline-slate-400 hover:outline-slate-400;
+    }
+
+    &::-ms-track {
+      @apply cursor-pointer bg-transparent border-transparent text-transparent;
+    }
+
+    &::-webkit-slider-runnable-track {
+      @apply bg-slate-200 rounded-lg h-4 w-full;
+    }
+
+    &::-moz-slider-runnable-track {
+      @apply bg-slate-200 rounded-lg h-4 w-full;
+    }
+
+    &::-ms-slider-runnable-track {
+      @apply bg-slate-200 rounded-lg h-4 w-full;
+    }
+
+    &:focus::-webkit-slider-runnable-track {
+      @apply bg-slate-200;
+    }
+
+    &:focus::-moz-slider-runnable-track {
+      @apply bg-slate-200;
+    }
+
+    &:focus::-ms-slider-runnable-track {
+      @apply bg-slate-200;
+    }
+  }
+}

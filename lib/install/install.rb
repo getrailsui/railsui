@@ -15,16 +15,16 @@ def add_css_bundling_setup
     insert_into_file(
       app_layout_path.to_s,
       defined?(Turbo) ?
-        %(\n    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>) :
+        %(\n    <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css", "data-turbo-track": "reload" %>) :
         %(\n    <%= stylesheet_link_tag "application" %>),
       before: /\s*<\/head>/
     )
   else
     say "Default application.html.erb is missing!", :red
     if defined?(Turbo)
-      say %(        Add <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> within the <head> tag in your custom layout.)
+      say %(        Add <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css", "data-turbo-track": "reload" %> within the <head> tag in your custom layout.)
     else
-      say %(        Add <%= stylesheet_link_tag "application" %> within the <head> tag in your custom layout.)
+      say %(        Add <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css" %> within the <head> tag in your custom layout.)
     end
   end
 
@@ -32,17 +32,6 @@ def add_css_bundling_setup
     say "Add default package.json"
     copy_file "#{__dir__}/package.json", "package.json"
   end
-
-  return if Rails.root.join("Procfile.dev").exist?
-  say "Add default Procfile.dev"
-  copy_file "#{__dir__}/Procfile.dev", "Procfile.dev", force: true
-
-  say "Ensure foreman is installed"
-  run "gem install foreman"
-
-  say "Add bin/dev to start foreman"
-  copy_file "#{__dir__}/dev", "bin/dev", force: true
-  chmod "bin/dev", 0755, verbose: false
 end
 
 
@@ -107,6 +96,10 @@ end
 def add_storage_and_rich_text
   rails_command "active_storage:install"
   rails_command "action_text:install"
+
+  if Rails.root.join("app/assets/stylesheets/actiontext.css").exist?
+    remove_file Rails.root.join("app/assets/stylesheets/actiontext.css")
+  end
 end
 
 # Add sidkiq
@@ -220,7 +213,7 @@ copy_application_mailer
 say "⚡️ Configuring Devise..."
 add_users
 
-say "⚡️ Add ESBuild"
+say "⚡️ Add esbuild"
 add_esbuild
 
 say "⚡️ Add Stimulus.js"

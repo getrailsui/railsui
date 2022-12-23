@@ -36,6 +36,7 @@ Railsui::Engine.routes.draw do
       get :input_groups
       get :inputs
       get :layout
+      get :action_text
       get :selects
       get :validation
     end

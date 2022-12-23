@@ -33,11 +33,15 @@ else
   say "Add build:css script"
   build_script = "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
 
-  if (`npx -v`.to_f < 7.1 rescue "Missing")
-    say %(Add "scripts": { "build:css": "#{build_script}" } to your package.json), :red
-  else
+  case `npx -v`.to_f
+  when 7.1...8.0
     run %(npm set-script build:css "#{build_script}")
     run %(yarn build:css)
+  when (8.0..)
+    run %(npm pkg set scripts.build:css="#{build_script}")
+    run %(yarn build:css)
+  else
+    say %(Add "scripts": { "build:css": "#{build_script}" } to your package.json), :green
   end
 
   # remove application.css
@@ -56,6 +60,9 @@ else
     say "Add themed Devise views"
     directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise"), force: true
   end
+
+  say "Append to Procfile.dev"
+  append_to_file "Procfile.dev", %(css: yarn build:css --watch\n)
 
   say "Copy images"
   directory "#{__dir__}/themes/#{Railsui.config.theme}/images", Rails.root.join("app/assets/images"), force: true

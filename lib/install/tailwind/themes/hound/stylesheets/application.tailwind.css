@@ -1,8 +1,10 @@
-.rui {
-  @import "tailwindcss/base";
-  @import "tailwindcss/components";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
-  /* Custom components */
+/* ActionText */
+@import "https://unpkg.com/trix@2.0.0/dist/trix.css";
 
-  @import "tailwindcss/utilities";
-}
+/* Custom components */
+@import "custom/custom.css";
+
+@import "tailwindcss/utilities";

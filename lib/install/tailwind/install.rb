@@ -48,15 +48,8 @@ else
     run %(yarn build:css)
   end
 
-  if Rails.root.join("Procfile.dev").exist?
-    append_to_file "Procfile.dev", "css: yarn build:css --watch\n"
-  else
-    say "Add default Procfile.dev"
-    copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"
-
-    say "Ensure foreman is installed"
-    run "gem install foreman"
-  end
+  say "Append to Procfile.dev"
+  append_to_file "Procfile.dev", %(css: yarn build:css --watch\n)
 
   say "Update .gitignore"
   inject_into_file ".gitignore", "node_modules\n"
