@@ -1,7 +1,7 @@
 <div class="my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Headings" %>
 
-  <div class="prose prose-lg prose-indigo dark:prose-invert">
+  <div class="prose prose-lg dark:prose-invert">
     <p>Headings come in two flavors. Default and Display. Default headings are tweaked to render at predesigned styles. You can modify these in the custom CSS included with the theme.</p>
     <p>Display headings make use of new utility classes added for the sake of keeping typography more consistent.</p>
   </div>
@@ -166,7 +166,7 @@
 <div class="mb-16 mt-8">
   <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lead paragraph" %>
   <div class="rui dark:p-6 dark:rounded-lg">
-    <div class="prose prose-xl prose-indigo dark:prose-invert">
+    <div class="prose prose-xl dark:prose-invert">
       <p>This is a lead paragraph. It stands out from regular paragraphs.</p>
     </div>
     <%= help_text do %>
@@ -176,7 +176,7 @@
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="prose prose-xl prose-indigo dark:prose-invert">
+<div class="prose prose-xl dark:prose-invert">
   <p>A lead paragraph stands out from regular paragraphs.</p>
 </div>
 <% end %>
@@ -351,7 +351,7 @@ Someone famous in
 <div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Body copy" %>
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 prose prose-indigo dark:prose-invert max-w-full">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 prose  dark:prose-invert max-w-full">
   <div>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
 
@@ -366,21 +366,21 @@ Someone famous in
 
 <%# .html %>
 <%= content_for :html, flush: true do %>
-<div class="prose prose-indigo dark:prose-invert">
+<div class="prose dark:prose-invert">
   <p>Lorem ipsum...</p>
 </div>
 <% end %>
 
 <%# .html %>
 <%= content_for :erb, flush: true do %>
-<%%= tag.div class: "prose prose-indigo dark:prose-invert" do %>
+<%%= tag.div class: "prose prose-primary dark:prose-invert" do %>
   <%%= tag.p "Lorem ipsum" %>
 <%% end %>
 <% end %>
 
 <%# .haml %>
 <%= content_for :haml, flush: true do %>
-.prose.prose-indigo.dark:prose-invert
+.prose.prose-primary.dark:prose-invert
   %p Lorem ipsum...
 <% end %>
 

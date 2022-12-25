@@ -1,5 +1,5 @@
 <div class="mb-16 mt-6">
-  <div class="prose-lg prose-indigo dark:prose-invert mb-16">
+  <div class="prose-lg dark:prose-invert mb-16">
      <p>Email templates are ready for use with Rails UI. They are a starting point for you to tweak as the content you send your users evolves.</p>
 
     <p>There are many email clients out in the wild, and each has different areas of support regarding CSS and HTML. Rails UI includes essential support with some clever hacks you can use to do more with your templates.</p>
@@ -18,14 +18,14 @@
 
   <div class="mb-16">
     <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Helpers" %>
-    <div class="prose prose-indigo dark:prose-invert mb-10">
+    <div class="prose dark:prose-invert mb-10">
       <p>Bundled with Rails UI is a small <%= code_inline("MailHelper") %> module which is included in the <%= code_inline("ApplicationHelper") %> module after configuring Rails UI. This is useful for displaying buttons and adding dependable spacing between HTML elements in a given template.</p>
 
       <p>HTML emails require tables  to layout a given design. It's a chore to write these but they are more dependable across clients if authored properly. I hope these helpers should save you time and headache!</p>
     </div>
 
 <h3 class="font-bold text-xl mb-3">Spacers</h3>
-<div class="prose prose-indigo dark:prose-invert">
+<div class="prose dark:prose-invert">
   <p>The spacer helper is an extraction for rendering a new table between elements inside an email template. Emails and margin/padding don't always behave across mail clients, so this is more of a sure way to get that extra space between elements.</p>
 
   <p>The helper renders an empty table with some inline styles and height attributes intact. Rather than write this HTML by hand, the spacer helper makes it easy.</p>
@@ -54,7 +54,7 @@
 
 
 <h3 class="font-bold text-xl mb-3">Buttons</h3>
-<div class="prose prose-indigo dark:prose-invert">
+<div class="prose dark:prose-invert">
   <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code_inline("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
 
   <p>Rails UI supports two themes (primary, secondary) which can be customized in the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
@@ -121,7 +121,7 @@
 
 <div class="mb-16">
   <h3 class="font-bold text-xl mb-3">Callouts</h3>
-  <div class="prose prose-indigo dark:prose-invert">
+  <div class="prose dark:prose-invert">
     Highlight important content in an email with a callout. Rails UI offers a simple view helper that accepts a block. Add your content and any basic HTML for formatted results. Customize color and more inside the <%= link_to "mailer layout", systems_mailers_layout_path %> CSS.
   </div>
 

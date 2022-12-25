@@ -6,7 +6,7 @@
   <% end %>
 
   <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
-    <p class="prose prose-indigo mb-6 dark:prose-invert">Enabling any option below will automatically generate themed views using the CSS framework chosen. These views will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
+    <p class="prose mb-6 dark:prose-invert">Enabling any option below will automatically generate themed views using the CSS framework chosen. These views will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
     <ul class="leading-loose space-y-4">
       <% if about_page_exists? %>
         <%= render "railsui/admin/fields/pages/page_present",

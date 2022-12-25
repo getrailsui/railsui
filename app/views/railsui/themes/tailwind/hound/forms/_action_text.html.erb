@@ -1,7 +1,7 @@
 <div class="my-6">
   <%= render "railsui/shared/sticky_subhead", title: "ActionText", subtitle: "Custom theme" %>
 
-  <div class="prose prose-indigo dark:prose-invert max-w-full">
+  <div class="prose dark:prose-invert max-w-full">
     <p><%= link_to "Action Text", "https://guides.rubyonrails.org/action_text_overview.html", target: :_blank %> brings rich text content and editing to Rails. It includes the <%= link_to "Trix editor", "https://trix-editor.org/", target: :_blank %> that handles everything from formatting to links to quotes to lists to embedded images and galleries.</p>
 
     <p>Use the custom ActionText editor design made exclusively for the <%= Railsui.config.theme.humanize %> theme.</p>
@@ -25,7 +25,7 @@
 <%%= form_with model: message do |form| %>
   <div class="form-group">
     <%%= form.label :content, class: "form-label" %>
-    <%%= form.rich_text_area :content, class: "form-input-richtext" %>
+    <%%= form.rich_text_area :content %>
   </div>
 <%% end %>
 <% end %>
@@ -34,7 +34,7 @@
 = form_with model: message do |form| %>
   .form-group
     = form.label :content, class: "form-label"
-    = form.rich_text_area :content, class: "form-input-richtext"
+    = form.rich_text_area :content
 <% end %>
 <%= render_snippet active_tab: "erb" %>
 </div>
