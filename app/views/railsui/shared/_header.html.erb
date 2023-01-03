@@ -19,7 +19,7 @@
     <p class="text-slate-600 dark:text-slate-400">Framework</p>
     <div class="flex items-center justify-start space-x-3 mt-1">
       <%= render_svg "#{framework.downcase}", title: "#{framework} logo", styles: "#{framework == "bootstrap" ? "dark:text-indigo-300 text-indigo-600" : "dark:text-teal-400 text-teal-500" } fill-current" %>
-      <p class="font-light text-slate-900 text-2xl dark:text-white"><%= framework.humanize %></p>
+      <p class="font-light text-slate-900 text-2xl dark:text-white"><%= framework.humanize %><%= " CSS" if framework == "tailwind" %></p>
     </div>
   </div>
 </div>

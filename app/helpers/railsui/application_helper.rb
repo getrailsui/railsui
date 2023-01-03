@@ -67,7 +67,7 @@ module Railsui
     end
 
     def code_inline(code)
-      content_tag :span, html_escape(code), class: "text-red-600 font-mono text-base dark:text-rose-400"
+      content_tag :span, html_escape(code), class: "text-indigo-900 font-mono font-semibold text-[15px] dark:text-rose-400 bg-indigo-50/50 p-px dark:bg-transparent rounded whitespace-pre"
     end
 
     def render_snippet(options={})
