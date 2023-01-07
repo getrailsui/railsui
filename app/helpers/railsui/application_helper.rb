@@ -149,5 +149,12 @@ module Railsui
         yield
       end
     end
+
+    def unsplash_url(options={})
+      item = options[:item] ||= "dog"
+      width = options[:width] ||= "600"
+      height = options[:height] ||= "400"
+      "https://source.unsplash.com/random/#{width}×#{height}/?#{item}"
+    end
   end
 end
