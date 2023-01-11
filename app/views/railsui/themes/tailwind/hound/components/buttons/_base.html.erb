@@ -1,0 +1,45 @@
+<div class="mb-16 mt-6">
+  <div class="prose-2xl font-light mb-6 dark:prose-invert">
+    <p>Button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more. Add spacing modifier classes to offset buttons as necessary.</p>
+  </div>
+
+<%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Base" %>
+
+<div class="prose dark:prose-invert mb-6 max-w-full">
+  <p>Buttons come as predefined components for rapid reusability. Every button will require a <%= code_inline(".btn") %> class.</p>
+  <p>Add <%= code_inline(".btn-primary") %>, <%= code_inline(".btn-dark") %>, <%= code_inline(".btn-light") %>, <%= code_inline("btn-white") %>, or <%= code_inline(".btn-link") %> to a given button to adopt a style of your choosing. You may extend the styles by adding additional CSS to the file inside <%= code_inline("app/assets/stylesheets/custom/buttons.css") %>.</p>
+</div>
+
+<div class="my-6 flex items-center space-x-2 p-6 bg-slate-50 rounded-lg shadow-inner">
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-white">White</button>
+  <button type="button" class="btn btn-link">Link</button>
+</div>
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-white">White</button>
+<button type="button" class="btn btn-link">Link</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Primary", type: "button", class: "btn btn-primary" %>
+<%%= button_tag "Dark", type: "button", class: "btn btn-dark" %>
+<%%= button_tag "Light", type: "button", class: "btn btn-light" %>
+<%%= button_tag "Light", type: "button", class: "btn btn-white" %>
+<%%= button_tag "Link", type: "button", class: "btn btn-link" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Primary", type: "button", class: "btn btn-primary"
+= button_tag "Light", type: "button", class: "btn btn-light"
+= button_tag "Dark", type: "button", class: "btn btn-dark"
+= button_tag "White", type: "button", class: "btn btn-white"
+= button_tag "Link", type: "button", class: "btn btn-link"
+<% end %>
+<%= render_snippet %>
+</div>

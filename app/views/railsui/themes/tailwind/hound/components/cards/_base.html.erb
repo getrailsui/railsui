@@ -1,0 +1,40 @@
+<div class="mb-16 mt-6">
+  <div class="prose-2xl font-light dark:prose-invert mb-6">
+    <p>Flexible and extensible content containers with multiple variants and options.</p>
+  </div>
+
+  <div class="prose prose-lg dark:prose-invert mb-6">
+    <p>Cards include options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.</p>
+  </div>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Base" %>
+
+  <div class="bg-slate-50 p-6 rounded shadow-inner">
+    <div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white p-6">
+      <h4>Card title</h4>
+      <p class="py-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white p-6">
+  <h4>Card title</h4>
+  <p class="py-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white p-6">
+  <h4>Card title</h4>
+  <p class="py-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-lg.shadow-lg.bg-white.p-6.shadow-slate-300/70
+  %h4 Card title
+  %p.py-2 Some quick example text to build on the card title and make up the bulk of the card's content.
+<% end %>
+<%= render_snippet %>
+
+</div>

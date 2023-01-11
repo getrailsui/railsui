@@ -1,0 +1,88 @@
+<%# Card - User card with actions %>
+<div class="my-16" data-controller="anchor">
+  <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "User card with actions" %>
+
+  <div class="bg-slate-50 p-6 rounded shadow-inner">
+   <div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white py-4 px-6 flex flex-wrap items-center w-auto">
+    <%= image_tag unsplash_url(item: "male portrait", width: 200, height: 200), class: "object-cover w-16 h-16 rounded-full flex-shrink-0" %>
+      <div class="pl-3 flex-1 flex flex-col items-start space-y-px text-slate-700">
+        <p class="font-bold">John Doe</p>
+        <p class="text-sm">Software Architect at <a href="#" class="btn-link" data-action="click->anchor#prevent">Amazon</a></p>
+      </div>
+      <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
+        <a data-action="click->anchor#prevent" href="#" class="btn btn-white space-x-2 group">
+          <%= icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+          <span>Phone</span>
+        </a>
+        <a data-action="click->anchor#prevent" href="#" class="btn btn-white space-x-2 group">
+          <%= icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+          <span>Email</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white py-4 px-6 flex flex-wrap items-center w-auto">
+  <%= image_tag unsplash_url(item: "male portrait", width: 200, height: 200), class: "object-cover w-16 h-16 rounded-full flex-shrink-0" %>
+  <div class="pl-3 flex-1 flex flex-col items-start space-y-px text-slate-700">
+    <p class="font-bold">John Doe</p>
+    <p class="text-sm">Software Architect at <a href="#" class="btn-link">Amazon</a></p>
+  </div>
+  <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
+    <a href="#" class="btn btn-white space-x-2 group">
+      <%%= icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <span>Phone</span>
+    </a>
+    <a href="#" class="btn btn-white space-x-2 group">
+      <%%= icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <span>Email</span>
+    </a>
+  </div>
+</div>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white py-4 px-6 flex flex-wrap items-center w-auto">
+<%= image_tag unsplash_url(item: "male portrait", width: 200, height: 200), class: "object-cover w-16 h-16 rounded-full flex-shrink-0" %>
+  <div class="pl-3 flex-1 flex flex-col items-start space-y-px text-slate-700">
+    <p class="font-bold">John Doe</p>
+    <p class="text-sm">Software Architect at <a href="#" class="btn-link">Amazon</a></p>
+  </div>
+  <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
+    <%%= link_to "#", class: "btn btn-white space-x-2 group" do %>
+      <%%= icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <span>Phone</span>
+    <%% end %>
+    <!-- * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit -->
+    <%% mail_content = capture do %>
+      <%%= icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <span>Email</span>
+    <%% end %>
+
+    <%%= mail_to "railsui@example.com", mail_content, class: "btn btn-white space-x-2 group" %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-lg.shadow-lg.bg-white.py-4.px-6.flex.flex-wrap.items-center.space-x-4.w-auto.shadow-slate-300/70
+  = image_tag "#", class: "object-cover w-16 h-16 rounded-full flex-shrink-0"
+  .flex-1.flex.flex-col.items-start.space-y-px.text-slate-700
+    %p.font-bold John Doe
+    %p.text-sm
+      Software Architect at #{link_to "Amazon", "#", class: "btn-link"}
+    .grid.gap-3.grid-cols-2.lg:pt-0.pt-3.w-full.lg:w-auto
+      = link_to "#", class: "btn btn-white space-x-2 group" do
+        = icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600"
+        %span Phone
+      / * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit
+      - mail_content = capture do
+        = icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600"
+        %span Email
+      = mail_to "railsui@example.com", mail_content, class: "btn btn-white space-x-2 group"
+<% end %>
+
+<%= render_snippet %>
+</div>

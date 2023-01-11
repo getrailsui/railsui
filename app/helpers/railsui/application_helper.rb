@@ -88,15 +88,7 @@ module Railsui
       options[:aria] = true
       options[:nocomment] = true
       options[:variant] ||= :outline
-
-      icon_size = case options[:size]
-      when :large
-        "icon-lg"
-      when :small
-        "icon-sm"
-      end
-
-      options[:class] = options[:variant] == :outline ? options.fetch(:styles, "icon icon-outline #{icon_size}") : options.fetch(:styles, "icon icon-solid #{icon_size}")
+      options[:class] = options.fetch(:styles)
 
       filename = "icons/#{options[:variant]}/#{name}.svg"
       inline_svg_tag(filename, options)

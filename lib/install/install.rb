@@ -187,7 +187,7 @@ def extend_layout_and_views
 end
 
 def copy_hero_icons
-  directory "#{__dir__}/icons", Rails.root.join("app/assets/images/icons")
+  directory "#{__dir__}/icons", Rails.root.join("app/assets/images/icons"), force: true
 end
 
 def copy_application_mailer
@@ -195,7 +195,7 @@ def copy_application_mailer
 end
 
 def scope_body_class
-  gsub_file Rails.root.join("app/views/layouts/application.html.erb"), "<body>", "<body class='rui'>"
+  gsub_file Rails.root.join('app/views/layouts/application.html.erb'), '<body>', '<body class="rui">'
 end
 
 # Add all the things!
