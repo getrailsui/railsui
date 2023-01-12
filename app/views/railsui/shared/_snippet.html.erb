@@ -23,8 +23,8 @@
         <li class="flex items-center">
           <a href="#erb"
           @click.prevent="active = 'erb'"
-          :class="active == 'erb' ? 'text-amber-400 border-amber-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-amber-400 hover:border-amber-400">.erb</a>
+          :class="active == 'erb' ? 'text-red-500 border-red-500' : 'border-transparent text-white/90'"
+          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-red-500 hover:border-red-500">.erb</a>
           <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
@@ -92,7 +92,7 @@
         data-controller="clipboard"
         >
         <button data-action="click->clipboard#copy"
-          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-amber-600 hover:from-amber-400 transition ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-red-600 hover:from-red-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none" %>
         </button>

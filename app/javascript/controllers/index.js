@@ -1,28 +1,31 @@
-import { application } from "./application"
+import { application } from './application'
 
-import TooltipController from "./tooltip_controller.js"
-application.register("tooltip", TooltipController)
+import TooltipController from './tooltip_controller.js'
+application.register('tooltip', TooltipController)
 
-import CanvasController from "./canvas_controller.js"
-application.register("canvas", CanvasController)
+import CanvasController from './canvas_controller.js'
+application.register('canvas', CanvasController)
 
-import ConfigurationController from "./configuration_controller.js"
-application.register("configuration", ConfigurationController)
+import ConfigurationController from './configuration_controller.js'
+application.register('configuration', ConfigurationController)
 
-import FlashController from "./flash_controller.js"
-application.register("flash", FlashController)
+import DropdownController from './dropdown_controller.js'
+application.register('dropdown', DropdownController)
 
-import CodeController from "./code_controller.js"
-application.register("code", CodeController)
+import FlashController from './flash_controller.js'
+application.register('flash', FlashController)
 
-import AnchorController from "./anchor_controller.js"
-application.register("anchor", AnchorController)
+import CodeController from './code_controller.js'
+application.register('code', CodeController)
 
-import ClipboardController from "./clipboard_controller.js"
-application.register("clipboard", ClipboardController)
+import AnchorController from './anchor_controller.js'
+application.register('anchor', AnchorController)
 
-import ToggleController from "./toggle_controller.js"
-application.register("toggle", ToggleController)
+import ClipboardController from './clipboard_controller.js'
+application.register('clipboard', ClipboardController)
 
-import ScrollController from "./scroll_controller.js"
-application.register("scroll", ScrollController)
+import ToggleController from './toggle_controller.js'
+application.register('toggle', ToggleController)
+
+import ScrollController from './scroll_controller.js'
+application.register('scroll', ScrollController)

@@ -501,6 +501,11 @@ highlight.js@^11.6.0:
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.6.0.tgz#a50e9da05763f1bb0c1322c8f4f755242cff3f5a"
   integrity sha512-ig1eqDzJaB0pqEvlPVIpSSyMaO92bH1N2rJpLMN/nX396wTpDA4Eq0uK+7I/2XG17pFaaKE0kjV/XPeGt7Evjw==
 
+hotkeys-js@>=3:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.10.1.tgz#0c67e72298f235c9200e421ab112d156dc81356a"
+  integrity sha512-mshqjgTqx8ee0qryHvRgZaZDxTwxam/2yTQmQlqAWS3+twnq1jsY9Yng9zB7lWq6WRrjTbTOc7knNwccXQiAjQ==
+
 import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
@@ -777,6 +782,13 @@ source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
+
+stimulus-use@^0.51.1:
+  version "0.51.1"
+  resolved "https://registry.yarnpkg.com/stimulus-use/-/stimulus-use-0.51.1.tgz#55e775eee26d583ee4bdb4427d58979885408ebe"
+  integrity sha512-e7yEDHWz1GrDWwTc1y1Nnz62HPjELRAfn5q1JSCpTj1wHCCs4NNRUR14oZ08xxlp/4bjrgApMOKRkMPKA2TmVg==
+  dependencies:
+    hotkeys-js ">=3"
 
 supports-color@^5.3.0:
   version "5.5.0"

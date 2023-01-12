@@ -17,7 +17,7 @@ else
   # postcss.config.js
   copy_file "#{__dir__}/themes/#{Railsui.config.theme}/postcss.config.js", "postcss.config.js", force: true
 
-  run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography --latest"
+  run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography stimulus-use --latest"
 
   if Rails.root.join("app/views/devise").exist?
     say "🛑 app/views/devise already exists. Files can't be copied. Refer to the gem source for reference."
