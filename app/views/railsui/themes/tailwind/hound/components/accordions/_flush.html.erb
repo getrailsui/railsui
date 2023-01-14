@@ -1,0 +1,119 @@
+<div class="mb-16 mt-6">
+
+  <%= render "railsui/shared/sticky_subhead", title: "Accordion", subtitle: "Flush" %>
+
+  <div class="prose prose-slate dark:prose-invert mb-6">
+    <p>A flush style accordion made up of <%= code_inline("<details>") %> and <%= code_inline("<summary>") %> HTML tags.</p>
+  </div>
+
+<dl class="my-6 divide-y divide-slate-100">
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&::-webkit-details-marker]:hidden">
+      This is the first accordion item
+      <%= icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block" %>
+      <%= icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque explicabo voluptates odio atque reiciendis, dolore magni quos quibusdam numquam, ad distinctio minima reprehenderit nemo harum, in perferendis delectus tempora.
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&::-webkit-details-marker]:hidden">
+      This is the second accordion item
+      <%= icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block" %>
+      <%= icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates maxime temporibus porro aut quis adipisci aliquid vitae labore modi harum facere, commodi molestiae repellat dicta eos officiis enim quae ullam.
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&::-webkit-details-marker]:hidden">
+      This is the third accordion item
+      <%= icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block" %>
+      <%= icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus excepturi aliquam quod deleniti sit mollitia at? Voluptates suscipit, perspiciatis fuga nesciunt atque, repellat minus distinctio iure cupiditate tenetur ipsam voluptatem?
+      </div>
+    </div>
+  </details>
+</dl>
+
+<% content_for :html, flush: true do %>
+<dl class="my-6 divide-y divide-slate-100">
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&::-webkit-details-marker]:hidden">
+      This is the first accordion item
+      <%%= icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block" %>
+      <%%= icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+        Lorem ipsum...
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&::-webkit-details-marker]:hidden">
+      This is the second accordion item
+      <%%= icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block" %>
+      <%%= icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+        Lorem ipsum...
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-indigo-600 [&::-webkit-details-marker]:hidden">
+      This is the third accordion item
+      <%%= icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block" %>
+      <%%= icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate max-w-none prose-a:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+        Lorem ipsum...
+      </div>
+    </div>
+  </details>
+</dl>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%dl.my-6 divide-y divide-slate-100
+%details.group.p-4.marker:content-['']
+  %summary.flex.w-full.cursor-pointer.select-none.justify-between.text-left.text-base.font-semibold.leading-7.text-slate-900.group-open:text-indigo-600.[&::-webkit-details-marker]:hidden
+    This is the first accordion item
+    = icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block"
+    = icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden"
+  .pt-6.pb-6
+    .prose.prose-slate.max-w-none.prose-a:font-semibold.prose-a:text-indigo-600.hover:prose-a:text-indigo-500
+      Lorem ipsum...
+%details.group.p-4.marker:content-['']
+  %summary.flex.w-full.cursor-pointer.select-none.justify-between.text-left.text-base.font-semibold.leading-7.text-slate-900.group-open:text-indigo-600.[&::-webkit-details-marker]:hidden
+    This is the second accordion item
+    = icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block"
+    = icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden"
+  .pt-6.pb-6
+    .prose.prose-slate.max-w-none.prose-a:font-semibold.prose-a:text-indigo-600.hover:prose-a:text-indigo-500
+      Lorem ipsum...
+%details.group.p-4.marker:content-['']
+  %summary.flex.w-full.cursor-pointer.select-none.justify-between.text-left.text-base.font-semibold.leading-7.text-slate-900.group-open:text-indigo-600.[&::-webkit-details-marker]:hidden
+    This is the third accordion item
+    = icon "plus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:hidden block"
+    = icon "minus", styles: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-indigo-500 group-open:block hidden"
+  .pt-6.pb-6
+    .prose.prose-slate.max-w-none.prose-a:font-semibold.prose-a:text-indigo-600.hover:prose-a:text-indigo-500
+      Lorem ipsum...
+<% end %>
+
+<%= render_snippet %>
+</div>
+
