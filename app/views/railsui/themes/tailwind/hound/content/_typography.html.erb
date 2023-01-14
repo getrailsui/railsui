@@ -183,7 +183,7 @@
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<%%= tag.div, class: "prose prose-xl prose-indigo dark:prose-invert" do %>
+<%%= tag.div class: "prose prose-xl prose-indigo dark:prose-invert" do %>
   <%%= tag.p "A lead paragraph stands out from regular paragraphs.", class: "lead" %>
 <%% end %>
 <% end %>
@@ -222,7 +222,7 @@
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<%% tag.figure, class: "pl-6 border-l-2 border-slate-200 py-1" do %>
+<%% tag.figure class: "pl-6 border-l-2 border-slate-200 py-1" do %>
   <%%= tag.blockquote class: "text-xl font-light mb-1 text-slate-700" do %>
     <%%= tag.p "A well-known quote, contained in a blockquote element." %>
   <%% end %>
@@ -248,7 +248,6 @@ Someone famous in
 
 <div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Typography", subtitle: "Lists" %>
-
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
   <div>
@@ -279,8 +278,6 @@ Someone famous in
   </div>
 </div>
 
-
-<%# .html %>
 <% content_for :html, flush: true do %>
 <ul class="list-disc">
   <li>A quick brown</li>
@@ -364,21 +361,18 @@ Someone famous in
   </div>
 </div>
 
-<%# .html %>
 <%= content_for :html, flush: true do %>
 <div class="prose dark:prose-invert">
   <p>Lorem ipsum...</p>
 </div>
 <% end %>
 
-<%# .html %>
 <%= content_for :erb, flush: true do %>
 <%%= tag.div class: "prose prose-primary dark:prose-invert" do %>
   <%%= tag.p "Lorem ipsum" %>
 <%% end %>
 <% end %>
 
-<%# .haml %>
 <%= content_for :haml, flush: true do %>
 .prose.prose-primary.dark:prose-invert
   %p Lorem ipsum...
