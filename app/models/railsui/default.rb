@@ -1,5 +1,7 @@
 module Railsui
   class Default
+    BOOTSTRAP_VERSION = "5.3"
+
     BOOTSTRAP = "bootstrap"
     TAILWIND_CSS = "tailwind"
 
