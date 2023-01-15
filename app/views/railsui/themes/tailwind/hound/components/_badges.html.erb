@@ -1,103 +1,11 @@
-<div class="mb-16 mt-6">
-  <div class="prose-2xl font-light mb-6 dark:prose-invert">
-    <p>Use badges as a branded way of labeling areas of a website or application.</p>
-  </div>
-
-  <%= render "railsui/shared/sticky_subhead", title: "Badges", subtitle: "Basic" %>
-
-<div class="rui dark:p-6 dark:rounded-lg">
-<span class="badge text-bg-primary">Primary</span>
-<span class="badge text-bg-secondary">Secondary</span>
-<span class="badge text-bg-success">Success</span>
-<span class="badge text-bg-danger">Danger</span>
-<span class="badge text-bg-warning">Warning</span>
-<span class="badge text-bg-info">Info</span>
-<span class="badge text-bg-light">Light</span>
+<div class="prose-lg prose-slate dark:prose-invert max-w-full my-6">
+  <p>Use badges to call attention to areas of a page or experience. Badges can be combined with other elements or used independently with comparable impact.</p>
 </div>
 
-<% content_for :html, flush: true do %>
-<span class="badge text-bg-primary">Primary</span>
-<span class="badge text-bg-secondary">Secondary</span>
-<span class="badge text-bg-success">Success</span>
-<span class="badge text-bg-danger">Danger</span>
-<span class="badge text-bg-warning">Warning</span>
-<span class="badge text-bg-info">Info</span>
-<span class="badge text-bg-light">Light</span>
-<% end %>
+<% path = "railsui/themes/tailwind/hound/components/badges" %>
 
-<% content_for :erb, flush: true do %>
-<%%= content_tag :span, "Primary", class: "badge text-bg-primary" %>
-<%%= content_tag :span, "Secondary", class: "badge text-bg-secondary" %>
-<%%= content_tag :span, "Success", class: "badge text-bg-success" %>
-<%%= content_tag :span, "Danger", class: "badge text-bg-danger" %>
-<%%= content_tag :span, "Warning", class: "badge text-bg-warning" %>
-<%%= content_tag :span, "Info", class: "badge text-bg-info" %>
-<%%= content_tag :span, "Light", class: "badge text-bg-light" %>
-<%%= content_tag :span, "Dark", class: "badge text-bg-dark" %>
-<% end %>
-
-<% content_for :haml, flush: true do %>
-%span.badge.text-bg-primary Primary
-%span.badge.text-bg-secondary Secondary
-%span.badge.text-bg-success Success
-%span.badge.text-bg-danger Danger
-%span.badge.text-bg-warning Warning
-%span.badge.text-bg-info Info
-%span.badge.text-bg-light Light
-%span.badge.text-bg-dark Dark
-<% end %>
-<%= render_snippet %>
-</div>
-
-<%# Badges - Pill %>
-
-<div class="mb-16 mt-6">
-
-  <%= render "railsui/shared/sticky_subhead", title: "Badges", subtitle: "Pills" %>
-
-<div class="rui dark:p-6 dark:rounded-lg">
-<span class="badge text-bg-primary rounded-pill">Primary</span>
-<span class="badge text-bg-secondary rounded-pill">Secondary</span>
-<span class="badge text-bg-success rounded-pill">Success</span>
-<span class="badge text-bg-danger rounded-pill">Danger</span>
-<span class="badge text-bg-warning rounded-pill">Warning</span>
-<span class="badge text-bg-info rounded-pill">Info</span>
-<span class="badge text-bg-light rounded-pill">Light</span>
-</div>
-
-<% content_for :html, flush: true do %>
-<span class="badge text-bg-primary rounded-6">Primary</span>
-<span class="badge text-bg-secondary rounded-6">Secondary</span>
-<span class="badge text-bg-success rounded-6">Success</span>
-<span class="badge text-bg-danger rounded-6">Danger</span>
-<span class="badge text-bg-warning rounded-6">Warning</span>
-<span class="badge text-bg-info rounded-6">Info</span>
-<span class="badge text-bg-light rounded-6">Light</span>
-<% end %>
-
-<% content_for :erb, flush: true do %>
-<%%= content_tag :span, "Primary", class: "badge text-bg-primary rounded-pill" %>
-<%%= content_tag :span, "Secondary", class: "badge text-bg-secondary rounded-pill" %>
-<%%= content_tag :span, "Success", class: "badge text-bg-success rounded-pill" %>
-<%%= content_tag :span, "Danger", class: "badge text-bg-danger rounded-pill" %>
-<%%= content_tag :span, "Warning", class: "badge text-bg-warning rounded-pill" %>
-<%%= content_tag :span, "Info", class: "badge text-bg-info rounded-pill" %>
-<%%= content_tag :span, "Light", class: "badge text-bg-light rounded-pill" %>
-<%%= content_tag :span, "Dark", class: "badge text-bg-dark rounded-pill" %>
-<% end %>
-
-<% content_for :haml, flush: true do %>
-%span.badge.text-bg-primary.rounded-pill Primary
-%span.badge.text-bg-secondary.rounded-pill Secondary
-%span.badge.text-bg-success.rounded-pill Success
-%span.badge.text-bg-danger.rounded-pill Danger
-%span.badge.text-bg-warning.rounded-pill Warning
-%span.badge.text-bg-info.rounded-pill Info
-%span.badge.text-bg-light.rounded-pill Light
-%span.badge.text-bg-dark.rounded-pill Dark
-<% end %>
-
-<%= render_snippet %>
-</div>
-
+<%= render "#{path}/basic" %>
+<%= render "#{path}/pill" %>
+<%= render "#{path}/outline" %>
+<%= render "#{path}/tag" %>
 

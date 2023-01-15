@@ -10,8 +10,4 @@ export default class extends Controller {
     event.preventDefault()
     navigator.clipboard.writeText(this.urlValue + `#${this.element.id}`)
   }
-
-  prevent(event) {
-    event.preventDefault()
-  }
 }
