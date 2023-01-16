@@ -1,0 +1,92 @@
+<div class="mb-16 mt-6">
+  <div class="prose-lg prose-slate mb-6 dark:prose-invert">
+    <p>Breadcrumbs help with everything from search engine optimization to easier navigation.</p>
+  </div>
+
+
+<div class="p-6 border border-slate-200 rounded-2xl">
+<nav aria-label="breadcrumb" class="my-3">
+  <ol class="flex flex-wrap items-center space-x-5">
+    <li>
+      <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
+    </li>
+    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Library</li>
+  </ol>
+</nav>
+
+<nav aria-label="breadcrumb" class="my-3">
+  <ol class="flex flex-wrap items-center space-x-5">
+    <li>
+      <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
+    </li>
+    <li>
+      <a href="#" class="text-slate-700 hover:underline before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block">Library</a>
+    </li>
+    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Data</li>
+  </ol>
+</nav>
+</div>
+
+<% content_for :html, flush: true do %>
+<nav aria-label="breadcrumb" class="my-3">
+  <ol class="flex flex-wrap items-center space-x-5">
+    <li>
+      <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
+    </li>
+    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Library</li>
+  </ol>
+</nav>
+
+<nav aria-label="breadcrumb" class="my-3">
+  <ol class="flex flex-wrap items-center space-x-5">
+    <li>
+      <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
+    </li>
+    <li>
+      <a href="#" class="text-slate-700 hover:underline before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block">Library</a>
+    </li>
+    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Data</li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<nav aria-label="breadcrumb" class="my-3">
+  <ol class="flex flex-wrap items-center space-x-5">
+    <li>
+      <%%= link_to "Home", "#", class: "text-slate-700 hover:underline inline-block" %>
+    </li>
+    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Library</li>
+  </ol>
+</nav>
+
+<nav aria-label="breadcrumb" class="my-3">
+  <ol class="flex flex-wrap items-center space-x-5">
+    <li>
+      <%%= link_to "Home", "#", class: "text-slate-700 hover:underline inline-block" %>
+    </li>
+    <li>
+      <%%= link_to "Library", "#", class: "text-slate-700 hover:underline before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" %>
+    </li>
+    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Data</li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav.my-3{"aria-label" => "breadcrumb"}
+  %ol.flex.flex-wrap.items-center.space-x-5
+    %li
+      %a.text-slate-700.hover:underline.inline-block{href: "#"} Home
+    %li.text-indigo-600.font-medium.before:absolute.before:-left-3.before:top-0.relative.before:text-slate-300.before:font-normal.inline-block.before:content-['/']{"aria-current" => "page"} Library
+%nav.my-3{"aria-label" => "breadcrumb"}
+  %ol.flex.flex-wrap.items-center.space-x-5
+    %li
+      %a.text-slate-700.hover:underline.inline-block{href: "#"} Home
+    %li
+      %a.text-slate-700.hover:underline.before:absolute.before:-left-3.before:top-0.relative.before:text-slate-300.before:font-normal.inline-block.before:content-['/']{href: "#"} Library
+    %li.text-indigo-600.font-medium.before:absolute.before:-left-3.before:top-0.relative.before:text-slate-300.before:font-normal.inline-block.before:content-['/']{"aria-current" => "page"} Data
+<% end %>
+
+<%= render_snippet %>
+</div>
