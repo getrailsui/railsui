@@ -1,0 +1,46 @@
+<div class="mb-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Base" %>
+
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <div class="card" style="width: 18rem;">
+      <img src="https://placeholder.pics/svg/400x300/DEDEDE/FFFFFF" class="card-img-top" alt="Placeholder image">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="card" style="width: 18rem;">
+  <img src="#" class="card-img-top" alt="Placeholder image">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="card" style="width: 18rem;">
+  <%%= image_tag "#", class: "card-img-top", alt: "Placeholder image" %>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%%= link_to "Go somewhere", "#", class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.card{:style => "width: 18rem;"}
+  = image_tag "#", class: "card-img-top", alt: "Placeholder image"
+  .card-body
+    %h5.card-title Card title
+    %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+    = link_to "Go somewhere", "#", class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>

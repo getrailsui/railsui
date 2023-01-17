@@ -1,0 +1,47 @@
+
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Header" %>
+
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <div class="card">
+      <div class="card-header">Featured</div>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<div class="card">
+  <div class="card-header">Featured</div>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="card">
+  <div class="card-header">Featured</div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <%%= link_to "Go somewhere", "#", class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.card
+  .card-header Featured
+    .card-body
+      %h5.card-title Special title treatment
+      %p.card-text With supporting text below as a natural lead-in to additional content.
+      = link_to "Go somewhere", "#", class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>

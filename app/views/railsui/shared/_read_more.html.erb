@@ -1,5 +1,5 @@
 <div class="mt-16">
-  <div class="bg-gray-100 dark:bg-slate-800 dark:text-slate-300 px-6 py-10 rounded-xl flex flex-wrap items-center justify-center mx-auto text-slate-500">
+  <div class="bg-white border dark:bg-slate-800 dark:text-slate-300 px-6 py-10 rounded-xl flex flex-wrap items-center justify-center mx-auto text-slate-500">
     <%= render_svg "book", styles: "stroke-current w-6 h-6 text-slate-400 mr-2" %>
     <p>Refer to the <%= link_to "official #{Railsui::config.css_framework.humanize} documentation", local_assigns[:link], target: :_blank, class: "text-indigo-600 underline hover:text-indigo-600 font-medium dark:text-indigo-500 dark:hover:text-indigo-500" %> for more help with <%= local_assigns[:subject] %>.</p>
   </div>

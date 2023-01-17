@@ -1,0 +1,35 @@
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Expanded display" %>
+
+  <div class="prose dark:prose-invert mb-6">
+    <p>Create responsive stacks of full-width buttons with a mix of display and gap utilities.</p>
+  </div>
+
+<div class="rui dark:p-6 dark:rounded-lg">
+<div class="d-grid gap-2">
+  <button class="btn btn-primary" type="button">Button</button>
+  <button class="btn btn-secondary" type="button">Button</button>
+</div>
+</div>
+
+<% content_for :html, flush: true do %>
+<div class="d-grid gap-2">
+  <button class="btn btn-primary" type="button">Button</button>
+  <button class="btn btn-secondary" type="button">Button</button>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= tag.div class: "d-grid gap-2" do %>
+  <%%= button_tag "Button", type: "button", class: "btn btn-primary" %>
+  <%%= button_tag "Button", type: "button", class: "btn btn-secondary" %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.d-grid.gap-2
+  = button_tag "Button", type: "button", class: "btn btn-primary"
+  = button_tag "Button", type: "button", class: "btn btn-secondary"
+<% end %>
+<%= render_snippet %>
+</div>

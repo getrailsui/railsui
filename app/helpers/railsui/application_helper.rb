@@ -66,7 +66,7 @@ module Railsui
       end
     end
 
-    def code_inline(code)
+    def code(code)
       content_tag :span, html_escape(code), class: "text-indigo-900 font-mono font-semibold text-[15px] dark:text-rose-400 bg-indigo-50/50 p-px dark:bg-transparent rounded whitespace-pre"
     end
 
@@ -88,7 +88,7 @@ module Railsui
       options[:aria] = true
       options[:nocomment] = true
       options[:variant] ||= :outline
-      options[:class] = options.fetch(:styles)
+      options[:class] = options.fetch(:styles, nil)
 
       filename = "icons/#{options[:variant]}/#{name}.svg"
       inline_svg_tag(filename, options)

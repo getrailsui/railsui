@@ -19,7 +19,7 @@
   <div class="mb-16">
     <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Helpers" %>
     <div class="prose dark:prose-invert mb-10">
-      <p>Bundled with Rails UI is a small <%= code_inline("MailHelper") %> module which is included in the <%= code_inline("ApplicationHelper") %> module after configuring Rails UI. This is useful for displaying buttons and adding dependable spacing between HTML elements in a given template.</p>
+      <p>Bundled with Rails UI is a small <%= code("MailHelper") %> module which is included in the <%= code("ApplicationHelper") %> module after configuring Rails UI. This is useful for displaying buttons and adding dependable spacing between HTML elements in a given template.</p>
 
       <p>HTML emails require tables  to layout a given design. It's a chore to write these but they are more dependable across clients if authored properly. I hope these helpers should save you time and headache!</p>
     </div>
@@ -55,7 +55,7 @@
 
 <h3 class="font-bold text-xl mb-3">Buttons</h3>
 <div class="prose dark:prose-invert">
-  <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code_inline("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
+  <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
 
   <p>Rails UI supports two themes (primary, secondary) which can be customized in the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
 </div>

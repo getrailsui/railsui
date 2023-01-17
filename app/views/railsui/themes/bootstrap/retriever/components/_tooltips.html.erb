@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Enabling tooltips" %>
 
   <div class="prose dark:prose-invert">
-    <p>Tooltips require intitialization with JavaScript before use. The easiest way is by targeting by the <%= code_inline("data-bs-toggle") %> attribute Bootstrap commonly utilizies.</p>
+    <p>Tooltips require intitialization with JavaScript before use. The easiest way is by targeting by the <%= code("data-bs-toggle") %> attribute Bootstrap commonly utilizies.</p>
   </div>
 
 <% content_for :js, flush: true do %>
@@ -34,7 +34,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Usage" %>
 
   <div class="prose dark:prose-invert mb-6">
-    <p>Using the <%= code_inline('data-bs-toggle="tooltip"') %> attribute you can enable tooltips on nearly any element. Pass tooltip content to an additional data attribute titled <%= code_inline('data-bs-title="My copy here"') %>.</p>
+    <p>Using the <%= code('data-bs-toggle="tooltip"') %> attribute you can enable tooltips on nearly any element. Pass tooltip content to an additional data attribute titled <%= code('data-bs-title="My copy here"') %>.</p>
   </div>
 
   <div class="rui dark:p-6 dark:rounded-lg">
@@ -65,7 +65,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
   <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Directions" %>
 
   <div class="prose dark:prose-invert mb-6">
-    <p>Use an additional data attribute called <%= code_inline("data-bs-placement") %> to denote what side of a given element the tooltip will appear.</p>
+    <p>Use an additional data attribute called <%= code("data-bs-placement") %> to denote what side of a given element the tooltip will appear.</p>
   </div>
 
   <div class="rui dark:p-6 dark:rounded-lg">

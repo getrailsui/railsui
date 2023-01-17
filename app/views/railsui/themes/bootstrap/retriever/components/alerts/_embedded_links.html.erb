@@ -1,0 +1,54 @@
+<div class="mb-16 mt-6">
+<div class="prose-2xl dark:prose-invert mb-6 max-w-full">
+  <p>Provide contextual feedback messages for typical user actions with the handful of flexible alert messages.</p>
+</div>
+
+<%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "Embedded links" %>
+
+<div class="mb-6 prose dark:prose-invert max-w-full">Use the<%= code('.alert-link') %>. utility class to quickly provide matching colored links within any alert.</div>
+
+<div class="rui dark:p-6 dark:rounded-lg">
+  <div class="alert alert-primary" role="alert">
+    A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+  <div class="alert alert-secondary" role="alert">
+    A simple secondary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+  <div class="alert alert-success" role="alert">
+    A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+  <div class="alert alert-danger" role="alert">
+    A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+  <div class="alert alert-warning" role="alert">
+    A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+  <div class="alert alert-info" role="alert">
+    A simple info alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+  <div class="alert alert-light" role="alert">
+    A simple light alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+  <div class="alert alert-dark" role="alert">
+    A simple dark alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+  </div>
+</div>
+
+<% content_for :html, flush: true do %>
+<div class="alert alert-primary" role="alert">
+  A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= tag.div class: "alert alert-primary", role: "alert" do %>
+  A simple primary alert with <%%= link_to "an example link", "#", class: "alert-link" %>. Give it a click if you like.
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= tag.div class: "alert alert-primary", role: "alert" do
+  A simple primary alert with #{link_to "an example link", "#", class: "alert-link"}. Give it a click if you like.
+<% end %>
+<%= render_snippet %>
+</div>
