@@ -1,0 +1,16 @@
+  <h2>3. Defining the menu</h2>
+
+  <p>Each dropdown has a corresponding menu that gets hidden by default. The menu requires the following attribute to function <%= code 'data-dropdown-target="menu"' %>. The element the target is appended to also requires the class name <%= code " class='hidden'" %> to be present.</p>
+
+<div class="not-prose mb-6">
+<% content_for :html, flush: true do %>
+<div data-controller="dropdown">
+  <button data-action="dropdown#toggle click@window->dropdown#hide">Dropdown</button>
+  <ul class="hidden" data-dropdown-target="menu">
+    <li>Menu list item 1</li>
+    <li>Menu list item 2</li>
+  </ul>
+</div>
+<% end %>
+<%= render_snippet %>
+</div>

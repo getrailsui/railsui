@@ -1,0 +1,30 @@
+<article class="p-8 bg-blue-50/20 border-blue-100 border my-6 rounded-lg relative">
+  <div class="absolute top-4 right-4">
+    <%= doc_label(:tutorial) %>
+  </div>
+
+  <div class="prose prose-slate max-w-full dark:prose-invert">
+    <h1 class=" text-slate-800">Tutorial</h1>
+    <p>The short-form tutorial below represents how to pair Rails UI, Stimulus.js, and Ruby on Rails together to achieve a dropdown pattern using a set of elements working together.</p>
+
+    <% tutorial_path = "railsui/themes/tailwind/hound/components/dropdowns/tutorial" %>
+
+    <%= render "#{tutorial_path}/dependencies" %>
+
+    <hr class="border-blue-200/50">
+
+    <%= render "#{tutorial_path}/1" %>
+
+    <hr class="border-blue-200/50">
+
+    <%= render "#{tutorial_path}/2" %>
+
+    <hr class="border-blue-200/50">
+
+    <%= render "#{tutorial_path}/3" %>
+
+    <hr class="border-blue-200/50">
+
+    <%= render "#{tutorial_path}/4" %>
+  </div>
+</article>
