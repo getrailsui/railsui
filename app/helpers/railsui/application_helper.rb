@@ -148,5 +148,16 @@ module Railsui
       height = options[:height] ||= "400"
       "https://source.unsplash.com/random/#{width}×#{height}/?#{item}"
     end
+
+    def doc_label(type)
+      case type
+      when :javascript
+        content_tag :p, "JavaScript", class:"bg-yellow-300 text-black rounded-full px-3 py-1 font-semibold inline-block text-xs"
+      when :stimulus
+        content_tag :p, "Stimulus.js", class: "bg-yellow-300 text-black rounded-full px-3 py-1 font-semibold inline-block text-xs"
+      when :ruby
+        content_tag :ruby, "Ruby", class: "bg-red-700 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs"
+      end
+    end
   end
 end

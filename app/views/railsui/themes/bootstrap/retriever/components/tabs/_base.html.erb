@@ -1,0 +1,88 @@
+<div class="mb-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Tabs", subtitle: "Base" %>
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <p class="pt-2">This is the content area for the Home tab</p>
+      </div>
+      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <p class="pt-2">Profile tab content</p>
+      </div>
+      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+        <p class="pt-2">Contact tab content</p>
+      </div>
+      <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
+        <p class="pt-2">Disabled tab content</p>
+      </div>
+    </div>
+  </div>
+
+<% content_for :html, flush: true do %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+</div>
+<% end %>
+
+  <% content_for :haml, flush: true do %>
+%ul#myTab.nav.nav-tabs{:role => "tablist"}
+  %li.nav-item{:role => "presentation"}
+    %button#home-tab.nav-link.active{"aria-controls" => "home-tab-pane", "aria-selected" => "true", "data-bs-target" => "#home-tab-pane", "data-bs-toggle" => "tab", :role => "tab", :type => "button"} Home
+  %li.nav-item{:role => "presentation"}
+    %button#profile-tab.nav-link{"aria-controls" => "profile-tab-pane", "aria-selected" => "false", "data-bs-target" => "#profile-tab-pane", "data-bs-toggle" => "tab", :role => "tab", :type => "button"} Profile
+  %li.nav-item{:role => "presentation"}
+    %button#contact-tab.nav-link{"aria-controls" => "contact-tab-pane", "aria-selected" => "false", "data-bs-target" => "#contact-tab-pane", "data-bs-toggle" => "tab", :role => "tab", :type => "button"} Contact
+  %li.nav-item{:role => "presentation"}
+    %button#disabled-tab.nav-link{"aria-controls" => "disabled-tab-pane", "aria-selected" => "false", "data-bs-target" => "#disabled-tab-pane", "data-bs-toggle" => "tab", :disabled => "disabled", :role => "tab", :type => "button"} Disabled
+#myTabContent.tab-content
+  #home-tab-pane.tab-pane.fade.show.active{"aria-labelledby" => "home-tab", :role => "tabpanel", :tabindex => "0"} ...
+  #profile-tab-pane.tab-pane.fade{"aria-labelledby" => "profile-tab", :role => "tabpanel", :tabindex => "0"} ...
+  #contact-tab-pane.tab-pane.fade{"aria-labelledby" => "contact-tab", :role => "tabpanel", :tabindex => "0"} ...
+  #disabled-tab-pane.tab-pane.fade{"aria-labelledby" => "disabled-tab", :role => "tabpanel", :tabindex => "0"} ...
+  <% end %>
+
+<% content_for :js, flush: true do %>
+// Use if you prefer to not use Bootstraps data attributes
+const triggerTabList = document.querySelectorAll('.nav-tabs')
+triggerTabList.forEach(triggerEl => {
+  const tabTrigger = new bootstrap.Tab(triggerEl)
+
+  triggerEl.addEventListener('click', event => {
+    event.preventDefault()
+    tabTrigger.show()
+  })
+})
+<% end %>
+
+<%= render_snippet %>
+</div>

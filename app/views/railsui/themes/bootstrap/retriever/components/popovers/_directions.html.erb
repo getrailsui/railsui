@@ -1,0 +1,54 @@
+<div class="mb-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Popovers", subtitle: "Directions" %>
+
+<div class="prose mb-6 dark:prose-invert">
+  <p>There are four directions to choose from include top, right, bottom, and left. Set <%= code("data-bs-placement") %> to customize the direction.</p>
+</div>
+
+<div class="rui dark:p-6 dark:rounded-lg">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+  Popover on top
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+  Popover on right
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+  Popover on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
+  Popover on left
+</button>
+</div>
+
+<p class="mt-3 text-sm text-gray-700 dark:text-slate-500">Note: This example will only work if the JS snippet above is initialized in your app.</p>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+  Popover on top
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+  Popover on right
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+  Popover on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
+  Popover on left
+</button>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Click to toggle popover", type: :button, class: "btn btn-lg btn-danger", data: { bs_toggle: "popover", bs_title: "Popover title", bs_content: "And here's some amazing content. It's very engaging. Right?", bs_placement: "left" } %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Click to toggle popover", type: :button, class: "btn btn-lg btn-danger", data: { bs_toggle: "popover", bs_title: "Popover title", bs_content: "And here's some amazing content. It's very engaging. Right?", bs_placement: "left" }
+<% end %>
+<%= render_snippet %>
+</div>
+</div>

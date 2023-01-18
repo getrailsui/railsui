@@ -1,0 +1,81 @@
+<div class="mb-16 mt-6">
+  <div class="prose-2xl font-light dark:prose-invert mb-6">
+    <p>Pagination indicates a series of related content exists across multiple pages.</p>
+  </div>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Pagination", subtitle: "Disabled and active states" %>
+
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <nav aria-label="...">
+      <ul class="pagination mb-0">
+        <li class="page-item">
+          <a class="page-link disabled">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item" aria-current="page">
+          <a class="page-link active" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+<% content_for :html, flush: true do %>
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link disabled">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item" aria-current="page">
+      <a class="page-link active" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= tag.nav do %>
+  <%%= tag.ul class: "pagination" do %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "Previous", class: "page-link disabled" %>
+    <%% end %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "1", class: "page-link" %>
+    <%% end %>
+    <%%= tag.li class: "page-item", "aria-current": "page" %>
+      <%%= link_to "2", class: "page-link active" %>
+    <%% end %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "3", class: "page-link" %>
+    <%% end %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "Next", class: "page-link" %>
+    <%% end %>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav{"aria-label" => "..."}
+  %ul.pagination
+    %li.page-item
+      %a.page-link.disabled Previous
+    %li.page-item
+      %a.page-link{:href => "#"} 1
+    %li.page-item{"aria-current" => "page"}
+      %a.page-link.active{:href => "#"} 2
+    %li.page-item
+      %a.page-link{:href => "#"} 3
+    %li.page-item
+      %a.page-link{:href => "#"} Next
+<% end %>
+<%= render_snippet %>
+</div>

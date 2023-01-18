@@ -1,0 +1,18 @@
+<div class="mb-16 mt-6">
+  <div class="prose-2xl font-light mb-6 dark:prose-invert">
+    <p>Add contextual content with tooltips.</p>
+  </div>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Enabling tooltips" %>
+
+  <div class="prose dark:prose-invert">
+    <p>Tooltips require intitialization with JavaScript before use. The easiest way is by targeting by the <%= code("data-bs-toggle") %> attribute Bootstrap commonly utilizies.</p>
+  </div>
+
+<% content_for :js, flush: true do %>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+<% end %>
+
+<%= render_snippet active_tab: "js" %>
+</div>

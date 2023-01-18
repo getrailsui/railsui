@@ -1,0 +1,79 @@
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Pagination", subtitle: "Alignment - Center" %>
+
+  <div class="prose dark:prose-invert mb-6">Shift pagination UI to the center using built in flexbox classes.</div>
+
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <nav aria-label="...">
+      <ul class="pagination mb-0 justify-content-center">
+        <li class="page-item">
+          <a class="page-link disabled">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item" aria-current="page">
+          <a class="page-link active" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+<% content_for :html, flush: true do %>
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link disabled">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item" aria-current="page">
+      <a class="page-link active" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= tag.nav do %>
+  <%%= tag.ul class: "pagination justify-content-center" do %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "Previous", class: "page-link disabled" %>
+    <%% end %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "1", class: "page-link" %>
+    <%% end %>
+    <%%= tag.li class: "page-item", "aria-current": "page" %>
+      <%%= link_to "2", class: "page-link active" %>
+    <%% end %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "3", class: "page-link" %>
+    <%% end %>
+    <%%= tag.li class: "page-item" %>
+      <%%= link_to "Next", class: "page-link" %>
+    <%% end %>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav{"aria-label" => "..."}
+  %ul.pagination.justify-content-center
+    %li.page-item
+      %a.page-link.disabled Previous
+    %li.page-item
+      %a.page-link{:href => "#"} 1
+    %li.page-item{"aria-current" => "page"}
+      %a.page-link.active{:href => "#"} 2
+    %li.page-item
+      %a.page-link{:href => "#"} 3
+    %li.page-item
+      %a.page-link{:href => "#"} Next
+<% end %>
+<%= render_snippet %>
+</div>

@@ -1,0 +1,21 @@
+<%# Toasts - Base Example %>
+<div class="mb-24 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Toasts", subtitle: "Base example" %>
+
+  <div class="prose dark:prose-invert mb-6">
+    <p>Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.</p>
+  </div>
+
+  <div class="rui dark:p-6 dark:rounded-lg">
+    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Rails UI</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+    </div>
+  </div>
+</div>
