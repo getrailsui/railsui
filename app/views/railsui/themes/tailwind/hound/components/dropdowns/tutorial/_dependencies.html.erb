@@ -21,7 +21,7 @@ yarn add stimulus-use
 
 </div>
 
-<div class="px-4 py-2 rounded-lg bg-indigo-50 flex items-center pointer-events-none select-none">
-  <%= icon "bell", styles: "text-indigo-600 w-5 h-5", variant: :solid %>
-  <p class="m-0 text-indigo-900 ml-2">Stimulus.js and stimulus-use are <strong>already installed</strong> as a dependency of the <%= Railsui::config.theme.titleize %> theme.</p>
-</div>
+
+<%= render callout do %>
+<p class="m-0 ml-2">Stimulus.js and stimulus-use are <strong>already installed</strong> as a dependency of the <%= Railsui::config.theme.titleize %> theme.</p>
+<% end %>

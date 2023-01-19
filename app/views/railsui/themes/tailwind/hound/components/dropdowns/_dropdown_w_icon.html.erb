@@ -1,5 +1,5 @@
-<div data-controller="dropdown" class="relative">
-  <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="btn <%= local_assigns[:class] %> pr-3">
+<div data-controller="dropdown" class="relative inline-block">
+  <button type="button" data-action="click->dropdown#toggle click@window->dropdown#hide" class="btn <%= local_assigns[:class] %> pr-3">
     <%= local_assigns[:label] %>
     <%= icon "chevron-down", styles: "w-3 h-3 ml-2" %>
   </button>
