@@ -21,6 +21,9 @@ application.register('dropdown', DropdownController)
 import FlashController from './flash_controller.js'
 application.register('flash', FlashController)
 
+import ModalController from './modal_controller.js'
+application.register('modal', ModalController)
+
 import PreventController from './prevent_controller.js'
 application.register('prevent', PreventController)
 

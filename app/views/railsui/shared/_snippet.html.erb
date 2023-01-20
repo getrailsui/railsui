@@ -15,7 +15,7 @@
           <a href="#html"
           @click.prevent="active = 'html'"
           :class="active == 'html' ? 'text-pink-400 border-pink-400' : 'border-transparent text-white/90'"
-          class="-ml-2 pl-5 pr-3 py-3 font-mono  text-sm border-b-2 hover:text-pink-400  hover:border-pink-400">.html</a>
+          class="-ml-2 pl-5 pr-3 py-3 font-mono  text-sm border-b-2 hover:text-pink-400  hover:border-pink-400"><%= local_assigns[:html_filename] %></a>
           <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
@@ -24,7 +24,7 @@
           <a href="#erb"
           @click.prevent="active = 'erb'"
           :class="active == 'erb' ? 'text-red-500 border-red-500' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-red-500 hover:border-red-500">.erb</a>
+          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-red-500 hover:border-red-500"><%= local_assigns[:erb_filename] %></a>
           <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
@@ -34,7 +34,7 @@
           <a href="#haml"
           @click.prevent="active = 'haml'"
           :class="active == 'haml' ? 'text-sky-400 border-sky-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-sky-400 hover:border-sky-400">.haml</a>
+          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-sky-400 hover:border-sky-400"><%= local_assigns[:haml_filename] %></a>
           <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
@@ -54,7 +54,7 @@
           <a href="#js"
           @click.prevent="active = 'js'"
           :class="active == 'js' ? 'text-amber-400 border-amber-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-amber-400 hover:border-amber-400">.js</a>
+          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-amber-400 hover:border-amber-400"><%= local_assigns[:js_filename] %></a>
           <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
@@ -64,7 +64,7 @@
           <a href="#ruby"
           @click.prevent="active = 'ruby'"
           :class="active == 'ruby' ? 'text-rose-400 border-rose-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400">.rb</a>
+          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400"><%= local_assigns[:ruby_filename] %></a>
           <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>

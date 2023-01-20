@@ -72,7 +72,21 @@ module Railsui
 
     def render_snippet(options={})
       active_tab = options[:active_tab] ||= "html"
-      render partial: "railsui/shared/snippet", locals: { active_tab: active_tab }
+      html_filename = options[:html_filename] ||= ".html"
+      erb_filename = options[:erb_filename] ||= ".html.erb"
+      haml_filename = options[:haml_filename] ||= ".haml"
+      js_filename = options[:js_filename] ||= ".js"
+      ruby_filename = options[:ruby_filename] ||= ".rb"
+
+
+      render partial: "railsui/shared/snippet", locals: {
+        active_tab: active_tab,
+        html_filename: html_filename,
+        erb_filename: erb_filename,
+        haml_filename: haml_filename,
+        js_filename: js_filename,
+        ruby_filename: ruby_filename
+      }
     end
 
     def framework_name
