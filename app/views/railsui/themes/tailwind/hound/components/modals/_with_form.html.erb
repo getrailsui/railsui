@@ -1,0 +1,225 @@
+<div class="mb-24 mt-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Modals", subtitle: "With form and action bar" %>
+
+<div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg">
+  <div class="rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative">
+    <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group" data-action="click->modal#close">
+      <%= icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
+    </button>
+    <div class="prose prose-indigo mb-4">
+      <h2 id="modal-with-form" class="mb-3">Subscribe</h2>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+    </div>
+
+    <form action="#">
+      <div class="form-group">
+        <label for="email_demo" class="form-label">E-mail</label>
+        <input id="email_demo" type="email" class="form-input" placeholder="saasquatch@railsui.com">
+      </div>
+      <div class="form-group">
+        <label for="reason_demo" class="form-label">Reason for joining</label>
+        <textarea name="reason" id="reason_demo" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
+      </div>
+    </form>
+
+    <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4">
+      <button class="btn btn-primary">Subscribe</button>
+      <button class="btn btn-white">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div data-controller="modal">
+  <div class="flex justify-center p-6 border-x border-b border-slate-200 rounded-b-lg relative">
+    <div class="absolute top-4 left-4">
+      <%= doc_label :demo %>
+    </div>
+    <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
+      Open modal with form
+    </button>
+  </div>
+
+  <div
+    aria-labelledby="modal-w-form"
+    aria-modal="true"
+    data-modal-target="container"
+    data-action="keyup@window->modal#closeWithEsc"
+    class="hidden fixed inset-0 z-50 overflow-y-auto"
+    role="dialog"
+    >
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div
+      data-modal-target="content"
+      data-transition-enter-active="transition ease-out duration-300"
+      data-transition-enter-from="transform opacity-0 scale-95"
+      data-transition-enter-to="transform opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-300"
+      data-transition-leave-from="transform opacity-100 scale-100"
+      data-transition-leave-to="transform opacity-0 scale-95"
+      class="hidden rounded shadow-xl max-w-lg bg-white m-1 p-8 origin-bottom relative">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group" data-action="click->modal#close">
+          <%= icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
+        </button>
+        <div class="prose prose-indigo mb-4">
+          <h2 id="modal-with-form" class="mb-3">Subscribe</h2>
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+        </div>
+
+        <form action="#">
+          <div class="form-group">
+            <label for="email" class="form-label">E-mail</label>
+            <input id="email" type="email" class="form-input" placeholder="saasquatch@railsui.com">
+          </div>
+          <div class="form-group">
+            <label for="reason" class="form-label">Reason for joining</label>
+            <textarea name="reason" id="reason" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
+          </div>
+        </form>
+
+        <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4">
+          <button class="btn btn-primary" data-action="click->modal#close">Subscribe</button>
+          <button class="btn btn-white" data-action="click->modal#close">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :html, flush: true do %>
+<div data-controller="modal">
+  <div class="flex justify-center p-6 border-x border-b border-slate-200 rounded-b-lg relative">
+    <div class="absolute top-4 left-4">
+      <%= doc_label :demo %>
+    </div>
+    <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
+      Open modal with form
+    </button>
+  </div>
+
+  <div
+    aria-labelledby="modal-w-form"
+    aria-modal="true"
+    data-modal-target="container"
+    data-action="keyup@window->modal#closeWithEsc"
+    class="hidden fixed inset-0 z-50 overflow-y-auto"
+    role="dialog"
+    >
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div
+      data-modal-target="content"
+      data-transition-enter-active="transition ease-out duration-300"
+      data-transition-enter-from="transform opacity-0 scale-95"
+      data-transition-enter-to="transform opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-300"
+      data-transition-leave-from="transform opacity-100 scale-100"
+      data-transition-leave-to="transform opacity-0 scale-95"
+      class="hidden rounded shadow-xl max-w-lg bg-white m-1 p-8 origin-bottom relative">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group" data-action="click->modal#close">
+          <%%= icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
+        </button>
+        <div class="prose prose-indigo mb-4">
+          <h2 id="modal-with-form" class="mb-3">Subscribe</h2>
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+        </div>
+
+        <form action="#">
+          <div class="form-group">
+            <label for="email" class="form-label">E-mail</label>
+            <input id="email" type="email" class="form-input" placeholder="saasquatch@railsui.com">
+          </div>
+          <div class="form-group">
+            <label for="reason" class="form-label">Reason for joining</label>
+            <textarea name="reason" id="reason" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
+          </div>
+        </form>
+
+        <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4">
+          <button class="btn btn-primary" data-action="click->modal#close">Subscribe</button>
+          <button class="btn btn-white" data-action="click->modal#close">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%div{"data-controller" => "modal"}
+  .flex.justify-center.p-6.border-x.border-b.border-slate-200.rounded-b-lg.relative
+    .absolute.top-4.left-4
+      = doc_label :demo
+    %button.btn.btn-primary{"data-action" => "click->modal#open", tabindex: "0", type: "button"}
+      Open modal with form
+  .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "modal-w-form", "aria-modal" => "true", "data-action" => "keyup@window->modal#closeWithEsc", "data-modal-target" => "container", role: "dialog"}
+    .h-screen.w-full.relative.flex.items-center.justify-center
+      .hidden.rounded.shadow-xl.max-w-lg.bg-white.m-1.p-8.origin-bottom.relative{"data-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
+        %button.absolute.top-2.right-2.w-8.h-8.bg-transparent.hover:bg-slate-50.flex.items-center.justify-center.rounded-full.group{"data-action" => "click->modal#close", type: "button"}
+          = icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none"
+        .prose.prose-indigo.mb-4
+          %h2#modal-with-form.mb-3 Subscribe
+          %p Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.
+        %form{action: "#"}
+          .form-group
+            %label.form-label{for: "email"} E-mail
+            %input#email.form-input{placeholder: "saasquatch@railsui.com", type: "email"}/
+          .form-group
+            %label.form-label{for: "reason"} Reason for joining
+            %textarea#reason.form-input{name: "reason", placeholder: "In a couple sentences let us know your reason for joining the Rails UI community"}
+        .mt-8.flex.justify-start.items-center.flex-wrap.bg-gray-50.px-8.py-4.-mx-8.-mb-8.border-t.border-slate-300.rounded-b.shadow-inner.space-x-4
+          %button.btn.btn-primary{"data-action" => "click->modal#close"} Subscribe
+          %button.btn.btn-white{"data-action" => "click->modal#close"} Cancel
+<% end %>
+
+<% content_for :js, flush: true do %>
+// app/javascript/controllers/modal_controller.js
+
+import { Controller } from "@hotwired/stimulus"
+import { useTransition } from 'stimulus-use'
+
+export default class extends Controller {
+  static targets = ['container', 'content']
+
+  connect() {
+    useTransition(this, {
+      element: this.contentTarget,
+    })
+  }
+
+  open(e) {
+    e.preventDefault()
+    this.enableAppearance()
+    this.toggleTransition()
+  }
+
+  close() {
+    this.leave();
+    this.disableAppearance()
+  }
+
+  closeWithEsc(e){
+    if (e.keyCode === 27 && !this.containerTarget.classList.contains('hidden')) {
+      this.close(e);
+    }
+  }
+
+  enableAppearance() {
+    this.containerTarget.classList.add("bg-black/80")
+    this.containerTarget.classList.remove('hidden')
+  }
+
+  disableAppearance() {
+    this.containerTarget.classList.add('hidden')
+    this.containerTarget.classList.remove("bg-black/80")
+  }
+
+  disconnect() {
+    this.toggleTransition()
+  }
+}
+<% end %>
+
+<%= render_snippet(js_filename: "modal_controller.js") %>
+</div>

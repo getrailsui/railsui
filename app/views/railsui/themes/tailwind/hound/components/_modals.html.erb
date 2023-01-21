@@ -5,6 +5,8 @@
 
   <div class="prose dark:prose-invert mb-6 max-w-full">
     <p>Use the bundled model component to add dialogs to your application. These could be leveraged for notifications, notices, or custom content.</p>
+
+    <p>All modals can be closed using an action-based element (button, close icon, etc...) or the <%= code "esc" %> key on your keyboard.</p>
   </div>
 
   <%= render callout do %>
@@ -16,3 +18,5 @@
 <%= render "#{path}/base" %>
 <%= render "#{path}/single_action" %>
 <%= render "#{path}/centered_dual_action" %>
+<%= render "#{path}/dismiss_icon" %>
+<%= render "#{path}/with_form" %>
