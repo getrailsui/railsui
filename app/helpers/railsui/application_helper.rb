@@ -173,12 +173,13 @@ module Railsui
         content_tag :p, "Ruby", class: "bg-red-700 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
       when :tutorial
         content_tag :p, "Tutorial", class: "bg-blue-500 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
+      when :demo
+        content_tag :p, "Demo", class: "bg-emerald-50 text-emerald-600 rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
       end
     end
 
     def callout
       "railsui/shared/callout"
     end
-
   end
 end

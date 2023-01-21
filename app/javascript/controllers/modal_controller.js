@@ -10,7 +10,8 @@ export default class extends Controller {
     })
   }
 
-  open() {
+  open(e) {
+    e.preventDefault()
     this.enableAppearance()
     this.toggleTransition()
   }
@@ -20,7 +21,7 @@ export default class extends Controller {
     this.disableAppearance()
   }
 
-  closeWithKey(e){
+  closeWithEsc(e){
     if (e.keyCode === 27 && !this.containerTarget.classList.contains('hidden')) {
       this.close(e);
     }
