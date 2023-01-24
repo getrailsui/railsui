@@ -24,6 +24,9 @@ application.register('flash', FlashController)
 import ModalController from './modal_controller.js'
 application.register('modal', ModalController)
 
+import NavController from './nav_controller.js'
+application.register('nav', NavController)
+
 import PreventController from './prevent_controller.js'
 application.register('prevent', PreventController)
 

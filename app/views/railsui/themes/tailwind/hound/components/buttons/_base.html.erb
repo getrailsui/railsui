@@ -7,7 +7,7 @@
 
 <div class="prose dark:prose-invert mb-6 max-w-full">
   <p>Buttons come as predefined components for rapid reusability. Every button will require a <%= code(".btn") %> class.</p>
-  <p>Add <%= code(".btn-primary") %>, <%= code(".btn-dark") %>, <%= code(".btn-light") %>, <%= code("btn-white") %>, or <%= code(".btn-link") %> to a given button to adopt a style of your choosing. You may extend the styles by adding additional CSS to the file inside <%= code("app/assets/stylesheets/custom/buttons.css") %>.</p>
+  <p>Add <%= code(".btn-primary") %>, <%= code(".btn-dark") %>, <%= code(".btn-light") %>, <%= code(".btn-white") %>, <%= code(".btn-transparent") %> or <%= code(".btn-link") %> to a given button to adopt a style of your choosing. You may extend the styles by adding additional CSS to the file inside <%= code("app/assets/stylesheets/custom/buttons.css") %>.</p>
 </div>
 
 <div class="my-6 flex items-center space-x-2 p-6 bg-slate-50 rounded-lg shadow-inner">
@@ -15,6 +15,7 @@
   <button type="button" class="btn btn-dark">Dark</button>
   <button type="button" class="btn btn-light">Light</button>
   <button type="button" class="btn btn-white">White</button>
+  <button type="button" class="btn btn-transparent">Transparent</button>
   <button type="button" class="btn btn-link">Link</button>
 </div>
 
@@ -23,6 +24,7 @@
 <button type="button" class="btn btn-dark">Dark</button>
 <button type="button" class="btn btn-light">Light</button>
 <button type="button" class="btn btn-white">White</button>
+<button type="button" class="btn btn-transparent">Transparent</button>
 <button type="button" class="btn btn-link">Link</button>
 <% end %>
 
@@ -39,6 +41,7 @@
 = button_tag "Light", type: "button", class: "btn btn-light"
 = button_tag "Dark", type: "button", class: "btn btn-dark"
 = button_tag "White", type: "button", class: "btn btn-white"
+= button_tag "Transparent", type: "button", class: "btn btn-transparent"
 = button_tag "Link", type: "button", class: "btn btn-link"
 <% end %>
 <%= render_snippet %>

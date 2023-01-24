@@ -130,8 +130,13 @@ module Railsui
     end
 
     def design_system_navgiation_state
-      return false if params["controller"].include?("authentication")
-      true
+      if params["controller"].include?("authentication")
+        false
+      elsif content_for(:fullwidth).present?
+        false
+      else
+        true
+      end
     end
 
     def email_viewer(subject="A sample subject", &block)
