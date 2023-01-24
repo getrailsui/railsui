@@ -2,10 +2,8 @@
 
 <%= render "railsui/shared/sticky_subhead", title: "Navigation", subtitle: "Base" %>
 
-<%# TODO: Port updates to static preview site %>
-
 <%= render "railsui/themes/tailwind/hound/components/navigation/nav_preview" do %>
-<header class="relative bg-white" data-controller="nav">
+<header class="relative bg-white rounded-t" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="sm:flex items-center flex-wrap sm:space-x-2">
       <div class="sm:block flex items-center justify-between">
@@ -36,7 +34,7 @@
       </div>
       <div
         id="base-navigation"
-        class="sm:flex-1 sm:block hidden sm:static absolute top-[57px] left-0 w-full bg-white transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl"
+        class="sm:flex-1 sm:block hidden sm:static absolute top-[57px] left-0 w-full bg-white sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-50"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -65,13 +63,14 @@
           <nav role="Secondary navigation">
             <ul class="sm:flex flex-wrap items-center justify-center grid grid-cols-2 sm:gap-0 gap-4 sm:mt-0 mt-6">
               <li class="sm:pr-5">
-                <a href="#" class="group sm:border-none border rounded bg-white flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-100">
-                  <%= icon "question-mark-circle", styles: "fill-current w-5 h-5 text-slate-400/60 group-hover:text-indigo-500 transition ease-in-out duration-300", variant: :solid %>
+                <a href="#" class="group sm:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-100">
+                  <%= icon "question-mark-circle", styles: "fill-current w-5 h-5 text-indigo-600 group-hover:text-indigo-700 transition ease-in-out duration-300", variant: :solid %>
                 </a>
               </li>
               <li class="sm:pr-3">
-                <a href="#" class="group sm:border-none border rounded bg-white flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-100">
-                  <%= icon "book-open", styles: "fill-current w-5 h-5 text-slate-400/60 group-hover:text-indigo-500 transition ease-in-out duration-300", variant: :solid %>
+                <a href="#" class="group sm:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-100">
+                  <%= icon "book-open", styles: "fill-current w-5 h-5
+                  text-indigo-600 group-hover:text-indigo-700 transition ease-in-out duration-300", variant: :solid %>
                 </a>
               </li>
               <li class="sm:block hidden sm:px-2">
