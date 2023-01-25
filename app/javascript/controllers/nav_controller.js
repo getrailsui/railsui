@@ -22,6 +22,5 @@ export default class extends Controller {
   swapIcon() {
     this.menuBarsTarget.classList.toggle('hidden')
     this.menuCrossTarget.classList.toggle('hidden')
-
   }
 }
