@@ -32,17 +32,20 @@
 
     <div class="xl:flex" x-data="{navOpen: <%= design_system_navgiation_state %>}">
       <button
-        class="xl:top-[80px] fixed z-50 px-3 py-2 rounded-r-lg shadow-sm left-2 top-2 bg-white border border-slate-200 hover:bg-slate-50 group xl:block hidden dark:bg-slate-700 dark:border-slate-600 hover:dark:bg-slate-800"
+        class="xl:top-[80px] fixed z-50 px-3 py-[12px] rounded-r-lg shadow-sm left-0 top-0 bg-white border border-slate-200 hover:bg-slate-50 group xl:block hidden dark:bg-slate-700 dark:border-slate-600 hover:dark:bg-slate-800"
         :class="navOpen ? 'xl:left-[299px]' : 'left-0'"
-        @click.prevent="navOpen = ! navOpen">
+        @click.prevent="navOpen = ! navOpen"
+        data-controller="tooltip"
+        data-tooltip-content-value="Toggle navigation"
+        >
         <span x-show.important="navOpen">
-          <%= render_svg "eye-close", styles: "w-4 h-4 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
+          <%= render_svg "eye-close", styles: "w-5 h-5 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
         </span>
         <span x-show.important="!navOpen">
-          <%= render_svg "eye-open", styles: "w-4 h-4 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
+          <%= render_svg "eye-open", styles: "w-5 h-5 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
         </span>
       </button>
-      <div id="system-nav" class="xl:flex hidden flex-col xl:w-[300px] w-full border-r bg-white h-full xl:fixed top-[73px] left-0 overflow-y-auto z-50 dark:bg-slate-900 dark:border-slate-700"
+      <div id="system-nav" class="xl:flex hidden flex-col xl:w-[300px] w-full border-r bg-white h-full xl:fixed top-[57px] left-0 overflow-y-auto z-50 dark:bg-slate-900 dark:border-slate-700"
        x-show.important="navOpen"
        data-toggle-target="toggleable"
        data-scroll-target="scrollitem"

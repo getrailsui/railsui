@@ -6,7 +6,9 @@
 <%= render "railsui/shared/sticky_subhead", title: "Navigation", subtitle: "Base" %>
 
 <div class="prose dark:prose-invert max-w-4xl mb-10 dark:text-slate-200 dark:prose-a:text-slate-200">
-  <p>The base nav is the offical navigation design you'll see on the <%= Railsui.config.theme.humanize %> theme's <%= link_to "preview page", theme_preview_link(Railsui.config.theme.humanize), target: :_blank %>. Icons are in use within the navigation component. Check out the icon guide for usage and tips.</p>
+  <p>The base nav is the offical navigation design you'll see on the <%= Railsui.config.theme.humanize %> theme's <%= link_to "preview page", theme_preview_link(Railsui.config.theme.humanize), target: :_blank %>. It supports dark mode and is full responsive. Bundled with the base navigation (and all other navs) is a mobile nav toggle control powered by <%= link_to "Stimulus.js", "https://stimulus.hotwired.dev/", target: :_blank %></p>
+
+  <p>For any icons shown, refer to the <%= link_to "Rails UI icon documentation", systems_icons_path %>.</p>
 </div>
 
 <%= render "railsui/themes/tailwind/hound/components/navigation/nav_preview", flush: true do %>

@@ -2,12 +2,12 @@
 <%= render "railsui/shared/sticky_subhead", title: "Navigation", subtitle: "Dark" %>
 
 <div class="prose dark:prose-invert max-w-4xl mb-10 dark:text-slate-200 dark:prose-a:text-slate-200">
-<p>The main difference between the Dark and Base nav is of course color and a new custom class called <%= code ".nav-link-dark" %> for the main navigation links.</p>
-<p>If you use the <%= code "nav_link_to" %> helper  method <em>(shown in the erb and haml snippets below and bundled with Rails UI)</em>, an active class of <%= code "nav-link-active" %> should be applied for a current page within your application.</p>
-<p>If you prefer a regular <%= code "link_to" %> view helper for links you can manually append the <%= code "nav-link-active" %> class as needed. </p>
+<p>The dark nav has a dark dominant color and a new custom class called <%= code ".nav-link-dark" %> for the main navigation links.</p>
+<p>By using the <%= code "nav_link_to" %> helper  method <em>(shown in the erb and haml snippets below and bundled with Rails UI)</em>, an active class of <%= code "nav-link-active" %> is applied for the current page within your application.</p>
+<p>If a regular <%= code "link_to" %> view helper is preferred for links, manually append the <%= code "nav-link-active" %> class as needed. </p>
 </div>
 
-<%= render "railsui/themes/tailwind/hound/components/navigation/nav_preview", flush: true do %>
+<%= render "railsui/themes/tailwind/hound/components/navigation/nav_preview", dark: true, flush: true do %>
 <header class="relative bg-slate-900 rounded-t" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="sm:flex items-center flex-wrap sm:space-x-2">
