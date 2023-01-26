@@ -32,8 +32,8 @@
 
     <div class="xl:flex" x-data="{navOpen: <%= design_system_navgiation_state %>}">
       <button
-        class="xl:top-[80px] fixed z-50 px-3 py-2 rounded-r-lg shadow-sm left-2 top-2 bg-white border border-slate-200 hover:bg-slate-50 group lg:block hidden dark:bg-slate-700 dark:border-slate-600 hover:dark:bg-slate-800"
-        :class="navOpen ? 'lg:left-[299px]' : 'lg:left-0'"
+        class="xl:top-[80px] fixed z-50 px-3 py-2 rounded-r-lg shadow-sm left-2 top-2 bg-white border border-slate-200 hover:bg-slate-50 group xl:block hidden dark:bg-slate-700 dark:border-slate-600 hover:dark:bg-slate-800"
+        :class="navOpen ? 'xl:left-[299px]' : 'left-0'"
         @click.prevent="navOpen = ! navOpen">
         <span x-show.important="navOpen">
           <%= render_svg "eye-close", styles: "w-4 h-4 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>

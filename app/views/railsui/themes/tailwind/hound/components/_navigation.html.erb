@@ -1,6 +1,31 @@
 <% content_for :fullwidth, true %>
 
+<%# TODO: Mention icons/icon guide %>
+<%# TODO: Mention nav_link_to helper + link to guide %>
 <% path = "railsui/themes/tailwind/hound/components/navigation" %>
 
-<%= render "#{path}/base" %>
-<%#= render "#{path}/dark" %>
+<div data-controller="smooth" class="relative">
+  <div class="p-3 bg-white border-b border-slate-200">
+    <p class="uppercase tracking-wide text-xs font-semibold mt-1  mb-1 text-indigo-600">Quicklinks</p>
+    <p class="mb-3 text-xs text-slate-600">Quickly navigate to different navigational components below</p>
+
+    <nav role="nav jump">
+      <ul class="flex items-center space-x-3">
+        <li>
+          <a href="#navigation-base" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Base</a>
+        </li>
+        <li>
+          <a href="#navigation-dark"
+          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Dark</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <%= render "#{path}/base" %>
+  <%= render "#{path}/dark" %>
+  <%#= render "#{path}/with_search" %>
+  <%#= render "#{path}/dark_with_search" %>
+  <%#= render "#{path}/with_action" %>
+  <%#= render "#{path}/with_account" %>
+</div>

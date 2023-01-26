@@ -33,6 +33,9 @@ application.register('prevent', PreventController)
 import ScrollController from './scroll_controller.js'
 application.register('scroll', ScrollController)
 
+import SmoothController from './smooth_controller.js'
+application.register('smooth', SmoothController)
+
 import ToggleController from './toggle_controller.js'
 application.register('toggle', ToggleController)
 
