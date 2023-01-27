@@ -5,12 +5,14 @@
     <p>Use the class <%= code(".form-input-checkbox") %> on any <%= code("input[type=checkbox]") %> element.</p>
   </div>
 
-<div class="form-group flex items-center">
+<%= render preview do %>
+<div class="form-group flex items-center mb-0">
   <input class="form-input-checkbox" type="checkbox" value="" id="check_default">
   <label class="ml-2" for="check_default">
     Default checkbox
   </label>
 </div>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
@@ -62,8 +64,8 @@
   <p>Because radio inputs typically appear in groups, you may offset block style radio inputs with simple margin and layout modifier classes Tailwind CSS ships with (e.g. <%= code("mb-2") %>, <%= code('flex') %>).</p>
 </div>
 
-
-<div class="form-group">
+<%= render preview do %>
+<div class="form-group mb-0">
   <div class="mb-2 flex items-center">
     <input class="form-input-radio" type="radio" name="radio_default" id="radio_default_1">
     <label class="ml-2" for="radio_default_1">
@@ -77,6 +79,7 @@
     </label>
   </div>
 </div>
+<% end %>
 
 
 <%# .html %>
@@ -117,7 +120,7 @@
   <div class="form-group">
     <div class="mb-2 flex items-center">
       <%%= f.radio_button_tag "radio_default", "1", false, class: "form-input-radio" %>
-      <%%= f.label :radio_default_1, "Default radio", class: "ml-2 %>
+      <%%= f.label :radio_default_1, "Default radio", class: "ml-2" %>
     </div>
 
     <div class="flex items-center">
@@ -155,16 +158,18 @@
   <p>Use the class <%= code(".form-input-switch") %> on a <%= code("input[type=checkbox]") %> element. A corresponding <%= code("<label>") %> element must be present after the input in order for the switch UI to display.</p>
 </div>
 
-<div class="form-group">
+<%= render preview do %>
+<div class="form-group mb-0">
   <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
-  <label class="form-label" for="switch_default">Default switch checkbox input</label>
+  <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>
 </div>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
 <div class="form-group">
   <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
-  <label class="form-label" for="switch_default">Default switch checkbox input</label>
+  <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>
 </div>
 <% end %>
 
@@ -173,14 +178,14 @@
 <!-- ActionView::Helpers::FormTagHelper -->
 <div class="form-group">
   <%%= check_box_tag "switch_default", "1", false, class: "form-input-switch" %>
-  <%%= label_tag "switch_default", nil, class: "form-label" %>
+  <%%= label_tag "switch_default", nil, class: "form-label mb-0" %>
 </div>
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_with model: @form do |f| %>
   <div class="form-group">
     <%%= f.check_box :switch_default, class: "form-input-switch" %>
-    <%%= f.label :switch_default, class: "form-label" %>
+    <%%= f.label :switch_default, class: "form-label mb-0" %>
   </div>
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
@@ -192,10 +197,8 @@
 = form_with model: @form do |f|
   .form-group
     = f.check_box :switch_default, class: "form-input-switch"
-    = f.label :switch_default, class: "form-label"
+    = f.label :switch_default, class: "form-label mb-0"
   = f.submit class: "btn btn-primary"
 <% end %>
 <%= render_snippet %>
 </div>
-
-

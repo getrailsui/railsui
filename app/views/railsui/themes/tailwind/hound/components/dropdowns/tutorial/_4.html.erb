@@ -11,16 +11,16 @@
 <% content_for :html, flush: true do %>
 <div data-controller="dropdown">
   <button data-action="dropdown#toggle click@window->dropdown#hide">Dropdown</button>
-  <ul
+  <div
     class="hidden"
     data-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95">
-    <li>Menu list item 1</li>
-    <li>Menu list item 2</li>
-  </ul>
+    <a href="#">Menu list item 1</a>
+    <a href="#">Menu list item 2</a>
+  </div>
 </div>
 <% end %>
 <%= render_snippet %>

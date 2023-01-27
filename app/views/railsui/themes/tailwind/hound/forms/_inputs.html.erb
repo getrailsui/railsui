@@ -1,11 +1,12 @@
 <div class="my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Input field" %>
 
-
+<%= render preview do %>
   <div class="mb-3">
     <label for="input_1" class="form-label">Email address</label>
     <input type="email" class="form-input" id="input_1" placeholder="name@example.com">
   </div>
+<% end %>
 
 
 <%# .html %>
@@ -56,10 +57,12 @@
 <div class="my-6">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Textarea" %>
 
+<%= render preview do %>
 <div class="form-group">
   <label for="textarea" class="form-label">Speak your mind</label>
   <textarea class="form-input" id="textarea" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
 </div>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
@@ -109,6 +112,8 @@
 
 <div class="my-6">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "File input" %>
+
+<%= render preview do %>
 <div class="flex items-center space-x-6 form-group">
   <div class="shrink-0">
     <img class="h-16 w-16 object-cover rounded-full border-2 border-slate-100 shadow-inner" src="https://source.unsplash.com/random/80×80/?dog" alt="Current profile photo" />
@@ -119,6 +124,7 @@
     <input type="file" class="form-file" />
   </label>
 </div>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
@@ -172,10 +178,12 @@
 <div class="my-6">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Color input" %>
 
+<%= render preview do %>
 <div class="form-group">
   <label for="color" class="form-label">Choose a color</label>
   <input class="form-input-color" type="color" id="color" value="#fb7185" title="Color picker">
 </div>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
@@ -225,11 +233,12 @@
 <div class="my-6">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Datalists" %>
 
+<%= render preview do %>
 <div class="form-group">
   <label for="datalist" class="form-label">Datalist example</label>
   <div class="relative">
     <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >
-    <%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+    <%= icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
   </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
@@ -239,7 +248,7 @@
     <option value="Chicago">
   </datalist>
 </div>
-
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
@@ -247,7 +256,7 @@
   <label for="datalist" class="form-label">Datalist example</label>
   <div class="relative">
     <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >
-    <%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+    <%= icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
   </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
@@ -266,7 +275,7 @@
   <%%= label_tag :datalist, "Datalist example", class: "form-label" %>
   <div class="relative">
     <%%= text_field_tag :datalist, "Type to search", class: "form-input form-input-data-list", list: "datalistOptions" %>
-    <%%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+    <%%= icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
   </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
@@ -283,7 +292,7 @@
     <%%= f.label :datalist, "Datalist example", class: "form-label" %>
     <div class="relative">
       <%%= f.text_field :datalist, "Type to search", class: "form-control", list: "datalistOptions" %>
-      <%%= icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+      <%%= icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
     </div>
     <datalist id="datalistOptions">
       <option value="San Francisco">
@@ -305,7 +314,7 @@
   %label.form-label{:for => "datalist"} Datalist example
   .relative
     %input#datalist.form-input.form-input-datalist{:list => "datalistOptions", :placeholder => "Type to search"}/
-    = icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500"
+    = icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500"
   %datalist#datalistOptions
     %option{:value => "San Francisco"}
     %option{:value => "New York"}
@@ -319,7 +328,7 @@
     = f.label :datalist, "Datalist example", class: "form-label"
     .relative
       = f.text_field :datalist, class: "form-input form-input-datalist", list: "datalistOptions", placeholder: "Type to search"
-      = icon "chevron-down", styles: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500"
+      = icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500"
     %datalist#datalistOptions
       %option{:value => "San Francisco"}
       %option{:value => "New York"}
@@ -337,10 +346,12 @@
 <div class="my-6">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Range" %>
 
+<%= render preview do %>
 <div class="form-group">
   <label for="volume" class="form-label">Volume</label>
   <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" />
 </div>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>

@@ -9,7 +9,7 @@
     <p>Use the <%= code('data-controller="dropdown"') %> attribute to initialize a new dropdown component using <%= link_to "Stimulus.js", "https://stimulus.hotwired.dev/", target: :_blank %>. To add transition effects to components like dropdowns, we prefer an additional dependency called <%= link_to "stimulus-use", "https://stimulus-use.github.io/stimulus-use/", target: :_blank %>. Read the <%= link_to "Dropdown component documentation", systems_components_dropdowns_path %> for more information.</p>
 
     <div class="px-4 py-2 rounded-lg bg-indigo-50 flex items-center pointer-events-none select-none">
-      <%= icon "bell", styles: "text-indigo-500 w-5 h-5" %>
+      <%= icon "bell", classes: "text-indigo-500 w-5 h-5" %>
       <p class="m-0 text-indigo-900 ml-2">Stimulus.js and stimulus-use are <strong>already installed</strong> as a dependency of the <%= Railsui::config.theme.titleize %> theme.</p>
     </div>
   </div>
@@ -23,7 +23,7 @@
       </div>
       <div data-controller="dropdown" class="relative">
         <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200">
-          <%= icon "ellipsis-vertical", styles: "w-6 h-6 text-slate-500 group-hover:text-indigo-500" %>
+          <%= icon "ellipsis-vertical", classes: "w-6 h-6 text-slate-500 group-hover:text-indigo-500" %>
         </button>
         <ul
           class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[200px] z-50 py-2"
@@ -61,7 +61,7 @@
       type="button"
       data-action="dropdown#toggle click@window->dropdown#hide"
       class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200">
-      <%%= icon "ellipsis-vertical", styles: "w-6 h-6 text-slate-500 group-hover:text-indigo-500" %>
+      <%%= icon "ellipsis-vertical", classes: "w-6 h-6 text-slate-500 group-hover:text-indigo-500" %>
     </button>
     <ul
       class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-slate-300/25 border border-slate-200 min-w-[200px] z-50 py-2"
@@ -99,7 +99,7 @@
       type="button"
       data-action="dropdown#toggle click@window->dropdown#hide"
       class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200">
-      <%%= icon "ellipsis-vertical", styles: "w-6 h-6 text-slate-500 group-hover:text-indigo-500" %>
+      <%%= icon "ellipsis-vertical", classes: "w-6 h-6 text-slate-500 group-hover:text-indigo-500" %>
     </button>
     <ul
       class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-slate-300/25 border border-slate-200 min-w-[200px] z-50 py-2"
@@ -133,7 +133,7 @@
   / Dropdown ~ dropdown_controller
   .relative{"data-controller" => "dropdown"}
     %button.relative.group.border-transparent.border.transition.ease-in-out.focus:ring-4.w-8.h-8.flex.items-center.justify-center.rounded-lg.hover:border-slate-200.focus:ring-slate-50.hover:bg-white.hover:shadow-sm.focus:border-slate-200{"data-action" => "dropdown#toggle click@window->dropdown#hide", type: "button"}
-      = icon "ellipsis-vertical", styles: "w-6 h-6 text-slate-500 group-hover:text-indigo-500"
+      = icon "ellipsis-vertical", classes: "w-6 h-6 text-slate-500 group-hover:text-indigo-500"
     %ul.hidden.transition.transform.origin-to-right.absolute.right-0.top-9.bg-white.rounded-lg.shadow-xl.border.border-slate-200.z-50.py-2.shadow-slate-300/25.min-w-[200px]{ "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
       %li
         = link_to "Follow", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block"

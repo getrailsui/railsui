@@ -102,7 +102,7 @@ module Railsui
       options[:aria] = true
       options[:nocomment] = true
       options[:variant] ||= :outline
-      options[:class] = options.fetch(:styles, nil)
+      options[:class] = options.fetch(:classes, nil)
 
       filename = "icons/#{options[:variant]}/#{name}.svg"
       inline_svg_tag(filename, options)
@@ -185,6 +185,10 @@ module Railsui
 
     def callout
       "railsui/shared/callout"
+    end
+
+    def preview
+      "railsui/shared/preview"
     end
   end
 end

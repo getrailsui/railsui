@@ -6,10 +6,10 @@
 <% content_for :html, flush: true do %>
 <div data-controller="dropdown">
   <button data-action="dropdown#toggle click@window->dropdown#hide">Dropdown</button>
-  <ul class="hidden" data-dropdown-target="menu">
-    <li>Menu list item 1</li>
-    <li>Menu list item 2</li>
-  </ul>
+  <div class="hidden" data-dropdown-target="menu">
+    <a href="#">Menu list item 1</a>
+    <a href="#">Menu list item 2</a>
+  </div>
 </div>
 <% end %>
 <%= render_snippet %>

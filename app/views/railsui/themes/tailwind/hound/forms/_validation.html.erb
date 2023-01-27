@@ -8,7 +8,7 @@
 <form action="#">
   <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6" role="alert">
     <div class="flex items-start space-x-4">
-      <%= icon "shield-exclamation", styles: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
+      <%= icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
       <div class="flex-1">
         <p class="font-bold">3 errors prohibited this post from being saved:</p>
         <ul class="list-disc mt-3 ml-4">
@@ -33,7 +33,7 @@
 <%% if resource.errors.any? %>
 <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6" role="alert">
   <div class="flex items-start space-x-4">
-    <%%= icon "shield-exclamation", styles: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
+    <%%= icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
     <div class="flex-1">
       <p class="font-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
       <ul class="list-disc mt-3 ml-4">
@@ -52,7 +52,7 @@
 
 .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6{role: "alert"}
   .flex.items-start.space-x-4
-    = icon "shield-exclamation", styles: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid
+    = icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid
     .flex-1
       %p.font-bold
         = pluralize(resource.errors.count, "error")

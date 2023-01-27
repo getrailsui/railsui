@@ -11,11 +11,11 @@
       </div>
       <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
         <a data-action="click->anchor#prevent" href="#" class="btn btn-white space-x-2 group">
-          <%= icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+          <%= icon "phone", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
           <span>Phone</span>
         </a>
         <a data-action="click->anchor#prevent" href="#" class="btn btn-white space-x-2 group">
-          <%= icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+          <%= icon "envelope", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
           <span>Email</span>
         </a>
       </div>
@@ -31,11 +31,11 @@
   </div>
   <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
     <a href="#" class="btn btn-white space-x-2 group">
-      <%%= icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <%%= icon "phone", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
       <span>Phone</span>
     </a>
     <a href="#" class="btn btn-white space-x-2 group">
-      <%%= icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <%%= icon "envelope", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
       <span>Email</span>
     </a>
   </div>
@@ -52,12 +52,12 @@
   </div>
   <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
     <%%= link_to "#", class: "btn btn-white space-x-2 group" do %>
-      <%%= icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <%%= icon "phone", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
       <span>Phone</span>
     <%% end %>
     <!-- * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit -->
     <%% mail_content = capture do %>
-      <%%= icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
+      <%%= icon "envelope", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600" %>
       <span>Email</span>
     <%% end %>
 
@@ -75,11 +75,11 @@
       Software Architect at #{link_to "Amazon", "#", class: "btn-link"}
     .grid.gap-3.grid-cols-2.lg:pt-0.pt-3.w-full.lg:w-auto
       = link_to "#", class: "btn btn-white space-x-2 group" do
-        = icon "phone", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600"
+        = icon "phone", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600"
         %span Phone
       / * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit
       - mail_content = capture do
-        = icon "envelope", styles: "w-5 h-5 text-slate-500 group-hover:text-indigo-600"
+        = icon "envelope", classes: "w-5 h-5 text-slate-500 group-hover:text-indigo-600"
         %span Email
       = mail_to "railsui@example.com", mail_content, class: "btn btn-white space-x-2 group"
 <% end %>

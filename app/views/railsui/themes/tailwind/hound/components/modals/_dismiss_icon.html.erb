@@ -4,10 +4,10 @@
 <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg">
   <div class="rounded mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 p-6 origin-bottom flex items-start relative">
     <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group" data-action="click->modal#close">
-      <%= icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
+      <%= icon "x-mark", classes: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
     </button>
     <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3">
-      <%= icon "exclamation-circle", styles: "w-6 h-6 text-red-600 flex-shrink-0" %>
+      <%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0" %>
     </div>
 
     <div class="flex-1">
@@ -52,11 +52,11 @@
       class="hidden rounded mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 p-6 origin-bottom relative">
       <div class="flex items-start">
         <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group" data-action="click->modal#close">
-          <%= icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
+          <%= icon "x-mark", classes: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
         </button>
 
         <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3">
-          <%= icon "exclamation-circle", styles: "w-6 h-6 text-red-600 flex-shrink-0" %>
+          <%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0" %>
         </div>
 
         <div class="flex-1">
@@ -100,11 +100,11 @@
       class="hidden rounded mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 p-6 origin-bottom relative">
       <div class="flex items-start">
         <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group" data-action="click->modal#close">
-          <%%= icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
+          <%%= icon "x-mark", classes: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
         </button>
 
         <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3">
-          <%%= icon "exclamation-circle", styles: "w-6 h-6 text-red-600 flex-shrink-0" %>
+          <%%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0" %>
         </div>
 
         <div class="flex-1">
@@ -132,9 +132,9 @@
       .hidden.rounded.mx-auto.shadow-xl.sm:w-full.sm:max-w-lg.bg-white.m-1.p-6.origin-bottom.relative{"data-action" => "keyup@window->modal#closeWithEsc", "data-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
         .flex.items-start
           %button.absolute.top-2.right-2.w-8.h-8.bg-transparent.hover:bg-slate-50.flex.items-center.justify-center.rounded-full.group{"data-action" => "click->modal#close", type: "button"}
-            = icon "x-mark", styles: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
+            = icon "x-mark", classes: "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none" %>
           .w-8.h-8.rounded-full.bg-red-50.flex.items-center.justify-center.mr-3
-            = icon "exclamation-circle", styles: "w-6 h-6 text-red-600 flex-shrink-0" %>
+            = icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0" %>
           .flex-1
             %h3.font-semibold.text-lg.text-slate-800.leading-tight.mb-2.pt-1 Delete account
             %p.text-slate-600.leading-snug.text-sm.mb-6.mt-1 Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?

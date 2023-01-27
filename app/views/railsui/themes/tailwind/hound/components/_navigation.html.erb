@@ -18,14 +18,28 @@
           <a href="#navigation-dark"
           data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Dark</a>
         </li>
+        <li>
+          <a href="#navigation-with-search"
+          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">With search</a>
+        </li>
+        <li>
+          <a href="#navigation-with-action"
+          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">With action</a>
+        </li>
+        <li>
+          <a href="#navigation-with-account-dropdown"
+          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">With account dropdown</a>
+        </li>
       </ul>
     </nav>
   </div>
 
-  <%= render "#{path}/base" %> <%# needs responsive work %>
-  <%= render "#{path}/dark" %> <%# needs responsive work %>
-  <%= render "#{path}/with_search" %> <%# reference for responsive work  %>
+  <%= render "#{path}/base" %>
+  <%= render "#{path}/dark" %>
+  <%= render "#{path}/with_search" %>
+  <%= render "#{path}/with_action" %>
+  <%= render "#{path}/with_account_dropdown" %>
   <%#= render "#{path}/dark_with_search" %>
-  <%#= render "#{path}/with_action" %>
+
   <%#= render "#{path}/with_account" %>
 </div>

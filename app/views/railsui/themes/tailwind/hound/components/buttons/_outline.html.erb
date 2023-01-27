@@ -5,7 +5,8 @@
     <p>Use outline buttons for less bold treatment and areas that benefit from a dark or lighter background color. Add the <%= code(".btn-outline") %> class to each theme-able button to achieve the outlined effect.</p>
   </div>
 
-<div class="my-6 flex items-center space-x-2 p-6 bg-slate-50 rounded-lg shadow-inner">
+<%= render preview do %>
+<div class="flex items-center space-x-2">
   <button type="button" class="btn btn-primary btn-outline">Primary</button>
   <button type="button" class="btn btn-dark btn-outline">Dark</button>
   <button type="button" class="btn btn-light btn-outline">Light</button>
@@ -13,6 +14,7 @@
     <button type="button" class="btn btn-white btn-outline">White</button>
   </div>
 </div>
+<% end %>
 
 <% content_for :html, flush: true do %>
 <button type="button" class="btn btn-primary btn-outline">Primary</button>

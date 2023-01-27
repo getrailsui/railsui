@@ -1,15 +1,19 @@
 <div class="my-6">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Select" %>
 
-<select class="form-select" aria-label="Default select example">
+<%= render preview do %>
+<label for="select-example" class="form-label">Select one</label>
+<select id="select-example" class="form-select" aria-label="Default select example">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
+<label for="select-example" class="form-lable">Select one</label>
 <select class="form-select" aria-label="Default select example">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
@@ -21,6 +25,7 @@
   <%# .erb %>
 <% content_for :erb, flush: true do %>
 <!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.label "Select one", class: "form-label" %>
 <%%= tag.select class: "form-select", "aria-label": "Default select example" do %>
   <%%= tag.option "Open this select menu", selected: true %>
   <%%= tag.option "One", value: "1" %>
@@ -30,7 +35,7 @@
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_with model: @form do |f| %>
-  <%%= f.label :select_1, "Default select example", class: "form-label" %>
+  <%%= f.label :select_1, "Select example", class: "form-label" %>
   <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" } %>
 <%% end %>
 <% end %>
@@ -40,7 +45,7 @@
 / ActionView::Helpers::FormHelper
 = form_with model: @form do |f|
 .mb-3
-  = f.label :select_1, "Default select example", class:  "form-label"
+  = f.label :select_1, "Select example", class:  "form-label"
   = f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" }
 = f.submit class: "btn btn-primary"
 <% end %>
@@ -51,15 +56,18 @@
 <div class="my-16">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Dates" %>
 
-  <div class="flex items-center space-x-3">
+<%= render preview do %>
+  <label for="data" class="form-label">Date</label>
+  <div class="flex items-center space-x-3 max-w-sm">
     <%= select_day Date.today.day, {}, { class: "form-select" }  %>
     <%= select_month Date.today.month, {}, { class: "form-select" }%>
     <%= select_year Date.today.year, {}, { class: "form-select" } %>
   </div>
+<% end %>
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="flex items-center space-x-3">
+<div class="flex items-center space-x-3 max-w-sm">
   <select id="date_month" name="data[month]" class="form-select">
       <!-- options -->
   </select>
@@ -74,7 +82,7 @@
 
   <%# .erb %>
 <% content_for :erb, flush: true do %>
-<div class="form-group flex items-center space-x-3">
+<div class="form-group flex items-center space-x-3 max-w-sm">
   <%%= select_day Date.today.day, {}, { class: "form-select" }  %>
   <%%= select_month Date.today.month, {}, { class: "form-select" }%>
   <%%= select_year Date.today.year, {}, { class: "form-select" } %>
@@ -83,14 +91,10 @@
 
 <%# .haml %>
 <% content_for :haml, flush: true do %>
-.form-group.flex.items-center.space-x-3
+.form-group.flex.items-center.space-x-3.max-w-sm
   = select_day Date.today.day, {}, { class: "form-select" }  %>
   = select_month Date.today.month, {}, { class: "form-select" }%>
   = select_year Date.today.year, {}, { class: "form-select" } %>
 <% end %>
 <%= render_snippet %>
 </div>
-
-
-
-
