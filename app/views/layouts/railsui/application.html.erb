@@ -26,32 +26,16 @@
     <%= yield :head %>
   </head>
 
-  <body class="font-normal leading-normal text-slate-800 lg:h-screen relative selection:bg-indigo-500/25 <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll">
+  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full relative selection:bg-indigo-500/25 <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll">
     <%= render "railsui/shared/flash" %>
     <%= render "layouts/railsui/masthead" %>
 
-    <div class="xl:flex" x-data="{navOpen: <%= design_system_navgiation_state %>}">
-      <button
-        class="xl:top-[80px] fixed z-50 px-3 py-[12px] rounded-r-lg shadow-sm left-0 top-0 bg-white border border-slate-200 hover:bg-slate-50 group xl:block hidden dark:bg-slate-700 dark:border-slate-600 hover:dark:bg-slate-800"
-        :class="navOpen ? 'xl:left-[299px]' : 'left-0'"
-        @click.prevent="navOpen = ! navOpen"
-        data-controller="tooltip"
-        data-tooltip-content-value="Toggle navigation"
-        >
-        <span x-show.important="navOpen">
-          <%= render_svg "eye-close", styles: "w-5 h-5 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
-        </span>
-        <span x-show.important="!navOpen">
-          <%= render_svg "eye-open", styles: "w-5 h-5 stroke-current text-slate-400 dark:text-slate-200 group-hover:text-indigo-600 group-hover:dark:text-indigo-400" %>
-        </span>
-      </button>
-      <div id="system-nav" class="xl:flex hidden flex-col xl:w-[300px] w-full border-r bg-white h-full xl:fixed top-[57px] left-0 overflow-y-auto z-50 dark:bg-slate-900 dark:border-slate-700"
-       x-show.important="navOpen"
-       data-toggle-target="toggleable"
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
+      <div id="system-nav" class="hidden lg:block fixed z-20 inset-0 top-[3.4rem] left-0 right-auto w-[300px] pb-10 overflow-y-auto border-r border-slate-200"
        data-scroll-target="scrollitem"
        >
         <div class="flex-1">
-          <div class="xl:py-0 py-2 xl:border-b-0 border-b border-slate-200 dark:border-slate-700 xl:hidden xl:px-0 px-3 xl:shadow-none shadow-sm">
+          <div class="lg:py-0 py-2 lg:border-b-0 border-b border-slate-200 dark:border-slate-700 lg:hidden lg:px-0 px-3 lg:shadow-none shadow-sm">
             <%= render "railsui/shared/top_nav" %>
           </div>
           <% if Railsui.config.css_framework.present? %>
@@ -61,12 +45,11 @@
           <% end %>
         </div>
       </div>
-      <div
-      <% unless content_for?(:fullwidth) %>
-      :class="navOpen ? 'xl:left-[150px]' : ''"
-      <% end %>
-      class="lg:top-[72px] flex-1 mx-auto xl:py-16 px-4 py-8 relative <%= content_for?(:fullwidth).present? ? "w-full xl:px-16 px-4" : "max-w-4xl" %> ">
-        <%= yield %>
+      <div class="lg:pl-[19.5rem]">
+        <main class="max-w-3xl mx-auto relative z-20 sm:pt-24 sm:pb-10 py-10 xl:max-w-none">
+          <%= yield %>
+        </main>
+        <%= render "railsui/shared/footer" %>
       </div>
     </div>
 
