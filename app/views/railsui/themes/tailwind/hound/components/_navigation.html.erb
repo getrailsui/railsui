@@ -28,17 +28,18 @@
         </li>
         <li>
           <a href="#navigation-with-account-dropdown"
-          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">With account dropdown</a>
+          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">With dropdowns</a>
         </li>
       </ul>
     </nav>
   </div>
 
   <%= render "#{path}/base" %>
-  <%= render "#{path}/dark" %>
   <%= render "#{path}/with_search" %>
+
+  <%= render "#{path}/dark" %>
   <%= render "#{path}/with_action" %>
-  <%= render "#{path}/with_account_dropdown" %>
+  <%= render "#{path}/with_dropdowns" %>
   <%#= render "#{path}/dark_with_search" %>
 
   <%#= render "#{path}/with_account" %>
