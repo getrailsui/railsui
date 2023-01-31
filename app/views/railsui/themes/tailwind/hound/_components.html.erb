@@ -1,0 +1,8 @@
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-8 pb-10">
+
+  <% components = ["Accordions", "Alerts", "Badges", "Breadcrumbs", "Buttons", "Cards", "Dropdowns", "Flash", "Modals", "Navigation", "Pagination", "Popovers", "Tabs", "Toasts", "Tooltips"] %>
+
+  <% components.each do |component| %>
+    <%= render "railsui/shared/grid_item", path: eval("systems_components_#{component.downcase}_path"), title: component, description: "Documentation and examples for the #{component.downcase.singularize} component." %>
+  <% end %>
+</div>

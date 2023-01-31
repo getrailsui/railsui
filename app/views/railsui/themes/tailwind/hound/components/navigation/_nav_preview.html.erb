@@ -2,7 +2,7 @@
   <div class="w-full border-b  <%= local_assigns[:dark] == true ? "rounded-t border-slate-700": "border-slate-200 rounded-t dark:border-slate-700" %>">
     <%= yield %>
   </div>
-  <span class="absolute top-[50%] -mb-7 left-[50%] -ml-7 w-full h-full">
+  <span class="absolute top-[50%] -mb-7 left-[50%] -ml-7">
     <%= inline_svg "r.svg", class: "w-14 h-14  fill-current #{local_assigns[:dark] == true ? "text-slate-900/50" : "text-slate-200/70 dark:text-slate-900"}" %>
   </span>
 </div>

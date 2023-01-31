@@ -1,0 +1,29 @@
+<div class="mb-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Pagination", subtitle: "Simple" %>
+
+
+<%= render preview do %>
+<nav aria-label="Page nagiation" class="text-slate-600 text-sm font-medium">
+  <ul class="flex items-center justify-between">
+    <li class="flex-1 flex justify-start items-center">
+      <a href="#" class="">Previous</a>
+    </li>
+    <div class="flex items-center">
+      <li>
+        <a href="#" class="py-3 px-4 block border-t-2 border-indigo-500 hover:bg-indigo-50/50">1</a>
+      </li>
+      <li>
+        <a href="#" class="py-3 px-4 border-t-2 border-transparent block hover:border-slate-100">2</a>
+      </li>
+      <li>
+        <a href="#" class="py-3 px-4 border-t-2 border-transparent block">3</a>
+      </li>
+    </div>
+    <li class="flex-1 flex justify-end items-center">
+      <a href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+</div>

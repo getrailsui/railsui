@@ -26,12 +26,12 @@
     <%= yield :head %>
   </head>
 
-  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full relative selection:bg-indigo-500/25 <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll">
+  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-indigo-500/25 <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll">
     <%= render "railsui/shared/flash" %>
     <%= render "layouts/railsui/masthead" %>
 
     <div class="max-w-8xl mx-auto sm:px-0 px-4">
-      <div id="system-nav" class="sm:top-[3.4rem] left-0 right-auto w-full sm:w-[300px] border-r border-slate-200 hidden lg:block fixed z-20 inset-0 pb-10 overflow-y-auto"
+      <div id="system-nav" class="sm:top-[3.6rem] left-0 right-auto w-full sm:w-[300px] border-r border-slate-200 hidden lg:block fixed z-40 inset-0 pb-10 overflow-y-auto bg-white"
         data-toggle-target="toggleable"
         data-scroll-target="scrollitem">
         <div class="flex-1">
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="lg:pl-[19.5rem]">
-        <main class="max-w-5xl mr-auto relative z-20 sm:pt-24 sm:pb-10 py-6 sm:px-8 px-4">
+        <main class="max-w-5xl mr-auto relative z-20 lg:pt-24 lg:pb-10 py-6 sm:px-8 px-4">
           <%= yield %>
         </main>
         <%= render "railsui/shared/footer" %>
