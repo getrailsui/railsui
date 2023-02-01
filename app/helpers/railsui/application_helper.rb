@@ -74,7 +74,7 @@ module Railsui
       active_tab = options[:active_tab] ||= "html"
       html_filename = options[:html_filename] ||= ".html"
       erb_filename = options[:erb_filename] ||= ".html.erb"
-      haml_filename = options[:haml_filename] ||= ".haml"
+      haml_filename = options[:haml_filename] ||= ".haml.erb"
       js_filename = options[:js_filename] ||= ".js"
       ruby_filename = options[:ruby_filename] ||= ".rb"
 
@@ -189,6 +189,10 @@ module Railsui
 
     def preview
       "railsui/shared/preview"
+    end
+
+    def preview_dark
+      "railsui/shared/preview_dark"
     end
   end
 end
