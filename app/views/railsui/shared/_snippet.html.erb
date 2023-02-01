@@ -23,8 +23,8 @@
         <li class="flex items-center">
           <a href="#erb"
           @click.prevent="active = 'erb'"
-          :class="active == 'erb' ? 'text-red-500 border-red-500' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-red-500 hover:border-red-500"><%= local_assigns[:erb_filename] %></a>
+          :class="active == 'erb' ? 'text-rose-400 border-rose-400' : 'border-transparent text-white/90'"
+          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400"><%= local_assigns[:erb_filename] %></a>
           <span class="w-px h-11 bg-gradient-to-b from-slate-600 to-slate-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
@@ -70,7 +70,7 @@
       <% end %>
     </ul>
   </div>
-  <div role="tabpanels" class="overflow-y-auto max-h-[767px]">
+  <div role="tabpanels" class="overflow-y-auto max-h-[640px]">
     <% if content_for?(:html) %>
       <div role="tabpanel"
       x-show="active == 'html'"
@@ -82,7 +82,7 @@
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HTML code" %>
         </button>
-        <pre class="whitespace-pre-wrap"><code data-code-target="snippet" data-clipboard-target="source" class="language-html"><%= html_content.to_param.strip %></code></pre>
+        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-html"><%= html_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:erb) %>
@@ -92,11 +92,11 @@
         data-controller="clipboard"
         >
         <button data-action="click->clipboard#copy"
-          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-red-600 hover:from-red-400 transition ease-in-out w-duration-200"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none" %>
         </button>
-        <pre class="whitespace-pre-wrap"><code data-code-target="snippet" data-clipboard-target="source" class="language-erb"><%= erb_content.to_param.strip %></code></pre>
+        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-erb"><%= erb_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:haml) %>
@@ -110,7 +110,7 @@
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HAML code" %>
         </button>
-        <pre class="whitespace-pre-wrap"><code data-code-target="snippet" data-clipboard-target="source" class="language-haml"><%= haml_content.to_param.strip %></code></pre>
+        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-haml"><%= haml_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:bash) %>
@@ -124,7 +124,7 @@
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
-        <pre class="whitespace-pre-wrap"><code data-code-target="snippet" data-clipboard-target="source" class="language-bash"><%= bash_content.to_param.strip %></code></pre>
+        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-bash"><%= bash_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:js) %>
@@ -138,7 +138,7 @@
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
-        <pre class="whitespace-pre-wrap"><code data-code-target="snippet" data-clipboard-target="source" class="language-javascript"><%= js_content.to_param.strip %></code></pre>
+        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-javascript"><%= js_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:ruby) %>
@@ -152,7 +152,7 @@
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy Ruby code" %>
         </button>
-        <pre class="whitespace-pre-wrap"><code data-code-target="snippet" data-clipboard-target="source" class="language-ruby"><%= ruby_content.to_param.strip %></code></pre>
+        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-ruby"><%= ruby_content.to_param.strip %></code></pre>
       </div>
     <% end %>
   </div>
