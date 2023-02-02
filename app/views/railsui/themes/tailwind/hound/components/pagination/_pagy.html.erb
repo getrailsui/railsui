@@ -38,14 +38,8 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!--
-  Source: https://github.com/ddnexus/pagy/blob/master/lib/templates/nav.html.erb
+<!-- Source: https://github.com/ddnexus/pagy/blob/master/lib/templates/nav.html.erb -->
 
-  This template is i18n-ready: if you don't use i18n, then you can replace the pagy_t
-  calls with the actual strings ("&lsaquo; Prev", "Next &rsaquo;", "&hellip;").
-  The link variable is set to a proc that returns the link tag.
-  Usage: link.call( page_number [, text [, extra_attributes_string ]])
--->
 <%% link = pagy_link_proc(pagy) %>
 <nav aria-label="pager" class="text-slate-500 sm:text-sm text-base font-medium" role="navigation">
   <div class="flex flex-wrap items-center sm:justify-between justify-center">
@@ -95,8 +89,6 @@
 
 <% content_for :haml, flush: true do %>
 / Source: https://github.com/ddnexus/pagy/blob/master/lib/templates/nav.html.erb
-
-/  This template is i18n-ready: if you don't use i18n, then you can replace the pagy_t calls with the actual strings ("‹ Prev", "Next ›", "…"). The link variable is set to a proc that returns the link tag. Usage: link.call( page_number [, text [, extra_attributes_string ]])
 
 - link = pagy_link_proc(pagy)
 %nav.text-slate-500.sm:text-sm.text-base.font-medium{"aria-label" => "pager", role: "navigation"}

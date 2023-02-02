@@ -1,0 +1,19 @@
+<% path = "railsui/themes/tailwind/hound/components/tabs" %>
+
+<div data-controller="smooth" class="relative">
+  <div class="py-3 bg-white border-b border-slate-200">
+    <p class="uppercase tracking-wide text-xs font-semibold mt-1  mb-1 text-indigo-600">Quicklinks</p>
+    <p class="mb-3 text-xs text-slate-600">Quickly navigate to different tab components below</p>
+
+    <nav role="nav jump">
+      <ul class="flex flex-wrap items-center gap-2">
+        <li>
+          <a href="#tabs-simple" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Simple</a>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+
+  <%= render "#{path}/simple" %>
+</div>

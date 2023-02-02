@@ -36,6 +36,9 @@ application.register('scroll', ScrollController)
 import SmoothController from './smooth_controller.js'
 application.register('smooth', SmoothController)
 
+import TabsController from './tabs_controller.js'
+application.register('tabs', TabsController)
+
 import ToggleController from './toggle_controller.js'
 application.register('toggle', ToggleController)
 

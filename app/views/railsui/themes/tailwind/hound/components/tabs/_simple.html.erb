@@ -1,0 +1,38 @@
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Tabs", subtitle: "Simple" %>
+
+<%= render preview do %>
+
+<div data-controller="tabs" data-tabs-active-classes-value="border-b border-indigo-600">
+  <nav role="navigation" class="border-b border-slate-200 py-3">
+    <ul class="flex items-center -mt-px">
+      <li>
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Activity</a>
+      </li>
+      <li>
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Account</a>
+      </li>
+      <li>
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Billing</a>
+      </li>
+      <li>
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Team</a>
+      </li>
+    </ul>
+  </nav>
+   <div class="hidden p-4" data-tabs-target="pane">
+    Tab panel 1
+  </div>
+
+  <div class="hidden p-4" data-tabs-target="pane">
+    Tab panel 2
+  </div>
+
+  <div class="hidden p-4" data-tabs-target="pane">
+    Tab panel 3
+  </div>
+  <div class="hidden p-4" data-tabs-target="pane">
+    Tab panel 4
+  </div>
+</div>
+<% end %>
