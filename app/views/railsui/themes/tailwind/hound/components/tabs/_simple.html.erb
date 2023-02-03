@@ -2,37 +2,178 @@
   <%= render "railsui/shared/sticky_subhead", title: "Tabs", subtitle: "Simple" %>
 
 <%= render preview do %>
-
-<div data-controller="tabs" data-tabs-active-classes-value="border-b border-indigo-600">
-  <nav role="navigation" class="border-b border-slate-200 py-3">
-    <ul class="flex items-center -mt-px">
-      <li>
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Activity</a>
-      </li>
-      <li>
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Account</a>
-      </li>
-      <li>
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Billing</a>
-      </li>
-      <li>
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4  bg-white">Team</a>
-      </li>
-    </ul>
-  </nav>
-   <div class="hidden p-4" data-tabs-target="pane">
-    Tab panel 1
+<div data-controller="tabs"
+    data-tabs-active-tab="border-b border-indigo-600 inline-block bg-white text-indigo-600"
+    >
+  <div class="border-slate-200 border-b">
+    <nav role="navigation" class="-mb-px">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap">Activity</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white inline-block whitespace-nowrap">Account</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white inline-block whitespace-nowrap">Billing</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white inline-block whitespace-nowrap">Team</a>
+    </nav>
+  </div>
+   <div class="p-4" data-tabs-target="panel">
+    Some activities...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="pane">
-    Tab panel 2
+  <div class="hidden p-4" data-tabs-target="panel">
+    Account information...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="pane">
-    Tab panel 3
+  <div class="hidden p-4" data-tabs-target="panel">
+    Billing information...
   </div>
-  <div class="hidden p-4" data-tabs-target="pane">
-    Tab panel 4
+  <div class="hidden p-4" data-tabs-target="panel">
+    Team information...
   </div>
 </div>
 <% end %>
+
+<% content_for :html, flush: true do %>
+<div data-controller="tabs"
+    data-tabs-active-tab="border-b border-indigo-600 inline-block bg-white text-indigo-600">
+  <div class="border-slate-200 border-b">
+    <nav role="navigation" class="-mb-px">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap">Activity</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white inline-block whitespace-nowrap">Account</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white inline-block whitespace-nowrap">Billing</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white inline-block whitespace-nowrap">Team</a>
+    </nav>
+  </div>
+   <div class="p-4" data-tabs-target="panel">
+    Some activities...
+  </div>
+
+  <div class="hidden p-4" data-tabs-target="panel">
+    Account information...
+  </div>
+
+  <div class="hidden p-4" data-tabs-target="panel">
+    Billing information...
+  </div>
+  <div class="hidden p-4" data-tabs-target="panel">
+    Team information...
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div data-controller="tabs"
+    data-tabs-active-tab="border-b border-indigo-600 inline-block bg-white text-indigo-600">
+  <div class="border-slate-200 border-b">
+    <nav role="navigation" class="-mb-px">
+      <%%= link_to "Activity", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap" %>
+      <%%= link_to "Account", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap" %>
+      <%%= link_to "Billing", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap" %>
+      <%%= link_to "Team", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap" %>
+    </nav>
+  </div>
+   <div class="p-4" data-tabs-target="panel">
+    Some activities...
+  </div>
+
+  <div class="hidden p-4" data-tabs-target="panel">
+    Account information...
+  </div>
+
+  <div class="hidden p-4" data-tabs-target="panel">
+    Billing information...
+  </div>
+  <div class="hidden p-4" data-tabs-target="panel">
+    Team information...
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%div{"data-controller" => "tabs", "data-tabs-active-tab" => "border-b border-indigo-600 inline-block bg-white text-indigo-600"}
+  .border-slate-200.border-b
+    %nav.-mb-px{role: "navigation"}
+      = link_to "Activity", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap"
+      = link_to "Account", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap"
+      = link_to "Billing", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap"
+      = link_to "Team", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap"
+  .p-4{"data-tabs-target" => "panel"}
+    Some activities...
+  .hidden.p-4{"data-tabs-target" => "panel"}
+    Account information...
+  .hidden.p-4{"data-tabs-target" => "panel"}
+    Billing information...
+  .hidden.p-4{"data-tabs-target" => "panel"}
+    Team information...
+<% end %>
+
+<% content_for :js, flush: true do %>
+// Credits to @excid3 and crew
+// https://github.com/excid3/tailwindcss-stimulus-components/graphs/contributors
+
+import { Controller } from '@hotwired/stimulus'
+
+export default class extends Controller {
+  static targets = ['tab', 'panel']
+
+  connect() {
+    this.activeTabClasses = (this.data.get('activeTab') || 'active').split(' ')
+    this.inactiveTabClasses = (this.data.get('inactiveTab') || 'inactive').split(' ')
+    if (this.anchor) this.index = this.tabTargets.findIndex((tab) => tab.id === this.anchor)
+    this.showTab()
+  }
+
+  change(event) {
+    event.preventDefault()
+
+    // If target specifies an index, use that
+    if (event.currentTarget.dataset.index) {
+      this.index = event.currentTarget.dataset.index
+
+    // If target specifies an id, use that
+    } else if (event.currentTarget.dataset.id) {
+      this.index = this.tabTargets.findIndex((tab) => tab.id == event.currentTarget.dataset.id)
+
+    // Otherwise, use the index of the current target
+    } else {
+      this.index = this.tabTargets.indexOf(event.currentTarget)
+    }
+
+    window.dispatchEvent(new CustomEvent('tsc:tab-change'))
+  }
+
+  showTab() {
+    this.tabTargets.forEach((tab, index) => {
+      const panel = this.panelTargets[index]
+
+      if (index === this.index) {
+        panel.classList.remove('hidden')
+        tab.classList.remove(...this.inactiveTabClasses)
+        tab.classList.add(...this.activeTabClasses)
+
+        // Update URL with the tab ID if it has one
+        // This will be automatically selected on page load
+        if (tab.id) {
+          location.hash = tab.id
+        }
+      } else {
+        panel.classList.add('hidden')
+        tab.classList.remove(...this.activeTabClasses)
+        tab.classList.add(...this.inactiveTabClasses)
+      }
+    })
+  }
+
+  get index() {
+    return parseInt(this.data.get('index') || 0)
+  }
+
+  set index(value) {
+    this.data.set('index', (value >= 0 ? value : 0))
+    this.showTab()
+  }
+
+  get anchor() {
+    return (document.URL.split('#').length > 1) ? document.URL.split('#')[1] : null;
+  }
+}
+<% end %>
+
+<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "tabs_controller.js" %>

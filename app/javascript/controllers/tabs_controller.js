@@ -1,13 +1,15 @@
+// Credits to @excid3 and crew
+// https://github.com/excid3/tailwindcss-stimulus-components/graphs/contributors
+
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['tab', 'pane']
-  static values = {
-    activeClasses: { type: String, default: "active" },
-    inactiveClasses: { type: String, default: "inactive" }
-  }
+  static targets = ['tab', 'panel']
 
   connect() {
+    this.activeTabClasses = (this.data.get('activeTab') || 'active').split(' ')
+    this.inactiveTabClasses = (this.data.get('inactiveTab') || 'inactive').split(' ')
+    if (this.anchor) this.index = this.tabTargets.findIndex((tab) => tab.id === this.anchor)
     this.showTab()
   }
 
@@ -26,22 +28,28 @@ export default class extends Controller {
     } else {
       this.index = this.tabTargets.indexOf(event.currentTarget)
     }
+
+    window.dispatchEvent(new CustomEvent('tsc:tab-change'))
   }
 
   showTab() {
     this.tabTargets.forEach((tab, index) => {
-      const pane = this.paneTargets[index]
-      const active = this.activeClassesValue.split(' ')
-      const inactive = this.inactiveClassesValue.split(' ')
+      const panel = this.panelTargets[index]
 
       if (index === this.index) {
-        pane.classList.remove('hidden')
-        active.forEach(c => tab.classList.add(c))
-        inactive.forEach(c => tab.classList.remove(c))
+        panel.classList.remove('hidden')
+        tab.classList.remove(...this.inactiveTabClasses)
+        tab.classList.add(...this.activeTabClasses)
+
+        // Update URL with the tab ID if it has one
+        // This will be automatically selected on page load
+        if (tab.id) {
+          location.hash = tab.id
+        }
       } else {
-        pane.classList.add('hidden')
-        active.forEach(c => tab.classList.remove(c))
-        inactive.forEach(c => tab.classList.add(c))
+        panel.classList.add('hidden')
+        tab.classList.remove(...this.activeTabClasses)
+        tab.classList.add(...this.inactiveTabClasses)
       }
     })
   }
@@ -53,5 +61,9 @@ export default class extends Controller {
   set index(value) {
     this.data.set('index', (value >= 0 ? value : 0))
     this.showTab()
+  }
+
+  get anchor() {
+    return (document.URL.split('#').length > 1) ? document.URL.split('#')[1] : null;
   }
 }
