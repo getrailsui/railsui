@@ -1,14 +1,14 @@
 <div class="my-16">
-  <%= render "railsui/shared/sticky_subhead", title: "Tabs", subtitle: "Pills" %>
+  <%= render "railsui/shared/sticky_subhead", title: "Tabs", subtitle: "Rounded" %>
 
 <%= render preview do %>
-<div data-controller="tabs" data-tabs-active-tab="py-3 px-4 font-medium bg-indigo-50 inline-block rounded-full text-indigo-600" data-tabs-inactive-tab="py-3 px-4 font-medium rounded-full inline-block">
-  <div class="text-slate-600">
+<div data-controller="tabs" data-tabs-active-tab="py-2 px-4 font-medium bg-indigo-50 inline-block rounded-md text-indigo-600" data-tabs-inactive-tab="py-2 px-4 font-medium rounded-md inline-block">
+  <div>
     <nav role="navigation" class="flex items-center text-gray-600 space-x-1">
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-indigo-50 inline-block rounded-full text-indigo-600">Activity</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 font-medium rounded-full inline-block">Account</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 font-medium rounded-full inline-block">Billing</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 font-medium rounded-full inline-block">Team</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 bg-indigo-50 inline-block rounded-md text-indigo-600">Activity</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 font-medium rounded-md inline-block">Account</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 font-medium rounded-md inline-block">Billing</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 font-medium rounded-md inline-block">Team</a>
     </nav>
   </div>
    <div class="p-4" data-tabs-target="panel">
@@ -29,13 +29,13 @@
 <% end %>
 
 <% content_for :html, flush: true do %>
-<div data-controller="tabs" data-tabs-active-tab="py-3 px-4 font-medium bg-indigo-50 inline-block rounded-full text-indigo-600" data-tabs-inactive-tab="py-3 px-4 font-medium rounded-full inline-block">
-  <div class="text-slate-600">
+<div data-controller="tabs" data-tabs-active-tab="py-2 px-4 font-medium bg-indigo-50 inline-block rounded-md text-indigo-600" data-tabs-inactive-tab="py-2 px-4 font-medium rounded-md inline-block">
+  <div>
     <nav role="navigation" class="flex items-center text-gray-600 space-x-1">
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-indigo-50 inline-block rounded-full text-indigo-600">Activity</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 font-medium rounded-full inline-block">Account</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 font-medium rounded-full inline-block">Billing</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 font-medium rounded-full inline-block">Team</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 bg-indigo-50 inline-block rounded-md text-indigo-600">Activity</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 font-medium rounded-md inline-block">Account</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 font-medium rounded-md inline-block">Billing</a>
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 font-medium rounded-md inline-block">Team</a>
     </nav>
   </div>
    <div class="p-4" data-tabs-target="panel">
@@ -56,13 +56,13 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="tabs" data-tabs-active-tab="py-3 px-4 font-medium bg-indigo-50 inline-block rounded-full text-indigo-600" data-tabs-inactive-tab="py-3 px-4 font-medium rounded-full inline-block">
-  <div class="text-slate-600">
+<div data-controller="tabs" data-tabs-active-tab="py-2 px-4 font-medium bg-indigo-50 inline-block rounded-md text-indigo-600" data-tabs-inactive-tab="py-2 px-4 font-medium rounded-md inline-block">
+  <div>
     <nav role="navigation" class="flex items-center text-gray-600 space-x-1">
-      <%%= link_to "Activity", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 bg-indigo-50 inline-block rounded-full text-indigo-600" %>
-      <%%= link_to "Account", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 font-medium rounded-full inline-block" %>
-      <%%= link_to "Billing", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 font-medium rounded-full inline-block" %>
-      <%%= link_to "Team", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 font-medium rounded-full inline-block" %>
+      <%%= link_to "Activity", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 bg-indigo-50 inline-block rounded-md text-indigo-600" %>
+      <%%= link_to "Account", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 font-medium rounded-md inline-block" %>
+      <%%= link_to "Billing", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 font-medium rounded-md inline-block" %>
+      <%%= link_to "Team", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 font-medium rounded-md inline-block" %>
     </nav>
   </div>
    <div class="p-4" data-tabs-target="panel">
@@ -83,13 +83,13 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%div{"data-controller" => "tabs", "data-tabs-active-tab" => "py-3 px-4 font-medium bg-indigo-50 inline-block rounded-full text-indigo-600", "data-tabs-inactive-tab" => "py-3 px-4 font-medium rounded-full inline-block"}
+%div{"data-controller" => "tabs", "data-tabs-active-tab" => "py-2 px-4 font-medium bg-indigo-50 inline-block rounded-md text-indigo-600", "data-tabs-inactive-tab" => "py-2 px-4 font-medium rounded-md inline-block"}
   %div
     %nav.flex.items-center.text-gray-600.space-x-1{role: "navigation"}
-      = link_to "Activity", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 bg-indigo-50 inline-block rounded-full text-indigo-600"
-      = link_to "Account", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 font-medium rounded-full inline-block"
-      = link_to "Billing", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 font-medium rounded-full inline-block"
-      = link_to "Team", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-3 px-4 font-medium rounded-full inline-block"
+      = link_to "Activity", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 bg-indigo-50 inline-block rounded-md text-indigo-600"
+      = link_to "Account", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 font-medium rounded-md inline-block"
+      = link_to "Billing", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 font-medium rounded-md inline-block"
+      = link_to "Team", "#", action: "click-tabs#change", tabs_target: "tab", class: "py-2 px-4 font-medium rounded-md inline-block"
   .p-4{"data-tabs-target" => "panel"}
     Some activities...
   .hidden.p-4{"data-tabs-target" => "panel"}
@@ -156,6 +156,7 @@ export default class extends Controller {
     this.showTab()
   }
 }
+
 <% end %>
 
 <%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "tabs_controller.js" %>
