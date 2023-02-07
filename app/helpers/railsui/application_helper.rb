@@ -156,7 +156,7 @@ module Railsui
     end
 
     def help_text &block
-      content_tag :div, class: "prose prose-sm prose-p:text-slate-600 prose-a:text-indigo-500 dark:prose-invert max-w-full my-2" do
+      content_tag :div, class: "prose prose-sm prose-p:text-slate-600 prose-a:text-indigo-500 dark:prose-invert max-w-full my-2 dark:prose-p:text-slate-400 dark:prose-a:text-indigo-400" do
         yield
       end
     end

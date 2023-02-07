@@ -2,18 +2,18 @@
   <p><%= link_to "Heroicons", "https://heroicons.com/", target: :_blank %> are the default icons of choice for Rails UI. We chose these icons since they are open sourced, updated regularly, and cover a vast set of scenarios in the design world.</p>
 </div>
 
-<div class="my-6 divide-y divide-slate-100 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200">
+<div class="my-6 divide-y divide-slate-100 dark:divide-slate-700 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200 dark:border-slate-600 dark:bg-slate-800 dark:shadow-slate-800/50">
   <details class="group p-4 marker:content-['']">
-    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-blue-600 [&::-webkit-details-marker]:hidden">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 dark:text-slate-100 group-open:text-yellow-400 [&::-webkit-details-marker]:hidden">
        <div><span class="bg-blue-500 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs">Usage guide</span> <span class="ml-3">Icon usage guide</span></div>
-      <%= icon "chevron-down", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-blue-500 group-open:hidden block" %>
-      <%= icon "chevron-up", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-blue-500 group-open:block hidden" %>
+      <%= icon "chevron-down", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-400 group-open:text-blue-500 group-open:hidden block" %>
+      <%= icon "chevron-up", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-400 group-open:text-blue-500 group-open:block hidden" %>
     </summary>
-    <article class="p-8 bg-blue-50/20 border-blue-100 border rounded-lg relative mt-6">
+    <article class="p-8 dark:bg-slate-700 bg-blue-50/20 dark:border-slate-700 border-blue-100 border rounded-lg relative mt-6">
       <div class="absolute top-4 right-4">
         <%= doc_label(:tutorial) %>
       </div>
-      <div class="prose prose-slate max-w-full dark:prose-invert prose-h4:text-xs prose-h4:font-bold prose-h4:uppercase prose-h4:tracking-wider prose-h4:text-indigo-700">
+      <div class="prose prose-slate max-w-full dark:!prose-invert prose-h4:text-xs prose-h4:font-bold prose-h4:uppercase prose-h4:tracking-wider prose-h4:text-indigo-700">
         <h3>Why SVG icons?</h3>
         <p>There are a lot of pros to using SVG icons rather than bitmap or font-based icons. The summarized take is they are more accessible, have lighter file sizes, and can scale infinitely, which is excellent for retina screens.</p>
         <p>The main downside is the way we have to render them in order to have more control. SVGs are essentially vector code and can be complex and cumbersome to drop into a new view whenever you require one. Because of this we bundled a helper into Rails UI that solves for icons.</p>
@@ -49,7 +49,7 @@ end
 </div>
   <p>There are options you may pass. See all options <%= link_to "here", "https://github.com/jamesmartin/inline_svg#options", target: :_blank %> We've included a couple more custom options to make rendering icons a breeze.</p>
 
-  <h4>Options</h4>
+  <h4 class="dark:text-slate-200">Options</h4>
   <ul>
     <li><%= code ":title" %> &mdash; Add a <%= code" <title>" %> node inside the top level of the SVG document <em>(Enabled by default)</em>.</li>
     <li><%= code ":aria" %> &mdash; Adds common accessibility attributes to the SVG (Enabled by default).</li>
@@ -84,18 +84,18 @@ end
 </div>
 
 <div data-controller="smooth" class="relative">
-  <div class="p-3 bg-white border-y border-slate-200">
-    <p class="uppercase tracking-wide text-xs font-semibold mt-1  mb-1 text-indigo-600">Quicklinks</p>
-    <p class="mb-3 text-xs text-slate-600">Quickly navigate to different icon variants below</p>
+  <div class="p-3 bg-white border-y border-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:rounded-lg dark:border-x">
+    <p class="uppercase tracking-wide text-xs font-semibold mt-1  mb-1 text-indigo-600 dark:text-indigo-400">Quicklinks</p>
+    <p class="mb-3 text-xs text-slate-600 dark:text-slate-300">Quickly navigate to different icon variants below</p>
 
     <nav role="nav jump">
       <ul class="flex items-center space-x-3">
         <li>
-          <a href="#icons-solid" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Solid icons</a>
+          <a href="#icons-solid" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-slate-500 dark:hover:bg-slate-700">Solid icons</a>
         </li>
         <li>
           <a href="#icons-outline"
-          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Outline icons</a>
+          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-slate-500 dark:hover:bg-slate-700">Outline icons</a>
         </li>
       </ul>
     </nav>
@@ -104,19 +104,19 @@ end
   <div class="my-16">
     <%= render "railsui/shared/sticky_subhead", title: "Icons", subtitle: "Solid" %>
 
-    <div class="mt-6 p-4 sm:p-8 bg-slate-50 rounded-lg border border-slate-200">
+    <div class="mt-6 p-4 sm:p-8 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
       <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 items-center justify-between sm:gap-4 gap-2 w-full">
       <% @icons.each do |icon| %>
         <div>
         <% name = icon.chomp('.svg') %>
-          <div class="flex items-center justify-center h-24 w-24 rounded border shadow-sm bg-white relative group hover:shadow-indigo-500/20 hover:border-indigo-300" data-controller="clipboard">
-            <%= render_svg name, title: name, styles: "fill-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-indigo-500" %>
+          <div class="flex items-center justify-center h-24 w-24 rounded border shadow-sm bg-white relative group hover:shadow-indigo-500/20 hover:border-indigo-300 dark:bg-slate-700 dark:border-slate-300/50 dark:shadow-slate-500/20" data-controller="clipboard">
+            <%= render_svg name, title: name, styles: "fill-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:text-white dark:group-hover:text-white" %>
             <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
-              <%= icon "square-2-stack", classes: "w-5 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-indigo-500" %>
+              <%= icon "square-2-stack", classes: "w-5 dark:text-slate-200 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:group-hover:text-indigo-300" %>
             </button>
             <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/solid/", "") %></span>
           </div>
-          <div class="my-2 text-xs text-slate-600 truncate sm:max-w-[100px]"><%= name.gsub("icons/solid/", "") %></div>
+          <div class="my-2 text-xs text-slate-600 dark:text-slate-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/solid/", "") %></div>
         </div>
       <% end %>
     </div>
@@ -125,19 +125,19 @@ end
   <div class="my-16">
     <%= render "railsui/shared/sticky_subhead", title: "Icons", subtitle: "Outline" %>
 
-    <div class="mt-6 p-4 sm:p-8 bg-slate-50 rounded-lg border border-slate-200 flex justify-center">
+    <div class="mt-6 p-4 sm:p-8 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
       <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 items-center justify-between sm:gap-4 gap-2 w-full">
       <% @outline_icons.each do |icon| %>
         <div>
         <% name = icon.chomp('.svg') %>
-          <div class="flex items-center justify-center h-24 w-24 rounded border shadow-sm bg-white relative group hover:shadow-indigo-500/20 hover:border-indigo-300" data-controller="clipboard">
-            <%= render_svg name, title: name, styles: "stroke-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-indigo-500" %>
+          <div class="flex items-center justify-center h-24 w-24 rounded border shadow-sm bg-white relative group hover:shadow-indigo-500/20 hover:border-indigo-300 dark:bg-slate-700 dark:border-slate-300/50 dark:shadow-slate-500/20" data-controller="clipboard">
+            <%= render_svg name, title: name, styles: "stroke-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:text-white dark:group-hover:text-white" %>
             <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
-              <%= icon "square-2-stack", classes: "w-5 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-indigo-500" %>
+              <%= icon "square-2-stack", classes: "w-5 dark:text-slate-200 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:group-hover:text-indigo-300" %>
             </button>
             <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/outline/", "") %></span>
           </div>
-          <div class="my-2 text-xs text-slate-600 truncate sm:max-w-[100px]"><%= name.gsub("icons/outline/", "") %></div>
+          <div class="my-2 text-xs text-slate-600 dark:text-slate-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/outline/", "") %></div>
         </div>
       <% end %>
       </div>

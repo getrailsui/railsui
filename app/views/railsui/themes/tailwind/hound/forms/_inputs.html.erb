@@ -116,7 +116,7 @@
 <%= render preview do %>
 <div class="flex items-center space-x-6 form-group">
   <div class="shrink-0">
-    <img class="h-16 w-16 object-cover rounded-full border-2 border-slate-100 shadow-inner" src="https://source.unsplash.com/random/80×80/?dog" alt="Current profile photo" />
+    <img class="h-16 w-16 object-cover rounded-full border-2 border-slate-100 dark:border-slate-600 shadow-inner" src="https://source.unsplash.com/random/80×80/?dog" alt="Current profile photo" />
   </div>
 
   <label class="block">
@@ -238,7 +238,7 @@
   <label for="datalist" class="form-label">Datalist example</label>
   <div class="relative">
     <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >
-    <%= icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500" %>
+    <%= icon "chevron-down", classes: "w-4 h-4 absolute top-3 right-3 stroke-current text-slate-500 dark:text-slate-300" %>
   </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
