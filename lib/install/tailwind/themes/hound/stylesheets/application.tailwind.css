@@ -1,9 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-/* ActionText */
-@import "https://unpkg.com/trix@2.0.0/dist/trix.css";
-
 /* Custom components */
 @import "custom/custom.css";
 

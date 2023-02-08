@@ -1,0 +1,109 @@
+/***************************************
+  ActionText
+****************************************/
+trix-toolbar {
+  .trix-button-row .trix-button-group {
+    @apply border-transparent;
+
+    &:not(:first-child) {
+      @apply ml-0;
+    }
+
+    .trix-button {
+      @apply border-transparent hover:bg-indigo-50/50 rounded dark:hover:bg-slate-500/50 dark:hover:text-white;
+
+      &[disabled] {
+        @apply dark:rounded dark:hover:bg-transparent dark:hover:text-slate-500/10 hover:cursor-not-allowed;
+      }
+
+      &:before {
+        @apply dark:hover:opacity-100 dark:hover:text-white;
+      }
+    }
+
+    .trix-button.trix-active {
+      @apply rounded bg-indigo-50 text-indigo-700 dark:bg-indigo-600 dark:text-white;
+
+      &[disabled] {
+        @apply dark:rounded dark:hover:bg-indigo-600/30 dark:hover:text-indigo-300;
+      }
+    }
+  }
+
+  .trix-button--icon::before {
+    @apply dark:!invert dark:!opacity-80;
+  }
+
+  .trix-button--icon:disabled::before {
+    @apply dark:opacity-25 dark:hover:bg-slate-800 !important;
+  }
+
+  .trix-dialog {
+    @apply shadow-lg p-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-900 !important;
+
+    .trix-input--dialog {
+      @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 pr-32 focus:ring-indigo-50 focus:border-indigo-500 text-slate-900 focus:shadow-none dark:border-slate-400 dark:placeholder:text-slate-400 dark:focus:ring-indigo-500/30 dark:focus:border-indigo-500/50 dark:bg-slate-800 dark:text-white !important;
+    }
+
+    .trix-button-group {
+      @apply border-transparent absolute right-8 top-[21px];
+    }
+
+    .trix-button:not(:first-child) {
+      @apply border-l-0 !important;
+    }
+  }
+}
+
+trix-toolbar .trix-button.trix-button--dialog {
+  @apply border-slate-300 bg-white dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-indigo-500/30 dark:hover:bg-slate-800/50 text-sm text-slate-800 px-2 py-1 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 hover:bg-slate-50/50 shadow-sm font-medium dark:border-slate-600 !important;
+  border: 1px;
+  border-style: solid;
+
+  &:first-of-type {
+    @apply rounded-l;
+  }
+
+  &:last-child {
+    @apply rounded-r;
+  }
+}
+
+/* prose style content */
+trix-editor {
+  @apply rounded border border-slate-300 focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 bg-white shadow-inner p-3 text-base dark:bg-slate-800 dark:text-white dark:focus:ring-indigo-500/20 dark:border-slate-700 !important;
+}
+
+trix-editor,
+.trix-content {
+  @apply overflow-x-auto dark:text-white;
+
+  blockquote {
+    @apply text-xl font-normal text-slate-800 dark:text-white;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  ul,
+  ol {
+    @apply pl-6;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  pre {
+    @apply p-4 bg-slate-50 font-mono text-base rounded whitespace-pre dark:bg-slate-900;
+  }
+
+  a {
+    @apply text-indigo-600 dark:text-indigo-400 underline font-medium;
+  }
+}

@@ -1,7 +1,7 @@
 <div class="mb-16 mt-6">
   <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Checkboxes" %>
 
-  <div class="prose mb-10 max-w-full dark:prose-invert">
+  <div class="prose mb-10 max-w-full dark:!prose-invert">
     <p>Use the class <%= code(".form-input-checkbox") %> on any <%= code("input[type=checkbox]") %> element.</p>
   </div>
 
@@ -59,7 +59,7 @@
 <div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Radios" %>
 
-<div class="prose mb-10 max-w-full dark:prose-invert">
+<div class="prose dark:!prose-invert mb-10 max-w-full">
   <p>Use the class <%= code(".form-input-radio") %> on any <%= code("input[type=radio]") %> element.</p>
   <p>Because radio inputs typically appear in groups, you may offset block style radio inputs with simple margin and layout modifier classes Tailwind CSS ships with (e.g. <%= code("mb-2") %>, <%= code('flex') %>).</p>
 </div>
@@ -154,7 +154,7 @@
 <div class="my-16">
 <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Switches" %>
 
-<div class="prose mb-10 max-w-full dark:prose-invert">
+<div class="prose mb-10 max-w-full dark:!prose-invert">
   <p>Use the class <%= code(".form-input-switch") %> on a <%= code("input[type=checkbox]") %> element. A corresponding <%= code("<label>") %> element must be present after the input in order for the switch UI to display.</p>
 </div>
 

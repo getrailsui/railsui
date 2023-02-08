@@ -1,0 +1,3 @@
+body.rui {
+  @apply font-normal leading-normal text-slate-800 relative selection:bg-indigo-500/40 bg-white dark:bg-slate-900 dark:text-slate-100 antialiased;
+}
