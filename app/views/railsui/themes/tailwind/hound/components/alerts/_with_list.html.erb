@@ -2,10 +2,10 @@
 
 <%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "With list" %>
 
-<div class="bg-rose-50/90 text-rose-700 p-4 rounded flex items-start justify-between space-x-3 text-sm">
-  <%= icon "shield-exclamation", classes: "text-rose-500 w-5 h-5 flex-shrink-0", variant: :solid %>
+<div class="bg-rose-50/90 text-rose-700 p-4 rounded flex items-start justify-between space-x-3 text-sm dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 dark:selection:bg-rose-50/10">
+  <%= icon "shield-exclamation", classes: "text-rose-500 w-5 h-5 flex-shrink-0 dark:text-rose-400", variant: :solid %>
   <div class="flex-1">
-    <p class="text-rose-800 font-semibold">There was 1 error trying to process your request.</p>
+    <p class="text-rose-800 font-semibold dark:text-rose-300">There was 1 error trying to process your request.</p>
     <ul class="list-disc pl-4 mt-1">
       <li>Your name must be as cool as Andy.</li>
     </ul>
@@ -13,10 +13,10 @@
 </div>
 
 <% content_for :html, flush: true do %>
-<div class="bg-rose-50/90 text-rose-700 p-4 rounded flex items-start justify-between space-x-3 text-sm">
-  <%%= icon "shield-exclamation", classes: "text-rose-500 w-5 h-5 flex-shrink-0", variant: :solid %>
+<div class="bg-rose-50/90 text-rose-700 p-4 rounded flex items-start justify-between space-x-3 text-sm dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 dark:selection:bg-rose-50/10">
+  <%= icon "shield-exclamation", classes: "text-rose-500 w-5 h-5 flex-shrink-0 dark:text-rose-400", variant: :solid %>
   <div class="flex-1">
-    <p class="text-rose-800 font-semibold">There was 1 error trying to process your request.</p>
+    <p class="text-rose-800 font-semibold dark:text-rose-300">There was 1 error trying to process your request.</p>
     <ul class="list-disc pl-4 mt-1">
       <li>Your name must be as cool as Andy.</li>
     </ul>
@@ -25,10 +25,10 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<%%= tag.div class:"bg-rose-50/90 text-rose-700 p-4 rounded flex items-start justify-between space-x-3 text-sm" do %>
-  <%%= icon "shield-exclamation", classes: "text-rose-500 w-5 h-5 flex-shrink-0", variant: :solid %>
+<%%= tag.div class:"bg-rose-50/90 text-rose-700 p-4 rounded flex items-start justify-between space-x-3 text-sm dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 dark:selection:bg-rose-50/10" do %>
+  <%%= icon "shield-exclamation", classes: "text-rose-500 w-5 h-5 flex-shrink-0 dark:text-rose-400", variant: :solid %>
   <%%= tag.div class: "flex-1"  do %>
-    <%%= tag.p "There was 1 error trying to process your request.", class: "text-rose-800 font-semibold" %>
+    <%%= tag.p "There was 1 error trying to process your request.", class: "text-rose-800 font-semibold dark:text-rose-300" %>
     <%%= tag.ul class: "list-disc pl-4 mt-1" do %>
       <%%= tag.li "Your name must be as cool as Andy" %>
     <%% end %>
@@ -37,10 +37,10 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-.text-rose-700.p-4.rounded.flex.items-start.justify-between.space-x-3.text-sm.bg-rose-50/90
-  = icon "shield-exclamation", classes: "text-rose-5400 w-5 h-5 flex-shrink-0", variant: :solid
+.text-rose-700.p-4.rounded.flex.items-start.justify-between.space-x-3.text-sm.dark:border.dark:text-rose-50{class: "bg-rose-50/90 dark:bg-rose-400/10 dark:border-rose-400/20 dark:selection:bg-rose-50/10"}
+  = icon "shield-exclamation", classes: "text-rose-500 w-5 h-5 flex-shrink-0 dark:text-rose-400", variant: :solid
   .flex-1
-    %p.text-rose-800.font-semibold There was 1 error trying to process your request.
+    %p.text-rose-800.font-semibold.dark:text-rose-300 There was 1 error trying to process your request.
     %ul.list-disc.pl-4.mt-1
       %li Your name must be as cool as Andy.
 <% end %>

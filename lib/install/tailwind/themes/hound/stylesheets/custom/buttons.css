@@ -48,6 +48,6 @@
   }
 
   .btn-link {
-    @apply text-indigo-600 font-semibold focus:ring-transparent hover:text-indigo-700;
+    @apply text-indigo-600 font-semibold focus:ring-transparent hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-500;
   }
 }
