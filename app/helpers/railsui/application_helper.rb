@@ -198,5 +198,11 @@ module Railsui
         "railsui/shared/preview"
       end
     end
+
+    def quick_link(title: nil, component: nil)
+      content_tag :li do
+        link_to title.titleize, "##{component.parameterize}-#{title.parameterize}", class: "text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700/80 transition ease-in-out duration-200", data: { action: "click->smooth#scroll" }
+      end
+    end
   end
 end

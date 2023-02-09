@@ -26,7 +26,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-indigo-500/25 <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll">
+  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-indigo-500/25 <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll smooth">
     <%= render "railsui/shared/flash" %>
     <%= render "layouts/railsui/masthead" %>
 
