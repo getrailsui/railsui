@@ -11,7 +11,7 @@
 <span class="rounded-full bg-indigo-100 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs">Indigo</span>
 <span class="rounded-full bg-purple-100 text-purple-800 font-medium px-2 py-1 leading-tight text-xs">Purple</span>
 <span class="rounded-full bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs">Pink</span>
-<span class="rounded-full bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs">White</span>
+<span class="rounded-full bg-white text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs">White</span>
 
 
 <% content_for :html, flush: true do %>
@@ -24,7 +24,7 @@
 <span class="rounded-full bg-indigo-100 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs">Indigo</span>
 <span class="rounded-full bg-purple-100 text-purple-800 font-medium px-2 py-1 leading-tight text-xs">Purple</span>
 <span class="rounded-full bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs">Pink</span>
-<span class="rounded-full bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs">White</span>
+<span class="rounded-full bg-white text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs">White</span>
 <% end %>
 
 <% content_for :erb, flush: true do %>
@@ -37,7 +37,7 @@
 <%%= content_tag :span, "Indigo", class: "rounded-full bg-indigo-100 text-indigo-800 font-medium px-2 py-1 text-xs" %>
 <%%= content_tag :span, "Purple", class: "rounded-full bg-purple-100 text-purple-800 font-medium px-2 py-1 text-xs" %>
 <%%= content_tag :span, "Pink", class: "rounded-full bg-pink-100 text-pink-800 font-medium px-2 py-1 text-xs" %>
-<%%= content_tag :span, "White", class: "rounded-full bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs" %>
+<%%= content_tag :span, "White", class: "rounded-full bg-white text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs" %>
 <% end %>
 
 <% content_for :haml, flush: true do %>
@@ -50,7 +50,7 @@
 %span.rounded-full.bg-indigo-100.text-indigo-800.font-medium.px-2.py-1.leading-tight.text-xs Indigo
 %span.rounded-full.bg-purple-100.text-purple-800.font-medium.px-2.py-1.leading-tight.text-xs Purple
 %span.rounded-full.bg-pink-100.text-pink-800.font-medium.px-2.py-1.leading-tight.text-xs Pink
-%span.rounded-full.bg-white-100.text-slate-800.border.border-slate-200.font-medium.px-2.py-1.leading-tight.text-xs White
+%span.rounded-full.bg-white.text-slate-800.border.border-slate-200.font-medium.px-2.py-1.leading-tight.text-xs White
 <% end %>
 
 <%= render_snippet %>

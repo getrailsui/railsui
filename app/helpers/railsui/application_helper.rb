@@ -187,12 +187,16 @@ module Railsui
       "railsui/shared/callout"
     end
 
-    def preview
-      "railsui/shared/preview"
-    end
-
-    def preview_dark
-      "railsui/shared/preview_dark"
+    def preview(variant = nil)
+      if variant == "base"
+        "railsui/shared/preview"
+      elsif variant == "gray"
+        "railsui/shared/preview_gray"
+      elsif variant == "dark"
+        "railsui/shared/preview_dark"
+      else
+        "railsui/shared/preview"
+      end
     end
   end
 end

@@ -1,92 +1,30 @@
-<div class="mb-16 mt-6">
-  <div class="prose-lg prose-slate mb-6 dark:prose-invert">
-    <p>Breadcrumbs help with everything from search engine optimization to easier navigation.</p>
+<% path = "railsui/themes/tailwind/hound/components/breadcrumbs" %>
+
+<div data-controller="smooth" class="relative">
+  <div class="py-3 bg-white border-b border-slate-200">
+    <p class="uppercase tracking-wide text-xs font-semibold mt-1  mb-1 text-indigo-600">Quicklinks</p>
+    <p class="mb-3 text-xs text-slate-600">Quickly navigate to different breadcrumb patterns below</p>
+
+    <nav role="nav jump">
+      <ul class="flex flex-wrap items-center gap-2">
+        <li>
+          <a href="#breadcrumbs-simple" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Simple</a>
+        </li>
+        <li>
+          <a href="#breadcrumbs-contained" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Contained</a>
+        </li>
+        <li>
+          <a href="#breadcrumbs-dark-simple" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Dark simple</a>
+        </li>
+        <li>
+          <a href="#breadcrumbs-dark-contained" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Dark contained</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 
-
-<div class="p-6 border border-slate-200 rounded-2xl">
-  <nav aria-label="breadcrumb" class="my-6">
-    <ol class="flex flex-wrap items-center space-x-5">
-      <li>
-        <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
-      </li>
-      <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Library</li>
-    </ol>
-  </nav>
-
-  <nav aria-label="breadcrumb" class="my-6">
-    <ol class="flex flex-wrap items-center space-x-5">
-      <li>
-        <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
-      </li>
-      <li>
-        <a href="#" class="text-slate-700 hover:underline before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block">Library</a>
-      </li>
-      <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Data</li>
-    </ol>
-  </nav>
-</div>
-
-<% content_for :html, flush: true do %>
-<nav aria-label="breadcrumb">
-  <ol class="flex flex-wrap items-center space-x-5">
-    <li>
-      <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
-    </li>
-    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Library</li>
-  </ol>
-</nav>
-
-<nav aria-label="breadcrumb">
-  <ol class="flex flex-wrap items-center space-x-5">
-    <li>
-      <a href="#" class="text-slate-700 hover:underline inline-block">Home</a>
-    </li>
-    <li>
-      <a href="#" class="text-slate-700 hover:underline before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block">Library</a>
-    </li>
-    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Data</li>
-  </ol>
-</nav>
-<% end %>
-
-<% content_for :erb, flush: true do %>
-<nav aria-label="breadcrumb">
-  <ol class="flex flex-wrap items-center space-x-5">
-    <li>
-      <%%= link_to "Home", "#", class: "text-slate-700 hover:underline inline-block" %>
-    </li>
-    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Library</li>
-  </ol>
-</nav>
-
-<nav aria-label="breadcrumb">
-  <ol class="flex flex-wrap items-center space-x-5">
-    <li>
-      <%%= link_to "Home", "#", class: "text-slate-700 hover:underline inline-block" %>
-    </li>
-    <li>
-      <%%= link_to "Library", "#", class: "text-slate-700 hover:underline before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" %>
-    </li>
-    <li class="text-indigo-600 font-medium before:content-['/'] before:absolute before:-left-3 before:top-0 relative before:text-slate-300 before:font-normal inline-block" aria-current="page">Data</li>
-  </ol>
-</nav>
-<% end %>
-
-<% content_for :haml, flush: true do %>
-%nav{"aria-label" => "breadcrumb"}
-  %ol.flex.flex-wrap.items-center.space-x-5
-    %li
-      %a.text-slate-700.hover:underline.inline-block{href: "#"} Home
-    %li.text-indigo-600.font-medium.before:absolute.before:-left-3.before:top-0.relative.before:text-slate-300.before:font-normal.inline-block.before:content-['/']{"aria-current" => "page"} Library
-%nav.my-3{"aria-label" => "breadcrumb"}
-  %ol.flex.flex-wrap.items-center.space-x-5
-    %li
-      %a.text-slate-700.hover:underline.inline-block{href: "#"} Home
-    %li
-      %a.text-slate-700.hover:underline.before:absolute.before:-left-3.before:top-0.relative.before:text-slate-300.before:font-normal.inline-block.before:content-['/']{href: "#"} Library
-    %li.text-indigo-600.font-medium.before:absolute.before:-left-3.before:top-0.relative.before:text-slate-300.before:font-normal.inline-block.before:content-['/']{"aria-current" => "page"} Data
-<% end %>
-
-<%= render_snippet %>
+  <%= render "#{path}/simple" %>
+  <%= render "#{path}/contained" %>
+  <%= render "#{path}/dark" %>
+  <%= render "#{path}/dark_contained" %>
 </div>

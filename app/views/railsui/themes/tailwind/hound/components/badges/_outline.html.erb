@@ -2,55 +2,91 @@
 
 <%= render "railsui/shared/sticky_subhead", title: "Badges", subtitle: "Outline with opaque fill" %>
 
-<span class="rounded bg-transparent text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60">Gray</span>
-<span class="rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60">Red</span>
-<span class="rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60">Orange</span>
-<span class="rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60">Yellow</span>
-<span class="rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60">Green</span>
-<span class="rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60">Blue</span>
-<span class="rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60">Indigo</span>
-<span class="rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60">Purple</span>
-<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60">Pink</span>
-<span class="rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs">White</span>
+<span class="rounded text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60 dark:bg-neutral-500/20 dark:text-neutral-300 dark:border-neutral-500/40">Gray</span>
+
+<span class="rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60 dark:bg-red-500/20 dark:border-red-500/30 dark:text-red-500">Red</span>
+
+<span class="rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60 dark:bg-orange-500/20 dark:border-orange-500/30 dark:text-orange-400">Orange</span>
+
+<span class="rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60 dark:text-yellow-500 dark:bg-yellow-500/20 dark:border-yellow-500/30">Yellow</span>
+
+<span class="rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60 dark:text-green-500 dark:bg-green-500/20 dark:border-green-500/30">Green</span>
+
+<span class="rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60 dark:text-blue-400 dark:border-blue-500/40 dark:bg-blue-500/20">Blue</span>
+
+<span class="rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-indigo-400 dark:border-indigo-400/30 dark:bg-indigo-500/20">Indigo</span>
+
+<span class="rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-purple-400 dark:border-purple-400/30 dark:bg-purple-500/20">Purple</span>
+
+<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60 dark:text-pink-500 dark:border-pink-500/40 dark:bg-pink-500/20">Pink</span>
+
+<span class="rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs dark:bg-white-10 dark:text-white">White</span>
 
 
 <% content_for :html, flush: true do %>
-<span class="rounded bg-transparent text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60">Gray</span>
-<span class="rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60">Red</span>
-<span class="rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60">Orange</span>
-<span class="rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60">Yellow</span>
-<span class="rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60">Green</span>
-<span class="rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60">Blue</span>
-<span class="rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60">Indigo</span>
-<span class="rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60">Purple</span>
-<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60">Pink</span>
-<span class="rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs">White</span>
+<span class="rounded text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60 dark:bg-neutral-500/20 dark:text-neutral-300 dark:border-neutral-500/40">Gray</span>
+
+<span class="rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60 dark:bg-red-500/20 dark:border-red-500/30 dark:text-red-500">Red</span>
+
+<span class="rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60 dark:bg-orange-500/20 dark:border-orange-500/30 dark:text-orange-400">Orange</span>
+
+<span class="rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60 dark:text-yellow-500 dark:bg-yellow-500/20 dark:border-yellow-500/30">Yellow</span>
+
+<span class="rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60 dark:text-green-500 dark:bg-green-500/20 dark:border-green-500/30">Green</span>
+
+<span class="rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60 dark:text-blue-400 dark:border-blue-500/40 dark:bg-blue-500/20">Blue</span>
+
+<span class="rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-indigo-400 dark:border-indigo-400/30 dark:bg-indigo-500/20">Indigo</span>
+
+<span class="rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-purple-400 dark:border-purple-400/30 dark:bg-purple-500/20">Purple</span>
+
+<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60 dark:text-pink-500 dark:border-pink-500/40 dark:bg-pink-500/20">Pink</span>
+
+<span class="rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs dark:bg-white-10 dark:text-white">White</span>
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<%%= tag.span "Gray", class: "rounded bg-transparent text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60" %>
-<%%= tag.span "Red", class: "rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60" %>
-<%%= tag.span "Orange", class: "rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60" %>
-<%%= tag.span "Yellow", class: "rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60" %>
-<%%= tag.span "Green", class: "rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60" %>
-<%%= tag.span "Blue", class: "rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60" %>
-<%%= tag.span "Indigo", class:"rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60" %>
-<%%= tag.span "Purple", class:"rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60" %>
-<%%= tag.span "Pink", class:"rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60" %>
-<%%= tag.span "White", class:"rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs" %>
+<%%= tag.span "Gray", class: "rounded text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60 dark:bg-neutral-500/20 dark:text-neutral-300 dark:border-neutral-500/40" %>
+
+<%%= tag.span "Red", class: "rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60 dark:bg-red-500/20 dark:border-red-500/30 dark:text-red-500" %>
+
+<%%= tag.span "Orange", class: "rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60 dark:bg-orange-500/20 dark:border-orange-500/30 dark:text-orange-400" %>
+
+<%%= tag.span "Yellow", class: "rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60 dark:text-yellow-500 dark:bg-yellow-500/20 dark:border-yellow-500/30" %>
+
+<%%= tag.span "Green", class: "rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60 dark:text-green-500 dark:bg-green-500/20 dark:border-green-500/30" %>
+
+<%%= tag.span "Blue", class: "rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60 dark:text-blue-400 dark:border-blue-500/40 dark:bg-blue-500/20" %>
+
+<%%= tag.span "Indigo", class:"rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-indigo-400 dark:border-indigo-400/30 dark:bg-indigo-500/20" %>
+
+<%%= tag.span "Purple", class:"rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-purple-400 dark:border-purple-400/30 dark:bg-purple-500/20" %>
+
+<%%= tag.span "Pink", class:"rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60 dark:text-pink-500 dark:border-pink-500/40 dark:bg-pink-500/20" %>
+
+<%%= tag.span "White", class:"rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs dark:bg-white-10 dark:text-white" %>
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%span.rounded.bg-transparent.text-neutral-800.font-medium.px-2.py-1.text-xs.border.border-neutral-800/60.bg-neutral-50/60 Gray
-%span.rounded.text-red-600.font-medium.px-2.py-1.text-xs.border.bg-red-50/30.border-red-600/60 Red
-%span.rounded.text-orange-600.font-medium.px-2.py-1.text-xs.border.bg-orange-50/30.border-orange-600/60 Orange
-%span.rounded.text-yellow-700.font-medium.px-2.py-1.text-xs.border.bg-yellow-50/30.border-yellow-500/60 Yellow
-%span.rounded.text-green-700.font-medium.px-2.py-1.text-xs.border.bg-green-50/30.border-green-500/60 Green
-%span.rounded.text-blue-800.font-medium.px-2.py-1.leading-tight.text-xs.border.bg-blue-50/30.border-blue-600/60 Blue
-%span.rounded.text-indigo-800.font-medium.px-2.py-1.leading-tight.text-xs.border.bg-indigo-50/30.border-indigo-600/60 Indigo
-%span.rounded.text-purple-800.font-medium.px-2.py-1.leading-tight.text-xs.border.bg-purple-50/30.border-indigo-600/60 Purple
-%span.rounded.bg-pink-100.text-pink-800.font-medium.px-2.py-1.leading-tight.text-xs.border.border-pink-600/60 Pink
-%span.rounded.bg-white-100.text-slate-800.border.border-slate-400.font-medium.px-2.py-1.leading-tight.text-xs White
+%span.rounded.text-neutral-800.font-medium.px-2.py-1.text-xs.border.dark:text-neutral-300{class: "border-neutral-800/60 bg-neutral-50/60 dark:bg-neutral-500/20 dark:border-neutral-500/40"} Gray
+
+%span.rounded.text-red-600.font-medium.px-2.py-1.text-xs.border.dark:text-red-500{class: "bg-red-50/30 border-red-600/60 dark:bg-red-500/20 dark:border-red-500/30"} Red
+
+%span.rounded.text-orange-600.font-medium.px-2.py-1.text-xs.border.dark:text-orange-400{class: "bg-orange-50/30 border-orange-600/60 dark:bg-orange-500/20 dark:border-orange-500/30"} Orange
+
+%span.rounded.text-yellow-700.font-medium.px-2.py-1.text-xs.border.dark:text-yellow-500{class: "bg-yellow-50/30 border-yellow-500/60 dark:bg-yellow-500/20 dark:border-yellow-500/30"} Yellow
+
+%span.rounded.text-green-700.font-medium.px-2.py-1.text-xs.border.dark:text-green-500{class: "bg-green-50/30 border-green-500/60 dark:bg-green-500/20 dark:border-green-500/30"} Green
+
+%span.rounded.text-blue-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-blue-400{class: "bg-blue-50/30 border-blue-600/60 dark:border-blue-500/40 dark:bg-blue-500/20"} Blue
+
+%span.rounded.text-indigo-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-indigo-400{class: "bg-indigo-50/30 border-indigo-600/60 dark:border-indigo-400/30 dark:bg-indigo-500/20"} Indigo
+
+%span.rounded.text-purple-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-purple-400{class: "bg-purple-50/30 border-indigo-600/60 dark:border-purple-400/30 dark:bg-purple-500/20"} Purple
+
+%span.rounded.bg-pink-100.text-pink-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-pink-500{class: "border-pink-600/60 dark:border-pink-500/40 dark:bg-pink-500/20"} Pink
+
+%span.rounded.bg-white-100.text-slate-800.border.border-slate-400.font-medium.px-2.py-1.leading-tight.text-xs.dark:bg-white-10.dark:text-white White
 <% end %>
 
 <%= render_snippet %>
