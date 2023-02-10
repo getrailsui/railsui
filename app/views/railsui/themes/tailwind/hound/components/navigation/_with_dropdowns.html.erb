@@ -202,11 +202,11 @@
 <% end %>
 
 <% content_for :html, flush: true do %>
-<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav prevent">
+<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
-        <a href="/" data-action="click->prevent#prevent" class="w-12 h-12 flex justify-center">
+        <a href="/" class="w-12 h-12 flex justify-center">
           <!-- Hound logo -->
           <svg
             class="fill-current w-6 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
@@ -249,13 +249,13 @@
             <ul
               class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
               <li>
-                <a href="#" class="nav-link nav-link-active" data-action="click->prevent#prevent">Dashboard</a>
+                <a href="#" class="nav-link nav-link-active">Dashboard</a>
               </li>
               <li>
-                <a href="#" class="nav-link" data-action="click->prevent#prevent">Metrics</a>
+                <a href="#" class="nav-link">Metrics</a>
               </li>
               <li>
-                <a href="#" class="nav-link" data-action="click->prevent#prevent">Settings</a>
+                <a href="#" class="nav-link">Settings</a>
               </li>
               <li data-controller="dropdown" class="relative">
                 <button class="nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->dropdown#toggle click@window->dropdown#hide">
@@ -270,7 +270,7 @@
                   <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Documents</a>
                   <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Statements</a>
                   <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Contacts</a>
-                   <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Referrals</a>
+                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Referrals</a>
                 </div>
               </li>
             </ul>
@@ -326,7 +326,7 @@
                       <div class="flex items-start space-x-2">
                         <%= image_tag unsplash_url(item: "male portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
                         <div class="flex-1">
-                          <p class="truncate">John D. replied to <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700 ">your comment</a></p>
+                          <p class="truncate">John D. replied to <a href="#" class="underline text-indigo-600 hover:text-indigo-700 ">your comment</a></p>
                           <p class="text-xs text-slate-500">Just now</p>
                         </div>
                       </div>
@@ -340,7 +340,7 @@
                       <div class="flex items-start space-x-2">
                         <%= image_tag unsplash_url(item: "female portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
                           <div class="flex-1">
-                            <p>Jane D. posted <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700">an update</a></p>
+                            <p>Jane D. posted <a href="#" class="underline text-indigo-600 hover:text-indigo-700">an update</a></p>
                             <p class="text-xs text-slate-500">15 mins ago</p>
                          </div>
                       </div>
@@ -354,7 +354,7 @@
                       <div class="flex items-start space-x-2">
                       <%= image_tag unsplash_url(item: "male portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
                         <div class="flex-1">
-                          <p>Scotty P. shared <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700">a repository</a></p>
+                          <p>Scotty P. shared <a href="#" class="underline text-indigo-600 hover:text-indigo-700">a repository</a></p>
                           <p class="text-xs text-slate-500">2 hours ago</p>
                         </div>
                       </div>
@@ -364,7 +364,7 @@
                     </button>
                   </div>
                   <div>
-                    <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500" href="#" data-controller="prevent" data-action="click->prevent#prevent">
+                    <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500" href="#">
                       <span>View all notifications</span>
                       <%%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500" %>
                     </a>
@@ -383,12 +383,12 @@
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
                   <div role="none">
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Profile</a>
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Preferences</a>
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Billing</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Profile</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Preferences</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Billing</a>
                   </div>
                   <div role="none">
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Sign out</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Sign out</a>
                   </div>
                 </div>
               </li>
@@ -402,7 +402,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav prevent">
+<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -604,7 +604,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%header.relative.dark:bg-slate-900.bg-white.rounded-t{"data-controller" => "nav prevent"}
+%header.relative.dark:bg-slate-900.bg-white.rounded-t{"data-controller" => "nav"}
   .container.mx-auto.px-4
     .md:flex.items-center.flex-wrap.md:space-x-2
       .md:block.flex.items-center.justify-between
