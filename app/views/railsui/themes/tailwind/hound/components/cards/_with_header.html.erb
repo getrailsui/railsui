@@ -1,46 +1,46 @@
 <%# Card - With header %>
 
 <div class="my-16">
-  <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Card with header" %>
+  <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "With header" %>
 
-  <div class="bg-slate-50 p-6 rounded shadow-inner">
-    <div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white p-6">
-      <div class="-mx-6 border-b border-slate-200 px-6 pb-4 mb-4">
-        <h3 class="h5">Job postings</h3>
-        <p class="text-slate-500">Lorem ipsum dolor sit amet, consectetur adipisicin.</p>
+<%= render preview("gray") do %>
+<div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white p-6 dark:bg-slate-800 dark:text-white dark:shadow-slate-900/50">
+  <div class="-mx-6 border-b border-slate-200 dark:border-slate-700 px-6 pb-4 mb-4">
+    <h3 class="h5">Job postings</h3>
+    <p class="text-slate-500 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipisicin.</p>
+  </div>
+  <ul class="divide-y divide-slate-100 dark:divide-slate-700 last-child:pb-0 opacity-25 dark:opacity-40 pointer-events-none select-none">
+    <li class="flex justify-between items-center py-3 -mx-6 px-6">
+      <div>
+        <a href="#" class="btn-link">Ruby Developer</a>
+          <div class="flex items-center space-x-2 text-slate-500 text-sm py-1 dark:text-slate-400">
+            <%= icon "users", classes: "w-5 h-5 text-slate-400" %>
+            <p>Engineering</p>
+          </div>
       </div>
-      <ul class="divide-y divide-slate-100 last-child:pb-0 opacity-25 pointer-events-none select-none">
-        <li class="flex justify-between items-center py-3 -mx-6 px-6">
-          <div>
-            <a href="#" class="btn-link">Ruby Developer</a>
-              <div class="flex items-center space-x-2 text-slate-500 text-sm py-1">
-                <%= icon "users", classes: "w-5 h-5 text-slate-400" %>
-                <p>Engineering</p>
-              </div>
+      <div class="flex flex-col items-end">
+        <div>
+          <span class="bg-emerald-100 text-emerald-700 font-semibold px-2 py-px rounded-lg text-xs">Full-time</span>
+        </div>
+        <div class="flex items-center space-x-2 text-slate-500 dark:text-slate-400 text-sm py-1">
+          <%= icon "map", classes: "w-5 h-5 text-slate-400" %>
+          <p>Remote</p>
+        </div>
+      </div>
+    </li>
+    <li class="flex justify-between items-center pt-3 -mx-6 px-6">
+      <div>
+        <a href="#" class="btn-link">Front-end Developer</a>
+          <div class="flex items-center space-x-2 text-slate-500 text-sm dark:text-slate-400">
+            <%= icon "users", classes: "w-5 h-5 text-slate-400" %>
+            <p>Engineering</p>
           </div>
-          <div class="flex flex-col items-end">
-            <div>
-              <span class="bg-emerald-100 text-emerald-700 font-semibold px-2 py-px rounded-lg text-xs">Full-time</span>
-            </div>
-            <div class="flex items-center space-x-2 text-slate-500 text-sm py-1">
-              <%= icon "map", classes: "w-5 h-5 text-slate-400" %>
-              <p>Remote</p>
-            </div>
-          </div>
-        </li>
-        <li class="flex justify-between items-center pt-3 -mx-6 px-6">
-          <div>
-            <a href="#" class="btn-link">Front-end Developer</a>
-              <div class="flex items-center space-x-2 text-slate-500 text-sm">
-                <%= icon "users", classes: "w-5 h-5 text-slate-400" %>
-                <p>Engineering</p>
-              </div>
-          </div>
-          <div class="flex flex-col items-end">
-            <div>
-              <span class="bg-emerald-100 text-emerald-700 font-semibold px-2 py-px rounded-lg text-xs">Full-time</span>
-            </div>
-            <div class="flex items-center space-x-2 text-slate-500 text-sm py-1">
+      </div>
+      <div class="flex flex-col items-end">
+        <div>
+          <span class="bg-emerald-100 text-emerald-700 font-semibold px-2 py-px rounded-lg text-xs">Full-time</span>
+        </div>
+        <div class="flex items-center space-x-2 text-slate-500 text-sm py-1 dark:text-slate-400">
               <%= icon "map", classes: "w-5 h-5 text-slate-400" %>
               <p>Remote</p>
             </div>
@@ -48,14 +48,14 @@
         </li>
       </ul>
     </div>
-  </div>
+<% end %>
 
 
 <% content_for :html, flush: true do %>
-<div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white p-6">
-  <div class="-mx-6 border-b border-slate-200 px-6 pb-4  mb-4">
+<div class="rounded-lg shadow-lg shadow-slate-300/70 bg-white p-6 dark:bg-slate-800 dark:text-white dark:shadow-slate-900/50">
+  <div class="-mx-6 border-b border-slate-200 dark:border-slate-700 px-6 pb-4 mb-4">
     <h3 class="h5">Job postings</h3>
-    <p class="text-slate-500">Lorem ipsum dolor sit amet, consectetur adipisicin.</p>
+    <p class="text-slate-500 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipisicin.</p>
   </div>
   <!-- content -->
 </div>
@@ -66,10 +66,10 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-.rounded-lg.shadow-lg.bg-white.p-6.shadow-slate-300/70
-  .-mx-6.border-b.border-slate-200.px-6.pb-4.mb-4
+.rounded-lg.shadow-lg.bg-white.p-6.dark:bg-slate-800.dark:text-white{class: "shadow-slate-300/70 dark:shadow-slate-900/50"}
+  .-mx-6.border-b.border-slate-200.dark:border-slate-700.px-6.pb-4.mb-4
     %h3.h5 Job postings
-    %p.text-slate-500 Lorem ipsum dolor sit amet, consectetur adipisicin.
+    %p.text-slate-500.dark:text-slate-300 Lorem ipsum dolor sit amet, consectetur adipisicin.
   / content
 <% end %>
 <%= render_snippet %>
