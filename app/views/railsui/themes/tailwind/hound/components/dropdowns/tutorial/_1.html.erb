@@ -1,6 +1,6 @@
 <h2>1. Initializing a dropdown</h2>
 
-<div class="prose max-w-full dark:prose-invert my-6">
+<div class="prose max-w-full dark:!prose-invert my-6">
   <p>Use the <%= code('data-controller="dropdown"') %> attribute to initialize a new dropdown component using <%= link_to "Stimulus.js", "https://stimulus.hotwired.dev/", target: :_blank %>.</p>
 </div>
 
@@ -50,8 +50,8 @@ export default class extends Controller {
 
 <% end %>
 
-<div class="prose max-w-full dark:prose-invert my-6">
-  Be sure the controller is registered inside <%= code "app/javascript/controllers/index.js" %>. (This should already be the case when you installed the <%= Railsui.config.theme.humanize %> theme.)
+<div class="prose max-w-full dark:!prose-invert my-6">
+  <p>Be sure the controller is registered inside <%= code "app/javascript/controllers/index.js" %>. (This should already be the case when you installed the <%= Railsui.config.theme.humanize %> theme.)</p>
 </div>
 
 <div class="not-prose">

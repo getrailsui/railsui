@@ -2,35 +2,29 @@
   <p><%= link_to "Heroicons", "https://heroicons.com/", target: :_blank %> are the default icons of choice for Rails UI. We chose these icons since they are open sourced, updated regularly, and cover a vast set of scenarios in the design world.</p>
 </div>
 
-<div class="my-6 divide-y divide-slate-100 dark:divide-slate-700 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200 dark:border-slate-600 dark:bg-slate-800 dark:shadow-slate-800/50">
-  <details class="group p-4 marker:content-['']">
-    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 dark:text-slate-100 group-open:text-yellow-400 [&::-webkit-details-marker]:hidden">
-       <div><span class="bg-blue-500 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs">Usage guide</span> <span class="ml-3">Icon usage guide</span></div>
-      <%= icon "chevron-down", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-400 group-open:text-blue-500 group-open:hidden block" %>
-      <%= icon "chevron-up", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-400 group-open:text-blue-500 group-open:block hidden" %>
-    </summary>
-    <article class="p-8 dark:bg-slate-700 bg-blue-50/20 dark:border-slate-700 border-blue-100 border rounded-lg relative mt-6">
-      <div class="absolute top-4 right-4">
-        <%= doc_label(:tutorial) %>
-      </div>
-      <div class="prose prose-slate max-w-full dark:!prose-invert prose-h4:text-xs prose-h4:font-bold prose-h4:uppercase prose-h4:tracking-wider prose-h4:text-indigo-700">
-        <h3>Why SVG icons?</h3>
-        <p>There are a lot of pros to using SVG icons rather than bitmap or font-based icons. The summarized take is they are more accessible, have lighter file sizes, and can scale infinitely, which is excellent for retina screens.</p>
-        <p>The main downside is the way we have to render them in order to have more control. SVGs are essentially vector code and can be complex and cumbersome to drop into a new view whenever you require one. Because of this we bundled a helper into Rails UI that solves for icons.</p>
 
-      <h3>Prerequisites</h3>
+<%= render "railsui/shared/usage_guide", title: "Icon usage guide" do %>
 
-      <p class="mt-0">The complete Heroicons icon bundle is included with your theme's installation so there's no need to install those manually. You can find all icons inside the <%= code "app/assets/images/icons" %> directory. The icons folder contains solid and outline-based variants.</p>
+<h3>Why SVG icons?</h3>
 
-      <p>As you build your application you may find that some designs call for a solid icon and others an outline icon. It's best to stick with a single variant per application, so if you use an outline icon in context, you should use outline icons going forward.</p>
+<p>There are a lot of pros to using SVG icons rather than bitmap or font-based icons. The summarized take is they are more accessible, have lighter file sizes, and can scale infinitely, which is excellent for retina screens.</p>
 
-      <h3>Dependencies</h3>
+<p>The main downside is the way we have to render them in order to have more control. SVGs are essentially vector code and can be complex and cumbersome to drop into a new view whenever you require one. Because of this we bundled a helper into Rails UI that solves for icons.</p>
 
-      <p>With Rails UI a handy <%= code "icon" %> helper is at your disposal which makes linking to and rendering SVG icons in your views a painless process.</p>
+<h3>Prerequisites</h3>
 
-      <p>The <%= code "icon" %> helper leverages a gem called  <%= link_to "inline_svg", "https://github.com/jamesmartin/inline_svg", target: :_blank %> to render the SVG and pass some options along the way.</p>
+<p class="mt-0">The complete Heroicons icon bundle is included with your theme's installation so there's no need to install those manually. You can find all icons inside the <%= code "app/assets/images/icons" %> directory. The icons folder contains solid and outline-based variants.</p>
 
-    <p>Here is the helper source code for context:</p>
+<p>As you build your application you may find that some designs call for a solid icon and others an outline icon. It's best to stick with a single variant per application, so if you use an outline icon in context, you should use outline icons going forward.</p>
+
+<h3>Dependencies</h3>
+
+<p>With Rails UI a handy <%= code "icon" %> helper is at your disposal which makes linking to and rendering SVG icons in your views a painless process.</p>
+
+<p>The <%= code "icon" %> helper leverages a gem called  <%= link_to "inline_svg", "https://github.com/jamesmartin/inline_svg", target: :_blank %> to render the SVG and pass some options along the way.</p>
+
+<p>Here is the helper source code for context:</p>
+
 <div class="not-prose">
 <% content_for :ruby, flush: true do %>
 def icon(name, options={})
@@ -77,29 +71,13 @@ end
   <%%= icon "academic-cap", styles: "w-5 h-5 text-indigo-600" %>
 <% end %>
   <%= render_snippet active_tab: "erb", erb_filename: "index.html.erb" %>
-        </div>
-      </div>
-    </article>
-  </details>
-</div>
-
-<div data-controller="smooth" class="relative">
-  <div class="p-3 bg-white border-y border-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:rounded-lg dark:border-x">
-    <p class="uppercase tracking-wide text-xs font-semibold mt-1  mb-1 text-indigo-600 dark:text-indigo-400">Quicklinks</p>
-    <p class="mb-3 text-xs text-slate-600 dark:text-slate-300">Quickly navigate to different icon variants below</p>
-
-    <nav role="nav jump">
-      <ul class="flex items-center space-x-3">
-        <li>
-          <a href="#icons-solid" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-slate-500 dark:hover:bg-slate-700">Solid icons</a>
-        </li>
-        <li>
-          <a href="#icons-outline"
-          data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-slate-500 dark:hover:bg-slate-700">Outline icons</a>
-        </li>
-      </ul>
-    </nav>
   </div>
+<% end %>
+
+<%= render "railsui/shared/quicklinks", name: "icon" do %>
+  <%= quick_link(title: "solid", component: "icons") %>
+  <%= quick_link(title: "outline", component: "icons") %>
+<% end %>
 
   <div class="my-16">
     <%= render "railsui/shared/sticky_subhead", title: "Icons", subtitle: "Solid" %>

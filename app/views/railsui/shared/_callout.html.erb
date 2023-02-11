@@ -1,6 +1,6 @@
-<div class="px-4 py-3 rounded-lg bg-indigo-50 flex items-start select-none text-indigo-900 border border-indigo-300 mb-6">
-    <%= icon "bell", classes: "text-indigo-600 relative w-5 h-5", variant: :solid %>
-    <div class="ml-2 prose-sm prose-indigo prose-a:font-semibold prose-a:underline prose-code:font-semibold prose-p:leading-tight">
+<div class="px-4 py-3 rounded-lg bg-indigo-50 flex sm:items-center items-start select-none text-indigo-900 border border-indigo-300 mb-6 dark:bg-indigo-500/20 dark:border-indigo-400/40 dark:text-indigo-200">
+    <%= icon "bell", classes: "text-indigo-600 dark:text-indigo-300 relative w-5 h-5", variant: :solid %>
+    <div class="ml-2 prose-sm prose-indigo dark:prose-invert prose-a:font-semibold prose-a:underline prose-code:font-semibold prose-p:leading-tight">
       <%= yield %>
     </div>
     <%= %>

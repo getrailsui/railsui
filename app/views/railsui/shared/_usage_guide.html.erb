@@ -1,0 +1,17 @@
+<div class="my-6 divide-y divide-slate-100 dark:divide-slate-700 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200 dark:border-slate-600 dark:bg-slate-800 dark:shadow-slate-800/50">
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 dark:text-slate-100 group-open:text-yellow-400 [&::-webkit-details-marker]:hidden">
+       <div><span class="bg-blue-500 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs">Usage guide</span> <span class="ml-3"><%= local_assigns[:title] %></span></div>
+      <%= icon "chevron-down", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-400 group-open:text-blue-500 group-open:hidden block" %>
+      <%= icon "chevron-up", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-400 group-open:text-blue-500 group-open:block hidden" %>
+    </summary>
+    <article class="p-8 dark:bg-slate-700 bg-blue-50/20 dark:border-slate-700 border-blue-100 border rounded-lg relative mt-6">
+      <div class="absolute top-4 right-4">
+        <%= doc_label(:tutorial) %>
+      </div>
+      <div class="prose prose-slate max-w-full dark:!prose-invert prose-h4:text-xs prose-h4:font-bold prose-h4:uppercase prose-h4:tracking-wider prose-h4:text-indigo-700">
+        <%= yield %>
+      </div>
+    </article>
+  </details>
+</div>

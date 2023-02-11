@@ -1,39 +1,23 @@
-<div class="my-6 divide-y divide-slate-100 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200">
-  <details class="group p-4 marker:content-['']">
-    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-blue-600 [&::-webkit-details-marker]:hidden">
-       <div><span class="bg-blue-500 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs">Usage guide</span> <span class="ml-3">Dropdown usage guide</span></div>
-      <%= icon "chevron-down", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-blue-500 group-open:hidden block" %>
-      <%= icon "chevron-up", classes: "w-5 h-5 flex-none ml-4 mt-0.5 text-slate-600 group-open:text-blue-500 group-open:block hidden" %>
-    </summary>
+<%= render "railsui/shared/usage_guide", title: "Dropdown usage guide" do %>
+  <p class="pt-10">The short-form tutorial below represents how to pair Rails UI, Stimulus.js, and Ruby on Rails together to achieve a dropdown pattern using a set of elements working together.</p>
 
-  <article class="p-8 bg-blue-50/20 border-blue-100 border my-6 rounded-lg relative">
-    <div class="absolute top-4 right-4">
-      <%= doc_label(:tutorial) %>
-    </div>
+  <% tutorial_path = "railsui/themes/tailwind/hound/components/dropdowns/tutorial" %>
 
-    <div class="prose prose-slate max-w-full dark:prose-invert pt-6">
-      <p>The short-form tutorial below represents how to pair Rails UI, Stimulus.js, and Ruby on Rails together to achieve a dropdown pattern using a set of elements working together.</p>
+  <%= render "#{tutorial_path}/dependencies" %>
 
-      <% tutorial_path = "railsui/themes/tailwind/hound/components/dropdowns/tutorial" %>
+  <hr class="border-blue-200/50">
 
-      <%= render "#{tutorial_path}/dependencies" %>
+  <%= render "#{tutorial_path}/1" %>
 
-      <hr class="border-blue-200/50">
+  <hr class="border-blue-200/50">
 
-      <%= render "#{tutorial_path}/1" %>
+  <%= render "#{tutorial_path}/2" %>
 
-      <hr class="border-blue-200/50">
+  <hr class="border-blue-200/50">
 
-      <%= render "#{tutorial_path}/2" %>
+  <%= render "#{tutorial_path}/3" %>
 
-      <hr class="border-blue-200/50">
+  <hr class="border-blue-200/50">
 
-      <%= render "#{tutorial_path}/3" %>
-
-      <hr class="border-blue-200/50">
-
-      <%= render "#{tutorial_path}/4" %>
-    </div>
-  </article>
-  </details>
-</div>
+  <%= render "#{tutorial_path}/4" %>
+<% end %>
