@@ -3,38 +3,38 @@
 
 <%= render preview do %>
 <div class="flex flex-wrap md:justify-between justify-center items-center space-y-2">
-  <p class="text-slate-600 text-sm block w-full md:w-auto md:text-left text-center">Viewing page <strong>1</strong> with <strong>24</strong> results per page</p>
-  <nav aria-label="Page navgiation" class="text-slate-500 md:text-sm text-base font-medium w-auto flex">
-    <ul class="flex flex-wrap items-center justify-center w-auto divide-x divide-slate-300 shadow-sm">
+  <p class="text-slate-600 dark:text-slate-200 text-sm block w-full md:w-auto md:text-left text-center">Viewing page <strong>1</strong> with <strong>24</strong> results per page</p>
+  <nav aria-label="Page navgiation" class="text-slate-500 dark:text-slate-200 md:text-sm text-base font-medium w-auto flex">
+    <ul class="flex flex-wrap items-center justify-center w-auto divide-x divide-slate-300 shadow-sm dark:divide-slate-600">
       <li class="flex justify-start items-center">
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300">
-          <%= icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Previous" %>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">
+          <%= icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Previous" %>
         </a>
       </li>
       <li>
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner">1</a>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner dark:hover:bg-indigo-500">1</a>
       </li>
       <li>
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">2</a>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">2</a>
       </li>
       <li>
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">3</a>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">3</a>
       </li>
       <li class="md:block hidden">
-        <span href="#" class="bg-white inline-flex items-center py-2 px-3 border-y border-slate-300 select-none pointer-events-none">&hellip;</span>
+        <span href="#" class="bg-white inline-flex items-center py-2 px-3 border-y border-slate-300 select-none pointer-events-nonehover:bg-slate-50/50 dark:bg-slate-800 dark:border-slate-600">&hellip;</span>
       </li>
       <li>
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">8</a>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">8</a>
       </li>
       <li>
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">9</a>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">9</a>
       </li>
       <li>
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">10</a>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">10</a>
       </li>
       <li class="flex justify-end items-center">
-        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300">
-          <%= icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Next" %>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">
+          <%= icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Next" %>
         </a>
       </li>
     </ul>
@@ -44,38 +44,38 @@
 
 <%= content_for :html, flush: true do %>
 <div class="flex flex-wrap md:justify-between justify-center items-center space-y-2">
-  <p class="text-slate-600 text-sm block w-full md:w-auto md:text-left text-center">Viewing page <strong>1</strong> with <strong>24</strong> results per page</p>
-  <nav aria-label="Page navgiation" class="text-slate-500 md:text-sm text-base font-medium w-auto flex">
-    <ul class="flex flex-wrap items-center justify-center w-auto divide-x divide-slate-300 shadow-sm">
+  <p class="text-slate-600 dark:text-slate-200 text-sm block w-full md:w-auto md:text-left text-center">Viewing page <strong>1</strong> with <strong>24</strong> results per page</p>
+  <nav aria-label="Page navgiation" class="text-slate-500 dark:text-slate-200 md:text-sm text-base font-medium w-auto flex">
+    <ul class="flex flex-wrap items-center justify-center w-auto divide-x divide-slate-300 shadow-sm dark:divide-slate-600">
       <li class="flex justify-start items-center">
-        <a href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300">
-          <%%= icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Previous" %>
+        <a href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">
+          <%%= icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Previous" %>
         </a>
       </li>
       <li>
-        <a href="#" class="inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner">1</a>
+        <a href="#" class="inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner dark:hover:bg-indigo-500">1</a>
       </li>
       <li>
-        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">2</a>
+        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">2</a>
       </li>
       <li>
-        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">3</a>
+        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">3</a>
       </li>
       <li class="md:block hidden">
-        <span href="#" class="bg-white inline-flex items-center py-2 px-3 border-y border-slate-300 select-none pointer-events-none">&hellip;</span>
+        <span href="#" class="bg-white inline-flex items-center py-2 px-3 border-y border-slate-300 select-none pointer-events-nonehover:bg-slate-50/50 dark:bg-slate-800 dark:border-slate-600">&hellip;</span>
       </li>
-        <li>
-        <a href="#" class="inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">8</a>
+      <li>
+        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">8</a>
       </li>
-        <li>
-        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">9</a>
+      <li>
+        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">9</a>
       </li>
-        <li>
-        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50">10</a>
+      <li>
+        <a href="#" class="bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">10</a>
       </li>
       <li class="flex justify-end items-center">
-        <a href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300">
-          <%%= icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Next" %>
+        <a href="#" class="bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600">
+          <%%= icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Next" %>
         </a>
       </li>
     </ul>
@@ -85,38 +85,38 @@
 
 <%= content_for :erb, flush: true do %>
 <div class="flex flex-wrap md:justify-between justify-center items-center space-y-2">
-  <p class="text-slate-600 text-sm block w-full md:w-auto md:text-left text-center">Viewing page <strong>1</strong> with <strong>24</strong> results per page</p>
-  <nav aria-label="Page navgiation" class="text-slate-500 md:text-sm text-base font-medium w-auto flex">
-    <ul class="flex flex-wrap items-center justify-center w-auto divide-x divide-slate-300 shadow-sm">
+  <p class="text-slate-600 dark:text-slate-200 text-sm block w-full md:w-auto md:text-left text-center">Viewing page <strong>1</strong> with <strong>24</strong> results per page</p>
+  <nav aria-label="Page navgiation" class="text-slate-500 dark:text-slate-200 md:text-sm text-base font-medium w-auto flex">
+    <ul class="flex flex-wrap items-center justify-center w-auto divide-x divide-slate-300 shadow-sm dark:divide-slate-600">
       <li class="flex justify-start items-center">
-        <%%= link_to "1", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300" do %>
-          <%%= icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Previous" %>
+        <%%= link_to "#", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600" do %>
+          <%%= icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Previous" %>
         <%% end %>
       </li>
       <li>
-        <%%= link_to "2", "#", "inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner" %>
+        <%%= link_to "1", "#", class: "inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner dark:hover:bg-indigo-500" %>
       </li>
       <li>
-        <%%= link_to "2", "#", "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50" %>
+        <%%= link_to "2", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600" %>
       </li>
       <li>
-        <%%= link_to "3", "#", "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50" %>
+        <%%= link_to "3", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600" %>
       </li>
       <li class="md:block hidden">
-        <span class="bg-white inline-flex items-center py-2 px-3 border-y border-slate-300 select-none pointer-events-none">&hellip;</span>
+        <span href="#" class="bg-white inline-flex items-center py-2 px-3 border-y border-slate-300 select-none pointer-events-nonehover:bg-slate-50/50 dark:bg-slate-800 dark:border-slate-600">&hellip;</span>
       </li>
       <li>
-        <%%= link_to "8", "#", "inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50" %>
+        <%%= link_to "8", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600" %>
       </li>
       <li>
-        <%%= link_to "9", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50" %>
+        <%%= link_to "9", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600" %>
       </li>
       <li>
-        <%%= link_to "10", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50" %>
+        <%%= link_to "10", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600" %>
       </li>
       <li class="flex justify-end items-center">
-        <%%= link_to "#", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300" do %>
-          <%%= icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Next" %>
+        <%%= link_to "#", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600" do %>
+          <%%= icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Next" %>
         <%% end %>
       </li>
     </ul>
@@ -126,34 +126,34 @@
 
 <% content_for :haml, flush: true do %>
 .flex.flex-wrap.md:justify-between.justify-center.items-center.space-y-2
-  %p.text-slate-600.text-sm.block.w-full.md:w-auto.md:text-left.text-center
+  %p.text-slate-600.dark:text-slate-200.text-sm.block.w-full.md:w-auto.md:text-left.text-center
     Viewing page
     %strong 1
     with
     %strong 24
     results per page
-  %nav.text-slate-500.md:text-sm.text-base.font-medium.w-auto.flex{"aria-label" => "Page navgiation"}
-    %ul.flex.flex-wrap.items-center.justify-center.w-auto.divide-x.divide-slate-300.shadow-sm
+  %nav.text-slate-500.dark:text-slate-200.md:text-sm.text-base.font-medium.w-auto.flex{"aria-label" => "Page navgiation"}
+    %ul.flex.flex-wrap.items-center.justify-center.w-auto.divide-x.divide-slate-300.shadow-sm.dark:divide-slate-600
       %li.flex.justify-start.items-center
-        = link_to "1", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300"
-          = icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Previous"
+        = link_to "#", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-l border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
+          = icon "arrow-small-left", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Previous"
       %li
-        = link_to "2", "#", "inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner"
+        = link_to "1", "#", class: "inline-flex items-center py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 border-y border-indigo-600 hover:border-indigo-700 shadow-inner dark:hover:bg-indigo-500"
       %li
-        = link_to "3", "#", "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50"
+        = link_to "2", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
       %li
-        = link_to "4", "#", "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50"
+        = link_to "3", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
       %li.md:block.hidden
-        %span.bg-white.inline-flex.items-center.py-2.px-3.border-y.border-slate-300.select-none.pointer-events-none …
+        %span.bg-white.inline-flex.items-center.py-2.px-3.border-y.border-slate-300.select-none.dark:bg-slate-800.dark:border-slate-600{class: "pointer-events-nonehover:bg-slate-50/50", href: "#"} …
       %li
-        = link_to "8", "#", "inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50" %>
+        = link_to "8", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
       %li
-        = link_to "9", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50"
+        = link_to "9", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
       %li
-        = link_to "10", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50"
+        = link_to "10", "#", class: "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
       %li.flex.justify-end.items-center
-        = link_to "#", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300"
-          = icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500", title: "Next"
+        = link_to "#", class: "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-indigo-600 md:w-auto w-full border-y border-r border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
+          = icon "arrow-small-right", classes: "w-5 h-5 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-slate-200", title: "Next"
 <% end %>
 <%= render_snippet %>
 </div>
