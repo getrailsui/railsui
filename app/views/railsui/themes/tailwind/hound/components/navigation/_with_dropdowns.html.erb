@@ -9,7 +9,7 @@
         <a href="/" data-action="click->prevent#prevent" class="w-12 h-12 flex justify-center">
           <!-- Hound logo -->
           <svg
-            class="fill-current w-6 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
+            class="fill-current w-5 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
             dark:hover:text-indigo-500"
             width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -34,7 +34,7 @@
       </div>
       <div
         id="dropdowns-navigation"
-        class="md:flex-1 md:block hidden md:static absolute top-[57px] left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0  rounded-b md:shadow-none shadow-xl z-40 text-base"
+        class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0  rounded-b md:shadow-none shadow-xl z-40 text-base"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -62,15 +62,15 @@
                   <span>More</span>
                   <%= icon "chevron-down", classes: "w-3 h-3 text-slate-500" %>
                 </button>
-                <div class="hidden transition transform origin-to-right md:absolute left-0 md:mt-0 mt-2 top-10 bg-white md:rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 py-1 text-base md:text-sm  font-medium text-slate-500" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute left-0 md:mt-0 mt-2 top-10 bg-white md:rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 py-1 md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 sm:text-sm text-base font-medium text-slate-600 dark:text-slate-200" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
-                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Documents</a>
-                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Statements</a>
-                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Contacts</a>
-                   <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Referrals</a>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Documents</a>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Statements</a>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Contacts</a>
+                   <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Referrals</a>
                 </div>
               </li>
             </ul>
@@ -88,21 +88,21 @@
                   <span>Create</span>
                   <%= icon "plus", classes: "w-4 h-4 text-indigo-100" %>
                 </button>
-                <div class="hidden transition transform origin-to-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[180px] z-50 py-1 md:text-sm text-base text-slate-500 font-medium" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 text-base py-1 md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 md:space-y-0 space-y-2" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
-                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 flex items-center space-x-2 group">
-                    <%= icon "rectangle-stack", classes: "text-blue-500 group-hover:text-indigo-600 w-5 h-5" %>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center">
+                    <%= icon "rectangle-stack", classes: "text-blue-500 w-5 h-5" %>
                     <span>Repository</span>
                   </a>
-                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 flex items-center space-x-2 group">
-                    <%= icon "chart-pie", classes: "text-rose-500 group-hover:text-indigo-600 w-5 h-5" %>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center">
+                    <%= icon "chart-pie", classes: "text-rose-500 w-5 h-5" %>
                     <span>Report</span>
                   </a>
-                   <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group">
-                    <%= icon "arrow-down-circle", classes: "text-amber-500 group-hover:text-indigo-600 w-5 h-5" %>
+                   <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center">
+                    <%= icon "arrow-down-circle", classes: "text-amber-500 w-5 h-5" %>
                     <span>Export</span>
                   </a>
                 </div>
@@ -111,12 +111,12 @@
               <li class="md:mt-0 mt-2 relative" data-controller="dropdown">
                 <button type="button" class="flex group justify-center items-center md:w-auto w-full px-4 py-3 md:p-0" data-action="click->dropdown#toggle click@window->dropdown#hide">
                   <div class="relative">
-                    <%= icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600" %>
-                    <span class="w-[10px] h-[10px] bg-indigo-600 rounded-full hover:animate-pulse absolute top-0 right-0 z-20"></span>
+                    <%= icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600 dark:group-hover:text-slate-300" %>
+                    <span class="w-[10px] h-[10px] bg-indigo-600 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-indigo-400"></span>
                   </div>
-                  <span class="md:hidden text-slate-500 text-sm font-medium ml-2">Notifications</span>
+                  <span class="md:hidden text-slate-500 dark:text-slate-200 text-sm font-medium ml-2">Notifications</span>
                 </button>
-                <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y text-left text-slate-600" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y text-left dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
@@ -126,13 +126,14 @@
                       <div class="flex items-start space-x-2">
                         <%= image_tag unsplash_url(item: "male portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
                         <div class="flex-1">
-                          <p class="truncate">John D. replied to <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700 ">your comment</a></p>
-                          <p class="text-xs text-slate-500">Just now</p>
+                          <p class="truncate">John D. replied to <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400">your comment</a></p>
+                          <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
                         </div>
                       </div>
                     </div>
-                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                      <%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
                     </button>
                   </div>
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -140,13 +141,14 @@
                       <div class="flex items-start space-x-2">
                         <%= image_tag unsplash_url(item: "female portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
                           <div class="flex-1">
-                            <p>Jane D. posted <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700">an update</a></p>
-                            <p class="text-xs text-slate-500">15 mins ago</p>
+                            <p>Jane D. posted <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400">an update</a></p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
                          </div>
                       </div>
                     </div>
-                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                      <%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
                     </button>
                   </div>
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -154,19 +156,21 @@
                       <div class="flex items-start space-x-2">
                       <%= image_tag unsplash_url(item: "male portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
                         <div class="flex-1">
-                          <p>Scotty P. shared <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700">a repository</a></p>
-                          <p class="text-xs text-slate-500">2 hours ago</p>
+                          <p>Scotty P. shared <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400">a repository</a></p>
+                          <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
                         </div>
                       </div>
                     </div>
-                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                      <%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
                     </button>
                   </div>
                   <div>
-                    <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500" href="#" data-controller="prevent" data-action="click->prevent#prevent">
+                    <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500
+                    dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white" href="#" data-controller="prevent" data-action="click->prevent#prevent">
                       <span>View all notifications</span>
-                      <%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500" %>
+                      <%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-indigo-200" %>
                     </a>
                   </div>
                 </div>
@@ -177,18 +181,18 @@
                   <%= image_tag unsplash_url(item: "portrait", width: 140, height: 140), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out" %>
                 </button>
 
-                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full text-base md:text-sm  font-medium text-slate-500" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
                   <div role="none">
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Profile</a>
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Preferences</a>
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Billing</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" data-action="click->prevent#prevent">Profile</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" data-action="click->prevent#prevent">Preferences</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" data-action="click->prevent#prevent">Billing</a>
                   </div>
                   <div role="none">
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" data-action="click->prevent#prevent">Sign out</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" data-action="click->prevent#prevent">Sign out</a>
                   </div>
                 </div>
               </li>
@@ -202,14 +206,14 @@
 <% end %>
 
 <% content_for :html, flush: true do %>
-<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav">
+<header class="relative dark:bg-slate-900 bg-white" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
         <a href="/" class="w-12 h-12 flex justify-center">
           <!-- Hound logo -->
           <svg
-            class="fill-current w-6 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
+            class="fill-current w-5 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
             dark:hover:text-indigo-500"
             width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -234,7 +238,7 @@
       </div>
       <div
         id="dropdowns-navigation"
-        class="md:flex-1 md:block hidden md:static absolute top-[57px] left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0  rounded-b md:shadow-none shadow-xl z-40 text-base"
+        class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0  rounded-b md:shadow-none shadow-xl z-40 text-base"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -262,15 +266,15 @@
                   <span>More</span>
                   <%%= icon "chevron-down", classes: "w-3 h-3 text-slate-500" %>
                 </button>
-                <div class="hidden transition transform origin-to-right md:absolute left-0 md:mt-0 mt-2 top-10 bg-white md:rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 py-1 text-base md:text-sm  font-medium text-slate-500" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute left-0 md:mt-0 mt-2 top-10 bg-white md:rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 py-1 md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 sm:text-sm text-base font-medium text-slate-600 dark:text-slate-200" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
-                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Documents</a>
-                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Statements</a>
-                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Contacts</a>
-                  <a href="#" class="px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block">Referrals</a>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Documents</a>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Statements</a>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Contacts</a>
+                   <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300">Referrals</a>
                 </div>
               </li>
             </ul>
@@ -288,21 +292,21 @@
                   <span>Create</span>
                   <%%= icon "plus", classes: "w-4 h-4 text-indigo-100" %>
                 </button>
-                <div class="hidden transition transform origin-to-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[180px] z-50 py-1 md:text-sm text-base text-slate-500 font-medium" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 text-base py-1 md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 md:space-y-0 space-y-2" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
-                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 flex items-center space-x-2 group">
-                    <%%= icon "rectangle-stack", classes: "text-blue-500 group-hover:text-indigo-600 w-5 h-5" %>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center">
+                    <%%= icon "rectangle-stack", classes: "text-blue-500 w-5 h-5" %>
                     <span>Repository</span>
                   </a>
-                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 flex items-center space-x-2 group">
-                    <%%= icon "chart-pie", classes: "text-rose-500 group-hover:text-indigo-600 w-5 h-5" %>
+                  <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center">
+                    <%%= icon "chart-pie", classes: "text-rose-500 w-5 h-5" %>
                     <span>Report</span>
                   </a>
-                   <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group">
-                    <%%= icon "arrow-down-circle", classes: "text-amber-500 group-hover:text-indigo-600 w-5 h-5" %>
+                   <a href="#" class="px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center">
+                    <%%= icon "arrow-down-circle", classes: "text-amber-500 w-5 h-5" %>
                     <span>Export</span>
                   </a>
                 </div>
@@ -311,12 +315,12 @@
               <li class="md:mt-0 mt-2 relative" data-controller="dropdown">
                 <button type="button" class="flex group justify-center items-center md:w-auto w-full px-4 py-3 md:p-0" data-action="click->dropdown#toggle click@window->dropdown#hide">
                   <div class="relative">
-                    <%%= icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600" %>
-                    <span class="w-[10px] h-[10px] bg-indigo-600 rounded-full hover:animate-pulse absolute top-0 right-0 z-20"></span>
+                    <%%= icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600 dark:group-hover:text-slate-300" %>
+                    <span class="w-[10px] h-[10px] bg-indigo-600 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-indigo-400"></span>
                   </div>
-                  <span class="md:hidden text-slate-500 text-sm font-medium ml-2">Notifications</span>
+                  <span class="md:hidden text-slate-500 dark:text-slate-200 text-sm font-medium ml-2">Notifications</span>
                 </button>
-                <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y text-left text-slate-600" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y text-left dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
@@ -326,13 +330,14 @@
                       <div class="flex items-start space-x-2">
                         <%= image_tag unsplash_url(item: "male portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
                         <div class="flex-1">
-                          <p class="truncate">John D. replied to <a href="#" class="underline text-indigo-600 hover:text-indigo-700 ">your comment</a></p>
-                          <p class="text-xs text-slate-500">Just now</p>
+                          <p class="truncate">John D. replied to <a href="#" class="underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400">your comment</a></p>
+                          <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
                         </div>
                       </div>
                     </div>
-                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
                     </button>
                   </div>
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -340,13 +345,14 @@
                       <div class="flex items-start space-x-2">
                         <%= image_tag unsplash_url(item: "female portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
                           <div class="flex-1">
-                            <p>Jane D. posted <a href="#" class="underline text-indigo-600 hover:text-indigo-700">an update</a></p>
-                            <p class="text-xs text-slate-500">15 mins ago</p>
+                            <p>Jane D. posted <a href="#" class="underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400">an update</a></p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
                          </div>
                       </div>
                     </div>
-                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
                     </button>
                   </div>
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -354,19 +360,21 @@
                       <div class="flex items-start space-x-2">
                       <%= image_tag unsplash_url(item: "male portrait", width: 140, height: 140), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
                         <div class="flex-1">
-                          <p>Scotty P. shared <a href="#" class="underline text-indigo-600 hover:text-indigo-700">a repository</a></p>
-                          <p class="text-xs text-slate-500">2 hours ago</p>
+                          <p>Scotty P. shared <a href="#" class="underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400">a repository</a></p>
+                          <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
                         </div>
                       </div>
                     </div>
-                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
                     </button>
                   </div>
                   <div>
-                    <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500" href="#">
+                    <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500
+                    dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white" href="#">
                       <span>View all notifications</span>
-                      <%%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500" %>
+                      <%%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-indigo-200" %>
                     </a>
                   </div>
                 </div>
@@ -377,18 +385,18 @@
                   <%= image_tag unsplash_url(item: "portrait", width: 140, height: 140), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out" %>
                 </button>
 
-                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full text-base md:text-sm  font-medium text-slate-500" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
                   <div role="none">
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Profile</a>
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Preferences</a>
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Billing</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block">Profile</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block">Preferences</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block">Billing</a>
                   </div>
                   <div role="none">
-                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block">Sign out</a>
+                    <a href="#" class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block">Sign out</a>
                   </div>
                 </div>
               </li>
@@ -402,14 +410,14 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav">
+<header class="relative dark:bg-slate-900 bg-white" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
-        <%%= link_to "#", class: "w-12 h-12 flex justify-center" do %>
+        <%%= link_to root_path, class: "w-12 h-12 flex justify-center" do %>
           <!-- Hound logo -->
           <svg
-            class="fill-current w-6 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
+            class="fill-current w-5 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
             dark:hover:text-indigo-500"
             width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -434,7 +442,7 @@
       </div>
       <div
         id="dropdowns-navigation"
-        class="md:flex-1 md:block hidden md:static absolute top-[57px] left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0  rounded-b md:shadow-none shadow-xl z-40 text-base"
+        class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0  rounded-b md:shadow-none shadow-xl z-40 text-base"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -449,28 +457,28 @@
             <ul
               class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
               <li>
-                <%%= nav_link_to "Dashboard", "#", class:"nav-link" %>
+                <%%= nav_link_to "Dashboard", "#" %>
               </li>
               <li>
-                <%%= nav_link_to "Metrics", "#", class:"nav-link" %>
+                <%%= nav_link_to "Metrics", "#" %>
               </li>
               <li>
-                <%%= nav_link_to "Settings", "#", class:"nav-link" %>
+                <%%= nav_link_to "Settings", "#" %>
               </li>
               <li data-controller="dropdown" class="relative">
                 <button class="nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->dropdown#toggle click@window->dropdown#hide">
                   <span>More</span>
                   <%%= icon "chevron-down", classes: "w-3 h-3 text-slate-500" %>
                 </button>
-                <div class="hidden transition transform origin-to-right md:absolute left-0 md:mt-0 mt-2 top-10 bg-white md:rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 py-1 text-base md:text-sm  font-medium text-slate-500" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute left-0 md:mt-0 mt-2 top-10 bg-white md:rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 py-1 md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 sm:text-sm text-base font-medium text-slate-600 dark:text-slate-200" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
-                  <%%= link_to "Documents", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block" %>
-                  <%%= link_to "Statements", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block" %>
-                  <%%= link_to "Contacts", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block" %>
-                  <%%= link_to "Referrals", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block" %>
+                  <%%= link_to "Documents", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300" %>
+                  <%%= link_to "Statements", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300" %>
+                  <%%= link_to "Contacts", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300" %>
+                  <%%= link_to "Referrals", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300" %>
                 </div>
               </li>
             </ul>
@@ -488,112 +496,114 @@
                   <span>Create</span>
                   <%%= icon "plus", classes: "w-4 h-4 text-indigo-100" %>
                 </button>
-                <div class="hidden transition transform origin-to-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[180px] z-50 py-1 md:text-sm text-base text-slate-500 font-medium" data-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 md:border border-slate-200 md:min-w-[180px] z-50 text-base py-1 md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 md:space-y-0 space-y-2" data-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
-                  <%%= link_to "#", class:"px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group" do %>
-                    <%%= icon "rectangle-stack", classes: "text-blue-500 group-hover:text-indigo-600 w-5 h-5" %>
+                  <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center" do %>
+                    <%%= icon "rectangle-stack", classes: "text-blue-500 w-5 h-5" %>
                     <span>Repository</span>
                   <%% end %>
-                   <%%= link_to "#", class:"px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group" do %>
-                    <%%= icon "chart-pie", classes: "text-rose-500 group-hover:text-indigo-600 w-5 h-5" %>
+                  <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center" do %>
+                    <%%= icon "chart-pie", classes: "text-rose-500 w-5 h-5" %>
                     <span>Report</span>
                   <%% end %>
-                  <%%= link_to "#", class:"px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group" do %>
-                    <%%= icon "arrow-down-circle", classes: "text-amber-500 group-hover:text-indigo-600 w-5 h-5" %>
+                  <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center" do %>
+                    <%%= icon "arrow-down-circle", classes: "text-amber-500 w-5 h-5" %>
                     <span>Export</span>
                   <%% end %>
                 </div>
               </li>
-              <%% if user_signed_in? %>
-                <!-- Notifications Dropdown -->
-                <li class="md:mt-0 mt-2 relative" data-controller="dropdown">
-                  <button type="button" class="flex group justify-center items-center md:w-auto w-full px-4 py-3 md:p-0" data-action="click->dropdown#toggle click@window->dropdown#hide">
-                    <div class="relative">
-                      <%%= icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600" %>
-                      <span class="w-[10px] h-[10px] bg-indigo-600 rounded-full hover:animate-pulse absolute top-0 right-0 z-20"></span>
-                    </div>
-                    <span class="md:hidden text-slate-500 text-sm font-medium ml-2">Notifications</span>
-                  </button>
-                  <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y text-left text-slate-600" data-dropdown-target="menu"
-                  data-transition-enter-from="opacity-0 scale-95"
-                  data-transition-enter-to="opacity-100 scale-100"
-                  data-transition-leave-from="opacity-100 scale-100"
-                  data-transition-leave-to="opacity-0 scale-95">
-                    <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
-                      <div class="flex-1">
-                        <div class="flex items-start space-x-2">
-                          <%%= image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
-                          <div class="flex-1">
-                            <p class="truncate">John D. replied to <%%= link_to "your comment", "#", class: "underline text-indigo-600 hover:text-indigo-700" %></p>
-                            <p class="text-xs text-slate-500">Just now</p>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                        <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
-                      </button>
-                    </div>
-                    <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
-                      <div class="flex-1">
-                        <div class="flex items-start space-x-2">
-                          <%%= image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
-                            <div class="flex-1">
-                              <p>Jane D. posted <%%= link_to "an update", "#", class: "underline text-indigo-600 hover:text-indigo-700" %></p>
-                              <p class="text-xs text-slate-500">15 mins ago</p>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                        <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
-                      </button>
-                    </div>
-                    <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
-                      <div class="flex-1">
-                        <div class="flex items-start space-x-2">
-                        <%%= image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
-                          <div class="flex-1">
-                            <p>Scotty P. shared <%%= link_to "a repository", "#", class: "underline text-indigo-600 hover:text-indigo-700" %></p>
-                            <p class="text-xs text-slate-500">2 hours ago</p>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50">
-                        <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600" %>
-                      </button>
-                    </div>
-                    <div>
-                      <%%= link_to "#", class: "flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500" do %>
-                        <span>View all notifications</span>
-                        <%%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500" %>
-                      <%% end %>
-                    </div>
+              <!-- Notifications Dropdown -->
+              <li class="md:mt-0 mt-2 relative" data-controller="dropdown">
+                <button type="button" class="flex group justify-center items-center md:w-auto w-full px-4 py-3 md:p-0" data-action="click->dropdown#toggle click@window->dropdown#hide">
+                  <div class="relative">
+                    <%%= icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600 dark:group-hover:text-slate-300" %>
+                    <span class="w-[10px] h-[10px] bg-indigo-600 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-indigo-400"></span>
                   </div>
-                </li>
-
-                <li class="md:mt-0 mt-4 flex flex-col items-center relative" data-controller="dropdown">
-                  <button class="group" type="button" data-action="click->dropdown#toggle click@window->dropdown#hide">
-                    <%%= image_tag "#", class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out" %>
-                  </button>
-
-                  <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full text-base md:text-sm  font-medium text-slate-500" data-dropdown-target="menu"
-                  data-transition-enter-from="opacity-0 scale-95"
-                  data-transition-enter-to="opacity-100 scale-100"
-                  data-transition-leave-from="opacity-100 scale-100"
-                  data-transition-leave-to="opacity-0 scale-95">
-                    <div role="none">
-                      <%%= link_to "Profile", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" %>
-                      <%%= link_to "Preferences", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" %>
-                      <%%= link_to "Billing", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" %>
+                  <span class="md:hidden text-slate-500 dark:text-slate-200 text-sm font-medium ml-2">Notifications</span>
+                </button>
+                <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y text-left dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu"
+                data-transition-enter-from="opacity-0 scale-95"
+                data-transition-enter-to="opacity-100 scale-100"
+                data-transition-leave-from="opacity-100 scale-100"
+                data-transition-leave-to="opacity-0 scale-95">
+                  <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
+                    <div class="flex-1">
+                      <div class="flex items-start space-x-2">
+                        <%%= image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
+                        <div class="flex-1">
+                          <p class="truncate">John D. replied to <%%= link_to "your comment", "#", class:"underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400" %></p>
+                          <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
+                        </div>
+                      </div>
                     </div>
-                    <div role="none">
-                      <%%= button_to "Sign out", user_session_destroy_path, method: :delete, class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block" %>
-                    </div>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
+                    </button>
                   </div>
-                </li>
-              <%% end %>
+                  <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
+                    <div class="flex-1">
+                      <div class="flex items-start space-x-2">
+                        <%%= image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
+                          <div class="flex-1">
+                            <p>Jane D. posted <%%= link_to "an update", "#", class:"underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400" %></p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
+                         </div>
+                      </div>
+                    </div>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
+                    </button>
+                  </div>
+                  <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
+                    <div class="flex-1">
+                      <div class="flex items-start space-x-2">
+                      <%%= image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
+                        <div class="flex-1">
+                          <p>Scotty P. shared <%%= link_to "a repository", "#", class: "underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400" %></p>
+                          <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+                      <%%= icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50" %>
+                    </button>
+                  </div>
+                  <div>
+                    <%%= link_to "flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500
+                    dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white" do %>
+                      <span>View all notifications</span>
+                      <%%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-indigo-200" %>
+                    <%% end %>
+                  </div>
+                </div>
+
+              </li>
+              <li class="md:mt-0 mt-4 flex flex-col items-center relative" data-controller="dropdown">
+                <button class="group" type="button" data-action="click->dropdown#toggle click@window->dropdown#hide">
+                  <%%= image_tag "#", class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out" %>
+                </button>
+
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu"
+                data-transition-enter-from="opacity-0 scale-95"
+                data-transition-enter-to="opacity-100 scale-100"
+                data-transition-leave-from="opacity-100 scale-100"
+                data-transition-leave-to="opacity-0 scale-95">
+                  <div role="none">
+                    <%%= link_to "Profile", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" %>
+                    <%%= link_to "Preferences", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" %>
+                    <%%= link_to "Billing", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" %>
+                  </div>
+                  <div role="none">
+                    <%%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" %>
+                  </div>
+                </div>
+              </li>
             </ul>
           </nav>
         </div>
@@ -604,113 +614,116 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%header.relative.dark:bg-slate-900.bg-white.rounded-t{"data-controller" => "nav"}
+%header.relative.dark:bg-slate-900.bg-white{"data-controller" => "nav"}
   .container.mx-auto.px-4
     .md:flex.items-center.flex-wrap.md:space-x-2
       .md:block.flex.items-center.justify-between
-        = link_to "#", class: "w-12 h-12 flex justify-center" do
-          / Hound logo
-          %svg.fill-current.w-6.h-auto.text-indigo-600.hover:text-indigo-700.duration-300.transition.ease-in-out.dark:hover:text-indigo-500{fill: "none", height: "50", viewbox: "0 0 39 50", width: "39", xmlns: "http://www.w3.org/2000/svg"}
-          %path{"clip-rule" => "evenodd", d: "M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z", "fill-rule" => "evenodd"}
-          %span.sr-only= Railsui.config.theme.humanize
-
+        = link_to root_path, class: "w-12 h-12 flex justify-center"
+        / Hound logo
+          %svg.fill-current.w-5.h-auto.text-indigo-600.hover:text-indigo-700.duration-300.transition.ease-in-out.dark:hover:text-indigo-500{fill: "none", height: "50", viewbox: "0 0 39 50", width: "39", xmlns: "http://www.w3.org/2000/svg"}
+            %path{"clip-rule" => "evenodd", d: "M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z", "fill-rule" => "evenodd"}
+          %span.sr-only Hound
         %button#dropdowns-nav-toggle.md:hidden.block.p-1.rounded.focus:ring-4.focus:ring-slate-100.active:bg-white.group.dark:focus:bg-slate-800.dark:focus:ring-slate-700{class: "focus:bg-white/50", "data-action" => "click->nav#toggle"}
           %div{"data-nav-target" => "menuBars", role: "none"}
             = icon "bars-3-center-left", classes: "w-8 h-8 text-slate-600 group-focus:text-indigo-600
             dark:text-slate-400 dark:group-focus:text-slate-100"
           .hidden{"data-nav-target" => "menuCross", role: "none"}
             = icon "x-mark", classes: "w-8 h-8 text-slate-600 group-focus:text-indigo-600 dark:text-slate-400 dark:group-focus:text-slate-100"
-      #dropdowns-navigation.md:flex-1.md:block.hidden.md:static.absolute.left-0.w-full.bg-white.dark:bg-slate-900.md:bg-transparent.transform.origin-top.px-4.pb-4.md:p-0.rounded-b.md:shadow-none.shadow-xl.z-40.text-base{class: "top-[57px]", "data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+      #dropdowns-navigation.md:flex-1.md:block.hidden.md:static.absolute.top-12.left-0.w-full.bg-white.dark:bg-slate-900.md:bg-transparent.transform.origin-top.px-4.pb-4.md:p-0.rounded-b.md:shadow-none.shadow-xl.z-40.text-base{"data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
         .md:flex-1.md:flex.flex-wrap.items-center.justify-between.lg:text-left.text-center
           %nav{role: "Primary navigation"}
             %ul.md:flex.block.items-center.flex-wrap.space-x-0.md:space-x-3.md:text-base.md:leading-normal.leading-relaxed.space-y-1.md:space-y-0.md:mb-0.mb-2
               %li
-                = nav_link_to "Dashboard", "#", class:"nav-link"
+                = nav_link_to "Dashboard", "#"
               %li
-                = nav_link_to "Metrics", "#", class:"nav-link"
+                = nav_link_to "Metrics", "#"
               %li
-                = nav_link_to "Settings", "#", class:"nav-link"
+                = nav_link_to "Settings", "#"
               %li.relative{"data-controller" => "dropdown"}
                 %button.nav-link.flex.justify-center.items-center.space-x-2.sm:w-auto.w-full{"data-action" => "click->dropdown#toggle click@window->dropdown#hide"}
                   %span More
                   = icon "chevron-down", classes: "w-3 h-3 text-slate-500"
-                .hidden.transition.transform.origin-to-right.md:absolute.left-0.md:mt-0.mt-2.top-10.bg-white.md:rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.py-1.text-base.md:text-sm.font-medium.text-slate-500{class: "shadow-slate-900/10 md:min-w-[180px]", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-                  = link_to "Documents", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block"
-                  = link_to "Statements", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block"
-                  = link_to "Contacts", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block"
-                  = link_to "Referrals", "#", class:"px-4 py-3 md:py-[.4rem] hover:text-indigo-600 block"
+                .hidden.transition.transform.origin-to-right.md:absolute.left-0.md:mt-0.mt-2.top-10.bg-white.md:rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.py-1.md:text-sm.dark:bg-slate-700.sm:text-sm.text-base.font-medium.text-slate-600.dark:text-slate-200{class: "shadow-slate-900/10 md:min-w-[180px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                  = link_to "Documents", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300"
+                  = link_to "Statements", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300"
+                  = link_to "Contacts", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300"
+                  = link_to "Referrals", "#", class: "px-4 py-[.4rem] hover:text-indigo-600 block dark:hover:text-indigo-300"
           %nav{role: "Secondary navigation"}
             %ul.md:flex.flex-wrap.items-center.md:justify-center.justify-between.md:space-x-4
               / Create + Dropdown
               %li.w-full.md:w-auto.relative{"data-controller" => "dropdown"}
                 %button.btn.btn-primary.md:w-auto.w-full.space-x-1.pr-3{"data-action" => "click->dropdown#toggle click@window->dropdown#hide", type: "button"}
                   %span Create
-                  = icon "plus", classes: "w-4 h-4 text-indigo-100"
-                .hidden.transition.transform.origin-to-right.absolute.right-0.top-10.bg-white.rounded-lg.shadow-xl.border.border-slate-200.z-50.py-1.md:text-sm.text-base.text-slate-500.font-medium{class: "shadow-slate-900/10 min-w-[180px]", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-                  = link_to "#", class:"px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group"
-                    = icon "rectangle-stack", classes: "text-blue-500 group-hover:text-indigo-600 w-5 h-5"
+                    = icon "plus", classes: "w-4 h-4 text-indigo-100"
+                .hidden.transition.transform.origin-to-right.md:absolute.right-0.top-10.bg-white.rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.text-base.py-1.md:text-sm.dark:bg-slate-700.font-medium.text-slate-600.dark:text-slate-200.md:space-y-0.space-y-2{class: "shadow-slate-900/10 md:min-w-[180px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                  = link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center"
+                    = icon "rectangle-stack", classes: "text-blue-500 w-5 h-5"
                     %span Repository
 
-                  = link_to "#", class:"px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group"
-                    = icon "chart-pie", classes: "text-rose-500 group-hover:text-indigo-600 w-5 h-5"
+                  = link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center"
+                    = icon "chart-pie", classes: "text-rose-500 w-5 h-5"
                     %span Report
 
-                  = link_to "#", class:"px-4 py-[.4rem] hover:text-indigo-600  flex items-center space-x-2 group"
-                    = icon "arrow-down-circle", classes: "text-amber-500 group-hover:text-indigo-600 w-5 h-5"
+                  = link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center space-x-2 group md:justify-start justify-center"
+                    = icon "arrow-down-circle", classes: "text-amber-500 w-5 h-5"
                     %span Export
-              - if user_signed_in?
-                / Notifications Dropdown
+
+              / Notifications Dropdown
               %li.md:mt-0.mt-2.relative{"data-controller" => "dropdown"}
                 %button.flex.group.justify-center.items-center.md:w-auto.w-full.px-4.py-3.md:p-0{"data-action" => "click->dropdown#toggle click@window->dropdown#hide", type: "button"}
                   .relative
-                    = icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600"
-                    %span.bg-indigo-600.rounded-full.hover:animate-pulse.absolute.top-0.right-0.z-20{class: "w-[10px] h-[10px]"}
-                  %span.md:hidden.text-slate-500.text-sm.font-medium.ml-2 Notifications
-                .hidden.transition.transform.origin-to-right.md:absolute.mt-2.ml-2.md:ml-0.md:mt-0.right-0.top-8.bg-white.rounded-lg.md:shadow-xl.border.border-slate-200.z-50.py-1.text-sm.divide-y.text-left.text-slate-600{class: "shadow-slate-900/10 md:min-w-[320px]", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                    = icon "bell", classes:"text-slate-400 w-6 h-6 group-hover:text-indigo-600 dark:group-hover:text-slate-300"
+                    %span.bg-indigo-600.rounded-full.hover:animate-pulse.absolute.top-0.right-0.z-20.dark:bg-indigo-400{class: "w-[10px] h-[10px]"}
+                  %span.md:hidden.text-slate-500.dark:text-slate-200.text-sm.font-medium.ml-2 Notifications
+                .hidden.transition.transform.origin-to-right.md:absolute.mt-2.ml-2.md:ml-0.md:mt-0.right-0.top-8.bg-white.rounded-lg.md:shadow-xl.border.border-slate-200.z-50.py-1.text-sm.divide-y.text-left.dark:bg-slate-700.font-medium.text-slate-600.dark:text-slate-200.dark:divide-gray-600{class: "shadow-slate-900/10 md:min-w-[320px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
                   .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                     .flex-1
                       .flex.items-start.space-x-2
                         = image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D."
                         .flex-1
                           %p.truncate John D. replied to
-                            = link_to "your comment", "#", class: "underline text-indigo-600 hover:text-indigo-700"
-                          %p.text-xs.text-slate-500 Just now
-                    %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.w-7.h-7.group.border.border-slate-200.hover:border-slate-300.focus:ring-4{class: "hover:bg-slate-50/50 focus:ring-slate-100/75 bg-white/50"}
-                      = icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600"
+                            = link_to "your comment", "#", class:"underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400"
+                          %p.text-xs.text-slate-500.dark:text-slate-400 Just now
+                    %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.w-7.h-7.group.border.border-slate-200.hover:border-slate-300.focus:ring-4.dark:border-slate-400{class: "hover:bg-slate-50/50 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:hover:bg-white/20"}
+                      = icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50"
                   .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                     .flex-1
                       .flex.items-start.space-x-2
                         = image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D."
                         .flex-1
                           %p Jane D. posted
-                            = link_to "an update", "#", class: "underline text-indigo-600 hover:text-indigo-700"
-                          %p.text-xs.text-slate-500 15 mins ago
-                    %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.w-7.h-7.group.border.border-slate-200.hover:border-slate-300.focus:ring-4{class: "hover:bg-slate-50/50 focus:ring-slate-100/75 bg-white/50"}
-                      = icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600"
+                            = link_to "an update", "#", class:"underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400"
+                          %p.text-xs.text-slate-500.dark:text-slate-400 15 mins ago
+                    %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.w-7.h-7.group.border.border-slate-200.hover:border-slate-300.focus:ring-4.dark:border-slate-400{class: "hover:bg-slate-50/50 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:hover:bg-white/20"}
+                      = icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50"
                   .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                     .flex-1
                       .flex.items-start.space-x-2
                         = image_tag "#", class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P."
                         .flex-1
                           %p Scotty P. shared
-                            = link_to "a repository", "#", class: "underline text-indigo-600 hover:text-indigo-700"
-                          %p.text-xs.text-slate-500 2 hours ago
-                    %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.w-7.h-7.group.border.border-slate-200.hover:border-slate-300.focus:ring-4{class: "hover:bg-slate-50/50 focus:ring-slate-100/75 bg-white/50"}
-                      = icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600"
+                            = link_to "a repository", "#", class: "underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400"
+                          %p.text-xs.text-slate-500.dark:text-slate-400 2 hours ago
+                    %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.w-7.h-7.group.border.border-slate-200.hover:border-slate-300.focus:ring-4.dark:border-slate-400{class: "hover:bg-slate-50/50 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:hover:bg-white/20"}
+                      = icon "x-mark", title: "Mark as read", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400
+                      dark:group-hover:text-slate-100 dark:text-slate-50"
                   %div
-                    = link_to "#", class: "flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500"
+                    = link_to "flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500
+                    dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white"
                       %span View all notifications
-                      = icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500"
+                      = icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-indigo-200"
               %li.md:mt-0.mt-4.flex.flex-col.items-center.relative{"data-controller" => "dropdown"}
                 %button.group{"data-action" => "click->dropdown#toggle click@window->dropdown#hide", type: "button"}
                   = image_tag "#", class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out"
-                .hidden.transition.transform.origin-to-right.md:absolute.right-0.top-10.bg-white.rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.py-1.divide-y.md:w-auto.w-full.text-base.md:text-sm.font-medium.text-slate-500{class: "md:shadow-slate-900/10 md:min-w-[200px]", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                .hidden.transition.transform.origin-to-right.md:absolute.right-0.top-10.bg-white.rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.py-1.divide-y.md:w-auto.w-full.md:text-sm.dark:bg-slate-700.text-base.font-medium.text-slate-600.dark:text-slate-200.dark:divide-gray-600{class: "md:shadow-slate-900/10 md:min-w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
                   %div{role: "none"}
-                    = link_to "Profile", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block"
-                    = link_to "Preferences", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block"
-                    = link_to "Billing", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block"
+                    = link_to "Profile", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block"
+                    = link_to "Preferences", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block"
+                    = link_to "Billing", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block"
                   %div{role: "none"}
-                    = button_to "Sign out", user_session_destroy_path, method: :delete, class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 block"
+                    = button_to "Sign out", destroy_user_session_path, method: :delete, class: "px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block"
 <% end %>
 
 <% content_for :js, flush: true do %>

@@ -9,7 +9,7 @@
         <a href="/" class="w-12 h-12 flex justify-center" data-action="click->prevent#prevent">
           <!-- Hound logo -->
           <svg
-            class="fill-current w-6 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
+            class="fill-current w-5 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
             dark:hover:text-indigo-500"
             width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -35,7 +35,7 @@
       </div>
       <div
         id="search-navigation"
-        class="md:flex-1 md:block hidden md:static absolute top-[57px] left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
+        class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -98,7 +98,7 @@
         <a href="/" class="w-12 h-12 flex justify-center">
           <!-- Hound logo -->
           <svg
-            class="fill-current w-6 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
+            class="fill-current w-5 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
             dark:hover:text-indigo-500"
             width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -121,7 +121,7 @@
 
       </div>
       <div id="search-navigation"
-        class="sm:flex-1 sm:block hidden sm:static absolute top-[57px] left-0 w-full bg-slate-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
+        class="sm:flex-1 sm:block hidden sm:static absolute top-12 left-0 w-full bg-slate-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -208,7 +208,7 @@
       </div>
       <div
         id="search-navigation"
-        class="sm:flex-1 sm:block hidden sm:static absolute top-[57px] left-0 w-full bg-slate-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
+        class="sm:flex-1 sm:block hidden sm:static absolute top-12 left-0 w-full bg-slate-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -269,7 +269,7 @@
       .sm:block.flex.items-center.justify-between
         = link_to root_path class: "w-12 h-12 flex justify-center"
           / Hound logo
-          %svg.fill-current.w-6.h-auto.text-indigo-600.hover:text-indigo-700.duration-300.transition.ease-in-out.dark:hover:text-indigo-500{fill: "none", height: "50", viewbox: "0 0 39 50", width: "39", xmlns: "http://www.w3.org/2000/svg"}
+          %svg.fill-current.w-5.h-auto.text-indigo-600.hover:text-indigo-700.duration-300.transition.ease-in-out.dark:hover:text-indigo-500{fill: "none", height: "50", viewbox: "0 0 39 50", width: "39", xmlns: "http://www.w3.org/2000/svg"}
             %path{"clip-rule" => "evenodd", d: "M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z", "fill-rule" => "evenodd"}
           %span.sr-only Hound
 
@@ -278,7 +278,7 @@
             = icon "bars-3-center-left", classes: "w-8 h-8 text-slate-300 group-focus:text-slate-200" %>
           .hidden{"data-nav-target" => "menuCross", role: "none"}
             = icon "x-mark", classes: "w-8 h-8 text-slate-300 group-focus:text-slate-200"
-      #search-navigation.sm:flex-1.sm:block.hidden.sm:static.absolute.left-0.w-full.bg-slate-900.sm:bg-transparent.transform.origin-top.sm:p-0.p-4.rounded-b.sm:shadow-none.shadow-xl.z-30{class: "top-[57px]", "data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+      #search-navigation.sm:flex-1.sm:block.hidden.sm:static.absolute.left-0.w-full.bg-slate-900.sm:bg-transparent.transform.origin-top.sm:p-0.p-4.rounded-b.sm:shadow-none.shadow-xl.z-30.top-12{"data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
         .sm:flex-1.sm:flex.flex-wrap.items-center.justify-between.lg:text-left.text-center
           %nav{role: "Primary navigation"}
             %ul.sm:flex.block.items-center.flex-wrap.space-x-0.sm:space-x-3.sm:text-base.text-lg.sm:leading-normal.leading-relaxed.space-y-1.sm:space-y-0.sm:mb-0.mb-4
