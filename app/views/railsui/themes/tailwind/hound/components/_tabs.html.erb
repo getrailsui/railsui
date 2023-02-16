@@ -1,34 +1,15 @@
 <% path = "railsui/themes/tailwind/hound/components/tabs" %>
 
-<div data-controller="smooth" class="relative">
-  <div class="py-3 bg-white border-b border-slate-200">
-    <p class="uppercase tracking-wide text-xs font-semibold mt-1  mb-1 text-indigo-600">Quicklinks</p>
-    <p class="mb-3 text-xs text-slate-600">Quickly navigate to different tab components below</p>
+<%= render "railsui/shared/quicklinks", name: "tab" do %>
+  <%= quick_link(title: "simple", component: "tabs") %>
+  <%= quick_link(title: "pills", component: "tabs") %>
+  <%= quick_link(title: "rounded", component: "tabs") %>
+  <%= quick_link(title: "with icons", component: "tabs") %>
+  <%= quick_link(title: "dark", component: "tabs") %>
+<% end %>
 
-    <nav role="nav jump">
-      <ul class="flex flex-wrap items-center gap-2">
-        <li>
-          <a href="#tabs-simple" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Simple</a>
-        </li>
-        <li>
-          <a href="#tabs-pills" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Pills</a>
-        </li>
-        <li>
-          <a href="#tabs-rounded" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Rounded</a>
-        </li>
-        <li>
-          <a href="#tabs-with-icons" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">With icons</a>
-        </li>
-        <li>
-          <a href="#tabs-dark" data-action="click->smooth#scroll" class="text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400">Dark</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <%= render "#{path}/simple" %>
-  <%= render "#{path}/pills" %>
-  <%= render "#{path}/rounded" %>
-  <%= render "#{path}/with_icons" %>
-  <%= render "#{path}/dark" %>
-</div>
+<%= render "#{path}/simple" %>
+<%= render "#{path}/pills" %>
+<%= render "#{path}/rounded" %>
+<%= render "#{path}/with_icons" %>
+<%= render "#{path}/dark" %>
