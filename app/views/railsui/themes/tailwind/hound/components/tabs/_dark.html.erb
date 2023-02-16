@@ -4,24 +4,24 @@
 <%= render preview("dark") do %>
 <div data-controller="tabs"
     data-tabs-active-tab="py-3 px-4 border-b border-indigo-400 flex items-center space-x-3 whitespace-nowrap text-indigo-400"
-    data-tabs-inactive-tab="py-3 px-4 bg-slate-900 flex items-center space-x-3 whitespace-nowrap border-b border-slate-700"
+    data-tabs-inactive-tab="py-3 px-4 bg-slate-900 flex items-center space-x-3 whitespace-nowrap border-b border-slate-700 dark:bg-transparent"
     >
 
-  <div class="border-slate-700 border-b text-slate-300">
+  <div class="border-slate-700 border-b text-slate-300 font-medium text-sm">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap">
       <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-indigo-300 flex items-center space-x-3 whitespace-nowrap text-indigo-300">
         <%= icon "chat-bubble-oval-left-ellipsis", classes: "w-5 h-5" %>
         <span>Activity</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent">
         <%= icon "user-circle", classes: "w-5 h-5" %>
         <span>Account</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent">
         <%= icon "credit-card", classes: "w-5 h-5" %>
         <span>Billing</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent">
         <%= icon "users", classes: "w-5 h-5" %>
         <span>Team</span>
       </a>
@@ -47,24 +47,24 @@
 <% content_for :html, flush: true do %>
 <div data-controller="tabs"
     data-tabs-active-tab="py-3 px-4 border-b border-indigo-600 flex items-center space-x-3 bg-white text-indigo-600 whitespace-nowrap"
-    data-tabs-inactive-tab="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b"
+    data-tabs-inactive-tab="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent"
     >
 
-  <div class="border-slate-200 border-b text-slate-300">
+  <div class="border-slate-200 border-b text-slate-300 font-medium text-sm">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap">
       <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-indigo-600 flex items-center space-x-3 bg-white whitespace-nowrap text-indigo-600">
         <%%= icon "chat-bubble-oval-left-ellipsis", classes: "w-5 h-5" %>
         <span>Activity</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent">
         <%%= icon "user-circle", classes: "w-5 h-5" %>
         <span>Account</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent">
         <%%= icon "credit-card", classes: "w-5 h-5" %>
         <span>Billing</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b">
+      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent">
         <%%= icon "users", classes: "w-5 h-5" %>
         <span>Team</span>
       </a>
@@ -93,21 +93,21 @@
     data-tabs-inactive-tab="py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b"
     >
 
-  <div class="border-slate-200 border-b text-slate-300">
+  <div class="border-slate-200 border-b text-slate-300 font-medium text-sm">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap">
       <%%= link_to "#", class: "py-3 px-4 border-b border-indigo-600 flex items-center space-x-3 bg-white whitespace-nowrap text-indigo-600", data: { action: "click->tabs#change", tabs_target: "tab" } do %>
         <%%= icon "chat-bubble-oval-left-ellipsis", classes: "w-5 h-5" %>
         <span>Activity</span>
       <%% end %>
-      <%%= link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b", data: { action: "click->tabs#change", tabs_target: "tab" } %>
+      <%%= link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent", data: { action: "click->tabs#change", tabs_target: "tab" } %>
         <%%= icon "user-circle", classes: "w-5 h-5" %>
         <span>Account</span>
       <%% end %>
-       <%%= link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b", data: { action: "click->tabs#change", tabs_target: "tab" } %>
+       <%%= link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent", data: { action: "click->tabs#change", tabs_target: "tab" } %>
         <%%= icon "credit-card", classes: "w-5 h-5" %>
         <span>Billing</span>
       <%% end %>
-       <%%= link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b", data: { action: "click->tabs#change", tabs_target: "tab" } %>
+       <%%= link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent", data: { action: "click->tabs#change", tabs_target: "tab" } %>
         <%%= icon "users", classes: "w-5 h-5" %>
         <span>Team</span>
       <%% end %>
@@ -132,21 +132,21 @@
 
 <% content_for :haml, flush: true do %>
 %div{"data-controller" => "tabs", "data-tabs-active-tab" => "py-3 px-4 border-b border-indigo-600 flex items-center space-x-3 bg-white text-indigo-600 whitespace-nowrap", "data-tabs-inactive-tab" => "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b"}
-  .border-slate-200.border-b.text-slate-300
+  .border-slate-200.border-b.text-slate-300.font-medium.text-sm
     %nav.-mb-px.flex.items-center.flex-wrap{role: "navigation"}
       = link_to "#", class: "py-3 px-4 border-b border-indigo-600 flex items-center space-x-3 bg-white whitespace-nowrap text-indigo-600", data: { action: "click->tabs#change", tabs_target: "tab" }
         = icon "chat-bubble-oval-left-ellipsis", classes: "w-5 h-5"
       %span Activity
 
-      = link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b", data: { action: "click->tabs#change", tabs_target: "tab" }
+      = link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent", data: { action: "click->tabs#change", tabs_target: "tab" }
         = icon "user-circle", classes: "w-5 h-5"
       %span Account
 
-      = link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b", data: { action: "click->tabs#change", tabs_target: "tab" }
+      = link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent", data: { action: "click->tabs#change", tabs_target: "tab" }
         = icon "credit-card", classes: "w-5 h-5"
       %span Billing
 
-      = link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b", data: { action: "click->tabs#change", tabs_target: "tab" }
+      = link_to "#", class: "py-3 px-4 bg-white flex items-center space-x-3 whitespace-nowrap border-b dark:bg-transparent", data: { action: "click->tabs#change", tabs_target: "tab" }
         = icon "users", classes: "w-5 h-5"
       %span Team
 

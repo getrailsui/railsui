@@ -5,7 +5,7 @@
 <div data-controller="tabs"
     data-tabs-active-tab="border-b border-indigo-600 inline-block bg-white text-indigo-600 dark:bg-slate-700 dark:text-white dark:border-indigo-400 rounded-t"
     >
-  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600">
+  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
     <nav role="navigation" class="-mb-px">
       <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap dark:bg-slate-900">Activity</a>
       <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-slate-900 inline-block whitespace-nowrap">Account</a>
@@ -34,7 +34,7 @@
 <div data-controller="tabs"
     data-tabs-active-tab="border-b border-indigo-600 inline-block bg-white text-indigo-600 dark:bg-slate-700 dark:text-white dark:border-indigo-400 rounded-t"
     >
-  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600">
+  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
     <nav role="navigation" class="-mb-px">
       <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap dark:bg-slate-900">Activity</a>
       <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-slate-900 inline-block whitespace-nowrap">Account</a>
@@ -62,7 +62,7 @@
 <% content_for :erb, flush: true do %>
 <div data-controller="tabs"
     data-tabs-active-tab="border-b border-indigo-600 inline-block bg-white text-indigo-600 dark:bg-slate-700 dark:text-white dark:border-indigo-400 rounded-t">
-  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600">
+  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
     <nav role="navigation" class="-mb-px">
       <%%= link_to "Activity", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap dark:bg-slate-900" %>
       <%%= link_to "Account", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-slate-900" %>
@@ -89,7 +89,7 @@
 
 <% content_for :haml, flush: true do %>
 %div{"data-controller" => "tabs", "data-tabs-active-tab" => "border-b border-indigo-600 inline-block bg-white text-indigo-600 dark:bg-slate-700 dark:text-white dark:border-indigo-400 rounded-t"}
-  .border-slate-200.border-b.text-slate-600.dark:text-slate-100.dark:border-slate-600
+  .border-slate-200.border-b.text-slate-600.font-medium.text-sm.dark:text-slate-100.dark:border-slate-600
     %nav.-mb-px{role: "navigation"}
       = link_to "Activity", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 border-b border-indigo-600 inline-block bg-white whitespace-nowrap dark:bg-slate-900"
       = link_to "Account", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-slate-900"
