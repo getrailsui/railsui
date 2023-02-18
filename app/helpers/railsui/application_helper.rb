@@ -165,7 +165,8 @@ module Railsui
       item = options[:item] ||= "dog"
       width = options[:width] ||= "600"
       height = options[:height] ||= "400"
-      "https://source.unsplash.com/random/#{width}×#{height}/?#{item}"
+      orientation = options[:orientation] ||= "landscape"
+      "https://source.unsplash.com/random/#{width}x#{height}/?#{item}&orientation#{orientation}"
     end
 
     def doc_label(type)
