@@ -2,11 +2,13 @@
   <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Overview" %>
 
   <div class="prose dark:prose-invert">
-    <p>The main <%= code("mailer.html.erb") %> layout comes ready to rock and roll inside <%= code("app/views/layouts") %>. Be warned that it's a bear of a file. Bundled inside the layout is some CSS used to cover the basics of any HTML template.</p>
+    <p>The main <%= code("mailer.html.erb") %> layout comes ready to rock and roll inside <%= code("app/views/layouts") %>. </p>
 
-    <p>Embedded in the layout is the dummy logo for the <%= Railsui.config.theme %> theme logo. Be sure to swap this for your own logo and/or plain text.</p>
+    <p>Be forewarned that it's a bear of a file. Bundled inside the layout is some CSS used to cover the basics of any HTML template.</p>
 
-    <p>Unfortunately, <%= Railsui.config.css_framework.humanize %> can't be dependably leveraged inside emails, so with Rails UI, the approach for emails is entirely custom as of today.</p>
+    <p>Embedded in the layout is a dummy logo, support email, and social links for the <%= Railsui.config.theme %> theme. Be sure to swap these out for your own.</p>
+
+    <p>Unfortunately, <%= Railsui.config.css_framework.humanize %> can't be leveraged inside emails, so with Rails UI, the email approach is entirely custom as of today.</p>
   </div>
 
   <% content_for :erb, flush: true do %>
