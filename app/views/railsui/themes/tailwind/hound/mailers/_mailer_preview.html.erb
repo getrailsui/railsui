@@ -461,7 +461,7 @@
           <table class="footer" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td>
-                Please contact <%= mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
+                Please contact <%= mail_to Railsui.config.support_email, Railsui.config.support_email, subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
               </td>
             </tr>
           </table>

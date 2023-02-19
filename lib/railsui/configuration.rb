@@ -6,12 +6,13 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
 
-    attr_accessor :application_name, :css_framework, :about, :pricing, :theme
+    attr_accessor :application_name, :css_framework, :support_email, :about, :pricing, :theme
 
     def initialize(options = {})
       assign_attributes(options)
       self.application_name ||= "Rails UI"
       self.css_framework ||= ""
+      self.support_email ||= "support@example.com"
       self.theme ||= ""
       self.about ||= false
       self.pricing ||= false

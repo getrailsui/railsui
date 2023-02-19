@@ -5,7 +5,7 @@ else
   say "🔥 Install Tailwind (+PostCSS w/ autoprefixer)"
   # tailwind.config.js
   copy_file "#{__dir__}/themes/#{Railsui.config.theme}/tailwind.config.js",
-  "tailwind.config.js"
+  "tailwind.config.js", force: true
 
   # remove application.css
   say "Remove app/assets/stylesheets/application.css so build output can take over"

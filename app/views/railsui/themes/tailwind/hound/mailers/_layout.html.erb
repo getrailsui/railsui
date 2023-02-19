@@ -4,7 +4,7 @@
   <div class="prose dark:prose-invert">
     <p>The main <%= code("mailer.html.erb") %> layout comes ready to rock and roll inside <%= code("app/views/layouts") %>. </p>
 
-    <p>Be forewarned that it's a bear of a file. Bundled inside the layout is some CSS used to cover the basics of any HTML template.</p>
+    <p>Be forewarned that it's a bear of a file. Bundled inside the layout is some CSS used to cover the basics of any HTML email template.</p>
 
     <p>Embedded in the layout is a dummy logo, support email, and social links for the <%= Railsui.config.theme %> theme. Be sure to swap these out for your own.</p>
 
@@ -47,13 +47,13 @@
         }
       }
 
-      .rui-mailer img {
+      img {
         border: none;
         -ms-interpolation-mode: bicubic;
         max-width: 100%;
       }
 
-      .rui-mailer img.rounded-full {
+      img.rounded-full {
         border-radius: 99999px;
         width: 20px;
         height: 20px;
@@ -61,20 +61,20 @@
         margin-bottom: -2px;
       }
 
-      .rui-mailer table {
+      table {
         border-collapse: separate;
         mso-table-lspace: 0pt;
         mso-table-rspace: 0pt;
         width: 100%;
       }
 
-      .rui-mailer table td {
+      table td {
         font-family: sans-serif;
         font-size: 16px;
         vertical-align: top;
       }
 
-      .rui-mailer .container {
+      .container {
         display: block;
         margin: 0 auto !important;
         /* makes it centered */
@@ -83,7 +83,7 @@
         width: 600px;
       }
 
-      .rui-mailer .content {
+      .content {
         box-sizing: border-box;
         display: block;
         margin: 0 auto;
@@ -93,7 +93,7 @@
         color: <%%= theme[:body_text_color] %>;
       }
 
-      .rui-mailer .logo {
+      .logo {
         color: #222;
         text-decoration: none;
         font-size: 18px;
@@ -101,31 +101,31 @@
         line-height: 0;
       }
 
-      .rui-mailer .logo:hover {
+      .logo:hover {
         text-decoration: none;
       }
 
-      .rui-mailer .main {
+      .main {
         background: #ffffff;
         width: 100%;
       }
 
-      .rui-mailer .wrapper {
+      .wrapper {
         box-sizing: border-box;
         padding: 20px;
       }
 
-      .rui-mailer .footer {
+      .footer {
         clear: both;
         padding-top: 16px;
         margin-bottom: 16px;
         text-align: center;
       }
 
-      .rui-mailer .footer td,
-      .rui-mailer .footer p,
-      .rui-mailer .footer span,
-      .rui-mailer .footer a {
+      .footer td,
+      .footer p,
+      .footer span,
+      .footer a {
         color: <%%= theme[:footer_text_color] %>;
         font-size: 13px;
         line-height: 150%;
@@ -133,10 +133,10 @@
         text-align: center;
       }
 
-      .rui-mailer h1,
-      .rui-mailer h2,
-      .rui-mailer h3,
-      .rui-mailer h4 {
+      h1,
+      h2,
+      h3,
+      h4 {
         color: <%%= theme[:heading_text_color] %>;
         font-family: 'system-ui',
         '-apple-system',
@@ -155,59 +155,59 @@
         margin-bottom: 20px;
       }
 
-      .rui-mailer h1 {
+      h1 {
         font-size: 24px;
         font-weight: 800;
         line-height: 30px;
       }
 
-      .rui-mailer h2 {
+      h2 {
         font-size: 22px;
         font-weight: 800;
       }
 
-      .rui-mailer p,
-      .rui-mailer ul,
-      .rui-mailer ol,
-      .rui-mailer table.callout {
+      p,
+      ul,
+      ol,
+      table.callout {
         font-family: sans-serif;
         font-size: 16px;
         font-weight: normal;
         margin-bottom: 18px;
       }
 
-      .rui-mailer ul {
+      ul {
         padding-left: 16px;
         margin: 10px 0;
         Margin: 10px 0;
         list-style-type: disc;
       }
 
-      .rui-mailer ul li {
+      ul li {
         Margin-bottom: 10px;
         margin-bottom: 10px;
       }
 
-      .rui-mailer p li,
-      .rui-mailer ul li,
-      .rui-mailer ol li {
+      p li,
+      ul li,
+      ol li {
         list-style-position: outside;
       }
 
-      .rui-mailer p.no-bottom-margin {
+      p.no-bottom-margin {
         margin-bottom: 0;
       }
 
-      .rui-mailer a {
+      a {
         color: <%%= theme[:primary] %>;
         text-decoration: underline;
       }
 
-      .rui-mailer a:hover {
+      a:hover {
         text-decoration: underline;
       }
 
-      .rui-mailer .intro blockquote {
+      .intro blockquote {
         font-style: italic;
         color: #111827 !important;
         border-left: 5px solid #e5e7eb;
@@ -215,64 +215,64 @@
         padding-left: 24px;
       }
 
-      .rui-mailer .intro blockquote p {
+      .intro blockquote p {
         font-weight: 500 !important;
         font-style: italic;
         color: #111827 !important;
         margin: 0;
       }
 
-      .rui-mailer .last {
+      .last {
         margin-bottom: 0;
       }
 
-      .rui-mailer .first {
+      .first {
         margin-top: 0;
       }
 
-      .rui-mailer .align-center {
+      .align-center {
         text-align: center;
       }
 
-      .rui-mailer .align-right {
+      .align-right {
         text-align: right;
       }
 
-      .rui-mailer .align-left {
+      .align-left {
         text-align: left;
       }
 
-      .rui-mailer .mt-0 {
+      .mt-0 {
         margin-top: 0;
       }
 
-      .rui-mailer .mb-0 {
+      .mb-0 {
         margin-bottom: 0;
       }
 
-      .rui-mailer .mt-10 {
+      .mt-10 {
         margin-top: 10px;
         Margin-top: 10px;
       }
 
-      .rui-mailer .mb-10 {
+      .mb-10 {
         margin-bottom: 10px;
         Margin-bottom: 10px;
       }
 
-      .rui-mailer .small {
+      .small {
         font-size: 14px;
         color: <%%= theme[:light_text_color] %>;
         line-height: 130%;
       }
 
-      .rui-mailer hr {
+      hr {
         border: 0;
         border-bottom: 1px solid #f6f6f6;
         margin: 20px 0;
       }
 
-      .rui-mailer table.callout td {
+      table.callout td {
         background-color: <%%= theme[:callout_bg_color] %>;
         border: 1px solid <%%= theme[:callout_border_color] %>;
         padding: 10px;
@@ -280,11 +280,11 @@
         color: <%%= theme[:callout_text_color] %>
       }
 
-      .rui-mailer table.callout td p {
+      table.callout td p {
         margin-bottom: 0;
       }
 
-      .rui-mailer .view-in-browser {
+      .view-in-browser {
         font-size: 12px;
         color: <%%= theme[:light_text_color] %>;
         margin-bottom: 10px;
@@ -292,87 +292,87 @@
         display: block;
       }
 
-      .rui-mailer table.social-links {
+      table.social-links {
         width: auto;
       }
 
-      .rui-mailer table.social-links td {
+      table.social-links td {
         width: 44px;
         overflow: hidden;
         text-align: center;
       }
 
-      .rui-mailer table.social-links td img {
+      table.social-links td img {
         display: inline;
       }
 
       @media only screen and (max-width: 620px) {
-        .rui-mailer table[class="body"] a.view-in-browser {
+        table[class="body"] a.view-in-browser {
           font-size: 12px !important;
           margin-top: 10px;
         }
 
-        .rui-mailer table[class="body"] h1 {
+        table[class="body"] h1 {
           font-size: 28px !important;
           margin-bottom: 10px !important;
         }
 
-        .rui-mailer table[class="body"] a,
-        .rui-mailer table[class="body"] ol,
-        .rui-mailer table[class="body"] p,
-        .rui-mailer table[class="body"] span,
-        .rui-mailer table[class="body"] td,
-        .rui-mailer table[class="body"] ul {
+        table[class="body"] a,
+        table[class="body"] ol,
+        table[class="body"] p,
+        table[class="body"] span,
+        table[class="body"] td,
+        table[class="body"] ul {
           font-size: 16px !important;
         }
 
-        .rui-mailer table[class="body"] p.small {
+        table[class="body"] p.small {
           font-size: 14px !important;
         }
 
-        .rui-mailer table[class="body"] .footer {
+        table[class="body"] .footer {
           padding: 10px;
         }
 
-        .rui-mailer table[class="body"] .footer p {
+        table[class="body"] .footer p {
           font-size: 16px !important;;
           line-height: 150%;
         }
 
-        .rui-mailer .wrapper {
+        .wrapper {
           padding: 20px 10px !important;
         }
 
-        .rui-mailer .content {
+        .content {
           padding: 0 !important;
         }
 
-        .rui-mailer .container {
+        .container {
           padding: 0 !important;
           width: 100.85% !important;
         }
 
-        .rui-mailer .main {
+        .main {
           border-left-width: 0 !important;
           border-radius: 0 !important;
           border-right-width: 0 !important;
           width: 100% !important;
         }
 
-        .rui-mailer .img-responsive {
+        .img-responsive {
           height: auto !important;
           max-width: 100% !important;
           width: auto !important;
         }
 
-        .rui-mailer .action__link--primary,
-        .rui-mailer .action__link--secondary {
+        .action__link--primary,
+        .action__link--secondary {
           border-width: 10px 0px !important;
         }
       }
 
       /* Action buttons */
-      .rui-mailer .action__link {
+      .action__link {
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
@@ -382,7 +382,7 @@
         font-size: 16px;
       }
       /* Update your brand colors here */
-      .rui-mailer .action__link--primary {
+      .action__link--primary {
         background-color: <%%= theme[:primary] %>;
         border-top: 10px solid  <%%= theme[:primary] %>;
         border-right: 18px solid <%%= theme[:primary] %>;
@@ -390,7 +390,7 @@
         border-left: 18px solid <%%= theme[:primary] %>;
       }
 
-      .rui-mailer .action__link--secondary {
+      .action__link--secondary {
         color: white;
         background-color: <%%= theme[:secondary] %>;
         border-top: 10px solid <%%= theme[:secondary] %>;
@@ -399,23 +399,23 @@
         border-left: 18px solid <%%= theme[:secondary] %>;
       }
 
-      .rui-mailer .action {
+      .action {
         width: 100%;
         padding: 0 0 5px 0 !important;
         text-align: center;
       }
 
-      .rui-mailer .action__link--expanded {
+      .action__link--expanded {
         width: 100%;
       }
 
-      .rui-mailer .action td {
+      .action td {
         padding: 0 !important;
         border: none;
       }
 
       @media only screen and (max-width: 600px) {
-        .rui-mailer .action a {
+        .action a {
           width: 100%;
         }
       }
@@ -454,7 +454,7 @@
           <table class="footer" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td>
-                Please contact <%%= mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
+                Please contact <%%= mail_to Railsui.config.support_email, Railsui.config.support_email, subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
               </td>
             </tr>
           </table>
@@ -535,13 +535,13 @@
         }
       }
 
-      .rui-mailer img {
+      img {
         border: none;
         -ms-interpolation-mode: bicubic;
         max-width: 100%;
       }
 
-      .rui-mailer img.rounded-full {
+      img.rounded-full {
         border-radius: 99999px;
         width: 20px;
         height: 20px;
@@ -549,20 +549,20 @@
         margin-bottom: -2px;
       }
 
-      .rui-mailer table {
+      table {
         border-collapse: separate;
         mso-table-lspace: 0pt;
         mso-table-rspace: 0pt;
         width: 100%;
       }
 
-      .rui-mailer table td {
+      table td {
         font-family: sans-serif;
         font-size: 16px;
         vertical-align: top;
       }
 
-      .rui-mailer .container {
+      .container {
         display: block;
         margin: 0 auto !important;
         /* makes it centered */
@@ -571,7 +571,7 @@
         width: 600px;
       }
 
-      .rui-mailer .content {
+      .content {
         box-sizing: border-box;
         display: block;
         margin: 0 auto;
@@ -581,7 +581,7 @@
         color: #{theme[:body_text_color]};
       }
 
-      .rui-mailer .logo {
+      .logo {
         color: #222;
         text-decoration: none;
         font-size: 18px;
@@ -589,31 +589,31 @@
         line-height: 0;
       }
 
-      .rui-mailer .logo:hover {
+      .logo:hover {
         text-decoration: none;
       }
 
-      .rui-mailer .main {
+      .main {
         background: #ffffff;
         width: 100%;
       }
 
-      .rui-mailer .wrapper {
+      .wrapper {
         box-sizing: border-box;
         padding: 20px;
       }
 
-      .rui-mailer .footer {
+      .footer {
         clear: both;
         padding-top: 16px;
         margin-bottom: 16px;
         text-align: center;
       }
 
-      .rui-mailer .footer td,
-      .rui-mailer .footer p,
-      .rui-mailer .footer span,
-      .rui-mailer .footer a {
+      .footer td,
+      .footer p,
+      .footer span,
+      .footer a {
         color: #{theme[:footer_text_color]};
         font-size: 13px;
         line-height: 150%;
@@ -621,10 +621,10 @@
         text-align: center;
       }
 
-      .rui-mailer h1,
-      .rui-mailer h2,
-      .rui-mailer h3,
-      .rui-mailer h4 {
+      h1,
+      h2,
+      h3,
+      h4 {
         color: #{theme[:heading_text_color]};
         font-family: 'system-ui',
         '-apple-system',
@@ -643,59 +643,59 @@
         margin-bottom: 20px;
       }
 
-      .rui-mailer h1 {
+      h1 {
         font-size: 24px;
         font-weight: 800;
         line-height: 30px;
       }
 
-      .rui-mailer h2 {
+      h2 {
         font-size: 22px;
         font-weight: 800;
       }
 
-      .rui-mailer p,
-      .rui-mailer ul,
-      .rui-mailer ol,
-      .rui-mailer table.callout {
+      p,
+      ul,
+      ol,
+      table.callout {
         font-family: sans-serif;
         font-size: 16px;
         font-weight: normal;
         margin-bottom: 18px;
       }
 
-      .rui-mailer ul {
+      ul {
         padding-left: 16px;
         margin: 10px 0;
         Margin: 10px 0;
         list-style-type: disc;
       }
 
-      .rui-mailer ul li {
+      ul li {
         Margin-bottom: 10px;
         margin-bottom: 10px;
       }
 
-      .rui-mailer p li,
-      .rui-mailer ul li,
-      .rui-mailer ol li {
+      p li,
+      ul li,
+      ol li {
         list-style-position: outside;
       }
 
-      .rui-mailer p.no-bottom-margin {
+      p.no-bottom-margin {
         margin-bottom: 0;
       }
 
-      .rui-mailer a {
+      a {
         color: #{theme[:primary]};
         text-decoration: underline;
       }
 
-      .rui-mailer a:hover {
+      a:hover {
         text-decoration: underline;
       }
 
-      .rui-mailer .intro blockquote {
+      .intro blockquote {
         font-style: italic;
         color: #111827 !important;
         border-left: 5px solid #e5e7eb;
@@ -703,64 +703,64 @@
         padding-left: 24px;
       }
 
-      .rui-mailer .intro blockquote p {
+      .intro blockquote p {
         font-weight: 500 !important;
         font-style: italic;
         color: #111827 !important;
         margin: 0;
       }
 
-      .rui-mailer .last {
+      .last {
         margin-bottom: 0;
       }
 
-      .rui-mailer .first {
+      .first {
         margin-top: 0;
       }
 
-      .rui-mailer .align-center {
+      .align-center {
         text-align: center;
       }
 
-      .rui-mailer .align-right {
+      .align-right {
         text-align: right;
       }
 
-      .rui-mailer .align-left {
+      .align-left {
         text-align: left;
       }
 
-      .rui-mailer .mt-0 {
+      .mt-0 {
         margin-top: 0;
       }
 
-      .rui-mailer .mb-0 {
+      .mb-0 {
         margin-bottom: 0;
       }
 
-      .rui-mailer .mt-10 {
+      .mt-10 {
         margin-top: 10px;
         Margin-top: 10px;
       }
 
-      .rui-mailer .mb-10 {
+      .mb-10 {
         margin-bottom: 10px;
         Margin-bottom: 10px;
       }
 
-      .rui-mailer .small {
+      .small {
         font-size: 14px;
         color: #{theme[:light_text_color]};
         line-height: 130%;
       }
 
-      .rui-mailer hr {
+      hr {
         border: 0;
         border-bottom: 1px solid #f6f6f6;
         margin: 20px 0;
       }
 
-      .rui-mailer table.callout td {
+      table.callout td {
         background-color: #{theme[:callout_bg_color]};
         border: 1px solid #{theme[:callout_border_color]};
         padding: 10px;
@@ -768,11 +768,11 @@
         color: #{theme[:callout_text_color]}
       }
 
-      .rui-mailer table.callout td p {
+      table.callout td p {
         margin-bottom: 0;
       }
 
-      .rui-mailer .view-in-browser {
+      .view-in-browser {
         font-size: 12px;
         color: #{theme[:light_text_color]};
         margin-bottom: 10px;
@@ -780,87 +780,87 @@
         display: block;
       }
 
-      .rui-mailer table.social-links {
+      table.social-links {
         width: auto;
       }
 
-      .rui-mailer table.social-links td {
+      table.social-links td {
         width: 44px;
         overflow: hidden;
         text-align: center;
       }
 
-      .rui-mailer table.social-links td img {
+      table.social-links td img {
         display: inline;
       }
 
       @media only screen and (max-width: 620px) {
-        .rui-mailer table[class="body"] a.view-in-browser {
+        table[class="body"] a.view-in-browser {
           font-size: 12px !important;
           margin-top: 10px;
         }
 
-        .rui-mailer table[class="body"] h1 {
+        table[class="body"] h1 {
           font-size: 28px !important;
           margin-bottom: 10px !important;
         }
 
-        .rui-mailer table[class="body"] a,
-        .rui-mailer table[class="body"] ol,
-        .rui-mailer table[class="body"] p,
-        .rui-mailer table[class="body"] span,
-        .rui-mailer table[class="body"] td,
-        .rui-mailer table[class="body"] ul {
+        table[class="body"] a,
+        table[class="body"] ol,
+        table[class="body"] p,
+        table[class="body"] span,
+        table[class="body"] td,
+        table[class="body"] ul {
           font-size: 16px !important;
         }
 
-        .rui-mailer table[class="body"] p.small {
+        table[class="body"] p.small {
           font-size: 14px !important;
         }
 
-        .rui-mailer table[class="body"] .footer {
+        table[class="body"] .footer {
           padding: 10px;
         }
 
-        .rui-mailer table[class="body"] .footer p {
+        table[class="body"] .footer p {
           font-size: 16px !important;;
           line-height: 150%;
         }
 
-        .rui-mailer .wrapper {
+        .wrapper {
           padding: 20px 10px !important;
         }
 
-        .rui-mailer .content {
+        .content {
           padding: 0 !important;
         }
 
-        .rui-mailer .container {
+        .container {
           padding: 0 !important;
           width: 100.85% !important;
         }
 
-        .rui-mailer .main {
+        .main {
           border-left-width: 0 !important;
           border-radius: 0 !important;
           border-right-width: 0 !important;
           width: 100% !important;
         }
 
-        .rui-mailer .img-responsive {
+        .img-responsive {
           height: auto !important;
           max-width: 100% !important;
           width: auto !important;
         }
 
-        .rui-mailer .action__link--primary,
-        .rui-mailer .action__link--secondary {
+        .action__link--primary,
+        .action__link--secondary {
           border-width: 10px 0px !important;
         }
       }
 
       /* Action buttons */
-      .rui-mailer .action__link {
+      .action__link {
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
@@ -870,7 +870,7 @@
         font-size: 16px;
       }
       /* Update your brand colors here */
-      .rui-mailer .action__link--primary {
+      .action__link--primary {
         background-color: #{theme[:primary]};
         border-top: 10px solid  #{theme[:primary]};
         border-right: 18px solid #{theme[:primary]};
@@ -878,7 +878,7 @@
         border-left: 18px solid #{theme[:primary]};
       }
 
-      .rui-mailer .action__link--secondary {
+      .action__link--secondary {
         color: white;
         background-color: #{theme[:secondary]};
         border-top: 10px solid #{theme[:secondary]};
@@ -887,23 +887,23 @@
         border-left: 18px solid #{theme[:secondary]};
       }
 
-      .rui-mailer .action {
+      .action {
         width: 100%;
         padding: 0 0 5px 0 !important;
         text-align: center;
       }
 
-      .rui-mailer .action__link--expanded {
+      .action__link--expanded {
         width: 100%;
       }
 
-      .rui-mailer .action td {
+      .action td {
         padding: 0 !important;
         border: none;
       }
 
       @media only screen and (max-width: 600px) {
-        .rui-mailer .action a {
+        .action a {
           width: 100%;
         }
       }
@@ -929,7 +929,7 @@
             %table.footer{border: "0", cellpadding: "0", cellspacing: "0"}
               %tr
                 %td
-                  Please contact #{mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;"} if you have any questions.
+                  Please contact #{mail_to Railsui.config.support_email, Railsui.config.support_email, subject: "Help", body: "I need help...", style: "text-decoration: underline;"} if you have any questions.
           %table.social-links{align: "center", border: "0", cellpadding: "0", cellspacing: "0"}
             %tr
               %td{align: "center"}

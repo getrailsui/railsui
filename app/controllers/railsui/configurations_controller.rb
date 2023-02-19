@@ -15,6 +15,7 @@ module Railsui
       params.require(:configuration)
         .permit(
           :application_name,
+          :support_email,
           :css_framework,
           :primary_color,
           :secondary_color,
