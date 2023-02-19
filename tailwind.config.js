@@ -6,6 +6,7 @@ module.exports = {
     "./app/views/**/*.html.erb",
     "./app/javascript/**/*.{js,vue,jsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {

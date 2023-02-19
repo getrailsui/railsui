@@ -4,8 +4,13 @@ if Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
 else
   say "🔥 Install Tailwind (+PostCSS w/ autoprefixer)"
   # tailwind.config.js
-  copy_file "#{__dir__}/themes/#{Railsui.config.theme}/tailwind.config.js",
+  unless Rails.root.join("tailwind.config.js").exist?
+    say "⬅️ Adding tailwind.config.js"
+    copy_file "#{__dir__}/themes/#{Railsui.config.theme}/tailwind.config.js",
   "tailwind.config.js", force: true
+  else
+    say "✅ tailwind.config.js already exists"
+  end
 
   # remove application.css
   say "Remove app/assets/stylesheets/application.css so build output can take over"
@@ -54,5 +59,5 @@ else
   say "Update .gitignore"
   inject_into_file ".gitignore", "node_modules\n"
 
-  say "Tailwind CSS theme installed 👍", :green
+  say "👍 Tailwind CSS theme installed", :green
 end

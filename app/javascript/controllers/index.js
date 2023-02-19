@@ -39,6 +39,9 @@ application.register('smooth', SmoothController)
 import TabsController from './tabs_controller.js'
 application.register('tabs', TabsController)
 
+import ThemeController from './theme_controller.js'
+application.register('theme', ThemeController)
+
 import ToggleController from './toggle_controller.js'
 application.register('toggle', ToggleController)
 

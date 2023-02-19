@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased">
+<html class="h-full antialiased" <% if tailwind? %> data-controller="theme" <% end %>>
   <head>
     <title>
       <% if content_for?(:title ) %>

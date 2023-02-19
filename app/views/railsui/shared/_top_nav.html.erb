@@ -21,5 +21,46 @@
         <span>Configuration</span>
       <% end %>
     </li>
+    <li data-controller="dropdown" class="relative inline-block">
+      <button type="button" data-action="click->dropdown#toggle click@window->dropdown#hide" class="rounded-lg focus:ring-4 focus:ring-slate-100/50 w-10 h-10 flex items-center justify-center">
+        <div data-theme-target="lightIcon">
+          <%= render_svg "light-mode", styles: "stroke-current w-7 h-7 text-slate-700 dark:text-slate-200 group-hover:text-indigo-500" %>
+        </div>
+        <div data-theme-target="darkIcon" class="hidden">
+          <%= render_svg "dark-mode", styles: "stroke-current w-6 h-6 text-slate-700 dark:text-slate-200 group-hover:text-indigo-500" %>
+        </div>
+        <div data-theme-target="systemIcon" class="hidden">
+          <%= render_svg "dark-mode", styles: "stroke-current w-6 h-6 text-slate-700 group-hover:text-indigo-500" %>
+        </div>
+      </button>
+      <div
+        class="hidden transition transform origin-to-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 dark:bg-slate-800 dark:border-slate-700/80 border border-slate-200 min-w-[140px] z-50 py-2 text-[15px]"
+        data-dropdown-target="menu"
+        data-transition-enter-from="opacity-0 scale-95"
+        data-transition-enter-to="opacity-100 scale-100"
+        data-transition-leave-from="opacity-100 scale-100"
+        data-transition-leave-to="opacity-0 scale-95"
+        >
+        <button
+          data-action="click->theme#toggle" data-theme="light"
+          class="px-4 py-[.4rem] hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center group w-full">
+         <%= render_svg "light-mode", styles: "stroke-current w-6 h-6 text-slate-700 dark:text-slate-400 group-hover:text-indigo-500 pointer-events-none" %>
+         <span class="font-medium pl-2 pointer-events-none">Light</span>
+        </button>
+        <button
+          data-action="click->theme#toggle" data-theme="dark"
+          class="px-4 py-[.4rem] hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center group w-full">
+          <%= render_svg "dark-mode", styles: "stroke-current w-6 h-6 text-slate-700 dark:text-slate-400 group-hover:text-indigo-500 pointer-events-none" %>
+          <span class="font-medium pl-2 pointer-events-none">Dark</span>
+        </button>
+        <button
+          data-action="click->theme#toggle"
+          data-theme="system"
+          class="px-4 py-[.4rem] hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center group w-full">
+          <%= render_svg "system-mode", styles: "stroke-current w-6 h-6 text-slate-700 dark:text-slate-400 group-hover:text-indigo-500 pointer-events-none group-hover:text-indigo-400" %>
+          <span class="font-medium pl-2 pointer-events-none">System</span>
+        </button>
+      </div>
+    </li>
   </ul>
 </nav>
