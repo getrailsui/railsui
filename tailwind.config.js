@@ -2,15 +2,13 @@ module.exports = {
   important: true,
   content: [
     "./app/helpers/**/*.rb",
-    "./app/assets/stylesheets/**/*.css",
     "./app/views/**/*.html.erb",
     "./app/javascript/**/*.{js,vue,jsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        mono: ["Fira Code", "monospace"]
+        mono: ["Fira Code", "monospace"],
       },
       colors: {
         salmon: {

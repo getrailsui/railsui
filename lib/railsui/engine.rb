@@ -17,10 +17,6 @@ Gem.loaded_specs['railsui'].dependencies.each do |d|
         Railsui.config = Railsui::Configuration.load!
       end
 
-      config.to_prepare do
-        Devise::Mailer.layout "mailer"
-      end
-
       initializer 'railsui.setup' do |app|
         if Rails.env.development?
          config.assets.precompile << "railsui_manifest.js"

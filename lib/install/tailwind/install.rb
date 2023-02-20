@@ -16,8 +16,8 @@ else
   say "Remove app/assets/stylesheets/application.css so build output can take over"
   remove_file "app/assets/stylesheets/application.css"
 
-  # add application.tailwind.css
-  copy_file "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets/application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true
+  # add theme stylesheets
+  directory "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets", "app/assets/stylesheets", force: true
 
   # postcss.config.js
   copy_file "#{__dir__}/themes/#{Railsui.config.theme}/postcss.config.js", "postcss.config.js", force: true
@@ -31,7 +31,7 @@ else
     directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
   end
 
-  # TODO: Figure out why this won't copy
+  # TODO: Figure out why this won't copy as a directory
   say "Add Tailwind-themed scaffold .erb templates"
   # directory "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold", Rails.root.join("lib/templates/erb/scaffold"), force: true
   file_names = ["_form.html.erb.tt", "edit.html.erb.tt", "index.html.erb.tt", "new.html.erb.tt", "partial.html.erb.tt", "show.html.erb.tt"]

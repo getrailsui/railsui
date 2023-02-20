@@ -147,6 +147,10 @@ def add_custom_template_engine
       g.template_engine :railsui
       g.fallbacks[:railsui] = :erb
     end
+
+    config.to_prepare do
+      Devise::Mailer.layout "mailer"
+    end
   RUBY
 
   insert_into_file "#{Rails.root}/config/application.rb", "#{content}\n", after: "class Application < Rails::Application\n"
