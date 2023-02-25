@@ -3,9 +3,6 @@ import { application } from "./application"
 import AnchorController from "./anchor_controller.js"
 application.register("anchor", AnchorController)
 
-import CanvasController from "./canvas_controller.js"
-application.register("canvas", CanvasController)
-
 import ClipboardController from "./clipboard_controller.js"
 application.register("clipboard", ClipboardController)
 

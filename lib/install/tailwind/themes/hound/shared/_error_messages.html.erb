@@ -1,15 +1,15 @@
 <% if resource.errors.any? %>
-  <div role="alert">
-    <p>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </p>
-    <ul class="list-disc">
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6" role="alert">
+  <div class="flex items-start space-x-4">
+    <%= icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
+    <div class="flex-1">
+      <p class="font-bold"><%= I18n.t("errors.messages.not_saved", count: resource.errors.count, resource: resource.class.model_name.human.downcase) %></p>
+      <ul class="list-disc mt-3 ml-4">
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+</div>
 <% end %>

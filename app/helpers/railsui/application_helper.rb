@@ -1,15 +1,5 @@
 module Railsui
   module ApplicationHelper
-    def render_svg(name, options = {})
-      options[:title] ||= name.underscore.humanize
-      options[:aria] = true
-      options[:nocomment] = true
-      options[:class] = options.fetch(:styles, "fill-current text-neutral-500")
-
-      filename = "#{name}.svg"
-      inline_svg_tag(filename, options)
-    end
-
     def form_input
       "border-gray-300 rounded focus:border-indigo-300 focus:outline-none focus:shadow-none focus:ring-indigo-50 focus:ring-4 ring-transparent ring-2 dark:text-slate-100 dark:focus:ring-indigo-600/50 dark:bg-slate-900 dark:border-slate-600 dark:focus:border-slate-300"
     end
@@ -95,17 +85,6 @@ module Railsui
 
     def theme_name
       Railsui.config.theme
-    end
-
-    def icon(name, options={})
-      options[:title] ||= name.underscore.humanize
-      options[:aria] = true
-      options[:nocomment] = true
-      options[:variant] ||= :outline
-      options[:class] = options.fetch(:classes, nil)
-
-      filename = "icons/#{options[:variant]}/#{name}.svg"
-      inline_svg_tag(filename, options)
     end
 
     def heading(options={})
@@ -213,5 +192,6 @@ module Railsui
     def bootstrap?
       Railsui.config.css_framework == Railsui::Default::BOOTSTRAP
     end
+
   end
 end

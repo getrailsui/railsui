@@ -22,7 +22,7 @@ else
   # postcss.config.js
   copy_file "#{__dir__}/themes/#{Railsui.config.theme}/postcss.config.js", "postcss.config.js", force: true
 
-  run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography stimulus-use --latest"
+  run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography stimulus-use tippy.js --latest"
 
   if Rails.root.join("app/views/devise").exist?
     say "🛑 app/views/devise already exists. Files can't be copied. Refer to the gem source for reference."
@@ -32,6 +32,8 @@ else
   end
 
   # TODO: Figure out why this won't copy as a directory
+  # TODO: Do we need this? Tested Feb 20,2023 - Inherited from railsui/lib/generators/railsui/templates/tailwind/<theme> somehow? Seems it's using the config in `application.rb - g.template_engine :railsui`. Pretty cool.
+  # Keeping for now
   say "Add Tailwind-themed scaffold .erb templates"
   # directory "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold", Rails.root.join("lib/templates/erb/scaffold"), force: true
   file_names = ["_form.html.erb.tt", "edit.html.erb.tt", "index.html.erb.tt", "new.html.erb.tt", "partial.html.erb.tt", "show.html.erb.tt"]
@@ -42,6 +44,12 @@ else
 
   say "Copy images/assets"
   directory "#{__dir__}/themes/#{Railsui.config.theme}/images", Rails.root.join("app/assets/images"), force: true
+
+  say "Copy shared partial files"
+  shared_files = ["_error_messages.html.erb", "_flash.html.erb"]
+  shared_files.each do |shared_file|
+    copy_file "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join('app/view/shared'), force: true
+  end
 
   say "Add build:css script"
   build_script = "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"

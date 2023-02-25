@@ -88,8 +88,13 @@ def add_users
     gsub_file migration, /:admin/, ":admin, default: false"
   end
 
+  content = <<-RUBY
+    has_person_name
+    has_one_attached :avatar
+  RUBY
+
   # name_of_person gem
-  append_to_file("app/models/user.rb", "\nhas_person_name\n", after: "class User < ApplicationRecord")
+  append_to_file("app/models/user.rb", "#{content}\n", after: "class User < ApplicationRecord")
 end
 
 # Add active storage and action text
@@ -202,6 +207,23 @@ def scope_body_class
   gsub_file Rails.root.join('app/views/layouts/application.html.erb'), '<body>', '<body class="rui">'
 end
 
+# Extend this gems helper into the client app + extend devise
+def add_application_controller_code
+  app_controller_code = <<-RUBY
+    helper Railsui::ThemeHelper
+
+    before_action :configure_permitted_parameters, if: :devise_controller?
+
+    protected
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :name])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :name])
+    end
+  RUBY
+  insert_into_file "#{Rails.root}/app/controllers/application_controller.rb", "#{app_controller_code}\n", after: "class ApplicationController < ActionController::Base\n"
+end
+
 # Add all the things!
 say "⚡️ Adding gems..."
 add_gems
@@ -240,6 +262,9 @@ scope_body_class
 
 say "⚡️ Configuring template engine with fallbacks..."
 add_custom_template_engine
+
+say "⚡️ Configure application controller"
+add_application_controller_code
 
 say "⚡️ Adding ActiveStorage and ActionText dependencies..."
 add_storage_and_rich_text
