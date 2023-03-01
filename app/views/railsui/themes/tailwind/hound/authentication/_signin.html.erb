@@ -1,0 +1,92 @@
+<div class="my-6">
+<%= render callout do %>
+  <p>Be sure to read the Rails UI authentication design patterns overview to understand how we've customized the default Devise views to work nicely inside the  <%= theme_name.humanize %> theme.
+<% end %>
+</div>
+
+<div class="my-6">
+  <iframe src="http://localhost:3000/users/sign_in" class="w-full aspect-square pointer-events-none rounded border border-slate-200 select-none" style="height: 800px; width: 100%;" sandbox></iframe>
+</div>
+
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/sessions/new.html.erb -->
+<%% content_for :masthead do %>
+  <div class="text-center">
+    <h1 class="text-3xl my-3">Sign in to your account</h1>
+    <p class="mb-6 text-slate-700">Or <%%= link_to "sign up", new_registration_path(resource_name), class: "btn-link" %> for an account</p>
+  </div>
+  <%%= render "shared/error_messages", resource: resource %>
+<%% end %>
+
+<%%= render "auth_layout" do %>
+  <%%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <div class="form-group">
+      <%%= f.label :email, class: "form-label" %>
+      <div class="relative">
+        <%%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input focus:pl-10 peer transition", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address" %>
+        <%%= icon "envelope", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%%= f.label :password, class: "form-label" %>
+      <div class="relative">
+        <%%= f.password_field :password, autocomplete: "current-password", class: "form-input focus:pl-10 peer transition" %>
+        <%%= icon "lock-closed", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3" %>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-between items-center form-group">
+      <%% if devise_mapping.rememberable? %>
+        <div class="flex items-center">
+          <%%= f.check_box :remember_me, class: "form-input-checkbox" %>
+          <%%= f.label :remember_me, class: "form-check-label ml-2" %>
+      </div>
+      <%% end %>
+        <%% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn-link text-sm" %>
+      <%% end %>
+    </div>
+
+    <%%= f.submit "Sign in", class: "btn btn-primary hover:cursor-pointer w-full" %>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/devise/sessions/new.html.erb
+- content_for :masthead do
+  .text-center
+    %h1.text-3xl.my-3 Sign in to your account
+    %p.mb-6.text-slate-700
+      Or #{link_to "sign up", new_registration_path(resource_name), class: "btn-link"} for an account
+  = render "shared/error_messages", resource: resource
+= render "auth_layout" do
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-group
+      = f.label :email, class: "form-label"
+      .relative
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input focus:pl-10 peer transition", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address"
+        = icon "envelope", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3"
+    .form-group
+      = f.label :password, class: "form-label"
+      .relative
+        = f.password_field :password, autocomplete: "current-password", class: "form-input focus:pl-10 peer transition"
+        = icon "lock-closed", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3"
+    .flex.flex-wrap.justify-between.items-center.form-group
+      - if devise_mapping.rememberable?
+        .flex.items-center
+          = f.check_box :remember_me, class: "form-input-checkbox"
+          = f.label :remember_me, class: "form-check-label ml-2"
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        = link_to "Forgot your password?", new_password_path(resource_name), class: "btn-link text-sm"
+    = f.submit "Sign in", class: "btn btn-primary hover:cursor-pointer w-full"
+<% end %>
+
+<%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
