@@ -49,7 +49,7 @@
 <%% end %>
 <% end %>
 
-<%= render_snippet(active_tab: "erb") %>
+<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb") %>
 
   <div class="prose dark:prose-invert">
     <p>Each corresponding view makes use of the layout partial as a means to keep code DRY. From there you can simply swap out forms and featured content relative to the Rails UI theme you choose.</p>
@@ -125,7 +125,7 @@
         = render "devise/shared/links"
 <% end %>
 
-<%= render_snippet(active_tab: "erb") %>
+<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb", haml_filename: "_auth_layout.haml.erb") %>
 
   <div class="prose dark:prose-invert mb-6">
     <%= heading text: "Modified devise links partial", id: "rui-devise-links-partial", tag: "h2" %>
@@ -158,10 +158,13 @@
     = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-sm text-slate-600 hover:text-slate-800"
 <% end %>
 
-<%= render_snippet(active_tab: "erb") %>
+<%= render_snippet(active_tab: "erb", erb_filename: "_links.html.erb", haml_filename: "_links.haml.erb") %>
+
+
 
 <div class="prose dark:prose-invert mb-6">
-  <p>Future versions of Rails UI will support themed and branded Omniauth provider links/buttons.</p>
+  <h3>OmniAuth</h3>
+  <p>The <%= theme_name.humanize %> theme supports themed and branded Omniauth provider buttons for Facebook, Twitter, LinkedIn, and Google. Icons for those providers are dynamically service to the view from <%= code 'app/assets/images/omniauth' %>.</p>
 </div>
 
 <div class="prose dark:prose-invert mb-6">
@@ -169,9 +172,9 @@
 
   <p>By default Rails UI copies over a pre-styled error partial made to work out of the box and save you time during development.</p>
 
-  <p>This file is called <%= code '_error_messages.html.erb' %>. Unlike what ships with Devise, this partial lives in the root view directory within <%= code "app/views/shared" %>. </p>
+  <p>This file is called <%= code '_error_messages.html.erb' %>. Unlike what ships with Devise, this partial lives in the root view directory within <%= code "app/views/shared" %> and is used throughout the app. </p>
 
-  <p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent throughout.</p>
+  <p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent.</p>
 </div>
 
 <%= render preview do %>
@@ -243,7 +246,6 @@
 </div>
 <% end %>
 
-
 <% content_for :haml, flush: true do %>
 - if resource.errors.any?
   .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.text-sm{role: "alert"}
@@ -258,4 +260,4 @@
             %li= error.full_message
 <% end %>
 
-<%= render_snippet active_tab: "erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>

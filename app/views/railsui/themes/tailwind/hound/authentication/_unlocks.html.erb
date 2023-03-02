@@ -63,7 +63,7 @@
 <%% end %>
 
 <%%= render "auth_layout" do %>
-  <%%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
     <div class="form-group">
       <%%= f.label :email, class: "form-label" %>
       <div class="relative">
@@ -85,7 +85,7 @@
     %p.mb-6.text-slate-700 Gain access to your existing account
   = render "shared/error_messages", resource: resource
 = render "auth_layout" do
-  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f|
     .form-group
       = f.label :email, class: "form-label"
       .relative
