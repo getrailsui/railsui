@@ -4,152 +4,142 @@
     <% end %>
   </div>
 
-  <div class="bg-slate-100/50 border rounded pointer-events-none select none">
-    <header class="relative dark:bg-slate-900 bg-white border-b border-slate-200" data-controller="nav">
-      <div class="container mx-auto px-4">
-        <div class="md:flex items-center flex-wrap md:space-x-2">
-          <div class="md:block flex items-center justify-between">
-            <a class="w-12 h-12 flex justify-center" href="/">
-              <!-- Hound logo -->
-              <svg class="fill-current w-5 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
+  <div class="border dark:border-slate-700 rounded pointer-events-none select none">
+    <header class="relative dark:bg-slate-900 bg-white border-b border-slate-200 dark:border-slate-700 rounded-t" data-controller="nav">
+  <div class="container mx-auto px-4">
+    <div class="md:flex items-center flex-wrap md:space-x-2">
+      <div class="md:block flex items-center justify-between">
+        <a class="w-12 h-12 flex justify-center" href="/">
+          <!-- Hound logo -->
+          <svg class="fill-current w-5 h-auto text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out
             dark:hover:text-indigo-500" width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z"></path>
-              </svg>
-              <span class="sr-only">Hound</span>
-            </a>
-            <button id="dropdowns-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
-              <div role="none" data-nav-target="menuBars">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-indigo-600             dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="agmudke2ngrh7bkd26zh4v013ptbib7d"><title id="agmudke2ngrh7bkd26zh4v013ptbib7d">Bars 3 center left</title>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"></path>
-                </svg>
-
-              </div>
-              <div role="none" data-nav-target="menuCross" class="hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-indigo-600 dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="angie6ecmpgiee3cqcrdlrgbz91scj71"><title id="angie6ecmpgiee3cqcrdlrgbz91scj71">X mark</title>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-
-              </div>
-            </button>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z"></path>
+          </svg>
+          <span class="sr-only">Hound</span>
+</a>
+        <button id="dropdowns-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+          <div role="none" data-nav-target="menuBars">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-indigo-600             dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="aizwk09s9b6getl7of67l85n6mj63q6h"><title id="aizwk09s9b6getl7of67l85n6mj63q6h">Bars 3 center left</title>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"></path>
+          </svg>
+          </div>
+          <div role="none" data-nav-target="menuCross" class="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-indigo-600 dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="a7yo91x0tasrdxkrlyew6t43iaw7po5j"><title id="a7yo91x0tasrdxkrlyew6t43iaw7po5j">X mark</title>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
 
           </div>
-          <div id="dropdowns-navigation" class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0 rounded-b md:shadow-none shadow-xl z-40 text-base" data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-active="transition ease-in duration-200" data-transition-leave-to="opacity-0 scale-95">
-            <div class="md:flex-1 md:flex flex-wrap items-center justify-between lg:text-left text-center">
-              <nav role="Primary navigation">
-                <ul class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
-                  <li>
-                  </li>
-                </ul>
-              </nav>
+        </button>
 
-              <nav role="Secondary navigation">
-                <ul class="md:flex flex-wrap items-center md:justify-center justify-between md:space-x-4">
-                  <li class="md:mt-0 mt-4 flex flex-col items-center relative" data-controller="dropdown">
-                    <button class="group" type="button" data-action="click->dropdown#toggle click@window->dropdown#hide">
-                      <img class="rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out" src="https://source.unsplash.com/random/600x400/?dog">
-                    </button>
-
-                    <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
-                      <div role="none">
-                        <a class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" data-turbo="false" href="/users/edit">Edit account</a>
-                      </div>
-                      <div role="none">
-                        <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block w-full sm:!text-left !text-center" data-turbo="false" type="submit">Sign out</button><input type="hidden" name="authenticity_token" value="5l2PIj0IEPW2c2YZwb4rTx3q9KpHjTks8X3WwArmps1pO62S-E5mca2PVN_r75JLzqLwjhrVBZGrdg3S-VdYtg" autocomplete="off"></form>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
       </div>
-    </header>
+      <div id="dropdowns-navigation" class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top px-4 pb-4 md:p-0 rounded-b md:shadow-none shadow-xl z-40 text-base" data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-active="transition ease-in duration-200" data-transition-leave-to="opacity-0 scale-95">
+        <div class="md:flex-1 md:flex flex-wrap items-center justify-between lg:text-left text-center">
+          <nav role="Primary navigation">
+            <ul class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
+              <li>
+                <a class="nav-link" data-turbo="false" href="/">Home</a>
+              </li>
+            </ul>
+          </nav>
 
-    <div class="max-w-4xl mx-auto px-4 my-10">
-      <h1 class="sm:text-4xl text-3xl">Account</h1>
+          <nav role="Secondary navigation">
+            <ul class="md:flex flex-wrap items-center md:justify-center justify-between md:space-x-4">
+              <li class="md:mt-0 mt-4 flex flex-col items-center relative" data-controller="dropdown">
+                <button class="group" type="button" data-action="click->dropdown#toggle click@window->dropdown#hide">
+                  <img class="rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out" src="https://source.unsplash.com/random/600x400/?dog">
+                </button>
 
-      <div class="my-6">
-        <h2 class="font-normal text-lg text-slate-700 mb-2">Profile</h2>
-        <p class="text-sm text-slate-600">This information will often be displayed publically.</p>
-      </div>
-
-      <form class="edit_user"
-      id="edit_user"
-      enctype="multipart/form-data"
-      action="#"
-      accept-charset="UTF-8"
-      method="post">
-
-        <input type="hidden" name="_method" value="put" autocomplete="off"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-end pb-6">
-          <div>
-            <label class="form-label" for="user_name">Name</label>
-            <input class="form-input" type="email" name="user[name]" id="user_name">
-          </div>
-
-          <div>
-            <div class="flex items-center">
-              <div class="w-14 h-14 flex items-center justify-center rounded-full bg-slate-300/50 pointer-events-none select-none border-2 border-slate-200">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-6 h-6 text-white" role="img" aria-labelledby="af5ewvvl9fr1y4an17ko6gfv73s6mn04"><title id="af5ewvvl9fr1y4an17ko6gfv73s6mn04">User</title>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
-                </svg>
-              </div>
-
-              <div class="flex-1 pl-4">
-                <label class="block" for="user_avatar">
-                  <input class="form-file" type="file" name="user[avatar]" id="user_avatar">
-                </label>
-              </div>
-            </div>
-          </div>
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+                  <div role="none">
+                    <a class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" data-turbo="false" href="/users/edit">Edit account</a>
+                  </div>
+                  <div role="none">
+                    <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block w-full sm:!text-left !text-center" data-turbo="false" type="submit">Sign out</button><input type="hidden" name="authenticity_token" value="247WxI3moLFKETE62nwlgg6q0T9bPTf1f0HE-4DGBZiP-vB8suMy6MyKoGMCsQz5_JIrGB3IkssLkY4DH8za_Q" autocomplete="off"></form>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
         </div>
-
-        <div class="py-10 mt-6 border-t border-slate-200">
-          <h2 class="font-normal text-lg text-slate-700 mb-2">Personal details</h2>
-          <p class="text-sm text-slate-600">This information will not be displayed publically.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-start form-group">
-          <div>
-            <label class="form-label" for="user_email">Email</label>
-            <input autocomplete="email" class="form-input" type="email" value="john.doe@example.com" name="user[email]" id="user_email">
-          </div>
-
-          <div>
-            <label class="form-label" for="user_password">Password</label>
-            <input autocomplete="new-password" class="form-input" type="password" name="user[password]" id="user_password">
-            <p class="text-xs text-slate-700 my-1">Leave this blank if you don't want to change it</p>
-            <p class="text-xs text-slate-700">6 characters minimum</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-start form-group">
-          <div>
-            <label class="form-label" for="user_password_confirmation">Password confirmation</label>
-            <input autocomplete="new-password" class="form-input" type="password" name="user[password_confirmation]" id="user_password_confirmation">
-          </div>
-
-          <div>
-            <label class="form-label" for="user_current_password">Current password</label>
-            <input autocomplete="current-password" class="form-input" type="password" name="user[current_password]" id="user_current_password">
-            <p class="text-xs text-slate-700 my-1">Your current password is required to update your account.</p>
-          </div>
-        </div>
-
-        <div class="flex items-center space-x-4 pt-10 border-t mt-10 border-slate-200">
-          <input type="submit" name="commit" value="Update" class="btn btn-primary" data-disable-with="Update">
-          <a class="btn btn-white" data-turbo="false" href="#">Cancel</a>
-        </div>
-      </form>
-      <div class="flex justify-end">
-        <form class="button_to" method="post" action="#"><input type="hidden" name="_method" value="delete" autocomplete="off">
-          <button data-confirm="Are you sure?" class="text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8" type="submit">Cancel account</button>
-          <input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
       </div>
     </div>
   </div>
+</header>
+
+
+<div class="max-w-4xl mx-auto px-4 my-10">
+  <h1 class="sm:text-4xl text-3xl">Account</h1>
+
+  <div class="my-6">
+    <h2 class="font-normal text-lg text-slate-700 dark:text-slate-200 mb-2">Profile</h2>
+    <p class="text-sm text-slate-600 dark:text-slate-400">This information will often be displayed publically.</p>
+  </div>
+
+  <form data-turbo="false" class="edit_user" id="edit_user" enctype="multipart/form-data" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="put" autocomplete="off"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-end pb-6">
+      <div>
+        <label class="form-label" for="user_name">Name</label>
+        <input class="form-input" type="email" name="user[name]" id="user_name">
+      </div>
+
+      <div>
+        <div class="flex items-center">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-slate-300/50 pointer-events-none select-none border-2 border-slate-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-6 h-6 text-white" role="img" aria-labelledby="asq6ebgzod4hniilym3b36wbui5864cr"><title id="asq6ebgzod4hniilym3b36wbui5864cr">User</title>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path></svg>
+          </div>
+
+          <div class="flex-1 pl-4">
+            <label class="block" for="user_avatar">
+              <input class="form-file" type="file" name="user[avatar]" id="user_avatar"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-10 mt-6 border-t border-slate-200 dark:border-slate-700">
+      <h2 class="font-normal text-lg text-slate-700 dark:text-slate-200 mb-2">Personal details</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-400">This information will not be displayed publically.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-start form-group">
+      <div>
+        <label class="form-label" for="user_email">Email</label>
+        <input autocomplete="email" class="form-input" type="email" value="john.doe@example.com" name="user[email]" id="user_email">
+      </div>
+
+      <div>
+        <label class="form-label" for="user_password">Password</label>
+        <input autocomplete="new-password" class="form-input" type="password" name="user[password]" id="user_password">
+        <p class="text-xs text-slate-700 my-1 dark:text-slate-400">Leave this blank if you don't want to change it</p>
+          <p class="text-xs text-slate-700 dark:text-slate-400">6 characters minimum</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-start form-group">
+      <div>
+        <label class="form-label" for="user_password_confirmation">Password confirmation</label>
+        <input autocomplete="new-password" class="form-input" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+      </div>
+
+      <div>
+        <label class="form-label" for="user_current_password">Current password</label>
+        <input autocomplete="current-password" class="form-input" type="password" name="user[current_password]" id="user_current_password">
+        <p class="text-xs text-slate-700 my-1 dark:text-slate-400">Your current password is required to update your account.</p>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-4 pt-10 border-t mt-10 border-slate-200 dark:border-slate-700">
+      <input type="submit" name="commit" value="Update" class="btn btn-primary" data-disable-with="Update">
+      <a class="btn btn-white" data-turbo="false" href="/">Cancel</a>
+    </div>
+</form>
+  <div class="flex justify-end">
+    <form class="button_to" method="post" action="/users"><input type="hidden" name="_method" value="delete" autocomplete="off"><button data-confirm="Are you sure?" class="text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8" type="submit">Cancel account</button><input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
+  </div>
+</div>
+</div>
 
 <% content_for :html, flush: true do %>
 
@@ -167,8 +157,8 @@
   <%% end %>
 
   <div class="my-6">
-    <h2 class="font-normal text-lg text-slate-700 mb-2">Profile</h2>
-    <p class="text-sm text-slate-600">This information will often be displayed publically.</p>
+    <h2 class="font-normal text-lg text-slate-700 dark:text-slate-200 mb-2">Profile</h2>
+    <p class="text-sm text-slate-600 dark:text-slate-400">This information will often be displayed publically.</p>
   </div>
 
   <%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
@@ -199,9 +189,9 @@
       </div>
     </div>
 
-    <div class="py-10 mt-6 border-t border-slate-200">
-      <h2 class="font-normal text-lg text-slate-700 mb-2">Personal details</h2>
-      <p class="text-sm text-slate-600">This information will not be displayed publically.</p>
+    <div class="py-10 mt-6 border-t border-slate-200 dark:border-slate-700">
+      <h2 class="font-normal text-lg text-slate-700 dark:text-slate-200 mb-2">Personal details</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-400">This information will not be displayed publically.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-start form-group">
@@ -213,9 +203,9 @@
       <div>
         <%%= f.label :password, class: "form-label" %>
         <%%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
-        <p class="text-xs text-slate-700 my-1">Leave this blank if you don't want to change it</p>
+        <p class="text-xs text-slate-700 my-1 dark:text-slate-400">Leave this blank if you don't want to change it</p>
         <%% if @minimum_password_length %>
-          <p class="text-xs text-slate-700"><%%= @minimum_password_length %> characters minimum</p>
+          <p class="text-xs text-slate-700 dark:text-slate-400"><%%= @minimum_password_length %> characters minimum</p>
         <%% end %>
       </div>
     </div>
@@ -229,11 +219,11 @@
       <div>
         <%%= f.label :current_password, class: "form-label" %>
         <%%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
-        <p class="text-xs text-slate-700 my-1">Your current password is required to update your account.</p>
+        <p class="text-xs text-slate-700 my-1 dark:text-slate-400">Your current password is required to update your account.</p>
       </div>
     </div>
 
-    <div class="flex items-center space-x-4 pt-10 border-t mt-10 border-slate-200">
+    <div class="flex items-center space-x-4 pt-10 border-t mt-10 border-slate-200 dark:border-slate-700">
       <%%= f.submit "Update", class: "btn btn-primary" %>
       <%%= link_to "Cancel", root_path, class: "btn btn-white", data: { turbo: false } %>
     </div>
@@ -246,8 +236,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-  / app/views/devise/registrations/edit.haml.erb
-/ app/views/devise/registrations/edit.html.erb
+/ app/views/devise/registrations/edit.haml.erb
 .max-w-4xl.mx-auto.px-4.my-10
   %h1.sm:text-4xl.text-3xl Account
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -256,8 +245,8 @@
         Currently waiting on confirmation for:
         %span.font-semibold= resource.unconfirmed_email
   .my-6
-    %h2.font-normal.text-lg.text-slate-700.mb-2 Profile
-    %p.text-sm.text-slate-600 This information will often be displayed publically.
+    %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Profile
+    %p.text-sm.text-slate-600.dark:text-slate-400 This information will often be displayed publically.
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f|
     = render "shared/error_messages", resource: resource
     .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-end.pb-6
@@ -274,9 +263,9 @@
           .flex-1.pl-4
             = f.label :avatar, class: "block" do
               = f.file_field :avatar, class: "form-file"
-    .py-10.mt-6.border-t.border-slate-200
-      %h2.font-normal.text-lg.text-slate-700.mb-2 Personal details
-      %p.text-sm.text-slate-600 This information will not be displayed publically.
+    .py-10.mt-6.border-t.border-slate-200.dark:border-slate-700
+      %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Personal details
+      %p.text-sm.text-slate-600.dark:text-slate-400 This information will not be displayed publically.
     .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
       %div
         = f.label :email, class: "form-label"
@@ -284,9 +273,9 @@
       %div
         = f.label :password, class: "form-label"
         = f.password_field :password, autocomplete: "new-password", class: "form-input"
-        %p.text-xs.text-slate-700.my-1 Leave this blank if you don't want to change it
+        %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Leave this blank if you don't want to change it
         - if @minimum_password_length
-          %p.text-xs.text-slate-700
+          %p.text-xs.text-slate-700.dark:text-slate-400
             = @minimum_password_length
             characters minimum
     .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
@@ -296,8 +285,8 @@
       %div
         = f.label :current_password, class: "form-label"
         = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
-        %p.text-xs.text-slate-700.my-1 Your current password is required to update your account.
-    .flex.items-center.space-x-4.pt-10.border-t.mt-10.border-slate-200
+        %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Your current password is required to update your account.
+    .flex.items-center.space-x-4.pt-10.border-t.mt-10.border-slate-200.dark:border-slate-700
       = f.submit "Update", class: "btn btn-primary"
       = link_to "Cancel", root_path, class: "btn btn-white", data: { turbo: false }
   .flex.justify-end

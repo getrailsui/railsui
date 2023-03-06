@@ -5,8 +5,9 @@
     <p>Extend form errors to leverage Rails UI + Tailwind CSS.</p>
   </div>
 
+<%= render preview do %>
 <form action="#">
-  <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50" role="alert">
+  <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
     <div class="flex items-start space-x-4">
       <%= icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0 dark:text-rose-400", variant: :solid %>
       <div class="flex-1">
@@ -24,6 +25,7 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<% end %>
 
 
 
@@ -31,7 +33,7 @@
 <!-- app/views/shared/error_messages.html.erb -->
 
 <%% if resource.errors.any? %>
-<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6" role="alert">
+<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
   <div class="flex items-start space-x-4">
     <%%= icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
     <div class="flex-1">
