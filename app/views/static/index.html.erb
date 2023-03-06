@@ -4,45 +4,144 @@
 
   <%# Dumb hack to avoid CSS collision %>
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.remove('rui');
-  })
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.remove('rui');
+    })
   </script>
 <% end %>
 
-<div class="absolute w-full h-full overflow-hidden bg-indigo-600" data-controller="canvas">
-  <canvas class="static-header z-10" id="canvas"></canvas>
-  <div class="flex flex-col justify-center items-center h-full p-4">
-    <div class="max-w-2xl mx-auto bg-gradient-to-br from-pink-100 via-white to-indigo-200 rounded-3xl shadow-lg relative z-20 text-center border-black border">
-      <div class="px-16 pt-16 pb-4">
-        <%= link_to root_path, class:"link text-xl tracking-tight font-black group transition ease-in-out duration-300 hover:-rotate-2 hover:scale-105 transform flex items-center justify-center text-black hover:text-black" do %>
-          <span class="sr-only">RailsUI</span>
-          <svg fill="none" height="34" viewBox="0 0 113 34" width="113" class="w-56 h-auto" xmlns="http://www.w3.org/2000/svg"><g class="fill-current"><path d="m31.1987 28.8915-.5402-.5403-.9905.7654c-.9904-.9454-1.7557-2.296-2.341-4.0068-.8104-2.386-1.4406-3.9617-1.8908-4.7271-1.1255-1.8458-2.7913-3.4215-5.0873-4.8171l6.3028-4.502-2.296-3.15134c-1.6207-2.20597-2.9263-3.96174-3.8717-5.17727l-8.0135 5.31233c-.3152-3.06135-2.206-5.13226-5.22232-5.13226-2.07091 0-4.00676.76534-5.76253 2.25099v.58526c1.21554-.31514 2.16095-.49522 2.88127-.49522 2.5211 0 3.73664 1.39562 3.69162 4.18684l-.04502 1.93587-7.293204 5.4474c4.952174 2.431 7.428264 5.5824 7.428264 9.4541-3.33146 1.0355-6.03265 2.9263-8.14858 5.7175l.0450198.2251c3.4665202-1.3055 6.3477902-1.9358 8.7338402-1.9358.58525 0 1.17051.045 1.66574.09 1.2155.1351 2.5211.5403 3.8267 1.2606.4952.2701 1.3055.7653 2.5211 1.4856l4.592-4.637-.5853-.5853-.9454.8554c-1.3056-.7653-2.7012-1.3956-4.1418-1.8908v-7.7884c2.0709 0 3.7366.9004 4.9522 2.7462.4502.6753 1.3055 2.6111 2.6111 5.8075 1.0355 2.5661 2.161 4.2769 3.3765 5.2223h.4502zm-9.004-15.7569-6.4828 4.772v-10.93975l1.3956-.94542zm-7.4282 13.4158c-.6303-.18-1.3056-.2701-2.0259-.2701v-17.24254l2.0259-1.3506zm-6.798-9.0039-3.37648-2.7012 3.37648-2.251z"/><path d="m47.6207 29.2516-.4952-.4051-.8104.4051c-.5852-.18-1.0354-.6302-1.2605-1.3956v-11.7952c.3151-1.2155.8103-2.341 1.5307-3.4665l-.0901-.1801-1.2605.9905-6.3928-2.116c-1.3956 1.3056-2.9713 1.8909-4.6371 1.7558l-.5852-.045 2.1609 5.6275c-2.9713 2.6561-4.4569 5.3573-4.4569 8.1485 0 1.8459 1.0804 3.7817 3.1964 5.7626h.2251l6.1227-4.9072c0 2.206.9454 3.8267 2.8812 4.8622zm-6.7529-8.4637-4.6371-2.251-1.8908-5.1322 6.5279 2.431zm.045 5.6725-3.3765 2.8813c-1.7558-1.7558-2.6112-3.6466-2.6112-5.6725 0-1.3956.4502-2.8813 1.3056-4.412l4.6821 2.3411z"/><path d="m54.9357 4.71586h-3.3314l-1.0805 4.59201h.5852zm1.1705 24.53574-.4502-.4051-.8103.5402c-.7203-.3602-1.1255-.8554-1.2606-1.4406v-12.4705l1.1255-1.2606-3.4665-2.8812-3.3315 2.7462 1.3056 1.3956v11.7501l-.045.8104c-.1351 1.9358.8104 3.4665 2.8362 4.547z"/><path d="m67.1301 28.9815-.5402-.5852-1.0805.8103-3.2865-2.0709v-18.95332c0-1.66573.7204-3.01633 2.206-4.0968-1.6657.2251-3.2414.99044-4.637 2.29601l-.4952.04502c-.8554-.6753-1.8458-1.17052-2.9713-1.44064.9904 1.03546 1.4856 1.98088 1.4856 2.88127v17.96286c0 1.3056-.4052 2.3861-1.1705 3.2415 2.8362 1.0354 4.9522 2.1609 6.3928 3.4215z"/><path d="m83.5894 10.1632c0-1.12544-.4502-1.66568-1.3506-1.66568-.7203 0-1.0805.2251-1.0805.72031l.2251.40518c.6753.85539.9905 1.39559.9905 1.71079 0 .8553-.8554 1.5757-1.7108 1.5757l-1.1705.135c-1.3956 0-3.2864-.6303-5.7625-1.8458-1.6658 1.5757-3.5116 2.8362-5.5375 3.7366v6.9331l4.3219 2.386-5.3573 7.6534.5852.4052c1.5757-.6753 3.0614-1.0355 4.547-1.0355 1.4857 0 3.0164.4052 4.547 1.1705 1.2606-.8553 2.161-1.3956 2.6562-1.7107.9454-.5853 1.9359-1.0355 2.9263-1.3506v-8.2836l-4.2319-2.6112 4.0968-5.5374c.8554-1.1705 1.3056-2.116 1.3056-2.7913zm-4.3669 5.3574-4.3669 5.7625-2.7012-1.3956.045-5.1773c1.6657.6753 3.1514.9905 4.502.9905.9454 0 1.8008-.045 2.5211-.1801zm-.5403 7.5183-.045 5.9876c-1.6657-.8103-3.2864-1.2155-4.8621-1.2155-1.1255 0-2.1159.09-2.9263.2701l4.9972-6.4828z"/></g><path clip-rule="evenodd" d="m94.9636 2.1103h10.5514c2.72 0 4.924 2.20457 4.924 4.92404v11.25496c0 2.7195-2.204 4.924-4.924 4.924h-10.5514c-2.7195 0-4.924-2.2045-4.924-4.924v-11.25496c0-2.71947 2.2045-4.92404 4.924-4.92404zm-7.0343 4.92404c0-3.88496 3.1493-7.03434 7.0343-7.03434h10.5514c3.885 0 7.034 3.14938 7.034 7.03434v11.25496c0 3.8849-3.149 7.0343-7.034 7.0343h-10.5514c-3.885 0-7.0343-3.1494-7.0343-7.0343zm12.2237 7.41676v-6.52975h1.854v6.68465c0 2.1982-1.659 3.702-4.1517 3.702-2.503 0-4.1517-1.5038-4.1517-3.702v-6.68465h1.8536v6.52975c0 1.284.8892 2.2032 2.2981 2.2032 1.4039 0 2.2977-.9192 2.2977-2.2032zm3.658-6.52975h1.853v10.23175h-1.853z" class="fill-current dark:text-white text-gray-800 group-hover:text-orange-600 transition ease-in-out duration-300 group-hover:animate-pulse" fill-rule="evenodd"/></svg>
-        <% end %>
+<div class="flex flex-col justify-center items-center h-full p-4 antialiased">
+  <div class="max-w-6xl sm:text-left text-center mx-auto rounded-3xl relative z-20 sm:p-16 p-6 bg-white">
+    <div class="flex flex-wrap justify-between items-end">
+      <div class="flex items-end sm:justify-start justify-center flex-1">
+        <%= render_svg "rails-logo", styles: "fill-current text-rails-500 w-36 h-auto" %>
 
-        <div class="max-w-2xl mx-auto">
-          <p class="lg:text-2xl text-xl mt-6 text-neutral-700 mb-4">UI components and templates for Ruby on Rails.</p>
-
-          <p class="lg:text-lg text-lg leading-relaxed text-neutral-600 mb-6">Save time creating views, scaffolds, components, and making tough design decisions with the help of Rails UI.</p>
+        <div class="bg-rails-500/10 inline-flex rounded-full px-3 py-px text-rails-500 font-semibold ml-2 text-sm">
+          v<%= Rails.gem_version %>
         </div>
       </div>
+      <div class="sm:block hidden">
+        <%= link_to "Read The Rails Doctrine.", "https://rubyonrails.org/doctrine", target: :_blank, class: "font-medium text-rails-500 block" %>
+      </div>
+    </div>
 
-      <div class="border-t border-black py-6 flex items-center justify-between px-6">
-        <%= link_to railsui.docs_path, class: "bg-white py-3 px-4 text-center inline-flex items-center text-gray-800 border border-black shadow-lg hover:shadow-none group rounded-3xl" do %>
-          <svg class="stroke-current w-6 h-6 mr-2 group-hover:text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>book</title><g fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 5.75a1 1 0 0 0-1-1H14a2 2 0 0 0-2 2v12.5l.828-.828a4 4 0 0 1 2.829-1.172h2.593a1 1 0 0 0 1-1V5.75z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.75 5.75a1 1 0 0 1 1-1H10a2 2 0 0 1 2 2v12.5l-.828-.828a4 4 0 0 0-2.829-1.172H5.75a1 1 0 0 1-1-1V5.75z"></path></g></svg>
-          <span class="font-medium">Read the docs</span>
-        <% end %>
+    <div class="my-16 max-w-3xl">
+      <h3 class="font-extrabold text-5xl text-slate-800 tracking-tight">All the tools for full-stack bliss.</h3>
+      <p class="mt-6 text-2xl text-slate-600">Optimized for developer happiness, Ruby on Rails compresses the complexity of modern web app development.</p>
+      <p class="mt-6 text-slate-700 leading-relaxed text-lg max-w-xl">Rails has united and cultivated a strong tribe around a wide set of heretical thoughts about the nature of programming and programmers.</p>
+    </div>
 
-        <%= link_to railsui.root_path, class: "bg-white py-3 pl-4 pr-3 text-center flex items-center rounded-full text-gray-800 border border-black shadow-lg hover:shadow-none group bg-gradient-to-br from-indigo-700 text-white to-indigo-600 rounded-3xl" do %>
-          <svg class="stroke-current w-6 h-6 mr-2 group-hover:text-indigo-100 font-medium text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>settings</title><g fill="none"><path  stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.12 5.613a1 1 0 0 0-.991-.863h-.258a1 1 0 0 0-.99.863l-.087.632c-.056.403-.354.724-.732.874a5.225 5.225 0 0 0-.167.07c-.373.163-.81.15-1.136-.095l-.308-.23a1 1 0 0 0-1.307.092l-.188.188a1 1 0 0 0-.092 1.307l.23.308c.244.325.258.763.095 1.136a5.225 5.225 0 0 0-.07.167c-.15.378-.47.676-.874.732l-.632.087a1 1 0 0 0-.863.99v.258a1 1 0 0 0 .863.99l.632.087c.403.056.724.354.874.732l.07.167c.163.373.15.81-.095 1.136l-.23.308a1 1 0 0 0 .092 1.307l.188.188a1 1 0 0 0 1.307.093l.308-.231c.325-.244.763-.258 1.136-.095a5.4 5.4 0 0 0 .167.07c.378.15.676.47.732.874l.087.632a1 1 0 0 0 .99.863h.258a1 1 0 0 0 .99-.863l.087-.632c.056-.403.354-.724.732-.874a5.12 5.12 0 0 0 .167-.07c.373-.163.81-.15 1.136.095l.308.23a1 1 0 0 0 1.307-.092l.188-.188a1 1 0 0 0 .093-1.307l-.231-.308c-.244-.325-.258-.763-.095-1.136l.07-.167c.15-.378.47-.676.874-.732l.632-.087a1 1 0 0 0 .863-.99v-.258a1 1 0 0 0-.863-.99l-.632-.087c-.403-.056-.724-.354-.874-.732a5.168 5.168 0 0 0-.07-.167c-.163-.373-.15-.81.095-1.136l.23-.308a1 1 0 0 0-.092-1.307l-.188-.188a1 1 0 0 0-1.307-.092l-.308.23c-.325.244-.763.258-1.136.095a5.185 5.185 0 0 0-.167-.07c-.378-.15-.676-.47-.732-.874l-.087-.632z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.25 12a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"></path></g></svg>
+    <p class="font-bold uppercase tracking-wide text-xs text-rails-500 mb-4">Take action</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-0 text-lg text-slate-600 -mx-2">
+      <ul class="leading-loose space-y-2 sm:mb-0 mb-2">
+        <li>
+          <%= link_to "https://guides.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "clipboard", styles: "stroke-current w-6 h-6 group-hover:text-rails-500" %>
+              </div>
+              <span>Rails Guides</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 sm:hover:translate-none  group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
 
-          <span class="text-white font-medium">Configure your app</span>
-          <svg class="stroke-current w-auto h-7 text-neutral-100 transform group-hover:translate-x-1 transition ease-linear duration-200 relative top-px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>chevron-right</title><g fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.75 8.75l3.5 3.25-3.5 3.25"></path></g></svg>
-        <% end %>
+        <li>
+          <%= link_to "https://api.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "code", styles: "stroke-current w-6 h-6 group-hover:text-rails-500" %>
+              </div>
+              <span>Rails API</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://discuss.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "message", styles: "stroke-current w-6 h-6 group-hover:text-rails-500" %>
+              </div>
+              <span>Forum</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="leading-loose space-y-2">
+        <li>
+          <%= link_to "https://rubyonrails.org/blog/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "open-book", styles: "stroke-current w-6 h-6 group-hover:text-rails-500" %>
+              </div>
+              <span>Blog</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://github.com/rails/rails", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "github", styles: "fill-current text-slate-500 w-5 h-5 group-hover:text-rails-500" %>
+              </div>
+              <span>Contribute</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://rubyonrails.org/category/releases", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "hashtag", styles: "stroke-current w-5 h-5 group-hover:text-rails-500" %>
+              </div>
+              <span>Releases</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-24">
+      <div class="bg-gradient-to-r from-white to-slate-50 relative p-6 -m-6 rounded-xl">
+        <div class="grid sm:block grid-cols-3 mb-6 sm:mb-0 gap-3 sm:gap-0">
+          <%= image_tag "tailwind-shepherd-thumbnail.jpg", class: "sm:absolute -right-6 -top-6 sm:max-w-[200px] h-auto rounded-xl sm:shadow-xl z-0 hover:z-20 transition ease-in-out duration-200", alt: "Rails UI Shepherd Theme" %>
+          <%= image_tag "tailwind-hound-thumbnail.jpg", class: "sm:absolute right-0 top-0 sm:max-w-[200px] h-auto rounded-xl sm:shadow-xl z-10 transition ease-in-out duration-200 hover:z-20", alt: "Rails UI Hound Theme" %>
+          <%= image_tag "bootstrap-retriever-thumbnail.jpg", class: "sm:absolute right-6 top-6 sm:max-w-[200px] h-auto rounded-xl sm:shadow-xl z-10 transition ease-in-out duration-200", alt: "Rails UI Hound Theme" %>
+        </div>
+
+        <div class="relative z-50">
+          <%= link_to root_path, class:"text-xl tracking-tight font-black group transform text-black hover:text-black inline-flex justify-center sm:justify-start" do %>
+            <h1 class="sr-only">RailsUI</h1>
+            <%= render_svg "animated-logo", styles: "text-black fill-current w-48 h-auto" %>
+          <% end %>
+
+          <div class="max-w-xl">
+            <p class="sm:text-2xl text-xl mt-6 text-slate-700 mb-4">UI components and templates for Ruby on Rails.</p>
+
+            <p class="text-lg max-w-lg leading-relaxed text-slate-700 mb-6">Save time creating views, scaffolds, components, and making tough design decisions with the help of Rails UI.</p>
+          </div>
+
+          <div class="flex flex-wrap justify-between items-center sm:space-x-4 space-y-4 sm:space-y-0 sm:mt-0 mt-6">
+            <%= link_to railsui.docs_path, class: "bg-white py-2 px-4 text-center flex items-center text-slate-800 border border-slate-800 shadow hover:shadow-none group rounded-full sm:h-[50px] sm:w-auto w-full justify-center" do %>
+              <%= render_svg "open-book", styles: "stroke-current w-6 h-6 mr-2 group-hover:text-rails-500" %>
+              <span class="font-medium">Read the docs</span>
+            <% end %>
+
+            <%= link_to railsui.root_path, class: "py-2 pl-4 pr-3 text-center flex items-center rounded-full text-gray-800 border border-black shadow hover:shadow-none group bg-rails-500 text-white rounded-full sm:h-[50px] sm:w-auto w-full justify-center" do %>
+              <%= render_svg "cog", styles: "stroke-current w-6 h-6 mr-2 font-medium text-white opacity-90 group-hover:opacity-100" %>
+              <span class="text-white font-medium">Configure your app</span>
+              <%= render_svg "chevron-right", styles: "stroke-current w-auto h-7 opacity-80 group-hover:opacity-100 transform group-hover:translate-x-1 transition ease-linear duration-200 relative text-white top-px" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="absolute bottom-3 left-3 z-50 text-xs font-mono text-white text-opacity-50">
     Made by <%= link_to "@justalever", "https://twitter.com/justalever", target: :_blank, class: "text-white underline" %>. Follow <%= link_to "Rails UI", "https://twitter.com/railsui_", target: :_blank, class: "text-white underline" %> on Twitter.
   </div>
-</div>
