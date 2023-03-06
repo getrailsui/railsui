@@ -8,7 +8,7 @@
 </div>
 
 <%= render "railsui/themes/tailwind/hound/components/navigation/nav_preview", flush: true do %>
-<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav prevent">
+<header class="relative dark:bg-slate-900 bg-white rounded-t py-1" data-controller="nav prevent">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -40,7 +40,7 @@
       </div>
       <div
         id="base-navigation"
-        class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
+        class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -98,7 +98,7 @@
 <% end %>
 
 <% content_for :html, flush: true do %>
-<header class="relative dark:bg-slate-900" data-controller="nav">
+<header class="relative dark:bg-slate-900 py-1" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -130,7 +130,7 @@
       </div>
       <div
         id="base-navigation"
-        class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
+        class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -188,7 +188,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<header class="relative dark:bg-slate-900" data-controller="nav">
+<header class="relative dark:bg-slate-900 py-1" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -220,7 +220,7 @@
       </div>
       <div
         id="base-navigation"
-        class="md:flex-1 md:block hidden md:static absolute top-12 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
+        class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
         data-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
@@ -278,7 +278,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%header.relative.dark:bg-slate-900{"data-controller" => "nav"}
+%header.relative.dark:bg-slate-900.py-1{"data-controller" => "nav"}
   .container.mx-auto.px-4
     .md:flex.items-center.flex-wrap.md:space-x-2
       .md:block.flex.items-center.justify-between
@@ -293,7 +293,7 @@
             dark:text-slate-400 dark:group-focus:text-slate-100"
           .hidden{"data-nav-target" => "menuCross", role: "none"}
             = icon "x-mark", classes: "w-8 h-8 text-slate-600 group-focus:text-indigo-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
-      #base-navigation.md:flex-1.md:block.hidden.md:static.absolute.left-0.w-full.bg-white.dark:bg-slate-900.md:bg-transparent.transform.origin-top.p-4.md:p-0.lg:p-0.rounded-b.md:shadow-none.shadow-xl.z-40.top-12{"data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+      #base-navigation.md:flex-1.md:block.hidden.md:static.absolute.left-0.w-full.bg-white.dark:bg-slate-900.md:bg-transparent.transform.origin-top.p-4.md:p-0.lg:p-0.rounded-b.md:shadow-none.shadow-xl.z-40.top-14{"data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
         .md:flex-1.md:flex.flex-wrap.items-center.justify-between.lg:text-left.text-center
           %nav{role: "Primary navigation"}
             %ul.md:flex.block.items-center.flex-wrap.space-x-0.md:space-x-3.md:text-base.text-lg.md:leading-normal.leading-relaxed.space-y-1.md:space-y-0.sm:mb-0.mb-4
