@@ -68,6 +68,7 @@ def add_gems
   gem "jsbundling-rails"
   gem 'name_of_person'
   gem 'sidekiq'
+  gem 'meta-tags'
 end
 
 # Install Devise
@@ -87,14 +88,6 @@ def add_users
     migration = Dir.glob("db/migrate/*").max_by{ |f| File.mtime(f) }
     gsub_file migration, /:admin/, ":admin, default: false"
   end
-
-  content = <<-RUBY
-    has_person_name
-    has_one_attached :avatar
-  RUBY
-
-  # name_of_person gem
-  append_to_file("app/models/user.rb", "#{content}\n", after: "class User < ApplicationRecord")
 end
 
 # Add active storage and action text
@@ -107,6 +100,16 @@ def add_storage_and_rich_text
   end
 end
 
+# Extend user.rb
+def add_user_attributes
+  content = <<-RUBY
+  has_person_name
+  has_one_attached :avatar
+  RUBY
+
+  insert_into_file "app/models/user.rb", "#{content}\n\n", after: "class User < ApplicationRecord\n"
+end
+
 # Add sidkiq
 def add_sidekiq
   environment "config.active_job.queue_adapter = :sidekiq"
@@ -116,9 +119,9 @@ def add_sidekiq
     before: "Rails.application.routes.draw do"
 
   content = <<-RUBY
-    authenticate :user, lambda { |u| u.admin? } do
-      mount Sidekiq::Web => '/sidekiq'
-    end
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   RUBY
 
   insert_into_file "config/routes.rb", "#{content}\n\n", after: "Rails.application.routes.draw do\n"
@@ -128,19 +131,18 @@ def add_static_assets
   say "⚡️ Generate StaticController"
   generate "controller", "static index --skip-test-framework --skip-assets --skip-helper --skip-routes --skip-template-engine"
 
-  # Note: this roots to static/index in gem as front page when first booting
-
   say "⚡️ Add default RailsUI routing and engine"
   content = <<-RUBY
-    if Rails.env.development? || Rails.env.test?
-      mount Railsui::Engine, at: "/railsui"
-    end
+  if Rails.env.development? || Rails.env.test?
+    mount Railsui::Engine, at: "/railsui"
+  end
 
-    scope controller: :static do
+  scope controller: :static do
 
-    end
-
-    root to: "static#index"
+  end
+  # Inherits from Railsui StaticController#index
+  # To overide, add your own static#index view or change to a new root
+  root to: "static#index"
   RUBY
 
   insert_into_file "#{Rails.root}/config/routes.rb", "#{content}\n", after: "Rails.application.routes.draw do\n"
@@ -210,19 +212,24 @@ end
 # Extend this gems helper into the client app + extend devise
 def add_application_controller_code
   app_controller_code = <<-RUBY
-    helper Railsui::ThemeHelper
+  helper Railsui::ThemeHelper
 
-    before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-    protected
+  protected
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :name])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :name])
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :name])
+  end
   RUBY
   insert_into_file "#{Rails.root}/app/controllers/application_controller.rb", "#{app_controller_code}\n", after: "class ApplicationController < ActionController::Base\n"
 end
+
+# TODO
+# def add_meta
+#  generate "meta_tags:install"
+# end
 
 # Add all the things!
 say "⚡️ Adding gems..."
@@ -275,6 +282,9 @@ copy_hero_icons
 # Migrate
 rails_command "db:create"
 rails_command "db:migrate"
+
+say "⚡️ Add additional user.rb attributes"
+add_user_attributes
 
 say "
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
