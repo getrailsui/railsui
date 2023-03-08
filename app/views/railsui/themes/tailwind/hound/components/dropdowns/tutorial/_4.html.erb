@@ -10,7 +10,7 @@
 <% end %>
 <% content_for :html, flush: true do %>
 <div data-controller="dropdown">
-  <button data-action="dropdown#toggle click@window->dropdown#hide">Dropdown</button>
+  <button data-action="click->dropdown#toggle click@window->dropdown#hide">Dropdown</button>
   <div
     class="hidden"
     data-dropdown-target="menu"

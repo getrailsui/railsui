@@ -45,9 +45,10 @@ module Railsui
       options[:nocomment] = true
       options[:variant] ||= :outline
       options[:class] = options.fetch(:classes, nil)
+      path = options.fetch(:path, "icons/#{options[:variant]}/#{name}.svg")
 
-      filename = "icons/#{options[:variant]}/#{name}.svg"
-      inline_svg_tag(filename, options)
+      icon = path
+      inline_svg_tag(icon, options)
     end
   end
 end

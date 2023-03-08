@@ -145,7 +145,7 @@
 
       <%= link_to systems_authentication_overview_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
         <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
-          <%= render_svg "components", styles: "stroke-current w-5 h-5 text-amber-500" %>
+          <%= render_svg "lock-unlocked", styles: "stroke-current w-5 h-5 text-amber-500" %>
         </div>
         <span>Authentication</span>
       <% end %>
@@ -156,6 +156,9 @@
         </li>
         <li>
           <%= nav_link_to "Sign in", systems_authentication_signin_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+        </li>
+        <li>
+          <%= nav_link_to "Change password", systems_authentication_change_password_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
         </li>
         <li>
           <%= nav_link_to "Reset password", systems_authentication_reset_password_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>

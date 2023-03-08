@@ -1,7 +1,6 @@
-<div class="prose-lg mt-6 max-w-full dark:prose-invert prose-a:font-semibold prose-a:underline">
+<div class="prose mt-6 max-w-full dark:prose-invert prose-a:font-semibold prose-a:underline">
   <p><%= link_to "Heroicons", "https://heroicons.com/", target: :_blank %> are the default icons of choice for Rails UI. We chose these icons since they are open sourced, updated regularly, and cover a vast set of scenarios in the design world.</p>
 </div>
-
 
 <%= render "railsui/shared/usage_guide", title: "Icon usage guide" do %>
 
@@ -17,6 +16,18 @@
 
 <p>As you build your application you may find that some designs call for a solid icon and others an outline icon. It's best to stick with a single variant per application, so if you use an outline icon in context, you should use outline icons going forward.</p>
 
+<div class="not-prose">
+<% content_for :bash do %>
+app/
+├─ assets/
+│  ├─ images/
+│  │  ├─ icons/
+│  │  │  ├─ outline/
+│  │  │  ├─ solid/
+<% end %>
+<%= render_snippet active_tab: "bash" %>
+</div>
+
 <h3>Dependencies</h3>
 
 <p>With Rails UI a handy <%= code "icon" %> helper is at your disposal which makes linking to and rendering SVG icons in your views a painless process.</p>
@@ -26,6 +37,10 @@
 <p>Here is the helper source code for context:</p>
 
 <div class="not-prose">
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
 <% content_for :ruby, flush: true do %>
 def icon(name, options={})
   options[:title] ||= name.underscore.humanize
@@ -33,9 +48,10 @@ def icon(name, options={})
   options[:nocomment] = true
   options[:variant] ||= :outline
   options[:class] = options.fetch(:classes, nil)
+  path = options.fetch(:path, "icons/#{options[:variant]}/#{name}.svg")
 
-  filename = "icons/#{options[:variant]}/#{name}.svg"
-  inline_svg_tag(filename, options)
+  icon = path
+  inline_svg_tag(icon, options)
 end
 <% end %>
 
@@ -56,22 +72,52 @@ end
     <li>
       <%= code ":classes" %> &mdash; <%= code "class" %> is reserved for the <%= code "inline_svg" %> gem so we used <%= code "classes" %> an an alternate way to pass additional HTML classes to style the icon. <%= code "stroke-current" %> and <%= code "stroke-fill" %> are appended by default based on the <%= code ":variant" %> option.
     </li>
-
+    <li>
+      <%= code ":path" %> &mdash; Pass a custom path to an icon.
+    </li>
   </ul>
   <h3>Usage</h3>
 
   <p>Using and rendering a new icon is quite simple and doesn't pollute your markup. </p>
 
-  <div class="not-prose">
-    <% content_for :ruby, flush: true do %>
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
 
-    <% end %>
+<% end %>
+
+<% content_for :ruby, flush: true do %>
+
+<% end %>
 
 <% content_for :erb, flush: true do %>
-  <%%= icon "academic-cap", styles: "w-5 h-5 text-indigo-600" %>
+  <%%= icon "academic-cap", classes: "w-5 h-5 text-indigo-600" %>
 <% end %>
-  <%= render_snippet active_tab: "erb", erb_filename: "index.html.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "index.html.erb" %>
   </div>
+
+  <h3>Custom icons</h3>
+  <p>Need to add some of your own icons? You can add those to <%= code "app/assets/images/icons" %>. Depending on the style of icon you can choose between the <%= code "solid" %> or <%= code "outline" %> folders.</p>
+
+  <p>If you require something more custom, use the <% code ":path" %> option to pass a unique path to the helper for rendering.</p>
+
+  <div class="my-6">
+    <%= icon "eye-close", path: "eye-close.svg", classes: "text-pink-400 stroke-current w-10 h-10" %>
+  </div>
+
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<% content_for :ruby, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+  <%%= icon "eye-close", path: "eye-close.svg", classes: "w-10 h-10 stroke-current text-pink-400" %>
+<% end %>
+<%= render_snippet active_tab: "erb" %>
+</div>
 <% end %>
 
 <%= render "railsui/shared/quicklinks", name: "icon" do %>

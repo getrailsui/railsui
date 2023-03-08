@@ -28,7 +28,7 @@ module Railsui
       end
 
       def add_routes
-        insert_into_file "#{Rails.root}/config/routes.rb", "\t\tget #{display_name.prepend(':')}\n", after: "scope controller: :static do\n"
+        insert_into_file "#{Rails.root}/config/routes.rb", "\t\t\t\tget #{display_name.prepend(':')}\n", after: "scope controller: :static do\n"
       end
     end
   end

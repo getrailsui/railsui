@@ -32,7 +32,7 @@
     </div>
 
     <p class="font-bold uppercase tracking-wide text-xs text-rails-500 mb-4">Take action</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-0 text-lg text-slate-600 -mx-2">
+    <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-10 gap-0 text-lg text-slate-600 -mx-2">
       <ul class="leading-loose space-y-2 sm:mb-0 mb-2">
         <li>
           <%= link_to "https://guides.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
@@ -99,6 +99,30 @@
                 <%= render_svg "hashtag", styles: "stroke-current w-5 h-5 group-hover:text-rails-500" %>
               </div>
               <span>Releases</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="leading-loose space-y-2">
+        <li>
+          <%= link_to "/rails/mailers", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "mail", styles: "stroke-current w-5 h-5 group-hover:text-rails-500" %>
+              </div>
+              <span>Mailers</span>
+            </div>
+            <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to railsui.routes_path,class: "flex items-center justify-start w-full hover:bg-slate-50 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
+            <div class="flex-1 flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50">
+                <%= render_svg "icons/outline/square-3-stack-3d", styles: "stroke-current w-4 h-4 group-hover:text-rails-500" %>
+              </div>
+              <span>Routes</span>
             </div>
             <%= render_svg "chevron-right", styles: "stroke-current w-6 h-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-rails-500 translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
           <% end %>
