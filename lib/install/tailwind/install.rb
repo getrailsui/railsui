@@ -57,7 +57,7 @@ else
     say "⚡️ Add shared nav partial"
     insert_into_file(
       app_layout_path.to_s,
-      %(\n    <%= render "shared/nav" if user_signed_in? %>),
+      %(\n    <%= render "shared/nav" %>),
       after: '<%= render "shared/flash" %>'
     )
   end
