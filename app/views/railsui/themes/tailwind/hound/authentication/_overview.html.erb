@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-8">
   <%= link_to systems_authentication_signin_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none dark:text-white dark:bg-none">Sign in</h3>
+    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Sign in</h3>
   <% end %>
 
   <%= link_to systems_authentication_signup_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
@@ -9,6 +9,10 @@
 
    <%= link_to systems_authentication_edit_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
     <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Edit Account</h3>
+  <% end %>
+
+  <%= link_to systems_authentication_change_password_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
+    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Change password</h3>
   <% end %>
 
   <%= link_to systems_authentication_reset_password_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
@@ -231,7 +235,7 @@
 
 <%= content_for :erb, flush: true do %>
 <%% if resource.errors.any? %>
-<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 text-sm" role="alert">
+<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
   <div class="flex items-start space-x-4">
     <%%= icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
     <div class="flex-1">
@@ -244,20 +248,21 @@
     </div>
   </div>
 </div>
+<%% end %>
 <% end %>
 
 <% content_for :haml, flush: true do %>
 - if resource.errors.any?
-  .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.text-sm{role: "alert"}
+  .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-rose-50.text-sm{class: "dark:bg-rose-400/10 dark:border-rose-400/20", role: "alert"}
     .flex.items-start.space-x-4
       = icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid
       .flex-1
         %p.font-bold
-          = pluralize(resource.errors.count, "error")
-          prohibited this post from being saved:
+          = pluralize(resource.errors.count, "error")   prohibited this post from being saved:
         %ul.list-disc.mt-3.ml-4
           - resource.errors.each do |error|
-            %li= error.full_message
+            %li
+            = error.full_message
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>

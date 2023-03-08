@@ -3,6 +3,7 @@ Railsui::Engine.routes.draw do
   resource :configuration, only: [:create, :update]
   resource :docs, only: :show
   resource :systems, only: :show
+  resource :routes, only: :show
 
   namespace :systems do
     get :authentication
@@ -19,6 +20,7 @@ Railsui::Engine.routes.draw do
       get :confirmation
       get :edit
       get :overview
+      get :change_password
       get :reset_password
       get :signin
       get :signup
