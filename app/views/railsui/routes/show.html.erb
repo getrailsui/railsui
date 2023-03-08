@@ -1,0 +1,20 @@
+<div class="flex items-center">
+  <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm flex-1">
+    <ol class="flex flex-wrap items-center space-x-3">
+      <li>
+        <a href="#" class="hover:underline hover:text-slate-600 dark:hover:text-slate-400">Main app</a>
+      </li>
+
+      <li class="flex space-x-3">
+        <div class="flex items-center">
+          <span class="text-slate-300 dark:text-slate-500">/</span>
+        </div>
+        <a href="#" aria-current="page" class="text-indigo-600 dark:text-indigo-500">Routes</a>
+      </li>
+    </ol>
+  </nav>
+
+  <%= search_field(:query, nil, id: 'search', placeholder: "Search", class: "rounded bg-white border border-slate-300 focus:ring-4 focus:ring-slate-50 shadow-inner block w-[600px] flex-shrink-0") %>
+</div>
+
+<%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self)) %>

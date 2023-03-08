@@ -193,5 +193,22 @@ module Railsui
       Railsui.config.css_framework == Railsui::Default::BOOTSTRAP
     end
 
+    def route_verb_classes(verb)
+      case verb
+      when "GET"
+        "bg-indigo-50 text-indigo-500"
+      when "PATCH"
+        "bg-cyan-50 text-cyan-500"
+      when "PUT"
+        "bg-amber-50 text-amber-500"
+      when "POST"
+        "bg-emerald-50 text-emerald-500"
+      when "DELETE"
+        "bg-rose-50 text-rose-500"
+      else
+        "bg-slate-50 text-slate-500"
+      end
+    end
+
   end
 end
