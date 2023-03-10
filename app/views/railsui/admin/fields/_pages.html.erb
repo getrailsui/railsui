@@ -2,42 +2,34 @@
 
   <% content_for :explainer, flush: true do %>
     <%= heading text: "Pages", id: "configuration_overview", tag: "h3", class: "font-semibold text-xl mb-3" %>
-    <p class="text-base lg:text-sm text-slate-700 dark:text-slate-300">Add pre-designed marketing pages with sample content to the app.</p>
+    <p class="text-base lg:text-sm text-slate-700 dark:text-slate-300">Add pre-designed pages with sample content.</p>
   <% end %>
 
   <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
-    <p class="prose mb-6 dark:prose-invert">Enabling any option below will automatically generate themed views using the CSS framework chosen. These views will contain minimal logic with clean HTML/ERB for you to take and run with.</p>
-    <ul class="leading-loose space-y-4">
-      <% if about_page_exists? %>
-        <%= render "railsui/admin/fields/pages/page_present",
-          label: "About page",
-          description: "Placeholder markup for company or organization about page.",
-          preview_link: main_app.about_path
-        %>
-        <%= f.hidden_field :about, value: "1" %>
-      <% else %>
-        <li class="relative">
-          <%= f.label :about, class: box_label_classes do %>
-            <%= f.check_box :about, class: box_check_classes, value: Railsui.config.about, checked: Railsui.config.about? %>
-            <span class="group-hover:text-indigo-600">Create about page</span><span class="text-slate-500 text-sm block pl-8 lg:mb-0 mb-3 dark:text-slate-300">Placeholder markup for company or organization about page.</span>
+    <div class="prose mb-6 dark:prose-invert prose-sm">
+      <h3>Add pages</h3>
+      <p>Generate pre-designed pages based off the <%= theme_name.humanize %> template design. If you previously generated a page, it will <strong>not</strong> be overwritten.</p>
+    </div>
+
+    <div class="divide-y">
+      <% Railsui::Pages::all_pages.each do | page, details | %>
+        <div class="py-4 flex flex-wrap items-center justify-between">
+          <div class="flex-1">
+            <%= check_box_tag "configuration[pages][]", page, Railsui::Pages.page_enabled?(page), id: page, class: "form-input-switch" %>
+            <%= label_tag page, details[:title] %>
+
+            <div class="prose prose-sm prose-slate-600 dark:prose-invert">
+              <p><%= details[:description] %></p>
+            </div>
+          </div>
+          <% if Railsui::Pages.page_exists?(page) %>
+          <div>
+            <%= link_to "View page", Rails.application.routes.url_for(action: details[:title].downcase, controller: "static", only_path: true), target: :_blank %>
+          </div>
           <% end %>
-        </li>
+        </div>
       <% end %>
-      <% if pricing_page_exists? %>
-        <%= render "railsui/admin/fields/pages/page_present",
-          label: "Pricing page",
-          description: "Placeholder markup for company or organization about page.",
-          preview_link: main_app.pricing_path
-        %>
-        <%= f.hidden_field :pricing, value: "1" %>
-      <% else %>
-        <li class="relative">
-          <%= f.label :pricing, class: box_label_classes do %>
-            <%= f.check_box :pricing, class: box_check_classes, value: Railsui.config.pricing, checked: Railsui.config.pricing? %>
-            <span class="group-hover:text-indigo-600 group-hover:dark:text-slate-200">Create pricing page</span><span class="text-slate-500 text-sm block pl-8 lg:mb-0 mb-3 dark:text-slate-300">Placeholder markup for SaaS-like pricing; 3 plans types by default.</span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    </div>
+
   </div>
 <% end %>

@@ -6,15 +6,10 @@ export default class extends Controller {
   currentResults = this.resultListTarget.innerHTML;
 
   search(event) {
-    if (event.target.value) {
-      this.filterList(event)
-    } else {
-      this._resetList()
-    }
+    this.filterList(event)
   }
 
   clear(event) {
-    console.log(event)
     event.target.value = ''
     this._resetList()
   }
@@ -23,17 +18,19 @@ export default class extends Controller {
     let temp = ''
     const result  = this.resultTargets.filter(item=> item.dataset.searchRouteValue.includes(event.target.value));
 
-
     if (result.length > 0) {
       temp = `<div class="divide-slate-200 divide-y">`
       result.forEach((item) => {
         temp += `${item.outerHTML}`
       })
       temp += `</div>`
+
+      this.resultListTarget.innerHTML = temp;
     } else {
       temp = `No results`
+      this._resetList()
     }
-    this.resultListTarget.innerHTML = temp;
+
   }
 
   _resetList() {

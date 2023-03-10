@@ -22,13 +22,13 @@ module Railsui
       end
 
       def copy_view_files
-        # only return supported files [about, pricing]
-        return unless display_name == "about" || display_name == "pricing"
+        # only return active Rails UI pages
+        return unless Railsui.config.pages.include?(display_name)
         template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{display_name}.html.erb.tt", File.join("app/views/static", "#{display_name}.html.erb")
       end
 
       def add_routes
-        insert_into_file "#{Rails.root}/config/routes.rb", "\t\t\t\tget #{display_name.prepend(':')}\n", after: "scope controller: :static do\n"
+        insert_into_file "#{Rails.root}/config/routes.rb", "\t\t\tget #{display_name.prepend(':')}\n", after: "scope controller: :static do\n"
       end
     end
   end

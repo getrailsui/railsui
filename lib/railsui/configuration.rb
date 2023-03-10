@@ -6,7 +6,8 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
 
-    attr_accessor :application_name, :css_framework, :support_email, :about, :pricing, :theme
+    attr_accessor :application_name, :css_framework, :support_email, :theme
+    attr_writer :pages
 
     def initialize(options = {})
       assign_attributes(options)
@@ -14,8 +15,6 @@ module Railsui
       self.css_framework ||= ""
       self.support_email ||= "support@example.com"
       self.theme ||= ""
-      self.about ||= false
-      self.pricing ||= false
     end
 
     def self.load!
@@ -28,25 +27,12 @@ module Railsui
       end
     end
 
+    def pages
+      Array.wrap(@pages)
+    end
 
     def self.config_path
       Rails.root.join("config", "railsui.yml")
-    end
-
-    def about=(value)
-      @about = ActiveModel::Type::Boolean.new.cast(value)
-    end
-
-    def about?
-      @about.nil? ? false : ActiveModel::Type::Boolean.new.cast(@about)
-    end
-
-    def pricing=(value)
-      @pricing = ActiveModel::Type::Boolean.new.cast(value)
-    end
-
-    def pricing?
-      @pricing.nil? ? false : ActiveModel::Type::Boolean.new.cast(@pricing)
     end
 
     def save
@@ -64,13 +50,14 @@ module Railsui
         Railsui.run_command "rails railsui:framework:install:tailwind"
       end
 
-      # Install any static pages
-      if !about_page_exists? && Railsui.config.about?
-        create_about_page
-      end
+      create_pages
+    end
 
-      if !pricing_page_exists? && Railsui.config.pricing?
-        create_pricing_page
+    def create_pages
+      Railsui::Pages.all_pages.each do | page, details |
+        if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)
+          Railsui.run_command "rails g railsui:static #{page}"
+        end
       end
     end
 
@@ -81,13 +68,6 @@ module Railsui
       Railsui.config.theme = self.theme
     end
 
-    def create_about_page
-      Railsui.run_command "rails g railsui:static about"
-    end
-
-    def create_pricing_page
-      Railsui.run_command "rails g railsui:static pricing"
-    end
 
     def copy_template(filename)
       # Safely copy template, so we don't blow away any customizations you made
@@ -98,14 +78,6 @@ module Railsui
 
     def template_path(filename)
       Rails.root.join("lib/templates", filename)
-    end
-
-    def about_page_exists?
-      Rails.root.join("app/views/static/about.html.erb").exist?
-    end
-
-    def pricing_page_exists?
-      Rails.root.join("app/views/static/pricing.html.erb").exist?
     end
   end
 end

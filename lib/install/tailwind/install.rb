@@ -1,5 +1,5 @@
 # General FYI: Tailwind requires more finesse to have ability to make use of more advanced PostCSS features. We're borrowing from the cssbundling-rails gem install pattern here to accomodate.
-say "🔔 Installing #{Railsui.confng.theme.humanize} theme dependencies"
+say "🔔 Installing #{Railsui.config.theme.humanize} theme dependencies"
 
 if Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
   say "Tailwind CSS is already installed. For best results uninstall it and re-run the Rails UI installer"
@@ -49,8 +49,11 @@ else
 
   say "⚡️ Copy shared partial files"
   shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb"]
+
   shared_files.each do |shared_file|
-    copy_file "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join('app/view/shared'), force: true
+    unless Rails.root.join("app/views/shared/#{shared_file}").exist?
+      copy_file "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join("app/views/shared/#{shared_file}")
+    end
   end
 
   if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?

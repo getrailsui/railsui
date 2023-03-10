@@ -19,9 +19,8 @@ module Railsui
           :css_framework,
           :primary_color,
           :secondary_color,
-          :about,
-          :pricing,
-          :theme
+          :theme,
+          pages: []
         )
     end
   end

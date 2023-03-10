@@ -3,6 +3,8 @@ require "railsui/engine"
 
 module Railsui
   autoload :Configuration, "railsui/configuration"
+  autoload :Controller, "railsui/controller"
+  autoload :Pages, "railsui/pages"
 
   mattr_accessor :config
   @@config = {}
@@ -50,7 +52,6 @@ module Railsui
   def self.framework?
     Railsui.config.css_framework.present?
   end
-
 
   def self.theme
     self.config.theme
