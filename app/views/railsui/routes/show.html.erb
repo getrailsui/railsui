@@ -1,20 +1,45 @@
-<div class="flex items-center">
-  <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm flex-1">
-    <ol class="flex flex-wrap items-center space-x-3">
-      <li>
-        <a href="#" class="hover:underline hover:text-slate-600 dark:hover:text-slate-400">Main app</a>
-      </li>
+<div data-controller="search helper" data-helper-url-value="_url" data-helper-path-value="_path">
+  <div class="bg-gradient-to-br from-indigo-800 to-salmon-500 via-blue-800 pt-14 pb-6 px-10 text-white">
 
-      <li class="flex space-x-3">
-        <div class="flex items-center">
-          <span class="text-slate-300 dark:text-slate-500">/</span>
+      <nav aria-label="breadcrumb" class="my-6 font-medium flex text-white dark:text-slate-200 text-sm flex-1">
+        <ol class="flex flex-wrap items-center space-x-3">
+          <li>
+            <%= link_to "Main app", railsui.root_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
+          </li>
+
+          <li class="flex space-x-3">
+            <div class="flex items-center">
+              <span class="text-slate-300 dark:text-slate-500">/</span>
+            </div>
+            <a href="#" aria-current="page" class="text-underline">Routes</a>
+          </li>
+        </ol>
+      </nav>
+
+    <div class="flex justify-center py-10">
+      <%= form_tag railsui.routes_path, method: :get, data: { search_target: "form" } do %>
+        <div class="relative">
+          <%= text_field :query, nil, id: 'search', autofocus: true, placeholder: "Search routes", class: "rounded bg-white/90 backdrop-blur-lg border border-slate-300 dark:bg-slate-800/75 dark:focus:bg-slate-800/75 focus:bg-white focus:ring-4 focus:ring-slate-50/25 shadow-inner block w-[600px] flex-shrink-0 dark:border-slate-600 dark:focus:ring-white/10 peer text-lg text-slate-800 font-medium dark:text-white", data: { action: "keyup->search#search keyup.esc->search#clear" }, tabindex: 0 %>
+
+          <span class="absolute opacity-0 peer-focus:opacity-100 transition ease-in-out duration-200 right-4 top-[13px] text-sm -translate-x-2 peer-focus:translate-x-0 text-slate-600 dark:text-slate-400">Hit <span class="border border-slate-400 text-slate-600 inline-flex dark:text-slate-100 leading-none items-center rounded px-1 py-0 h-5 font-mono text-xs">esc</span> to reset</span>
         </div>
-        <a href="#" aria-current="page" class="text-indigo-600 dark:text-indigo-500">Routes</a>
-      </li>
-    </ol>
-  </nav>
+      <% end %>
 
-  <%= search_field(:query, nil, id: 'search', placeholder: "Search", class: "rounded bg-white border border-slate-300 focus:ring-4 focus:ring-slate-50 shadow-inner block w-[600px] flex-shrink-0") %>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <h1 class="text-4xl font-extrabold tracking-tight flex-1">Routes</h1>
+        <div class="flex items-center">
+          <button role="button" type="button" title="Returns a relative path (without the http or domain)" class="bg-white/90 backdrop-blur-md rounded-l border border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 border-r hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-white"
+          data-helper-target="btn"
+           data-action="click->helper#togglePath">Path</button>
+          <button role="button" type="button" title="Returns an absolute URL (with the http and domain)" class="bg-white/90 backdrop-blur-md rounded-r border-r border-y border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-white" data-helper-target="btn" data-action="click->helper#toggleUrl">URL</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-10">
+      <%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self))
+    %>
+    </div>
 </div>
-
-<%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self)) %>

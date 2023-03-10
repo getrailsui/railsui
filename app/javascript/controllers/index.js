@@ -18,6 +18,9 @@ application.register("dropdown", DropdownController)
 import FlashController from "./flash_controller.js"
 application.register("flash", FlashController)
 
+import HelperController from "./helper_controller.js"
+application.register("helper", HelperController)
+
 import ModalController from "./modal_controller.js"
 application.register("modal", ModalController)
 
@@ -29,6 +32,9 @@ application.register("prevent", PreventController)
 
 import ScrollController from "./scroll_controller.js"
 application.register("scroll", ScrollController)
+
+import SearchController from "./search_controller.js"
+application.register("search", SearchController)
 
 import SmoothController from "./smooth_controller.js"
 application.register("smooth", SmoothController)

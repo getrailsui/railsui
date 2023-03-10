@@ -196,17 +196,17 @@ module Railsui
     def route_verb_classes(verb)
       case verb
       when "GET"
-        "bg-indigo-50 text-indigo-500"
+        "bg-indigo-50 text-indigo-500 dark:bg-indigo-400/50 dark:text-indigo-100"
       when "PATCH"
-        "bg-cyan-50 text-cyan-500"
+        "bg-cyan-50 text-cyan-500 dark:bg-cyan-400/50 dark:text-cyan-100"
       when "PUT"
-        "bg-amber-50 text-amber-500"
+        "bg-amber-50 text-amber-500 dark:bg-amber-400/50 dark:text-amber-100"
       when "POST"
-        "bg-emerald-50 text-emerald-500"
+        "bg-emerald-50 text-emerald-500 dark:bg-emerald-400/50 dark:text-emerald-100"
       when "DELETE"
-        "bg-rose-50 text-rose-500"
+        "bg-rose-50 text-rose-500 dark:bg-rose-400/50 dark:text-rose-100"
       else
-        "bg-slate-50 text-slate-500"
+        "bg-slate-50 text-slate-500 dark:bg-slate-700 dark:text-slate-100"
       end
     end
 
