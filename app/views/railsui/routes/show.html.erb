@@ -1,5 +1,7 @@
+<% gradients = ["from-indigo-800 to-salmon-500 via-blue-800", "from-emerald-800 to-blue-800 via-indigo-600", "from-pink-600 to-rose-500", "from-slate-700 to-slate-900" ]%>
+
 <div data-controller="search helper" data-helper-url-value="_url" data-helper-path-value="_path">
-  <div class="bg-gradient-to-br from-indigo-800 to-salmon-500 via-blue-800 pt-14 pb-6 px-10 text-white">
+  <div class="bg-gradient-to-br  pt-14 pb-6 px-10 text-white <%= gradients.sample %>">
 
       <nav aria-label="breadcrumb" class="my-6 font-medium flex text-white dark:text-slate-200 text-sm flex-1">
         <ol class="flex flex-wrap items-center space-x-3">
@@ -30,10 +32,10 @@
       <div class="flex items-center justify-between">
         <h1 class="text-4xl font-extrabold tracking-tight flex-1 text-white">Routes</h1>
         <div class="flex items-center">
-          <button role="button" type="button" title="Returns a relative path (without the http or domain)" class="bg-white/90 backdrop-blur-md rounded-l border border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 border-r hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-white"
+          <button role="button" type="button" title="Returns a relative path (without the http or domain)" class="bg-white backdrop-blur-md rounded-l border border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 border-r hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-indigo-500 focus:text-white focus:border-indigo-600"
           data-helper-target="btn"
            data-action="click->helper#togglePath">Path</button>
-          <button role="button" type="button" title="Returns an absolute URL (with the http and domain)" class="bg-white/90 backdrop-blur-md rounded-r border-r border-y border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-white" data-helper-target="btn" data-action="click->helper#toggleUrl">URL</button>
+          <button role="button" type="button" title="Returns an absolute URL (with the http and domain)" class="bg-white backdrop-blur-md rounded-r border-r border-y border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-indigo-500 focus:text-white focus:border-indigo-600" data-helper-target="btn" data-action="click->helper#toggleUrl">URL</button>
         </div>
       </div>
     </div>
