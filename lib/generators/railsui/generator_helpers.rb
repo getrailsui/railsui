@@ -31,10 +31,6 @@ module Railsui
         actions
       end
 
-      def static_files
-        %w(about pricing)
-      end
-
       def controller_methods(dir_name)
         all_actions.map do |action|
           read_template("#{dir_name}/#{action}.rb")

@@ -6,7 +6,7 @@ module Railsui
       Railsui::Configuration.new(configuration_params).save
       Railsui.bundle
 
-      redirect_to root_path, notice: "Your app configuration updated successfully"
+      redirect_to root_path, notice: "App configuration updated successfully 🎉"
     end
 
     private
@@ -17,8 +17,6 @@ module Railsui
           :application_name,
           :support_email,
           :css_framework,
-          :primary_color,
-          :secondary_color,
           :theme,
           pages: []
         )

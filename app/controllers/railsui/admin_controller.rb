@@ -5,7 +5,7 @@ module Railsui
     layout "railsui/fullwidth"
     def show
       @config = Railsui::Configuration.load!
-      @pages = Railsui::Pages::BASE_PAGES
+      @pages = Railsui::Pages.all_pages
     end
   end
 end
