@@ -44,3 +44,11 @@
       <%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self))%>
     </div>
 </div>
+
+
+<div class="fixed bottom-4 right-2" data-controller="scroll">
+  <button data-action="click->scroll#scrollToTop" data-scroll-target="launcher" class="btn btn-white rounded-2xl bg-opacity-80 backdrop-blur-lg focus:ring-white/20 hidden">
+    <%= icon "chevron-up", classes: "w-3 h-3 text-slate-800 mr-2" %>
+    <span>Scroll to top</span>
+  </button>
+</div>
