@@ -78,7 +78,7 @@ def add_users
 
   # Configure Devise
   environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }",
-              env: 'development'
+        env: 'development'
 
   # Create Devise User
   generate :devise, "User", "first_name", "last_name", "admin:boolean"
@@ -172,28 +172,29 @@ def extend_layout_and_views
   end
 
   if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
-    say "⚡️ Add meta tag partial"
+    head_content = <<-RUBY
+    <%= render "shared/meta" %>
+    <%= yield :head %>
+    RUBY
+
+    say "⚡️ Add <head> includes"
     insert_into_file(
-      app_layout_path.to_s,
-      %(\n    <%= render "shared/meta" %>),
+      app_layout_path.to_s, head_content,
       before:/\s*<\/head>/
     )
 
-    say "⚡️ Add :head yield"
-    insert_into_file(
-      app_layout_path.to_s,
-      %(\n    <%= yield :head %>),
-      before:/\s*<\/head>/
-    )
-
-    say "⚡️ Add flash partial"
-    insert_into_file(
-      app_layout_path.to_s,
-      %(
+    # Layout content with conditional header block
+    layout_content = <<-RUBY
     <%= render "shared/flash" %>
-      ),
-      after:"<body>"
-    )
+    <% if content_for(:header).present? %>
+      <%= yield :header %>
+      <% else %>
+      <%= render "shared/nav" %>
+    <% end %>
+    RUBY
+
+    say "⚡️ Add layout content"
+    insert_into_file(app_layout_path.to_s, layout_content, after:"<body>")
   end
 end
 

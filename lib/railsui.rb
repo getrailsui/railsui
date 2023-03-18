@@ -14,7 +14,7 @@ module Railsui
   end
 
   def self.restart
-    run_command "bin/dev"
+    run_command "rails restart"
   end
 
   def self.bundle
@@ -39,14 +39,6 @@ module Railsui
 
   def self.no_framework_set?
     self.config.css_framework == "" # not yet configured
-  end
-
-  def self.bootstrap_installed?
-    Rails.root.join("app/assets/stylesheets/application.bootstrap.scss").exist?
-  end
-
-  def self.tailwind_installed?
-    Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
   end
 
   def self.framework?

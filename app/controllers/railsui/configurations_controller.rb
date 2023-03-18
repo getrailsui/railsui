@@ -5,6 +5,7 @@ module Railsui
     def create
       Railsui::Configuration.new(configuration_params).save
       Railsui.bundle
+      Railsui.restart
 
       redirect_to root_path, notice: "App configuration updated successfully 🎉"
     end

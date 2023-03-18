@@ -1,3 +1,28 @@
+<%% content_for :header do %>
+<header class="bg-cover bg-center relative bg-no-repeat" style="background-image: <%%= asset_url("fusion.png") %>;" data-controller="nav">
+  <div class="dark:bg-slate-900">
+    <%%= render "shared/nav_menu" %>
+  </div>
+  <div
+    class="container mx-auto flex flex-wrap items-center justify-center lg:justify-between lg:py-16 pb-10 px-4 relative z-10">
+    <div class="xl:w-1/2 lg:w-2/5 w-full lg:order-1 order-2">
+      <p class="text-indigo-600 font-medium mb-2 lg:mt-0 mt-2 dark:text-indigo-500">Our Company</p>
+      <h1 class="lg:text-5xl xl:text-6xl text-4xl font-extrabold">Soaring to new <br class="lg:block hidden" />heights
+        in tech
+      </h1>
+      <p class="my-4 text-slate-900 dark:text-slate-400 text-lg">We empower each other to build great software</p>
+      <%%= link_to "Join our team", "#", class: "btn btn-primary btn-lg" %>
+    </div>
+    <div class="xl:w-1/2 lg:w-3/5 w-full lg:order-2 order-1 lg:my-0 my-4">
+      <%%= image_tag "hero-image.png", alt: "Team", class: "max-w-full h-auto w-full shadow-xl" %>
+    </div>
+  </div>
+  <div
+    class="lg:block hidden bg-gradient-to-b from-transparent to-white h-40 absolute left-0 right-0 bottom-0 w-full dark:from-transparent dark:to-slate-900">
+  </div>
+</header>
+<%% end %>
+
 <div class="container mx-auto px-4 lg:py-24 pb-16 pt-0">
   <div class="flex flex-wrap items-center justify-between">
     <div class="lg:w-1/2 w-full">
@@ -41,7 +66,7 @@
 <div class="container mx-auto py-16 px-4">
   <div class="flex justify-center mb-6">
     <div class="rounded bg-indigo-100 dark:bg-indigo-500/50 w-12 h-12 flex items-center justify-center">
-      <%%= icon "globe", classes: "text-indigo-700 dark:text-indigo-300 w-4 h-4 stroke-current" %>
+      <%%= icon "globe-americas", classes: "text-indigo-700 dark:text-indigo-300 w-4 h-4 stroke-current" %>
     </div>
   </div>
   <h3 class="font-extrabold lg:text-4xl text-3xl mb-2 text-center">Work from across the globe</h3>
