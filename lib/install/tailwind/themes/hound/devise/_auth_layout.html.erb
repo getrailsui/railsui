@@ -1,18 +1,39 @@
-<div class="row g-0 vh-100 align-items-center">
-  <div class="col-lg-5 col-md-12 vh-100 d-flex align-items-center px-3 px-lg-6">
-    <div class="rui-auth-form-wrap">
-      <%= link_to root_path do %>
-        <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo" %>
-      <% end %>
+<div class="sm:h-screen pt-10 sm:pt-0 flex flex-col items-center justify-center bg-cover bg-center px-4" style="background-image: url('<%= asset_url('fusion.png')%>')" >
+  <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
+    <div>
+      <div class="flex justify-center">
+        <%= link_to root_path do %>
+          <%= image_tag Railsui.theme_logo_url, alt: "#{Railsui.config.theme.humanize} logo", class: "w-10 h-auto" %>
+        <% end %>
+      </div>
 
-      <%= yield %>
+      <div class="mt-6">
+        <%= yield :masthead %>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
+        <%= yield %>
+
+        <%#
+          Add additional provider SVG icons in app/assets/images/omniauth as necessary. Default options include: Google, LinkedIn, Twitter, Facebook.
+        %>
+
+        <%- if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name) %>
+          <hr class="my-6"/>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <div class="my-2">
+            <%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do %>
+              <%= inline_svg "omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 w-5 h-5" %>
+              <span>"Sign in with <%= OmniAuth::Utils.camelize(provider) %></span>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
 
       <div class="mt-4">
         <%= render "devise/shared/links" %>
       </div>
     </div>
-  </div>
-  <div class="rui-auth-feature-bg col-md-7 vh-100 d-flex align-items-center justify-content-center">
-    <%= yield :featured_block %>
   </div>
 </div>

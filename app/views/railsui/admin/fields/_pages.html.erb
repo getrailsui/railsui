@@ -11,13 +11,13 @@
       <p>Generate pre-designed pages based off the <%= theme_name.humanize %> template design. If you previously generated a page, it will <strong>not</strong> be overwritten.</p>
     </div>
 
-    <div class="divide-y">
+    <div class="divide-y dark:divide-slate-600">
       <% Railsui::Pages::all_pages.each do | page, details | %>
          <div class="py-4 flex flex-wrap items-center justify-between">
         <% if Railsui::Pages.page_exists?(page) %>
           <div class="flex-1">
             <div class="flex items-center space-x-3 mb-1">
-              <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex justify-center items-center shadow-inner border-4 border-slate-50/50" data-controller="tooltip" data-tooltip-content-value="Page installed">
+              <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex justify-center items-center shadow-inner border-4 border-slate-50/50 dark:from-green-600 dark:to-green-700" data-controller="tooltip" data-tooltip-content-value="Page installed">
                 <%= render_svg "check", styles: "w-5 h-5 stroke-current text-white" %>
               </div>
               <p><%= details[:title] %></p>
@@ -27,7 +27,7 @@
             </div>
           </div>
           <div>
-            <%= link_to "View page", Rails.application.routes.url_for(action: details[:title].downcase, controller: "static", only_path: true), target: :_blank, class: "px-3 py-2 bg-white border border-slate-300 text-slate-600 shadow-sm rounded text-center text-sm font-medium hover:text-slate-700 hover:border-slate-400" %>
+            <%= link_to "View page", Rails.application.routes.url_for(action: details[:title].downcase, controller: "static", only_path: true), target: :_blank, class: "px-3 py-2 bg-white border border-slate-300 text-slate-600 shadow-sm rounded text-center text-sm font-medium hover:text-slate-700 hover:border-slate-400 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-700 dark:hover:text-slate-100 dark:hover:border-slate-500" %>
           </div>
         <% else %>
           <div class="flex-1">

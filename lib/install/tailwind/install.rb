@@ -52,7 +52,7 @@ else
 
   # Copy themed globally shared partials
   say "⚡️ Copy shared partial files"
-  shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb"]
+  shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb", "_footer.html.erb"]
 
   shared_files.each do |shared_file|
     unless Rails.root.join("app/views/shared/#{shared_file}").exist?

@@ -1,0 +1,51 @@
+<footer class="container mx-auto px-4 pb-4">
+  <nav role="Utility navigation">
+    <ul class="lg:flex items-center justify-center text-center lg:my-6 mb-6 lg:text-base text-lg">
+      <li class="py-3 lg:py-0">
+        <%= link_to "Product", "#", class: "px-3 py-2 hover:text-indigo-700 dark:hover:text-indigo-500" %>
+      </li>
+      <li class="py-3 lg:py-0">
+        <%= link_to "Customers", "#", class: "px-3 py-2 hover:text-indigo-700 dark:hover:text-indigo-500" %>
+      </li>
+      <li class="py-3 lg:py-0">
+        <%= link_to "Features", "#", class: "px-3 py-2 hover:text-indigo-700 dark:hover:text-indigo-500" %>
+      </li>
+      <% if Railsui::Pages.page_exists?("pricing") %>
+        <li class="py-3 lg:py-0">
+          <%= link_to "Pricing", pricing_path, class: "px-3 py-2 hover:text-indigo-700 dark:hover:text-indigo-500" %>
+        </li>
+      <% end %>
+      <% if Railsui::Pages.page_exists?("about") %>
+        <li class="py-3 lg:py-0">
+          <%= link_to "Company", about_path, class: "px-3 py-2 hover:text-indigo-700  dark:hover:text-indigo-500" %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <ul class="flex items-center justify-center space-x-6 mb-6">
+    <li>
+      <%= link_to "#", class: "group", target: :_blank do %>
+        <%= icon "facebook", path: "social/facebook.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-500" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "group", target: :_blank do %>
+        <%= icon "twitter", path: "social/twitter.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-500" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "group", target: :_blank do %>
+        <%= icon "linkedin", path: "social/linkedin.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-500" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "group", target: :_blank do %>
+        <%= icon "youtube", path: "social/youtube.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-500" %>
+      <% end %>
+    </li>
+  </ul>
+
+  <p class="text-center text-slate-600 text-sm">&copy; <%= Railsui.config.application_name %> All Rights Reserved. <%= Railsui.config.theme.humanize %> theme by <a
+      href="https://railsui.com" class="underline" target="_blank">RailsUI</a></p>
+</footer>

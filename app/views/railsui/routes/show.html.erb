@@ -1,6 +1,6 @@
 <% gradients = ["from-indigo-800 to-salmon-500 via-blue-800", "from-emerald-800 to-blue-800 via-indigo-600", "from-pink-600 to-rose-500", "from-slate-700 to-slate-900" ]%>
 
-<div data-controller="search helper" data-helper-url-value="_url" data-helper-path-value="_path">
+<div data-controller="search helper" data-helper-url-value="_url" data-helper-path-value="_path" data-search-data-value="">
   <div class="bg-gradient-to-br  pt-14 pb-6 px-10 text-white <%= gradients.sample %>">
 
       <nav aria-label="breadcrumb" class="my-6 font-medium flex text-white dark:text-slate-200 text-sm flex-1">
@@ -41,7 +41,6 @@
     </div>
 
     <div class="px-10">
-      <%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self))
-    %>
+      <%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self))%>
     </div>
 </div>

@@ -4,7 +4,7 @@
 
 <%= render preview("gray") do %>
 <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 text-sm bg-white rounded items-center border-slate-300/80 border overflow-hidden sm:py-0 py-4">
-  <ol class="flex items-center justify-star space-x-6 px-4">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
     <li class="sm:h-12 flex items-center justify-center">
       <a href="#" class="hover:underline hover:text-slate-600 inline-block pl-2 group" data-controller="prevent" data-action="click->prevent#prevent">
         <%= icon "home", classes: "w-5 h-5 text-slate-400 group-hover:text-slate-600" %>
@@ -25,7 +25,7 @@
 
 <% content_for :html, flush: true do %>
 <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 text-sm bg-white rounded items-center border-slate-300/80 border overflow-hidden sm:py-0 py-4">
-  <ol class="flex items-center justify-star space-x-6 px-4">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
     <li class="sm:h-12 flex items-center justify-center">
       <a href="#" class="hover:underline hover:text-slate-600 inline-block pl-2 group">
         <%%= icon "home", classes: "w-5 h-5 text-slate-400 group-hover:text-slate-600" %>
@@ -46,7 +46,7 @@
 
 <% content_for :erb, flush: true do %>
 <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 text-sm bg-white rounded items-center border-slate-300/80 border overflow-hidden sm:py-0 py-4">
-  <ol class="flex items-center justify-star space-x-6 px-4">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
     <li class="sm:h-12 flex items-center justify-center">
       <a href="#" class="hover:underline hover:text-slate-600 inline-block pl-2 group">
         <%%= icon "home", classes: "w-5 h-5 text-slate-400 group-hover:text-slate-600" %>
@@ -67,7 +67,7 @@
 
 <% content_for :haml, flush: true do %>
 %nav.my-6.font-medium.flex.text-slate-500.text-sm.bg-white.rounded.items-center.border.overflow-hidden.sm:py-0.py-4{"aria-label" => "breadcrumb", class: "border-slate-300/80"}
-  %ol.flex.items-center.justify-star.space-x-6.px-4
+  %ol.flex.items-center.justify-star.space-x-6.px-4.list-none
     %li.sm:h-12.flex.items-center.justify-center
       %a.hover:underline.hover:text-slate-600.inline-block.pl-2.group{href: "#"}
         = icon "home", classes: "w-5 h-5 text-slate-400 group-hover:text-slate-600"

@@ -15,22 +15,13 @@ export default class extends Controller {
   }
 
   filterList(event) {
-    let temp = ''
-    const result  = this.resultTargets.filter(item=> item.dataset.searchRouteValue.includes(event.target.value));
-
-    if (result.length > 0) {
-      temp = `<div class="divide-slate-200 divide-y">`
-      result.forEach((item) => {
-        temp += `${item.outerHTML}`
-      })
-      temp += `</div>`
-
-      this.resultListTarget.innerHTML = temp;
-    } else {
-      temp = `No results`
-      this._resetList()
-    }
-
+    this.resultTargets.forEach(result => {
+      if (result.dataset.searchRouteValue.includes(event.target.value)) {
+        result.style.cssText = "display: block !important"
+      } else {
+        result.style.cssText = "display: none !important"
+      }
+    })
   }
 
   _resetList() {

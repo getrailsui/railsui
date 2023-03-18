@@ -1,9 +1,9 @@
-<div class="border flex items-center justify-between rounded shadow-sm overflow-hidden bg-gradient-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-900 dark:border-slate-600">
-  <div class="flex-1">
+<div class="border flex flex-wrap items-center justify-between rounded shadow-sm overflow-hidden bg-gradient-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-900 dark:border-slate-600">
+  <div class="flex-1 py-3 sm:py-0 sm:px-0 px-4 sm:block flex items-center justify-between">
     <div class="flex justify-center items-center">
       <div class="mr-3">
         <% if Railsui.bootstrap? %>
-        <%= render_svg "bootstrap", styles: "fill-current text-indigo-800 dark:text-indigo-400 w-12 h-12" %>
+          <%= render_svg "bootstrap", styles: "fill-current text-indigo-800 dark:text-indigo-400 w-12 h-12" %>
         <% else %>
          <%= render_svg "tailwind", styles: "fill-current text-teal-500 w-12 h-12" %>
         <% end %>
@@ -12,13 +12,21 @@
       <h4 class="font-semibold text-xl"><%= framework_name.humanize %></h4>
     </div>
 
-    <div class="flex justify-center mt-3">
-      <div class="bg-emerald-50 uppercase tracking-wide text-emerald-700 font-bold px-3 py-px rounded-full inline-flex items-center text-xs">
+    <div class="flex justify-center sm:mt-3">
+      <div class="bg-green-50 uppercase tracking-wide text-green-600 font-bold px-3 py-px rounded-full inline-flex items-center text-xs">
         <%= render_svg "paw", styles: "w-6 h-6 fill-current" %>
         <%= theme_name.humanize %>
       </div>
     </div>
   </div>
-  <%= image_tag "#{framework_name.parameterize}-#{theme_name.parameterize}-thumbnail.jpg", class: "max-w-md mx-auto border-l dark:border-slate-500" %>
+
+  <%= image_tag "#{framework_name.parameterize}-#{theme_name.parameterize}-thumbnail.jpg", class: "max-w-md mx-auto border-l dark:border-slate-500 w-full" %>
+
+  <div class="w-full">
+    <%= link_to theme_preview_link(theme_name.humanize), target: :_blank, class: "border-t dark:border-slate-600 py-4 px-4 text-center justify-center w-full text-slate-700 bg-white hover:bg-slate-100 transition ease-in-out duration rounded-b block dark:bg-slate-700 dark:text-white hover:dark:bg-slate-600 hover:dark:text-white flex items-center space-x-2 font-medium text-sm" do %>
+      <%= icon "eye", classes: "w-5 h-5 text-green-600", variant: :solid %>
+      <span>Preview theme</span>
+    <% end %>
+  </div>
 </div>
 <%= f.hidden_field :theme, value: Railsui.config.theme %>
