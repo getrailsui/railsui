@@ -1,5 +1,5 @@
 <%% content_for :header do %>
-<header class="bg-cover bg-center relative bg-no-repeat" style="background-image: <%%= asset_url("fusion.png") %>;" data-controller="nav">
+<header class="bg-cover bg-center relative bg-no-repeat" style="background-image: url(<%%= asset_url("fusion.png") %>);" data-controller="nav">
   <div class="dark:bg-slate-900">
     <%%= render "shared/nav_menu" %>
   </div>

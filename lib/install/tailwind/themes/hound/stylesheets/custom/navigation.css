@@ -1,5 +1,5 @@
 .nav-link {
-  @apply rounded px-3 py-3 text-slate-500 focus:text-indigo-600 md:inline-block block relative md:text-sm text-base font-medium hover:transition hover:duration-300 hover:ease-in-out hover:text-slate-700 dark:text-slate-200 dark:hover:text-slate-300 dark:focus:text-white;
+  @apply rounded px-3 py-4 text-slate-500 focus:text-indigo-600 md:inline-block block relative md:text-sm text-base font-medium hover:transition hover:duration-300 hover:ease-in-out hover:text-slate-700 dark:text-slate-200 dark:hover:text-slate-300 dark:focus:text-white;
 }
 
 .nav-link-active {
@@ -8,7 +8,7 @@
 
 .nav-link:hover::after,
 .nav-link-active::after {
-  @apply content-[''] block h-[2px] w-full left-0 absolute -bottom-[2px] transition duration-300 ease-in-out bg-indigo-600 hover:transition hover:duration-300 dark:bg-indigo-500;
+  @apply content-[''] block h-[2px] w-full left-0 absolute -bottom-px transition duration-300 ease-in-out bg-indigo-600 hover:transition hover:duration-300 dark:bg-indigo-500;
 }
 
 /* Dark */
