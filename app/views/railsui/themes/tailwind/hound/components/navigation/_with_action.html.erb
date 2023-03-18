@@ -2,7 +2,7 @@
 <%= render "railsui/shared/sticky_subhead", title: "Navigation", subtitle: "With action" %>
 
 <%= render "railsui/themes/tailwind/hound/components/navigation/nav_preview", flush: true do %>
-<header class="relative dark:bg-slate-900 bg-white rounded-t py-1" data-controller="nav">
+<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -168,7 +168,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<header class="relative dark:bg-slate-900 py-1" data-controller="nav">
+<header class="relative dark:bg-slate-900" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -250,7 +250,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%header.relative.dark:bg-slate-900.py-1{"data-controller" => "nav"}
+%header.relative.dark:bg-slate-900{"data-controller" => "nav"}
   .container.mx-auto.px-4
     .md:flex.items-center.flex-wrap.md:space-x-2
       .md:block.flex.items-center.justify-between

@@ -2,7 +2,7 @@
 <%= render "railsui/shared/sticky_subhead", title: "Navigation", subtitle: "With search" %>
 
 <%= render "railsui/themes/tailwind/hound/components/navigation/nav_preview", flush: true do %>
-<header class="relative bg-white dark:bg-slate-900 rounded-t py-1" data-controller="nav prevent">
+<header class="relative bg-white dark:bg-slate-900 rounded-t" data-controller="nav prevent">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -91,7 +91,7 @@
 
 
 <% content_for :html, flush: true do %>
-<header class="relative bg-slate-900 py-1" data-controller="nav">
+<header class="relative bg-slate-900" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="sm:flex items-center flex-wrap sm:space-x-2">
       <div class="sm:block flex items-center justify-between">
@@ -176,7 +176,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<header class="relative bg-slate-900 py-1" data-controller="nav">
+<header class="relative bg-slate-900" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="sm:flex items-center flex-wrap sm:space-x-2">
       <div class="sm:block flex items-center justify-between">
@@ -263,7 +263,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%header.relative.bg-slate-900.py-1{"data-controller" => "nav"}
+%header.relative.bg-slate-900{"data-controller" => "nav"}
   .container.mx-auto.px-4
     .sm:flex.items-center.flex-wrap.sm:space-x-2
       .sm:block.flex.items-center.justify-between
