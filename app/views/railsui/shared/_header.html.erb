@@ -4,22 +4,21 @@
   <%= heading text: params[:controller].gsub("railsui/systems/", "").titleize, id: params[:controller].gsub("railsui/systems/", ""), tag: "p", class: "text-slate-500" %>
 <% end %>
 
-<%= heading text: params[:action].titleize, id: params[:action], tag: "h1", class: "text-5xl text-slate-800 font-bold dark:text-white" %>
+<%= heading text: params[:action].titleize, id: params[:action], tag: "h1", classes: "text-5xl text-slate-800 font-bold dark:text-white" %>
 
-<div class="grid grid-cols-3 gap-10 mt-8 pb-8 border-b border-slate-200 dark:border-slate-700">
+<div class="grid grid-cols-2 lg:grid-cols-3 lg:gap-10 mt-8 pb-8 border-b border-slate-200 dark:border-slate-700">
   <div>
-
     <p class="text-slate-600 dark:text-slate-400">Theme</p>
-    <div class="flex items-center mt-1">
-      <%= image_tag Railsui.theme_logo_url, class: "w-8 h-auto mr-2" %>
-      <p class="font-light text-slate-900 dark:text-white text-2xl"><%= Railsui::config.theme.humanize %></p>
+    <div class="flex items-center space-x-3 mt-1">
+      <%= image_tag Railsui.theme_logo_url, class: "sm:w-8 w-6 h-auto" %>
+      <p class="font-light text-slate-900 dark:text-white sm:text-2xl text-xl"><%= Railsui::config.theme.humanize %></p>
     </div>
   </div>
   <div>
     <p class="text-slate-600 dark:text-slate-400">Framework</p>
     <div class="flex items-center justify-start space-x-3 mt-1">
       <%= render_svg "#{framework.downcase}", title: "#{framework} logo", styles: "#{framework == "bootstrap" ? "dark:text-indigo-300 text-indigo-600" : "dark:text-teal-400 text-teal-500" } fill-current" %>
-      <p class="font-light text-slate-900 text-2xl dark:text-white"><%= framework.humanize %><%= " CSS" if framework == "tailwind" %></p>
+      <p class="font-light text-slate-900 sm:text-2xl text-xl dark:text-white"><%= framework.humanize %><%= " CSS" if framework == "tailwind" %></p>
     </div>
   </div>
 </div>
