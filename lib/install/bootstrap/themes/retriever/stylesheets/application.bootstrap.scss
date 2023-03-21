@@ -90,7 +90,7 @@ $font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
   @import "bootstrap/scss/type";
   @import "bootstrap/scss/utilities/api";
 
-  // ActionText
+  // ActionText - Gotta import here since we aren't using sprockets
   @import "https://unpkg.com/trix@2.0.0/dist/trix.css";
 
   @import "custom";

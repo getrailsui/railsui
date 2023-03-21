@@ -99,6 +99,6 @@ else
     inject_into_file ".gitignore", "node_modules\n"
 
     # Fin
-    say "👍 Tailwind CSS theme installed", :green
+    say "#{Railsui.config.css_framework.humanize} theme: #{Railsui.config.theme.humanize} installed 👍", :green
   end
 end
