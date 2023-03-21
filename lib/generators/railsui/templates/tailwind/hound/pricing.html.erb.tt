@@ -1,3 +1,21 @@
+<%% content_for :header do %>
+ <header class="bg-cover bg-center relative bg-no-repeat" style="background-image: url(<%%= asset_url("fusion.png") %>);" data-controller="nav">
+    <div class="dark:bg-slate-900 relative">
+      <%%= render "shared/nav_menu" %>
+    </div>
+
+  <div class="container mx-auto px-4">
+    <div class="text-center py-20 relative z-20">
+      <p class="font-semibold text-center uppercase text-sm text-indigo-600 mb-4 dark:text-indigo-500">Pricing</p>
+      <h1 class="lg:text-5xl text-4xl text-slate-900 font-extrabold mb-4 dark:text-slate-50">Priced with you in mind</h1>
+      <p class="text-lg text-slate-700 dark:text-slate-200 max-w-xl mx-auto">Maecenas faucibus mollis interdum. Maecenas sed diam eget
+        risus varius blandit
+        sit amet non magna.</p>
+    </div>
+  </div>
+</header>
+<%% end %>
+
 <div class="container mx-auto px-4 pt-6">
   <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-4 border-b border-slate-100  dark:border-slate-800">
     <div class="font-semibold text-slate-700 dark:text-slate-200">Plans</div>

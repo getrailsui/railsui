@@ -54,15 +54,32 @@ else
     say "⚡️ Copy images/assets"
     directory "#{__dir__}/themes/#{Railsui.config.theme}/images", Rails.root.join("app/assets/images"), force: true
 
-
     # Copy themed globally shared partials
     # These files overide those shipped during first install of Rails UI
+    # TODO: Improve this so we don't have to call explicit file names but rather files within the folder per theme
     say "⚡️ Copy shared partial files"
-      shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb", "_nav_menu.html.erb", "_footer.html.erb"]
+    shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb", "_nav_menu.html.erb", "_footer.html.erb"]
 
     shared_files.each do |shared_file|
       copy_file "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join("app/views/shared/#{shared_file}"), force: true
     end
+
+    say "⚡️ Add Stimulus.js controllers"
+    path = "#{__dir__}/themes/#{Railsui.config.theme}/javascript/controllers"
+    files = Dir.children(path)
+    puts "Controller files: 🗄️ #{files}"
+
+    # copy each controller
+    files.each do |file|
+      file_name = file.gsub("_controller.js", "")
+      copy_file "#{path}/#{file}", Rails.root.join("app/javascript/controllers/#{file}")
+
+      # append each import to controllers/index.js
+      append_to_file "#{Rails.application.root.join("app/javascript/controllers/index.js")}", %(\nimport #{file_name.capitalize}Controller from "./#{file_name}_controller"\napplication.register("#{file_name}", #{file_name.capitalize}Controller)\n)
+    end
+
+    # update manifest
+    rails_command "rails stimulus:manifest:update"
 
     # Build scripts for good measure
     say "⚡️ Add build:css script"
