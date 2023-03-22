@@ -12,7 +12,11 @@
       <h4 class="font-semibold text-xl"><%= framework_name.humanize %></h4>
     </div>
 
-    <div class="flex justify-center sm:mt-3">
+    <div class="flex justify-center mt-1">
+      <%= framework_version_label %>
+    </div>
+
+    <div class="flex justify-center sm:mt-6">
       <div class="bg-green-50 uppercase tracking-wide text-green-600 font-bold px-3 py-px rounded-full inline-flex items-center text-xs">
         <%= render_svg "paw", styles: "w-6 h-6 fill-current" %>
         <%= theme_name.humanize %>

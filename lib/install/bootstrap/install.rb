@@ -24,7 +24,7 @@ else
     # Copy customized Bootstrap CSS
     copy_file "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets/application.bootstrap.scss",
       "app/assets/stylesheets/application.bootstrap.scss"
-    run "yarn add sass bootstrap bootstrap-icons @popperjs/core"
+    run "yarn add sass #{Railsui::Default::BOOTSTRAP_PACKAGE_VERSION} bootstrap-icons @popperjs/core"
 
     # Add bootstrap icons even though Rails UI doesn't make use of them
     inject_into_file "config/initializers/assets.rb", after: /.*Rails.application.config.assets.paths.*\n/ do

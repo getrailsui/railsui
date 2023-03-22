@@ -12,6 +12,20 @@
   </div>
 
 <% content_for :erb, flush: true do %>
+  <%%
+    theme = {
+      align_logo: "center",
+      primary: "#0d6efd",
+      secondary: "#062c65",
+      heading_text_color: "#062c65",
+      footer_text_color: "#94a3b8",
+      body_text_color: "#212529",
+      light_text_color: "#94a3b8",
+      callout_bg_color: "#e0e7ff",
+      callout_border_color: "#a5b4fc",
+      callout_text_color: "#4338ca"
+    }
+  %>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html>
     <head>
@@ -41,30 +55,8 @@
           border-radius: 99999px;
           width: 20px;
           height: 20px;
-        }
-
-        body {
-          background-color: #ffffff;
-          font-family: 'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          'Roboto',
-          '"Helvetica Neue"',
-          'Arial',
-          '"Noto Sans"',
-          'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-          '"Noto Color Emoji"';
-          -webkit-font-smoothing: antialiased;
-          font-size: 14px;
-          line-height: 1.4;
-          margin: 0;
-          padding: 0;
-          -ms-text-size-adjust: 100%;
-          -webkit-text-size-adjust: 100%;
+          margin-bottom: -2px;
+          margin-bottom: -2px;
         }
 
         table {
@@ -80,20 +72,21 @@
           vertical-align: top;
         }
 
-        .body {
-          background-color: #fff;
-          width: 100%;
-          color: #334155;
-        }
+        /* -------------------------------------
+        BODY & CONTAINER
+        ------------------------------------- */
 
+        /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone */
         .container {
           display: block;
           margin: 0 auto !important;
+          /* makes it centered */
           max-width: 600px;
           padding: 10px;
           width: 600px;
         }
 
+        /* This should be a block element, so that it will fill 100% of the .container */
         .content {
           box-sizing: border-box;
           display: block;
@@ -101,9 +94,10 @@
           max-width: 600px;
           padding: 20px;
           line-height: 1.6;
-          color: #333;
+          color: <%%= theme[:body_text_color] %>;
         }
 
+        /* Use for a text-based logo */
         .logo {
           color: #222;
           text-decoration: none;
@@ -116,6 +110,9 @@
           text-decoration: none;
         }
 
+        /* -------------------------------------
+        HEADER, FOOTER, MAIN
+        ------------------------------------- */
         .main {
           background: #ffffff;
           width: 100%;
@@ -137,18 +134,21 @@
         .footer p,
         .footer span,
         .footer a {
-          color: #94a3b8;
+          color: <%%= theme[:footer_text_color] %>;
           font-size: 13px;
           line-height: 150%;
           margin: 0;
           text-align: center;
         }
 
+        /* -------------------------------------
+        TYPOGRAPHY
+        ------------------------------------- */
         h1,
         h2,
         h3,
         h4 {
-          color: #222;
+          color: <%%= theme[:heading_text_color] %>;
           font-family: 'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
@@ -164,7 +164,6 @@
           '"Noto Color Emoji"';
           line-height: 1.4;
           margin-bottom: 20px;
-          margin: 0;
         }
 
         h1 {
@@ -192,6 +191,7 @@
           padding-left: 16px;
           margin: 10px 0;
           Margin: 10px 0;
+          list-style-type: disc;
         }
 
         ul li {
@@ -210,7 +210,7 @@
         }
 
         a {
-          color: #334155;
+          color: <%%= theme[:primary] %>;
           text-decoration: underline;
         }
 
@@ -233,6 +233,9 @@
           margin: 0;
         }
 
+        /* -------------------------------------
+        OTHER STYLES THAT MIGHT BE USEFUL
+        ------------------------------------- */
         .last {
           margin-bottom: 0;
         }
@@ -273,7 +276,7 @@
 
         .small {
           font-size: 14px;
-          color: #94a3b8;
+          color: <%%= theme[:light_text_color] %>;
           line-height: 130%;
         }
 
@@ -283,29 +286,21 @@
           margin: 20px 0;
         }
 
-        .actions {
-          font-size: 14px;
-        }
-
-        .actions a {
-          color: #059669;
-        }
-
         table.callout td {
-          background-color: #EBF8FF;
-          border: 1px solid #90CDF4;
+          background-color: <%%= theme[:callout_bg_color] %>;
+          border: 1px solid <%%= theme[:callout_border_color] %>;
           padding: 10px;
           border-radius: 6px;
+          color: <%%= theme[:callout_text_color] %>
         }
 
         table.callout td p {
           margin-bottom: 0;
-          Margin-bottom: 0;
         }
 
         .view-in-browser {
           font-size: 12px;
-          color: #999;
+          color: <%%= theme[:light_text_color] %>;
           margin-bottom: 10px;
           text-align: center;
           display: block;
@@ -315,23 +310,20 @@
           width: auto;
         }
 
-        table.social-links td img {
-          display: inline;
-        }
-
         table.social-links td {
           width: 44px;
           overflow: hidden;
           text-align: center;
         }
 
-        @media only screen and (max-width: 620px) {
-          body,
-          .body
-            {
-            background-color: #ffffff;
-          }
+        table.social-links td img {
+          display: inline;
+        }
 
+        /* -------------------------------------
+        RESPONSIVE AND MOBILE FRIENDLY STYLES
+        ------------------------------------- */
+        @media only screen and (max-width: 620px) {
           table[class="body"] a.view-in-browser {
             font-size: 12px !important;
             margin-top: 10px;
@@ -396,6 +388,7 @@
           }
         }
 
+        /* Action buttons */
         .action__link {
           display: inline-block;
           text-decoration: none !important;
@@ -407,20 +400,20 @@
         }
         /* Update your brand colors here */
         .action__link--primary {
-          background-color: #059669;
-          border-top: 10px solid #059669;
-          border-right: 18px solid #059669;
-          border-bottom: 10px solid #059669;
-          border-left: 18px solid #059669;
+          background-color: <%%= theme[:primary] %>;
+          border-top: 10px solid  <%%= theme[:primary] %>;
+          border-right: 18px solid <%%= theme[:primary] %>;
+          border-bottom: 10px solid <%%= theme[:primary] %>;
+          border-left: 18px solid <%%= theme[:primary] %>;
         }
 
         .action__link--secondary {
           color: white;
-          background-color: #b91c1c;
-          border-top: 10px solid #b91c1c;
-          border-right: 18px solid #b91c1c;
-          border-bottom: 10px solid #b91c1c;
-          border-left: 18px solid #b91c1c;
+          background-color: <%%= theme[:secondary] %>;
+          border-top: 10px solid <%%= theme[:secondary] %>;
+          border-right: 18px solid <%%= theme[:secondary] %>;
+          border-bottom: 10px solid <%%= theme[:secondary] %>;
+          border-left: 18px solid <%%= theme[:secondary] %>;
         }
 
         .action {
@@ -436,7 +429,6 @@
         .action td {
           padding: 0 !important;
           border: none;
-          text-align: left;
         }
 
         @media only screen and (max-width: 600px) {

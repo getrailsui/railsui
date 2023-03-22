@@ -1,6 +1,6 @@
 <div class="lg:text-sm relative text-base sm:pb-24 pb-4">
   <ul class="rui-primary-nav leading-loose">
-    <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
+    <li>
       <%= link_to systems_content_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group"  do %>
         <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
           <%= render_svg "content", styles: "stroke-current w-5 h-5 text-indigo-500 group-hover:text-indigo-700 dark:group-hover:text-indigo-300" %>
@@ -28,8 +28,7 @@
         </li>
       </ul>
     </li>
-    <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
-
+    <li>
       <%= link_to systems_forms_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
         <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
           <%= render_svg "forms", styles: "stroke-current w-5 h-5 text-teal-500" %>
@@ -58,8 +57,7 @@
         </li>
       </ul>
     </li>
-    <li x-data="{open: window.location.pathname.includes('components')}" x-cloak>
-
+    <li>
       <%= link_to systems_components_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
         <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
           <%= render_svg "components", styles: "stroke-current w-5 h-5 text-rose-500" %>
@@ -113,8 +111,7 @@
       </ul>
     </li>
 
-    <li x-data="{open: window.location.pathname.includes('mailers')}" x-cloak>
-
+    <li>
       <%= link_to systems_mailers_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
         <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
           <%= render_svg "mail", styles: "stroke-current w-5 h-5 text-blue-500" %>
@@ -141,8 +138,7 @@
       </ul>
     </li>
 
-    <li x-data="{open: window.location.pathname.includes('authentication')}" x-cloak>
-
+    <li>
       <%= link_to systems_authentication_overview_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
         <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
           <%= render_svg "lock-unlocked", styles: "stroke-current w-5 h-5 text-amber-500" %>

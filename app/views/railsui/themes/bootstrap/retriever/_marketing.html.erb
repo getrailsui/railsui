@@ -15,5 +15,6 @@
   <%= link_to "#{Railsui::Default::THEME_PREVIEW_LINK[:retriever]}/pricing", target: :_blank do %>
     <%= image_tag "https://f001.backblazeb2.com/file/railsui/themes/retriever/pricing.jpg", alt: "Pricing page for #{Railsui.config.theme.humanize} theme", class: "max-w-full h-auto border rounded-lg shadow-xl" %>
   <% end %>
-
 </div>
+
+<%= system_pagination(prev_path: systems_content_images_path, prev_text: "Images", next_path: systems_scaffolds_path, next_text: "Scaffolds") %>

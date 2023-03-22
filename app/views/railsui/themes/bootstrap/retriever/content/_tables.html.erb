@@ -508,4 +508,6 @@
   <%= render_snippet %>
 </div>
 
+<%= system_pagination(prev_path: systems_content_typography_path, prev_text: "Typography", next_path: systems_content_images_path, next_text: "Images") %>
+
 <%= render "railsui/shared/read_more", subject: "tables", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/content/tables/" %>

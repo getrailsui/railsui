@@ -87,4 +87,6 @@
 <%= render_snippet %>
 </div>
 
+<%= system_pagination(prev_path: systems_content_tables_path, prev_text: "Tables", next_path: systems_marketing_path, next_text: "Marketing") %>
+
 <%= render "railsui/shared/read_more", subject: "images", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/content/images/" %>

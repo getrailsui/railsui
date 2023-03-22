@@ -1,10 +1,13 @@
 <div class="flex items-center">
-  <div class="flex items-center flex-1">
-    <div class="mr-2">
+  <div class="flex items-center flex-1 space-x-2">
+    <div>
       <%= render_svg "#{Railsui.config.css_framework}", styles: "fill-current w-5 h-5 #{Railsui.tailwind? ? "text-teal-500" : "text-indigo-800"}" %>
     </div>
 
-    <h4 class="font-semibold text-sm dark:text-white"><%= Railsui.config.css_framework.humanize %></h4>
+    <div class="flex items-center space-x-2">
+      <h4 class="font-semibold text-sm dark:text-white"><%= Railsui.config.css_framework.humanize %></h4>
+      <%= framework_version_label %>
+    </div>
   </div>
 
   <% if Railsui.config.theme.present? %>

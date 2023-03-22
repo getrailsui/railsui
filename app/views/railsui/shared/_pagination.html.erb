@@ -1,0 +1,10 @@
+<div class="flex items-center justify-between my-2">
+  <%= link_to local_assigns[:prev_path], class: "group flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-slate-50 transition ease-in-out duration-200" do %>
+    <%= icon "chevron-left", classes: "w-4 h-4 text-slate-500 group-hover:-translate-x-1 transition ease-in-out transform duration-200 group-hover:text-indigo-500" %>
+    <p class="font-semibold text-sm"><%= local_assigns[:prev_text] %></p>
+  <% end %>
+  <%= link_to local_assigns[:next_path], class: "group flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-slate-50 transition ease-in-out duration-200" do %>
+    <p class="font-semibold text-sm"><%= local_assigns[:next_text] %></p>
+    <%= icon "chevron-right", classes: "w-4 h-4 text-slate-500 group-hover:translate-x-1 transition ease-in-out transform duration-200 group-hover:text-indigo-500" %>
+  <% end %>
+</div>

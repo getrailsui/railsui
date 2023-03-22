@@ -1,3 +1,19 @@
+<%
+theme = {
+  align_logo: "center",
+  primary: "#0d6efd",
+  secondary: "#062c65",
+  heading_text_color: "#062c65",
+  footer_text_color: "#94a3b8",
+  body_text_color: "#212529",
+  light_text_color: "#94a3b8",
+  callout_bg_color: "#e0e7ff",
+  callout_border_color: "#a5b4fc",
+  callout_text_color: "#4338ca"
+}
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
@@ -66,10 +82,10 @@
         max-width: 600px;
         padding: 20px;
         line-height: 1.6;
-        color: <%= local_assigns[:body_text_color] %>;
+        color: <%= theme[:body_text_color] %>;
       }
 
-      /* For a text based logo */
+      /* Use for a text-based logo */
       .rui-mailer .logo {
         color: #222;
         text-decoration: none;
@@ -106,7 +122,7 @@
       .rui-mailer .footer p,
       .rui-mailer .footer span,
       .rui-mailer .footer a {
-        color: <%= local_assigns[:footer_text_color] %>;
+        color: <%= theme[:footer_text_color] %>;
         font-size: 13px;
         line-height: 150%;
         margin: 0;
@@ -120,7 +136,7 @@
       .rui-mailer h2,
       .rui-mailer h3,
       .rui-mailer h4 {
-        color: <%= local_assigns[:heading_text_color] %>;
+        color: <%= theme[:heading_text_color] %>;
         font-family: 'system-ui',
         '-apple-system',
         'BlinkMacSystemFont',
@@ -182,7 +198,7 @@
       }
 
       .rui-mailer a {
-        color: <%= local_assigns[:primary] %>;
+        color: <%= theme[:primary] %>;
         text-decoration: underline;
       }
 
@@ -248,7 +264,7 @@
 
       .rui-mailer .small {
         font-size: 14px;
-        color: <%= local_assigns[:light_text_color] %>;
+        color: <%= theme[:light_text_color] %>;
         line-height: 130%;
       }
 
@@ -259,10 +275,11 @@
       }
 
       .rui-mailer table.callout td {
-        background-color: #EBF8FF;
-        border: 1px solid #90CDF4;
+        background-color: <%= theme[:callout_bg_color] %>;
+        border: 1px solid <%= theme[:callout_border_color] %>;
         padding: 10px;
         border-radius: 6px;
+        color: <%= theme[:callout_text_color] %>
       }
 
       .rui-mailer table.callout td p {
@@ -271,7 +288,7 @@
 
       .rui-mailer .view-in-browser {
         font-size: 12px;
-        color: <%= local_assigns[:light_text_color] %>;
+        color: <%= theme[:light_text_color] %>;
         margin-bottom: 10px;
         text-align: center;
         display: block;
@@ -371,20 +388,20 @@
       }
       /* Update your brand colors here */
       .rui-mailer .action__link--primary {
-        background-color: <%= local_assigns[:primary] %>;
-        border-top: 10px solid  <%= local_assigns[:primary] %>;
-        border-right: 18px solid <%= local_assigns[:primary] %>;
-        border-bottom: 10px solid <%= local_assigns[:primary] %>;
-        border-left: 18px solid <%= local_assigns[:primary] %>;
+        background-color: <%= theme[:primary] %>;
+        border-top: 10px solid  <%= theme[:primary] %>;
+        border-right: 18px solid <%= theme[:primary] %>;
+        border-bottom: 10px solid <%= theme[:primary] %>;
+        border-left: 18px solid <%= theme[:primary] %>;
       }
 
       .rui-mailer .action__link--secondary {
         color: white;
-        background-color: <%= local_assigns[:secondary] %>;
-        border-top: 10px solid <%= local_assigns[:secondary] %>;
-        border-right: 18px solid <%= local_assigns[:secondary] %>;
-        border-bottom: 10px solid <%= local_assigns[:secondary] %>;
-        border-left: 18px solid <%= local_assigns[:secondary] %>;
+        background-color: <%= theme[:secondary] %>;
+        border-top: 10px solid <%= theme[:secondary] %>;
+        border-right: 18px solid <%= theme[:secondary] %>;
+        border-bottom: 10px solid <%= theme[:secondary] %>;
+        border-left: 18px solid <%= theme[:secondary] %>;
       }
 
       .rui-mailer .action {
@@ -420,12 +437,12 @@
                 <table border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td class="wrapper">
-                      <table align="<%= local_assigns[:align_logo] ||= "left" %>">
+                      <table align="<%= theme[:align_logo] ||= "left" %>">
                         <tr>
-                          <td align="<%= local_assigns[:align_logo] ||= "left" %>">
+                          <td align="<%= theme[:align_logo] ||= "left" %>">
                             <%= spacer(12) %>
                             <%= link_to root_url, class: "logo", target: :_blank do %>
-                              <%= image_tag Railsui.theme_logo_url, style: "width: 60px; max-width: 60px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.config.application_name} logo" %>
+                              <%= image_tag Railsui.theme_logo_url, style: "width: 40px; max-width: 40px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.config.application_name} logo" %>
                             <% end %>
                             <%= spacer(24) %>
                           </td>
@@ -442,7 +459,7 @@
           <table class="footer" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td>
-                Please contact <%= mail_to "support@#{Railsui.parameterized_app_name}.com", "support@#{Railsui.parameterized_app_name}.com", subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
+                Please contact <%= mail_to Railsui.config.support_email, Railsui.config.support_email, subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
               </td>
             </tr>
           </table>
