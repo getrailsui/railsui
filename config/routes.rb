@@ -80,5 +80,10 @@ Railsui::Engine.routes.draw do
     get :faqs
   end
 
+  scope controller: :static do
+    get :index
+    get :start
+  end
+
   root to: "admin#show"
 end

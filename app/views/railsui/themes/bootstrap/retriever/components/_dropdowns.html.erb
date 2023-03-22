@@ -9,4 +9,6 @@
 <%= render "#{path}/split" %>
 <%= render "#{path}/drop_up" %>
 
+<%= system_pagination(prev_path: systems_components_cards_path, prev_text: "Cards", next_path: systems_components_flash_path, next_text: "Flash") %>
+
 <%= render "railsui/shared/read_more", subject: "dropdowns", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/components/dropdowns/" %>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased" <% if tailwind? %> data-controller="theme" <% end %>>
+<html class="h-full antialiased">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="lg:pl-[19.5rem]">
-        <main class="max-w-5xl mr-auto relative z-20 lg:pt-24 lg:pb-10 py-6 sm:px-8 px-4">
+        <main class="mr-auto relative z-20 lg:pt-24 lg:pb-10 py-6 sm:px-8 px-4 <%= content_for(:fullwidth) ? "" : "max-w-5xl" %>">
           <%= yield %>
         </main>
         <%= render "railsui/shared/footer" %>

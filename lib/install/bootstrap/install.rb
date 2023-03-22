@@ -67,7 +67,7 @@ else
 
     shared_files.each do |shared_file|
       unless Rails.root.join("app/views/shared/#{shared_file}").exist?
-        copy_file   "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join("app/view/shared/#{shared_file}")
+        copy_file   "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join("app/views/shared/#{shared_file}")
       else
         "🛑 #{shared_file} already exists, skipping."
         end

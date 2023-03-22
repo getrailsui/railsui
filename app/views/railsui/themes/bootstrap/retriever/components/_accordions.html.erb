@@ -20,4 +20,6 @@
 <%= render "#{path}/basic" %>
 <%= render "#{path}/flush" %>
 
+<%= system_pagination(prev_path: systems_components_path, prev_text: "Components", next_path: systems_components_alerts_path, next_text: "Alerts") %>
+
 <%= render "railsui/shared/read_more", subject: "accordions", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/components/accordion/" %>

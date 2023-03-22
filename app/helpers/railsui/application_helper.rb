@@ -108,16 +108,6 @@ module Railsui
       Rails.root.join("app/views/static/pricing.html.erb").exist? && Railsui.config.pricing?
     end
 
-    def design_system_navgiation_state
-      if params["controller"].include?("authentication")
-        false
-      elsif content_for(:fullwidth).present?
-        false
-      else
-        true
-      end
-    end
-
     def email_viewer(subject="A sample subject", &block)
       render "railsui/shared/rui_email_preview", subject: subject, block: block, flush: true
     end

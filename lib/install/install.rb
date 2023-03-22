@@ -34,7 +34,6 @@ def add_css_bundling_setup
   end
 end
 
-
 def remove_importmaps
   if Rails.root.join("config/importmap.rb").exist?
     run "bundle remove importmap-rails"
@@ -127,11 +126,7 @@ def add_sidekiq
   insert_into_file "config/routes.rb", "#{content}\n\n", after: "Rails.application.routes.draw do\n"
 end
 
-def add_static_assets
-  say "⚡️ Generate StaticController"
-  generate "controller", "static index --skip-test-framework --skip-assets --skip-helper --skip-routes --skip-template-engine"
-
-  say "⚡️ Add default RailsUI routing and engine"
+def setup_routes
   content = <<-RUBY
   if Rails.env.development? || Rails.env.test?
     mount Railsui::Engine, at: "/railsui"
@@ -140,9 +135,11 @@ def add_static_assets
   scope controller: :static do
 
   end
-  # Inherits from Railsui StaticController#index
+
+  # Inherits from Railsui::StaticController#index
   # To overide, add your own static#index view or change to a new root
-  root to: "static#index"
+  # Visit the start page for Rails UI any time at /railsui/start
+  root action: :index, controller: "railsui/static"
   RUBY
 
   insert_into_file "#{Rails.root}/config/routes.rb", "#{content}\n", after: "Rails.application.routes.draw do\n"
@@ -189,7 +186,7 @@ def extend_layout_and_views
     <% if content_for(:header).present? %>
       <%= yield :header %>
       <% else %>
-      <%= render "shared/nav" %>
+      <%= render "shared/nav" unless devise_controller? %>
     <% end %>
     RUBY
 
@@ -256,8 +253,8 @@ add_stimulus
 say "⚡️ Add custom css-bundling setup"
 add_css_bundling_setup
 
-say "⚡️ Adding static assets..."
-add_static_assets
+say "⚡️ Setup routes"
+setup_routes
 
 say "⚡️ Adding sidekiq..."
 add_sidekiq

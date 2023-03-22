@@ -7,4 +7,6 @@
 <%= render "#{path}/base" %>
 <%= render "#{path}/pills" %>
 
+<%= system_pagination(prev_path: systems_components_popovers_path, prev_text: "Popovers", next_path: systems_components_toasts_path, next_text: "Toasts") %>
+
 <%= render "railsui/shared/read_more", subject: "tabs", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/components/navs-tabs/" %>

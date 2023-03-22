@@ -15,4 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <%= render "#{path}/usage" %>
 <%= render "#{path}/directions" %>
 
+<%= system_pagination(prev_path: systems_components_toasts_path, prev_text: "Toasts", next_path: systems_mailers_path, next_text: "Mailers") %>
+
 <%= render "railsui/shared/read_more", subject: "tabs", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/components/tooltips/" %>

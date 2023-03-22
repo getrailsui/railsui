@@ -164,4 +164,7 @@
 <%= render_snippet %>
 </div>
 
+
+<%= system_pagination(prev_path: systems_components_modals_path, prev_text: "Modals", next_path: systems_components_pagination_path, next_text: "Pagination") %>
+
 <%= render "railsui/shared/read_more", subject: "navbars", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/components/navbar/" %>

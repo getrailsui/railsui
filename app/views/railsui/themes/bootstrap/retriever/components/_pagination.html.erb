@@ -4,4 +4,6 @@
 <%= render "#{path}/centered" %>
 <%= render "#{path}/end" %>
 
+<%= system_pagination(prev_path: systems_components_navigation_path, prev_text: "Navigation", next_path: systems_components_popovers_path, next_text: "Popovers") %>
+
 <%= render "railsui/shared/read_more", subject: "pagination", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/components/pagination/" %>

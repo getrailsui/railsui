@@ -12,4 +12,6 @@
 <%= render "#{path}/header" %>
 <%= render "#{path}/styles" %>
 
+<%= system_pagination(prev_path: systems_components_buttons_path, prev_text: "Buttons", next_path: systems_components_dropdowns_path, next_text: "Dropdowns") %>
+
 <%= render "railsui/shared/read_more", subject: "cards", link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/components/card/" %>

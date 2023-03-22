@@ -66,5 +66,7 @@
 <%= render_snippet %>
 </div>
 
+<%= system_pagination(prev_path: systems_forms_inputs_path, prev_text: "Inputs", next_path: systems_forms_selects_path, next_text: "Selects") %>
+
 <%= render "railsui/shared/read_more", subject: "input groups",
 link: "https://getbootstrap.com/docs/#{Railsui::Default::BOOTSTRAP_VERSION}/forms/input-group/" %>

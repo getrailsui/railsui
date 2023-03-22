@@ -14,3 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
 <%= render "#{path}/enable" %>
 <%= render "#{path}/example" %>
 <%= render "#{path}/directions" %>
+
+<%= system_pagination(prev_path: systems_components_pagination_path, prev_text: "Pagination", next_path: systems_components_tabs_path, next_text: "Tabs") %>
