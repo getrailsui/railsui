@@ -9,7 +9,7 @@ module Railsui
       source_root File.expand_path('../templates', __FILE__)
       class_option :css, type: :string, default: nil, desc: "Pass CSS framework of choice"
 
-      desc "Adds additional routing and views for the StaticController"
+      desc "Adds StaticController, additional routing and associated pages for views"
 
       def copy_controller_action
         append_to_file "app/controllers/static_controller.rb", after: "class StaticController < ApplicationController\n" do
@@ -31,11 +31,11 @@ module Railsui
 
 
       def add_to_navigation
-inserted_link = <<-ERB
-<li>
-  <%= nav_link_to "#{display_name.titleize}", send("#{display_name}_path"), class: "nav-link" %>
-</li>
-ERB
+      inserted_link = <<-ERB
+      <li>
+        <%= nav_link_to "#{display_name.titleize}", send("#{display_name}_path"), class: "nav-link" %>
+      </li>
+      ERB
         append_to_file "app/views/shared/_nav_links.html.erb", inserted_link
       end
 

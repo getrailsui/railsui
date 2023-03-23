@@ -1,44 +1,6 @@
+<%% content_for :header do %>
 <header class="container mt-lg-4 mt-2 mb-5">
-  <nav class="navbar navbar-light bg-white navbar-expand-lg">
-    <div class="container-fluid">
-      <%%= link_to root_path, class: "navbar-brand" do %>
-        <%%= image_tag Railsui.theme_logo_url %>
-      <%% end %>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#retrieverNav"
-        aria-controls="retrieverNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse" id="retrieverNav">
-        <ul class="navbar-nav justify-content-start flex-grow-1">
-           <li class="nav-item">
-            <%%= link_to "Product", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%%= link_to "Features", "#", class: "nav-link" %>
-          </li>
-          <%% if Railsui.config.pricing? %>
-            <li class="nav-item">
-              <%%= link_to "Pricing", pricing_path, class: "nav-link #{current_page?(pricing_path) ? "active" : nil}" %>
-            </li>
-          <%% end %>
-          <%% if Railsui.config.about? %>
-            <li class="nav-item">
-              <%%= link_to "Company", about_path, class: "nav-link #{current_page?(about_path) ? "active" : nil}" %>
-            </li>
-          <%% end %>
-        </ul>
-
-        <ul class="navbar-nav justify-content-end">
-          <li class="nav-item">
-            <%%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%%= link_to "Get started", new_user_registration_path, class: "btn btn-primary" %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <%%= render "shared/nav_menu" %>
 
   <div class="mt-lg-4 mt-2 d-flex align-items-center flex-column flex-lg-row flex-column-reverse">
     <div class="col-md-auto col-lg-6">
@@ -77,6 +39,7 @@
     </div>
   </div>
 </header>
+<%% end %>
 
 <div class="container mt-5 pt-5 pb-5 mb-5 retriever-quote px-4 px-lg-0 text-center text-lg-start">
   <div class="row align-items-center justify-content-center justify-content-lg-start">
@@ -174,7 +137,6 @@
       technology.</p>
     <%%= link_to "View open roles", "#", class: "btn btn-primary" %>
   </div>
-
 </div>
 
 <div class="bg-light py-6">

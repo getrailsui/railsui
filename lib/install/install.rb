@@ -12,6 +12,11 @@ def add_css_bundling_setup
 
   if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
     say "Add stylesheet link tag in application layout"
+
+    # remove default application.css file
+    gsub_file Rails.root.join("app/views/layouts/application.html.erb"), '<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>', ""
+
+    # load css with trix.css
     insert_into_file(
       app_layout_path.to_s,
       defined?(Turbo) ?
@@ -145,6 +150,11 @@ def setup_routes
   insert_into_file "#{Rails.root}/config/routes.rb", "#{content}\n", after: "Rails.application.routes.draw do\n"
 end
 
+def add_static_controller
+ generate "controller", "static --skip-test-framework --skip-assets --skip-helper --skip-routes --skip-template-engine"
+end
+
+
 def add_custom_template_engine
   content = <<-RUBY
     config.generators do |g|
@@ -162,36 +172,49 @@ end
 
 def extend_layout_and_views
   if Rails.root.join("app/views/shared").exist?
-  say "🛑 app/views/shared already exists. Files can't be copied. Refer to the gem source for reference."
+    say "🛑 app/views/shared already exists. Files can't be copied. Refer to the gem source for reference."
   else
     say "⚡️ Adding shared partials"
     directory "#{__dir__}/shared", Rails.root.join("app/views/shared")
   end
 
   if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
-    head_content = <<-RUBY
-    <%= render "shared/meta" %>
+    head_content = <<-ERB
+  <%= render "shared/meta" %>
     <%= yield :head %>
-    RUBY
+    ERB
 
     say "⚡️ Add <head> includes"
-    insert_into_file(
-      app_layout_path.to_s, head_content,
-      before:/\s*<\/head>/
-    )
+    insert_into_file(app_layout_path.to_s, head_content, before: "</head>")
 
     # Layout content with conditional header block
     layout_content = <<-RUBY
     <%= render "shared/flash" %>
     <% if content_for(:header).present? %>
       <%= yield :header %>
-      <% else %>
-      <%= render "shared/nav" unless devise_controller? %>
+    <% else %>
+      <%= render "shared/nav" %>
     <% end %>
     RUBY
 
     say "⚡️ Add layout content"
-    insert_into_file(app_layout_path.to_s, layout_content, after:"<body>")
+    insert_into_file(app_layout_path.to_s, layout_content, after:"<body>\n")
+  end
+
+  gsub_file Rails.root.join('app/views/layouts/application.html.erb'), '<body>', '<body class="rui">'
+end
+
+def add_devise_layout
+  copy_file Rails.root.join("app/views/layouts/application.html.erb"), Rails.root.join("app/views/layouts/devise.html.erb")
+
+  if (app_layout_path = Rails.root.join("app/views/layouts/devise.html.erb")).exist?
+    head_content = <<-ERB
+  <%= render "shared/meta" %>
+    <%= yield :head %>
+    ERB
+    insert_into_file(app_layout_path.to_s, head_content, before: "</head>")
+    insert_into_file(app_layout_path.to_s, "\t\t<%= render \"shared/flash\" %>\n", after:"<body>\n")
+    gsub_file Rails.root.join('app/views/layouts/devise.html.erb'), '<body>', '<body class="rui">'
   end
 end
 
@@ -201,10 +224,6 @@ end
 
 def copy_application_mailer
    copy_file "#{__dir__}/application_mailer.rb", Rails.root.join("app/mailers/application_mailer.rb"), force: true
-end
-
-def scope_body_class
-  gsub_file Rails.root.join('app/views/layouts/application.html.erb'), '<body>', '<body class="rui">'
 end
 
 # Extend this gems helper into the client app + extend devise
@@ -259,11 +278,15 @@ setup_routes
 say "⚡️ Adding sidekiq..."
 add_sidekiq
 
+say "⚡️ Generate StaticController"
+add_static_controller
+
+# Make sure it's before the extend_layout_and_views method
+say "⚡️ Add devise layout..."
+add_devise_layout
+
 say "⚡️ Extending layout and views..."
 extend_layout_and_views
-
-say "⚡️ Scope styles to body"
-scope_body_class
 
 say "⚡️ Configuring template engine with fallbacks..."
 add_custom_template_engine

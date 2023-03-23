@@ -24,7 +24,7 @@ else
     # Copy customized Bootstrap CSS
     copy_file "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets/application.bootstrap.scss",
       "app/assets/stylesheets/application.bootstrap.scss"
-    run "yarn add sass #{Railsui::Default::BOOTSTRAP_PACKAGE_VERSION} bootstrap-icons @popperjs/core"
+    run "yarn add sass #{Railsui::Default::BOOTSTRAP_INSTALL_PACKAGE} bootstrap-icons @popperjs/core"
 
     # Add bootstrap icons even though Rails UI doesn't make use of them
     inject_into_file "config/initializers/assets.rb", after: /.*Rails.application.config.assets.paths.*\n/ do
@@ -40,8 +40,6 @@ else
     else
       say %(Add import * as bootstrap from "bootstrap" to your entry point JavaScript file), :red
     end
-
-    run "yarn build:css"
   end
 
   # Add themed devise views
@@ -63,14 +61,10 @@ else
 
   def copy_customized_shared_partials
     shared_files = Dir.children("#{__dir__}/themes/#{Railsui.config.theme}/shared")
-    puts "Shared partials: 🗄️ #{shared_files}"
+    puts "Shared #{Railsui.config.theme.humanize} partials: 🗄️ #{shared_files}"
 
     shared_files.each do |shared_file|
-      unless Rails.root.join("app/views/shared/#{shared_file}").exist?
-        copy_file   "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join("app/views/shared/#{shared_file}")
-      else
-        "🛑 #{shared_file} already exists, skipping."
-        end
+      copy_file "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join("app/views/shared/#{shared_file}"), force: true
     end
   end
 
@@ -99,6 +93,8 @@ else
     else
       say %(Add "scripts": { "build:css": "#{build_script}" } to your package.json), :green
     end
+    # build it
+    run "yarn build:css"
   end
 
   say "Stop linking stylesheets automatically"
