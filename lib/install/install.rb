@@ -199,6 +199,7 @@ def extend_layout_and_views
 
     say "⚡️ Add layout content"
     insert_into_file(app_layout_path.to_s, layout_content, after:"<body>\n")
+    insert_into_file(app_layout_path.to_s, "<%= railsui_launcher if Rails.env.development? %>", before: "</body>")
   end
 
   gsub_file Rails.root.join('app/views/layouts/application.html.erb'), '<body>', '<body class="rui">'
@@ -214,6 +215,7 @@ def add_devise_customizations
     ERB
     insert_into_file(app_layout_path.to_s, head_content, before: "</head>")
     insert_into_file(app_layout_path.to_s, "\t\t<%= render \"shared/flash\" %>\n", after:"<body>\n")
+    insert_into_file(app_layout_path.to_s, "<%= railsui_launcher if Rails.env.development? %>", before: "</body>")
     gsub_file Rails.root.join('app/views/layouts/devise.html.erb'), '<body>', '<body class="rui">'
   end
 

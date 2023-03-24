@@ -50,5 +50,9 @@ module Railsui
       icon = path
       inline_svg_tag(icon, options)
     end
+
+    def railsui_launcher
+      render partial: "railsui/shared/launcher"
+    end
   end
 end

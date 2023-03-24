@@ -1,0 +1,29 @@
+<%= link_to railsui.start_url, class: "rui-launcher" do %>
+  <%= icon "r", path: "r.svg", classes: "rui-r" %>
+<% end %>
+<style>
+  .rui-launcher {
+    width: 48px;
+    height: 48px;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    position: fixed;
+    left: 6px;
+    bottom: 6px;
+  }
+
+  .rui-launcher:hover {
+    box-shadow: none;
+  }
+
+  .rui-launcher .rui-r {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    fill: white;
+  }
+</style>
