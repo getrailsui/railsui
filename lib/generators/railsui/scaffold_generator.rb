@@ -47,11 +47,12 @@ module Railsui # :nodoc:
       end
 
       def add_to_navigation
-        inserted_link = <<-ERB
-        <li class="nav-item">
-          <%= nav_link_to "#{plural_table_name.titleize}", #{index_helper(type: :path)}, class: "nav-link" %>
-        </li>
-        ERB
+inserted_link = <<-ERB
+<li class="nav-item">
+  <%= nav_link_to "#{plural_table_name.titleize}", #{index_helper(type: :path)}, class: "nav-link" %>
+</li>
+
+ERB
         append_to_file "app/views/shared/_nav_links.html.erb", inserted_link
       end
 

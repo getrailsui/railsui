@@ -12,6 +12,9 @@ application.register("configuration", ConfigurationController)
 import CodeController from "./code_controller.js"
 application.register("code", CodeController)
 
+import CanvasController from "./canvas_controller.js"
+application.register("canvas", CanvasController)
+
 import DropdownController from "./dropdown_controller.js"
 application.register("dropdown", DropdownController)
 

@@ -1,3 +1,5 @@
+<% content_for :noscroll, true %>
+
 <%= render "railsui/admin/field_layout" do %>
   <% content_for :explainer, flush: true do %>
 
@@ -9,15 +11,15 @@
     <p class="text-sm mt-3 text-slate-500 dark:text-slate-300">Saving will automatically restart your app and install any dependencies.</p>
   </div>
 
-  <div data-configuration-target="saving" class="hidden fixed inset-0 w-full h-full bg-indigo-800 z-40">
+  <div data-configuration-target="saving" class="config-loader">
     <div class="flex flex-col justify-center h-full items-center relative z-50">
       <div class="mb-6">
-        <%= render "railsui/shared/logo_light" %>
+        <%= icon "railsui-light", path: "railsui-light.svg", classes: "fill-current text-white" %>
       </div>
       <h3 class="text-2xl text-white font-bold text-center mb-3">Saving changes...</h3>
       <p class="text-white text-center mb-3">This could take a bit...</p>
       <%= render_svg "loading", styles: "w-10 h-10" %>
     </div>
-    <canvas id="canvas" data-controller="canvas" class="fixed inset-0 w-full h-full"></canvas>
+    <canvas id="canvas" data-controller="canvas" class="fixed inset-x-0 top-96 bottom-0 w-full h-full overflow-hidden transform rotate-10"></canvas>
   </div>
 <% end %>

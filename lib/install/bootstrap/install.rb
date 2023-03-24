@@ -46,7 +46,7 @@ else
   def add_devise_views
     if Rails.root.join("app/views/devise").exist?
       say "🛑 app/views/devise already exists. Files can't be copied. Refer to the gem source for reference."
-  else
+    else
       directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise"), force: true
     end
   end

@@ -204,7 +204,7 @@ def extend_layout_and_views
   gsub_file Rails.root.join('app/views/layouts/application.html.erb'), '<body>', '<body class="rui">'
 end
 
-def add_devise_layout
+def add_devise_customizations
   copy_file Rails.root.join("app/views/layouts/application.html.erb"), Rails.root.join("app/views/layouts/devise.html.erb")
 
   if (app_layout_path = Rails.root.join("app/views/layouts/devise.html.erb")).exist?
@@ -216,6 +216,18 @@ def add_devise_layout
     insert_into_file(app_layout_path.to_s, "\t\t<%= render \"shared/flash\" %>\n", after:"<body>\n")
     gsub_file Rails.root.join('app/views/layouts/devise.html.erb'), '<body>', '<body class="rui">'
   end
+
+initializer_content = <<-RUBY
+Rails.application.config.to_prepare do
+  Devise::SessionsController.layout "devise"
+  Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+  Devise::ConfirmationsController.layout "devise"
+  Devise::UnlocksController.layout "devise"
+  Devise::PasswordsController.layout "devise"
+end
+RUBY
+
+  append_to_file Rails.root.join('config/initializers/devise.rb'), "\n#{initializer_content}"
 end
 
 def copy_hero_icons
@@ -282,8 +294,8 @@ say "⚡️ Generate StaticController"
 add_static_controller
 
 # Make sure it's before the extend_layout_and_views method
-say "⚡️ Add devise layout..."
-add_devise_layout
+say "⚡️ Add devise layout and customizations..."
+add_devise_customizations
 
 say "⚡️ Extending layout and views..."
 extend_layout_and_views

@@ -29,13 +29,12 @@ module Railsui
         template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{display_name}.html.erb.tt", File.join("app/views/static", "#{display_name}.html.erb")
       end
 
-
       def add_to_navigation
-      inserted_link = <<-ERB
-      <li>
-        <%= nav_link_to "#{display_name.titleize}", send("#{display_name}_path"), class: "nav-link" %>
-      </li>
-      ERB
+inserted_link = <<-ERB
+<li>
+  <%= nav_link_to "#{display_name.titleize}", send("#{display_name}_path"), class: "nav-link" %>
+</li>
+ERB
         append_to_file "app/views/shared/_nav_links.html.erb", inserted_link
       end
 

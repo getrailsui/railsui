@@ -46,19 +46,12 @@ export default class extends Controller {
   saveChanges(event) {
     event.preventDefault()
     // Show loading state
-    this.savingTarget.classList.remove("hidden")
+    this.savingTarget.classList.add("config-loader--active")
+    document.body.classList.add('overflow-hidden')
     // Disable button
     this.submitTarget.setAttribute("disabled", true)
     // Continue submission
     this.element.submit()
-
-    // let urlParams = new URLSearchParams(window.location.search)
-    // let reload = urlParams.get("reload")
-    // if (reload) {
-    //   setTimeout(function () {
-    //     window.location.href = "/railsui"
-    //   }, 4000)
-    // }
   }
 
   toggleTheme(event) {
@@ -91,5 +84,8 @@ export default class extends Controller {
       this.themeCopyTarget,
     ]
     all.forEach((t) => t.classList.add("hidden"))
+    // Remove loader
+    this.savingTarget.classList.remove("config-loader--active")
+    document.body.classList.remove('overflow-hidden')
   }
 }
