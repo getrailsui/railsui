@@ -289,3 +289,5 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+
+<%= system_pagination(prev_path: systems_authentication_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_unlocks_path, next_text: "Unlock") %>

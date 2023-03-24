@@ -151,5 +151,6 @@
     = f.submit "Sign in", class: "btn btn-primary hover:cursor-pointer w-full"
 <% end %>
 
-
 <%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+
+<%= system_pagination(prev_path: systems_authentication_signup_path, prev_text: "Sign up", next_path: systems_authentication_change_password_path, next_text: "Change password") %>

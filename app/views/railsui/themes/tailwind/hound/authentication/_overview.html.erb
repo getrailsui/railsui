@@ -266,3 +266,5 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>
+
+<%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_signup_path, next_text: "Sign up") %>

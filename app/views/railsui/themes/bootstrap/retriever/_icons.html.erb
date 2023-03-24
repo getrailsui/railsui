@@ -118,7 +118,14 @@ end
 <% end %>
 <%= render_snippet active_tab: "erb" %>
 </div>
+
+<h3>Bootstrap-specific Icons</h3>
+<p>Bootstrap ships with  <code>bootstrap-icons</code>, an independent package included with Rails UI. While Rails UI doesn't leverage these icons directly, they are supported out of the box. <strong>We recommend sticking to one icon library for maximum consistency</strong>.</p>
+
+<p>Refer to <%= link_to "the documentation", "https://icons.getbootstrap.com/", target: :_blank %> for usage and reference. The node package is was installed when you installed the <%= Railsui.config.theme.humanize %> theme.</p>
 <% end %>
+
+
 
 <%= render "railsui/shared/quicklinks", name: "icon" do %>
   <%= quick_link(title: "solid", component: "icons") %>

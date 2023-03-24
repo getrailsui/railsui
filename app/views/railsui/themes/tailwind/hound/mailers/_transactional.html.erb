@@ -170,3 +170,5 @@
 
   <%= render_snippet active_tab: "erb", erb_filename: "transactional.html.erb", haml_filename: "transactional.haml.erb" %>
 </div>
+
+<%= system_pagination(prev_path: systems_mailers_promotion_path, prev_text: "Promotion", next_path: systems_mailers_devise_path, next_text: "Devise") %>

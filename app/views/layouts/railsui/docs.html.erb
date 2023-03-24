@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <%= render "railsui/shared/scroll_to_top" %>
+      <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
       <%= yield :demo_scripts %>
     </body>
   </html>

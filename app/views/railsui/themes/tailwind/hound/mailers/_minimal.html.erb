@@ -65,3 +65,5 @@
 
   <%= render_snippet active_tab: "erb", erb_filename: "minimal.html.erb", haml_filename: "minimal.haml.erb" %>
 </div>
+
+<%= system_pagination(prev_path: systems_mailers_layout_path, prev_text: "Layouts", next_path: systems_mailers_promotion_path, next_text: "Promotion") %>

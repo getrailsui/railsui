@@ -13,7 +13,7 @@
 
 <%# .html %>
 <% content_for :html, flush: true do %>
-<label for="select-example" class="form-lable">Select one</label>
+<label for="select-example" class="form-label">Select one</label>
 <select class="form-select" aria-label="Default select example">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
@@ -98,3 +98,5 @@
 <% end %>
 <%= render_snippet %>
 </div>
+
+<%= system_pagination(prev_path: systems_forms_input_groups_path, prev_text: "Input Groups", next_path: systems_forms_checkboxes_and_radios_path, next_text: "Checkboxes & Radios") %>

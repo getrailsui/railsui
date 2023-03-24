@@ -35,6 +35,6 @@
       <%= render "railsui/shared/footer" %>
     </div>
 
-    <%= render "railsui/shared/scroll_to_top" %>
+    <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
   </body>
 </html>
