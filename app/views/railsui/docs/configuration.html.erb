@@ -1,9 +1,24 @@
 <div class="prose prose-lg prose-h1:font-bold mb-10 dark:prose-invert">
   <%= heading text: "Configuration", tag: "h1", id: "docs_configuration" %>
 
+  <p>For best results, use Rails UI for <strong>brand new</strong> Ruby on Rails applications.</p>
+
+  <p class="italic">Once configured Rails UI will:</p>
+  <ol>
+    <li>Generate a custom configuration yaml file <code class="text-base dark:text-yellow-500 text-red-400">railsui.yml</code> that's required to theme your new app.</li>
+    <li>Install dependencies and any necessary assets.</li>
+    <li>Generate a custom tailored design system for repeatable web elements. Think of this as a system for providing design direction when creating new features. This includes typography, font elements, and SVG icons.</li>
+    <li>
+      Optionally install one-off templates (i.e. About us, Pricing, etc...). Use these as a starting point.
+    </li>
+    <li>
+      Install scaffold templates that follow the theme and CSS framework you chose.
+    </li>
+  </ol>
+
   <p>After installing the Rails UI gem and running the installer, you may configure your application preferences.</p>
 
-  <p>This is a simple process that first prompts you for an application name and preferred CSS framework.</p>
+  <p>Configuration is a simple process that first prompts you for an application name and preferred CSS framework.</p>
 
   <p>Rails UI currently ships with support for <%= link_to "Bootstrap", "https://getbootstrap.com/", target: :_blank %> and <%= link_to "Tailwind CSS", "https://tailwindcss.com", target: :_blank %>.</p>
 
@@ -25,7 +40,7 @@
 
   <p>Because each theme is built from scratch, you may optionally configure Rails UI to generate a theme with additional pages automatically.</p>
 
-  <p>Once installed may preview these pages right inside your application.</p>
+  <p>Once installed you may view these pages right inside your application.</p>
 
   <p>Additional pages and templates will follow as Rails UI ages.</p>
 

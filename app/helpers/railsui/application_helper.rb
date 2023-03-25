@@ -200,5 +200,8 @@ module Railsui
       end
     end
 
+    def unavailable_theme?(theme)
+      theme.last == "Setter" || theme.last == "Shepherd"
+    end
   end
 end

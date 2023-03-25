@@ -5,17 +5,21 @@
   <% end %>
 
   <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
-    <div class="mb-8">
-      <%= f.label :application_name, class: "block mb-2 font-medium" %>
-      <%= f.text_field :application_name, class: "#{input_classes} w-full" %>
-      <p class="text-xs text-slate-600 mt-1 dark:text-slate-300">Used for branding purposes only.</p>
+    <div class="grid grid-cols-2 gap-6 mb-6">
+      <div>
+        <%= f.label :application_name, class: "block mb-2 font-medium" %>
+        <%= f.text_field :application_name, class: "#{input_classes} w-full" %>
+        <p class="text-xs text-slate-600 mt-1 dark:text-slate-300">Used for branding throughout a given theme.</p>
+      </div>
+
+      <div>
+        <%= f.label :support_email, class: "block mb-2 font-medium" %>
+        <%= f.text_field :support_email, class: "#{input_classes} w-full", placeholder: "support@example.com" %>
+        <p class="text-xs text-slate-600 mt-1 dark:text-slate-300">The support email is used inside email templates and various contact-specific experiences. It's optional but must be overridden manually.</p>
+      </div>
     </div>
 
-    <div class="mb-8">
-      <%= f.label :support_email, class: "block mb-2 font-medium" %>
-      <%= f.text_field :support_email, class: "#{input_classes} w-full", placeholder: "support@example.com" %>
-      <p class="text-xs text-slate-600 mt-1 dark:text-slate-300">The support email is used inside email templates and various contact-specific experiences. It's optional but must be overridden manually.</p>
-    </div>
+    <hr class="my-6 dark:border-slate-700">
 
     <div>
       <% if Railsui.no_framework_set? || !Railsui.config.css_framework.present? %>
@@ -30,11 +34,11 @@
         </div>
         <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
       <% end %>
-      <div class="text-sm mt-4 pt-4 border-t border-slate-200 flex items-start dark:border-slate-700">
+      <div class="text-sm mt-4 pt-4 flex items-start dark:border-slate-700">
         <div class="bg-indigo-50 dark:bg-slate-600 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
           <%= render_svg "warning", styles: "stroke-current text-indigo-500 w-5 h-5 flex-shrink-0 dark:text-rose-100" %>
         </div>
-        <p class="text-slate-800 dark:text-slate-300">Note: This choice <span class="font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI",docs_path, class: "text-indigo-700 dark:text-indigo-400" %>.
+        <p class="text-slate-800 dark:text-slate-300">This choice <span class="font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI", docs_configuration_path, class: "text-indigo-700 dark:text-indigo-400", target: :_blank %>.
         </p>
       </div>
     </div>

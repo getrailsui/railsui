@@ -10,9 +10,9 @@ export default class extends Controller {
     "tailwind",
     "frameworks",
     "submit",
+    "submitContainer",
     "saving",
     "theme",
-    "themeCopy",
   ]
   static values = {
     chosenTheme: String,
@@ -24,15 +24,17 @@ export default class extends Controller {
       switch (value) {
         case "bootstrap":
           this.frameworksTarget.classList.remove("hidden")
-          this.themeCopyTarget.classList.remove("hidden")
+          this.submitContainerTarget.classList.remove('hidden')
           if (this.hasBootstrapTarget) {
+
             this.bootstrapTarget.classList.remove("hidden")
           }
           break
         case "tailwind":
           this.frameworksTarget.classList.remove("hidden")
-          this.themeCopyTarget.classList.remove("hidden")
+          this.submitContainerTarget.classList.remove('hidden')
           if (this.hasTailwindTarget) {
+
             this.tailwindTarget.classList.remove("hidden")
           }
           break
@@ -40,7 +42,6 @@ export default class extends Controller {
           this._toggleAllThemes()
       }
     }
-    this.submitTarget.removeAttribute("disabled")
   }
 
   saveChanges(event) {
@@ -59,16 +60,16 @@ export default class extends Controller {
       case "bootstrap":
         this._toggleAllThemes()
         this.frameworksTarget.classList.remove("hidden")
-        this.themeCopyTarget.classList.remove("hidden")
         this.bootstrapTarget.classList.remove("hidden")
+        this.submitContainerTarget.classList.remove('hidden')
         this.bootstrapTarget.querySelector("label").control.checked = true
 
         break
       case "tailwind":
         this._toggleAllThemes()
         this.frameworksTarget.classList.remove("hidden")
-        this.themeCopyTarget.classList.remove("hidden")
         this.tailwindTarget.classList.remove("hidden")
+        this.submitContainerTarget.classList.remove('hidden')
         this.tailwindTarget.querySelector("label").control.checked = true
         break
       default:
@@ -81,7 +82,7 @@ export default class extends Controller {
       this.bootstrapTarget,
       this.tailwindTarget,
       this.frameworksTarget,
-      this.themeCopyTarget,
+      this.submitContainerTarget
     ]
     all.forEach((t) => t.classList.add("hidden"))
     // Remove loader

@@ -1,21 +1,34 @@
 <% framework = Railsui::config.css_framework.downcase %>
 
-<%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-4xl text-2xl text-slate-800 font-bold lg:pb-6 pb-3 border-b border-slate-200 dark:border-slate-700 dark:text-white" %>
+<div class="lg:pb-6 pb-3 border-b border-slate-200 dark:border-slate-700 flex items-center mb-6">
+  <div class="flex-1">
+    <%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-4xl text-2xl text-slate-800 font-bold dark:text-white mb-2" %>
+    <div class="prose dark:prose-invert max-w-full">
+      <p>Read the documentation to learn more about Rails UI including what it does and what it does not do.</p>
+    </div>
+  </div>
+
+  <div class="prose dark:prose-invert">
+    <%= link_to "Read documentation", docs_path, target: :_blank %>
+  </div>
+</div>
 
 <%= form_with model: @config, url: configuration_path, class: "h-full block relative", data: {
   action: "submit->configuration#saveChanges",
   controller: "configuration",
   configuration_chosen_theme_value: Railsui.config.css_framework
   } do |f| %>
+  <div class="space-y-8">
+    <% unless Railsui.framework? %>
+      <%= render "railsui/admin/fields/config_overview" %>
+    <% end %>
 
-  <% unless Railsui.framework? %>
-    <%= render "railsui/admin/fields/config_overview" %>
-  <% end %>
-
-  <%= render "railsui/admin/fields/app_preferences", f: f %>
-  <%= render "railsui/admin/fields/theme", f: f %>
-  <% if Railsui.framework? %>
-    <%= render "railsui/admin/fields/pages", f: f %>
-  <% end %>
-  <%= render "railsui/admin/fields/commit", f: f %>
+    <%= render "railsui/admin/fields/app_preferences", f: f %>
+    <%= render "railsui/admin/fields/theme", f: f %>
+    <% if Railsui.framework? %>
+      <%= render "railsui/admin/fields/pages", f: f %>
+    <% end %>
+    <%= render "railsui/admin/fields/commit", f: f %>
+  </div>
+  <%= render "railsui/admin/loader" %>
 <% end %>

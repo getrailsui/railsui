@@ -1,23 +1,8 @@
 <%= render "railsui/admin/field_layout" do %>
   <%= content_for :explainer do %>
-    <%= heading text: "Overview", id: "configuration_overview", tag: "h3", class: "font-semibold text-xl mb-3" %>
-    <p class="text-sm text-slate-700">What Rails UI does and doesn't do.</p>
+
   <% end %>
-  <div class="leading-relaxed text-lg p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
-    <div class="prose dark:prose-invert">
-      <p>For best results, use Rails UI for brand new Ruby on Rails applications.</p>
-      <p class="italic">Once configured Rails UI will:</p>
-      <ol>
-        <li>Generate a custom configuration yaml file <code class="text-base dark:text-yellow-500 text-red-400">railsui.yml</code> that's required to theme your new app.</li>
-        <li>Install dependencies and any necessary assets.</li>
-        <li>Generate a custom tailored design system for repeatable web elements. Use this system as a design direction when creating new features. This includes typography, font elements, and SVG icons.</li>
-        <li>
-          Optionally install marketing components and templates (i.e. About us, Pricing). Use these as a starting point.
-        </li>
-        <li>
-          Install scaffold templates that follow the theme and CSS framework you chose
-        </li>
-      </ol>
-    </div>
+  <div class="p-3 bg-slate-300/20 text-center rounded-lg dark:bg-slate-800 dark:border-slate-700 border">
+    <p class="italic">Heads up: Rails UI is only meant for brand new Ruby on Rails applications at this time.</p>
   </div>
 <% end %>

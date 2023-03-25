@@ -1,31 +1,34 @@
 <h3 class="font-bold text-2xl mb-3 font-rui">Select a theme</h3>
 <div class="prose dark:prose-invert mb-6 max-w-full">
-  <p>The theme you chose acts as a starting point for the design of the app. Rails UI builds customized components based off this team which you can full customize after configuration. Once a theme is configured you cannot change it.</p>
-
-  <p>Each theme provides pre-designed static pages, scaffolded resources, UI components, layout patterns, partials, and more.</p>
+  <p>Each theme provides pre-designed static pages, scaffolded resources, UI components, layout patterns, partials, and more. <%= link_to "Read more about themes", docs_themes_path, target: :_blank %>.</p>
 </div>
 
 <% Railsui::Default::THEMES.each do |framework, themes| %>
   <% f = framework.to_s.parameterize %>
 
-  <div class="mb-6 hidden" data-configuration-target="<%= f %>">
+  <div class="hidden" data-configuration-target="<%= f %>">
     <h4 class="font-bold text-xl mb-3"><%= f.humanize %> themes</h4>
     <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-3">
       <% themes.each do |theme| %>
         <li>
-          <label for="configuration_theme_<%= theme.first %>" class="bg-white rounded-lg p-4 block border border-slate-200 focus:ring-4 focus:ring-slate-100 hover:shadow-xl transition duration-300 dark:bg-slate-700 dark:border-slate-600" data-configuration-target="theme">
+          <label for="configuration_theme_<%= theme.first %>" class="bg-white rounded-lg p-4 block border border-slate-200 focus:ring-4 focus:ring-slate-100  transition duration-300 dark:bg-slate-700 dark:border-slate-600 <%= unavailable_theme?(theme) ? "relative pointer-events-none opacity-70" : "hover:shadow-xl" %>" data-configuration-target="theme">
             <%= image_tag "#{f}-#{theme.first}-thumbnail.jpg", alt: "#{theme.last.humanize} theme", class: "border border-slate-200 rounded dark:border-slate-400" %>
+            <% if unavailable_theme?(theme) %>
+              <div class="px-4 mt-4 flex items-center justify-center rounded italic text-amber-800">
+                Coming soon
+              </div>
+            <% else %>
             <div class="px-4 mt-4 flex justify-center">
               <input
                     type="radio"
                     id="configuration_theme_<%= theme.first %>"
                     value="<%= theme.first %>"
                     name="configuration[theme]"
-                    class="w-6 h-6 dark:bg-slate-500 dark:border-slate-600"
+                    class="w-6 h-6 dark:bg-slate-500 dark:border-slate-600 text-indigo-600"
                     >
-
                 <span class="ml-2"><%= theme.last.humanize %></span>
               </div>
+              <% end %>
             </label>
 
             <%= link_to "Preview theme", theme_preview_link(theme.last.humanize), target: :_blank, class: "py-3 px-4 text-center justify-center w-full text-slate-700 bg-slate-100 hover:bg-slate-200 transition ease-in-out duration border border-transparent rounded block mt-3 dark:bg-indigo-500 dark:border-indigo-500 dark:text-white hover:dark:bg-indigo-600 hover:dark:text-white" %>
