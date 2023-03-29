@@ -1,29 +1,104 @@
-<%= link_to railsui.start_url, class: "rui-launcher" do %>
-  <%= icon "r", path: "r.svg", classes: "rui-r" %>
-<% end %>
-<style>
-  .rui-launcher {
-    width: 48px;
-    height: 48px;
-    background: rgba(0, 0, 0, .8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
-    position: fixed;
-    left: 6px;
-    bottom: 6px;
-  }
+<div>
+  <!-- Rails UI Launcher - Only visible in development -->
+  <div class="rui-launcher" x-data="{ open: false }">
+    <button type="button" @click="open = true">
+      <%= icon "r", path: "r.svg", classes: "rui-r" %>
+    </button>
+    <nav x-show="open"  @click.outside="open = false" x-transition>
+      <ul>
+        <li>
+          <%= link_to "Start", railsui.start_url, data: { turbo: false } %>
+        </li>
+        <li>
+          <%= link_to "Configuration", railsui.root_path, data: { turbo: false } %>
+        </li>
 
-  .rui-launcher:hover {
-    box-shadow: none;
-  }
+        <li>
+          <%= link_to "Design system", railsui.systems_path, data: { turbo: false } %>
+        </li>
 
-  .rui-launcher .rui-r {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    fill: white;
-  }
-</style>
+        <li>
+          <%= link_to "Documentation", railsui.docs_path, data: { turbo: false } %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <style>
+    .rui-launcher {
+      position: fixed;
+      left: 6px;
+      bottom: 6px;
+      z-index: 9999;
+    }
+
+    .rui-launcher button {
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+      background: rgb(2,0,36);
+      background: linear-gradient(43deg, rgba(2,0,36,1) 0%, rgba(10,10,84,1) 64%, rgba(63,0,64,1) 100%);
+    }
+
+    .rui-launcher button:focus {
+      outline-color: #f1f5f9;
+      outline-offset: 4px;
+      outline-style: solid;
+    }
+
+    .rui-launcher button:hover {
+      box-shadow: none;
+    }
+
+    .rui-launcher nav {
+      position: absolute;
+      left: 0px;
+      bottom: 48px;
+      background: rgb(2,0,36);
+      background: linear-gradient(43deg, rgba(2,0,36,1) 0%, rgba(10,10,84,1) 64%, rgba(63,0,64,1) 100%);
+      border-radius: 6px;
+      min-width: 220px;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      padding: 0.6rem 0;
+      backdrop-filter: blur(12px);
+    }
+
+    .rui-launcher nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .rui-launcher nav a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8);
+      display: block;
+      padding: 0.4rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .rui-launcher nav a:hover {
+      text-decoration: underline
+    }
+
+    .rui-launcher .rui-r {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      fill: white;
+    }
+
+    @media screen and (max-width: 767px) {
+      .rui-launcher {
+        display: none;
+      }
+    }
+  </style>
+  <script src="//unpkg.com/alpinejs" defer></script>
+</div>

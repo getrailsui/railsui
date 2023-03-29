@@ -13,7 +13,7 @@ Railsui::Engine.routes.draw do
     get :forms
     get :icons
     get :mailers
-    get :marketing
+    get :pages
     get :scaffolds
 
     namespace :authentication do

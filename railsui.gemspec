@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   # end
   # spec.require_paths = ["lib"]
   spec.license = "TBD"
-  spec.files = Dir["lib/**/*", "README.md"]
+  spec.files = Dir["lib/**/*", "README.md", "app/**/*", "config/**/*"]
 
   spec.add_dependency "rails"
   spec.add_dependency "inline_svg"

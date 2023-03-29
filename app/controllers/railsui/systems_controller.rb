@@ -15,7 +15,7 @@ module Railsui
 
     end
 
-    def marketing
+    def pages
     end
 
     def scaffolds
