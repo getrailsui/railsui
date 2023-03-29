@@ -12,7 +12,7 @@ module Railsui
 
     def framework_version_label
       return nil unless Railsui.config.css_framework.present?
-      content_tag :div, class: "bg-slate-200 rounded-full px-2 py-px font-semibold text-xs flex items-center" do
+      content_tag :div, class: "bg-slate-200 rounded-full px-2 py-px font-semibold text-xs flex items-center dark:bg-slate-700 dark:text-slate-100" do
         Railsui.bootstrap? ? Railsui::Default::BOOTSTRAP_PACKAGE_VERSION : Railsui::Default::TAILWIND_CSS_VERSION
       end
     end
