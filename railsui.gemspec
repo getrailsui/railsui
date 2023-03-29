@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require "lib/railsui/version"
+require_relative "lib/railsui/version"
 
 Gem::Specification.new do |spec|
   spec.name = "railsui"
