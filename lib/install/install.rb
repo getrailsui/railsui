@@ -71,7 +71,6 @@ def add_gems
   gem 'devise'
   gem "jsbundling-rails"
   gem 'name_of_person'
-  gem 'sidekiq'
   gem 'meta-tags'
 end
 
@@ -112,23 +111,6 @@ def add_user_attributes
   RUBY
 
   insert_into_file "app/models/user.rb", "#{content}\n\n", after: "class User < ApplicationRecord\n"
-end
-
-# Add sidkiq
-def add_sidekiq
-  environment "config.active_job.queue_adapter = :sidekiq"
-
-  insert_into_file "config/routes.rb",
-    "require 'sidekiq/web'\n\n",
-    before: "Rails.application.routes.draw do"
-
-  content = <<-RUBY
-  authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-  RUBY
-
-  insert_into_file "config/routes.rb", "#{content}\n\n", after: "Rails.application.routes.draw do\n"
 end
 
 def setup_routes
@@ -288,9 +270,6 @@ add_css_bundling_setup
 
 say "⚡️ Setup routes"
 setup_routes
-
-say "⚡️ Adding sidekiq..."
-add_sidekiq
 
 say "⚡️ Generate StaticController"
 add_static_controller
