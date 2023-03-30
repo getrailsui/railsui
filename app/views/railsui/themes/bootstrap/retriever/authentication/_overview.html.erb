@@ -113,19 +113,19 @@
 <!-- app/views/devise/shared/_links -->
 <%%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <p class="mb-3">
-    <%%= link_to "Forgot password?", new_password_path(resource_name), class: "text-muted text-decoration-underline" %>
+    <%%= link_to "Forgot password?", new_password_path(resource_name), class: "text-body-secondary text-decoration-underline" %>
   </p>
 <%% end %>
 
 <%%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <p class="mb-3">
-    <%%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-muted text-decoration-underline" %>
+    <%%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-body-secondary text-decoration-underline" %>
   </p>
 <%% end %>
 
 <%%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <p class="mb-3">
-    <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-muted text-decoration-underline" %>
+    <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-body-secondary text-decoration-underline" %>
   </p>
 <%% end %>
 
@@ -141,15 +141,15 @@
 <% content_for :haml, flush: true do %>
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
   %p.mb-3
-    = link_to "Forgot password?", new_password_path(resource_name), class: "text-muted text-decoration-underline"
+    = link_to "Forgot password?", new_password_path(resource_name), class: "text-body-secondary text-decoration-underline"
 
 - if devise_mapping.confirmable? &&  controller_name != 'confirmations'
   %p.mb-3
-    = link_to Didn't receive confirmation instructions?, new_confirmation_path(resource_name), class: text-muted text-decoration-underline
+    = link_to Didn't receive confirmation instructions?, new_confirmation_path(resource_name), class: text-body-secondary text-decoration-underline
 
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
   %p.mb-3
-    = link_to Didn't receive unlock instructions?, new_unlock_path(resource_name), class: text-muted text-decoration-underline
+    = link_to Didn't receive unlock instructions?, new_unlock_path(resource_name), class: text-body-secondary text-decoration-underline
 
 - if devise_mapping.omniauthable?
   - resource_class.omniauth_providers.each do |provider|
@@ -173,7 +173,7 @@
   <p class="absolute top-4 right-4 bg-black bg-opacity-50 text-white text-[11px] font-semibold uppercase px-1 py-px rounded">Example</p>
   <div class="rui-auth-form-wrap select-none">
     <h1 class="display-6 mb-4 mt-6">Reset password</h1>
-    <p class="text-muted mb-4">Enter your email to receive instructions on how to reset your password.</p>
+    <p class="text-body-secondary mb-4">Enter your email to receive instructions on how to reset your password.</p>
       <form class="new_user" id="new_user" data-turbo="false" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="#" autocomplete="off" class="pointer-events-none">
 
       <div class="alert alert-danger" role="alert">

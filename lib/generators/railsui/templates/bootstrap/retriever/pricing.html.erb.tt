@@ -4,7 +4,7 @@
 
   <div class="text-center pt-7 pb-3">
     <h1 class="display-4 mb-1">Simple transparent pricing</h1>
-    <p class="text-muted">Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    <p class="text-body-secondary">Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
   </div>
 
   <div class="d-flex justify-content-center">

@@ -5,7 +5,7 @@
   <div class="rui dark:p-6 dark:rounded-lg">
     <div class="input-group">
       <span class="input-group-text" id="envelope">
-        <%= icon("envelope", classes: "icon stroke-current text-muted") %>
+        <%= icon("envelope", classes: "icon stroke-current text-body-secondary") %>
       </span>
       <input type="email" class="form-control" placeholder="john.doe@example.com" aria-label="Email" aria-describedby="envelope">
     </div>
@@ -19,7 +19,7 @@
 <% content_for :html, flush: true do %>
 <div class="input-group mb-3">
   <span class="input-group-text" id="envelope">
-    <%%= icon("envelope", styles: "icon stroke-current text-muted") %>
+    <%%= icon("envelope", styles: "icon stroke-current text-body-secondary") %>
   </span>
   <input type="email" class="form-control" placeholder="john.doe@example.com" aria-label="Email" aria-describedby="envelope">
 </div>
@@ -30,7 +30,7 @@
 <!-- ActionView::Helpers::FormTagHelper -->
 <%%= tag.div class: "input-group mb-3" do %>
   <%%= tag.span class: "input-group-text", id: "envelope" do %>
-    <%%= icon("envelope", styles: "icon stroke-current text-muted") %>
+    <%%= icon("envelope", styles: "icon stroke-current text-body-secondary") %>
   <%% end %>
   <%%= email_field_tag "envelope", nil, class: "form-control", "aria-describedby": "envelope", "aria-label": "Email", placeholder: "john.doe@example.com" %>
 <%% end %>
@@ -39,7 +39,7 @@
 <%%= form_with model: @form do |f| %>
   <%%= tag.div class: "input-group mb-3" do %>
     <%%= tag.span class: "input-group-text", id: "envelope" do %>
-      <%%= icon("envelope", styles: "icon stroke-current text-muted") %>
+      <%%= icon("envelope", styles: "icon stroke-current text-body-secondary") %>
     <%% end %>
     <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-label" %>
   <%% end %>
@@ -52,14 +52,14 @@
 / ActionView::Helpers::FormTagHelper
 .input-group.mb-3
   span.input-group-text#envelope
-    = icon "envelope", styles: "icon stroke-current text-muted"
+    = icon "envelope", styles: "icon stroke-current text-body-secondary"
     = email_field_tag "envelope", nil, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
 
 / ActionView::Helpers::FormHelper
 = form_with model: @form do |f|
   .input-group.mb-3
     span.input-group-text#envelope
-      = icon "envelope", styles: "icon stroke-current text-muted"
+      = icon "envelope", styles: "icon stroke-current text-body-secondary"
     = f.email_field :my_input, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
   = f.submit class: "btn btn-primary"
 <% end %>

@@ -1,18 +1,18 @@
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <p class="mb-3">
-    <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-muted text-decoration-underline" %>
+    <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-body-secondary text-decoration-underline" %>
   </p>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <p class="mb-3">
-    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-muted text-decoration-underline" %>
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-body-secondary text-decoration-underline" %>
   </p>
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <p class="mb-3">
-    <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-muted text-decoration-underline" %>
+    <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-body-secondary text-decoration-underline" %>
   </p>
 <% end %>
 
