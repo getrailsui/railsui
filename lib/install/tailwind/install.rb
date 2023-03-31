@@ -1,4 +1,4 @@
-# General FYI: Tailwind requires more finesse to have ability to make use of more advanced PostCSS features. We're borrowing from the cssbundling-rails gem install pattern here to accomodate.
+# General FYI: Tailwind requires more finesse to have ability to make use of more advanced PostCSS features. I'm borrowing from the cssbundling-rails gem install.rb file here to accomodate.
 
 if Railsui.config.pages.any? && Railsui.config.theme.present?
   say "🔔 #{Railsui.config.theme.humanize} theme already installed and configured"

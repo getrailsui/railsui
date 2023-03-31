@@ -56,7 +56,7 @@ module Railsui
     def create_pages
       Railsui::Pages.all_pages.each do | page, details |
         if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)
-          Railsui.run_command "rails g railsui:static #{page}"
+          Railsui.run_command "rails g railsui:page #{page}"
           Railsui.run_command "rails css:build"
         end
       end

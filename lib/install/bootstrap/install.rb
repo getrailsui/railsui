@@ -1,5 +1,5 @@
 if Rails.root.join("app/assets/stylesheets/application.bootstrap.scss").exist?
-  say "🛑 Bootstrap is already installed. For best results uninstall it and re-run the Rails UI installer."
+  say "🥾 Bootstrap is already installed."
 else
 
   def swap_sprockets_to_builds

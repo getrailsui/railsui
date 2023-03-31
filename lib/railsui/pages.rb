@@ -22,7 +22,7 @@ module Railsui
     end
 
     def self.page_exists?(page)
-      Rails.root.join("app/views/static/#{page}.html.erb").exist?
+      Rails.root.join("app/views/page/#{page}.html.erb").exist?
     end
   end
 end

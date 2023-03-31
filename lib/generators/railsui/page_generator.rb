@@ -1,18 +1,17 @@
 require 'generators/railsui/generator_helpers'
 module Railsui
   module Generators
-    class StaticGenerator < Rails::Generators::NamedBase
+    class PageGenerator < Rails::Generators::NamedBase
       include Rails::Generators::ResourceHelpers
       include Rails.application.routes.url_helpers
       include Railsui::Generators::GeneratorHelpers
       hook_for :test_framework, as: :controller
       source_root File.expand_path('../templates', __FILE__)
-      class_option :css, type: :string, default: nil, desc: "Pass CSS framework of choice"
 
-      desc "Adds StaticController, additional routing and associated pages for views"
+      desc "Adds additional routing and associated pages for views"
 
       def copy_controller_action
-        append_to_file "app/controllers/static_controller.rb", after: "class StaticController < ApplicationController\n" do
+        append_to_file "app/controllers/page_controller.rb", after: "class PageController < ApplicationController\n" do
         "\tdef #{display_name}\n\tend\n\n"
         end
       end
@@ -26,7 +25,7 @@ module Railsui
       def copy_view_files
         # only return active Rails UI pages
         return unless Railsui.config.pages.include?(display_name)
-        template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{display_name}.html.erb.tt", File.join("app/views/static", "#{display_name}.html.erb")
+        template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{display_name}.html.erb.tt", File.join("app/views/page", "#{display_name}.html.erb")
       end
 
       def add_to_navigation
@@ -39,7 +38,7 @@ ERB
       end
 
       def add_routes
-        insert_into_file "#{Rails.root}/config/routes.rb", "\t\tget #{display_name.prepend(':')}\n", after: "scope controller: :static do\n"
+        insert_into_file "#{Rails.root}/config/routes.rb", "\t\tget #{display_name.prepend(':')}\n", after: "scope controller: :page do\n"
       end
     end
   end

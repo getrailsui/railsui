@@ -27,7 +27,7 @@
             </div>
           </div>
           <div>
-            <%= link_to "View page", Rails.application.routes.url_for(action: details[:title].downcase, controller: "static", only_path: true), target: :_blank, class: "px-3 py-2 bg-white border border-slate-300 text-slate-600 shadow-sm rounded text-center text-sm font-medium hover:text-slate-700 hover:border-slate-400 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-700 dark:hover:text-slate-100 dark:hover:border-slate-500" %>
+            <%= link_to "View page", Rails.application.routes.url_for(action: details[:title].downcase, controller: "page", only_path: true), target: :_blank, class: "px-3 py-2 bg-white border border-slate-300 text-slate-600 shadow-sm rounded text-center text-sm font-medium hover:text-slate-700 hover:border-slate-400 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-700 dark:hover:text-slate-100 dark:hover:border-slate-500" %>
           </div>
         <% else %>
           <div class="flex-1">

@@ -100,14 +100,6 @@ module Railsui
       }
     end
 
-    def about_page_exists?
-      Rails.root.join("app/views/static/about.html.erb").exist? && Railsui.config.about?
-    end
-
-    def pricing_page_exists?
-      Rails.root.join("app/views/static/pricing.html.erb").exist? && Railsui.config.pricing?
-    end
-
     def email_viewer(subject="A sample subject", &block)
       render "railsui/shared/rui_email_preview", subject: subject, block: block, flush: true
     end

@@ -80,7 +80,7 @@ Railsui::Engine.routes.draw do
     get :faqs
   end
 
-  scope controller: :static do
+  scope controller: :page do
     get :index
     get :start
   end

@@ -119,21 +119,21 @@ def setup_routes
     mount Railsui::Engine, at: "/railsui"
   end
 
-  scope controller: :static do
+  scope controller: :page do
 
   end
 
-  # Inherits from Railsui::StaticController#index
-  # To overide, add your own static#index view or change to a new root
+  # Inherits from Railsui::PageController#index
+  # To overide, add your own page#index view or change to a new root
   # Visit the start page for Rails UI any time at /railsui/start
-  root action: :index, controller: "railsui/static"
+  root action: :index, controller: "railsui/page"
   RUBY
 
   insert_into_file "#{Rails.root}/config/routes.rb", "#{content}\n", after: "Rails.application.routes.draw do\n"
 end
 
-def add_static_controller
- generate "controller", "static --skip-test-framework --skip-assets --skip-helper --skip-routes --skip-template-engine"
+def add_page_controller
+ generate "controller", "page --skip-test-framework --skip-assets --skip-helper --skip-routes --skip-template-engine"
 end
 
 
@@ -271,8 +271,8 @@ add_css_bundling_setup
 say "⚡️ Setup routes"
 setup_routes
 
-say "⚡️ Generate StaticController"
-add_static_controller
+say "⚡️ Generate PageController"
+add_page_controller
 
 # Make sure it's before the extend_layout_and_views method
 say "⚡️ Add devise layout and customizations..."
