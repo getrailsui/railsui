@@ -1,7 +1,9 @@
 module Railsui
   class Default
+    # Used for linking to specific Bootstrap docs
     BOOTSTRAP_VERSION = "5.3"
-    TAILWIND_CSS_VERSION = "3.3.0"
+
+    # Used in installation steps
     BOOTSTRAP_PACKAGE_VERSION = "5.3.0-alpha2"
     BOOTSTRAP_INSTALL_PACKAGE = "bootstrap@5.3.0-alpha2"
 

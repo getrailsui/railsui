@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="flex flex-col justify-center items-center h-full p-4 antialiased dark:text-white">
-  <div class="max-w-6xl sm:text-left text-center mx-auto rounded-3xl relative z-20 sm:p-16 p-6 bg-white dark:bg-slate-900">
+  <div class="max-w-6xl sm:text-left text-center mx-auto rounded-3xl relative z-20 sm:px-16 sm:py-0 p-6 bg-white dark:bg-slate-900">
     <div class="flex flex-wrap justify-between items-end">
       <div class="flex items-end sm:justify-start justify-center flex-1">
         <%= render_svg "rails-logo", styles: "fill-current text-rails-500 w-36 h-auto" %>
@@ -33,7 +33,7 @@
 
     <p class="font-bold uppercase tracking-wide text-xs text-rails-500 mb-4">Take action</p>
     <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-10 gap-0 text-lg text-slate-600 dark:text-slate-300 -mx-2">
-      <ul class="leading-loose space-y-2 sm:mb-0 mb-2">
+      <ul class="leading-loose space-y-3 sm:space-y-2 sm:mb-0 mb-3">
         <li>
           <%= link_to "https://guides.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 dark:bg-transparent dark:hover:bg-slate-800 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
             <div class="flex-1 flex items-center space-x-2">
@@ -69,7 +69,7 @@
           <% end %>
         </li>
       </ul>
-      <ul class="leading-loose space-y-2">
+      <ul class="leading-loose space-y-3 sm:space-y-2 sm:mb-0 mb-3">
         <li>
           <%= link_to "https://rubyonrails.org/blog/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 dark:bg-transparent dark:hover:bg-slate-800 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
             <div class="flex-1 flex items-center space-x-2">
@@ -104,7 +104,7 @@
           <% end %>
         </li>
       </ul>
-      <ul class="leading-loose space-y-2">
+      <ul class="leading-loose space-y-3 sm:space-y-2 sm:mb-0 mb-3">
         <li>
           <%= link_to "/rails/mailers", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 dark:bg-transparent dark:hover:bg-slate-800 rounded px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
             <div class="flex-1 flex items-center space-x-2">

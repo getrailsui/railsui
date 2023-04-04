@@ -1,14 +1,18 @@
-require 'generators/railsui/generator_helpers'
+# frozen_string_literal: true
+
+require "rails/generators/named_base"
+
 module Railsui
   module Generators
     class PageGenerator < Rails::Generators::NamedBase
       include Rails::Generators::ResourceHelpers
-      include Rails.application.routes.url_helpers
-      include Railsui::Generators::GeneratorHelpers
-      hook_for :test_framework, as: :controller
+      # include Rails.application.routes.url_helpers
+      # include Railsui::Generators::GeneratorHelpers
+      # hook_for :test_framework, as: :controller
+      # TODO: Include arguments at some point? i.e. Pricing tier count or something
       source_root File.expand_path('../templates', __FILE__)
 
-      desc "Adds additional routing and associated pages for views"
+      desc "Adds additional routing and associated views with given page."
 
       def copy_controller_action
         append_to_file "app/controllers/page_controller.rb", after: "class PageController < ApplicationController\n" do
@@ -30,7 +34,7 @@ module Railsui
 
       def add_to_navigation
 inserted_link = <<-ERB
-<li>
+<li #{'class="nav-item"' if Railsui.bootstrap? }>
   <%= nav_link_to "#{display_name.titleize}", send("#{display_name}_path"), class: "nav-link" %>
 </li>
 ERB

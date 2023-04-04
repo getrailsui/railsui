@@ -12,10 +12,21 @@ module Railsui
 
     def framework_version_label
       return nil unless Railsui.config.css_framework.present?
-      content_tag :div, class: "bg-slate-200 rounded-full px-2 py-px font-semibold text-xs flex items-center dark:bg-slate-700 dark:text-slate-100" do
-        Railsui.bootstrap? ? Railsui::Default::BOOTSTRAP_PACKAGE_VERSION : Railsui::Default::TAILWIND_CSS_VERSION
-      end
+      content_tag :div, framework_version, class: "bg-slate-200 rounded-full px-2 py-px font-semibold text-xs flex items-center dark:bg-slate-700 dark:text-slate-100"
     end
+
+    def framework_version
+      package_version = nil
+      version = File.open(Rails.root.join("package.json")) do |f|
+        f.each_line do |line|
+          if line =~ /"tailwindcss"/ || line =~ /"bootstrap"/
+            package_version = line.match(/(?<=\")[^\"]*\d+\.\d+\.\d+[^\s,\"]*/)[0]
+          end
+        end
+      end
+      package_version
+    end
+
 
     def system_pagination(options={})
       render partial: "railsui/shared/pagination", locals: options

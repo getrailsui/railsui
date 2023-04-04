@@ -3,10 +3,11 @@ require 'rails/generators/resource_helpers'
 
 # Inspiration
 # https://github.com/rails/rails/blob/main/railties/lib/rails/generators/erb/scaffold/scaffold_generator.rb
+# TODO: This is all types of hacky :)
 
-module Railsui # :nodoc:
-  module Generators # :nodoc:
-    class Base < Rails::Generators::NamedBase #:nodoc:
+module Railsui
+  module Generators
+    class Base < Rails::Generators::NamedBase
       protected
 
       def format
@@ -48,7 +49,7 @@ module Railsui # :nodoc:
 
       def add_to_navigation
 inserted_link = <<-ERB
-<li class="nav-item">
+<li #{'class="nav-item"' if Railsui.bootstrap? }>
   <%= nav_link_to "#{plural_table_name.titleize}", #{index_helper(type: :path)}, class: "nav-link" %>
 </li>
 
