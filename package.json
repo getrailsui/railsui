@@ -13,7 +13,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.2",
     "debounce": "^1.2.1",
-    "esbuild": "^0.17.14",
+    "esbuild": "^0.17.16",
     "highlight.js": "^11.6.0",
     "postcss": "^8.4.8",
     "postcss-import": "^15.1.0",
