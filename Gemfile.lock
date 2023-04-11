@@ -2,10 +2,10 @@ PATH
   remote: .
   specs:
     railsui (0.1.0)
-      cssbundling-rails (~> 1.1, >= 1.1.2)
+      cssbundling-rails (~> 1.1)
       inline_svg (~> 1.9)
-      jsbundling-rails (~> 1.1, >= 1.1.1)
-      rails (~> 7.0, >= 7.0.4.3)
+      jsbundling-rails (~> 1.1)
+      rails (~> 7.0)
 
 GEM
   remote: https://rubygems.org/

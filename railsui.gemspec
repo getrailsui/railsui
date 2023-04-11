@@ -27,8 +27,8 @@ Gem::Specification.new do |spec|
   spec.license = "Unlicense" # https://choosealicense.com/no-permission/
   # spec.files = Dir["lib/**/*", "README.md"]
 
-  spec.add_dependency 'rails', '~> 7.0', '>= 7.0.4.3'
-  spec.add_dependency 'inline_svg', '~> 1.9'
-  spec.add_dependency 'cssbundling-rails', '~> 1.1', '>= 1.1.2'
-  spec.add_dependency 'jsbundling-rails', '~> 1.1', '>= 1.1.1'
+  spec.add_dependency 'rails', '>= 7.0'
+  spec.add_dependency 'inline_svg', '>= 1.9'
+  spec.add_dependency 'cssbundling-rails', '>= 1.1'
+  spec.add_dependency 'jsbundling-rails', '>= 1.1'
 end
