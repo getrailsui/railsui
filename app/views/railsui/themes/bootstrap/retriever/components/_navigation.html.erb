@@ -6,7 +6,7 @@
 
   <%= render "railsui/shared/sticky_subhead", title: "Navbar", subtitle: "Base" %>
   <div class="rui dark:p-6 dark:rounded-lg">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-body">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <%= image_tag Railsui.theme_logo_url %>
@@ -39,7 +39,7 @@
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-secondary" type="submit">Search</button>
+            <button class="btn btn-secondary" type="submit">Search</button>
           </form>
         </div>
       </div>
@@ -47,7 +47,7 @@
   </div>
 
 <% content_for :html, flush: true do %>
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg bg-body">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <%= Railsui.config.theme.humanize %>
@@ -88,7 +88,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg bg-body">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <%%= Railsui.config.theme.humanize %>
@@ -129,7 +129,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%nav.navbar.navbar-expand-lg
+%nav.navbar.navbar-expand-lg.bg-body
   .container-fluid
     %a.navbar-brand{:href => "#"}
       = Railsui.config.theme.humanize %>

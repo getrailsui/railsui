@@ -13,11 +13,22 @@ Rails UI ships with components and views wrapped up in theme form. Each theme ut
 
 ## Installation
 
-Add this line to your application's Gemfile:
+After grabbing a license you will need to add an annoying but necessary line to your `Gemfile`. Feel free to save the code and contact information in an environment variable for extra security.
+
+Special characters in the email address must be URL encoded. So instead of the @ symbol they must enter %40. Head [here](https://www.urlencoder.io/) to encode a string.
 
 ```ruby
-gem 'railsui', git: "<git link shared with you>"
+gem sources --add https://john%40doe.com:8c21df8f-6273-4932-b4ba-8bcc723ef500:railsui.com@rails-ui.rubygem.pub
+
 ```
+
+The license key and Rails UI fingerprint should be separated by a colon (:).
+
+The code above translates to the following:
+
+- Contact email: `john@doe.com`
+- License key: `8c21df8f-6273-4932-b4ba-8bcc723ef500`
+- Activation fingerprint: `railsui.com`
 
 And then execute:
 
@@ -47,7 +58,6 @@ After configuring your Rails UI install, you will see a series of themes. Choose
 
 Note: The theme list will grow as Rails UI does.
 
-
 ### Adding pages
 
 Because we take a theme-first approach to design with Rails UI, you can install pre-designed one-off pages. Pages are a work in progress, and each theme will have multiple available for install in the future.
@@ -56,14 +66,13 @@ Because we take a theme-first approach to design with Rails UI, you can install 
 
 After you configure Rails UI, you can preview the design system. There you will find a collection of components and best practices for real-world usage of your Rails UI theme. Use this as a guide to add a new design to your application, but please don't take it as gosple. Design is less rigid than programming and often needs a little tweaking as you go. My goal is to give you a hell of a good head start.
 
-
-
 ## Frequently Asked Questions
 
 <details>
   <summary>What is Rails UI? </summary>
 
-  [Rails UI](https://railsui.com) is plug-and-play UI for Ruby on Rails applications. It takes a theme-based approach to product design and offers a suite of pre-designed components and pages for rails developer looking to move fast but look good doing so.
+[Rails UI](https://railsui.com) is plug-and-play UI for Ruby on Rails applications. It takes a theme-based approach to product design and offers a suite of pre-designed components and pages for rails developer looking to move fast but look good doing so.
+
 </details>
 
 <details>
@@ -142,45 +151,48 @@ Rails UI installs a custom template engine configured when installed. The engine
 Designing a proper e-mail template takes a lot of work, and Rails UI takes out the guesswork of supporting many e-mail clients.
 
 Bundled with your theme is a customized `mailer.html.erb` layout file and a few helpers to make coding additional e-mails easier. We've bundled a few templates to get you started, including a minimal, promotional, and transactional template. All Devise e-mails come ready to use too.
+
 </details>
 
 <details>
   <summary>Is this an application template for Rails?</summary>
 
-  No. Well, kind of, but mostly this is a hybrid Rails engine not like other engines you've probably used. You can think of Rails UI as a source of truth for design elements, components, and views that significantly influence what your end users see when interacting with your app. It takes the guesswork out of the design problem.
+No. Well, kind of, but mostly this is a hybrid Rails engine not like other engines you've probably used. You can think of Rails UI as a source of truth for design elements, components, and views that significantly influence what your end users see when interacting with your app. It takes the guesswork out of the design problem.
 
-  **Rails UI is meant for brand new Rails applications.** You'll want to use it on the "first run" so you can establish the foundation for assets and design patterns early on. To use Rails UI you need to choose a theme (more themes coming soon) that will act as the basis for future design elements.
+**Rails UI is meant for brand new Rails applications.** You'll want to use it on the "first run" so you can establish the foundation for assets and design patterns early on. To use Rails UI you need to choose a theme (more themes coming soon) that will act as the basis for future design elements.
+
 </details>
 
 <details>
   <summary>What happens when I configure Rails UI? </summary>
 
-  Once configured Rails UI will:
+Once configured Rails UI will:
 
-  - Generate a custom configuration yaml file railsui.yml that's required to theme your new app.
-  - Install dependencies and any necessary assets.
-  - Generate a custom tailored design system for repeatable web elements. Think of this as a system for providing design direction when creating new features. This includes typography, font elements, and SVG icons.
-  - Optionally install one-off templates (i.e. About us, Pricing, etc...). Use these as a starting point.
-  - Install scaffold templates that follow the theme and CSS framework you chose.
-  - After installing the Rails UI gem and running the installer, you may configure your application preferences.
+- Generate a custom configuration yaml file railsui.yml that's required to theme your new app.
+- Install dependencies and any necessary assets.
+- Generate a custom tailored design system for repeatable web elements. Think of this as a system for providing design direction when creating new features. This includes typography, font elements, and SVG icons.
+- Optionally install one-off templates (i.e. About us, Pricing, etc...). Use these as a starting point.
+- Install scaffold templates that follow the theme and CSS framework you chose.
+- After installing the Rails UI gem and running the installer, you may configure your application preferences.
 </details>
 
 <details>
   <summary>Where are all the Turbo goodies?</summary>
 
-  We're just hitting ground with Rails UI so expect to see additional components and solutions in the future. We have loads of ideas but would always love to hear yours as well.
+We're just hitting ground with Rails UI so expect to see additional components and solutions in the future. We have loads of ideas but would always love to hear yours as well.
+
 </details>
 
 <details>
   <summary>Is this code open-sourced?</summary>
 
-  While we are kicking the tires with an alpha version of Rails UI it is free and clear to try out but not redistribute.
+While we are kicking the tires with an alpha version of Rails UI it is free and clear to try out but not redistribute.
 
-  Our _evenutal_ license model will be a non-exclusive one in which essentially means you don't have permission to modify or share Rails UI but you can use it freely in your projects.
+Our _evenutal_ license model will be a non-exclusive one in which essentially means you don't have permission to modify or share Rails UI but you can use it freely in your projects.
 
-  Eventually, when the official first release drops, an ongoing subscription is required in order to ship new themes and updates in an ongoing fashion.
+Eventually, when the official first release drops, an ongoing subscription is required in order to ship new themes and updates in an ongoing fashion.
+
 </details>
-
 
 ## Updates
 
