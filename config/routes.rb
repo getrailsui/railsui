@@ -1,7 +1,6 @@
 Railsui::Engine.routes.draw do
   resource :admin, only: :show
   resource :configuration, only: [:create, :update]
-  resource :docs, only: :show
   resource :systems, only: :show
   resource :routes, only: :show
 
@@ -68,16 +67,6 @@ Railsui::Engine.routes.draw do
       get :promotion
       get :transactional
     end
-  end
-
-  namespace :docs do
-    get :configuration
-    get :design_system
-    get :installation
-    get :interaction
-    get :themes
-    get :updates
-    get :faqs
   end
 
   scope controller: :page do

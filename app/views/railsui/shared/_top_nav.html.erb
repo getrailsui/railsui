@@ -1,7 +1,7 @@
  <nav role="primary nav" class="text-sm lg:auto full">
   <ul class="flex items-center lg:space-x-3 space-x-3">
     <li>
-      <%= nav_link_to docs_path, class: "lg:p-2 font-semibold hover:text-indigo-600 flex items-center hover:dark:text-indigo-400 #{params[:controller].include?("docs") ? "text-indigo-600 dark:text-indigo-300" : "text-slate-800 dark:text-slate-300" }", active_class: "text-indigo-600" do %>
+      <%= nav_link_to "https://railsui.com/docs", class: "lg:p-2 font-semibold hover:text-indigo-600 flex items-center hover:dark:text-indigo-400 #{params[:controller].include?("docs") ? "text-indigo-600 dark:text-indigo-300" : "text-slate-800 dark:text-slate-300" }", active_class: "text-indigo-600", target: :_blank do %>
         <%= render_svg "book", styles: "stroke-current w-5 h-5 mr-2 flex-shrink-0" %>
         <span>Docs</span>
       <% end %>
