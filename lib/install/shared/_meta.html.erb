@@ -2,47 +2,89 @@
 
 Put a favicon.ico or favicon.svg (preferred) in your public/ folder and add favicon_link_tag "favicon.svg" to your layout inside the <head></head> tags.
 
-You may optionally reach for the meta_tags gem and do this all dynamically. This is on the roadmap to support in the future.
+You may optionally reach for the meta_tags gem as I did below and do this all dynamically.
 
-Below are the recommended tags to include for best discoverability between apps and services.
+Below are the recommended tags to include for best discoverability between apps and services. You don't need everything listed to see success but many apps now query open graph tags to find assets and content for link previews so it goes a long way (i.e., Slack, Twitter, Facebook).
 
 Generate icons:
-https://www.favicon-generator.org/
+https://redketchup.io/favicon-generator (generate from an image)
 
-Tips: Before generating all icons, I typically start with a icon that is atleast 512x512 in size. It can have a transparent background (.png, .svg) but I'd recommend something more bold and easily discoverable.
+Tip: Before generating icons, I typically start with a icon that is atleast 512x512 in size. It can have a transparent background (.png, .svg). Keep it as simple as possible.
 
-Preview:
+Free editor/vector tool:
+https://figma.com
+
+Previewing:
 https://www.opengraph.xyz/
 
-<!--
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2d89ef">
-<meta name="msapplication-TileColor" content="#2d89ef">
-<meta name="theme-color" content="#ffffff">
--->
 
-<!-- Twitter
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@YourAccount">
-<meta name="twitter:creator" content="@YourAccount">
-<meta name="twitter:title" content="Title of your page">
-<meta name="twitter:url" content="URL of your page">
-<meta name="twitter:description" content="Your description here">
-<meta name="twitter:image:src" content="URL of image">
--->
+# Usage:
 
-<!-- Open Graph
-<meta property="og:title" content="ENTER PAGE TITLE">
-<meta property="og:type" content="website">
-<meta property="og:url" content="ENTER PAGE URL">
-<meta property="og:image" content="URL OF IMAGE">
-<meta property="og:image:width" content="1240">
-<meta property="og:image:height" content="650">
-<meta property="og:site_name" content="ENTER YOUR SITE NAME">
-<meta property="og:description" content="ENTER YOUR PAGE DESCRIPTION">
-<meta property="fb:app_id" content="ENTER YOUR FB APP ID">
--->
+Title:
+Change the title and description tags below to match your own site. The title displays alongside your site name in a given browser tab next to the favicon.
+
+Description:
+The description is a good place for one to two sentences describing a page OR what the site is all about. You can tweak this on a per-page basis inside your views or controllers. See the metatags gem documentation on tips for doing so: https://github.com/kpumuk/meta-tags#mirrored-values
+
+Images:
+Swap your own images for placeholder ones inside the "assets/images/meta" folder Rails UI copied to your app (jpg, png).
 %>
+
+<%= display_meta_tags(
+  site: "#{Railsui.config.application_name.parameterize}.com", # <!-- change -->,
+  reverse: true,
+  viewport: "width=device-width, initial-scale=1",
+  title: "CHANGE ME",
+  canonical: request.original_url,
+  og: {
+    title: Railsui.config.application_name,
+    type: "website",
+    url: request.original_url,
+    image: [{
+      _: image_url("meta/opengraph.jpg"),
+      width: 1200,
+      height: 630
+    }],
+    site_name: "#{Railsui.config.application_name.parameterize}.com", # <!-- change -->
+    description: "CHANGE ME",
+  },
+  twitter: {
+    title: :title,
+    description: :description,
+    card:  "summary",
+    image: {
+      _: image_url("meta/opengraph-mark.jpg"),
+      width:  400,
+      height: 400,
+    }
+  },
+  author: Railsui.config.application_name,
+  description: "CHANGE ME",
+  icon: [
+    {
+      href: image_url("meta/favicon.svg"),
+      sizes: 'any',
+      type: "image/svg+xml"
+    },
+    {
+      href: image_url("meta/favicon-16x16.png"),
+      sizes: "16x16",
+      type: "images/png"
+    },
+    {
+      href: image_url("meta/android-chrome-192x192.png"),
+      sizes: '192x192',
+      type: "image/png"
+    },
+    {
+      href: image_url("meta/android-chrome-512x512.png"),
+      sizes: '512x512',
+      type: "image/png"
+    },
+    {
+      href: image_url("meta/apple-touch-icon.png"),
+      sizes: '180x180',
+      type: "image/png"
+    }
+  ])
+  %>
