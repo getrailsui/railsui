@@ -26,7 +26,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-indigo-500/25 <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll smooth">
+  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-indigo-500/25 antialiased <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll smooth">
     <%= render "railsui/shared/flash" %>
     <%= render "layouts/railsui/masthead" %>
 
@@ -57,7 +57,7 @@
 
     <%= yield :demo_scripts %>
     <% if Railsui.bootstrap? %>
-     <!-- Hey! If you're wondering why the CDN? This normally gets included in your build (application.js) but for Rails UI we use it this way to keep versions more current and reduce conflicting scripts in the Railsui namespace -->
+      <!-- Hey! If you're wondering why the CDN? This normally gets included in your build (application.js) but for Rails UI we use it this way to keep versions more current and reduce conflicting scripts in the Railsui namespace -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <% end %>
   </body>

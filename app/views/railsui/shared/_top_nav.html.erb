@@ -1,7 +1,7 @@
- <nav role="primary nav" class="text-sm lg:auto full">
-  <ul class="flex items-center lg:space-x-3 space-x-3">
+ <nav role="primary nav" class="text-sm sm:w-auto w-full  sm:bg-none bg-white z-50 absolute left-0 top-[58px] sm:static sm:shadow-none shadow-lg">
+  <ul class="sm:flex items-center sm:space-x-3 space-x-0">
     <li>
-      <%= nav_link_to "https://railsui.com/docs", class: "lg:p-2 font-semibold hover:text-indigo-600 flex items-center hover:dark:text-indigo-400 #{params[:controller].include?("docs") ? "text-indigo-600 dark:text-indigo-300" : "text-slate-800 dark:text-slate-300" }", active_class: "text-indigo-600", target: :_blank do %>
+      <%= nav_link_to "https://railsui.com/docs", class: "sm:p-2 font-semibold hover:text-indigo-600 flex items-center justify-center hover:dark:text-indigo-400 py-4 sm:text-sm text-base #{params[:controller].include?("docs") ? "text-indigo-600 dark:text-indigo-300" : "text-slate-800 dark:text-slate-300" }", active_class: "text-indigo-600", target: :_blank do %>
         <%= render_svg "book", styles: "stroke-current w-5 h-5 mr-2 flex-shrink-0" %>
         <span>Docs</span>
       <% end %>
@@ -9,16 +9,23 @@
 
     <% if Railsui.config.css_framework.present? %>
       <li>
-        <%= nav_link_to systems_path, class: "lg:p-2 font-semibold hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center justify-center text-slate-800 dark:text-slate-300", active_class: "text-indigo-600 dark:text-indigo-300" do %>
+        <%= nav_link_to systems_path, class: "sm:p-2 font-semibold hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center justify-center text-slate-800 dark:text-slate-300 py-4 sm:text-sm text-base", active_class: "text-indigo-600 dark:text-indigo-300" do %>
           <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>
           <span>Design system</span>
         <% end %>
       </li>
     <% end %>
     <li>
-      <%= nav_link_to root_path, class: "lg:p-2 font-semibold text-slate-800 flex items-center justify-center hover:text-indigo-600 hover:dark:text-indigo-400 text-slate-800 dark:text-slate-300", active_class: "text-indigo-600" do %>
+      <%= nav_link_to root_path, class: "sm:p-2 font-semibold text-slate-800 flex items-center justify-center hover:text-indigo-600 hover:dark:text-indigo-400 text-slate-800 dark:text-slate-300 py-4 sm:text-sm text-base", active_class: "text-indigo-600" do %>
         <%= render_svg "settings", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>
         <span>Configuration</span>
+      <% end %>
+    </li>
+
+    <li>
+      <%= nav_link_to "https://railsui.com/pricing", class: "sm:p-2 font-semibold text-slate-800 flex items-center justify-center hover:text-indigo-600 hover:dark:text-indigo-400 text-slate-800 dark:text-slate-300 py-4 sm:text-sm text-base" do %>
+        <%= render_svg "icons/outline/sparkles", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>
+        <span>Become an early supporter</span>
       <% end %>
     </li>
   </ul>
