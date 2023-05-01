@@ -1,8 +1,12 @@
+![Rails UI Docs](https://f001.backblazeb2.com/file/railsui/docs/rui-docs-header.png)
+
 # Rails UI
 
-Welcome to Rails UI—a plug-and-play solution for Ruby on Rails developers needing product design support.
+Rails UI is a powerful tool for Ruby on Rails developers to enhance the design of their applications quickly and easily.
 
-Rails UI ships with components and views wrapped up in theme form. Each theme utilizes a CSS framework of your choice. Leverage a bundled design system to scale your apps faster and more consistently.
+By providing pre-built and customizable UI components, Rails UI streamlines front-end development and allows developers to focus on building robust features that provide exceptional user experiences.
+
+With Rails UI, you can easily bring professional-grade design to your Ruby on Rails applications, boosting engagement and improving user satisfaction.
 
 ### Links
 
@@ -13,24 +17,12 @@ Rails UI ships with components and views wrapped up in theme form. Each theme ut
 
 ## Installation
 
-After grabbing a license you will need to add an annoying but necessary line to your `Gemfile`. Feel free to save the code and contact information in an environment variable for extra security.
-
-Special characters in the email address must be URL encoded. So instead of the @ symbol they must enter %40. Head [here](https://www.urlencoder.io/) to encode a string.
+> Free while in alpha
 
 ```ruby
-gem sources --add https://john%40doe.com:8c21df8f-6273-4932-b4ba-8bcc723ef500:railsui.com@rails-ui.rubygem.pub
-
+# Gemfile
+gem "railsui", github: "getrailsui/railsui"
 ```
-
-The license key and Rails UI fingerprint should be separated by a colon (:).
-
-The code above translates to the following:
-
-- Contact email: `john@doe.com`
-- License key: `8c21df8f-6273-4932-b4ba-8bcc723ef500`
-- Activation fingerprint: `railsui.com`
-
-And then execute:
 
 ```bash
 $ bundle install
@@ -60,7 +52,7 @@ Note: The theme list will grow as Rails UI does.
 
 ### Adding pages
 
-Because we take a theme-first approach to design with Rails UI, you can install pre-designed one-off pages. Pages are a work in progress, and each theme will have multiple available for install in the future.
+Because we take a theme-first approach to design with Rails UI, you can install pre-designed one-off pages. **Pages are a work in progress**, and each theme will have multiple available for install.
 
 ## Design system
 
