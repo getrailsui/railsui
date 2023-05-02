@@ -28,5 +28,10 @@ Gem.loaded_specs['railsui'].dependencies.each do |d|
           helper Railsui::MailHelper
         end
       end
+
+      initializer "railsui.assets.precompile" do |app|
+        app.config.assets.paths << root.join("builds").to_s
+        app.config.assets.precompile << "railsui/application.css"
+      end
    end
  end
