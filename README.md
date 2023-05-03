@@ -14,7 +14,7 @@ With Rails UI, you can easily bring professional-grade design to your Ruby on Ra
 
 - [Website](https://railsui.com)
 - [Documentation](https://railsui.com/docs)
-- Community - Coming soon
+- [Discussions](https://github.com/getrailsui/railsui/discussions)
 - [Twitter](https://twitter.com/railsui_)
 
 ## Installation
