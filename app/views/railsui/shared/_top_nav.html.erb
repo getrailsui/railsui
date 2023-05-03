@@ -1,4 +1,4 @@
- <nav role="primary nav" class="text-sm sm:w-auto w-full  sm:bg-none bg-white z-50 absolute left-0 top-[58px] sm:static sm:shadow-none shadow-lg">
+ <nav role="primary nav" class="text-sm sm:w-auto w-full  sm:bg-transparent bg-white z-40 absolute left-0 top-[58px] sm:static sm:shadow-none shadow-lg">
   <ul class="sm:flex items-center sm:space-x-3 space-x-0">
     <li>
       <%= nav_link_to "https://railsui.com/docs", class: "sm:p-2 font-semibold hover:text-indigo-600 flex items-center justify-center hover:dark:text-indigo-400 py-4 sm:text-sm text-base #{params[:controller].include?("docs") ? "text-indigo-600 dark:text-indigo-300" : "text-slate-800 dark:text-slate-300" }", active_class: "text-indigo-600", target: :_blank do %>
