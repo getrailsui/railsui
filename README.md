@@ -2,6 +2,8 @@
 
 # Rails UI
 
+> Free while in alpha
+
 Rails UI is a powerful tool for Ruby on Rails developers to enhance the design of their applications quickly and easily.
 
 By providing pre-built and customizable UI components, Rails UI streamlines front-end development and allows developers to focus on building robust features that provide exceptional user experiences.
@@ -16,8 +18,6 @@ With Rails UI, you can easily bring professional-grade design to your Ruby on Ra
 - [Twitter](https://twitter.com/railsui_)
 
 ## Installation
-
-> Free while in alpha
 
 ```ruby
 # Gemfile
