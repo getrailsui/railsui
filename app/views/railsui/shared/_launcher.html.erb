@@ -1,7 +1,7 @@
 <div>
   <!-- Rails UI Launcher - Only visible in development -->
   <div class="rui-launcher" x-data="{ open: false }">
-    <button type="button" @click="open = true">
+    <button type="button" @click="open = true" data-turbo="false">
       <%= icon "r", path: "r.svg", classes: "rui-r" %>
     </button>
     <nav x-show="open"  @click.outside="open = false" x-transition>
