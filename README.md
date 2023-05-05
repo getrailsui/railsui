@@ -190,3 +190,9 @@ Eventually, when the official first release drops, an ongoing subscription is re
 Rails UI ships as a gem. Future releases are available to clone/pull from a private git-hosted group of which you will have access to with an active subscription.
 
 If you subscription lapses you can still use Rails UI but you lose access to ongoing updates and additional themes to choose from.
+
+## Become an early supporter ❤️
+
+Help shape the future of Rails UI as [an early supporter](https://railsui.com/pricing).
+
+Save money and support ongoing development by locking in a less costly early supporter lifetime contribution. Your one-time purchase will help keep this project alive and thriving for years to come and you'll retain access to Rails UI for good.
