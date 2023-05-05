@@ -183,7 +183,6 @@ While we are kicking the tires with an alpha version of Rails UI it is free and 
 Our _evenutal_ license model will be a non-exclusive one in which essentially means you don't have permission to modify or share Rails UI but you can use it freely in your projects.
 
 Eventually, when the official first release drops, an ongoing subscription is required in order to ship new themes and updates in an ongoing fashion.
-
 </details>
 
 ## Updates
