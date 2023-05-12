@@ -18,16 +18,16 @@
     <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %> %>
 <%- elsif attribute.field_type == :date_select -%>
-    <%%= form.label :<%= attribute.column_name %> %>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
     <%%= form.text_field :<%= attribute.column_name %>, class: "form-input" %>
 <%- elsif attribute.field_type == :datetime_select -%>
-    <%%= form.label :<%= attribute.column_name %> %>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
     <%%= form.datetime_select :<%= attribute.column_name %>, class: "form-input-datetime-select" %>
 <%- elsif attribute.field_type == :check_box -%>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-input-checkbox" %>
     <%%= form.label :<%= attribute.column_name %>, class: "ml-2" %>
 <%- else -%>
-    <%%= form.label :<%= attribute.column_name %>, class: "label" %>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-input" %>
 <%- end -%>
   </div>
