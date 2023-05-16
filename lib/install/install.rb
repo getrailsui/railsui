@@ -67,29 +67,54 @@ def add_stimulus
 end
 
 def add_gems
-  gem "cssbundling-rails"
-  gem 'devise'
-  gem "jsbundling-rails"
-  gem 'name_of_person'
-  gem 'meta-tags'
+  add_gem_if_not_installed("cssbundling-rails")
+  add_gem_if_not_installed("devise")
+  add_gem_if_not_installed("jsbundling-rails")
+  add_gem_if_not_installed("name_of_person")
+  add_gem_if_not_installed("meta-tags")
+end
+
+def add_gem_if_not_installed(gem_name)
+  gemfile_path = Rails.root.join('Gemfile')
+  gemfile_content = File.read(gemfile_path)
+
+  unless gem_installed?(gem_name, gemfile_content)
+    gem(gem_name)
+  end
+end
+
+def gem_installed?(gem_name, gemfile_content)
+  gemfile_content.include?("gem '#{gem_name}'") || gemfile_content.include?("gem \"#{gem_name}\"")
 end
 
 # Install Devise
-def add_users
-  # Install Devise
-  generate "devise:install"
 
-  # Configure Devise
-  environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }",
+def devise_installed?
+  gemfile_path = Rails.root.join('Gemfile')
+  gemfile_content = File.read(gemfile_path)
+
+  gemfile_content.include?("gem 'devise'") || gemfile_content.include?("gem \"devise\"")
+end
+
+def add_users
+  if devise_installed?
+    puts "Devise is already installed 🏄‍♂️"
+  else
+    # Install Devise
+    generate "devise:install"
+
+    # Configure Devise
+    environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }",
         env: 'development'
 
-  # Create Devise User
-  generate :devise, "User", "first_name", "last_name", "admin:boolean"
+    # Create Devise User
+    generate :devise, "User", "first_name", "last_name", "admin:boolean"
 
-  # set admin boolean to false by default
-  in_root do
-    migration = Dir.glob("db/migrate/*").max_by{ |f| File.mtime(f) }
-    gsub_file migration, /:admin/, ":admin, default: false"
+    # set admin boolean to false by default
+    in_root do
+      migration = Dir.glob("db/migrate/*").max_by{ |f| File.mtime(f) }
+      gsub_file migration, /:admin/, ":admin, default: false"
+    end
   end
 end
 
