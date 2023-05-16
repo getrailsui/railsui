@@ -97,24 +97,20 @@ def devise_installed?
 end
 
 def add_users
-  if devise_installed?
-    puts "Devise is already installed 🏄‍♂️"
-  else
-    # Install Devise
-    generate "devise:install"
+  # Install Devise
+  generate "devise:install"
 
-    # Configure Devise
-    environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }",
-        env: 'development'
+  # Configure Devise
+  environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }",
+      env: 'development'
 
-    # Create Devise User
-    generate :devise, "User", "first_name", "last_name", "admin:boolean"
+  # Create Devise User
+  generate :devise, "User", "first_name", "last_name", "admin:boolean"
 
-    # set admin boolean to false by default
-    in_root do
-      migration = Dir.glob("db/migrate/*").max_by{ |f| File.mtime(f) }
-      gsub_file migration, /:admin/, ":admin, default: false"
-    end
+  # set admin boolean to false by default
+  in_root do
+    migration = Dir.glob("db/migrate/*").max_by{ |f| File.mtime(f) }
+    gsub_file migration, /:admin/, ":admin, default: false"
   end
 end
 
