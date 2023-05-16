@@ -88,14 +88,6 @@ def gem_installed?(gem_name, gemfile_content)
 end
 
 # Install Devise
-
-def devise_installed?
-  gemfile_path = Rails.root.join('Gemfile')
-  gemfile_content = File.read(gemfile_path)
-
-  gemfile_content.include?("gem 'devise'") || gemfile_content.include?("gem \"devise\"")
-end
-
 def add_users
   # Install Devise
   generate "devise:install"
