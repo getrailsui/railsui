@@ -58,6 +58,10 @@ Because we take a theme-first approach to design with Rails UI, you can install 
 
 After you configure Rails UI, you can preview the design system. There you will find a collection of components and best practices for real-world usage of your Rails UI theme. Use this as a guide to add a new design to your application, but please don't take it as gosple. Design is less rigid than programming and often needs a little tweaking as you go. My goal is to give you a hell of a good head start.
 
+## Updates
+
+While in alpha you can run `bundle update railsui` from within your project and it should fetch the most recent version of the gem/engine direct from GitHub. I'll be tagging major releases once features are more solidified.
+
 ## Frequently Asked Questions
 
 <details>
