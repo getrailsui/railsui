@@ -33,7 +33,7 @@
     </div>
   </div>
 <% else %>
-  <details class="py-6 group marker:content-[''] bg-gradient-to-b from-slate-50 to-white px-6">
+  <details class="py-6 group marker:content-[''] bg-gradient-to-b from-slate-50 to-white px-6 dark:from-slate-800 dark:to-slate-800">
     <summary class="flex items-center w-full cursor-pointer select-none justify-between text-left text-base font-semibold text-slate-900 dark:text-slate-200 group-open:text-indigo-300 group-open:dark:text-indigo-400 [&amp;::-webkit-details-marker]:hidden">
     <div class="flex items-center">
       <% if route[:verb].present? %>
@@ -41,7 +41,7 @@
           <div class="inline-flex items-center font-bold px-1 h-5 rounded text-xs -ml-1 <%= route_verb_classes(route[:verb]) %>"><%= route[:verb] %></div>
         </div>
       <% end %>
-      <span class="text-sm text-slate-500 font-normal"
+      <span class="text-sm dark:text-slate-300 text-slate-500 font-normal"
       ><%= route[:reqs] %></span>
     </div>
     <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-slate-700 dark:stroke-slate-400 group-open:stroke-indigo-500" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>

@@ -19,6 +19,9 @@ With Rails UI, you can easily bring professional-grade design to your Ruby on Ra
 
 ## Installation
 
+Before installing the gem, ensure both your node and [yarn](https://yarnpkg.com/) versions are up to date for best results. Using something like [nvm](https://github.com/nvm-sh/nvm) helps with node versions. I like to use [homebrew](https://brew.sh/) for yarn and periodically run `brew upgrade yarn`.
+
+
 ```ruby
 # Gemfile
 gem "railsui", github: "getrailsui/railsui"

@@ -10,7 +10,7 @@
   </script>
 <% end %>
 
-<div class="flex flex-col justify-center items-center h-full p-4 antialiased dark:text-white">
+<div class="flex flex-col justify-center items-center h-full antialiased dark:text-white sm:py-16 py-10">
   <div class="max-w-6xl sm:text-left text-center mx-auto rounded-3xl relative z-20 sm:px-16 sm:py-0 p-6 bg-white dark:bg-slate-900">
     <div class="flex flex-wrap justify-between items-end">
       <div class="flex items-end sm:justify-start justify-center flex-1">
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="my-16 max-w-3xl">
+    <div class="my-10 max-w-3xl">
       <h3 class="font-extrabold text-5xl text-slate-800 tracking-tight dark:text-white">All the tools for full-stack bliss.</h3>
       <p class="mt-6 text-2xl text-slate-600 dark:text-slate-300">Optimized for developer happiness, Ruby on Rails compresses the complexity of modern web app development.</p>
       <p class="mt-6 text-slate-700 leading-relaxed text-lg max-w-xl dark:text-slate-400">Rails has united and cultivated a strong tribe around a wide set of heretical thoughts about the nature of programming and programmers.</p>
@@ -166,6 +166,6 @@
       </div>
     </div>
   </div>
-  <div class="absolute bottom-3 left-3 z-50 text-xs font-mono text-white text-opacity-50">
+  <div class="sm:block hidden fixed bottom-3 left-3 z-50 text-xs font-mono text-white text-opacity-50">
     Made by <%= link_to "@justalever", "https://twitter.com/justalever", target: :_blank, class: "text-white underline" %>. Follow <%= link_to "Rails UI", "https://twitter.com/railsui_", target: :_blank, class: "text-white underline" %> on Twitter.
   </div>
