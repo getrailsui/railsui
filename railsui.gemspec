@@ -29,6 +29,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 7.0'
   spec.add_dependency 'inline_svg', '>= 1.9'
-  spec.add_dependency 'jsbundling-rails', '>= 1.1'
-  spec.add_dependency 'cssbundling-rails', '>= 1.1'
 end

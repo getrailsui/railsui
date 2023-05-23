@@ -24,7 +24,7 @@ else
     # Copy customized Bootstrap CSS
     copy_file "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets/application.bootstrap.scss",
       "app/assets/stylesheets/application.bootstrap.scss"
-    run "yarn add sass #{Railsui::Default::BOOTSTRAP_INSTALL_PACKAGE} bootstrap-icons @popperjs/core"
+    run "yarn add sass #{Railsui::Default::BOOTSTRAP_INSTALL_PACKAGE} bootstrap-icons @popperjs/core stimulus-use"
 
     # Add bootstrap icons even though Rails UI doesn't make use of them
     inject_into_file "config/initializers/assets.rb", after: /.*Rails.application.config.assets.paths.*\n/ do
@@ -49,10 +49,6 @@ else
     else
       directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise"), force: true
     end
-  end
-
-  def procfile_setup
-    append_to_file "Procfile.dev", %(css: yarn build:css --watch\n)
   end
 
   def copy_images_and_assets
@@ -81,20 +77,34 @@ else
 
   # build scripts
   def add_build_scripts
-    build_script = "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    say "Append build:css script to package.json"
 
-    case `npx -v`.to_f
-    when 7.1...8.0
-      run %(npm set-script build:css "#{build_script}")
-      run %(yarn build:css)
-    when (8.0..)
-      run %(npm pkg set scripts.build:css="#{build_script}")
-      run %(yarn build:css)
-    else
-      say %(Add "scripts": { "build:css": "#{build_script}" } to your package.json), :green
+    insert_into_file Rails.application.root.join("package.json"),
+    after: '"scripts": {' do
+      "\n\t\t" + '"build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",'
     end
-    # build it
+
+    say "Append to Procfile.dev"
+    append_to_file "Procfile.dev", %(css: yarn build:css --watch\n)
+
+    say "Run build:css"
     run "yarn build:css"
+  end
+
+  def copy_stimulus_js_controllers
+    say "⚡️ Add Stimulus.js controllers"
+    path = "#{__dir__}/themes/#{Railsui.config.theme}/javascript/controllers"
+    files = Dir.children(path)
+    puts "Controller files: 🗄️ #{files}"
+
+    # copy each controller
+    files.each do |file|
+      file_name = file.gsub("_controller.js", "")
+      copy_file "#{path}/#{file}", Rails.root.join("app/javascript/controllers/#{file}")
+
+      # append each import to controllers/index.js
+      append_to_file "#{Rails.application.root.join("app/javascript/controllers/index.js")}", %(\nimport #{file_name.capitalize}Controller from "./#{file_name}_controller"\napplication.register("#{file_name}", #{file_name.capitalize}Controller)\n)
+    end
   end
 
   say "Stop linking stylesheets automatically"
@@ -121,8 +131,8 @@ else
   say "🤖️ Copy scaffold templates"
   copy_tt_templates
 
-  say "🛹  Configure Procfile.dev"
-  procfile_setup
+  say "⚡️ Copy Stimulus controllers"
+  copy_stimulus_js_controllers
 
   # Fin
   say "#{Railsui.config.css_framework.humanize} theme: #{Railsui.config.theme.humanize} installed 👍", :green

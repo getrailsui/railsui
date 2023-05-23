@@ -32,11 +32,6 @@ def add_css_bundling_setup
       say %(        Add <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css" %> within the <head> tag in your custom layout.)
     end
   end
-
-  unless Rails.root.join("package.json").exist?
-    say "Add default package.json"
-    copy_file "#{__dir__}/package.json", "package.json"
-  end
 end
 
 def remove_importmaps
@@ -59,7 +54,54 @@ def remove_importmaps
 end
 
 def add_esbuild
-  rails_command "javascript:install:esbuild", force: true
+  # rails_command "javascript:install:esbuild", force: true
+  # Node versions make this thing a chore and we want it to be fully automated not dependent on a specific version so we gotta go full manual for now
+
+  if (sprockets_manifest_path = Rails.root.join("app/assets/config/manifest.js")).exist?
+    append_to_file sprockets_manifest_path, %(//= link_tree ../builds\n)
+  end
+
+  if Rails.root.join(".gitignore").exist?
+    append_to_file(".gitignore", %(\n/app/assets/builds/*\n!/app/assets/builds/.keep\n))
+    append_to_file(".gitignore", %(\n/node_modules\n))
+  end
+
+  if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
+    say "Add JavaScript include tag in application layout"
+    insert_into_file app_layout_path.to_s,
+      %(\n    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>), before: /\s*<\/head>/
+  else
+    say "Default application.html.erb is missing!", :red
+    say %(        Add <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %> within the <head> tag in your custom layout.)
+  end
+
+  unless (app_js_entrypoint_path = Rails.root.join("app/javascript/application.js")).exist?
+    say "Create default entrypoint in app/javascript/application.js"
+    empty_directory app_js_entrypoint_path.parent.to_s
+    copy_file "#{__dir__}/application.js", app_js_entrypoint_path
+  end
+
+  unless Rails.root.join("package.json").exist?
+    say "Add Rails UI default package.json which includes esbuild build script"
+    copy_file "#{__dir__}/package.json", "package.json"
+  end
+
+  if Rails.root.join("Procfile.dev").exist?
+    append_to_file "Procfile.dev", "js: yarn build --watch\n"
+  else
+    say "Add default Procfile.dev"
+    copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"
+
+    say "Ensure foreman is installed"
+    run "gem install foreman"
+  end
+
+  say "Add bin/dev to start foreman"
+  copy_file "#{__dir__}/dev", "bin/dev"
+  chmod "bin/dev", 0755, verbose: false
+
+  # esbuild specific
+  run "yarn add esbuild"
 end
 
 def add_stimulus

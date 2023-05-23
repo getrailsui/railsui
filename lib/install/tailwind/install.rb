@@ -83,14 +83,15 @@ else
 
     # Build scripts for good measure
     say "⚡️ Add build:css script"
-    build_script = "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
 
-    if (`npx -v`.to_f < 7.1 rescue "Missing")
-      say %(Add "scripts": { "build:css": "#{build_script}" } to your package.json), :red
-    else
-      run %(npm set-script build:css "#{build_script}")
-      run %(yarn build:css)
+    say "Append build:css script to package.json"
+    insert_into_file Rails.application.root.join("package.json"),
+    after: '"scripts": {' do
+      "\n\t\t" + '"build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",'
     end
+
+    say "Run build:css"
+    run %(yarn build:css)
 
     say "Append to Procfile.dev"
     append_to_file "Procfile.dev", %(css: yarn build:css --watch\n)
