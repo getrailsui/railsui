@@ -109,9 +109,7 @@ def add_stimulus
 end
 
 def add_gems
-  add_gem_if_not_installed("cssbundling-rails")
   add_gem_if_not_installed("devise")
-  add_gem_if_not_installed("jsbundling-rails")
   add_gem_if_not_installed("name_of_person")
   add_gem_if_not_installed("meta-tags")
 end
