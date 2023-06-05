@@ -19,6 +19,13 @@ else
       say "✅ tailwind.config.js already exists"
     end
 
+    # ensure sprockets plays nicely
+    if (sprockets_manifest_path = Rails.root.join("app/assets/config/manifest.js")).exist?
+      gsub_file "app/assets/config/manifest.js", "//= link_directory ../stylesheets .css\n", ""
+      gsub_file "app/assets/config/manifest.js", "//= link_tree ../../javascript .js\n", ""
+      gsub_file "app/assets/config/manifest.js", "//= link_tree ../../../vendor/javascript .js\n", ""
+    end
+
     # remove application.css
     say "⚡️ Remove app/assets/stylesheets/application.css so build output can take over"
     remove_file "app/assets/stylesheets/application.css"
@@ -40,10 +47,7 @@ else
       directory "#{__dir__}/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
     end
 
-    # TODO: Do we need this? - Inherited from railsui/lib/generators/railsui/templates/tailwind/<theme> somehow? Seems it's using the config in `application.rb - g.template_engine :railsui`. Pretty cool.
-    # Keeping for now
     say "⚡️ Add Tailwind-themed scaffold .erb templates"
-    # directory "#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold", Rails.root.join("lib/templates/erb/scaffold"), force: true
     file_names = ["_form.html.erb.tt", "edit.html.erb.tt", "index.html.erb.tt", "new.html.erb.tt", "partial.html.erb.tt", "show.html.erb.tt"]
 
     file_names.each do |name|
@@ -56,7 +60,6 @@ else
 
     # Copy themed globally shared partials
     # These files overide those shipped during first install of Rails UI
-    # TODO: Improve this so we don't have to call explicit file names but rather files within the folder per theme
     say "⚡️ Copy shared partial files"
     shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb", "_nav_menu.html.erb", "_footer.html.erb"]
 

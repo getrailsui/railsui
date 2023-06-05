@@ -54,11 +54,12 @@ def remove_importmaps
 end
 
 def add_esbuild
-  # rails_command "javascript:install:esbuild", force: true
-  # Node versions make this thing a chore and we want it to be fully automated not dependent on a specific version so we gotta go full manual for now
+  # rails_command "javascript:install:esbuild", force: true <<- replacement
 
   if (sprockets_manifest_path = Rails.root.join("app/assets/config/manifest.js")).exist?
     append_to_file sprockets_manifest_path, %(//= link_tree ../builds\n)
+    gsub_file "app/assets/config/manifest.js", "//= link_tree ../../javascript .js\n", ""
+    gsub_file "app/assets/config/manifest.js", "//= link_tree ../../../vendor/javascript .js\n", ""
   end
 
   if Rails.root.join(".gitignore").exist?
@@ -257,7 +258,7 @@ def add_devise_customizations
 initializer_content = <<-RUBY
 Rails.application.config.to_prepare do
   Devise::SessionsController.layout "devise"
-  Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+  Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "devise" }
   Devise::ConfirmationsController.layout "devise"
   Devise::UnlocksController.layout "devise"
   Devise::PasswordsController.layout "devise"

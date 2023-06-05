@@ -35,7 +35,7 @@ document.addEventListener('turbo:load', () => {
 <%= doc_label(:stimulus) %>
 
 <% content_for :html, flush: true do %>
-<div class="notice" role="alert" data-controller="flash">
+<div class="flash flash-warning" role="alert" data-controller="flash">
   <p>...</p>
 </div>
 <% end %>

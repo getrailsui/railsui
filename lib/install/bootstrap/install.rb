@@ -2,11 +2,12 @@ if Rails.root.join("app/assets/stylesheets/application.bootstrap.scss").exist?
   say "🥾 Bootstrap is already installed."
 else
 
-  def swap_sprockets_to_builds
+  # ensure sprockets plays nicely
+  def optimize_sprockets
     if (sprockets_manifest_path = Rails.root.join("app/assets/config/manifest.js")).exist?
-    append_to_file sprockets_manifest_path, %(//= link_tree ../builds\n)
-
-    gsub_file "app/assets/config/manifest.js", "//= link_directory ../stylesheets .css\n", ""
+      gsub_file "app/assets/config/manifest.js", "//= link_directory ../stylesheets .css\n", ""
+      gsub_file "app/assets/config/manifest.js", "//= link_tree ../../javascript .js\n", ""
+      gsub_file "app/assets/config/manifest.js", "//= link_tree ../../../vendor/javascript .js\n", ""
     end
   end
 
@@ -19,8 +20,6 @@ else
   end
 
   def install_bootstrap
-    # source: https://github.com/rails/cssbundling-rails/blob/main/lib/install/bootstrap/install.rb
-
     # Copy customized Bootstrap CSS
     copy_file "#{__dir__}/themes/#{Railsui.config.theme}/stylesheets/application.bootstrap.scss",
       "app/assets/stylesheets/application.bootstrap.scss"
@@ -107,8 +106,8 @@ else
     end
   end
 
-  say "Stop linking stylesheets automatically"
-  swap_sprockets_to_builds
+  say "Make Sprockets behave"
+  optimize_sprockets
 
   say "🎨️ Copy custom CSS"
   copy_custom_css
