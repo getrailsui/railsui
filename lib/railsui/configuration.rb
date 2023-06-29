@@ -19,7 +19,7 @@ module Railsui
 
     def self.load!
       if File.exist?(config_path)
-        config = Psych.safe_load_file(config_path, permitted_classes: [Hash, Railsui::Configuration])
+        config = Psych.load_file(config_path, permitted_classes: [Hash, Railsui::Configuration])
         return config if config.is_a?(Railsui::Configuration)
         new(config)
       else
