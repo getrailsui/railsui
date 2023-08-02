@@ -96,12 +96,11 @@ Installing Rails UI is a quick process that goes something like this:
 #### Gems
 
 We keep the gem list simple because Rails UI focuses less on core application logic.
-
-- [cssbundling-rails](https://github.com/rails/cssbundling-rails)
-- [devise](https://github.com/heartcombo/devise)
-- [jsbundling-rails](https://github.com/rails/jsbundling-rails)
+- [inline_svg](https://github.com/jamesmartin/inline_svg)
+- [devise](https://github.com/heartcombo/dev)ise)
 - [name_of_person](https://github.com/basecamp/name_of_person)
 - [meta-tags](https://github.com/kpumuk/meta-tags)
+- [psych](https://github.com/ruby/psych)
 
 #### Icons
 
@@ -129,9 +128,9 @@ We added the `first_name` and `last_name` attributes for use with the handy [nam
 
 #### Remove importmaps as a default
 
-Rails UI has some opinionated defaults when it comes to assets and JavaScript. We leverage both the [cssbundling-rails](https://github.com/rails/cssbundling-rails) and [jsbundling-rails](https://github.com/rails/jsbundling-rails). Importmaps aren't our preference, so we use these gems to compensate.
+Rails UI has some opinionated defaults when it comes to assets and JavaScript. Importmaps aren't our preference, so we use a custom approach.
 
-esbuild is the default JavaScript build engine. Depending on your chosen CSS framework, we included those dependencies as well. Rails UI currently supports Bootstrap and Tailwind CSS.
+[esbuild](https://esbuild.github.io/) is the default JavaScript build engine. Depending on your chosen CSS framework, we include those dependencies as well. Rails UI currently supports Bootstrap and Tailwind CSS.
 
 #### Add ActiveStorage and ActionText support
 
