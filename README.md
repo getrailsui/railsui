@@ -24,7 +24,7 @@ Before installing the gem, ensure both your node and [yarn](https://yarnpkg.com/
 
 ```ruby
 # Gemfile
-gem "railsui", github: "getrailsui/railsui"
+gem "railsui", github: "getrailsui/railsui", branch: "main"
 ```
 
 ```bash
