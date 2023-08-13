@@ -25,5 +25,8 @@
   "scripts": {
     "build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/railsui/application.tailwind.css -o ./app/assets/builds/railsui/application.css --minify",
     "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds/railsui"
+  },
+  "devDependencies": {
+    "tailwind-scrollbar": "^3.0.4"
   }
 }

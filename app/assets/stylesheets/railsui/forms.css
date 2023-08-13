@@ -20,10 +20,10 @@
   }
 
   + label {
-    @apply inline-flex cursor-pointer text-base leading-6 select-none relative;
+    @apply inline-flex cursor-pointer text-base leading-snug select-none relative;
 
     &:before {
-      @apply content-[""] block bg-slate-300 rounded-full h-6 w-10 mr-2 transition-colors ease-out flex-shrink-0 dark:bg-slate-500;
+      @apply content-[""] block bg-slate-300 rounded-full h-6 w-10 mr-3 transition-colors ease-out flex-shrink-0 dark:bg-slate-500;
     }
 
     &:after {

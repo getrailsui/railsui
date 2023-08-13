@@ -15,6 +15,9 @@ application.register("code", CodeController)
 import CanvasController from "./canvas_controller.js"
 application.register("canvas", CanvasController)
 
+import DialogController from "./dialog_controller.js"
+application.register("dialog", DialogController)
+
 import DropdownController from "./dropdown_controller.js"
 application.register("dropdown", DropdownController)
 
@@ -44,6 +47,9 @@ application.register("smooth", SmoothController)
 
 import TabsController from "./tabs_controller.js"
 application.register("tabs", TabsController)
+
+import PagesController from "./pages_controller.js"
+application.register("pages", PagesController)
 
 import ToggleController from "./toggle_controller.js"
 application.register("toggle", ToggleController)

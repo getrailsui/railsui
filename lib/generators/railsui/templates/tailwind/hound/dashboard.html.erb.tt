@@ -1,0 +1,810 @@
+<%%= render "shared/admin/nav", { header_title: "Dashboard" } do %>
+  <%%= render "shared/admin/create_dropdown" %>
+<%% end %>
+
+<div class="px-4">
+  <div class="flex justify-between items-center mt-4 container mx-auto">
+    <h2 class="text-base font-medium text-slate-700 dark:text-slate-300 mb-0">
+      Recent stats
+    </h2>
+    <div data-controller="modal">
+      <button type="button" class="btn btn-white space-x-2" tabindex="0" data-action="click->modal#open">
+        <%%= icon "cog-6-tooth", classes: "stroke-current w-4 h-4 text-slate-600 dark:text-slate-300" %>
+        <span class="pointer-events-none">Customize dashboard</span>
+      </button>
+      <div aria-labelledby="modal-title" aria-modal="true" data-action="keyup@window->modal#closeWithEsc"
+        data-modal-target="container" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
+        <div class="h-screen w-full relative">
+          <div data-modal-target="content" data-transition-enter-active="transition ease-out duration-300"
+            data-transition-enter-from="transform opacity-0 scale-95"
+            data-transition-enter-to="transform opacity-100 scale-100"
+            data-transition-leave-active="transition ease-in duration-300"
+            data-transition-leave-from="transform opacity-100 scale-100"
+            data-transition-leave-to="transform opacity-0 scale-95"
+            class="hidden rounded shadow-xl max-w-2xl h-auto mx-auto bg-white m-4 p-8 dark:bg-slate-700">
+            <div class="prose prose-indigo dark:bg-slate-700 dark:text-slate-200 m-auto">
+              <h2 id="modal-title" class="dark:text-slate-100">Customize dashboard</h2>
+              <p>This could be some sort of widget enabling interface for the dashboard</p>
+              <div class="flex justify-end items-center flex-wrap space-x-4">
+                <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-12 md:gap-6 gap-4 mt-4 container mx-auto mb-24">
+    <div
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      <div class="flex items-start space-x-3">
+        <div class="rounded-full w-10 h-10 flex items-center justify-center bg-indigo-50 dark:bg-indigo-600/30">
+          <%%= icon "envelope-open", classes: "w-5 h-5 text-indigo-600 stroke-current dark:text-indigo-300" %>
+        </div>
+        <div class="flex-1">
+          <span class="text-indigo-500 dark:text-indigo-400/90 text-sm font-medium">Open deals</span>
+          <div class="flex items-center space-x-2 mt-1 mb-2">
+            <h3 class="h2 tracking-tight">32</h3>
+            <p class="text-red-600">-2</p>
+          </div>
+          <p class="text-sm text-slate-400">vs last month: <strong
+              class="text-slate-600 dark:text-slate-400">34</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      <div class="flex items-start space-x-3">
+        <div class="rounded-full w-10 h-10 flex items-center justify-center bg-red-50 dark:bg-red-500/20">
+          <%%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 stroke-current dark:text-red-400/90" %>
+        </div>
+        <div class="flex-1">
+          <span class="text-red-400 dark:text-red-400/90 text-sm font-medium">Untouched deals</span>
+          <div class="flex items-center space-x-2 mt-1 mb-2">
+            <h3 class="h2 tracking-tight">40</h3>
+            <p class="text-green-600">+1</p>
+          </div>
+          <p class="text-sm text-slate-500">vs last month: <strong
+              class="text-slate-600 dark:text-slate-400">39</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      <div class="flex items-start space-x-3">
+        <div class="rounded-full w-10 h-10 flex items-center justify-center bg-blue-50 dark:bg-blue-500/20">
+          <%%= icon "phone-arrow-up-right", classes: "w-5 h-5 text-blue-600 stroke-current dark:text-blue-400/80" %>
+        </div>
+        <div class="flex-1">
+          <span class="text-blue-500 dark:text-blue-300/90 text-sm font-medium">Calls today</span>
+          <div class="flex items-center space-x-2 mt-1 mb-2">
+            <h3 class="h2 tracking-tight">25</h3>
+            <p class="text-green-600">+7</p>
+          </div>
+          <p class="text-sm text-slate-500">vs yesterday: <strong
+              class="text-slate-600 dark:text-slate-400">18</strong>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      <div class="flex items-start space-x-3">
+        <div class="rounded-full w-10 h-10 flex items-center justify-center bg-green-50 dark:bg-green-500/20">
+          <%%= icon "currency-dollar", classes: "w-6 h-6 text-green-600 stroke-current dark:text-green-400/80" %>
+        </div>
+        <div class="flex-1">
+          <span class="text-green-500 dark:text-green-400/90 text-sm font-medium">Revenue this month</span>
+
+          <div class="flex items-center space-x-2 mt-1 mb-2">
+            <h3 class="h3 tracking-tight">$125,302</h3>
+            <p class="text-green-600">+2%</p>
+          </div>
+          <p class="text-sm text-slate-500">vs last month: <strong
+              class="text-slate-600 dark:text-slate-400">$102,103</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-12 flex items-center">
+      <div class="h-px w-1/2 bg-gradient-to-l from-slate-200 dark:from-slate-600"></div>
+      <div class="h-px w-1/2 bg-gradient-to-r from-slate-200 dark:from-slate-600"></div>
+    </div>
+
+    <div
+      class="lg:col-span-7 md:col-span-6 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6 dark:text-slate-300">
+      <div class="flex items-start justify-between pb-10">
+        <div class="flex-1">
+          <h4 class="font-medium text-slate-800 dark:text-slate-300 tracking-tight text-xl m-0">Deal revenue forecast
+          </h4>
+        </div>
+        <select name="revenue_period" id="revenue_period"
+          class="form-select w-1/5 shadow-none bg-slate-50 border-none text-sm dark:bg-slate-900">
+          <option value="month">Year</option>
+          <option value="quarter">Quarter</option>
+          <option value="annual">Month</option>
+        </select>
+      </div>
+      <div class="grid grid-cols-12 items-start">
+        <div class="lg:col-span-4 col-span-12">
+          <div>
+            <p class="mb-3 text-slate-700 dark:text-slate-300">Company goals</p>
+            <div id="company_goals" data-dashboard-target="companygoals"></div>
+          </div>
+        </div>
+        <div class="lg:col-span-8 col-span-12">
+          <div>
+            <p class="mb-3 text-slate-700 dark:text-slate-300">Team goals</p>
+            <div id="team_goals" class="w-full -ml-6 -mt-4" data-dashboard-target="teamgoals"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="lg:col-span-5 md:col-span-6 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
+      <div class="flex items-center justify-between">
+        <h4 class="font-medium text-slate-800 dark:text-slate-300 tracking-tight text-xl m-0">New contacts</h4>
+        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+      </div>
+
+      <ul class="divide-y mt-6 text-slate-600 dark:text-slate-300 dark:divide-slate-600">
+      <%% [
+        {
+          name: "John Smith",
+          email: "john.smith@example.com",
+          tel: "5551234567",
+          tag: "New Lead",
+          tag_classes: "bg-blue-100 text-blue-800 dark:bg-blue-500/20 dark:text-blue-300",
+          img: { id: "23", variant: "men" }
+        },
+        {
+          name: "Emily Johnson",
+          email: "emily.johnson@example.com",
+          tel: "5559876543",
+          tag: "Qualified Lead",
+          tag_classes: "bg-green-100 text-green-800 dark:bg-green-500/20 dark:text-green-300/80",
+          img: { id: "32", variant: "women" }
+        },
+        {
+          name: "Michael Davis",
+          email: "michael.davis@example.com",
+          tel: "5554567890",
+          tag: "New Lead",
+          tag_classes: "bg-blue-100 text-blue-800 dark:bg-blue-500/20 dark:text-blue-300",
+          img: { id: "45", variant: "men" }
+        },
+        {
+          name: "Sarah Thompson",
+          email: "sarah.thompson@example.com",
+          tel: "5557890123",
+          tag: "Contacted",
+          tag_classes: "bg-yellow-100 text-yellow-800 dark:bg-yellow-300/10 dark:text-yellow-500/80",
+          img: { id: "54", variant: "women" }
+        },
+        {
+          name: "Jennifer Brown",
+          email: "jennifer.brown@example.com",
+          tel: "5558765432",
+          tag: "Contacted",
+          tag_classes: "bg-yellow-100 text-yellow-800 dark:bg-yellow-300/10 dark:text-yellow-500/80",
+          img: { id: "76", variant: "women" }
+        }].each do |contact| %>
+          <li class="flex flex-wrap justify-between items-start py-3">
+            <div class="flex items-start space-x-3">
+              <%%= link_to "#", class: "flex items-center sm:mb-0 mb-1" do %>
+                <%%= image_tag demo_avatar_url(id: contact[:img][:id], variant: contact[:img][:variant]), alt: contact[:name], class: "w-10 h-10 rounded-full" %>
+              <%% end %>
+              <div>
+                <%%= link_to contact[:name], "#", class: "font-medium text-slate-700 dark:text-slate-200 block" %>
+                <span
+                  class="<%%= contact[:tag_classes] %> rounded font-medium px-2 py-1 leading-tight text-xs inline-block sm:mb-0"><%%= contact[:tag] %></span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <%%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
+                <%%= icon "envelope", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300" %>
+              <%% end %>
+              <%%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
+                <%%= icon "phone", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300" %>
+              <%% end %>
+            </div>
+          </li>
+        <%% end %>
+      </ul>
+    </div>
+
+    <div
+      class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h4 class="text-lg font-medium">Open deals</h4>
+        <%% if respond_to?(:admin_projects_path) %>
+          <%%= link_to "View all", admin_projects_path, class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+        <%% else %>
+          <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+        <%% end %>
+      </div>
+
+      <div class="space-y-4 divide-y dark:divide-slate-600">
+      <%% [
+          {
+            img: {id: "85", variant: "women"},
+            name: "Jackie Hacky",
+            tag: "Contacted",
+            tag_classes: "bg-yellow-100 text-yellow-800 font-medium px-2 py-1 leading-tight text-xs inline-block sm:mb-0 rounded md:ml-9 dark:bg-yellow-300/10 dark:text-yellow-500/80",
+            address: "123 Easy Street",
+            close_date: "Jan 18, 2024"
+          },
+          {
+            img: {id: "83", variant: "women"},
+            name: "Jane Myers",
+            tag: "Contacted",
+            tag_classes: "bg-yellow-100 text-yellow-800 font-medium px-2 py-1 leading-tight text-xs inline-block sm:mb-0 rounded md:ml-9 dark:bg-yellow-300/10 dark:text-yellow-500/80",
+            address: "456 Sunny Estate",
+            close_date: "Jan 18, 2024"
+          },
+          {
+            img: {id: "32", variant: "men"},
+            name: "Josh Scandal",
+            tag: "Qualified Lead",
+            tag_classes: "bg-green-100 text-green-800 font-medium px-2 py-1 leading-tight text-xs inline-block sm:mb-0 rounded md:ml-9 dark:bg-green-500/20 dark:text-green-300/80",
+            address: "563 Saucy Ave",
+            close_date: "Jan 18, 2024"
+          }
+        ].each do | deal | %>
+          <%%= link_to "#", class: "p-2 flex flex-wrap items-center group" do %>
+            <div class="md:flex-1 md:block flex justify-between w-full">
+              <div class="flex items-center space-x-3">
+                <%%= image_tag demo_avatar_url(id: deal[:img][:id], variant: deal[:img][:variant]), alt: deal[:name], class: "md:w-6 w-8 md:h-6 h-8 rounded-full" %>
+                <p class="font-medium hover:text-indigo-600 flex-1"><%%= deal[:name] %></p>
+              </div>
+              <div class="text-left">
+                <span class="<%%= deal[:tag_classes] %>"><%%= deal[:tag] %></span>
+              </div>
+            </div>
+
+            <div
+              class="md:text-right text-left md:group-hover:-translate-x-1 md:group-hover:transition duration-200 md:group-hover:transform md:w-auto w-full md:pt-0 pt-3">
+              <p class="font-medium text-slate-600 dark:text-slate-300"><%%= deal[:address] %></p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Closing date: <%%= deal[:close_date] %></p>
+            </div>
+            <div
+              class="opacity-0 group-hover:opacity-100 transition ease-in-out group-hover:transform group-hover:translate-x-1 md:block hidden">
+              <%%= icon "chevron-right", classes: "w-4 h-4 stroke-current text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-300" %>
+            </div>
+          <%% end %>
+        <%% end %>
+      </div>
+    </div>
+    <div
+      class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h4 class="font-medium text-slate-800 dark:text-slate-300 tracking-tight text-xl m-0">Recent projects</h4>
+        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+      </div>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <%% [
+        {
+          title: "Enhanced User Authentication System",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores",
+        },
+        {
+          title: "Automated Data Migration Tool",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum",
+        },
+        {
+          title: "Real-time Data Visualization Dashboard",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum",
+        },
+        {
+          title: "Intelligent Chatbot for Customer Support",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum"
+        }
+      ].each do |project| %>
+        <li>
+          <%% if respond_to?(:admin_project_path) %>
+            <%%= link_to admin_project_path, class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-indigo-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
+              <p class="font-medium dark:group-hover:text-indigo-300 group-hover:text-indigo-600 line-clamp-1 mb-2"><%%= project[:title] %></p>
+              <p class="line-clamp-2 text-sm text-slate-500"><%%= project[:description] %></p>
+            <%% end %>
+          <%% else %>
+              <%%= link_to "#", class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-indigo-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
+              <p class="font-medium dark:group-hover:text-indigo-300 group-hover:text-indigo-600 line-clamp-1 mb-2"><%%= project[:title] %></p>
+              <p class="line-clamp-2 text-sm text-slate-500"><%%= project[:description] %></p>
+            <%% end %>
+          <%% end %>
+        </li>
+        <%% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%% content_for :head do %>
+<!--
+  ### READ ME ###
+  The embedded JavaScript below is for preview purposes only.
+
+  You should consider adding this as a Stimulus.js controller (or similiar) outside of this view for best performance and compatibility.
+
+  ✅ I've include a Stimulus.js version at the bottom of this file. The markup already has the controller and targets added.
+-->
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+(function() {
+  document.addEventListener("DOMContentLoaded", () => {
+
+
+// Function to check if the system is in dark mode
+function isSystemInDarkMode() {
+  return (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  )
+}
+
+// Variable to track the current color scheme
+let isDarkMode = isSystemInDarkMode()
+let chart = null
+let teamChart = null
+
+const currencyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+})
+
+const valueFormatter = function (value) {
+  return currencyFormatter.format(value)
+}
+
+const totalFormatter = function (w) {
+  const seriesTotals = w.globals.seriesTotals
+  return seriesTotals[0].toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  })
+}
+
+function setChartColors() {
+  const colorScheme = isDarkMode
+    ? ["#d9826b", "#f1a03b"]
+    : ["#4f46e5", "#cbd5e1"]
+
+  const options = {
+    series: [800530, 1500000],
+    colors: colorScheme,
+    labels: ["Gross Revenue", "Total Revenue Goal"],
+    chart: {
+      type: "donut",
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    plotOptions: {
+      pie: {
+        expandOnClick: false,
+        donut: {
+          labels: {
+            show: true,
+            name: {
+              show: false,
+            },
+            value: {
+              show: true,
+              fontSize: 13,
+              offsetY: 5,
+              formatter: valueFormatter,
+              style: {
+                colors: isDarkMode ? "#ffffff" : "#333",
+              },
+            },
+            total: {
+              show: true,
+              formatter: totalFormatter,
+            },
+          },
+        },
+      },
+    },
+    tooltip: {
+      y: {
+        formatter: valueFormatter,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    states: {
+      hover: {
+        filter: {
+          type: "none",
+        },
+      },
+    },
+    yaxis: {
+      labels: {
+        formatter: valueFormatter,
+      },
+    },
+  }
+
+  if (chart) {
+    chart.destroy()
+  }
+
+  chart = new ApexCharts(document.querySelector("#company_goals"), options)
+
+  chart.render()
+
+  const totalElement = document.querySelector(
+    ".apexcharts-datalabels-group text"
+  )
+
+  // Hack!
+  totalElement.style.color = isDarkMode ? "#ffffff" : "#333"
+  totalElement.style.fill = isDarkMode ? "#ffffff" : "#333"
+}
+
+function setTeamChartColors() {
+  const colorScheme = isDarkMode
+    ? ["#d9826b", "#f1a03b"]
+    : ["#4f46e5", "#cbd5e1"]
+  const teamChartOptions = {
+    series: [
+      {
+        name: "Net revenue",
+        data: [
+          129000, 123993, 134003, 128400, 122340, 131400, 133293, 149000,
+          132993, 125302,
+        ],
+      },
+    ],
+    dataLabels: {
+      enabled: false,
+    },
+    colors: colorScheme,
+    chart: {
+      type: "bar",
+      toolbar: {
+        show: false,
+      },
+    },
+    plotOptions: {
+      bar: {
+        barHeight: "100%",
+      },
+    },
+    xaxis: {
+      labels: {
+        style: {
+          colors: isDarkMode ? "#ffffff" : "#333",
+        },
+      },
+      categories: [
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+      ],
+
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      labels: {
+        show: false,
+      },
+    },
+    tooltip: {
+      theme: "dark",
+      x: {
+        show: false,
+      },
+      y: {
+        formatter: valueFormatter,
+      },
+    },
+    legend: {
+      show: false,
+    },
+  }
+
+  if (teamChart) {
+    teamChart.destroy()
+  }
+
+  teamChart = new ApexCharts(
+    document.querySelector("#team_goals"),
+    teamChartOptions
+  )
+  teamChart.render()
+}
+
+    function updateCharts() {
+      setChartColors();
+      setTeamChartColors();
+    }
+
+    // Init
+    setChartColors();
+    setTeamChartColors();
+
+    // Listen for changes in the system's dark mode preference
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      isDarkMode = e.matches;
+      updateCharts();
+    });
+
+    // Call updateCharts() on page load
+    updateCharts();
+  });
+})();
+</script>
+<%% end %>
+
+<!--
+### ⚡️ Stimulus.js ###
+
+Below is a bare bones version of a Stimulus controller you can add to the app. You're encouraged to DRY this thing up so maybe you have a chart_controller.js file or similar as opposed to one-off use cases. I'm leaving that up to you!
+
+1. Run the generator to save some key strokes:
+
+```
+$ rails g stimulus dashboard
+```
+
+2. Add apexcharts
+
+```
+$ yarn add apexcharts
+```
+
+3. Copy the JavaScript over
+
+import { Controller } from '@hotwired/stimulus'
+import ApexCharts from "apexcharts";
+
+export default class extends Controller {
+  static targets = ["companygoals", "teamgoals"];
+
+  connect() {
+    this.isDarkMode = this.isSystemInDarkMode();
+    this.chart = null;
+    this.teamChart = null;
+
+    this.currencyFormatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+
+    this.valueFormatter = (value) => {
+      return this.currencyFormatter.format(value);
+    };
+
+    this.totalFormatter = (w) => {
+      const seriesTotals = w.globals.seriesTotals;
+      return seriesTotals[0].toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 0,
+      });
+    };
+
+    this.updateCharts();
+    this.setDarkModeListener();
+  }
+
+  isSystemInDarkMode() {
+    return (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
+  }
+
+  setDarkModeListener() {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        this.isDarkMode = e.matches;
+        this.updateCharts();
+      });
+  }
+
+  setChartColors() {
+    const colorScheme = this.isDarkMode
+      ? ["#d9826b", "#f1a03b"]
+      : ["#4f46e5", "#cbd5e1"]
+
+    const options = {
+      series: [800530, 1500000],
+      colors: colorScheme,
+      labels: ["Gross Revenue", "Total Revenue Goal"],
+      chart: {
+        type: "donut",
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      plotOptions: {
+        pie: {
+          expandOnClick: false,
+          donut: {
+            labels: {
+              show: true,
+              name: {
+                show: false,
+              },
+              value: {
+                show: true,
+                fontSize: 13,
+                offsetY: 5,
+                formatter: this.valueFormatter,
+                style: {
+                  colors: this.isDarkMode ? "#ffffff" : "#333",
+                },
+              },
+              total: {
+                show: true,
+                formatter: this.totalFormatter,
+              },
+            },
+          },
+        },
+      },
+      tooltip: {
+        y: {
+          formatter: this.valueFormatter,
+        },
+      },
+      legend: {
+        show: false,
+      },
+      states: {
+        hover: {
+          filter: {
+            type: "none",
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          formatter: this.valueFormatter,
+        },
+      },
+    }
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    this.chart = new ApexCharts(
+      this.companygoalsTarget,
+      options
+    );
+
+    this.chart.render();
+
+    const totalElement = this.chart.w.globals.dom.baseEl.querySelector(
+      ".apexcharts-datalabels-group text"
+    );
+
+    totalElement.style.color = this.isDarkMode ? "#ffffff" : "#333";
+    totalElement.style.fill = this.isDarkMode ? "#ffffff" : "#333";
+  }
+
+  setTeamChartColors() {
+    const teamColorScheme = this.isDarkMode
+    ? ["#d9826b", "#f1a03b"]
+    : ["#4f46e5", "#cbd5e1"]
+    const teamChartOptions = {
+      series: [
+        {
+          name: "Net revenue",
+          data: [129000, 123993, 134003, 128400, 122340, 131400, 133293, 149000,
+          132993, 125302],
+        },
+      ],
+      dataLabels: {
+        enabled: false,
+      },
+      colors: teamColorScheme,
+      chart: {
+        type: "bar",
+        toolbar: {
+          show: false,
+        },
+      },
+      plotOptions: {
+        bar: {
+          barHeight: "100%",
+        },
+      },
+      xaxis: {
+        labels: {
+          style: {
+            colors: this.isDarkMode ? "#ffffff" : "#333",
+          },
+        },
+        categories: [
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+        ],
+
+        axisBorder: {
+          show: false,
+        },
+        axisTicks: {
+          show: false,
+        },
+      },
+      yaxis: {
+        labels: {
+          show: false,
+        },
+      },
+      tooltip: {
+        theme: "dark",
+        x: {
+          show: false,
+        },
+        y: {
+          formatter: this.valueFormatter,
+        },
+      },
+      legend: {
+        show: false,
+      },
+    }
+
+    if (this.teamChart) {
+      this.teamChart.destroy();
+    }
+
+    this.teamChart = new ApexCharts(
+      this.teamgoalsTarget,
+      teamChartOptions
+    );
+
+    this.teamChart.render();
+  }
+
+  updateCharts() {
+    this.setChartColors();
+    this.setTeamChartColors();
+  }
+}
+-->

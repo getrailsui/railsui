@@ -54,5 +54,21 @@ module Railsui
     def railsui_launcher
       render partial: "railsui/shared/launcher"
     end
+
+    def demo_avatar_url(options = {})
+      id = options[:id] || "22"
+      variant = options[:variant] || "men"
+
+      "https://randomuser.me/api/portraits/#{variant}/#{id}.jpg"
+    end
+
+    def conditional_link_to(route_helper, options = {}, &block)
+      if Rails.application.routes.url_helpers.method_defined?(route_helper)
+        link_to send(route_helper), options, &block
+      else
+        content_tag(:div, options, &block)
+      end
+    end
+
   end
 end

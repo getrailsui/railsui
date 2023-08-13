@@ -1,0 +1,690 @@
+<div class="container mt-lg-4 h-100 position-relative d-flex flex-column min-h-100" data-controller="products">
+  <div class="row mb-4 mb-md-0">
+    <div class="col-md-6 col-12">
+      <h1 class="display-6">Products</h1>
+      <p class="text-black-50">A place for products in your app.</p>
+    </div>
+    <div class="col justify-content-end text-md-end">
+      <%%= link_to "Create product", "#", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="border-top border-bottom pt-1 pb-1 row">
+    <ul class="nav col-md-6 col-12">
+      <li class="nav-item">
+        <%%= link_to "For sale (28)", "#", class: "nav-link active", "aria-current": "page" %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "Unlisted", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "Archived", "#", class: "nav-link" %>
+      </li>
+    </ul>
+
+    <ul class="nav col-md-6 justify-content-lg-end">
+      <li class="nav-item">
+        <%%= link_to "#", class: "nav-link ps-md-2 pe-md-2", id: "productsFilter" do %>
+          <%%= icon "funnel", classes: "icon pe-none" %>
+        <%% end %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "#", class: "nav-link ps-md-2 pe-md-2", id: "productsList", data: { action: "click->products#toggleView", products_target: "listIcon" } do %>
+          <%%= icon "list-bullet", classes: "icon pe-none" %>
+        <%% end %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "#", class: "nav-link ps-md-2 pe-md-2 active", id: "productsGrid", data: { action: "click->products#toggleView", products_target: "gridIcon" } do %>
+          <%%= icon "squares-2x2", classes: "icon pe-none" %>
+        <%% end %>
+      </li>
+    </ul>
+  </div>
+
+  <div id="productsGridContainer" class="row row-cols-2 mt-4" data-products-target="grid">
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-turbo="false" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-1.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">Basic tee</div>
+              <p class="text-black-50"><small>White</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-turbo="false" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-2.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">One-color Graphic</div>
+              <p class="text-black-50"><small>Pink</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-turbo="false" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-3.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">Basic tee</div>
+              <p class="text-black-50"><small>Black</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-turbo="false" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-4.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">Graphic Crop Top</div>
+              <p class="text-black-50"><small>White</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-turbo="false" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-5.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">Graphic on back</div>
+              <p class="text-black-50"><small>White</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-turbo="false" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-6.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">Graphic text</div>
+              <p class="text-black-50"><small>Maroon</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-7.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">Basic Womens Tee</div>
+              <p class="text-black-50"><small>Pink</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card border-0">
+        <div class="dropdown position-absolute top-0 end-0 bg-black bg-opacity-10 rounded-1">
+          <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <%%= icon "cog-6-tooth", classes: "icon text-white" %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Archive", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+            </li>
+          </ul>
+        </div>
+
+        <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-8.jpg", alt: "Demo product", class: "rounded-1" %>
+
+        <div class="card-body ps-0 pe-0">
+          <div class="row">
+            <div class="col-8">
+              <div class="card-title">Skeleton Hand Tee</div>
+              <p class="text-black-50"><small>Black</small></p>
+            </div>
+            <div class="col-4 text-end">$27</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="productsListContainer" class="mt-2 d-none table-responsive" data-products-target="list">
+    <table class="table align-middle">
+      <thead>
+        <th>Product</th>
+        <th>Variant</th>
+        <th>Price</th>
+        <th></th>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-1.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "Basic tee", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>White</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-2.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "One-color Graphic", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>Pink</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-3.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "Basic tee", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>Black</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-4.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "Graphic Crop Top", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>White</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-5.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "Graphic on Back", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>White</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-6.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "Graphic Text", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>Maroon</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-7.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "Basic Womans Tee", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>Pink</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="row align-items-center">
+              <div class="col-2">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#{Railsui.asset_url}/themes/#{Railsui.config.theme}/products/product-8.jpg", alt: "Demo product image", class: "img-fluid rounded-3" %>
+                <%% end %>
+              </div>
+              <div class="col-10">
+                <%%= link_to "Skeleton Hand Tee", "#", class: "text-decoration-none text-body" %>
+              </div>
+            </div>
+          </td>
+          <td>Black</td>
+          <td>$27</td>
+          <td>
+            <div class="dropdown">
+              <button role="button" class="btn dropdown-toggle dropdown-toggle-minimal" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                  <%%= icon "cog-6-tooth", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit product", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Archive", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Unlist", "#", class: "dropdown-item text-danger" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%% content_for :head do %>
+
+<!--
+  ### READ ME ###
+  The embedded JavaScript below is for preview purposes only.
+
+  You should consider adding this as a Stimulus.js controller (or similiar) outside of this view for best performance and compatibility.
+
+  ✅ I've include a Stimulus.js version at the bottom of this file. The markup already has the controller and targets added.
+-->
+
+<script>
+// 🍝
+
+document.addEventListener("DOMContentLoaded", () => {
+  const productsFilter = document.querySelector("#productsFilter")
+  const productsList = document.querySelector("#productsList")
+  const productsGrid = document.querySelector("#productsGrid")
+  const productsGridContainer = document.querySelector("#productsGridContainer")
+  const productsListContainer = document.querySelector("#productsListContainer")
+
+  productsList.addEventListener("click", (event) => {
+    event.preventDefault()
+    productsList.classList.add("active")
+    productsGrid.classList.remove("active")
+    productsListContainer.classList.remove("d-none")
+    productsGridContainer.classList.add("d-none")
+  })
+
+  productsGrid.addEventListener("click", (event) => {
+    event.preventDefault()
+    productsList.classList.remove("active")
+    productsGrid.classList.add("active")
+    productsListContainer.classList.add("d-none")
+    productsGridContainer.classList.remove("d-none")
+  })
+})
+</script
+<%% end %>
+
+
+<!--
+### ⚡️ Stimulus.js ###
+
+Below is a bare bones version of a Stimulus controller you can add to the app. You're encouraged to DRY this thing as opposed to one-off use cases. I'm leaving that up to you!
+
+1. Run the generator to save some key strokes:
+
+```
+$ rails g stimulus products
+```
+
+2. Copy the JavaScript over
+
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = ["grid", "list", "gridIcon", "listIcon"]
+
+  toggleView(event) {
+    event.preventDefault()
+
+    const isList = event.target.id === "productsList"
+
+    this.gridIconTarget.classList.toggle("active", !isList)
+    this.listIconTarget.classList.toggle("active", isList)
+    this.gridTarget.classList.toggle("d-none", isList)
+    this.listTarget.classList.toggle("d-none", !isList)
+  }
+}
+-->

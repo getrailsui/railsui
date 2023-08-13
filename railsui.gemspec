@@ -30,4 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails', '>= 7.0'
   spec.add_dependency 'inline_svg', '>= 1.9'
   spec.add_dependency 'psych'
+  spec.add_dependency 'name_of_person'
+  spec.add_dependency 'meta-tags'
 end

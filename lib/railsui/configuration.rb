@@ -27,6 +27,17 @@ module Railsui
       end
     end
 
+    def self.delete_page(page)
+      config_path = Rails.root.join("config", "railsui.yml")
+      if File.exist?(config_path)
+        config = Psych.safe_load_file(config_path, permitted_classes: [Hash, Railsui::Configuration])
+        config.pages.delete(page)
+        File.write(config_path, config.to_yaml)
+        Railsui.restart
+      end
+
+    end
+
     def pages
       Array.wrap(@pages)
     end
@@ -51,13 +62,14 @@ module Railsui
       end
 
       create_pages
+      sleep 1
     end
 
     def create_pages
-      Railsui::Pages.all_pages.each do | page, details |
+      Railsui::Pages.theme_pages.each do | page, details |
         if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)
-          Railsui.run_command "rails g railsui:page #{page}"
-          Railsui.run_command "rails css:build"
+          Railsui.run_command "rails g railsui:page #{page} --force-plural"
+          Railsui.build_css
         end
       end
     end

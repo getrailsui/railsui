@@ -1,0 +1,252 @@
+<%%= render "shared/admin/nav", { header_title: "People" } do %>
+  <%%= render "shared/admin/create_dropdown" %>
+<%% end %>
+
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+    <nav role="messages nav">
+      <ul
+        class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#", class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80" do %>
+            <span>Active</span>
+            <span class="rounded bg-indigo-600 text-white px-1 py-px text-xs font-semibold">228</span>
+          <%% end %>
+        </li>
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <span>Inactive</span>
+            <span class="rounded bg-slate-200 text-slate-500 px-1 py-px text-xs font-semibold">5</span>
+          <%% end %>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sm:flex items-center sm:space-x-4">
+      <form action="#">
+        <label for="people_sort" class="sr-only">Filter results</label>
+        <select class="form-select text-base" id="people_sort">
+          <option value="">Filter results</option>
+          <option value="1">Name</option>
+          <option value="1">Join Date</option>
+          <option value="1">Role</option>
+          <option value="1">Close sales (Highest)</option>
+          <option value="1">Close sales (Lowest)</option>
+        </select>
+      </form>
+
+      <div class="relative lg:w-auto w-full lg:mt-0 md:mt-0 mt-4 sm:mt-0 lg:mb-0 mb-4">
+        <%%= icon "magnifying-glass", classes: "w-5 h-5 text-slate-500/90 stroke-current absolute left-3 top-3" %>
+        <input type="search" placeholder="Search" class="form-input lg:w-[250px] pl-10 focus:shadow-inner">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="px-4 mb-16">
+  <div class="container mx-auto rounded-lg border border-slate-300/80 shadow shadow-slate-100 dark:shadow-slate-950 mt-6 bg-white dark:bg-slate-800 dark:border-slate-600/80">
+    <ul class="divide-y divide-slate-300/80 dark:divide-slate-600">
+    <%% [
+          {
+            img: { id: "32", variant: "women" },
+            name: "Jennifer Thompson",
+            username: "@jthompson",
+            date: "Jan 01, 2023",
+            role: "Sales Lead",
+            report: "John Smith",
+            sales: "$320,324.50",
+            label_class: "before:bg-red-500"
+          },
+          {
+            img: { id: "42", variant: "women" },
+            name: "Emily Wilson",
+            username: "@ewilson",
+            date: "Feb 10, 2023",
+            role: "Sales Associate",
+            report: "Michael Johnson",
+            sales: "$150,000.00",
+            label_class: "before:bg-blue-500"
+          },
+          {
+            img: { id: "46", variant: "men" },
+            name: "David Roberts",
+            username: "@droberts",
+            date: "Mar 05, 2023",
+            role: "Sales Representative",
+            report: "Sarah Davis",
+            sales: "$85,200.75",
+            label_class: "before:bg-amber-500"
+          },
+          {
+            img: { id: "16", variant: "women" },
+            name: "Samantha Reed",
+            username: "@sreed",
+            date: "Apr 22, 2023",
+            role: "Sales Lead",
+            report: "Daniel Thompson",
+            sales: "$420,500.25",
+            label_class: "before:bg-indigo-500"
+          },
+          {
+            img: { id: "59", variant: "men" },
+            name: "Brian Johnson",
+            username: "@bjohnson",
+            date: "May 17, 2023",
+            role: "Sales Associate",
+            report: "Jennifer Thompson",
+            sales: "$275,800.10",
+            label_class: "before:bg-amber-500"
+          },
+          {
+            img: { id: "71", variant: "women" },
+            name: "Olivia Green",
+            username: "@ogreen",
+            date: "Jun 08, 2023",
+            role: "Sales Representative",
+            report: "Emily Wilson",
+            sales: "$95,600.50",
+            label_class: "before:bg-green-500"
+          },
+          {
+            img: { id: "71", variant: "men" },
+            name: "Robert Anderson",
+            username: "@randerson",
+            date: "Jul 14, 2023",
+            role: "Sales Lead",
+            report: "Samantha Reed",
+            sales: "$380,100.75",
+            label_class: "before:bg-blue-500"
+          },
+          {
+            img: { id: "51", variant: "women" },
+            name: "Jessica Taylor",
+            username: "@jtaylor",
+            date: "Aug 19, 2023",
+            role: "Sales Associate",
+            report: "Brian Johnson",
+            sales: "$200,000.00",
+            label_class: "before:bg-red-500"
+          },
+          {
+            img: { id: "82", variant: "men" },
+            name: "Michael Clark",
+            username: "@mclark",
+            date: "Aug 19, 2023",
+            role: "Sales Representative",
+            report: "Brian Johnson",
+            sales: "$200,000.00",
+            label_class: "before:bg-indigo-500"
+          },
+          {
+            img: { id: "82", variant: "women" },
+            name: "Ashley Martinez",
+            username: "@amartinez",
+            date: "Oct 30, 2023",
+            role: "Sales Lead",
+            report: "Robert Anderson",
+            sales: "$450,700.50",
+            label_class: "before:bg-amber-500"
+          }
+        ].each do | person | %>
+        <!-- person start -->
+        <li
+          class="px-4 py-5 sm:text-base text-sm items-start grid grid-cols-2 sm:grid-cols-12 gap-3 sm:gap-0 before:content-[''] before:absolute relative before:left-2 before:h-[calc(100%-30px)] before:w-2 before:rounded-full before:bottom-1 before:top-4 pl-8 before:flex before:flex-col before:items-center before:justify-center hover:bg-slate-50 transition ease-in-out duration-200 dark:hover:bg-slate-800 <%%= person[:label_class] %>">
+          <div class="flex items-center space-x-3 sm:col-span-3 sm:mb-0 mb-4 col-span-2">
+            <%% if respond_to?(:admin_profile_path) %>
+              <%%= link_to admin_profile_path do %>
+                <%%= image_tag demo_avatar_url(id: person[:img][:id], variant: person[:img][:variant]), alt: person[:name], class: "rounded-full sm:w-10 w-14 sm:h-10 h-14" %>
+              <%% end %>
+            <%% else %>
+              <%%= link_to "#" do %>
+                <%%= image_tag demo_avatar_url(id: person[:img][:id], variant: person[:img][:variant]), alt: person[:name], class: "rounded-full sm:w-10 w-14 sm:h-10 h-14" %>
+              <%% end %>
+            <%% end %>
+            <div>
+              <%%= link_to person[:name], "#", class: "sm:font-medium text-slate-900 hover:text-indigo-600 sm:text-base text-lg font-semibold dark:text-slate-200" %>
+              <p class="text-slate-500 text-sm"><%%= person[:username] %></p>
+            </div>
+          </div>
+          <div class="sm:col-span-2 col-span-1">
+            <p><%%= person[:date] %></p>
+            <p class="text-sm text-slate-500">Join date</p>
+          </div>
+          <div class="sm:col-span-2 col-span-1">
+            <p><%%= person[:role] %></p>
+            <p class="text-sm text-slate-500">Role</p>
+          </div>
+          <div class="sm:col-span-2 col-span-1">
+            <p><%%= person[:report] %></p>
+            <p class="text-sm text-slate-500">Report</p>
+          </div>
+          <div class="sm:col-span-2 col-span-1">
+            <p><%%= person[:sales] %></p>
+            <p class="text-sm text-slate-500">Closed sales</p>
+          </div>
+          <div data-controller="dropdown" class="sm:col-span-1 relative col-span-2">
+            <div class="flex justify-end">
+              <button data-action="click->dropdown#toggle click@window->dropdown#hide"
+                class="-mt-1 block group p-2 rounded-lg focus:ring-4 focus:ring-indigo-50 dark:focus:ring-slate-600/50">
+                  <%%= icon "cog-6-tooth", classes: "w-6 h-6 stroke-current text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+              </button>
+            </div>
+            <ul data-dropdown-target="menu"
+              class="hidden transition transform origin-to-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+              data-transition-enter-active="transition ease-out duration-300"
+              data-transition-enter-from="transform opacity-0 scale-95"
+              data-transition-enter-to="transform opacity-100 scale-100"
+              data-transition-leave-active="transition ease-in duration-300"
+              data-transition-leave-from="transform opacity-100 scale-100"
+              data-transition-leave-to="transform opacity-0 scale-95">
+              <li>
+                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
+                  <%%= icon "pencil-square", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                  <span>Edit</span>
+                <%% end %>
+              </li>
+              <li>
+                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
+                  <%%= icon "paper-airplane", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                  <span>Message</span>
+                <%% end %>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- person end -->
+      <%% end %>
+      </ul>
+    </div>
+
+    <nav aria-label="Page navgiation"
+      class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300 mt-8 container mx-auto">
+      <ul class="flex flex-wrap items-center justify-start sm:space-x-0 space-x-2">
+        <div class="flex items-center justify-center sm:text-sm text-lg">
+          <li>
+            <%%= link_to "1", "#", class: "py-2 px-4 border-t-2 block border-indigo-500 hover:bg-indigo-50/50 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-indigo-500/30" %>
+          </li>
+          <li>
+            <%%= link_to "2", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+          </li>
+          <li>
+            <%%= link_to "3", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+          </li>
+          <li>
+            <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+          </li>
+          <li>
+            <%%= link_to "8", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+          </li>
+          <li>
+            <%%= link_to "9", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+          </li>
+        </div>
+        <li class="flex sm:justify-end items-center">
+          <%%= link_to "#", class: "flex justify-center items-center sm:space-x-2 py-2 sm:px-4 px-2 rounded hover:bg-slate-50/50 group hover:text-indigo-600 sm:bg-transparent bg-slate-200/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" do %>
+            <span class="sr-only sm:not-sr-only">Next</span>
+            <%%= icon "arrow-small-right", classes: "sm:w-4 w-5 sm:h-4 h-5 text-slate-600 group-hover:text-indigo-500 dark:group-hover:text-slate-200 stroke-current" %>
+          <%% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

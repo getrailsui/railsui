@@ -173,10 +173,6 @@ def setup_routes
     mount Railsui::Engine, at: "/railsui"
   end
 
-  scope controller: :page do
-
-  end
-
   # Inherits from Railsui::PageController#index
   # To overide, add your own page#index view or change to a new root
   # Visit the start page for Rails UI any time at /railsui/start
@@ -216,7 +212,8 @@ def extend_layout_and_views
 
   if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
     head_content = <<-ERB
-  <%= render "shared/meta" %>
+  <%= render "shared/fonts" %>
+    <%= render "shared/meta" %>
     <%= yield :head %>
     ERB
 
@@ -235,7 +232,7 @@ def extend_layout_and_views
 
     say "⚡️ Add layout content"
     insert_into_file(app_layout_path.to_s, layout_content, after:"<body>\n")
-    insert_into_file(app_layout_path.to_s, "<%= railsui_launcher if Rails.env.development? %>", before: "</body>")
+    insert_into_file(app_layout_path.to_s, "<%= railsui_launcher if Rails.env.development? %>\n", before: "</body>")
   end
 
   gsub_file Rails.root.join('app/views/layouts/application.html.erb'), '<body>', '<body class="rui">'
@@ -246,7 +243,8 @@ def add_devise_customizations
 
   if (app_layout_path = Rails.root.join("app/views/layouts/devise.html.erb")).exist?
     head_content = <<-ERB
-  <%= render "shared/meta" %>
+  <%= render "shared/fonts" %>
+    <%= render "shared/meta" %>
     <%= yield :head %>
     ERB
     insert_into_file(app_layout_path.to_s, head_content, before: "</head>")

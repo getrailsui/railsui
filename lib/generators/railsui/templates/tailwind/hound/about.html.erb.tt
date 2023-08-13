@@ -3,27 +3,35 @@
   <div class="dark:bg-slate-900">
     <%%= render "shared/nav_menu" %>
   </div>
-  <div
-    class="container mx-auto flex flex-wrap items-center justify-center lg:justify-between lg:py-16 pb-10 px-4 relative z-10">
-    <div class="xl:w-1/2 lg:w-2/5 w-full lg:order-1 order-2">
-      <p class="text-indigo-600 font-medium mb-2 lg:mt-0 mt-2 dark:text-indigo-500">Our Company</p>
-      <h1 class="lg:text-5xl xl:text-6xl text-4xl font-extrabold">Soaring to new <br class="lg:block hidden" />heights
-        in tech
-      </h1>
-      <p class="my-4 text-slate-900 dark:text-slate-400 text-lg">We empower each other to build great software</p>
-      <%%= link_to "Join our team", "#", class: "btn btn-primary btn-lg" %>
+  <div class="container mx-auto sm:py-24 pb-10 px-4 relative z-10 flex flex-wrap items-center justify-between">
+    <div class="xl:w-2/5 w-full xl:text-left text-center xl:pr-16">
+      <p class="text-indigo-600 font-medium mb-6 lg:mt-0 mt-2 dark:text-indigo-500">Our Company</p>
+      <h1 class="sm:text-6xl text-4xl font-extrabold">Soaring to new <br class="sm:hidden block" />heights
+        in
+        tech</h1>
+      <p class="my-6 text-slate-700 dark:text-slate-400 text-lg">We empower each other to build great software one line
+        of code and one team member at a time.</p>
+      <div class="xl:flex grid grid-cols-1 gap-4">
+        <%%= link_to "Join our team", "#", class: "btn btn-primary btn-lg" %>
+        <%%= link_to "Watch video", "#", class: "btn btn-lg  btn-transparent" %>
+      </div>
     </div>
-    <div class="xl:w-1/2 lg:w-3/5 w-full lg:order-2 order-1 lg:my-0 my-4">
-      <%%= image_tag "hero-image.png", alt: "Team", class: "max-w-full h-auto w-full shadow-xl" %>
+    <div class="xl:w-3/5 w-full xl:my-0 mt-6 mb-10">
+      <div class="flex justify-center relative">
+        <%%= image_tag "hero-image.jpg", alt: "Team", class: "max-w-full xl:max-w-2xl 2xl:max-w-3xl object-cover rounded-3xl relative z-20 shadow-2xl shadow-slate-500/20" %>
+        <div
+          class="w-[650px] h-[650px] bg-indigo-500/10 absolute -bottom-10 left-5 rounded-full z-0 blur-2xl sm:block hidden">
+        </div>
+        <div
+          class="w-[450px] h-[450px] bg-pink-500/10 absolute -top-10 left-5 rounded-full z-0 blur-2xl sm:block hidden">
+        </div>
+      </div>
     </div>
-  </div>
-  <div
-    class="lg:block hidden bg-gradient-to-b from-transparent to-white h-40 absolute left-0 right-0 bottom-0 w-full dark:from-transparent dark:to-slate-900">
   </div>
 </header>
 <%% end %>
 
-<div class="container mx-auto px-4 lg:py-24 pb-16 pt-0">
+<div class="container mx-auto sm:px-16 sm:px-16 px-4 lg:py-24 pb-16 pt-0">
   <div class="flex flex-wrap items-center justify-between">
     <div class="lg:w-1/2 w-full">
       <span class="block w-20 bg-slate-300 dark:bg-slate-700 h-px"></span>
@@ -48,7 +56,7 @@
   </div>
 </div>
 
-<div class="bg-slate-900 dark:bg-slate-800 py-16 text-slate-100 px-4">
+<div class="bg-slate-900 dark:bg-slate-800 py-16 text-slate-100 sm:px-16 px-4">
   <div class="mx-auto max-w-lg text-center">
     <div class="flex items-center justify-center">
       <%%= image_tag "brad-jost.png", alt: "Brad Jost", class: "w-20 h-20 rounded-full mb-2" %>
@@ -63,7 +71,7 @@
   </div>
 </div>
 
-<div class="container mx-auto py-16 px-4">
+<div class="container mx-auto py-16 sm:px-16 px-4">
   <div class="flex justify-center mb-6">
     <div class="rounded bg-indigo-100 dark:bg-indigo-500/50 w-12 h-12 flex items-center justify-center">
       <%%= icon "globe-americas", classes: "text-indigo-700 dark:text-indigo-300 w-4 h-4 stroke-current" %>
@@ -112,7 +120,7 @@
   </div>
 </div>
 
-<div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white px-4">
+<div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-2 grid-cols-1 gap-10 relative lg:py-24 py-16">
     <div class="flex items-center md:justify-center">
       <div
@@ -146,8 +154,8 @@
   </div>
 </div>
 
-<div class="bg-slate-100 dark:bg-slate-900 lg:py-20 py-16 px-4">
-  <div class="container mx-auto">
+<div class="bg-slate-100 dark:bg-slate-900 lg:py-20 py-16">
+  <div class="container mx-auto sm:px-16 px-4">
     <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-24 gap-12">
       <div>
         <h3 class="font-extrabold lg:text-4xl text-3xl">Enabling collaboration <br class="lg:block hidden" /> at
@@ -206,7 +214,7 @@
   </div>
 </div>
 
-<div class="container mx-auto lg:py-20 py-10 lg:px-0 px-4">
+<div class="container mx-auto lg:py-20 py-10 sm:px-16 px-4">
   <h5 class="uppercase tracking-wider text-indigo-600 dark:text-indigo-500 text-sm text-center mb-6 font-semibold">From the blog</h5>
 
   <div class="flex items-start justify-between flex-wrap">

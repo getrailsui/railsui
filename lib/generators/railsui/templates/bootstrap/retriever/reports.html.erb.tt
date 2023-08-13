@@ -1,0 +1,306 @@
+<div class="container mt-lg-4 h-100 position-relative d-flex flex-column min-h-100 pb-6" data-controller="reports">
+  <div class="row mb-4 mb-md-0">
+    <div class="col-md-8 col-12">
+      <h1 class="display-6">Reports</h1>
+      <p class="text-black-50">Showing reports for June 1 &mdash; June 11, 2023 (Today)</p>
+    </div>
+    <div class="col row justify-content-end">
+      <div class="d-flex align-items-center gap-3">
+        <select name="time_period" class="form-select" aria-label="Default select example">
+          <option value="">Month to date</option>
+          <option value="1">Last 3 months</option>
+          <option value="2">Last 6 months</option>
+          <option value="3">Last year</option>
+        </select>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-turbo="false">
+            Export
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <%%= link_to "CSV", "#", class: "dropdown-item" %>
+            </li>
+            <li>
+              <%%= link_to "PDF", "#", class: "dropdown-item" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row gx-3 gy-3 mt-md-4 mb-4">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 text-black-50 fw-normal">Orders</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">321</p>
+            <div>
+              <%%= icon "arrow-small-up", classes: "icon-xs text-success" %>
+              <small class="text-success">+3.12%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 text-black-50 fw-normal">Average order amount</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">$256.23</p>
+            <div>
+              <%%= icon "arrow-small-up", classes: "icon-xs text-success" %>
+              <small class="text-success">+0.12%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 text-black-50 fw-normal">Refunds</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">3</p>
+            <div>
+              <%%= icon "arrow-small-down", classes: "icon-xs text-danger" %>
+              <small class="text-danger">-1.2%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 text-black-50 fw-normal">New customers</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">303</p>
+            <div>
+              <%%= icon "arrow-small-up", classes: "icon-xs text-success" %>
+              <small class="text-success">+2.12%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h3 class="mb-4">Revenue</h3>
+
+    <div class="mb-4 row row-cols-auto gap-4">
+      <div class="col">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <div class="icon-sm bg-primary"></div>
+          <p class="body-text mb-0 text-opacity-75">Gross Volume</p>
+        </div>
+        <div class="d-flex align-items-baseline gap-2">
+          <p class="h4 mb-0">$59,356.23</p>
+          <%%= icon "arrow-small-up", classes: "icon-xs text-success" %>
+          <small class="text-success">+3.12% <span class="text-body text-opacity-50">last month</span></small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <div class="icon-sm bg-dark-subtle"></div>
+          <p class="body-text mb-0 text-opacity-75">Net Volume</p>
+        </div>
+        <div class="d-flex align-items-baseline gap-2">
+          <p class="h4 mb-0">$34,133.02</p>
+          <%%= icon "arrow-small-up", classes: "icon-xs text-success" %>
+          <small class="text-success">+1.12% <span class="text-body text-opacity-50">last month</span></small>
+        </div>
+      </div>
+    </div>
+
+    <div id="reports" data-reports-target="chart"></div>
+
+    <h3>Past Exports</h3>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <th>Date</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>June 3, 2023</td>
+            <td class="text-end">
+              <%%= link_to "Download", "#", class: "btn btn-light" %>
+            </td>
+          </tr>
+          <tr>
+            <td>May 3, 2023</td>
+            <td class="text-end">
+              <%%= link_to "Download", "#", class: "btn btn-light" %>
+            </td>
+          </tr>
+          <tr>
+            <td>April 22, 2023</td>
+            <td class="text-end">
+              <%%= link_to "Download", "#", class: "btn btn-light" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%% content_for :head do %>
+
+<!--
+  ### READ ME ###
+  The embedded JavaScript below is for preview purposes only.
+
+  You should consider adding this as a Stimulus.js controller (or similiar) outside of this view for best performance and compatibility.
+
+  ✅ I've include a Stimulus.js version at the bottom of this file. The markup already has the controller and targets added.
+-->
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const options = {
+    series: [
+      {
+        name: "Gross",
+        data: [
+          32234, 34059, 41958, 42300, 48000, 45000, 50000, 49505, 59000, 59356,
+        ],
+      },
+      {
+        name: "Net",
+        data: [
+          24234, 24059, 31958, 36300, 35610, 35300, 36000, 34505, 39000, 34132,
+        ],
+      },
+    ],
+    colors: ["#0d6efd", "#adb5bd"],
+    chart: {
+      toolbar: false,
+      height: 440,
+      type: "area",
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "smooth",
+    },
+    xaxis: {
+      type: "datetime",
+      categories: [
+        "June 1, 2023",
+        "June 2, 2023",
+        "June 3, 2023",
+        "June 4, 2023",
+        "June 5, 2023",
+        "June 6, 2023",
+        "June 7, 2023",
+        "June 8, 2023",
+        "June 9, 2023",
+        "June 10, 2023",
+      ],
+    },
+    tooltip: {
+      x: {
+        format: "dd/MM/yy HH:mm",
+      },
+    },
+  }
+
+  const chart = new ApexCharts(document.querySelector("#reports"), options)
+  chart.render()
+})
+</script>
+
+<%% end %>
+
+
+<!--
+### ⚡️ Stimulus.js ###
+
+Below is a bare bones version of a Stimulus controller you can add to the app. You're encouraged to DRY this thing up so maybe you have a chart_controller.js file or similar as opposed to one-off use cases. I'm leaving that up to you!
+
+1. Run the generator to save some key strokes:
+
+```
+$ rails g stimulus reports
+```
+
+2. Add apexcharts
+
+```
+$ yarn add apexcharts
+```
+
+3. Copy the JavaScript over
+
+import { Controller } from "@hotwired/stimulus"
+import ApexCharts from "apexcharts"
+
+// Connects to data-controller="dashboard"
+export default class extends Controller {
+  static targets = ["chart"]
+
+  connect() {
+    const options = {
+      series: [
+        {
+          name: "Gross",
+          data: [
+            32234, 34059, 41958, 42300, 48000, 45000, 50000, 49505, 59000, 59356,
+          ],
+        },
+        {
+          name: "Net",
+          data: [
+            24234, 24059, 31958, 36300, 35610, 35300, 36000, 34505, 39000, 34132,
+          ],
+        },
+      ],
+      colors: ["#0d6efd", "#adb5bd"],
+      chart: {
+        toolbar: false,
+        height: 440,
+        type: "area",
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        curve: "smooth",
+      },
+      xaxis: {
+        type: "datetime",
+        categories: [
+          "June 1, 2023",
+          "June 2, 2023",
+          "June 3, 2023",
+          "June 4, 2023",
+          "June 5, 2023",
+          "June 6, 2023",
+          "June 7, 2023",
+          "June 8, 2023",
+          "June 9, 2023",
+          "June 10, 2023",
+        ],
+      },
+      tooltip: {
+        x: {
+          format: "dd/MM/yy HH:mm",
+        },
+      },
+    }
+    const chart = new ApexCharts(this.chartTarget, options)
+    chart.render()
+  }
+}
+-->

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-md p-0 retriever-admin-top-nav">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse gap-2" id="retrieverNav2">
+      <%= form_tag("#", role: "search", class: "retriever-admin-search-form") do %>
+        <div class="position-relative">
+          <%= icon "magnifying-glass", classes: "icon" %>
+          <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search", aria: { label: "Search" } %>
+        </div>
+      <% end %>
+
+      <div class="dropdown retriever-admin-notifications">
+        <button class="dropdown-toggle dropdown-toggle-minimal btn focus-ring" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <%= icon "bell" %>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lg-end">
+          <li><a class="dropdown-item" href="#">Notification 1</a></li>
+          <li><a class="dropdown-item" href="#">Notification 2</a></li>
+          <li><a class="dropdown-item" href="#">Notification 3</a></li>
+          <li class="dropdown-divider"></li>
+          <% if respond_to?(:admin_notifications_path) %>
+            <li><%= link_to "Notifications settings", admin_notifications_path, class: "dropdown-item" %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="dropdown retriever-account-dropdown">
+        <button class="dropdown-toggle dropdown-toggle-minimal btn" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= image_tag "https://randomuser.me/api/portraits/women/3.jpg", alt: "Jane doe", class: "avatar" %>
+          <%= icon "chevron-down" %>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-lg-end">
+          <% if respond_to?(:admin_settings_path) %>
+            <li><%= link_to "Profile", admin_settings_path, class: "dropdown-item" %></li>
+          <% end %>
+
+          <% if respond_to?(:admin_settings_path) %>
+            <li><%= link_to "Account", admin_settings_path, class: "dropdown-item" %></li>
+          <% end %>
+
+          <% if respond_to?(:admin_billing_path) %>
+            <li><%= link_to "Billing", admin_billing_path, class: "dropdown-item" %></li>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <li>
+              <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

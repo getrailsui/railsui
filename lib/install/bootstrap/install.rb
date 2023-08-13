@@ -64,7 +64,6 @@ else
   end
 
   def copy_tt_templates
-    # TODO: .tt files get converted to erb with Thor. Need a workaround.
     say "Add Bootstrap-themed scaffold .erb templates"
     file_names = Dir.children("#{__dir__}/themes/#{Railsui.config.theme}/templates/erb/scaffold")
     puts "Templates: 🗄️ #{file_names}"
@@ -102,7 +101,7 @@ else
       copy_file "#{path}/#{file}", Rails.root.join("app/javascript/controllers/#{file}")
 
       # append each import to controllers/index.js
-      append_to_file "#{Rails.application.root.join("app/javascript/controllers/index.js")}", %(\nimport #{file_name.capitalize}Controller from "./#{file_name}_controller"\napplication.register("#{file_name}", #{file_name.capitalize}Controller)\n)
+      append_to_file "#{Rails.application.root.join("app/javascript/controllers/index.js")}", %(\nimport #{file_name.classify}Controller from "./#{file_name}_controller.js";\napplication.register("#{file_name.dasherize}", #{file_name.classify}Controller);\n)
     end
   end
 

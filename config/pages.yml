@@ -1,0 +1,246 @@
+retriever:
+  about:
+    title: About
+    description: Company or organization about page.
+    tags:
+      - marketing
+    path: about_path
+    add_to_nav: true
+  pricing:
+    title: Pricing
+    description: SaaS-like pricing; 3 plans types by default.
+    tags:
+      - marketing
+    path: pricing_path
+    add_to_nav: true
+  dashboard:
+    title: Dashboard
+    description: Admin dashboard.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_dashboard_path
+    add_to_nav: true
+  analytics:
+    title: Analytics
+    description: Analyze data and generate reports.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_analytics_path
+    add_to_nav: true
+  orders:
+    title: Orders
+    description: Review and process orders.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_orders_path
+    add_to_nav: true
+  products:
+    title: Products
+    description: Manage product information.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_products_path
+    add_to_nav: true
+  reports:
+    title: Reports
+    description: Generate and view various reports.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_reports_path
+    add_to_nav: true
+  servers:
+    title: Servers
+    description: Manage server configurations and settings.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_servers_path
+    add_to_nav: true
+  settings:
+    title: Settings
+    description: Configure application settings.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_settings_path
+    add_to_nav: true
+  billing:
+    title: Billing
+    description: Manage billing settings.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_billing_path
+    add_to_nav: true
+  integrations:
+    title: Integrations
+    description: Manage third-party integrations.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_integrations_path
+    add_to_nav: true
+  notifications:
+    title: Notifications
+    description: Manage notification settings.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_notifications_path
+    add_to_nav: true
+  support:
+    title: Support
+    description: Provide customer support and assistance.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_support_path
+    add_to_nav: true
+  users:
+    title: Users
+    description: Managing user accounts.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_users_path
+    add_to_nav: true
+hound:
+  about:
+    title: About
+    description: Company or organization about page.
+    tags:
+      - marketing
+    path: about_path
+    add_to_nav: true
+  pricing:
+    title: Pricing
+    description: SaaS-like pricing; 3 plans types by default.
+    tags:
+      - marketing
+    path: pricing_path
+    add_to_nav: true
+  dashboard:
+    title: Dashboard
+    description: Admin dashboard for a CRM type of tool.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_dashboard_path
+    add_to_nav: true
+  projects:
+    title: Projects
+    description: Projects index view
+    namespace: admin
+    tags:
+      - admin
+    path: admin_projects_path
+    add_to_nav: true
+  project:
+    title: Project
+    description: The detail view of a given project
+    namespace: admin
+    tags:
+      - admin
+    path: admin_project_path
+    add_to_nav: false
+  messages:
+    title: Messages
+    description: A message view for inbound and outgoing messages within the app.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_messages_path
+    add_to_nav: true
+  message:
+    title: Message
+    description: The detail view of a given message.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_message_path
+    add_to_nav: false
+  assignments:
+    title: Assignments
+    description: Assignments view for a current user account.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_assignments_path
+    add_to_nav: true
+  calendar:
+    title: Calendar
+    description: Calendar view for an example events page.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_calendar_path
+    add_to_nav: true
+  people:
+    title: People
+    description: User view of all people in the app.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_people_path
+    add_to_nav: true
+  profile:
+    title: Profile
+    description: A profile view with activity for an individual user.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_profile_path
+    add_to_nav: false
+  activity:
+    title: Activity
+    description: A global activity view for a team.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_activity_path
+    add_to_nav: true
+  settings:
+    title: Settings
+    description: A settings view for the account.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_settings_path
+    add_to_nav: false
+  notifications:
+    title: Notifications
+    description: Notification controls for a given account.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_notifications_path
+    add_to_nav: false
+  billing:
+    title: Billing
+    description: A billing page used to manage a subscription and seat count.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_billing_path
+    add_to_nav: false
+  team:
+    title: Team
+    description: A team management view.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_team_path
+    add_to_nav: false
+  integrations:
+    title: Integrations
+    description: A view for managing integrations and their respective states.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_integrations_path
+    add_to_nav: false

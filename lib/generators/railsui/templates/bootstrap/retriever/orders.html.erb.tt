@@ -1,0 +1,292 @@
+<div class="container mt-lg-4 h-100 position-relative d-flex flex-column min-h-100">
+  <div class="row">
+    <div class="col-6">
+      <h1 class="display-6">Orders</h1>
+      <p class="h5 fw-normal text-black-50">Today's stats</p>
+    </div>
+    <div class="col-6 justify-content-end text-end">
+      <a href="#" class="btn btn-primary">Create order</a>
+    </div>
+  </div>
+  <div class="row gy-3 gx-3 mb-4 mt-2">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 fw-normal">Orders</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">12</p>
+            <div>
+              <%%= icon "arrow-small-up", classes: "icon-xs text-success", variant: :solid %>
+              <small class="text-success">+1%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 text-black-50 fw-normal">Revenue</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">$3,356.23</p>
+            <div>
+              <%%= icon "arrow-small-up", classes: "icon-xs text-success", variant: :solid %>
+              <small class="text-success">+0.12%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 fw-normal">Refunds</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">0</p>
+            <div>
+              <%%= icon "arrow-small-down", classes: "icon-xs text-danger", variant: :solid %>
+              <small class="text-danger">-1%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="fs-6 fw-normal">New customers</h3>
+          <div class="d-flex align-items-baseline gap-2">
+            <p class="h4 m-0">9</p>
+            <div>
+              <%%= icon "arrow-small-up", classes: "icon-xs text-success", variant: :solid %>
+              <small class="text-success">+3.12%</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4">
+    <div class="col">
+      <h3>Recent orders</h3>
+    </div>
+    <div class="col text-end">
+      <a href="#" class="btn-link">View all orders</a>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table align-start">
+      <thead>
+        <th>Status</th>
+        <th>Order</th>
+        <th>Ship to address</th>
+        <th class="text-end">Total</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="retriever-order-status-icon bg-primary bg-opacity-10">
+              <%%= icon "truck", classes: "icon text-primary" %>
+            </div>
+          </td>
+          <td>
+            <%%= link_to "Order # 86006388", "#", class: "fw-semibold text-decoration-none" %>
+            <p><small>June 19, 2023</small></p>
+            <p class="m-0 text-primary fw-semibold"><small>Shipped</small></p>
+            <p><small>7 items</small></p>
+          </td>
+          <td>
+            <p><small>Jane Doe<br />123 Easy Street, Los Angeles, CA 90210<br />United States</small></p>
+          </td>
+          <td class="text-end">
+            <p class="fw-semibold text-danger">$1,109.73</p>
+          </td>
+          <td class="text-end">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" data-turbo="false">Actions</button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Another action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <%%= link_to "Seperated link", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="retriever-order-status-icon bg-success bg-opacity-10">
+              <%%= icon "hand-thumb-up", classes: "icon text-success" %>
+            </div>
+          </td>
+          <td>
+            <%%= link_to "Order # 86006387", "#", class: "fw-semibold text-decoration-none" %>
+            <p><small>June 19, 2023</small></p>
+            <p class="m-0 text-primary fw-semibold"><small>Delivered</small></p>
+            <p><small>4 items</small></p>
+          </td>
+          <td>
+            <p><small>Jane Doe<br />123 Easy Street, Los Angeles, CA 90210<br />United States</small></p>
+          </td>
+          <td class="text-end">
+            <p class="fw-semibold text-danger">$309.22</p>
+          </td>
+          <td class="text-end">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" data-turbo="false">Actions</button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Another action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <%%= link_to "Seperated link", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="retriever-order-status-icon bg-info bg-opacity-10">
+              <%%= icon "arrow-right-circle", classes: "icon text-info" %>
+            </div>
+          </td>
+          <td>
+            <%%= link_to "Order # 86006386", "#", class: "fw-semibold text-decoration-none" %>
+            <p><small>June 19, 2023</small></p>
+            <p class="m-0 text-primary fw-semibold"><small>Processing</small></p>
+            <p><small>10 items</small></p>
+          </td>
+          <td>
+            <p><small>Sunny Doe<br />456 Easy Street, Los Angeles, CA 90210<br />United States</small></p>
+          </td>
+          <td class="text-end">
+            <p class="fw-semibold text-danger">$2,103.54</p>
+          </td>
+          <td class="text-end">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" data-turbo="false">Actions</button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Another action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <%%= link_to "Seperated link", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="retriever-order-status-icon bg-primary bg-opacity-10">
+              <%%= icon "truck", classes: "icon text-primary" %>
+            </div>
+          </td>
+          <td>
+            <%%= link_to "Order # 86006385", "#", class: "fw-semibold text-decoration-none" %>
+            <p><small>June 19, 2023</small></p>
+            <p class="m-0 text-primary fw-semibold"><small>Shipped</small></p>
+            <p><small>7 items</small></p>
+          </td>
+          <td>
+            <p><small>Olivia Doe<br />123 Easy Street, Los Angeles, CA 90210<br />United States</small></p>
+          </td>
+          <td class="text-end">
+            <p class="fw-semibold text-danger">$509.73</p>
+          </td>
+          <td class="text-end">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" data-turbo="false">Actions</button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Another action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <%%= link_to "Seperated link", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="retriever-order-status-icon bg-primary bg-opacity-10">
+              <%%= icon "truck", classes: "icon text-primary" %>
+            </div>
+          </td>
+          <td>
+            <%%= link_to "Order # 86006388", "#", class: "fw-semibold text-decoration-none" %>
+            <p><small>June 19, 2023</small></p>
+            <p class="m-0 text-primary fw-semibold"><small>Shipped</small></p>
+            <p><small>7 items</small></p>
+          </td>
+          <td>
+            <p><small>Olivia Doe<br />123 Easy Street, Los Angeles, CA 90210<br />United States</small></p>
+          </td>
+          <td class="text-end">
+            <p class="fw-semibold text-danger">$1,109.73</p>
+          </td>
+          <td class="text-end">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" data-turbo="false">Actions</button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Another action", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <%%= link_to "Seperated link", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

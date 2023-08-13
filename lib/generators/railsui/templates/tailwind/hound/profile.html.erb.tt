@@ -1,0 +1,178 @@
+<%%= render "shared/admin/nav",  { header_title: "John Smith" } do %>
+  <%%= link_to "Message John", "#", class:"btn btn-primary" %>
+<%% end %>
+
+<div class="container mx-auto sm:my-16 my-10 px-4 grid md:grid-cols-12 md:gap-16 gap-0">
+  <aside
+    class="bg-white dark:bg-slate-800 dark:border-slate-600/50 border border-slate-300 lg:col-span-4 md:col-span-6 px-6 pt-10 rounded-lg col-span-1 md:max-w-[350px] shadow-sm shadow-slate-300/20 dark:shadow-none">
+    <div class="flex flex-col items-center justify-center mb-6">
+      <div class="relative">
+        <%%= image_tag demo_avatar_url, class: "w-16 h-16 rounded-full", alt: "John Smith" %>
+        <div class="bg-green-500 rounded-full w-3 h-3 right-1 -bottom-1 absolute border-2 border-white box-content">
+        </div>
+      </div>
+
+      <h3 class="font-semibold text-slate-900 text-lg dark:text-slate-200 mt-2">John Smith</h3>
+      <p class="text-sm text-slate-400">Team lead</p>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <%%= link_to "#" do %>
+        <%%= icon "twitter.svg", path: "social/twitter.svg", classes: "fill-current w-6 h-6 text-slate-400 hover:text-indigo-500" %>
+      <%% end %>
+
+      <%%= link_to "#" do %>
+        <%%= icon "window", classes: "stroke-current w-6 h-6 hover:text-indigo-500 text-slate-400" %>
+      <%% end %>
+    </div>
+
+    <div class="my-6">
+      <h4 class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">Bio</h4>
+      <p class="text-slate-500 leading-relaxed md:text-sm text-base dark:text-slate-400">I'm a seasoned sales
+        professional renowned for
+        delivering
+        exceptional results and building strong client
+        relationships.
+        With excellent communication skills and a strategic approach, I consistently achieves success in sales
+        campaigns, while
+        inspiring others with my dedication to growth.</p>
+    </div>
+
+    <div class="my-6">
+      <h4 class="text-sm font-medium text-indigo-600 mb-1 dark:text-indigo-400">Hobbies</h4>
+      <ul class="list-disc pl-4 md:text-sm text-base text-slate-500 dark:text-slate-400 space-y-1 mt-2">
+        <li>Reading, Books, Podcasts</li>
+        <li>Rugby</li>
+        <li>Family</li>
+        <li>Weightlifting</li>
+      </ul>
+    </div>
+
+    <div class="my-6">
+      <h4 class="text-sm font-medium text-indigo-600 mb-1 dark:text-indigo-400">Current Timezone</h4>
+      <p class="text-slate-500 dark:text-slate-400 md:text-sm text-base">CDT - Chicago (12:41 pm CDT)</p>
+    </div>
+
+    <div class="my-6">
+      <h4 class="text-sm font-medium text-indigo-600 mb-1 dark:text-indigo-400">Favorite food</h4>
+      <p class="text-slate-500 dark:text-slate-400 md:text-sm text-base">Tacos</p>
+    </div>
+
+
+    <%% if respond_to?(:admin_assignments_path) %>
+      <%%= link_to "View assignments", admin_assignments_path, class: "btn btn-white mb-6" %>
+    <%% else %>
+      <%%= link_to "View assignments", "#", class: "btn btn-white mb-6" %>
+    <%% end %>
+  </aside>
+
+  <section class="lg:col-span-8 md:col-span-6 col-span-1">
+    <div class="max-w-3xl relative mb-10 sm:-mt-16">
+      <div class="h-full w-px bg-slate-300/80 absolute sm:left-2 left-4 top-0 bottom-0 z-0 dark:bg-slate-700"></div>
+
+      <ul class="pt-10 flex flex-col sm:pl-0 px-4 space-y-10">
+        <li class="flex flex-wrap items-start justify-between">
+          <div
+            class="rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 sm:w-8 h-6 sm:h-8 w-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
+            <%%= icon "calendar", classes: "sm:w-5 sm:h-5 h-4 w-4 stroke-current" %>
+          </div>
+          <div class="flex-1 sm:flex sm:justify-between">
+            <div
+              class="sm:pt-2 prose prose-slate prose-a:text-indigo-500 dark:prose-invert prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full">
+              <p><%%= link_to "John Smith", "#" %> created a new event <%%= link_to "Product Demo for Pork Corp", "#" %> scheduled
+                for
+                July 5, 2023, at 10:00 AM.
+                (Assigned
+                to: <%%= link_to "Sarah Johnson", "#" %>)</p>
+            </div>
+            <time datetime="2023-06-30T10:30" class="text-sm text-slate-500/80 dark:text-slate-400/80 pt-2 block">Jun
+              30</time>
+          </div>
+        </li>
+
+        <li class="flex flex-wrap items-start">
+          <div>
+            <%%= image_tag demo_avatar_url(id: "4", variant: "women"), class: "border-4 border-slate-50 dark:border-slate-900 box-content top-0 -left-4 relative sm:w-8 w-6 h-6 sm:h-8 rounded-full", alt: "Avatar" %>
+          </div>
+          <div class="flex-1 sm:flex sm:flex-wrap w-full sm:justify-between">
+            <div
+              class="sm:pt-2 prose prose-slate dark:prose-invert prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full">
+              <p>
+                <%%= link_to "Sarah Johnson", "#" %> commented on event <%%= link_to "Product Demo for Pork Chop", "#" %>.
+              </p>
+            </div>
+            <time datetime="2023-06-30T10:30" class="text-sm text-slate-500/80 dark:text-slate-400/80 pt-2 block">Jun
+              30</time>
+
+            <div
+              class="bg-white border rounded shadow-sm shadow-slate-300 p-4 w-full max-w-xl mt-4 prose relative dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:shadow-none">
+              <p>Wow, the Product Demo for Pork Chop sounds exciting! I can't wait to see what our team has in store
+                for
+                this event.
+                Let's make sure to prepare thoroughly and deliver a top-notch presentation. If anyone needs assistance
+                or
+                has any ideas,
+                feel free to reach out to me. Together, we'll make it a great success!</p>
+                <%%= link_to "Post reply", "#", class: "font-semibold text-indigo-600 hover:text-indigo-700 absolute bottom-3 px-3 py-2 hover:bg-slate-50 rounded-lg no-underline right-4 text-sm focus:ring-4 focus:ring-indigo-50 dark:text-indigo-400 dark:hover:bg-slate-800 dark:hover:text-slate-300 dark:focus:ring-slate-600" %>
+            </div>
+          </div>
+        </li>
+
+        <li class="flex flex-wrap items-start justify-between">
+          <div
+            class="w-4 h-4 relative flex items-center justify-center box-border border-4 border-slate-50 rounded-full bg-slate-400/50 sm:left-px -left-[7px] dark:bg-slate-300/50 dark:border-slate-700">
+            <div class="w-[3px] h-[3px] flex items-center bg-slate-50 rounded-full flex-shrink-0 dark:bg-slate-700">
+            </div>
+          </div>
+          <div class="sm:pl-6 pl-4 flex-1 sm:flex sm:justify-between -mt-2">
+            <div
+              class="prose prose-slate prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
+              <p><%%= link_to "Jennifer Thompson", "#" %> assigned the <%%= link_to "Follow-up Call", "#" %> task to John Smith for
+                the
+                <%%= link_to "Product Demo for Pork Chop", "#" %> event.
+              </p>
+            </div>
+            <time datetime="2023-06-29T10:30"
+              class="text-sm text-slate-500/80 dark:text-slate-400/80 block sm:pt-0 pt-2">Jun 29</time>
+          </div>
+        </li>
+
+        <li class="flex flex-wrap items-start justify-between">
+          <div
+            class="w-4 h-4 relative flex items-center justify-center box-border border-4 border-slate-50 rounded-full bg-slate-400/50 sm:left-px -left-[7px] dark:bg-slate-300/50 dark:border-slate-700">
+            <div class="w-[3px] h-[3px] flex items-center bg-slate-50 rounded-full flex-shrink-0 dark:bg-slate-700">
+            </div>
+          </div>
+          <div class="sm:pl-6 pl-4 flex-1 sm:flex sm:justify-between -mt-2">
+            <div
+              class="prose prose-slate prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
+              <p><%%= link_to "Mark Davis", "#" %> updated the event <%%= link_to "Sales Training Workshop", "#" %> scheduled for
+                July
+                10, 2023, to include a new guest speaker.
+              </p>
+            </div>
+            <time datetime="2023-06-28T10:30"
+              class="text-sm text-slate-500/80 dark:text-slate-400/80 block sm:pt-0 pt-2">Jun 28</time>
+          </div>
+        </li>
+
+        <li class="flex flex-wrap items-start justify-between">
+          <div
+            class="rounded-full bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 sm:w-8 sm:h-8 w-6 h-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
+            <%%= icon "check", classes: "stroke-current sm:w-5 w-3 sm:h-5 h-3" %>
+          </div>
+          <div class="flex-1 sm:flex sm:justify-between">
+            <div
+              class="prose prose-slate prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
+              <p><%%= link_to "Emily Carter", "#" %> completed the task <%%= link_to "Lead Generation Research", "#" %> assigned by
+                <%%= link_to "Mark Davis", "#" %>.
+              </p>
+            </div>
+            <time datetime="2023-06-28T10:30" class="text-sm text-slate-500/80 dark:text-slate-400/80 block">Jun
+              28</time>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

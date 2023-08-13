@@ -1,0 +1,114 @@
+<div class="container mt-lg-4 h-100 position-relative d-flex flex-column min-h-100 pb-6">
+  <div class="row mt-4">
+    <div class="col-md-8 pe-lg-6">
+      <h1 class="display-5 mb-4">We are here to help you succeed.</h1>
+
+      <p class="lead">Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Curabitur
+        blandit tempus porttitor. Fusce dapibus
+        condimentum.</p>
+      <p class="lh-lg text-body text-opacity-75">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, impedit modi, a temporibus asperiores
+        eveniet, aliquam molestias fuga distinctio explicabo facilis quae! Quasi natus amet reiciendis
+        recusandae pariatur mollitia officia!
+      </p>
+
+      <hr />
+
+      <h4 class="text-smallcaps mb-5">Useful links</h4>
+
+      <div class="pb-5">
+        <%%= link_to "#", class: "text-decoration-none" do %>
+          <h2 class="h3">Documentation</h2>
+        <%% end %>
+        <p class="text-body text-opacity-75">Etiam porta sem malesuada magna mollis euismod. Aenean lacinia
+          bibendum nulla sed consectetur. Donec sed odio dui.
+          Aenean lacinia bibendum nulla sed consectetur. </p>
+      </div>
+
+      <div class="pb-5">
+        <%%= link_to "#", class: "text-decoration-none" do %>
+          <h2 class="h3">Frequently Asked Questions</h2>
+        <%% end %>
+        <p class="text-body text-opacity-75">Integer posuere erat a ante venenatis dapibus posuere velit
+          aliquet. Vivamus sagittis lacus vel augue laoreet rutrum
+          faucibus dolor auctor.</p>
+      </div>
+
+      <div class="pb-5">
+        <%%= link_to "#", class: "text-decoration-none" do %>
+          <h2 class="h3">Billing</h2>
+        <%% end %>
+        <p class="text-body text-opacity-75">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+          auctor. Maecenas sed diam eget risus varius blandit sit
+          amet non magna. Curabitur blandit tempus porttitor. Maecenas faucibus.</p>
+      </div>
+      <div class="pb-4">
+        <%%= link_to "#", class: "text-decoration-none" do %>
+          <h2 class="h3">Integrations</h2>
+        <%% end %>
+
+        <p class="text-body text-opacity-75">Curabitur blandit tempus porttitor. Nullam id dolor id nibh
+          ultricies vehicula ut id eullam id dolor id nibh ultricies
+          vehicula ut id elit.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="p-4 bg-light rounded-2">
+        <h3 class="h5">Prefer to talk to a human?</h3>
+        <p class="text-body text-opacity-75">If you have any questions, concerns, or feedback please reach out
+          to us using one
+          of the forms of communication supplied
+          below.</p>
+
+        <div class="mt-4 mb-4">
+          <p class="text-body text-opacity-75 mb-1">Chat</p>
+          <%%= link_to "Send message", "#", class: "fw-semibold text-decoration-none" %>
+
+          <p class="text-body text-opacity-50"><small>less than 1-hour response times</small>
+          </p>
+        </div>
+
+        <div class="mt-4 mb-4">
+          <p class="text-body text-opacity-75 mb-1">Email</p>
+          <%%= mail_to "support@retriever.com", "support@retriever.com", class: "fw-semibold text-decoration-none" %>
+
+          <p class="text-body text-opacity-50"><small>up to 24 hour response times</small>
+          </p>
+        </div>
+
+        <div class="mt-4 mb-4">
+          <p class="text-body text-opacity-75 mb-1">Phone</p>
+          <%%= link_to "+1-800-555-2345", "tel:+18005552345", class: "fw-semibold text-decoration-none" %>
+
+          <p class="text-body text-opacity-50"><small>up to a 1-hour response time</small>
+          </p>
+        </div>
+
+        <div class="mt-4 mb-4">
+          <p class="text-body text-opacity-75 mb-1">Social Media</p>
+          <ul class="nav">
+            <li class="nav-item">
+              <%%= link_to "#", class: "text-decoration nav-link" do %>
+                <%%= icon "twitter", path: "social/twitter.svg", classes: "icon text-primary fill-current" %>
+              <%% end %>
+            </li>
+            <li class="nav-item">
+              <%%= link_to "#", class: "text-decoration nav-link" do %>
+                <%%= icon "facebook", path: "social/facebook.svg", classes: "icon text-primary fill-current" %>
+              <%% end %>
+            </li>
+            <li class="nav-item">
+              <%%= link_to "#", class: "text-decoration nav-link" do %>
+                <%%= icon "linkedin", path: "social/linkedin.svg", classes: "icon text-primary fill-current" %>
+              <%% end %>
+            </li>
+          </ul>
+
+          <p class="text-body text-opacity-50"><small>Less than 1-hour response times</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,7 +36,7 @@
   }
 
   .btn-white {
-    @apply bg-white hover:bg-white text-slate-700 focus:ring-slate-100 border border-slate-300 shadow-sm hover:border-slate-400 shadow-slate-300/20 hover:shadow-slate-300/50;
+    @apply bg-white hover:bg-white text-slate-700 focus:ring-slate-100 border border-slate-300 shadow-sm hover:border-slate-400 shadow-slate-300/20 hover:shadow-slate-300/50 dark:shadow-none dark:bg-slate-700/70 dark:text-slate-200 dark:border-slate-700 dark:focus:ring-slate-600/30 dark:hover:border-slate-600 dark:hover:bg-slate-800;
 
     &.btn-outline {
       @apply bg-transparent text-white hover:text-slate-700 hover:bg-white focus:ring-slate-100/20 border-white;
