@@ -57877,130 +57877,150 @@
   // app/javascript/controllers/canvas_controller.js
   var canvas_controller_default = class extends Controller {
     connect() {
-      var c = this.element, ctx = c.getContext("2d"), cw = c.width = window.innerWidth, ch = c.height = window.innerHeight, points = [], tick = 0, opt = {
-        count: 5,
-        range: {
-          x: 40,
-          y: 80
-        },
-        duration: {
-          min: 40,
-          max: 100
-        },
-        thickness: 0,
-        strokeColor: "transparent",
-        level: 0.65,
-        curved: true
-      }, rand = function(min2, max2) {
-        return Math.floor(Math.random() * (max2 - min2 + 1) + min2);
-      }, ease = function(t, b, c2, d) {
-        if ((t /= d / 2) < 1)
-          return c2 / 2 * t * t + b;
-        return -c2 / 2 * (--t * (t - 2) - 1) + b;
-      };
-      ctx.lineJoin = "round";
-      ctx.lineWidth = opt.thickness;
-      ctx.strokeStyle = opt.strokeColor;
-      var Point = function(config) {
-        this.anchorX = config.x;
-        this.anchorY = config.y;
-        this.x = config.x;
-        this.y = config.y;
-        this.setTarget();
-      };
-      Point.prototype.setTarget = function() {
-        this.initialX = this.x;
-        this.initialY = this.y;
-        this.targetX = this.anchorX + rand(0, opt.range.x * 2) - opt.range.x;
-        this.targetY = this.anchorY + rand(0, opt.range.y * 2) - opt.range.y;
-        this.tick = 0;
-        this.duration = rand(opt.duration.min, opt.duration.max);
-      };
-      Point.prototype.update = function() {
-        var dx = this.targetX - this.x;
-        var dy = this.targetY - this.y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (Math.abs(dist) <= 0) {
-          this.setTarget();
-        } else {
-          var t = this.tick;
-          var b = this.initialY;
-          var c2 = this.targetY - this.initialY;
-          var d = this.duration;
-          this.y = ease(t, b, c2, d);
-          b = this.initialX;
-          c2 = this.targetX - this.initialX;
-          d = this.duration;
-          this.x = ease(t, b, c2, d);
-          this.tick++;
-        }
-      };
-      Point.prototype.render = function() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false);
-        ctx.fillStyle = "#000";
-        ctx.fill();
-      };
-      var updatePoints = function() {
-        var i2 = points.length;
-        while (i2--) {
-          points[i2].update();
-        }
-      };
-      var renderPoints = function() {
-        var i2 = points.length;
-        while (i2--) {
-          points[i2].render();
-        }
-      };
-      var renderShape = function() {
-        ctx.beginPath();
-        var pointCount = points.length;
-        ctx.moveTo(points[0].x, points[0].y);
-        var i2;
-        for (i2 = 0; i2 < pointCount - 1; i2++) {
-          var c2 = (points[i2].x + points[i2 + 1].x) / 2;
-          var d = (points[i2].y + points[i2 + 1].y) / 2;
-          ctx.quadraticCurveTo(points[i2].x, points[i2].y, c2, d);
-        }
-        ctx.lineTo(-opt.range.x - opt.thickness, ch + opt.thickness);
-        ctx.lineTo(cw + opt.range.x + opt.thickness, ch + opt.thickness);
-        ctx.closePath();
-        var gradient = ctx.createLinearGradient(20, 300, 240, 0);
-        gradient.addColorStop(1, "#4338CA");
-        gradient.addColorStop(0.05, "salmon");
-        ctx.fillStyle = gradient;
-        ctx.fill();
-        ctx.stroke();
-      };
-      var clear = function() {
-        ctx.clearRect(0, 0, cw, ch);
-      };
-      var loop = function() {
-        window.requestAnimFrame(loop, c);
-        tick++;
-        clear();
-        updatePoints();
-        renderShape();
-      };
-      var i = opt.count + 2;
-      var spacing = (cw + opt.range.x * 2) / (opt.count - 1);
-      while (i--) {
-        points.push(
-          new Point({
-            x: spacing * (i - 1) - opt.range.x,
-            y: ch - ch * opt.level
-          })
-        );
-      }
-      window.requestAnimFrame = function() {
-        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(a) {
-          window.setTimeout(a, 1e3 / 60);
+      if (this.element) {
+        var c = this.element, ctx = c.getContext("2d"), cw = c.width = window.innerWidth, ch = c.height = window.innerHeight, points = [], tick = 0, opt = {
+          count: 5,
+          range: {
+            x: 40,
+            y: 80
+          },
+          duration: {
+            min: 40,
+            max: 100
+          },
+          thickness: 0,
+          strokeColor: "transparent",
+          level: 0.65,
+          curved: true
+        }, rand = function(min2, max2) {
+          return Math.floor(Math.random() * (max2 - min2 + 1) + min2);
+        }, ease = function(t, b, c2, d) {
+          if ((t /= d / 2) < 1)
+            return c2 / 2 * t * t + b;
+          return -c2 / 2 * (--t * (t - 2) - 1) + b;
         };
-      }();
-      loop();
+        ctx.lineJoin = "round";
+        ctx.lineWidth = opt.thickness;
+        ctx.strokeStyle = opt.strokeColor;
+        var Point = function(config) {
+          this.anchorX = config.x;
+          this.anchorY = config.y;
+          this.x = config.x;
+          this.y = config.y;
+          this.setTarget();
+        };
+        Point.prototype.setTarget = function() {
+          this.initialX = this.x;
+          this.initialY = this.y;
+          this.targetX = this.anchorX + rand(0, opt.range.x * 2) - opt.range.x;
+          this.targetY = this.anchorY + rand(0, opt.range.y * 2) - opt.range.y;
+          this.tick = 0;
+          this.duration = rand(opt.duration.min, opt.duration.max);
+        };
+        Point.prototype.update = function() {
+          var dx = this.targetX - this.x;
+          var dy = this.targetY - this.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (Math.abs(dist) <= 0) {
+            this.setTarget();
+          } else {
+            var t = this.tick;
+            var b = this.initialY;
+            var c2 = this.targetY - this.initialY;
+            var d = this.duration;
+            this.y = ease(t, b, c2, d);
+            b = this.initialX;
+            c2 = this.targetX - this.initialX;
+            d = this.duration;
+            this.x = ease(t, b, c2, d);
+            this.tick++;
+          }
+        };
+        Point.prototype.render = function() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false);
+          ctx.fillStyle = "#000";
+          ctx.fill();
+        };
+        var updatePoints = function() {
+          var i2 = points.length;
+          while (i2--) {
+            points[i2].update();
+          }
+        };
+        var renderPoints = function() {
+          var i2 = points.length;
+          while (i2--) {
+            points[i2].render();
+          }
+        };
+        var renderShape = function() {
+          ctx.beginPath();
+          var pointCount = points.length;
+          ctx.moveTo(points[0].x, points[0].y);
+          var i2;
+          for (i2 = 0; i2 < pointCount - 1; i2++) {
+            var c2 = (points[i2].x + points[i2 + 1].x) / 2;
+            var d = (points[i2].y + points[i2 + 1].y) / 2;
+            ctx.quadraticCurveTo(points[i2].x, points[i2].y, c2, d);
+          }
+          ctx.lineTo(-opt.range.x - opt.thickness, ch + opt.thickness);
+          ctx.lineTo(cw + opt.range.x + opt.thickness, ch + opt.thickness);
+          ctx.closePath();
+          var gradient = ctx.createLinearGradient(20, 300, 240, 0);
+          gradient.addColorStop(1, "#4338CA");
+          gradient.addColorStop(0.05, "salmon");
+          ctx.fillStyle = gradient;
+          ctx.fill();
+          ctx.stroke();
+        };
+        var clear = function() {
+          ctx.clearRect(0, 0, cw, ch);
+        };
+        var loop = function() {
+          window.requestAnimFrame(loop, c);
+          tick++;
+          clear();
+          updatePoints();
+          renderShape();
+        };
+        var i = opt.count + 2;
+        var spacing = (cw + opt.range.x * 2) / (opt.count - 1);
+        while (i--) {
+          points.push(
+            new Point({
+              x: spacing * (i - 1) - opt.range.x,
+              y: ch - ch * opt.level
+            })
+          );
+        }
+        window.requestAnimFrame = function() {
+          return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(a) {
+            window.setTimeout(a, 1e3 / 60);
+          };
+        }();
+        loop();
+      }
     }
   };
+
+  // app/javascript/controllers/dialog_controller.js
+  var dialog_controller_default = class extends Controller {
+    launch(event) {
+      event.preventDefault();
+      this.dialogTarget.showModal();
+    }
+    cancel(event) {
+      event.preventDefault();
+      this.dialogTarget.close();
+    }
+    perform() {
+      this.buttonTarget.textContent = "Processing...";
+      this.buttonTarget.classList.add("opacity-50", "pointer-events-none");
+      this.cancelTarget.classList.add("hidden");
+    }
+  };
+  __publicField(dialog_controller_default, "targets", ["dialog", "button", "cancel"]);
 
   // node_modules/stimulus-use/dist/index.js
   var composeEventName = (name, controller, eventPrefix) => {
@@ -58473,6 +58493,19 @@
   };
   __publicField(tabs_controller_default, "targets", ["tab", "panel"]);
 
+  // app/javascript/controllers/pages_controller.js
+  var pages_controller_default = class extends Controller {
+    checkAll() {
+      const checkAllCheckbox = this.checkboxTargets[0];
+      const checkboxes = this.checkboxTargets.slice(1);
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = !checkbox.checked;
+      });
+      checkAllCheckbox.checked = checkboxes.every((checkbox) => checkbox.checked);
+    }
+  };
+  __publicField(pages_controller_default, "targets", ["checkbox"]);
+
   // app/javascript/controllers/toggle_controller.js
   var toggle_controller_default = class extends Controller {
     toggle() {
@@ -58508,6 +58541,7 @@
   application.register("configuration", configuration_controller_default);
   application.register("code", code_controller_default);
   application.register("canvas", canvas_controller_default);
+  application.register("dialog", dialog_controller_default);
   application.register("dropdown", dropdown_controller_default);
   application.register("flash", flash_controller_default);
   application.register("helper", helper_controller_default);
@@ -58518,6 +58552,7 @@
   application.register("search", search_controller_default);
   application.register("smooth", smooth_controller_default);
   application.register("tabs", tabs_controller_default);
+  application.register("pages", pages_controller_default);
   application.register("toggle", toggle_controller_default);
   application.register("tooltip", tooltip_controller_default);
 })();

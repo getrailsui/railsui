@@ -1,0 +1,420 @@
+<div class="container mt-lg-4 h-100 position-relative d-flex flex-column min-h-100">
+  <h2 class="display-6">Users</h2>
+  <p class="text-black-50">A list of users in your app could go here</p>
+
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Job title</th>
+          <th scope="col">Status</th>
+          <th scope="col">Role</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/1.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Stacey Brown</p>
+            </div>
+          </td>
+          <td>
+            Software Engineer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/28.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Adam Johnson</p>
+            </div>
+          </td>
+          <td>
+            Product Lead
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Admin
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/29.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Benjamin Patel</p>
+            </div>
+          </td>
+          <td>
+            Software Engineer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/2.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Mia Gupta</p>
+            </div>
+          </td>
+          <td>
+            UX Designer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/33.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Ave Sharma</p>
+            </div>
+          </td>
+          <td>
+            Product Designer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/22.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Nathan Rodriguez</p>
+            </div>
+          </td>
+          <td>
+            Senior Software Architect
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Admin
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/34.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Lily Cooper</p>
+            </div>
+          </td>
+          <td>
+            Software Engineer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/38.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Isabella Anderson</p>
+            </div>
+          </td>
+          <td>
+            Designer
+          </td>
+          <td>
+            <span class="badge text-bg-light">Inactive</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/49.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Stacey Brown</p>
+            </div>
+          </td>
+          <td>
+            Software Engineer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/50.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Adam Johnson</p>
+            </div>
+          </td>
+          <td>
+            Product Lead
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Admin
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/32.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Benjamin Patel</p>
+            </div>
+          </td>
+          <td>
+            Software Engineer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/22.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Mia Gupta</p>
+            </div>
+          </td>
+          <td>
+            UX Designer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/33.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Ave Sharma</p>
+            </div>
+          </td>
+          <td>
+            Product Designer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/25.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Isabella Anderson</p>
+            </div>
+          </td>
+          <td>
+            Designer
+          </td>
+          <td>
+            <span class="badge text-bg-light">Inactive</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/8.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Nathan Rodriguez</p>
+            </div>
+          </td>
+          <td>
+            Senior Software Architect
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Admin
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/27.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Lily Cooper</p>
+            </div>
+          </td>
+          <td>
+            Software Engineer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/7.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Nathan Rodriguez</p>
+            </div>
+          </td>
+          <td>
+            Senior Software Architect
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Admin
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/women/16.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Lily Cooper</p>
+            </div>
+          </td>
+          <td>
+            Software Engineer
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Member
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <%%= image_tag "https://randomuser.me/api/portraits/men/6.jpg", alt: "User", class: "avatar" %>
+              <p class="m-0 fw-semibold text-dark-50">Nathan Rodriguez</p>
+            </div>
+          </td>
+          <td>
+            Senior Software Architect
+          </td>
+          <td>
+            <span class="badge text-bg-success">Active</span>
+          </td>
+          <td>
+            Admin
+          </td>
+          <td>
+            <%%= link_to "Edit", "#", class: "btn-link" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<nav aria-label="Users pagination" class="container">
+  <ul class="pagination mt-4">
+    <li class="page-item disabled">
+      <%%= link_to "Previous", "#", class: "page-link" %>
+    </li>
+    <li class="page-item">
+      <%%= link_to "1", "#", class: "page-link" %>
+    </li>
+    <li class="page-item active" aria-current="page">
+      <%%= link_to "2", "#", class: "page-link" %>
+    </li>
+    <li class="page-item">
+      <%%= link_to "3", "#", class: "page-link" %>
+    </li>
+    <li class="page-item">
+      <%%= link_to "Next", "#", class: "page-link" %>
+    </li>
+  </ul>
+</nav>

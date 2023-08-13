@@ -195,5 +195,18 @@ module Railsui
     def unavailable_theme?(theme)
       theme.last == "Setter" || theme.last == "Shepherd"
     end
+
+    def tag_label(tag)
+      base_classes = "rounded text-xs px-1 py-px font-semibold inline-flex items-center justify-center"
+
+      case tag
+      when "marketing"
+        content_tag :div, tag.humanize, class: "#{base_classes} bg-indigo-50 text-indigo-500 dark:bg-indigo-500/40 dark:text-indigo-200"
+      when "admin"
+        content_tag :div, tag.humanize, class: "#{base_classes} bg-sky-50 text-sky-500 dark:bg-sky-500/40 dark:text-sky-200"
+      else
+        content_tag :div, tag.humanize, class: "#{base_classes} bg-slate-50 text-slate-500 dark:bg-slate-500/40 dark:text-slate-200"
+      end
+    end
   end
 end

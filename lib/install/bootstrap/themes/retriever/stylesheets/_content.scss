@@ -1,3 +1,7 @@
+:is(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: -0.04em;
+}
+
 .display-1,
 .display-2,
 .display-3,
@@ -23,4 +27,41 @@
 
 mark {
   background: lightyellow;
+}
+
+hr {
+  opacity: 0.15;
+  margin: 2rem 0;
+}
+
+.text-smallcaps {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  color: var(--bs-gray-600);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.avatar-sm {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.avatar-lg {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }

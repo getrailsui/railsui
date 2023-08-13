@@ -37,7 +37,7 @@ else
     copy_file "#{__dir__}/themes/#{Railsui.config.theme}/postcss.config.js", "postcss.config.js", force: true
 
     # Yarn stuffs
-    run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography stimulus-use tippy.js --latest"
+    run "yarn add tailwindcss postcss autoprefixer postcss-import postcss-nesting @tailwindcss/forms @tailwindcss/typography stimulus-use tippy.js tailwind-scrollbar --latest"
 
     # Copy themed devise views
     if Rails.root.join("app/views/devise").exist?
@@ -61,7 +61,7 @@ else
     # Copy themed globally shared partials
     # These files overide those shipped during first install of Rails UI
     say "⚡️ Copy shared partial files"
-    shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb", "_nav_menu.html.erb", "_footer.html.erb"]
+    shared_files = ["_error_messages.html.erb", "_flash.html.erb", "_nav.html.erb", "_nav_menu.html.erb", "_footer.html.erb", "_fonts.html.erb"]
 
     shared_files.each do |shared_file|
       copy_file "#{__dir__}/themes/#{Railsui.config.theme}/shared/#{shared_file}", Rails.root.join("app/views/shared/#{shared_file}"), force: true
@@ -78,19 +78,26 @@ else
       copy_file "#{path}/#{file}", Rails.root.join("app/javascript/controllers/#{file}")
 
       # append each import to controllers/index.js
-      append_to_file "#{Rails.application.root.join("app/javascript/controllers/index.js")}", %(\nimport #{file_name.capitalize}Controller from "./#{file_name}_controller"\napplication.register("#{file_name}", #{file_name.capitalize}Controller)\n)
+      append_to_file "#{Rails.application.root.join("app/javascript/controllers/index.js")}", %(\nimport #{file_name.classify}Controller from "./#{file_name}_controller.js";\napplication.register("#{file_name.dasherize}", #{file_name.classify}Controller);\n)
     end
 
     # update manifest
     rails_command "rails stimulus:manifest:update"
 
-    # Build scripts for good measure
-    say "⚡️ Add build:css script"
+    # Get the content of package.json
+    package_json_path = Rails.application.root.join("package.json")
+    package_json_content = File.read(package_json_path)
 
-    say "Append build:css script to package.json"
-    insert_into_file Rails.application.root.join("package.json"),
-    after: '"scripts": {' do
-      "\n\t\t" + '"build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",'
+    # Check if the build:css script already exists
+    unless package_json_content.include?('"build:css"')
+      say "Append build:css script to package.json"
+      # Add the build:css script if it's not present
+      insert_into_file package_json_path,
+        after: '"scripts": {' do
+          "\n\t\t" + '"build:css": "tailwindcss --postcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",'
+        end
+    else
+      say "build:css script already exists in package.json. Skipping..."
     end
 
     say "Run build:css"

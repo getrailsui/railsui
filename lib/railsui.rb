@@ -20,8 +20,16 @@ module Railsui
     run_command "bundle"
   end
 
+  def self.build_css
+    run_command "yarn build:css"
+  end
+
   def self.theme_logo_url
     "https://f001.backblazeb2.com/file/railsui/themes/#{self.config.theme.parameterize}/logo.svg"
+  end
+
+  def self.asset_url
+    "https://f001.backblazeb2.com/file/railsui"
   end
 
   def self.parameterized_app_name

@@ -1,3 +1,11 @@
+.border-dashed {
+  border-style: dashed;
+}
+
+.min-h-100 {
+  min-height: 100%;
+}
+
 .fill-current {
   fill: currentColor;
 }
@@ -16,4 +24,12 @@
 
 .z-10 {
   z-index: 10;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.w-100vw {
+  width: 100vw;
 }

@@ -1,0 +1,152 @@
+<%#
+  This data should probably fed from elsewhere (i.e. a controller or similar) but I'm showing it here for context.
+%>
+
+<% combo_select_json_data = [
+  {
+    "name": "John Doe",
+    "thumbnail": "https://randomuser.me/api/portraits/men/22.jpg"
+  },
+  {
+    "name": "Janae Black",
+    "thumbnail": "https://randomuser.me/api/portraits/women/2.jpg"
+  },
+  {
+    "name": "Christopher Robinson",
+    "thumbnail": "https://randomuser.me/api/portraits/men/10.jpg"
+  },
+  {
+    "name": "Alice Denace",
+    "thumbnail": "https://randomuser.me/api/portraits/women/14.jpg"
+  },
+  {
+    "name": "Trevor James",
+    "thumbnail": "https://randomuser.me/api/portraits/men/24.jpg"
+  }
+] %>
+
+<div data-controller="dropdown">
+  <div data-controller="modal">
+    <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="trigger"
+      class="btn btn-primary space-x-2 flex sm:pr-2 focus:ring-slate-100/20 group dark:focus:ring-slate-500/20">
+      <span>Create</span>
+      <%= icon "chevron-down", classes: "stroke-current w-3 h-3 text-white group-focus:rotate-180 transition ease-in-out transform" %>
+    </button>
+
+    <ul data-dropdown-target="menu"
+    class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+    data-transition-enter-active="transition ease-out duration-300"
+    data-transition-enter-from="transform opacity-0 scale-95" data-transition-enter-to="transform opacity-100 scale-100"
+    data-transition-leave-active="transition ease-in duration-300"
+    data-transition-leave-from="transform opacity-100 scale-100"
+    data-transition-leave-to="transform opacity-0 scale-95">
+
+      <% if respond_to?(:admin_projects_path) || respond_to?(:admin_project_path) %>
+        <li>
+          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
+            <%= icon "plus-small", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+            <span>Project</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if respond_to?(:admin_messages_path) || respond_to?(:admin_message_path) %>
+        <li>
+          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
+            <%= icon "paper-airplane", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+            <span>Message</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if respond_to?(:admin_assignments_path) %>
+        <li>
+          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3", data: { action: "click->modal#open" } do %>
+            <%= icon "pencil-square", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 pointer-events-none" %>
+            <span class="pointer-events-none">Assignment</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if respond_to?(:admin_calendar_path) %>
+        <li>
+          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
+            <%= icon "calendar-days", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+            <span>Event</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <div aria-labelledby="modal-title" aria-modal="true" data-action="keyup@window->modal#closeWithEsc"
+      data-modal-target="container" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
+      <div class="h-screen w-full relative">
+        <div
+          data-modal-target="content" data-transition-enter-active="transition ease-out duration-300"
+          data-transition-enter-from="transform opacity-0 scale-95"
+          data-transition-enter-to="transform opacity-100 scale-100"
+          data-transition-leave-active="transition ease-in duration-300"
+          data-transition-leave-from="transform opacity-100 scale-100"
+          data-transition-leave-to="transform opacity-0 scale-95"
+          class="hidden rounded shadow-xl max-w-2xl h-auto mx-auto bg-white m-4 p-8 relative dark:bg-slate-700">
+          <button
+            class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 group"
+            data-action="click->modal#close">
+            <%= icon "x-mark", classes: "w-6 h-6 text-slate-500 stroke-current dark:group-hover:text-slate-300" %>
+          </button>
+          <div>
+            <h2 id="assignment-modal-title" class="dark:text-slate-100 mb-6 sm:h4 h5">Add Assignment</h2>
+            <%= form_tag "#" do %>
+              <div class="mb-6">
+                <%= label_tag :assignment_title, "Title", class: "form-label" %>
+                <%= text_field_tag :assignment_title, nil, class: "form-input", placeholder: "Assignment title" %>
+              </div>
+
+              <div class="mb-6">
+                <%= label_tag "assignment[description]", "Description", class: "form-label" %>
+                <%= text_area_tag "assignment[description]", nil, class: "form-input min-h-[110px]", placeholder: "Add a description of the assignment" %>
+              </div>
+
+              <div class="mb-6" data-controller="combo-select" data-combo-select-items-value='<%=  combo_select_json_data.to_json %>'>
+                <%= label_tag :combobox, "Assign to", class: "form-label" %>
+                <div class="relative mt-2">
+                  <%= hidden_field_tag :combobox_value, nil, data: { "combo-select-target" => "input" } %>
+                  <%= text_field_tag :combobox, nil, class: "form-input sm:pr-12 shadow-sm w-full", role: "combobox", "aria-controls": "options", "aria-expanded": "false", data: { action: "keydown->combo-select#handleKeyboardNavigation click->combo-select#toggle click@window->combo-select#hide","combo-select-target": "input" }, readonly: true %>
+
+                  <button type="button" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
+                    <%= icon "chevron-up-down", classes: "h-5 w-5 text-slate-400" %>
+                  </button>
+
+                  <div data-combo-select-target="active" data-action="click->combo-select#toggle"
+                    class="flex items-center absolute inset-y-0 left-2 z-0">
+                    <div class="absolute inset-y-0 flex items-center space-x-2 left-1 z-0">
+                      <span class="flex items-center">
+                        <div class="flex items-center">
+                          <%= image_tag demo_avatar_url, alt: "Avatar", class: "h-6 w-6 flex-shrink-0 rounded-full" %>
+                          <span class="ml-2 font-medium text-sm whitespace-nowrap">John Doe</span>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+
+                  <ul
+                    class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white dark:bg-slate-800 p-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                    id="options" role="listbox" data-combo-select-target="options"
+                    data-transition-enter-active="transition ease-out duration-300"
+                    data-transition-enter-from="transform opacity-0 scale-95"
+                    data-transition-enter-to="transform opacity-100 scale-100"
+                    data-transition-leave-active="transition ease-in duration-100"
+                    data-transition-leave-from="transform opacity-100 scale-100"
+                    data-transition-leave-to="transform opacity-0 scale-95">
+                  </ul>
+                </div>
+              </div>
+
+              <%= submit_tag "Create", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

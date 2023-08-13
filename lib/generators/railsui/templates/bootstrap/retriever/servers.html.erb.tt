@@ -1,0 +1,690 @@
+<div class="container mt-lg-4 h-100 position-relative d-flex flex-column min-h-100 pb-6" data-controller="servers">
+  <div class="row mb-4 mb-md-0">
+    <div class="col-md-6 col-12">
+      <h1 class="display-6">Servers</h1>
+      <p class="text-black-50">A list of servers in your app could go here</p>
+    </div>
+    <div class="col justify-content-end text-md-end">
+      <a href="#" class="btn btn-primary">Create server</a>
+    </div>
+  </div>
+  <div class="border-top border-bottom pt-1 pb-1 row">
+    <ul class="nav col-md-6 col-12">
+      <li class="nav-item">
+        <%%= link_to "Active (8)", "#", class: "nav-link active", "aria-current": "page" %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "Inactive", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "Archived", "#", class: "nav-link" %>
+      </li>
+    </ul>
+
+    <ul class="nav col-md-6 justify-content-lg-end">
+      <li class="nav-item">
+        <%%= link_to "#", class: "nav-link ps-md-2 pe-md-2", id: "serversFilter" do %>
+          <%%= icon "funnel", classes: "icon pe-none" %>
+        <%% end %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "#", class: "nav-link ps-md-2 pe-md-2", id: "serversList", data: { action: "click->servers#toggleView", servers_target: "listIcon" } do %>
+          <%%= icon "list-bullet", classes: "icon pe-none" %>
+        <%% end %>
+      </li>
+      <li class="nav-item">
+        <%%= link_to "#", class: "nav-link ps-md-2 pe-md-2 active", id: "serversGrid", data: { action: "click->servers#toggleView", servers_target: "gridIcon" } do %>
+          <%%= icon "squares-2x2", classes: "icon pe-none" %>
+        <%% end %>
+      </li>
+    </ul>
+  </div>
+
+  <!-- GRID -->
+  <div id="serversGridContainer" class="mt-2 row gy-4" data-servers-target="grid">
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-primary" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">autumn-sun-6428</h3>
+                <%% end %>
+                <small class="text-black-50">NYC1 / 4GB / 50GB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light"></div>
+        </div>
+        <p class="retriever-server-card-ip">123.32.76.23</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-primary" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">winter-moon-7523</h3>
+                <%% end %>
+                <small class="text-black-50">LON1 / 16GB / 200GB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light"></div>
+        </div>
+        <p class="retriever-server-card-ip">198.51.100.2</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-primary" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">spring-breeze-8654</h3>
+                <%% end %>
+                <small class="text-black-50">AMS1 / 32GB / 500GB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light"></div>
+        </div>
+        <p class="retriever-server-card-ip">203.0.113.15</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-primary" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">summer-star-9132</h3>
+                <%% end %>
+                <small class="text-black-50">SYD1 / 64GB / 1TB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light"></div>
+        </div>
+        <p class="retriever-server-card-ip">172.16.20.50</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-primary" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">golden-leaves-5279</h3>
+                <%% end %>
+                <small class="text-black-50">NYC1 / 4GB / 50GB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light"></div>
+        </div>
+        <p class="retriever-server-card-ip">172.31.0.1</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-primary" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">frosty-morning-3691</h3>
+                <%% end %>
+                <small class="text-black-50">TOK1 / 256GB / 4TB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light"></div>
+        </div>
+        <p class="retriever-server-card-ip">192.0.2.128</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-danger" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">radiant-sky-7684</h3>
+                <%% end %>
+                <small class="text-black-50">MUM1 / 1TB / 16TB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light inactive"></div>
+        </div>
+        <p class="retriever-server-card-ip">10.0.0.32</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card retriever-server-card">
+        <div class="card-body">
+          <div>
+            <div class="d-flex gap-3">
+              <%%= icon "server", classes: "icon text-danger" %>
+              <div>
+                <%%= link_to "#", class: "text-decoration-none" do %>
+                  <h3 class="fw-semibold h6 text-primary m-0">harvest-fields-4159</h3>
+                <%% end %>
+                <small class="text-black-50">CHI1 / 2TB / 32TB Disk</small>
+              </div>
+            </div>
+            <div class="dropdown position-absolute top-0 end-0">
+              <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+                <%%= icon "ellipsis-horizontal", classes: "icon" %>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="retriever-server-card-status-light inactive"></div>
+        </div>
+        <p class="retriever-server-card-ip">192.168.0.100</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIST -->
+  <div id="serversListContainer" class="mt-2 d-none table-responsive" data-servers-target="list">
+    <table class="table align-middle">
+      <thead>
+        <th>Title</th>
+        <th>Stats</th>
+        <th>IP</th>
+        <th>Status</th>
+        <th></th>
+      </thead>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-primary" %>
+            <%%= link_to "autumn-sun-6428", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>NYC1 / 4GB / 50GB Disk</td>
+        <td>123.32.76.23</td>
+        <td>
+          <div class="retriever-server-card-status-light"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-primary" %>
+            <%%= link_to "winter-moon-7523", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>LON1 / 16GB / 200GB Disk</td>
+        <td>198.51.100.2</td>
+        <td>
+          <div class="retriever-server-card-status-light"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-primary" %>
+            <%%= link_to "spring-breeze-8654", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>AMS1 / 32GB / 500GB Disk	</td>
+        <td>203.0.113.15</td>
+        <td>
+          <div class="retriever-server-card-status-light"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-primary" %>
+            <%%= link_to "summer-star-9132", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>SYD1 / 64GB / 1TB Disk</td>
+        <td>172.16.20.50</td>
+        <td>
+          <div class="retriever-server-card-status-light"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-primary" %>
+            <%%= link_to "golden-leaves-5279", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>NYC1 / 4GB / 50GB Disk</td>
+        <td>172.31.0.1</td>
+        <td>
+          <div class="retriever-server-card-status-light"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-primary" %>
+            <%%= link_to "frosty-morning-3691", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>TOK1 / 256GB / 4TB Disk</td>
+        <td>192.0.2.128</td>
+        <td>
+          <div class="retriever-server-card-status-light"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-danger" %>
+            <%%= link_to "radiant-sky-7684", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>MUM1 / 1TB / 16TB Disk</td>
+        <td>10.0.0.32</td>
+        <td>
+          <div class="retriever-server-card-status-light inactive"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="retriever-server-list-item">
+        <td>
+          <div class="d-flex gap-3">
+            <%%= icon "server", classes: "icon text-danger" %>
+            <%%= link_to "harvest-fields-4159", "#", class: "text-decoration-none fw-semibold" %>
+          </div>
+        </td>
+        <td>CHI1 / 2TB / 32TB Disk</td>
+        <td>192.168.0.100</td>
+        <td>
+          <div class="retriever-server-card-status-light inactive"></div>
+        </td>
+        <td class="text-end">
+          <div class="dropdown">
+            <button class="dropdown-toggle dropdown-toggle-minimal btn" type="button" data-bs-toggle="dropdown" data-turbo="false"
+                aria-expanded="false">
+              <%%= icon "ellipsis-horizontal", classes: "icon" %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%%= link_to "Edit server", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server name", "#", class: "dropdown-item" %>
+              </li>
+              <li>
+                <%%= link_to "Copy server IP", "#", class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<%% content_for :head do %>
+
+<!--
+  ### READ ME ###
+  The embedded JavaScript below is for preview purposes only.
+
+  You should consider adding this as a Stimulus.js controller (or similiar) outside of this view for best performance and compatibility.
+
+  ✅ I've include a Stimulus.js version at the bottom of this file. The markup already has the controller and targets added.
+-->
+
+<script>
+// 🍝
+
+document.addEventListener("DOMContentLoaded", () => {
+  const serversFilter = document.querySelector("#serversFilter")
+  const serversList = document.querySelector("#serversList")
+  const serversGrid = document.querySelector("#serversGrid")
+  const serversGridContainer = document.querySelector("#serversGridContainer")
+  const serversListContainer = document.querySelector("#serversListContainer")
+
+  serversList.addEventListener("click", (event) => {
+    event.preventDefault()
+    serversList.classList.add("active")
+    serversGrid.classList.remove("active")
+    serversListContainer.classList.remove("d-none")
+    serversGridContainer.classList.add("d-none")
+  })
+
+  serversGrid.addEventListener("click", (event) => {
+    event.preventDefault()
+    serversList.classList.remove("active")
+    serversGrid.classList.add("active")
+    serversListContainer.classList.add("d-none")
+    serversGridContainer.classList.remove("d-none")
+  })
+})
+</script
+<%% end %>
+
+
+<!--
+### ⚡️ Stimulus.js ###
+
+Below is a bare bones version of a Stimulus controller you can add to the app. You're encouraged to DRY this thing as opposed to one-off use cases. I'm leaving that up to you!
+
+1. Run the generator to save some key strokes:
+
+```
+$ rails g stimulus servers
+```
+
+2. Copy the JavaScript over
+
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = ["grid", "list", "gridIcon", "listIcon"]
+
+  toggleView(event) {
+    event.preventDefault()
+
+    const isList = event.target.id === "serversList"
+
+    this.gridIconTarget.classList.toggle("active", !isList)
+    this.listIconTarget.classList.toggle("active", isList)
+    this.gridTarget.classList.toggle("d-none", isList)
+    this.listTarget.classList.toggle("d-none", !isList)
+  }
+}
+-->

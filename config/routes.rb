@@ -3,6 +3,7 @@ Railsui::Engine.routes.draw do
   resource :configuration, only: [:create, :update]
   resource :systems, only: :show
   resource :routes, only: :show
+  get :delete_page, to: "configurations#delete_page"
 
   namespace :systems do
     get :authentication

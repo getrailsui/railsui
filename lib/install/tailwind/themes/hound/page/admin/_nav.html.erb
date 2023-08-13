@@ -1,0 +1,162 @@
+<header class="px-4 dark:border-b dark:border-slate-700 bg-slate-800 <%= local_assigns[:header_title].present? ? 'sm:py-6 py-4' : 'sm:pt-6 pt-4' %>" data-controller="nav">
+  <div class="lg:flex flex-wrap items-center justify-start container mx-auto border-b border-slate-700 pb-4">
+    <div class="flex items-center justify-between">
+
+      <%= link_to root_path do %>
+        <svg class="fill-current text-indigo-500 sm:w-10 w-6" width="32" height="42" viewBox="0 0 32 42" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M7.17241 0C3.2112 0 0 3.2112 0 7.17241V22.0065C0 25.9678 3.2112 29.1789 7.17241 29.1789C11.1336 29.1789 14.3448 25.9678 14.3448 22.0065V7.17241C14.3448 3.2112 11.1336 0 7.17241 0ZM24.8276 0C20.8664 0 17.6552 3.2112 17.6552 7.17241V34.8276C17.6552 38.7888 20.8664 42 24.8276 42C28.7888 42 32 38.7888 32 34.8276V7.17241C32 3.2112 28.7888 0 24.8276 0Z" />
+        </svg>
+      <% end %>
+
+      <button id="admin-nav-toggle" data-action="click->nav#toggle"
+        class="lg:hidden block px-1 py-px rounded focus:ring-2 focus:ring-slate-100/30 focus:bg-slate-700 focus:shadow-sm active:bg-slate-700 group dark:focus:bg-slate-800 dark:focus:ring-slate-600 dark:focus:shadow-sm"
+        role="Mobile navigation toggle">
+        <div role="none" data-nav-target="menuBars">
+          <%= icon "bars-3-bottom-left", classes: "stroke-current w-9 h-9 text-slate-300 group-focus:text-indigo-200 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+        </div>
+        <div role="none" data-nav-target="menuCross" class="hidden">
+          <%= icon "x-mark", classes: "stroke-current w-9 h-9 text-slate-300 group-focus:text-indigo-200 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+        </div>
+      </button>
+    </div>
+    <div class="text-white lg:pl-6 flex-1 lg:py-0 py-4 lg:flex" data-nav-target="nav"
+      data-transition-enter-active="transition ease-out duration-200" data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-200" data-transition-leave-to="opacity-0 scale-95">
+
+      <nav class="flex-1">
+        <ul class="lg:flex md:flex-nowrap flex-wrap items-center sm:mx-0 -mx-2 lg:space-x-px space-y-px lg:space-y-0">
+          <%= render "shared/admin/nav_links" %>
+        </ul>
+      </nav>
+
+      <%# Notifications Dropdown %>
+      <div class="sm:flex justify-end flex-1 md:mr-6 mr-3 md:mt-3 relative" data-controller="dropdown">
+
+        <button type="button" class="flex group sm:justify-center items-center md:w-auto w-full px-2 py-3 md:p-0"
+          data-action="click->dropdown#toggle click@window->dropdown#hide">
+          <div class="relative">
+            <%= icon "bell", classes: "text-slate-300 w-6 h-6 group-hover:text-slate-400 dark:group-hover:text-slate-300 stroke-current" %>
+            <span
+              class="w-[10px] h-[10px] bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-indigo-400"></span>
+          </div>
+          <span class="md:hidden text-slate-300 dark:text-slate-200 text-base ml-2">Notifications</span>
+        </button>
+
+        <div
+          class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[320px] md:min-w-[320px]  divide-y text-left dark:divide-gray-600
+          hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[320px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+          data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
+          data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100"
+          data-transition-leave-to="opacity-0 scale-95">
+          <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
+            <div class="flex-1">
+              <div class="flex items-start space-x-2">
+                <%= image_tag demo_avatar_url(id: "10"), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
+                <div class="flex-1">
+                  <p class="truncate">John D. replied to <%= link_to "your comment", "#", class: "underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400" %></p>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
+                </div>
+              </div>
+            </div>
+
+            <button
+              class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+              <%= icon "x-mark", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
+            </button>
+          </div>
+          <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
+            <div class="flex-1">
+              <div class="flex items-start space-x-2">
+                <%= image_tag demo_avatar_url(id: "14", variant: "women"), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                <div class="flex-1">
+                  <p>Jane D. posted  <%= link_to "an update", "#", class: "underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400" %></p>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
+                </div>
+              </div>
+            </div>
+            <button
+              class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+              <%= icon "x-mark", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
+            </button>
+          </div>
+          <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
+            <div class="flex-1">
+              <div class="flex items-start space-x-2">
+                <%= image_tag demo_avatar_url(id: "24"), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                <div class="flex-1">
+                  <p>Scotty P. shared <%= link_to "a repository", "#", class: "underline text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-400" %></p>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
+                </div>
+              </div>
+            </div>
+            <button
+              class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
+              <%= icon "x-mark", classes: "w-3 h-3 text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
+            </button>
+          </div>
+          <div>
+            <%= link_to "#", class: "flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-indigo-500 text-sm group font-medium text-slate-500 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white" do %>
+              <span>View all notifications</span>
+              <%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-indigo-200 stroke-current" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%# end Notifications Dropdown %>
+
+      <div data-controller="dropdown" class="lg:flex relative lg:pt-0 pt-4">
+        <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="trigger"
+          class="appearance-none rounded-full lg:w-10 w-12 lg:h-10 h-12 focus:ring-slate-200/90 hover:ring-slate-200/90 ring-2 ring-transparent box-content transition ease-in-out duration-200 flex-shrink-0 dark:focus:ring-indigo-400 dark:hover:ring-slate-500">
+          <%= image_tag demo_avatar_url, class: "lg:w-10 w-12 lg:h-10 h-12 rounded-full flex-shrink-0 select-none", alt: "John Smith" %>
+        </button>
+        <ul data-dropdown-target="menu"
+          class="hidden transition transform origin-top-right absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+          data-transition-enter-active="transition ease-out duration-300"
+          data-transition-enter-from="transform opacity-0 scale-95"
+          data-transition-enter-to="transform opacity-100 scale-100"
+          data-transition-leave-active="transition ease-in duration-300"
+          data-transition-leave-from="transform opacity-100 scale-100"
+          data-transition-leave-to="transform opacity-0 scale-95">
+          <% if respond_to?(:admin_settings_path) %>
+            <li>
+              <%= link_to admin_settings_path, class: "py-2 px-4 hover:text-indigo-600 focus:text-indigo-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-indigo-400" do %>
+                <%= icon "cog-6-tooth", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                <span>Settings</span>
+              <% end %>
+            </li>
+          <% end %>
+          <% if respond_to?(:admin_billing_path) %>
+            <li>
+              <%= link_to admin_billing_path, class: "py-2 px-4 hover:text-indigo-600 focus:text-indigo-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-indigo-400" do %>
+                <%= icon "banknotes", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                <span>Billing</span>
+              <% end %>
+            </li>
+          <% end %>
+          <% if respond_to?(:destroy_user_session_path) %>
+            <li>
+              <%= button_to destroy_user_session_path, method: :delete, class: "py-2 px-4 hover:text-indigo-600 focus:text-indigo-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-indigo-400" do %>
+                <%= icon "arrow-right-on-rectangle", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                <span>Sign out</span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="<%= local_assigns[:header_title].present? ? 'container mx-auto lg:pt-16 pt-6' : 'container mx-auto' %>">
+    <div class="flex flex-wrap items-center justify-between relative">
+      <% if local_assigns[:header_title].present? %>
+        <h1 class="lg:h2 h3 text-white flex-1">
+          <%= local_assigns[:header_title] %>
+        </h1>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,106 @@
+<div class="container mt-lg-4 h-100 position-relative d-flex flex-column min-h-100 pb-6">
+
+  <div class="row mb-4 mb-md-0">
+    <div class="col-md-6 col-12">
+      <h1 class="display-6">Settings</h1>
+    </div>
+  </div>
+
+  <div class="border-top border-bottom pt-1 pb-1 row mt-md-4 mb-5">
+    <ul class="nav col-md-6">
+      <%% if respond_to?(:admin_settings_path) %>
+        <li class="nav-item">
+          <%%= nav_link_to "Settings", admin_settings_path, class: "nav-link" %>
+        </li>
+      <%% end %>
+      <%% if respond_to?(:admin_notifications_path) %>
+        <li class="nav-item">
+          <%%= nav_link_to "Notifications", admin_notifications_path, class: "nav-link" %>
+        </li>
+      <%% end %>
+      <%% if respond_to?(:admin_billing_path) %>
+        <li class="nav-item">
+          <%%= nav_link_to "Billing", admin_billing_path, class: "nav-link" %>
+        </li>
+      <%% end %>
+      <%% if respond_to?(:admin_integrations_path) %>
+        <li class="nav-item">
+          <%%= link_to "Integrations", admin_integrations_path, class: "nav-link" %>
+        </li>
+      <%% end %>
+    </ul>
+  </div>
+
+  <h2 class="fs-4 mb-3">Notification preferences</h2>
+  <p class="col-md-7 text-body mb-3">This is where you can add nofication settings on a per account basis.</p>
+
+  <%%= form_tag "#", class: "my-3" do %>
+    <div class="mb-3 pb-3 border-bottom">
+      <div class="form-check form-switch">
+        <%%= check_box_tag :email_notifications, 1, true, class: "form-check-input", role: "switch", id: "email_notifications" %>
+        <%%= label_tag :email_notifications, "Enable email notifications", class: "form-check-label" %>
+        <div class="form-text">Enable this setting to receive email settings as actions happen.</div>
+      </div>
+    </div>
+    <div class="mb-3 pb-3 border-bottom">
+      <div class="form-check form-switch">
+        <%%= check_box_tag :push_notifications, 1, false, class: "form-check-input", role: "switch", id: "pushNotifications" %>
+        <%%= label_tag :push_notifications, "Enable push notifications", class: "form-check-label" %>
+        <div class="form-text">Enable this setting to receive push notifications on your mobile device.</div>
+      </div>
+    </div>
+    <div class="mb-3 pb-3 border-bottom">
+      <div class="form-group">
+        <div class="form-check form-switch">
+          <%%= check_box_tag :sms_notifications, 1, false, class: "form-check-input", role: "switch", id: "smsNotifications" %>
+          <%%= label_tag :sms_notifications, "Enable SMS notifications", class: "form-check-label" %>
+          <div class="form-text">Enable this setting to receive text notifications on your mobile device.</div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 pb-3">
+      <div class="form-group">
+        <div class="form-check form-switch">
+          <%%= check_box_tag :in_app_notifications, 1, false, class: "form-check-input", role: "switch", id: "in_app_notifications" %>
+          <%%= label_tag :in_app_notifications, "Enable in-app notifications", class: "form-check-label" %>
+          <div class="form-text">Enable this setting to receive in-app notifications as you browse the web-based app.</div>
+        </div>
+      </div>
+    </div>
+    <%%= button_tag "Save", class: "btn btn-primary", type: "submit" %>
+  <%% end %>
+
+  <hr>
+
+  <h2 class="fs-4 mb-3">Other preferences</h2>
+  <p class="col-md-7 text-body mb-3">This might be where you add app marketing related emails or similar communication channels</p>
+
+  <%%= form_tag "#", class: "my-3" do %>
+    <div class="mb-3 pb-3 border-bottom">
+      <div class="form-check form-switch">
+        <%%= check_box_tag :email_digest, 1, true, class: "form-check-input", role: "switch", id: "emailDigest" %>
+        <%%= label_tag :email_digest, "Weekly Digest", class: "form-check-label" %>
+        <div class="form-text">A weekly email with curated topics and tips.</div>
+      </div>
+    </div>
+    <div class="mb-3 pb-3 border-bottom">
+      <div class="form-group">
+        <div class="form-check form-switch">
+          <%%= check_box_tag :new_features, 1, false, class: "form-check-input", role: "switch", id: "new_features" %>
+          <%%= label_tag :new_features, "New features", class: "form-check-label" %>
+          <div class="form-text">Learn about new features as we are working on them.</div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 pb-3">
+      <div class="form-group">
+        <div class="form-check form-switch">
+          <%%= check_box_tag :announcements, 1, false, class: "form-check-input", role: "switch", id: "announcements" %>
+          <%%= label_tag :announcements, "Product announcements", class: "form-check-label" %>
+          <div class="form-text">Learn when new features launch before the masses.</div>
+        </div>
+      </div>
+    </div>
+    <%%= button_tag "Save", class: "btn btn-primary", type: "submit" %>
+  <%% end %>
+</div>

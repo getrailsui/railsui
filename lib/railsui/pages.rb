@@ -1,28 +1,33 @@
 module Railsui
   module Pages
-
-    BASE_PAGES = {
-      "about" => {
-        title: "About",
-        description: "Placeholder markup for company or organization about page.",
-      },
-      "pricing" => {
-        title: "Pricing",
-        description: "Placeholder markup for SaaS-like pricing; 3 plans types by default.",
-      }
-    }.freeze
-
+    CONFIG_FILE = Railsui::Engine.root.join("config", "pages.yml")
+    VIEWS_FOLDER = Rails.root.join("app/views/page/")
 
     def self.all_pages
-      BASE_PAGES
+      @all_pages ||= load_pages_config
+    end
+
+    def self.theme_pages
+      all_pages[Railsui.config.theme]
     end
 
     def self.page_enabled?(page)
-      Railsui.config.pages.include?(page)
+      Railsui.config.pages.include?(page.to_s)
     end
 
     def self.page_exists?(page)
-      Rails.root.join("app/views/page/#{page}.html.erb").exist?
+      VIEWS_FOLDER.join("#{page}.html.erb").exist?
+    end
+
+    def self.all_pages_installed?
+      theme_pages.keys.all? { |page| page_exists?(page) }
+    end
+
+    private
+
+    def self.load_pages_config
+      return {} unless File.exist?(CONFIG_FILE)
+      YAML.safe_load_file(CONFIG_FILE)
     end
   end
 end

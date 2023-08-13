@@ -7,7 +7,15 @@ module Railsui
       Railsui.bundle
       Railsui.restart
 
-      redirect_to root_path, notice: "App configuration updated successfully 🎉"
+      redirect_to root_path, notice: "✅ App configuration updated successfully"
+    end
+
+    def delete_page
+      title = params[:title]
+      system("rails d railsui:page #{title} --force-plural")
+      Railsui.restart
+
+      redirect_to root_path, notice: "✅ Page removed successfully"
     end
 
     private
