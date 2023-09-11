@@ -1,0 +1,48 @@
+<div class="md:mb-0 mb-3">
+  <div class="flex items-center space-x-3">
+    <div class="w-7 h-7 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex justify-center items-center shadow-inner border-2 border-slate-50/50 dark:from-green-600 dark:to-green-700" data-controller="tooltip" data-tooltip-content-value="Page installed">
+      <%= render_svg "check", styles: "w-5 h-5 stroke-current text-white" %>
+    </div>
+    <p class="font-medium md:text-base text-lg"><%= details["title"] %></p>
+  </div>
+
+  <div>
+    <div class="sm:prose prose-sm prose-p:text-slate-500 dark:prose-invert dark:prose-p:text-slate-300 mb-1 mt-1 leading-snug">
+      <p><%= details["description"] %></p>
+    </div>
+    <div class="mt-2">
+      <% details['tags'].each do |tag | %>
+        <%= tag_label(tag) %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="flex items-center space-x-4 md:justify-between justify-end w-full md:w-auto">
+  <% if main_app.respond_to?(details['path'].to_sym) %>
+    <%= link_to main_app.send(details['path'].to_sym), class: "px-3 py-2 bg-slate-50/20 border border-slate-300 text-slate-600 shadow-sm rounded text-center text-sm font-medium hover:text-slate-700
+                  hover:border-indigo-400 hover:bg-indigo-50/50 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-700
+                  dark:hover:bg-indigo-600/10 dark:hover:text-indigo-300 dark:hover:border-indigo-600 flex items-center focus:ring-4 focus:ring-slate-50 dark:focus:ring-4 dark:focus:ring-slate-700 group transition ease-in-out duration-200", target: :_blank do %>
+      <span class="sr-only">View page</span>
+      <%= icon "arrow-up-right", classes: "w-4 h-4 text-slate-400 dark:text-slate-200 group-hover:text-indigo-500 dark:group-hover:text-indigo-400" %>
+    <% end %>
+  <% end %>
+  <div data-controller="dialog">
+    <%= link_to "#", data: { action:"click->dialog#launch" }, class: "px-3 py-2 bg-slate-50/20 border border-slate-300 text-slate-600 shadow-sm rounded text-center text-sm font-medium hover:text-slate-700 hover:border-red-500 hover:bg-red-50/50 dark:bg-slate-800 dark:text-red-400 dark:border-red-500/30
+                  dark:hover:bg-red-500/20 dark:hover:text-red-500/50 dark:hover:border-red-500/50 block dark:focus:ring-4 dark:focus:ring-red-500/10 focus:ring-4 focus:ring-slate-50 group transition ease-in-out duration-200" do %>
+      <span class="sr-only">Remove page</span>
+      <%= icon "trash", classes: "w-4 h-4 text-red-500 dark:group-hover:text-red-400", title: "Remove page" %>
+    <% end %>
+
+    <dialog id="confirmDialog" data-dialog-target="dialog" class="z-50 backdrop:bg-black/80 backdrop:p-0 open:animate-fade-in max-w-lg rounded-xl border bg-white p-6 mx-auto dark:bg-slate-800 dark:border-slate-700">
+      <h3 class="font-semibold text-lg text-red-700 mb-2 dark:text-red-400">Are you sure you want to remove this page?</h3>
+      <p class="text-slate-700 dark:text-slate-200 mb-4">Any changes made to the view will be removed for good.</p>
+
+      <%= link_to "Yes, remove page", delete_page_path(title: details["title"].downcase.underscore), data: { dialog_target: "button", action: "click->dialog#perform" }, class: "px-3 py-2 bg-red-700 text-red-100 border border-red-700 shadow-sm rounded text-center text-sm hover:bg-red-600 hover:border-red-600 dark:bg-red-400/60 hover:dark:bg-red-400/80 dark:text-red-100 dark:border-red-400/80 dark:hover:text-white dark:hover:border-red-400 inline-block mt-3 mr-4 font-medium text-base dark:bg-red-600" %>
+      <a href="#" class="underline font-medium text-slate-700 dark:text-slate-200" data-action="click->dialog#cancel" data-dialog-target="cancel">Cancel</a>
+
+      <p class="text-slate-700 dark:text-slate-400 mt-2 text-xs">Removing a page requires a server restart which will happen automatically.</p>
+
+    </dialog>
+  </div>
+</div>
