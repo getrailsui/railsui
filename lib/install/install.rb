@@ -109,6 +109,10 @@ def add_stimulus
   rails_command "stimulus:install:node"
 end
 
+def add_turbo
+  rails_command "turbo:install"
+end
+
 def add_gems
   add_gem_if_not_installed("devise")
   add_gem_if_not_installed("name_of_person")
@@ -316,6 +320,9 @@ add_esbuild
 
 say "⚡️ Add Stimulus.js"
 add_stimulus
+
+say "⚡️ Installing turbo for good measure"
+add_turbo
 
 say "⚡️ Add custom css-bundling setup"
 add_css_bundling_setup
