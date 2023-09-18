@@ -5,3 +5,4 @@
 @import "custom/custom.css";
 
 @import "tailwindcss/utilities";
+@import "tippy.js/dist/tippy.css";
