@@ -97,7 +97,7 @@ Installing Rails UI is a quick process that goes something like this:
 
 We keep the gem list simple because Rails UI focuses less on core application logic.
 - [inline_svg](https://github.com/jamesmartin/inline_svg)
-- [devise](https://github.com/heartcombo/dev)ise)
+- [devise](https://github.com/heartcombo/devise)
 - [name_of_person](https://github.com/basecamp/name_of_person)
 - [meta-tags](https://github.com/kpumuk/meta-tags)
 - [psych](https://github.com/ruby/psych)
