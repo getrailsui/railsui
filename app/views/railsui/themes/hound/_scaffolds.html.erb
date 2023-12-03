@@ -1,0 +1,33 @@
+<div class="prose dark:prose-invert my-6 max-w-full">
+  <p>Rails let's you get moving quick with scaffolds. Under the hood files and code are generated to remove the repetative nature of setting up new logic. The <em><%= theme_name.humanize %></em> theme provides some sensible defaults to make design work quickly for you as well.</p>
+
+  <p>When you install Rails UI the installer adds a generator configuration to your app's <%= code "config/application.rb" %> file </p>
+
+<div class="not-prose">
+<% content_for :ruby, flush: true do %>
+module <%= theme_name.humanize %>
+  class Application < Rails::Application
+    config.generators do |g|
+      g.template_engine :railsui
+      # more generator stuff
+    end
+  end
+end
+<% end %>
+<%= render_snippet active_tab: "ruby", ruby_filename: "application.rb" %>
+</div>
+<p>If you'd prefer the default scaffolding templates, remove the line <%= code("g.template_engine :railsui") %> from your <%= code("application.rb") %> file as shown in the example above.</p>
+</div>
+
+<%= render callout do %>
+  <p>For the sake of example it's assumed we'll generate a scaffold with a <%= code("Post") %> model. Substitute your own resouce when referring to the snippets below.</p>
+<% end %>
+
+
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/index" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/show" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/new" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/edit" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/partial" %>
+
+<%= system_pagination(prev_path: systems_pages_path, prev_text: "Pages", next_path: systems_forms_path, next_text: "Forms") %>

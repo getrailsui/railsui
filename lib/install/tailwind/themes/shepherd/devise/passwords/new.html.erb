@@ -1,0 +1,14 @@
+<%= render "auth_layout" do %>
+  <h1 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight mb-6">Forget your password?</h1>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
+    <%= render "shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com" %>
+    </div>
+
+    <%= f.submit "Send me reset password instructions", class: "btn btn-primary w-full" %>
+  <% end %>
+<% end %>

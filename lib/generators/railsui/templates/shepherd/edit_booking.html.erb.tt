@@ -1,0 +1,145 @@
+<div class="max-w-2xl mx-auto px-4 md:py-16 py-6">
+  <nav class="font-heading text-sm mb-6 text-zinc-700 dark:text-zinc-200">
+    <ul class="flex items-center space-x-3">
+      <li class="after:content-['/'] after:relative after:text-zinc-300 after:left-1 dark:after:text-zinc-500">
+        <%%= link_to "Bookings", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
+      </li>
+      <li>
+        <p>Edit Booking</p>
+      </li>
+    </ul>
+  </nav>
+
+  <h1 class="mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Edit Booking</h1>
+
+  <form action="#">
+    <!-- Property -->
+    <div class="form-group">
+      <label for="booking[property]" class="form-label form-label-required">Property</label>
+      <select name="booking[property]" id="booking[property]" class="form-select">
+        <option value="">Select a property</option>
+        <option value="1" selected>Nature's Nook</option>
+        <option value="2">The Haven</option>
+        <option value="3">The Mountain Majesty</option>
+      </select>
+    </div>
+
+
+    <h3 class="mb-6 pt-10 text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Contact Information</h3>
+
+    <div class="prose prose-zinc mb-6 dark:prose-invert">
+      <p>Enter the contact information for the primary guest reserving the property. We recommend collecting both and email and phone number if possible.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 form-group">
+      <!-- Guest name -->
+      <div>
+        <label for="booking[name]" class="form-label form-label-required">Guest name</label>
+        <input type="text" id="booking[name]" class="form-input w-full" placeholder="Andy Leverenz"
+          value="Andy Leverenz" />
+      </div>
+      <!-- Guest email -->
+      <div>
+        <label for="booking[email]" class="form-label form-label-required">Guest email</label>
+        <input type="email" id="booking[email]" class="form-input w-full" placeholder="andy@railsui.com" value="andy@railsui.com" />
+      </div>
+    </div>
+
+    <!-- Check-in/Checkout -->
+    <div class="form-group">
+      <label for="booking[checkin_checkout]" class="form-label form-label-required">Check-in/Check-out</label>
+      <a role="button"
+        data-controller="date-range-picker"
+
+        class="btn btn-white space-x-3 inline-flex items-center">
+        <%%= icon "calendar-days", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300 flex-shrink-0" %>
+        <span data-date-range-picker-target="label">Select a date range</span>
+        <input type="hidden" data-date-range-picker-target="input">
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+      <div>
+        <!-- Mobile number -->
+        <label for="booking[mobile_phone]" class="form-label">Mobile number</label>
+        <div class="relative">
+          <input id="booking[mobile_phone]" type="tel" class="form-input w-full peer pl-14" value="+1658675309">
+          <span
+            class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-500/80">
+            <%%= icon "device-phone-mobile", classes: "w-5 h-5" %>
+          </span>
+        </div>
+        <p class="text-xs text-zinc-500 mt-2">Eg. +12015502123</p>
+      </div>
+      <div>
+        <!-- Language -->
+        <label for="booking[language]" class="form-label form-label-required">Language</label>
+        <select name="booking[language]" id="booking[language]" class="form-select">
+          <option value="english" selected>English</option>
+          <option value="spanish">Spanish</option>
+          <option value="french">French</option>
+          <option value="german">German</option>
+          <option value="italian">Italian</option>
+          <option value="chinese">Chinese</option>
+          <option value="japanese">Japanese</option>
+          <option value="korean">Korean</option>
+          <option value="arabic">Arabic</option>
+          <option value="russian">Russian</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="booking[notes]" class="form-label">Note</label>
+      <textarea name="booking[notes]" id="booking[notes]" resize class="form-textarea w-full" placeholder="Add a note"
+        value="I added a note here to show context of what it might look like when rendered filled."></textarea>
+    </div>
+
+    <h3 class="mb-6 pt-10 text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Guests</h3>
+
+    <div class="prose prose-zinc mb-6 dark:prose-invert">
+      <p>At least one guest is required to create a new booking. Add additional guests based on the selected property's criteria.</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 form-group">
+      <div>
+        <label for="booking[adults]" class="form-label">Adults</label>
+        <input type="number" class="form-input w-full" id="booking[adults]" value="2" min="0" max="25" placeholder="2">
+      </div>
+      <div>
+        <label for="booking[children]" class="form-label">Children</label>
+        <input type="number" class="form-input w-full" id="booking[children]" min="0" max="25" placeholder="0" value="1">
+      </div>
+      <div>
+        <label for="booking[infants]" class="form-label">Infants</label>
+        <input type="number" class="form-input w-full" id="booking[infants]" min="0" max="25" placeholder="0">
+      </div>
+      <div>
+        <label for="booking[pets]" class="form-label">Pets</label>
+        <input type="number" class="form-input w-full" id="booking[pets]" min="0" max="5" placeholder="0">
+      </div>
+    </div>
+
+    <h3 class="mb-6 pt-10 text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Pricing</h3>
+
+    <div class="prose prose-zinc mb-6 dark:prose-invert">
+      <p>The pricing entered below should include all fees, taxes, and services rendered. It's up to you to communicate
+        the breakdown of such fees to your guest.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label for="booking[total]" class="form-label">Total</label>
+      <div class="relative">
+        <span
+          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 font-medium dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-500/80">$</span>
+        <input type="number" class="form-input w-full pl-16" placeholder="0.00" min="0" step=".01" value="1375.00">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-6 pt-10">
+      <%%= link_to "Go Back", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "btn btn-white text-center" %>
+      <input type="submit" value="Update booking" class="btn btn-primary w-full">
+    </div>
+  </form>
+</div>

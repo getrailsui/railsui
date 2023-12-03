@@ -1,0 +1,15 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/pagination" %>
+
+<%= render "railsui/shared/quicklinks", name: "pagination" do %>
+  <%= quick_link(title: "simple", component: "pagination") %>
+  <%= quick_link(title: "contained", component: "pagination") %>
+  <%= quick_link(title: "dark", component: "pagination") %>
+  <%= quick_link(title: "pagy gem", component: "pagination") %>
+<% end %>
+
+<%= render "#{path}/simple" %>
+<%= render "#{path}/contained" %>
+<%= render "#{path}/dark" %>
+<%= render "#{path}/pagy" %>
+
+<%= system_pagination(prev_path: systems_components_navigation_path, prev_text: "Navigation", next_path: systems_components_tabs_path, next_text: "Tabs") %>

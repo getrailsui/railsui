@@ -1,0 +1,206 @@
+<div class="mb-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Checkboxes" %>
+
+  <div class="prose mb-10 max-w-full dark:!prose-invert">
+    <p>Use the class <%= code(".form-input-checkbox") %> on any <%= code("input[type=checkbox]") %> element.</p>
+  </div>
+
+<%= render preview do %>
+<div class="form-group flex items-center mb-0">
+  <input class="form-input-checkbox" type="checkbox" value="" id="check_default">
+  <label class="ml-2" for="check_default">
+    Default checkbox
+  </label>
+</div>
+<% end %>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-group flex items-center">
+  <input class="form-input-checkbox" type="checkbox" value="" id="check_default">
+  <label class="ml-2" for="check_default">
+    Default checkbox
+  </label>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.div class: "form-group flex items-center" do %>
+  <%%= check_box_tag :check_default, nil, false, class: "form-input-checkbox" %>
+  <%%= label_tag :check_default, "Default checkbox", class: "ml-2" %>
+<%% end %>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <%% tag.div class: "form-group flex items-center" do %>
+    <%%= f.check_box :check_default, class: "form-input-checkbox" %>
+    <%%= f.label :check_default, "Default checkbox", class: "ml-2" %>
+  <%% end %>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-group.flex.items-center
+    = f.check_box :check_default, class: "form-input-checkbox"
+    = f.label :check_default, "Default checkbox", class: "ml-2"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
+
+<%#### Radios %>
+
+<div class="my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Radios" %>
+
+<div class="prose dark:!prose-invert mb-10 max-w-full">
+  <p>Use the class <%= code(".form-input-radio") %> on any <%= code("input[type=radio]") %> element.</p>
+  <p>Because radio inputs typically appear in groups, you may offset block style radio inputs with simple margin and layout modifier classes Tailwind CSS ships with (e.g. <%= code("mb-2") %>, <%= code('flex') %>).</p>
+</div>
+
+<%= render preview do %>
+<div class="form-group mb-0">
+  <div class="mb-2 flex items-center">
+    <input class="form-input-radio" type="radio" name="radio_default" id="radio_default_1">
+    <label class="ml-2" for="radio_default_1">
+      Default radio
+    </label>
+  </div>
+  <div class="flex items-center">
+    <input class="form-input-radio" type="radio" name="radio_default" id="radio_default_2" checked>
+    <label class="ml-2" for="radio_default_2">
+      Default checked radio
+    </label>
+  </div>
+</div>
+<% end %>
+
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <div class="mb-2 flex items-center">
+    <input class="form-input-radio" type="radio" name="radio_default" id="radio_default_1">
+    <label class="ml-2" for="radio_default_1">
+      Default radio
+    </label>
+  </div>
+  <div class="flex items-center">
+    <input class="form-input-radio" type="radio" name="radio_default" id="radio_default_2" checked>
+    <label class="ml-2" for="radio_default_2">
+      Default checked radio
+    </label>
+  </div>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<div class="form-group">
+  <div class="mb-2 flex items-center">
+    <%%= radio_button_tag "radio_default", "1", false, class: "form-input-radio" %>
+    <%%= label_tag "radio_default_1", "Default radio", class: "ml-2" %>
+  </div>
+
+  <div class="flex items-center">
+    <%%= radio_button_tag "radio_default", "2", true, class: "form-input-radio" %>
+    <%%= label_tag "radio_default_2", "Default checked radio", class: "ml-2" %>
+  </div>
+</div>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <div class="mb-2 flex items-center">
+      <%%= f.radio_button_tag "radio_default", "1", false, class: "form-input-radio" %>
+      <%%= f.label :radio_default_1, "Default radio", class: "ml-2" %>
+    </div>
+
+    <div class="flex items-center">
+      <%%= f.radio_button_tag "radio_default", "2", true, class: "form-input-radio" %>
+      <%%= f.label :radio_default_2, "Default checked radio", class: "ml-2" %>
+    </div>
+  </div>
+
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-group
+    .mb-2.flex.items-center
+      = f.radio_button_tag "radio_default", "1", false, class: "form-input-radio"
+      = f.label :radio_default_1, "Default radio", class: "ml-2"
+    .flex.items-center
+      = f.radio_button_tag "radio_default", "2", true, class: "form-input-radio"
+      = f.label :radio_default_2, "Default checked radio", class: "ml-2"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
+
+<%#### Switches %>
+
+<div class="my-16">
+<%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Switches" %>
+
+<div class="prose mb-10 max-w-full dark:!prose-invert">
+  <p>Use the class <%= code(".form-input-switch") %> on a <%= code("input[type=checkbox]") %> element. A corresponding <%= code("<label>") %> element must be present after the input in order for the switch UI to display.</p>
+</div>
+
+<%= render preview do %>
+<div class="form-group mb-0">
+  <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
+  <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>
+</div>
+<% end %>
+
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
+  <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<div class="form-group">
+  <%%= check_box_tag "switch_default", "1", false, class: "form-input-switch" %>
+  <%%= label_tag "switch_default", nil, class: "form-label mb-0" %>
+</div>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.check_box :switch_default, class: "form-input-switch" %>
+    <%%= f.label :switch_default, class: "form-label mb-0" %>
+  </div>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-group
+    = f.check_box :switch_default, class: "form-input-switch"
+    = f.label :switch_default, class: "form-label mb-0"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+</div>
+
+<%= system_pagination(prev_path: systems_forms_selects_path, prev_text: "Selects", next_path: systems_forms_action_text_path, next_text: "ActionText") %>

@@ -3,37 +3,22 @@
   <p>Each theme provides pre-designed pages, scaffolded resources, UI components, layout patterns, partials, and more. <%= link_to "Read more about themes", "https://railsui.com/docs/themes", target: :_blank %>.</p>
 </div>
 
-<% Railsui::Default::THEMES.each do |framework, themes| %>
-  <% f = framework.to_s.parameterize %>
+<div>
+  <h4 class="font-bold text-xl mb-3">Themes</h4>
+  <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-3">
+    <% Railsui::Default::THEMES.each do |key, theme| %>
+      <li>
+        <% theme_id = key.to_s %>
 
-  <div class="hidden" data-configuration-target="<%= f %>">
-    <h4 class="font-bold text-xl mb-3"><%= f.humanize %> themes</h4>
-    <ul class="grid grid-cols-1 lg:grid-cols-2 max-w-3xl gap-3">
-      <% themes.each do |theme| %>
-        <li>
-          <label for="configuration_theme_<%= theme.first %>" class="bg-white rounded-lg p-4 block border border-slate-200 focus:ring-4 focus:ring-slate-100  transition duration-300 dark:bg-slate-700 dark:border-slate-600 <%= unavailable_theme?(theme) ? "relative" : "hover:shadow-xl" %>" data-configuration-target="theme">
-            <%= image_tag "#{f}-#{theme.first}-thumbnail.jpg", alt: "#{theme.last.humanize} theme", class: "border border-slate-200 rounded dark:border-slate-400" %>
-            <% if unavailable_theme?(theme) %>
-              <div class="px-4 mt-4 flex items-center justify-center rounded italic text-amber-800">
-                Coming soon.  &nbsp;<span data-controller="tooltip" data-tooltip-content-value="Become an early supporter to help me work faster on this. The more I can make the more time I can devote here as opposed to other projects."><%= link_to "Become a supporter", "https://railsui.com/pricing", target: :_blank, class: "underline" %></span>
-              </div>
-            <% else %>
-              <div class="px-4 mt-4 flex justify-center">
-                <input
-                    type="radio"
-                    id="configuration_theme_<%= theme.first %>"
-                    value="<%= theme.first %>"
-                    name="configuration[theme]"
-                    class="w-6 h-6 dark:bg-slate-500 dark:border-slate-600 text-indigo-600"
-                    >
-                  <span class="ml-2"><%= theme.last.humanize %></span>
-                </div>
-              <% end %>
-            </label>
-
-            <%= link_to "Preview theme", theme_preview_link(theme.last.humanize), target: :_blank, class: "py-3 px-4 text-center justify-center w-full text-slate-700 bg-slate-100 hover:bg-slate-200 transition ease-in-out duration border border-transparent rounded block mt-3 dark:bg-indigo-500 dark:border-indigo-500 dark:text-white hover:dark:bg-indigo-600 hover:dark:text-white" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <label data-configuration-target="theme" for="configuration_theme_<%= theme_id %>" class="bg-white rounded-lg p-4 block border border-slate-200 focus:ring-4 focus:ring-slate-100  transition duration-300 dark:bg-slate-700 dark:border-slate-600 hover:shadow-xl">
+          <%= image_tag theme[:thumbnail], alt: "#{theme[:name]} theme", class: "border border-slate-200 rounded dark:border-slate-400" %>
+            <div class="px-4 mt-4 flex justify-center">
+              <input type="radio" id="configuration_theme_<%= theme_id %>" value="<%= key %>" name="configuration[theme]" class="w-6 h-6 dark:bg-slate-500 dark:border-slate-600 text-indigo-600" <% if theme_id == "hound" %>checked<% end %>>
+              <span class="ml-2"><%= theme[:name] %></span>
+            </div>
+          </label>
+          <%= link_to "Preview theme", theme[:preview_link], target: :_blank, class: "py-3 px-4 text-center justify-center w-full text-slate-700 bg-slate-100 hover:bg-slate-200 transition ease-in-out duration border border-transparent rounded block mt-3 dark:bg-indigo-500 dark:border-indigo-500 dark:text-white hover:dark:bg-indigo-600 hover:dark:text-white" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>

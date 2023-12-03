@@ -1,0 +1,57 @@
+<div class="mb-16 mt-6">
+
+<%= render "railsui/shared/sticky_subhead", title: "Badges", subtitle: "Basic" %>
+
+<span class="rounded bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs">Gray</span>
+<span class="rounded bg-red-100 text-red-800 font-medium px-2 py-1 text-xs">Red</span>
+<span class="rounded bg-orange-100 text-orange-700 font-medium px-2 py-1 text-xs">Orange</span>
+<span class="rounded bg-yellow-100 text-yellow-700 font-medium px-2 py-1 text-xs">Yellow</span>
+<span class="rounded bg-green-100 text-green-800 font-medium px-2 py-1 text-xs">Green</span>
+<span class="rounded bg-blue-100 text-blue-800 font-medium px-2 py-1 leading-tight text-xs">Blue</span>
+<span class="rounded bg-indigo-100 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs">Indigo</span>
+<span class="rounded bg-purple-100 text-purple-800 font-medium px-2 py-1 leading-tight text-xs">Purple</span>
+<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs">Pink</span>
+<span class="rounded bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:bg-white-10 dark:text-white">White</span>
+
+
+<% content_for :html, flush: true do %>
+<span class="rounded bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs">Gray</span>
+<span class="rounded bg-red-100 text-red-800 font-medium px-2 py-1 text-xs">Red</span>
+<span class="rounded bg-orange-100 text-orange-700 font-medium px-2 py-1 text-xs">Orange</span>
+<span class="rounded bg-yellow-100 text-yellow-700 font-medium px-2 py-1 text-xs">Yellow</span>
+<span class="rounded bg-green-100 text-green-800 font-medium px-2 py-1 text-xs">Green</span>
+<span class="rounded bg-blue-100 text-blue-800 font-medium px-2 py-1 leading-tight text-xs">Blue</span>
+<span class="rounded bg-indigo-100 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs">Indigo</span>
+<span class="rounded bg-purple-100 text-purple-800 font-medium px-2 py-1 leading-tight text-xs">Purple</span>
+<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs">Pink</span>
+<span class="rounded bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:bg-white-10 dark:text-white">White</span>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= content_tag :span, "Gray", class: "rounded bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Red", class: "rounded bg-red-100 text-red-800 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Orange", class: "rounded bg-orange-100 text-orange-700 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Yellow", class: "rounded bg-neutral-100 text-yellow-700 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Green", class: "rounded bg-green-100 text-green-800 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Blue", class: "rounded bg-blue-100 text-blue-800 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Indigo", class: "rounded bg-indigo-100 text-indigo-800 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Purple", class: "rounded bg-purple-100 text-purple-800 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "Pink", class: "rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 text-xs" %>
+<%%= content_tag :span, "White", class: "rounded bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:bg-white-10 dark:text-white" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%span.rounded.bg-neutral-100.text-neutral-800.font-medium.px-2.py-1.text-xs Gray
+%span.rounded.bg-red-100.text-red-800.font-medium.px-2.py-1.text-xs Red
+%span.rounded.bg-orange-100.text-orange-700.font-medium.px-2.py-1.text-xs Orange
+%span.rounded.bg-yellow-100.text-yellow-700.font-medium.px-2.py-1.text-xs Yellow
+%span.rounded.bg-green-100.text-green-800.font-medium.px-2.py-1.text-xs Green
+%span.rounded.bg-blue-100.text-blue-800.font-medium.px-2.py-1.leading-tight.text-xs Blue
+%span.rounded.bg-indigo-100.text-indigo-800.font-medium.px-2.py-1.leading-tight.text-xs Indigo
+%span.rounded.bg-purple-100.text-purple-800.font-medium.px-2.py-1.leading-tight.text-xs Purple
+%span.rounded.bg-pink-100.text-pink-800.font-medium.px-2.py-1.leading-tight.text-xs Pink
+%span.rounded.bg-white-100.text-slate-800.border.border-slate-200.font-medium.px-2.py-1.leading-tight.text-xs.dark:bg-white-10.dark:text-white White
+<% end %>
+
+<%= render_snippet %>
+</div>

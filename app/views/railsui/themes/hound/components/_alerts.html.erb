@@ -1,0 +1,14 @@
+<div class="mb-16 mt-6">
+  <div class="prose-lg prose-slate max-w-full mb-6 dark:prose-invert">
+    <p>Provide contextual feedback messages for typical user actions with the handful of flexible alert messages.</p>
+  </div>
+
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/alerts" %>
+
+<%= render "#{path}/with_description" %>
+<%= render "#{path}/with_list" %>
+<%= render "#{path}/with_actions" %>
+<%= render "#{path}/with_accent_border" %>
+<%= render "#{path}/dismissable" %>
+
+<%= system_pagination(prev_path: systems_components_accordions_path, prev_text: "Accordions", next_path: systems_components_badges_path, next_text: "Badges") %>

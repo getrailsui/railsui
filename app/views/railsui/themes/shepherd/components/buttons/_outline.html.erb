@@ -1,0 +1,39 @@
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Outline" %>
+
+  <div class="prose dark:!prose-invert mb-6 max-w-full">
+    <p>Use outline buttons for less bold treatment and areas that benefit from a dark or lighter background color. Add the <%= code(".btn-outline") %> class to each theme-able button to achieve the outlined effect.</p>
+  </div>
+
+<%= render preview "zinc" do %>
+<div class="flex items-center space-x-2">
+  <button type="button" class="btn btn-primary btn-outline">Primary</button>
+  <button type="button" class="btn btn-secondary btn-outline">Secondary</button>
+  <button type="button" class="btn btn-dark btn-outline">Dark</button>
+  <button type="button" class="btn btn-light btn-outline">Light</button>
+  <button type="button" class="btn btn-white btn-outline">White</button>
+</div>
+<% end %>
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-primary btn-outline">Primary</button>
+<button type="button" class="btn btn-dark btn-outline">Dark</button>
+<button type="button" class="btn btn-light btn-outline">Light</button>
+<button type="button" class="btn btn-white btn-outline">White</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Primary", type: "button", class: "btn btn-primary btn-outline" %>
+<%%= button_tag "Dark", type: "button", class: "btn btn-dark btn-outline" %>
+<%%= button_tag "Light", type: "button", class: "btn btn-light btn-outline" %>
+<%%= button_tag "White", type: "button", class: "btn btn-white btn-outline" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Primary", type: "button", class: "btn btn-primary btn-outline"
+= button_tag "Dark", type: "button", class: "btn btn-dark btn-outline"
+= button_tag "Light", type: "button", class: "btn btn-light btn-outline"
+= button_tag "White", type: "button", class: "btn btn-white btn-outline"
+<% end %>
+<%= render_snippet %>
+</div>

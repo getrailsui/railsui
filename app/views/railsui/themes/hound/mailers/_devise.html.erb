@@ -1,0 +1,39 @@
+<!--
+  # confirmation_instructions.html.erb
+  # email_changed.html.erb
+  # password_change.html.erb
+  # reset_password_instructions.html.erb
+  # unlock_instructions.html.erb
+-->
+<% theme_path = "railsui/themes/#{Railsui.config.theme.downcase}/mailers/devise" %>
+
+<div class="mb-16 mt-6">
+  <div class="prose dark:prose-invert mb-10">
+    <p>Devise ships with optional views you can generate on command. Most of these should work out of the box with Rails UI. The generated views in <%= code("app/views/devise/mailer/") %> have the <%= Railsui.config.theme.humanize %> theme applied. Save time without reinventing the wheel!</p>
+
+    <div class="not-prose bg-indigo-50 text-indigo-800 p-3 rounded-lg">
+      <p>When you configured your app Rails UI generated and copied these mailer templates over automatically so there is no need to generate the views.</p>
+    </div>
+
+    <h3>Configuration</h3>
+
+    <p>Rails UI takes care of the following:</p>
+    <ol>
+      <li>Installs the latest version of the Devise gem</li>
+      <li>Copies over custom views and mailer templates based on the active Rails UI Theme (yours is currently: <%= Railsui.config.theme.humanize %>). </li>
+      <li>Adds a <%= link_to"few helpers", systems_mailers_url(anchor: "mailers-helpers") %> via a bundled module in the Rails UI engine.</li>
+    </ol>
+
+    <p>Depending on your application you can enable different features from Devise so we'll leave the rest up to you to configure.</p>
+
+    <p>Be sure to update your <%= code('config/initializers/devise.rb') %> file to suite your needs.</p>
+  </div>
+</div>
+
+<%= render "#{theme_path}/confirmation_instructions" %>
+<%= render "#{theme_path}/email_changed" %>
+<%= render "#{theme_path}/password_changed" %>
+<%= render "#{theme_path}/reset_password_instructions" %>
+<%= render "#{theme_path}/unlock_instructions" %>
+
+<%= system_pagination(prev_path: systems_mailers_transactional_path, prev_text: "Transactional", next_path: systems_authentication_overview_path, next_text: "Authentication") %>

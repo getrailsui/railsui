@@ -38,7 +38,8 @@
       <h3 class="font-semibold text-lg text-red-700 mb-2 dark:text-red-400">Are you sure you want to remove this page?</h3>
       <p class="text-slate-700 dark:text-slate-200 mb-4">Any changes made to the view will be removed for good.</p>
 
-      <%= link_to "Yes, remove page", delete_page_path(title: details["title"].downcase.underscore), data: { dialog_target: "button", action: "click->dialog#perform" }, class: "px-3 py-2 bg-red-700 text-red-100 border border-red-700 shadow-sm rounded text-center text-sm hover:bg-red-600 hover:border-red-600 dark:bg-red-400/60 hover:dark:bg-red-400/80 dark:text-red-100 dark:border-red-400/80 dark:hover:text-white dark:hover:border-red-400 inline-block mt-3 mr-4 font-medium text-base dark:bg-red-600" %>
+      <% snake_case_title = details["title"].downcase.gsub(" ", "_").gsub(/[^a-zA-Z0-9_]/, '') %>
+      <%= link_to "Yes, remove page", delete_page_path(title: snake_case_title), data: { dialog_target: "button", action: "click->dialog#perform" }, class: "px-3 py-2 bg-red-700 text-red-100 border border-red-700 shadow-sm rounded text-center text-sm hover:bg-red-600 hover:border-red-600 dark:bg-red-400/60 hover:dark:bg-red-400/80 dark:text-red-100 dark:border-red-400/80 dark:hover:text-white dark:hover:border-red-400 inline-block mt-3 mr-4 font-medium text-base dark:bg-red-600" %>
       <a href="#" class="underline font-medium text-slate-700 dark:text-slate-200" data-action="click->dialog#cancel" data-dialog-target="cancel">Cancel</a>
 
       <p class="text-slate-700 dark:text-slate-400 mt-2 text-xs">Removing a page requires a server restart which will happen automatically.</p>

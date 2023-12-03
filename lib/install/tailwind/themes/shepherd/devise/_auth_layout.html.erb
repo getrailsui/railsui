@@ -1,0 +1,42 @@
+<div class="md:flex grid flex-wrap md:w-screen md:h-[calc(100vh-60px)]">
+  <div class="md:w-1/2 flex items-center justify-center p-10 md:order-1 order-2">
+    <div class="md:w-[400px] w-full">
+      <%= link_to root_path, class: "group inline-block mb-6" do %>
+        <%= icon "logo", path: "logo.svg", classes: "group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 w-10 h-10 text-primary-500 fill-current" %>
+      <% end %>
+
+      <%= yield %>
+
+      <!--
+      Add additional provider SVG icons in app/assets/images/omniauth as necessary.
+      Default options include: Google, LinkedIn, Twitter, Facebook.
+
+      **You will need to install additional dependencies
+      not included in Rails UI for omniauth support.**
+      -->
+
+      <% if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name) %>
+
+        <hr class="mt-8 border-zinc-100 dark:border-zinc-700/80" />
+
+        <div class="space-y-3 mt-10">
+          <% resource_class.omniauth_providers.each do |provider| %>
+            <%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do %>
+              <div class="flex items-center space-x-2">
+                <%= inline_svg "omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "w-4 h-4 text-zinc-600 fill-current dark:text-zinc-500" %>
+                <span>"Sign in with <%= OmniAuth::Utils.camelize(provider) %></span>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="mt-4 prose prose-sm prose-zinc dark:prose-invert">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+  <div class="md:w-1/2 md:order-2 order-1 bg-zinc-900 overflow-hidden">
+    <%= image_tag ["auth-cabin.jpg", "auth-desert.jpg"].sample, class: "object-cover md:h-screen h-[140px] w-full animate-fadeIn", alt: "Sign in to Shepherd" %>
+  </div>
+</div>

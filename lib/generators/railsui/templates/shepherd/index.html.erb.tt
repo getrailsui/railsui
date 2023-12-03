@@ -1,0 +1,12 @@
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="flex items-center justify-between pb-6 border-b dark:border-zinc-700 border-zinc-200">
+    <h1 class="text-4xl font-medium font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= plural_table_name.titleize %></h1>
+    <div class="flex items-center justify-end">
+      <%%= link_to "New <%= singular_table_name.titleize %>", new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div id="<%= plural_table_name %>" class="divide-y divide-zinc-200 dark:divide-zinc-700">
+    <%%= render @<%= plural_table_name %> %>
+  </div>
+</div>

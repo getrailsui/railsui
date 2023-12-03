@@ -1,31 +1,32 @@
-[x-cloak] {
-  display: none;
-}
+.railsui {
+  [x-cloak] {
+    display: none;
+  }
 
-.rui-primary-nav {
-  @apply relative;
-}
+  .rui-primary-nav {
+    @apply relative;
+  }
 
-/* Overrides nav_link_to helper */
-.rui-primary-nav ul li a.nav-link-active,
-.rui-primary-nav ul li a:hover {
-  @apply text-indigo-800 border-r-2 border-indigo-800 dark:border-yellow-300 dark:text-indigo-300 !important;
-}
+  /* Overrides nav_link_to helper */
+  .rui-primary-nav ul li a.nav-link-active,
+  .rui-primary-nav ul li a:hover {
+    @apply text-indigo-800 border-r-2 border-indigo-800 dark:border-yellow-300 dark:text-indigo-300 !important;
+  }
 
-.rui-primary-nav ul li a.nav-link-active:after {
-  content: "";
-  background: none;
-}
+  .rui-primary-nav ul li a.nav-link-active:after {
+    content: "";
+    background: none;
+  }
 
-.rui-primary-nav ul li a:hover {
-  @apply dark:bg-slate-800;
-}
+  .rui-primary-nav ul li a:hover {
+    @apply dark:bg-slate-800;
+  }
 
-.rui-primary-nav ul li a.nav-link-active {
-  @apply font-semibold bg-indigo-50 dark:bg-slate-800 dark:text-white;
-}
+  .rui-primary-nav ul li a.nav-link-active {
+    @apply font-semibold bg-indigo-50 dark:bg-slate-800 dark:text-white;
+  }
 
-/* .rui-primary-nav a.active::before {
+  /* .rui-primary-nav a.active::before {
   content: "";
   width: 6px;
   height: 6px;
@@ -36,3 +37,4 @@
   background-color: white;
   opacity: 0.8;
 } */
+}

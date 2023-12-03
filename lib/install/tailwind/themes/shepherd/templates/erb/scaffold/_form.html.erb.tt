@@ -1,0 +1,50 @@
+<%%= form_with(model: <%= model_resource_name %>) do |form| %>
+  <%%= render "shared/error_messages", resource: form.object %>
+
+<%- attributes.each do |attribute| -%>
+  <div class="form-group">
+<%- if attribute.password_digest? -%>
+    <%%= form.label :password, class: "form-label" %>
+    <%%= form.password_field :password, class: "form-input" %>
+  </div>
+
+  <div class="form-group">
+    <%%= form.label :password_confirmation %>
+    <%%= form.password_field :password_confirmation, class: "form-input" %>
+<%- elsif attribute.attachments? -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true, class: "form-input" %>
+<%- elsif attribute.rich_text? -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %> %>
+<%- elsif attribute.field_type == :date_select -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.text_field :<%= attribute.column_name %>, class: "form-input" %>
+<%- elsif attribute.field_type == :text_area -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.text_area :<%= attribute.column_name %>, class: "form-textarea", data: { controller: "auto-expand-text-area", action:"input->auto-expand-text-area#expand" } %>
+<%- elsif attribute.field_type == :datetime_select -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.datetime_select :<%= attribute.column_name %>, class: "form-input-datetime-select" %>
+<%- elsif attribute.field_type == :check_box -%>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-input-checkbox" %>
+    <%%= form.label :<%= attribute.column_name %>, class: "ml-2" %>
+<%- else -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-input" %>
+<%- end -%>
+  </div>
+
+<%- end -%>
+  <div class="flex items-center justify-between flex-wrap">
+    <div class="sm:flex-1 sm:mb-0 mb-6">
+      <%%= form.submit class: "btn btn-primary" %>
+    </div>
+
+    <%% if form.object.new_record? %>
+      <%%= link_to "Cancel", <%= index_helper(type: :path) %>, class: "btn btn-white" %>
+    <%% else %>
+      <%%= link_to "Cancel", <%= show_helper(type: :path) %>, class: "btn btn-white" %>
+    <%% end %>
+  </div>
+<%% end %>

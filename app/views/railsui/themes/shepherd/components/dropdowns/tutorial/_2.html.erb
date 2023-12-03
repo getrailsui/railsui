@@ -1,0 +1,16 @@
+<h2>2. Triggering a dropdown</h2>
+
+<p>To trigger a dropdown to appear you will need some form of actionable target like a <%= code("button") %> or <%= code("a") %> element. Append the following attributes to your target. <%= code 'data-action="dropdown#toggle click@window->dropdown#hide"' %> (see the base example below for a complete concept).</p>
+
+<div class="not-prose">
+<% content_for :html, flush: true do %>
+<div data-controller="dropdown">
+  <button data-action="click->dropdown#toggle click@window->dropdown#hide">Dropdown</button>
+  <div>
+    <a href="#">Menu list item 1</a>
+    <a href="#">Menu list item 2</a>
+  </div>
+</div>
+<% end %>
+<%= render_snippet %>
+</div>

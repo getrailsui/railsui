@@ -1,0 +1,76 @@
+<div class="my-16">
+
+<%= render "railsui/shared/sticky_subhead", title: "Breadcrumbs", subtitle: "Contained" %>
+
+<%= render preview("zinc") do %>
+<nav aria-label="breadcrumb" class="my-6 font-medium flex text-zinc-200 text-sm bg-zinc-50 rounded-lg items-center dark:border-zinc-600/80 border overflow-hidden sm:py-0 py-4 dark:bg-zinc-800 border-zinc-300/80">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
+    <li class="sm:h-12 flex items-center justify-center">
+      <a href="#" class="hover:underline text-primary-500 hover:text-primary-600 inline-block pl-2 group" data-controller="prevent" data-action="click->prevent#prevent">
+        <%= icon "home", classes: "w-5 h-5 text-zinc-500 group-hover:text-primary-500 dark:text-zinc-400" %>
+        <span class="sr-only">Home</span>
+      </a>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+      <a href="#" class="hover:underline text-primary-500 hover:text-primary-600" data-controller="prevent" data-action="click->prevent#prevent">Library</a>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+      <a href="#" aria-current="page" class="text-zinc-500 dark:text-zinc-100" data-controller="prevent" data-action="click->prevent#prevent">Data</a>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :html, flush: true do %>
+<nav aria-label="breadcrumb" class="my-6 font-medium flex text-zinc-200 text-sm bg-zinc-50 rounded-lg items-center dark:border-zinc-600/80 border overflow-hidden sm:py-0 py-4 dark:bg-zinc-800 border-zinc-300/80">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
+    <li class="sm:h-12 flex items-center justify-center">
+      <a href="#" class="hover:underline text-primary-500 hover:text-primary-600 inline-block pl-2 group">
+        <%%= icon "home", classes: "w-5 h-5 text-zinc-500 group-hover:text-primary-500 dark:text-zinc-400" %>
+        <span class="sr-only">Home</span>
+      </a>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+      <a href="#" class="hover:underline text-primary-500 hover:text-primary-600">Library</a>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+      <a href="#" aria-current="page" class="text-zinc-500 dark:text-zinc-100">Data</a>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<nav aria-label="breadcrumb" class="my-6 font-medium flex text-zinc-200 text-sm bg-zinc-50 rounded-lg items-center dark:border-zinc-600/80 border overflow-hidden sm:py-0 py-4 dark:bg-zinc-800 border-zinc-300/80">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
+    <li class="sm:h-12 flex items-center justify-center">
+      <a href="#" class="hover:underline text-primary-500 hover:text-primary-600 inline-block pl-2 group">
+        <%%= icon "home", classes: "w-5 h-5 text-zinc-500 group-hover:text-primary-500 dark:text-zinc-400" %>
+        <span class="sr-only">Home</span>
+      </a>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+      <%%= link_to "Library", "#", class: "hover:underline text-primary-500 hover:text-primary-600" %>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+       <%%= link_to "Date", "#", class: "text-zinc-500 dark:text-zinc-100", "aria-current": "page" %>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav.my-6.font-medium.flex.text-zinc-200.text-sm.bg-zinc-50.rounded-lg.items-center.border.overflow-hidden.sm:py-0.py-4.dark:bg-zinc-800{"aria-label" => "breadcrumb", class: "dark:border-zinc-600/80 border-zinc-300/80"}
+  %ol.flex.items-center.justify-star.space-x-6.px-4.list-none
+    %li.sm:h-12.flex.items-center.justify-center
+      %a.hover:underline.text-primary-500.hover:text-primary-600.inline-block.pl-2.group{href: "#"}
+        = icon "home", classes: "w-5 h-5 text-zinc-500 group-hover:text-primary-500 dark:text-zinc-400"
+        %span.sr-only Home
+    %li.sm:h-12.flex.items-center.space-x-2.justify-center
+      = link_to "Library", "#", class: "hover:underline text-primary-500 hover:text-primary-600"
+    %li.sm:h-12.flex.items-center.space-x-2.justify-center
+      = link_to "Date", "#", class: "text-zinc-500 dark:text-zinc-100", "aria-current": "page"
+<% end %>
+
+<%= render_snippet %>
+</div>

@@ -39,22 +39,27 @@ module Railsui
         available_views.each do |view|
           filename = filename_with_extensions(view)
           # dynamically choose a template
-          template_path = "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{filename}"
-
+          template_path = "#{Railsui.config.theme}/#{filename}"
           template template_path, File.join("app/views",controller_file_path, filename)
         end
 
-        template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/partial.html.erb", File.join("app/views", controller_file_path, "_#{singular_name}.html.erb")
+        template "#{Railsui.config.theme}/partial.html.erb", File.join("app/views", controller_file_path, "_#{singular_name}.html.erb")
       end
 
       def add_to_navigation
-inserted_link = <<-ERB
-<li #{'class="nav-item"' if Railsui.bootstrap? }>
+        nav_link_partial = if File.exist?(Rails.root.join('app', 'views', 'shared', 'admin', '_nav_links.html.erb'))
+                             'app/views/shared/admin/_nav_links.html.erb'
+                           else
+                             'app/views/shared/_nav_links.html.erb'
+                           end
+
+        inserted_link = <<-ERB
+<li>
   <%= nav_link_to "#{plural_table_name.titleize}", #{index_helper(type: :path)}, class: "nav-link" %>
 </li>
 
 ERB
-        append_to_file "app/views/shared/_nav_links.html.erb", inserted_link
+        append_to_file nav_link_partial, inserted_link
       end
 
     protected

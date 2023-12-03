@@ -1,0 +1,33 @@
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Buttons", subtitle: "Sizes" %>
+
+  <div class="prose dark:!prose-invert mb-6">Choose from two additional buttons sizes outside of the default <%= code(".btn") %> class (<%= code(".btn-lg") %>, <%= code(".btn-sm") %>) or customize size with additional Tailwind CSS classes.</div>
+
+<%= render preview do %>
+  <div class="flex items-center space-x-2">
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+    <button type="button" class="btn btn-primary">Base button</button>
+    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  </div>
+<% end %>
+
+
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-primary btn-lg">Large button</button>
+<button type="button" class="btn btn-primary">Base button</button>
+<button type="button" class="btn btn-primary btn-sm">Small button</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg" %>
+<%%= button_tag "Base Button", type: "button", class: "btn btn-primary" %>
+<%%= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg"
+= button_tag "Base Button", type: "button", class: "btn btn-primary"
+= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm"
+<% end %>
+<%= render_snippet %>
+</div>

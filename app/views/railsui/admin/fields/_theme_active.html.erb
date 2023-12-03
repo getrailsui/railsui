@@ -1,15 +1,11 @@
-<div class="border flex flex-wrap items-center justify-between rounded shadow-sm overflow-hidden bg-gradient-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-900 dark:border-slate-600 mb-6">
+<div class="border flex flex-wrap items-center justify-between rounded-lg shadow-sm overflow-hidden bg-gradient-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-900 dark:border-slate-600 mb-4">
   <div class="flex-1 py-3 sm:py-0 sm:px-0 px-4 sm:block flex items-center justify-between">
     <div class="flex justify-center items-center">
       <div class="mr-3">
-        <% if Railsui.bootstrap? %>
-          <%= render_svg "bootstrap", styles: "fill-current text-indigo-800 dark:text-indigo-400 w-12 h-12" %>
-        <% else %>
-         <%= render_svg "tailwind", styles: "fill-current text-teal-500 w-12 h-12" %>
-        <% end %>
+        <%= render_svg "tailwind", styles: "fill-current text-teal-500 w-12 h-12" %>
       </div>
 
-      <h4 class="font-semibold text-xl"><%= framework_name.humanize %></h4>
+      <h4 class="font-semibold text-xl">Tailwind CSS</h4>
     </div>
 
     <div class="flex justify-center mt-1">
@@ -17,20 +13,60 @@
     </div>
 
     <div class="flex justify-center sm:mt-6">
-      <div class="bg-green-50 uppercase tracking-wide text-green-600 font-bold px-3 py-px rounded-full inline-flex items-center text-xs">
+      <div class="bg-indigo-50 uppercase tracking-wide text-indigo-600 font-bold px-3 py-px rounded-full inline-flex items-center text-xs">
         <%= render_svg "paw", styles: "w-6 h-6 fill-current" %>
         <%= theme_name.humanize %>
       </div>
     </div>
   </div>
 
-  <%= image_tag "#{framework_name.parameterize}-#{theme_name.parameterize}-thumbnail.jpg", class: "max-w-md mx-auto border-l dark:border-slate-500 w-full" %>
+  <%= image_tag "tailwind-#{theme_name.parameterize}-thumbnail.jpg", class: "max-w-md mx-auto border-l dark:border-slate-500 w-full" %>
+</div>
 
-  <div class="w-full">
-    <%= link_to theme_preview_link(theme_name.humanize), target: :_blank, class: "border-t dark:border-slate-600 py-4 px-4 text-center justify-center w-full text-slate-700 bg-white hover:bg-slate-100 transition ease-in-out duration rounded-b block dark:bg-slate-700 dark:text-white hover:dark:bg-slate-600 hover:dark:text-white flex items-center space-x-2 font-medium text-sm" do %>
-      <%= icon "eye", classes: "w-5 h-5 text-green-600", variant: :solid %>
+<div class="w-full mb-6 flex justify-center items-center">
+  <div class="h-px bg-gradient-to-l from-slate-200 dark:from-slate-600 w-1/3"></div>
+  <% if Railsui::Default::THEMES.key?(theme_key) %>
+    <%= link_to Railsui::Default::THEMES[theme_key][:preview_link], target: :_blank, class: "rounded-full bg-white border border-slate-300 focus:ring-4 focus:ring-slate-50 flex items-center space-x-2 py-3 px-5 justify-center text-center shadow-sm transition ease-in-out duration-200 hover:shadow group dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 dark:border-slate-600/80 dark:hover:from-slate-700 dark:hover:to-slate-800 dark:hover:border-slate-500/80" do %>
+      <%= icon "eye", classes: "w-5 h-5 text-slate-400/80 group-hover:text-indigo-600 dark:group-hover:text-indigo-500 transition", variant: :solid %>
       <span>Preview theme</span>
     <% end %>
-  </div>
+  <% else %>
+    <p>Theme not found.</p>
+  <% end %>
+  <div class="h-px bg-gradient-to-r from-slate-200 dark:from-slate-600 w-1/3"></div>
 </div>
+
 <%= f.hidden_field :theme, value: Railsui.config.theme %>
+
+<hr class="border-slate-200 my-6 dark:border-slate-600/80">
+
+<h3 class="text-slate-500 text-sm dark:text-slate-300">Color scheme</h3>
+
+<% if @theme_colors.present? %>
+ <% if @config.colors.present? %>
+    <% @config.colors.each do |collection, colors| %>
+      <h3 class="font-semibold mb-3"><%= collection.capitalize %> Colors</h3>
+      <div class="grid grid-cols-11 gap-2 mb-8">
+        <% colors.each do |shade, hex| %>
+          <div class="color-item">
+            <%= label_tag "#{collection}_#{shade}", "#{shade.capitalize} Color", class: "sr-only" %>
+
+            <%= f.color_field :colors, value: @config.colors[collection][shade], name: "configuration[colors][#{collection}][#{shade}]", class: "rui-form-input-color" %>
+
+            <div class="text-left mt-1 leading-none">
+              <p class="text-sm font-semibold text-slate-800 dark:text-slate-200"><%= shade %></p>
+              <code class="font-mono text-xs text-slate-600 selection:bg-indigo-500 selection:text-white dark:text-slate-400"><%= hex %></code>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="prose prose-sm max-w-full dark:!prose-invert p-3 rounded-xl bg-slate-50 dark:bg-slate-900">
+    <h4>Changing brand colors</h4>
+    <p>While the <%= Railsui.config.theme.humanize %> theme comes with default brand colors, the Primary and Secondary colors are always editable from within your <code>railsui.yml</code> config file or directly in this form. I recommend using a tool like <%= link_to "Color Toner", "https://colors.dopely.top/color-toner/ffe0e0-shades-11", target: :_blank %> to generate 11 color shades per color for maximum flexibility.</p>
+    <p>Additional color modifications outside of the Primary and Secondary colors should be done from the <code>tailwind.config.js</code> file after installing a theme.</p>
+    <p>When making changes be sure to restart your server!</p>
+  </div>
+<% end %>

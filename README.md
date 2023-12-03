@@ -19,8 +19,26 @@ With Rails UI, you can easily bring professional-grade design to your Ruby on Ra
 
 ## Installation
 
-Before installing the gem, ensure both your node and [yarn](https://yarnpkg.com/) versions are up to date for best results. Using something like [nvm](https://github.com/nvm-sh/nvm) helps with node versions. I like to use [homebrew](https://brew.sh/) for yarn and periodically run `brew upgrade yarn`.
+> [!IMPORTANT]
+> Rails UI is for fresh Rails installs. Adding it to your existing app _could_ work but we assume a blank slate.
 
+At this time Rails UI does not support installation alongside something like Jumpstart Pro or Bulletrain which serve their own front-ends.
+
+#### Create a new vanilla app
+
+```
+rails new my_app
+```
+
+- We recommend **not** configuring any front-end dependencies on the fly by passing options.
+
+- Passing options like `--css`, `-c`, `--javascript`, `-j` are not necessary as the Rails UI installer takes care of this automatically.
+
+- Other options are fair game such as tests, database type, etc...
+
+**Pre-requisites**
+
+Before installing the gem, ensure both your node and [yarn](https://yarnpkg.com/) versions are up to date for best results. Using something like [nvm](https://github.com/nvm-sh/nvm) helps with node versions. I like to use [homebrew](https://brew.sh/) for yarn and periodically run `brew upgrade yarn`.
 
 ```ruby
 # Gemfile
@@ -45,21 +63,23 @@ After installing Rails UI, run your server using the `bin/dev` command and proce
 
 Use Rails UI for brand **new** Ruby on Rails applications for best results.
 
-Configuration is a simple process that first prompts you for an application name and preferred CSS framework—following install of a CSS framework; you can choose a theme. Rails UI currently ships with support for Bootstrap and Tailwind CSS.
+Configuration is a simple process that first prompts you for an application name, support email, and theme. Rails UI currently ships with support for Tailwind CSS.
 
 ### Selecting a theme
 
-After configuring your Rails UI install, you will see a series of themes. Choose your preferred theme and click "Save changes." Rails UI installs any assets, dependencies, and code related to the theme.
-
-Note: The theme list will grow as Rails UI does.
+After configuring your Rails UI install, you will see a series of themes (more to come!). Choose your preferred theme and submit the form. Rails UI installs any assets, dependencies, and code related to the theme.
 
 ### Adding pages
 
 Because we take a theme-first approach to design with Rails UI, you can install pre-designed one-off pages. **Pages are a work in progress**, and each theme will have multiple available for install.
 
-## Design system
+## Integrated design system
 
-After you configure Rails UI, you can preview the design system. There you will find a collection of components and best practices for real-world usage of your Rails UI theme. Use this as a guide to add a new design to your application, but please don't take it as gosple. Design is less rigid than programming and often needs a little tweaking as you go. My goal is to give you a hell of a good head start.
+After you configure Rails UI, you can preview the design system. There you will find a collection of components and best practices for real-world usage of your Rails UI theme.
+
+Use this as a guide to add a new design to your application, but please don't take it as gosple.
+
+Design is less rigid than programming and often needs a little tweaking as you go. My goal is to give you a hell of a good head start.
 
 ## Updates
 
@@ -86,16 +106,16 @@ Installing Rails UI is a quick process that goes something like this:
 1. Install the gem
 2. Run the installer `rails railsui:install`
 3. Boot your server and load the Rails UI landing page and click "Configure app"
-4. Choose an application name, support email, and CSS framework ([Bootstrap](https://getbootstrap.com), [Tailwind](https://tailwindcss.com)) and save your changes.
-5. Choose a theme based on the previously chosen CSS framework
-6. Optionally install pre-designed pages bundled with your chosen theme.
-7. 🏄‍♀️ Done!
+4. Set a application name, support email and choose a theme.
+5. Optionally install pre-designed pages bundled with your chosen theme.
+6. 🏄‍♀️ Done!
 
 ### Dependencies included by default
 
 #### Gems
 
 We keep the gem list simple because Rails UI focuses less on core application logic.
+
 - [inline_svg](https://github.com/jamesmartin/inline_svg)
 - [devise](https://github.com/heartcombo/devise)
 - [name_of_person](https://github.com/basecamp/name_of_person)
@@ -105,8 +125,6 @@ We keep the gem list simple because Rails UI focuses less on core application lo
 #### Icons
 
 For all Rails UI applications we leverage [heroicons](https://heroicons.com/). These icons cover a lot of basis and come in multiple variants which is useful for different design problems.
-
-If you select Bootstrap as your CSS framework that comes with [Bootstrap Icons](https://icons.getbootstrap.com/) as an additional set of icons to leverage.
 
 It's recommended to stick with one library of icons and one variant for better consistency.
 
@@ -130,7 +148,7 @@ We added the `first_name` and `last_name` attributes for use with the handy [nam
 
 Rails UI has some opinionated defaults when it comes to assets and JavaScript. Importmaps aren't our preference, so we use a custom approach.
 
-[esbuild](https://esbuild.github.io/) is the default JavaScript build engine. Depending on your chosen CSS framework, we include those dependencies as well. Rails UI currently supports Bootstrap and Tailwind CSS.
+[esbuild](https://esbuild.github.io/) is the default JavaScript build engine. Depending on your chosen CSS framework, we include those dependencies as well. Rails UI currently supports Tailwind CSS.
 
 #### Add ActiveStorage and ActionText support
 
@@ -159,6 +177,8 @@ No. Well, kind of, but mostly this is a hybrid Rails engine not like other engin
 
 **Rails UI is meant for brand new Rails applications.** You'll want to use it on the "first run" so you can establish the foundation for assets and design patterns early on. To use Rails UI you need to choose a theme (more themes coming soon) that will act as the basis for future design elements.
 
+At this time Rails UI does not integrate directly with application templates like Jumpstart Pro or Bulletrain. Most templates come with some form of their own front-end and that leads to too many conflicts.
+
 </details>
 
 <details>
@@ -170,7 +190,7 @@ Once configured Rails UI will:
 - Install dependencies and any necessary assets.
 - Generate a custom tailored design system for repeatable web elements. Think of this as a system for providing design direction when creating new features. This includes typography, font elements, and SVG icons.
 - Optionally install one-off templates (i.e. About us, Pricing, etc...). Use these as a starting point.
-- Install scaffold templates that follow the theme and CSS framework you chose.
+- Install scaffold templates that follow the theme you chose.
 - After installing the Rails UI gem and running the installer, you may configure your application preferences.
 </details>
 
@@ -186,16 +206,15 @@ We're just hitting ground with Rails UI so expect to see additional components a
 
 While we are kicking the tires with an alpha version of Rails UI it is free and clear to try out but not redistribute.
 
-Our _evenutal_ license model will be a non-exclusive one in which essentially means you don't have permission to modify or share Rails UI but you can use it freely in your projects.
+Our _evenutal_ license model will be a non-exclusive one in which essentially means you don't have permission to modify or share Rails UI as your own product but you can use it freely in your projects.
 
-Eventually, when the official first release drops, an ongoing subscription is required in order to ship new themes and updates in an ongoing fashion.
+Eventually, when the official premium version drops there will be a private space to access ongoing updates via git. New themes and more will be a part of that in an ongoing fashion.
+
 </details>
 
 ## Updates
 
-Rails UI ships as a gem. Future releases are available to clone/pull from a private git-hosted group of which you will have access to with an active subscription.
-
-If you subscription lapses you can still use Rails UI but you lose access to ongoing updates and additional themes to choose from.
+Rails UI ships as a gem. Future releases are available to clone/pull from a private git-hosted group of which you will have access if you purchase the premium version.
 
 ## Become an early supporter ❤️
 

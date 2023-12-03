@@ -1,0 +1,14 @@
+<div class="prose dark:!prose-invert mt-6 max-w-full">
+  <p>Tooltips depend on the <%= link_to "tippy.js", "https://atomiks.github.io/tippyjs/", target: :_blank %> library. Using the <%= code "tooltip_controller.js" %> controller adding a tooltip to virtually any element is quite easy.</p>
+  <p>The <%= code "tooltip_controller.js" %> controller comes pre-installed with the <%= Railsui.config.theme %> theme.</p>
+
+  <h3>Prefer a different theme?</h3>
+
+  <p>Tippy.js ships with <%= link_to "alternative themes", "https://atomiks.github.io/tippyjs/v6/themes/", target: :_blank %>. We recommend tweaking the <%= code "tooltip_controller.js" %> implementation to accomodate. Future versions of Rails UI may ship with completely custom tooltip themes.</p>
+</div>
+
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/tooltips" %>
+
+<%= render "#{path}/simple" %>
+
+<%= system_pagination(prev_path: systems_components_toasts_path, prev_text: "Toasts", next_path: systems_mailers_path, next_text: "Mailers") %>

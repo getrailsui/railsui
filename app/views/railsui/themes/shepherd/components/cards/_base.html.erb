@@ -1,0 +1,43 @@
+<div class="mb-16 mt-6">
+  <div class="prose prose-lg dark:!prose-invert mb-6">
+    <p>Cards include options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.</p>
+  </div>
+
+  <%= render "railsui/shared/sticky_subhead", title: "Cards", subtitle: "Base" %>
+
+<%= render preview "zinc" do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40">
+  <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Card title</h4>
+  <div class="prose prose-zinc my-2 dark:prose-invert max-w-full">
+    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :html, flush: true do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40">
+  <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Card title</h4>
+  <div class="prose prose-zinc my-2 dark:prose-invert max-w-full">
+    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40">
+  <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Card title</h4>
+  <div class="prose prose-zinc my-2 dark:prose-invert max-w-full">
+    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-lg.shadow-sm.bg-white.p-6.dark:bg-zinc-800.dark:text-white.border.border-zinc-300/90{class: "shadow-zinc-400/20 dark:border-zinc-600/80 dark:shadow-zinc-950/40"}
+  %h4.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Card title
+  .prose.prose-zinc.my-2.dark:prose-invert.max-w-full
+    %p Some quick example text to build on the card title and make up the bulk of the card's content.
+<% end %>
+<%= render_snippet %>
+
+</div>

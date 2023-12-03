@@ -1,0 +1,16 @@
+<%= render "auth_layout" do %>
+  <h1 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight mb-6">Resend confirmation instuctions</h1>
+
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
+
+    <%= render "shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%= f.label :email, class: "form-label" %>
+
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com" %>
+    </div>
+
+    <%= f.submit "Resend confirmation instructions", class: "btn btn-primary w-full" %>
+  <% end %>
+<% end %>

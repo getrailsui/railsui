@@ -1,3 +1,5 @@
-.collapse {
-  visibility: visible !important;
+.railsui {
+  .collapse {
+    visibility: visible !important;
+  }
 }

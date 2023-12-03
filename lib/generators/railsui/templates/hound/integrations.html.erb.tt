@@ -1,0 +1,201 @@
+<%% content_for :body_classes, "text-slate-800 dark:bg-slate-900 dark:text-slate-100 bg-white" %>
+
+<%%= render "shared/admin/nav", { header_title: "Integrations" } %>
+
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+    <nav role="settings nav">
+      <ul
+        class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+
+        <%% if respond_to?(:admin_settings_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Account", admin_settings_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_notifications_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Notifications", admin_notifications_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_billing_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Billing", admin_billing_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_team_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Team", admin_team_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_integrations_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Integrations", admin_integrations_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="container mx-auto pb-24 px-4 my-16">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="mb-2 text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Integrations</h1>
+    <p class="text-lg text-slate-500 mb-6 dark:text-slate-400">Connect <%%= Railsui.config.theme.humanize %> with your favorite third-party tools.</p>
+
+    <div class="pt-8">
+      <h3 class="font-semibold text-xl tracking-tight text-slate-800 dark:text-slate-200">Email service providers</h3>
+      <p class="mb-6 text-slate-600 dark:text-slate-400">Send emails with confidence.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-8 gap-5 pb-8 mb-8">
+
+      <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-lg flex flex-col justify-between items-start">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/mailchimp.png", alt: "Mailchimp Logo", class: "w-auto h-16 object-contain dark:invert" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Mailchimp", "https://mailchimp.com", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Powerful email marketing software to help you reach your audience and grow your business.</p>
+        </div>
+        <%%= link_to "Connect", "#", class: "btn btn-white dark:btn-primary dark:border-none" %>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/sendgrid.png", alt: "Send Grid Logo", class: "w-auto h-8 object-contain dark:invert" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "SendGrid", "https://sendgrid.com", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Email delivery service to make sure your emails reach your customers' inboxes.</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <%%= link_to "Disconnect", "#", class: "btn btn-dark dark:btn-white" %>
+          <%%= link_to "Settings", "#", class: "btn btn-transparent" %>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/constant-contact.svg", alt: "Constant Contact Logo", class: "w-auto h-8 object-contain" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Constant Contact", "https://www.constantcontact.com/", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Email marketing solution for small businesses and nonprofits.</p>
+        </div>
+        <%%= link_to "Connect", "#", class: "btn btn-white dark:btn-primary" %>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t dark:border-slate-700">
+      <h3 class="font-semibold text-xl tracking-tight text-slate-800 dark:text-slate-200">Analytics</h3>
+      <p class="mb-6 text-slate-600 dark:text-slate-400">Get more insight on your team and users with powerful analytics.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-8 gap-5 pb-8 mb-8">
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/google-analytics.svg", alt: "Google Analytics Logo", class: "w-auto h-10 object-fit" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Google Analytics", "https://analytics.google.com/", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Track and report website traffic to gain insights into your users' behavior.</p>
+        </div>
+        <%%= link_to "Connect", "#", class: "btn btn-white dark:btn-primary" %>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/mixpanel.svg", alt: "Mixpanel logo", class: "w-auto h-8 object-fit dark:invert" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Mixpanel", "https://mixpanel.com/", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Advanced analytics platform to analyze user interactions with your product.</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <%%= link_to "Disconnect", "#", class: "btn btn-dark dark:btn-white" %>
+          <%%= link_to "Settings", "#", class: "btn btn-transparent" %>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/segment.png", alt: "Segment Logo", class: "w-auto h-10 object-fit dark:invert" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Segment", "#", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Collect, clean, and control your customer data all in one place.</p>
+        </div>
+        <%%= link_to "Connect", "#", class: "btn btn-white dark:btn-primary dark:border-none" %>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t dark:border-slate-700">
+      <h3 class="font-semibold text-xl tracking-tight text-slate-800 dark:text-slate-200">Tool Add-ons</h3>
+      <p class="mb-6 text-slate-600 dark:text-slate-400">Super-charge your Hound experience with these third-party tool add-ons.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-8 gap-5 pb-8 mb-8">
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/slack.svg", class: "w-auto h-16 object-fit" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Slack", "https://slack.com", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Collaborate with your team in real-time with messaging, file sharing, and more.</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <%%= link_to "Disconnect", "#", class: "btn btn-dark dark:btn-white" %>
+          <%%= link_to "Settings", "#", class: "btn btn-transparent" %>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/trello.svg", alt: "Trello Logo", class: "w-auto h-8 object-fit dark:invert" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Trello", "https://trello.com", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Manage your projects with boards, lists, and cards to organize and prioritize your tasks.</p>
+        </div>
+        <%%= link_to "Connect", "#", class: "btn btn-white dark:btn-primary" %>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-lg flex flex-col justify-between items-start dark:bg-slate-800">
+        <div class="flex-1">
+          <div class="sm:h-16 h-auto mb-3 flex items-center sm:justify-center justify-start">
+            <%%= image_tag "#{Railsui.asset_url}/themes/brands/zoom.svg", alt: "Zoom logo", class: "w-auto h-6 object-fit" %>
+          </div>
+          <h4 class="font-semibold text-lg mb-3">
+            <%%= link_to "Zoom", "https://zoom.com", target: :_blank %>
+          </h4>
+          <p class="mb-3 text-slate-600 text-sm line-clamp-3 dark:text-slate-400">Connect with your team through secure video, voice, chat, and content sharing.</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <%%= link_to "Disconnect", "#", class: "btn btn-dark dark:btn-white" %>
+          <%%= link_to "Settings", "#", class: "btn btn-transparent" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="mb-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Tooltips", subtitle: "Usage" %>
+
+<div class="flex items-center space-x-3">
+  <button data-controller="tooltip" data-tooltip-content-value="Hi, from the tips of tools" class="btn btn-primary">Tooltip here</button>
+  <button data-controller="tooltip" data-tooltip-content-value="We raised over $1 billion to engineer the greatest tooltip of our lives. <strong>What's super cool</strong> is that HTML can be embedded into the tooltip for max emphasis." data-tooltip-allow-html-value="true" class="btn btn-white">and here</button>
+</div>
+
+<%= render "railsui/shared/usage_guide", title: "Tooltips usage guide" do %>
+
+
+<p>The short-form tutorial below represents how to pair Rails UI, Stimulus.js, and Tippy.js together.</p>
+
+<h2>1. Initializing the Stimulus.js controller</h2>
+
+<p>The <%= Railsui.config.theme.humanize %> theme ships with the <%= code "tooltip_controller.js" %> controller file by default. Below is the file for reference. <%= link_to "Tippy.js", "https://atomiks.github.io/tippyjs/", target: :_blank %> is required to make the tooltip component function properly. You may customize Tippy to your needs but we started of with some simple defaults. </p>
+
+<div class="not-prose">
+<%= content_for :js, flush: true do %>
+import { Controller } from "@hotwired/stimulus"
+import tippy from "tippy.js"
+
+export default class extends Controller {
+  static values = {
+    content: String,
+    allowHtml: Boolean
+  }
+
+  connect() {
+    let options = {}
+    if (this.hasContentValue) {
+      options["content"] = this.contentValue
+    }
+    if (this.hasAllowHtmlValue) {
+      options["allowHTML"] = this.allowHtmlValue
+    }
+    this.tippy = tippy(this.element, options)
+  }
+
+  disconnect() {
+    this.tippy.destroy()
+  }
+}
+
+  <% end %>
+  <%= render_snippet active_tab: "js", js_filename: "tooltip_controller.js" %>
+</div>
+
+<h2>2. Initialize the controller in your views</h2>
+
+<p>Add the data attribute <%= code "data-controller='tooltip'" %> to an HTML element.</p>
+
+<div class="not-prose">
+  <% content_for :js, flush: true do %>
+
+  <% end %>
+  <% content_for :html, flush: true do %>
+    <button data-controller="tooltip" class="btn btn-primary">Tooltip demo</button>
+  <% end %>
+  <%= render_snippet %>
+</div>
+
+<h2>3. Pass content to the tooltip</h2>
+
+<p>Add the data attribute <%= code "data-tooltip-content-value='Your content here'" %> to an HTML element. Inside the data attribute you may pass as much copy as you like.</p>
+
+<div class="not-prose">
+  <button data-controller="tooltip" data-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+  <% content_for :js, flush: true do %>
+
+  <% end %>
+  <% content_for :html, flush: true do %>
+    <button data-controller="tooltip" data-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+  <% end %>
+  <%= render_snippet %>
+</div>
+
+<h3>(optional) 4. Allow HTML in content</h3>
+
+<p>Add the data attribute <%= code 'data-tooltip-allow-html-value="true"' %> to an HTML element. Inside the data attribute pass <%= code "true" %> to enable the option <%= code "allowHTML" %> for the tippy.js library.</p>
+
+<div class="not-prose">
+  <button data-controller="tooltip" data-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+
+
+  <% content_for :js, flush: true do %>
+
+  <% end %>
+
+  <% content_for :html, flush: true do %>
+    <button data-controller="tooltip" data-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+  <% end %>
+
+  <%= render_snippet %>
+  </div>
+<% end %>
+
+
+<% content_for :html, flush: true  do %>
+<button data-controller="tooltip" data-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+<% end %>
+
+<% content_for :erb, flush: true  do %>
+<%%= button_tag "#", class: "btn btn-primary", data: { controller: "tooltip", tooltip_content_value: "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!", tooltip_allow_html_value: "true" } %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%button.btn.btn-primary{"data-controller" => "tooltip", "data-tooltip-allow-html-value" => "true", "data-tooltip-content-value" => "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!"} Tooltip with HTML demo
+<% end %>
+
+<%= render_snippet %>
+</div>

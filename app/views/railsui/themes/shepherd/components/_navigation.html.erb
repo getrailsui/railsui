@@ -1,0 +1,19 @@
+<% content_for :fullwidth, true %>
+
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/navigation" %>
+
+<%= render "railsui/shared/quicklinks", name: "navigation" do %>
+  <%= quick_link(title: "base", component: "navigation") %>
+  <%= quick_link(title: "dark", component: "navigation") %>
+  <%= quick_link(title: "with search", component: "navigation") %>
+  <%= quick_link(title: "logged out", component: "navigation") %>
+  <%= quick_link(title: "with dropdowns", component: "navigation") %>
+<% end %>
+
+<%= render "#{path}/base" %>
+<%= render "#{path}/with_search" %>
+<%= render "#{path}/dark" %>
+<%= render "#{path}/logged_out" %>
+<%= render "#{path}/with_dropdowns" %>
+
+<%= system_pagination(prev_path: systems_components_modals_path, prev_text: "Modals", next_path: systems_components_pagination_path, next_text: "Pagination") %>

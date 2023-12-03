@@ -1,0 +1,141 @@
+<div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
+  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+    bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+
+  <div class="relative z-20">
+    <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
+
+    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
+      convenient place.</p>
+  </div>
+</div>
+
+<div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
+  <!-- Dynamic tabs relative to what pages are installed -->
+  <%= render "shared/account/tabs" %>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div class="bg-blue-50/90 text-blue-700 border-l-4 border-blue-700 py-4 px-6 text-sm dark:bg-blue-50/10 dark:text-blue-50 dark:border-blue-400 rounded-r-xl rounded-l my-4">
+      <p class="text-blue-800 dark:text-blue-400 font-normal font-heading">Currently waiting on confirmation for: <span class="font-medium"><%= resource.unconfirmed_email %></span></p>
+    </div>
+  <% end %>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+
+    <div class="max-w-xl mx-auto">
+      <%= render "shared/error_messages", resource: resource %>
+      <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Profile</h2>
+      <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
+        <p>Edit your profile details.</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :avatar, class: "form-label" %>
+
+        <div class="flex items-center space-x-3">
+          <% if f.object.avatar.attached? %>
+            <%= image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none" %>
+          <% else %>
+            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
+              <%= icon "user", classes: "w-6 h-6 text-zinc-500" %>
+            </div>
+          <% end %>
+
+          <%= f.label :avatar, class: "block" do %>
+            <%= f.file_field :avatar, class: "form-file" %>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <%= f.label :name, class: "form-label" %>
+        <%= f.text_field :name, class: "form-input" %>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <%= f.label :email, class: "form-label form-label-required" %>
+        <%= f.email_field :email, autocomplete: "email", class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: "form-label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+        <div class="prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+          <% if @minimum_password_length %>
+            <p><%= @minimum_password_length %> characters minimum</p>
+          <% end %>
+          <p>Leave this blank if you don't want to change it</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+      </div>
+
+      <div class="from-group">
+        <%= f.label :current_password, class: "form-label form-label-required" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
+        <div class="prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+          <p>Your current password is required to update your account.</p>
+        </div>
+      </div>
+
+      <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight pt-10">Social media</h4>
+
+      <div class="prose prose-zinc dark:prose-invert mb-6">
+        <p>You could optionally add social media accounts in this section.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="user[x]" class="form-label sr-only">X</label>
+        <div class="relative">
+          <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
+          <span
+          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+            <%= icon "x", path: "social/x.svg", classes: "w-5 h-5 fill-current" %>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="user[facebook]" class="form-label sr-only">Facebook</label>
+        <div class="relative">
+          <input type="text" id="user[facebook]" class="form-input w-full pl-14"
+          placeholder="https://facebook.com/username">
+          <span
+          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600dark:text-zinc-400 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+            <%= icon "facebook", path: "social/facebook.svg", classes: "w-5 h-5 fill-current" %>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="user[github]" class="form-label sr-only">GitHub</label>
+        <div class="relative">
+          <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
+          <span
+          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+            <%= icon "github", path: "social/github.svg", classes: "w-5 h-5 fill-current" %>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
+        <div class="relative">
+          <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
+          placeholder="https://linkedin.com/in/username">
+          <span
+          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+            <%= icon "linkedin", path: "social/linkedin.svg", classes: "w-5 h-5 fill-current" %>
+          </span>
+        </div>
+      </div>
+
+      <%= f.submit "Save changes", class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

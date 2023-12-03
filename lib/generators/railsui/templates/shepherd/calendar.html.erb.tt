@@ -1,0 +1,321 @@
+<div class="flex items-start justify-between sm:h-[calc(100vh-74px)] h-full w-full relative overflow-x-hidden sm:overflow-x-hidden">
+  <!-- Left pane -->
+  <div
+    class="sm:w-[360px] sm:h-[calc(100vh-74px)] sm:pl-4 border-r border-zinc-300/80 overflow-y-auto overflow-x-hidden block sm:pb-0 pb-16 dark:border-zinc-700 w-[90px] sm:pt-[25px] pt-[139px] sm:z-10 z-50 relative flex-shrink-0 bg-white dark:bg-zinc-900">
+    <!-- Calendar search -->
+    <div class="sm:flex items-center space-x-2 pr-2 hidden">
+      <form action="#" class="flex items-center justify-between flex-1">
+        <input type="search" class="form-input w-full" placeholder="Search properties" />
+      </form>
+      <div data-controller="dropdown" class="relative">
+        <button
+          class="bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1.5 flex items-center justify-center border border-transparent focus:border-zinc-300/80 focus:bg-white focus:ring-4 focus:ring-zinc-300/20 transition ease-in-out duration-200 group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70"
+          data-action="click->dropdown#toggle click@window->dropdown#hide">
+
+          <%%= icon "adjustments-horizontal", classes: "w-5 h-5 text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-600 group-focus:text-zinc-600 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200" %>
+        </button>
+        <ul
+          class="hidden origin-top-right absolute mt-3 top-8 right-0 shadow-xl rounded-xl py-1 md:w-[200px] w-[320px] shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600 font-heading"
+          data-transition-enter-active="transition ease-out duration-100"
+          data-transition-enter-from="transform opacity-0 scale-95"
+          data-transition-enter-to="transform opacity-100 scale-100"
+          data-transition-leave-active="transition ease-in duration-100"
+          data-transition-leave-from="transform opacity-100 scale-100"
+          data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+          <li>
+            <label for="filter_upcoming_first"
+              class="py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center group select-none">
+              <input id="filter_upcoming_first" type="radio" class="form-input-radio" name="filter" />
+              <span class="pl-2">Upcoming first</span>
+            </label>
+          </li>
+          <li>
+            <label for="filter_least_bookings"
+              class="py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center group select-none">
+              <input id="filter_least_bookings" type="radio" class="form-input-radio" name="filter" />
+              <span class="pl-2">Least Bookings</span>
+            </label>
+          </li>
+          <li>
+            <label for="filter_most_bookings"
+              class="py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center group select-none">
+              <input id="filter_most_bookings" type="radio" class="form-input-radio" name="filter" />
+              <span class="pl-2">Most bookings</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pb-4 pt-[10.5px] border-b border-zinc-300/60 mt-4 sm:block hidden dark:border-zinc-700">
+      <div class="pl-5 pr-2 flex items-center justify-between">
+        <h5 class="mb-0 text-xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">3 properties</h5>
+      </div>
+    </div>
+    <ul>
+      <%% [
+        {
+          title: "Cozy Mountain A-Frame",
+          image: "property-1.jpg",
+          subtitle: "Nature's Nook",
+          color: "bg-secondary-600"
+        },
+        {
+          title: "Alpine Retreat Haven",
+          image: "property-2.jpg",
+          subtitle: "The Haven",
+          color: "bg-blue-600"
+        },
+        {
+          title: "Mountain Vista Chalet",
+          image: "property-3.jpg",
+          subtitle: "The Mountain Majesty",
+          color: "bg-primary-600"
+        }
+      ].each do |property| %>
+
+        <%%= link_to "#", class: "flex items-center space-x-3 h-[64px] pl-1 hover:bg-zinc-50 transition ease-in-out duration-200 border-b border-zinc-300/80 dark:border-zinc-700 dark:hover:bg-zinc-800" do %>
+          <div class="w-1.5 rounded h-10 <%%= property[:color] %>"></div>
+          <%%= image_tag property[:image], class: "rounded w-14 h-auto", alt: property[:title] %>
+          <div class="flex-1 sm:block hidden">
+            <h3 class="font-semibold text-[15px] mb-0 leading-tight dark:text-zinc-50"><%%= property[:title] %></h3>
+            <p class="text-zinc-600 text-sm dark:text-zinc-300"><%%= property[:subtitle] %></p>
+          </div>
+        <%% end %>
+
+      <%% end %>
+    </ul>
+  </div>
+  <div
+    class="flex-1 py-4 w-full h-full before:absolute before:content-[''] before:w-3 before:h-full before:bg-gradient-to-r before:from-zinc-400/5 before:top-0 before:left-0 after:z-50 dark:before:from-zinc-950/10">
+
+    <!-- Calendar date controls -->
+    <div class="flex justify-between items-center space-x-3 bg-white sm:bg-transparent sm:static absolute left-0 z-50 top-0 sm:border-none border-b border-zinc-300/80 overflow-x-auto sm:overflow-auto sm:overflow-y-auto overflow-y-hidden py-2 px-2 sm:px-4 scroll-smooth snap-x snap-start w-full dark:bg-zinc-900 dark:border-zinc-700/80">
+      <div class="flex items-center space-x-4">
+        <button type="button" data-controller="date-range-picker"
+          data-date-range-picker-range-value='["2023-11-18", "2023-11-25"]'
+          class="btn btn-white w-[188px] space-x-3 flex items-center">
+          <%%= icon "calendar-days", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+
+          <span data-date-range-picker-target="label"></span>
+          <input type="hidden" data-date-range-picker-target="input">
+        </button>
+
+        <button type="button" class="btn btn-white">Today</button>
+      </div>
+      <div>
+        <%%= link_to "Create Booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "btn btn-primary whitespace-nowrap" %>
+      </div>
+    </div>
+
+    <div
+      class="flex-1 absolute sm:left-[360px] left-[90px] top-[74.5px] w-full sm:h-[calc(100%-75px)] overflow-x-auto overflow-y-hidden border-zinc-200 before:absolute before:content-[''] before:w-3 before:h-full before:bg-gradient-to-r before:from-zinc-400/5 before:top-0 before:left-0 dark:before:from-zinc-950/10">
+
+      <!-- Calendar grid UI -->
+      <div class="flex items-end text-center">
+        <%% [
+          { day: "Mon", number: "17", month: nil, active: false },
+          { day: "Tue", number: "18", month: nil, active: false },
+          { day: "Wed", number: "19", month: nil, active: false },
+          { day: "Thu", number: "20", month: nil, active: true },
+          { day: "Fri", number: "21", month: nil, active: false },
+          { day: "Sat", number: "22", month: nil, active: false },
+          { day: "Sun", number: "23", month: nil, active: false },
+          { day: "Mon", number: "24", month: nil, active: false },
+          { day: "Tue", number: "25", month: nil, active: false },
+          { day: "Wed", number: "26", month: nil, active: false },
+          { day: "Thu", number: "27", month: nil, active: false },
+          { day: "Fri", number: "29", month: "Sep", active: false },
+          { day: "Sat", number: "30", month: nil, active: false },
+          { day: "Sun", number: "1", month: "Oct", active: false },
+          { day: "Mon", number: "2", month: nil, active: false },
+          { day: "Tue", number: "3", month: nil, active: false },
+          { day: "Wed", number: "4", month: nil, active: false },
+          { day: "Thu", number: "5", month: nil, active: false },
+          { day: "Fri", number: "6", month: nil, active: false },
+          { day: "Sat", number: "7", month: nil, active: false },
+          { day: "Fri", number: "8", month: nil, active: false },
+          { day: "Sat", number: "9", month: nil, active: false },
+          { day: "Sun", number: "10", month: nil, active: false },
+          { day: "Mon", number: "11", month: nil, active: false },
+          { day: "Tue", number: "12", month: nil, active: false },
+          { day: "Wed", number: "13", month: nil, active: false },
+          { day: "Thu", number: "14", month: nil, active: false },
+          { day: "Fri", number: "15", month: nil, active: false },
+          { day: "Sat", number: "16", month: nil, active: false },
+          { day: "Sun", number: "17", month: nil, active: false },
+          { day: "Mon", number: "18", month: nil, active: false },
+          { day: "Tue", number: "19", month: nil, active: false },
+          { day: "Wed", number: "20", month: nil, active: false },
+          { day: "Thu", number: "21", month: nil, active: false },
+          { day: "Fri", number: "22", month: nil, active: false },
+          { day: "Sat", number: "23", month: nil, active: false },
+          { day: "Sun", number: "24", month: nil, active: false },
+          { day: "Mon", number: "25", month: nil, active: false },
+          { day: "Tue", number: "26", month: nil, active: false },
+          { day: "Wed", number: "27", month: nil, active: false },
+          { day: "Thu", number: "28", month: nil, active: false },
+          { day: "Fri", number: "29", month: nil, active: false },
+          { day: "Sat", number: "30", month: nil, active: false },
+          { day: "Sun", number: "1", month: "Oct", active: false }
+        ].each do |calendar_date| %>
+          <%% if calendar_date[:active] == true %>
+            <div class="text-center h-[64px] flex items-center justify-center flex-shrink-0 w-[64px] flex-wrap flex-col relative border-b border-zinc-300/80">
+              <div class="flex justify-center w-full">
+                <span class="w-1 h-1 bg-primary-600 rounded-full block"></span>
+              </div>
+              <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-50 block w-full"><%%= calendar_date[:number] %></span>
+              <span class="text-xs uppercase text-zinc-800 font-semibold block dark:text-zinc-50"><%%= calendar_date[:day] %></span>
+            </div>
+          <%% else %>
+            <%% if calendar_date[:month].present? %>
+            <div class="text-center h-[64px] flex items-center justify-center flex-shrink-0 w-[64px] relative border-b border-zinc-300/80 dark:border-zinc-700">
+              <div>
+                <span class="text-xs uppercase font-normal text-zinc-400 block"><%%= calendar_date[:month] %></span>
+                <span class="text-sm font-normal text-zinc-600 dark:text-zinc-400 block"><%%= calendar_date[:number] %></span>
+                <span class="text-xs uppercase text-zinc-400 dark:text-zinc-200 block"><%%= calendar_date[:day] %></span>
+              </div>
+            </div>
+            <%% else %>
+            <div class="text-center h-[64px] flex items-center justify-center flex-shrink-0 w-[64px] border-b border-zinc-300/80 dark:border-zinc-700">
+              <div>
+                <span class="text-sm font-normal text-zinc-600 dark:text-zinc-400 block"><%%= calendar_date[:number] %></span>
+                <span class="text-xs uppercase text-zinc-400 dark:text-zinc-200 block"><%%= calendar_date[:day] %></span>
+              </div>
+            </div>
+            <%% end %>
+          <%% end %>
+        <%% end %>
+      </div>
+
+      <!-- Grid lines -->
+      <div class="grid" style="grid-template-columns: repeat(50, minmax(64px,64px) auto);">
+        <%% 44.times do %>
+          <div class="w-[64px] h-[64px] border-r border-b border-zinc-300/80 dark:border-zinc-700"></div>
+        <%% end %>
+      </div>
+
+       <div class="grid" style="grid-template-columns: repeat(50, minmax(64px,64px) auto);">
+        <%% 44.times do %>
+          <div class="w-[64px] h-[64px] border-r border-b border-zinc-300/80 dark:border-zinc-700"></div>
+        <%% end %>
+      </div>
+
+       <div class="grid" style="grid-template-columns: repeat(50, minmax(64px,64px) auto);">
+        <%% 44.times do %>
+          <div class="w-[64px] h-[64px] border-r border-b border-zinc-300/80 dark:border-zinc-700"></div>
+        <%% end %>
+      </div>
+
+      <!-- Bookings -->
+      <div class="flex-1 absolute left-2 top-[70px]">
+        <div class="grid gap-y-[11px]" style="grid-template-columns: 64px repeat(50, minmax(64px,64px));">
+          <%% [
+            {
+              name: "Jared",
+              avatar: demo_avatar_url(id: "12", variant: "men"),
+              color: "secondary",
+              width: "col-span-6 row-start-1"
+            },
+            {
+              name: "Ashley",
+              avatar: demo_avatar_url(id: "7", variant: "women"),
+              color: "secondary",
+              width: "col-span-4 row-start-1 col-start-[10]"
+            },
+            {
+              name: "Andy",
+              avatar: demo_avatar_url(id: "4", variant: "men"),
+              color: "blue",
+              width: "col-span-3 row-start-2 col-start-2"
+            },
+            {
+              name: "Joseph",
+              avatar: demo_avatar_url(id: "23", variant: "men"),
+              color: "blue",
+              width: "col-span-6 row-start-2 col-start-6"
+            },
+            {
+              name: "Jane",
+              avatar: demo_avatar_url(id: "4", variant: "women"),
+              color: "primary",
+              width: "col-span-3 row-start-3 col-start-2"
+            },
+            {
+              name: "Travis",
+              avatar: demo_avatar_url(id: "8", variant: "men"),
+              color: "primary",
+              width: "col-span-5 row-start-3 col-start-[9]"
+            },
+            {
+              name: "Jamie",
+              avatar: demo_avatar_url(id: "52", variant: "men"),
+              color: "secondary",
+              width: "col-span-5 row-start-1 col-start-[20]"
+            },
+            {
+              name: "Jackie",
+              avatar: demo_avatar_url(id: "22", variant: "women"),
+              color: "blue",
+              width: "col-span-3 row-start-2 col-start-[19]"
+            },
+            {
+              name: "Jake",
+              avatar: demo_avatar_url(id: "88", variant: "men"),
+              color: "primary",
+              width: "col-span-6 row-start-3 col-start-[19]"
+            },
+            {
+              name: "Danny",
+              avatar: demo_avatar_url(id: "62", variant: "men"),
+              color: "secondary",
+              width: "col-span-10 row-start-1 col-start-[26]"
+            },
+            {
+              name: "Reggie",
+              avatar: demo_avatar_url(id: "38", variant: "men"),
+              color: "blue",
+              width: "col-span-4 row-start-2 col-start-[28]"
+            },
+            {
+              name: "Janessa",
+              avatar: demo_avatar_url(id: "70", variant: "women"),
+              color: "primary",
+              width: "col-span-6 row-start-3 col-start-[28]"
+            }].each do |booking| %>
+            <%% if booking[:color] == "primary" %>
+              <a href="#" class="rounded-full pl-[4px] pr-4 py-1 border-2 border-primary-600 bg-white/80 backdrop-blur-sm flex items-center focus:ring-4 focus:ring-primary-50 justify-between group dark:bg-primary-900/90 dark:border-primary-900/90 dark:backdrop-blur-none dark:focus:ring-primary-400/70 dark:hover:bg-primary-900 <%%= booking[:width] %>">
+                <div class="flex-1 flex items-center space-x-3">
+                  <%%= image_tag booking[:avatar], alt: booking[:name], class: "w-10 h-10 rounded-full" %>
+                  <p class="text-primary-600 dark:text-primary-100/90 font-medium font-heading"><%%= booking[:name] %></p>
+                </div>
+                <%%= icon "chevron-right", classes: "w-4 h-4 text-zinc-500 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:transform group-hover:translate-x-1 group-hover:transition group-hover:duration-100 group-hover:ease-in-out dark:text-primary-200" %>
+              </a>
+            <%% end %>
+
+            <%% if booking[:color] == "blue" %>
+              <a href="#" class="rounded-full pl-[4px] pr-4 py-1 border-2 border-blue-700 bg-white/80 backdrop-blur-sm flex items-center focus:ring-4 focus:ring-blue-50 justify-between group dark:bg-blue-800/90 dark:border-blue-900/90 dark:backdrop-blur-0 dark:focus:ring-blue-400/70 dark:hover:bg-blue-800 <%%= booking[:width] %>">
+                <div class="flex-1 flex items-center space-x-3">
+                  <%%= image_tag booking[:avatar], alt: booking[:name], class: "w-10 h-10 rounded-full" %>
+                  <p class="text-blue-700 dark:text-blue-200/90 font-medium font-heading"><%%= booking[:name] %></p>
+                </div>
+                <%%= icon "chevron-right", classes: "w-4 h-4 text-zinc-500 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:transform group-hover:translate-x-1 group-hover:transition group-hover:duration-100 group-hover:ease-in-out dark:text-blue-200" %>
+              </a>
+            <%% end %>
+
+            <%% if booking[:color] == "secondary" %>
+              <a href="#" class="rounded-full pl-[4px] pr-4 py-1 border-2 border-secondary-600 bg-white/80 backdrop-blur-sm flex items-center focus:ring-4 focus:ring-secondary-50 justify-between group dark:bg-secondary-700/90 dark:border-secondary-700/90 dark:backdrop-blur-none dark:focus:ring-secondary-300/70 dark:hover:bg-secondary-700 <%%= booking[:width] %>">
+
+                <div class="flex-1 flex items-center space-x-3">
+                  <%%= image_tag booking[:avatar], alt: booking[:name], class: "w-10 h-10 rounded-full" %>
+                  <p class="text-secondary-600 dark:text-secondary-100/90 font-medium font-heading"><%%= booking[:name] %></p>
+                </div>
+                <%%= icon "chevron-right", classes: "w-4 h-4 text-zinc-500 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:transform group-hover:translate-x-1 group-hover:transition group-hover:duration-100 group-hover:ease-in-out dark:text-secondary-200" %>
+              </a>
+            <%% end %>
+          <%% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

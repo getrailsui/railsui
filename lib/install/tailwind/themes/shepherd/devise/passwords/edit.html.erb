@@ -1,0 +1,35 @@
+<%= render "auth_layout" do %>
+  <h1 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Change your password</h1>
+
+  <div class="prose prose-sm prose-zinc dark:prose-invert mt-3 mb-10">
+    <p>Enter a new password to update and secure your account.</p>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+    <%= render "shared/error_messages", resource: resource %>
+
+    <%= f.hidden_field :reset_password_token %>
+
+    <div class="form-group">
+      <div class="flex items-center justify-between mb-2">
+        <%= f.label :password, class: "form-label mb-0" %>
+
+        <% if @minimum_password_length %>
+          <div class="inline prose prose-sm prose-zinc dark:prose-invert">
+            <p>(<%= @minimum_password_length %> characters minimum)</p>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Confirm new password", class: "form-label" %>
+
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+    </div>
+
+    <%= f.submit "Change password", class: "btn btn-primary hover:cursor-pointer w-full"  %>
+  <% end %>
+<% end %>
