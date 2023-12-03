@@ -10,11 +10,6 @@
         <div class="lg:w-auto w-full flex-1 lg:flex-grow-0">
           <%= render "railsui/shared/logo" %>
         </div>
-        <% if Railsui.config.css_framework.present? %>
-          <div class="lg:block hidden">
-            <%= render "railsui/shared/theme_label" %>
-          </div>
-        <% end %>
         <button role="toggle nav" class="lg:hidden block p-1 focus:ring-indigo-300 focus:ring-4 rounded-lg focus:ring-opacity-50 dark:focus:ring-slate-600" data-action="click->toggle#toggle">
           <%= render_svg "menu", styles: "stroke-current w-8 h-8 text-slate-600" %>
         </button>

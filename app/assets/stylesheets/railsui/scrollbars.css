@@ -1,28 +1,7 @@
-* {
-  scrollbar-width: thin;
-  scrollbar-color: theme("colors.slate.300") theme("colors.white");
-}
-
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 12px;
-}
-
-*::-webkit-scrollbar-track {
-  background: theme("colors.white");
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: theme("colors.slate.300");
-  border-radius: 20px;
-  border: 3px solid theme("colors.white");
-}
-
-@media (prefers-color-scheme: dark) {
-  /* Works on Firefox */
+.railsui {
   * {
     scrollbar-width: thin;
-    scrollbar-color: theme("colors.slate.700") theme("colors.slate.800");
+    scrollbar-color: theme("colors.slate.300") theme("colors.white");
   }
 
   /* Works on Chrome, Edge, and Safari */
@@ -31,12 +10,35 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: theme("colors.slate.800");
+    background: theme("colors.white");
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: theme("colors.slate.700");
+    background-color: theme("colors.slate.300");
     border-radius: 20px;
-    border: 3px solid theme("colors.slate.800");
+    border: 3px solid theme("colors.white");
+  }
+
+  @media (prefers-color-scheme: dark) {
+    /* Works on Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: theme("colors.slate.700") theme("colors.slate.800");
+    }
+
+    /* Works on Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: theme("colors.slate.800");
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: theme("colors.slate.700");
+      border-radius: 20px;
+      border: 3px solid theme("colors.slate.800");
+    }
   }
 }

@@ -1,16 +1,14 @@
-<div class="hidden" data-configuration-target="frameworks">
+<div data-configuration-target="frameworks">
   <%= render "railsui/admin/field_layout" do %>
     <% content_for :explainer, flush: true do %>
       <%= heading text: "Theme", id: "theme", tag: "h3", class: "font-semibold text-xl mb-3" %>
       <% if Railsui.config.theme.present? %>
-        <p class="text-slate-700 dark:text-slate-300 lg:text-sm text-base">Your active theme is <%= Railsui.config.theme.humanize %> which uses <%= Railsui.config.css_framework.humanize %>.
+        <p class="text-slate-700 dark:text-slate-300 lg:text-sm text-base">Your active theme is <%= Railsui.config.theme.humanize %>.
 
-          <% if Railsui.bootstrap? %>All colors and theming conventions can be customized in the Bootstrap SCSS files.<% end %>
-
-          <% if Railsui.tailwind? %>All colors and theming conventions can be customized inside the tailwind.config.js file.<% end %>
+          All colors and theming conventions can be customized inside the tailwind.config.js file.
         </p>
       <% else %>
-        <p class="text-slate-700 dark:text-slate-300 text-sm">Select a theme to base your application off of.</p>
+        <p class="text-slate-700 dark:text-slate-300 text-sm">Select a theme to base your application off of. Rails UI uses Tailwind CSS as the underlaying CSS framework.</p>
       <% end %>
     <% end %>
 

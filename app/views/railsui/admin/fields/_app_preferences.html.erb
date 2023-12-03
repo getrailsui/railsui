@@ -1,7 +1,7 @@
 <%= render "railsui/admin/field_layout" do %>
   <%= content_for :explainer, flush: true do %>
     <%= heading text: "Application preferences", id: "application_preferences", tag: "h3", class: "font-semibold text-xl mb-3" %>
-    <p class="text-slate-700 lg:text-sm text-base dark:text-slate-300">Set your application name, support email, and choose your preferred CSS framework.</p>
+    <p class="text-slate-700 lg:text-sm text-base dark:text-slate-300">Set your application name and support email.</p>
   <% end %>
 
   <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
@@ -16,30 +16,6 @@
         <%= f.label :support_email, class: "block mb-2 font-medium" %>
         <%= f.text_field :support_email, class: "#{input_classes} w-full", placeholder: "support@example.com" %>
         <p class="text-xs text-slate-600 mt-1 dark:text-slate-300">The support email is used inside email templates and various contact-specific experiences. It's optional but must be overridden manually.</p>
-      </div>
-    </div>
-
-    <hr class="my-6 dark:border-slate-700">
-
-    <div>
-      <% if Railsui.no_framework_set? || !Railsui.config.css_framework.present? %>
-        <%= f.label :css_framework, "What CSS framework would you like to use?", class: "block mb-2 font-medium" %>
-        <%= f.select :css_framework, options_for_select(Railsui::Default::CSS_FRAMEWORKS, Railsui.config.css_framework), { prompt: "Select one" }, { class:"#{select_classes} w-full", data: { action: "change->configuration#toggleTheme"} }%>
-
-      <% else %>
-        This app configured to use:
-        <div class="flex items-center justify-start space-x-3 mt-1">
-          <%= render_svg "#{framework_name.downcase}", title: "#{framework_name.humanize} logo", styles: "#{framework_name.downcase == "bootstrap" ? "text-indigo-600 dark:text-indigo-400" : "text-teal-500" } fill-current" %>
-          <p class="font-light text-slate-800 dark:text-slate-300 text-2xl"><%= framework_name.humanize %></p>
-        </div>
-        <%= f.hidden_field :css_framework, value: Railsui.config.css_framework %>
-      <% end %>
-      <div class="text-sm mt-4 pt-4 flex items-start dark:border-slate-700">
-        <div class="bg-indigo-50 dark:bg-slate-600 mr-4 w-10 h-10 rounded flex items-center justify-center flex-shrink-0">
-          <%= render_svg "warning", styles: "stroke-current text-indigo-500 w-5 h-5 flex-shrink-0 dark:text-rose-100" %>
-        </div>
-        <p class="text-slate-800 dark:text-slate-300">This choice <span class="font-bold">cannot</span> be changed without creating a new app and a new Rails UI configuration. Read more about  <%= link_to "choosing a CSS framework with Rails UI", "https://railsui.com/docs/configuration", class: "text-indigo-700 dark:text-indigo-400", target: :_blank %>.
-        </p>
       </div>
     </div>
   </div>

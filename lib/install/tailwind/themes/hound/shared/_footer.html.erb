@@ -10,12 +10,12 @@
       <li class="py-3 lg:py-0">
         <%= link_to "Features", "#", class: "px-3 py-2 hover:text-indigo-700 dark:hover:text-indigo-500" %>
       </li>
-      <% if Railsui::Pages.page_exists?("pricing") %>
+      <% if page_exists?("pricing") %>
         <li class="py-3 lg:py-0">
           <%= link_to "Pricing", pricing_path, class: "px-3 py-2 hover:text-indigo-700 dark:hover:text-indigo-500" %>
         </li>
       <% end %>
-      <% if Railsui::Pages.page_exists?("about") %>
+      <% if page_exists?("about") %>
         <li class="py-3 lg:py-0">
           <%= link_to "Company", about_path, class: "px-3 py-2 hover:text-indigo-700  dark:hover:text-indigo-500" %>
         </li>
@@ -47,5 +47,5 @@
   </ul>
 
   <p class="text-center text-slate-600 text-sm">&copy; <%= Railsui.config.application_name %> All Rights Reserved. <%= Railsui.config.theme.humanize %> theme by <a
-      href="https://railsui.com" class="underline" target="_blank">RailsUI</a></p>
+      href="https://railsui.com" class="underline" target="_blank">Rails UI</a></p>
 </footer>

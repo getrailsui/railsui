@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased" <% if tailwind? %> data-controller="theme" <% end %>>
+<html class="h-full antialiased" data-controller="theme">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -8,33 +8,33 @@
         Rails UI
       <% end %>
     </title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= favicon_link_tag "favicon.svg" %>
-  <%= javascript_include_tag "railsui/application" %>
-  <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
-  <%= stylesheet_link_tag "railsui/application", "application" %>
+    <%= favicon_link_tag "favicon.svg" %>
+    <%= javascript_include_tag "railsui/application" %>
+    <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
+    <%= stylesheet_link_tag "railsui/application", "application" %>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
-  <%= yield :head %>
-</head>
+    <%= yield :head %>
+  </head>
 
-<body class="font-normal leading-normal text-slate-800 lg:h-screen relative selection:bg-indigo-50/50 antialiased bg-white dark:bg-slate-900 dark:text-white" data-controller="toggle scroll smooth">
-  <%= render "railsui/shared/flash" %>
-  <%= render "layouts/railsui/masthead" %>
+  <body class="railsui font-normal leading-normal text-slate-800 lg:h-screen relative selection:bg-neutral-50/50 antialiased bg-white dark:bg-slate-900 dark:text-white" data-controller="toggle scroll smooth">
+    <%= render "railsui/shared/flash" %>
+    <%= render "layouts/railsui/masthead" %>
 
-  <%= yield %>
+    <%= yield %>
 
-  <div class="pt-6">
-    <%= render "railsui/shared/footer" %>
-  </div>
+    <div class="pt-6">
+      <%= render "railsui/shared/footer" %>
+    </div>
 
-  <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
-</body>
+    <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
+  </body>
 </html>

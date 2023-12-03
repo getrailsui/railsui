@@ -1,0 +1,118 @@
+<div class="md:py-16 py-6 px-4">
+  <div class="container mx-auto">
+    <nav class="font-heading text-sm mb-6 text-zinc-700 dark:text-zinc-300">
+      <ul class="flex items-center space-x-3">
+        <li class="after:content-['/'] after:relative after:text-zinc-300 after:left-1 dark:after:text-zinc-500">
+          <%%= link_to "Bookings", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
+        </li>
+        <li>
+          <p>Jared Sanders</p>
+        </li>
+      </ul>
+    </nav>
+    <div class="flex flex-wrap items-center justify-between pb-6 md:pb-0">
+      <div class="flex items-center space-x-3 mb-6 flex-1">
+        <%%= image_tag demo_avatar_url(id: "12", variant: "men"), alt: "Ethan", class: "w-16 h-16 rounded-full border-2 border-white" %>
+        <div>
+          <h1 class="pb-1 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Jared Sanders</h1>
+          <div class="text-sm text-zinc-600 pl-1 pb-1 dark:text-zinc-400">
+            4.9 rating &bull; <%%= link_to "12 ratings", "#",class: "underline" %> &bull; <%%= link_to "View profile", "#", class: "underline" %>
+          </div>
+        </div>
+      </div>
+      <div class="flex md:justify-end space-x-3 md:w-auto w-full">
+        <%%= link_to "Message Jared", (defined?(admin_inbox_path) ? admin_inbox_path : "#"), class: "btn btn-primary" %>
+        <%%= link_to "Edit Booking", (defined?(admin_edit_booking_path) ? admin_edit_booking_path : "#"), class: "btn btn-white" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-6 container mx-auto relative" data-controller="gallery">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <a href="<%%= image_url('property-1.jpg') %>" data-pswp-width="2500" data-pswp-height="1667" target="_blank">
+          <%%= image_tag "property-1.jpg", class: "rounded-xl w-full object-cover h-full" %>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <a href="<%%= image_url('gallery-1.jpg') %>" data-pswp-width="2000" data-pswp-height="1333" target="_blank">
+          <%%= image_tag "gallery-1.jpg", class: "rounded-xl w-full object-cover lg:h-[248px] h-[140px]" %>
+        </a>
+        <a href="<%%= image_url('gallery-2.jpg') %>" data-pswp-width="2000" data-pswp-height="1333" target="_blank">
+          <%%= image_tag "gallery-2.jpg", class: "rounded-xl w-full object-cover lg:h-[248px] h-[140px]" %>
+        </a>
+        <a href="<%%= image_url('gallery-3.jpg') %>" data-pswp-width="2000" data-pswp-height="3000" target="_blank">
+          <%%= image_tag "gallery-3.jpg", class: "rounded-xl  w-full object-cover lg:h-[248px] h-[140px]" %>
+        </a>
+        <a href="<%%= image_url('gallery-4.jpg') %>" data-pswp-width="2000" data-pswp-height="2588" target="_blank">
+          <%%= image_tag "gallery-4.jpg", class: "rounded-xl w-full object-cover lg:h-[248px] h-[140px]" %>
+        </a>
+      </div>
+    </div>
+    <a href="<%%= image_url('property-1.jpg') %>" data-pswp-width="2500" data-pswp-height="1667" target="_blank" class="btn btn-white absolute right-4 bottom-10 bg-white/75 backdrop-blur-lg border-none text-zinc-900 hover:bg-white/100">View all photos</a>
+  </div>
+
+  <div class="container mx-auto px-4 pb-24 pt-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-8">
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "home-modern", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Property</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">Cozy Mountain A-frame</span>
+      </div>
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "calendar-days", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Booked dates</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">Sep 1 - Sep 4, 2023</span>
+      </div>
+
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "clock", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Check-in</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">3:00 P.M.</span>
+      </div>
+
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "banknotes", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Booking payout</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">$834.96</span>
+      </div>
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "user-group", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Guests</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">2 Adults, 2 Children, 0 Pets</span>
+      </div>
+
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "qr-code", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Booking ID</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">RAILSUISHEPHERD</span>
+      </div>
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "sparkles", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Cleaning Fee</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">$150</span>
+      </div>
+      <div>
+        <div class="flex items-center space-x-3">
+          <%%= icon "information-circle", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300" %>
+          <p class="font-heading dark:text-zinc-50">Platform Fee (2%)</p>
+        </div>
+        <span class="pl-8 text-zinc-600 dark:text-zinc-300">$150</span>
+      </div>
+    </div>
+  </div>

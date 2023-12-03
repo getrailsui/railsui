@@ -1,0 +1,81 @@
+<div class="mb-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Promotion" %>
+
+  <div class="prose dark:prose-invert">
+    <p>The Rails UI promotional template gives you a good starting point for a sales-based email template. Using a short and sweet heading, callouts, and larger buttons incentivizes users to take more action.</p>
+  </div>
+
+<%= email_viewer("A promotional template") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+
+    <%= image_tag unsplash_url(item: "promotional", width: "1200", height: "600"), alt: "Promotional image example", class: "object-cover max-h-[400px]", height: "400px", width: "1200px" %>
+
+    <%= spacer(16) %>
+
+    <h1>Limited time offer!</h1>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+
+    <%= email_callout do %>
+      <p>For a limited time use the coupon code <strong>50OFF</strong> for 50% off your first purchase.</p>
+    <% end %>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+
+    <%= email_action "Start shopping", "#", align: "center", fullwidth: true %>
+  <% end %>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/some_mailer/promotion.html.erb -->
+
+<!-- Add width and height attributes to all images for maximum cross email client support -->
+<%%= image_tag "promotion-image.jpg", alt: "Promotional image example", width: "1200px", height: "600px" %>
+
+<%%= spacer(16) %>
+
+<h1>Limited time offer!</h1>
+
+<%%= spacer(16) %>
+
+<p>Lorem ipsum dolor...</p>
+
+<%%= spacer(16) %>
+
+<%%= email_callout do %>
+  <p>For a limited time use the coupon code <strong>50OFF</strong> for 50% off your first purchase.</p>
+<%% end %>
+
+<%%= spacer(16) %>
+
+<p>Lorem ipsum dolor...</p>
+
+<%%= spacer(16) %>
+
+<%%= email_action "Start shopping", "#", align: "center", fullwidth: true %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/some_mailer/promotion.haml.erb
+/ Add width and height attributes to all images for maximum cross-email client support
+= image_tag "your/promotion/image.jpg", alt: "Promotional image example", width: "1200px", height: "600px"
+= spacer(16)
+%h1 Limited time offer!
+= spacer(16)
+%p Lorem ipsum dolor...
+= spacer(16)
+= email_callout do
+  %p
+    For a limited time use the coupon code
+    %strong 50OFF
+    for 50% off your first purchase.
+= spacer(16)
+%p Lorem ipsum dolor...
+= spacer(16)
+= email_action "Start shopping", "#", align: "center", fullwidth: true
+<% end %>
+
+  <%= render_snippet active_tab: "erb", erb_filename: "promotion.html.erb", haml_filename: "promotion.haml.erb" %>
+</div>
+
+<%= system_pagination(prev_path: systems_mailers_minimal_path, prev_text: "Minimal", next_path: systems_mailers_transactional_path, next_text: "Transactional") %>

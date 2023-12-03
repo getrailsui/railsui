@@ -1,21 +1,20 @@
-import { Controller } from "@hotwired/stimulus";
-import debounce from "debounce";
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["result", "form", "resultList"]
-  currentResults = this.resultListTarget.innerHTML;
+  currentResults = this.resultListTarget.innerHTML
 
   search(event) {
     this.filterList(event)
   }
 
   clear(event) {
-    event.target.value = ''
+    event.target.value = ""
     this._resetList()
   }
 
   filterList(event) {
-    this.resultTargets.forEach(result => {
+    this.resultTargets.forEach((result) => {
       if (result.dataset.searchRouteValue.includes(event.target.value)) {
         result.style.cssText = "display: block !important"
       } else {

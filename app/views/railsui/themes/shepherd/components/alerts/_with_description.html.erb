@@ -1,0 +1,42 @@
+<div class="mb-16 mt-6">
+
+<%= render "railsui/shared/sticky_subhead", title: "Alerts", subtitle: "With description" %>
+
+<div class="bg-amber-100/60 text-amber-800 py-4 px-6 rounded-xl flex items-start justify-between space-x-3 text-sm dark:bg-amber-300/10 dark:border dark:border-amber-400/30 dark:text-amber-50 dark:selection:bg-amber-50/10">
+  <%= icon "exclamation-triangle", classes: "text-amber-500/90 w-5 h-5 flex-shrink-0 dark:text-amber-400/90", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-amber-900 dark:text-amber-400/90 font-medium font-heading">Action required</p>
+    <p class="leading-snug my-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.</p>
+  </div>
+</div>
+
+<% content_for :html, flush: true do %>
+<div class="bg-amber-100/60 text-amber-800 py-4 px-6 rounded-xl flex items-start justify-between space-x-3 text-sm dark:bg-amber-300/10 dark:border dark:border-amber-400/30 dark:text-amber-50 dark:selection:bg-amber-50/10">
+  <%%= icon "exclamation-triangle", classes: "text-amber-500/90 w-5 h-5 flex-shrink-0 dark:text-amber-400/90", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-amber-900 dark:text-amber-400/90 font-medium font-heading">Action required</p>
+    <p class="leading-snug my-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="bg-amber-100/60 text-amber-800 py-4 px-6 rounded-xl flex items-start justify-between space-x-3 text-sm dark:bg-amber-300/10 dark:border dark:border-amber-400/30 dark:text-amber-50 dark:selection:bg-amber-50/10">
+  <%%= icon "exclamation-triangle", classes: "text-amber-500/90 w-5 h-5 flex-shrink-0 dark:text-amber-400/90", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-amber-900 dark:text-amber-400/90 font-medium font-heading">Action required</p>
+    <p class="leading-snug my-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.text-amber-800.py-4.px-6.rounded-xl.flex.items-start.justify-between.space-x-3.text-sm.dark:border.dark:text-amber-50(class="bg-amber-100/60 dark:bg-amber-300/10 dark:border-amber-400/30 dark:selection:bg-amber-50/10")
+  = icon "exclamation-triangle", classes: "text-amber-500/90 w-5 h-5 flex-shrink-0 dark:text-amber-400/90", variant: :solid
+  .flex-1
+    %p.text-amber-900.font-medium.font-heading(class="dark:text-amber-400/90") Action required
+    %p.leading-snug.my-1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.
+<% end %>
+
+<%= render_snippet %>
+</div>

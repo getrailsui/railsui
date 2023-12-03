@@ -1,0 +1,19 @@
+<div
+  class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+  <%= image_tag locals[:property], alt: "Image of #{locals[:title]}", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
+  <div class="flex items-center space-x-3 mt-4">
+    <%= image_tag demo_avatar_url(variant: locals[:avatar_variant], id: locals[:avatar_id]), class: "w-10 h-10 rounded-full object-cover", alt: locals[:name] %>
+    <div class="flex-1">
+      <p class="font-medium dark:text-white font-heading text-zinc-900"><%= locals[:name] %></p>
+      <p class="font-light text-sm text-zinc-600 font-heading dark:text-zinc-400"><%= locals[:title] %></p>
+    </div>
+  </div>
+  <div class="flex justify-between items-end pt-3">
+    <div class="flex items-center space-x-2">
+      <%= icon "clock", classes: "w-5 h-5 text-zinc-500 stroke-current dark:text-zinc-300" %>
+      <span class="text-sm text-zinc-600 dark:text-zinc-300"><%= locals[:booking_date] %></span>
+    </div>
+
+    <%= link_to "View", "#", class: "btn btn-white", data: { controller: "prevent", action: "click->prevent#prevent" } %>
+  </div>
+</div>

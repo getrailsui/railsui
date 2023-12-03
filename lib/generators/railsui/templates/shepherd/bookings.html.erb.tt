@@ -1,0 +1,980 @@
+<!--
+  This file has code that's heavily repeated for the sake of simplicity.
+  Much of it can be extracted to reusable partials and helpers.
+-->
+<div class="container mx-auto px-4 md:py-16 py-6 md:mb-16">
+  <div class="md:flex items-center justify-between">
+    <h1 class="mb:mb-0 mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Bookings</h1>
+    <div class="md:flex items-center md:space-x-6">
+      <!-- Utility nav-->
+      <div class="flex lg:flex-row flex-row-reverse flex-wrap items-center lg:space-x-6 lg:w-auto w-full justify-between">
+        <button type="button" class="btn btn-white lg:order-1 order-2 py-2 lg:hidden block peer group">
+          <%%= icon "magnifying-glass", classes: "stroke-current dark:text-zinc-400 w-6 h-6 dark:group-focus:text-primary-500/90" %>
+        </button>
+        <form action="#" class="lg:block hidden peer-focus:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto">
+          <input type="search" class="form-input lg:w-auto w-full" placeholder="Search" />
+        </form>
+        <div class="flex items-center lg:justify-start justify-center lg:order-1 order-2">
+          <div data-controller="dropdown" class="relative">
+            <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="trigger"
+              type="button" class="btn btn-white rounded-l-full rounded-r-none border-r-0 group py-2">
+              <%%= icon "adjustments-horizontal", classes: "text-zinc-600 w-6 h-6 stroke-current group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500" %>
+            </button>
+
+            <ul data-dropdown-target="menu"
+              class="hidden transition transform md:origin-top-right origin-top-left absolute lef-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 w-[200px] z-50 py-1 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[15px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+              data-transition-enter-active="transition ease-out duration-300"
+              data-transition-enter-from="transform opacity-0 scale-95"
+              data-transition-enter-to="transform opacity-100 scale-100"
+              data-transition-leave-active="transition ease-in duration-300"
+              data-transition-leave-from="transform opacity-100 scale-100"
+              data-transition-leave-to="transform opacity-0 scale-95">
+              <li>
+                <label for="sort_ascending"
+                  class="py-3 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center justify-between group select-none">
+                  <div class="flex-1">
+                    <input id="sort_ascending" type="radio" class="form-input-radio" name="sort" />
+                    <span class="pl-2">Ascending</span>
+                  </div>
+                  <%%= icon "bars-arrow-up", classes: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                </label>
+              </li>
+              <li>
+                <label for="sort_descending"
+                  class="py-3 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center justify-between group select-none">
+                  <div class="flex-1">
+                    <input id="sort_descending" type="radio" name="sort" class="form-input-radio" />
+
+                    <span class="pl-2">Descending</span>
+                  </div>
+
+                  <%%= icon "bars-arrow-down", classes: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="btn py-2 rounded-none btn-white group">
+            <%%= icon "printer", classes: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+          </button>
+          <button type="button" class="btn btn-white group rounded-r-full rounded-l-none border-l-0 py-2">
+            <%%= icon "arrow-down-tray", classes: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+          </button>
+        </div>
+      </div>
+
+      <%%= link_to "Create booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "btn btn-primary md:mt-0 mt-6" %>
+    </div>
+  </div>
+
+  <div class="my-6 font-heading" data-controller="tabs"
+    data-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-zinc-700 dark:text-white dark:border-primary-400 rounded-t">
+
+    <div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-100 dark:border-zinc-600">
+      <nav role="navigation" class="-mb-px">
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+          class="py-4 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-zinc-900">Upcoming</a>
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+          class="py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap">Complete</a>
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+          class="py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap">Canceled</a>
+        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+          class="py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap">All</a>
+      </nav>
+    </div>
+
+    <!-- Upcoming Bookings -->
+    <div class="p-4" data-tabs-target="panel">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm min-w-full border-collapse">
+          <thead>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Status</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Guests</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Arrival</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Departure</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Booking date
+            </th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Property</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Payout</th>
+            <th></th>
+          </thead>
+
+          <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
+
+           <%% [{
+              status: "Upcoming",
+              guest: "Dannie White",
+              guest_count: "3 adults, 1 child",
+              arrival: "Aug 24, 2024",
+              departure: "Aug 28, 2024",
+              date: "Jun 15, 2024",
+              time: "7:38 PM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,165.45"
+            },
+            {
+              status: "Upcoming",
+              guest: "John Smith",
+              guest_count: "2 adults, 2 children",
+              arrival: "Sep 12, 2024",
+              departure: "Sep 17, 2024",
+              date: "Jul 5, 2024",
+              time: "4:15 PM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,320.75"
+            },
+            {
+              status: "Upcoming",
+              guest: "Sarah Johnson",
+              guest_count: "4 adults",
+              arrival: "Oct 5, 2024",
+              departure: "Oct 10, 2024",
+              date: "Aug 20, 2024",
+              time: "2:45 PM CST",
+              property: "Cozy Mountain A-Frame",
+              price: "$980.00"
+            },
+            {
+              status: "Upcoming",
+              guest: "Michael Brown",
+              guest_count: "2 adults, 1 child",
+              arrival: "Nov 8, 2024",
+              departure: "Nov 12, 2024",
+              date: "Sep 30, 2024",
+              time: "9:22 AM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,045.90"
+            },
+            {
+              status: "Upcoming",
+              guest: "Linda Davis",
+              guest_count: "5 adults",
+              arrival: "Dec 15, 2024",
+              departure: "Dec 20, 2024",
+              date: "Oct 25, 2024",
+              time: "5:10 PM CST",
+              property: "Alpine Retreat Haven",
+              price: "$1,520.30"
+            },
+            {
+              status: "Upcoming",
+              guest: "Robert Taylor",
+              guest_count: "3 adults, 2 children",
+              arrival: "Jan 20, 2025",
+              departure: "Jan 25, 2025",
+              date: "Nov 10, 2024",
+              time: "3:55 PM CST",
+              property: "Cozy Mountain A-Frame",
+              price: "$1,100.25"
+            },
+            {
+              status: "Upcoming",
+              guest: "Emily Wilson",
+              guest_count: "4 adults, 1 child",
+              arrival: "Feb 18, 2025",
+              departure: "Feb 23, 2025",
+              date: "Dec 5, 2024",
+              time: "8:50 AM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,275.80"
+            },
+            {
+              status: "Upcoming",
+              guest: "Daniel Lee",
+              guest_count: "2 adults",
+              arrival: "Mar 22, 2025",
+              departure: "Mar 27, 2025",
+              date: "Jan 15, 2025",
+              time: "6:30 PM CST",
+              property: "Alpine Retreat Haven",
+              price: "$1,000.00"
+            },
+            {
+              status: "Upcoming",
+              guest: "Susan Martin",
+              guest_count: "3 adults, 1 child",
+              arrival: "Apr 25, 2025",
+              departure: "Apr 30, 2025",
+              date: "Feb 10, 2025",
+              time: "10:15 AM CST",
+              property: "Cozy Mountain A-Frame",
+              price: "$1,150.75"
+            },
+            {
+              status: "Upcoming",
+              guest: "David Anderson",
+              guest_count: "4 adults",
+              arrival: "May 20, 2025",
+              departure: "May 25, 2025",
+              date: "Mar 5, 2025",
+              time: "4:55 PM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,320.00"
+            }].each do |booking| %>
+              <tr class="md:whitespace-normal whitespace-nowrap">
+                <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
+                  <span
+                    class="text-xs font-medium rounded-full font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200"><%%= booking[:status] %></span>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <p><%%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:arrival] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:departure] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <p><%%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <%%= link_to booking[:property], "#" %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:price] %>
+                </td>
+                <td class="align-top pt-2">
+                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                    <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
+                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+
+                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+
+                      <span class="md:hidden block">Actions</span>
+
+                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                    </button>
+
+                    <ul
+                      class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
+                      data-transition-enter-active="transition ease-out duration-100"
+                      data-transition-enter-from="transform opacity-0 scale-95"
+                      data-transition-enter-to="transform opacity-100 scale-100"
+                      data-transition-leave-active="transition ease-in duration-100"
+                      data-transition-leave-from="transform opacity-100 scale-100"
+                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      <li>
+                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                          <span>Go to Booking</span>
+                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <%% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <%% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Completed Bookings -->
+    <div class="hidden p-4" data-tabs-target="panel">
+       <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm min-w-full border-collapse">
+          <thead>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Status</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Guests</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Arrival</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Departure</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Booking date
+            </th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Property</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Payout</th>
+            <th></th>
+          </thead>
+
+          <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
+
+        <%% [{
+              status: "Complete",
+              guest: "James Anderson",
+              guest_count: "2 adults, 1 child",
+              arrival: "Aug 3, 2024",
+              departure: "Aug 10, 2024",
+              date: "May 25, 2024",
+              time: "10:45 AM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,250.00"
+            },
+            {
+              status: "Complete",
+              guest: "Olivia Parker",
+              guest_count: "4 adults",
+              arrival: "Sep 15, 2024",
+              departure: "Sep 20, 2024",
+              date: "Jul 28, 2024",
+              time: "3:20 PM CST",
+              property: "Alpine Retreat Haven",
+              price: "$1,450.75"
+            },
+            {
+              status: "Complete",
+              guest: "Ethan Mitchell",
+              guest_count: "3 adults",
+              arrival: "Oct 10, 2024",
+              departure: "Oct 15, 2024",
+              date: "Aug 18, 2024",
+              time: "5:30 PM CST",
+              property: "Cozy Mountain A-Frame",
+              price: "$980.00"
+            },
+            {
+              status: "Complete",
+              guest: "Ava Turner",
+              guest_count: "2 adults, 2 children",
+              arrival: "Nov 5, 2024",
+              departure: "Nov 10, 2024",
+              date: "Sep 20, 2024",
+              time: "9:15 AM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,100.50"
+            },
+            {
+              status: "Complete",
+              guest: "Liam Murphy",
+              guest_count: "3 adults",
+              arrival: "Dec 20, 2024",
+              departure: "Dec 25, 2024",
+              date: "Oct 30, 2024",
+              time: "4:55 PM CST",
+              property: "Alpine Retreat Haven",
+              price: "$1,320.30"
+            },
+            {
+              status: "Complete",
+              guest: "Sophia Reed",
+              guest_count: "5 adults, 1 child",
+              arrival: "Jan 25, 2025",
+              departure: "Jan 30, 2025",
+              date: "Nov 15, 2024",
+              time: "2:10 PM CST",
+              property: "Cozy Mountain A-Frame",
+              price: "$1,200.25"
+            },
+            {
+              status: "Complete",
+              guest: "Mason Brooks",
+              guest_count: "2 adults, 1 child",
+              arrival: "Feb 22, 2025",
+              departure: "Feb 27, 2025",
+              date: "Dec 5, 2024",
+              time: "7:30 AM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,175.80"
+            },
+            {
+              status: "Complete",
+              guest: "Harper Lewis",
+              guest_count: "4 adults",
+              arrival: "Mar 28, 2025",
+              departure: "Apr 2, 2025",
+              date: "Jan 12, 2025",
+              time: "6:45 PM CST",
+              property: "Alpine Retreat Haven",
+              price: "$1,100.00"
+            },
+            {
+              status: "Complete",
+              guest: "Jackson Wright",
+              guest_count: "3 adults",
+              arrival: "Apr 30, 2025",
+              departure: "May 5, 2025",
+              date: "Feb 10, 2025",
+              time: "10:30 AM CST",
+              property: "Cozy Mountain A-Frame",
+              price: "$1,050.75"
+            },
+            {
+              status: "Complete",
+              guest: "Aria Parker",
+              guest_count: "2 adults, 2 children",
+              arrival: "May 20, 2025",
+              departure: "May 25, 2025",
+              date: "Mar 15, 2025",
+              time: "3:55 PM CST",
+              property: "Mountain Vista Chalet",
+              price: "$1,320.00"
+            }].each do |booking| %>
+
+              <tr class="md:whitespace-normal whitespace-nowrap">
+                <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
+                  <span class="text-xs font-medium rounded-full font-sans bg-emerald-50 text-emerald-600  px-2 py-1 tracking-tight dark:bg-emerald-500/20 dark:text-emerald-200"><%%= booking[:status] %></span>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <p><%%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:arrival] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:departure] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <p><%%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <%%= link_to booking[:property], "#" %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:price] %>
+                </td>
+                <td class="align-top pt-2">
+                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                    <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
+                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+
+                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+
+                      <span class="md:hidden block">Actions</span>
+
+                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                    </button>
+
+                    <ul
+                      class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
+                      data-transition-enter-active="transition ease-out duration-100"
+                      data-transition-enter-from="transform opacity-0 scale-95"
+                      data-transition-enter-to="transform opacity-100 scale-100"
+                      data-transition-leave-active="transition ease-in duration-100"
+                      data-transition-leave-from="transform opacity-100 scale-100"
+                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      <li>
+                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                          <span>Go to Booking</span>
+                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <%% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <%% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Cancelled bookings -->
+    <div class="hidden p-4" data-tabs-target="panel">
+       <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm min-w-full border-collapse">
+          <thead>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Status</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Guests</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Arrival</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Departure</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Booking date
+            </th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Property</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Payout</th>
+            <th></th>
+          </thead>
+
+          <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
+
+        <%% [{
+              status: "Canceled",
+              guest: "Sophie Walker",
+              guest_count: "2 adults",
+              arrival: "Aug 15, 2024",
+              departure: "Aug 20, 2024",
+              date: "Jun 25, 2024",
+              time: "1:45 PM CST",
+              property: "Mountain Vista Chalet",
+              price: "$980.00"
+            },
+            {
+              status: "Canceled",
+              guest: "Noah Hall",
+              guest_count: "3 adults",
+              arrival: "Sep 10, 2024",
+              departure: "Sep 15, 2024",
+              date: "Jul 18, 2024",
+              time: "4:30 PM CST",
+              property: "Alpine Retreat Haven",
+              price: "$1,150.50"
+            },
+            {
+              status: "Canceled",
+              guest: "Liam Turner",
+              guest_count: "4 adults, 1 child",
+              arrival: "Oct 5, 2024",
+              departure: "Oct 10, 2024",
+              date: "Aug 10, 2024",
+              time: "6:20 PM CST",
+              property: "Cozy Mountain A-Frame",
+              price: "$1320.02"
+            }].each do |booking| %>
+
+              <tr class="md:whitespace-normal whitespace-nowrap">
+                <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
+                  <span class="text-xs font-medium rounded-full font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200"><%%= booking[:status] %></span>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <p><%%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:arrival] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:departure] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <p><%%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <%%= link_to booking[:property], "#" %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:price] %>
+                </td>
+                <td class="align-top pt-2">
+                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                    <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
+                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+
+                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+
+                      <span class="md:hidden block">Actions</span>
+
+                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                    </button>
+
+                    <ul
+                      class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
+                      data-transition-enter-active="transition ease-out duration-100"
+                      data-transition-enter-from="transform opacity-0 scale-95"
+                      data-transition-enter-to="transform opacity-100 scale-100"
+                      data-transition-leave-active="transition ease-in duration-100"
+                      data-transition-leave-from="transform opacity-100 scale-100"
+                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      <li>
+                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                          <span>Go to Booking</span>
+                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <%% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <%% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- All Bookings -->
+    <div class="hidden p-4" data-tabs-target="panel">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm min-w-full border-collapse">
+          <thead>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Status</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Guests</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Arrival</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Departure</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Booking date
+            </th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Property</th>
+            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
+              Payout</th>
+            <th></th>
+          </thead>
+
+          <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
+
+          <%% [
+              {
+                status: "Upcoming",
+                guest: "Dannie White",
+                guest_count: "3 adults, 1 child",
+                arrival: "Aug 24, 2024",
+                departure: "Aug 28, 2024",
+                date: "Jun 15, 2024",
+                time: "7:38 PM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,165.45"
+              },
+              {
+                status: "Upcoming",
+                guest: "John Smith",
+                guest_count: "2 adults, 2 children",
+                arrival: "Sep 12, 2024",
+                departure: "Sep 17, 2024",
+                date: "Jul 5, 2024",
+                time: "4:15 PM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,320.75"
+              },
+              {
+                status: "Upcoming",
+                guest: "Sarah Johnson",
+                guest_count: "4 adults",
+                arrival: "Oct 5, 2024",
+                departure: "Oct 10, 2024",
+                date: "Aug 20, 2024",
+                time: "2:45 PM CST",
+                property: "Cozy Mountain A-Frame",
+                price: "$980.00"
+              },
+              {
+                status: "Upcoming",
+                guest: "Michael Brown",
+                guest_count: "2 adults, 1 child",
+                arrival: "Nov 8, 2024",
+                departure: "Nov 12, 2024",
+                date: "Sep 30, 2024",
+                time: "9:22 AM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,045.90"
+              },
+              {
+                status: "Upcoming",
+                guest: "Linda Davis",
+                guest_count: "5 adults",
+                arrival: "Dec 15, 2024",
+                departure: "Dec 20, 2024",
+                date: "Oct 25, 2024",
+                time: "5:10 PM CST",
+                property: "Alpine Retreat Haven",
+                price: "$1,520.30"
+              },
+              {
+                status: "Upcoming",
+                guest: "Robert Taylor",
+                guest_count: "3 adults, 2 children",
+                arrival: "Jan 20, 2025",
+                departure: "Jan 25, 2025",
+                date: "Nov 10, 2024",
+                time: "3:55 PM CST",
+                property: "Cozy Mountain A-Frame",
+                price: "$1,100.25"
+              },
+              {
+                status: "Upcoming",
+                guest: "Emily Wilson",
+                guest_count: "4 adults, 1 child",
+                arrival: "Feb 18, 2025",
+                departure: "Feb 23, 2025",
+                date: "Dec 5, 2024",
+                time: "8:50 AM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,275.80"
+              },
+              {
+                status: "Upcoming",
+                guest: "Daniel Lee",
+                guest_count: "2 adults",
+                arrival: "Mar 22, 2025",
+                departure: "Mar 27, 2025",
+                date: "Jan 15, 2025",
+                time: "6:30 PM CST",
+                property: "Alpine Retreat Haven",
+                price: "$1,000.00"
+              },
+              {
+                status: "Upcoming",
+                guest: "Susan Martin",
+                guest_count: "3 adults, 1 child",
+                arrival: "Apr 25, 2025",
+                departure: "Apr 30, 2025",
+                date: "Feb 10, 2025",
+                time: "10:15 AM CST",
+                property: "Cozy Mountain A-Frame",
+                price: "$1,150.75"
+              },
+              {
+                status: "Upcoming",
+                guest: "David Anderson",
+                guest_count: "4 adults",
+                arrival: "May 20, 2025",
+                departure: "May 25, 2025",
+                date: "Mar 5, 2025",
+                time: "4:55 PM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,320.00"
+              },
+              {
+                status: "Complete",
+                guest: "James Anderson",
+                guest_count: "2 adults, 1 child",
+                arrival: "Aug 3, 2024",
+                departure: "Aug 10, 2024",
+                date: "May 25, 2024",
+                time: "10:45 AM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,250.00"
+              },
+              {
+                status: "Complete",
+                guest: "Olivia Parker",
+                guest_count: "4 adults",
+                arrival: "Sep 15, 2024",
+                departure: "Sep 20, 2024",
+                date: "Jul 28, 2024",
+                time: "3:20 PM CST",
+                property: "Alpine Retreat Haven",
+                price: "$1,450.75"
+              },
+              {
+                status: "Complete",
+                guest: "Ethan Mitchell",
+                guest_count: "3 adults",
+                arrival: "Oct 10, 2024",
+                departure: "Oct 15, 2024",
+                date: "Aug 18, 2024",
+                time: "5:30 PM CST",
+                property: "Cozy Mountain A-Frame",
+                price: "$980.00"
+              },
+              {
+                status: "Complete",
+                guest: "Ava Turner",
+                guest_count: "2 adults, 2 children",
+                arrival: "Nov 5, 2024",
+                departure: "Nov 10, 2024",
+                date: "Sep 20, 2024",
+                time: "9:15 AM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,100.50"
+              },
+              {
+                status: "Complete",
+                guest: "Liam Murphy",
+                guest_count: "3 adults",
+                arrival: "Dec 20, 2024",
+                departure: "Dec 25, 2024",
+                date: "Oct 30, 2024",
+                time: "4:55 PM CST",
+                property: "Alpine Retreat Haven",
+                price: "$1,320.30"
+              },
+              {
+                status: "Complete",
+                guest: "Sophia Reed",
+                guest_count: "5 adults, 1 child",
+                arrival: "Jan 25, 2025",
+                departure: "Jan 30, 2025",
+                date: "Nov 15, 2024",
+                time: "2:10 PM CST",
+                property: "Cozy Mountain A-Frame",
+                price: "$1,200.25"
+              },
+              {
+                status: "Complete",
+                guest: "Mason Brooks",
+                guest_count: "2 adults, 1 child",
+                arrival: "Feb 22, 2025",
+                departure: "Feb 27, 2025",
+                date: "Dec 5, 2024",
+                time: "7:30 AM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,175.80"
+              },
+              {
+                status: "Complete",
+                guest: "Harper Lewis",
+                guest_count: "4 adults",
+                arrival: "Mar 28, 2025",
+                departure: "Apr 2, 2025",
+                date: "Jan 12, 2025",
+                time: "6:45 PM CST",
+                property: "Alpine Retreat Haven",
+                price: "$1,100.00"
+              },
+              {
+                status: "Complete",
+                guest: "Jackson Wright",
+                guest_count: "3 adults",
+                arrival: "Apr 30, 2025",
+                departure: "May 5, 2025",
+                date: "Feb 10, 2025",
+                time: "10:30 AM CST",
+                property: "Cozy Mountain A-Frame",
+                price: "$1,050.75"
+              },
+              {
+                status: "Complete",
+                guest: "Aria Parker",
+                guest_count: "2 adults, 2 children",
+                arrival: "May 20, 2025",
+                departure: "May 25, 2025",
+                date: "Mar 15, 2025",
+                time: "3:55 PM CST",
+                property: "Mountain Vista Chalet",
+                price: "$1,320.00"
+              },
+              {
+                status: "Canceled",
+                guest: "Sophie Walker",
+                guest_count: "2 adults",
+                arrival: "Aug 15, 2024",
+                departure: "Aug 20, 2024",
+                date: "Jun 25, 2024",
+                time: "1:45 PM CST",
+                property: "Mountain Vista Chalet",
+                price: "$980.00"
+              },
+              {
+                status: "Canceled",
+                guest: "Noah Hall",
+                guest_count: "3 adults",
+                arrival: "Sep 10, 2024",
+                departure: "Sep 15, 2024",
+                date: "Jul 18, 2024",
+                time: "4:30 PM CST",
+                property: "Alpine Retreat Haven",
+                price: "$1,150.50"
+              },
+              {
+                status: "Canceled",
+                guest: "Liam Turner",
+                guest_count: "4 adults, 1 child",
+                arrival: "Oct 5, 2024",
+                departure: "Oct 10, 2024",
+                date: "Aug 10, 2024",
+                time: "6:20 PM CST",
+                property: "Cozy Mountain A-Frame",
+                price: "$1320.02"
+              }].each do |booking| %>
+
+              <tr class="md:whitespace-normal whitespace-nowrap">
+                <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
+                  <%% if booking[:status] == "Upcoming" %>
+                    <span class="text-xs font-medium rounded-full font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200"><%%= booking[:status] %></span>
+                  <%% elsif booking[:status] == "Complete" %>
+                    <span class="text-xs font-medium rounded-full font-sans bg-emerald-50 text-emerald-600  px-2 py-1 tracking-tight dark:bg-emerald-500/20 dark:text-emerald-200"><%%= booking[:status] %></span>
+                  <%% else %>
+                    <span class="text-xs font-medium rounded-full font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200"><%%= booking[:status] %></span>
+                  <%% end %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <p><%%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:arrival] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:departure] %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <p><%%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+                  <%%= link_to booking[:property], "#" %>
+                </td>
+                <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+                  <%%= booking[:price] %>
+                </td>
+                <td class="align-top pt-2">
+                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                    <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
+                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+
+                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+
+                      <span class="md:hidden block">Actions</span>
+
+                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                    </button>
+
+                    <ul
+                      class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
+                      data-transition-enter-active="transition ease-out duration-100"
+                      data-transition-enter-from="transform opacity-0 scale-95"
+                      data-transition-enter-to="transform opacity-100 scale-100"
+                      data-transition-leave-active="transition ease-in duration-100"
+                      data-transition-leave-from="transform opacity-100 scale-100"
+                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      <li>
+                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                          <span>Go to Booking</span>
+                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <%% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <%% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check the Rails UI design system for other designs and pagy support -->
+  <nav aria-label="Page navgiation" class="text-zinc-500 sm:text-sm text-base font-medium dark:text-zinc-300">
+    <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+      <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+        <%%= link_to "Previous", "#", class: "btn btn-white" %>
+      </li>
+      <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+        <li>
+          <%%= link_to "1", "#", class: "py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30" %>
+        </li>
+        <li>
+          <%%= link_to "2", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+        </li>
+        <li>
+          <%%= link_to "3", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+        </li>
+        <li>
+          <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+        </li>
+        <li>
+          <%%= link_to "8", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+        </li>
+        <li>
+          <%%= link_to "9", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+        </li>
+        <li>
+          <%%= link_to "10", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+        </li>
+
+      </div>
+      <li class="flex-1 flex justify-end items-center">
+        <%%= link_to "Next", "#", class: "btn btn-white" %>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<%%= render "shared/footer" %>

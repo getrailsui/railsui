@@ -1,0 +1,9 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdowns" %>
+
+<%= render "#{path}/tutorial/tutorial" %>
+<%= render "#{path}/base" %>
+<%= render "#{path}/with_menu_icons" %>
+<%= render "#{path}/with_dividers" %>
+<%= render "#{path}/right_aligned" %>
+
+<%= system_pagination(prev_path: systems_components_cards_path, prev_text: "Cards", next_path: systems_components_flash_path, next_text: "Flash") %>

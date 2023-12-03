@@ -1,114 +1,3 @@
-retriever:
-  about:
-    title: About
-    description: Company or organization about page.
-    tags:
-      - marketing
-    path: about_path
-    add_to_nav: true
-  pricing:
-    title: Pricing
-    description: SaaS-like pricing; 3 plans types by default.
-    tags:
-      - marketing
-    path: pricing_path
-    add_to_nav: true
-  dashboard:
-    title: Dashboard
-    description: Admin dashboard.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_dashboard_path
-    add_to_nav: true
-  analytics:
-    title: Analytics
-    description: Analyze data and generate reports.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_analytics_path
-    add_to_nav: true
-  orders:
-    title: Orders
-    description: Review and process orders.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_orders_path
-    add_to_nav: true
-  products:
-    title: Products
-    description: Manage product information.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_products_path
-    add_to_nav: true
-  reports:
-    title: Reports
-    description: Generate and view various reports.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_reports_path
-    add_to_nav: true
-  servers:
-    title: Servers
-    description: Manage server configurations and settings.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_servers_path
-    add_to_nav: true
-  settings:
-    title: Settings
-    description: Configure application settings.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_settings_path
-    add_to_nav: true
-  billing:
-    title: Billing
-    description: Manage billing settings.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_billing_path
-    add_to_nav: true
-  integrations:
-    title: Integrations
-    description: Manage third-party integrations.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_integrations_path
-    add_to_nav: true
-  notifications:
-    title: Notifications
-    description: Manage notification settings.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_notifications_path
-    add_to_nav: true
-  support:
-    title: Support
-    description: Provide customer support and assistance.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_support_path
-    add_to_nav: true
-  users:
-    title: Users
-    description: Managing user accounts.
-    namespace: admin
-    tags:
-      - admin
-    path: admin_users_path
-    add_to_nav: true
 hound:
   about:
     title: About
@@ -243,4 +132,171 @@ hound:
     tags:
       - admin
     path: admin_integrations_path
+    add_to_nav: false
+shepherd:
+  about:
+    title: About
+    description: Company or organization about page.
+    tags:
+      - marketing
+    path: about_path
+    add_to_nav: true
+  pricing:
+    title: Pricing
+    description: SaaS-like pricing; 3 plans types by default.
+    tags:
+      - marketing
+    path: pricing_path
+    add_to_nav: true
+  dashboard:
+    title: Dashboard
+    description: Admin dashboard for a property management tool.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_dashboard_path
+    add_to_nav: true
+  properties:
+    title: Properties
+    description: Properties index view
+    namespace: admin
+    tags:
+      - admin
+    path: admin_properties_path
+    add_to_nav: true
+  inbox:
+    title: Inbox
+    description: An inbox for inbound and outgoing messages within the app.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_inbox_path
+    add_to_nav: true
+  calendar:
+    title: Calendar
+    description: Calendar view page.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_calendar_path
+    add_to_nav: true
+  insights:
+    title: Insights
+    description: Stats view for property insights.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_insights_path
+    add_to_nav: true
+  bookings:
+    title: Bookings
+    description: Bookings index with filtering.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_bookings_path
+    add_to_nav: true
+  new_booking:
+    title: New Booking
+    description: Add new booking.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_new_booking_path
+    add_to_nav: false
+  booking:
+    title: "Booking"
+    description: Booking show view
+    namespace: admin
+    tags:
+      - admin
+    path: admin_booking_path
+    add_to_nav: false
+  edit_booking:
+    title: Edit Booking
+    description: Edit booking.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_edit_booking_path
+    add_to_nav: false
+  help_center:
+    title: Help Center
+    description: Help center hub.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_help_center_path
+    add_to_nav: true
+  changelog:
+    title: Changelog
+    description: A view for app updates and changes.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_changelog_path
+    add_to_nav: true
+  api:
+    title: API
+    description: API landing page with advanced navigation.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_api_path
+    add_to_nav: true
+  privacy_policy:
+    title: Privacy Policy
+    description: A simple template for a privacy policy.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_privacy_policy_path
+    add_to_nav: false
+  terms:
+    title: Terms
+    description: A simple template for Terms of Service.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_terms_path
+    add_to_nav: false
+  contact:
+    title: Contact
+    description: A simple landing page for contact.
+    namespace: admin
+    tags:
+      - admin
+    path: admin_contact_path
+    add_to_nav: false
+  account_payment_methods:
+    title: "Account: Payment Methods"
+    description: "Payment method UI for the user profile"
+    namespace: admin
+    tags:
+      - admin
+    path: admin_account_payment_methods_path
+    add_to_nav: false
+  account_payouts:
+    title: "Account: Payouts"
+    description: "Payouts UI for the user profile"
+    namespace: admin
+    tags:
+      - admin
+    path: admin_account_payouts_path
+    add_to_nav: false
+  account_notifications:
+    title: "Account: Notifications"
+    description: "Notifications settings for the user profile"
+    namespace: admin
+    tags:
+      - admin
+    path: admin_account_notifications_path
+    add_to_nav: false
+  account_preferences:
+    title: "Account: Preferences"
+    description: "Preferences settings for the user profile"
+    namespace: admin
+    tags:
+      - admin
+    path: admin_account_preferences_path
     add_to_nav: false

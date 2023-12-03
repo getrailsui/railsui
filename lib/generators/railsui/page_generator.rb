@@ -35,7 +35,7 @@ module Railsui
         return unless Railsui.config.pages.include?(display_name)
 
         unless File.exist?(File.join("app/views/page", "#{display_name}.html.erb"))
-          template "#{Railsui.config.css_framework}/#{Railsui.config.theme}/#{display_name}.html.erb.tt", File.join("app/views/page", "#{display_name}.html.erb")
+          template "#{Railsui.config.theme}/#{display_name}.html.erb.tt", File.join("app/views/page", "#{display_name}.html.erb")
         end
 
         if namespace.present?
@@ -43,12 +43,12 @@ module Railsui
           layout_path = File.join("app/views/layouts", "#{layout_name}.html.erb")
 
           unless File.exist?(layout_path)
-            layout_source = Railsui::Engine.root.join("lib", "generators", "railsui", "templates", "#{Railsui.config.css_framework}", "#{Railsui.config.theme}", "#{namespace}.html.erb.tt")
+            layout_source = Railsui::Engine.root.join("lib", "generators", "railsui", "templates", "#{Railsui.config.theme}", "#{namespace}.html.erb.tt")
 
             template layout_source, layout_path
           end
           # copies folder associated with namespace i.e. app/views/shared/admin
-          source_directory = Railsui::Engine.root.join("lib", "install", "#{Railsui.config.css_framework}", "themes", "#{Railsui.config.theme}", "page", namespace)
+          source_directory = Railsui::Engine.root.join("lib", "install", "tailwind", "themes", "#{Railsui.config.theme}", "page", namespace)
           destination_directory = Rails.root.join("app", "views", "shared", namespace)
 
           if Dir.exist?(source_directory) && !Dir.exist?(destination_directory)
@@ -58,12 +58,14 @@ module Railsui
       end
 
       def add_to_navigation
+        @add_to_nav = pages_config[Railsui.config.theme][display_name]&.fetch("add_to_nav", true)
+
         return unless @add_to_nav
         # TODO: Adjust nav link based on
         # Dynamically append a navigation link for the page
         link_path = namespace.present? ? "#{namespace}_#{display_name}_path" : "#{display_name}_path"
         inserted_link = <<-ERB
-<li #{'class="nav-item"' if Railsui.bootstrap? }>
+<li>
   <%= nav_link_to "#{display_name.titleize}", send("#{link_path}"), class: "nav-link" %>
 </li>
 ERB
@@ -108,13 +110,12 @@ ERB
 
         say_status("subtract", "railsui.yml config", :green)
         Railsui::Configuration.delete_page(display_name)
+        Railsui::Configuration.synchronize_pages
+
+        remove_nav_link_from_partial
 
         Railsui.clear
         Railsui.restart
-      end
-
-      def action_string_with_colon(action)
-        ":#{action}"
       end
 
       def namespace
@@ -123,6 +124,24 @@ ERB
 
       def pages_config
         @pages_config ||= YAML.load_file(File.join(Railsui::Engine.root, "config", "pages.yml"))
+      end
+
+      def remove_nav_link_from_partial
+        link_path = namespace.present? ? "#{namespace}_#{display_name}_path" : "#{display_name}_path"
+
+        link_code = "<%= nav_link_to \"#{display_name.titleize}\", send(\"#{link_path}\"), class: \"nav-link\" %>"
+        partial_path = namespace.present? ? "app/views/shared/#{namespace}/_nav_links.html.erb" : "app/views/shared/_nav_links.html.erb"
+
+        if File.exist?(partial_path)
+          # Read the content of the partial
+          partial_content = File.read(partial_path)
+
+          # Remove the link code from the partial content
+          partial_content.gsub!(link_code, '')
+
+          # Write the modified content back to the partial
+          File.open(partial_path, 'w') { |file| file.write(partial_content) }
+        end
       end
     end
   end

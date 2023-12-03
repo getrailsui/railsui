@@ -1,0 +1,102 @@
+<div class="my-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Edit" %>
+
+<%= render preview do %>
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="mb-4 pb-6 border-b dark:border-slate-700">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+      <ol class="flex flex-wrap items-center space-x-3">
+        <li>
+          <a class="hover:underline hover:text-slate-600 dark:hover:text-slate-400" href="/posts">Posts</a>
+        </li>
+        <li class="flex space-x-3">
+          <div class="flex items-center">
+            <span class="text-slate-300 dark:text-slate-500">/</span>
+          </div>
+          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">Edit</span>
+        </li>
+      </ol>
+    </nav>
+    <div class="flex items-center justify-between">
+      <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Edit Post</h1>
+        <form data-turbo-confirm="Are you sure?" class="button_to" method="post" action="#"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="btn btn-light" type="submit">Delete</button><input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
+      </div>
+    </div>
+
+    <div>
+      <form action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
+
+
+    <div class="form-group">
+      <label class="label" for="post_title">Title</label>
+      <input class="form-input" type="text" value="Testing 123" name="post[title]" id="post_title">
+    </div>
+
+    <div class="form-group">
+      <label class="label" for="post_content">Content</label>
+      <textarea class="form-input" name="post[content]" id="post_content">Testing 123</textarea>
+    </div>
+
+    <div class="flex items-center justify-between flex-wrap">
+      <div class="sm:flex-1 sm:mb-0 mb-6">
+        <input type="submit" name="commit" value="Update Post" class="btn btn-primary" data-disable-with="Update Post">
+      </div>
+
+      <a class="btn btn-light" href="#">Cancel</a>
+    </div>
+  </form>
+  </div>
+</div>
+<% end %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="mb-4 pb-6 border-b dark:border-slate-700">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+      <ol class="flex flex-wrap items-center space-x-3">
+        <li>
+          <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
+        </li>
+        <li class="flex space-x-3">
+          <div class="flex items-center">
+            <span class="text-slate-300 dark:text-slate-500">/</span>
+          </div>
+          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">Edit</span>
+        </li>
+      </ol>
+    </nav>
+    <div class="flex items-center justify-between">
+      <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Edit Post</h1>
+      <%%= button_to "Delete", @post, method: :delete, class: "btn btn-light", form: { data: { turbo_confirm: "Are you sure?" } } %>
+    </div>
+  </div>
+
+  <div>
+    <%%= render "form", post: @post %>
+  </div>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.max-w-3xl.mx-auto.px-4.my-16
+  .mb-4.pb-6.border-b.dark:border-slate-700
+    %nav.my-6.font-medium.flex.text-slate-500.dark:text-slate-200.text-sm{"aria-label" => "breadcrumb"}
+      %ol.flex.flex-wrap.items-center.space-x-3
+        %li
+          = link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
+        %li.flex.space-x-3
+          .flex.items-center
+            %span.text-slate-300.dark:text-slate-500 /
+          %span.text-indigo-600.dark:text-indigo-500{"aria-current" => "page"} Edit
+    .flex.items-center.justify-between
+      %h1.text-4xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Edit Post
+      = button_to "Delete", @post, method: :delete, class: "btn btn-light", form: { data: { turbo_confirm: "Are you sure?" } }
+  %div
+    = render "form", post: @post
+<% end %>
+<% content_for :ruby do %>
+
+<% end %>
+<%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+</div>

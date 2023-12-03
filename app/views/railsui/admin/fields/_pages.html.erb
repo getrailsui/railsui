@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700 relative" data-controller="pages">
-    <div class="prose mb-6 dark:prose-invert">
+    <div class="prose mb-6 dark:!prose-invert">
       <h3>Add pages</h3>
       <p>Generate professionally designed pages that accompany the <%= theme_name.humanize %> template. If you previously generated a page, it will <strong>not</strong> be overwritten.</p>
     </div>
 
     <%= render "railsui/admin/fields/check_all" unless Railsui::Pages.all_pages_installed? %>
 
-    <div class="divide-y dark:divide-slate-700">
+    <div class="divide-y divide-slate-200 dark:divide-slate-700">
       <% if @theme_pages.present? %>
         <% @theme_pages.each do |page, details| %>
           <div class="flex flex-wrap items-start justify-between py-6">
-            <% if Railsui::Pages.page_exists?(page) %>
+            <% if page_exists?(page) %>
               <%= render "railsui/admin/fields/active_page", page: page, details: details %>
             <% else %>
               <%= render "railsui/admin/fields/inactive_page", page: page, details: details %>

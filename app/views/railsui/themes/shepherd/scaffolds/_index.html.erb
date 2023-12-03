@@ -1,0 +1,96 @@
+<div class="mb-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Index" %>
+
+<%= render preview(variant="zinc") do %>
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="flex items-center justify-between pb-6 border-b dark:border-zinc-700 border-zinc-200">
+    <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Posts</h1>
+    <div class="flex items-center justify-end">
+      <a href="#" class="btn btn-primary">New Post</a>
+    </div>
+  </div>
+  <div id="posts" class="divide-y divide-zinc-200 dark:divide-zinc-700">
+    <!-- post 1 content -->
+    <article id="post_1" class="prose prose-zinc dark:prose-invert first:pt-0 py-6">
+      <div>
+        <p class="mb-0 font-heading">
+          Title
+        </p>
+        <p class="my-0">
+          Example post title
+        </p>
+      </div>
+      <div>
+        <p class="mb-0 font-heading">
+          Content
+        </p>
+        <p class="my-0">
+          Example post content
+        </p>
+      </div>
+      <time class="text-zinc-600 dark:text-zinc-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
+      <div class="not-prose mt-6">
+        <a href="#" class="btn btn-white inline-block">View post</a>
+      </div>
+    </article>
+
+    <!-- post 2 content -->
+    <article id="post_2" class="prose prose-zinc dark:prose-invert first:pt-0 py-6">
+      <div>
+        <p class="mb-0 font-heading">
+          Title
+        </p>
+        <p class="my-0">
+          Example post title 2
+        </p>
+      </div>
+      <div>
+        <p class="mb-0 font-heading">
+          Content
+        </p>
+        <p class="my-0">
+          Example post content
+        </p>
+      </div>
+      <time class="text-zinc-600 dark:text-zinc-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
+      <div class="not-prose mt-6">
+        <a href="#" class="btn btn-white inline-block">View post</a>
+      </div>
+    </article>
+  </div>
+</div>
+<% end %>
+
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="flex items-center justify-between pb-6 border-b dark:border-zinc-700 border-zinc-200">
+    <h1 class="text-4xl font-medium font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Posts</h1>
+    <div class="flex items-center justify-end">
+      <%%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div id="posts" class="divide-y divide-zinc-200 dark:divide-zinc-700">
+    <%%= render @posts %>
+  </div>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.max-w-3xl.mx-auto.px-4.my-16
+  .flex.items-center.justify-between.pb-6.border-b.dark:border-zinc-700.border-zinc-200
+    %h1.text-4xl.font-medium.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Posts
+    .flex.items-center.justify-end
+      = link_to "New Post", new_post_path, class: "btn btn-primary"
+  #posts.divide-y.divide-zinc-200.dark:divide-zinc-700
+    = render @posts
+<% end %>
+
+<% content_for :ruby, flush: true do %>
+
+<% end %>
+<%= render_snippet active_tab: "erb", erb_filename: "index.html.erb", haml_filename: "index.haml.erb" %>
+</div>

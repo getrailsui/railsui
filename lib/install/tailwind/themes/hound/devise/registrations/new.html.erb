@@ -1,6 +1,6 @@
 <% content_for :masthead do %>
   <div class="text-center">
-    <h1 class="text-3xl my-3">Sign up for an account</h1>
+    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight my-3">Sign up for an account</h1>
     <p class="mb-6 text-slate-700 dark:text-slate-200">Already have an account? <%= link_to "Sign in", new_session_path(resource_name), class: "btn-link" %></p>
   </div>
   <%= render "shared/error_messages", resource: resource %>

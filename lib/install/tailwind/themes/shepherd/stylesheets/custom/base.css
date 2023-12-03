@@ -1,0 +1,6 @@
+/* Overrides default .border class color */
+*,
+::before,
+::after {
+  @apply border-zinc-300;
+}

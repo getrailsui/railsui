@@ -7,14 +7,15 @@
       <% end %>
     </li>
 
-    <% if Railsui.config.css_framework.present? %>
-      <li>
-        <%= nav_link_to systems_path, class: "sm:p-2 font-semibold hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center justify-center text-slate-800 dark:text-slate-300 py-4 sm:text-sm text-base", active_class: "text-indigo-600 dark:text-indigo-300" do %>
-          <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>
-          <span>Design system</span>
-        <% end %>
-      </li>
+    <% if Railsui.config.theme.present? %>
+    <li>
+      <%= nav_link_to systems_path, class: "sm:p-2 font-semibold hover:text-indigo-600 hover:dark:text-indigo-400 flex items-center justify-center text-slate-800 dark:text-slate-300 py-4 sm:text-sm text-base", active_class: "text-indigo-600 dark:text-indigo-300" do %>
+        <%= render_svg "map", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>
+        <span>Design system</span>
+      <% end %>
+    </li>
     <% end %>
+
     <li>
       <%= nav_link_to root_path, class: "sm:p-2 font-semibold text-slate-800 flex items-center justify-center hover:text-indigo-600 hover:dark:text-indigo-400 text-slate-800 dark:text-slate-300 py-4 sm:text-sm text-base", active_class: "text-indigo-600" do %>
         <%= render_svg "settings", styles: "stroke-current w-6 h-6 mr-[4px] flex-shrink-0" %>

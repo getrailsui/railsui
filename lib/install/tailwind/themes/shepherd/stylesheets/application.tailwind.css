@@ -1,0 +1,8 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* Custom components */
+@import "custom/custom.css";
+
+@import "tailwindcss/utilities";
+@import "tippy.js/dist/tippy.css";

@@ -17,16 +17,24 @@
     <%= javascript_include_tag "railsui/application" %>
     <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
 
-    <%= stylesheet_link_tag "railsui/application", "application" %>
+    <%= stylesheet_link_tag "railsui/application" %>
+    <%= stylesheet_link_tag "application" %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
+    <% if Railsui.config.theme.present? %>
+      <%= render "railsui/themes/#{Railsui.config.theme}/fonts" %>
+    <% end %>
+
+    <%= custom_colors_css %>
+
     <%= yield :head %>
   </head>
 
-  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-indigo-500/25 antialiased <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll smooth">
+  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-neutral-500/25 antialiased font-rui <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll smooth">
+
     <%= render "railsui/shared/flash" %>
     <%= render "layouts/railsui/masthead" %>
 
@@ -38,8 +46,8 @@
           <div class="lg:py-0 py-2 lg:border-b-0 border-b border-slate-200 dark:border-slate-700 lg:hidden lg:px-0 px-3 lg:shadow-none shadow-sm">
             <%= render "railsui/shared/top_nav" %>
           </div>
-          <% if Railsui.config.css_framework.present? %>
-            <%= render "railsui/themes/#{Railsui.config.css_framework}/#{Railsui.config.theme}/nav" %>
+          <% if Railsui.config.theme.present? %>
+            <%= render "railsui/themes/#{Railsui.config.theme}/nav" %>
           <% else %>
             <%= render "railsui/shared/nav" %>
           <% end %>
@@ -47,7 +55,9 @@
       </div>
       <div class="lg:pl-[19.5rem]">
         <main class="mr-auto relative z-20 lg:pt-24 lg:pb-10 py-6 sm:px-8 px-4 <%= content_for(:fullwidth) ? "" : "max-w-5xl" %>">
+
           <%= yield %>
+
         </main>
         <%= render "railsui/shared/footer" %>
       </div>
@@ -56,9 +66,5 @@
     <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
 
     <%= yield :demo_scripts %>
-    <% if Railsui.bootstrap? %>
-      <!-- Hey! If you're wondering why the CDN? This normally gets included in your build (application.js) but for Rails UI we use it this way to keep versions more current and reduce conflicting scripts in the Railsui namespace -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <% end %>
   </body>
 </html>

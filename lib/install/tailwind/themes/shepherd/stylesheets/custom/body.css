@@ -1,0 +1,3 @@
+body.rui {
+  @apply h-full antialiased text-zinc-800 leading-normal selection:bg-primary-100 selection:text-primary-700 dark:bg-zinc-900 bg-white dark:text-zinc-50 dark:selection:bg-zinc-500/40 dark:selection:text-zinc-200;
+}

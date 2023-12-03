@@ -1,0 +1,14 @@
+<div class="text-zinc-600 dark:text-zinc-100 sm:px-10 px-4 sm:justify-center flex font-heading text-base">
+  <nav role="navigation" class="overflow-y-hidden overflow-x-auto snap-x flex">
+
+    <%= nav_link_to "Profile", edit_user_registration_path, active_class: "py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500", inactive_class: "py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap" %>
+
+    <%= nav_link_to "Payment Methods", (defined?(admin_account_payment_methods_path) ? admin_account_payment_methods_path : "#"), active_class: "py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500", inactive_class: "py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap" %>
+
+    <%= nav_link_to "Payouts", (defined?(admin_account_payouts_path) ? admin_account_payouts_path : "#"), active_class: "py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500", inactive_class: "py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap" %>
+
+    <%= nav_link_to "Notifications", (defined?(admin_account_notifications_path) ? admin_account_notifications_path : "#"), active_class: "py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500", inactive_class: "py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap"%>
+
+    <%= nav_link_to "Preferences", (defined?(admin_account_preferences_path) ? admin_account_preferences_path : "#"), active_class: "py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500", inactive_class: "py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap" %>
+  </nav>
+</div>

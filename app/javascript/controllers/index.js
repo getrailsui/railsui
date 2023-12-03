@@ -15,6 +15,9 @@ application.register("code", CodeController)
 import CanvasController from "./canvas_controller.js"
 application.register("canvas", CanvasController)
 
+import DateRangePickerController from "./date_range_picker_controller.js"
+application.register("date-range-picker", DateRangePickerController)
+
 import DialogController from "./dialog_controller.js"
 application.register("dialog", DialogController)
 
@@ -41,6 +44,9 @@ application.register("scroll", ScrollController)
 
 import SearchController from "./search_controller.js"
 application.register("search", SearchController)
+
+import SelectAllController from "./select_all_controller.js"
+application.register("select-all", SelectAllController)
 
 import SmoothController from "./smooth_controller.js"
 application.register("smooth", SmoothController)

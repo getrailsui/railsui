@@ -1,0 +1,161 @@
+<div class="mb-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Pagination", subtitle: "Simple" %>
+
+<%= render preview "zinc" do %>
+<nav aria-label="Page navgiation" class="text-zinc-600 sm:text-sm text-base font-medium dark:text-zinc-300">
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="btn btn-white flex items-center justify-center space-x-2 pl-3 group md:w-auto w-full md:mb-0 mb-3">
+        <%= icon "arrow-small-left", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200" %>
+        <span>Previous</span>
+      </a>
+    </li>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <li>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">1</a>
+      </li>
+      <li>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-500 dark:border-primary-500 dark:hover:bg-primary-500/30">2</a>
+      </li>
+      <li>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">3</a>
+      </li>
+      <li>
+        <span href="#" class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+      </li>
+       <li>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">8</a>
+      </li>
+       <li>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">9</a>
+      </li>
+       <li>
+        <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">10</a>
+      </li>
+
+    </div>
+    <li class="flex-1 flex justify-end items-center">
+      <a data-controller="prevent" data-action="click->prevent#prevent" href="#" class="btn btn-white flex items-center justify-center space-x-2 pr-3 group md:w-auto w-full md:mb-0 mb-3">
+        <span>Next</span>
+        <%= icon "arrow-small-right", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200" %>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :html, flush: true  do %>
+<nav aria-label="Page navgiation" class="text-zinc-600 sm:text-sm text-base font-medium dark:text-zinc-300">
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <a href="#" class="btn btn-white flex items-center justify-center space-x-2 pl-3 group md:w-auto w-full md:mb-0 mb-3">
+        <%%= icon "arrow-small-left", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200" %>
+        <span>Previous</span>
+      </a>
+    </li>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">1</a>
+      </li>
+      <li>
+        <a href="#" class="py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-500 dark:border-primary-500 dark:hover:bg-primary-500/30">2</a>
+      </li>
+      <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">3</a>
+      </li>
+      <li>
+        <span href="#" class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+      </li>
+       <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">8</a>
+      </li>
+       <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">9</a>
+      </li>
+       <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200">10</a>
+      </li>
+
+    </div>
+    <li class="flex-1 flex justify-end items-center">
+      <a href="#" class="btn btn-white flex items-center justify-center space-x-2 pr-3 group md:w-auto w-full md:mb-0 mb-3">
+        <span>Next</span>
+        <%%= icon "arrow-small-right", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200" %>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<nav aria-label="Page navgiation" class="text-zinc-600 sm:text-sm text-base font-medium dark:text-zinc-300">
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <%%= link_to "#", class: "btn btn-white flex items-center justify-center space-x-2 pl-3 group md:w-auto w-full md:mb-0 mb-3" do %>
+        <%%= icon "arrow-small-left", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200" %>
+        <span>Previous</span>
+      <%% end %>
+    </li>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <li>
+        <%%= link_to "1", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+      </li>
+      <li>
+        <%%= link_to "2", "#", class: "py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-500 dark:border-primary-500 dark:hover:bg-primary-500/30" %>
+      </li>
+      <li>
+        <%%= link_to "3", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+      </li>
+      <li>
+        <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+      </li>
+       <li>
+        <%%= link_to "8", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+      </li>
+       <li>
+        <%%= link_to "9", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+      </li>
+      <li>
+        <%%= link_to "10", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+      </li>
+    </div>
+    <li class="flex-1 flex justify-end items-center">
+      <%%= link_to "#", class: "btn btn-white flex items-center justify-center space-x-2 pr-3 group md:w-auto w-full md:mb-0 mb-3" do %>
+        <span>Next</span>
+        <%%= icon "arrow-small-right", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200" %>
+      <%% end %>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav.text-zinc-600.sm:text-sm.text-base.font-medium.dark:text-zinc-300{"aria-label" => "Page navgiation"}
+  %ul.flex.flex-wrap.items-center.sm:justify-between.justify-center
+    %li.flex-1.flex.justify-start.items-center.sm:w-auto.w-full
+      = link_to "#", class: "btn btn-white flex items-center justify-center space-x-2 pl-3 group md:w-auto w-full md:mb-0 mb-3" do
+        = icon "arrow-small-left", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200"
+        %span Previous
+    .flex.items-center.justify-center.sm:w-auto.w-full.sm:text-sm.text-lg
+      %li
+        = link_to "1", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200"
+      %li
+        = link_to "2", "#", class: "py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-500 dark:border-primary-500 dark:hover:bg-primary-500/30"
+      %li
+        = link_to "3", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200"
+      %li
+        %span.py-2.px-4.block.border-t-2.border-transparent.rounded.pointer-events-none.select-none …
+      %li
+        = link_to "8", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200"
+      %li
+        = link_to "9", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200"
+      %li
+        = link_to "10", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200"
+    %li.flex-1.flex.justify-end.items-center
+      = link_to "#", class: "btn btn-white flex items-center justify-center space-x-2 pr-3 group md:w-auto w-full md:mb-0 mb-3" do
+        %span Next
+        = icon "arrow-small-right", classes: "w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200"
+<% end %>
+
+<%= render_snippet %>
+</div>

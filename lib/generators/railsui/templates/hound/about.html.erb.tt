@@ -1,0 +1,255 @@
+<%% content_for :header do %>
+<header class="bg-cover bg-center relative bg-no-repeat" style="background-image: url(<%%= asset_url("fusion.png") %>);" data-controller="nav">
+  <div class="dark:bg-slate-900">
+    <%%= render "shared/nav_menu" %>
+  </div>
+  <div class="container mx-auto sm:py-24 pb-10 px-4 relative z-10 flex flex-wrap items-center justify-between">
+    <div class="xl:w-2/5 w-full xl:text-left text-center xl:pr-16">
+      <p class="text-indigo-600 font-medium mb-6 lg:mt-0 mt-2 dark:text-indigo-500">Our Company</p>
+      <h1 class="text-5xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Soaring to new <br class="sm:hidden block" />heights
+        in
+        tech</h1>
+      <p class="my-6 text-slate-700 dark:text-slate-400 text-lg">We empower each other to build great software one line
+        of code and one team member at a time.</p>
+      <div class="xl:flex grid grid-cols-1 gap-4">
+        <%%= link_to "Join our team", "#", class: "btn btn-primary btn-lg" %>
+        <%%= link_to "Watch video", "#", class: "btn btn-lg  btn-transparent" %>
+      </div>
+    </div>
+    <div class="xl:w-3/5 w-full xl:my-0 mt-6 mb-10">
+      <div class="flex justify-center relative">
+        <%%= image_tag "hero-image.jpg", alt: "Team", class: "max-w-full xl:max-w-2xl 2xl:max-w-3xl object-cover rounded-3xl relative z-20 shadow-2xl shadow-slate-500/20" %>
+        <div
+          class="w-[650px] h-[650px] bg-indigo-500/10 absolute -bottom-10 left-5 rounded-full z-0 blur-2xl sm:block hidden">
+        </div>
+        <div
+          class="w-[450px] h-[450px] bg-pink-500/10 absolute -top-10 left-5 rounded-full z-0 blur-2xl sm:block hidden">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<%% end %>
+
+<div class="container mx-auto sm:px-16 sm:px-16 px-4 lg:py-24 pb-16 pt-0">
+  <div class="flex flex-wrap items-center justify-between">
+    <div class="lg:w-1/2 w-full">
+      <span class="block w-20 bg-slate-300 dark:bg-slate-700 h-px"></span>
+      <h2 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight pt-10">The challenges that lie ahead</h2>
+      <div class="max-w-lg mt-6 prose prose-indigo dark:prose-invert">
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem
+          lacinia quam venenatis vestibulum. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non
+          commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante
+          venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper.</p>
+        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui. Cras justo odio, dapibus ac
+          facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur
+          blandit tempus porttitor.</p>
+        <%%= link_to "#" do %>
+          <span>View open roles</span>
+          <%%= icon "chevron-right", classes: "group-hover:transform group-hover:translate-x-1 group-hover:transition-transform group-hover:duration-300 ml-2 w-2 h-2 fill-current transform transition duration-300", variant: :solid %>
+        <%% end %>
+      </div>
+    </div>
+    <div class="lg:w-1/2 w-full">
+      <%%= image_tag "challenges.png", alt: "Challenges", class: "max-w-full h-auto w-full" %>
+    </div>
+  </div>
+</div>
+
+<div class="bg-slate-900 dark:bg-slate-800 py-16 text-slate-100 sm:px-16 px-4">
+  <div class="mx-auto max-w-lg text-center">
+    <div class="flex items-center justify-center">
+      <%%= image_tag "brad-jost.png", alt: "Brad Jost", class: "w-20 h-20 rounded-full mb-2" %>
+    </div>
+    <blockquote class="text-center font-light text-lg">&quot;Vivamus sagittis lacus vel augue laoreet rutrum
+      faucibus
+      dolor auctor. Nullam quis
+      risus eget urna mollis ornare vel eu
+      leo.&quot;
+      <cite class="mt-2 block font-semibold text-white">Brad Jost</cite>
+    </blockquote>
+  </div>
+</div>
+
+<div class="container mx-auto py-16 sm:px-16 px-4">
+  <div class="flex justify-center mb-6">
+    <div class="rounded bg-indigo-100 dark:bg-indigo-500/50 w-12 h-12 flex items-center justify-center">
+      <%%= icon "globe-americas", classes: "text-indigo-700 dark:text-indigo-300 w-4 h-4 stroke-current" %>
+    </div>
+  </div>
+  <h3 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-2 text-center">Work from across the globe</h3>
+  <p class="text-center text-slate-700 dark:text-slate-300">We're actively looking to fill over 200 roles</p>
+
+  <div class="max-w-4xl mx-auto">
+    <ul class="divide-y divide-dashed divide-slate-300 my-6 dark:divide-slate-600">
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Designer", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Engineer", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Design Manager", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Engineering Manager", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Designer", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Engineer", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Design Manager", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+      <li class="flex items-center flex-wrap justify-between py-5">
+        <%%= link_to "Product Engineering Manager", "#", class: "text-indigo-600 dark:text-indigo-400 font-medium hover:underline" %>
+        <p class="text-slate-600">Remote</p>
+      </li>
+    </ul>
+
+    <%%= link_to "View all open roles", "#", class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 grid-cols-1 gap-10 relative lg:py-24 py-16">
+    <div class="flex items-center md:justify-center">
+      <div
+        style="background-image: <%%= asset_url('checkboard-pattern.svg') %>"
+        class="bg-repeat-y w-32 absolute top-0 left-0 h-full lg:opacity-100 opacity-50">
+      </div>
+
+      <%%= image_tag "process.png", alt: "Process description", class: "lg:max-w-lg max-w-full inline text-center relative z-50" %>
+    </div>
+    <div>
+      <p class="text-indigo-300 uppercase tracking-wider text-sm font-medium dark:text-indigo-500">Work with us</p>
+      <h3 class="text-white font-extrabold text-3xl my-2">Our process</h3>
+      <div class="prose prose-indigo text-white max-w-lg">
+        <p>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Sed posuere
+          consectetur est at lobortis. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus
+          et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        <p>Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet nonmagna.
+          Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor
+          ligula, eget lacinia odio sem nec elit. Vestibulum id ligula porta felis euismod semper.</p>
+        <h4 class="text-white font-extrabold text-xl">What sets us apart</h4>
+
+        <p>Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio
+          dui. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis
+          ornare vel eu leo.</p>
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo,
+          tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed
+          consectetur. Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus
+          posuere velit aliquet.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-slate-100 dark:bg-slate-900 lg:py-20 py-16">
+  <div class="container mx-auto sm:px-16 px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-24 gap-12">
+      <div>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Enabling collaboration <br class="lg:block hidden" /> at
+          exponential rates
+        </h3>
+        <p class="my-6 text-slate-700 text-lg leading-relaxed dark:text-slate-300">Morbi leo risus, porta ac consectetur ac, vestibulum at
+          eros. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+        <div class="prose prose-indigo dark:prose-invert">
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti in ad obcaecati explicabo molestiae?
+            Asperiores, veniam atque! Quasi eaque doloremque eum. Quod perferendis hic aspernatur debitis error
+            dignissimos vero suscipit?</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores fugit debitis consequatur, ipsum laborum
+            pariatur ipsa vitae eum nostrum est non. Nostrum laborum illo quasi iure repellat at, placeat quam.</p>
+          <%%= link_to "#", class: "font-medium text-indigo-600 dark:text-indigo-400 flex items-center group" do %>
+            Read more about what we've been working on
+            <%%= icon "chevron-right", classes: "group-hover:transform group-hover:translate-x-1 group-hover:transition-transform group-hover:duration-300 ml-2 w-2 h-2 fill-current transform transition duration-300", variant: :solid %>
+          <%% end %>
+        </div>
+      </div>
+      <div>
+        <div class="bg-indigo-600 text-white lg:rounded-xl shadow-lg">
+          <%%= image_tag "enabling-collaboration.png", alt: "Enabling collaboration", class: "lg:rounded-t-lg" %>
+          <blockquote class="relative text-white text-xl leading-relaxed lg:p-10 p-8">
+            <svg class="w-6 h-6 fill-current text-white opacity-20 flex-shrink-0" height="22" viewBox="0 0 28 22"
+              width="28" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m12.5312 16.9375c0 1.3333-.5416 2.5-1.625 3.5-1.06245 1-2.32287 1.5-3.7812 1.5-2.29167 0-4.05208-.7604-5.28125-2.2813-1.229167-1.5208-1.84375-3.625-1.84375-6.3124 0-2.5 1.05208-5.02088 3.15625-7.56255 2.125-2.54167 4.67708-4.46875 7.65625-5.78125l1.375 2.21875c-2.35417 1.14583-4.19792 2.47917-5.53125 4s-2.10417 3.36458-2.3125 5.53125h1.75c1.29167 0 2.34375.1458 3.15625.4375s1.4688.6979 1.9688 1.2187c.4791.5.8124 1.0521 1 1.6563.2083.6042.3124 1.2292.3124 1.875zm15.4063 0c0 1.3333-.5417 2.5-1.625 3.5-1.0625 1-2.3229 1.5-3.7813 1.5-2.2916 0-4.052-.7604-5.2812-2.2813-1.2292-1.5208-1.8438-3.625-1.8438-6.3124 0-2.5 1.0521-5.02088 3.1563-7.56255 2.125-2.54167 4.6771-4.46875 7.6563-5.78125l1.375 2.21875c-2.3542 1.14583-4.198 2.47917-5.5313 4s-2.1042 3.36458-2.3125 5.53125h1.75c1.2917 0 2.3438.1458 3.1562.4375.8126.2917 1.4688.6979 1.9688 1.2187.4792.5.8125 1.0521 1 1.6563.2083.6042.3125 1.2292.3125 1.875z">
+              </path>
+            </svg>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur alias quos voluptatibus eligendi
+            nobis
+            aperiam esse
+            <cite class="font-semibold text-base block mt-4">&mdash; Jane Smith, Janice Ross</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 w-full mt-16">
+      <div>
+        <p class="text-slate-600 dark:text-slate-400">Founded</p>
+        <h4 class="font-extrabold text-3xl lg:text-5xl tracking-tight">2009</h4>
+      </div>
+      <div>
+        <p class="text-slate-600 dark:text-slate-400">Active Users</p>
+        <h4 class="font-extrabold text-3xl lg:text-5xl tracking-tight">23,503</h4>
+      </div>
+      <div>
+        <p class="text-slate-600 dark:text-slate-400">Employees</p>
+        <h4 class="font-extrabold text-3xl lg:text-5xl tracking-tight">18</h4>
+      </div>
+      <div>
+        <p class="text-slate-600 dark:text-slate-400">Raised</p>
+        <h4 class="font-extrabold text-3xl lg:text-5xl tracking-tight">$0</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto lg:py-20 py-10 sm:px-16 px-4">
+  <h5 class="uppercase tracking-wider text-indigo-600 dark:text-indigo-500 text-sm text-center mb-6 font-semibold">From the blog</h5>
+
+  <div class="flex items-start justify-between flex-wrap">
+    <article class="lg:w-1/3 w-full lg:p-6 p-3">
+      <%%= link_to "#", class: "group" do %>
+        <%%= image_tag "blog-1.png", alt: "Description for this image", class: "shadow-lg group-hover:shadow-none duration-300 transition-all" %>
+        <h1 class="text-slate-900 my-4 leading-tight font-extrabold text-lg group-hover:text-slate-800 dark:text-slate-200 dark:group-hover:text-indigo-500">Aenean lacinia
+          bibendum nulla sed
+          consectetur.</h1>
+        <p class="text-slate-700 dark:text-slate-400">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sociis natoque
+          penatibus et magnis dis
+          parturient montes, nascetur ridiculus mus.</p>
+      <%% end %>
+    </article>
+    <article class="lg:w-1/3 w-full lg:p-6 p-3">
+      <%%= link_to "#", class: "group" do %>
+        <%%= image_tag "blog-2.png", alt: "Description for this image", class: "shadow-lg group-hover:shadow-none duration-300 transition-all" %>
+        <h1 class="text-slate-900 my-4 leading-tight font-extrabold text-lg group-hover:text-slate-800 dark:text-slate-200 dark:group-hover:text-indigo-500">Nullam quis
+          risus eget urna mollis ornare
+          vel eu leo.</h1>
+        <p class="text-slate-700 dark:text-slate-400">Maecenas sed diam eget risus varius blandit sit amet non magna. Etiam porta sem
+          malesuada magna mollis euismod.</p>
+      <%% end %>
+    </article>
+    <article class="lg:w-1/3 w-full lg:p-6 p-3">
+      <%%= link_to "#", class: "group" do %>
+        <%%= image_tag "blog-3.png", alt: "Description for this image", class: "shadow-lg group-hover:shadow-none duration-300 transition-all" %>
+        <h1 class="text-slate-900 my-4 leading-tight font-extrabold text-lg group-hover:text-slate-800 dark:text-slate-200 dark:group-hover:text-indigo-500">Fusce dapibus,
+          tellus ac cursus commodo
+        </h1>
+        <p class="text-slate-700 dark:text-slate-400">Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum.
+        </p>
+      <%% end %>
+    </article>
+  </div>
+</div>
+
+<%%= render "shared/footer" %>

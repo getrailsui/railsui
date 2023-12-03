@@ -1,0 +1,487 @@
+<%
+  # Refer to Tailwind's colors for max control
+  # https://tailwindcss.com/docs/customizing-colors#using-css-variables
+  theme = {
+    align_logo: "center",
+    primary: "#4f46e5",
+    secondary: "#1e293b",
+    heading_text_color: "#0f172a",
+    footer_text_color: "#94a3b8",
+    body_text_color: "#334155",
+    light_text_color: "#94a3b8",
+    callout_bg_color: "#e0e7ff",
+    callout_border_color: "#a5b4fc",
+    callout_text_color: "#4338ca"
+  }
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      @media all {
+        .ExternalClass {
+          width: 100%;
+        }
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+          line-height: 100%;
+        }
+      }
+
+      img {
+        border: none;
+        -ms-interpolation-mode: bicubic;
+        max-width: 100%;
+      }
+
+      img.rounded-full {
+        border-radius: 99999px;
+        width: 20px;
+        height: 20px;
+        margin-bottom: -2px;
+        margin-bottom: -2px;
+      }
+
+      table {
+        border-collapse: separate;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        width: 100%;
+      }
+
+      table td {
+        font-family: sans-serif;
+        font-size: 16px;
+        vertical-align: top;
+      }
+
+      .container {
+        display: block;
+        margin: 0 auto !important;
+        /* makes it centered */
+        max-width: 600px;
+        padding: 10px;
+        width: 600px;
+      }
+
+      .content {
+        box-sizing: border-box;
+        display: block;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 20px;
+        line-height: 1.6;
+        color: <%= theme[:body_text_color] %>;
+      }
+
+      .logo {
+        color: #222;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 0;
+      }
+
+      .logo:hover {
+        text-decoration: none;
+      }
+
+      .main {
+        background: #ffffff;
+        width: 100%;
+      }
+
+      .wrapper {
+        box-sizing: border-box;
+        padding: 20px;
+      }
+
+      .footer {
+        clear: both;
+        padding-top: 16px;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+
+      .footer td,
+      .footer p,
+      .footer span,
+      .footer a {
+        color: <%= theme[:footer_text_color] %>;
+        font-size: 13px;
+        line-height: 150%;
+        margin: 0;
+        text-align: center;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: <%= theme[:heading_text_color] %>;
+        font-family: 'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"';
+        line-height: 1.4;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 30px;
+      }
+
+      h2 {
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      p,
+      ul,
+      ol,
+      table.callout {
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        margin-bottom: 18px;
+      }
+
+      ul {
+        padding-left: 16px;
+        margin: 10px 0;
+        Margin: 10px 0;
+        list-style-type: disc;
+      }
+
+      ul li {
+        Margin-bottom: 10px;
+        margin-bottom: 10px;
+      }
+
+      p li,
+      ul li,
+      ol li {
+        list-style-position: outside;
+      }
+
+      p.no-bottom-margin {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: <%= theme[:primary] %>;
+        text-decoration: underline;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .intro blockquote {
+        font-style: italic;
+        color: #111827 !important;
+        border-left: 5px solid #e5e7eb;
+        margin: 0 0 18px 0;
+        padding-left: 24px;
+      }
+
+      .intro blockquote p {
+        font-weight: 500 !important;
+        font-style: italic;
+        color: #111827 !important;
+        margin: 0;
+      }
+
+      .last {
+        margin-bottom: 0;
+      }
+
+      .first {
+        margin-top: 0;
+      }
+
+      .align-center {
+        text-align: center;
+      }
+
+      .align-right {
+        text-align: right;
+      }
+
+      .align-left {
+        text-align: left;
+      }
+
+      .mt-0 {
+        margin-top: 0;
+      }
+
+      .mb-0 {
+        margin-bottom: 0;
+      }
+
+      .mt-10 {
+        margin-top: 10px;
+        Margin-top: 10px;
+      }
+
+      .mb-10 {
+        margin-bottom: 10px;
+        Margin-bottom: 10px;
+      }
+
+      .small {
+        font-size: 14px;
+        color: <%= theme[:light_text_color] %>;
+        line-height: 130%;
+      }
+
+      hr {
+        border: 0;
+        border-bottom: 1px solid #f6f6f6;
+        margin: 20px 0;
+      }
+
+      table.callout td {
+        background-color: <%= theme[:callout_bg_color] %>;
+        border: 1px solid <%= theme[:callout_border_color] %>;
+        padding: 10px;
+        border-radius: 6px;
+        color: <%= theme[:callout_text_color] %>
+      }
+
+      table.callout td p {
+        margin-bottom: 0;
+      }
+
+      .view-in-browser {
+        font-size: 12px;
+        color: <%= theme[:light_text_color] %>;
+        margin-bottom: 10px;
+        text-align: center;
+        display: block;
+      }
+
+      table.social-links {
+        width: auto;
+      }
+
+      table.social-links td {
+        width: 44px;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      table.social-links td img {
+        display: inline;
+      }
+
+      @media only screen and (max-width: 620px) {
+        table[class="body"] a.view-in-browser {
+          font-size: 12px !important;
+          margin-top: 10px;
+        }
+
+        table[class="body"] h1 {
+          font-size: 28px !important;
+          margin-bottom: 10px !important;
+        }
+
+        table[class="body"] a,
+        table[class="body"] ol,
+        table[class="body"] p,
+        table[class="body"] span,
+        table[class="body"] td,
+        table[class="body"] ul {
+          font-size: 16px !important;
+        }
+
+        table[class="body"] p.small {
+          font-size: 14px !important;
+        }
+
+        table[class="body"] .footer {
+          padding: 10px;
+        }
+
+        table[class="body"] .footer p {
+          font-size: 16px !important;;
+          line-height: 150%;
+        }
+
+        .wrapper {
+          padding: 20px 10px !important;
+        }
+
+        .content {
+          padding: 0 !important;
+        }
+
+        .container {
+          padding: 0 !important;
+          width: 100.85% !important;
+        }
+
+        .main {
+          border-left-width: 0 !important;
+          border-radius: 0 !important;
+          border-right-width: 0 !important;
+          width: 100% !important;
+        }
+
+        .img-responsive {
+          height: auto !important;
+          max-width: 100% !important;
+          width: auto !important;
+        }
+
+        .action__link--primary,
+        .action__link--secondary {
+          border-width: 10px 0px !important;
+        }
+      }
+
+      /* Action buttons */
+      .action__link {
+        display: inline-block;
+        text-decoration: none !important;
+        text-align: center;
+        border-radius: 3px;
+        -webkit-text-size-adjust: none;
+        color: white !important;
+        font-size: 16px;
+      }
+      /* Update your brand colors here */
+      .action__link--primary {
+        background-color: <%= theme[:primary] %>;
+        border-top: 10px solid  <%= theme[:primary] %>;
+        border-right: 18px solid <%= theme[:primary] %>;
+        border-bottom: 10px solid <%= theme[:primary] %>;
+        border-left: 18px solid <%= theme[:primary] %>;
+      }
+
+      .action__link--secondary {
+        color: white;
+        background-color: <%= theme[:secondary] %>;
+        border-top: 10px solid <%= theme[:secondary] %>;
+        border-right: 18px solid <%= theme[:secondary] %>;
+        border-bottom: 10px solid <%= theme[:secondary] %>;
+        border-left: 18px solid <%= theme[:secondary] %>;
+      }
+
+      .action {
+        width: 100%;
+        padding: 0 0 5px 0 !important;
+        text-align: center;
+      }
+
+      .action__link--expanded {
+        width: 100%;
+      }
+
+      .action td {
+        padding: 0 !important;
+        border: none;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .action a {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <table border="0" cellpadding="0" cellspacing="0" class="body">
+    <tr>
+      <td class="container">
+        <div class="content">
+          <table class="main" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <table border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="wrapper">
+                      <table align="<%= theme[:align_logo] ||= "left" %>">
+                        <tr>
+                          <td align="<%= theme[:align_logo] ||= "left" %>">
+                            <%= spacer(12) %>
+                            <%= link_to root_url, class: "logo", target: :_blank do %>
+                              <%= image_tag Railsui.theme_logo_url, style: "width: 40px; max-width: 40px; height: auto; display: inline; text-align: center;", alt: "#{Railsui.config.application_name} logo" %>
+                            <% end %>
+                            <%= spacer(24) %>
+                          </td>
+                        </tr>
+                      </table>
+                      <%= yield %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <%= spacer(8) %>
+          <table class="footer" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                Please contact <%= mail_to Railsui.config.support_email, Railsui.config.support_email, subject: "Help", body: "I need help...", style: "text-decoration: underline;" %> if you have any questions.
+              </td>
+            </tr>
+          </table>
+        </div>
+        <table class="social-links" align="center" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="center">
+              <%= link_to "https://twitter.com/" do %>
+                <%= image_tag "social/twitter.png", width: 24, height: 24, alt: "Twitter logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://facebook.com/" do %>
+                <%= image_tag "social/facebook.png", width: 24, height: 24, alt: "Facebook logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://linkedin.com/" do %>
+                <%= image_tag "social/linkedin.png", width: 24, height: 24, alt: "LinkedIn logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://instagram.com/" do %>
+                <%= image_tag "social/instagram.png", width: 24, height: 24, alt: "Instagram logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://youtube.com/" do %>
+                <%= image_tag "social/youtube.png", width: 24, height: 24, alt: "YouTube logo" %>
+              <% end %>
+            </td>
+            <td align="center">
+              <%= link_to "https://github.com/" do %>
+                <%= image_tag "social/github.png", width: 24, height: 24, alt: "Github logo" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</body>
+</html>

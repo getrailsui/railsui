@@ -1,0 +1,55 @@
+<div class="mb-16 mt-6">
+  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Validation" %>
+
+  <div class="prose dark:!prose-invert mb-6">
+    <p>Extend form errors to leverage Rails UI + Tailwind CSS. This design and default logic resides inside your <code>app/views/shared/</code> folder and is called <code>_error_messages.html.erb</code></p>
+  </div>
+
+<%= render preview do %>
+<form action="#">
+  <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
+    <p class="font-semibold font-heading">3 errors prohibited this post from being saved:</p>
+    <ul class="list-disc mt-3 ml-4">
+      <li>Title can't be blank</li>
+      <li>Body can't be blank</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="validation_1" class="form-label">Example field</label>
+    <input type="text" class="form-input form-input-error" id="validation_1" placeholder="Example field">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/shared/error_messages.html.erb -->
+
+<%% if resource.errors.any? %>
+<div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
+  <p class="font-semibold font-heading"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+  <ul class="list-disc mt-3 ml-4">
+    <%% resource.errors.each do |error| %>
+      <li><%%= error.full_message %></li>
+    <%% end %>
+  </ul>
+</div>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/shared/error_messages.html.erb
+- if resource.errors.any?
+  .text-primary-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-primary-50.text-sm(class="bg-primary-50/50 dark:bg-primary-400/10 dark:border-primary-400/20" role="alert")
+    %p.font-semibold.font-heading
+      = pluralize(resource.errors.count, "error")
+      prohibited this post from being saved:
+    %ul.list-disc.mt-3.ml-4
+      - resource.errors.each do |error|
+        %li= error.full_message
+<% end %>
+<%= render_snippet active_tab: "erb" %>
+</div>
+
+<%= system_pagination(prev_path: systems_forms_action_text_path, prev_text: "ActionText", next_path: systems_components_path, next_text: "Components") %>

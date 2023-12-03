@@ -43,13 +43,9 @@ module Railsui
 
     def theme_preview_link(theme)
       case theme
-      when Railsui::Default::THEMES[:bootstrap][:retriever]
-        Railsui::Default::THEME_PREVIEW_LINK[:retriever]
-      when Railsui::Default::THEMES[:bootstrap][:setter]
-        Railsui::Default::THEME_PREVIEW_LINK[:setter]
-      when Railsui::Default::THEMES[:tailwind][:hound]
+      when Railsui::Default::THEMES[:hound]
         Railsui::Default::THEME_PREVIEW_LINK[:hound]
-      when Railsui::Default::THEMES[:tailwind][:shepherd]
+      when Railsui::Default::THEMES[:shepherd]
         Railsui::Default::THEME_PREVIEW_LINK[:shepherd]
       else
         nil
@@ -57,7 +53,7 @@ module Railsui
     end
 
     def code(code)
-      content_tag :span, html_escape(code), class: "text-indigo-900 font-mono font-semibold text-[15px] dark:text-rose-400 bg-indigo-50/50 p-px dark:bg-transparent rounded whitespace-pre"
+      content_tag :span, html_escape(code), class: "text-neutral-900 font-mono font-semibold text-[15px] dark:text-rose-400 bg-neutral-100 px-1 py-px dark:bg-transparent rounded whitespace-pre"
     end
 
     def render_snippet(options={})
@@ -79,12 +75,12 @@ module Railsui
       }
     end
 
-    def framework_name
-      Railsui.config.css_framework
-    end
-
     def theme_name
       Railsui.config.theme
+    end
+
+    def theme_key
+      theme_name.to_sym
     end
 
     def heading(options={})
@@ -117,17 +113,9 @@ module Railsui
     end
 
     def help_text &block
-      content_tag :div, class: "prose prose-sm prose-p:text-slate-600 prose-a:text-indigo-500 dark:prose-invert max-w-full my-2 dark:prose-p:text-slate-400 dark:prose-a:text-indigo-400" do
+      content_tag :div, class: "prose prose-sm prose-neutral dark:prose-invert max-w-full" do
         yield
       end
-    end
-
-    def unsplash_url(options={})
-      item = options[:item] ||= "dog"
-      width = options[:width] ||= "600"
-      height = options[:height] ||= "400"
-      orientation = options[:orientation] ||= "landscape"
-      "https://source.unsplash.com/random/#{width}x#{height}/?#{item}&orientation#{orientation}"
     end
 
     def doc_label(type)
@@ -150,11 +138,16 @@ module Railsui
     end
 
     def preview(variant = nil)
-      if variant == "base"
+      case variant
+      when "base"
         "railsui/shared/preview"
-      elsif variant == "gray"
+      when "zinc"
+        "railsui/shared/preview_zinc"
+      when "dark_zinc"
+        "railsui/shared/preview_dark_zinc"
+      when "gray"
         "railsui/shared/preview_gray"
-      elsif variant == "dark"
+      when "dark"
         "railsui/shared/preview_dark"
       else
         "railsui/shared/preview"
@@ -165,14 +158,6 @@ module Railsui
       content_tag :li do
         link_to title.capitalize, "##{component.parameterize}-#{title.parameterize}", class: "text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700/80 transition ease-in-out duration-200", data: { action: "click->smooth#scroll" }
       end
-    end
-
-    def tailwind?
-      Railsui.config.css_framework == Railsui::Default::TAILWIND_CSS
-    end
-
-    def bootstrap?
-      Railsui.config.css_framework == Railsui::Default::BOOTSTRAP
     end
 
     def route_verb_classes(verb)
@@ -193,7 +178,7 @@ module Railsui
     end
 
     def unavailable_theme?(theme)
-      theme.last == "Setter" || theme.last == "Shepherd"
+      theme[:name] == "Shepherd"
     end
 
     def tag_label(tag)
@@ -207,6 +192,10 @@ module Railsui
       else
         content_tag :div, tag.humanize, class: "#{base_classes} bg-slate-50 text-slate-500 dark:bg-slate-500/40 dark:text-slate-200"
       end
+    end
+
+    def theme_colors(group,val)
+      Railsui::Default::THEME_COLORS[Railsui.config.theme.to_sym][group][val]
     end
   end
 end

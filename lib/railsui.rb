@@ -4,6 +4,7 @@ require "railsui/engine"
 module Railsui
   autoload :Configuration, "railsui/configuration"
   autoload :Pages, "railsui/pages"
+  autoload :Colors, "railsui/colors"
 
   mattr_accessor :config
   @@config = {}
@@ -25,7 +26,7 @@ module Railsui
   end
 
   def self.theme_logo_url
-    "https://f001.backblazeb2.com/file/railsui/themes/#{self.config.theme.parameterize}/logo.svg"
+    "https://f001.backblazeb2.com/file/railsui/themes/#{self.theme}/logo.svg"
   end
 
   def self.asset_url
@@ -34,22 +35,6 @@ module Railsui
 
   def self.parameterized_app_name
     Railsui.config.application_name.parameterize(separator:"")
-  end
-
-  def self.tailwind?
-    Railsui.config.css_framework == Railsui::Default::TAILWIND_CSS
-  end
-
-  def self.bootstrap?
-    Railsui.config.css_framework == Railsui::Default::BOOTSTRAP
-  end
-
-  def self.no_framework_set?
-    self.config.css_framework == "" # not yet configured
-  end
-
-  def self.framework?
-    Railsui.config.css_framework.present?
   end
 
   def self.theme

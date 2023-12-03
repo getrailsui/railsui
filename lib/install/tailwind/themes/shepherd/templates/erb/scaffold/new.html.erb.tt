@@ -1,0 +1,22 @@
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="mb-4 pb-6 border-b">
+    <nav aria-label="breadcrumb" class="my-6 font-heading flex text-zinc-500 dark:text-zinc-200 text-sm">
+      <ol class="flex flex-wrap items-center space-x-3 list-none m-0 p-0">
+        <li>
+          <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "hover:underline text-primary-600 dark:text-primary-500" %>
+        </li>
+        <li class="flex space-x-3">
+          <div class="flex items-center">
+            <span class="text-zinc-300 dark:text-zinc-500">/</span>
+          </div>
+          <span class="text-zinc-600 dark:text-zinc-100" aria-current="page">New</span>
+        </li>
+      </ol>
+    </nav>
+    <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">New <%= singular_table_name.titleize %></h1>
+  </div>
+
+  <div>
+    <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/datalists" %>
+
+<%= render "#{path}/property_list" %>
+<%= render "#{path}/booking_list" %>
+
+
+<%= system_pagination(prev_path: systems_components_cards_path, prev_text: "Cards", next_path: systems_components_dropdowns_path, next_text: "Dropdowns") %>

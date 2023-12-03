@@ -1,0 +1,24 @@
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="pb-6 border-b dark:border-zinc-700 border-zinc-200">
+    <nav aria-label="breadcrumb" class="my-6 font-heading flex text-zinc-500 dark:text-zinc-200 text-sm">
+      <ol class="flex flex-wrap items-center space-x-3 list-none m-0 p-0">
+        <li>
+          <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "hover:underline text-primary-600 dark:text-primary-500" %>
+        </li>
+        <li class="flex space-x-3">
+          <div class="flex items-center">
+            <span class="text-zinc-300 dark:text-zinc-500">/</span>
+          </div>
+          <span class="text-zinc-600 dark:text-zinc-100" aria-current="page">
+            #<%%= @<%= singular_table_name %>.id %>
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <div class="flex items-center justify-between">
+      <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight flex-1"><%= singular_table_name %> #<%%= @<%= singular_table_name %>.id %></h1>
+      <%%= link_to "Edit", edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-white" %>
+    </div>
+  </div>
+  <%%= render @<%= singular_table_name %> %>
+</div>

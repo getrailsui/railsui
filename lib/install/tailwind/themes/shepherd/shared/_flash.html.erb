@@ -1,0 +1,11 @@
+<% if notice %>
+  <div class="bg-secondary-600 text-white text-center p-4" role="alert">
+    <p><%= sanitize notice %></p>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="bg-primary-600 text-white text-center p-4" role="alert">
+    <p><%= sanitize alert %></p>
+  </div>
+<% end %>

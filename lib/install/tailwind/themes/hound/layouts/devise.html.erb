@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= Railsui.config.application_name || "Rails UI " %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css", "data-turbo-track": "reload" %>
+
+    <%= render "shared/fonts" %>
+    <%= render "shared/meta" %>
+    <%= custom_colors_css %>
+    <%= yield :head %>
+  </head>
+
+  <body class="rui">
+    <%= render "shared/flash" %>
+    <%= yield %>
+    <%= railsui_launcher if Rails.env.development? %>
+  </body>
+</html>

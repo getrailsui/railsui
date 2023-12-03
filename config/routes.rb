@@ -50,6 +50,7 @@ Railsui::Engine.routes.draw do
       get :breadcrumbs
       get :buttons
       get :cards
+      get :datalists
       get :dropdowns
       get :flash
       get :modals

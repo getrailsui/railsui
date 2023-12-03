@@ -1,0 +1,308 @@
+<%% content_for :header do %>
+  <div class="absolute bg-gradient-to-br from-primary-500/20 to-secondary-500/20 via-violet/50 blur-3xl w-full h-[500px] z-0 opacity-40"></div>
+
+  <div class="bg-cover h-auto z-40 relative">
+    <header class="py-4 container mx-auto px-4 text-[15px] lg:flex items-center justify-between" data-controller="dropdown">
+      <div class="lg:w-auto w-full flex items-center justify-between lg:space-x-3">
+        <%%= link_to (defined?(root_path) ? root_path : "#"), class: "group" do %>
+          <svg
+            class="group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 text-zinc-900 fill-current w-10 h-10 dark:text-zinc-100"
+            width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M6 49C2.68629 49 4.04954e-06 46.3137 4.33923e-06 43L7.57388e-06 6C7.86357e-06 2.68629 2.6863 -2.34175e-07 6.00001 5.55182e-08L43 3.29016e-06C46.3137 3.57985e-06 49 2.68629 49 6L49 43C49 46.3137 46.3137 49 43 49L6 49ZM27.0487 7.19884C26.7537 7.15423 26.5152 7.4441 26.5152 7.74239L26.5152 14.1001C26.5152 17.1779 29.847 19.1015 32.5124 17.5626C33.4762 17.0062 34.7087 17.3364 35.2652 18.3002C35.8216 19.2641 35.4914 20.4965 34.5276 21.053C31.8332 22.6085 31.8332 26.4974 34.5276 28.053C35.4914 28.6095 35.8216 29.8419 35.2652 30.8057C34.7087 31.7696 33.4762 32.0998 32.5124 31.5433C29.847 30.0044 26.5151 31.9281 26.5151 35.0059L26.5151 36.5643C26.5151 39.5009 29.1413 41.8187 31.8044 40.5812C37.8253 37.7836 42 31.6824 42 24.6061C42 15.7849 35.5127 8.4789 27.0487 7.19884ZM6.78789 24.6061C6.78789 15.7175 13.3747 8.3674 21.9335 7.17056C22.2405 7.12763 22.4848 7.43239 22.4848 7.74239L22.4848 14.218C22.4848 17.2767 19.1737 19.1884 16.5247 17.6591C15.5609 17.1026 14.3284 17.4328 13.772 18.3967C13.2155 19.3605 13.5457 20.5929 14.5096 21.1494C17.1297 22.6621 17.1297 26.4439 14.5096 27.9566C13.5457 28.513 13.2155 29.7455 13.772 30.7093C14.3284 31.6732 15.5609 32.0034 16.5247 31.4469C19.1737 29.9175 22.4848 31.8293 22.4848 34.888L22.4848 36.5904C22.4848 39.5379 19.8674 41.8799 17.1792 40.6708C11.0533 37.9153 6.78789 31.7588 6.78789 24.6061Z" />
+          </svg>
+        <%% end %>
+
+        <button class="lg:hidden block btn btn-white hover:bg-white px-3 dark:hover:bg-zinc-800" role="Mobile navigation toggle" data-action="click->dropdown#toggle click@window->dropdown#hide">
+          <%%= icon "bars-3-center-left", classes: "stroke-current w-8 h-8 text-zinc-600 group-focus:text-primary-500 dark:text-zinc-200" %>
+        </button>
+      </div>
+      <div class="lg:flex hidden justify-between w-full" data-dropdown-target="menu"
+        data-transition-enter-active="transition ease-out duration-100"
+        data-transition-enter-from="transform opacity-0 scale-95" data-transition-enter-to="transform opacity-100 scale-100"
+        data-transition-leave-active="transition ease-in duration-100"
+        data-transition-leave-from="transform opacity-100 scale-100"
+        data-transition-leave-to="transform opacity-0 scale-95">
+        <nav class="flex-1" role="Primary navigation">
+          <ul
+            class="lg:flex items-center lg:space-x-3 lg:pl-8 lg:mt-0 mt-4 font-heading text-zinc-800 lg:text-[15px] text-lg">
+            <li>
+              <%%= nav_link_to "Features", "#", inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
+            </li>
+            <li>
+              <%%= nav_link_to "Testimonials", "#", inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
+            </li>
+            <li>
+              <%%= nav_link_to "Pricing", (defined?(pricing_path) ? pricing_path : "#"), inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
+            </li>
+            <li>
+              <%%= nav_link_to "About", (defined?(about_path) ? about_path : "#"), inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
+            </li>
+          </ul>
+        </nav>
+
+        <nav>
+          <ul
+            class="flex lg:justify-start justify-between items-center space-x-3 lg:pt-0 pt-6 border-t lg:border-t-0 lg:mt-0 mt-6 text-zinc-700 dark:border-zinc-600/80">
+            <li class="lg:w-auto w-1/2">
+              <%%= link_to "Sign in", new_user_session_path, class: "lg:px-3 lg:py-2 py-[8px] lg:inline-block block hover:bg-opacity-50 hover:text-primary-500 focus:ring-4 focus:ring-zinc-50 lg:w-auto w-full text-center lg:border-0 border lg:rounded-none rounded-full font-heading dark:text-zinc-100 dark:focus:ring-zinc-800" %>
+            </li>
+            <li class="lg:w-auto w-1/2">
+              <%%= link_to "Get started", new_user_registration_path, class: "btn btn-primary lg:w-auto w-full flex justify-center" %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-4 lg:py-24 py-14">
+      <h1 class="md:text-5xl text-3xl tracking-tighter font-semibold font-heading text-zinc-900 dark:text-white text-center"> We leverage AI to make real estate <br class="lg:block hidden" /> investors more income</h1>
+      <div class="prose prose-lg prose-zinc text-center mx-auto my-6 dark:prose-invert">
+        <p>With vacation rentals money is left on the table if you don't optimize. <br class="lg:block hidden" /> Our solutions and products give investors more say in what they earn.</p>
+      </div>
+
+      <div class="lg:flex justify-center items-center mt-6 lg:space-x-4 lg:space-y-0 space-y-4">
+
+        <%%= link_to "Learn more", "#", class: "btn btn-primary lg:w-auto w-full text-center" %>
+
+        <%%= link_to "#", class: "btn btn-white flex items-center lg:w-auto w-full justify-center" do %>
+          <span>Join our team</span>
+          <%%= icon "user-plus", classes: "ml-2 stroke-current text-zinc-600 w-4 h-4 dark:text-zinc-300" %>
+        <%% end %>
+      </div>
+    </div>
+    <div class="container mx-auto px-4">
+      <%%= image_tag "hero-image.jpg", alt: "Hero image of cabin in snow", class: "animate-fadeIn" %>
+    </div>
+  </div>
+<%% end %>
+
+<div class="overflow-x-hidden">
+  <div class="relative lg:mt-6 mt-10 lg:pt-10 container mx-auto">
+    <svg class="lg:block hidden" width="1369" height="202" viewBox="0 0 1369 202" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.5">
+        <path opacity="0.25"
+          d="M-49.5166 62.5836C18.8101 35.5836 226.389 2.68356 510.092 87.0836C864.72 192.584 1069.7 231.084 1367.74 174.584"
+          stroke="#1C94D9" stroke-width="2" stroke-linecap="round" />
+        <path
+          d="M-130 30.5836C-61.6733 3.58358 145.906 -29.3164 429.608 55.0836C784.236 160.584 989.216 199.084 1287.25 142.584"
+          stroke="#F2F6F7" stroke-width="2" stroke-linecap="round" />
+      </g>
+    </svg>
+
+    <div class="container mx-auto px-4 lg:absolute top-0 right-0 lg:flex items-start lg:justify-end justify-start lg:space-x-24 lg:pt-16 lg:pr-16 lg:space-y-0 space-y-6">
+      <div class="flex items-center space-x-4">
+        <%%= image_tag "jackie-jones.png", alt: "Jackie Jones", class: "lg:w-24 w-16 h-16 lg:h-24 rounded-full" %>
+        <div>
+          <p class="text-zinc-800 dark:text-zinc-200 font-semibold">Jackie Jones</p>
+          <p class="dark:text-zinc-400">Co-founder</p>
+        </div>
+        <div class="flex-1 h-px bg-secondary-50 lg:hidden block"></div>
+      </div>
+      <div class="flex items-center space-x-4 lg:pt-8 justify-end">
+        <div class="flex-1 w-24 h-px bg-zinc-200 lg:hidden block"></div>
+        <%%= image_tag "jake-jones.png", alt: "Jake Jones", class: "lg:w-24 lg:h-24 w-16 h-16 rounded-full" %>
+        <div>
+          <p class="text-zinc-800 dark:text-zinc-200 font-semibold">Jake Jones</p>
+          <p class="dark:text-zinc-400">Co-founder</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 xl:-mt-20 mt-10 pb-16">
+    <h2 class="font-heading tracking-tight lg:text-5xl text-4xl mb-3 relative z-10 dark:text-white font-semibold">Born out of the travel industry</h2>
+    <p class="text-primary-500 text-lg">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-10 gap-6 lg:mt-10 mt-6">
+      <div class="prose prose-zinc dark:prose-invert">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+
+        <p> Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+
+        <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+      </div>
+      <div class="prose prose-zinc dark:prose-invert">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consecteturet.</p>
+
+        <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+      </div>
+
+      <div class="prose prose-zinc dark:prose-invert">
+        <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-zinc-50 lg:py-24 py-16 relative dark:bg-zinc-900">
+    <div class="absolute top-0 left-0 bottom-0 right-0 h-full w-full grid grid-flow-col auto-cols-fr z-0">
+      <div class="border-r border-dashed border-zinc-200 dark:border-zinc-800 h-full"></div>
+      <div class="border-r border-dashed border-zinc-200 dark:border-zinc-800 h-full"></div>
+      <div class="border-r border-dashed border-zinc-200 dark:border-zinc-800 h-full"></div>
+      <div class="border-r border-dashed border-zinc-200 dark:border-zinc-800 h-full"></div>
+      <div class="border-r border-dashed border-zinc-200 dark:border-zinc-800 h-full"></div>
+      <div class="border-r border-dashed border-zinc-200 dark:border-zinc-800 h-full"></div>
+    </div>
+    <div class="container mx-auto px-4 grid lg:grid-cols-12 grid-cols-1 gap-6 relative z-50 items-center">
+      <div class="lg:col-span-5 flex flex-col h-full lg:pt-16">
+        <div class="flex-1">
+          <h2 class="font-heading tracking-tight lg:text-5xl text-4xl mb-3 dark:text-white font-semibold">Trusted by over 200,000 real estate investors</h2>
+          <div class="prose prose-zinc dark:prose-invert">
+            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+          <div class="grid grid-cols-3 gap-6 mt-6">
+            <div>
+              <h4 class="font-bold font-heading text-4xl text-primary-500 tracking-tighter">98%
+              </h4>
+              <p class="font-normal text-base text-zinc-700 block dark:text-zinc-300">Uptime</p>
+            </div>
+            <div>
+              <h4 class="font-bold font-heading text-4xl text-primary-500 tracking-tighter">94.7%
+              </h4>
+              <p class="font-normal text-base text-zinc-700 block dark:text-zinc-300">Accuracy</p>
+            </div>
+            <div>
+              <h4 class="font-bold font-heading text-4xl text-primary-500">9%
+              </h4>
+              <p class="font-normal text-base text-zinc-700 block dark:text-zinc-300">Returns*</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-zinc-400 mt-6">*Based on an average annual return in the past 5 years</p>
+      </div>
+      <div class="lg:col-span-7 lg:flex lg:justify-end">
+        <%%= image_tag "trusted-by.jpg", alt: "Man at desk looking at laptop display", class: "rounded shadow-lg inline text-right lg:max-w-2xl" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-zinc-900 lg:py-24 py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="font-semibold font-heading lg:text-4xl text-3xl text-primary-500">Determined to help investors become financially free</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-8">
+        <div class="prose text-white dark:prose-invert">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget
+            urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consecteturet.</p>
+
+          <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+          </p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laborum? Alias optio quo saepe dolorem sit. Nostrum consequatur ipsa, fugit, eos inventore officiis ea vero, aperiam recusandae debitis amet dolorum.</p>
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente vero, sit eum voluptate cumque obcaecati sed fugiat, quo similique eos adipisci consequuntur non asperiores veritatis laborum sunt fuga ullam nemo.</p>
+        </div>
+        <div class="prose text-white dark:prose-invert">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget
+            urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+          <h4 class="font-heading text-2xl text-zinc-200">Duis mollis, est non commodo luctus, nisi erat</h4>
+          <p>
+            Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+          </p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nihil deserunt aliquid accusantium, delectus facere doloremque impedit quam maiores corporis commodi, nemo omnis officiis tempore perspiciati maxime tenetur velit beatae.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="flex items-end justify-between flex-wrap mb-10">
+      <div>
+        <h2 class="font-semibold tracking-tight font-heading text-4xl dark:text-white">The team</h2>
+        <p class="text-primary-500">We are small, yet mighty</p>
+      </div>
+      <div class="lg:mt-0 mt-4">
+        <p class="text-zinc-700 dark:text-zinc-200">Looking for a job? <a href="#" class="text-primary-500 font-semibold">See our openings</a>
+        </p>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-5 grid-cols-2 gap-8">
+      <div class="relative">
+        <%%= image_tag "jake.jpg", alt: "Jake Jones", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Jake Jones</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Co-founder</p>
+      </div>
+      <div>
+        <%%= image_tag "jackie.jpg", alt: "Jackie Jones", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Jackie Jones</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Co-founder</p>
+      </div>
+      <div>
+        <%%= image_tag "ryan.jpg", alt: "Ryan Coover", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Ryan Coover</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Product Lead</p>
+      </div>
+      <div>
+        <%%= image_tag "aimee.jpg", alt: "Aimee Sandeep", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Aimee Sandeep</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Product Engineering Lead</p>
+      </div>
+      <div>
+        <%%= image_tag "ross.jpg", alt: "Ross White", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Ross White</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Product Designer</p>
+      </div>
+      <div>
+        <%%= image_tag "trevor.jpg", alt: "Trevor Sands", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Trevor Sands</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Engineering</p>
+      </div>
+      <div>
+        <%%= image_tag "harman.jpg", alt: "Harman Styth", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Harman Styth</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Engineering</p>
+      </div>
+      <div>
+        <%%= image_tag "frankie.jpg", alt: "Frankie Desco", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Frankie Desco</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Data Analysis</p>
+      </div>
+      <div>
+        <%%= image_tag "janel.jpg", alt: "Janel Smith", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Janel Smith</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Sales</p>
+      </div>
+      <div>
+        <%%= image_tag "janae.jpg", alt: "Janae Bass", class: "rounded-lg shadow hover:grayscale transition duration-200" %>
+        <h4 class="font-medium mt-4 dark:text-rose-500">Janae Bass</h4>
+        <p class="text-zinc-700 dark:text-zinc-300">Customer Service</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-zinc-100 lg:py-36 py-12 lg:mt-32 dark:bg-zinc-900">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 relative">
+      <div class="col-span-2 lg:pr-10 lg:order-1 order-2">
+        <svg class="stroke-current text-primary-500 w-7 h-auto" width="34" height="34" viewBox="0 0 34 34" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2 6.2069C2 5.09116 2.44323 4.02112 3.23217 3.23217C4.02112 2.44323 5.09116 2 6.2069 2H19.8793C20.995 2 22.0651 2.44323 22.854 3.23217C23.643 4.02112 24.0862 5.09116 24.0862 6.2069V28.2931C24.0862 29.4088 23.643 30.4789 22.854 31.2678C22.0651 32.0568 20.995 32.5 19.8793 32.5H6.2069C5.09116 32.5 4.02112 32.0568 3.23217 31.2678C2.44323 30.4789 2 29.4088 2 28.2931V6.2069Z"
+            stroke="#F43F5E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M13.5688 27.2415H12.5171" stroke="#F43F5E" stroke-width="3" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M31.4482 21.9829C31.4482 21.9829 32.5 20.0771 32.5 17.2501C32.5 14.4231 31.4482 12.5173 31.4482 12.5173"
+            stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+        <h3 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight mt-6">Want to read more about what <br class="lg:block hidden" /> we're up to every week?</h3>
+        <div class="prose prose-zinc dark:prose-invert mt-4">
+          <p>Dive into our weekly newsletter for exclusive insights on the latest in real estate, AI-driven investments, and Shepherd's innovative solutions.</p>
+        </div>
+
+        <form action="#" class="relative mt-6 flex items-center">
+          <input type="text" class="form-input w-full py-3" placeholder="Enter email address">
+          <button class="btn btn-primary border-primary-600 border py-[8px] absolute right-1.5 inset-y-auto">Subscribe</button>
+        </form>
+      </div>
+      <div class="lg:absolute right-0 lg:-top-48 lg:order-2 order-1">
+        <%%= image_tag "read-more-photo.png", alt: "Read more", class: "lg:max-w-2xl max-w-full h-auto" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-10">
+    <%%= render "shared/footer" %>
+  </div>
+</div>

@@ -2,6 +2,8 @@ require_dependency "railsui/application_controller"
 
 module Railsui
   class SystemsController < ApplicationController
+    before_action :ensure_theme_installed
+
     def show
     end
 
@@ -31,5 +33,11 @@ module Railsui
       end
 
     end
+
+    private
+
+      def ensure_theme_installed
+        redirect_to root_path if Railsui.config.theme == nil
+      end
   end
 end

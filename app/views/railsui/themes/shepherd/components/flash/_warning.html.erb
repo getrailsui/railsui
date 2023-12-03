@@ -1,0 +1,29 @@
+<div class="my-16">
+  <%= render "railsui/shared/sticky_subhead", title: "Flash messages", subtitle: "Warning or Alert" %>
+
+<div class="bg-primary-500 text-white text-center p-4" role="alert">
+  <p>A message commonly displayed at the top of the viewport on <a class="font-bold underline" href="https://rubyonrails.org">Rails</a> apps when an error or exception occurs.</p>
+</div>
+
+<% content_for :html, flush: true do %>
+<div class="bg-primary-500 text-white text-center p-4" role="alert">
+  <p>A message commonly displayed at the top of the viewport on <a class="font-bold underline" href="https://rubyonrails.org" class="font-bold underline">Rails</a> apps when an error or exception occurs.</p>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%% if notice %>
+<div class="bg-primary-500 text-white text-center p-4" role="alert">
+  <p><%%= sanitize notice %></p>
+</div>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+- if notice
+  .bg-primary-500.text-white.text-center.p-4{:role => "alert"}
+    %p= sanitize notice
+<% end %>
+
+  <%= render_snippet %>
+</div>
