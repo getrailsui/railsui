@@ -23,7 +23,7 @@ With Rails UI, you can easily bring professional-grade design to your Ruby on Ra
 > [!IMPORTANT]
 > Rails UI is for fresh Rails installs. Adding it to your existing app _could_ work but we assume a blank slate.
 
-At this time Rails UI does not support installation alongside something like Jumpstart Pro or Bulletrain which serve their own front-ends.
+At this time Rails UI does not support installation alongside something like Jumpstart Pro or Bulletrain, which serve their own front-ends.
 
 #### Create a new vanilla app
 
@@ -78,13 +78,13 @@ Because we take a theme-first approach to design with Rails UI, you can install 
 
 After you configure Rails UI, you can preview the design system. There you will find a collection of components and best practices for real-world usage of your Rails UI theme.
 
-Use this as a guide to add a new design to your application, but please don't take it as gosple.
+Use this as a guide to add a new design to your application, but please don't take it as gospel.
 
 Design is less rigid than programming and often needs a little tweaking as you go. My goal is to give you a hell of a good head start.
 
 ## Updates
 
-While in alpha you can run `bundle update railsui` from within your project and it should fetch the most recent version of the gem/engine direct from GitHub. I'll be tagging major releases once features are more solidified.
+While in alpha you can run `bundle update railsui` from within your project and it should fetch the most recent version of the gem/engine directly from GitHub. I'll be tagging major releases once features are more solidified.
 
 ## Frequently Asked Questions
 
@@ -161,7 +161,7 @@ While there are many JavaScript solutions out there, the default with Rails is [
 
 #### Custom scaffolds and generators
 
-Rails UI installs a custom template engine configured when installed. The engine hooks into the Rails generator logic and spits out themed scaffold templates when you generate a new resource. We found this saves loads of time that you can put better use elsewhere.
+Rails UI installs a custom template engine configured when installed. The engine hooks into the Rails generator logic and spits out themed scaffold templates when you generate a new resource. We found this saves loads of time that you can put to better use elsewhere.
 
 #### Custom mailer layout and mailer helpers
 
@@ -207,15 +207,15 @@ We're just hitting ground with Rails UI so expect to see additional components a
 
 While we are kicking the tires with an alpha version of Rails UI it is free and clear to try out but not redistribute.
 
-Our _evenutal_ license model will be a non-exclusive one in which essentially means you don't have permission to modify or share Rails UI as your own product but you can use it freely in your projects.
+Our _eventual_ license model will be a non-exclusive one, which essentially means you don't have permission to modify or share Rails UI as your own product but you can use it freely in your projects.
 
-Eventually, when the official premium version drops there will be a private space to access ongoing updates via git. New themes and more will be a part of that in an ongoing fashion.
+Eventually, when the official premium version drops, there will be a private space to access ongoing updates via git. New themes and more will be a part of that in an ongoing fashion.
 
 </details>
 
 ## Updates
 
-Rails UI ships as a gem. Future releases are available to clone/pull from a private git-hosted group of which you will have access if you purchase the premium version.
+Rails UI ships as a gem. Future releases are available to clone/pull from a private git-hosted group to which you will have access if you purchase the premium version.
 
 ## Become an early supporter ❤️
 
