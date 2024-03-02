@@ -1,7 +1,7 @@
-<div class="mb-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Index" %>
+<div id="scaffolds-index">
+<%= render layout: example, locals: { heading: "Index", section: "Scaffolds" } do %>
 
-<%= render preview do %>
+<%= render preview('gray') do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
   <div class="flex items-center justify-between pb-6 border-b dark:border-slate-700">
     <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Posts</h1>
@@ -62,7 +62,7 @@
 </div>
 <% end %>
 
-
+<% content_for :example, flush: true do %>
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
@@ -103,4 +103,6 @@
 
 <% end %>
 <%= render_snippet active_tab: "erb", erb_filename: "index.html.erb", haml_filename: "index.haml.erb" %>
+<% end %>
+<% end %>
 </div>

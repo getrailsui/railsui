@@ -1,9 +1,8 @@
-<div class="pr-4 pl-5 py-5 rounded-lg bg-white dark:bg-indigo-500/75 flex items-center select-none text-neutral-900 dark:text-white border border-neutral-300/80 shadow-sm dark:border-slate-600/80">
-    <div class="w-10 h-10 rounded-full flex items-center justify-center bg-indigo-500/10 dark:bg-indigo-400/90 flex-shrink-0">
-      <%= icon "light-bulb", classes: "text-indigo-600 dark:text-white relative w-4 h-4 relative", variant: :solid %>
-    </div>
-    <div class="ml-4 prose-sm prose-indigo dark:prose-invert prose-a:font-semibold prose-a:underline prose-code:font-semibold prose-code:text-[15px] prose-p:leading-snug dark:prose-a:text-indigo-300">
-      <%= yield %>
-    </div>
-    <%= %>
+<div class="pl-4 pr-6 py-3.5 flex items-start bg-white border border-neutral-300/70 backdrop-blur-sm gap-4 rounded-lg mb-6 dark:bg-neutral-800/60 dark:border-none">
+  <div class="bg-neutral-950 size-7 rounded-full flex items-center justify-center flex-shrink-0 relative top-0.5 border dark:border-neutral-600 border-white">
+    <%= icon "r.svg", path: "r.svg", classes: "size-3 fill-current text-white" %>
+  </div>
+  <div class="prose prose-neutral dark:prose-invert prose-a:font-semibold prose-a:underline prose-code:font-semibold prose-code:text-[15px] max-w-full">
+    <%= yield %>
+  </div>
 </div>

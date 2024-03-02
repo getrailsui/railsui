@@ -1,0 +1,27 @@
+<h2 class="uppercase tracking-wide text-xs text-slate-800 font-bold dark:text-slate-400">Dependencies</h2>
+
+<p>To add transition effects to components like dropdowns, we prefer an additional dependency called <%= link_to "stimulus-use", "https://stimulus-use.github.io/stimulus-use/", target: :_blank %>.</p>
+
+<p>If for some reason stimulus-use is not installed (check your <code>package.json</code> file.) run the following.</p>
+
+<div class="not-prose mb-6">
+<%= content_for :html, flush: true do %>
+
+<% end %>
+
+<%= content_for :js, flush: true do %>
+
+<% end %>
+
+<%= content_for :bash, flush: true do %>
+yarn add stimulus-use
+<% end %>
+
+<%= render_snippet active_tab: "bash" %>
+
+</div>
+
+
+<%= render callout do %>
+<p class="m-0 ml-2">Stimulus.js and stimulus-use are <strong>already installed</strong> as a dependency of the <%= Railsui::config.theme.titleize %> theme.</p>
+<% end %>

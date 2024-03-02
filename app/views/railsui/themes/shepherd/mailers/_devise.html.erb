@@ -8,14 +8,14 @@
 <% theme_path = "railsui/themes/#{Railsui.config.theme.downcase}/mailers/devise" %>
 
 <div class="mb-16 mt-6">
-  <div class="prose dark:prose-invert mb-10">
-    <p>Devise ships with optional views you can generate on command. Most of these should work out of the box with Rails UI. The generated views in <%= code("app/views/devise/mailer/") %> have the <%= Railsui.config.theme.humanize %> theme applied. Save time without reinventing the wheel!</p>
+  <div class="prose prose-neutral dark:prose-invert mb-10">
+    <p>Devise ships with optional views you can generate on command. Most of these should work out of the box with Rails UI so you needn't generate them yourself. The views in <code>app/views/devise/mailer/</code> have the <%= Railsui.config.theme.humanize %> theme applied.</p>
 
-  <%= render callout do %>
-    <p>When you configured your app, Rails UI generated and copied these mailer templates automatically. There is no need to generate the views.</p>
-  <% end %>
+    <%= render callout do %>
+      <p>When you configured your app Rails UI generated and copied these mailer templates over automatically so there is no need to generate the views.</p>
+    <% end %>
 
-  <h3>Configuration</h3>
+    <h3>Configuration</h3>
 
     <p>Rails UI takes care of the following:</p>
     <ol>
@@ -26,14 +26,28 @@
 
     <p>Depending on your application you can enable different features from Devise so we'll leave the rest up to you to configure.</p>
 
-    <p>Be sure to update your <%= code('config/initializers/devise.rb') %> file to suite your needs.</p>
+    <p>Be sure to update your <code>config/initializers/devise.rb</code> file to suite your needs.</p>
   </div>
 </div>
 
 <%= render "#{theme_path}/confirmation_instructions" %>
+<%= divider %>
 <%= render "#{theme_path}/email_changed" %>
+<%= divider %>
 <%= render "#{theme_path}/password_changed" %>
+<%= divider %>
 <%= render "#{theme_path}/reset_password_instructions" %>
+<%= divider %>
 <%= render "#{theme_path}/unlock_instructions" %>
 
-<%= system_pagination(prev_path: systems_mailers_transactional_path, prev_text: "Transactional", next_path: systems_authentication_overview_path, next_text: "Authentication") %>
+<%= system_pagination(prev_path: systems_mailers_transactional_path, prev_text: "Transactional", next_path: systems_path, next_text: "Design system") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Confirmation instructions", "#devise-confirmation-instructions" %>
+    <%= component_link "Email changed", "#devise-email-changed" %>
+    <%= component_link "Password changed", "#devise-password-changed" %>
+    <%= component_link "Reset password", "#devise-reset-password" %>
+    <%= component_link "Unlock instructions", "#devise-unlock-instructions" %>
+  <% end %>
+<% end %>

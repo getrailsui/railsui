@@ -1,0 +1,9 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/toast" %>
+
+<%= render callout do %>
+  <p>Toasts will require custom JavaScript.</p>
+<% end %>
+
+<%= render "#{path}/base" %>
+
+<%= system_pagination(prev_path: systems_components_tab_path, prev_text: "Tab", next_path: systems_components_tooltip_path, next_text: "Tooltip") %>

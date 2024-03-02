@@ -1,2 +1,6 @@
+<% content_for :header_description do %>
+  <p>Icons in two flavors. Click-to-copy and be on your way.</p>
+<% end %>
+
 <%= render "railsui/shared/header" %>
 <%= render "railsui/themes/#{Railsui.config.theme}/icons", cached: true %>

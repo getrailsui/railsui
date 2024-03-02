@@ -8,13 +8,13 @@
       <ul
         class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#", class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80" do %>
+          <%%= link_to "#", class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80" do %>
             <span>Active</span>
-            <span class="rounded bg-indigo-600 text-white px-1 py-px text-xs font-semibold">228</span>
+            <span class="rounded bg-primary-600 text-white px-1 py-px text-xs font-semibold">228</span>
           <%% end %>
         </li>
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
             <span>Inactive</span>
             <span class="rounded bg-slate-200 text-slate-500 px-1 py-px text-xs font-semibold">5</span>
           <%% end %>
@@ -85,7 +85,7 @@
             role: "Sales Lead",
             report: "Daniel Thompson",
             sales: "$420,500.25",
-            label_class: "before:bg-indigo-500"
+            label_class: "before:bg-primary-500"
           },
           {
             img: { id: "59", variant: "men" },
@@ -135,7 +135,7 @@
             role: "Sales Representative",
             report: "Brian Johnson",
             sales: "$200,000.00",
-            label_class: "before:bg-indigo-500"
+            label_class: "before:bg-primary-500"
           },
           {
             img: { id: "82", variant: "women" },
@@ -162,7 +162,7 @@
               <%% end %>
             <%% end %>
             <div>
-              <%%= link_to person[:name], "#", class: "sm:font-medium text-slate-900 hover:text-indigo-600 sm:text-base text-lg font-semibold dark:text-slate-200" %>
+              <%%= link_to person[:name], "#", class: "sm:font-medium text-slate-900 hover:text-primary-600 sm:text-base text-lg font-semibold dark:text-slate-200" %>
               <p class="text-slate-500 text-sm"><%%= person[:username] %></p>
             </div>
           </div>
@@ -185,8 +185,8 @@
           <div data-controller="dropdown" class="sm:col-span-1 relative col-span-2">
             <div class="flex justify-end">
               <button data-action="click->dropdown#toggle click@window->dropdown#hide"
-                class="-mt-1 block group p-2 rounded-lg focus:ring-4 focus:ring-indigo-50 dark:focus:ring-slate-600/50">
-                  <%%= icon "cog-6-tooth", classes: "w-6 h-6 stroke-current text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                class="-mt-1 block group p-2 rounded-lg focus:ring-4 focus:ring-primary-50 dark:focus:ring-slate-600/50">
+                  <%%= icon "cog-6-tooth", classes: "w-6 h-6 stroke-current text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               </button>
             </div>
             <ul data-dropdown-target="menu"
@@ -198,14 +198,14 @@
               data-transition-leave-from="transform opacity-100 scale-100"
               data-transition-leave-to="transform opacity-0 scale-95">
               <li>
-                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
-                  <%%= icon "pencil-square", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+                  <%%= icon "pencil-square", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                   <span>Edit</span>
                 <%% end %>
               </li>
               <li>
-                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
-                  <%%= icon "paper-airplane", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+                  <%%= icon "paper-airplane", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                   <span>Message</span>
                 <%% end %>
               </li>
@@ -222,7 +222,7 @@
       <ul class="flex flex-wrap items-center justify-start sm:space-x-0 space-x-2">
         <div class="flex items-center justify-center sm:text-sm text-lg">
           <li>
-            <%%= link_to "1", "#", class: "py-2 px-4 border-t-2 block border-indigo-500 hover:bg-indigo-50/50 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-indigo-500/30" %>
+            <%%= link_to "1", "#", class: "py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30" %>
           </li>
           <li>
             <%%= link_to "2", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
@@ -241,9 +241,9 @@
           </li>
         </div>
         <li class="flex sm:justify-end items-center">
-          <%%= link_to "#", class: "flex justify-center items-center sm:space-x-2 py-2 sm:px-4 px-2 rounded hover:bg-slate-50/50 group hover:text-indigo-600 sm:bg-transparent bg-slate-200/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" do %>
+          <%%= link_to "#", class: "flex justify-center items-center sm:space-x-2 py-2 sm:px-4 px-2 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:bg-transparent bg-slate-200/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" do %>
             <span class="sr-only sm:not-sr-only">Next</span>
-            <%%= icon "arrow-small-right", classes: "sm:w-4 w-5 sm:h-4 h-5 text-slate-600 group-hover:text-indigo-500 dark:group-hover:text-slate-200 stroke-current" %>
+            <%%= icon "arrow-small-right", classes: "sm:w-4 w-5 sm:h-4 h-5 text-slate-600 group-hover:text-primary-500 dark:group-hover:text-slate-200 stroke-current" %>
           <%% end %>
         </li>
       </ul>

@@ -22,7 +22,7 @@
             data-transition-leave-from="transform opacity-100 scale-100"
             data-transition-leave-to="transform opacity-0 scale-95"
             class="hidden rounded shadow-xl max-w-2xl h-auto mx-auto bg-white m-4 p-8 dark:bg-slate-700">
-            <div class="prose prose-indigo dark:bg-slate-700 dark:text-slate-200 m-auto">
+            <div class="prose dark:bg-slate-700 dark:text-slate-200 m-auto">
               <h2 id="modal-title" class="dark:text-slate-100">Customize dashboard</h2>
               <p>This could be some sort of widget enabling interface for the dashboard</p>
               <div class="flex justify-end items-center flex-wrap space-x-4">
@@ -39,11 +39,11 @@
     <div
       class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start space-x-3">
-        <div class="rounded-full w-10 h-10 flex items-center justify-center bg-indigo-50 dark:bg-indigo-600/30">
-          <%%= icon "envelope-open", classes: "w-5 h-5 text-indigo-600 stroke-current dark:text-indigo-300" %>
+        <div class="rounded-full w-10 h-10 flex items-center justify-center bg-primary-50 dark:bg-primary-600/30">
+          <%%= icon "envelope-open", classes: "w-5 h-5 text-primary-600 stroke-current dark:text-primary-300" %>
         </div>
         <div class="flex-1">
-          <span class="text-indigo-500 dark:text-indigo-400/90 text-sm font-medium">Open deals</span>
+          <span class="text-primary-500 dark:text-primary-400/90 text-sm font-medium">Open deals</span>
           <div class="flex items-center space-x-2 mt-1 mb-2">
             <h3 class="h2 tracking-tight">32</h3>
             <p class="text-red-600">-2</p>
@@ -150,7 +150,7 @@
       class="lg:col-span-5 md:col-span-6 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between">
         <h4 class="font-medium text-slate-800 dark:text-slate-300 tracking-tight text-xl m-0">New contacts</h4>
-        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
       </div>
 
       <ul class="divide-y mt-6 text-slate-600 dark:text-slate-300 dark:divide-slate-600">
@@ -208,10 +208,10 @@
             </div>
             <div class="flex items-center space-x-2">
               <%%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
-                <%%= icon "envelope", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300" %>
+                <%%= icon "envelope", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
               <%% end %>
               <%%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
-                <%%= icon "phone", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300" %>
+                <%%= icon "phone", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
               <%% end %>
             </div>
           </li>
@@ -224,9 +224,9 @@
       <div class="flex items-center justify-between mb-4">
         <h4 class="text-lg font-medium">Open deals</h4>
         <%% if respond_to?(:admin_projects_path) %>
-          <%%= link_to "View all", admin_projects_path, class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+          <%%= link_to "View all", admin_projects_path, class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
         <%% else %>
-          <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+          <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
         <%% end %>
       </div>
 
@@ -261,7 +261,7 @@
             <div class="md:flex-1 md:block flex justify-between w-full">
               <div class="flex items-center space-x-3">
                 <%%= image_tag demo_avatar_url(id: deal[:img][:id], variant: deal[:img][:variant]), alt: deal[:name], class: "md:w-6 w-8 md:h-6 h-8 rounded-full" %>
-                <p class="font-medium hover:text-indigo-600 flex-1"><%%= deal[:name] %></p>
+                <p class="font-medium hover:text-primary-600 flex-1"><%%= deal[:name] %></p>
               </div>
               <div class="text-left">
                 <span class="<%%= deal[:tag_classes] %>"><%%= deal[:tag] %></span>
@@ -275,7 +275,7 @@
             </div>
             <div
               class="opacity-0 group-hover:opacity-100 transition ease-in-out group-hover:transform group-hover:translate-x-1 md:block hidden">
-              <%%= icon "chevron-right", classes: "w-4 h-4 stroke-current text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-300" %>
+              <%%= icon "chevron-right", classes: "w-4 h-4 stroke-current text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
             </div>
           <%% end %>
         <%% end %>
@@ -285,7 +285,7 @@
       class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between mb-4">
         <h4 class="font-medium text-slate-800 dark:text-slate-300 tracking-tight text-xl m-0">Recent projects</h4>
-        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-indigo-600 text-slate-600 dark:text-slate-400 dark:hover:text-indigo-300" %>
+        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
       </div>
 
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -312,8 +312,8 @@
         }
       ].each do |project| %>
         <li>
-          <%%= link_to (defined?(admin_project_path) ? admin_project_path : "#"), class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-indigo-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
-            <p class="font-medium dark:group-hover:text-indigo-300 group-hover:text-indigo-600 line-clamp-1 mb-2"><%%= project[:title] %></p>
+          <%%= link_to (defined?(admin_project_path) ? admin_project_path : "#"), class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-primary-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
+            <p class="font-medium dark:group-hover:text-primary-300 group-hover:text-primary-600 line-clamp-1 mb-2"><%%= project[:title] %></p>
             <p class="line-clamp-2 text-sm text-slate-500"><%%= project[:description] %></p>
           <%% end %>
         </li>

@@ -1,0 +1,34 @@
+<div id="flash-alert">
+<%= render layout: example, locals: { heading: "Alert", section: "Flash" } do %>
+
+<%= render preview 'zinc' do %>
+<div class="bg-primary-500 text-white text-center p-4" role="alert">
+  <p>A message commonly displayed when an error or exception occurs.</p>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="bg-primary-500 text-white text-center p-4" role="alert">
+  <p>A message commonly displayed when an error or exception occurs.</p>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%% if notice %>
+<div class="bg-primary-500 text-white text-center p-4" role="alert">
+  <p><%%= sanitize notice %></p>
+</div>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+- if notice
+  .bg-primary-500.text-white.text-center.p-4{:role => "alert"}
+    %p= sanitize notice
+<% end %>
+
+  <%= render_snippet %>
+<% end %>
+<% end %>
+</div>

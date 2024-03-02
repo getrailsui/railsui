@@ -11,7 +11,8 @@
     light_text_color: "#94a3b8",
     callout_bg_color: "#e0e7ff",
     callout_border_color: "#a5b4fc",
-    callout_text_color: "#4338ca"
+    callout_text_color: "#4338ca",
+    button_border_radius: "6px"
   }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -267,7 +268,7 @@
       }
 
       table.callout td p {
-        margin-bottom: 0;
+        margin: 0;
       }
 
       .view-in-browser {
@@ -362,10 +363,10 @@
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
-        border-radius: 3px;
         -webkit-text-size-adjust: none;
         color: white !important;
         font-size: 16px;
+        border-radius: <%= theme[:button_border_radius] %> !important;
       }
       /* Update your brand colors here */
       .action__link--primary {

@@ -1,29 +1,33 @@
-<div class="lg:pb-6 pb-3 border-b border-slate-200 dark:border-slate-700 lg:flex items-center mb-6">
-  <div class="flex-1 lg:mb-0 mb-3">
-    <%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-4xl text-2xl text-slate-800 font-bold dark:text-white mb-2" %>
-    <div class="prose dark:!prose-invert max-w-full">
-      <p>Configure your Rails UI install. Choose theme and optional pages, then go build 🚀.</p>
-    </div>
+<div class="pb-8">
+  <%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-3xl text-2xl text-neutral-800 font-bold dark:text-white mb-2 tracking-tight" %>
+  <div class="prose dark:!prose-invert prose-neutral max-w-full prose-lg mb-6">
+    <p>Choose a theme, add optional pages, then go build 🚀.</p>
   </div>
 
-  <div class="prose dark:prose-invert">
-    <%= link_to "Read documentation", "https://railsui.com/docs", target: :_blank %>
-  </div>
+  <%= render callout do %>
+    <p><strong>Heads up</strong>: Rails UI is only meant for brand new Ruby on Rails applications at this time.</p>
+  <% end %>
+
 </div>
 
-<%= form_with model: @config, url: configuration_path, class: "h-full block relative", data: {
+<%= form_with model: @config, url: configuration_path, class: "h-full block relative pb-24", data: {
   action: "submit->configuration#saveChanges",
   controller: "configuration"
   } do |f| %>
-  <div class="space-y-8">
-    <%= render "railsui/admin/fields/config_overview" %>
-    <%= render "railsui/admin/fields/app_preferences", f: f %>
-    <%= render "railsui/admin/fields/theme", f: f %>
-    <% if Railsui.config.theme.present? %>
-      <%= render "railsui/admin/fields/pages", f: f %>
-    <% end %>
 
-    <%= render "railsui/admin/fields/commit", f: f %>
-  </div>
+  <%= render "railsui/admin/fields/general", f: f %>
+
+  <hr class="border-neutral-200/80 dark:border-neutral-700/80 mb-6">
+
+  <%= render "railsui/admin/fields/theme", f: f %>
+
+  <% if Railsui.config.theme.present? %>
+    <hr class="border-neutral-200/80 dark:border-neutral-700/80 mb-6">
+
+    <%= render "railsui/admin/fields/pages", f: f %>
+  <% end %>
+
+  <%= render "railsui/admin/fields/commit", f: f %>
+
   <%= render "railsui/admin/loader" %>
 <% end %>

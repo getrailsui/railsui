@@ -1,5 +1,5 @@
-<div class="my-16">
-<%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Email changed" %>
+<div id="devise-email-changed">
+<%= render layout: example, locals: { heading: "Email changed", section: "Mailers / Devise" } do %>
 
 <%= email_viewer("Email changed") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
@@ -12,6 +12,7 @@
   <% end %>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/mailer/email_changed.html.erb -->
 <p>Hi <%%= @email %>,</p>
@@ -35,4 +36,6 @@
     We're contacting you to notify you that your email has been changed to #{@resource.email}.
 <% end %>
 <%= render_snippet active_tab: "erb", erb_filename: "email_changed.html.erb", haml_filename: "email_changed.haml.erb"  %>
+<% end %>
+<% end %>
 </div>

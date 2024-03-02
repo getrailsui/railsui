@@ -25,14 +25,19 @@
     <%= yield :head %>
   </head>
 
-  <body class="railsui font-normal leading-normal text-slate-800 lg:h-screen relative selection:bg-neutral-50/50 antialiased bg-white dark:bg-slate-900 dark:text-white" data-controller="toggle scroll smooth">
+  <body class="railsui font-normal leading-normal text-netural-800 lg:h-screen relative selection:bg-neutral-100 antialiased bg-white dark:bg-neutral-900 dark:text-neutral-50 overflow-x-hidden" data-controller="toggle scroll smooth">
+
+    <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.05] dark:opacity-20 z-10 md:block hidden" %>
+
     <%= render "railsui/shared/flash" %>
-    <%= render "layouts/railsui/masthead" %>
 
-    <%= yield %>
+    <div class="container mx-auto px-4 md:px-6">
+      <%= yield %>
 
-    <div class="pt-6">
-      <%= render "railsui/shared/footer" %>
+      <div class="pt-6">
+        <%= render "railsui/shared/footer" %>
+      </div>
+
     </div>
 
     <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>

@@ -1,0 +1,20 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/badge" %>
+
+<%= render "#{path}/basic" %>
+<%= divider %>
+<%= render "#{path}/pill" %>
+<%= divider %>
+<%= render "#{path}/outline" %>
+<%= divider %>
+<%= render "#{path}/tag" %>
+
+<%= system_pagination(prev_path: systems_components_alert_path, prev_text: "Alert", next_path: systems_components_breadcrumb_path, next_text: "Breadcrumb") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Basic", "#badge-basic" %>
+		<%= component_link "Pill", "#badge-pill" %>
+		<%= component_link "Outline", "#badge-outline" %>
+    <%= component_link "Tag", "#badge-tag" %>
+  <% end %>
+<% end %>

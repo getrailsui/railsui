@@ -1,0 +1,31 @@
+<% path = "railsui/themes/hound/content/image" %>
+
+<%= render "#{path}/responsive" %>
+
+<%= divider %>
+
+<%= render "#{path}/object_cover" %>
+
+<%= divider %>
+
+<%= render "#{path}/object_contain" %>
+
+<%= divider %>
+
+<%= render "#{path}/object_fill" %>
+
+<%= divider %>
+
+<%= render "#{path}/object_scale_down" %>
+
+<%= system_pagination(prev_path: systems_icons_path, prev_text: "Icons", next_path: systems_scaffolds_path, next_text: "Scaffold") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Responsive", "#image-responsive" %>
+		<%= component_link "Object Cover", "#image-object-cover" %>
+    <%= component_link "Object Contain", "#image-object-contain" %>
+    <%= component_link "Object Fill", "#image-object-fill" %>
+    <%= component_link "Object Scale Down", "#image-object-scale-down" %>
+  <% end %>
+<% end %>

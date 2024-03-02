@@ -1,0 +1,91 @@
+<div id="breadcrumb-base">
+<%= render layout: example, locals: { heading: "Base" } do %>
+
+<%= render preview 'zinc' do %>
+<div class="flex justify-center">
+  <nav aria-label="breadcrumb" class="my-6 font-medium flex text-zinc-500 dark:text-zinc-200 text-sm">
+    <ol class="flex flex-wrap items-center space-x-3 list-none m-0 p-0">
+      <li>
+        <a href="#" class="hover:underline hover:text-zinc-600 dark:hover:text-zinc-400" data-controller="prevent" data-action="click->prevent#prevent">Home</a>
+      </li>
+      <li class="flex space-x-3">
+        <div class="flex items-center">
+          <span class="text-zinc-300 dark:text-zinc-500">/</span>
+        </div>
+        <a href="#" class="hover:underline hover:text-zinc-600 dark:hover:text-zinc-400" data-controller="prevent" data-action="click->prevent#prevent">Library</a>
+      </li>
+      <li class="flex space-x-3">
+        <div class="flex items-center">
+          <span class="text-zinc-300 dark:text-zinc-500">/</span>
+        </div>
+        <a href="#" aria-current="page" class="text-primary-500 dark:text-primary-500" data-controller="prevent" data-action="click->prevent#prevent">Data</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<nav aria-label="breadcrumb" class="my-6 font-medium flex text-zinc-500 dark:text-zinc-200 text-sm">
+  <ol class="flex flex-wrap items-center space-x-3">
+    <li>
+      <a href="#" class="hover:underline hover:text-zinc-600 dark:hover:text-zinc-400">Home</a>
+    </li>
+    <li class="flex space-x-3">
+      <div class="flex items-center">
+        <span class="text-zinc-300 dark:text-zinc-500">/</span>
+      </div>
+      <a href="#" class="hover:underline hover:text-zinc-600 dark:hover:text-zinc-400">Library</a>
+    </li>
+    <li class="flex space-x-3">
+      <div class="flex items-center">
+        <span class="text-zinc-300 dark:text-zinc-500">/</span>
+      </div>
+      <a href="#" aria-current="page" class="text-primary-500 dark:text-primary-500">Data</a>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<nav aria-label="breadcrumb" class="my-6 font-medium flex text-zinc-500 dark:text-zinc-200 text-sm">
+  <ol class="flex flex-wrap items-center space-x-3 list-none m-0 p-0">
+    <li>
+      <%%= link_to "Home", "#", class: "hover:underline hover:text-zinc-600 dark:hover:text-zinc-400" %>
+    </li>
+    <li class="flex space-x-3">
+      <div class="flex items-center">
+        <span class="text-zinc-300 dark:text-zinc-500">/</span>
+      </div>
+      <%%= link_to "Library", "#", class: "hover:underline hover:text-zinc-600 dark:hover:text-zinc-400" %>
+    </li>
+    <li class="flex space-x-3">
+      <div class="flex items-center">
+        <span class="text-zinc-300 dark:text-zinc-500">/</span>
+      </div>
+      <%%= link_to "Data", "#", class: "text-primary-500 dark:text-primary-500", data: { "aria-current": "page" } %>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav.my-6.font-medium.flex.text-zinc-500.dark:text-zinc-200.text-sm{"aria-label" => "breadcrumb"}
+  %ol.flex.flex-wrap.items-center.space-x-3.list-none.m-0.p-0
+    %li
+      = link_to "Home", "#", class: "hover:underline hover:text-zinc-600 dark:hover:text-zinc-400"
+    %li.flex.space-x-3
+      .flex.items-center
+        %span.text-zinc-300.dark:text-zinc-500 /
+        = link_to "Library", "#", class: "hover:underline hover:text-zinc-600 dark:hover:text-zinc-400"
+    %li.flex.space-x-3
+      .flex.items-center
+        %span.text-zinc-300.dark:text-zinc-500 /
+        = link_to "Data", "#", class: "text-primary-500 dark:text-primary-500", data: { "aria-current": "page" }
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

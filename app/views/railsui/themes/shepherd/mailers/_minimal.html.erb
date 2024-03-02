@@ -1,7 +1,6 @@
-<div class="mb-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Overview" %>
+<%= render layout: example, locals: { heading: "Minimal", section: "Mailers" } do %>
 
-  <div class="prose dark:prose-invert">
+  <div class="prose prose-neutral dark:prose-invert">
     <p>The <%= Railsui.config.theme.humanize %> theme minimal template gives you a good starting point for an HTML email that is primarily text. The template features basic <%= link_to "email-supported HTML markup", "https://www.caniemail.com/features/", target: :_blank %>.</p>
   </div>
 
@@ -25,8 +24,7 @@
   <% end %>
 <% end %>
 
-
-
+<% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
 <!-- app/views/some_mailer/minimal.html.erb -->
 
@@ -64,6 +62,7 @@
 <% end %>
 
   <%= render_snippet active_tab: "erb", erb_filename: "minimal.html.erb", haml_filename: "minimal.haml.erb" %>
-</div>
+<% end %>
+<% end %>
 
 <%= system_pagination(prev_path: systems_mailers_layout_path, prev_text: "Layouts", next_path: systems_mailers_promotion_path, next_text: "Promotion") %>

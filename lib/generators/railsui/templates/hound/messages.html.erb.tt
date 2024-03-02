@@ -8,36 +8,36 @@
       <ul
         class="flex items-center sm:justify-start justify-between sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#", class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80" do %>
-            <%%= icon "inbox-arrow-down", classes: "sm:w-5 sm:h-5 w-8 h-8 text-indigo-600 dark:text-indigo-400 stroke-current" %>
+          <%%= link_to "#", class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80" do %>
+            <%%= icon "inbox-arrow-down", classes: "sm:w-5 sm:h-5 w-8 h-8 text-primary-600 dark:text-primary-400 stroke-current" %>
 
             <span class="sm:block hidden">Inbox</span>
-            <span class="rounded bg-indigo-600 dark:bg-indigo-500 text-white px-1 py-px text-xs font-semibold">3</span>
+            <span class="rounded bg-primary-600 dark:bg-primary-500 text-white px-1 py-px text-xs font-semibold">3</span>
           <%% end %>
         </li>
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
-            <%%= icon "check", classes:"sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-indigo-600 dark:group-hover:text-indigo-400 dark:text-slate-400" %>
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <%%= icon "check", classes:"sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:group-hover:text-primary-400 dark:text-slate-400" %>
             <span class="sm:block hidden">Sent</span>
           <%% end %>
         </li>
         <li class="flex justify-center items-center sm:block">
 
-          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 font-medium flex items-center space-x-2 group dark:hover:text-indigo-400 dark:text-slate-300 dark:hover:bg-slate-900" do %>
-            <%%= icon "document", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-indigo-400" %>
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 font-medium flex items-center space-x-2 group dark:hover:text-primary-400 dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <%%= icon "document", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:text-slate-400 dark:group-hover:text-primary-400" %>
             <span class="sm:block hidden">Drafts</span>
           <%% end %>
         </li>
         <li class="flex justify-center items-center sm:block">
 
-          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 font-medium flex items-center space-x-2 group dark:hover:text-indigo-400 dark:text-slate-300 dark:hover:bg-slate-900" do %>
-            <%%= icon "star", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-indigo-400" %>
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 font-medium flex items-center space-x-2 group dark:hover:text-primary-400 dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <%%= icon "star", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:text-slate-400 dark:group-hover:text-primary-400" %>
             <span class="sm:block hidden">Starred</span>
           <%% end %>
         </li>
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-indigo-400" do %>
-            <%%= icon "user-group", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-indigo-400" %>
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-primary-400" do %>
+            <%%= icon "user-group", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:text-slate-400 dark:group-hover:text-primary-400" %>
               <span class="sm:block hidden">Shared</span>
             <%% end %>
         </li>

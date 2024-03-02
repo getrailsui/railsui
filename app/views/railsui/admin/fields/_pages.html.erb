@@ -1,25 +1,45 @@
-<%= render "railsui/admin/field_layout" do %>
+<div class="py-8" data-controller="pages">
+  <%= heading text: "Pages", id: "pages", tag: "h2", class: "font-bold text-3xl tracking-tight mb-6" %>
 
-  <% content_for :explainer, flush: true do %>
-    <%= heading text: "Pages", id: "configuration_overview", tag: "h3", class: "font-semibold text-xl mb-3" %>
-    <p class="text-base lg:text-sm text-slate-700 dark:text-slate-400">Add pre-designed pages with sample content.</p>
+  <div class="prose prose-neutra dark:prose-invert mb-10">
+    <p>Prototype rapidly with ready-made pages that look great with the <%= theme_name.humanize %> theme.</p>
+  </div>
 
-    <hr class="my-4 dark:border-slate-700">
-
-    <h4 class="font-semibold text-sm mb-2 text-indigo-600 dark:text-slate-300">Remove a page</h4>
-
-    <p class="text-base lg:text-sm text-slate-700 dark:text-slate-400 mb-3">When you choose to remove a page with Rails UI, it is permanently deleted, resulting in the loss of all changes made to the view. However, you have the option to reinstall it later, as it is included as a default component in the <%= Railsui.config.theme.humanize %> Rails UI theme.</p>
-  <% end %>
-
-  <div class="p-6 rounded-lg bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700 relative" data-controller="pages">
-    <div class="prose mb-6 dark:!prose-invert">
-      <h3>Add pages</h3>
-      <p>Generate professionally designed pages that accompany the <%= theme_name.humanize %> template. If you previously generated a page, it will <strong>not</strong> be overwritten.</p>
+  <div class="flex items-start gap-4 mb-6">
+    <div class="flex-shrink-0 -mt-1">
+      <div class="size-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800/80">
+        <%= icon "document-plus", classes: "size-5 text-neutral-600 dark:text-neutral-400" %>
+      </div>
     </div>
 
-    <%= render "railsui/admin/fields/check_all" unless Railsui::Pages.all_pages_installed? %>
+    <div class="prose prose-sm max-w-full prose-neutral dark:!prose-invert">
+      <h4>Adding pages</h4>
+      <p>Installed pages are found inside the <code>app/views/page</code> folder in your app and won't be overwritten.</p>
+    </div>
+  </div>
 
-    <div class="divide-y divide-slate-200 dark:divide-slate-700">
+  <div class="flex items-start gap-4 mb-10">
+    <div class="flex-shrink-0 -mt-1">
+      <div class="size-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800/80">
+        <%= icon "hand-thumb-up", classes: "size-5 text-neutral-600 dark:text-neutral-400" %>
+      </div>
+    </div>
+
+    <div class="prose prose-sm max-w-full prose-neutral dark:!prose-invert">
+      <h4>Best practices</h4>
+      <p>Pages are a starting point. Copy them to other views you're working on and make changes there as opposed to directly inside the <code>app/views/page</code> directory.</p>
+    </div>
+  </div>
+
+  <div class="border border-neutral-200/80 rounded-md mb-10 dark:border-neutral-700/80">
+    <% unless Railsui::Pages.all_pages_installed? %>
+      <div class="flex items-center relative px-6 py-4 rounded-t-md bg-neutral-50 border-b border-neutral-200/80 dark:bg-neutral-800/50 dark:border-neutral-700/80">
+        <%= check_box_tag "checkAll", "1", false, class: "rui-form-input-switch", data: { action: "pages#checkAll" } %>
+        <%= label_tag "checkAll", "Check all" %>
+      </div>
+    <% end %>
+
+    <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80 px-6">
       <% if @theme_pages.present? %>
         <% @theme_pages.each do |page, details| %>
           <div class="flex flex-wrap items-start justify-between py-6">
@@ -37,4 +57,5 @@
       <% end %>
     </div>
   </div>
-<% end %>
+
+</div>

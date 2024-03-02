@@ -1,8 +1,8 @@
 <div class="mb-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Overview" %>
+  <%= render "railsui/shared/code_example_heading", title: "Mailers", subtitle: "Overview" %>
 
-  <div class="prose dark:prose-invert">
-    <p>The main <%= code("mailer.html.erb") %> layout comes ready to rock and roll inside <%= code("app/views/layouts") %>. </p>
+  <div class="prose prose-neutral dark:prose-invert pt-6">
+    <p>The main <code>mailer.html.erb</code> layout comes ready to rock and roll inside <code>app/views/layouts</code>. </p>
 
     <p>Be forewarned that it's a bear of a file. Bundled inside the layout is some CSS used to cover the basics of any HTML email template.</p>
 
@@ -17,14 +17,16 @@
   # https://tailwindcss.com/docs/customizing-colors#using-css-variables
   theme = {
     align_logo: "center",
-    primary: "#18181b",
-    secondary: "#f43f5e",
-    heading_text_color: "#27272a",
+    primary: "#f43f5e",
+    secondary: "#1D9AE2",
+    heading_text_color: "#0f172a",
     footer_text_color: "#71717a",
     body_text_color: "#27272a",
     light_text_color: "#71717a",
-    callout_bg_color: "#eaf6fc",
-    callout_text_color: "#187eb9"
+    callout_bg_color: "#fef9c3",
+    callout_border_color: "#fef08a",
+    callout_text_color: "#a16207",
+    button_border_radius: "25px"
   }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -279,7 +281,7 @@
       }
 
       table.callout td p {
-        margin-bottom: 0;
+        margin: 0;
       }
 
       .view-in-browser {
@@ -374,7 +376,7 @@
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
-        border-radius: 3px;
+        border-radius: <%%= theme[:button_border_radius] %> !important;
         -webkit-text-size-adjust: none;
         color: white !important;
         font-size: 15px;
@@ -386,7 +388,6 @@
         border-right: 24px solid <%%= theme[:primary] %>;
         border-bottom: 10px solid <%%= theme[:primary] %>;
         border-left: 24px solid <%%= theme[:primary] %>;
-        border-radius: 25px;
       }
 
       .action__link--secondary {
@@ -396,7 +397,6 @@
         border-right: 24px solid <%%= theme[:secondary] %>;
         border-bottom: 10px solid <%%= theme[:secondary] %>;
         border-left: 24px solid <%%= theme[:secondary] %>;
-        border-radius: 25px;
       }
 
       .action {
@@ -956,4 +956,4 @@
 <%= render_snippet active_tab: "erb", erb_filename: "mailer.html.erb", haml_filename: "mailer.haml.erb" %>
 </div>
 
-<%= system_pagination(prev_path: systems_mailers_path, prev_text: "Mailers", next_path: systems_mailers_minimal_path, next_text: "Minimal") %>
+<%= system_pagination(prev_path: systems_authentication_unlocks_path, prev_text: "Unlock", next_path: systems_mailers_minimal_path, next_text: "Minimal") %>

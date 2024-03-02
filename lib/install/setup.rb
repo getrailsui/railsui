@@ -110,23 +110,20 @@ def add_users
       env: 'development'
 
   # Create Devise User
-  generate :devise, "User", "first_name", "last_name", "admin:boolean"
+  generate :devise, "User", "first_name:string", "last_name:string", "admin:boolean"
 
-  # set admin boolean to false by default
+  # Set default value for admin column if not already set
   in_root do
     migration = Dir.glob("db/migrate/*").max_by{ |f| File.mtime(f) }
-    gsub_file migration, /:admin/, ":admin, default: false"
+    unless File.read(migration).include?(":admin, default:")
+      gsub_file migration, /:admin/, ":admin, default: false"
+    end
   end
 end
 
-# Add active storage and action text
-def add_storage_and_rich_text
-  rails_command "active_storage:install"
-  rails_command "action_text:install"
-
-  if Rails.root.join("app/assets/stylesheets/actiontext.css").exist?
-    remove_file Rails.root.join("app/assets/stylesheets/actiontext.css")
-  end
+def add_devise_email_previews
+  # Add devise email preview support in # test/mailers/previews/devise_mailer_preview.rb
+  copy_file "#{__dir__}/mail/devise_mailer_preview.rb", Rails.root.join("test/mailers/previews/devise_mailer_preview.rb"), force: true
 end
 
 # Extend user.rb
@@ -137,6 +134,31 @@ def add_user_attributes
   RUBY
 
   insert_into_file "app/models/user.rb", "#{content}\n\n", after: "class User < ApplicationRecord\n"
+end
+
+def add_devise_customizations
+initializer_content = <<-RUBY
+Rails.application.config.to_prepare do
+  Devise::SessionsController.layout "devise"
+  Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "devise" }
+  Devise::ConfirmationsController.layout "devise"
+  Devise::PasswordsController.layout "devise"
+  Devise::UnlocksController.layout "devise"
+  Devise::Mailer.helper Railsui::MailHelper
+end
+RUBY
+
+  append_to_file Rails.root.join('config/initializers/devise.rb'), "\n#{initializer_content}"
+end
+
+# Add active storage and action text
+def add_storage_and_rich_text
+  rails_command "active_storage:install"
+  rails_command "action_text:install"
+
+  if Rails.root.join("app/assets/stylesheets/actiontext.css").exist?
+    remove_file Rails.root.join("app/assets/stylesheets/actiontext.css")
+  end
 end
 
 def setup_routes
@@ -181,20 +203,6 @@ def extend_layout_and_views
   copy_file "#{__dir__}/layouts/devise.html.erb", Rails.root.join("app/views/layouts/devise.html.erb"), force: true
 end
 
-def add_devise_customizations
-initializer_content = <<-RUBY
-Rails.application.config.to_prepare do
-  Devise::SessionsController.layout "devise"
-  Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "devise" }
-  Devise::ConfirmationsController.layout "devise"
-  Devise::UnlocksController.layout "devise"
-  Devise::PasswordsController.layout "devise"
-end
-RUBY
-
-  append_to_file Rails.root.join('config/initializers/devise.rb'), "\n#{initializer_content}"
-end
-
 def copy_hero_icons
   directory "#{__dir__}/icons", Rails.root.join("app/assets/images/icons"), force: true
 end
@@ -218,4 +226,29 @@ def add_application_controller_code
   end
   RUBY
   insert_into_file "#{Rails.root}/app/controllers/application_controller.rb", "#{app_controller_code}\n", after: "class ApplicationController < ActionController::Base\n"
+end
+
+def update_mailer_sender
+  # Path to the devise initializer file
+  devise_initializer_path = Rails.root.join("config", "initializers", "devise.rb")
+
+  if File.exist?(devise_initializer_path)
+    # Update the config.mailer_sender value with Railsui.config.support_email
+    gsub_file devise_initializer_path, /config.mailer_sender\s*=\s*['"][^'"]+['"]/, "config.mailer_sender = Railsui.config.support_email"
+
+    say_status :success, "Devise mailer sender updated.", :green
+  else
+    say_status :error, "Devise initializer file not found.", :red
+  end
+end
+
+def generate_sample_mailers
+  rails_command "generate mailer Railsui minimal promotion transactional"
+end
+
+def copy_sample_mailers
+  source_directory = File.expand_path("mail/railsui_mailer", __dir__)
+  destination_directory = Rails.root.join("app/views/railsui_mailer")
+
+  directory source_directory, destination_directory, force: true
 end

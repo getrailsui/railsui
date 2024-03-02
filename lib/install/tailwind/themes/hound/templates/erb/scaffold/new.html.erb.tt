@@ -9,7 +9,7 @@
           <div class="flex items-center">
             <span class="text-slate-300 dark:text-slate-500">/</span>
           </div>
-          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">New</span>
+          <span class="text-primary-600 dark:text-primary-500" aria-current="page">New</span>
         </li>
       </ol>
     </nav>

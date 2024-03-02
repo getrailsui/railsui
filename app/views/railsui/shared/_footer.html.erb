@@ -1,11 +1,11 @@
-<footer class="border-t border-slate-200 dark:border-slate-700 py-6 flex items-center justify-between sm:px-8 px-4">
-  <div class="text-sm text-slate-700 dark:text-slate-400">
+<footer class="py-6 mt-10 flex items-center justify-between col-span-12">
+  <div class="text-sm text-neutral-500 dark:text-neutral-400">
     <p class="inline-block">Copyright &copy; <%= Date.today.year %> <span data-controller="tooltip" data-tooltip-content-value="Rails UI is not affiliated with Ruby on Rails (https://rubyonrails.org) or Tailwind CSS (https://tailwindcss.com). We (Rails UI) use these open-source tools to create assets available for other developers to both purchase and use freely."><%= link_to "Rails UI", "https://railsui.com", class: "hover:underline", target: :_blank %></span></p>
-    <span class="px-1 text-slate-400">/</span>
-    <p class="inline-block">Need something more? <%= link_to "Hire me", "https:/railsui.com/custom", class: "underline", target: :_blank %></p>
+    <span class="px-1 text-neutral-400">/</span>
+    <p class="inline-block">Need something custom? <%= link_to "Hire me", "https:/railsui.com/custom", class: "underline dark:hover:text-neutral-300", target: :_blank %></p>
   </div>
 
   <%= link_to "https://twitter.com/railsui_", target: :_blank, class: "group block" do %>
-    <%= render_svg "twitter", styles: "fill-current text-slate-400 dark:text-slate-500 w-5 h-5 group-hover:text-[#1DA1F2]" %>
+    <%= render_svg "twitter", styles: "fill-current text-neutral-400 dark:text-neutral-500 w-5 h-5 group-hover:text-neutral-900 dark:group-hover:text-neutral-300" %>
   <% end %>
 </footer>

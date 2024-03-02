@@ -6,10 +6,10 @@ module Railsui
       def typography
       end
 
-      def tables
+      def table
       end
 
-      def images
+      def image
       end
     end
   end

@@ -1,17 +1,16 @@
 <% content_for :noscroll, true %>
 
-<div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-10 items-start" data-configuration-target="submitContainer">
-  <div class="lg:col-span-4">
-  </div>
-  <div class="lg:col-span-8">
+<div data-configuration-target="submitContainer">
+  <div class="fixed bg-white/90 backdrop-blur-sm bottom-0 md:flex-row flex flex-col items-center md:justify-between w-full md:w-[calc(100vw-280px)] md:h-16 h-24 border-t border-neutral-200/80 md:left-[280px] left-0 md:px-8 px-4 dark:bg-neutral-900/90 dark:border-neutral-700/80 md:py-0 pt-2">
+    <p class="md:text-sm text-xs md:text-left text-center text-neutral-500 dark:text-neutral-400 md:w-auto md:order-1 order-2 md:mt-0 mt-2">When saving your app will automatically restart and install any dependencies.</p>
 
-    <% if Railsui.config.theme.present? %>
-      <%= f.button "Save changes", id: "config_button", class: "px-5 py-3 text-white bg-gradient-to-br from-indigo-800 via-indigo-600 to-salmon-500 font-semibold text-center rounded transform shadow inline-block hover:bg-gradient-to-tl hover:-translate-y-px transition ease-in-out duration-300 !important w-full sticky", data: {configuration_target: "submit" } %>
-    <% else %>
-      <%= hidden_field_tag :button_clicked, "config_button_first_install", id: "button_clicked" %>
-      <%= f.button "Install theme and save changes", id: "config_button_first_install", class: "px-5 py-3 text-white bg-gradient-to-br from-indigo-800 via-indigo-600 to-salmon-500 font-semibold text-center rounded transform shadow inline-block hover:bg-gradient-to-tl hover:-translate-y-px transition ease-in-out duration-300 !important w-full sticky", data: {configuration_target: "submit" }, name: "first_install" %>
-    <% end %>
-
-    <p class="text-sm mt-3 text-slate-500 dark:text-slate-300">Saving will automatically restart your app and install any dependencies.</p>
+    <div class="md:order-2 order-1 md:w-auto w-full">
+      <% if Railsui.config.theme.present? %>
+        <%= f.button "Save changes", id: "config_button", class: "rui-btn rui-btn-black md:w-auto w-full", data: {configuration_target: "submit" } %>
+      <% else %>
+        <%= hidden_field_tag :button_clicked, "config_button_first_install", id: "button_clicked" %>
+        <%= f.button "Install theme and save changes", id: "config_button_first_install", class: "rui-btn rui-btn-black md:w-auto w-full", data: {configuration_target: "submit" }, name: "first_install" %>
+      <% end %>
+    </div>
   </div>
 </div>

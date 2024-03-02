@@ -1,10 +1,10 @@
-<div class="flex items-center justify-between my-2">
-  <%= link_to local_assigns[:prev_path], class: "group flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-slate-50 transition ease-in-out duration-200 dark:hover:bg-slate-800/50" do %>
-    <%= icon "chevron-left", classes: "w-4 h-4 text-slate-500 group-hover:-translate-x-1 transition ease-in-out transform duration-200 group-hover:text-indigo-500" %>
+<div class="flex items-center justify-between my-6">
+  <%= link_to local_assigns[:prev_path], class: "group flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-neutral-50 transition ease-in-out duration-200 dark:hover:bg-neutral-800/50" do %>
+    <%= icon "chevron-left", classes: "size-3 text-neutral-500 group-hover:-translate-x-1 transition ease-in-out transform duration-200 group-hover:text-neutral-900 dark:group-hover:text-neutral-200" %>
     <p class="font-semibold text-sm"><%= local_assigns[:prev_text] %></p>
   <% end %>
-  <%= link_to local_assigns[:next_path], class: "group flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-slate-50 transition ease-in-out duration-200 dark:hover:bg-slate-800/50" do %>
+  <%= link_to local_assigns[:next_path], class: "group flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-neutral-50 transition ease-in-out duration-200 dark:hover:bg-neutral-800/50" do %>
     <p class="font-semibold text-sm"><%= local_assigns[:next_text] %></p>
-    <%= icon "chevron-right", classes: "w-4 h-4 text-slate-500 group-hover:translate-x-1 transition ease-in-out transform duration-200 group-hover:text-indigo-500" %>
+    <%= icon "chevron-right", classes: "size-3 text-neutral-500 group-hover:translate-x-1 transition ease-in-out transform duration-200 group-hover:text-neutral-900 dark:group-hover:text-neutral-200" %>
   <% end %>
 </div>

@@ -1,0 +1,38 @@
+<div id="typography-paragraphs">
+<%= render layout: example, locals: { heading: "Paragraphs", section: "Typography" } do %>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 prose prose-zinc dark:prose-invert max-w-full">
+  <div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
+
+    <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
+  </div>
+  <div>
+    <p>Id velit dolorum fugit, beatae unde sint saepe rerum impedit nihil deleniti recusandae quam amet nesciunt, eveniet maiores?</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illo nisi distinctio neque veniam aliquam debitis architecto quaerat. Temporibus, similique dolor quia voluptates maiores in placeat laborum deleniti ratione officiis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iure non velit dignissimos laudantium modi at, eum officiis ipsam, illo vitae omnis nam, ut nisi alias odio magni qui nostrum.</p>
+  </div>
+</div>
+
+<% content_for :example, flush: true do %>
+<%= content_for :html, flush: true do %>
+<div class="prose proze-zinc dark:prose-invert">
+  <p>Lorem ipsum...</p>
+</div>
+<% end %>
+
+<%= content_for :erb, flush: true do %>
+<%%= tag.div class: "prose prose-zinc dark:prose-invert" do %>
+  <%%= tag.p "Lorem ipsum" %>
+<%% end %>
+<% end %>
+
+<%= content_for :haml, flush: true do %>
+.prose.prose-zinc.dark:prose-invert
+  %p Lorem ipsum...
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

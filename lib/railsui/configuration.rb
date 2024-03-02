@@ -89,7 +89,6 @@ module Railsui
       end
     end
 
-
     def create_pages
       Railsui::Pages.theme_pages.each do | page, details |
         if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)

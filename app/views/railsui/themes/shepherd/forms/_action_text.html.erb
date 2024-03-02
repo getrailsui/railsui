@@ -1,6 +1,5 @@
-<div class="my-6">
-  <%= render "railsui/shared/sticky_subhead", title: "ActionText", subtitle: "Custom theme" %>
-
+<div id="form-rich-text">
+<%= render layout: example, locals: { heading: "Rich Text Editor", section: "ActionText" } do %>
   <div class="prose dark:!prose-invert max-w-full">
     <p><%= link_to "Action Text", "https://guides.rubyonrails.org/action_text_overview.html", target: :_blank %> brings rich text content and editing to Rails. It includes the <%= link_to "Trix editor", "https://trix-editor.org/", target: :_blank %> that handles everything from formatting to links to quotes to lists to embedded images and galleries.</p>
 
@@ -21,6 +20,7 @@
   </form>
 </div>
 
+<% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
 <%%= form_with model: message do |form| %>
   <div class="form-group">
@@ -37,6 +37,14 @@
     = form.rich_text_area :content
 <% end %>
 <%= render_snippet active_tab: "erb" %>
+<% end %>
+<% end %>
 </div>
 
-<%= system_pagination(prev_path: systems_forms_checkboxes_and_radios_path, prev_text: "Checkboxes & Radios", next_path: systems_forms_validation_path, next_text: "Validation") %>
+<%= system_pagination(prev_path: systems_forms_switch_path, prev_text: "Switch", next_path: systems_forms_validation_path, next_text: "Validation") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Rich Text Editor", "#form-rich-text" %>
+  <% end %>
+<% end %>

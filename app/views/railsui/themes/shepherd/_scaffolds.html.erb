@@ -33,3 +33,14 @@ end
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/partial" %>
 
 <%= system_pagination(prev_path: systems_pages_path, prev_text: "Pages", next_path: systems_forms_path, next_text: "Forms") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Overview", "#scaffolds-overview" %>
+    <%= component_link "Index", "#scaffolds-index" %>
+		<%= component_link "Show", "#scaffolds-show" %>
+    <%= component_link "New", "#scaffolds-new" %>
+    <%= component_link "Edit", "#scaffolds-edit" %>
+    <%= component_link "Partial", "#scaffolds-partial" %>
+  <% end %>
+<% end %>

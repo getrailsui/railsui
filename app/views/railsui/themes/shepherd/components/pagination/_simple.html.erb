@@ -1,5 +1,5 @@
-<div class="mb-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Pagination", subtitle: "Simple" %>
+<div id="pagination-minimal">
+<%= render layout: example, locals: { heading: "Minimal", section: "Pagination" } do %>
 
 <%= render preview "zinc" do %>
 <nav aria-label="Page navgiation" class="text-zinc-600 sm:text-sm text-base font-medium dark:text-zinc-300">
@@ -44,6 +44,7 @@
 </nav>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <% content_for :html, flush: true  do %>
 <nav aria-label="Page navgiation" class="text-zinc-600 sm:text-sm text-base font-medium dark:text-zinc-300">
   <ul class="flex flex-wrap items-center sm:justify-between justify-center">
@@ -158,4 +159,6 @@
 <% end %>
 
 <%= render_snippet %>
+<% end %>
+<% end %>
 </div>

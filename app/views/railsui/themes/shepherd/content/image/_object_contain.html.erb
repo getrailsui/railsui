@@ -1,0 +1,34 @@
+<div id="image-object-contain">
+<%= render layout: example, locals: { heading: "Object Contain" } do %>
+  <div class="prose prose-neutral dark:!prose-invert mb-6 max-w-full">
+    <p>Resize an element’s content to stay contained within its container using <code>.object-contain</code>.</p>
+  </div>
+
+  <div class="bg-zinc-50 flex items-center justify-center p-6 rounded-lg border border-zinc-200 dark:bg-zinc-700 dark:border-zinc-600">
+    <img src="https://source.unsplash.com/random/900×700/?dog" alt="fruit" class="object-contain h-48 w-96 rounded-lg shadow-xl bg-red-100">
+  </div>
+
+<% content_for :example, flush: true do %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="bg-zinc-50...">
+  <img src="#" class="object-contain h-48 w-96">
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="bg-zinc-50...">
+  <%%= image_tag "#", class: "object-contain h-48 w-96" %>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.bg-zinc-50
+  image_tag "#", class: "object-contain h-48 w-96"
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

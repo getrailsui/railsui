@@ -1,5 +1,5 @@
-<div class="my-16">
-<%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Email changed" %>
+<div id="devise-email-changed">
+<%= render layout: example, locals: { heading: "Email Changed", section: "Mailers / Devise" } do %>
 
 <%= email_viewer("Email changed") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
@@ -8,10 +8,11 @@
 
     <p>We're contacting you to notify you that your email has been changed to saasquatch@railsui.com.</p>
 
-    <%= email_action "View account", "#", fullwidth: true %>
+    <%= email_action "View account", "#" %>
   <% end %>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/mailer/email_changed.html.erb -->
 <p>Hi <%%= @email %>,</p>
@@ -21,6 +22,8 @@
 <%% else %>
   <p>We're contacting you to notify you that your email has been changed to <%%= @resource.email %>.</p>
 <%% end %>
+
+<%%= email_action "View account", edit_user_registration_url %>
 <% end %>
 
 <% content_for :haml, flush: true do %>
@@ -33,6 +36,9 @@
 - else
   %p
     We're contacting you to notify you that your email has been changed to #{@resource.email}.
+= email_action "View account", edit_user_registration_url
 <% end %>
 <%= render_snippet active_tab: "erb", erb_filename: "email_changed.html.erb", haml_filename: "email_changed.haml.erb"  %>
+<% end %>
+<% end %>
 </div>

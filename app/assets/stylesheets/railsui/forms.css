@@ -1,6 +1,14 @@
 .railsui {
-  .form-input-switch {
-    @apply !hidden;
+  .rui-form-input {
+    @apply rounded-md px-4 py-2 border border-neutral-300/80 bg-white focus:border-neutral-500/80 focus:ring-4 focus:ring-neutral-100/80 focus:shadow-none focus:outline-none dark:bg-neutral-800 dark:border-neutral-700/80 dark:focus:border-neutral-500 placeholder-neutral-500/60 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 font-normal antialiased font-sans w-full dark:text-neutral-50 text-neutral-800;
+  }
+
+  .rui-form-label {
+    @apply block mb-2 font-medium text-[14px];
+  }
+
+  .rui-form-input-switch {
+    @apply hidden;
 
     &:disabled + label {
       @apply opacity-70 cursor-not-allowed;
@@ -11,20 +19,20 @@
     }
 
     &:checked + label::before {
-      @apply bg-indigo-500;
+      @apply bg-primary-500;
     }
 
     &:checked + label::after {
       transform: translate3d(16px, 0, 0);
       background-size: 10px 10px;
-      @apply bg-no-repeat bg-center bg-white;
+      @apply bg-no-repeat bg-center bg-white dark:bg-zinc-200;
     }
 
     + label {
-      @apply inline-flex cursor-pointer text-base leading-snug select-none relative;
+      @apply inline-flex cursor-pointer text-base leading-6 select-none relative font-sans;
 
       &:before {
-        @apply content-[""] block bg-slate-300 rounded-full h-6 w-10 mr-3 transition-colors ease-out flex-shrink-0 dark:bg-slate-500;
+        @apply content-[""] block bg-zinc-300 rounded-full h-6 w-10 mr-2 transition-colors ease-out flex-shrink-0 dark:bg-zinc-600;
       }
 
       &:after {
@@ -33,12 +41,12 @@
     }
   }
 
-.rui-form-input-color {
-  @apply appearance-none w-8 h-8 border border-slate-200 focus:border-slate-400 focus:shadow rounded-md transition focus:ring-4 focus:ring-slate-500/10 dark:border-slate-600;
+  .rui-form-input-color {
+    @apply appearance-none w-8 h-8 border border-neutral-200 focus:border-neutral-400 focus:shadow rounded-md transition focus:ring-4 focus:ring-neutral-500/10 dark:border-neutral-600;
 
-  &::-webkit-color-swatch-wrapper,
-  &::-webkit-color-swatch {
-    @apply p-0 rounded border-2 border-white dark:border-slate-700;
+    &::-webkit-color-swatch-wrapper,
+    &::-webkit-color-swatch {
+      @apply p-0 rounded border-2 border-white dark:border-neutral-700;
+    }
   }
-}
 }

@@ -1,11 +1,11 @@
-<div class="mb-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Forms", subtitle: "Validation" %>
+<div id="form-validation">
+<%= render layout: example, locals: { heading: "Errors" } do %>
 
   <div class="prose dark:!prose-invert mb-6">
     <p>Extend form errors to leverage Rails UI + Tailwind CSS.</p>
   </div>
 
-<%= render preview do %>
+<%= render preview('gray') do %>
 <form action="#">
   <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
     <div class="flex items-start space-x-4">
@@ -27,8 +27,7 @@
 </form>
 <% end %>
 
-
-
+<% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
 <!-- app/views/shared/error_messages.html.erb -->
 
@@ -64,6 +63,14 @@
           %li= error.full_message
 <% end %>
 <%= render_snippet active_tab: "erb" %>
+<% end %>
+<% end %>
+
+<%= system_pagination(prev_path: systems_forms_action_text_path, prev_text: "ActionText", next_path: systems_components_accordion_path, next_text: "Accordion") %>
 </div>
 
-<%= system_pagination(prev_path: systems_forms_action_text_path, prev_text: "ActionText", next_path: systems_components_path, next_text: "Components") %>
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Form errors", "#form-validation" %>
+  <% end %>
+<% end %>

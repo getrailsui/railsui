@@ -1,17 +1,5 @@
 module Railsui
   module ApplicationHelper
-    def form_input
-      "border-gray-300 rounded focus:border-indigo-300 focus:outline-none focus:shadow-none focus:ring-indigo-50 focus:ring-4 ring-transparent ring-2 dark:text-slate-100 dark:focus:ring-indigo-600/50 dark:bg-slate-900 dark:border-slate-600 dark:focus:border-slate-300"
-    end
-
-    def select_classes
-      "form-select #{form_input}"
-    end
-
-    def input_classes
-      "form-input #{form_input}"
-    end
-
     def nav_link_to(name = nil, options = {}, html_options = {}, &block)
       if block
         html_options = options
@@ -89,11 +77,7 @@ module Railsui
       id = options[:id]
       classes = options[:class]
 
-      content_tag tag.to_sym, text, id: id, class: classes, data: {
-        action: "click->anchor#copy",
-        controller: "anchor",
-        anchor_url_value: url_for(only_path: false)
-      }
+      content_tag tag.to_sym, text, id: id, class: "#{classes}tracking-[-0.025em]"
     end
 
     def email_viewer(subject="A sample subject", &block)
@@ -177,10 +161,6 @@ module Railsui
       end
     end
 
-    def unavailable_theme?(theme)
-      theme[:name] == "Shepherd"
-    end
-
     def tag_label(tag)
       base_classes = "rounded text-xs px-1 py-px font-semibold inline-flex items-center justify-center"
 
@@ -196,6 +176,27 @@ module Railsui
 
     def theme_colors(group,val)
       Railsui::Default::THEME_COLORS[Railsui.config.theme.to_sym][group][val]
+    end
+
+    def example
+      "railsui/shared/code_example"
+    end
+
+    def component_link(name, href)
+      content_tag :li do
+        link_to name, href, class: "block py-0.5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate", data: {
+          action: "click->smooth#scroll",
+          scroll_spy_target: "link"
+        }
+      end
+    end
+
+    def divider
+      content_tag :hr, nil, class: "my-6 dark:border-neutral-700/80 border-neutral-200/70"
+    end
+
+    def system_nav_item(label:, path:)
+      render "railsui/shared/system_nav_item", label: label, path: path
     end
   end
 end

@@ -1,0 +1,89 @@
+<div id="badge-pill">
+<%= render layout: example, locals: { heading: "Pill", section: "Badge" } do %>
+
+<%= render preview 'gray' do %>
+<span class="rounded-full bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs dark:bg-neutral-500/20 dark:text-neutral-200">Gray</span>
+
+<span class="rounded-full bg-red-100 text-red-800 font-medium px-2 py-1 text-xs dark:bg-red-500/20 dark:text-red-300">Red</span>
+
+<span class="rounded-full bg-orange-100 text-orange-700 font-medium px-2 py-1 text-xs dark:bg-orange-500/20 dark:text-orange-300">Orange</span>
+
+<span class="rounded-full bg-yellow-100 text-yellow-700 font-medium px-2 py-1 text-xs dark:text-yellow-300 dark:bg-yellow-500/20">Yellow</span>
+
+<span class="rounded-full bg-green-100 text-green-800 font-medium px-2 py-1 text-xs dark:text-green-300 dark:bg-green-500/20">Green</span>
+
+<span class="rounded-full bg-blue-100 text-blue-800 font-medium px-2 py-1 leading-tight text-xs dark:text-blue-300 dark:bg-blue-500/20">Blue</span>
+
+<span class="rounded-full bg-indigo-100 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs dark:text-indigo-300 dark:bg-indigo-500/20">Indigo</span>
+
+<span class="rounded-full bg-purple-100 text-purple-800 font-medium px-2 py-1 leading-tight text-xs dark:text-purple-300 dark:bg-purple-500/20">Purple</span>
+
+<span class="rounded-full bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs dark:text-pink-300 dark:bg-pink-500/20">Pink</span>
+
+<span class="rounded-full bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80">White</span>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<!-- Gray -->
+<span class="rounded-full bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs dark:bg-neutral-500/20 dark:text-neutral-200">Gray</span>
+
+<!-- Red -->
+<span class="rounded-full bg-red-100 text-red-800 font-medium px-2 py-1 text-xs dark:bg-red-500/20 dark:text-red-300">Red</span>
+
+<!-- Orange -->
+<span class="rounded-full bg-orange-100 text-orange-700 font-medium px-2 py-1 text-xs dark:bg-orange-500/20 dark:text-orange-300">Orange</span>
+
+<!-- Yellow -->
+<span class="rounded-full bg-yellow-100 text-yellow-700 font-medium px-2 py-1 text-xs dark:text-yellow-300 dark:bg-yellow-500/20">Yellow</span>
+
+<!-- Green -->
+<span class="rounded-full bg-green-100 text-green-800 font-medium px-2 py-1 text-xs dark:text-green-300 dark:bg-green-500/20">Green</span>
+
+<!-- Blue -->
+<span class="rounded-full bg-blue-100 text-blue-800 font-medium px-2 py-1 leading-tight text-xs dark:text-blue-300 dark:bg-blue-500/20">Blue</span>
+
+<!-- Indigo -->
+<span class="rounded-full bg-indigo-100 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs dark:text-indigo-300 dark:bg-indigo-500/20">Indigo</span>
+
+<!-- Purple -->
+<span class="rounded-full bg-purple-100 text-purple-800 font-medium px-2 py-1 leading-tight text-xs dark:text-purple-300 dark:bg-purple-500/20">Purple</span>
+
+<!-- Pink -->
+<span class="rounded-full bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs dark:text-pink-300 dark:bg-pink-500/20">Pink</span>
+
+<!-- White -->
+<span class="rounded-full bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80">White</span>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ Gray
+%span.rounded-full.bg-neutral-100.text-neutral-800.font-medium.px-2.py-1.text-xs.dark:text-neutral-200(class="dark:bg-neutral-500/20") Gray
+/ Red
+%span.rounded-full.bg-red-100.text-red-800.font-medium.px-2.py-1.text-xs.dark:text-red-300(class="dark:bg-red-500/20") Red
+/ Orange
+%span.rounded-full.bg-orange-100.text-orange-700.font-medium.px-2.py-1.text-xs.dark:text-orange-300(class="dark:bg-orange-500/20") Orange
+/ Yellow
+%span.rounded-full.bg-yellow-100.text-yellow-700.font-medium.px-2.py-1.text-xs.dark:text-yellow-300(class="dark:bg-yellow-500/20") Yellow
+/ Green
+%span.rounded-full.bg-green-100.text-green-800.font-medium.px-2.py-1.text-xs.dark:text-green-300(class="dark:bg-green-500/20") Green
+/ Blue
+%span.rounded-full.bg-blue-100.text-blue-800.font-medium.px-2.py-1.leading-tight.text-xs.dark:text-blue-300(class="dark:bg-blue-500/20") Blue
+/ Indigo
+%span.rounded-full.bg-indigo-100.text-indigo-800.font-medium.px-2.py-1.leading-tight.text-xs.dark:text-indigo-300(class="dark:bg-indigo-500/20") Indigo
+/ Purple
+%span.rounded-full.bg-purple-100.text-purple-800.font-medium.px-2.py-1.leading-tight.text-xs.dark:text-purple-300(class="dark:bg-purple-500/20") Purple
+/ Pink
+%span.rounded-full.bg-pink-100.text-pink-800.font-medium.px-2.py-1.leading-tight.text-xs.dark:text-pink-300(class="dark:bg-pink-500/20") Pink
+/ White
+%span.rounded-full.bg-white-100.text-slate-800.border.border-slate-200.font-medium.px-2.py-1.leading-tight.text-xs.dark:border-none(class="dark:bg-white/10 dark:text-white/80") White
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

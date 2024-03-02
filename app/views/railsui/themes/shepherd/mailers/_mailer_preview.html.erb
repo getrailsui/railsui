@@ -2,18 +2,19 @@
   # Refer to Tailwind's colors for max control
   # https://tailwindcss.com/docs/customizing-colors#using-css-variables
   theme = {
-    align_logo: "center",
-    primary: "#18181b",
-    secondary: "#f43f5e",
-    heading_text_color: "#27272a",
+   align_logo: "center",
+    primary: "#f43f5e",
+    secondary: "#1D9AE2",
+    heading_text_color: "#0f172a",
     footer_text_color: "#71717a",
     body_text_color: "#27272a",
     light_text_color: "#71717a",
-    callout_bg_color: "#eaf6fc",
-    callout_text_color: "#187eb9"
+    callout_bg_color: "#fef9c3",
+    callout_border_color: "#fef08a",
+    callout_text_color: "#a16207",
+    button_border_radius: "25px"
   }
 %>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -287,7 +288,7 @@
       }
 
       .rui-mailer table.callout td p {
-        margin-bottom: 0;
+        margin: 0;
       }
 
       .rui-mailer .view-in-browser {
@@ -376,7 +377,7 @@
 
         .rui-mailer .action__link--primary,
         .rui-mailer .action__link--secondary {
-          border-width: 10px 0px !important;
+          border-width: 8px 0px !important;
         }
       }
 
@@ -385,7 +386,7 @@
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
-        border-radius: 3px;
+        border-radius: <%= theme[:button_border_radius] %> !important;
         -webkit-text-size-adjust: none;
         color: white !important;
         font-size: 15px;
@@ -393,21 +394,19 @@
       /* Update your brand colors here */
       .rui-mailer .action__link--primary {
         background-color: <%= theme[:primary] %>;
-        border-top: 10px solid  <%= theme[:primary] %>;
+        border-top: 8px solid  <%= theme[:primary] %>;
         border-right: 24px solid <%= theme[:primary] %>;
-        border-bottom: 10px solid <%= theme[:primary] %>;
+        border-bottom: 8px solid <%= theme[:primary] %>;
         border-left: 24px solid <%= theme[:primary] %>;
-        border-radius: 25px !important;
       }
 
       .rui-mailer .action__link--secondary {
         color: white;
         background-color: <%= theme[:secondary] %>;
-        border-top: 10px solid <%= theme[:secondary] %>;
+        border-top: 8px solid <%= theme[:secondary] %>;
         border-right: 18px solid <%= theme[:secondary] %>;
-        border-bottom: 10px solid <%= theme[:secondary] %>;
+        border-bottom: 8px solid <%= theme[:secondary] %>;
         border-left: 18px solid <%= theme[:secondary] %>;
-        border-radius: 25px !important;
       }
 
       .rui-mailer .action {
@@ -497,7 +496,7 @@
                 <%= image_tag "social/youtube.png", width: 24, height: 24, alt: "YouTube logo" %>
               <% end %>
             </td>
-             <td align="center">
+            <td align="center">
               <%= link_to "https://github.com/" do %>
                 <%= image_tag "social/github.png", width: 24, height: 24, alt: "Github logo" %>
               <% end %>

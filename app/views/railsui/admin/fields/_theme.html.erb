@@ -1,23 +1,20 @@
-<div data-configuration-target="frameworks">
-  <%= render "railsui/admin/field_layout" do %>
-    <% content_for :explainer, flush: true do %>
-      <%= heading text: "Theme", id: "theme", tag: "h3", class: "font-semibold text-xl mb-3" %>
-      <% if Railsui.config.theme.present? %>
-        <p class="text-slate-700 dark:text-slate-300 lg:text-sm text-base">Your active theme is <%= Railsui.config.theme.humanize %>.
+<div class="py-8" data-configuration-target="frameworks">
+  <%= heading text: "Themes", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
 
-          All colors and theming conventions can be customized inside the tailwind.config.js file.
-        </p>
-      <% else %>
-        <p class="text-slate-700 dark:text-slate-300 text-sm">Select a theme to base your application off of. Rails UI uses Tailwind CSS as the underlaying CSS framework.</p>
-      <% end %>
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <% if Railsui.config.theme.present? %>
+      <p>Your active theme is <span class="bg-neutral-800/10 text-neutral-900 dark:bg-neutral-500/30 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span>.
+        All colors and theming conventions can be customized inside the tailwind.config.js file.
+      </p>
+    <% else %>
+      <p>Select a theme to base your application off of. Rails UI uses Tailwind CSS as the underlaying CSS framework. <%= link_to "Read more about themes", "https://railsui.com/docs/themes", target: :_blank %>.</p>
     <% end %>
+  </div>
 
-    <div class="p-6 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 shadow-sm dark:border-slate-700">
-      <% if Railsui.config.theme.present? %>
-        <%= render "railsui/admin/fields/theme_active", f: f %>
-      <% else %>
-        <%= render "railsui/admin/fields/theme_setup", f: f %>
-      <% end %>
-    </div>
+  <% if Railsui.config.theme.present? %>
+    <%= render "railsui/admin/fields/theme_active", f: f %>
+  <% else %>
+    <%= render "railsui/admin/fields/theme_setup", f: f %>
   <% end %>
+
 </div>

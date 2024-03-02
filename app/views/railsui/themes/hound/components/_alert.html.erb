@@ -1,0 +1,23 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/alert" %>
+
+<%= render "#{path}/with_description" %>
+<%= divider %>
+<%= render "#{path}/with_list" %>
+<%= divider %>
+<%= render "#{path}/with_actions" %>
+<%= divider %>
+<%= render "#{path}/with_accent_border" %>
+<%= divider %>
+<%= render "#{path}/dismissable" %>
+
+<%= system_pagination(prev_path: systems_components_accordion_path, prev_text: "Accordion", next_path: systems_components_badge_path, next_text: "Badge") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "With description", "#alert-with-description" %>
+		<%= component_link "With list", "#alert-with-list" %>
+		<%= component_link "With actions", "#alert-with-actions" %>
+    <%= component_link "Border accent", "#alert-border-accent" %>
+    <%= component_link "Dismissable", "#alert-dismissable" %>
+  <% end %>
+<% end %>

@@ -1,5 +1,6 @@
-<div class="my-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Partial" %>
+<div id="scaffolds-partial">
+<%= render layout: example, locals: { heading: "Partial", section: "Scaffolds" } do %>
+
 
 <%= render preview(variant="zinc") do %>
 <article id="post_1" class="py-6 prose prose-zinc dark:prose-invert first:pt-0">
@@ -23,6 +24,7 @@
 </article>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <article id="<%%= dom_id post %>" class="py-6 prose prose-zinc dark:prose-invert first:pt-0">
@@ -66,4 +68,6 @@
 
 <% end %>
 <%= render_snippet active_tab: "erb", erb_filename: "_post.html.erb", haml_filename: "_post.haml.erb" %>
+<% end %>
+<% end %>
 </div>

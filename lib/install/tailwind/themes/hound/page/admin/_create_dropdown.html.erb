@@ -43,8 +43,8 @@
 
       <% if respond_to?(:admin_projects_path) || respond_to?(:admin_project_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
-            <%= icon "plus-small", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+            <%= icon "plus-small", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Project</span>
           <% end %>
         </li>
@@ -52,8 +52,8 @@
 
       <% if respond_to?(:admin_messages_path) || respond_to?(:admin_message_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
-            <%= icon "paper-airplane", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+            <%= icon "paper-airplane", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Message</span>
           <% end %>
         </li>
@@ -61,8 +61,8 @@
 
       <% if respond_to?(:admin_assignments_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3", data: { action: "click->modal#open" } do %>
-            <%= icon "pencil-square", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 pointer-events-none" %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3", data: { action: "click->modal#open" } do %>
+            <%= icon "pencil-square", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 pointer-events-none" %>
             <span class="pointer-events-none">Assignment</span>
           <% end %>
         </li>
@@ -70,8 +70,8 @@
 
       <% if respond_to?(:admin_calendar_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 group flex items-center justify-start space-x-3" do %>
-            <%= icon "calendar-days", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+            <%= icon "calendar-days", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Event</span>
           <% end %>
         </li>

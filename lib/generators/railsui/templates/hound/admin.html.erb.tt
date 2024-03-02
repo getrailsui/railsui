@@ -13,10 +13,11 @@
 
   <%%= render "shared/fonts" %>
   <%%= render "shared/meta" %>
+  <%%= custom_colors_css %>
   <%%= yield :head %>
 </head>
 
-<body class="rui-admin antialiased h-full <%%= yield(:body_classes).presence || 'bg-slate-50 dark:bg-slate-900 dark:text-slate-100 text-slate-800' %>">
+<body class="rui-admin antialiased h-full bg-slate-50 dark:bg-slate-900 dark:text-slate-100 text-slate-800">
   <%%= render "shared/flash" %>
 
   <%%= yield %>

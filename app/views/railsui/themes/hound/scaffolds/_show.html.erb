@@ -1,7 +1,6 @@
-<div class="my-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Show" %>
-
-<%= render preview do %>
+<div id="scaffolds-show">
+<%= render layout: example, locals: { heading: "Show", section: "Scaffolds" } do %>
+<%= render preview('gray') do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
   <div class="pb-6 border-b dark:border-slate-700">
     <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
@@ -47,6 +46,8 @@
 </div>
 <% end %>
 
+
+<% content_for :example, flush: true do %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
@@ -99,4 +100,6 @@
 
 <% end %>
 <%= render_snippet active_tab: "erb", erb_filename: "show.html.erb", haml_filename: "show.haml.erb" %>
+<% end %>
+<% end %>
 </div>

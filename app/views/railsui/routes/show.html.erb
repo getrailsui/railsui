@@ -1,46 +1,43 @@
-<% gradients = ["from-indigo-800 to-salmon-500 via-blue-800", "from-emerald-800 to-blue-800 via-indigo-600", "from-pink-600 to-rose-500", "from-slate-700 to-slate-900" ]%>
+<div data-controller="search helper" data-helper-url-value="_url"
+data-helper-path-value="_path"
+data-search-data-value="">
+  <div class="dark:text-neutral-100 text-neutral-800">
+    <%= render "railsui/routes/nav" %>
 
-<div data-controller="search helper" data-helper-url-value="_url" data-helper-path-value="_path" data-search-data-value="">
-  <div class="bg-gradient-to-br  pt-14 pb-6 px-10 text-white <%= gradients.sample %>">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex dark:text-neutral-200 text-sm flex-1">
+      <ol class="flex flex-wrap items-center space-x-3">
+        <li>
+          <%= link_to "Rails UI", railsui.root_path, class: "hover:underline" %>
+        </li>
 
-      <nav aria-label="breadcrumb" class="my-6 font-medium flex text-white dark:text-slate-200 text-sm flex-1">
-        <ol class="flex flex-wrap items-center space-x-3">
-          <li>
-            <%= link_to "Main app", railsui.root_path, class: "hover:underline hover:text-white" %>
-          </li>
+        <li class="flex space-x-3">
+          <div class="flex items-center">
+            <span class="text-neutral-300 dark:text-neutral-500">/</span>
+          </div>
+          <a href="#" aria-current="page" class="text-underline">Routes</a>
+        </li>
+      </ol>
+    </nav>
+    <h1 class="md:text-6xl text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">Routes</h1>
 
-          <li class="flex space-x-3">
-            <div class="flex items-center">
-              <span class="text-slate-300 dark:text-slate-500">/</span>
-            </div>
-            <a href="#" aria-current="page" class="text-underline">Routes</a>
-          </li>
-        </ol>
-      </nav>
-
-    <div class="flex justify-center py-10">
+    <div class="md:flex items-center justify-between md:pt-16 md:pb-24 py-4">
       <%= form_tag railsui.routes_path, method: :get, data: { search_target: "form" } do %>
         <div class="relative">
-          <%= text_field :query, nil, id: 'search', autofocus: true, placeholder: "Search routes", class: "rounded bg-white/90 backdrop-blur-lg border border-slate-300 dark:bg-slate-800/75 dark:focus:bg-slate-800/75 focus:bg-white focus:ring-4 focus:ring-slate-50/25 shadow-inner block w-[600px] flex-shrink-0 dark:border-slate-600 dark:focus:ring-white/10 peer text-lg text-slate-800 font-medium dark:text-white", data: { action: "keyup->search#search keyup.esc->search#clear" }, tabindex: 0 %>
+          <%= text_field :query, nil, id: 'search', autofocus: true, placeholder: "Search routes", class: "  border-b border-x-0 focus:bg-transparent border-t-0 border-neutral-300 focus:ring-0 block w-full md:w-[900px] flex-shrink-0 dark:bg-transparent dark:border-neutral-600 peer text-2xl px-1 py-5 text-neutral-800 font-medium dark:text-white placeholder:text-neutral-400 selection:bg-netural-300 dark:selection:bg-neutral-700/30", data: { action: "keyup->search#search keyup.esc->search#clear" }, tabindex: 0 %>
 
-          <span class="absolute opacity-0 peer-focus:opacity-100 transition ease-in-out duration-200 right-4 top-[13px] text-sm -translate-x-2 peer-focus:translate-x-0 text-slate-600 dark:text-slate-400">Hit <span class="border border-slate-400 text-slate-600 inline-flex dark:text-slate-100 leading-none items-center rounded px-1 py-0 h-5 font-mono text-xs">esc</span> to reset</span>
+          <span class="absolute opacity-0 peer-focus:opacity-100 transition ease-in-out duration-200 right-4 top-[20px] text-sm -translate-x-2 peer-focus:translate-x-0 text-neutral-600 dark:text-neutral-400">Hit <span class="border border-neutral-400 text-neutral-600 inline-flex dark:text-neutral-100 leading-none items-center rounded px-1 py-0 h-5 font-mono text-xs">esc</span> to reset</span>
         </div>
       <% end %>
 
-      </div>
-
-      <div class="flex items-center justify-between">
-        <h1 class="text-4xl font-extrabold tracking-tight flex-1 text-white">Routes</h1>
-        <div class="flex items-center">
-          <button role="button" type="button" title="Returns a relative path (without the http or domain)" class="bg-white backdrop-blur-md rounded-l border border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 border-r hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-indigo-500 focus:text-white focus:border-indigo-600"
+      <div class="md:flex items-center justify-between md:pt-0 pt-6 z-50">
+        <div class="flex items-center md:w-auto w-full">
+          <button role="button" type="button" title="Returns a relative path (without the http or domain)" class="bg-transparent backdrop-blur-md rounded-l-md border border-neutral-300 font-medium text-sm text-neutral-700 px-5 py-2 border-r hover:bg-neutral-100 focus:ring-4 focus:ring-white/20 focus:bg-indigo-500 focus:text-white focus:border-indigo-600 dark:bg-neutral-800 dark:border-neutral-700/80 dark:text-neutral-100 md:w-auto w-full dark:hover:bg-neutral-800"
           data-helper-target="btn"
            data-action="click->helper#togglePath">Path</button>
-          <button role="button" type="button" title="Returns an absolute URL (with the http and domain)" class="bg-white backdrop-blur-md rounded-r border-r border-y border-slate-300 font-medium text-sm text-slate-700 px-3 py-2 hover:bg-slate-100 focus:ring-4 focus:ring-white/20 focus:bg-indigo-500 focus:text-white focus:border-indigo-600" data-helper-target="btn" data-action="click->helper#toggleUrl">URL</button>
+          <button role="button" type="button" title="Returns an absolute URL (with the http and domain)" class="bg-transparent backdrop-blur-md rounded-r-md border-r border-y border-neutral-300 font-medium text-sm text-neutral-700 px-5 py-2 hover:bg-neutral-100 focus:ring-4 focus:ring-white/20 focus:bg-indigo-500 focus:text-white focus:border-indigo-600 dark:bg-neutral-800 dark:border-neutral-700/80 dark:text-neutral-100 md:w-auto w-full dark:hover:bg-neutral-800" data-helper-target="btn" data-action="click->helper#toggleUrl">URL</button>
         </div>
       </div>
     </div>
-
-    <div class="px-10">
-      <%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self))%>
-    </div>
+  </div>
+  <%= @routes.format(ActionDispatch::Routing::HtmlTableFormatter.new(self))%>
 </div>

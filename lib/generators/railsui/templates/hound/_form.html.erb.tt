@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-group">
-    <%%= form.label :password_confirmation %>
+    <%%= form.label :password_confirmation, class: "form-label" %>
     <%%= form.password_field :password_confirmation, class: "form-input" %>
 <%- elsif attribute.attachments? -%>
     <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
@@ -22,7 +22,7 @@
     <%%= form.text_field :<%= attribute.column_name %>, class: "form-input" %>
 <%- elsif attribute.field_type == :datetime_select -%>
     <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
-    <%%= form.datetime_select :<%= attribute.column_name %>, class: "form-input-datetime-select" %>
+    <%%= form.datetime_select :<%= attribute.column_name %> %>
 <%- elsif attribute.field_type == :check_box -%>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-input-checkbox" %>
     <%%= form.label :<%= attribute.column_name %>, class: "ml-2" %>

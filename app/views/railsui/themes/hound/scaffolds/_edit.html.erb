@@ -1,7 +1,7 @@
-<div class="my-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "Edit" %>
+<div id="scaffolds-edit">
+<%= render layout: example, locals: { heading: "Edit", section: "Scaffolds" } do %>
 
-<%= render preview do %>
+<%= render preview('gray') do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
   <div class="mb-4 pb-6 border-b dark:border-slate-700">
     <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
@@ -28,12 +28,12 @@
 
 
     <div class="form-group">
-      <label class="label" for="post_title">Title</label>
+      <label class="form-label" for="post_title">Title</label>
       <input class="form-input" type="text" value="Testing 123" name="post[title]" id="post_title">
     </div>
 
     <div class="form-group">
-      <label class="label" for="post_content">Content</label>
+      <label class="form-label" for="post_content">Content</label>
       <textarea class="form-input" name="post[content]" id="post_content">Testing 123</textarea>
     </div>
 
@@ -48,6 +48,8 @@
   </div>
 </div>
 <% end %>
+
+<% content_for :example, flush: true do %>
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
@@ -99,4 +101,6 @@
 
 <% end %>
 <%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+<% end %>
+<% end %>
 </div>

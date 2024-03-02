@@ -278,8 +278,8 @@
           xmlns="http://www.w3.org/2000/svg">
           <path
             d="M2 6.2069C2 5.09116 2.44323 4.02112 3.23217 3.23217C4.02112 2.44323 5.09116 2 6.2069 2H19.8793C20.995 2 22.0651 2.44323 22.854 3.23217C23.643 4.02112 24.0862 5.09116 24.0862 6.2069V28.2931C24.0862 29.4088 23.643 30.4789 22.854 31.2678C22.0651 32.0568 20.995 32.5 19.8793 32.5H6.2069C5.09116 32.5 4.02112 32.0568 3.23217 31.2678C2.44323 30.4789 2 29.4088 2 28.2931V6.2069Z"
-            stroke="#F43F5E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M13.5688 27.2415H12.5171" stroke="#F43F5E" stroke-width="3" stroke-linecap="round"
+           stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M13.5688 27.2415H12.5171" stroke-width="3" stroke-linecap="round"
             stroke-linejoin="round" />
           <path
             d="M31.4482 21.9829C31.4482 21.9829 32.5 20.0771 32.5 17.2501C32.5 14.4231 31.4482 12.5173 31.4482 12.5173"

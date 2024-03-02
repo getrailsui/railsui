@@ -1,31 +1,26 @@
-<h1 class="font-extrabold text-4xl mb-6 dark:text-white tracking-tight">Design system</h1>
-<div class="prose prose-lg dark:!prose-invert max-w-3xl">
-  <p>A design system is a pre-configured set of standards and patterns to follow as you iterate on the application building process.</p>
 
-  <p>Use this system as a guide but not necessarily a source of truth for exact use cases. It's meant to solve those repeatable problems aimed to help you increase speed and developer happiness.</p>
+<div class="text-center">
+  <div class="flex items-center justify-center mb-3">
+    <div class="flex items-center gap-3">
+      <div class="w-20 h-px bg-gradient-to-r from-transparent to-neutral-200 dark:to-neutral-700"></div>
+      <p class="font-medium"><%= Railsui.config.application_name %></p>
+      <div class="w-20 h-px bg-gradient-to-l from-transparent to-neutral-200 dark:to-neutral-700"></div>
+    </div>
+  </div>
+  <h1 class="font-bold text-3xl mb-6 dark:text-white tracking-tight">Design patterns</h1>
+  <div class="prose prose-neutral dark:prose-invert mx-auto max-w-md mb-10">
+    <p class="text-lg">Rapidly construct your application UI and increase developer happiness.</p>
+  </div>
 </div>
 
-<ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-10">
-  <li>
-    <%= render "railsui/shared/grid_item", path: systems_content_path, title: "Content", description: "Design patterns for everyday markup and content." %>
-  </li>
-  <li>
-    <%= render "railsui/shared/grid_item", path: systems_forms_path, title: "Forms", description: "Inputs, controls, buttons, and more ready for quick use." %>
-  </li>
+<%= render layout: "railsui/shared/linkables" do %>
+  <%= render "railsui/shared/linkable", path: systems_content_typography_path, title: "Content", description: "Ready-to-use content patterns for everyday markup and content." %>
 
-  <li>
-    <%= render "railsui/shared/grid_item", path: systems_components_path, title: "Components", description: "Scale with greater ease with the bundled component library." %>
-  </li>
+  <%= render "railsui/shared/linkable", path: systems_forms_input_path, title: "Forms", description: "Form inputs, controls, and pre-designed patterns." %>
 
-  <li>
-    <%= render "railsui/shared/grid_item", path: systems_components_path, title: "Scaffolds", description: "Pre-themed Rails scaffold templates" %>
-  </li>
+  <%= render "railsui/shared/linkable", path: systems_components_accordion_path, title: "Components", description: "Customizable components that you can copy and paste into your apps." %>
 
-  <li>
-    <%= render "railsui/shared/grid_item", path: systems_authentication_overview_path, title: "Authentication", description: "An authentication experience ready for use." %>
-  </li>
+  <%= render "railsui/shared/linkable", path: systems_authentication_overview_path, title: "Authentication", description: "A customizable authentication experience based on the Devise gem." %>
 
-  <li>
-    <%= render "railsui/shared/grid_item", path: systems_mailers_path, title: "Mailers", description: "Some help getting those pesky email templates in good shape." %>
-  </li>
-</ul>
+  <%= render "railsui/shared/linkable", path: systems_mailers_path, title: "Mailers", description: "Some help getting those pesky email templates in good shape." %>
+<% end %>

@@ -16,7 +16,6 @@ module Railsui
       package_version
     end
 
-
     def system_pagination(options={})
       render partial: "railsui/shared/pagination", locals: options
     end

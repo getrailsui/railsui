@@ -374,7 +374,7 @@
 
         .rui-mailer .action__link--primary,
         .rui-mailer .action__link--secondary {
-          border-width: 10px 0px !important;
+          border-width: 8px 0px !important;
         }
       }
 
@@ -383,7 +383,7 @@
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
-        border-radius: 3px;
+        border-radius: 6px;
         -webkit-text-size-adjust: none;
         color: white !important;
         font-size: 16px;
@@ -391,18 +391,18 @@
       /* Update your brand colors here */
       .rui-mailer .action__link--primary {
         background-color: <%= theme[:primary] %>;
-        border-top: 10px solid  <%= theme[:primary] %>;
+        border-top: 8px solid  <%= theme[:primary] %>;
         border-right: 18px solid <%= theme[:primary] %>;
-        border-bottom: 10px solid <%= theme[:primary] %>;
+        border-bottom: 8px solid <%= theme[:primary] %>;
         border-left: 18px solid <%= theme[:primary] %>;
       }
 
       .rui-mailer .action__link--secondary {
         color: white;
         background-color: <%= theme[:secondary] %>;
-        border-top: 10px solid <%= theme[:secondary] %>;
+        border-top: 8px solid <%= theme[:secondary] %>;
         border-right: 18px solid <%= theme[:secondary] %>;
-        border-bottom: 10px solid <%= theme[:secondary] %>;
+        border-bottom: 8px solid <%= theme[:secondary] %>;
         border-left: 18px solid <%= theme[:secondary] %>;
       }
 
@@ -469,8 +469,8 @@
         <table class="social-links" align="center" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td align="center">
-              <%= link_to "https://twitter.com/" do %>
-                <%= image_tag "social/twitter.png", width: 24, height: 24, alt: "Twitter logo" %>
+              <%= link_to "https://x.com/" do %>
+                <%= image_tag "social/x.png", width: 24, height: 24, alt: "X logo" %>
               <% end %>
             </td>
             <td align="center">

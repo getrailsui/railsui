@@ -1,4 +1,5 @@
-<%= render preview do %>
+<%= render layout: example, locals: { heading: "Unock", section: "Authentication" } do %>
+<%= render preview 'gray' do %>
   <div class="sm:-m-8 -m-4 pointer-events-none select-none sm:h-[800px] min-h-[600px] pt-10 sm:pt-0 flex flex-col items-center justify-center bg-cover bg-center px-4" style="background-image: url('<%= asset_url('fusion.png') %>')">
     <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
       <div>
@@ -15,7 +16,7 @@
           </div>
         </div>
 
-        <div class="bg-white dark:bg-slate-800 dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
+        <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
 
           <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
             <div class="form-group">
@@ -42,6 +43,7 @@
   </div>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <% content_for :html do %>
 
 <% end %>
@@ -89,5 +91,7 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<% end %>
+<% end %>
 
-<%= system_pagination(prev_path: systems_authentication_edit_path, prev_text: "Edit", next_path: systems_path, next_text: "Design system") %>
+<%= system_pagination(prev_path: systems_authentication_edit_path, prev_text: "Edit", next_path: systems_mailers_path, next_text: "Mailers") %>

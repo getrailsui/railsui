@@ -1,7 +1,15 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/flash" %>
 
 <%= render "#{path}/notice" %>
-<%= render "#{path}/warning" %>
+<%= render "#{path}/alert" %>
 <%= render "#{path}/dynamic" %>
 
-<%= system_pagination(prev_path: systems_components_dropdowns_path, prev_text: "Dropdowns", next_path: systems_components_modals_path, next_text: "Modals") %>
+<%= system_pagination(prev_path: systems_components_dropdown_path, prev_text: "Dropdown", next_path: systems_components_modal_path, next_text: "Modal") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Notice", "#flash-notice" %>
+    <%= component_link "Alert", "#flash-alert" %>
+		<%= component_link "Dynamic", "#flash-dynamic" %>
+  <% end %>
+<% end %>

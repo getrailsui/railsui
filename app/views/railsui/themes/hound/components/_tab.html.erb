@@ -1,0 +1,20 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/tab" %>
+
+<%= render "#{path}/base" %>
+<%= divider %>
+<%= render "#{path}/pills" %>
+<%= divider %>
+<%= render "#{path}/rounded" %>
+<%= divider %>
+<%= render "#{path}/with_icons" %>
+
+<%= system_pagination(prev_path: systems_components_pagination_path, prev_text: "Pagination", next_path: systems_components_toast_path, next_text: "Toast") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Base", "#tab-base" %>
+    <%= component_link "Pill", "#tab-pill" %>
+		<%= component_link "Rounded", "#tab-rounded" %>
+    <%= component_link "With icons", "#tab-with-icons" %>
+  <% end %>
+<% end %>

@@ -32,7 +32,7 @@
   *  http://localhost:3000/railsui/systems/forms/inputs#forms-input-field
   */
   .form-input {
-    @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-indigo-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400;
+    @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400;
 
     &[disabled] {
       @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-slate-800/90 dark:opacity-70;
@@ -52,8 +52,8 @@
     file:mr-4 file:py-2 file:px-4
     file:rounded-full file:border-0
     file:text-sm file:font-semibold
-    file:bg-indigo-50 file:text-indigo-700
-    hover:file:bg-indigo-100 dark:file:bg-indigo-600 dark:file:text-slate-100 dark:hover:file:text-slate-100 dark:hover:file:bg-indigo-700;
+    file:bg-primary-50 file:text-primary-700
+    hover:file:bg-primary-100 dark:file:bg-primary-600 dark:file:text-slate-100 dark:hover:file:text-slate-100 dark:hover:file:bg-primary-700;
   }
 
   /**
@@ -65,7 +65,7 @@
   *  http://localhost:3000/railsui/systems/forms/inputs#forms-color-input
   */
   .form-input-color {
-    @apply appearance-none rounded-full w-8 h-8 border border-slate-200 focus:border-slate-400 focus:shadow transition focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-600;
+    @apply appearance-none rounded-full w-8 h-8 border border-slate-200 focus:border-slate-400 focus:shadow transition focus:ring-4 focus:ring-primary-500/10 dark:border-slate-600;
 
     &::-webkit-color-swatch-wrapper,
     &::-webkit-color-swatch {
@@ -161,7 +161,7 @@
   *  http://localhost:3000/railsui/systems/forms/selects#forms-select
   */
   .form-select {
-    @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-indigo-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400 shadow-sm;
+    @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400 shadow-sm;
 
     &[disabled] {
       @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-slate-800/90 dark:opacity-70;
@@ -177,7 +177,7 @@
   *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
   */
   .form-input-checkbox {
-    @apply rounded-sm border border-slate-400   checked:border-indigo-500 checked:accent-indigo-500 text-indigo-600 dark:bg-slate-700 dark:border-slate-600 focus:ring-indigo-500/30 dark:checked:border-indigo-400 dark:checked:accent-indigo-400;
+    @apply rounded-sm border border-slate-400   checked:border-primary-500 checked:accent-primary-500 text-primary-600 dark:bg-slate-700 dark:border-slate-600 focus:ring-primary-500/30 dark:checked:border-primary-400 dark:checked:accent-primary-400;
   }
 
   /**
@@ -189,7 +189,7 @@
   *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-radios
   */
   .form-input-radio {
-    @apply rounded-full border border-slate-400 focus:ring-2 checked:ring-indigo-200 checked:border-indigo-600 checked:accent-indigo-600 checked:shadow-indigo-600 text-indigo-600 focus-visible:text-indigo-600 focus-visible:ring-indigo-200 focus-visible:outline-none dark:bg-slate-700 dark:border-slate-600 dark:checked:border-indigo-400 dark:checked:accent-indigo-400;
+    @apply rounded-full border border-slate-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-none dark:bg-slate-700 dark:border-slate-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
   }
 
   /**
@@ -212,7 +212,7 @@
     }
 
     &:checked + label::before {
-      @apply bg-indigo-500;
+      @apply bg-primary-500;
     }
 
     &:checked + label::after {

@@ -1,5 +1,5 @@
-<div class="my-16">
-<%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Confirmation instructions" %>
+<div id="devise-confirmation-instructions">
+<%= render layout: example, locals: { heading: "Confirmation Instructions", section: "Mailers / Devise" } do %>
 
 <%= email_viewer("Confirmation instructions") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
@@ -14,7 +14,7 @@
   <% end %>
 <% end %>
 
-
+<% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/mailer/confirmation_instructions.html.erb -->
 <p>Hi <%%= @email %>,</p>
@@ -36,4 +36,6 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "confirmation_instructions.html.erb", haml_filename: "confirmation_instructions.haml.erb" %>
+<% end %>
+<% end %>
 </div>
