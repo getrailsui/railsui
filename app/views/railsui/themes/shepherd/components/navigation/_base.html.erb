@@ -1,17 +1,5 @@
-<div class="mb-16 mt-6 pb-24">
-<%= render "railsui/shared/sticky_subhead", title: "Navigation", subtitle: "Base" %>
-
-<div class="prose dark:prose-invert max-w-4xl mb-10 dark:text-slate-200 dark:prose-a:text-slate-200">
-  <p>The base nav is the offical navigation design from the <%= Railsui.config.theme %> theme. Bundled with the base navigation (and all other navs) is a mobile nav toggle control powered by <%= link_to "Stimulus.js", "https://stimulus.hotwired.dev/", target: :_blank %></p>
-
-  <p>For any icons shown, refer to the <%= link_to "Rails UI icon documentation", systems_icons_path %> for usage instructions and best practices.</p>
-
-
-  <h4>Navigation links</h4>
-
-  <p>By using the <%= code "nav_link_to" %> helper  method <em>(shown in the erb and haml snippets below and bundled with Rails UI)</em>, an active class of <%= code "nav-link-active" %> is applied for the current page within your application.</p>
-  <p>If a regular <%= code "link_to" %> view helper is preferred for links, manually append the <%= code "nav-link-active" %> class as needed.</p>
-</div>
+<div id="navigation-base">
+<%= render layout: example, locals: { heading: "Base", section: "Navigation" } do %>
 
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/navigation/nav_preview_zinc", flush: true do %>
 <header class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b rounded-t-xl border-zinc-300/80 relative z-50 dark:border-zinc-700/80" data-controller="nav">
@@ -19,6 +7,8 @@
 </header>
 <% end %>
 
+
+<% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 <header class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b rounded-t-xl border-zinc-300/80 relative z-50 dark:border-zinc-700/80" data-controller="nav">
   <div class="md:flex items-center justify-between">
@@ -426,4 +416,6 @@ export default class extends Controller {
 <% end %>
 
 <%= render_snippet(js_filename: "nav_controller.js") %>
+<% end %>
+<% end %>
 </div>

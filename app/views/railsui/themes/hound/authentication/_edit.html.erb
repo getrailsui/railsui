@@ -1,21 +1,22 @@
+<%= render layout: example, locals: { heading: "Edit account", section: "Authentication" } do %>
 
-<div class="border dark:border-slate-700 rounded pointer-events-none select none">
+<div class="border dark:border-slate-700 rounded pointer-events-none select none dark:bg-slate-900">
     <header class="relative dark:bg-slate-900 bg-white border-b border-slate-200 dark:border-slate-700 py-1" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
         <%= link_to "#", class: "w-12 h-12 flex justify-center" do %>
-          <%= icon "themes/#{Railsui.config.theme}/logo.svg", path: "themes/#{Railsui.config.theme}/logo.svg", classes: "w-10 h-auto fill-current text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out dark:hover:text-indigo-500", variant: :solid %>
+          <%= icon "themes/#{Railsui.config.theme}/logo.svg", path: "themes/#{Railsui.config.theme}/logo.svg", classes: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
           <span class="sr-only"><%= Railsui.config.application_name %></span>
         <% end %>
         <button id="dropdowns-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
           <div role="none" data-nav-target="menuBars">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-indigo-600             dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="aizwk09s9b6getl7of67l85n6mj63q6h"><title id="aizwk09s9b6getl7of67l85n6mj63q6h">Bars 3 center left</title>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-primary-600             dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="aizwk09s9b6getl7of67l85n6mj63q6h"><title id="aizwk09s9b6getl7of67l85n6mj63q6h">Bars 3 center left</title>
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"></path>
           </svg>
           </div>
           <div role="none" data-nav-target="menuCross" class="hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-indigo-600 dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="a7yo91x0tasrdxkrlyew6t43iaw7po5j"><title id="a7yo91x0tasrdxkrlyew6t43iaw7po5j">X mark</title>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="a7yo91x0tasrdxkrlyew6t43iaw7po5j"><title id="a7yo91x0tasrdxkrlyew6t43iaw7po5j">X mark</title>
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
 
@@ -37,15 +38,15 @@
             <ul class="md:flex flex-wrap items-center md:justify-center justify-between md:space-x-4">
               <li class="md:mt-0 mt-4 flex flex-col items-center relative" data-controller="dropdown">
                 <button class="group" type="button" data-action="click->dropdown#toggle click@window->dropdown#hide">
-                  <img class="rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-indigo-600 transition duration-300 ease-in-out" src="https://source.unsplash.com/random/600x400/?dog">
+                  <img class="rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" src="https://source.unsplash.com/random/600x400/?dog">
                 </button>
 
                 <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
                   <div role="none">
-                    <a class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block" data-turbo="false" href="/users/edit">Edit account</a>
+                    <a class="px-4 py-2 md:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block" data-turbo="false" href="/users/edit">Edit account</a>
                   </div>
                   <div role="none">
-                    <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="px-4 py-2 md:py-[.4rem] hover:text-indigo-600 dark:hover:text-indigo-400 block w-full sm:!text-left !text-center" data-turbo="false" type="submit">Sign out</button><input type="hidden" name="authenticity_token" value="247WxI3moLFKETE62nwlgg6q0T9bPTf1f0HE-4DGBZiP-vB8suMy6MyKoGMCsQz5_JIrGB3IkssLkY4DH8za_Q" autocomplete="off"></form>
+                    <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="px-4 py-2 md:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block w-full sm:!text-left !text-center" data-turbo="false" type="submit">Sign out</button><input type="hidden" name="authenticity_token" value="247WxI3moLFKETE62nwlgg6q0T9bPTf1f0HE-4DGBZiP-vB8suMy6MyKoGMCsQz5_JIrGB3IkssLkY4DH8za_Q" autocomplete="off"></form>
                   </div>
                 </div>
               </li>
@@ -132,6 +133,7 @@
 </div>
 </div>
 
+<% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 
 <% end %>
@@ -285,5 +287,8 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+
+<% end %>
+<% end %>
 
 <%= system_pagination(prev_path: systems_authentication_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_unlocks_path, next_text: "Unlock") %>

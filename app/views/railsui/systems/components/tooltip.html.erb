@@ -1,0 +1,5 @@
+<% content_for :header_description do %>
+  <p>A small box that shows info about something when you point your mouse at it or click on it.</p>
+<% end %>
+<%= render "railsui/shared/header" %>
+<%= render "railsui/themes/#{Railsui.config.theme}/components/tooltip" %>

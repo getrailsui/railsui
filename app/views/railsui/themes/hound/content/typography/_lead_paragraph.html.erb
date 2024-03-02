@@ -1,0 +1,31 @@
+<div id="typography-lead-paragraph">
+<%= render layout: example, locals: { heading: "Lead paragraph", section: "Typography" } do %>
+
+<div class="font-light text-lg text-slate-700 tracking-normal mt-3 mb-6 dark:text-slate-300">
+  <p>This is a lead paragraph. It stands out from regular paragraphs.</p>
+</div>
+
+<% content_for :example, flush: true do %>
+  <%# .html %>
+  <% content_for :html, flush: true do %>
+<div class="font-light text-lg text-slate-700 tracking-normal dark:text-slate-300">
+  <p>A lead paragraph stands out from regular paragraphs.</p>
+</div>
+  <% end %>
+
+  <%# .erb %>
+  <% content_for :erb, flush: true do %>
+<%%= tag.div class: "font-light text-base text-slate-700 tracking-normal dark:text-slate-300" do %>
+  <%%= tag.p "A lead paragraph stands out from regular paragraphs.", class: "lead" %>
+<%% end %>
+    <% end %>
+
+    <%# .haml %>
+    <% content_for :haml, flush: true do %>
+.font-light.text-base.text-slate-700.tracking-normal.dark:text-slate-300
+  %p A lead paragraph stands out from regular paragraphs.
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

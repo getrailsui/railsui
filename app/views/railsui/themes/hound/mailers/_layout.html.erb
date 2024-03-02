@@ -1,5 +1,5 @@
 <div class="mb-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Mailers", subtitle: "Overview" %>
+  <%= render "railsui/shared/code_example_heading", title: "Mailers", subtitle: "Overview" %>
 
   <div class="prose dark:prose-invert">
     <p>The main <%= code("mailer.html.erb") %> layout comes ready to rock and roll inside <%= code("app/views/layouts") %>. </p>
@@ -25,7 +25,8 @@
     light_text_color: "#94a3b8",
     callout_bg_color: "#e0e7ff",
     callout_border_color: "#a5b4fc",
-    callout_text_color: "#4338ca"
+    callout_text_color: "#4338ca",
+    button_border_radius: "6px"
   }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -281,7 +282,7 @@
       }
 
       table.callout td p {
-        margin-bottom: 0;
+        margin: 0;
       }
 
       .view-in-browser {
@@ -376,7 +377,7 @@
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
-        border-radius: 3px;
+        border-radius: <%%= theme[:button_border_radius] %> !important;
         -webkit-text-size-adjust: none;
         color: white !important;
         font-size: 16px;
@@ -384,18 +385,18 @@
       /* Update your brand colors here */
       .action__link--primary {
         background-color: <%%= theme[:primary] %>;
-        border-top: 10px solid  <%%= theme[:primary] %>;
+        border-top: 8px solid  <%%= theme[:primary] %>;
         border-right: 18px solid <%%= theme[:primary] %>;
-        border-bottom: 10px solid <%%= theme[:primary] %>;
+        border-bottom: 8px solid <%%= theme[:primary] %>;
         border-left: 18px solid <%%= theme[:primary] %>;
       }
 
       .action__link--secondary {
         color: white;
         background-color: <%%= theme[:secondary] %>;
-        border-top: 10px solid <%%= theme[:secondary] %>;
+        border-top: 8px solid <%%= theme[:secondary] %>;
         border-right: 18px solid <%%= theme[:secondary] %>;
-        border-bottom: 10px solid <%%= theme[:secondary] %>;
+        border-bottom: 8px solid <%%= theme[:secondary] %>;
         border-left: 18px solid <%%= theme[:secondary] %>;
       }
 
@@ -462,8 +463,8 @@
         <table class="social-links" align="center" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td align="center">
-              <%%= link_to "https://twitter.com/" do %>
-                <%%= image_tag "social/twitter.png", width: 24, height: 24, alt: "Twitter logo" %>
+              <%%= link_to "https://x.com/" do %>
+                <%%= image_tag "social/twitter.png", width: 24, height: 24, alt: "X logo" %>
               <%% end %>
             </td>
             <td align="center">
@@ -872,18 +873,18 @@
       /* Update your brand colors here */
       .action__link--primary {
         background-color: #{theme[:primary]};
-        border-top: 10px solid  #{theme[:primary]};
+        border-top: 8px solid  #{theme[:primary]};
         border-right: 18px solid #{theme[:primary]};
-        border-bottom: 10px solid #{theme[:primary]};
+        border-bottom: 8px solid #{theme[:primary]};
         border-left: 18px solid #{theme[:primary]};
       }
 
       .action__link--secondary {
         color: white;
         background-color: #{theme[:secondary]};
-        border-top: 10px solid #{theme[:secondary]};
+        border-top: 8px solid #{theme[:secondary]};
         border-right: 18px solid #{theme[:secondary]};
-        border-bottom: 10px solid #{theme[:secondary]};
+        border-bottom: 8px solid #{theme[:secondary]};
         border-left: 18px solid #{theme[:secondary]};
       }
 
@@ -933,8 +934,8 @@
           %table.social-links{align: "center", border: "0", cellpadding: "0", cellspacing: "0"}
             %tr
               %td{align: "center"}
-                = link_to "https://twitter.com/" do
-                  = image_tag "social/twitter.png", width: 24, height: 24, alt: "Twitter logo"
+                = link_to "https://x.com/" do
+                  = image_tag "social/x.png", width: 24, height: 24, alt: "X logo"
               %td{align: "center"}
                 = link_to "https://facebook.com/" do
                   = image_tag "social/facebook.png", width: 24, height: 24, alt: "Facebook logo"

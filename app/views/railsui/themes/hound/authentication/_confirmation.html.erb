@@ -1,10 +1,11 @@
-<%= render preview do %>
+<%= render layout: example, locals: { heading: "Confirmation", section: "Authentication" } do %>
+<%= render preview 'gray' do %>
   <div class="pointer-events-none select-none sm:h-[800px] min-h-[600px] sm:-m-8 -m-4 pt-10 sm:pt-0 flex flex-col items-center justify-center bg-cover bg-center px-4" style="background-image: url('<%= asset_path('fusion.png')%>')">
     <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
       <div>
         <div class="flex justify-center">
           <%= link_to "#", class: "w-12 h-12 flex justify-center" do %>
-            <%= icon "themes/#{Railsui.config.theme}/logo.svg", path: "themes/#{Railsui.config.theme}/logo.svg", classes: "w-10 h-auto fill-current text-indigo-600 hover:text-indigo-700 duration-300 transition ease-in-out dark:hover:text-indigo-500", variant: :solid %>
+            <%= icon "themes/#{Railsui.config.theme}/logo.svg", path: "themes/#{Railsui.config.theme}/logo.svg", classes: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
             <span class="sr-only"><%= Railsui.config.application_name %></span>
           <% end %>
         </div>
@@ -17,7 +18,7 @@
           </div>
         </div>
 
-        <div class="bg-white dark:bg-slate-800 dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
+        <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
 
           <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
 
@@ -25,7 +26,7 @@
               <label class="form-label" for="user_email">Email</label>
               <div class="relative">
                 <input autocomplete="email" value="" class="form-input peer focus:pl-10 transition" pattern="[^@ ]+@[^@ ]+.[^@ ]+" title="Invalid email address" type="email" name="user[email]" id="user_email">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-indigo-400" role="img" aria-labelledby="a6dt3lf8fyqy8pivdxo8kxutpdzb0g86"><title id="a6dt3lf8fyqy8pivdxo8kxutpdzb0g86">Envelope</title>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-primary-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-primary-400" role="img" aria-labelledby="a6dt3lf8fyqy8pivdxo8kxutpdzb0g86"><title id="a6dt3lf8fyqy8pivdxo8kxutpdzb0g86">Envelope</title>
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
                 </svg>
 
@@ -46,6 +47,7 @@
   </div>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 
 <% end %>
@@ -68,7 +70,7 @@
       <%%= f.label :email, class: "form-label" %>
       <div class="relative">
         <%%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-input peer focus:pl-10 transition", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address" %>
-        <%%= icon "envelope", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-indigo-400" %>
+        <%%= icon "envelope", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-primary-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-primary-400" %>
       </div>
     </div>
 
@@ -94,10 +96,12 @@
       = f.label :email, class: "form-label"
       .relative
         = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-input peer focus:pl-10 transition", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address"
-        = icon "envelope", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-indigo-400"
+        = icon "envelope", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-primary-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-primary-400"
     = f.submit "Resend confirmation instructions", class: "btn btn-primary w-full"
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<% end %>
+<% end %>
 
 <%= system_pagination(prev_path: systems_authentication_reset_password_path, prev_text: "Reset password", next_path: systems_authentication_edit_path, next_text: "Edit account") %>

@@ -1,22 +1,19 @@
-<% unless params[:controller] == "railsui/systems" %>
-  <%= heading text: params[:controller].gsub("railsui/systems/", "").titleize, id: params[:controller].gsub("railsui/systems/", ""), tag: "p", class: "text-slate-500" %>
-<% end %>
-
-<%= heading text: params[:action].titleize, id: params[:action], tag: "h1", class: "sm:text-4xl text-3xl text-slate-800 font-extrabold dark:text-white tracking-tight" %>
-
-<div class="grid grid-cols-2 lg:grid-cols-3 lg:gap-10 mt-8 pb-8 border-b border-slate-200 dark:border-slate-700">
-  <div>
-    <p class="text-slate-600 dark:text-slate-400">Theme</p>
-    <div class="flex items-center space-x-3 mt-1">
-      <%= icon "themes/#{theme_name}/logo.svg", path: "themes/#{theme_name}/logo.svg", classes: "text-primary-500 dark:text-white fill-current w-8 h-8" %>
-      <p class="font-light text-slate-800 dark:text-white sm:text-2xl text-xl"><%= theme_name.humanize %></p>
+<div class="mb-6">
+  <div class="text-neutral-500 dark:text-neutral-400 text-sm md:mb-2">
+    <div class="flex items-center gap-1.5">
+      <% unless params[:controller] == "railsui/systems" %>
+        <p class="text-neutral-500 dark:text-neutral-400 relative text-sm"><%= params[:controller].gsub("railsui/systems/", "").titleize %></p>
+      <% else %>
+        <p class="text-neutral-500 dark:text-neutral-400 text-sm relative">Module</p>
+      <% end %>
+      <%= icon "chevron-right", classes: "size-3 text-neutral-500" %>
+      <div class="text-neutral-900 dark:text-white font-medium"><%= params[:action].titleize %></div>
     </div>
   </div>
-  <div>
-    <p class="text-slate-600 dark:text-slate-400">Framework</p>
-    <div class="flex items-center justify-start space-x-3 mt-1">
-      <%= render_svg "tailwind", title: "Tailwind CSS logo", styles: "dark:text-teal-400 text-teal-500 fill-current" %>
-      <p class="font-light text-slate-900 sm:text-2xl text-xl dark:text-white">Tailwind CSS</p>
+  <%= heading text: params[:action].titleize, id: params[:action], tag: "h1", class: "md:text-4xl text-3xl text-neutral-800 font-bold dark:text-neutral-100 tracking-tight relative" %>
+  <% if content_for?(:header_description).present? %>
+    <div class="prose prose-neutral dark:prose-invert mt-3 prose-lg prose-p:text-neutral-500 dark:prose-p:text-neutral-400">
+      <%= yield :header_description %>
     </div>
-  </div>
+  <% end %>
 </div>

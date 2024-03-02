@@ -1,0 +1,36 @@
+<div id="card-base">
+<%= render layout: example, locals: { heading: "Base", section: "Card" } do %>
+
+<%= render preview "zinc" do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40 w-[320px]">
+  <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Card title</h4>
+  <div class="prose prose-zinc my-2 dark:prose-invert max-w-full">
+    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40">
+  <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Card title</h4>
+  <div class="prose prose-zinc my-2 dark:prose-invert max-w-full">
+    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-lg.shadow-sm.bg-white.p-6.dark:bg-zinc-800.dark:text-white.border.border-zinc-300/90{class: "shadow-zinc-400/20 dark:border-zinc-600/80 dark:shadow-zinc-950/40"}
+  %h4.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Card title
+  .prose.prose-zinc.my-2.dark:prose-invert.max-w-full
+    %p Some quick example text to build on the card title and make up the bulk of the card's content.
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

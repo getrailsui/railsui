@@ -1,4 +1,5 @@
-<div class="prose mt-6 max-w-full dark:prose-invert prose-a:font-semibold prose-a:underline">
+<div id="icons-overview">
+<div class="prose prose-neutral mt-6 max-w-full dark:prose-invert prose-a:font-semibold prose-a:underline">
   <p><%= link_to "Heroicons", "https://heroicons.com/", target: :_blank %> are the default icons of choice for Rails UI. We chose these icons since they are open sourced, updated regularly, and cover a vast set of scenarios in the design world.</p>
 </div>
 
@@ -119,54 +120,58 @@ end
 <%= render_snippet active_tab: "erb" %>
 </div>
 <% end %>
+</div>
 
-<%= render "railsui/shared/quicklinks", name: "icon" do %>
-  <%= quick_link(title: "solid", component: "icons") %>
-  <%= quick_link(title: "outline", component: "icons") %>
-<% end %>
-
-  <div class="my-16">
-    <%= render "railsui/shared/sticky_subhead", title: "Icons", subtitle: "Solid" %>
-
-    <div class="mt-6 p-4 sm:p-8 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
-      <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 items-center justify-between sm:gap-4 gap-2 w-full">
-      <% @icons.each do |icon| %>
-        <div>
-        <% name = icon.chomp('.svg') %>
-          <div class="flex items-center justify-center h-24 w-24 rounded border shadow-sm bg-white relative group hover:shadow-indigo-500/20 hover:border-indigo-300 dark:bg-slate-700 dark:border-slate-300/50 dark:shadow-slate-500/20" data-controller="clipboard">
-            <%= render_svg name, title: name, styles: "fill-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:text-white dark:group-hover:text-white" %>
-            <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
-              <%= icon "square-2-stack", classes: "w-5 dark:text-slate-200 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:group-hover:text-indigo-300" %>
-            </button>
-            <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/solid/", "") %></span>
-          </div>
-          <div class="my-2 text-xs text-slate-600 dark:text-slate-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/solid/", "") %></div>
-        </div>
-      <% end %>
-    </div>
+<div id="icons-solid" class="my-10">
+  <div class="mb-6">
+    <%= render "railsui/shared/code_example_heading", title: "Icons", subtitle: "Solid" %>
   </div>
 
-  <div class="my-16">
-    <%= render "railsui/shared/sticky_subhead", title: "Icons", subtitle: "Outline" %>
-
-    <div class="mt-6 p-4 sm:p-8 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
-      <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 items-center justify-between sm:gap-4 gap-2 w-full">
-      <% @outline_icons.each do |icon| %>
-        <div>
-        <% name = icon.chomp('.svg') %>
-          <div class="flex items-center justify-center h-24 w-24 rounded border shadow-sm bg-white relative group hover:shadow-indigo-500/20 hover:border-indigo-300 dark:bg-slate-700 dark:border-slate-300/50 dark:shadow-slate-500/20" data-controller="clipboard">
-            <%= render_svg name, title: name, styles: "stroke-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:text-white dark:group-hover:text-white" %>
-            <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
-              <%= icon "square-2-stack", classes: "w-5 dark:text-slate-200 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-indigo-500 dark:group-hover:text-indigo-300" %>
-            </button>
-            <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/outline/", "") %></span>
-          </div>
-          <div class="my-2 text-xs text-slate-600 dark:text-slate-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/outline/", "") %></div>
+    <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 items-center justify-between sm:gap-4 gap-2 w-full">
+    <% @icons.each do |icon| %>
+      <div>
+      <% name = icon.chomp('.svg') %>
+        <div class="flex items-center justify-center size-20 rounded border shadow-sm bg-white relative group hover:shadow-primary-500/20 hover:border-primary-300 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-neutral-500/20" data-controller="clipboard">
+          <%= render_svg name, title: name, styles: "fill-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-primary-500 dark:text-white dark:group-hover:text-white" %>
+          <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
+            <%= icon "square-2-stack", classes: "w-5 dark:text-slate-200 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-primary-500 dark:group-hover:text-primary-300" %>
+          </button>
+          <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/solid/", "") %></span>
         </div>
-      <% end %>
+        <div class="my-2 text-xs text-neutral-600 dark:text-neutral-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/solid/", "") %></div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
-<%= system_pagination(prev_path: systems_content_tables_path, prev_text: "Tables", next_path: systems_content_images_path, next_text: "Images") %>
+<div id="icons-outline" class="my-10">
+  <div class="mb-6">
+    <%= render "railsui/shared/code_example_heading", title: "Icons", subtitle: "Outline" %>
+  </div>
+
+    <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 items-center justify-between sm:gap-4 gap-2 w-full">
+    <% @outline_icons.each do |icon| %>
+      <div>
+      <% name = icon.chomp('.svg') %>
+        <div class="flex items-center justify-center size-20 rounded border shadow-sm bg-white relative group hover:shadow-primary-500/20 hover:border-primary-300 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-neutral-500/20" data-controller="clipboard">
+          <%= render_svg name, title: name, styles: "stroke-current text-slate-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-primary-500 dark:text-white dark:group-hover:text-white" %>
+          <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
+            <%= icon "square-2-stack", classes: "w-5 dark:text-slate-200 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-primary-500 dark:group-hover:text-primary-300" %>
+          </button>
+          <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/outline/", "") %></span>
+        </div>
+        <div class="my-2 text-xs text-neutral-600 dark:text-neutral-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/outline/", "") %></div>
+      </div>
+    <% end %>
+    </div>
+</div>
+
+<%= system_pagination(prev_path: systems_content_table_path, prev_text: "Table", next_path: systems_content_image_path, next_text: "Image") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Overview", "#icons-overview" %>
+    <%= component_link "Solid", "#icons-solid" %>
+		<%= component_link "Outline", "#icons-outline" %>
+  <% end %>
+<% end %>

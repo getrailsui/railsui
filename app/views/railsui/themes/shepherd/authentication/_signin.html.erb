@@ -1,4 +1,4 @@
-
+<%= render layout: example, locals: { heading: "Sign In", section: "Authentication" } do %>
 <div class="rounded-xl border-zinc-200 dark:border-zinc-600/80 overflow-hidden border dark:bg-zinc-900">
  <div class="md:flex grid flex-wrap md:w-full md:h-[calc(100vh-60px)]">
   <div class="md:w-1/2 flex items-center justify-center p-10 md:order-1 order-2">
@@ -43,6 +43,7 @@
 </div>
 </div>
 
+<% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 
 <% end %>
@@ -113,5 +114,8 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+
+<% end %>
+<% end %>
 
 <%= system_pagination(prev_path: systems_authentication_signup_path, prev_text: "Sign up", next_path: systems_authentication_change_password_path, next_text: "Change password") %>

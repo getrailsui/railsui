@@ -1,9 +1,8 @@
 <div class="flex-1">
-    <%= check_box_tag "configuration[pages][]", page, Railsui::Pages.page_enabled?(page), id: page, class: "form-input-switch", data: { pages_target: "checkbox" } %>
-    <%= label_tag page, details['title'], class: "font-medium sm:text-base text-lg" %>
-
+  <%= check_box_tag "configuration[pages][]", page, Railsui::Pages.page_enabled?(page), id: page, class: "rui-form-input-switch", data: { pages_target: "checkbox" } %>
+  <%= label_tag page, details['title'], class: "font-medium text-base -mt-px" %>
   <div>
-    <div class="mt-1 sm:prose prose-sm prose-p:text-slate-500 dark:prose-invert dark:prose-p:text-slate-300 max-w-full leading-tight">
+    <div class="mt-1 sm:prose prose-sm prose-p:text-neutral-500 dark:prose-invert dark:prose-p:text-neutral-300 max-w-full leading-tight">
       <p><%= details["description"] %></p>
     </div>
     <div class="mt-2">

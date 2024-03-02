@@ -1,13 +1,11 @@
-<% action_brand_color ||= "primary" %>
-<% align ||= "center" %>
-
+<%# locals: (align: "left", fullwidth: false, url: root_url, theme: "primary", action: "Continue" ) %>
 <table class="action" align="<%= align %>">
   <tr>
     <td align="<%= align %>">
-      <a href="<%= action_path %>" class="action__link  action__link--<%= action_brand_color %>" target="_blank"><%= action %></a>
+      <a href="<%= url %>" class="action__link action__link--<%= theme %> <%= fullwidth ? "action__link--expanded" : nil %>" target="_blank"><%= action %></a>
       <div itemscope itemtype="http://schema.org/EmailMessage">
         <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
-          <link itemprop="target" href="<%= action_path %>"/>
+          <link itemprop="target" href="<%= url %>"/>
           <meta itemprop="name" content="<%= action %>"/>
         </div>
       </div>

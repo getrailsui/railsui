@@ -15,7 +15,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="rui">
+  <body class="font-normal leading-normal text-slate-800 relative selection:bg-primary-500/40 bg-white dark:bg-slate-900 dark:text-slate-100 antialiased">
     <%= render "shared/flash" %>
     <%= yield %>
     <%= railsui_launcher if Rails.env.development? %>

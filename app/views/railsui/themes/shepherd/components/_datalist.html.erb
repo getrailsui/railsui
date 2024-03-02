@@ -1,0 +1,14 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/datalist" %>
+
+<%= render "#{path}/property_list" %>
+<%= divider %>
+<%= render "#{path}/booking_list" %>
+
+<%= system_pagination(prev_path: systems_components_card_path, prev_text: "Card", next_path: systems_components_dropdown_path, next_text: "Dropdown") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Property list", "#datalist-property-list" %>
+    <%= component_link "Booking list", "#datalist-booking-list" %>
+  <% end %>
+<% end %>

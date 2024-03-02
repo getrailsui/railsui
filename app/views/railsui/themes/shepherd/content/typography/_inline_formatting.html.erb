@@ -1,0 +1,63 @@
+<div id="typography-inline-formatting">
+<%= render layout: example, locals: { heading: "Inline formatting", section: "Typography" } do %>
+<div class="text-zinc-800 dark:text-zinc-100">
+  <p class="pb-1">You can use the mark tag to <mark>highlight</mark> text.</p>
+  <p class="pb-1"><del>This line of text is meant to be treated as deleted text.</del></p>
+  <p class="pb-1"><s>This line of text is meant to be treated as no longer accurate.</s></p>
+  <p class="pb-1"><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+  <p class="pb-1"><u>This line of text will render as underlined.</u></p>
+  <p class="pb-1"><small>This line of text is meant to be treated as fine print.</small></p>
+  <p class="pb-1"><strong>This line rendered as bold text.</strong></p>
+  <p class="pb-1"><em>This line rendered as italicized text.</em></p>
+</div>
+
+<% content_for :example, flush: true do %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<p>You can use the mark tag to <mark>highlight</mark> text.</p>
+<p><del>This line of text is meant to be treated as deleted text.</del></p>
+<p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+<p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+<p><u>This line of text will render as underlined.</u></p>
+<p><small>This line of text is meant to be treated as fine print.</small></p>
+<p><strong>This line rendered as bold text.</strong></p>
+<p><em>This line rendered as italicized text.</em></p>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= tag.p "You can use the mark tag to #{tag.mark 'highlight'} text." %>
+<%%= tag.p tag.del "This line of text is meant to be treated as deleted text." %>
+<%%= tag.p tag.s "This line of text is meant to be treated as no longer accurate." %>
+<%%= tag.p tag.ins "This line of text is meant to be treated as an addition to the document." %>
+<%%= tag.p tag.u "This line of text will render as underlined." %>
+<%%= tag.p tag.small "This line of text is meant to be treated as fine print." %>
+<%%= tag.p tag.strong "This line rendered as bold text." %>
+<%%= tag.p tag.em "This line rendered as italicized text." %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+%p
+  You can use the mark tag to
+  %mark highlight
+  text.
+%p
+  %del This line of text is meant to be treated as deleted text.
+%p
+  %s This line of text is meant to be treated as no longer accurate.
+%p
+  %ins This line of text is meant to be treated as an addition to the document.
+%p
+  %u This line of text will render as underlined.
+%p
+  %small This line of text is meant to be treated as fine print.
+%p
+  %strong This line rendered as bold text.
+%p
+  %em This line rendered as italicized text.
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

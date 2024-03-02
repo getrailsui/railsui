@@ -1,0 +1,63 @@
+<div id="form-switch">
+<%= render layout: example, locals: { heading: "Base" } do %>
+<%#### Switches %>
+<div class="prose mb-10 max-w-full dark:!prose-invert">
+  <p>A corresponding <code>label</code> element must be present <strong>after</strong> the input in order for the switch UI to display.</p>
+</div>
+
+<%= render preview do %>
+<div class="form-group mb-0">
+  <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
+  <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="form-group">
+  <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
+  <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>
+</div>
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<div class="form-group">
+  <%%= check_box_tag "switch_default", "1", false, class: "form-input-switch" %>
+  <%%= label_tag "switch_default", nil, class: "form-label mb-0" %>
+</div>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <div class="form-group">
+    <%%= f.check_box :switch_default, class: "form-input-switch" %>
+    <%%= f.label :switch_default, class: "form-label mb-0" %>
+  </div>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+  .form-group
+    = f.check_box :switch_default, class: "form-input-switch"
+    = f.label :switch_default, class: "form-label mb-0"
+  = f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+
+
+<%= system_pagination(prev_path: systems_forms_radio_path, prev_text: "Radio", next_path: systems_forms_action_text_path, next_text: "ActionText") %>
+</div>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Base", "#form-switch" %>
+  <% end %>
+<% end %>

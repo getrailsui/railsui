@@ -18,16 +18,16 @@
 
     <div class="flex items-center space-x-4">
       <%%= link_to "#" do %>
-        <%%= icon "twitter.svg", path: "social/twitter.svg", classes: "fill-current w-6 h-6 text-slate-400 hover:text-indigo-500" %>
+        <%%= icon "twitter.svg", path: "social/twitter.svg", classes: "fill-current w-6 h-6 text-slate-400 hover:text-primary-500" %>
       <%% end %>
 
       <%%= link_to "#" do %>
-        <%%= icon "window", classes: "stroke-current w-6 h-6 hover:text-indigo-500 text-slate-400" %>
+        <%%= icon "window", classes: "stroke-current w-6 h-6 hover:text-primary-500 text-slate-400" %>
       <%% end %>
     </div>
 
     <div class="my-6">
-      <h4 class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">Bio</h4>
+      <h4 class="text-sm font-medium text-primary-600 dark:text-primary-400 mb-1">Bio</h4>
       <p class="text-slate-500 leading-relaxed md:text-sm text-base dark:text-slate-400">I'm a seasoned sales
         professional renowned for
         delivering
@@ -39,7 +39,7 @@
     </div>
 
     <div class="my-6">
-      <h4 class="text-sm font-medium text-indigo-600 mb-1 dark:text-indigo-400">Hobbies</h4>
+      <h4 class="text-sm font-medium text-primary-600 mb-1 dark:text-primary-400">Hobbies</h4>
       <ul class="list-disc pl-4 md:text-sm text-base text-slate-500 dark:text-slate-400 space-y-1 mt-2">
         <li>Reading, Books, Podcasts</li>
         <li>Rugby</li>
@@ -49,12 +49,12 @@
     </div>
 
     <div class="my-6">
-      <h4 class="text-sm font-medium text-indigo-600 mb-1 dark:text-indigo-400">Current Timezone</h4>
+      <h4 class="text-sm font-medium text-primary-600 mb-1 dark:text-primary-400">Current Timezone</h4>
       <p class="text-slate-500 dark:text-slate-400 md:text-sm text-base">CDT - Chicago (12:41 pm CDT)</p>
     </div>
 
     <div class="my-6">
-      <h4 class="text-sm font-medium text-indigo-600 mb-1 dark:text-indigo-400">Favorite food</h4>
+      <h4 class="text-sm font-medium text-primary-600 mb-1 dark:text-primary-400">Favorite food</h4>
       <p class="text-slate-500 dark:text-slate-400 md:text-sm text-base">Tacos</p>
     </div>
 
@@ -78,7 +78,7 @@
           </div>
           <div class="flex-1 sm:flex sm:justify-between">
             <div
-              class="sm:pt-2 prose prose-slate prose-a:text-indigo-500 dark:prose-invert prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full">
+              class="sm:pt-2 prose prose-slate prose-a:text-primary-500 dark:prose-invert prose-a:hover:text-primary-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full">
               <p><%%= link_to "John Smith", "#" %> created a new event <%%= link_to "Product Demo for Pork Corp", "#" %> scheduled
                 for
                 July 5, 2023, at 10:00 AM.
@@ -96,7 +96,7 @@
           </div>
           <div class="flex-1 sm:flex sm:flex-wrap w-full sm:justify-between">
             <div
-              class="sm:pt-2 prose prose-slate dark:prose-invert prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full">
+              class="sm:pt-2 prose prose-slate dark:prose-invert prose-a:text-primary-500 prose-a:hover:text-primary-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full">
               <p>
                 <%%= link_to "Sarah Johnson", "#" %> commented on event <%%= link_to "Product Demo for Pork Chop", "#" %>.
               </p>
@@ -113,7 +113,7 @@
                 or
                 has any ideas,
                 feel free to reach out to me. Together, we'll make it a great success!</p>
-                <%%= link_to "Post reply", "#", class: "font-semibold text-indigo-600 hover:text-indigo-700 absolute bottom-3 px-3 py-2 hover:bg-slate-50 rounded-lg no-underline right-4 text-sm focus:ring-4 focus:ring-indigo-50 dark:text-indigo-400 dark:hover:bg-slate-800 dark:hover:text-slate-300 dark:focus:ring-slate-600" %>
+                <%%= link_to "Post reply", "#", class: "font-semibold text-primary-600 hover:text-primary-700 absolute bottom-3 px-3 py-2 hover:bg-slate-50 rounded-lg no-underline right-4 text-sm focus:ring-4 focus:ring-primary-50 dark:text-primary-400 dark:hover:bg-slate-800 dark:hover:text-slate-300 dark:focus:ring-slate-600" %>
             </div>
           </div>
         </li>
@@ -126,7 +126,7 @@
           </div>
           <div class="sm:pl-6 pl-4 flex-1 sm:flex sm:justify-between -mt-2">
             <div
-              class="prose prose-slate prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
+              class="prose prose-slate prose-a:text-primary-500 prose-a:hover:text-primary-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
               <p><%%= link_to "Jennifer Thompson", "#" %> assigned the <%%= link_to "Follow-up Call", "#" %> task to John Smith for
                 the
                 <%%= link_to "Product Demo for Pork Chop", "#" %> event.
@@ -145,7 +145,7 @@
           </div>
           <div class="sm:pl-6 pl-4 flex-1 sm:flex sm:justify-between -mt-2">
             <div
-              class="prose prose-slate prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
+              class="prose prose-slate prose-a:text-primary-500 prose-a:hover:text-primary-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
               <p><%%= link_to "Mark Davis", "#" %> updated the event <%%= link_to "Sales Training Workshop", "#" %> scheduled for
                 July
                 10, 2023, to include a new guest speaker.
@@ -163,7 +163,7 @@
           </div>
           <div class="flex-1 sm:flex sm:justify-between">
             <div
-              class="prose prose-slate prose-a:text-indigo-500 prose-a:hover:text-indigo-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
+              class="prose prose-slate prose-a:text-primary-500 prose-a:hover:text-primary-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
               <p><%%= link_to "Emily Carter", "#" %> completed the task <%%= link_to "Lead Generation Research", "#" %> assigned by
                 <%%= link_to "Mark Davis", "#" %>.
               </p>

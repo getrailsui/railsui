@@ -7,20 +7,20 @@
     <nav role="messages nav">
       <ul class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#" , class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-indigo-600 dark:text-indigo-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80 whitespace-nowrap" do %>
+          <%%= link_to "#" , class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80 whitespace-nowrap" do %>
             <span>My Assignments</span>
-            <span class="rounded bg-indigo-600 text-white px-1 py-px text-xs font-semibold">8</span>
+            <span class="rounded bg-primary-600 text-white px-1 py-px text-xs font-semibold">8</span>
           <%% end %>
         </li>
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
 
             <span>Assigned to others</span>
             <span class="rounded bg-slate-200 text-slate-500 px-1 py-px text-xs font-semibold">2</span>
           <%% end %>
         </li>
         <li class="flex justify-center items-center sm:block">
-          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
             <span>Completed</span>
           <%% end %>
         </li>
@@ -43,7 +43,7 @@
 
       <div class="mb-10">
         <%%= link_to "#", class: "mb-3 block" do %>
-          <h3 class="font-normal text-indigo-500 text-lg dark:text-indigo-400">Product Demo for Pork Chop</h3>
+          <h3 class="font-normal text-primary-500 text-lg dark:text-primary-400">Product Demo for Pork Chop</h3>
         <%% end %>
 
         <p class="font-extrabold text-slate-900 dark:text-slate-200 mb-3">Q/A</p>
@@ -94,7 +94,7 @@
       </div>
 
       <%%= link_to class: "block mt-6" do %>
-        <h3 class="font-normal text-indigo-500 mb-3 text-lg dark:text-indigo-400">Onboarding improvments</h3>
+        <h3 class="font-normal text-primary-500 mb-3 text-lg dark:text-primary-400">Onboarding improvments</h3>
       <%% end %>
 
       <div class="mb-10">

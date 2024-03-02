@@ -1,0 +1,6 @@
+<% content_for :header_description do %>
+  <p>Display non-intrusive notifications or messages to users.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+<%= render "railsui/themes/#{Railsui.config.theme}/components/toast" %>

@@ -1,0 +1,89 @@
+<div id="badge-outline">
+<%= render layout: example, locals: { heading: "Outline", section: "Badge" } do %>
+
+<%= render preview 'zinc' do %>
+<span class="rounded text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60 dark:bg-neutral-500/20 dark:text-neutral-200 dark:border-neutral-500/40">Gray</span>
+
+<span class="rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60  dark:border-red-700/50 dark:bg-red-500/20 dark:text-red-300">Red</span>
+
+<span class="rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60  dark:border-orange-700/50 dark:bg-orange-500/20 dark:text-orange-300">Orange</span>
+
+<span class="rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60 dark:text-yellow-300 dark:bg-yellow-500/20 dark:border-yellow-700/50">Yellow</span>
+
+<span class="rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60 dark:text-green-300 dark:bg-green-500/20 dark:border-green-700/50">Green</span>
+
+<span class="rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60 dark:text-blue-300 dark:bg-blue-500/20 dark:border-blue-700/50">Blue</span>
+
+<span class="rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-indigo-300 dark:bg-indigo-500/20 dark:border-indigo-700/50">Indigo</span>
+
+<span class="rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-purple-300 dark:bg-purple-500/20 dark:border-purple-700/50">Purple</span>
+
+<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60 dark:text-pink-300 dark:bg-pink-500/20 dark:border-pink-700/50">Pink</span>
+
+<span class="rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs dark:bg-white/10 dark:text-white/80 dark:border-white/30">White</span>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<!-- Gray -->
+<span class="rounded text-neutral-800 font-medium px-2 py-1 text-xs border border-neutral-800/60 bg-neutral-50/60 dark:bg-neutral-500/20 dark:text-neutral-200 dark:border-neutral-500/40">Gray</span>
+
+<!-- Red -->
+<span class="rounded bg-red-50/30 text-red-600 font-medium px-2 py-1 text-xs border border-red-600/60  dark:border-red-700/50 dark:bg-red-500/20 dark:text-red-300">Red</span>
+
+<!-- Orange -->
+<span class="rounded bg-orange-50/30 text-orange-600 font-medium px-2 py-1 text-xs border border-orange-600/60  dark:border-orange-700/50 dark:bg-orange-500/20 dark:text-orange-300">Orange</span>
+
+<!-- Yellow -->
+<span class="rounded bg-yellow-50/30 text-yellow-700 font-medium px-2 py-1 text-xs border border-yellow-500/60 dark:text-yellow-300 dark:bg-yellow-500/20 dark:border-yellow-700/50">Yellow</span>
+
+<!-- Green -->
+<span class="rounded bg-green-50/30 text-green-700 font-medium px-2 py-1 text-xs border border-green-500/60 dark:text-green-300 dark:bg-green-500/20 dark:border-green-700/50">Green</span>
+
+<!-- Blue -->
+<span class="rounded bg-blue-50/30 text-blue-800 font-medium px-2 py-1 leading-tight text-xs border border-blue-600/60 dark:text-blue-300 dark:bg-blue-500/20 dark:border-blue-700/50">Blue</span>
+
+<!-- Indigo -->
+<span class="rounded bg-indigo-50/30 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-indigo-300 dark:bg-indigo-500/20 dark:border-indigo-700/50">Indigo</span>
+
+<!-- Purple -->
+<span class="rounded bg-purple-50/30 text-purple-800 font-medium px-2 py-1 leading-tight text-xs border border-indigo-600/60 dark:text-purple-300 dark:bg-purple-500/20 dark:border-purple-700/50">Purple</span>
+
+<!-- Pink -->
+<span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs border border-pink-600/60 dark:text-pink-300 dark:bg-pink-500/20 dark:border-pink-700/50">Pink</span>
+
+<!-- White -->
+<span class="rounded bg-white-100 text-slate-800 border border-slate-400 font-medium px-2 py-1 leading-tight text-xs dark:bg-white/10 dark:text-white/80 dark:border-white/30">White</span>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ Gray
+%span.rounded.text-neutral-800.font-medium.px-2.py-1.text-xs.border.dark:text-neutral-200(class="border-neutral-800/60 bg-neutral-50/60 dark:bg-neutral-500/20 dark:border-neutral-500/40") Gray
+/ Red
+%span.rounded.text-red-600.font-medium.px-2.py-1.text-xs.border.dark:text-red-300(class="bg-red-50/30 border-red-600/60 dark:border-red-700/50 dark:bg-red-500/20") Red
+/ Orange
+%span.rounded.text-orange-600.font-medium.px-2.py-1.text-xs.border.dark:text-orange-300(class="bg-orange-50/30 border-orange-600/60 dark:border-orange-700/50 dark:bg-orange-500/20") Orange
+/ Yellow
+%span.rounded.text-yellow-700.font-medium.px-2.py-1.text-xs.border.dark:text-yellow-300(class="bg-yellow-50/30 border-yellow-500/60 dark:bg-yellow-500/20 dark:border-yellow-700/50") Yellow
+/ Green
+%span.rounded.text-green-700.font-medium.px-2.py-1.text-xs.border.dark:text-green-300(class="bg-green-50/30 border-green-500/60 dark:bg-green-500/20 dark:border-green-700/50") Green
+/ Blue
+%span.rounded.text-blue-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-blue-300(class="bg-blue-50/30 border-blue-600/60 dark:bg-blue-500/20 dark:border-blue-700/50") Blue
+/ Indigo
+%span.rounded.text-indigo-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-indigo-300(class="bg-indigo-50/30 border-indigo-600/60 dark:bg-indigo-500/20 dark:border-indigo-700/50") Indigo
+/ Purple
+%span.rounded.text-purple-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-purple-300(class="bg-purple-50/30 border-indigo-600/60 dark:bg-purple-500/20 dark:border-purple-700/50") Purple
+/ Pink
+%span.rounded.bg-pink-100.text-pink-800.font-medium.px-2.py-1.leading-tight.text-xs.border.dark:text-pink-300(class="border-pink-600/60 dark:bg-pink-500/20 dark:border-pink-700/50") Pink
+/ White
+%span.rounded.bg-white-100.text-slate-800.border.border-slate-400.font-medium.px-2.py-1.leading-tight.text-xs(class="dark:bg-white/10 dark:text-white/80 dark:border-white/30") White
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

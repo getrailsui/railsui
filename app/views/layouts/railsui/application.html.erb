@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased">
+<html class="h-full antialiased scrollbar-track-transparent scrollbar-thumb-neutral-200/60 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -33,37 +33,38 @@
     <%= yield :head %>
   </head>
 
-  <body class="font-normal leading-normal text-slate-800 lg:h-screen h-full w-full relative selection:bg-neutral-500/25 antialiased font-rui <%= content_for?(:bg_theme).present? ? yield(:bg_theme) : "bg-white dark:bg-slate-900 dark:text-slate-100" %>" data-controller="toggle scroll smooth">
-
+  <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="toggle scroll smooth scroll-spy" data-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
+      data-scroll-spy-inactive-class-value="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate">
     <%= render "railsui/shared/flash" %>
-    <%= render "layouts/railsui/masthead" %>
+    <div class="flex md:flex-row flex-col items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
 
-    <div class="max-w-8xl mx-auto sm:px-0 px-4">
-      <div id="system-nav" class="sm:top-[3.6rem] left-0 right-auto w-full sm:w-[300px] border-r border-slate-200 hidden lg:block fixed z-20 inset-0 pb-10 overflow-y-auto bg-white dark:bg-slate-900 dark:border-slate-700"
-        data-toggle-target="toggleable"
-        data-scroll-target="scrollitem">
-        <div class="flex-1">
-          <div class="lg:py-0 py-2 lg:border-b-0 border-b border-slate-200 dark:border-slate-700 lg:hidden lg:px-0 px-3 lg:shadow-none shadow-sm">
-            <%= render "railsui/shared/top_nav" %>
+      <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.02] dark:opacity-5 z-0" %>
+
+      <%= render "railsui/shared/global_nav" %>
+
+      <div class="md:flex-1 h-full md:pt-2 md:w-auto w-full md:overflow-y-auto scrollbar relative z-30" data-scroll-spy-target="scrollContainer">
+        <div class="max-w-7xl mx-auto md:px-10 md:pt-10 md:pb-0 p-4 flex-col flex h-full">
+          <div class="flex-1">
+
+
+            <div class="md:grid grid-cols-12 items-start gap-4">
+              <div class="<%= content_for?(:component_nav).present? ? "col-span-9" : "col-span-12" %>">
+                <%= yield %>
+              </div>
+              <% if content_for?(:component_nav).present? %>
+              <div class="col-span-3 sticky top-2">
+                <%= yield :component_nav %>
+              </div>
+              <% end %>
+            </div>
           </div>
-          <% if Railsui.config.theme.present? %>
-            <%= render "railsui/themes/#{Railsui.config.theme}/nav" %>
-          <% else %>
-            <%= render "railsui/shared/nav" %>
-          <% end %>
+
+          <%= render "railsui/shared/footer" %>
+          <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
         </div>
-      </div>
-      <div class="lg:pl-[19.5rem]">
-        <main class="mr-auto relative z-20 lg:pt-24 lg:pb-10 py-6 sm:px-8 px-4 <%= content_for(:fullwidth) ? "" : "max-w-5xl" %>">
-
-          <%= yield %>
-
-        </main>
-        <%= render "railsui/shared/footer" %>
       </div>
     </div>
 
-    <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
 
     <%= yield :demo_scripts %>
   </body>

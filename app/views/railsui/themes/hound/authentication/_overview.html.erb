@@ -1,50 +1,19 @@
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-8">
-  <%= link_to systems_authentication_signin_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Sign in</h3>
-  <% end %>
+<div id="auth-prerequisites">
+<%= render callout do %>
+  <p>Rails UI authentication templates map to the <a href="https://rubygems.org/gems/devise/" target="_blank">Devise</a> gem's <a href="https://github.com/heartcombo/devise/tree/main/app/views/devise" target="_blank">view templates</a> at this time. There may be future support for different authentication libraries or a solution built from scratch in the future.</p>
+<% end %>
 
-  <%= link_to systems_authentication_signup_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Sign up</h3>
-  <% end %>
-
-   <%= link_to systems_authentication_edit_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Edit Account</h3>
-  <% end %>
-
-  <%= link_to systems_authentication_change_password_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Change password</h3>
-  <% end %>
-
-  <%= link_to systems_authentication_reset_password_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Reset password</h3>
-  <% end %>
-
-  <%= link_to systems_authentication_confirmation_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Confirmation</h3>
-  <% end %>
-
-  <%= link_to systems_authentication_unlocks_path, class: "border border-slate-200 rounded-lg shadow-sm p-5 group hover:shadow-lg shadow-indigo-50 hover:shadow-indigo-50 transition ease-in-out duration-200 dark:border-slate-700 dark:bg-slate-800 dark:shadow-none dark:hover:shadow-none dark:hover:border-slate-500" do %>
-    <h3 class="font-bold text-transparent bg-clip-text bg-gradient-to-tl from-salmon-500 to-indigo-600 block mb-1 text-base dark:text-white dark:bg-none">Unlocks</h3>
-  <% end %>
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <p>Before diving into your Rails UI configuration there are some patterns in use for more efficient front-end development. Most of those patterns involve abstractions where it makes sense and others are a bit more opinionated.</p>
+  </div>
 </div>
 
-<div class="my-10">
-  <div class="prose dark:prose-invert mb-6 max-w-full">
-    <%= heading tag: "h1", id: "rui-auth-design-patterns", text: "Rails UI authentication design patterns." %>
-  </div>
+<div id="auth-global-layout" class="py-6">
+<div class="prose prose-neutral dark:prose-invert mb-6">
+  <h3>Use a global authentication layout partial</h3>
 
-  <%= render callout do %>
-    <p>Rails UI authentication templates map to the <a href="https://rubygems.org/gems/devise/" target="_blank" class="font-medium text-indigo-600">Devise</a> gem's <a href="https://github.com/heartcombo/devise/tree/main/app/views/devise" target="_blank" class="font-medium text-indigo-600">view templates</a> at this time. There may be future support for different authentication libraries or a solution built from scratch in the future.</p>
-  <% end %>
-
-  <div class="prose dark:prose-invert mb-6">
-    <p>Before diving into your Rails UI configuration there are some patterns in use for more efficient front-end development. Most of those patterns involve abstractions where it makes sense and others are a bit more opinionated.</p>
-
-    <%= heading id: "rui-global-auth-partial", text: "Use a global authentication layout partial" %>
-
-    <p>Rails UI uses a reusable partial with a block pattern designed to repeat the existing authentication design. Because Devise ships with many different authentication strategies and forms it makes sense to extract repeatable code away.</p>
-  </div>
-
+  <p>Rails UI uses a reusable partial with a block pattern designed to repeat the existing authentication design. Because Devise ships with many different authentication strategies and forms it makes sense to extract repeatable code away.</p>
+</div>
 
 <% content_for :erb, flush: true do %>
 <!-- render auth_layout partial with block (app/views/devise/_auth_layout.html.erb) -->
@@ -64,7 +33,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/devise/_auth_layout.html.erb -->
+<!-- Hound theme: app/views/devise/_auth_layout.html.erb -->
 <div class="sm:h-[calc(100vh_-_52px)] pt-10 sm:pt-0 flex flex-col items-center justify-center bg-cover bg-center px-4" style="background-image: url('<%%= asset_url('fusion.png')%>')" >
   <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
     <div>
@@ -128,12 +97,15 @@
       .mt-4
         = render "devise/shared/links"
 <% end %>
-
 <%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb", haml_filename: "_auth_layout.haml.erb") %>
+</div>
 
-  <div class="prose dark:prose-invert mb-6">
+<%= divider %>
+
+<div id="auth-links-partial" class="py-6">
+  <div class="prose dark:prose-invert my-6">
     <%= heading text: "Modified devise links partial", id: "rui-devise-links-partial", tag: "h2" %>
-    <p>Rails UI modifies the default <%= code("app/views/devise/shared/_links.html.erb") %> partial supplied by the Devise gem for a more improved user experience. During the configuration phase of installing Rails UI the modified partial is copied over to your app so you needn't worry about updating this manually.</p>
+    <p>Rails UI modifies the default <code>app/views/devise/shared/_links.html.erb</code> partial supplied by the Devise gem for a more improved user experience. During the configuration phase of installing Rails UI the modified partial is copied over to your app so you needn't worry about updating this manually.</p>
     <p>If you were to ever reinstall devise or use their supplied view template generator this would be overwritten.</p>
   </div>
 
@@ -163,27 +135,33 @@
 <% end %>
 
 <%= render_snippet(active_tab: "erb", erb_filename: "_links.html.erb", haml_filename: "_links.haml.erb") %>
-
-
-
-<div class="prose dark:prose-invert mb-6">
-  <h3>OmniAuth</h3>
-  <p>The <%= theme_name.humanize %> theme supports themed and branded Omniauth provider buttons for Facebook, Twitter, LinkedIn, and Google. Icons for those providers are dynamically service to the view from <%= code 'app/assets/images/omniauth' %>.</p>
-
-  <p>Note: The logic in the layout assumes you've installed <%= link_to "OmniAuth", "https://github.com/omniauth/omniauth", target: :_blank %> which doesn't come pre-installed with Rails UI.</p>
 </div>
 
-<div class="prose dark:prose-invert mb-6">
-  <%= heading text: "Devise error_messages partial", id: "rui-devise-error-messages-partial", tag: "h2" %>
+<%= divider %>
 
+<div id="auth-omniauth-ui" class="py-6">
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <h3>OmniAuth</h3>
+    <p>The <%= theme_name.humanize %> theme supports themed and branded Omniauth provider buttons for Facebook, Twitter, LinkedIn, and Google. Icons for those providers are dynamically service to the view from <code>app/assets/images/omniauth</code>.</p>
+
+    <p>Note: The logic in the layout assumes you've installed <%= link_to "OmniAuth", "https://github.com/omniauth/omniauth", target: :_blank %> which doesn't come pre-installed with Rails UI.</p>
+  </div>
+</div>
+
+<%= divider %>
+
+<div id="auth-error-messages" class="py-6">
+<%= render layout: example, locals: { heading: "_error_messages partial" } do %>
+
+<div class="prose prose-neutral dark:prose-invert my-6">
   <p>By default Rails UI copies over a pre-styled error partial made to work out of the box and save you time during development.</p>
 
-  <p>This file is called <%= code '_error_messages.html.erb' %>. Unlike what ships with Devise, this partial lives in the root view directory within <%= code "app/views/shared" %> and is used throughout the app. </p>
+  <p>This file is called <code>_error_messages.html.erb</code>. Unlike what ships with Devise, this partial lives in the root view directory within <code>app/views/shared</code> and is used throughout the app.</p>
 
   <p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent.</p>
 </div>
 
-<%= render preview do %>
+<%= render preview 'gray' do %>
 <div class="sm:h-[700px] -m-8 flex flex-col items-center justify-center bg-cover bg-center px-4 pointer-events-none select-none" style="background-image: url('<%= asset_url('fusion.png') %>')">
   <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
     <div>
@@ -214,7 +192,7 @@
     </div>
   </div>
 
-  <div class="bg-white dark:bg-slate-800 dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
+  <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
     <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="KFz5ZtupOgfCmPUrSoPOW62TqhAxjRRUVi3LC4quDw3wQCnw7Afy_IwRpt8-SqpMsNyhT8A6NlMo3-6XQ_2sMQ" autocomplete="off">
 
     <div class="form-group">
@@ -235,6 +213,7 @@
 </div>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <%= content_for :erb, flush: true do %>
 <%% if resource.errors.any? %>
 <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
@@ -268,5 +247,18 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>
+<% end %>
+<% end %>
+</div>
 
 <%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_signup_path, next_text: "Sign up") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Prerequisites", "#auth-prerequisites" %>
+    <%= component_link "Global auth layout", "#auth-global-layout" %>
+    <%= component_link "Links partial", "#auth-links-partial" %>
+    <%= component_link "OmniAuth UI", "#auth-omniauth-ui" %>
+    <%= component_link "Error messages", "#auth-error-messages" %>
+  <% end %>
+<% end %>

@@ -1,5 +1,5 @@
-<div class="mb-16 mt-6 pb-24">
-<%= render "railsui/shared/sticky_subhead", title: "Navigation", subtitle: "Logged out" %>
+<div id="navigation-logged-out">
+<%= render layout: example, locals: { heading: "Logged out", section: "Navigation" } do %>
 
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/navigation/nav_preview_zinc", flush: true do %>
 <header class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b rounded-t-xl border-zinc-300/80 relative z-50 dark:border-zinc-700/80" data-controller="nav">
@@ -49,6 +49,7 @@
 </header>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 <header class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b rounded-t-xl border-zinc-300/80 relative z-50 dark:border-zinc-700/80" data-controller="nav">
   <div class="md:flex items-center justify-between">
@@ -193,4 +194,6 @@ export default class extends Controller {
 <% end %>
 
 <%= render_snippet(js_filename: "nav_controller.js") %>
+<% end %>
+<% end %>
 </div>

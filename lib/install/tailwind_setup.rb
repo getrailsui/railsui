@@ -75,6 +75,9 @@ def add_tailwind
         copy_shared_directory(Railsui.config.theme)
         add_yarn_packages(["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "hotkeys-js", "photoswipe", "apexcharts"])
 
+      when "retriever"
+        copy_shared_directory(Railsui.config.theme)
+        add_yarn_packages(["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "apexcharts", "tailwind-scrollbar"])
       else
         copy_shared_directory(Railsui.config.theme)
         add_yarn_packages(["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar"])
@@ -131,6 +134,8 @@ def add_yarn_packages(packages)
 end
 
 def copy_shared_directory(theme)
-  say "⚡️ Copy #{theme} theme shared directory"
-  directory "#{__dir__}/tailwind/themes/#{theme}/shared", Rails.root.join("app/views/shared")
+  unless Rails.root.join("app/views/shared").exist?
+    say "⚡️ Copy #{theme} theme shared directory"
+    directory "#{__dir__}/tailwind/themes/#{theme}/shared",   Rails.root.join("app/views/shared")
+  end
 end

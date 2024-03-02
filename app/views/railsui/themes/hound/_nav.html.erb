@@ -1,170 +1,111 @@
-<div class="lg:text-sm relative text-base sm:pb-24 pb-4">
-  <ul class="rui-primary-nav leading-loose">
+<div class="text-[14px] relative pb-4 pl-4">
+  <ul>
     <li>
-      <%= link_to systems_content_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group"  do %>
-        <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
-          <%= render_svg "content", styles: "stroke-current w-5 h-5 text-indigo-500 group-hover:text-indigo-700 dark:group-hover:text-indigo-300" %>
-        </div>
-        <span>Content</span>
-      <% end %>
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-slate-100 dark:border-slate-700">
-        <li>
-          <%= nav_link_to "Typography", systems_content_typography_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Tables", systems_content_tables_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Icons", systems_icons_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Images", systems_content_images_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Scaffolds", systems_scaffolds_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mb-1 text-[14px]">Content</p>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Typography", path:  systems_content_typography_path) %>
+
+        <%= system_nav_item(label: "Table", path:  systems_content_table_path) %>
+
+        <%= system_nav_item(label: "Icon", path:  systems_icons_path) %>
+
+        <%= system_nav_item(label: "Image", path:  systems_content_image_path) %>
+
+        <%= system_nav_item(label: "Scaffold", path:  systems_scaffolds_path) %>
       </ul>
     </li>
     <li>
-      <%= link_to systems_forms_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
-        <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
-          <%= render_svg "forms", styles: "stroke-current w-5 h-5 text-teal-500" %>
-        </div>
-        <span>Forms</span>
-      <% end %>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Forms</p>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
 
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-slate-100 dark:border-slate-700">
-        <li>
-          <%= nav_link_to "Inputs", systems_forms_inputs_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Input Groups", systems_forms_input_groups_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Selects", systems_forms_selects_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Checkboxes & Radios", systems_forms_checkboxes_and_radios_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "ActionText", systems_forms_action_text_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Validation", systems_forms_validation_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
+        <%= system_nav_item(label: "Input", path:  systems_forms_input_path) %>
+
+        <%= system_nav_item(label: "Input Group", path:  systems_forms_input_group_path) %>
+
+        <%= system_nav_item(label: "Select", path:  systems_forms_select_path) %>
+
+        <%= system_nav_item(label: "Checkbox", path:  systems_forms_checkbox_path) %>
+
+        <%= system_nav_item(label: "Radio", path:  systems_forms_radio_path) %>
+
+        <%= system_nav_item(label: "Switch", path:  systems_forms_switch_path) %>
+
+        <%= system_nav_item(label: "ActionText", path:  systems_forms_action_text_path) %>
+
+        <%= system_nav_item(label: "Validation", path:  systems_forms_validation_path) %>
       </ul>
     </li>
     <li>
-      <%= link_to systems_components_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
-        <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
-          <%= render_svg "components", styles: "stroke-current w-5 h-5 text-rose-500" %>
-        </div>
-        <span>Components</span>
-      <% end %>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Components</p>
+        <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
 
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-slate-100 dark:border-slate-700">
-        <li>
-          <%= nav_link_to "Accordions", systems_components_accordions_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Alerts", systems_components_alerts_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Badges", systems_components_badges_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Breadcrumbs", systems_components_breadcrumbs_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Buttons", systems_components_buttons_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Cards",systems_components_cards_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Dropdowns", systems_components_dropdowns_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Flash", systems_components_flash_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Modals", systems_components_modals_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Navigation", systems_components_navigation_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Pagination", systems_components_pagination_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Tabs", systems_components_tabs_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Toasts", systems_components_toasts_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
-        <li>
-          <%= nav_link_to "Tooltips", systems_components_tooltips_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
-        </li>
+        <%= system_nav_item(label: "Accordion", path:  systems_components_accordion_path) %>
+
+        <%= system_nav_item(label: "Alert", path:  systems_components_alert_path) %>
+
+        <%= system_nav_item(label: "Badge", path:  systems_components_badge_path) %>
+
+        <%= system_nav_item(label: "Breadcrumb", path:  systems_components_breadcrumb_path) %>
+
+        <%= system_nav_item(label: "Button", path:  systems_components_button_path) %>
+
+        <%= system_nav_item(label: "Card", path:  systems_components_card_path) %>
+
+        <%= system_nav_item(label: "Dropdown", path:  systems_components_dropdown_path) %>
+
+        <%= system_nav_item(label: "Flash", path:  systems_components_flash_path) %>
+
+        <%= system_nav_item(label: "Modal", path:  systems_components_modal_path) %>
+
+        <%= system_nav_item(label: "Navigation", path:  systems_components_navigation_path) %>
+
+        <%= system_nav_item(label: "Pagination", path:  systems_components_pagination_path) %>
+
+        <%= system_nav_item(label: "Tab", path:  systems_components_tab_path) %>
+
+        <%= system_nav_item(label: "Toast", path:  systems_components_toast_path) %>
+
+        <%= system_nav_item(label: "Tooltip", path:  systems_components_tooltip_path) %>
       </ul>
     </li>
 
     <li>
-      <%= link_to systems_mailers_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
-        <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
-          <%= render_svg "mail", styles: "stroke-current w-5 h-5 text-blue-500" %>
-        </div>
-        <span>Mailers</span>
-      <% end %>
-
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-slate-100 dark:border-slate-700">
-        <li>
-          <%= nav_link_to "Layout", systems_mailers_layout_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Minimal", systems_mailers_minimal_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Promotion", systems_mailers_promotion_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Transactional", systems_mailers_transactional_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Devise", systems_mailers_devise_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-      </ul>
-    </li>
-
-    <li>
-      <%= link_to systems_authentication_overview_path, class:"font-semibold px-4 pb-2 pt-4 border-slate-300 bg-gradient-to-b from-slate-50 to-transparent dark:from-slate-800 dark:to-slate-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-slate-700"  do %>
-        <div class="bg-white dark:bg-slate-800 dark:border-slate-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-slate-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-slate-600">
-          <%= render_svg "lock-unlocked", styles: "stroke-current w-5 h-5 text-amber-500" %>
-        </div>
+      <%= nav_link_to systems_authentication_overview_path, inactive_class:"font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block hover:bg-neutral-100/80 dark:hover:bg-neutral-800/90 border-l-2 border-transparent", active_class: "transition-colors duration-200 ease-linear relative border-l-2 border-neutral-800 text-neutral-900 bg-neutral-100/80 font-medium dark:text-white dark:border-neutral-50 dark:bg-neutral-800/90 px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block" do %>
         <span>Authentication</span>
       <% end %>
 
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-slate-100 dark:border-slate-700">
-        <li>
-          <%= nav_link_to "Sign up", systems_authentication_signup_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Sign in", systems_authentication_signin_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Change password", systems_authentication_change_password_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Reset password", systems_authentication_reset_password_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Confirmation", systems_authentication_confirmation_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Edit account", systems_authentication_edit_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
-        <li>
-          <%= nav_link_to "Unlock", systems_authentication_unlocks_path, inactive_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent", active_class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-indigo-500 text-indigo-600 font-medium dark:text-indigo-400 dark:border-indigo-400" %>
-        </li>
+       <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Sign up", path:  systems_authentication_signup_path) %>
+
+        <%= system_nav_item(label: "Sign in", path:  systems_authentication_signin_path) %>
+
+        <%= system_nav_item(label: "Change password", path:  systems_authentication_change_password_path) %>
+
+        <%= system_nav_item(label: "Reset password", path:  systems_authentication_reset_password_path) %>
+
+        <%= system_nav_item(label: "Confirmation", path:  systems_authentication_confirmation_path) %>
+
+        <%= system_nav_item(label: "Edit account", path:  systems_authentication_edit_path) %>
+
+        <%= system_nav_item(label: "Unlock", path:  systems_authentication_unlocks_path) %>
+      </ul>
+    </li>
+
+    <li>
+      <%= nav_link_to systems_mailers_path, inactive_class:"font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block hover:bg-neutral-100/80 dark:hover:bg-neutral-800/90 border-l-2 border-transparent", active_class: "transition-colors duration-200 ease-linear relative border-l-2 border-neutral-800 text-neutral-900 bg-neutral-100/80 font-medium dark:text-white dark:border-neutral-50 dark:bg-neutral-800/90 px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block" do %>
+        <span>Mailers</span>
+      <% end %>
+
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Layout", path:  systems_mailers_layout_path) %>
+
+        <%= system_nav_item(label: "Minimal", path:  systems_mailers_minimal_path) %>
+
+        <%= system_nav_item(label: "Promotion", path:  systems_mailers_promotion_path) %>
+
+        <%= system_nav_item(label: "Transactional", path:  systems_mailers_transactional_path) %>
+
+        <%= system_nav_item(label: "Devise", path:  systems_mailers_devise_path) %>
       </ul>
     </li>
   </ul>

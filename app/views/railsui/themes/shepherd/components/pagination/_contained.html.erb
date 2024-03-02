@@ -1,5 +1,5 @@
-<div class="my-16">
-  <%= render "railsui/shared/sticky_subhead", title: "Pagination", subtitle: "Contained" %>
+<div id="pagination-contained">
+<%= render layout: example, locals: { heading: "Contained", section: "Pagination" } do %>
 
 <%= render preview "zinc" do %>
 <div class="flex flex-wrap md:justify-between justify-center items-center space-y-2">
@@ -42,6 +42,7 @@
 </div>
 <% end %>
 
+<% content_for :example, flush: true do %>
 <%= content_for :html, flush: true do %>
 <div class="flex flex-wrap md:justify-between justify-center items-center space-y-2">
   <p class="text-zinc-600 dark:text-zinc-200 text-sm block w-full md:w-auto md:text-left text-center">Viewing page <strong>1</strong> with <strong>24</strong> results per page</p>
@@ -156,4 +157,6 @@
           = icon "chevron-right", classes: "w-5 h-5 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200", title: "Next"
 <% end %>
 <%= render_snippet %>
+<% end %>
+<% end %>
 </div>

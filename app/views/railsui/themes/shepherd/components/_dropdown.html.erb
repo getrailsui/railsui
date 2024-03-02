@@ -1,0 +1,23 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown" %>
+
+
+<%= render "#{path}/tutorial/tutorial" %>
+<%= render "#{path}/base" %>
+<%= divider %>
+<%= render "#{path}/with_menu_icons" %>
+<%= divider %>
+<%= render "#{path}/with_dividers" %>
+<%= divider %>
+<%= render "#{path}/right_aligned" %>
+
+<%= system_pagination(prev_path: systems_components_datalist_path, prev_text: "Datalist", next_path: systems_components_flash_path, next_text: "Flash") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Usage", "#dropdown-usage" %>
+    <%= component_link "Base", "#dropdown-base" %>
+		<%= component_link "With icons", "#dropdown-with-menu-icons" %>
+		<%= component_link "With dividers", "#dropdown-with-dividers" %>
+    <%= component_link "Right aligned", "#dropdown-right-aligned" %>
+  <% end %>
+<% end %>

@@ -42,7 +42,7 @@
 
           <div class="flex-1">
             <%%= link_to "#", class: "group" do %>
-              <h3 class="font-medium group-hover:text-indigo-600 text-base dark:text-slate-300 dark:group-hover:text-indigo-400 text-slate-700 mb-1"><%%= event[:title] %></h3>
+              <h3 class="font-medium group-hover:text-primary-600 text-base dark:text-slate-300 dark:group-hover:text-primary-400 text-slate-700 mb-1"><%%= event[:title] %></h3>
             <%% end %>
 
             <p class="text-sm dark:text-slate-400/90 text-slate-500"><%%= event[:time] %></p>
@@ -67,14 +67,14 @@
               data-transition-leave-from="transform opacity-100 scale-100"
               data-transition-leave-to="transform opacity-0 scale-95">
               <li>
-                <%%= link_to "#", class: "py-2 px-4 hover:text-indigo-600 focus:text-indigo-600 flex items-center space-x-2 w-full group dark:hover:text-indigo-400" do %>
-                  <%%= icon "pencil-square", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                <%%= link_to "#", class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group dark:hover:text-primary-400" do %>
+                  <%%= icon "pencil-square", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                   <span>Edit</span>
                 <%% end %>
               </li>
               <li>
-                <%%= link_to "#", class: "py-2 px-4 hover:text-indigo-600 focus:text-indigo-600 flex items-center space-x-2 w-full group dark:hover:text-indigo-400" do %>
-                  <%%= icon "paper-airplane", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" %>
+                <%%= link_to "#", class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group dark:hover:text-primary-400" do %>
+                  <%%= icon "paper-airplane", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                   <span>Message</span>
                 <%% end %>
               </li>
@@ -94,7 +94,7 @@
           </div>
           <div class="flex items-center text-slate-900">
             <button type="button"
-              class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-300">
+              class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-slate-400 hover:text-primary-600 dark:hover:text-primary-300">
               <span class="sr-only">Previous month</span>
               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -104,10 +104,10 @@
             </button>
 
             <button type="button"
-              class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-slate-400 px-3 hover:text-indigo-600 text-xs dark:hover:text-indigo-300">Today</button>
+              class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-slate-400 px-3 hover:text-primary-600 text-xs dark:hover:text-primary-300">Today</button>
 
             <button type="button"
-              class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-300">
+              class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-slate-400 hover:text-primary-600 dark:hover:text-primary-300">
               <span class="sr-only">Next month</span>
               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -208,7 +208,7 @@
               class="ml-auto mr-2 flex sm:h-14 sm:w-14 h-10 w-10 items-start justify-end rounded-full">14</time>
           </button>
           <button type="button"
-            class="bg-white dark:bg-slate-800 dark:hover:bg-slate-600 py-1.5 font-semibold text-indigo-500 hover:bg-slate-100 focus:z-10 dark:text-indigo-400">
+            class="bg-white dark:bg-slate-800 dark:hover:bg-slate-600 py-1.5 font-semibold text-primary-500 hover:bg-slate-100 focus:z-10 dark:text-primary-400">
             <time datetime="2023-08-15"
               class="ml-auto mr-2 flex sm:h-14 sm:w-14 h-10 w-10 items-start justify-end rounded-full">15</time>
           </button>

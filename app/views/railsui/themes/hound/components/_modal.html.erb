@@ -1,0 +1,24 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/modal" %>
+
+<%= render "#{path}/base" %>
+<%= divider %>
+<%= render "#{path}/single_action" %>
+<%= divider %>
+<%= render "#{path}/centered_dual_action" %>
+<%= divider %>
+<%= render "#{path}/dismiss_icon" %>
+<%= divider %>
+<%= render "#{path}/with_form" %>
+
+<%= system_pagination(prev_path: systems_components_flash_path, prev_text: "Flash", next_path: systems_components_navigation_path, next_text: "Navigation") %>
+
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Base", "#modal-base" %>
+		<%= component_link "Single action", "#modal-single-action" %>
+		<%= component_link "Centered dual action", "#modal-centered-dual-action" %>
+    <%= component_link "With dismiss button", "#modal-with-dismiss-button" %>
+    <%= component_link "With form", "#modal-with-form" %>
+  <% end %>
+<% end %>

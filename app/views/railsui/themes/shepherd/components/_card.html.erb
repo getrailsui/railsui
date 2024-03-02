@@ -1,0 +1,29 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/card" %>
+
+<%= render "#{path}/base" %>
+<%= divider %>
+<%= render "#{path}/with_header" %>
+<%= divider %>
+<%= render "#{path}/with_action" %>
+<%= divider %>
+<%= render "#{path}/property_card" %>
+<%= divider %>
+<%= render "#{path}/property_user_card" %>
+<%= divider %>
+<%= render "#{path}/user_card_with_actions" %>
+
+
+<%= system_pagination(prev_path: systems_components_button_path, prev_text: "Button", next_path: systems_components_dropdown_path, next_text: "Dropdown") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Base", "#card-base" %>
+    <%= component_link "With header", "#card-with-header" %>
+    <%= component_link "With action", "#card-with-action" %>
+
+    <%= component_link "Property card", "#card-property-card" %>
+    <%= component_link "Property user card", "#card-property-user-card" %>
+    <%= component_link "User card with actions", "#card-user-card-with-actions" %>
+
+  <% end %>
+<% end %>

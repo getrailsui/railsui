@@ -3,6 +3,7 @@ Railsui::Engine.routes.draw do
   resource :configuration, only: [:create, :update]
   resource :systems, only: :show
   resource :routes, only: :show
+  resources :mailers, only: [:index, :show]
   get :delete_page, to: "configurations#delete_page"
 
   namespace :systems do
@@ -28,38 +29,39 @@ Railsui::Engine.routes.draw do
     end
 
     namespace :content do
-      get :images
-      get :tables
+      get :image
+      get :table
       get :typography
     end
 
     namespace :forms do
-      get :checkboxes_and_radios
-      get :input_groups
-      get :inputs
-      get :layout
       get :action_text
-      get :selects
+      get :checkbox
+      get :input_group
+      get :input
+      get :layout
+      get :radio
+      get :select
+      get :switch
       get :validation
     end
 
     namespace :components do
-      get :accordions
-      get :alerts
-      get :badges
-      get :breadcrumbs
-      get :buttons
-      get :cards
-      get :datalists
-      get :dropdowns
+      get :accordion
+      get :alert
+      get :badge
+      get :breadcrumb
+      get :button
+      get :card
+      get :datalist
+      get :dropdown
       get :flash
-      get :modals
+      get :modal
       get :navigation
       get :pagination
-      get :popovers
-      get :tabs
-      get :toasts
-      get :tooltips
+      get :tab
+      get :toast
+      get :tooltip
     end
 
     namespace :mailers do

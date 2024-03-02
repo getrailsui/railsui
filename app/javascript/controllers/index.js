@@ -42,6 +42,9 @@ application.register("prevent", PreventController)
 import ScrollController from "./scroll_controller.js"
 application.register("scroll", ScrollController)
 
+import ScrollSpyController from "./scroll_spy_controller.js"
+application.register("scroll-spy", ScrollSpyController)
+
 import SearchController from "./search_controller.js"
 application.register("search", SearchController)
 
@@ -50,6 +53,9 @@ application.register("select-all", SelectAllController)
 
 import SmoothController from "./smooth_controller.js"
 application.register("smooth", SmoothController)
+
+import SnippetController from "./snippet_controller.js"
+application.register("snippet", SnippetController)
 
 import TabsController from "./tabs_controller.js"
 application.register("tabs", TabsController)

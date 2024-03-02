@@ -15,7 +15,6 @@ module Railsui
 
     THEME_COLORS = {
       shepherd: {
-        # Rose
         primary: {
           "50": "#fff1f2",
           "100": "#ffe4e6",
@@ -29,7 +28,6 @@ module Railsui
           "900": "#881337",
           "950": "#4c0519"
         },
-        # Sapphire
         secondary: {
           "50": "#fff1f2",
           "100": "#ffe4e6",
@@ -45,7 +43,6 @@ module Railsui
         }
       },
       hound: {
-        # Indigo
         primary: {
           "50": "#eef2ff",
           "100": "#e0e7ff",
@@ -59,7 +56,6 @@ module Railsui
           "900": "#312e81",
           "950": "#1e1b4b"
         },
-        # slate
         secondary: {
           "50": "#f8fafc",
           "100": "#f1f5f9",

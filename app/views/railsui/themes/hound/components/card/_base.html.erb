@@ -1,0 +1,36 @@
+<div id="card-base">
+<%= render layout: example, locals: { heading: "Base", section: "Card" } do %>
+
+<%= render preview 'gray' do %>
+<div class="flex justify-center items-center">
+  <div class="rounded-lg bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 md:w-[350px]">
+    <h3 class="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Create a message</h3>
+    <p class="prose prose-slate dark:prose-invert mt-2 mb-4">Send a message to your teammates.</p>
+    <button class="btn btn-primary">Start writing</button>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 md:w-[350px]">
+  <h3 class="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Create a message</h3>
+  <p class="prose prose-slate dark:prose-invert mt-2 mb-4">Send a message to your teammates.</p>
+  <button class="btn btn-primary">Start writing</button>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border(class="border-slate-300/70 dark:border-slate-600/70 md:w-[350px]")
+  %h3.text-xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Create a message
+  %p.prose.prose-slate.dark:prose-invert.mt-2.mb-4 Send a message to your teammates.
+  %button.btn.btn-primary Start writing
+<% end %>
+<%= render_snippet(active_tab: :erb) %>
+<% end %>
+<% end %>
+</div>

@@ -3,7 +3,7 @@ require_dependency "railsui/application_controller"
 module Railsui
   module Systems
     class ComponentsController < ApplicationController
-      pages = %w[accordions alerts badges breadcrumbs buttons cards datalists dropdowns flash modals navigation pagination popovers tabs toasts tooltips]
+      pages = %w[accordion alert badge breadcrumb button card datalist dropdown flash modal navigation pagination tab toast tooltip]
 
       pages.each do |page|
         define_method(page) do

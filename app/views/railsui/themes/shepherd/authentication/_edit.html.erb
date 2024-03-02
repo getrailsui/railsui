@@ -1,3 +1,4 @@
+<%= render layout: example, locals: { heading: "Edit account", section: "Authentication" } do %>
 <div class="rounded-xl border-zinc-200 dark:border-zinc-600/80 overflow-hidden border dark:bg-zinc-900 pointer-events-none select-none">
 <header
   class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b border-zinc-300/80 relative z-50 dark:border-zinc-700/80 pointer-events-none select-none"
@@ -400,6 +401,7 @@
   </div>
 </div>
 
+<% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 
 <% end %>
@@ -608,5 +610,7 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+<% end %>
+<% end %>
 
 <%= system_pagination(prev_path: systems_authentication_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_unlocks_path, next_text: "Unlock") %>

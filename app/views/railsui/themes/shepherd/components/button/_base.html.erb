@@ -1,0 +1,67 @@
+<div id="button-base">
+<%= render layout: example, locals: { heading: "Base", section: "Button" } do %>
+
+<%= render preview 'zinc' do %>
+  <div class="flex items-center flex-wrap gap-3">
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-secondary">Secondary</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-white">White</button>
+  <button type="button" class="btn btn-transparent">Transparent</button>
+  <button type="button" class="btn btn-link">Link</button>
+  </div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-primary">Primary</button>
+
+<button type="button" class="btn btn-secondary">Secondary</button>
+
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-light">Light</button>
+
+<button type="button" class="btn btn-white">White</button>
+
+<button type="button" class="btn btn-transparent">Transparent</button>
+
+<button type="button" class="btn btn-link">Link</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Primary", type: "button", class: "btn btn-primary" %>
+
+<%%= button_tag "Secondary", type: "button", class: "btn btn-secondary" %>
+
+<%%= button_tag "Dark", type: "button", class: "btn btn-dark" %>
+
+<%%= button_tag "Light", type: "button", class: "btn btn-light" %>
+
+<%%= button_tag "White", type: "button", class: "btn btn-white" %>
+
+<%%= button_tag "Transparent", type: "button", class: "btn btn-transparent" %>
+
+<%%= button_tag "Link", type: "button", class: "btn btn-link" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Primary", type: "button", class: "btn btn-primary"
+
+= button_tag "Secondary", type: "button", class: "btn btn-secondary"
+
+= button_tag "Light", type: "button", class: "btn btn-light"
+
+= button_tag "Dark", type: "button", class: "btn btn-dark"
+
+= button_tag "White", type: "button", class: "btn btn-white"
+
+= button_tag "Transparent", type: "button", class: "btn btn-transparent"
+
+= button_tag "Link", type: "button", class: "btn btn-link"
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

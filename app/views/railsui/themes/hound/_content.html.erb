@@ -1,9 +1,9 @@
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-8">
-  <%= render "railsui/shared/grid_item", path: systems_content_typography_path, title: "Typography", description: "Documentation and examples for typography and basic content." %>
+<%= render layout: "railsui/shared/linkables" do %>
+  <%= render "railsui/shared/linkable", path: systems_content_typography_path, title: "Typography", description: "Documentation and examples for typography and basic content." %>
 
-  <%= render "railsui/shared/grid_item", path: systems_content_tables_path, title: "Tables", description: "Documentation and examples for opt-in styling of tables." %>
+  <%= render "railsui/shared/linkable", path: systems_content_table_path, title: "Table", description: "Documentation and examples for opt-in styling of tables." %>
 
-  <%= render "railsui/shared/grid_item", path: systems_content_images_path, title: "Images", description: "A starting point for styling and displaying images." %>
+  <%= render "railsui/shared/linkable", path: systems_content_image_path, title: "Image", description: "A starting point for styling and displaying images." %>
 
-  <%= render "railsui/shared/grid_item", path: systems_scaffolds_path, title: "Scaffolds", description: "Pre-designed scaffold templates." %>
-</div>
+  <%= render "railsui/shared/linkable", path: systems_scaffolds_path, title: "Scaffolds", description: "Pre-designed scaffold templates." %>
+<% end %>

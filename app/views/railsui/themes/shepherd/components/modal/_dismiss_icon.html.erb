@@ -1,0 +1,198 @@
+<div id="modal-with-dismiss-button">
+<%= render layout: example, locals: { heading: "With dismiss button", section: "Modal" } do %>
+
+<div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-zinc-900 dark:border-t dark:border-x dark:border-zinc-600">
+  <div class="rounded-xl mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 px-6 pb-6 pt-8 origin-bottom flex items-start relative  dark:bg-zinc-800 dark:text-zinc-200">
+    <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
+      <%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
+    </button>
+    <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3 dark:bg-red-600/20">
+      <%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0 dark:text-red-500" %>
+    </div>
+
+    <div class="flex-1">
+      <h3 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Delete account</h3>
+
+      <div class="prose prose-sm prose-zinc dark:prose-invert my-4">
+        <p>Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
+      </div>
+
+      <div class="flex justify-end items-center space-x-3">
+        <button class="btn btn-transparent" data-action="click->modal#close">Cancel</button>
+        <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-zinc-600/10 dark:focus:ring-red-600/20">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-controller="modal">
+  <div class="flex justify-center p-6 border-x border-b border-zinc-200 rounded-b-lg relative dark:bg-zinc-700 dark:border-zinc-600 dark:border-t">
+    <div class="absolute top-4 left-4">
+      <%= doc_label :demo %>
+    </div>
+    <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
+      Open dismissable icon modal
+    </button>
+  </div>
+  <div
+    aria-labelledby="dismissable-action-modal-title"
+    aria-modal="true"
+    data-modal-target="container"
+    class="hidden fixed inset-0 z-50 overflow-y-auto"
+    role="dialog"
+    >
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div
+      data-modal-target="content"
+      data-action="keyup@window->modal#closeWithEsc"
+      data-transition-enter-active="transition ease-out duration-300"
+      data-transition-enter-from="transform opacity-0 scale-95"
+      data-transition-enter-to="transform opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-300"
+      data-transition-leave-from="transform opacity-100 scale-100"
+      data-transition-leave-to="transform opacity-0 scale-95"
+      class="rounded-xl mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 px-6 pb-6 pt-8 origin-bottom flex items-start relative dark:bg-zinc-800 dark:text-zinc-200">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
+          <%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
+        </button>
+        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3 dark:bg-red-600/20">
+          <%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0 dark:text-red-500" %>
+        </div>
+
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Delete account</h3>
+
+          <div class="prose prose-sm prose-zinc dark:prose-invert my-4">
+            <p>Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
+          </div>
+
+          <div class="flex justify-end items-center space-x-3">
+            <button class="btn btn-transparent" data-action="click->modal#close">Cancel</button>
+            <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-zinc-600/10 dark:focus:ring-red-600/20">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div data-controller="modal">
+  <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">Open dismissable icon modal</button>
+
+  <div
+    aria-labelledby="dismissable-action-modal-title"
+    aria-modal="true"
+    data-modal-target="container"
+    class="hidden fixed inset-0 z-50 overflow-y-auto"
+    role="dialog">
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div
+      data-modal-target="content"
+      data-action="keyup@window->modal#closeWithEsc"
+      data-transition-enter-active="transition ease-out duration-300"
+      data-transition-enter-from="transform opacity-0 scale-95"
+      data-transition-enter-to="transform opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-300"
+      data-transition-leave-from="transform opacity-100 scale-100"
+      data-transition-leave-to="transform opacity-0 scale-95"
+      class="rounded-xl mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 px-6 pb-6 pt-8 origin-bottom flex items-start relative dark:bg-zinc-800 dark:text-zinc-200">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
+          <%%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
+        </button>
+        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3 dark:bg-red-600/20">
+          <%%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0 dark:text-red-500" %>
+        </div>
+
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Delete account</h3>
+
+          <div class="prose prose-sm prose-zinc dark:prose-invert my-4">
+            <p>Once your account is deleted, it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
+          </div>
+
+          <div class="flex justify-end items-center space-x-3">
+            <button class="btn btn-transparent" data-action="click->modal#close">Cancel</button>
+            <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-zinc-600/10 dark:focus:ring-red-600/20">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div data-controller="modal">
+  <%%= button_tag "Open dismissable icon modal", type: "button", class: "btn btn-primary", data: { action: "click->modal#open" }, "tabindex": "0" %>
+
+  <div
+    aria-labelledby="dismissable-action-modal-title"
+    aria-modal="true"
+    data-modal-target="container"
+    class="hidden fixed inset-0 z-50 overflow-y-auto"
+    role="dialog">
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div
+      data-modal-target="content"
+      data-action="keyup@window->modal#closeWithEsc"
+      data-transition-enter-active="transition ease-out duration-300"
+      data-transition-enter-from="transform opacity-0 scale-95"
+      data-transition-enter-to="transform opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-300"
+      data-transition-leave-from="transform opacity-100 scale-100"
+      data-transition-leave-to="transform opacity-0 scale-95"
+      class="rounded-xl mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 px-6 pb-6 pt-8 origin-bottom flex items-start relative dark:bg-zinc-800 dark:text-zinc-200">
+        <%%= button_tag type: "button", class: "absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50", data: { action: "click->modal#close" } do %>
+          <%%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
+        <%% end %>
+        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3 dark:bg-red-600/20">
+          <%%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0 dark:text-red-500" %>
+        </div>
+
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Delete account</h3>
+
+          <div class="prose prose-sm prose-zinc dark:prose-invert my-4">
+            <p>Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
+          </div>
+
+          <div class="flex justify-end items-center space-x-3">
+            <%%= button_tag "Cancel", type: "button", class: "btn btn-transparent", data: { action: "click->modal#close" } %>
+            <%%= button_tag "Delete", type: "button", class: "btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-zinc-600/10 dark:focus:ring-red-600/20" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%div{"data-controller" => "modal"}
+  = button_tag "Open dismissable icon modal", type: "button", class: "btn btn-primary", data: { action: "click->modal#open" }, "tabindex": "0"
+  .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "dismissable-action-modal-title", "aria-modal" => "true", "data-modal-target" => "container", role: "dialog"}
+    .h-screen.w-full.relative.flex.items-center.justify-center
+      .rounded-xl.mx-auto.shadow-xl.sm:w-full.sm:max-w-lg.bg-white.m-1.px-6.pb-6.pt-8.origin-bottom.flex.items-start.relative.dark:bg-zinc-800.dark:text-zinc-200{"data-action" => "keyup@window->modal#closeWithEsc", "data-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
+        = button_tag type: "button", class: "absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50", data: { action: "click->modal#close" } do
+          = icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400"
+        .w-8.h-8.rounded-full.bg-red-50.flex.items-center.justify-center.mr-3{class: "dark:bg-red-600/20"}
+          = icon "exclamation-circle", classes: "w-6 h-6 text-red-600 flex-shrink-0 dark:text-red-500"
+        .flex-1
+          %h3.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Delete account
+          .prose.prose-sm.prose-zinc.dark:prose-invert.my-4
+            %p Once your account is deleted, it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?
+          .flex.justify-end.items-center.space-x-3
+            = button_tag "Cancel", type: "button", class: "btn btn-transparent", data: { action: "click->modal#close" }
+            = button_tag "Delete", type: "button", class: "btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-zinc-600/10 dark:focus:ring-red-600/20"
+<% end %>
+
+<% content_for :js, flush: true do %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/modal/modal_js" %>
+<% end %>
+
+<%= render_snippet(js_filename: "modal_controller.js") %>
+<% end %>
+<% end %>
+</div>

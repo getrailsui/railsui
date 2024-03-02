@@ -1,5 +1,5 @@
-<div class="my-16 mt-6">
-  <%= render "railsui/shared/sticky_subhead", title: "Scaffolds", subtitle: "New" %>
+<div id="scaffolds-new">
+<%= render layout: example, locals: { heading: "New", section: "Scaffolds" } do %>
 
 <%= render preview(variant="zinc") do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
@@ -42,6 +42,8 @@
   </div>
 </div>
 <% end %>
+
+<% content_for :example, flush: true do %>
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
@@ -89,4 +91,6 @@
 
 <% end %>
 <%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<% end %>
+<% end %>
 </div>

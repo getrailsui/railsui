@@ -60731,6 +60731,63 @@
   };
   __publicField(scroll_controller_default, "targets", ["scrollitem", "launcher"]);
 
+  // app/javascript/controllers/scroll_spy_controller.js
+  var scroll_spy_controller_default = class extends Controller {
+    connect() {
+      if (this.hasScrollContainerTarget) {
+        this.scrollHandler = this.scrollHandler.bind(this);
+        this.scrollContainerTarget.addEventListener("scroll", this.scrollHandler);
+      }
+    }
+    disconnect() {
+      this.scrollContainerTarget.removeEventListener("scroll", this.scrollHandler);
+    }
+    scrollHandler() {
+      const scrollPosition = this.scrollContainerTarget.scrollTop;
+      this.linkTargets.forEach((link) => {
+        const targetId = link.getAttribute("href");
+        if (!targetId) {
+          return;
+        }
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const targetPosition = targetElement.offsetTop;
+          const targetHeight = targetElement.offsetHeight;
+          if (scrollPosition >= targetPosition && scrollPosition < targetPosition + targetHeight) {
+            this.activateLink(link);
+          } else {
+            this.deactivateLink(link);
+          }
+        }
+      });
+    }
+    activateLink(link) {
+      const activeClasses = this.activeClassValue.split(" ");
+      activeClasses.forEach((className) => {
+        link.classList.add(className);
+      });
+      const inactiveClasses = this.inactiveClassValue.split(" ");
+      inactiveClasses.forEach((className) => {
+        link.classList.remove(className);
+      });
+    }
+    deactivateLink(link) {
+      const activeClasses = this.activeClassValue.split(" ");
+      activeClasses.forEach((className) => {
+        link.classList.remove(className);
+      });
+      const inactiveClasses = this.inactiveClassValue.split(" ");
+      inactiveClasses.forEach((className) => {
+        link.classList.add(className);
+      });
+    }
+  };
+  __publicField(scroll_spy_controller_default, "targets", ["link", "scrollContainer"]);
+  __publicField(scroll_spy_controller_default, "values", {
+    activeClass: String,
+    inactiveClass: String
+  });
+
   // app/javascript/controllers/search_controller.js
   var search_controller_default = class extends Controller {
     currentResults = this.resultListTarget.innerHTML;
@@ -60774,13 +60831,88 @@
   var smooth_controller_default = class extends Controller {
     scroll(event) {
       event.preventDefault();
-      let item = event.currentTarget.hash;
-      let target = document.querySelector(item);
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
+      const target = document.querySelector(event.currentTarget.hash);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+        const href = event.currentTarget.getAttribute("href");
+        if (href) {
+          history.pushState({}, "", href);
+        }
+      }
     }
   };
+
+  // app/javascript/controllers/snippet_controller.js
+  var snippet_controller_default = class extends Controller {
+    ACTIVE_CLASSES = [
+      "bg-white",
+      "px-3",
+      "py-1.5",
+      "rounded-md",
+      "shadow",
+      "flex",
+      "items-center",
+      "justify-center",
+      "gap-2",
+      "text-[13px]",
+      "font-semibold",
+      "focus:ring-4",
+      "focus:ring-blue-600",
+      "group",
+      "dark:bg-neutral-800/90",
+      "dark:text-neutral-100",
+      "dark:focus:ring-blue-600/50",
+      "dark:text-neutral-300"
+    ];
+    INACTIVE_CLASSES = [
+      "bg-transparent",
+      "px-3",
+      "py-1.5",
+      "rounded-md",
+      "shadow-none",
+      "flex",
+      "items-center",
+      "justify-center",
+      "gap-2",
+      "text-[13px]",
+      "font-semibold",
+      "dark:text-neutral-300"
+    ];
+    togglePreview(event) {
+      event.preventDefault();
+      this.toggle("preview");
+    }
+    toggleCode(event) {
+      event.preventDefault();
+      this.toggle("code");
+    }
+    toggle(target) {
+      const activeClasses = this.ACTIVE_CLASSES;
+      const inactiveClasses = this.INACTIVE_CLASSES;
+      if (target === "preview") {
+        if (!this.previewTarget.classList.contains("hidden")) {
+          return;
+        }
+        this.previewTarget.classList.toggle("hidden");
+        this.codeTarget.classList.add("hidden");
+        this.previewBtnTarget.className = "";
+        this.codeBtnTarget.className = "";
+        activeClasses.forEach((cls) => this.previewBtnTarget.classList.add(cls));
+        inactiveClasses.forEach((cls) => this.codeBtnTarget.classList.add(cls));
+      } else if (target === "code") {
+        if (!this.codeTarget.classList.contains("hidden")) {
+          return;
+        }
+        this.codeTarget.classList.toggle("hidden");
+        this.previewTarget.classList.add("hidden");
+        this.previewBtnTarget.className = "";
+        this.codeBtnTarget.className = "";
+        activeClasses.forEach((cls) => this.codeBtnTarget.classList.add(cls));
+        inactiveClasses.forEach((cls) => this.previewBtnTarget.classList.add(cls));
+      }
+    }
+  };
+  __publicField(snippet_controller_default, "targets", ["preview", "previewBtn", "code", "codeBtn"]);
 
   // app/javascript/controllers/tabs_controller.js
   var tabs_controller_default = class extends Controller {
@@ -60889,9 +61021,11 @@
   application.register("nav", nav_controller_default);
   application.register("prevent", prevent_controller_default);
   application.register("scroll", scroll_controller_default);
+  application.register("scroll-spy", scroll_spy_controller_default);
   application.register("search", search_controller_default);
   application.register("select-all", select_all_controller_default);
   application.register("smooth", smooth_controller_default);
+  application.register("snippet", snippet_controller_default);
   application.register("tabs", tabs_controller_default);
   application.register("pages", pages_controller_default);
   application.register("toggle", toggle_controller_default);

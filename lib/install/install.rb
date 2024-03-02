@@ -8,7 +8,7 @@ if Railsui.config.theme == nil
 
   run "bundle install"
 
-  say "❌ Remove importmaps"
+  say "➖ Remove importmaps"
   remove_importmaps
 
   say "➡️ Copy optimized application_mailer.rb file"
@@ -31,6 +31,9 @@ if Railsui.config.theme == nil
 
   say "⛏️ Setup routes"
   setup_routes
+
+  say "✉️  Generate Rails UI mailers and previews"
+  generate_sample_mailers
 
   say "🤖 Generate PageController"
   add_page_controller
@@ -57,9 +60,29 @@ if Railsui.config.theme == nil
   say "⚡️ Add additional user.rb attributes"
   add_user_attributes
 
+  say "✉️ Generate Devise mailer previews"
+  add_devise_email_previews
+
+  say "✉️ Update mail sender"
+  update_mailer_sender
+  copy_sample_mailers
+
   # Migrate
   rails_command "db:create"
   rails_command "db:migrate"
+
+  # Create sample users
+  say "✉️ Generate Sample users"
+
+ # Define the code to be executed in the Rails console
+console_script = <<-SCRIPT
+  User.create!(email: "admin@example.com", password: "password", password_confirmation: "password", admin: true, first_name: "Admin", last_name: "Doe")
+  User.create!(email: "john.doe@example.com", password: "password", password_confirmation: "password", admin: false, first_name: "John", last_name: "Doe")
+SCRIPT
+
+# Execute the Rails console script
+run "rails runner '#{console_script}'"
+
 else
   say "⚡️ Setup themes"
   add_tailwind
