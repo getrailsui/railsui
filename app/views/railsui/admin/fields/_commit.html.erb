@@ -9,7 +9,7 @@
         <%= f.button "Save changes", id: "config_button", class: "rui-btn rui-btn-black md:w-auto w-full", data: {configuration_target: "submit" } %>
       <% else %>
         <%= hidden_field_tag :button_clicked, "config_button_first_install", id: "button_clicked" %>
-        <%= f.button "Install theme and save changes", id: "config_button_first_install", class: "rui-btn rui-btn-black md:w-auto w-full", data: {configuration_target: "submit" }, name: "first_install" %>
+        <%= f.button "Install template and save changes", id: "config_button_first_install", class: "rui-btn rui-btn-black md:w-auto w-full", data: {configuration_target: "submit" }, name: "first_install" %>
       <% end %>
     </div>
   </div>
