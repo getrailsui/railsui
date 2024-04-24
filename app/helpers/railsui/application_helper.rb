@@ -77,7 +77,7 @@ module Railsui
       id = options[:id]
       classes = options[:class]
 
-      content_tag tag.to_sym, text, id: id, class: "#{classes}tracking-[-0.025em]"
+      content_tag tag.to_sym, text, id: id, class: "#{classes} tracking-[-0.025em]"
     end
 
     def email_viewer(subject="A sample subject", &block)
