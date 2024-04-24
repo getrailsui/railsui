@@ -20,13 +20,13 @@
 
     <div data-toggle-target="toggleable" class="md:block hidden">
 
-    <%= render "railsui/shared/global_nav_item", path: root_path, icon: "cog-6-tooth", label: "Configuration" %>
+      <%= render "railsui/shared/global_nav_item", path: root_path, icon: "cog-6-tooth", label: "Configuration" %>
 
       <% if params[:controller].include?('admin') %>
         <div class="pl-8 font-normal text-[14px] -mx-2 pt-px">
           <a href="#configuration" data-action="click->smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">General</a>
 
-          <a href="#theme" data-action="click->smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Theme</a>
+          <a href="#theme" data-action="click->smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Template</a>
 
           <% if Railsui.theme.present? %>
             <a href="#color" data-action="click->smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Color</a>

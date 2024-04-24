@@ -1,13 +1,13 @@
 <div class="py-8" data-configuration-target="frameworks">
-  <%= heading text: "Themes", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
+  <%= heading text: "Templates", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
 
   <div class="prose prose-neutral dark:prose-invert mb-6">
     <% if Railsui.config.theme.present? %>
-      <p>Your active theme is <span class="bg-neutral-800/10 text-neutral-900 dark:bg-neutral-500/30 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span>.
+      <p>Your active template is <span class="bg-neutral-800/10 text-neutral-900 dark:bg-neutral-500/30 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span>.
         All colors and theming conventions can be customized inside the tailwind.config.js file.
       </p>
     <% else %>
-      <p>Select a theme to base your application off of. Rails UI uses Tailwind CSS as the underlaying CSS framework. <%= link_to "Read more about themes", "https://railsui.com/docs/themes", target: :_blank %>.</p>
+      <p>Select a template to base your application off of. Rails UI uses Tailwind CSS as the underlaying CSS framework. <%= link_to "Read more about themes", "https://railsui.com/docs/themes", target: :_blank %>.</p>
     <% end %>
   </div>
 
