@@ -5,7 +5,7 @@ def add_tailwind
     say "🔔 Installing #{Railsui.config.theme.humanize} theme dependencies"
 
     # Skip it all if Tailwind already exists.
-    if Rails.root.join("app/assets/stylesheets/application.tailwind.scss").exist?
+    if Rails.root.join("app/assets/stylesheets/application.tailwind.css").exist?
       say "🛑 Tailwind CSS is already installed. For best results create a new app and run the Rails UI installer."
     else
       say "🔥 Install Tailwind (+PostCSS w/ autoprefixer)"
@@ -42,6 +42,7 @@ def add_tailwind
         say "⚡️ Add #{Railsui.config.theme.humanize} theme Devise views"
         directory "#{__dir__}/tailwind/themes/#{Railsui.config.theme}/devise", Rails.root.join("app/views/devise")
       end
+
 
       say "⚡️ Add #{Railsui.config.theme.humanize} theme layouts"
 
