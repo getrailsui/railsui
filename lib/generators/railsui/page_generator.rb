@@ -63,7 +63,8 @@ module Railsui
         return unless @add_to_nav
         # TODO: Adjust nav link based on
         # Dynamically append a navigation link for the page
-        link_path = namespace.present? ? "#{namespace}_#{display_name}_path" : "#{display_name}_path"
+        link_path = pages_config[Railsui.config.theme][display_name]&.fetch("path")
+
         inserted_link = <<-ERB
 <li>
   <%= nav_link_to "#{display_name.titleize}", send("#{link_path}"), class: "nav-link" %>
@@ -127,7 +128,7 @@ ERB
       end
 
       def remove_nav_link_from_partial
-        link_path = namespace.present? ? "#{namespace}_#{display_name}_path" : "#{display_name}_path"
+        link_path = pages_config[Railsui.config.theme][display_name]&.fetch("path")
 
         link_code = "<%= nav_link_to \"#{display_name.titleize}\", send(\"#{link_path}\"), class: \"nav-link\" %>"
         partial_path = namespace.present? ? "app/views/shared/#{namespace}/_nav_links.html.erb" : "app/views/shared/_nav_links.html.erb"
