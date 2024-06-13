@@ -3,7 +3,7 @@
 
 <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-zinc-900 dark:border-t dark:border-x dark:border-zinc-600">
   <div class="rounded-xl shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-zinc-800 dark:text-zinc-200">
-    <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
+    <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
         <%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
     </button>
     <div class="mb-4">
@@ -31,12 +31,12 @@
   </div>
 </div>
 
-<div data-controller="modal">
+<div data-controller="railsui-modal">
   <div class="flex justify-center p-6 border-x border-b border-zinc-200 rounded-b-lg relative dark:bg-zinc-800 dark:border-zinc-600 dark:border-t">
     <div class="absolute top-4 left-4">
       <%= doc_label :demo %>
     </div>
-    <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
+    <button type="button" data-action="click->railsui-modal#open" class="btn btn-primary" tabindex="0">
       Open modal with form
     </button>
   </div>
@@ -44,14 +44,14 @@
   <div
     aria-labelledby="modal-with-form"
     aria-modal="true"
-    data-modal-target="container"
-    data-action="keyup@window->modal#closeWithEsc"
+    data-railsui-modal-target="container"
+    data-action="keyup@window->railsui-modal#closeWithEsc"
     class="hidden fixed inset-0 z-50 overflow-y-auto"
     role="dialog"
     >
     <div class="h-screen w-full relative flex items-center justify-center">
       <div
-      data-modal-target="content"
+      data-railsui-modal-target="content"
       data-transition-enter-active="transition ease-out duration-300"
       data-transition-enter-from="transform opacity-0 scale-95"
       data-transition-enter-to="transform opacity-100 scale-100"
@@ -59,7 +59,7 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded-xl shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-zinc-800 dark:text-zinc-200">
-        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
           <%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
         </button>
         <div class="mb-4">
@@ -80,8 +80,8 @@
           </div>
 
            <div class="mt-6 flex justify-start items-center flex-wrap space-x-3">
-            <a data-controller="prevent" data-action="click->prevent#prevent" class="btn btn-primary cursor-pointer">Subscribe</a>
-            <a class="btn btn-transparent cursor-pointer" data-action="click->modal#close">Skip for now</a>
+            <a data-controller="prevent" data-action="click->railsui-prevent#prevent" class="btn btn-primary cursor-pointer">Subscribe</a>
+            <a class="btn btn-transparent cursor-pointer" data-action="click->railsui-modal#close">Skip for now</a>
           </div>
         </form>
       </div>

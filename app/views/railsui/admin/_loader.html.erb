@@ -1,4 +1,4 @@
-<div data-configuration-target="saving" class="config-loader">
+<div data-railsui-configuration-target="saving" class="config-loader">
   <div class="flex flex-col justify-center h-full items-center relative z-50">
     <div class="mb-6">
       <%= icon "railsui-light", path: "railsui-light.svg", classes: "fill-current text-white" %>
@@ -7,5 +7,5 @@
     <p class="text-white text-center mb-3">This could take a few moments</p>
     <%= render_svg "loading", styles: "w-10 h-10" %>
   </div>
-  <canvas id="canvas" data-controller="canvas" class="fixed inset-x-0 top-96 bottom-0 w-full h-full overflow-hidden transform rotate-10"></canvas>
+  <canvas id="canvas" data-controller="railsui-canvas" class="fixed inset-x-0 top-96 bottom-0 w-full h-full overflow-hidden transform rotate-10"></canvas>
 </div>

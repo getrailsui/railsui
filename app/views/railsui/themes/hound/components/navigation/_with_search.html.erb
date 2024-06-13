@@ -2,11 +2,11 @@
 <%= render layout: example, locals: { heading: "With search", section: "Navigation" } do %>
 
 <%= render "railsui/themes/hound/components/navigation/nav_preview", flush: true do %>
-<header class="relative bg-white dark:bg-slate-900 rounded-t" data-controller="nav prevent">
+<header class="relative bg-white dark:bg-slate-900 rounded-t" data-controller="railsui-nav railsui-prevent">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
-        <a href="/" class="w-12 h-12 flex justify-center" data-action="click->prevent#prevent">
+        <a href="/" class="w-12 h-12 flex justify-center" data-action="click->railsui-prevent#prevent">
           <!-- Hound logo -->
           <svg
             class="fill-current w-5 h-auto text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out
@@ -20,14 +20,14 @@
 
         <button
           id="search-nav-toggle"
-          data-action="click->nav#toggle"
+          data-action="click->railsui-nav#toggle"
           class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700"
           role="Mobile navigation toggle">
-          <div role="none" data-nav-target="menuBars">
+          <div role="none" data-railsui-nav-target="menuBars">
             <%= icon "bars-3-center-left", classes: "w-8 h-8 text-slate-600 group-focus:text-primary-600
             dark:text-slate-400 dark:group-focus:text-slate-100" %>
           </div>
-          <div role="none" data-nav-target="menuCross" class="hidden">
+          <div role="none" data-railsui-nav-target="menuCross" class="hidden">
             <%= icon "x-mark", classes: "w-8 h-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
           </div>
         </button>
@@ -36,7 +36,7 @@
       <div
         id="search-navigation"
         class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
-        data-nav-target="nav"
+        data-railsui-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
         data-transition-enter-to="opacity-100 scale-100"
@@ -50,20 +50,20 @@
             <ul
               class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base text-lg md:leading-normal leading-relaxed space-y-1 md:space-y-0 sm:mb-0 mb-4">
               <li>
-                <a href="#" class="nav-link" data-action="click->prevent#prevent">Product</a>
+                <a href="#" class="nav-link" data-action="click->railsui-prevent#prevent">Product</a>
               </li>
               <li>
-                <a href="#" class="nav-link" data-action="click->prevent#prevent">Pricing</a>
+                <a href="#" class="nav-link" data-action="click->railsui-prevent#prevent">Pricing</a>
               </li>
               <li>
-                <a href="#" class="nav-link nav-link-active" data-action="click->prevent#prevent">Company</a>
+                <a href="#" class="nav-link nav-link-active" data-action="click->railsui-prevent#prevent">Company</a>
               </li>
             </ul>
           </nav>
 
           <div class="md:flex items-center justify-between xl:w-[460px] w-auto">
             <div class="md:pr-3 flex-1 md:hidden lg:block">
-              <form action="#" data-action="submit->prevent#prevent">
+              <form action="#" data-action="submit->railsui-prevent#prevent">
                 <div class="relative">
                   <input type="search" placeholder="Search" class="form-input w-full py-2 shadow-none sm:text-sm pl-8 peer">
                   <%= icon "magnifying-glass", classes: "w-5 h-5 text-slate-400 absolute left-2 sm:top-2 top-3 peer-focus:text-primary-500" %>
@@ -74,10 +74,10 @@
             <nav role="Secondary navigation">
               <ul class="md:flex flex-wrap items-center justify-center grid grid-cols-2 md:gap-0 gap-4 md:mt-0 mt-6">
                 <li class="w-full sm:w-auto sm:mb-0 col-span-2">
-                  <a href="#" class="btn btn-transparent sm:w-auto w-full" data-action="click->prevent#prevent">Sign in</a>
+                  <a href="#" class="btn btn-transparent sm:w-auto w-full" data-action="click->railsui-prevent#prevent">Sign in</a>
                 </li>
                 <li class="sm:pl-3 w-full sm:w-auto col-span-2">
-                  <a href="#" class="btn btn-dark sm:w-auto w-full" data-action="click->prevent#prevent">Sign up</a>
+                  <a href="#" class="btn btn-dark sm:w-auto w-full" data-action="click->railsui-prevent#prevent">Sign up</a>
                 </li>
               </ul>
             </nav>

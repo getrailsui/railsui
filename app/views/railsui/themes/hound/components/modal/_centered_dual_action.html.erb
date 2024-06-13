@@ -8,36 +8,38 @@
         <%= icon "rocket-launch", classes: "w-6 h-6 text-emerald-600 flex-shrink-0" %>
       </div>
     </div>
-    <h3 id="dual-action-modal-title" class="font-semibold text-xl text-slate-800 dark:text-slate-100">Time to launch</h3>
+    <h3 id="dual-action-modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Time to launch</h3>
 
-    <p class="mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!</p>
+    <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!</p>
+    </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <button class="btn btn-white w-full sm:order-1 order-2" data-action="click->modal#close">Cancel</button>
+      <button class="btn btn-white w-full sm:order-1 order-2">Cancel</button>
       <button class="btn btn-primary w-full sm:order-2 order-1">Proceed to launch</button>
     </div>
   </div>
 </div>
 
-<div data-controller="modal">
+<div data-controller="railsui-modal">
   <div class="flex justify-center p-6 border-x border-b border-slate-200 rounded-b-lg relative dark:bg-slate-700 dark:border-slate-600 dark:border-t">
     <div class="absolute top-4 left-4">
       <%= doc_label :demo %>
     </div>
-    <button type="button" data-action="click->modal#open:prevent" class="btn btn-primary" tabindex="0">Open centered dual action modal</button>
+    <button type="button" data-action="click->railsui-modal#open:prevent" class="btn btn-primary" tabindex="0">Open centered dual action modal</button>
   </div>
 
   <div
     aria-labelledby="dual-action-modal-title"
     aria-modal="true"
-    data-action="keyup@window->modal#closeWithEsc"
-    data-modal-target="container"
+    data-action="keyup@window->railsui-modal#closeWithEsc"
+    data-railsui-modal-target="container"
     class="hidden fixed inset-0 z-50 overflow-y-auto"
     role="dialog"
     >
     <div class="h-screen w-full relative flex items-center justify-center">
       <div
-      data-modal-target="content"
+      data-railsui-modal-target="content"
       data-transition-enter-active="transition ease-out duration-300"
       data-transition-enter-from="transform opacity-0 scale-95"
       data-transition-enter-to="transform opacity-100 scale-100"
@@ -50,12 +52,14 @@
             <%= icon "rocket-launch", classes: "w-6 h-6 text-emerald-600 flex-shrink-0" %>
           </div>
         </div>
-        <h3 id="dual-action-modal-title" class="font-semibold text-xl text-slate-800 dark:text-slate-100">Time to launch</h3>
+        <h3 id="dual-action-modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Time to launch</h3>
 
-        <p class="mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!</p>
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!</p>
+        </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button class="btn btn-white w-full sm:order-1 order-2" data-action="click->modal#close">Cancel</button>
+          <button class="btn btn-white w-full sm:order-1 order-2" data-action="click->railsui-modal#close">Cancel</button>
           <button class="btn btn-primary w-full sm:order-2 order-1">Proceed to launch</button>
         </div>
       </div>
@@ -91,9 +95,11 @@
             <%%= icon "rocket-launch", classes: "w-6 h-6 text-emerald-600 flex-shrink-0" %>
           </div>
         </div>
-        <h3 id="dual-action-modal-title" class="font-semibold text-xl text-slate-800 dark:text-slate-100">Time to launch</h3>
+        <h3 id="dual-action-modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Time to launch</h3>
 
-        <p class="mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!</p>
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!</p>
+        </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <button class="btn btn-white w-full sm:order-1 order-2" data-action="click->modal#close">Cancel</button>
@@ -113,9 +119,10 @@
       .hidden.rounded.mx-auto.shadow-xl.max-w-lg.bg-white.m-1.p-8.origin-bottom.text-center.dark:bg-slate-700.dark:text-slate-200{"data-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
         .flex.justify-center
           .w-12.h-12.rounded-full.bg-emerald-50.flex.items-center.justify-center.mb-3
-            = icon "rocket-launch", classes: "w-6 h-6 text-emerald-600 flex-shrink-0" %>
-        %h3#dual-action-modal-title.font-semibold.text-xl.text-slate-800.dark:text-slate-100 Time to launch
-        %p.mt-2.mb-4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!
+            = icon "rocket-launch", classes: "w-6 h-6 text-emerald-600 flex-shrink-0"
+        %h3#dual-action-modal-title.text-2xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Time to launch
+        .prose.prose-slate.dark:prose-invert.mt-2.mb-6
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus laudantium quis asperiores, suscipit!
         .grid.grid-cols-1.sm:grid-cols-2.gap-3
           %button.btn.btn-white.w-full.sm:order-1.order-2{"data-action" => "click->modal#close"} Cancel
           %button.btn.btn-primary.w-full.sm:order-2.order-1 Proceed to launch

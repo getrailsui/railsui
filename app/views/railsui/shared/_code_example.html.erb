@@ -1,15 +1,15 @@
-<div data-controller="snippet" class="py-8">
+<div data-controller="railsui-snippet" class="py-8">
   <div class="flex items-end justify-between mb-6 mt-4">
     <div class="flex-1">
       <%= render "railsui/shared/code_example_heading", title: local_assigns[:section], subtitle: local_assigns[:heading] %>
     </div>
 
     <div class="bg-neutral-100 flex items-center justify-center gap-1 px-1 py-1 rounded-lg dark:bg-neutral-950">
-      <button data-snippet-target="previewBtn" data-action="click->snippet#togglePreview" class="bg-white px-3 py-1.5 rounded-md shadow flex items-center justify-center gap-2 text-[13px] font-semibold focus:ring-4 focus:ring-blue-600 group dark:bg-neutral-800/90 dark:text-neutral-100">
+      <button data-railsui-snippet-target="previewBtn" data-action="click->railsui-snippet#togglePreview" class="bg-white px-3 py-1.5 rounded-md shadow flex items-center justify-center gap-2 text-[13px] font-semibold focus:ring-4 focus:ring-blue-600 group dark:bg-neutral-800/90 dark:text-neutral-100">
         <%= icon "eye", classes: "size-4 text-neutral-500 group-hover:text-neutral-800 dark:text-neutral-300 group-focus:text-neutral-800 pointer-events-none dark:group-hover:text-neutral-200 dark:group-focus:text-neutral-200" %>
         <span>Preview</span>
       </button>
-      <button data-snippet-target="codeBtn" data-action="click->snippet#toggleCode"
+      <button data-railsui-snippet-target="codeBtn" data-action="click->railsui-snippet#toggleCode"
         class="bg-transparent px-3 py-1.5 rounded-md shadow-none flex items-center justify-center gap-2 text-[13px] font-semibold">
         <%= icon "code-bracket", classes: "size-4 text-neutral-500 dark:text-neutral-300 group-hover:text-neutral-800 group-focus:text-neutral-800 pointer-events-none dark:group-hover:text-neutral-200 dark:group-focus:text-neutral-200" %>
         <span>Code</span>
@@ -18,11 +18,11 @@
   </div>
 
   <div>
-    <div data-snippet-target="preview">
+    <div data-railsui-snippet-target="preview">
       <%= yield %>
     </div>
 
-    <div data-snippet-target="code" class="hidden">
+    <div data-railsui-snippet-target="code" class="hidden">
       <%= yield :example %>
     </div>
   </div>

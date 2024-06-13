@@ -39,7 +39,7 @@ export default class extends Controller {
 
 <h2>2. Initialize the controller in your views</h2>
 
-<p>Add the data attribute <%= code "data-controller='tooltip'" %> to an HTML element.</p>
+<p>Add the data attribute <code>data-controller='tooltip'</code> to an HTML element.</p>
 
 <div class="not-prose">
   <% content_for :js, flush: true do %>
@@ -56,12 +56,12 @@ export default class extends Controller {
 <p>Add the data attribute <code>data-tooltip-content-value='Your content here'</code> to an HTML element. Inside the data attribute you may pass as much copy as you like.</p>
 
 <div class="not-prose">
-  <button data-controller="tooltip" data-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+  <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
   <% content_for :js, flush: true do %>
 
   <% end %>
   <% content_for :html, flush: true do %>
-    <button data-controller="tooltip" data-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+    <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
   <% end %>
   <%= render_snippet %>
 </div>
@@ -71,7 +71,7 @@ export default class extends Controller {
 <p>Add the data attribute <code>data-tooltip-allow-html-value="true"</code> to an HTML element. Inside the data attribute pass <code>true</code> to enable the option <code>allowHTML</code> for the tippy.js library.</p>
 
 <div class="not-prose">
-  <button data-controller="tooltip" data-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+  <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
 
 
   <% content_for :js, flush: true do %>
@@ -79,7 +79,7 @@ export default class extends Controller {
   <% end %>
 
   <% content_for :html, flush: true do %>
-    <button data-controller="tooltip" data-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+    <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
   <% end %>
 
   <%= render_snippet %>

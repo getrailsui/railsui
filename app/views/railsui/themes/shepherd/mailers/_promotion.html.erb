@@ -7,7 +7,7 @@
 <%= email_viewer("A promotional template") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
 
-    <%= image_tag unsplash_url(item: "promotional", width: "1200", height: "600"), alt: "Promotional image example", class: "object-cover max-h-[400px]", height: "400px", width: "1200px" %>
+    <%= image_tag "https://picsum.photos/1200/600", alt: "Promotional image example", class: "w-[600px] h-[240px] object-cover" %>
 
     <%= spacer(16) %>
 

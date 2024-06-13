@@ -54239,19 +54239,19 @@
   });
   var tippy_esm_default = tippy;
 
-  // app/javascript/controllers/anchor_controller.js
-  var anchor_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_anchor_controller.js
+  var railsui_anchor_controller_default = class extends Controller {
     copy(event) {
       event.preventDefault();
       navigator.clipboard.writeText(this.urlValue + `#${this.element.id}`);
     }
   };
-  __publicField(anchor_controller_default, "values", {
+  __publicField(railsui_anchor_controller_default, "values", {
     url: String
   });
 
-  // app/javascript/controllers/clipboard_controller.js
-  var clipboard_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_clipboard_controller.js
+  var railsui_clipboard_controller_default = class extends Controller {
     copy(event) {
       event.preventDefault();
       navigator.clipboard.writeText(this.textToCopy);
@@ -54271,10 +54271,10 @@
       });
     }
   };
-  __publicField(clipboard_controller_default, "targets", ["source"]);
+  __publicField(railsui_clipboard_controller_default, "targets", ["source"]);
 
-  // app/javascript/controllers/configuration_controller.js
-  var configuration_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_configuration_controller.js
+  var railsui_configuration_controller_default = class extends Controller {
     connect() {
       if (this.hasChosenThemeValue) {
         let value = this.chosenThemeValue;
@@ -54337,7 +54337,7 @@
       document.body.classList.remove("overflow-hidden");
     }
   };
-  __publicField(configuration_controller_default, "targets", [
+  __publicField(railsui_configuration_controller_default, "targets", [
     "bootstrap",
     "tailwind",
     "frameworks",
@@ -54346,7 +54346,7 @@
     "saving",
     "theme"
   ]);
-  __publicField(configuration_controller_default, "values", {
+  __publicField(railsui_configuration_controller_default, "values", {
     chosenTheme: String
   });
 
@@ -57798,7 +57798,7 @@
     };
   }
 
-  // app/javascript/controllers/code_controller.js
+  // app/javascript/controllers/railsui_code_controller.js
   es_default.registerLanguage("bash", bash);
   es_default.registerLanguage("css", css);
   es_default.registerLanguage("javascript", javascript);
@@ -57811,17 +57811,17 @@
   es_default.configure({
     languages: ["bash", "css", "javascript", "xml", "erb", "haml", "ruby", "scss", "yaml"]
   });
-  var code_controller_default = class extends Controller {
+  var railsui_code_controller_default = class extends Controller {
     connect() {
       this.snippetTargets.forEach((el) => {
         es_default.highlightElement(el);
       });
     }
   };
-  __publicField(code_controller_default, "targets", ["snippet"]);
+  __publicField(railsui_code_controller_default, "targets", ["snippet"]);
 
-  // app/javascript/controllers/canvas_controller.js
-  var canvas_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_canvas_controller.js
+  var railsui_canvas_controller_default = class extends Controller {
     connect() {
       if (this.element) {
         var c = this.element, ctx = c.getContext("2d"), cw = c.width = window.innerWidth, ch = c.height = window.innerHeight, points = [], tick = 0, opt = {
@@ -60289,10 +60289,10 @@
   }
   var esm_default = flatpickr;
 
-  // app/javascript/controllers/date_range_picker_controller.js
+  // app/javascript/controllers/railsui_date_range_picker_controller.js
   var currentDate = /* @__PURE__ */ new Date();
   var oneWeekLater = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1e3);
-  var date_range_picker_controller_default = class extends Controller {
+  var railsui_date_range_picker_controller_default = class extends Controller {
     connect() {
       this.rangeValue = this.rangeValue.map((dateString) => new Date(dateString));
       let self = this;
@@ -60319,8 +60319,8 @@
       }
     }
   };
-  __publicField(date_range_picker_controller_default, "targets", ["label", "input"]);
-  __publicField(date_range_picker_controller_default, "values", {
+  __publicField(railsui_date_range_picker_controller_default, "targets", ["label", "input"]);
+  __publicField(railsui_date_range_picker_controller_default, "values", {
     mode: String || "",
     minDate: String || "today",
     dateFormat: String || "Y-m-d",
@@ -60330,8 +60330,8 @@
     }
   });
 
-  // app/javascript/controllers/dialog_controller.js
-  var dialog_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_dialog_controller.js
+  var railsui_dialog_controller_default = class extends Controller {
     launch(event) {
       event.preventDefault();
       this.dialogTarget.showModal();
@@ -60346,7 +60346,7 @@
       this.cancelTarget.classList.add("hidden");
     }
   };
-  __publicField(dialog_controller_default, "targets", ["dialog", "button", "cancel"]);
+  __publicField(railsui_dialog_controller_default, "targets", ["dialog", "button", "cancel"]);
 
   // node_modules/stimulus-use/dist/index.js
   var composeEventName = (name, controller, eventPrefix) => {
@@ -60579,8 +60579,8 @@
     return str.length === 0 || !str.trim();
   }
 
-  // app/javascript/controllers/dropdown_controller.js
-  var dropdown_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_dropdown_controller.js
+  var railsui_dropdown_controller_default = class extends Controller {
     connect() {
       useTransition(this, {
         element: this.menuTarget
@@ -60595,10 +60595,10 @@
       }
     }
   };
-  __publicField(dropdown_controller_default, "targets", ["menu", "trigger"]);
+  __publicField(railsui_dropdown_controller_default, "targets", ["menu", "trigger"]);
 
-  // app/javascript/controllers/flash_controller.js
-  var flash_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_flash_controller.js
+  var railsui_flash_controller_default = class extends Controller {
     connect() {
       if (this.element) {
         setTimeout(() => {
@@ -60608,8 +60608,8 @@
     }
   };
 
-  // app/javascript/controllers/helper_controller.js
-  var helper_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_helper_controller.js
+  var railsui_helper_controller_default = class extends Controller {
     togglePath(event) {
       event.preventDefault();
       this.extensionTargets.forEach((t) => {
@@ -60623,14 +60623,14 @@
       });
     }
   };
-  __publicField(helper_controller_default, "targets", ["extension"]);
-  __publicField(helper_controller_default, "values", {
+  __publicField(railsui_helper_controller_default, "targets", ["extension"]);
+  __publicField(railsui_helper_controller_default, "values", {
     path: String,
     url: String
   });
 
-  // app/javascript/controllers/modal_controller.js
-  var modal_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_modal_controller.js
+  var railsui_modal_controller_default = class extends Controller {
     connect() {
       useTransition(this, {
         element: this.contentTarget
@@ -60673,10 +60673,10 @@
       this.toggleTransition();
     }
   };
-  __publicField(modal_controller_default, "targets", ["container", "content"]);
+  __publicField(railsui_modal_controller_default, "targets", ["container", "content"]);
 
-  // app/javascript/controllers/nav_controller.js
-  var nav_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_nav_controller.js
+  var railsui_nav_controller_default = class extends Controller {
     connect() {
       useTransition(this, {
         element: this.navTarget
@@ -60694,17 +60694,17 @@
       this.menuCrossTarget.classList.toggle("hidden");
     }
   };
-  __publicField(nav_controller_default, "targets", ["nav", "menuBars", "menuCross"]);
+  __publicField(railsui_nav_controller_default, "targets", ["nav", "menuBars", "menuCross"]);
 
-  // app/javascript/controllers/prevent_controller.js
-  var prevent_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_prevent_controller.js
+  var railsui_prevent_controller_default = class extends Controller {
     prevent(event) {
       event.preventDefault();
     }
   };
 
-  // app/javascript/controllers/scroll_controller.js
-  var scroll_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_scroll_controller.js
+  var railsui_scroll_controller_default = class extends Controller {
     connect() {
       if (this.hasScrollitemTarget) {
         let scrollpos = localStorage.getItem("scrollpos");
@@ -60729,10 +60729,10 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-  __publicField(scroll_controller_default, "targets", ["scrollitem", "launcher"]);
+  __publicField(railsui_scroll_controller_default, "targets", ["scrollitem", "launcher"]);
 
-  // app/javascript/controllers/scroll_spy_controller.js
-  var scroll_spy_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_scroll_spy_controller.js
+  var railsui_scroll_spy_controller_default = class extends Controller {
     connect() {
       if (this.hasScrollContainerTarget) {
         this.scrollHandler = this.scrollHandler.bind(this);
@@ -60782,14 +60782,14 @@
       });
     }
   };
-  __publicField(scroll_spy_controller_default, "targets", ["link", "scrollContainer"]);
-  __publicField(scroll_spy_controller_default, "values", {
+  __publicField(railsui_scroll_spy_controller_default, "targets", ["link", "scrollContainer"]);
+  __publicField(railsui_scroll_spy_controller_default, "values", {
     activeClass: String,
     inactiveClass: String
   });
 
-  // app/javascript/controllers/search_controller.js
-  var search_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_search_controller.js
+  var railsui_search_controller_default = class extends Controller {
     currentResults = this.resultListTarget.innerHTML;
     search(event) {
       this.filterList(event);
@@ -60811,10 +60811,10 @@
       this.resultListTarget.innerHTML = this.currentResults;
     }
   };
-  __publicField(search_controller_default, "targets", ["result", "form", "resultList"]);
+  __publicField(railsui_search_controller_default, "targets", ["result", "form", "resultList"]);
 
-  // app/javascript/controllers/select_all_controller.js
-  var select_all_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_select_all_controller.js
+  var railsui_select_all_controller_default = class extends Controller {
     connect() {
       this.selectAllTarget.addEventListener("change", this.selectAll.bind(this));
     }
@@ -60825,10 +60825,10 @@
       });
     }
   };
-  __publicField(select_all_controller_default, "targets", ["checkbox", "selectAll"]);
+  __publicField(railsui_select_all_controller_default, "targets", ["checkbox", "selectAll"]);
 
-  // app/javascript/controllers/smooth_controller.js
-  var smooth_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_smooth_controller.js
+  var railsui_smooth_controller_default = class extends Controller {
     scroll(event) {
       event.preventDefault();
       const target = document.querySelector(event.currentTarget.hash);
@@ -60842,8 +60842,8 @@
     }
   };
 
-  // app/javascript/controllers/snippet_controller.js
-  var snippet_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_snippet_controller.js
+  var railsui_snippet_controller_default = class extends Controller {
     ACTIVE_CLASSES = [
       "bg-white",
       "px-3",
@@ -60912,10 +60912,10 @@
       }
     }
   };
-  __publicField(snippet_controller_default, "targets", ["preview", "previewBtn", "code", "codeBtn"]);
+  __publicField(railsui_snippet_controller_default, "targets", ["preview", "previewBtn", "code", "codeBtn"]);
 
-  // app/javascript/controllers/tabs_controller.js
-  var tabs_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_tabs_controller.js
+  var railsui_tabs_controller_default = class extends Controller {
     connect() {
       this.activeTabClasses = (this.data.get("activeTab") || "active").split(" ");
       this.inactiveTabClasses = (this.data.get("inactiveTab") || "inactive").split(" ");
@@ -60962,10 +60962,10 @@
       return document.URL.split("#").length > 1 ? document.URL.split("#")[1] : null;
     }
   };
-  __publicField(tabs_controller_default, "targets", ["tab", "panel"]);
+  __publicField(railsui_tabs_controller_default, "targets", ["tab", "panel"]);
 
-  // app/javascript/controllers/pages_controller.js
-  var pages_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_pages_controller.js
+  var railsui_pages_controller_default = class extends Controller {
     checkAll() {
       const checkAllCheckbox = this.checkboxTargets[0];
       const checkboxes = this.checkboxTargets.slice(1);
@@ -60975,18 +60975,18 @@
       checkAllCheckbox.checked = checkboxes.every((checkbox) => checkbox.checked);
     }
   };
-  __publicField(pages_controller_default, "targets", ["checkbox"]);
+  __publicField(railsui_pages_controller_default, "targets", ["checkbox"]);
 
-  // app/javascript/controllers/toggle_controller.js
-  var toggle_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_toggle_controller.js
+  var railsui_toggle_controller_default = class extends Controller {
     toggle() {
       this.toggleableTarget.classList.toggle("hidden");
     }
   };
-  __publicField(toggle_controller_default, "targets", ["toggleable"]);
+  __publicField(railsui_toggle_controller_default, "targets", ["toggleable"]);
 
-  // app/javascript/controllers/tooltip_controller.js
-  var tooltip_controller_default = class extends Controller {
+  // app/javascript/controllers/railsui_tooltip_controller.js
+  var railsui_tooltip_controller_default = class extends Controller {
     connect() {
       let options = {};
       if (this.hasContentValue) {
@@ -61001,34 +61001,34 @@
       this.tippy.destroy();
     }
   };
-  __publicField(tooltip_controller_default, "values", {
+  __publicField(railsui_tooltip_controller_default, "values", {
     content: String,
     allowHtml: Boolean
   });
 
   // app/javascript/controllers/index.js
-  application.register("anchor", anchor_controller_default);
-  application.register("clipboard", clipboard_controller_default);
-  application.register("configuration", configuration_controller_default);
-  application.register("code", code_controller_default);
-  application.register("canvas", canvas_controller_default);
-  application.register("date-range-picker", date_range_picker_controller_default);
-  application.register("dialog", dialog_controller_default);
-  application.register("dropdown", dropdown_controller_default);
-  application.register("flash", flash_controller_default);
-  application.register("helper", helper_controller_default);
-  application.register("modal", modal_controller_default);
-  application.register("nav", nav_controller_default);
-  application.register("prevent", prevent_controller_default);
-  application.register("scroll", scroll_controller_default);
-  application.register("scroll-spy", scroll_spy_controller_default);
-  application.register("search", search_controller_default);
-  application.register("select-all", select_all_controller_default);
-  application.register("smooth", smooth_controller_default);
-  application.register("snippet", snippet_controller_default);
-  application.register("tabs", tabs_controller_default);
-  application.register("pages", pages_controller_default);
-  application.register("toggle", toggle_controller_default);
-  application.register("tooltip", tooltip_controller_default);
+  application.register("railsui-anchor", railsui_anchor_controller_default);
+  application.register("railsui-clipboard", railsui_clipboard_controller_default);
+  application.register("railsui-configuration", railsui_configuration_controller_default);
+  application.register("railsui-code", railsui_code_controller_default);
+  application.register("railsui-canvas", railsui_canvas_controller_default);
+  application.register("railsui-date-range-picker", railsui_date_range_picker_controller_default);
+  application.register("railsui-dialog", railsui_dialog_controller_default);
+  application.register("railsui-dropdown", railsui_dropdown_controller_default);
+  application.register("railsui-flash", railsui_flash_controller_default);
+  application.register("railsui-helper", railsui_helper_controller_default);
+  application.register("railsui-modal", railsui_modal_controller_default);
+  application.register("railsui-nav", railsui_nav_controller_default);
+  application.register("railsui-prevent", railsui_prevent_controller_default);
+  application.register("railsui-scroll", railsui_scroll_controller_default);
+  application.register("railsui-scroll-spy", railsui_scroll_spy_controller_default);
+  application.register("railsui-search", railsui_search_controller_default);
+  application.register("railsui-select-all", railsui_select_all_controller_default);
+  application.register("railsui-smooth", railsui_smooth_controller_default);
+  application.register("railsui-snippet", railsui_snippet_controller_default);
+  application.register("railsui-tabs", railsui_tabs_controller_default);
+  application.register("railsui-pages", railsui_pages_controller_default);
+  application.register("railsui-toggle", railsui_toggle_controller_default);
+  application.register("railsui-tooltip", railsui_tooltip_controller_default);
 })();
 //# sourceMappingURL=application.js.map

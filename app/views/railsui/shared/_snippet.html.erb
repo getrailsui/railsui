@@ -7,7 +7,7 @@
   ruby_content = yield :ruby
 %>
 
-<div data-controller="code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg overflow-clip dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 relative scrollbar border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
+<div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg overflow-clip dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 relative scrollbar border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
   <div class="bg-neutral-800">
     <ul class="flex items-center justify-start space-x-2 border-b border-neutral-700 px-3">
       <% if content_for?(:html) %>
@@ -74,85 +74,85 @@
     <% if content_for?(:html) %>
       <div role="tabpanel"
       x-show="active == 'html'"
-      data-controller="clipboard"
+      data-controller="railsui-clipboard"
       >
         <button
-    data-action="click->clipboard#copy"
+    data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-pink-600 hover:from-pink-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HTML code" %>
         </button>
-        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-html scrollbar"><%= html_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-html scrollbar"><%= html_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:erb) %>
       <div
         role="tabpanel"
         x-show="active == 'erb'"
-        data-controller="clipboard"
+        data-controller="railsui-clipboard"
         >
-        <button data-action="click->clipboard#copy"
+        <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none" %>
         </button>
-        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-erb scrollbar"><%= erb_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-erb scrollbar"><%= erb_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:haml) %>
       <div
         role="tabpanel"
         x-show="active == 'haml'"
-        data-controller="clipboard"
+        data-controller="railsui-clipboard"
         >
-        <button data-action="click->clipboard#copy"
+        <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-sky-600 hover:from-sky-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HAML code" %>
         </button>
-        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-haml scrollbar"><%= haml_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-haml scrollbar"><%= haml_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:bash) %>
       <div
         role="tabpanel"
         x-show="active == 'bash'"
-        data-controller="clipboard"
+        data-controller="railsui-clipboard"
         >
-        <button data-action="click->clipboard#copy"
+        <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-cyan-600 hover:from-cyan-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
-        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-bash scrollbar"><%= bash_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-bash scrollbar"><%= bash_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:js) %>
       <div
         role="tabpanel"
         x-show="active == 'js'"
-        data-controller="clipboard"
+        data-controller="railsui-clipboard"
         >
-        <button data-action="click->clipboard#copy"
+        <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-amber-600 hover:from-amber-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
-        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-javascript scrollbar"><%= js_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-javascript scrollbar"><%= js_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:ruby) %>
       <div
         role="tabpanel"
         x-show="active == 'ruby'"
-        data-controller="clipboard"
+        data-controller="railsui-clipboard"
         >
-        <button data-action="click->clipboard#copy"
+        <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
           type="button">
           <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy Ruby code" %>
         </button>
-        <pre><code data-code-target="snippet" data-clipboard-target="source" class="language-ruby scrollbar"><%= ruby_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-ruby scrollbar"><%= ruby_content.to_param.strip %></code></pre>
       </div>
     <% end %>
   </div>

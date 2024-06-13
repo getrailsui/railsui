@@ -2,7 +2,7 @@
 <%= render layout: example, locals: { heading: "With action", section: "Navigation" } do %>
 
 <%= render "railsui/themes/hound/components/navigation/nav_preview", flush: true do %>
-<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="nav">
+<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="railsui-nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -20,13 +20,13 @@
 
         <button
           id="base-nav-toggle"
-          data-action="click->nav#toggle"
+          data-action="click->railsui-nav#toggle"
           class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
-          <div role="none" data-nav-target="menuBars">
+          <div role="none" data-railsui-nav-target="menuBars">
             <%= icon "bars-3-center-left", classes: "w-8 h-8 text-slate-600 group-focus:text-primary-600
             dark:text-slate-400 dark:group-focus:text-slate-100" %>
           </div>
-          <div role="none" data-nav-target="menuCross" class="hidden">
+          <div role="none" data-railsui-nav-target="menuCross" class="hidden">
             <%= icon "x-mark", classes: "w-8 h-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
           </div>
         </button>
@@ -35,7 +35,7 @@
       <div
         id="base-navigation"
         class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
-        data-nav-target="nav"
+        data-railsui-nav-target="nav"
         data-transition-enter-active="transition ease-out duration-200"
         data-transition-enter-from="opacity-0 scale-95"
         data-transition-enter-to="opacity-100 scale-100"
@@ -66,13 +66,13 @@
                 <a href="#" class="btn btn-primary md:w-auto w-full">Create project</a>
               </li>
               <li class="md:pt-0 pt-6">
-                <a href="#" data-controller="prevent" data-action="click->prevent#prevent" class="block group">
+                <a href="#" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="block group">
                   <%= icon "bell", classes: "text-slate-400 md:w-6 w-7 md:h-6 h-7 group-hover:text-primary-600" %>
                 </a>
               </li>
               <li class="md:pt-0 pt-6">
-                <a href="#" data-controller="prevent" data-action="click->prevent#prevent">
-                  <%= image_tag unsplash_url(item: "portrait", width: 140, height: 140), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover" %>
+                <a href="#" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
+                  <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover" %>
                 </a>
               </li>
             </ul>
@@ -156,7 +156,7 @@
               </li>
               <li class="md:pt-0 pt-6">
                 <a href="#" data-controller="prevent" data-action="click->prevent#prevent">
-                  <%= image_tag unsplash_url(item: "portrait", width: 140, height: 140), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover" %>
+                  <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover" %>
                 </a>
               </li>
             </ul>

@@ -2,7 +2,7 @@
 <%= render layout: example, locals: { heading: "Base", section: "Dropdown" } do %>
 
 <%= render preview "zinc" do %>
-<div class="flex md:flex-row flex-col flex-wrap items-center justify-start md:space-x-3 space-x-0 space-y-3 md:space-y-0">
+<div class="flex md:flex-row flex-col flex-wrap items-center justify-start gap-3">
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown", label: "Dropdown", class: "btn-primary" %>
 
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown", label: "Dropdown", class: "btn-secondary" %>

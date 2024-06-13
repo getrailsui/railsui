@@ -11,7 +11,7 @@
 </div>
 
 <%= form_with model: @config, url: configuration_path, class: "h-full block relative pb-24", data: {
-  action: "submit->configuration#saveChanges",
+  action: "submit->railsui-configuration#saveChanges",
   controller: "configuration"
   } do |f| %>
 

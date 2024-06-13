@@ -1,4 +1,4 @@
-<div class="py-8" data-controller="pages">
+<div class="py-8" data-controller="railsui-pages">
   <%= heading text: "Pages", id: "pages", tag: "h2", class: "font-bold text-3xl tracking-tight mb-6" %>
 
   <div class="prose prose-neutra dark:prose-invert mb-10">
@@ -34,7 +34,7 @@
   <div class="border border-neutral-200/80 rounded-md mb-10 dark:border-neutral-700/80">
     <% unless Railsui::Pages.all_pages_installed? %>
       <div class="flex items-center relative px-6 py-4 rounded-t-md bg-neutral-50 border-b border-neutral-200/80 dark:bg-neutral-800/50 dark:border-neutral-700/80">
-        <%= check_box_tag "checkAll", "1", false, class: "rui-form-input-switch", data: { action: "pages#checkAll" } %>
+        <%= check_box_tag "checkAll", "1", false, class: "rui-form-input-switch", data: { action: "railsui-pages#checkAll" } %>
         <%= label_tag "checkAll", "Check all" %>
       </div>
     <% end %>

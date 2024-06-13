@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased" data-controller="theme">
+<html class="h-full antialiased" data-controller="railsui-theme">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -29,7 +29,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="toggle scroll smooth scroll-spy">
+  <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-800/80 selection:text-neutral-100 antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy">
     <div class="flex md:flex-row flex-col items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
 
     <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.09] dark:opacity-20 z-0" %>

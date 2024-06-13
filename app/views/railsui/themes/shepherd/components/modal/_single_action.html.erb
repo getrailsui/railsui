@@ -10,33 +10,33 @@
     </div>
     <h3 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Time to launch</h3>
 
-    <div class="prose prose-sm prose-zinc my-4 dark:prose-invert">
+    <div class="prose prose-zinc my-4 dark:prose-invert">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
     <button class="btn btn-primary w-full">Launch away</button>
   </div>
 </div>
 
-<div data-controller="modal">
+<div data-controller="railsui-modal">
   <div class="flex justify-center p-6 border-x border-b border-zinc-200 rounded-b-lg relative dark:bg-zinc-700 dark:border-zinc-600 dark:border-t">
     <div class="absolute top-4 left-4">
       <%= doc_label :demo %>
     </div>
-    <button type="button" data-action="click->modal#open:prevent" class="btn btn-primary" tabindex="0">
+    <button type="button" data-action="click->railsui-modal#open:prevent" class="btn btn-primary" tabindex="0">
       Open single action modal
     </button>
   </div>
   <div
     aria-labelledby="single-action-modal-title"
     aria-modal="true"
-    data-modal-target="container"
+    data-railsui-modal-target="container"
     class="hidden fixed inset-0 z-50 overflow-y-auto"
     role="dialog"
     >
     <div class="h-screen w-full relative flex items-center justify-center">
       <div
-      data-modal-target="content"
-      data-action="keyup@window->modal#closeWithEsc"
+      data-railsui-modal-target="content"
+      data-action="keyup@window->railsui-modal#closeWithEsc"
       data-transition-enter-active="transition ease-out duration-300"
       data-transition-enter-from="transform opacity-0 scale-95"
       data-transition-enter-to="transform opacity-100 scale-100"
@@ -51,11 +51,11 @@
         </div>
         <h3 id="single-action-modal-title" class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Time to launch</h3>
 
-        <div class="prose prose-sm prose-zinc my-4 dark:prose-invert">
+        <div class="prose prose-zinc my-4 dark:prose-invert">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
 
-        <button type="button" class="btn btn-primary w-full" data-action="click->modal#close">Launch away</button>
+        <button type="button" class="btn btn-primary w-full" data-action="click->railsui-modal#close">Launch away</button>
       </div>
     </div>
   </div>
@@ -90,7 +90,7 @@
         </div>
         <h3 id="single-action-modal-title" class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Time to launch</h3>
 
-        <div class="prose prose-sm prose-zinc my-4 dark:prose-invert">
+        <div class="prose prose-zinc my-4 dark:prose-invert">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
 
@@ -129,7 +129,7 @@
         </div>
         <h3 id="single-action-modal-title" class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Time to launch</h3>
 
-        <div class="prose prose-sm prose-zinc my-4 dark:prose-invert">
+        <div class="prose prose-zinc my-4 dark:prose-invert">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
 
@@ -150,7 +150,7 @@
           .w-12.h-12.rounded-full.bg-emerald-50.flex.items-center.justify-center.mb-3{class: "dark:bg-emerald-600/10"}
             \&lt;%= icon "rocket-launch", classes: "w-6 h-6 text-emerald-600 dark:text-emerald-500 flex-shrink-0" %&gt;
         %h3#single-action-modal-title.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Time to launch
-        .prose.prose-sm.prose-zinc.my-4.dark:prose-invert
+        .prose.prose-zinc.my-4.dark:prose-invert
           %p Lorem ipsum dolor sit amet consectetur adipisicing elit.
         = button_tag "Launch away", type: "button", class: "btn btn-primary w-full", data: { action: "click->modal#close" }
 <% end %>
