@@ -131,12 +131,12 @@ end
     <% @icons.each do |icon| %>
       <div>
       <% name = icon.chomp('.svg') %>
-        <div class="flex items-center justify-center size-20 rounded border shadow-sm bg-white relative group hover:shadow-primary-500/20 hover:border-primary-300 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-neutral-500/20" data-controller="clipboard">
+        <div class="flex items-center justify-center size-20 rounded border shadow-sm bg-white relative group hover:shadow-primary-500/20 hover:border-primary-300 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-neutral-500/20" data-controller="railsui-clipboard">
           <%= render_svg name, title: name, styles: "fill-current text-zinc-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-primary-500 dark:text-white dark:group-hover:text-white" %>
-          <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
+          <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->railsui-clipboard#copy" aria-label="Copy icon label">
             <%= icon "square-2-stack", classes: "w-5 dark:text-zinc-200 text-zinc-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-primary-500 dark:group-hover:text-primary-300" %>
           </button>
-          <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/solid/", "") %></span>
+          <span class="hidden" data-railsui-clipboard-target="source"><%= name.gsub("icons/solid/", "") %></span>
         </div>
         <div class="my-2 text-xs text-neutral-600 dark:text-neutral-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/solid/", "") %></div>
       </div>
@@ -153,12 +153,12 @@ end
     <% @outline_icons.each do |icon| %>
       <div>
       <% name = icon.chomp('.svg') %>
-        <div class="flex items-center justify-center size-20 rounded border shadow-sm bg-white relative group hover:shadow-primary-500/20 hover:border-primary-300 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-neutral-500/20" data-controller="clipboard">
+        <div class="flex items-center justify-center size-20 rounded border shadow-sm bg-white relative group hover:shadow-primary-500/20 hover:border-primary-300 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-neutral-500/20" data-controller="railsui-clipboard">
           <%= render_svg name, title: name, styles: "stroke-current text-zinc-500 w-auto h-6 group-hover:transform group-hover:scale-125 transition ease-in-out duration-300 group-hover:text-primary-500 dark:text-white dark:group-hover:text-white" %>
-          <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->clipboard#copy" aria-label="Copy icon label">
+          <button class="block w-5 h-5 absolute right-1 bottom-1" type="button" data-action="click->railsui-clipboard#copy" aria-label="Copy icon label">
             <%= icon "square-2-stack", classes: "w-5 dark:text-slate-200 text-slate-400 opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 group-hover:text-primary-500 dark:group-hover:text-primary-300" %>
           </button>
-          <span class="hidden" data-clipboard-target="source"><%= name.gsub("icons/outline/", "") %></span>
+          <span class="hidden" data-railsui-clipboard-target="source"><%= name.gsub("icons/outline/", "") %></span>
         </div>
         <div class="my-2 text-xs text-neutral-600 dark:text-neutral-100 truncate sm:max-w-[100px]"><%= name.gsub("icons/outline/", "") %></div>
       </div>

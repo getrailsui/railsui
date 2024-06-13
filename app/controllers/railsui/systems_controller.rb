@@ -31,7 +31,6 @@ module Railsui
       @outline_icons = Dir.chdir(Rails.root.join('app/assets/images/')) do
         Dir.glob("icons/outline/*.svg").sort
       end
-
     end
 
     private

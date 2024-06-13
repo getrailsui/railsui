@@ -124,7 +124,7 @@
 <%= render preview(variant="zinc") do %>
 <div class="flex items-center space-x-6 form-group">
   <div class="shrink-0">
-    <img class="h-16 w-16 object-cover rounded-full border-2 border-slate-100 dark:border-slate-600 shadow-inner" src="https://source.unsplash.com/random/80×80/?dog" alt="Current profile photo" />
+    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), alt: "current profile photo", class: "h-16 w-16 object-cover rounded-full border-2 border-slate-100 dark:border-slate-600 shadow-inner" %>
   </div>
 
   <label class="block">

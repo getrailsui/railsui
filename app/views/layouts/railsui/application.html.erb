@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased scrollbar-track-transparent scrollbar-thumb-neutral-200/60 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+<html class="h-full antialiased scrollbar-track-transparent scrollbar-thumb-neutral-200/60 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 selection:text-neutral-900 selection:bg-neutral-400/80">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -33,8 +33,8 @@
     <%= yield :head %>
   </head>
 
-  <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="toggle scroll smooth scroll-spy" data-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
-      data-scroll-spy-inactive-class-value="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate">
+  <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
+      data-railsui-scroll-spy-inactive-class-value="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate">
     <%= render "railsui/shared/flash" %>
     <div class="flex md:flex-row flex-col items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
 
@@ -42,10 +42,9 @@
 
       <%= render "railsui/shared/global_nav" %>
 
-      <div class="md:flex-1 h-full md:pt-2 md:w-auto w-full md:overflow-y-auto scrollbar relative z-30" data-scroll-spy-target="scrollContainer">
+      <div class="md:flex-1 h-full md:pt-2 md:w-auto w-full md:overflow-y-auto scrollbar relative z-30" data-railsui-scroll-spy-target="scrollContainer">
         <div class="max-w-7xl mx-auto md:px-10 md:pt-10 md:pb-0 p-4 flex-col flex h-full">
           <div class="flex-1">
-
 
             <div class="md:grid grid-cols-12 items-start gap-4">
               <div class="<%= content_for?(:component_nav).present? ? "col-span-9" : "col-span-12" %>">

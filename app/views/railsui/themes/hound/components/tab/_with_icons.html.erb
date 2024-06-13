@@ -3,44 +3,42 @@
 
     <%= render preview 'gray' do %>
       <div
-  data-controller="tabs"
-  data-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t"
-  data-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b dark:border-slate-600">
-
+  data-controller="railsui-tabs"
+  data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t"
+  data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b dark:border-slate-600">
         <div class="border-slate-200 border-b text-slate-600 dark:text-slate-200 dark:border-slate-600 text-sm font-medium">
           <nav role="navigation" class="-mb-px flex items-center flex-wrap">
-            <a href="#"
-      data-tabs-target="tab" data-action="click->tabs#change"
+            <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
               class="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t">
               <%= icon "chat-bubble-oval-left-ellipsis", classes: "w-5 h-5" %>
               <span>Activity</span>
             </a>
-            <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+            <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
               <%= icon "user-circle", classes: "w-5 h-5" %>
               <span>Account</span>
             </a>
-            <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+            <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
               <%= icon "credit-card", classes: "w-5 h-5" %>
               <span>Billing</span>
             </a>
-            <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+            <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
               <%= icon "users", classes: "w-5 h-5" %>
               <span>Team</span>
             </a>
           </nav>
         </div>
-        <div class="p-4" data-tabs-target="panel">
+        <div class="p-4" data-railsui-tabs-target="panel">
           Some activities...
         </div>
 
-        <div class="hidden p-4" data-tabs-target="panel">
+        <div class="hidden p-4" data-railsui-tabs-target="panel">
           Account information...
         </div>
 
-        <div class="hidden p-4" data-tabs-target="panel">
+        <div class="hidden p-4" data-railsui-tabs-target="panel">
           Billing information...
         </div>
-        <div class="hidden p-4" data-tabs-target="panel">
+        <div class="hidden p-4" data-railsui-tabs-target="panel">
           Team information...
         </div>
       </div>

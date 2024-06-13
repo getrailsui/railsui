@@ -3,7 +3,7 @@
 
 <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-zinc-900 dark:border-t dark:border-x dark:border-zinc-600">
   <div class="rounded-xl mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 px-6 pb-6 pt-8 origin-bottom flex items-start relative  dark:bg-zinc-800 dark:text-zinc-200">
-    <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
+    <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
       <%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
     </button>
     <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3 dark:bg-red-600/20">
@@ -18,33 +18,33 @@
       </div>
 
       <div class="flex justify-end items-center space-x-3">
-        <button class="btn btn-transparent" data-action="click->modal#close">Cancel</button>
+        <button class="btn btn-transparent" data-action="click->railsui-modal#close">Cancel</button>
         <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-zinc-600/10 dark:focus:ring-red-600/20">Delete</button>
       </div>
     </div>
   </div>
 </div>
 
-<div data-controller="modal">
+<div data-controller="railsui-modal">
   <div class="flex justify-center p-6 border-x border-b border-zinc-200 rounded-b-lg relative dark:bg-zinc-700 dark:border-zinc-600 dark:border-t">
     <div class="absolute top-4 left-4">
       <%= doc_label :demo %>
     </div>
-    <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
+    <button type="button" data-action="click->railsui-modal#open" class="btn btn-primary" tabindex="0">
       Open dismissable icon modal
     </button>
   </div>
   <div
     aria-labelledby="dismissable-action-modal-title"
     aria-modal="true"
-    data-modal-target="container"
+    data-railsui-modal-target="container"
     class="hidden fixed inset-0 z-50 overflow-y-auto"
     role="dialog"
     >
     <div class="h-screen w-full relative flex items-center justify-center">
       <div
-      data-modal-target="content"
-      data-action="keyup@window->modal#closeWithEsc"
+      data-railsui-modal-target="content"
+      data-action="keyup@window->railsui-modal#closeWithEsc"
       data-transition-enter-active="transition ease-out duration-300"
       data-transition-enter-from="transform opacity-0 scale-95"
       data-transition-enter-to="transform opacity-100 scale-100"
@@ -52,7 +52,7 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="rounded-xl mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 px-6 pb-6 pt-8 origin-bottom flex items-start relative dark:bg-zinc-800 dark:text-zinc-200">
-        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
           <%= icon "x-mark", classes: "text-zinc-400 w-6 h-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
         </button>
         <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center mr-3 dark:bg-red-600/20">
@@ -67,7 +67,7 @@
           </div>
 
           <div class="flex justify-end items-center space-x-3">
-            <button class="btn btn-transparent" data-action="click->modal#close">Cancel</button>
+            <button class="btn btn-transparent" data-action="click->railsui-modal#close">Cancel</button>
             <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-zinc-600/10 dark:focus:ring-red-600/20">Delete</button>
           </div>
         </div>

@@ -3,14 +3,14 @@
 
 <%= render preview 'zinc' do %>
 <div class="flex items-center gap-3">
-<button data-controller="tooltip" data-tooltip-content-value="Hi, from the tips of tools" class="btn btn-primary">Hover here</button>
-<button data-controller="tooltip" data-tooltip-content-value="We raised over $1 billion to engineer the greatest tooltip of our lives. <strong>What's super cool</strong> is that HTML can be embedded into the tooltip for max emphasis." data-tooltip-allow-html-value="true" class="btn btn-white">and here</button>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="Hi, from the tips of tools" class="btn btn-primary">Hover here</button>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="We raised over $1 billion to engineer the greatest tooltip of our lives. <strong>What's super cool</strong> is that HTML can be embedded into the tooltip for max emphasis." data-railsui-tooltip-allow-html-value="true" class="btn btn-white">and here</button>
 </div>
 <% end %>
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true  do %>
-<button data-controller="tooltip" data-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
 <% end %>
 
 <% content_for :erb, flush: true  do %>

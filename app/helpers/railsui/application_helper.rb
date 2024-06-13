@@ -140,7 +140,7 @@ module Railsui
 
     def quick_link(title: nil, component: nil)
       content_tag :li do
-        link_to title.capitalize, "##{component.parameterize}-#{title.parameterize}", class: "text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700/80 transition ease-in-out duration-200", data: { action: "click->smooth#scroll" }
+        link_to title.capitalize, "##{component.parameterize}-#{title.parameterize}", class: "text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700/80 transition ease-in-out duration-200", data: { action: "click->railsui-smooth#scroll" }
       end
     end
 
@@ -185,8 +185,8 @@ module Railsui
     def component_link(name, href)
       content_tag :li do
         link_to name, href, class: "block py-0.5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate", data: {
-          action: "click->smooth#scroll",
-          scroll_spy_target: "link"
+          action: "click->railsui-smooth#scroll",
+          railsui_scroll_spy_target: "link"
         }
       end
     end

@@ -3,29 +3,29 @@
 
 <%= render preview 'gray' do %>
 <div
-  data-controller="tabs"
-  data-tabs-active-tab="py-2 px-4 bg-primary-50 inline-block rounded-md text-primary-600 dark:bg-primary-600 dark:text-white"
-  data-tabs-inactive-tab="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">
+  data-controller="railsui-tabs"
+  data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 inline-block rounded-md text-primary-600 dark:bg-primary-600 dark:text-white"
+  data-railsui-tabs-inactive-tab="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">
   <div>
     <nav role="navigation" class="flex items-center text-gray-600 space-x-1 font-medium text-sm">
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 bg-primary-50 inline-block rounded-md text-primary-600 dark:bg-primary-600 dark:text-white">Activity</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">Account</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">Billing</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">Team</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 bg-primary-50 inline-block rounded-md text-primary-600 dark:bg-primary-600 dark:text-white">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">Account</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">Billing</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md inline-block dark:bg-transparent dark:text-slate-300">Team</a>
     </nav>
   </div>
-   <div class="p-4" data-tabs-target="panel">
+   <div class="p-4" data-railsui-tabs-target="panel">
     Some activities...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Account information...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Billing information...
   </div>
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Team information...
   </div>
 </div>

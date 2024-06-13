@@ -55,7 +55,7 @@
         <div>
           <div class="flex items-start space-x-4">
             <div class="flex items-center justify-start space-x-3 mb-3">
-              <%%= image_tag "https://source.unsplash.com/random/120x120/?dog", class: "w-8 h-8 rounded-full", alt: "Hound Pro" %>
+              <%%= image_tag "https://picsum.photos/120/120", class: "w-8 h-8 rounded-full", alt: "Hound Pro" %>
               <div>
                 <p class="font-semibold">Pro</p>
                 <p class="text-slate-600 dark:text-slate-300">$99/mo + tax</p>

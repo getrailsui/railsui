@@ -52,7 +52,7 @@
             <% if user_signed_in? %>
               <li class="lg:mt-0 mt-4 flex flex-col items-center relative" data-controller="dropdown">
                 <button class="group" type="button" data-action="click->dropdown#toggle click@window->dropdown#hide">
-                  <%= image_tag "https://source.unsplash.com/random/600x400/?dog", class: "rounded-full lg:w-10 w-12 lg:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" %>
+                  <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), alt: "current profile photo", class: "rounded-full lg:w-10 w-12 lg:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" %>
                 </button>
 
                 <div class="hidden transition transform origin-to-right lg:absolute right-0 top-10 bg-white rounded-lg lg:shadow-xl lg:shadow-slate-900/10 lg:border border-slate-200 lg:min-w-[200px] z-50 py-1 divide-y lg:w-auto w-full lg:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-dropdown-target="menu"

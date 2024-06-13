@@ -3,22 +3,24 @@
 
 <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-slate-800 dark:border-t dark:border-x dark:border-slate-600">
   <div class="rounded shadow-xl max-w-lg bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200">
-    <h2 id="modal-title" class="dark:text-slate-100">Modal Title</h2>
+    <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Modal Title</h3>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+    <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+    </div>
 
-    <div class="flex justify-end items-center flex-wrap space-x-4">
-      <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+    <div class="flex justify-end items-center flex-wrap gap-4">
+      <button class="btn btn-primary">Close</button>
     </div>
   </div>
 </div>
 
-<div data-controller="modal">
+<div data-controller="railsui-modal">
   <div class="flex justify-center p-6 border-x border-b border-slate-200 rounded-b-lg relative dark:bg-slate-700 dark:border-slate-600 dark:border-t">
     <div class="absolute top-4 left-4">
       <%= doc_label :demo %>
     </div>
-    <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
+    <button type="button" data-action="click->railsui-modal#open" class="btn btn-primary" tabindex="0">
       Open modal
     </button>
   </div>
@@ -26,14 +28,14 @@
   <div
     aria-labelledby="modal-title"
     aria-modal="true"
-    data-modal-target="container"
-    data-action="keyup@window->modal#closeWithEsc"
+    data-railsui-modal-target="container"
+    data-action="keyup@window->railsui-modal#closeWithEsc"
     class="hidden fixed inset-0 z-50 overflow-y-auto"
     role="dialog"
     >
     <div class="h-screen w-full relative flex items-center justify-center">
       <div
-      data-modal-target="content"
+      data-railsui-modal-target="content"
       data-transition-enter-active="transition ease-out duration-300"
       data-transition-enter-from="transform opacity-0 scale-95"
       data-transition-enter-to="transform opacity-100 scale-100"
@@ -41,12 +43,14 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded shadow-xl max-w-lg bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200">
-        <h2 id="modal-title" class="dark:text-slate-100">Modal Title</h2>
+        <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Modal Title</h3>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+        </div>
 
-        <div class="flex justify-end items-center flex-wrap space-x-4">
-          <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+        <div class="flex justify-end items-center flex-wrap gap-4">
+          <button class="btn btn-primary" data-action="click->railsui-modal#close">Close</button>
         </div>
       </div>
     </div>
@@ -78,10 +82,14 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded shadow-xl max-w-lg bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200">
-        <h2 id="modal-title" class="dark:text-slate-100">Modal Title</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
-        <div class="flex justify-end items-center flex-wrap space-x-4">
-          <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+        <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Modal Title</h3>
+
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
+        </div>
+
+        <div class="flex justify-end items-center flex-wrap gap-4">
+          <button class="btn btn-primary" data-action="click->railsui-modal#close">Close</button>
         </div>
       </div>
     </div>
@@ -96,10 +104,11 @@
   .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "modal-title", "aria-modal" => "true", "data-action" => "keyup@window->modal#closeWithEsc", "data-modal-target" => "container", role: "dialog"}
     .h-screen.w-full.relative.flex.items-center.justify-center
       .hidden.rounded.shadow-xl.max-w-lg.bg-white.m-1.p-8.prose.origin-bottom.mx-auto.dark:bg-slate-700.dark:text-slate-200{"data-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
-        %h2#modal-title.dark:text-slate-100 Modal Title
-        %p Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.
-        .flex.justify-end.items-center.flex-wrap.space-x-4
-          %button.btn.btn-primary{"data-action" => "click->modal#close"} Close
+        %h3#modal-title.text-2xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Modal Title
+        .prose.prose-slate.dark:prose-invert.mt-2.mb-6
+          %p Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.
+        .flex.justify-end.items-center.flex-wrap.gap-4
+          %button.btn.btn-primary{"data-action" => "click->railsui-modal#close"} Close
 <% end %>
 
 <% content_for :js, flush: true do %>

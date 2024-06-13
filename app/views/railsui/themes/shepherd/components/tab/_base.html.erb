@@ -2,28 +2,28 @@
 <%= render layout: example, locals: { heading: "Base", section: "Tab" } do %>
 
 <%= render preview "zinc" do %>
-<div data-controller="tabs"
-    data-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:border-primary-500 dark:text-primary-500">
+<div data-controller="railsui-tabs"
+    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:border-primary-500 dark:text-primary-500">
   <div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-100 dark:border-zinc-600/80 text-[15px]">
     <nav role="navigation" class="-mb-px font-heading">
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-transparent dark:text-primary-500">Activity</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Account</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Billing</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Team</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-transparent dark:text-primary-500">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Account</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Billing</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Team</a>
     </nav>
   </div>
-   <div class="p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+   <div class="p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Some activities...</p>
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Account information...</p>
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Billing information...</p>
   </div>
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Team information...</p>
   </div>
 </div>

@@ -3,44 +3,44 @@
 
 <%= render preview "zinc" do %>
 <div
-  data-controller="tabs"
-  data-tabs-active-tab="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t"
-  data-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
+  data-controller="railsui-tabs"
+  data-railsui-tabs-active-tab="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t"
+  data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
 
   <div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap font-heading">
       <a href="#"
-      data-tabs-target="tab" data-action="click->tabs#change"
+      data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
       class="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white rounded-t">
         <%= icon "chat-bubble-oval-left-ellipsis", classes: "w-5 h-5" %>
         <span>Activity</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
         <%= icon "user-circle", classes: "w-5 h-5" %>
         <span>Account</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
         <%= icon "credit-card", classes: "w-5 h-5" %>
         <span>Billing</span>
       </a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
         <%= icon "users", classes: "w-5 h-5" %>
         <span>Team</span>
       </a>
     </nav>
   </div>
-   <div class="p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+   <div class="p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     Some activities...
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     Account information...
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     Billing information...
   </div>
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     Team information...
   </div>
 </div>

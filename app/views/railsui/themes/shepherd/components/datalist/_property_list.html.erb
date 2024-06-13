@@ -3,12 +3,12 @@
 
 <%= render preview "zinc" do %>
 <h1 class="mb:mb-0 mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Properties</h1>
-<div class="text-left my-8" data-controller="select-all">
+<div class="text-left my-8" data-controller="railsui-select-all">
   <div class="flex items-center justify-start">
     <div class="md:w-12 mb-3 md:mb-0">
       <div class="flex items-center space-x-3">
         <input type="checkbox" class="form-input-checkbox" name="all_properties" id="all_properties"
-          data-select-all-target="selectAll" />
+          data-railsui-select-all-target="selectAll" />
         <label for="all_properties" class="form-label mb-0 md:hidden block text-zinc-700 dark:text-zinc-200">All
           properties</label>
       </div>
@@ -72,7 +72,7 @@
       </div>
       <div class="md:flex-1 w-full">
         <a href="#" class="flex md:items-center items-start space-x-3">
-          <%= image_tag unsplash_url(item: "cabin", width: 200, height: 200), class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
+          <%= image_tag "https://picsum.photos/600/600", class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
           <div class="flex-1">
             <h3 class="md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50 font-heading">Cozy Mountain A-Frame</h3>
             <h4 class="font-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80">Nature's Nook</h4>
@@ -133,7 +133,7 @@
       </div>
       <div class="md:flex-1 w-full">
         <a href="#" class="flex md:items-center items-start space-x-3">
-          <%= image_tag unsplash_url(item: "cabin"), class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
+          <%= image_tag "https://picsum.photos/600/600", class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
           <div class="flex-1">
             <h3 class="md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50 font-heading">Alpine Retreat Haven</h3>
             <h4 class="font-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80">The Haven</h4>
@@ -194,7 +194,7 @@
       </div>
       <div class="md:flex-1 w-full">
         <a href="#" class="flex md:items-center items-start space-x-3">
-          <%= image_tag unsplash_url(item: "cabin"), class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
+          <%= image_tag "https://picsum.photos/600/600", class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
           <div class="flex-1">
             <h3 class="md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50 font-heading">Alpine Retreat Haven</h3>
             <h4 class="font-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80">The Haven</h4>
@@ -286,7 +286,7 @@
       </div>
       <div class="md:flex-1 w-full">
         <%%= link_to "#", class: "flex md:items-center items-start space-x-3" do %>
-          <%%= image_tag unsplash_url(item: "cabin", width: 200, height: 200), class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
+          <%%= image_tag "https://picsum.photos/600/600", class: "md:w-16 w-24 md:h-10 h-16 rounded" %>
           <div class="flex-1">
             <h3 class="md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50 font-heading">Cozy Mountain A-Frame</h3>
             <h4 class="font-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80">Nature's Nook</h4>
@@ -371,7 +371,7 @@
         %input.form-input-checkbox{"data-select-all-target" => "checkbox", type: "checkbox"}/
       .md:flex-1.w-full
         = link_to "#", class: "flex md:items-center items-start space-x-3" do
-          = image_tag unsplash_url(item: "cabin", width: 200, height: 200), class: "md:w-16 w-24 md:h-10 h-16 rounded"
+          = image_tag "https://picsum.photos/600/600", class: "md:w-16 w-24 md:h-10 h-16 rounded"
           .flex-1
             %h3.md:text-base.text-lg.leading-tight.text-zinc-700.line-clamp-1.dark:text-zinc-50.font-heading Cozy Mountain A-Frame
             %h4.font-light.md:text-sm.text-base.text-zinc-500.leading-tight.line-clamp-1{class: "dark:text-zinc-300/80"} Nature's Nook
@@ -401,7 +401,7 @@
         %input.form-input-checkbox{"data-select-all-target" => "checkbox", type: "checkbox"}/
       .md:flex-1.w-full
         = link_to "#", class: "flex md:items-center items-start space-x-3" do
-          = image_tag unsplash_url(item: "cabin", width: 200, height: 200), class: "md:w-16 w-24 md:h-10 h-16 rounded"
+          = image_tag "https://picsum.photos/600/600", class: "md:w-16 w-24 md:h-10 h-16 rounded"
           .flex-1
             %h3.md:text-base.text-lg.leading-tight.text-zinc-700.line-clamp-1.dark:text-zinc-50.font-heading Cozy Mountain A-Frame
             %h4.font-light.md:text-sm.text-base.text-zinc-500.leading-tight.line-clamp-1{class: "dark:text-zinc-300/80"} Nature's Nook
@@ -431,7 +431,7 @@
         %input.form-input-checkbox{"data-select-all-target" => "checkbox", type: "checkbox"}/
       .md:flex-1.w-full
         = link_to "#", class: "flex md:items-center items-start space-x-3" do
-          = image_tag unsplash_url(item: "cabin", width: 200, height: 200), class: "md:w-16 w-24 md:h-10 h-16 rounded"
+          = image_tag "https://picsum.photos/600/600", class: "md:w-16 w-24 md:h-10 h-16 rounded"
           .flex-1
             %h3.md:text-base.text-lg.leading-tight.text-zinc-700.line-clamp-1.dark:text-zinc-50.font-heading Cozy Mountain A-Frame
             %h4.font-light.md:text-sm.text-base.text-zinc-500.leading-tight.line-clamp-1{class: "dark:text-zinc-300/80"} Nature's Nook

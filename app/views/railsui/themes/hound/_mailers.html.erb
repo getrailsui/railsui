@@ -1,27 +1,36 @@
 <div class="prose prose-neutral dark:prose-invert mb-16">
-  <p>Email templates are ready for use with Rails UI. They are a starting point for you to tweak as the content you send your users evolves.</p>
+  <div id="mailers-overview">
+    <p>Email templates are ready for use with Rails UI. They are a starting point for you to tweak as the content you send your users evolves.</p>
 
-  <p>Many email clients are out in the wild, and each has different areas of support regarding CSS and HTML. Rails UI includes essential support with some clever hacks you can use to do more with your templates.</p>
+    <p>Many email clients are out in the wild, and each has different areas of support regarding CSS and HTML. Rails UI includes essential support with some clever hacks you can use to do more with your templates.</p>
+  </div>
 
-  <h3>Styling considerations</h3>
+  <div id="mailers-styling-considerations">
+    <h3>Styling considerations</h3>
 
-  <p>It's recommended that CSS be inlined to work best inside any email, Tailwind CSS will not work well inside the templates. All included CSS resides inside the <%= link_to "mailer layout template",  systems_mailers_layout_path %> for this reason.</p>
+    <p>It's recommended that CSS be inlined to work best inside any email, Tailwind CSS will not work well inside the templates. All included CSS resides inside the <%= link_to "mailer layout template",  systems_mailers_layout_path %> for this reason.</p>
 
-  <p>If you prefer to write your CSS in another stylesheet and include it in your layout, we recommend using something like <%= link_to "premailer", "https://github.com/premailer/premailer" %> to ensure any additional styles you include render correctly inline.</p>
+    <p>If you prefer to write your CSS in another stylesheet and include it in your layout, we recommend using something like <%= link_to "premailer", "https://github.com/premailer/premailer" %> to ensure any additional styles you include render correctly inline.</p>
+  </div>
 
-  <h3>Helpers</h3>
 
-  <p>Bundled with Rails UI is a small <code>MailHelper</code> module. The helper is useful for displaying buttons and adding dependable spacing between HTML elements in a given template, as you can't rely on CSS much of the time.</p>
+  <div id="mailers-helpers">
+    <h3>Helpers</h3>
 
-  <p>HTML emails require tables to layout a given design. Writing these is a chore, but they are more dependable across clients if appropriately authored. I hope these helpers should save you time and headache!</p>
+    <p>Bundled with Rails UI is a small <code>MailHelper</code> module. The helper is useful for displaying buttons and adding dependable spacing between HTML elements in a given template, as you can't rely on CSS much of the time.</p>
 
-  <h3>Spacers</h3>
+    <p>HTML emails require tables to layout a given design. Writing these is a chore, but they are more dependable across clients if appropriately authored. I hope these helpers should save you time and headache!</p>
+  </div>
 
-  <p>The spacer helper is an extraction for rendering a new table between elements inside an email template. Emails and margin/padding don't always behave across mail clients, so this is a sure way to get that extra space between elements.</p>
+  <div id="mailers-spacers">
+    <h3>Spacers</h3>
 
-  <p>The helper renders an empty table with some inline styles and height attributes intact. Rather than write this HTML by hand, the spacer helper makes it easy.</p>
+    <p>The spacer helper is an extraction for rendering a new table between elements inside an email template. Emails and margin/padding don't always behave across mail clients, so this is a sure way to get that extra space between elements.</p>
 
-  <p>Pass an amount to the helper for more or less space to suit your needs. The amount passed will render in pixel units.</p>
+    <p>The helper renders an empty table with some inline styles and height attributes intact. Rather than write this HTML by hand, the spacer helper makes it easy.</p>
+
+    <p>Pass an amount to the helper for more or less space to suit your needs. The amount passed will render in pixel units.</p>
+  </div>
 </div>
 
 <% content_for :html, flush: true do %>
@@ -43,6 +52,7 @@
 <% end %>
 <%= render_snippet(active_tab: "erb") %>
 
+<div id="mailers-buttons">
     <h3 class="font-bold text-xl mb-3">Buttons</h3>
     <div class="primary dark:primary-invert">
       <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
@@ -84,6 +94,7 @@
         </li>
       </ul>
     </div>
+  </div>
 <% content_for :erb, flush: true do %>
 <!-- all available options shown in use -->
 <%%= email_action("View notification", root_url, theme: "primary", align: "center") %>
@@ -107,7 +118,7 @@
 <% end %>
 
 <%= render_snippet(active_tab: "erb" ) %>
-
+<div id="mailers-callouts">
 <div class="prose prose-neutral dark:prose-invert">
   <h3>Callouts</h3>
   <p>Highlight important content in an email with a callout. Rails UI offers a simple view helper that accepts a block. Add your content and any basic HTML for formatted results. Customize color and more inside the <%= link_to "mailer layout", systems_mailers_layout_path %> CSS.</p>
@@ -131,8 +142,9 @@
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur veritatis quibusdam molestias nam culpa quasi facere nulla. Nisi, eius magni, tempora cupiditate atque sed optio iure necessitatibus ad minus ratione?</p>
   <% end %>
 <% end %>
+</div>
 
-
+<div id="mailers-templates">
 <div class="prose prose-neutral dark:prose-invert mt-8 mb-6">
   <h3>Templates</h3>
 </div>
@@ -148,6 +160,7 @@
 
   <%= render "railsui/shared/linkable", path: systems_mailers_devise_path, title: "Devise", description: "Save time with pre-themed Devise templates." %>
 <% end %>
+</div>
 
 
 <%= content_for :component_nav do %>
