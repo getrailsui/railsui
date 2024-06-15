@@ -1,5 +1,6 @@
 <div class="overflow-x-auto w-full">
-  <div data-railsui-search-target="result" data-railsui-search-route-value="<%= route[:name].downcase %> <%= route[:reqs].downcase %>" data-railsui-search-route-nested="<%= route[:name].present? ? false : true %>">
+  <div data-railsui-search-target="result"
+      data-search-route-value="<%= route[:name].downcase %> <%= route[:reqs].downcase %>" data-search-route-nested="<%= route[:name].present? ? false : true %>">
     <% if route[:name].present? %>
       <div class="grid md:grid-cols-11 text-sm items-start py-6">
         <div class="sm:col-span-5 text-base">
