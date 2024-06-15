@@ -28,7 +28,7 @@
     <% end %>
   <% end %>
   <div data-controller="railsui-dialog">
-    <%= link_to "#", data: { action:"click->dialog#launch" }, class: "px-3 py-2 bg-neutral-50/20 border border-neutral-300 text-neutral-600 shadow-sm rounded text-center text-sm font-medium hover:text-neutral-700 hover:border-red-500 hover:bg-red-50/50 dark:bg-neutral-800 dark:text-red-400 dark:border-red-500/30
+    <%= link_to "#", data: { action:"click->railsui-dialog#launch" }, class: "px-3 py-2 bg-neutral-50/20 border border-neutral-300 text-neutral-600 shadow-sm rounded text-center text-sm font-medium hover:text-neutral-700 hover:border-red-500 hover:bg-red-50/50 dark:bg-neutral-800 dark:text-red-400 dark:border-red-500/30
                   dark:hover:bg-red-500/20 dark:hover:text-red-500/50 dark:hover:border-red-500/50 block dark:focus:ring-4 dark:focus:ring-red-500/10 focus:ring-4 focus:ring-neutral-50 group transition ease-in-out duration-200" do %>
       <span class="sr-only">Remove page</span>
       <%= icon "trash", classes: "w-4 h-4 text-red-500 dark:group-hover:text-red-400", title: "Remove page" %>
@@ -39,7 +39,7 @@
       <p class="text-neutral-700 dark:text-neutral-200 mb-4">Any changes made to the view will be removed for good.</p>
 
       <% snake_case_title = details["title"].downcase.gsub(" ", "_").gsub(/[^a-zA-Z0-9_]/, '') %>
-      <%= link_to "Yes, remove page", delete_page_path(title: snake_case_title), data: { dialog_target: "button", action: "click->railsui-dialog#perform" }, class: "px-3 py-2 bg-red-700 text-red-100 border border-red-700 shadow-sm rounded text-center text-sm hover:bg-red-600 hover:border-red-600 dark:bg-red-400/60 hover:dark:bg-red-400/80 dark:text-red-100 dark:border-red-400/80 dark:hover:text-white dark:hover:border-red-400 inline-block mt-3 mr-4 font-medium text-base dark:bg-red-600" %>
+      <%= link_to "Yes, remove page", delete_page_path(title: snake_case_title), data: { railsui_dialog_target: "button", action: "click->railsui-dialog#perform" }, class: "px-3 py-2 bg-red-700 text-red-100 border border-red-700 shadow-sm rounded text-center text-sm hover:bg-red-600 hover:border-red-600 dark:bg-red-400/60 hover:dark:bg-red-400/80 dark:text-red-100 dark:border-red-400/80 dark:hover:text-white dark:hover:border-red-400 inline-block mt-3 mr-4 font-medium text-base dark:bg-red-600" %>
       <a href="#" class="underline font-medium text-neutral-700 dark:text-neutral-200" data-action="click->railsui-dialog#cancel" data-railsui-dialog-target="cancel">Cancel</a>
 
       <p class="text-neutral-700 dark:text-neutral-400 mt-2 text-xs">Removing a page requires a server restart which will happen automatically.</p>

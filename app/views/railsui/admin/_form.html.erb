@@ -12,7 +12,7 @@
 
 <%= form_with model: @config, url: configuration_path, class: "h-full block relative pb-24", data: {
   action: "submit->railsui-configuration#saveChanges",
-  controller: "configuration"
+  controller: "railsui-configuration"
   } do |f| %>
 
   <%= render "railsui/admin/fields/general", f: f %>
