@@ -1,11 +1,13 @@
-<table class="action" align="<%= local_assigns[:align] %>">
+<%# locals: (align: "center", url: root_url, action:, theme: "primary", fullwidth: false) %>
+
+<table class="action" align="<%= align %>">
   <tr>
-    <td align="<%= local_assigns[:align] %>">
-      <a href="<%= local_assigns[:url] %>" class="action__link  action__link--<%= local_assigns[:theme] %> <%= local_assigns[:fullwidth] == true ? "action__link--expanded" : nil %>" target="_blank"><%= local_assigns[:action] %></a>
+    <td align="<%= align %>">
+      <a href="<%= url %>" class="action__link action__link--<%= theme %> <%= fullwidth == true ? "action__link--expanded" : nil %>" target="_blank"><%= action %></a>
       <div itemscope itemtype="http://schema.org/EmailMessage">
         <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
-          <link itemprop="target" href="<%= local_assigns[:url] %>"/>
-          <meta itemprop="name" content="<%= local_assigns[:action] %>"/>
+          <link itemprop="target" href="<%= url %>"/>
+          <meta itemprop="name" content="<%= action %>"/>
         </div>
       </div>
     </td>
