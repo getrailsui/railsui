@@ -1,0 +1,14 @@
+<% case type %>
+<% when :button %>
+  <%= button_tag type: :button, class: btn_classes do %>
+    <%= content? ? content : text %>
+  <% end %>
+<% when :link %>
+  <%= link_to text, options[:url], class: btn_classes %>
+<% when :submit %>
+  <%= button_tag text, type: :submit, class: btn_classes %>
+<% else %>
+  <%= button_tag type: :button, class: btn_classes do %>
+    <%= content %>
+  <% end %>
+<% end %>

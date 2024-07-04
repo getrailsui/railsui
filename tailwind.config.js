@@ -1,11 +1,19 @@
+const execSync = require("child_process").execSync
+const outputRailsUI = execSync("bundle show railsui", { encoding: "utf-8" })
+const rails_ui_path = outputRailsUI.trim() + "/**/*.rb"
+const rails_ui_template_path = outputRailsUI.trim() + "/**/*.html.erb"
+
 const defaultTheme = require("tailwindcss/defaultTheme")
 module.exports = {
   important: true,
   content: [
     "./app/helpers/**/*.rb",
     "./app/views/**/*.html.erb",
+    "./app/components/**/*.html.erb",
     "./app/javascript/**/*.{js,vue,jsx}",
     "./lib/generators/templates/**/*.html.erb.tt",
+    rails_ui_path,
+    rails_ui_template_path,
   ],
   theme: {
     extend: {

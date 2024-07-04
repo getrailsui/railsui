@@ -97,14 +97,6 @@ module Railsui
       custom_css_and_html.html_safe
     end
 
-    def unsplash_url(options = {})
-      item = options[:item] || "dog"
-      width = options[:width] || "600"
-      height = options[:height] || "400"
-      orientation = options[:orientation] || "landscape"
-      raw "https://source.unsplash.com/random/#{width}x#{height}/?#{item}&orientation=#{orientation}"
-    end
-
     def rgb_values(color)
       color = color.to_hex unless color.is_a?(String)
       color.scan(/(?!#)../).map(&:hex).join(" ")

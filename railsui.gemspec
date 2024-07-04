@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'name_of_person'
   spec.add_dependency 'cssbundling-rails'
   spec.add_dependency 'jsbundling-rails'
+  spec.add_dependency "view_component"
 end
