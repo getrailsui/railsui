@@ -1,0 +1,165 @@
+<%% content_for :body_classes, "text-slate-800 dark:bg-slate-900 dark:text-slate-100 bg-white" %>
+
+<%%= render "shared/admin/nav", { header_title: "Billing" } %>
+
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+    <nav role="messages nav">
+      <ul
+        class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+
+        <%% if respond_to?(:admin_settings_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Account", admin_settings_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-prmary-600 dark:text-prmary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-prmary-600 dark:hover:text-prmary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_notifications_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Notifications", admin_notifications_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-prmary-600 dark:text-prmary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-prmary-600 dark:hover:text-prmary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_billing_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Billing", admin_billing_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-prmary-600 dark:text-prmary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-prmary-600 dark:hover:text-prmary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_team_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Team", admin_team_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-prmary-600 dark:text-prmary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-prmary-600 dark:hover:text-prmary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+
+        <%% if respond_to?(:admin_integrations_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%%= nav_link_to "Integrations", admin_integrations_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-prmary-600 dark:text-prmary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-prmary-600 dark:hover:text-prmary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <%% end %>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="container mx-auto pb-24 px-4 my-16">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="mb-2 text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Billing</h1>
+    <p class="text-lg text-slate-500 mb-6 dark:text-slate-400">Easily update your payment information or switch plans.</p>
+
+    <div class="py-8 border-b mb-8 dark:border-slate-700">
+      <h3 class="font-semibold text-xl tracking-tight text-slate-800 mb-6 dark:text-slate-100">Subscription details
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <div class="flex items-start space-x-4">
+            <div class="flex items-center justify-start space-x-3 mb-3">
+              <%%= image_tag "https://picsum.photos/120/120", class: "w-8 h-8 rounded-full", alt: "Hound Pro" %>
+              <div>
+                <p class="font-semibold">Pro</p>
+                <p class="text-slate-600 dark:text-slate-300">$99/mo + tax</p>
+              </div>
+            </div>
+            <div>
+              <p
+                class="rounded-full bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs dark:bg-slate-800 dark:text-slate-400">
+                Monthly</p>
+            </div>
+          </div>
+          <%%= link_to "Manage plan", "#", class: "btn btn-white" %>
+        </div>
+        <div>
+          <h4 class="font-semibold text-base">Billing period</h4>
+          <p class="mb-3 text-slate-600 dark:text-slate-300">Monthly (renews August 30, 2023)</p>
+          <%%= link_to "Change period", "#", class: "btn btn-white" %>
+        </div>
+      </div>
+
+      <div class="my-10">
+        <h4 class="font-semibold text-lg">Seats</h4>
+        <h5 class="font-semibold text-base my-3 dark:text-slate-300">Remaining seats</h5>
+        <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5 my-3">
+          <div class="bg-prmary-600 h-2.5 rounded-full" style="width: 50%"></div>
+        </div>
+
+        <p class="my-3"><span
+            class="rounded bg-neutral-100 text-neutral-800 dark:bg-slate-700 dark:text-slate-300 px-2 py-1 text-sm font-semibold">5</span>
+          of 10 seats
+          used</p>
+        <div class="flex items-center justify-end space-x-4">
+          <%%= link_to "Manage seats", "#", class: "btn btn-white" %>
+          <%%= link_to "Manage team", "#", class: "btn btn-white" %>
+        </div>
+      </div>
+    </div>
+
+
+    <h4 class="font-semibold text-xl tracking-tight text-slate-800 mb-6 dark:text-slate-100">Billing details</h4>
+    <p class="py-2 mb-6 text-slate-600 dark:text-slate-300">Most recent saved payment method on file.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <div
+          class="border border-slate-300 rounded-xl shadow-sm inline-flex p-3 h-40 flex-col w-[280px] bg-gradient-to-br from-slate-50 to-white relative dark:from-slate-700 dark:to-slate-900 dark:border-slate-700 mb-6">
+          <div class="flex-1">
+            <%%= link_to "Edit", "#", class: "btn btn-transparent absolute top-2 text-sm right-2" %>
+            <!-- Visa logo -->
+            <svg class="w-12 h-10 text-[#1434cb] fill-current dark:brightness-200"
+              enable-background="new 0 0 659.055 202.068" height="324.6835" viewBox="0 0 1000 324.68351" width="1000"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m651.18503.50000002c-70.93272 0-134.32163 36.76584998-134.32163 104.69357998 0 77.90028 112.42264 83.28082 112.42264 122.41576 0 16.47806-18.88384 31.22851-51.13668 31.22851-45.77308 0-79.98403-20.61081-79.98403-20.61081l-14.63836 68.54658s39.41037 17.40989 91.73375 17.40989c77.55217 0 138.57651-38.57104 138.57651-107.66029 0-82.3157-112.89106-87.53633-112.89106-123.86008 0-12.9082 15.50201-27.05169 47.66251-27.05169 36.28682 0 65.89216 14.98968 65.89216 14.98968l14.32608-66.20444s-32.21317-13.89668998-77.64189-13.89668998zm-648.9674695 4.99656998-1.71756797 9.99312s29.84159547 5.46149 56.71878047 16.35593c34.606624 12.4927 37.071853 19.7653 42.900167 42.35367l63.51098 244.83152h85.13673l131.15974-313.53424h-84.94155l-84.27794 213.17361-34.3904-180.69596c-3.1539-20.68051-19.12941-32.47765-38.68431-32.47765h-135.4146295zm411.8650095 0-66.63383 313.53424h80.99895l66.39962-313.53424h-80.76474zm451.75943 0c-19.53181 0-29.88045 10.45695-37.47421 28.73022l-118.66834 284.80402h84.94155l16.434-47.46734h103.48348l9.99312 47.46734h74.94843l-65.3847-313.53424h-68.27333zm11.04709 84.70733 25.17799 117.65341h-67.45359z" />
+            </svg>
+            <p class="font-medium text-sm my-1">John Doe</p>
+            <div class="font-mono text-sm text-slate-600 dark:text-slate-400">
+              ••• ••• ••• 1234
+            </div>
+          </div>
+          <div class="font-mono text-slate-500 dark:text-slate-400 text-sm">
+            11/2027
+          </div>
+        </div>
+        <%%= link_to "Manage payment methods", "#", class: "btn btn-white" %>
+      </div>
+      <div>
+        <div class="flex items-center justify-between">
+          <p class="font-semibold">Recent invoices</p>
+          <%%= link_to "View all", class: "text-sm text-slate-600 underline dark:text-slate-400" %>
+        </div>
+        <table class="mt-3 text-left w-full">
+          <tbody>
+            <tr>
+              <td class="pr-2 py-2">
+                <%%= link_to "Invoice #1103", "#", class: "hover:text-prmary-600 font-medium underline text-slate-600 dark:text-slate-400 dark:hover:text-prmary-400" %>
+              </td>
+              <td class="pr-2 py-2">June 1, 2023</td>
+              <td class="pr-2 py-2 text-right">$103.23</td>
+            </tr>
+            <tr>
+              <td class="pr-2 py-2">
+                <%%= link_to "Invoice #1102", "#", class: "hover:text-prmary-600 font-medium underline text-slate-600 dark:text-slate-400 dark:hover:text-prmary-400" %>
+              </td>
+              <td class="pr-2 py-2">May 1, 2023</td>
+              <td class="pr-2 py-2 text-right">$103.23</td>
+            </tr>
+            <tr>
+              <td class="pr-2 py-2">
+                <%%= link_to "Invoice #1101", "#", class: "hover:text-prmary-600 font-medium underline text-slate-600 dark:text-slate-400 dark:hover:text-prmary-400" %>
+              </td>
+              <td class="pr-2 py-2">April 1, 2023</td>
+              <td class="pr-2 py-2 text-right">$103.23</td>
+            </tr>
+            <tr>
+              <td class="pr-2 py-2">
+                <%%= link_to "Invoice #1100", "#", class: "hover:text-prmary-600 font-medium underline text-slate-600 dark:text-slate-400 dark:hover:text-prmary-400" %>
+              </td>
+              <td class="pr-2 py-2">March 1, 2023</td>
+              <td class="pr-2 py-2 text-right">$103.23</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

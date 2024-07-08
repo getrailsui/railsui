@@ -1,0 +1,199 @@
+<%%= render "shared/admin/nav", { header_title: "Messages" } do %>
+  <%%= render "shared/admin/create_dropdown" %>
+<%% end %>
+
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+    <nav role="messages nav">
+      <ul
+        class="flex items-center sm:justify-start justify-between sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#", class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80" do %>
+            <%%= icon "inbox-arrow-down", classes: "sm:w-5 sm:h-5 w-8 h-8 text-primary-600 dark:text-primary-400 stroke-current" %>
+
+            <span class="sm:block hidden">Inbox</span>
+            <span class="rounded bg-primary-600 dark:bg-primary-500 text-white px-1 py-px text-xs font-semibold">3</span>
+          <%% end %>
+        </li>
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <%%= icon "check", classes:"sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:group-hover:text-primary-400 dark:text-slate-400" %>
+            <span class="sm:block hidden">Sent</span>
+          <%% end %>
+        </li>
+        <li class="flex justify-center items-center sm:block">
+
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 font-medium flex items-center space-x-2 group dark:hover:text-primary-400 dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <%%= icon "document", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:text-slate-400 dark:group-hover:text-primary-400" %>
+            <span class="sm:block hidden">Drafts</span>
+          <%% end %>
+        </li>
+        <li class="flex justify-center items-center sm:block">
+
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 font-medium flex items-center space-x-2 group dark:hover:text-primary-400 dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <%%= icon "star", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:text-slate-400 dark:group-hover:text-primary-400" %>
+            <span class="sm:block hidden">Starred</span>
+          <%% end %>
+        </li>
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-primary-400" do %>
+            <%%= icon "user-group", classes: "sm:w-5 sm:h-5 w-8 h-8 text-slate-600 stroke-current group-hover:text-primary-600 dark:text-slate-400 dark:group-hover:text-primary-400" %>
+              <span class="sm:block hidden">Shared</span>
+            <%% end %>
+        </li>
+      </ul>
+    </nav>
+
+    <hr class="lg:hidden block my-2 dark:border-slate-700" />
+
+    <div class="relative lg:w-auto w-full lg:mt-0 md:mt-0 mt-4 sm:mt-0 lg:mb-0 mb-4">
+      <%%= icon "magnifying-glass", classes: "w-5 h-5 text-slate-500/90 stroke-current absolute left-3 top-3" %>
+      <input type="search" placeholder="Search" class="form-input lg:w-[250px] pl-10 focus:shadow-inner">
+    </div>
+  </div>
+</div>
+
+
+ <div class="container mx-auto">
+    <div class="flex items-center mb-6 mt-10">
+      <div class="h-px w-1/2 bg-gradient-to-l from-slate-200 dark:from-slate-600"></div>
+      <h2 class="text-base text-slate-600 font-semibold px-4 whitespace-nowrap dark:text-slate-300">Previously seen</h2>
+      <div class="h-px w-1/2 bg-gradient-to-r from-slate-200 dark:from-slate-600"></div>
+    </div>
+  </div>
+
+<div class="max-w-6xl mx-auto px-4">
+  <div class="dark:border-none border rounded-lg shadow shadow-slate-300/30 dark:shadow-none">
+    <ul class="divide-y dark:divide-slate-700">
+
+      <li class="relative first-of-type:rounded-b-none first-of-type:rounded-t-lg last-of-type:rounded-t-none last-of-type:rounded-b-lg hover:bg-slate-50/50 dark:hover:bg-slate-700/80 bg-white  dark:bg-slate-800">
+        <time class="absolute top-2 right-2 text-[11px] text-slate-400"><%%= Date.today.strftime("%b %d, %Y") %></time>
+         <%%= conditional_link_to(:admin_message_path, class: "flex items-start sm:items-center flex-wrap space-x-3 w-full p-6") do %>
+
+          <div class="w-[9px] h-[9px] rounded-full bg-blue-600 sm:mt-0 mt-7"></div>
+
+          <%%= image_tag demo_avatar_url(id: "10", variant: "men"), alt: "Christopher Robinson", class: "w-14 h-14 rounded-full object-fill object-center flex-shrink-0" %>
+
+          <div class="flex-1">
+            <h3 class="leading-snug font-medium sm:text-lg text-base text-slate-800 dark:text-slate-300 mb-1">Exciting News: A new opportunity</h3>
+            <p class="text-slate-500 text-sm line-clamp-2 dark:text-slate-400"><span class="font-medium">Christopher Robin</span> &mdash; I hope this email finds you well. We are excited to share with you the latest opportunity we have created. Attached to this email, you will find the file containing the outline. We value your opinion and expertise and would greatly ap...</p>
+          </div>
+        <%% end %>
+      </li>
+
+      <li class="relative first-of-type:rounded-b-none first-of-type:rounded-t-lg last-of-type:rounded-t-none last-of-type:rounded-b-lg hover:bg-slate-50/50 dark:hover:bg-slate-700/80 bg-white  dark:bg-slate-800">
+        <time class="absolute top-2 right-2 text-[11px] text-slate-400"><%%= Date.today.strftime("%b %d, %Y") %></time>
+        <%%= conditional_link_to(:admin_message_path, class: "flex items-start sm:items-center flex-wrap space-x-3 w-full p-6") do %>
+
+          <div class="w-[9px] h-[9px] rounded-full bg-blue-600 sm:mt-0 mt-7"></div>
+
+          <%%= image_tag demo_avatar_url(id: "22", variant: "women"), alt: "Emily Sands", class: "w-14 h-14 rounded-full object-fill object-center flex-shrink-0" %>
+
+          <div class="flex-1">
+            <h3 class="leading-snug font-medium sm:text-lg text-base text-slate-800 dark:text-slate-300 mb-1">Request for Additional Resources</h3>
+            <p class="text-slate-500 text-sm line-clamp-2 dark:text-slate-400"><span class="font-medium">Emily Sands</span> &mdash; Hello John, I hope this email finds you well. I wanted to discuss the current workload of
+      our team and the need for additional resources. Can we schedule a meeting to address this issue? Best regards, Emily</p>
+          </div>
+        <%% end %>
+      </li>
+
+      <li class="relative first-of-type:rounded-b-none first-of-type:rounded-t-lg last-of-type:rounded-t-none last-of-type:rounded-b-lg hover:bg-slate-50/50 dark:hover:bg-slate-700/80 bg-white  dark:bg-slate-800">
+        <time class="absolute top-2 right-2 text-[11px] text-slate-400"><%%= Date.today.strftime("%b %d, %Y") %></time>
+        <%%= conditional_link_to(:admin_message_path, class: "flex items-start sm:items-center flex-wrap space-x-3 w-full p-6") do %>
+          <div class="w-[9px] h-[9px] rounded-full bg-blue-600 sm:mt-0 mt-7"></div>
+          <%%= image_tag demo_avatar_url(id: "42", variant: "men"), alt: "Mathew Martinez", class: "w-14 h-14 rounded-full object-fill object-center flex-shrink-0" %>
+          <div class="flex-1">
+            <h3 class="leading-snug font-medium sm:text-lg text-base text-slate-800 dark:text-slate-300 mb-1">Thank You for Your Help!</h3>
+            <p class="text-slate-500 text-sm line-clamp-2 dark:text-slate-400">
+              <span class="font-medium">Mathew Martinez</span> &mdash; I hope this email finds you well. I wanted to provide you with an update on the progress of Rails UI, which we've been working on diligently for the past few weeks. Firstly, I'm pleased to inform you that our development team has successfully completed the initial phase of the project. We have successfully implemented the core functionalities and conducted thorough testing to ensure the stability and reliability of the software.
+            </p>
+          </div>
+        <%% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container mx-auto">
+  <div class="flex items-center mb-6 mt-10">
+    <div class="h-px w-1/2 bg-gradient-to-l from-slate-200 dark:from-slate-600"></div>
+    <h2 class="text-base text-slate-600 font-semibold px-4 whitespace-nowrap dark:text-slate-300">Previously seen</h2>
+    <div class="h-px w-1/2 bg-gradient-to-r from-slate-200 dark:from-slate-600"></div>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-4 mb-10">
+  <div class="border rounded-lg shadow shadow-slate-300/30 dark:border-none dark:shadow-none">
+    <ul class="divide-y dark:divide-slate-700">
+      <li class="relative first-of-type:rounded-b-none first-of-type:rounded-t-lg last-of-type:rounded-t-none last-of-type:rounded-b-lg hover:bg-slate-50/50 dark:hover:bg-slate-700/80 bg-white  dark:bg-slate-800">
+        <time class="absolute top-2 right-2 text-[11px] text-slate-400"><%%= Date.today.strftime("%b %d, %Y") %></time>
+        <%%= conditional_link_to(:admin_message_path, class: "flex items-start sm:items-center flex-wrap space-x-3 w-full p-6") do %>
+
+          <%%= image_tag demo_avatar_url(id: "10", variant: "men"), alt: "James Garner", class: "w-14 h-14 rounded-full object-fill object-center flex-shrink-0" %>
+
+          <div class="flex-1">
+            <h3 class="leading-snug font-medium sm:text-lg text-base text-slate-800 dark:text-slate-300 mb-1">Congratulations on the Successful Launch</h3>
+            <p class="text-slate-500 text-sm line-clamp-2 dark:text-slate-400"><span class="font-medium">James Garner</span> &mdash; Dear John, I'm thrilled to share the news that our latest product launch was a great success. We've received positive feedback and achieved impressive sales figures. Thank you for your guidance and support throughout the process. Best regards, James.</p>
+          </div>
+        <%% end %>
+      </li>
+
+      <li class="relative first-of-type:rounded-b-none first-of-type:rounded-t-lg last-of-type:rounded-t-none last-of-type:rounded-b-lg hover:bg-slate-50/50 dark:hover:bg-slate-700/80 bg-white  dark:bg-slate-800">
+        <time class="absolute top-2 right-2 text-[11px] text-slate-400"><%%= Date.today.strftime("%b %d, %Y") %></time>
+        <%%= conditional_link_to(:admin_message_path, class: "flex items-start sm:items-center flex-wrap space-x-3 w-full p-6") do %>
+
+          <%%= image_tag demo_avatar_url(id: "45", variant: "women"), alt: "Jane Anderson", class: "w-14 h-14 rounded-full object-fill object-center flex-shrink-0" %>
+
+          <div class="flex-1">
+            <h3 class="leading-snug font-medium sm:text-lg text-base text-slate-800 dark:text-slate-300 mb-1">Urgent IT Support Required</h3>
+            <p class="text-slate-500 text-sm line-clamp-2 dark:text-slate-400"><span class="font-medium">Jane Anderson</span> &mdash;
+            Dear John, I'm experiencing technical issues with my computer and urgently need assistance to resolve the problem. Please prioritize this request as it is affecting my productivity.</p>
+          </div>
+        <%% end %>
+      </li>
+
+      <li class="relative first-of-type:rounded-b-none first-of-type:rounded-t-lg last-of-type:rounded-t-none last-of-type:rounded-b-lg hover:bg-slate-50/50 dark:hover:bg-slate-700/80 bg-white  dark:bg-slate-800">
+        <time class="absolute top-2 right-2 text-[11px] text-slate-400"><%%= Date.today.strftime("%b %d, %Y") %></time>
+        <%%= conditional_link_to(:admin_message_path, class: "flex items-start sm:items-center flex-wrap space-x-3 w-full p-6") do %>
+
+          <%%= image_tag demo_avatar_url(id: "42", variant: "women"), alt: "April Marks", class: "w-14 h-14 rounded-full object-fill object-center flex-shrink-0" %>
+
+          <div class="flex-1">
+            <h3 class="leading-snug font-medium sm:text-lg text-base text-slate-800 dark:text-slate-300 mb-1">Thank you for your help!</h3>
+            <p class="text-slate-500 text-sm line-clamp-2 dark:text-slate-400"><span class="font-medium">April Marks</span> &mdash; I hope this email finds you well. I wanted to provide you with an update on the progress of Rails UI, which we've been working on diligently for the past few weeks. Firstly, I'm pleased to inform you that our development team has successfully completed the initial phase of the project. We have successfully implemented the core functionalities and conducted thorough testing to ensure the stability and reliability of the software.</p>
+          </div>
+        <%% end %>
+      </li>
+
+      <li class="relative first-of-type:rounded-b-none first-of-type:rounded-t-lg last-of-type:rounded-t-none last-of-type:rounded-b-lg hover:bg-slate-50/50 dark:hover:bg-slate-700/80 bg-white dark:bg-slate-800">
+        <time class="absolute top-2 right-2 text-[11px] text-slate-400"><%%= Date.today.strftime("%b %d, %Y") %></time>
+        <%%= conditional_link_to(:admin_message_path, class: "flex items-start sm:items-center flex-wrap space-x-3 w-full p-6") do %>
+
+          <%%= image_tag demo_avatar_url(id: "42", variant: "men"), alt: "Michael Lechvin", class: "w-14 h-14 rounded-full object-fill object-center flex-shrink-0" %>
+
+          <div class="flex-1">
+            <h3 class="leading-snug font-medium sm:text-lg text-base text-slate-800 dark:text-slate-300 mb-1">Thank you for your help!</h3>
+            <p class="text-slate-500 text-sm line-clamp-2 dark:text-slate-400"><span class="font-medium">Michael Lechvin</span> &mdash; Dear John, I wanted to express my heartfelt appreciation for your exceptional work on the recent client project. Your dedication, attention to detail, and problem-solving skills were instrumental in its success. Thank you and well done!</p>
+          </div>
+        <%% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="flex items-center justify-center pb-16 space-x-3">
+  <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
+  <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
+    class="text-slate-300 stroke-current w-6 h-6">
+    <g fill="none" fill-rule="evenodd">
+      <g transform="translate(1 1)" stroke-width="2">
+        <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+        <path d="M36 18c0-9.94-8.06-18-18-18">
+          <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s"
+            repeatCount="indefinite" />
+        </path>
+      </g>
+    </g>
+  </svg>
+  <p class="text-sm text-slate-400 font-medium">Loading...</p>
+</div>

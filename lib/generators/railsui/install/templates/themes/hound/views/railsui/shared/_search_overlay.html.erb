@@ -1,0 +1,28 @@
+<div data-search-target="overlay"
+  class="hidden fixed w-screen h-screen bg-white/70 dark:bg-slate-950/90 backdrop-blur-md z-[60] px-4 left-0 right-0 top-0 bottom-0"
+  data-transition-enter-active="transition ease-out duration-100"
+  data-transition-enter-from="transform opacity-0 scale-95" data-transition-enter-to="transform opacity-100 scale-100"
+  data-transition-leave-active="transition ease-in duration-100"
+  data-transition-leave-from="transform opacity-100 scale-100" data-transition-leave-to="transform opacity-0 scale-95">
+  <div class="absolute top-4 md:right-10 right-4">
+    <button class="btn btn-white px-3" data-action="click->search#close">
+      <svg class="w-5 h-5 text-slate-700 stroke-current pointer-events-none dark:text-slate-100"
+        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <title>x-mark</title>
+        <g fill="none">
+          <path d="M6 18L18 6M6 6l12 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          </path>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <div class="flex flex-col items-center h-full w-full justify-center">
+    <div
+      class="md:w-[600px] w-full max-w-2xl mx-auto bg-white dark:bg-slate-800 rounded-lg md:rounded-3xl shadow-xl shadow-slate-300/30 dark:shadow-slate-950/30 md:p-16 p-6 border border-slate-300/80 dark:border-slate-700/80"
+      data-search-target="content">
+      <form action="#">
+        <input type="text" data-search-target="input" placeholder="Search" class="form-input w-full">
+      </form>
+    </div>
+  </div>
+</div>

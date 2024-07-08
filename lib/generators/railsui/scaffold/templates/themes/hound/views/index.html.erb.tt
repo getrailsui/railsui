@@ -1,0 +1,18 @@
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="flex items-center justify-between pb-6 border-b dark:border-slate-700">
+    <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight"><%= plural_table_name.titleize %></h1>
+    <div class="flex items-center justify-end">
+      <%%= link_to "New <%= singular_table_name.titleize %>", new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div id="<%= plural_table_name %>" class="divide-y dark:text-slate-700 mb-10">
+    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+      <div class="py-3">
+        <%%= render <%= singular_table_name %> %>
+
+        <%%= link_to "View <%= human_name.downcase %>", <%= model_resource_name(singular_table_name) %>, class: "btn-link inline-block my-3" %>
+      </div>
+    <%% end %>
+  </div>
+</div>

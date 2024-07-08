@@ -26,8 +26,8 @@ def add_tailwind
       end
 
       # remove application.css
-      say "⚡️ Remove app/assets/stylesheets/application.css so build output can take over"
-      remove_file "app/assets/stylesheets/application.css"
+     # say "⚡️ Remove app/assets/stylesheets/application.css so build output can take over"
+     # remove_file "app/assets/stylesheets/application.css"
 
       # add theme stylesheets
       directory "#{__dir__}/tailwind/themes/#{Railsui.config.theme}/stylesheets", "app/assets/stylesheets", force: true

@@ -19,7 +19,7 @@ module Railsui
 
     def delete_page
       title = params[:title]
-      system("rails d railsui:page #{title} --force-plural")
+      # system("rails d railsui:page #{title} --force-plural")
       Railsui::Configuration.delete_page(title)
       Railsui.restart
 

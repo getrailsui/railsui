@@ -1,34 +1,13 @@
 require "railsui/version"
 require "railsui/engine"
-require "railsui/configuration"
-require "railsui/theme_registry"
-require "view_component/engine"
+require "railsui/railtie" if defined?(Rails)
 
 module Railsui
-  class << self
-    attr_accessor :config
-
-    def configure
-      self.config ||= Configuration.new
-      yield(config)
-    end
-
-    def theme
-      self.config.theme
-    end
-
-    def const_missing(name)
-      if name.to_s.end_with?("Component")
-        theme_module = ThemeRegistry.get_theme_module(theme.to_s)
-        component_class_name = "#{theme_module}::#{name}"
-        component_class_name.split('::').inject(Object) { |mod, class_name| mod.const_get(class_name) }
-      else
-        super
-      end
-    end
-  end
-
-  class Error < StandardError; end
+  autoload :Colors, "railsui/colors"
+  autoload :Configuration, "railsui/configuration"
+  autoload :Pages, "railsui/pages"
+  autoload :ThemeHelper, "railsui/theme_helper"
+  autoload :ThemeSetup, "railsui/theme_setup"
 
   mattr_accessor :config
   @@config = {}
@@ -55,10 +34,6 @@ module Railsui
 
   def self.asset_url
     "https://f001.backblazeb2.com/file/railsui"
-  end
-
-  def self.parameterized_app_name
-    Railsui.config.application_name.parameterize(separator:"")
   end
 
   def self.run_command(command)

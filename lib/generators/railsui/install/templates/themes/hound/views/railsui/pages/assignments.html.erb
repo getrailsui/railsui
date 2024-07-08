@@ -1,0 +1,132 @@
+<%%= render "shared/admin/nav", { header_title: "Assignments" } do %>
+  <%%= render "shared/admin/create_dropdown" %>
+<%% end %>
+
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+    <nav role="messages nav">
+      <ul class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#" , class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80 whitespace-nowrap" do %>
+            <span>My Assignments</span>
+            <span class="rounded bg-primary-600 text-white px-1 py-px text-xs font-semibold">8</span>
+          <%% end %>
+        </li>
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+
+            <span>Assigned to others</span>
+            <span class="rounded bg-slate-200 text-slate-500 px-1 py-px text-xs font-semibold">2</span>
+          <%% end %>
+        </li>
+        <li class="flex justify-center items-center sm:block">
+          <%%= link_to "#", class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" do %>
+            <span>Completed</span>
+          <%% end %>
+        </li>
+      </ul>
+    </nav>
+
+    <hr class="lg:hidden block my-2 dark:border-slate-700">
+
+    <form action="#" class="relative lg:w-auto w-full lg:mt-0 md:mt-0 mt-4 sm:mt-0 lg:mb-0 mb-4">
+      <%%= icon "magnifying-glass", classes: "w-5 h-5 text-slate-500/90 stroke-current absolute left-3 top-3" %>
+      <input type="search" placeholder="Search" class="form-input lg:w-[250px] pl-10 focus:shadow-inner">
+    </form>
+  </div>
+</div>
+
+  <div class="px-4">
+    <div
+      class="sm:mt-16 mt-8 max-w-6xl mx-auto sm:p-16 p-6 rounded-lg border bg-white dark:bg-slate-800 dark:border-slate-700">
+      <h2 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-6">My Assignments</h2>
+
+      <div class="mb-10">
+        <%%= link_to "#", class: "mb-3 block" do %>
+          <h3 class="font-normal text-primary-500 text-lg dark:text-primary-400">Product Demo for Pork Chop</h3>
+        <%% end %>
+
+        <p class="font-extrabold text-slate-900 dark:text-slate-200 mb-3">Q/A</p>
+
+        <ul class="my-2 space-y-4">
+          <li class="flex items-center space-x-3">
+            <input type="checkbox" class="form-input-checkbox w-5 h-5 rounded border-slate-300" />
+
+            <%%= link_to "Improve slides and reorder", "#", class: "hover:underline text-base" %>
+            <div>
+              <%%= image_tag demo_avatar_url, alt: "John Doe", class: "w-6 h-6 rounded-full ml-1" %>
+            </div>
+          </li>
+
+          <li class="flex items-center space-x-3">
+            <input type="checkbox" class="form-input-checkbox w-5 h-5 rounded border-slate-300" />
+
+            <%%= link_to "Tweak branding to be more consistent", "#", class: "hover:underline text-base" %>
+            <div>
+              <%%= image_tag demo_avatar_url, alt: "John Doe", class: "w-6 h-6 rounded-full ml-1" %>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mb-10">
+        <p class="font-extrabold text-slate-900 dark:text-slate-200 mb-3">Generate prototype</p>
+
+        <ul class="my-2 space-y-4">
+          <li class="flex items-center space-x-3">
+            <input type="checkbox" class="form-input-checkbox w-5 h-5 rounded border-slate-300" />
+
+            <%%= link_to "Launch to staging site for company-wide preview", "#", class: "hover:underline text-base" %>
+            <div>
+              <%%= image_tag demo_avatar_url, alt: "John Doe", class: "w-6 h-6 rounded-full ml-1" %>
+            </div>
+          </li>
+
+          <li class="flex items-center space-x-3">
+            <input type="checkbox" class="form-input-checkbox w-5 h-5 rounded border-slate-300" />
+
+            <%%= link_to "Document overview of changes for team", "#", class: "hover:underline text-base" %>
+            <div>
+              <%%= image_tag demo_avatar_url, alt: "John Doe", class: "w-6 h-6 rounded-full ml-1" %>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <%%= link_to class: "block mt-6" do %>
+        <h3 class="font-normal text-primary-500 mb-3 text-lg dark:text-primary-400">Onboarding improvments</h3>
+      <%% end %>
+
+      <div class="mb-10">
+        <p class="font-extrabold text-slate-900 dark:text-slate-200 mb-3">Establish scope</p>
+        <ul class="my-2 space-y-4">
+          <li class="flex items-center space-x-3">
+            <input type="checkbox" class="form-input-checkbox w-5 h-5 rounded border-slate-300" />
+
+            <%%= link_to "Define team and goals", "#", class: "hover:underline text-base" %>
+            <div>
+              <%%= image_tag demo_avatar_url, alt: "John Doe", class: "w-6 h-6 rounded-full ml-1" %>
+            </div>
+          </li>
+
+          <li class="flex items-center space-x-3">
+            <input type="checkbox" class="form-input-checkbox w-5 h-5 rounded border-slate-300" />
+
+            <%%= link_to "Define project goals", "#", class: "hover:underline text-base" %>
+            <div>
+              <%%= image_tag demo_avatar_url, alt: "John Doe", class: "w-6 h-6 rounded-full ml-1" %>
+            </div>
+          </li>
+
+          <li class="flex items-center space-x-3">
+            <input type="checkbox" class="form-input-checkbox w-5 h-5 rounded border-slate-300" />
+
+            <%%= link_to "Collect customer data and feedback for review", "#", class: "hover:underline text-base" %>
+            <div>
+              <%%= image_tag demo_avatar_url, alt: "John Doe", class: "w-6 h-6 rounded-full ml-1" %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

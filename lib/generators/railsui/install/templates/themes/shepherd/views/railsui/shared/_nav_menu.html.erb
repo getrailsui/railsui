@@ -1,0 +1,90 @@
+<div class="md:flex items-center justify-between">
+  <div class="md:flex items-center md:space-x-4 md:flex-1">
+    <div class="md:flex items-center justify-between w-full md:space-x-3">
+      <div class="flex items-center justify-between md:w-auto w-full">
+        <%= link_to (defined?(admin_dashboard_path) ? admin_dashboard_path : "#") do %>
+          <h1>
+            <%= icon "logo", path: "logo.svg", classes: "text-zinc-900 dark:text-white fill-current w-10 h-10" %>
+            <span class="sr-only">Shepherd</span>
+          </h1>
+        <% end %>
+
+        <button type="button" data-action="click->nav#toggle"
+          class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+          role="Mobile navigation toggle">
+          <%= icon "bars-3-center-left", classes: "stroke-current w-8 h-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
+        </button>
+      </div>
+
+      <div data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200"
+          data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100"
+          data-transition-leave-from="opacity-100 scale-100"
+          data-transition-leave-active="transition ease-in duration-200" data-transition-leave-to="opacity-0 scale-95"
+          class="origin-top md:flex items-center hidden w-full">
+        <nav role="primary navigation" class="flex-1">
+          <ul class="md:flex items-center md:space-y-0 space-y-4">
+            <div class="flex-1 md:flex items-center">
+              <%= render "shared/admin/nav_links" %>
+            </div>
+
+            <% if user_signed_in? %>
+              <%= render "shared/notifications" %>
+              <li>
+                <div data-controller="dropdown" class="md:flex relative">
+                  <button data-action="click->dropdown#toggle click@window->dropdown#hide"
+                    data-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
+                    focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
+                    dark:focus:border-zinc-300/90">
+
+                    <% if current_user.avatar.attached? %>
+                      <%= image_tag current_user.avatar, class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
+                    <% else %>
+                      <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none", alt: "Shepherd user" %>
+                    <% end %>
+                  </button>
+
+                  <ul data-dropdown-target="menu"
+                    class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                    data-transition-enter-active="transition ease-out duration-300"
+                    data-transition-enter-from="transform opacity-0 scale-95"
+                    data-transition-enter-to="transform opacity-100 scale-100"
+                    data-transition-leave-active="transition ease-in duration-300"
+                    data-transition-leave-from="transform opacity-100 scale-100"
+                    data-transition-leave-to="transform opacity-0 scale-95">
+
+                    <li>
+                      <%= link_to "Inbox", (defined?(admin_inbox_path) ? admin_inbox_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                    </li>
+
+                    <li>
+                      <%= link_to "Manage properties", (defined?(admin_properties_path) ? admin_properties_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                    </li>
+
+                    <li>
+                      <%= link_to "Add booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                    </li>
+
+                    <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
+                    <li>
+                      <%= link_to "Account", (defined?(edit_user_registration_path) ? edit_user_registration_path : "#"), class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm block" %>
+                    </li>
+
+                    <li>
+                      <%= button_to "Sign out",(defined?(destroy_user_session_path) ? destroy_user_session_path : "#"), method: :delete, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm text-left block" %>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            <% else %>
+              <div class="md:flex items-center md:space-x-3 md:space-y-0 space-y-3">
+                <%= link_to "Sign in", new_user_session_path, class: "btn btn-transparent" %>
+
+                <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

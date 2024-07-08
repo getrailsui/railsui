@@ -1,0 +1,15 @@
+<%# locals: (align: "center", url: root_url, action:, theme: "primary", fullwidth: false) %>
+
+<table class="action" align="<%= align %>">
+  <tr>
+    <td align="<%= align %>">
+      <a href="<%= url %>" class="action__link action__link--<%= theme %> <%= fullwidth == true ? "action__link--expanded" : nil %>" target="_blank"><%= action %></a>
+      <div itemscope itemtype="http://schema.org/EmailMessage">
+        <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
+          <link itemprop="target" href="<%= url %>"/>
+          <meta itemprop="name" content="<%= action %>"/>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

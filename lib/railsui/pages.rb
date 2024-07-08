@@ -1,7 +1,7 @@
 module Railsui
   module Pages
     CONFIG_FILE = Railsui::Engine.root.join("config", "pages.yml")
-    VIEWS_FOLDER = Rails.root.join("app/views/page/")
+    VIEWS_FOLDER = Rails.root.join("app/views/railsui/page/")
 
     def self.all_pages
       @all_pages ||= load_pages_config
@@ -9,6 +9,10 @@ module Railsui
 
     def self.theme_pages
       all_pages[Railsui.config.theme]
+    end
+
+    def self.get_pages(theme)
+      all_pages[theme.to_s].keys
     end
 
     def self.page_enabled?(page)

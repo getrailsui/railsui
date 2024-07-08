@@ -7,9 +7,10 @@ module Railsui
     include Thor::Actions
 
     attr_accessor :application_name, :support_email, :theme, :colors
-    attr_writer :pages, :colors
+    attr_writer :pages
 
     def initialize(options = {})
+      options ||= {}
       assign_attributes(options)
       self.application_name ||= "Rails UI"
       self.support_email ||= "support@example.com"
@@ -32,12 +33,22 @@ module Railsui
     end
 
     def self.delete_page(page)
+      # update config
       config_path = Rails.root.join("config", "railsui.yml")
       if File.exist?(config_path)
         config = Psych.safe_load_file(config_path, permitted_classes: [Hash, Railsui::Configuration])
         config.pages.delete(page)
         File.write(config_path, config.to_yaml)
         Railsui.restart
+      end
+
+      # remove view
+      view_path = Rails.root.join("app", "views", "railsui", "#{page}.html.erb")
+
+      if File.exist?(view_path)
+        File.delete(view_path)
+      else
+        puts "View #{view_path} does not exist"
       end
     end
 
@@ -56,10 +67,19 @@ module Railsui
       # Change the Rails UI config to the latest version
       Railsui.config = self
 
-      install
+      sleep 1
 
-      # Install optional pages per theme
-      create_pages
+      Railsui.build_css
+    end
+
+    def update
+      # Creates config/railsui.yml
+      File.write(self.class.config_path, to_yaml)
+
+      # Change the Rails UI config to the latest version
+      Railsui.config = self
+
+      update
 
       sleep 1
 
@@ -89,18 +109,10 @@ module Railsui
       end
     end
 
-    def create_pages
-      Railsui::Pages.theme_pages.each do | page, details |
-        if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)
-          Railsui.run_command "rails g railsui:page #{page} --force-plural"
-        end
-      end
-    end
-
     private
 
-    def install
-      Railsui.run_command "rails railsui:install"
+    def update
+      Railsui.run_command "rails g railsui:update"
     end
 
     def copy_template(filename)

@@ -1,0 +1,15 @@
+<% if resource.errors.any? %>
+<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
+  <div class="flex items-start space-x-4">
+    <%= icon "shield-exclamation", classes: "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
+    <div class="flex-1">
+      <p class="font-bold"><%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+      <ul class="list-disc mt-3 ml-4">
+        <% resource.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% end %>

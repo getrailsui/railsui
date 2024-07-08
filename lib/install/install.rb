@@ -1,92 +1,97 @@
 source_root = File.expand_path('../templates', __FILE__)
 
-require_relative "setup"
-require_relative "tailwind_setup"
+# require_relative "setup"
+# require_relative "tailwind_setup"
 
-if Railsui.config.theme == nil
-  say "⚡️⚡️⚡️⚡️ Rails UI first run ⚡️⚡️⚡️⚡️"
+# if Railsui.config.theme == nil
+#   say "⚡️⚡️⚡️⚡️ Rails UI first run ⚡️⚡️⚡️⚡️"
 
-  run "bundle install"
+#   run "bundle install"
 
-  say "➖ Remove importmaps"
-  remove_importmaps
+#  # say "➖ Remove importmaps"
+#  # remove_importmaps
 
-  say "➡️ Copy optimized application_mailer.rb file"
-  copy_application_mailer
+#  # say "➡️ Copy optimized application_mailer.rb file"
+#  # copy_application_mailer
 
-  say "👨‍💻 Configuring Devise..."
-  add_users
+#  # say "👨‍💻 Configuring Devise..."
+# #  add_users
 
-  say "✨ Add esbuild"
-  add_esbuild
+#   # say "✨ Add esbuild"
+#   # add_esbuild
 
-  say "✨ Add Stimulus.js"
-  add_stimulus
+#  # say "✨ Add Stimulus.js"
+#  # add_stimulus
 
-  say "🚀 Installing turbo for good measure"
-  add_turbo
+#  # say "🚀 Installing turbo for good measure"
+#  # add_turbo
 
-  say "🎨 Add custom css-bundling setup"
-  add_css_bundling_setup
+#  # say "🎨 Add custom css-bundling setup"
+#  # add_css_bundling_setup
 
-  say "⛏️ Setup routes"
-  setup_routes
+#   say "⛏️ Setup routes"
+#   setup_routes
 
-  say "✉️  Generate Rails UI mailers and previews"
-  generate_sample_mailers
+#  # say "✉️  Generate Rails UI mailers and previews"
+#  # generate_sample_mailers
 
-  say "🤖 Generate PageController"
-  add_page_controller
+#  # say "🤖 Generate PageController"
+#  add_page_controller
 
-  # Make sure it's before the extend_layout_and_views method
-  say "👨‍💻 Add devise layout and customizations..."
-  add_devise_customizations
+#  # say "👨‍💻 Configuring template engine with fallbacks..."
+#  add_custom_template_engine
 
-  say "👨‍💻 Extending layout and views..."
-  extend_layout_and_views
+#  # say "👨‍💻 Configure application controller"
+#  # add_application_controller_code
 
-  say "👨‍💻 Configuring template engine with fallbacks..."
-  add_custom_template_engine
+#   say "👨‍💻 Adding ActiveStorage and ActionText dependencies..."
+#   def add_storage_and_rich_text
+#     rails_command "active_storage:install"
+#     rails_command "action_text:install"
 
-  say "👨‍💻 Configure application controller"
-  add_application_controller_code
+#     if Rails.root.join("app/assets/stylesheets/actiontext.css").exist?
+#       remove_file Rails.root.join("app/assets/stylesheets/actiontext.css")
+#     end
+#   end
 
-  say "👨‍💻 Adding ActiveStorage and ActionText dependencies..."
-  add_storage_and_rich_text
+#    add_storage_and_rich_text
 
-  say "☕️ Copy hero icon library"
-  copy_hero_icons
+#   # say "☕️ Copy hero icon library"
+#   # copy_hero_icons
 
-  say "⚡️ Add additional user.rb attributes"
-  add_user_attributes
+#   # say "⚡️ Add additional user.rb attributes"
+#   # add_user_attributes
 
-  say "✉️ Generate Devise mailer previews"
-  add_devise_email_previews
+#   # say "✉️ Generate Devise mailer previews"
+#   # add_devise_email_previews
 
-  say "✉️ Update mail sender"
-  update_mailer_sender
-  copy_sample_mailers
+#   # say "✉️ Update mail sender"
+#   # update_mailer_sender
+#   # copy_sample_mailers
 
-  # Migrate
-  rails_command "db:create"
-  rails_command "db:migrate"
+#   # Migrate
+#   # rails_command "db:create"
+#   # rails_command "db:migrate"
 
-  # Create sample users
-  say "✉️ Generate Sample users"
+#   # Create sample users
+#   # say "✉️ Generate Sample users"
 
- # Define the code to be executed in the Rails console
-console_script = <<-SCRIPT
-  User.create!(email: "admin@example.com", password: "password", password_confirmation: "password", admin: true, first_name: "Admin", last_name: "Doe")
-  User.create!(email: "john.doe@example.com", password: "password", password_confirmation: "password", admin: false, first_name: "John", last_name: "Doe")
-SCRIPT
+#  # Define the code to be executed in the Rails console
+# #console_script = <<-SCRIPT
+# #  User.create!(email: "admin@example.com", password: "password", password_confirmation: "password", admin: true, first_name: "Admin", last_name: "Doe")
+# #  User.create!(email: "john.doe@example.com", password: "password", password_confirmation: "password", admin: false, first_name: "John", last_name: "Doe")
+# #SCRIPT
 
-# Execute the Rails console script
-run "rails runner '#{console_script}'"
+# # Execute the Rails console script
+# # run "rails runner '#{console_script}'"
 
-else
-  say "⚡️ Setup themes"
-  add_tailwind
-end
+# else
+#   say "⚡️ Setup themes"
+#   add_tailwind
+# end
+#
+
+
 
 say "
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM

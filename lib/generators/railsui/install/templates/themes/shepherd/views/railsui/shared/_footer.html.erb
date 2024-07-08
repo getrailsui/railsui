@@ -1,0 +1,142 @@
+<footer class="container mx-auto px-4 pb-10 font-heading">
+  <div class="grid md:grid-cols-4 grid-cols-2 gap-6">
+    <div>
+      <h4 class="text-zinc-800 text-lg font-medium mb-4 dark:text-zinc-50">Support</h4>
+      <ul class="leading-[2.8rem] text-zinc-500/90 dark:text-zinc-400/90">
+
+        <li>
+          <%= link_to "Get help", (defined?(admin_help_center_path) ? admin_help_center_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+
+        <li>
+          <a href="#" class="hover:text-zinc-700 dark:hover:text-zinc-300/90">Forum</a>
+        </li>
+
+        <li>
+          <%= link_to "Documentation", (defined?(admin_help_center_path) ? admin_help_center_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+
+        <li>
+          <a href="#" class="hover:text-zinc-700 dark:hover:text-zinc-300/90">Tutorials</a>
+        </li>
+
+        <li>
+          <%= link_to "Product updates", (defined?(admin_changelog_path) ? admin_changelog_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+
+        <li>
+          <%= link_to "Give feedback", (defined?(admin_contact_path) ? admin_contact_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-zinc-800 text-lg font-medium mb-4 dark:text-zinc-50">Hosting</h4>
+      <ul class="leading-[2.8rem] text-zinc-500/90 dark:text-zinc-400/90">
+
+        <li>
+          <%= link_to "Pricing", (defined?(pricing_path) ? pricing_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+
+        <li>
+          <%= link_to "Resources", (defined?(admin_help_center_path) ? admin_help_center_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+        <li>
+          <%= link_to "Affiliates", "#", class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+        <li>
+          <%= link_to "Integrations", "#", class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+
+        <li>
+          <%= link_to "API Access", (defined?(admin_api_path) ? admin_api_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+
+        <li>
+          <a href="#" class="hover:text-zinc-700 dark:hover:text-zinc-300/90">Booking direct</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-zinc-800 text-lg font-medium mb-4 dark:text-zinc-50">Company</h4>
+      <ul class="leading-[2.8rem] text-zinc-500/90 dark:text-zinc-400/90">
+
+        <li>
+          <%= link_to "About us", (defined?(about_path) ? about_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+
+        <li>
+          <a href="#" class="hover:text-zinc-700 dark:hover:text-zinc-300/90">Careers</a>
+        </li>
+        <li>
+          <a href="#" class="hover:text-zinc-700 dark:hover:text-zinc-300/90">Blog</a>
+        </li>
+
+        <li>
+          <%= link_to "Contact us", (defined?(admin_contact_path) ? admin_contact_path : "#"), class: "hover:text-zinc-700 dark:hover:text-zinc-300/90" %>
+        </li>
+      </ul>
+    </div>
+    <div></div>
+  </div>
+
+  <div
+    class="md:flex items-center pt-6 mt-16 border-t border-zinc-300/50 dark:border-zinc-600/50 flex-wrap md:justify-start justify-center">
+    <div class="md:flex-1 md:flex items-center">
+      <%= link_to root_path, class: "flex items-center md:space-x-3 justify-center md:justify-start group" do %>
+        <svg class="fill-current text-zinc-900 dark:text-zinc-100 dark:group-hover:text-white" width="36" height="36"
+          viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M30 0C33.3137 0 36 2.68629 36 6V30C36 33.3137 33.3137 36 30 36H6C2.68629 36 0 33.3137 0 30V6C0 2.68629 2.68629 0 6 0H30ZM16.1275 30.7111C16.3442 30.7438 16.5195 30.5309 16.5195 30.3117V25.6407C16.5195 23.3795 14.0716 21.9662 12.1133 23.0968C11.4052 23.5057 10.4997 23.2631 10.0909 22.5549C9.68208 21.8468 9.9247 20.9413 10.6328 20.5325C12.6123 19.3896 12.6123 16.5325 10.6328 15.3896C9.9247 14.9808 9.68208 14.0753 10.0909 13.3672C10.4997 12.6591 11.4052 12.4165 12.1133 12.8253C14.0716 13.9559 16.5195 12.5426 16.5195 10.2814V9.1364C16.5195 6.97891 14.5901 5.27606 12.6335 6.1852C8.20999 8.24062 5.14286 12.7232 5.14286 17.9221C5.14286 24.403 9.90907 29.7706 16.1275 30.7111ZM31.013 17.9221C31.013 24.4524 26.1737 29.8525 19.8856 30.7318C19.6601 30.7634 19.4805 30.5395 19.4805 30.3117V25.5541C19.4805 23.3069 21.9132 21.9024 23.8594 23.026C24.5675 23.4348 25.473 23.1922 25.8818 22.4841C26.2907 21.776 26.048 20.8705 25.3399 20.4617C23.415 19.3503 23.415 16.5718 25.3399 15.4605C26.048 15.0516 26.2907 14.1462 25.8818 13.438C25.473 12.7299 24.5675 12.4873 23.8594 12.8961C21.9132 14.0198 19.4805 12.6152 19.4805 10.368V9.11727C19.4805 6.95171 21.4035 5.2311 23.3785 6.11944C27.8792 8.14385 31.013 12.667 31.013 17.9221Z" />
+        </svg>
+
+        <span
+          class="font-semibold text-xl lg:block hidden dark:text-zinc-100 dark:group-hover:text-white">Shepherd</span>
+      <% end %>
+
+      <ul
+        class="md:flex md:w-auto w-full items-center md:space-x-4 font-light md:ml-4 text-zinc-500 md:text-left text-center md:leading-normal leading-loose my-5 md:my-0 md:text-base text-sm dark:text-zinc-500">
+        <li>&copy; 2023, Shepherd Inc.</li>
+
+        <li>
+          <%= link_to "Terms", (defined?(admin_terms_path) ? admin_terms_path : "#"), class: "hover:text-zinc-800 dark:hover:text-zinc-400" %>
+        </li>
+
+        <li>
+          <%= link_to "Privacy", (defined?(admin_privacy_path) ? admin_privacy_path : "#"), class: "hover:text-zinc-800 dark:hover:text-zinc-400" %>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="flex justify-center items-center space-x-8">
+      <li>
+        <%= link_to "#", class: "group" do %>
+          <%= icon "instagram.svg", path: "social/instagram.svg", classes: "w-6 h-6 fill-current text-zinc-700 dark:text-zinc-600 dark:group-hover:text-white group-hover:text-zinc-800" %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "#", class: "group" do %>
+          <%= icon "x.svg", path: "social/x.svg", classes: "w-6 h-6 fill-current text-zinc-700 dark:text-zinc-600 dark:group-hover:text-white group-hover:text-zinc-800" %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "#", class: "group" do %>
+          <%= icon "facebook", path: "social/facebook.svg", classes: "w-6 h-6 fill-current text-zinc-700 dark:text-zinc-600 dark:group-hover:text-white group-hover:text-zinc-800" %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "#", class: "group" do %>
+          <%= icon "linkedin", path: "social/linkedin.svg", classes: "w-6 h-6 fill-current text-zinc-700 dark:text-zinc-600 dark:group-hover:text-white group-hover:text-zinc-800" %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "#", class: "group" do %>
+          <%= icon "youtube", path: "social/youtube.svg", classes: "w-6 h-6 fill-current text-zinc-700 dark:text-zinc-600 dark:group-hover:text-white group-hover:text-zinc-800" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</footer>
