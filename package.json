@@ -13,6 +13,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.2",
     "debounce": "^1.2.1",
+    "deepmerge": "^4.3.1",
     "esbuild": "^0.17.16",
     "flatpickr": "^4.6.13",
     "highlight.js": "^11.6.0",

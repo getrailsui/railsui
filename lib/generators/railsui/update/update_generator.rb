@@ -18,7 +18,7 @@ module Railsui
         update_body_classes
 
         if @config.pages.any?
-          generate_railsui_pages_routes
+          copy_railsui_pages_routes
           copy_railsui_page_controller(@config.theme)
           copy_railsui_images(@config.theme)
           copy_railsui_pages(@config.theme)
@@ -29,10 +29,6 @@ module Railsui
         @config.save
         say "✅ Configuration updated successfully", :green
       end
-
-
-
-
     end
   end
 end

@@ -6,7 +6,7 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
 
-    attr_accessor :application_name, :support_email, :theme, :colors
+    attr_accessor :application_name, :support_email, :theme, :colors, :body_classes
     attr_writer :pages
 
     def initialize(options = {})
@@ -15,7 +15,12 @@ module Railsui
       self.application_name ||= "Rails UI"
       self.support_email ||= "support@example.com"
       self.theme
+      initialize_theme_classes if self.theme
       initialize_colors_for_theme if self.theme
+    end
+
+    def initialize_theme_classes
+      self.body_classes ||= Railsui::Themes::body_classes(self.theme)
     end
 
     def initialize_colors_for_theme
@@ -61,7 +66,7 @@ module Railsui
     end
 
     def save
-      # Creates config/railsui.yml
+      # Create config/railsui.yml
       File.write(self.class.config_path, to_yaml)
 
       # Change the Rails UI config to the latest version
@@ -73,17 +78,7 @@ module Railsui
     end
 
     def update
-      # Creates config/railsui.yml
-      File.write(self.class.config_path, to_yaml)
-
-      # Change the Rails UI config to the latest version
-      Railsui.config = self
-
-      update
-
-      sleep 1
-
-      Railsui.build_css
+      Railsui.run_command "rails g railsui:update"
     end
 
     def self.synchronize_pages
@@ -110,10 +105,6 @@ module Railsui
     end
 
     private
-
-    def update
-      Railsui.run_command "rails g railsui:update"
-    end
 
     def copy_template(filename)
       unless File.exist?(Rails.root.join(filename))

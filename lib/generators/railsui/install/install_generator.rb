@@ -27,16 +27,34 @@ module Railsui
         @theme = Railsui.config.theme
         say "🔥 Installing #{@theme.humanize} theme"
 
+        # First run
+        # Add engine routes
+        copy_railsui_routes
+
+        # action_text
+        install_action_text
+
+        # mailers
+        update_application_mailer
+        update_railsui_mailer_layout(@theme)
+        generate_sample_mailers(@theme)
+
+        # rails ui deps
         install_theme_dependencies(@theme)
         setup_stimulus(@theme)
+
+        # view related
         copy_railsui_head(@theme)
         copy_railsui_launcher(@theme)
         copy_railsui_shared_directory(@theme)
+
+        # tailwind related
         update_tailwind_config(@theme)
         update_body_classes
 
+        # pages if present
         if Railsui.config.pages.any?
-          generate_railsui_pages_routes
+          copy_railsui_pages_routes
           copy_railsui_page_controller(@theme)
           copy_railsui_images(@theme)
           copy_railsui_pages(@theme)

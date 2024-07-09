@@ -89,8 +89,7 @@ module Railsui
     end
 
     def railsui_body_classes
-      theme = Railsui.config.theme || "default"
-      Railsui::Default::BODY_CLASSES[theme.to_sym]
+      Railsui.config.body_classes ||= ""
     end
   end
 end

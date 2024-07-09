@@ -1,0 +1,23 @@
+<%= image_tag "https://picsum.photos/600/280", alt: "Promotional image example", width: 600, height: 280 %>
+
+<%= spacer(16) %>
+
+<h1>Limited time offer!</h1>
+
+<%= spacer(16) %>
+
+<p>Lorem ipsum dolor...</p>
+
+<%= spacer(16) %>
+
+<%= email_callout do %>
+  <p>For a limited time use the coupon code <strong>50OFF</strong> for 50% off your first purchase.</p>
+<% end %>
+
+<%= spacer(16) %>
+
+<p>Lorem ipsum dolor...</p>
+
+<%= spacer(16) %>
+
+<%= email_action "Start shopping", "#", align: "center", fullwidth: true, theme: "secondary" %>

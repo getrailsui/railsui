@@ -1,0 +1,55 @@
+<p>Hey User,</p>
+
+<p>Thanks for subscribing to Rails UI. This email contains the receipt from your purchase.</p>
+
+<p>The purchase will appear as <code>RAILSUI</code> on your credit card statement for the card ending in <code>1234</code>. You may <%= link_to "update your payment information", "#" %> at any time. Below you'll find the details of your order:</p>
+
+<%= spacer(16) %>
+
+<table class="mb-0">
+  <tbody>
+    <tr>
+      <td>
+        Order #2345
+      </td>
+      <td align="right">
+        01/01/23
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <th align="left">Description</th>
+    <th align="right">Amount</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to "Rails UI", "https://railsui.com", target: :_blank %>
+        <p class="small mb-0">Renews annually. Next charge on 01/01/24.</p>
+      </td>
+      <td align="right">
+        $1,000,000.00
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="right">
+        <strong>Total: $1,000,000.00</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= spacer(16) %>
+
+<p>If you have any questions about this receipt or Rails UI, please reply to this email or reach out to our support team for help. Someone will get back to you within a few hours.</p>
+
+<%= email_action("View receipt", "#") %>

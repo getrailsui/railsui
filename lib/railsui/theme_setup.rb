@@ -1,15 +1,66 @@
 module Railsui
   module ThemeSetup
 
-    private
-
     def install_theme_dependencies(theme)
       say("Installing dependencies", :yellow)
       add_yarn_packages(theme_dependencies(theme))
     end
 
+    def generate_sample_mailers
+      say "Adding Rails UI mailers", :yellow
 
-    def generate_railsui_pages_routes
+      rails_command "generate mailer Railsui minimal promotion transactional --layout=railsui_mailer"
+      copy_sample_mailers
+    end
+
+    def copy_sample_mailers(theme)
+      source_directory = "themes/#{theme}/mail/railsui_mailer"
+      destination_directory = Rails.root.join("app/views/railsui_mailer")
+
+      if Dir.exist?(destination_directory)
+        remove_directory(destination_directory, "mailers")
+      end
+
+      directory source_directory, destination_directory, force: true
+    end
+
+    def update_railsui_mailer_layout(theme)
+      source_file = Rails.root.join('app/views/layouts/railsui_mailer.html.erb')
+      if File.exist?(source_file)
+        remove_file source_file
+      end
+
+      copy_file "themes/#{theme}/layouts/railsui_mailer.html.erb", source_file, force: true
+    end
+
+    def update_application_mailer
+      content = <<-RUBY
+      helper Railsui::MailHelper
+      RUBY
+
+      insert_into_file "#{Rails.root}/app/mailers/application_mailer.rb", "#{content}\n", after: "class ApplicationMailer < ActionMailer::Base\n"
+    end
+
+    def install_action_text
+      rails_command "action_text:install"
+    end
+
+    def copy_railsui_routes
+      content = <<-RUBY
+      if Rails.env.development?
+        mount Railsui::Engine, at: "/railsui"
+      end
+
+      # Inherits from Railsui::PageController#index
+      # To overide, add your own page#index view or change to a new root
+      # Visit the start page for Rails UI any time at /railsui/start
+      root action: :index, controller: "railsui/default"
+      RUBY
+
+      insert_into_file "#{Rails.root}/config/routes.rb", "#{content}\n", after: "Rails.application.routes.draw do\n"
+    end
+
+    def copy_railsui_pages_routes
       # Path to the routes file
       routes_file = Rails.root.join('config/routes.rb')
 
@@ -95,9 +146,9 @@ module Railsui
 
       unless File.read(layout_file).include?('<%= railsui_head %>')
         content = <<-ERB.strip_heredoc
-          <%= railsui_head %>
+            <%= railsui_head %>
         ERB
-        insert_into_file layout_file, "#{content}\n", before: '</head>'
+        insert_into_file layout_file, "\n#{content}", before: '</head>'
       end
     end
 
@@ -107,9 +158,9 @@ module Railsui
 
       unless File.read(layout_file).include?('<%= railsui_launcher if Rails.env.development? %>')
         content = <<-ERB.strip_heredoc
-          <%= railsui_launcher if Rails.env.development? %>
+            <%= railsui_launcher if Rails.env.development? %>
         ERB
-        insert_into_file layout_file, "#{content}\n", before: '</body>'
+        insert_into_file layout_file, "\n#{content}", before: '</body>'
       end
     end
 
@@ -185,9 +236,14 @@ module Railsui
 
     def copy_tailwind_config(theme)
       tailwind_config_path = Rails.root.join("tailwind.config.js")
-      return unless File.exist?(tailwind_config_path)
 
-      copy_file "themes/#{theme}/tailwind.config.js", tailwind_config_path, force: true
+      if File.exist?(tailwind_config_path)
+        say("Syncing Tailwind CSS configuration...", :green)
+        system("node merge_tailwind_config.js")
+      else
+        say("No tailwind.config.js file. Creating one...", :yellow)
+        copy_file "themes/#{theme}/tailwind.config.js", tailwind_config_path, force: true
+      end
     end
 
     private

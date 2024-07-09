@@ -6,6 +6,7 @@ module Railsui
   autoload :Colors, "railsui/colors"
   autoload :Configuration, "railsui/configuration"
   autoload :Pages, "railsui/pages"
+  autoload :Themes, "railsui/themes"
   autoload :ThemeHelper, "railsui/theme_helper"
   autoload :ThemeSetup, "railsui/theme_setup"
 

@@ -1,8 +1,9 @@
 require_dependency "railsui/application_controller"
 
 module Railsui
-  class PageController < ApplicationController
+  class DefaultController < ApplicationController
     layout "railsui/landing"
+
     def index
     end
 

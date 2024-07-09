@@ -73,7 +73,7 @@ Railsui::Engine.routes.draw do
     end
   end
 
-  scope controller: :page do
+  scope controller: :default do
     get :index
     get :start
   end

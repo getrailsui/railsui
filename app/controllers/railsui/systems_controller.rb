@@ -14,7 +14,6 @@ module Railsui
     end
 
     def components
-
     end
 
     def pages
@@ -24,6 +23,7 @@ module Railsui
     end
 
     def icons
+      # TODO: Use railsui_icon instead, include new variants
       @icons = Dir.chdir(Rails.root.join('app/assets/images/')) do
         Dir.glob("icons/solid/*.svg").sort
       end
