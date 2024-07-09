@@ -25,7 +25,7 @@ module Railsui
         config = Railsui::Configuration.load!
 
         @theme = Railsui.config.theme
-        say "🔥 Installing #{@theme.humanize} theme"
+        say "🔥 Installing #{@theme.humanize} theme."
 
         # First run
         # Add engine routes
@@ -60,6 +60,8 @@ module Railsui
           copy_railsui_pages(@theme)
         end
 
+        rails_command "db:migrate"
+
         config.save
 
 say "
@@ -87,8 +89,9 @@ MMMMMMMMMNxldk0XNWMMMMMWNKkl,.  .lKWMMMMMXo. ,xNMMMMMMMMMMMM
 MMMMMMMMMWWMMMMMMMMMMMMMMMMMW0kkKWMMMMMMMMWKONMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 "
-say "✅"
-say "Run bin/dev to boot the rails server", :yellow
+say "✅ Install complete", :green
+say "--"
+say "📌 Tip: To change your theme options modify your config/railsui.yml file or use the Rails UI configuration form. Read the docs at https://railsui.com/docs for available options."
       end
     end
   end

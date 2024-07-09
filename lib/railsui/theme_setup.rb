@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module Railsui
   module ThemeSetup
 
@@ -6,39 +8,37 @@ module Railsui
       add_yarn_packages(theme_dependencies(theme))
     end
 
-    def generate_sample_mailers
+    def generate_sample_mailers(theme)
       say "Adding Rails UI mailers", :yellow
 
-      rails_command "generate mailer Railsui minimal promotion transactional --layout=railsui_mailer"
-      copy_sample_mailers
+      rails_command "generate mailer Railsui minimal promotion transactional"
+
+      copy_sample_mailers(theme)
+
+      insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, '  layout "railsui/railsui_mailer"', after: "class RailsuiMailer < ApplicationMailer\n"
     end
 
     def copy_sample_mailers(theme)
       source_directory = "themes/#{theme}/mail/railsui_mailer"
       destination_directory = Rails.root.join("app/views/railsui_mailer")
-
-      if Dir.exist?(destination_directory)
-        remove_directory(destination_directory, "mailers")
-      end
-
       directory source_directory, destination_directory, force: true
     end
 
     def update_railsui_mailer_layout(theme)
-      source_file = Rails.root.join('app/views/layouts/railsui_mailer.html.erb')
+      source_file = Rails.root.join('app/views/layouts/railsui/railsui_mailer.html.erb')
       if File.exist?(source_file)
         remove_file source_file
       end
 
-      copy_file "themes/#{theme}/layouts/railsui_mailer.html.erb", source_file, force: true
+      copy_file "themes/#{theme}/views/layouts/railsui/railsui_mailer.html.erb", source_file, force: true
     end
 
     def update_application_mailer
-      content = <<-RUBY
+      content = <<-RUBY.strip_heredoc
       helper Railsui::MailHelper
       RUBY
 
-      insert_into_file "#{Rails.root}/app/mailers/application_mailer.rb", "#{content}\n", after: "class ApplicationMailer < ActionMailer::Base\n"
+      insert_into_file "#{Rails.root}/app/mailers/application_mailer.rb", "  #{content}\n", after: "class ApplicationMailer < ActionMailer::Base\n"
     end
 
     def install_action_text
@@ -46,18 +46,18 @@ module Railsui
     end
 
     def copy_railsui_routes
-      content = <<-RUBY
-      if Rails.env.development?
-        mount Railsui::Engine, at: "/railsui"
-      end
+  content = <<-RUBY
+  if Rails.env.development?
+    mount Railsui::Engine, at: "/railsui"
+  end
 
-      # Inherits from Railsui::PageController#index
-      # To overide, add your own page#index view or change to a new root
-      # Visit the start page for Rails UI any time at /railsui/start
-      root action: :index, controller: "railsui/default"
-      RUBY
+  # Inherits from Railsui::PageController#index
+  # To overide, add your own page#index view or change to a new root
+  # Visit the start page for Rails UI any time at /railsui/start
+  root action: :index, controller: "railsui/default"
+  RUBY
 
-      insert_into_file "#{Rails.root}/config/routes.rb", "#{content}\n", after: "Rails.application.routes.draw do\n"
+      insert_into_file "#{Rails.root}/config/routes.rb", "\n#{content}\n", after: "Rails.application.routes.draw do\n"
     end
 
     def copy_railsui_pages_routes
@@ -88,17 +88,6 @@ module Railsui
       insert_into_file(routes_file, routes_block, after: "Rails.application.routes.draw do\n")
     end
 
-    def remove_route(file, page)
-      # Read the current content of the routes file
-      route_content = File.read(file)
-
-      # Remove route associated with railsui/pages#<page>
-      route_content.gsub!(/^\s*get\s+'#{page}',\s+to:\s+'railsui\/pages##{page}'\s*$/, '')
-
-      # Write the updated content back to the file
-      File.open(file, 'w') { |f| f.write(route_content) }
-    end
-
     def copy_railsui_page_controller(theme)
       copy_file "themes/#{theme}/controllers/railsui/pages_controller.rb", "app/controllers/railsui/pages_controller.rb", force: true
     end
@@ -110,7 +99,7 @@ module Railsui
         end
       end
 
-      copy_file "themes/#{theme}/views/layouts/railsui/railsui.html.erb", "app/views/layouts/railsui.html.erb", force: true
+      copy_file "themes/#{theme}/views/layouts/railsui/railsui.html.erb", "app/views/layouts/railsui/railsui.html.erb", force: true
     end
 
     def update_body_classes
@@ -145,9 +134,9 @@ module Railsui
       return unless File.exist?(layout_file)
 
       unless File.read(layout_file).include?('<%= railsui_head %>')
-        content = <<-ERB.strip_heredoc
-            <%= railsui_head %>
-        ERB
+    content = <<-ERB
+    <%= railsui_head %>
+    ERB
         insert_into_file layout_file, "\n#{content}", before: '</head>'
       end
     end
@@ -157,9 +146,9 @@ module Railsui
       return unless File.exist?(layout_file)
 
       unless File.read(layout_file).include?('<%= railsui_launcher if Rails.env.development? %>')
-        content = <<-ERB.strip_heredoc
-            <%= railsui_launcher if Rails.env.development? %>
-        ERB
+    content = <<-ERB
+    <%= railsui_launcher if Rails.env.development? %>
+    ERB
         insert_into_file layout_file, "\n#{content}", before: '</body>'
       end
     end
@@ -176,8 +165,8 @@ module Railsui
     end
 
     def copy_railsui_shared_directory(theme)
-      theme_dir = "themes/#{theme}/images/railsui"
-      target_dir = Rails.root.join("app/assets/images/railsui")
+      theme_dir = "themes/#{theme}/views/railsui/shared"
+      target_dir = Rails.root.join("app/views/railsui/shared")
 
       remove_directory(target_dir, "shared views")
       directory theme_dir, target_dir, force: true
@@ -236,10 +225,61 @@ module Railsui
 
     def copy_tailwind_config(theme)
       tailwind_config_path = Rails.root.join("tailwind.config.js")
+      tailwind_preset = Rails.root.join("railsui.#{theme}.preset.js")
+
+      # Remove existing theme preset if present
+      if File.exist?(tailwind_preset)
+        say "Removing existing theme preset"
+        remove_file tailwind_preset
+      end
+
+      # Copy theme preset
+      copy_file "themes/#{theme}/railsui.#{theme}.preset.js", Rails.root.join("railsui.#{theme}.preset.js")
 
       if File.exist?(tailwind_config_path)
-        say("Syncing Tailwind CSS configuration...", :green)
-        system("node merge_tailwind_config.js")
+        tailwind_setup = <<-JAVASCRIPT.strip_heredoc
+          const execSync = require("child_process").execSync
+          const outputRailsUI = execSync("bundle show railsui", { encoding: "utf-8" })
+          const rails_ui_path = outputRailsUI.trim() + "/**/*.rb"
+          const rails_ui_template_path = outputRailsUI.trim() + "/**/*.html.erb"
+        JAVASCRIPT
+
+        tailwind_preset_content = <<-JAVASCRIPT.strip_heredoc
+            presets: [require("./railsui.#{theme}.preset.js")],
+        JAVASCRIPT
+
+        # Insert the setup vars at the top of the file
+        unless File.read(tailwind_config_path).include?(tailwind_setup)
+          say "Adding setup variables...", :green
+          insert_into_file tailwind_config_path.to_s, tailwind_setup + "\n", before: "module.exports = {"
+        end
+
+        # Insert the preset require statement after "module.exports = {"
+        unless File.read(tailwind_config_path).include?(tailwind_preset_content)
+          say "Adding preset require statement...", :green
+          insert_into_file tailwind_config_path.to_s, "\n  #{tailwind_preset_content}", after: "module.exports = {"
+        end
+
+        # Update the content array
+        new_content_paths = ["./app/components/**/*.html.erb","./app/components/**/*.rb", "./app/helpers/**/*.rb", "./app/javascript/**/*.js", "./app/views/**/*.html.erb"]
+
+        new_content_paths.each_with_index do |path, index|
+          unless File.read(tailwind_config_path).include?(path)
+            say "Adding content path #{path}...", :green
+            if index == new_content_paths.length - 1
+              insert_into_file tailwind_config_path.to_s, "    '#{path}'\n", after: "content: [\n"
+            else
+              insert_into_file tailwind_config_path.to_s, "    '#{path}',\n", after: "content: [\n"
+            end
+          end
+        end
+
+    tailwind_variables = <<-JAVASCRIPT
+    rails_ui_path,
+    rails_ui_template_path,
+    JAVASCRIPT
+
+        insert_into_file tailwind_config_path.to_s, tailwind_variables, after: "content: [\n"
       else
         say("No tailwind.config.js file. Creating one...", :yellow)
         copy_file "themes/#{theme}/tailwind.config.js", tailwind_config_path, force: true
@@ -247,6 +287,7 @@ module Railsui
     end
 
     private
+
 
     def remove_directory(directory_path, thing)
       if Dir.exist?(directory_path)
@@ -256,6 +297,17 @@ module Railsui
     rescue => e
       say("Error removing directory #{directory_path}: #{e.message}", :red)
       raise e
+    end
+
+    def remove_route(file, page)
+      # Read the current content of the routes file
+      route_content = File.read(file)
+
+      # Remove route associated with railsui/pages#<page>
+      route_content.gsub!(/^\s*get\s+'#{page}',\s+to:\s+'railsui\/pages##{page}'\s*$/, '')
+
+      # Write the updated content back to the file
+      File.open(file, 'w') { |f| f.write(route_content) }
     end
   end
 end
