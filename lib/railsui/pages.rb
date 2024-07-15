@@ -1,7 +1,7 @@
 module Railsui
   module Pages
     CONFIG_FILE = Railsui::Engine.root.join("config", "pages.yml")
-    VIEWS_FOLDER = Rails.root.join("app/views/railsui/page/")
+    VIEWS_FOLDER = Rails.root.join("app/views/railsui/pages/")
 
     def self.all_pages
       @all_pages ||= load_pages_config

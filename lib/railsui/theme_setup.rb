@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 
 module Railsui
   module ThemeSetup
-
     def install_theme_dependencies(theme)
       say("Installing dependencies", :yellow)
       add_yarn_packages(theme_dependencies(theme))
@@ -189,15 +190,15 @@ module Railsui
     def theme_dependencies(theme)
       case theme
       when "hound"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus"]
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
       when "shepherd"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "hotkeys-js", "photoswipe", "apexcharts", "railsui-stimulus"]
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "hotkeys-js", "photoswipe", "apexcharts", "railsui-stimulus", "railsui-tailwind-presets"]
       when "retriever"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "apexcharts", "tailwind-scrollbar", "railsui-stimulus"]
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "apexcharts", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
       when "setter"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus"]
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
       else
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus"]
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
       end
     end
 
@@ -225,69 +226,73 @@ module Railsui
 
     def copy_tailwind_config(theme)
       tailwind_config_path = Rails.root.join("tailwind.config.js")
-      tailwind_preset = Rails.root.join("railsui.#{theme}.preset.js")
-
-      # Remove existing theme preset if present
-      if File.exist?(tailwind_preset)
-        say "Removing existing theme preset"
-        remove_file tailwind_preset
-      end
-
-      # Copy theme preset
-      copy_file "themes/#{theme}/railsui.#{theme}.preset.js", Rails.root.join("railsui.#{theme}.preset.js")
 
       if File.exist?(tailwind_config_path)
+        content = File.read(tailwind_config_path)
+
+        # Setup variables
         tailwind_setup = <<-JAVASCRIPT.strip_heredoc
-          const execSync = require("child_process").execSync
-          const outputRailsUI = execSync("bundle show railsui", { encoding: "utf-8" })
-          const rails_ui_path = outputRailsUI.trim() + "/**/*.rb"
-          const rails_ui_template_path = outputRailsUI.trim() + "/**/*.html.erb"
+          const presets = require("railsui-tailwind-presets");
+          const execSync = require("child_process").execSync;
+          const outputRailsUI = execSync("bundle show railsui", { encoding: "utf-8" });
+          const rails_ui_path = outputRailsUI.trim() + "/**/*.rb";
+          const rails_ui_template_path = outputRailsUI.trim() + "/**/*.html.erb";
         JAVASCRIPT
 
-        tailwind_preset_content = <<-JAVASCRIPT.strip_heredoc
-            presets: [require("./railsui.#{theme}.preset.js")],
+        tailwind_preset_content = "  presets: [presets.#{theme}],"
+
+        # Combine the paths
+        combined_paths_js = <<-JAVASCRIPT.strip_heredoc
+          rails_ui_path,
+          rails_ui_template_path,
+          './app/components/**/*.rb',
+          './app/components/**/*.html.erb',
+          './app/helpers/**/*.rb',
+          './app/javascript/**/*.js',
+          './app/views/**/*.html.erb',
+          './app/assets/stylesheets/**/*.css'
         JAVASCRIPT
 
-        # Insert the setup vars at the top of the file
-        unless File.read(tailwind_config_path).include?(tailwind_setup)
-          say "Adding setup variables...", :green
-          insert_into_file tailwind_config_path.to_s, tailwind_setup + "\n", before: "module.exports = {"
+        # Insert setup variables if not present
+        unless content.include?(tailwind_setup)
+          puts "Adding setup variables..."
+          content.sub!("module.exports = {", "#{tailwind_setup}\nmodule.exports = {")
         end
 
-        # Insert the preset require statement after "module.exports = {"
-        unless File.read(tailwind_config_path).include?(tailwind_preset_content)
-          say "Adding preset require statement...", :green
-          insert_into_file tailwind_config_path.to_s, "\n  #{tailwind_preset_content}", after: "module.exports = {"
+        # Update or add the preset theme
+        if content =~ /presets: \[presets\..+\],/
+          content.gsub!(/presets: \[presets\..+\],/, tailwind_preset_content)
+          puts "Updating preset theme to #{theme}..."
+        else
+          puts "Adding preset theme #{theme}..."
+          content.sub!("module.exports = {", "module.exports = {\n#{tailwind_preset_content}")
         end
 
-        # Update the content array
-        new_content_paths = ["./app/components/**/*.html.erb","./app/components/**/*.rb", "./app/helpers/**/*.rb", "./app/javascript/**/*.js", "./app/views/**/*.html.erb"]
+        # Add combined paths to the content array without duplication
+        if content.include?("content: [")
+          existing_paths = content.match(/content: \[([^\]]*)\]/m)[1].split(",").map(&:strip)
+          new_paths = combined_paths_js.strip.split(",").map(&:strip)
+          all_paths = (existing_paths + new_paths).uniq.sort
 
-        new_content_paths.each_with_index do |path, index|
-          unless File.read(tailwind_config_path).include?(path)
-            say "Adding content path #{path}...", :green
-            if index == new_content_paths.length - 1
-              insert_into_file tailwind_config_path.to_s, "    '#{path}'\n", after: "content: [\n"
-            else
-              insert_into_file tailwind_config_path.to_s, "    '#{path}',\n", after: "content: [\n"
-            end
-          end
+          formatted_paths = all_paths.map { |path| "    #{path}" }.join(",\n")
+
+          content.sub!(/content: \[([^\]]*)\]/m, "content: [\n#{formatted_paths}\n  ]")
+          puts "Adding combined paths..."
+        else
+          puts "Adding content array with combined paths..."
+          content.sub!("module.exports = {", "module.exports = {\n  content: [\n#{combined_paths_js.strip.split(",").map { |path| "    #{path.strip}" }.join(",\n")}\n  ],")
         end
 
-    tailwind_variables = <<-JAVASCRIPT
-    rails_ui_path,
-    rails_ui_template_path,
-    JAVASCRIPT
-
-        insert_into_file tailwind_config_path.to_s, tailwind_variables, after: "content: [\n"
+        # Write the updated content back to the file
+        File.write(tailwind_config_path, content)
+        puts "Updated tailwind.config.js successfully."
       else
-        say("No tailwind.config.js file. Creating one...", :yellow)
+        puts "No tailwind.config.js file. Creating one..."
         copy_file "themes/#{theme}/tailwind.config.js", tailwind_config_path, force: true
       end
     end
 
     private
-
 
     def remove_directory(directory_path, thing)
       if Dir.exist?(directory_path)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Railsui
   module ThemeHelper
     def nav_link_to(name = nil, options = {}, html_options = {}, &block)

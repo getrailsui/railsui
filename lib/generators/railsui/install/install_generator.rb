@@ -11,9 +11,9 @@ module Railsui
         configuration_params = {
           application_name: "Rails UI",
           support_email: "support@example.com",
-          theme: "default",
-          colors: Railsui::Colors.theme_colors('default'),
-          pages: Railsui::Pages.get_pages('default')
+          theme: "hound",
+          colors: Railsui::Colors.theme_colors('hound'),
+          pages: Railsui::Pages.get_pages('hound')
         }
 
         config = Railsui::Configuration.new(configuration_params)
@@ -27,11 +27,12 @@ module Railsui
         @theme = Railsui.config.theme
         say "🔥 Installing #{@theme.humanize} theme."
 
-        # First run
         # Add engine routes
+        # Add a GUI for easier theme configuration
         copy_railsui_routes
 
         # action_text
+        # Needed for the rich text editor
         install_action_text
 
         # mailers
@@ -50,9 +51,10 @@ module Railsui
 
         # tailwind related
         update_tailwind_config(@theme)
+        # Each theme requires unique body classes. Instead of blowing away the layout, we'll just add the classes.
         update_body_classes
 
-        # pages if present
+        # If pages are present, copy the pages related files.
         if Railsui.config.pages.any?
           copy_railsui_pages_routes
           copy_railsui_page_controller(@theme)

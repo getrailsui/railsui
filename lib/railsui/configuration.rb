@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "open-uri"
 require "thor"
 
@@ -48,7 +50,7 @@ module Railsui
       end
 
       # remove view
-      view_path = Rails.root.join("app", "views", "railsui", "#{page}.html.erb")
+      view_path = Rails.root.join("app", "views", "railsui", "pages", "#{page}.html.erb")
 
       if File.exist?(view_path)
         File.delete(view_path)

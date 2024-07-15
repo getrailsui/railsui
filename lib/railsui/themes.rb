@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Railsui
   module Themes
     CONFIG_FILE = Railsui::Engine.root.join("config", "theme.yml")
