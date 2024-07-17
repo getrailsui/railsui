@@ -1,11 +1,11 @@
 <div>
-<%= link_to local_assigns[:path], class: "hover:bg-neutral-50/50 block px-4 md:py-3 py-1.5 md:px-8 group dark:hover:bg-neutral-800/40" do %>
-  <div class="md:prose-base prose-sm prose-neutral dark:prose-invert prose-headings:font-semibold flex items-center max-w-full">
-    <div class="flex-1">
-      <h3 class="mb-1 md:mt-4 mt-3"><%= local_assigns[:title] %></h3>
-      <p class="pt-0"><%= local_assigns[:description] %></p>
+  <%= link_to local_assigns[:path], class: "hover:bg-neutral-50/50 block px-4 md:py-3 py-1.5 md:px-8 group dark:hover:bg-neutral-800/40" do %>
+    <div class="md:prose-base prose-sm prose-neutral dark:prose-invert prose-headings:font-semibold flex items-center max-w-full">
+      <div class="flex-1">
+        <h3 class="mb-1 md:mt-4 mt-3"><%= local_assigns[:title] %></h3>
+        <p class="pt-0"><%= local_assigns[:description] %></p>
+      </div>
+      <%= icon "chevron-right", class: "size-6 text-neutral-300 group-hover:translate-x-1 group-hover:transform ease-in-out duration-200 group-hover:text-neutral-500 md:block hidden" %>
     </div>
-    <%= icon "chevron-right", classes: "size-6 text-neutral-300 group-hover:translate-x-1 group-hover:transform ease-in-out duration-200 group-hover:text-neutral-500 md:block hidden" %>
-  </div>
-<% end %>
+  <% end %>
 </div>

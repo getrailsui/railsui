@@ -4,9 +4,9 @@ require 'fileutils'
 
 module Railsui
   module ThemeSetup
-    ################################################################
-    # Assests
-    ################################################################
+
+    # Assets
+    #
     def copy_theme_javascript(theme)
       say("Adding theme-specific stimulus.js controllers", :yellow)
 
@@ -52,8 +52,11 @@ module Railsui
       destination_path = "app/assets/stylesheets/railsui"
       application_css_path = Rails.root.join("app/assets/stylesheets/application.tailwind.css")
 
+      # Empty the destination directory before copying
+      FileUtils.rm_rf(Dir.glob("#{destination_path}/*"))
+
       # Copy the directory and overwrite if theme is modified
-      directory source_path, destination_path
+      directory source_path, destination_path, force: true
 
       # Get the list of stylesheet files
       stylesheet_files = Dir.children(Rails.root.join(destination_path)).select { |f| f.end_with?(".css") }
@@ -64,18 +67,33 @@ module Railsui
         "@import \"railsui/#{File.basename(file, '.css')}\";"
       end.join("\n")
 
-      # Read the existing application.css content
+      # Read the existing application.tailwind.css content
       application_css_content = File.exist?(application_css_path) ? File.read(application_css_path) : ""
 
-      # Remove old import statements for railsui stylesheets
-      new_application_css_content = application_css_content.gsub(/@import "railsui\/.*";\n*/, "")
+      # Define the desired Tailwind structure
+      tailwind_imports_top = [
+        '@import "tailwindcss/base";',
+        '@import "tailwindcss/components";'
+      ].join("\n")
 
-      # Add the new import statements
-      new_application_css_content += "\n#{import_statements}\n"
+      tailwind_imports_bottom = '@import "tailwindcss/utilities";'
 
-      # Write the updated content back to application.css
+      # Remove old @tailwind directives and import statements for tailwindcss and railsui stylesheets
+      cleaned_css_content = application_css_content.gsub(/@tailwind\s+(base|components|utilities);\n*/, "")
+      cleaned_css_content.gsub!(/@import "tailwindcss\/.*";\n*/, "")
+      cleaned_css_content.gsub!(/@import "railsui\/.*";\n*/, "")
+
+      # Add the new import statements in the correct order
+      new_application_css_content = [
+        tailwind_imports_top,
+        cleaned_css_content.strip,  # Preserving existing content
+        import_statements,
+        tailwind_imports_bottom
+      ].join("\n\n")
+
+      # Write the updated content back to application.tailwind.css
       File.write(application_css_path, new_application_css_content)
-      say("Updated app/assets/stylesheets/application.css successfully.", :green)
+      say("Updated app/assets/stylesheets/application.tailwind.css successfully.", :green)
     end
 
     def install_theme_dependencies(theme)
@@ -145,6 +163,11 @@ module Railsui
 
     def copy_tailwind_config(theme)
       tailwind_config_path = Rails.root.join("tailwind.config.js")
+      postcss_config_path = Rails.root.join("postcss.config.js")
+
+      unless File.exist?(postcss_config_path)
+        copy_file "postcss.config.js", postcss_config_path, force: true
+      end
 
       if File.exist?(tailwind_config_path)
         content = File.read(tailwind_config_path)
@@ -293,10 +316,7 @@ module Railsui
       insert_into_file(routes_file, routes_block, after: "Rails.application.routes.draw do\n")
     end
 
-    ################################################################
     # Pages
-    ################################################################
-
     def copy_railsui_page_controller(theme)
       copy_file "themes/#{theme}/controllers/railsui/pages_controller.rb", "app/controllers/railsui/pages_controller.rb", force: true
     end

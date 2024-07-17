@@ -80,7 +80,7 @@
     data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-pink-600 hover:from-pink-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HTML code" %>
+          <%= icon "clipboard", class: "stroke-current text-white select-none", title: "Copy HTML code" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-html scrollbar"><%= html_content.to_param.strip %></code></pre>
       </div>
@@ -94,7 +94,7 @@
         <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "stroke-current text-white select-none" %>
+          <%= icon "clipboard", class: "stroke-current text-white select-none" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-erb scrollbar"><%= erb_content.to_param.strip %></code></pre>
       </div>
@@ -108,7 +108,7 @@
         <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-sky-600 hover:from-sky-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy HAML code" %>
+          <%= icon "clipboard", class: "stroke-current text-white select-none", title: "Copy HAML code" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-haml scrollbar"><%= haml_content.to_param.strip %></code></pre>
       </div>
@@ -122,7 +122,7 @@
         <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-cyan-600 hover:from-cyan-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
+          <%= icon "clipboard", class: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-bash scrollbar"><%= bash_content.to_param.strip %></code></pre>
       </div>
@@ -136,7 +136,7 @@
         <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-amber-600 hover:from-amber-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
+          <%= icon "clipboard", class: "stroke-current text-white select-none", title: "Copy JavaScript code" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-javascript scrollbar"><%= js_content.to_param.strip %></code></pre>
       </div>
@@ -150,7 +150,7 @@
         <button data-action="click->railsui-clipboard#copy"
           class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
           type="button">
-          <%= render_svg "clipboard", styles: "stroke-current text-white select-none", title: "Copy Ruby code" %>
+          <%= icon "clipboard", class: "stroke-current text-white select-none", title: "Copy Ruby code" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-ruby scrollbar"><%= ruby_content.to_param.strip %></code></pre>
       </div>

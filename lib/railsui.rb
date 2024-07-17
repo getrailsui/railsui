@@ -10,7 +10,7 @@ module Railsui
   autoload :ThemeSetup, "railsui/theme_setup"
 
   mattr_accessor :config
-  @@config = {}
+  @@config = Railsui::Configuration.new
 
   def self.clear
     run_command "rails tmp:clear"
@@ -29,7 +29,8 @@ module Railsui
   end
 
   def self.theme_logo_url
-    "https://f001.backblazeb2.com/file/railsui/themes/#{self.theme}/logo.svg"
+    theme = Railsui.config.theme
+    "https://f001.backblazeb2.com/file/railsui/themes/#{theme}/logo.svg"
   end
 
   def self.asset_url

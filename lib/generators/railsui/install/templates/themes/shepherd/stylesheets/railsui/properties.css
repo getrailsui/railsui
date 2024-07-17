@@ -1,0 +1,3 @@
+button[data-properties-target][data-active="true"] svg {
+  @apply !text-primary-600;
+}

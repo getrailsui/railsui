@@ -1,7 +1,7 @@
 <div class="md:mb-0 mb-3">
   <div class="flex items-center space-x-3">
     <div class="w-7 h-7 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex justify-center items-center shadow-inner border-2 border-neutral-50/50 dark:from-green-600 dark:to-green-700" data-controller="railsui-tooltip" data-railsui-tooltip-content-value="Page installed">
-      <%= render_svg "check", styles: "w-5 h-5 stroke-current text-white" %>
+      <%= icon "check", class: "size-5 stroke-current text-white" %>
     </div>
     <p class="font-medium md:text-base text-lg"><%= details["title"] %></p>
   </div>
@@ -24,14 +24,13 @@
                   hover:border-indigo-400 hover:bg-indigo-50/50 dark:bg-neutral-800 dark:text-neutral-100 dark:border-neutral-700
                   dark:hover:bg-indigo-600/10 dark:hover:text-indigo-300 dark:hover:border-indigo-600 flex items-center focus:ring-4 focus:ring-neutral-50 dark:focus:ring-4 dark:focus:ring-neutral-700 group transition ease-in-out duration-200", target: :_blank do %>
       <span class="sr-only">View page</span>
-      <%= icon "arrow-up-right", classes: "w-4 h-4 text-neutral-400 dark:text-neutral-200 group-hover:text-indigo-500 dark:group-hover:text-indigo-400" %>
+      <%= icon "arrow-up-right", class: "size-4 text-neutral-400 dark:text-neutral-200 group-hover:text-indigo-500 dark:group-hover:text-indigo-400" %>
     <% end %>
   <% end %>
   <div data-controller="railsui-dialog">
-    <%= link_to "#", data: { action:"click->railsui-dialog#launch" }, class: "px-3 py-2 bg-neutral-50/20 border border-neutral-300 text-neutral-600 shadow-sm rounded text-center text-sm font-medium hover:text-neutral-700 hover:border-red-500 hover:bg-red-50/50 dark:bg-neutral-800 dark:text-red-400 dark:border-red-500/30
-                  dark:hover:bg-red-500/20 dark:hover:text-red-500/50 dark:hover:border-red-500/50 block dark:focus:ring-4 dark:focus:ring-red-500/10 focus:ring-4 focus:ring-neutral-50 group transition ease-in-out duration-200" do %>
+    <%= link_to "#", data: { action:"click->railsui-dialog#launch" }, class: "px-3 py-2 bg-neutral-50/20 border border-neutral-300 text-neutral-600 shadow-sm rounded text-center text-sm font-medium hover:text-neutral-700 hover:border-red-500 hover:bg-red-50/50 dark:bg-neutral-800 dark:text-red-400 dark:border-red-500/30 dark:hover:bg-red-500/20 dark:hover:text-red-500/50 dark:hover:border-red-500/50 block dark:focus:ring-4 dark:focus:ring-red-500/10 focus:ring-4 focus:ring-neutral-50 group transition ease-in-out duration-200" do %>
       <span class="sr-only">Remove page</span>
-      <%= icon "trash", classes: "w-4 h-4 text-red-500 dark:group-hover:text-red-400", title: "Remove page" %>
+      <%= icon "trash", class: "size-4 text-red-500 dark:group-hover:text-red-400", title: "Remove page" %>
     <% end %>
 
     <dialog id="confirmDialog" data-railsui-dialog-target="dialog" class="z-50 backdrop:bg-black/80 backdrop:p-0 open:animate-fade-in max-w-lg rounded-xl border bg-white p-6 mx-auto dark:bg-neutral-800 dark:border-neutral-700">

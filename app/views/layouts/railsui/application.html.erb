@@ -51,19 +51,17 @@
                 <%= yield %>
               </div>
               <% if content_for?(:component_nav).present? %>
-              <div class="col-span-3 sticky top-2">
-                <%= yield :component_nav %>
-              </div>
+                <div class="col-span-3 sticky top-2">
+                  <%= yield :component_nav %>
+                </div>
               <% end %>
             </div>
           </div>
 
-          <%= render "railsui/shared/footer" %>
           <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
         </div>
       </div>
     </div>
-
 
     <%= yield :demo_scripts %>
   </body>

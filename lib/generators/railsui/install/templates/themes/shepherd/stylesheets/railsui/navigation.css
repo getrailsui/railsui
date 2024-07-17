@@ -1,0 +1,16 @@
+.nav-link {
+  @apply font-heading md:text-[15px] text-base md:px-4 py-4 text-zinc-800 focus:text-primary-600 md:inline-block block relative font-normal hover:transition hover:duration-300 hover:ease-in-out hover:text-zinc-950 dark:text-white dark:hover:text-zinc-300 dark:focus:text-white;
+}
+
+.nav-link-active {
+  @apply text-primary-600 hover:text-primary-600 relative hover:transition hover:duration-300 hover:ease-in-out dark:hover:text-primary-400 dark:text-primary-500/95;
+}
+
+/* Dark */
+.nav-link-dark {
+  @apply rounded-full focus:text-white md:inline-block block relative md:text-[15px] text-base hover:transition hover:duration-300 hover:ease-in-out text-zinc-200 hover:text-zinc-100 md:hover:bg-zinc-800 md:py-2 py-4 md:px-4;
+}
+
+.nav-link-dark.nav-link-active {
+  @apply md:py-2 py-2 px-4 bg-primary-500 hover:bg-primary-600 focus:ring-primary-600/20 text-white;
+}

@@ -1,0 +1,45 @@
+@layer components {
+  .btn {
+    @apply rounded-full px-5 py-[11px] text-white ring-4 ring-transparent text-sm transition-colors ease-in-out duration-300 font-medium font-heading border border-transparent disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed flex justify-center text-center items-center;
+
+    &.btn-lg {
+      @apply py-3 px-5 text-lg;
+    }
+
+    &.btn-sm {
+      @apply py-1 px-3 text-xs;
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 focus:ring-secondary-100/70 hover:bg-secondary-600 dark:focus:ring-secondary-500/30;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 focus:ring-primary-100/70 hover:bg-primary-600 dark:focus:ring-primary-500/30;
+  }
+
+  .btn-dark {
+    @apply bg-zinc-800 hover:bg-zinc-900 focus:ring-zinc-800/20 text-white dark:hover:text-zinc-100 dark:hover:bg-zinc-700 dark:focus:ring-zinc-800;
+  }
+
+  .btn-light {
+    @apply bg-zinc-200/90 hover:bg-zinc-300/80 focus:ring-zinc-300/20 text-zinc-700;
+  }
+
+  .btn-white {
+    @apply bg-white hover:bg-zinc-50/50 hover:shadow-none shadow-sm text-zinc-800/80 border border-zinc-300/90 shadow-zinc-300/20 focus:ring-4 hover:border-zinc-400/80 focus:ring-zinc-100/70 focus:border-zinc-300/90 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/50 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80;
+  }
+
+  .btn-neutral {
+    @apply bg-zinc-100 text-zinc-700 focus:ring-zinc-50 hover:bg-zinc-200 border border-zinc-300;
+  }
+
+  .btn-transparent {
+    @apply bg-transparent text-zinc-700 focus:ring-zinc-200/80 hover:bg-zinc-100/90 dark:text-zinc-200 dark:focus:ring-zinc-600/80 dark:hover:bg-zinc-800/70;
+  }
+
+  .btn-link {
+    @apply text-zinc-700 font-heading focus:ring-transparent hover:text-zinc-800 dark:hover:text-zinc-200 underline dark:text-zinc-50;
+  }
+}

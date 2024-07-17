@@ -2,19 +2,19 @@
   <div>
     <div class="flex flex-wrap items-center gap-4 justify-between py-2 md:py-1 w-full">
       <div class="flex items-center gap-2 md:mb-3">
-        <%= link_to main_app.root_path, class: "size-6 border border-transparent hover:border-neutral-300 dark:hover:border-neutral-500 rounded-md flex items-center justify-center hover:transition hover:ease-in-out hover:duration-300 relative -left-1", data: { controller: "tooltip", tooltip_content_value: "Back to app" } do %>
+        <%= link_to main_app.root_path, class: "size-6 border border-transparent hover:border-neutral-300 dark:hover:border-neutral-500 rounded-md flex items-center justify-center hover:transition hover:ease-in-out hover:duration-300 relative -left-1", data: { controller: "railsui-tooltip", railsui_tooltip_content_value: "Back to app" } do %>
 
-          <%= icon "chevron-left", classes: "size-4 stroke-neutral-400 group-hover:stroke-neutral-600" %>
+          <%= icon "chevron-left", class: "size-4 stroke-neutral-400 group-hover:stroke-neutral-600" %>
           <span class="sr-only">Back to app</span>
         <% end %>
 
         <%= link_to params[:controller].include?('systems') ? systems_path : root_path, class: "relative -left-0.5" do %>
-          <%= icon "railsui-logo", path: "railsui-logo.svg", classes: "fill-current text-neutral-900 w-20 h-auto dark:text-neutral-50" %>
+          <%= icon "railsui-logo", custom_path: "/railsui-logo.svg", class: "fill-current text-neutral-900 w-20 h-auto dark:text-neutral-50" %>
         <% end %>
       </div>
 
       <button role="toggle nav" class="md:hidden size-10 focus:ring-neutral-300/20 focus:ring-4 rounded-lg dark:focus:ring-neutral-600 flex items-center justify-center flex-shrink-0" data-action="click->railsui-toggle#toggle">
-        <%= render_svg "menu", styles: "stroke-current w-7 h-7 text-neutral-600 dark:text-neutral-300" %>
+        <%= icon "menu", custom_path: "/menu.svg", class: "stroke-current w-7 h-7 text-neutral-600 dark:text-neutral-300" %>
       </button>
     </div>
 
@@ -28,7 +28,7 @@
 
           <a href="#theme" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Template</a>
 
-          <% if Railsui.theme.present? %>
+          <% if Railsui.config.theme.present? %>
             <a href="#color" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Color</a>
 
             <a href="#pages" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Pages</a>

@@ -2,7 +2,7 @@
 <div data-controller="dropdown" class="relative inline-block">
   <div class="rui-launcher">
     <button type="button" data-turbo="false" data-action="click->dropdown#toggle click@window->dropdown#hide">
-      <%= icon "r", path: "r.svg", classes: "rui-r" %>
+      <%= icon "r", custom_path: "/r.svg", class: "rui-r" %>
     </button>
     <nav class="hidden" data-dropdown-target="menu">
       <ul>
