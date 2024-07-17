@@ -9,19 +9,19 @@
       <!-- Utility nav-->
       <div class="flex lg:flex-row flex-row-reverse flex-wrap items-center lg:space-x-6 lg:w-auto w-full justify-between">
         <button type="button" class="btn btn-white lg:order-1 order-2 py-2 lg:hidden block peer group">
-          <%%= icon "magnifying-glass", classes: "stroke-current dark:text-zinc-400 w-6 h-6 dark:group-focus:text-primary-500/90" %>
+          <%= icon "magnifying-glass", class: "stroke-current dark:text-zinc-400 w-6 h-6 dark:group-focus:text-primary-500/90" %>
         </button>
         <form action="#" class="lg:block hidden peer-focus:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto">
           <input type="search" class="form-input lg:w-auto w-full" placeholder="Search" />
         </form>
         <div class="flex items-center lg:justify-start justify-center lg:order-1 order-2">
-          <div data-controller="dropdown" class="relative">
-            <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="trigger"
+          <div data-controller="railsui-dropdown" class="relative">
+            <button data-action="click->railsui-dropdown#toggle click@window->dropdown#hide"
               type="button" class="btn btn-white rounded-l-full rounded-r-none border-r-0 group py-2">
-              <%%= icon "adjustments-horizontal", classes: "text-zinc-600 w-6 h-6 stroke-current group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500" %>
+              <%= icon "adjustments-horizontal", class: "text-zinc-600 w-6 h-6 stroke-current group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500" %>
             </button>
 
-            <ul data-dropdown-target="menu"
+            <ul data-railsui-dropdown-target="menu"
               class="hidden transition transform md:origin-top-right origin-top-left absolute lef-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 w-[200px] z-50 py-1 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[15px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
               data-transition-enter-active="transition ease-out duration-300"
               data-transition-enter-from="transform opacity-0 scale-95"
@@ -36,7 +36,7 @@
                     <input id="sort_ascending" type="radio" class="form-input-radio" name="sort" />
                     <span class="pl-2">Ascending</span>
                   </div>
-                  <%%= icon "bars-arrow-up", classes: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                  <%= icon "bars-arrow-up", class: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
                 </label>
               </li>
               <li>
@@ -48,42 +48,42 @@
                     <span class="pl-2">Descending</span>
                   </div>
 
-                  <%%= icon "bars-arrow-down", classes: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                  <%= icon "bars-arrow-down", class: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
                 </label>
               </li>
             </ul>
           </div>
           <button type="button" class="btn py-2 rounded-none btn-white group">
-            <%%= icon "printer", classes: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+            <%= icon "printer", class: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
           </button>
           <button type="button" class="btn btn-white group rounded-r-full rounded-l-none border-l-0 py-2">
-            <%%= icon "arrow-down-tray", classes: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+            <%= icon "arrow-down-tray", class: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
           </button>
         </div>
       </div>
 
-      <%%= link_to "Create booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "btn btn-primary md:mt-0 mt-6" %>
+      <%= link_to "Create booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "btn btn-primary md:mt-0 mt-6" %>
     </div>
   </div>
 
-  <div class="my-6 font-heading" data-controller="tabs"
-    data-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-zinc-700 dark:text-white dark:border-primary-400 rounded-t">
+  <div class="my-6 font-heading" data-controller="railsui-tabs"
+    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-zinc-700 dark:text-white dark:border-primary-400 rounded-t">
 
     <div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-100 dark:border-zinc-600">
       <nav role="navigation" class="-mb-px">
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+        <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
           class="py-4 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-zinc-900">Upcoming</a>
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+        <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
           class="py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap">Complete</a>
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+        <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
           class="py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap">Canceled</a>
-        <a href="#" data-tabs-target="tab" data-action="click->tabs#change"
+        <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
           class="py-4 px-4 bg-white dark:bg-zinc-900 inline-block whitespace-nowrap">All</a>
       </nav>
     </div>
 
     <!-- Upcoming Bookings -->
-    <div class="p-4" data-tabs-target="panel">
+    <div class="p-4" data-railsui-tabs-target="panel">
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm min-w-full border-collapse">
           <thead>
@@ -107,7 +107,7 @@
 
           <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
 
-           <%% [{
+            <% [{
               status: "Upcoming",
               guest: "Dannie White",
               guest_count: "3 adults, 1 child",
@@ -220,38 +220,38 @@
               <tr class="md:whitespace-normal whitespace-nowrap">
                 <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
                   <span
-                    class="text-xs font-medium rounded-full font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200"><%%= booking[:status] %></span>
+                    class="text-xs font-medium rounded-full font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200"><%= booking[:status] %></span>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <p><%%= link_to booking[:guest], "#" %></p>
-                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                  <p><%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%= booking[:guest_count] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:arrival] %>
+                  <%= booking[:arrival] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:departure] %>
+                  <%= booking[:departure] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <p><%%= booking[:date] %></p>
-                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                  <p><%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%= booking[:time] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <%%= link_to booking[:property], "#" %>
+                  <%= link_to booking[:property], "#" %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:price] %>
+                  <%= booking[:price] %>
                 </td>
                 <td class="align-top pt-2">
-                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                  <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
-                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+                      data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -261,26 +261,26 @@
                       data-transition-enter-to="transform opacity-100 scale-100"
                       data-transition-leave-active="transition ease-in duration-100"
                       data-transition-leave-from="transform opacity-100 scale-100"
-                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
-                        <%% end %>
+                          <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <% end %>
                       </li>
                     </ul>
                   </div>
                 </td>
               </tr>
-            <%% end %>
+            <% end %>
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- Completed Bookings -->
-    <div class="hidden p-4" data-tabs-target="panel">
-       <div class="overflow-x-auto">
+    <div class="hidden p-4" data-railsui-tabs-target="panel">
+      <div class="overflow-x-auto">
         <table class="w-full text-left text-sm min-w-full border-collapse">
           <thead>
             <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
@@ -303,7 +303,7 @@
 
           <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
 
-        <%% [{
+            <% [{
               status: "Complete",
               guest: "James Anderson",
               guest_count: "2 adults, 1 child",
@@ -416,38 +416,38 @@
 
               <tr class="md:whitespace-normal whitespace-nowrap">
                 <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
-                  <span class="text-xs font-medium rounded-full font-sans bg-emerald-50 text-emerald-600  px-2 py-1 tracking-tight dark:bg-emerald-500/20 dark:text-emerald-200"><%%= booking[:status] %></span>
+                  <span class="text-xs font-medium rounded-full font-sans bg-emerald-50 text-emerald-600  px-2 py-1 tracking-tight dark:bg-emerald-500/20 dark:text-emerald-200"><%= booking[:status] %></span>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <p><%%= link_to booking[:guest], "#" %></p>
-                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                  <p><%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%= booking[:guest_count] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:arrival] %>
+                  <%= booking[:arrival] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:departure] %>
+                  <%= booking[:departure] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <p><%%= booking[:date] %></p>
-                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                  <p><%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%= booking[:time] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <%%= link_to booking[:property], "#" %>
+                  <%= link_to booking[:property], "#" %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:price] %>
+                  <%= booking[:price] %>
                 </td>
                 <td class="align-top pt-2">
-                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                  <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
-                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+                      data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -457,26 +457,26 @@
                       data-transition-enter-to="transform opacity-100 scale-100"
                       data-transition-leave-active="transition ease-in duration-100"
                       data-transition-leave-from="transform opacity-100 scale-100"
-                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
-                        <%% end %>
+                          <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <% end %>
                       </li>
                     </ul>
                   </div>
                 </td>
               </tr>
-            <%% end %>
+            <% end %>
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- Cancelled bookings -->
-    <div class="hidden p-4" data-tabs-target="panel">
-       <div class="overflow-x-auto">
+    <div class="hidden p-4" data-railsui-tabs-target="panel">
+      <div class="overflow-x-auto">
         <table class="w-full text-left text-sm min-w-full border-collapse">
           <thead>
             <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">
@@ -499,7 +499,7 @@
 
           <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
 
-        <%% [{
+            <% [{
               status: "Canceled",
               guest: "Sophie Walker",
               guest_count: "2 adults",
@@ -535,38 +535,38 @@
 
               <tr class="md:whitespace-normal whitespace-nowrap">
                 <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
-                  <span class="text-xs font-medium rounded-full font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200"><%%= booking[:status] %></span>
+                  <span class="text-xs font-medium rounded-full font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200"><%= booking[:status] %></span>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <p><%%= link_to booking[:guest], "#" %></p>
-                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                  <p><%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%= booking[:guest_count] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:arrival] %>
+                  <%= booking[:arrival] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:departure] %>
+                  <%= booking[:departure] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <p><%%= booking[:date] %></p>
-                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                  <p><%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%= booking[:time] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <%%= link_to booking[:property], "#" %>
+                  <%= link_to booking[:property], "#" %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:price] %>
+                  <%= booking[:price] %>
                 </td>
                 <td class="align-top pt-2">
-                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                  <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
-                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+                      data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -576,25 +576,25 @@
                       data-transition-enter-to="transform opacity-100 scale-100"
                       data-transition-leave-active="transition ease-in duration-100"
                       data-transition-leave-from="transform opacity-100 scale-100"
-                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
-                        <%% end %>
+                          <%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <% end %>
                       </li>
                     </ul>
                   </div>
                 </td>
               </tr>
-            <%% end %>
+            <% end %>
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- All Bookings -->
-    <div class="hidden p-4" data-tabs-target="panel">
+    <div class="hidden p-4" data-railsui-tabs-target="panel">
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm min-w-full border-collapse">
           <thead>
@@ -618,7 +618,7 @@
 
           <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
 
-          <%% [
+            <% [
               {
                 status: "Upcoming",
                 guest: "Dannie White",
@@ -875,44 +875,44 @@
 
               <tr class="md:whitespace-normal whitespace-nowrap">
                 <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
-                  <%% if booking[:status] == "Upcoming" %>
-                    <span class="text-xs font-medium rounded-full font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200"><%%= booking[:status] %></span>
-                  <%% elsif booking[:status] == "Complete" %>
-                    <span class="text-xs font-medium rounded-full font-sans bg-emerald-50 text-emerald-600  px-2 py-1 tracking-tight dark:bg-emerald-500/20 dark:text-emerald-200"><%%= booking[:status] %></span>
-                  <%% else %>
-                    <span class="text-xs font-medium rounded-full font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200"><%%= booking[:status] %></span>
-                  <%% end %>
+                  <% if booking[:status] == "Upcoming" %>
+                    <span class="text-xs font-medium rounded-full font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200"><%= booking[:status] %></span>
+                  <% elsif booking[:status] == "Complete" %>
+                    <span class="text-xs font-medium rounded-full font-sans bg-emerald-50 text-emerald-600  px-2 py-1 tracking-tight dark:bg-emerald-500/20 dark:text-emerald-200"><%= booking[:status] %></span>
+                  <% else %>
+                    <span class="text-xs font-medium rounded-full font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200"><%= booking[:status] %></span>
+                  <% end %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <p><%%= link_to booking[:guest], "#" %></p>
-                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%%= booking[:guest_count] %></small></p>
+                  <p><%= link_to booking[:guest], "#" %></p>
+                  <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%= booking[:guest_count] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:arrival] %>
+                  <%= booking[:arrival] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:departure] %>
+                  <%= booking[:departure] %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <p><%%= booking[:date] %></p>
-                  <p><small class="text-zinc-500"><%%= booking[:time] %></small></p>
+                  <p><%= booking[:date] %></p>
+                  <p><small class="text-zinc-500"><%= booking[:time] %></small></p>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100">
-                  <%%= link_to booking[:property], "#" %>
+                  <%= link_to booking[:property], "#" %>
                 </td>
                 <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
-                  <%%= booking[:price] %>
+                  <%= booking[:price] %>
                 </td>
                 <td class="align-top pt-2">
-                  <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+                  <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
-                      data-action="click->dropdown#toggle click@window->dropdown#hide">
+                      data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -922,18 +922,18 @@
                       data-transition-enter-to="transform opacity-100 scale-100"
                       data-transition-leave-active="transition ease-in duration-100"
                       data-transition-leave-from="transform opacity-100 scale-100"
-                      data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                      data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
-                        <%% end %>
+                          <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                        <% end %>
                       </li>
                     </ul>
                   </div>
                 </td>
               </tr>
-            <%% end %>
+            <% end %>
           </tbody>
         </table>
       </div>
@@ -944,37 +944,37 @@
   <nav aria-label="Page navgiation" class="text-zinc-500 sm:text-sm text-base font-medium dark:text-zinc-300">
     <ul class="flex flex-wrap items-center sm:justify-between justify-center">
       <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
-        <%%= link_to "Previous", "#", class: "btn btn-white" %>
+        <%= link_to "Previous", "#", class: "btn btn-white" %>
       </li>
       <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
         <li>
-          <%%= link_to "1", "#", class: "py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30" %>
+          <%= link_to "1", "#", class: "py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30" %>
         </li>
         <li>
-          <%%= link_to "2", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+          <%= link_to "2", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
         </li>
         <li>
-          <%%= link_to "3", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+          <%= link_to "3", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
         </li>
         <li>
           <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
         </li>
         <li>
-          <%%= link_to "8", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+          <%= link_to "8", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
         </li>
         <li>
-          <%%= link_to "9", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+          <%= link_to "9", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
         </li>
         <li>
-          <%%= link_to "10", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
+          <%= link_to "10", "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200" %>
         </li>
 
       </div>
       <li class="flex-1 flex justify-end items-center">
-        <%%= link_to "Next", "#", class: "btn btn-white" %>
+        <%= link_to "Next", "#", class: "btn btn-white" %>
       </li>
     </ul>
   </nav>
 </div>
 
-<%%= render "shared/footer" %>
+<%= render "railsui/shared/footer" %>

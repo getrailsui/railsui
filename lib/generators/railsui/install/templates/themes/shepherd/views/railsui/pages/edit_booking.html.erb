@@ -2,7 +2,7 @@
   <nav class="font-heading text-sm mb-6 text-zinc-700 dark:text-zinc-200">
     <ul class="flex items-center space-x-3">
       <li class="after:content-['/'] after:relative after:text-zinc-300 after:left-1 dark:after:text-zinc-500">
-        <%%= link_to "Bookings", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
+        <%= link_to "Bookings", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
       </li>
       <li>
         <p>Edit Booking</p>
@@ -23,7 +23,6 @@
         <option value="3">The Mountain Majesty</option>
       </select>
     </div>
-
 
     <h3 class="mb-6 pt-10 text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Contact Information</h3>
 
@@ -49,12 +48,12 @@
     <div class="form-group">
       <label for="booking[checkin_checkout]" class="form-label form-label-required">Check-in/Check-out</label>
       <a role="button"
-        data-controller="date-range-picker"
+        data-controller="railsui-date-range-picker"
 
-        class="btn btn-white space-x-3 inline-flex items-center">
-        <%%= icon "calendar-days", classes: "w-5 h-5 text-zinc-500 dark:text-zinc-300 flex-shrink-0" %>
-        <span data-date-range-picker-target="label">Select a date range</span>
-        <input type="hidden" data-date-range-picker-target="input">
+        class="btn btn-white gap-3 inline-flex items-center">
+        <%= icon "calendar-days", class: "size-5 text-zinc-500 dark:text-zinc-300 flex-shrink-0" %>
+        <span data-railsui-date-range-picker-target="label">Select a date range</span>
+        <input type="hidden" data-railsui-date-range-picker-target="input">
       </a>
     </div>
 
@@ -66,7 +65,7 @@
           <input id="booking[mobile_phone]" type="tel" class="form-input w-full peer pl-14" value="+1658675309">
           <span
             class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-500/80">
-            <%%= icon "device-phone-mobile", classes: "w-5 h-5" %>
+            <%= icon "device-phone-mobile", class: "size-5" %>
           </span>
         </div>
         <p class="text-xs text-zinc-500 mt-2">Eg. +12015502123</p>
@@ -138,7 +137,7 @@
     </div>
 
     <div class="grid grid-cols-2 gap-6 pt-10">
-      <%%= link_to "Go Back", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "btn btn-white text-center" %>
+      <%= link_to "Go Back", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "btn btn-white text-center" %>
       <input type="submit" value="Update booking" class="btn btn-primary w-full">
     </div>
   </form>

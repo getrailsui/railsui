@@ -31,6 +31,9 @@ module Railsui
         # Add a GUI for easier theme configuration
         copy_railsui_routes
 
+        # rails ui icons
+        install_railsui_icon
+
         # action_text
         # Needed for the rich text editor
         install_action_text
@@ -44,6 +47,10 @@ module Railsui
         install_theme_dependencies(@theme)
         setup_stimulus(@theme)
 
+        # themed assets
+        copy_theme_javascript(@theme)
+        copy_theme_stylesheets(@theme)
+
         # view related
         copy_railsui_head(@theme)
         copy_railsui_launcher(@theme)
@@ -51,7 +58,7 @@ module Railsui
 
         # tailwind related
         update_tailwind_config(@theme)
-        # Each theme requires unique body classes. Instead of blowing away the layout, we'll just add the classes.
+        # Each theme requires unique body classes. Instead of blowing away the layout, we'll just add the classes to the config.
         update_body_classes
 
         # If pages are present, copy the pages related files.

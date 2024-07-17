@@ -29,6 +29,7 @@ module Railsui
       initializer "railsui.assets.precompile" do |app|
         app.config.assets.paths << root.join("builds").to_s
         app.config.assets.precompile << "railsui/application.css"
+        app.config.assets.precompile << %w[*.svg]
       end
    end
  end

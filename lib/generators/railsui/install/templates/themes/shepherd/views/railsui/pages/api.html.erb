@@ -1,103 +1,103 @@
-<%% content_for :header do %>
-<div class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b border-zinc-300/80 relative z-50 dark:border-zinc-700/80" data-controller="nav">
-  <div class="container mx-auto md:flex items-center justify-between">
-    <div class="md:flex items-center md:space-x-4 md:flex-1">
-      <div class="md:flex items-center justify-between w-full md:space-x-3">
-        <div class="flex items-center justify-between md:w-auto w-full">
-          <%%= link_to (defined?(admin_dashboard_path) ? admin_dashboard_path : root_path) do %>
-            <h1>
-              <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
+<% content_for :header do %>
+  <div class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b border-zinc-300/80 relative z-50 dark:border-zinc-700/80" data-controller="nav">
+    <div class="container mx-auto md:flex items-center justify-between">
+      <div class="md:flex items-center md:space-x-4 md:flex-1">
+        <div class="md:flex items-center justify-between w-full md:space-x-3">
+          <div class="flex items-center justify-between md:w-auto w-full">
+            <%= link_to (defined?(admin_dashboard_path) ? admin_dashboard_path : root_path) do %>
+              <h1>
+                <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
                 class="text-zinc-900 dark:text-white fill-current w-10 h-10">
-                <path fill-rule="evenodd" clip-rule="evenodd"
+                  <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M42 0C45.3137 0 48 2.68629 48 6V42C48 45.3137 45.3137 48 42 48H6C2.68629 48 0 45.3137 0 42V6C0 2.68629 2.68629 0 6 0H42ZM21.5033 40.9481C21.7923 40.9918 22.026 40.7078 22.026 40.4156V34.1876C22.026 31.1727 18.7622 29.2883 16.1511 30.7958C15.207 31.3409 13.9997 31.0174 13.4545 30.0732C12.9094 29.1291 13.2329 27.9218 14.1771 27.3767C16.8164 25.8529 16.8164 22.0433 14.1771 20.5195C13.2329 19.9744 12.9094 18.7671 13.4545 17.8229C13.9997 16.8788 15.207 16.5553 16.1511 17.1004C18.7622 18.6079 22.026 16.7235 22.026 13.7085V12.1819C22.026 9.30521 19.4534 7.03474 16.8446 8.24694C10.9466 10.9875 6.85714 16.9642 6.85714 23.8961C6.85714 32.5373 13.2121 39.6941 21.5033 40.9481ZM41.3507 23.8961C41.3507 32.6033 34.8983 39.8034 26.5142 40.9758C26.2134 41.0178 25.974 40.7193 25.974 40.4156V34.0722C25.974 31.0759 29.2176 29.2032 31.8125 30.7013C32.7567 31.2464 33.964 30.9229 34.5091 29.9788C35.0542 29.0346 34.7307 27.8273 33.7865 27.2822C31.2199 25.8004 31.2199 22.0958 33.7865 20.614C34.7307 20.0689 35.0542 18.8616 34.5091 17.9174C33.964 16.9732 32.7567 16.6497 31.8125 17.1949C29.2176 18.693 25.974 16.8203 25.974 13.824V12.1564C25.974 9.26895 28.5381 6.9748 31.1714 8.15925C37.1723 10.8585 41.3507 16.8893 41.3507 23.8961Z" />
-              </svg>
-              <span class="sr-only">Shepherd</span>
-            </h1>
-          <%% end %>
+                </svg>
+                <span class="sr-only">Shepherd</span>
+              </h1>
+            <% end %>
 
-          <button type="button" data-action="click->nav#toggle"
-            class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
-            role="Mobile navigation toggle">
-            <%%= icon "bars-3-center-left", classes: "stroke-current w-8 h-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
-          </button>
-        </div>
+            <button type="button" data-action="click->nav#toggle"
+              class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+              role="Mobile navigation toggle">
+              <%= icon "bars-3-center-left", class: "stroke-current w-8 h-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
+            </button>
+          </div>
 
-        <div data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200"
+          <div data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200"
           data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100"
           data-transition-leave-from="opacity-100 scale-100"
           data-transition-leave-active="transition ease-in duration-200" data-transition-leave-to="opacity-0 scale-95"
           class="origin-top-left md:flex items-center hidden w-full">
-          <nav role="primary navigation" class="flex-1">
-            <ul class="md:flex items-center md:space-y-0 space-y-4">
-              <div class="flex-1 md:flex items-center">
-                <li>
-                  <%%= nav_link_to "API Reference", "#", class: "nav-link" %>
-                </li>
-                <li>
-                  <%%= nav_link_to "Guides", "#", class: "nav-link" %>
-                </li>
-                <li>
-                  <%%= nav_link_to "Changelog", (defined?(admin_changelog_path) ? admin_changelog_path : "#"), class: "nav-link" %>
-                </li>
-              </div>
-
-              <li class="md:mx-2">
-                <div class="relative">
-                  <%%= icon "magnifying-glass", classes: "stroke-current w-5 h-5 text-zinc-300 dark:text-zinc-600 absolute left-3 top-[11px]" %>
-                  <input type="text" placeholder="Search" class="form-input pl-9 w-full"
-                    data-action="focus->search#toggle" data-search-target="anchor" />
-                  <span class="absolute right-4 top-3 rounded text-xs font-semibold text-zinc-600 dark:text-zinc-500">
-                    <kbd>&#8984;K</kbd>
-                  </span>
+            <nav role="primary navigation" class="flex-1">
+              <ul class="md:flex items-center md:space-y-0 space-y-4">
+                <div class="flex-1 md:flex items-center">
+                  <li>
+                    <%= nav_link_to "API Reference", "#", class: "nav-link" %>
+                  </li>
+                  <li>
+                    <%= nav_link_to "Guides", "#", class: "nav-link" %>
+                  </li>
+                  <li>
+                    <%= nav_link_to "Changelog", (defined?(admin_changelog_path) ? admin_changelog_path : "#"), class: "nav-link" %>
+                  </li>
                 </div>
-              </li>
-              <li class="md:mx-2">
-                <div data-controller="dropdown" class="relative">
-                  <button class="btn btn-white md:px-3"
-                    data-action="click->dropdown#toggle click@window->dropdown#hide">
-                    <%%= icon "sun", classes: "text-zinc-700 dark:text-zinc-400 lg:w-5 lg:h-5 w-7 h-7 stroke-current" %>
-                  </button>
-                  <ul
+
+                <li class="md:mx-2">
+                  <div class="relative">
+                    <%= icon "magnifying-glass", classes: "stroke-current w-5 h-5 text-zinc-300 dark:text-zinc-600 absolute left-3 top-[11px]" %>
+                    <input type="text" placeholder="Search" class="form-input pl-9 w-full"
+                    data-action="focus->search#toggle" data-search-target="anchor" />
+                    <span class="absolute right-4 top-3 rounded text-xs font-semibold text-zinc-600 dark:text-zinc-500">
+                      <kbd>&#8984;K</kbd>
+                    </span>
+                  </div>
+                </li>
+                <li class="md:mx-2">
+                  <div data-controller="railsui-dropdown" class="relative">
+                    <button class="btn btn-white md:px-3"
+                    data-action="click->railsui-dropdown#toggle click@window->dropdown#hide">
+                      <%= icon "sun", class: "text-zinc-700 dark:text-zinc-400 lg:w-5 lg:h-5 w-7 h-7 stroke-current" %>
+                    </button>
+                    <ul
                     class="hidden origin-top-right absolute mt-3 md:top-10 top-12 md:right-0 md:left-auto left-0 shadow-xl rounded-xl py-1 md:w-[160px] w-[320px] shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600 font-heading"
                     data-transition-enter-active="transition ease-out duration-100"
                     data-transition-enter-from="transform opacity-0 scale-95"
                     data-transition-enter-to="transform opacity-100 scale-100"
                     data-transition-leave-active="transition ease-in duration-100"
                     data-transition-leave-from="transform opacity-100 scale-100"
-                    data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
-                    <li>
-                      <%%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "dark" } do %>
-                        <%%= icon "moon", classes: "w-5 h-4 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
-                        <span>Dark</span>
-                      <%% end %>
-                    </li>
-                    <li>
-                      <%%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "light" } do %>
-                        <%%= icon "sun", classes: "w-5 h-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
-                        <span>Light</span>
-                      <%% end %>
-                    </li>
+                    data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
+                      <li>
+                        <%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "dark" } do %>
+                          <%= icon "moon", classes: "w-5 h-4 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
+                          <span>Dark</span>
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "light" } do %>
+                          <%= icon "sun", class: "w-5 h-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
+                          <span>Light</span>
+                        <% end %>
+                      </li>
 
-                    <li>
-                      <%%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "system" } do %>
-                        <%%= icon "computer-desktop", classes: "w-5 h-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
-                        <span>System</span>
-                      <%% end %>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+                      <li>
+                        <%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "system" } do %>
+                          <%= icon "computer-desktop", class: "w-5 h-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
+                          <span>System</span>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
 
-              <li>
-                <div data-controller="dropdown" class="md:flex relative">
-                  <button data-action="click->dropdown#toggle click@window->dropdown#hide"
-                    data-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
-                    focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
-                    dark:focus:border-zinc-300/90">
-                    <%%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none", alt: "Justin Smith" %>
-                  </button>
+                <li>
+                  <div data-controller="railsui-dropdown" class="md:flex relative">
+                    <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
+                      data-railsui-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
+                      focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
+                      dark:focus:border-zinc-300/90">
+                      <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none", alt: "Justin Smith" %>
+                    </button>
 
-                  <ul data-dropdown-target="menu"
+                    <ul data-railsui-dropdown-target="menu"
                     class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-4 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[15px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading space-y-3"
                     data-transition-enter-active="transition ease-out duration-300"
                     data-transition-enter-from="transform opacity-0 scale-95"
@@ -105,37 +105,37 @@
                     data-transition-leave-active="transition ease-in duration-300"
                     data-transition-leave-from="transform opacity-100 scale-100"
                     data-transition-leave-to="transform opacity-0 scale-95">
-                     <li>
-                      <%%= link_to "Inbox", (defined?(admin_inbox_path) ? admin_inbox_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
-                    </li>
+                      <li>
+                        <%= link_to "Inbox", (defined?(admin_inbox_path) ? admin_inbox_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      </li>
 
-                    <li>
-                      <%%= link_to "Manage properties", (defined?(admin_properties_path) ? admin_properties_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
-                    </li>
+                      <li>
+                        <%= link_to "Manage properties", (defined?(admin_properties_path) ? admin_properties_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      </li>
 
-                    <li>
-                      <%%= link_to "Add booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
-                    </li>
+                      <li>
+                        <%= link_to "Add booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      </li>
 
-                    <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
-                    <li>
-                      <%%= link_to "Account", (defined?(edit_user_registration_path) ? edit_user_registration_path : "#"), class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm block" %>
-                    </li>
+                      <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
+                      <li>
+                        <%= link_to "Account", (defined?(edit_user_registration_path) ? edit_user_registration_path : "#"), class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm block" %>
+                      </li>
 
-                    <li>
-                      <%%= button_to "Sign out",(defined?(destroy_user_session_path) ? destroy_user_session_path : "#"), method: :delete, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm text-left block" %>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </nav>
+                      <li>
+                        <%= button_to "Sign out",(defined?(destroy_user_session_path) ? destroy_user_session_path : "#"), method: :delete, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm text-left block" %>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<%% end %>
+<% end %>
 
 <div class="px-4 md:py-16 py-10 flex flex-wrap items-start justify-between container mx-auto"
   data-controller="smooth-scroll scroll-spy"
@@ -144,7 +144,7 @@
   <div class="lg:w-[240px] w-full lg:pl-6">
     <div data-controller="visibility">
       <button data-action="click->visibility#toggle" class="lg:hidden btn btn-white flex items-center space-x-3">
-        <%%= icon "code-bracket-square", classes: "w-6 h-6 stroke-current text-primary-600" %>
+        <%= icon "code-bracket-square", class: "w-6 h-6 stroke-current text-primary-600" %>
         <span>Toggle API Menu</span>
       </button>
       <div data-visibility-target="container" class="lg:block origin-top-left pt-6 lg:pt-0 lg:pl-0 pl-4"
@@ -159,28 +159,28 @@
 
         <ul class="space-y-2 mb-6">
           <li class="relative">
-            <a href="/api/index.html" class="pl-1 pr-2 py-1.5 flex items-center space-x-3 text-primary-600">
+            <%= link_to "#" class: "pl-1 pr-2 py-1.5 flex items-center space-x-3 text-primary-600" do %>
               <span>
-                <%%= icon "eye", classes: "stroke-current text-primary-600 w-4 h-4" %>
+                <%= icon "eye", class: "stroke-current text-primary-600 w-4 h-4" %>
               </span>
 
               <span>Introduction</span>
-            </a>
+            <% end %>
           </li>
           <li>
-            <%%= link_to "Authentication", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
+            <%= link_to "Authentication", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
           </li>
           <li>
-            <%%= link_to "Versioning", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
+            <%= link_to "Versioning", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
           </li>
           <li>
-            <%%= link_to "Responses", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
+            <%= link_to "Responses", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
           </li>
           <li>
-            <%%= link_to "Pagination", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
+            <%= link_to "Pagination", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
           </li>
           <li>
-            <%%= link_to "Including Sources", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
+            <%= link_to "Including Sources", "#", class: "pl-8 pr-2 py-1.5 hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" %>
           </li>
         </ul>
 
@@ -189,30 +189,30 @@
         <details class="-ml-5 marker:content-[''] group" open>
           <summary
             class="flex space-x-2 w-full items-center cursor-pointer select-none justify-start text-left text-base font-medium leading-7 text-zinc-700 dark:text-zinc-300 [&::-webkit-details-marker]:hidden group-open:text-primary-600">
-            <%%= icon "chevron-right", classes: "w-3 h-3 stroke-current text-zinc-500 group-open:transform group-open:rotate-90 transition ease-in-out duration-200 group-open:transition" %>
+            <%= icon "chevron-right", classes: "w-3 h-3 stroke-current text-zinc-500 group-open:transform group-open:rotate-90 transition ease-in-out duration-200 group-open:transition" %>
             <span>Properties</span>
           </summary>
           <ul class="space-y-3 mb-6 text-sm pl-5 pt-4">
             <li class="relative">
-              <%%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
+              <%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
                 <span>Get properties</span>
                 <span
                   class="bg-green-50 text-green-600 dark:bg-green-800/50 dark:text-green-300 uppercase font-sans font-medium text-xs px-1 py-px rounded-full inline-block">GET</span>
-              <%% end %>
+              <% end %>
             </li>
             <li>
-              <%%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
+              <%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
                 <span>Get Property by ID</span>
                 <span
                   class="bg-green-50 text-green-600 dark:bg-green-800/50 dark:text-green-300 uppercase font-sans font-medium text-xs px-1 py-px rounded-full inline-block">GET</span>
-              <%% end %>
+              <% end %>
             </li>
             <li>
-              <%%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
+              <%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
                 <span>Get Property Images</span>
                 <span
                   class="bg-green-50 text-green-600 dark:bg-green-800/50 dark:text-green-300 uppercase font-sans font-medium text-xs px-1 py-px rounded-full inline-block">GET</span>
-              <%% end %>
+              <% end %>
             </li>
           </ul>
         </details>
@@ -222,37 +222,37 @@
         <details class="-ml-5 marker:content-[''] group">
           <summary
             class="flex space-x-2 w-full items-center cursor-pointer select-none justify-start text-left text-base font-medium leading-7 text-zinc-700 dark:text-zinc-300 [&::-webkit-details-marker]:hidden group-open:text-primary-600">
-            <%%= icon "chevron-right", classes: "w-3 h-3 stroke-current text-zinc-500 group-open:transform group-open:rotate-90 transition ease-in-out duration-200 group-open:transition" %>
+            <%= icon "chevron-right", class: "w-3 h-3 stroke-current text-zinc-500 group-open:transform group-open:rotate-90 transition ease-in-out duration-200 group-open:transition" %>
             <span>Calendar</span>
           </summary>
           <ul class="space-y-3 mb-6 text-sm pl-5 pt-4">
             <li class="relative">
-              <%%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
+              <%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
                 <span>Get Calendar</span>
                 <span
                   class="bg-green-50 dark:bg-green-800/50 dark:text-green-300 text-green-600 uppercase font-sans font-medium text-xs px-1 py-px rounded-full inline-block">GET</span>
-              <%% end %>
+              <% end %>
             </li>
             <li>
-              <%%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
+              <%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
                 <span>Update Calendar</span>
                 <span
                   class="bg-purple-50 dark:bg-purple-800/50 dark:text-purple-300 text-purple-600 uppercase font-sans font-medium text-xs px-1 py-px rounded-full inline-block">PUT</span>
-              <%% end %>
+              <% end %>
             </li>
             <li>
-              <%%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
+              <%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
                 <span>Get Bookings</span>
                 <span
                   class="bg-green-50 text-green-600 dark:bg-green-800/50 dark:text-green-300 uppercase font-sans font-medium text-xs px-1 py-px rounded-full inline-block">GET</span>
-              <%% end %>
+              <% end %>
             </li>
             <li>
-              <%%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
+              <%= link_to "#", class: "hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 dark:hover:text-white flex items-center justify-between" do %>
                 <span>Get Booking by UUID</span>
                 <span
                   class="bg-green-50 text-green-600 dark:bg-green-800/50 dark:text-green-300 uppercase font-sans font-medium text-xs px-1 py-px rounded-full inline-block">GET</span>
-              <%% end %>
+              <% end %>
             </li>
           </ul>
         </details>
@@ -287,7 +287,6 @@
       </p>
     </div>
 
-
     <div id="security">
       <h2>Security</h2>
 
@@ -319,7 +318,7 @@
   <aside class="lg:w-[200px] text-zinc-600 dark:text-zinc-200 lg:sticky lg:top-4 lg:pb-0 pb-24">
     <h4 class="text-base flex space-x-3 items-center font-normal text-zinc-600 mb-3 dark:text-zinc-200">
       <span>
-        <%%= icon "list-bullet", classes: "text-zinc-600 dark:text-zinc-300 w-5 h-5 stroke-current" %>
+        <%= icon "list-bullet", class: "text-zinc-600 dark:text-zinc-300 w-5 h-5 stroke-current" %>
       </span>
       <span>Table of contents</span>
     </h4>
@@ -349,4 +348,4 @@
   </aside>
 </div>
 
-<%%= render "shared/footer" %>
+<%= render "railsui/shared/footer" %>

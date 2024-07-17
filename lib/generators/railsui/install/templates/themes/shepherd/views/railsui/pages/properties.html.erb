@@ -2,26 +2,23 @@
   <div class="flex flex-wrap items-end justify-between">
     <div class="lg:flex-1">
       <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Properties</h1>
-      <h2 class="font-light text-base text-zinc-700 tracking-normal mt-3 lg:mb-0 mb-3 dark:text-zinc-300 font-heading">Group, manage,
-        and study your
-        properties using
-        Shepherd.</h2>
+      <h2 class="font-light text-base text-zinc-700 tracking-normal mt-3 lg:mb-0 mb-3 dark:text-zinc-300 font-heading">Group, manage, and study your properties using Shepherd.</h2>
     </div>
     <div class="flex lg:flex-row flex-row-reverse flex-wrap items-center lg:space-x-6 lg:w-auto w-full justify-between">
       <button class="btn btn-white lg:order-1 order-2 py-2 lg:hidden block peer group">
-        <%%= icon "magnifying-glass", class: "stroke-current dark:text-zinc-400 w-6 h-6 dark:group-focus:text-primary-500/90" %>
+        <%= icon "magnifying-glass", class: "stroke-current dark:text-zinc-400 size-6 dark:group-focus:text-primary-500/90" %>
       </button>
       <form action="#" class="lg:block hidden peer-focus:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto">
         <input type="search" class="form-input lg:w-auto w-full" placeholder="Search" />
       </form>
       <div class="flex items-center lg:justify-start justify-center lg:order-1 order-2">
-        <div data-controller="dropdown" class="relative">
-          <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="trigger"
+        <div data-controller="railsui-dropdown" class="relative">
+          <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" data-railsui-dropdown-target="trigger"
             type="button" class="btn btn-white rounded-l-full rounded-r-none border-r-0 group py-2">
-            <%%= icon "adjustments-horizontal", classes: "text-zinc-600 w-6 h-6 stroke-current group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500" %>
+            <%= icon "adjustments-horizontal", class: "text-zinc-600 size-6 stroke-current group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500" %>
           </button>
 
-          <ul data-dropdown-target="menu"
+          <ul data-railsui-dropdown-target="menu"
             class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-1 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[15px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
             data-transition-enter-active="transition ease-out duration-300"
             data-transition-enter-from="transform opacity-0 scale-95"
@@ -36,7 +33,7 @@
                   <input id="sort_ascending" type="radio" class="form-input-radio" name="sort" />
                   <span class="pl-2">Ascending</span>
                 </div>
-                <%%= icon "bars-arrow-up", classes: "stroke-current text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                <%= icon "bars-arrow-up", class: "stroke-current text-zinc-500 size-4 group-hover:text-primary-600/90" %>
               </label>
             </li>
             <li>
@@ -48,22 +45,22 @@
                   <span class="pl-2">Descending</span>
                 </div>
 
-                <%%= icon "bars-arrow-down", classes: "stroke-current text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                <%= icon "bars-arrow-down", class: "stroke-current text-zinc-500 size-4 group-hover:text-primary-600/90" %>
               </label>
             </li>
           </ul>
         </div>
         <button type="button" class="btn py-2 rounded-none btn-white group" data-action="click->properties#toggle"
           data-properties-target="listbutton" data-view="list" data-active="true">
-          <%%= icon "list-bullet", classes: "w-6 h-6 stroke-current text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+          <%= icon "list-bullet", class: "size-6 stroke-current text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
         </button>
         <button type="button" class="btn btn-white group rounded-r-full rounded-l-none border-l-0 py-2"
           data-action="click->properties#toggle" data-view="grid" data-properties-target="gridbutton" data-active="false">
-          <%%= icon "squares-2x2", classes: "w-6 h-6 stroke-current text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+          <%= icon "squares-2x2", class: "size-6 stroke-current text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
         </button>
       </div>
       <div class="lg:pb-0 pb-6 pt-4 lg:pt-0 lg:w-auto w-full lg:order-3 order-1">
-        <%%= link_to "Create property", "#", class: "btn btn-primary lg:w-auto w-full text-center" %>
+        <%= link_to "Create property", "#", class: "btn btn-primary lg:w-auto w-full text-center" %>
       </div>
     </div>
   </div>
@@ -71,55 +68,55 @@
   <!-- GRID -->
   <div id="properties-grid" data-properties-target="grid" class="hidden">
     <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8">
-      <%% [
+      <% [
         {
           title: "Cozy Mountain A-Frame",
           subtitle: "Nature's Nook",
-          image: "property-1.jpg",
+          image: "railsui/property-1.jpg",
           listings: "3",
           avatar: demo_avatar_url(id: "32", variant: "men")
         },
         {
           title: "Alpine Retreat Haven",
           subtitle: "The Haven",
-          image: "property-2.jpg",
+          image: "railsui/property-2.jpg",
           listings: "3",
           avatar: demo_avatar_url(id: "32", variant: "men")
         },
         {
           title: "Mountain Vista Chalet",
           subtitle: "The Mountain Majesty",
-          image: "property-3.jpg",
+          image: "railsui/property-3.jpg",
           listings: "3",
           avatar: demo_avatar_url(id: "32", variant: "men")
         },
       ].each do |property| %>
 
-      <!-- property -->
-      <div class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+        <!-- property -->
+        <div class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
           <div class="relative mb-3">
-            <%%= image_tag property[:image], class: "rounded-lg h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent", alt: "Image of #{property[:title]}" %>
+            <%= image_tag property[:image], class: "rounded-lg h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent", alt: "Image of #{property[:title]}" %>
 
-            <%%= image_tag property[:avatar], class: "w-10 h-10 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white/90", alt: "Avatar" %>
+            <%= image_tag property[:avatar], class: "w-10 h-10 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white/90", alt: "Avatar" %>
           </div>
 
-          <h3 class="text-lg font-normal text-zinc-800 dark:text-zinc-100 font-heading"><%%= property[:title] %></h3>
-          <h4 class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%%= property[:subtitle] %></h4>
+          <h3 class="text-lg font-normal text-zinc-800 dark:text-zinc-100 font-heading"><%= property[:title] %></h3>
+          <h4 class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= property[:subtitle] %></h4>
           <div class="flex items-center pt-6">
-            <div class="flex-1 flex items-center space-x-4">
-              <div class="flex items-center space-x-2">
-                <%%= icon "home-modern", classes: "w-5 h-5 text-zinc-600 stroke-current dark:text-zinc-400" %>
-                <span class="text-sm text-zinc-600 dark:text-zinc-400"><%%= property[:listings] %> Listings</span>
+            <div class="flex-1 flex items-center gap-4">
+              <div class="flex items-center gap-2">
+                <%= icon "home-modern", class: "size-5 text-zinc-600 stroke-current dark:text-zinc-400" %>
+                <span class="text-sm text-zinc-600 dark:text-zinc-400"><%= property[:listings] %> Listings</span>
               </div>
               <div class="flex items-center space-x-2">
-                <%%= icon "arrow-path", classes: "w-4 h-4 text-zinc-600 stroke-current dark:text-zinc-400" %>
+                <%= icon "arrow-path", class: "size-4 text-zinc-600 stroke-current dark:text-zinc-400" %>
                 <span class="text-sm text-zinc-600 dark:text-zinc-400">Syncing</span>
               </div>
             </div>
-            <div data-controller="dropdown" class="relative">
+            <div data-controller="railsui-dropdown" class="relative">
               <button type="button" class="bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1 flex items-center justify-center border border-transparent focus:border-zinc-300/80 focus:bg-white focus:ring-4 focus:ring-zinc-300/20 transition ease-in-out duration-200 group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70"
-                data-action="click->dropdown#toggle click@window->dropdown#hide">
-                <%%= icon "ellipsis-horizontal", classes: "w-6 h-6 stroke-current text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 group-focus:text-zinc-600 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200" %>
+                data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+                <%= icon "ellipsis-horizontal", class: "size-6 stroke-current text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 group-focus:text-zinc-600 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200" %>
               </button>
               <ul
                 class="hidden static origin-top-right md:absolute md:top-12 mt-3 md:mt-0 right-0 md:w-48 md:shadow-xl md:rounded-xl rounded-3xl py-2 w-full shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600 font-heading dark:text-zinc-200"
@@ -128,24 +125,24 @@
                 data-transition-enter-to="transform opacity-100 scale-100"
                 data-transition-leave-active="transition ease-in duration-100"
                 data-transition-leave-from="transform opacity-100 scale-100"
-                data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                 <li>
-                  <%%= link_to "#", class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                  <%= link_to "#", class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                     <span>Edit property</span>
-                    <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
-                  <%% end %>
+                    <%= icon "chevron-right", class: "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+                  <% end %>
                 </li>
                 <li>
-                  <%%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" do %>
+                  <%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" do %>
                     <span>Re-sync</span>
-                    <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
-                  <%% end %>
+                    <%= icon "chevron-right", class: "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+                  <% end %>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-      <%% end %>
+      <% end %>
     </div>
   </div>
 
@@ -154,7 +151,7 @@
     <div class="text-left my-8" data-controller="select-all">
       <div class="flex items-center justify-start">
         <div class="md:w-12 mb-3 md:mb-0">
-          <div class="flex items-center space-x-3">
+          <div class="flex items-center gap-3">
             <input type="checkbox" class="form-input-checkbox" name="all_properties" id="all_properties"
               data-select-all-target="selectAll" />
             <label for="all_properties" class="form-label mb-0 md:hidden block text-zinc-700 dark:text-zinc-200">All
@@ -168,25 +165,25 @@
         <div class="md:w-1/12 md:block hidden"></div>
       </div>
       <ul class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
-        <%% [
+        <% [
           {
             title: "Cozy Mountain A-Frame",
             subtitle: "Nature's Nook",
-            image: "property-1.jpg",
+            image: "railsui/property-1.jpg",
             listings: "3",
             avatar: demo_avatar_url(id: "32", variant: "men")
           },
           {
             title: "Alpine Retreat Haven",
             subtitle: "The Haven",
-            image: "property-2.jpg",
+            image: "railsui/property-2.jpg",
             listings: "3",
             avatar: demo_avatar_url(id: "32", variant: "men")
           },
           {
             title: "Mountain Vista Chalet",
             subtitle: "The Mountain Majest",
-            image: "property-3.jpg",
+            image: "railsui/property-3.jpg",
             listings: "3",
             avatar: demo_avatar_url(id: "32", variant: "men")
           }].each do |property| %>
@@ -196,36 +193,36 @@
               <input type="checkbox" class="form-input-checkbox" data-select-all-target="checkbox" />
             </div>
             <div class="md:flex-1 w-full">
-              <%%= link_to "#", class: "flex md:items-center items-start space-x-3" do %>
-                <%%= image_tag property[:image], class: "md:w-16 w-24 md:h-10 h-16 rounded", alt: property[:title] %>
-                 <div class="flex-1">
-                  <h3 class="font-medium md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50"><%%= property[:title] %></h3>
-                  <h4 class="font-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80"><%%= property[:subtitle] %></h4>
+              <%= link_to "#", class: "flex md:items-center items-start gap-3" do %>
+                <%= image_tag property[:image], class: "md:w-16 w-24 md:h-10 h-16 rounded", alt: property[:title] %>
+                <div class="flex-1">
+                  <h3 class="font-medium md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50"><%= property[:title] %></h3>
+                  <h4 class="font-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80"><%= property[:subtitle] %></h4>
                 </div>
-              <%% end %>
+              <% end %>
             </div>
             <div class="md:w-2/12 w-1/3">
               <span class="md:hidden text-zinc-600 dark:text-zinc-400 text-sm block mb-2">Listings</span>
-              <span class="block"><%%= property[:listings] %></span>
+              <span class="block"><%= property[:listings] %></span>
             </div>
             <div class="md:w-2/12 w-1/3">
               <span class="md:hidden text-zinc-600 dark:text-zinc-400 text-sm block mb-2">Sync</span>
-              <%%= icon "arrow-path", classes: "stroke-current w-5 h-5 text-zinc-600 dark:text-zinc-300/90" %>
+              <%= icon "arrow-path", class: "stroke-current size-5 text-zinc-600 dark:text-zinc-300/90" %>
             </div>
             <div class="md:w-2/12 w-1/3">
               <span class="md:hidden text-zinc-600 dark:text-zinc-400 text-sm block mb-2">Hosts</span>
-              <%%= image_tag property[:avatar], class: "md:w-9 w-5 md:h-9 h-5 rounded-full flex-shrink-0", alt: "Avatar" %>
+              <%= image_tag property[:avatar], class: "md:size-9 size-5 rounded-full flex-shrink-0", alt: "Avatar" %>
             </div>
             <div class="md:w-1/12 w-full md:pt-0 pt-4">
-              <div data-controller="dropdown" class="relative md:flex md:justify-end justify-start">
+              <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
                 <button type="button" class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
-                  data-action="click->dropdown#toggle click@window->dropdown#hide">
+                  data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                  <%%= icon "ellipsis-horizontal", classes: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                  <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                   <span class="md:hidden block">Actions</span>
 
-                  <%%= icon "chevron-down", classes: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                  <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                 </button>
 
                 <ul
@@ -235,24 +232,24 @@
                   data-transition-enter-to="transform opacity-100 scale-100"
                   data-transition-leave-active="transition ease-in duration-100"
                   data-transition-leave-from="transform opacity-100 scale-100"
-                  data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+                  data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                   <li>
-                    <%%= link_to "#", class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                    <%= link_to "#", class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                       <span>Edit property</span>
-                      <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
-                    <%% end %>
+                      <%= icon "chevron-right", class: "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+                    <% end %>
                   </li>
                   <li>
-                    <%%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" do %>
+                    <%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" do %>
                       <span>Re-sync</span>
-                      <%%= icon "chevron-right", classes: "md:hidden block w-5 h-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
-                    <%% end %>
+                      <%= icon "chevron-right", class: "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+                    <% end %>
                   </li>
                 </ul>
               </div>
             </div>
           </li>
-        <%% end %>
+        <% end %>
       </ul>
     </div>
   </div>

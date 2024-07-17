@@ -7,13 +7,13 @@
     <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Find answers in our help documentation or chat with us for more expert help.</p>
   </div>
 
-   <!--
+  <!--
     See: help_search_controller.js for logic
     - Pass JSON as values for recent data on search and/or top results
     - Pass custom link styles
     -->
-    <div class="flex justify-center">
-      <form action="#" class="md:w-1/3 w-full relative" data-controller="help-search"
+  <div class="flex justify-center">
+    <form action="#" class="md:w-1/3 w-full relative" data-controller="help-search"
         data-help-search-link-classes-value="text-zinc-600 hover:text-primary-600 font-heading hover:bg-zinc-50/50 p-4 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:hover:text-primary-500"
         data-help-search-recent-data-value='[
         {
@@ -40,13 +40,13 @@
           "title": "chat",
           "url": "#"
         }]'>
-        <input type="text" class="form-input text-lg font-normal placeholder-zinc-500 font-heading px-6 py-3 w-full"
+      <input type="text" class="form-input text-lg font-normal placeholder-zinc-500 font-heading px-6 py-3 w-full"
           data-action="focus->help-search#toggle click@window->help-search#hide" placeholder="Search for answers"
-          tabindex="0" />
-        <button type="submit" class="btn btn-primary py-2 px-4 absolute top-1.5 right-2">
-          <%%= icon "magnifying-glass", classes: "w-6 h-6" %>
-        </button>
-        <ul
+      tabindex="0" />
+      <button type="submit" class="btn btn-primary py-2 px-4 absolute top-1.5 right-2">
+        <%= icon "magnifying-glass", classes: "size-6" %>
+      </button>
+      <ul
           class="absolute top-16 w-full hidden origin-top rounded-3xl border border-zinc-400/60 bg-white space-y-1 overflow-hidden shadow-xl shadow-zinc-600/20 dark:bg-zinc-800 dark:text-zinc-200 dark:shadow-zinc-950/20 dark:border-zinc-700/80"
           data-help-search-target="searchMenu" data-transition-enter-active="transition ease-out duration-200"
           data-transition-enter-from="transform opacity-0 scale-95"
@@ -54,39 +54,39 @@
           data-transition-leave-active="transition ease-in duration-200"
           data-transition-leave-from="transform opacity-100 scale-100"
           data-transition-leave-to="transform opacity-0 scale-95">
-        </ul>
-      </form>
-    </div>
+      </ul>
+    </form>
+  </div>
 </div>
 
 <div class="container mx-auto px-4 pb-24 pt-1">
   <nav>
     <ul class="flex items-center overflow-x-auto snap-x snap-proximity font-heading text-base">
       <li class="snap-center">
-        <%%= link_to "Hosting", "#", class: "px-5 py-4 block text-primary-600 border-b-2 border-primary-600 whitespace-nowrap" %>
+        <%= link_to "Hosting", "#", class: "px-5 py-4 block text-primary-600 border-b-2 border-primary-600 whitespace-nowrap" %>
       </li>
       <li class="snap-center">
-        <%%= link_to "Guest experience", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+        <%= link_to "Guest experience", "#", class: "px-5 py-4 block whitespace-nowrap" %>
       </li>
       <li class="snap-center">
-        <%%= link_to "Properties", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+        <%= link_to "Properties", "#", class: "px-5 py-4 block whitespace-nowrap" %>
       </li>
       <li class="snap-center">
-        <%%= link_to "Integrations", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+        <%= link_to "Integrations", "#", class: "px-5 py-4 block whitespace-nowrap" %>
       </li>
       <li class="snap-center">
-        <%%= link_to "Reporting", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+        <%= link_to "Reporting", "#", class: "px-5 py-4 block whitespace-nowrap" %>
       </li>
     </ul>
   </nav>
 
   <div class="flex items-center justify-between mb-10 pt-24">
     <h2 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Guides</h2>
-    <%%= link_to "View all guides", "#", class: "font-heading text-[15px] hover:text-primary-600" %>
+    <%= link_to "View all guides", "#", class: "font-heading text-[15px] hover:text-primary-600" %>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-    <%% [
+    <% [
        {
         title: "Getting Started as a Host",
         image: "help-1.png",
@@ -110,31 +110,31 @@
        }].each do |card| %>
       <article>
         <div class="flex items-start space-x-6">
-          <%%= link_to "#", class: "block overflow-hidden md:w-40 w-24 md:h-40 h-24 group rounded-xl" do %>
-            <%%= image_tag card[:image], class: "w-40 h-auto rounded-xl object-cover group-hover:scale-110 transition ease-in-out duration-300", alt: card[:title] %>
-          <%% end %>
+          <%= link_to "#", class: "block overflow-hidden md:w-40 w-24 md:h-40 h-24 group rounded-xl" do %>
+            <%= image_tag card[:image], class: "w-40 h-auto rounded-xl object-cover group-hover:scale-110 transition ease-in-out duration-300", alt: card[:title] %>
+          <% end %>
           <div class="flex-1">
             <header>
-              <%%= link_to  "#" do %>
-                <h1 class="font-semibold text-base dark:text-zinc-100"><%%= card[:title] %></h1>
-              <%% end %>
+              <%= link_to  "#" do %>
+                <h1 class="font-semibold text-base dark:text-zinc-100"><%= card[:title] %></h1>
+              <% end %>
             </header>
 
             <div class="prose prose-zinc dark:prose-invert font-heading font-light my-3 max-w-md">
-              <p><%%= card[:excerpt] %></p>
+              <p><%= card[:excerpt] %></p>
             </div>
             <footer>
-              <%%= link_to "Read now", "#", class: "btn btn-white md:mt-1 mt-2 inline-flex items-center" %>
+              <%= link_to "Read now", "#", class: "btn btn-white md:mt-1 mt-2 inline-flex items-center" %>
             </footer>
           </div>
         </div>
       </article>
-    <%% end %>
+    <% end %>
   </div>
 
   <div class="flex items-center justify-between mb-10 pt-24">
     <h2 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Articles</h2>
-    <%%= link_to "View all articles", "#", class: "font-heading text-[15px] hover:text-primary-600" %>
+    <%= link_to "View all articles", "#", class: "font-heading text-[15px] hover:text-primary-600" %>
   </div>
 
   <div class="flex flex-wrap items-start md:space-x-10">
@@ -142,27 +142,27 @@
       <h3 class="font-normal text-base">Top rates articles</h3>
       <ul class="space-y-4 mt-4 md:text-sm">
         <li>
-          <%%= link_to "Creating an appealing listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+          <%= link_to "Creating an appealing listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
         </li>
         <li>
-          <%%= link_to "Pricing strategies for hosts", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+          <%= link_to "Pricing strategies for hosts", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
         </li>
         <li>
-          <%%= link_to "Dealing with guest issues", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+          <%= link_to "Dealing with guest issues", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
         </li>
         <li>
-          <%%= link_to "Seeing success with direct bookin...", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+          <%= link_to "Seeing success with direct bookin...", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
         </li>
         <li>
-          <%%= link_to "Adding a new listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+          <%= link_to "Adding a new listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
         </li>
         <li>
-           <%%= link_to "Creating an appealing listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+          <%= link_to "Creating an appealing listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
         </li>
       </ul>
     </div>
     <div class="flex-1 flex flex-wrap items-center justify-between">
-      <%% [
+      <% [
         {
           title: "Creating an Appealing Listing",
           body: "Learn how to craft an eye-catching property listing that attracts more guests and maximizes your bookings."
@@ -197,17 +197,17 @@
         }].each do |article| %>
         <div class="md:w-1/2">
           <article class="md:px-6 md:pb-6 py-6">
-            <%%= link_to "#", class: "group block mb-3" do %>
-              <h1 class="font-semibold text-base group-hover:text-secondary-600 dark:text-zinc-100 dark:group-hover:text-secondary-400 font-heading"><%%= article[:title] %></h1>
-            <%% end %>
+            <%= link_to "#", class: "group block mb-3" do %>
+              <h1 class="font-semibold text-base group-hover:text-secondary-600 dark:text-zinc-100 dark:group-hover:text-secondary-400 font-heading"><%= article[:title] %></h1>
+            <% end %>
             <div class="prose prose-zinc font-heading prose-p:font-light dark:prose-invert">
-              <p><%%= article[:body] %></p>
+              <p><%= article[:body] %></p>
             </div>
           </article>
         </div>
-      <%% end %>
+      <% end %>
     </div>
   </div>
 </div>
 
-<%%= render "shared/footer" %>
+<%= render "railsui/shared/footer" %>

@@ -12,6 +12,7 @@ module.exports = {
     "./app/components/**/*.html.erb",
     "./app/javascript/**/*.{js,vue,jsx}",
     "./lib/generators/templates/**/*.html.erb.tt",
+    "./config/initializers/railsui_icon.rb",
     rails_ui_path,
     rails_ui_template_path,
   ],

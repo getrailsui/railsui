@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 module Railsui
   module Colors
     CONFIG_FILE = Railsui::Engine.root.join("config", "colors.yml")

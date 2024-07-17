@@ -1,0 +1,37 @@
+.nav-link {
+  @apply rounded px-3 py-4 text-slate-500 focus:text-primary-600 md:inline-block block relative md:text-sm text-base font-medium hover:transition hover:duration-300 hover:ease-in-out hover:text-slate-700 dark:text-slate-200 dark:hover:text-slate-300 dark:focus:text-white;
+}
+
+.nav-link-active {
+  @apply text-primary-600 hover:text-primary-600 relative hover:transition hover:duration-300 hover:ease-in-out dark:hover:text-primary-400 dark:text-primary-500;
+}
+
+.nav-link:hover::after,
+.nav-link-active::after {
+  @apply content-[''] block h-[2px] w-full left-0 absolute -bottom-px transition duration-300 ease-in-out bg-primary-600 hover:transition hover:duration-300 dark:bg-primary-500;
+}
+
+/* Dark */
+.nav-link-dark {
+  @apply rounded text-slate-100 focus:text-white md:inline-block block relative md:text-sm text-base font-medium hover:transition hover:duration-300 hover:ease-in-out hover:text-slate-100  dark:text-slate-200 dark:hover:text-slate-100 hover:bg-slate-700 dark:hover:bg-slate-700 hover:rounded py-2 px-3;
+}
+
+.nav-link-dark.nav-link-active {
+  @apply rounded py-2 px-3 bg-primary-600 hover:bg-primary-700 focus:ring-primary-600/20 text-white;
+}
+
+.nav-link-dark.nav-link-active:after {
+  @apply hidden;
+}
+
+.rui-admin .nav-link {
+  @apply px-4 lg:py-2 py-3 rounded-md transition ease-in-out duration-200 lg:inline-block block text-white md:text-base text-base;
+}
+
+.rui-admin .nav-link.nav-link-active {
+  @apply px-4 lg:py-2 py-3 rounded-md transition ease-in-out duration-200 lg:inline-block block bg-slate-900 hover:bg-slate-900 text-white md:text-base text-base;
+}
+
+.rui-admin .nav-link:after {
+  @apply hidden;
+}

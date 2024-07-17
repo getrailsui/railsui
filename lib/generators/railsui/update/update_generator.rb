@@ -12,8 +12,21 @@ module Railsui
 
         say "Updating Rails UI config", :yellow
 
+        # mailers
+        update_railsui_mailer_layout(@config.theme)
+        copy_sample_mailers(@config.theme)
+
+        # rails ui deps
         install_theme_dependencies(@config.theme)
+
+        # themed assets
+        copy_theme_javascript(@config.theme)
+        copy_theme_stylesheets(@config.theme)
+
+        # view related
         copy_railsui_shared_directory(@config.theme)
+
+        # tailwind related
         update_tailwind_config(@config.theme)
         update_body_classes
 

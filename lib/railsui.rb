@@ -1,6 +1,5 @@
 require "railsui/version"
 require "railsui/engine"
-require "railsui/railtie" if defined?(Rails)
 
 module Railsui
   autoload :Colors, "railsui/colors"

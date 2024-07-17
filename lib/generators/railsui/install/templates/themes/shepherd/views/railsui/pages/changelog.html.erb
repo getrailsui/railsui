@@ -7,7 +7,7 @@
   </div>
 
   <ul class="max-w-2xl mx-auto py-10 divide-y divide-zinc-200 dark:divide-zinc-700 space-y-10">
-    <%% [
+    <% [
       {
         title: "Multi-language support",
         body: "We've added support for multiple languages, making it easier for hosts and guests from around the world to use our platform.",
@@ -34,24 +34,24 @@
       }].each do |changelog| %>
       <li class="py-6">
         <article>
-          <time class="text-sm font-sans text-zinc-600 dark:text-zinc-400"><%%= changelog[:date] %></time>
-          <h1 class="my-2 text-xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%%= changelog[:title] %></h1>
+          <time class="text-sm font-sans text-zinc-600 dark:text-zinc-400"><%= changelog[:date] %></time>
+          <h1 class="my-2 text-xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= changelog[:title] %></h1>
           <div class="prose-sm prose-zinc font-heading font-light mb-2 dark:prose-invert">
-            <p><%%= changelog[:body] %></p>
+            <p><%= changelog[:body] %></p>
           </div>
           <div>
-            <%% if changelog[:tag] == "New features" %>
+            <% if changelog[:tag] == "New features" %>
               <span class="text-xs font-medium rounded font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200">New features</span>
-            <%% elsif changelog[:tag] == "Enhancement" %>
+            <% elsif changelog[:tag] == "Enhancement" %>
               <span class="text-xs font-medium rounded font-sans bg-indigo-50 text-indigo-600 px-2 py-1 tracking-tight dark:bg-indigo-500/20 dark:text-indigo-200">Enhancement</span>
-            <%% else %>
+            <% else %>
               <span class="text-xs font-medium rounded font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200">Bug fix</span>
-            <%% end %>
+            <% end %>
           </div>
         </article>
       </li>
-      <%% end %>
+    <% end %>
   </ul>
 </div>
 
-<%%= render "shared/footer" %>
+<%= render "railsui/shared/footer" %>

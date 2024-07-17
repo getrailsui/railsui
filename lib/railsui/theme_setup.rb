@@ -4,11 +4,217 @@ require 'fileutils'
 
 module Railsui
   module ThemeSetup
+    ################################################################
+    # Assests
+    ################################################################
+    def copy_theme_javascript(theme)
+      say("Adding theme-specific stimulus.js controllers", :yellow)
+
+      # Define paths
+      source_path = "themes/#{theme}/javascript/controllers/railsui"
+      destination_path = "app/javascript/controllers/railsui"
+      index_js_path = Rails.root.join("app/javascript/controllers/index.js")
+
+      # Copy the directory
+      directory source_path, destination_path
+
+      # Get the list of controller files
+      controller_files = Dir.children(Rails.root.join(destination_path)).select { |f| f.end_with?("_controller.js") }
+      puts "Controller files: 🗄️ #{controller_files}"
+
+      # Generate import and register statements
+      import_statements = controller_files.map do |file|
+        controller_name = File.basename(file, ".js").sub("_controller", "")
+        import_name = controller_name.camelize
+        registration_name = controller_name.dasherize
+        "import #{import_name}Controller from \"./railsui/#{File.basename(file, '.js')}\";\napplication.register(\"#{registration_name}\", #{import_name}Controller);"
+      end.join("\n")
+
+      # Read the existing index.js content
+      index_js_content = File.exist?(index_js_path) ? File.read(index_js_path) : ""
+
+      # Remove old import and register statements for railsui controllers
+      new_index_js_content = index_js_content.gsub(/import .* from "\.\/railsui\/.*";\napplication\.register\(".*", .*;\n*/, "")
+
+      # Add the new import and register statements
+      new_index_js_content += "\n#{import_statements}\n"
+
+      # Write the updated content back to index.js
+      File.write(index_js_path, new_index_js_content)
+      say("Updated app/javascript/controllers/index.js successfully.", :green)
+    end
+
+    def copy_theme_stylesheets(theme)
+      say("Copying theme-specific stylesheets", :yellow)
+
+      # Define paths
+      source_path = "themes/#{theme}/stylesheets/railsui"
+      destination_path = "app/assets/stylesheets/railsui"
+      application_css_path = Rails.root.join("app/assets/stylesheets/application.tailwind.css")
+
+      # Copy the directory and overwrite if theme is modified
+      directory source_path, destination_path
+
+      # Get the list of stylesheet files
+      stylesheet_files = Dir.children(Rails.root.join(destination_path)).select { |f| f.end_with?(".css") }
+      puts "Stylesheet files: 🗄️ #{stylesheet_files}"
+
+      # Generate import statements for stylesheets
+      import_statements = stylesheet_files.map do |file|
+        "@import \"railsui/#{File.basename(file, '.css')}\";"
+      end.join("\n")
+
+      # Read the existing application.css content
+      application_css_content = File.exist?(application_css_path) ? File.read(application_css_path) : ""
+
+      # Remove old import statements for railsui stylesheets
+      new_application_css_content = application_css_content.gsub(/@import "railsui\/.*";\n*/, "")
+
+      # Add the new import statements
+      new_application_css_content += "\n#{import_statements}\n"
+
+      # Write the updated content back to application.css
+      File.write(application_css_path, new_application_css_content)
+      say("Updated app/assets/stylesheets/application.css successfully.", :green)
+    end
+
     def install_theme_dependencies(theme)
       say("Installing dependencies", :yellow)
       add_yarn_packages(theme_dependencies(theme))
     end
 
+     def install_action_text
+      rails_command "action_text:install"
+    end
+
+    def setup_stimulus(theme)
+      say("Setting up Stimulus controllers", :yellow)
+      insert_stimulus_controllers
+    end
+
+    def update_tailwind_config(theme)
+      say("Updating Tailwind CSS configuration", :yellow)
+      copy_tailwind_config(theme)
+    end
+
+    def humanize_theme(theme)
+      theme.humanize
+    end
+
+    def theme_dependencies(theme)
+      case theme
+      when "hound"
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+      when "shepherd"
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "hotkeys-js", "photoswipe", "apexcharts", "railsui-stimulus", "railsui-tailwind-presets"]
+      when "retriever"
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "apexcharts", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+      when "setter"
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+      else
+        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+      end
+    end
+
+    def add_yarn_packages(packages)
+      run "yarn add #{packages.join(' ')} --latest"
+    end
+
+    def install_railsui_icon
+      gem "railsui_icon"
+      run "rails g railsui_icon:install"
+    end
+
+    def insert_stimulus_controllers
+      js_content = <<-JAVASCRIPT.strip_heredoc
+        import { RailsuiClipboard, RailsuiCountUp, RailsuiDateRangePicker, RailsuiDropdown, RailsuiModal, RailsuiTabs, RailsuiToast, RailsuiToggle, RailsuiTooltip } from 'railsui-stimulus'
+
+        application.register('railsui-clipboard', RailsuiClipboard)
+        application.register('railsui-count-up', RailsuiCountUp)
+        application.register('railsui-date-range-picker', RailsuiDateRangePicker)
+        application.register('railsui-dropdown', RailsuiDropdown)
+        application.register('railsui-modal', RailsuiModal)
+        application.register('railsui-tabs', RailsuiTabs)
+        application.register('railsui-toast', RailsuiToast)
+        application.register('railsui-toggle', RailsuiToggle)
+        application.register('railsui-tooltip', RailsuiTooltip)
+      JAVASCRIPT
+
+      insert_into_file "#{Rails.root}/app/javascript/controllers/index.js", "\n#{js_content}", after: 'import { application } from "./application"'
+    end
+
+    def copy_tailwind_config(theme)
+      tailwind_config_path = Rails.root.join("tailwind.config.js")
+
+      if File.exist?(tailwind_config_path)
+        content = File.read(tailwind_config_path)
+
+        # Setup variables
+        tailwind_setup = <<-JAVASCRIPT.strip_heredoc
+          const presets = require("railsui-tailwind-presets");
+          const execSync = require("child_process").execSync;
+          const outputRailsUI = execSync("bundle show railsui", { encoding: "utf-8" });
+          const rails_ui_path = outputRailsUI.trim() + "/**/*.rb";
+          const rails_ui_template_path = outputRailsUI.trim() + "/**/*.html.erb";
+        JAVASCRIPT
+
+        tailwind_preset_content = "  presets: [presets.#{theme}],"
+
+        # Combine the paths
+        combined_paths_js = <<-JAVASCRIPT.strip_heredoc
+          rails_ui_path,
+          rails_ui_template_path,
+          './app/components/**/*.rb',
+          './app/components/**/*.html.erb',
+          './app/helpers/**/*.rb',
+          './app/javascript/**/*.js',
+          './app/views/**/*.html.erb',
+          './app/assets/stylesheets/**/*.css',
+          "./config/initializers/railsui_icon.rb",
+        JAVASCRIPT
+
+        # Insert setup variables if not present
+        unless content.include?(tailwind_setup)
+          puts "Adding setup variables..."
+          content.sub!("module.exports = {", "#{tailwind_setup}\nmodule.exports = {")
+        end
+
+        # Update or add the preset theme
+        if content =~ /presets: \[presets\..+\],/
+          content.gsub!(/presets: \[presets\..+\],/, tailwind_preset_content)
+          puts "Updating preset theme to #{theme}..."
+        else
+          puts "Adding preset theme #{theme}..."
+          content.sub!("module.exports = {", "module.exports = {\n#{tailwind_preset_content}")
+        end
+
+        # Add combined paths to the content array without duplication
+        if content.include?("content: [")
+          existing_paths = content.match(/content: \[([^\]]*)\]/m)[1].split(",").map(&:strip)
+          new_paths = combined_paths_js.strip.split(",").map(&:strip)
+          all_paths = (existing_paths + new_paths).uniq.sort
+
+          formatted_paths = all_paths.map { |path| "    #{path}" }.join(",\n")
+
+          content.sub!(/content: \[([^\]]*)\]/m, "content: [\n#{formatted_paths}\n  ]")
+          puts "Adding combined paths..."
+        else
+          puts "Adding content array with combined paths..."
+          content.sub!("module.exports = {", "module.exports = {\n  content: [\n#{combined_paths_js.strip.split(",").map { |path| "    #{path.strip}" }.join(",\n")}\n  ],")
+        end
+
+        # Write the updated content back to the file
+        File.write(tailwind_config_path, content)
+        puts "Updated tailwind.config.js successfully."
+      else
+        puts "No tailwind.config.js file. Creating one..."
+        copy_file "themes/#{theme}/tailwind.config.js", tailwind_config_path, force: true
+      end
+    end
+
+    ################################################################
+    # Mailers
+    ################################################################
     def generate_sample_mailers(theme)
       say "Adding Rails UI mailers", :yellow
 
@@ -42,9 +248,7 @@ module Railsui
       insert_into_file "#{Rails.root}/app/mailers/application_mailer.rb", "  #{content}\n", after: "class ApplicationMailer < ActionMailer::Base\n"
     end
 
-    def install_action_text
-      rails_command "action_text:install"
-    end
+   ################################################################
 
     def copy_railsui_routes
   content = <<-RUBY
@@ -88,6 +292,10 @@ module Railsui
       # Insert the routes block into the routes file
       insert_into_file(routes_file, routes_block, after: "Rails.application.routes.draw do\n")
     end
+
+    ################################################################
+    # Pages
+    ################################################################
 
     def copy_railsui_page_controller(theme)
       copy_file "themes/#{theme}/controllers/railsui/pages_controller.rb", "app/controllers/railsui/pages_controller.rb", force: true
@@ -171,125 +379,6 @@ module Railsui
 
       remove_directory(target_dir, "shared views")
       directory theme_dir, target_dir, force: true
-    end
-
-    def setup_stimulus(theme)
-      say("Setting up Stimulus controllers", :yellow)
-      insert_stimulus_controllers
-    end
-
-    def update_tailwind_config(theme)
-      say("Updating Tailwind CSS configuration", :yellow)
-      copy_tailwind_config(theme)
-    end
-
-    def humanize_theme(theme)
-      theme.humanize
-    end
-
-    def theme_dependencies(theme)
-      case theme
-      when "hound"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
-      when "shepherd"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "hotkeys-js", "photoswipe", "apexcharts", "railsui-stimulus", "railsui-tailwind-presets"]
-      when "retriever"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "apexcharts", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
-      when "setter"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
-      else
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
-      end
-    end
-
-    def add_yarn_packages(packages)
-      run "yarn add #{packages.join(' ')} --latest"
-    end
-
-    def insert_stimulus_controllers
-      js_content = <<-JAVASCRIPT.strip_heredoc
-        import { RailsuiClipboard, RailsuiCountUp, RailsuiDateRangePicker, RailsuiDropdown, RailsuiModal, RailsuiTabs, RailsuiToast, RailsuiToggle, RailsuiTooltip } from 'railsui-stimulus'
-
-        application.register('railsui-clipboard', RailsuiClipboard)
-        application.register('railsui-count-up', RailsuiCountUp)
-        application.register('railsui-date-range-picker', RailsuiDateRangePicker)
-        application.register('railsui-dropdown', RailsuiDropdown)
-        application.register('railsui-modal', RailsuiModal)
-        application.register('railsui-tabs', RailsuiTabs)
-        application.register('railsui-toast', RailsuiToast)
-        application.register('railsui-toggle', RailsuiToggle)
-        application.register('railsui-tooltip', RailsuiTooltip)
-      JAVASCRIPT
-
-      insert_into_file "#{Rails.root}/app/javascript/controllers/index.js", "\n#{js_content}", after: 'import { application } from "./application"'
-    end
-
-    def copy_tailwind_config(theme)
-      tailwind_config_path = Rails.root.join("tailwind.config.js")
-
-      if File.exist?(tailwind_config_path)
-        content = File.read(tailwind_config_path)
-
-        # Setup variables
-        tailwind_setup = <<-JAVASCRIPT.strip_heredoc
-          const presets = require("railsui-tailwind-presets");
-          const execSync = require("child_process").execSync;
-          const outputRailsUI = execSync("bundle show railsui", { encoding: "utf-8" });
-          const rails_ui_path = outputRailsUI.trim() + "/**/*.rb";
-          const rails_ui_template_path = outputRailsUI.trim() + "/**/*.html.erb";
-        JAVASCRIPT
-
-        tailwind_preset_content = "  presets: [presets.#{theme}],"
-
-        # Combine the paths
-        combined_paths_js = <<-JAVASCRIPT.strip_heredoc
-          rails_ui_path,
-          rails_ui_template_path,
-          './app/components/**/*.rb',
-          './app/components/**/*.html.erb',
-          './app/helpers/**/*.rb',
-          './app/javascript/**/*.js',
-          './app/views/**/*.html.erb',
-          './app/assets/stylesheets/**/*.css'
-        JAVASCRIPT
-
-        # Insert setup variables if not present
-        unless content.include?(tailwind_setup)
-          puts "Adding setup variables..."
-          content.sub!("module.exports = {", "#{tailwind_setup}\nmodule.exports = {")
-        end
-
-        # Update or add the preset theme
-        if content =~ /presets: \[presets\..+\],/
-          content.gsub!(/presets: \[presets\..+\],/, tailwind_preset_content)
-          puts "Updating preset theme to #{theme}..."
-        else
-          puts "Adding preset theme #{theme}..."
-          content.sub!("module.exports = {", "module.exports = {\n#{tailwind_preset_content}")
-        end
-
-        # Add combined paths to the content array without duplication
-        if content.include?("content: [")
-          existing_paths = content.match(/content: \[([^\]]*)\]/m)[1].split(",").map(&:strip)
-          new_paths = combined_paths_js.strip.split(",").map(&:strip)
-          all_paths = (existing_paths + new_paths).uniq.sort
-
-          formatted_paths = all_paths.map { |path| "    #{path}" }.join(",\n")
-
-          content.sub!(/content: \[([^\]]*)\]/m, "content: [\n#{formatted_paths}\n  ]")
-          puts "Adding combined paths..."
-        else
-          puts "Adding content array with combined paths..."
-          content.sub!("module.exports = {", "module.exports = {\n  content: [\n#{combined_paths_js.strip.split(",").map { |path| "    #{path.strip}" }.join(",\n")}\n  ],")
-        end
-
-        # Write the updated content back to the file
-        File.write(tailwind_config_path, content)
-        puts "Updated tailwind.config.js successfully."
-      else
-        puts "No tailwind.config.js file. Creating one..."
-        copy_file "themes/#{theme}/tailwind.config.js", tailwind_config_path, force: true
-      end
     end
 
     private

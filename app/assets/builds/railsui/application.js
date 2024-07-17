@@ -33,7 +33,6 @@
   // node_modules/highlight.js/lib/core.js
   var require_core = __commonJS({
     "node_modules/highlight.js/lib/core.js"(exports, module) {
-      var deepFreezeEs6 = { exports: {} };
       function deepFreeze(obj) {
         if (obj instanceof Map) {
           obj.clear = obj.delete = obj.set = function() {
@@ -45,16 +44,15 @@
           };
         }
         Object.freeze(obj);
-        Object.getOwnPropertyNames(obj).forEach(function(name) {
-          var prop = obj[name];
-          if (typeof prop == "object" && !Object.isFrozen(prop)) {
+        Object.getOwnPropertyNames(obj).forEach((name) => {
+          const prop = obj[name];
+          const type = typeof prop;
+          if ((type === "object" || type === "function") && !Object.isFrozen(prop)) {
             deepFreeze(prop);
           }
         });
         return obj;
       }
-      deepFreezeEs6.exports = deepFreeze;
-      deepFreezeEs6.exports.default = deepFreeze;
       var Response = class {
         /**
          * @param {CompiledMode} mode
@@ -89,9 +87,12 @@
       }
       var SPAN_CLOSE = "</span>";
       var emitsWrappingTags = (node) => {
-        return !!node.scope || node.sublanguage && node.language;
+        return !!node.scope;
       };
       var scopeToCSSClass = (name, { prefix }) => {
+        if (name.startsWith("language:")) {
+          return name.replace("language:", "language-");
+        }
         if (name.includes(".")) {
           const pieces = name.split(".");
           return [
@@ -127,12 +128,10 @@
         openNode(node) {
           if (!emitsWrappingTags(node))
             return;
-          let className = "";
-          if (node.sublanguage) {
-            className = `language-${node.language}`;
-          } else {
-            className = scopeToCSSClass(node.scope, { prefix: this.classPrefix });
-          }
+          const className = scopeToCSSClass(
+            node.scope,
+            { prefix: this.classPrefix }
+          );
           this.span(className);
         }
         /**
@@ -246,18 +245,6 @@
         }
         /**
          * @param {string} text
-         * @param {string} scope
-         */
-        addKeyword(text, scope) {
-          if (text === "") {
-            return;
-          }
-          this.openNode(scope);
-          this.addText(text);
-          this.closeNode();
-        }
-        /**
-         * @param {string} text
          */
         addText(text) {
           if (text === "") {
@@ -265,14 +252,21 @@
           }
           this.add(text);
         }
+        /** @param {string} scope */
+        startScope(scope) {
+          this.openNode(scope);
+        }
+        endScope() {
+          this.closeNode();
+        }
         /**
          * @param {Emitter & {root: DataNode}} emitter
          * @param {string} name
          */
-        addSublanguage(emitter, name) {
+        __addSublanguage(emitter, name) {
           const node = emitter.root;
-          node.sublanguage = true;
-          node.language = name;
+          if (name)
+            node.scope = `language:${name}`;
           this.add(node);
         }
         toHTML() {
@@ -280,6 +274,7 @@
           return renderer.value();
         }
         finalize() {
+          this.closeAllNodes();
           return true;
         }
       };
@@ -489,28 +484,18 @@
         relevance: 0
       };
       var REGEXP_MODE = {
-        // this outer rule makes sure we actually have a WHOLE regex and not simply
-        // an expression such as:
-        //
-        //     3 / something
-        //
-        // (which will then blow up when regex's `illegal` sees the newline)
-        begin: /(?=\/[^/\n]*\/)/,
-        contains: [{
-          scope: "regexp",
-          begin: /\//,
-          end: /\/[gimuy]*/,
-          illegal: /\n/,
-          contains: [
-            BACKSLASH_ESCAPE,
-            {
-              begin: /\[/,
-              end: /\]/,
-              relevance: 0,
-              contains: [BACKSLASH_ESCAPE]
-            }
-          ]
-        }]
+        scope: "regexp",
+        begin: /\/(?=[^/\n]*\/)/,
+        end: /\/[gimuy]*/,
+        contains: [
+          BACKSLASH_ESCAPE,
+          {
+            begin: /\[/,
+            end: /\]/,
+            relevance: 0,
+            contains: [BACKSLASH_ESCAPE]
+          }
+        ]
       };
       var TITLE_MODE = {
         scope: "title",
@@ -545,30 +530,30 @@
       };
       var MODES3 = /* @__PURE__ */ Object.freeze({
         __proto__: null,
-        MATCH_NOTHING_RE,
-        IDENT_RE: IDENT_RE2,
-        UNDERSCORE_IDENT_RE,
-        NUMBER_RE,
-        C_NUMBER_RE,
+        APOS_STRING_MODE,
+        BACKSLASH_ESCAPE,
+        BINARY_NUMBER_MODE,
         BINARY_NUMBER_RE,
+        COMMENT,
+        C_BLOCK_COMMENT_MODE,
+        C_LINE_COMMENT_MODE,
+        C_NUMBER_MODE,
+        C_NUMBER_RE,
+        END_SAME_AS_BEGIN,
+        HASH_COMMENT_MODE,
+        IDENT_RE: IDENT_RE2,
+        MATCH_NOTHING_RE,
+        METHOD_GUARD,
+        NUMBER_MODE,
+        NUMBER_RE,
+        PHRASAL_WORDS_MODE,
+        QUOTE_STRING_MODE,
+        REGEXP_MODE,
         RE_STARTERS_RE,
         SHEBANG,
-        BACKSLASH_ESCAPE,
-        APOS_STRING_MODE,
-        QUOTE_STRING_MODE,
-        PHRASAL_WORDS_MODE,
-        COMMENT,
-        C_LINE_COMMENT_MODE,
-        C_BLOCK_COMMENT_MODE,
-        HASH_COMMENT_MODE,
-        NUMBER_MODE,
-        C_NUMBER_MODE,
-        BINARY_NUMBER_MODE,
-        REGEXP_MODE,
         TITLE_MODE,
-        UNDERSCORE_TITLE_MODE,
-        METHOD_GUARD,
-        END_SAME_AS_BEGIN
+        UNDERSCORE_IDENT_RE,
+        UNDERSCORE_TITLE_MODE
       });
       function skipIfHasPrecedingDot(match, response) {
         const before = match.input[match.index - 1];
@@ -967,7 +952,7 @@
         }
         return mode;
       }
-      var version = "11.7.0";
+      var version = "11.10.0";
       var HTMLInjectionError = class extends Error {
         constructor(reason, html) {
           super(reason);
@@ -1070,7 +1055,7 @@
                   buf += match[0];
                 } else {
                   const cssClass = language.classNameAliases[kind] || kind;
-                  emitter.addKeyword(match[0], cssClass);
+                  emitKeyword(match[0], cssClass);
                 }
               } else {
                 buf += match[0];
@@ -1099,7 +1084,7 @@
             if (top2.relevance > 0) {
               relevance += result2.relevance;
             }
-            emitter.addSublanguage(result2._emitter, result2.language);
+            emitter.__addSublanguage(result2._emitter, result2.language);
           }
           function processBuffer() {
             if (top2.subLanguage != null) {
@@ -1108,6 +1093,13 @@
               processKeywords();
             }
             modeBuffer = "";
+          }
+          function emitKeyword(keyword, scope) {
+            if (keyword === "")
+              return;
+            emitter.startScope(scope);
+            emitter.addText(keyword);
+            emitter.endScope();
           }
           function emitMultiClass(scope, match) {
             let i = 1;
@@ -1120,7 +1112,7 @@
               const klass = language.classNameAliases[scope[i]] || scope[i];
               const text = match[i];
               if (klass) {
-                emitter.addKeyword(text, klass);
+                emitKeyword(text, klass);
               } else {
                 modeBuffer = text;
                 processKeywords();
@@ -1135,7 +1127,7 @@
             }
             if (mode.beginScope) {
               if (mode.beginScope._wrap) {
-                emitter.addKeyword(modeBuffer, language.classNameAliases[mode.beginScope._wrap] || mode.beginScope._wrap);
+                emitKeyword(modeBuffer, language.classNameAliases[mode.beginScope._wrap] || mode.beginScope._wrap);
                 modeBuffer = "";
               } else if (mode.beginScope._multi) {
                 emitMultiClass(mode.beginScope, match);
@@ -1210,7 +1202,7 @@
             const origin = top2;
             if (top2.endScope && top2.endScope._wrap) {
               processBuffer();
-              emitter.addKeyword(lexeme, top2.endScope._wrap);
+              emitKeyword(lexeme, top2.endScope._wrap);
             } else if (top2.endScope && top2.endScope._multi) {
               processBuffer();
               emitMultiClass(top2.endScope, match);
@@ -1306,24 +1298,27 @@
           let iterations = 0;
           let resumeScanAtSamePosition = false;
           try {
-            top2.matcher.considerAll();
-            for (; ; ) {
-              iterations++;
-              if (resumeScanAtSamePosition) {
-                resumeScanAtSamePosition = false;
-              } else {
-                top2.matcher.considerAll();
+            if (!language.__emitTokens) {
+              top2.matcher.considerAll();
+              for (; ; ) {
+                iterations++;
+                if (resumeScanAtSamePosition) {
+                  resumeScanAtSamePosition = false;
+                } else {
+                  top2.matcher.considerAll();
+                }
+                top2.matcher.lastIndex = index;
+                const match = top2.matcher.exec(codeToHighlight);
+                if (!match)
+                  break;
+                const beforeMatch = codeToHighlight.substring(index, match.index);
+                const processedCount = processLexeme(beforeMatch, match);
+                index = match.index + processedCount;
               }
-              top2.matcher.lastIndex = index;
-              const match = top2.matcher.exec(codeToHighlight);
-              if (!match)
-                break;
-              const beforeMatch = codeToHighlight.substring(index, match.index);
-              const processedCount = processLexeme(beforeMatch, match);
-              index = match.index + processedCount;
+              processLexeme(codeToHighlight.substring(index));
+            } else {
+              language.__emitTokens(codeToHighlight, emitter);
             }
-            processLexeme(codeToHighlight.substring(index));
-            emitter.closeAllNodes();
             emitter.finalize();
             result = emitter.toHTML();
             return {
@@ -1414,6 +1409,10 @@
             "before:highlightElement",
             { el: element, language }
           );
+          if (element.dataset.highlighted) {
+            console.log("Element previously highlighted. To highlight again, first unset `dataset.highlighted`.", element);
+            return;
+          }
           if (element.children.length > 0) {
             if (!options.ignoreUnescapedHTML) {
               console.warn("One of your code blocks includes unescaped HTML. This is a potentially serious security risk.");
@@ -1433,6 +1432,7 @@
           const text = node.textContent;
           const result = language ? highlight2(text, { language, ignoreIllegals: true }) : highlightAuto(text);
           element.innerHTML = result.value;
+          element.dataset.highlighted = "yes";
           updateClassName(element, language, result.language);
           element.result = {
             language: result.language,
@@ -1543,6 +1543,12 @@
           upgradePluginAPI(plugin);
           plugins.push(plugin);
         }
+        function removePlugin(plugin) {
+          const index = plugins.indexOf(plugin);
+          if (index !== -1) {
+            plugins.splice(index, 1);
+          }
+        }
         function fire(event, args) {
           const cb = event;
           plugins.forEach(function(plugin) {
@@ -1573,7 +1579,8 @@
           registerAliases,
           autoDetection,
           inherit,
-          addPlugin
+          addPlugin,
+          removePlugin
         });
         hljs.debugMode = function() {
           SAFE_MODE = false;
@@ -1591,13 +1598,14 @@
         };
         for (const key in MODES3) {
           if (typeof MODES3[key] === "object") {
-            deepFreezeEs6.exports(MODES3[key]);
+            deepFreeze(MODES3[key]);
           }
         }
         Object.assign(hljs, MODES3);
         return hljs;
       };
       var highlight = HLJS({});
+      highlight.newInstance = () => HLJS({});
       module.exports = highlight;
       highlight.HighlightJS = highlight;
       highlight.default = highlight;
@@ -1665,6 +1673,11 @@
               begin: "\\d{4}([\\.\\\\/:-]?\\d{2}){0,5}"
             }
           ]
+        };
+        const PUNCTUATION = {
+          match: /[;()+\-:=,]/,
+          className: "punctuation",
+          relevance: 0
         };
         const COMMENTS = hljs.inherit(hljs.C_LINE_COMMENT_MODE);
         const META = {
@@ -1743,7 +1756,8 @@
             SYMBOL,
             NUMBERS,
             STRINGS,
-            DATE
+            DATE,
+            PUNCTUATION
           ]
         };
       }
@@ -2677,34 +2691,44 @@
   var require_arcade = __commonJS({
     "node_modules/highlight.js/lib/languages/arcade.js"(exports, module) {
       function arcade(hljs) {
+        const regex = hljs.regex;
         const IDENT_RE2 = "[A-Za-z_][0-9A-Za-z_]*";
         const KEYWORDS2 = {
           keyword: [
-            "if",
-            "for",
-            "while",
-            "var",
-            "new",
-            "function",
+            "break",
+            "case",
+            "catch",
+            "continue",
+            "debugger",
             "do",
-            "return",
-            "void",
             "else",
-            "break"
+            "export",
+            "for",
+            "function",
+            "if",
+            "import",
+            "in",
+            "new",
+            "return",
+            "switch",
+            "try",
+            "var",
+            "void",
+            "while"
           ],
           literal: [
             "BackSlash",
             "DoubleQuote",
-            "false",
             "ForwardSlash",
             "Infinity",
             "NaN",
             "NewLine",
-            "null",
             "PI",
             "SingleQuote",
             "Tab",
             "TextFormatting",
+            "false",
+            "null",
             "true",
             "undefined"
           ],
@@ -2729,19 +2753,22 @@
             "BufferGeodetic",
             "Ceil",
             "Centroid",
+            "ChangeTimeZone",
             "Clip",
             "Concatenate",
             "Console",
             "Constrain",
             "Contains",
             "ConvertDirection",
+            "ConvexHull",
             "Cos",
             "Count",
             "Crosses",
             "Cut",
-            "Date",
+            "Date|0",
             "DateAdd",
             "DateDiff",
+            "DateOnly",
             "Day",
             "Decode",
             "DefaultValue",
@@ -2768,25 +2795,34 @@
             "FeatureSetById",
             "FeatureSetByName",
             "FeatureSetByPortalItem",
+            "FeatureSetByRelationshipClass",
             "FeatureSetByRelationshipName",
             "Filter",
             "Find",
-            "First",
+            "First|0",
             "Floor",
             "FromCharCode",
             "FromCodePoint",
             "FromJSON",
+            "Front",
             "GdbVersion",
             "Generalize",
             "Geometry",
+            "GetEnvironment",
             "GetFeatureSet",
+            "GetFeatureSetInfo",
             "GetUser",
             "GroupBy",
             "Guid",
-            "Hash",
             "HasKey",
+            "HasValue",
+            "Hash",
             "Hour",
             "IIf",
+            "ISOMonth",
+            "ISOWeek",
+            "ISOWeekday",
+            "ISOYear",
             "Includes",
             "IndexOf",
             "Insert",
@@ -2794,10 +2830,6 @@
             "Intersects",
             "IsEmpty",
             "IsNan",
-            "ISOMonth",
-            "ISOWeek",
-            "ISOWeekday",
-            "ISOYear",
             "IsSelfIntersecting",
             "IsSimple",
             "Left|0",
@@ -2816,11 +2848,13 @@
             "Month",
             "MultiPartToSinglePart",
             "Multipoint",
+            "NearestCoordinate",
+            "NearestVertex",
             "NextSequenceValue",
             "None",
             "Now",
             "Number",
-            "Offset|0",
+            "Offset",
             "OrderBy",
             "Overlaps",
             "Point",
@@ -2851,6 +2885,7 @@
             "Splice",
             "Split",
             "Sqrt",
+            "StandardizeGuid",
             "Stdev",
             "SubtypeCode",
             "SubtypeName",
@@ -2859,15 +2894,18 @@
             "SymmetricDifference",
             "Tan",
             "Text",
+            "Time",
+            "TimeZone",
+            "TimeZoneOffset",
             "Timestamp",
             "ToCharCode",
             "ToCodePoint",
-            "Today",
             "ToHex",
             "ToLocal",
+            "ToUTC",
+            "Today",
             "Top|0",
             "Touches",
-            "ToUTC",
             "TrackAccelerationAt",
             "TrackAccelerationWindow",
             "TrackCurrentAcceleration",
@@ -2892,14 +2930,46 @@
             "Variance",
             "Week",
             "Weekday",
-            "When",
+            "When|0",
             "Within",
-            "Year"
+            "Year|0"
           ]
         };
+        const PROFILE_VARS = [
+          "aggregatedFeatures",
+          "analytic",
+          "config",
+          "datapoint",
+          "datastore",
+          "editcontext",
+          "feature",
+          "featureSet",
+          "feedfeature",
+          "fencefeature",
+          "fencenotificationtype",
+          "join",
+          "layer",
+          "locationupdate",
+          "map",
+          "measure",
+          "measure",
+          "originalFeature",
+          "record",
+          "reference",
+          "rowindex",
+          "sourcedatastore",
+          "sourcefeature",
+          "sourcelayer",
+          "target",
+          "targetdatastore",
+          "targetfeature",
+          "targetlayer",
+          "value",
+          "view"
+        ];
         const SYMBOL = {
           className: "symbol",
-          begin: "\\$[datastore|feature|layer|map|measure|sourcefeature|sourcelayer|targetfeature|targetlayer|value|view]+"
+          begin: "\\$" + regex.either(...PROFILE_VARS)
         };
         const NUMBER = {
           className: "number",
@@ -3070,9 +3140,16 @@
         const NUMBERS = {
           className: "number",
           variants: [
-            { begin: "\\b(0b[01']+)" },
-            { begin: "(-?)\\b([\\d']+(\\.[\\d']*)?|\\.[\\d']+)((ll|LL|l|L)(u|U)?|(u|U)(ll|LL|l|L)?|f|F|b|B)" },
-            { begin: "(-?)(\\b0[xX][a-fA-F0-9']+|(\\b[\\d']+(\\.[\\d']*)?|\\.[\\d']+)([eE][-+]?[\\d']+)?)" }
+            // Floating-point literal.
+            {
+              begin: "[+-]?(?:(?:[0-9](?:'?[0-9])*\\.(?:[0-9](?:'?[0-9])*)?|\\.[0-9](?:'?[0-9])*)(?:[Ee][+-]?[0-9](?:'?[0-9])*)?|[0-9](?:'?[0-9])*[Ee][+-]?[0-9](?:'?[0-9])*|0[Xx](?:[0-9A-Fa-f](?:'?[0-9A-Fa-f])*(?:\\.(?:[0-9A-Fa-f](?:'?[0-9A-Fa-f])*)?)?|\\.[0-9A-Fa-f](?:'?[0-9A-Fa-f])*)[Pp][+-]?[0-9](?:'?[0-9])*)(?:[Ff](?:16|32|64|128)?|(BF|bf)16|[Ll]|)"
+            },
+            // Integer literal.
+            {
+              begin: "[+-]?\\b(?:0[Bb][01](?:'?[01])*|0[Xx][0-9A-Fa-f](?:'?[0-9A-Fa-f])*|0(?:'?[0-7])*|[1-9](?:'?[0-9])*)(?:[Uu](?:LL?|ll?)|[Uu][Zz]?|(?:LL?|ll?)[Uu]?|[Zz][Uu]|)"
+              // Note: there are user-defined literal suffixes too, but perhaps having the custom suffix not part of the
+              // literal highlight actually makes it stand out more.
+            }
           ],
           relevance: 0
         };
@@ -3984,7 +4061,7 @@
               // GNU preprocs
               ".2byte .4byte .align .ascii .asciz .balign .byte .code .data .else .end .endif .endm .endr .equ .err .exitm .extern .global .hword .if .ifdef .ifndef .include .irp .long .macro .rept .req .section .set .skip .space .text .word .arm .thumb .code16 .code32 .force_thumb .thumb_func .ltorg ALIAS ALIGN ARM AREA ASSERT ATTR CN CODE CODE16 CODE32 COMMON CP DATA DCB DCD DCDU DCDO DCFD DCFDU DCI DCQ DCQU DCW DCWU DN ELIF ELSE END ENDFUNC ENDIF ENDP ENTRY EQU EXPORT EXPORTAS EXTERN FIELD FILL FUNCTION GBLA GBLL GBLS GET GLOBAL IF IMPORT INCBIN INCLUDE INFO KEEP LCLA LCLL LCLS LTORG MACRO MAP MEND MEXIT NOFP OPT PRESERVE8 PROC QN READONLY RELOC REQUIRE REQUIRE8 RLIST FN ROUT SETA SETL SETS SN SPACE SUBT THUMB THUMBX TTL WHILE WEND "
             ),
-            built_in: "r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15 pc lr sp ip sl sb fp a1 a2 a3 a4 v1 v2 v3 v4 v5 v6 v7 v8 f0 f1 f2 f3 f4 f5 f6 f7 p0 p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 c0 c1 c2 c3 c4 c5 c6 c7 c8 c9 c10 c11 c12 c13 c14 c15 q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 q14 q15 cpsr_c cpsr_x cpsr_s cpsr_f cpsr_cx cpsr_cxs cpsr_xs cpsr_xsf cpsr_sf cpsr_cxsf spsr_c spsr_x spsr_s spsr_f spsr_cx spsr_cxs spsr_xs spsr_xsf spsr_sf spsr_cxsf s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 s17 s18 s19 s20 s21 s22 s23 s24 s25 s26 s27 s28 s29 s30 s31 d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 d28 d29 d30 d31 {PC} {VAR} {TRUE} {FALSE} {OPT} {CONFIG} {ENDIAN} {CODESIZE} {CPU} {FPU} {ARCHITECTURE} {PCSTOREOFFSET} {ARMASM_VERSION} {INTER} {ROPI} {RWPI} {SWST} {NOSWST} . @"
+            built_in: "r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29 w30 x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18 x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 pc lr sp ip sl sb fp a1 a2 a3 a4 v1 v2 v3 v4 v5 v6 v7 v8 f0 f1 f2 f3 f4 f5 f6 f7 p0 p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 c0 c1 c2 c3 c4 c5 c6 c7 c8 c9 c10 c11 c12 c13 c14 c15 q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 q14 q15 cpsr_c cpsr_x cpsr_s cpsr_f cpsr_cx cpsr_cxs cpsr_xs cpsr_xsf cpsr_sf cpsr_cxsf spsr_c spsr_x spsr_s spsr_f spsr_cx spsr_cxs spsr_xs spsr_xsf spsr_sf spsr_cxsf s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 s17 s18 s19 s20 s21 s22 s23 s24 s25 s26 s27 s28 s29 s30 s31 d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 d28 d29 d30 d31 {PC} {VAR} {TRUE} {FALSE} {OPT} {CONFIG} {ENDIAN} {CODESIZE} {CPU} {FPU} {ARCHITECTURE} {PCSTOREOFFSET} {ARMASM_VERSION} {INTER} {ROPI} {RWPI} {SWST} {NOSWST} . @"
           },
           contains: [
             {
@@ -5336,6 +5413,18 @@
           end: /\)/,
           contains: [hljs.BACKSLASH_ESCAPE]
         };
+        const COMMENT = hljs.inherit(
+          hljs.COMMENT(),
+          {
+            match: [
+              /(^|\s)/,
+              /#.*$/
+            ],
+            scope: {
+              2: "comment"
+            }
+          }
+        );
         const HERE_DOC = {
           begin: /<<-?\s*(?=\w+)/,
           starts: { contains: [
@@ -5358,13 +5447,15 @@
         };
         SUBST.contains.push(QUOTE_STRING);
         const ESCAPED_QUOTE = {
-          className: "",
-          begin: /\\"/
+          match: /\\"/
         };
         const APOS_STRING = {
           className: "string",
           begin: /'/,
           end: /'/
+        };
+        const ESCAPED_APOS = {
+          match: /\\'/
         };
         const ARITHMETIC = {
           begin: /\$?\(\(/,
@@ -5408,12 +5499,14 @@
           "fi",
           "for",
           "while",
+          "until",
           "in",
           "do",
           "done",
           "case",
           "esac",
-          "function"
+          "function",
+          "select"
         ];
         const LITERALS2 = [
           "true",
@@ -5458,6 +5551,7 @@
           "read",
           "readarray",
           "source",
+          "sudo",
           "type",
           "typeset",
           "ulimit",
@@ -5640,7 +5734,10 @@
         ];
         return {
           name: "Bash",
-          aliases: ["sh"],
+          aliases: [
+            "sh",
+            "zsh"
+          ],
           keywords: {
             $pattern: /\b[a-z][a-z0-9._-]+\b/,
             keyword: KEYWORDS2,
@@ -5662,12 +5759,13 @@
             // to catch unknown shells but still highlight the shebang
             FUNCTION,
             ARITHMETIC,
-            hljs.HASH_COMMENT_MODE,
+            COMMENT,
             HERE_DOC,
             PATH_MODE,
             QUOTE_STRING,
             ESCAPED_QUOTE,
             APOS_STRING,
+            ESCAPED_APOS,
             VAR
           ]
         };
@@ -6040,7 +6138,7 @@
           className: "meta",
           begin: /#\s*[a-z]+\b/,
           end: /$/,
-          keywords: { keyword: "if else elif endif define undef warning error line pragma _Pragma ifdef ifndef include" },
+          keywords: { keyword: "if else elif endif define undef warning error line pragma _Pragma ifdef ifndef elifdef elifndef include" },
           contains: [
             {
               begin: /\\\n/,
@@ -6081,6 +6179,8 @@
           "restrict",
           "return",
           "sizeof",
+          "typeof",
+          "typeof_unqual",
           "struct",
           "switch",
           "typedef",
@@ -6114,14 +6214,26 @@
           "char",
           "void",
           "_Bool",
+          "_BitInt",
           "_Complex",
           "_Imaginary",
           "_Decimal32",
           "_Decimal64",
+          "_Decimal96",
           "_Decimal128",
+          "_Decimal64x",
+          "_Decimal128x",
+          "_Float16",
+          "_Float32",
+          "_Float64",
+          "_Float128",
+          "_Float32x",
+          "_Float64x",
+          "_Float128x",
           // modifiers
           "const",
           "static",
+          "constexpr",
           // aliases
           "complex",
           "bool",
@@ -7860,9 +7972,16 @@
         const NUMBERS = {
           className: "number",
           variants: [
-            { begin: "\\b(0b[01']+)" },
-            { begin: "(-?)\\b([\\d']+(\\.[\\d']*)?|\\.[\\d']+)((ll|LL|l|L)(u|U)?|(u|U)(ll|LL|l|L)?|f|F|b|B)" },
-            { begin: "(-?)(\\b0[xX][a-fA-F0-9']+|(\\b[\\d']+(\\.[\\d']*)?|\\.[\\d']+)([eE][-+]?[\\d']+)?)" }
+            // Floating-point literal.
+            {
+              begin: "[+-]?(?:(?:[0-9](?:'?[0-9])*\\.(?:[0-9](?:'?[0-9])*)?|\\.[0-9](?:'?[0-9])*)(?:[Ee][+-]?[0-9](?:'?[0-9])*)?|[0-9](?:'?[0-9])*[Ee][+-]?[0-9](?:'?[0-9])*|0[Xx](?:[0-9A-Fa-f](?:'?[0-9A-Fa-f])*(?:\\.(?:[0-9A-Fa-f](?:'?[0-9A-Fa-f])*)?)?|\\.[0-9A-Fa-f](?:'?[0-9A-Fa-f])*)[Pp][+-]?[0-9](?:'?[0-9])*)(?:[Ff](?:16|32|64|128)?|(BF|bf)16|[Ll]|)"
+            },
+            // Integer literal.
+            {
+              begin: "[+-]?\\b(?:0[Bb][01](?:'?[01])*|0[Xx][0-9A-Fa-f](?:'?[0-9A-Fa-f])*|0(?:'?[0-7])*|[1-9](?:'?[0-9])*)(?:[Uu](?:LL?|ll?)|[Uu][Zz]?|(?:LL?|ll?)[Uu]?|[Zz][Uu]|)"
+              // Note: there are user-defined literal suffixes too, but perhaps having the custom suffix not part of the
+              // literal highlight actually makes it stand out more.
+            }
           ],
           relevance: 0
         };
@@ -8914,6 +9033,11 @@
           ],
           relevance: 0
         };
+        const RAW_STRING = {
+          className: "string",
+          begin: /"""("*)(?!")(.|\n)*?"""\1/,
+          relevance: 1
+        };
         const VERBATIM_STRING = {
           className: "string",
           begin: '@"',
@@ -8979,6 +9103,7 @@
           hljs.inherit(hljs.C_BLOCK_COMMENT_MODE, { illegal: /\n/ })
         ];
         const STRING = { variants: [
+          RAW_STRING,
           INTERPOLATED_VERBATIM_STRING,
           INTERPOLATED_STRING,
           VERBATIM_STRING,
@@ -9235,11 +9360,11 @@
           },
           CSS_VARIABLE: {
             className: "attr",
-            begin: /--[A-Za-z][A-Za-z0-9_-]*/
+            begin: /--[A-Za-z_][A-Za-z0-9_-]*/
           }
         };
       };
-      var TAGS3 = [
+      var HTML_TAGS3 = [
         "a",
         "abbr",
         "address",
@@ -9291,11 +9416,16 @@
         "nav",
         "object",
         "ol",
+        "optgroup",
+        "option",
         "p",
+        "picture",
         "q",
         "quote",
         "samp",
         "section",
+        "select",
+        "source",
         "span",
         "strong",
         "summary",
@@ -9312,6 +9442,53 @@
         "ul",
         "var",
         "video"
+      ];
+      var SVG_TAGS3 = [
+        "defs",
+        "g",
+        "marker",
+        "mask",
+        "pattern",
+        "svg",
+        "switch",
+        "symbol",
+        "feBlend",
+        "feColorMatrix",
+        "feComponentTransfer",
+        "feComposite",
+        "feConvolveMatrix",
+        "feDiffuseLighting",
+        "feDisplacementMap",
+        "feFlood",
+        "feGaussianBlur",
+        "feImage",
+        "feMerge",
+        "feMorphology",
+        "feOffset",
+        "feSpecularLighting",
+        "feTile",
+        "feTurbulence",
+        "linearGradient",
+        "radialGradient",
+        "stop",
+        "circle",
+        "ellipse",
+        "image",
+        "line",
+        "path",
+        "polygon",
+        "polyline",
+        "rect",
+        "text",
+        "use",
+        "textPath",
+        "tspan",
+        "foreignObject",
+        "clipPath"
+      ];
+      var TAGS3 = [
+        ...HTML_TAGS3,
+        ...SVG_TAGS3
       ];
       var MEDIA_FEATURES3 = [
         "any-hover",
@@ -9348,7 +9525,7 @@
         "max-width",
         "min-height",
         "max-height"
-      ];
+      ].sort().reverse();
       var PSEUDO_CLASSES3 = [
         "active",
         "any-link",
@@ -9423,7 +9600,7 @@
         "visited",
         "where"
         // where()
-      ];
+      ].sort().reverse();
       var PSEUDO_ELEMENTS3 = [
         "after",
         "backdrop",
@@ -9439,11 +9616,13 @@
         "selection",
         "slotted",
         "spelling-error"
-      ];
+      ].sort().reverse();
       var ATTRIBUTES3 = [
+        "accent-color",
         "align-content",
         "align-items",
         "align-self",
+        "alignment-baseline",
         "all",
         "animation",
         "animation-delay",
@@ -9454,6 +9633,7 @@
         "animation-name",
         "animation-play-state",
         "animation-timing-function",
+        "appearance",
         "backface-visibility",
         "background",
         "background-attachment",
@@ -9465,6 +9645,7 @@
         "background-position",
         "background-repeat",
         "background-size",
+        "baseline-shift",
         "block-size",
         "border",
         "border-block",
@@ -9511,10 +9692,14 @@
         "border-left-width",
         "border-radius",
         "border-right",
+        "border-end-end-radius",
+        "border-end-start-radius",
         "border-right-color",
         "border-right-style",
         "border-right-width",
         "border-spacing",
+        "border-start-end-radius",
+        "border-start-start-radius",
         "border-style",
         "border-top",
         "border-top-color",
@@ -9530,6 +9715,8 @@
         "break-after",
         "break-before",
         "break-inside",
+        "cx",
+        "cy",
         "caption-side",
         "caret-color",
         "clear",
@@ -9537,6 +9724,11 @@
         "clip-path",
         "clip-rule",
         "color",
+        "color-interpolation",
+        "color-interpolation-filters",
+        "color-profile",
+        "color-rendering",
+        "color-scheme",
         "column-count",
         "column-fill",
         "column-gap",
@@ -9558,7 +9750,12 @@
         "cursor",
         "direction",
         "display",
+        "dominant-baseline",
         "empty-cells",
+        "enable-background",
+        "fill",
+        "fill-opacity",
+        "fill-rule",
         "filter",
         "flex",
         "flex-basis",
@@ -9569,6 +9766,8 @@
         "flex-wrap",
         "float",
         "flow",
+        "flood-color",
+        "flood-opacity",
         "font",
         "font-display",
         "font-family",
@@ -9590,6 +9789,7 @@
         "font-variation-settings",
         "font-weight",
         "gap",
+        "glyph-orientation-horizontal",
         "glyph-orientation-vertical",
         "grid",
         "grid-area",
@@ -9616,16 +9816,32 @@
         "image-resolution",
         "ime-mode",
         "inline-size",
+        "inset",
+        "inset-block",
+        "inset-block-end",
+        "inset-block-start",
+        "inset-inline",
+        "inset-inline-end",
+        "inset-inline-start",
         "isolation",
+        "kerning",
         "justify-content",
+        "justify-items",
+        "justify-self",
         "left",
         "letter-spacing",
+        "lighting-color",
         "line-break",
         "line-height",
         "list-style",
         "list-style-image",
         "list-style-position",
         "list-style-type",
+        "marker",
+        "marker-end",
+        "marker-mid",
+        "marker-start",
+        "mask",
         "margin",
         "margin-block",
         "margin-block-end",
@@ -9707,12 +9923,15 @@
         "pointer-events",
         "position",
         "quotes",
+        "r",
         "resize",
         "rest",
         "rest-after",
         "rest-before",
         "right",
+        "rotate",
         "row-gap",
+        "scale",
         "scroll-margin",
         "scroll-margin-block",
         "scroll-margin-block-end",
@@ -9744,12 +9963,24 @@
         "shape-image-threshold",
         "shape-margin",
         "shape-outside",
+        "shape-rendering",
+        "stop-color",
+        "stop-opacity",
+        "stroke",
+        "stroke-dasharray",
+        "stroke-dashoffset",
+        "stroke-linecap",
+        "stroke-linejoin",
+        "stroke-miterlimit",
+        "stroke-opacity",
+        "stroke-width",
         "speak",
         "speak-as",
         "src",
         // @font-face
         "tab-size",
         "table-layout",
+        "text-anchor",
         "text-align",
         "text-align-all",
         "text-align-last",
@@ -9757,7 +9988,9 @@
         "text-decoration",
         "text-decoration-color",
         "text-decoration-line",
+        "text-decoration-skip-ink",
         "text-decoration-style",
+        "text-decoration-thickness",
         "text-emphasis",
         "text-emphasis-color",
         "text-emphasis-position",
@@ -9769,6 +10002,7 @@
         "text-rendering",
         "text-shadow",
         "text-transform",
+        "text-underline-offset",
         "text-underline-position",
         "top",
         "transform",
@@ -9780,7 +10014,9 @@
         "transition-duration",
         "transition-property",
         "transition-timing-function",
+        "translate",
         "unicode-bidi",
+        "vector-effect",
         "vertical-align",
         "visibility",
         "voice-balance",
@@ -9799,10 +10035,10 @@
         "word-spacing",
         "word-wrap",
         "writing-mode",
+        "x",
+        "y",
         "z-index"
-        // reverse makes sure longer attributes `font-weight` are matched fully
-        // instead of getting false positives on say `font`
-      ].reverse();
+      ].sort().reverse();
       function css2(hljs) {
         const regex = hljs.regex;
         const modes = MODES3(hljs);
@@ -10259,6 +10495,11 @@
           contains: CONTAINABLE,
           end: "$"
         };
+        const ENTITY = {
+          //https://spec.commonmark.org/0.31.2/#entity-references
+          scope: "literal",
+          match: /&([a-zA-Z0-9]+|#[0-9]{1,7}|#[Xx][0-9a-fA-F]{1,6});/
+        };
         return {
           name: "Markdown",
           aliases: [
@@ -10276,7 +10517,8 @@
             CODE,
             HORIZONTAL_RULE,
             LINK,
-            LINK_REFERENCE
+            LINK_REFERENCE,
+            ENTITY
           ]
         };
       }
@@ -10404,6 +10646,7 @@
           "assert",
           "async",
           "await",
+          "base",
           "break",
           "case",
           "catch",
@@ -10433,7 +10676,7 @@
           "implements",
           "import",
           "in",
-          "inferface",
+          "interface",
           "is",
           "late",
           "library",
@@ -10446,6 +10689,7 @@
           "required",
           "rethrow",
           "return",
+          "sealed",
           "set",
           "show",
           "static",
@@ -10459,6 +10703,7 @@
           "typedef",
           "var",
           "void",
+          "when",
           "while",
           "with",
           "yield"
@@ -10695,22 +10940,41 @@
           // Source: https://www.freepascal.org/docs-html/ref/refse6.html
           variants: [
             {
+              // Regular numbers, e.g., 123, 123.456.
+              match: /\b\d[\d_]*(\.\d[\d_]*)?/
+            },
+            {
               // Hexadecimal notation, e.g., $7F.
-              begin: "\\$[0-9A-Fa-f]+"
+              match: /\$[\dA-Fa-f_]+/
+            },
+            {
+              // Hexadecimal literal with no digits
+              match: /\$/,
+              relevance: 0
             },
             {
               // Octal notation, e.g., &42.
-              begin: "&[0-7]+"
+              match: /&[0-7][0-7_]*/
             },
             {
               // Binary notation, e.g., %1010.
-              begin: "%[01]+"
+              match: /%[01_]+/
+            },
+            {
+              // Binary literal with no digits
+              match: /%/,
+              relevance: 0
             }
           ]
         };
         const CHAR_STRING = {
           className: "string",
-          begin: /(#\d+)+/
+          variants: [
+            { match: /#\d[\d_]*/ },
+            { match: /#\$[\dA-Fa-f][\dA-Fa-f_]*/ },
+            { match: /#&[0-7][0-7_]*/ },
+            { match: /#%[01][01_]*/ }
+          ]
         };
         const CLASS = {
           begin: hljs.IDENT_RE + "\\s*=\\s*class\\s*\\(",
@@ -10752,7 +11016,6 @@
           contains: [
             STRING,
             CHAR_STRING,
-            hljs.NUMBER_MODE,
             NUMBER,
             CLASS,
             FUNCTION,
@@ -12411,6 +12674,10 @@
             }
           ]
         };
+        const CHAR_LITERAL = {
+          scope: "string",
+          match: /\$(\\([^0-9]|[0-9]{1,3}|)|.)/
+        };
         const BLOCK_STATEMENTS = {
           beginKeywords: "fun receive if try case",
           end: "end",
@@ -12427,7 +12694,8 @@
           TUPLE,
           VAR1,
           VAR2,
-          RECORD_ACCESS
+          RECORD_ACCESS,
+          CHAR_LITERAL
         ];
         const BASIC_MODES = [
           COMMENT,
@@ -12439,7 +12707,8 @@
           TUPLE,
           VAR1,
           VAR2,
-          RECORD_ACCESS
+          RECORD_ACCESS,
+          CHAR_LITERAL
         ];
         FUNCTION_CALL.contains[1].contains = BASIC_MODES;
         TUPLE.contains = BASIC_MODES;
@@ -12514,6 +12783,7 @@
             VAR1,
             VAR2,
             TUPLE,
+            CHAR_LITERAL,
             { begin: /\.$/ }
             // relevance booster
           ]
@@ -13718,6 +13988,7 @@
             "f95"
           ],
           keywords: {
+            $pattern: /\b[a-z][a-z0-9_]+\b|\.[a-z][a-z0-9_]+\./,
             keyword: KEYWORDS2,
             literal: LITERALS2,
             built_in: BUILT_INS2
@@ -14558,7 +14829,7 @@
               excludeEnd: true,
               contains: [].concat(PARSE_PARAMS)
             },
-            inherits || {}
+            {}
           );
           mode.contains.push(FUNCTION_DEF);
           mode.contains.push(hljs.C_NUMBER_MODE);
@@ -14849,10 +15120,12 @@
           "globalvar",
           "if",
           "mod",
+          "new",
           "not",
           "or",
           "repeat",
           "return",
+          "static",
           "switch",
           "then",
           "until",
@@ -14863,47 +15136,18 @@
         ];
         const BUILT_INS2 = [
           "abs",
-          "achievement_available",
-          "achievement_event",
-          "achievement_get_challenges",
-          "achievement_get_info",
-          "achievement_get_pic",
-          "achievement_increment",
-          "achievement_load_friends",
-          "achievement_load_leaderboard",
-          "achievement_load_progress",
-          "achievement_login",
-          "achievement_login_status",
-          "achievement_logout",
-          "achievement_post",
-          "achievement_post_score",
-          "achievement_reset",
-          "achievement_send_challenge",
-          "achievement_show",
-          "achievement_show_achievements",
-          "achievement_show_challenge_notifications",
-          "achievement_show_leaderboards",
-          "action_inherited",
-          "action_kill_object",
-          "ads_disable",
-          "ads_enable",
-          "ads_engagement_active",
-          "ads_engagement_available",
-          "ads_engagement_launch",
-          "ads_event",
-          "ads_event_preload",
-          "ads_get_display_height",
-          "ads_get_display_width",
-          "ads_interstitial_available",
-          "ads_interstitial_display",
-          "ads_move",
-          "ads_set_reward_callback",
-          "ads_setup",
           "alarm_get",
           "alarm_set",
-          "analytics_event",
-          "analytics_event_ext",
           "angle_difference",
+          "animcurve_channel_evaluate",
+          "animcurve_channel_new",
+          "animcurve_create",
+          "animcurve_destroy",
+          "animcurve_exists",
+          "animcurve_get",
+          "animcurve_get_channel",
+          "animcurve_get_channel_index",
+          "animcurve_point_new",
           "ansi_char",
           "application_get_position",
           "application_surface_draw_enable",
@@ -14913,21 +15157,55 @@
           "arcsin",
           "arctan",
           "arctan2",
+          "array_all",
+          "array_any",
+          "array_concat",
+          "array_contains",
+          "array_contains_ext",
           "array_copy",
+          "array_copy_while",
           "array_create",
+          "array_create_ext",
           "array_delete",
           "array_equals",
-          "array_height_2d",
+          "array_filter",
+          "array_filter_ext",
+          "array_find_index",
+          "array_first",
+          "array_foreach",
+          "array_get",
+          "array_get_index",
           "array_insert",
+          "array_intersection",
+          "array_last",
           "array_length",
-          "array_length_1d",
-          "array_length_2d",
+          "array_map",
+          "array_map_ext",
           "array_pop",
           "array_push",
+          "array_reduce",
           "array_resize",
+          "array_reverse",
+          "array_reverse_ext",
+          "array_set",
+          "array_shuffle",
+          "array_shuffle_ext",
           "array_sort",
+          "array_union",
+          "array_unique",
+          "array_unique_ext",
+          "asset_add_tags",
+          "asset_clear_tags",
+          "asset_get_ids",
           "asset_get_index",
+          "asset_get_tags",
           "asset_get_type",
+          "asset_has_any_tag",
+          "asset_has_tags",
+          "asset_remove_tags",
+          "audio_bus_clear_emitters",
+          "audio_bus_create",
+          "audio_bus_get_emitters",
           "audio_channel_num",
           "audio_create_buffer_sound",
           "audio_create_play_queue",
@@ -14936,11 +15214,14 @@
           "audio_debug",
           "audio_destroy_stream",
           "audio_destroy_sync_group",
+          "audio_effect_create",
+          "audio_emitter_bus",
           "audio_emitter_create",
           "audio_emitter_exists",
           "audio_emitter_falloff",
           "audio_emitter_free",
           "audio_emitter_gain",
+          "audio_emitter_get_bus",
           "audio_emitter_get_gain",
           "audio_emitter_get_listener_mask",
           "audio_emitter_get_pitch",
@@ -14966,6 +15247,8 @@
           "audio_get_recorder_count",
           "audio_get_recorder_info",
           "audio_get_type",
+          "audio_group_get_assets",
+          "audio_group_get_gain",
           "audio_group_is_loaded",
           "audio_group_load",
           "audio_group_load_progress",
@@ -14983,48 +15266,52 @@
           "audio_listener_set_velocity",
           "audio_listener_velocity",
           "audio_master_gain",
-          "audio_music_gain",
-          "audio_music_is_playing",
           "audio_pause_all",
-          "audio_pause_music",
           "audio_pause_sound",
           "audio_pause_sync_group",
           "audio_play_in_sync_group",
-          "audio_play_music",
           "audio_play_sound",
           "audio_play_sound_at",
+          "audio_play_sound_ext",
           "audio_play_sound_on",
           "audio_queue_sound",
           "audio_resume_all",
-          "audio_resume_music",
           "audio_resume_sound",
           "audio_resume_sync_group",
           "audio_set_listener_mask",
           "audio_set_master_gain",
           "audio_sound_gain",
+          "audio_sound_get_audio_group",
           "audio_sound_get_gain",
           "audio_sound_get_listener_mask",
+          "audio_sound_get_loop",
+          "audio_sound_get_loop_end",
+          "audio_sound_get_loop_start",
           "audio_sound_get_pitch",
           "audio_sound_get_track_position",
+          "audio_sound_is_playable",
           "audio_sound_length",
+          "audio_sound_loop",
+          "audio_sound_loop_end",
+          "audio_sound_loop_start",
           "audio_sound_pitch",
           "audio_sound_set_listener_mask",
           "audio_sound_set_track_position",
           "audio_start_recording",
           "audio_start_sync_group",
           "audio_stop_all",
-          "audio_stop_music",
           "audio_stop_recording",
           "audio_stop_sound",
           "audio_stop_sync_group",
           "audio_sync_group_debug",
           "audio_sync_group_get_track_pos",
+          "audio_sync_group_is_paused",
           "audio_sync_group_is_playing",
-          "audio_system",
-          "background_get_height",
-          "background_get_width",
+          "audio_system_is_available",
+          "audio_system_is_initialised",
           "base64_decode",
           "base64_encode",
+          "bool",
           "browser_input_capture",
           "buffer_async_group_begin",
           "buffer_async_group_end",
@@ -15032,11 +15319,15 @@
           "buffer_base64_decode",
           "buffer_base64_decode_ext",
           "buffer_base64_encode",
+          "buffer_compress",
           "buffer_copy",
           "buffer_copy_from_vertex_buffer",
+          "buffer_copy_stride",
+          "buffer_crc32",
           "buffer_create",
           "buffer_create_from_vertex_buffer",
           "buffer_create_from_vertex_buffer_ext",
+          "buffer_decompress",
           "buffer_delete",
           "buffer_exists",
           "buffer_fill",
@@ -15059,11 +15350,15 @@
           "buffer_save_ext",
           "buffer_seek",
           "buffer_set_surface",
+          "buffer_set_used_size",
           "buffer_sha1",
           "buffer_sizeof",
           "buffer_tell",
           "buffer_write",
+          "call_cancel",
+          "call_later",
           "camera_apply",
+          "camera_copy_transforms",
           "camera_create",
           "camera_create_view",
           "camera_destroy",
@@ -15184,6 +15479,26 @@
           "date_valid_datetime",
           "date_week_span",
           "date_year_span",
+          "db_to_lin",
+          "dbg_add_font_glyphs",
+          "dbg_button",
+          "dbg_checkbox",
+          "dbg_color",
+          "dbg_colour",
+          "dbg_drop_down",
+          "dbg_same_line",
+          "dbg_section",
+          "dbg_section_delete",
+          "dbg_section_exists",
+          "dbg_slider",
+          "dbg_slider_int",
+          "dbg_sprite",
+          "dbg_text",
+          "dbg_text_input",
+          "dbg_view",
+          "dbg_view_delete",
+          "dbg_view_exists",
+          "dbg_watch",
           "dcos",
           "debug_event",
           "debug_get_callstack",
@@ -15207,6 +15522,7 @@
           "directory_exists",
           "display_get_dpi_x",
           "display_get_dpi_y",
+          "display_get_frequency",
           "display_get_gui_height",
           "display_get_gui_width",
           "display_get_height",
@@ -15233,10 +15549,6 @@
           "dot_product_normalised",
           "dot_product_normalized",
           "draw_arrow",
-          "draw_background",
-          "draw_background_ext",
-          "draw_background_part_ext",
-          "draw_background_tiled",
           "draw_button",
           "draw_circle",
           "draw_circle_color",
@@ -15246,15 +15558,19 @@
           "draw_ellipse",
           "draw_ellipse_color",
           "draw_ellipse_colour",
-          "draw_enable_alphablend",
           "draw_enable_drawevent",
+          "draw_enable_skeleton_blendmodes",
           "draw_enable_swf_aa",
           "draw_flush",
           "draw_get_alpha",
           "draw_get_color",
           "draw_get_colour",
+          "draw_get_enable_skeleton_blendmodes",
+          "draw_get_font",
+          "draw_get_halign",
           "draw_get_lighting",
           "draw_get_swf_aa_level",
+          "draw_get_valign",
           "draw_getpixel",
           "draw_getpixel_ext",
           "draw_healthbar",
@@ -15289,13 +15605,8 @@
           "draw_roundrect_ext",
           "draw_self",
           "draw_set_alpha",
-          "draw_set_alpha_test",
-          "draw_set_alpha_test_ref_value",
-          "draw_set_blend_mode",
-          "draw_set_blend_mode_ext",
           "draw_set_circle_precision",
           "draw_set_color",
-          "draw_set_color_write_enable",
           "draw_set_colour",
           "draw_set_font",
           "draw_set_halign",
@@ -15380,6 +15691,7 @@
           "ds_grid_set_region",
           "ds_grid_shuffle",
           "ds_grid_sort",
+          "ds_grid_to_mp_grid",
           "ds_grid_value_disk_exists",
           "ds_grid_value_disk_x",
           "ds_grid_value_disk_y",
@@ -15398,6 +15710,8 @@
           "ds_list_find_index",
           "ds_list_find_value",
           "ds_list_insert",
+          "ds_list_is_list",
+          "ds_list_is_map",
           "ds_list_mark_as_list",
           "ds_list_mark_as_map",
           "ds_list_read",
@@ -15422,6 +15736,9 @@
           "ds_map_find_next",
           "ds_map_find_previous",
           "ds_map_find_value",
+          "ds_map_is_list",
+          "ds_map_is_map",
+          "ds_map_keys_to_array",
           "ds_map_read",
           "ds_map_replace",
           "ds_map_replace_list",
@@ -15432,6 +15749,7 @@
           "ds_map_secure_save_buffer",
           "ds_map_set",
           "ds_map_size",
+          "ds_map_values_to_array",
           "ds_map_write",
           "ds_priority_add",
           "ds_priority_change_priority",
@@ -15478,29 +15796,25 @@
           "effect_clear",
           "effect_create_above",
           "effect_create_below",
+          "effect_create_depth",
+          "effect_create_layer",
           "environment_get_variable",
           "event_inherited",
           "event_perform",
+          "event_perform_async",
           "event_perform_object",
           "event_user",
+          "exception_unhandled_handler",
           "exp",
+          "extension_exists",
+          "extension_get_option_count",
+          "extension_get_option_names",
+          "extension_get_option_value",
+          "extension_get_options",
+          "extension_get_version",
           "external_call",
           "external_define",
           "external_free",
-          "facebook_accesstoken",
-          "facebook_check_permission",
-          "facebook_dialog",
-          "facebook_graph_request",
-          "facebook_init",
-          "facebook_launch_offerwall",
-          "facebook_login",
-          "facebook_logout",
-          "facebook_post_message",
-          "facebook_request_publish_permissions",
-          "facebook_request_read_permissions",
-          "facebook_send_invite",
-          "facebook_status",
-          "facebook_user_id",
           "file_attributes",
           "file_bin_close",
           "file_bin_open",
@@ -15542,23 +15856,38 @@
           "font_add_get_enable_aa",
           "font_add_sprite",
           "font_add_sprite_ext",
+          "font_cache_glyph",
           "font_delete",
+          "font_enable_effects",
+          "font_enable_sdf",
           "font_exists",
           "font_get_bold",
           "font_get_first",
           "font_get_fontname",
+          "font_get_info",
           "font_get_italic",
           "font_get_last",
           "font_get_name",
+          "font_get_sdf_enabled",
+          "font_get_sdf_spread",
           "font_get_size",
           "font_get_texture",
           "font_get_uvs",
-          "font_replace",
           "font_replace_sprite",
           "font_replace_sprite_ext",
+          "font_sdf_spread",
           "font_set_cache_size",
-          "font_texture_page_size",
           "frac",
+          "fx_create",
+          "fx_get_name",
+          "fx_get_parameter",
+          "fx_get_parameter_names",
+          "fx_get_parameters",
+          "fx_get_single_layer",
+          "fx_set_parameter",
+          "fx_set_parameters",
+          "fx_set_single_layer",
+          "game_change",
           "game_end",
           "game_get_speed",
           "game_load",
@@ -15578,13 +15907,27 @@
           "gamepad_get_button_threshold",
           "gamepad_get_description",
           "gamepad_get_device_count",
+          "gamepad_get_guid",
+          "gamepad_get_mapping",
+          "gamepad_get_option",
+          "gamepad_hat_count",
+          "gamepad_hat_value",
           "gamepad_is_connected",
           "gamepad_is_supported",
+          "gamepad_remove_mapping",
           "gamepad_set_axis_deadzone",
           "gamepad_set_button_threshold",
           "gamepad_set_color",
           "gamepad_set_colour",
+          "gamepad_set_option",
           "gamepad_set_vibration",
+          "gamepad_test_mapping",
+          "gc_collect",
+          "gc_enable",
+          "gc_get_stats",
+          "gc_get_target_frame_time",
+          "gc_is_enabled",
+          "gc_target_frame_time",
           "gesture_double_tap_distance",
           "gesture_double_tap_time",
           "gesture_drag_distance",
@@ -15617,10 +15960,13 @@
           "get_string",
           "get_string_async",
           "get_timer",
+          "gif_add_surface",
+          "gif_open",
+          "gif_save",
+          "gif_save_buffer",
           "gml_pragma",
           "gml_release_mode",
           "gpu_get_alphatestenable",
-          "gpu_get_alphatestfunc",
           "gpu_get_alphatestref",
           "gpu_get_blendenable",
           "gpu_get_blendmode",
@@ -15633,8 +15979,8 @@
           "gpu_get_colorwriteenable",
           "gpu_get_colourwriteenable",
           "gpu_get_cullmode",
+          "gpu_get_depth",
           "gpu_get_fog",
-          "gpu_get_lightingenable",
           "gpu_get_state",
           "gpu_get_tex_filter",
           "gpu_get_tex_filter_ext",
@@ -15662,7 +16008,6 @@
           "gpu_pop_state",
           "gpu_push_state",
           "gpu_set_alphatestenable",
-          "gpu_set_alphatestfunc",
           "gpu_set_alphatestref",
           "gpu_set_blendenable",
           "gpu_set_blendmode",
@@ -15671,8 +16016,8 @@
           "gpu_set_colorwriteenable",
           "gpu_set_colourwriteenable",
           "gpu_set_cullmode",
+          "gpu_set_depth",
           "gpu_set_fog",
-          "gpu_set_lightingenable",
           "gpu_set_state",
           "gpu_set_tex_filter",
           "gpu_set_tex_filter_ext",
@@ -15697,14 +16042,17 @@
           "gpu_set_zfunc",
           "gpu_set_ztestenable",
           "gpu_set_zwriteenable",
+          "handle_parse",
           "highscore_add",
           "highscore_clear",
           "highscore_name",
           "highscore_value",
           "http_get",
           "http_get_file",
+          "http_get_request_crossorigin",
           "http_post_string",
           "http_request",
+          "http_set_request_crossorigin",
           "iap_acquire",
           "iap_activate",
           "iap_consume",
@@ -15730,7 +16078,6 @@
           "instance_activate_region",
           "instance_change",
           "instance_copy",
-          "instance_create",
           "instance_create_depth",
           "instance_create_layer",
           "instance_deactivate_all",
@@ -15748,17 +16095,23 @@
           "instance_place_list",
           "instance_position",
           "instance_position_list",
+          "instanceof",
           "int64",
           "io_clear",
           "irandom",
           "irandom_range",
           "is_array",
           "is_bool",
+          "is_callable",
+          "is_debug_overlay_open",
+          "is_handle",
           "is_infinity",
+          "is_instanceof",
           "is_int32",
           "is_int64",
-          "is_matrix",
+          "is_keyboard_used_debug_overlay",
           "is_method",
+          "is_mouse_over_debug_overlay",
           "is_nan",
           "is_numeric",
           "is_ptr",
@@ -15766,10 +16119,10 @@
           "is_string",
           "is_struct",
           "is_undefined",
-          "is_vec3",
-          "is_vec4",
           "json_decode",
           "json_encode",
+          "json_parse",
+          "json_stringify",
           "keyboard_check",
           "keyboard_check_direct",
           "keyboard_check_pressed",
@@ -15814,19 +16167,23 @@
           "layer_background_vtiled",
           "layer_background_xscale",
           "layer_background_yscale",
+          "layer_clear_fx",
           "layer_create",
           "layer_depth",
           "layer_destroy",
           "layer_destroy_instances",
           "layer_element_move",
+          "layer_enable_fx",
           "layer_exists",
           "layer_force_draw_depth",
+          "layer_fx_is_enabled",
           "layer_get_all",
           "layer_get_all_elements",
           "layer_get_depth",
           "layer_get_element_layer",
           "layer_get_element_type",
           "layer_get_forced_depth",
+          "layer_get_fx",
           "layer_get_hspeed",
           "layer_get_id",
           "layer_get_id_at_depth",
@@ -15846,6 +16203,33 @@
           "layer_reset_target_room",
           "layer_script_begin",
           "layer_script_end",
+          "layer_sequence_angle",
+          "layer_sequence_create",
+          "layer_sequence_destroy",
+          "layer_sequence_exists",
+          "layer_sequence_get_angle",
+          "layer_sequence_get_headdir",
+          "layer_sequence_get_headpos",
+          "layer_sequence_get_instance",
+          "layer_sequence_get_length",
+          "layer_sequence_get_sequence",
+          "layer_sequence_get_speedscale",
+          "layer_sequence_get_x",
+          "layer_sequence_get_xscale",
+          "layer_sequence_get_y",
+          "layer_sequence_get_yscale",
+          "layer_sequence_headdir",
+          "layer_sequence_headpos",
+          "layer_sequence_is_finished",
+          "layer_sequence_is_paused",
+          "layer_sequence_pause",
+          "layer_sequence_play",
+          "layer_sequence_speedscale",
+          "layer_sequence_x",
+          "layer_sequence_xscale",
+          "layer_sequence_y",
+          "layer_sequence_yscale",
+          "layer_set_fx",
           "layer_set_target_room",
           "layer_set_visible",
           "layer_shader",
@@ -15904,6 +16288,7 @@
           "lengthdir_x",
           "lengthdir_y",
           "lerp",
+          "lin_to_db",
           "ln",
           "load_csv",
           "log10",
@@ -15926,7 +16311,6 @@
           "matrix_set",
           "matrix_stack_clear",
           "matrix_stack_is_empty",
-          "matrix_stack_multiply",
           "matrix_stack_pop",
           "matrix_stack_push",
           "matrix_stack_set",
@@ -15940,6 +16324,10 @@
           "median",
           "merge_color",
           "merge_colour",
+          "method",
+          "method_call",
+          "method_get_index",
+          "method_get_self",
           "min",
           "motion_add",
           "motion_set",
@@ -15949,6 +16337,7 @@
           "mouse_clear",
           "mouse_wheel_down",
           "mouse_wheel_up",
+          "move_and_collide",
           "move_bounce_all",
           "move_bounce_solid",
           "move_contact_all",
@@ -15980,8 +16369,11 @@
           "mp_potential_settings",
           "mp_potential_step",
           "mp_potential_step_object",
+          "nameof",
           "network_connect",
+          "network_connect_async",
           "network_connect_raw",
+          "network_connect_raw_async",
           "network_create_server",
           "network_create_server_raw",
           "network_create_socket",
@@ -15996,7 +16388,6 @@
           "network_set_config",
           "network_set_timeout",
           "object_exists",
-          "object_get_depth",
           "object_get_mask",
           "object_get_name",
           "object_get_parent",
@@ -16012,6 +16403,7 @@
           "object_set_sprite",
           "object_set_visible",
           "ord",
+          "os_check_permission",
           "os_get_config",
           "os_get_info",
           "os_get_language",
@@ -16020,24 +16412,34 @@
           "os_is_paused",
           "os_lock_orientation",
           "os_powersave_enable",
+          "os_request_permission",
+          "os_set_orientation_lock",
           "parameter_count",
           "parameter_string",
           "part_emitter_burst",
           "part_emitter_clear",
           "part_emitter_create",
+          "part_emitter_delay",
           "part_emitter_destroy",
           "part_emitter_destroy_all",
+          "part_emitter_enable",
           "part_emitter_exists",
+          "part_emitter_interval",
           "part_emitter_region",
+          "part_emitter_relative",
           "part_emitter_stream",
+          "part_particles_burst",
           "part_particles_clear",
           "part_particles_count",
           "part_particles_create",
           "part_particles_create_color",
           "part_particles_create_colour",
+          "part_system_angle",
           "part_system_automatic_draw",
           "part_system_automatic_update",
           "part_system_clear",
+          "part_system_color",
+          "part_system_colour",
           "part_system_create",
           "part_system_create_layer",
           "part_system_depth",
@@ -16045,7 +16447,9 @@
           "part_system_draw_order",
           "part_system_drawit",
           "part_system_exists",
+          "part_system_get_info",
           "part_system_get_layer",
+          "part_system_global_space",
           "part_system_layer",
           "part_system_position",
           "part_system_update",
@@ -16077,9 +16481,14 @@
           "part_type_scale",
           "part_type_shape",
           "part_type_size",
+          "part_type_size_x",
+          "part_type_size_y",
           "part_type_speed",
           "part_type_sprite",
           "part_type_step",
+          "part_type_subimage",
+          "particle_exists",
+          "particle_get_info",
           "path_add",
           "path_add_point",
           "path_append",
@@ -16102,7 +16511,6 @@
           "path_get_point_y",
           "path_get_precision",
           "path_get_speed",
-          "path_get_time",
           "path_get_x",
           "path_get_y",
           "path_insert_point",
@@ -16229,10 +16637,6 @@
           "position_meeting",
           "power",
           "ptr",
-          "push_cancel_local_notification",
-          "push_get_first_local_notification",
-          "push_get_next_local_notification",
-          "push_local_notification",
           "radtodeg",
           "random",
           "random_get_seed",
@@ -16244,11 +16648,33 @@
           "rectangle_in_circle",
           "rectangle_in_rectangle",
           "rectangle_in_triangle",
+          "ref_create",
+          "rollback_chat",
+          "rollback_create_game",
+          "rollback_define_extra_network_latency",
+          "rollback_define_input",
+          "rollback_define_input_frame_delay",
+          "rollback_define_mock_input",
+          "rollback_define_player",
+          "rollback_display_events",
+          "rollback_get_info",
+          "rollback_get_input",
+          "rollback_get_player_prefs",
+          "rollback_join_game",
+          "rollback_leave_game",
+          "rollback_set_player_prefs",
+          "rollback_start_game",
+          "rollback_sync_on_frame",
+          "rollback_use_late_join",
+          "rollback_use_manual_start",
+          "rollback_use_player_prefs",
+          "rollback_use_random_input",
           "room_add",
           "room_assign",
           "room_duplicate",
           "room_exists",
           "room_get_camera",
+          "room_get_info",
           "room_get_name",
           "room_get_viewport",
           "room_goto",
@@ -16259,21 +16685,30 @@
           "room_next",
           "room_previous",
           "room_restart",
-          "room_set_background_color",
-          "room_set_background_colour",
           "room_set_camera",
           "room_set_height",
           "room_set_persistent",
-          "room_set_view",
           "room_set_view_enabled",
           "room_set_viewport",
           "room_set_width",
           "round",
+          "scheduler_resolution_get",
+          "scheduler_resolution_set",
           "screen_save",
           "screen_save_part",
           "script_execute",
+          "script_execute_ext",
           "script_exists",
           "script_get_name",
+          "sequence_create",
+          "sequence_destroy",
+          "sequence_exists",
+          "sequence_get",
+          "sequence_get_objects",
+          "sequence_instance_override_object",
+          "sequence_keyframe_new",
+          "sequence_keyframedata_new",
+          "sequence_track_new",
           "sha1_file",
           "sha1_string_unicode",
           "sha1_string_utf8",
@@ -16287,6 +16722,7 @@
           "shader_set",
           "shader_set_uniform_f",
           "shader_set_uniform_f_array",
+          "shader_set_uniform_f_buffer",
           "shader_set_uniform_i",
           "shader_set_uniform_i_array",
           "shader_set_uniform_matrix",
@@ -16294,6 +16730,7 @@
           "shaders_are_supported",
           "shop_leave_rating",
           "show_debug_message",
+          "show_debug_message_ext",
           "show_debug_overlay",
           "show_error",
           "show_message",
@@ -16305,30 +16742,53 @@
           "skeleton_animation_clear",
           "skeleton_animation_get",
           "skeleton_animation_get_duration",
+          "skeleton_animation_get_event_frames",
           "skeleton_animation_get_ext",
           "skeleton_animation_get_frame",
           "skeleton_animation_get_frames",
+          "skeleton_animation_get_position",
+          "skeleton_animation_is_finished",
+          "skeleton_animation_is_looping",
           "skeleton_animation_list",
           "skeleton_animation_mix",
           "skeleton_animation_set",
           "skeleton_animation_set_ext",
           "skeleton_animation_set_frame",
+          "skeleton_animation_set_position",
           "skeleton_attachment_create",
+          "skeleton_attachment_create_color",
+          "skeleton_attachment_create_colour",
+          "skeleton_attachment_destroy",
+          "skeleton_attachment_exists",
           "skeleton_attachment_get",
+          "skeleton_attachment_replace",
+          "skeleton_attachment_replace_color",
+          "skeleton_attachment_replace_colour",
           "skeleton_attachment_set",
           "skeleton_bone_data_get",
           "skeleton_bone_data_set",
+          "skeleton_bone_list",
           "skeleton_bone_state_get",
           "skeleton_bone_state_set",
           "skeleton_collision_draw_set",
+          "skeleton_find_slot",
           "skeleton_get_bounds",
           "skeleton_get_minmax",
           "skeleton_get_num_bounds",
+          "skeleton_skin_create",
           "skeleton_skin_get",
           "skeleton_skin_list",
           "skeleton_skin_set",
+          "skeleton_slot_alpha_get",
+          "skeleton_slot_color_get",
+          "skeleton_slot_color_set",
+          "skeleton_slot_colour_get",
+          "skeleton_slot_colour_set",
           "skeleton_slot_data",
+          "skeleton_slot_data_instance",
+          "skeleton_slot_list",
           "sprite_add",
+          "sprite_add_ext",
           "sprite_add_from_surface",
           "sprite_assign",
           "sprite_collision_mask",
@@ -16340,10 +16800,13 @@
           "sprite_flush_multi",
           "sprite_get_bbox_bottom",
           "sprite_get_bbox_left",
+          "sprite_get_bbox_mode",
           "sprite_get_bbox_right",
           "sprite_get_bbox_top",
           "sprite_get_height",
+          "sprite_get_info",
           "sprite_get_name",
+          "sprite_get_nineslice",
           "sprite_get_number",
           "sprite_get_speed",
           "sprite_get_speed_type",
@@ -16354,136 +16817,88 @@
           "sprite_get_xoffset",
           "sprite_get_yoffset",
           "sprite_merge",
+          "sprite_nineslice_create",
           "sprite_prefetch",
           "sprite_prefetch_multi",
           "sprite_replace",
           "sprite_save",
           "sprite_save_strip",
           "sprite_set_alpha_from_sprite",
+          "sprite_set_bbox",
+          "sprite_set_bbox_mode",
           "sprite_set_cache_size",
           "sprite_set_cache_size_ext",
+          "sprite_set_nineslice",
           "sprite_set_offset",
           "sprite_set_speed",
           "sqr",
           "sqrt",
-          "steam_activate_overlay",
-          "steam_activate_overlay_browser",
-          "steam_activate_overlay_store",
-          "steam_activate_overlay_user",
-          "steam_available_languages",
-          "steam_clear_achievement",
-          "steam_create_leaderboard",
-          "steam_current_game_language",
-          "steam_download_friends_scores",
-          "steam_download_scores",
-          "steam_download_scores_around_user",
-          "steam_file_delete",
-          "steam_file_exists",
-          "steam_file_persisted",
-          "steam_file_read",
-          "steam_file_share",
-          "steam_file_size",
-          "steam_file_write",
-          "steam_file_write_file",
-          "steam_get_achievement",
-          "steam_get_app_id",
-          "steam_get_persona_name",
-          "steam_get_quota_free",
-          "steam_get_quota_total",
-          "steam_get_stat_avg_rate",
-          "steam_get_stat_float",
-          "steam_get_stat_int",
-          "steam_get_user_account_id",
-          "steam_get_user_persona_name",
-          "steam_get_user_steam_id",
-          "steam_initialised",
-          "steam_is_cloud_enabled_for_account",
-          "steam_is_cloud_enabled_for_app",
-          "steam_is_overlay_activated",
-          "steam_is_overlay_enabled",
-          "steam_is_screenshot_requested",
-          "steam_is_user_logged_on",
-          "steam_reset_all_stats",
-          "steam_reset_all_stats_achievements",
-          "steam_send_screenshot",
-          "steam_set_achievement",
-          "steam_set_stat_avg_rate",
-          "steam_set_stat_float",
-          "steam_set_stat_int",
-          "steam_stats_ready",
-          "steam_ugc_create_item",
-          "steam_ugc_create_query_all",
-          "steam_ugc_create_query_all_ex",
-          "steam_ugc_create_query_user",
-          "steam_ugc_create_query_user_ex",
-          "steam_ugc_download",
-          "steam_ugc_get_item_install_info",
-          "steam_ugc_get_item_update_info",
-          "steam_ugc_get_item_update_progress",
-          "steam_ugc_get_subscribed_items",
-          "steam_ugc_num_subscribed_items",
-          "steam_ugc_query_add_excluded_tag",
-          "steam_ugc_query_add_required_tag",
-          "steam_ugc_query_set_allow_cached_response",
-          "steam_ugc_query_set_cloud_filename_filter",
-          "steam_ugc_query_set_match_any_tag",
-          "steam_ugc_query_set_ranked_by_trend_days",
-          "steam_ugc_query_set_return_long_description",
-          "steam_ugc_query_set_return_total_only",
-          "steam_ugc_query_set_search_text",
-          "steam_ugc_request_item_details",
-          "steam_ugc_send_query",
-          "steam_ugc_set_item_content",
-          "steam_ugc_set_item_description",
-          "steam_ugc_set_item_preview",
-          "steam_ugc_set_item_tags",
-          "steam_ugc_set_item_title",
-          "steam_ugc_set_item_visibility",
-          "steam_ugc_start_item_update",
-          "steam_ugc_submit_item_update",
-          "steam_ugc_subscribe_item",
-          "steam_ugc_unsubscribe_item",
-          "steam_upload_score",
-          "steam_upload_score_buffer",
-          "steam_upload_score_buffer_ext",
-          "steam_upload_score_ext",
-          "steam_user_installed_dlc",
-          "steam_user_owns_dlc",
+          "static_get",
+          "static_set",
           "string",
           "string_byte_at",
           "string_byte_length",
           "string_char_at",
+          "string_concat",
+          "string_concat_ext",
           "string_copy",
           "string_count",
           "string_delete",
           "string_digits",
+          "string_ends_with",
+          "string_ext",
+          "string_foreach",
           "string_format",
           "string_hash_to_newline",
           "string_height",
           "string_height_ext",
           "string_insert",
+          "string_join",
+          "string_join_ext",
+          "string_last_pos",
+          "string_last_pos_ext",
           "string_length",
           "string_letters",
           "string_lettersdigits",
           "string_lower",
           "string_ord_at",
           "string_pos",
+          "string_pos_ext",
           "string_repeat",
           "string_replace",
           "string_replace_all",
           "string_set_byte_at",
+          "string_split",
+          "string_split_ext",
+          "string_starts_with",
+          "string_trim",
+          "string_trim_end",
+          "string_trim_start",
           "string_upper",
           "string_width",
           "string_width_ext",
+          "struct_exists",
+          "struct_foreach",
+          "struct_get",
+          "struct_get_from_hash",
+          "struct_get_names",
+          "struct_names_count",
+          "struct_remove",
+          "struct_set",
+          "struct_set_from_hash",
           "surface_copy",
           "surface_copy_part",
           "surface_create",
           "surface_create_ext",
           "surface_depth_disable",
           "surface_exists",
+          "surface_format_is_supported",
           "surface_free",
           "surface_get_depth_disable",
+          "surface_get_format",
           "surface_get_height",
+          "surface_get_target",
+          "surface_get_target_ext",
           "surface_get_texture",
           "surface_get_width",
           "surface_getpixel",
@@ -16494,14 +16909,29 @@
           "surface_save_part",
           "surface_set_target",
           "surface_set_target_ext",
+          "tag_get_asset_ids",
+          "tag_get_assets",
           "tan",
+          "texture_debug_messages",
+          "texture_flush",
           "texture_get_height",
           "texture_get_texel_height",
           "texture_get_texel_width",
           "texture_get_uvs",
           "texture_get_width",
           "texture_global_scale",
+          "texture_is_ready",
+          "texture_prefetch",
           "texture_set_stage",
+          "texturegroup_get_fonts",
+          "texturegroup_get_names",
+          "texturegroup_get_sprites",
+          "texturegroup_get_status",
+          "texturegroup_get_textures",
+          "texturegroup_get_tilesets",
+          "texturegroup_load",
+          "texturegroup_set_mode",
+          "texturegroup_unload",
           "tile_get_empty",
           "tile_get_flip",
           "tile_get_index",
@@ -16530,10 +16960,35 @@
           "tilemap_set",
           "tilemap_set_at_pixel",
           "tilemap_set_global_mask",
+          "tilemap_set_height",
           "tilemap_set_mask",
+          "tilemap_set_width",
           "tilemap_tileset",
           "tilemap_x",
           "tilemap_y",
+          "tileset_get_info",
+          "tileset_get_name",
+          "tileset_get_texture",
+          "tileset_get_uvs",
+          "time_bpm_to_seconds",
+          "time_seconds_to_bpm",
+          "time_source_create",
+          "time_source_destroy",
+          "time_source_exists",
+          "time_source_get_children",
+          "time_source_get_parent",
+          "time_source_get_period",
+          "time_source_get_reps_completed",
+          "time_source_get_reps_remaining",
+          "time_source_get_state",
+          "time_source_get_time_remaining",
+          "time_source_get_units",
+          "time_source_pause",
+          "time_source_reconfigure",
+          "time_source_reset",
+          "time_source_resume",
+          "time_source_start",
+          "time_source_stop",
           "timeline_add",
           "timeline_clear",
           "timeline_delete",
@@ -16548,12 +17003,33 @@
           "url_open",
           "url_open_ext",
           "url_open_full",
+          "uwp_device_touchscreen_available",
+          "uwp_livetile_badge_clear",
+          "uwp_livetile_badge_notification",
+          "uwp_livetile_notification_begin",
+          "uwp_livetile_notification_end",
+          "uwp_livetile_notification_expiry",
+          "uwp_livetile_notification_image_add",
+          "uwp_livetile_notification_secondary_begin",
+          "uwp_livetile_notification_tag",
+          "uwp_livetile_notification_template_add",
+          "uwp_livetile_notification_text_add",
+          "uwp_livetile_queue_enable",
+          "uwp_livetile_tile_clear",
+          "uwp_secondarytile_badge_clear",
+          "uwp_secondarytile_badge_notification",
+          "uwp_secondarytile_delete",
+          "uwp_secondarytile_pin",
+          "uwp_secondarytile_tile_clear",
+          "variable_clone",
+          "variable_get_hash",
           "variable_global_exists",
           "variable_global_get",
           "variable_global_set",
           "variable_instance_exists",
           "variable_instance_get",
           "variable_instance_get_names",
+          "variable_instance_names_count",
           "variable_instance_set",
           "variable_struct_exists",
           "variable_struct_get",
@@ -16582,10 +17058,10 @@
           "vertex_format_add_position",
           "vertex_format_add_position_3d",
           "vertex_format_add_texcoord",
-          "vertex_format_add_textcoord",
           "vertex_format_begin",
           "vertex_format_delete",
           "vertex_format_end",
+          "vertex_format_get_info",
           "vertex_freeze",
           "vertex_get_buffer_size",
           "vertex_get_number",
@@ -16593,8 +17069,25 @@
           "vertex_position",
           "vertex_position_3d",
           "vertex_submit",
+          "vertex_submit_ext",
           "vertex_texcoord",
           "vertex_ubyte4",
+          "vertex_update_buffer_from_buffer",
+          "vertex_update_buffer_from_vertex",
+          "video_close",
+          "video_draw",
+          "video_enable_loop",
+          "video_get_duration",
+          "video_get_format",
+          "video_get_position",
+          "video_get_status",
+          "video_get_volume",
+          "video_is_looping",
+          "video_open",
+          "video_pause",
+          "video_resume",
+          "video_seek_to",
+          "video_set_volume",
           "view_get_camera",
           "view_get_hport",
           "view_get_surface_id",
@@ -16613,58 +17106,35 @@
           "virtual_key_delete",
           "virtual_key_hide",
           "virtual_key_show",
-          "win8_appbar_add_element",
-          "win8_appbar_enable",
-          "win8_appbar_remove_element",
-          "win8_device_touchscreen_available",
-          "win8_license_initialize_sandbox",
-          "win8_license_trial_version",
-          "win8_livetile_badge_clear",
-          "win8_livetile_badge_notification",
-          "win8_livetile_notification_begin",
-          "win8_livetile_notification_end",
-          "win8_livetile_notification_expiry",
-          "win8_livetile_notification_image_add",
-          "win8_livetile_notification_secondary_begin",
-          "win8_livetile_notification_tag",
-          "win8_livetile_notification_text_add",
-          "win8_livetile_queue_enable",
-          "win8_livetile_tile_clear",
-          "win8_livetile_tile_notification",
-          "win8_search_add_suggestions",
-          "win8_search_disable",
-          "win8_search_enable",
-          "win8_secondarytile_badge_notification",
-          "win8_secondarytile_delete",
-          "win8_secondarytile_pin",
-          "win8_settingscharm_add_entry",
-          "win8_settingscharm_add_html_entry",
-          "win8_settingscharm_add_xaml_entry",
-          "win8_settingscharm_get_xaml_property",
-          "win8_settingscharm_remove_entry",
-          "win8_settingscharm_set_xaml_property",
-          "win8_share_file",
-          "win8_share_image",
-          "win8_share_screenshot",
-          "win8_share_text",
-          "win8_share_url",
+          "wallpaper_set_config",
+          "wallpaper_set_subscriptions",
+          "weak_ref_alive",
+          "weak_ref_any_alive",
+          "weak_ref_create",
           "window_center",
           "window_device",
+          "window_enable_borderless_fullscreen",
+          "window_get_borderless_fullscreen",
           "window_get_caption",
           "window_get_color",
           "window_get_colour",
           "window_get_cursor",
           "window_get_fullscreen",
           "window_get_height",
+          "window_get_showborder",
           "window_get_visible_rects",
           "window_get_width",
           "window_get_x",
           "window_get_y",
           "window_handle",
           "window_has_focus",
+          "window_mouse_get_delta_x",
+          "window_mouse_get_delta_y",
+          "window_mouse_get_locked",
           "window_mouse_get_x",
           "window_mouse_get_y",
           "window_mouse_set",
+          "window_mouse_set_locked",
           "window_set_caption",
           "window_set_color",
           "window_set_colour",
@@ -16676,105 +17146,74 @@
           "window_set_min_width",
           "window_set_position",
           "window_set_rectangle",
+          "window_set_showborder",
           "window_set_size",
           "window_view_mouse_get_x",
           "window_view_mouse_get_y",
           "window_views_mouse_get_x",
           "window_views_mouse_get_y",
-          "winphone_license_trial_version",
-          "winphone_tile_back_content",
-          "winphone_tile_back_content_wide",
-          "winphone_tile_back_image",
-          "winphone_tile_back_image_wide",
-          "winphone_tile_back_title",
           "winphone_tile_background_color",
           "winphone_tile_background_colour",
-          "winphone_tile_count",
-          "winphone_tile_cycle_images",
-          "winphone_tile_front_image",
-          "winphone_tile_front_image_small",
-          "winphone_tile_front_image_wide",
-          "winphone_tile_icon_image",
-          "winphone_tile_small_background_image",
-          "winphone_tile_small_icon_image",
-          "winphone_tile_title",
-          "winphone_tile_wide_content",
-          "zip_unzip"
-        ];
-        const LITERALS2 = [
-          "all",
-          "false",
-          "noone",
-          "pointer_invalid",
-          "pointer_null",
-          "true",
-          "undefined"
+          "zip_add_file",
+          "zip_create",
+          "zip_save",
+          "zip_unzip",
+          "zip_unzip_async"
         ];
         const SYMBOLS = [
-          "ANSI_CHARSET",
-          "ARABIC_CHARSET",
-          "BALTIC_CHARSET",
-          "CHINESEBIG5_CHARSET",
-          "DEFAULT_CHARSET",
-          "EASTEUROPE_CHARSET",
-          "GB2312_CHARSET",
+          "AudioEffect",
+          "AudioEffectType",
+          "AudioLFOType",
           "GM_build_date",
+          "GM_build_type",
+          "GM_is_sandboxed",
+          "GM_project_filename",
           "GM_runtime_version",
           "GM_version",
-          "GREEK_CHARSET",
-          "HANGEUL_CHARSET",
-          "HEBREW_CHARSET",
-          "JOHAB_CHARSET",
-          "MAC_CHARSET",
-          "OEM_CHARSET",
-          "RUSSIAN_CHARSET",
-          "SHIFTJIS_CHARSET",
-          "SYMBOL_CHARSET",
-          "THAI_CHARSET",
-          "TURKISH_CHARSET",
-          "VIETNAMESE_CHARSET",
-          "achievement_achievement_info",
-          "achievement_filter_all_players",
-          "achievement_filter_favorites_only",
-          "achievement_filter_friends_only",
-          "achievement_friends_info",
-          "achievement_leaderboard_info",
-          "achievement_our_info",
-          "achievement_pic_loaded",
-          "achievement_show_achievement",
-          "achievement_show_bank",
-          "achievement_show_friend_picker",
-          "achievement_show_leaderboard",
-          "achievement_show_profile",
-          "achievement_show_purchase_prompt",
-          "achievement_show_ui",
-          "achievement_type_achievement_challenge",
-          "achievement_type_score_challenge",
+          "NaN",
+          "_GMFILE_",
+          "_GMFUNCTION_",
+          "_GMLINE_",
+          "alignmentH",
+          "alignmentV",
+          "all",
+          "animcurvetype_bezier",
+          "animcurvetype_catmullrom",
+          "animcurvetype_linear",
+          "asset_animationcurve",
           "asset_font",
           "asset_object",
           "asset_path",
           "asset_room",
           "asset_script",
+          "asset_sequence",
           "asset_shader",
           "asset_sound",
           "asset_sprite",
           "asset_tiles",
           "asset_timeline",
           "asset_unknown",
-          "audio_3d",
+          "audio_3D",
+          "audio_bus_main",
           "audio_falloff_exponent_distance",
           "audio_falloff_exponent_distance_clamped",
+          "audio_falloff_exponent_distance_scaled",
           "audio_falloff_inverse_distance",
           "audio_falloff_inverse_distance_clamped",
+          "audio_falloff_inverse_distance_scaled",
           "audio_falloff_linear_distance",
           "audio_falloff_linear_distance_clamped",
           "audio_falloff_none",
           "audio_mono",
-          "audio_new_system",
-          "audio_old_system",
           "audio_stereo",
+          "bboxkind_diamond",
+          "bboxkind_ellipse",
+          "bboxkind_precise",
+          "bboxkind_rectangular",
+          "bboxmode_automatic",
+          "bboxmode_fullimage",
+          "bboxmode_manual",
           "bm_add",
-          "bm_complex",
           "bm_dest_alpha",
           "bm_dest_color",
           "bm_dest_colour",
@@ -16811,12 +17250,7 @@
           "buffer_f64",
           "buffer_fast",
           "buffer_fixed",
-          "buffer_generalerror",
           "buffer_grow",
-          "buffer_invalidtype",
-          "buffer_network",
-          "buffer_outofbounds",
-          "buffer_outofspace",
           "buffer_s16",
           "buffer_s32",
           "buffer_s8",
@@ -16824,7 +17258,6 @@
           "buffer_seek_relative",
           "buffer_seek_start",
           "buffer_string",
-          "buffer_surface_copy",
           "buffer_text",
           "buffer_u16",
           "buffer_u32",
@@ -16832,16 +17265,18 @@
           "buffer_u8",
           "buffer_vbuffer",
           "buffer_wrap",
-          "button_type",
           "c_aqua",
           "c_black",
           "c_blue",
           "c_dkgray",
+          "c_dkgrey",
           "c_fuchsia",
           "c_gray",
           "c_green",
+          "c_grey",
           "c_lime",
           "c_ltgray",
+          "c_ltgrey",
           "c_maroon",
           "c_navy",
           "c_olive",
@@ -16852,6 +17287,8 @@
           "c_teal",
           "c_white",
           "c_yellow",
+          "cache_directory",
+          "characterSpacing",
           "cmpfunc_always",
           "cmpfunc_equal",
           "cmpfunc_greater",
@@ -16860,6 +17297,8 @@
           "cmpfunc_lessequal",
           "cmpfunc_never",
           "cmpfunc_notequal",
+          "coreColor",
+          "coreColour",
           "cr_appstart",
           "cr_arrow",
           "cr_beam",
@@ -16894,6 +17333,8 @@
           "display_portrait_flipped",
           "dll_cdecl",
           "dll_stdcall",
+          "dropShadowEnabled",
+          "dropShadowEnabled",
           "ds_type_grid",
           "ds_type_list",
           "ds_type_map",
@@ -16912,18 +17353,49 @@
           "ef_snow",
           "ef_spark",
           "ef_star",
-          // for example ev_ are types of events
+          "effectsEnabled",
+          "effectsEnabled",
           "ev_alarm",
           "ev_animation_end",
+          "ev_animation_event",
+          "ev_animation_update",
+          "ev_async_audio_playback",
+          "ev_async_audio_playback_ended",
+          "ev_async_audio_recording",
+          "ev_async_dialog",
+          "ev_async_push_notification",
+          "ev_async_save_load",
+          "ev_async_save_load",
+          "ev_async_social",
+          "ev_async_system_event",
+          "ev_async_web",
+          "ev_async_web_cloud",
+          "ev_async_web_iap",
+          "ev_async_web_image_load",
+          "ev_async_web_networking",
+          "ev_async_web_steam",
+          "ev_audio_playback",
+          "ev_audio_playback_ended",
+          "ev_audio_recording",
           "ev_boundary",
+          "ev_boundary_view0",
+          "ev_boundary_view1",
+          "ev_boundary_view2",
+          "ev_boundary_view3",
+          "ev_boundary_view4",
+          "ev_boundary_view5",
+          "ev_boundary_view6",
+          "ev_boundary_view7",
+          "ev_broadcast_message",
           "ev_cleanup",
-          "ev_close_button",
           "ev_collision",
           "ev_create",
           "ev_destroy",
+          "ev_dialog_async",
           "ev_draw",
           "ev_draw_begin",
           "ev_draw_end",
+          "ev_draw_normal",
           "ev_draw_post",
           "ev_draw_pre",
           "ev_end_of_path",
@@ -17011,18 +17483,36 @@
           "ev_no_more_lives",
           "ev_other",
           "ev_outside",
+          "ev_outside_view0",
+          "ev_outside_view1",
+          "ev_outside_view2",
+          "ev_outside_view3",
+          "ev_outside_view4",
+          "ev_outside_view5",
+          "ev_outside_view6",
+          "ev_outside_view7",
+          "ev_pre_create",
+          "ev_push_notification",
           "ev_right_button",
           "ev_right_press",
           "ev_right_release",
           "ev_room_end",
           "ev_room_start",
+          "ev_social",
           "ev_step",
           "ev_step_begin",
           "ev_step_end",
           "ev_step_normal",
+          "ev_system_event",
           "ev_trigger",
           "ev_user0",
           "ev_user1",
+          "ev_user10",
+          "ev_user11",
+          "ev_user12",
+          "ev_user13",
+          "ev_user14",
+          "ev_user15",
           "ev_user2",
           "ev_user3",
           "ev_user4",
@@ -17031,12 +17521,13 @@
           "ev_user7",
           "ev_user8",
           "ev_user9",
-          "ev_user10",
-          "ev_user11",
-          "ev_user12",
-          "ev_user13",
-          "ev_user14",
-          "ev_user15",
+          "ev_web_async",
+          "ev_web_cloud",
+          "ev_web_iap",
+          "ev_web_image_load",
+          "ev_web_networking",
+          "ev_web_sound_load",
+          "ev_web_steam",
           "fa_archive",
           "fa_bottom",
           "fa_center",
@@ -17044,21 +17535,34 @@
           "fa_hidden",
           "fa_left",
           "fa_middle",
+          "fa_none",
           "fa_readonly",
           "fa_right",
           "fa_sysfile",
           "fa_top",
           "fa_volumeid",
-          "fb_login_default",
-          "fb_login_fallback_to_webview",
-          "fb_login_forcing_safari",
-          "fb_login_forcing_webview",
-          "fb_login_no_fallback_to_webview",
-          "fb_login_use_system_account",
+          "false",
+          "frameSizeX",
+          "frameSizeY",
           "gamespeed_fps",
           "gamespeed_microseconds",
-          "ge_lose",
           "global",
+          "glowColor",
+          "glowColour",
+          "glowEnabled",
+          "glowEnabled",
+          "glowEnd",
+          "glowStart",
+          "gp_axis_acceleration_x",
+          "gp_axis_acceleration_y",
+          "gp_axis_acceleration_z",
+          "gp_axis_angular_velocity_x",
+          "gp_axis_angular_velocity_y",
+          "gp_axis_angular_velocity_z",
+          "gp_axis_orientation_w",
+          "gp_axis_orientation_x",
+          "gp_axis_orientation_y",
+          "gp_axis_orientation_z",
           "gp_axislh",
           "gp_axislv",
           "gp_axisrh",
@@ -17098,7 +17602,7 @@
           "iap_storeload_failed",
           "iap_storeload_ok",
           "iap_unavailable",
-          "input_type",
+          "infinity",
           "kbv_autocapitalize_characters",
           "kbv_autocapitalize_none",
           "kbv_autocapitalize_sentences",
@@ -17126,22 +17630,22 @@
           "layerelementtype_instance",
           "layerelementtype_oldtilemap",
           "layerelementtype_particlesystem",
+          "layerelementtype_sequence",
           "layerelementtype_sprite",
           "layerelementtype_tile",
           "layerelementtype_tilemap",
           "layerelementtype_undefined",
-          "lb_disp_none",
-          "lb_disp_numeric",
-          "lb_disp_time_ms",
-          "lb_disp_time_sec",
-          "lb_sort_ascending",
-          "lb_sort_descending",
-          "lb_sort_none",
           "leaderboard_type_number",
           "leaderboard_type_time_mins_secs",
           "lighttype_dir",
           "lighttype_point",
-          "local",
+          "lineSpacing",
+          "m_axisx",
+          "m_axisx_gui",
+          "m_axisy",
+          "m_axisy_gui",
+          "m_scroll_down",
+          "m_scroll_up",
           "matrix_projection",
           "matrix_view",
           "matrix_world",
@@ -17150,52 +17654,83 @@
           "mb_middle",
           "mb_none",
           "mb_right",
+          "mb_side1",
+          "mb_side2",
           "mip_markedonly",
           "mip_off",
           "mip_on",
+          "network_config_avoid_time_wait",
           "network_config_connect_timeout",
+          "network_config_disable_multicast",
           "network_config_disable_reliable_udp",
+          "network_config_enable_multicast",
           "network_config_enable_reliable_udp",
           "network_config_use_non_blocking_socket",
+          "network_config_websocket_protocol",
+          "network_connect_active",
+          "network_connect_blocking",
+          "network_connect_nonblocking",
+          "network_connect_none",
+          "network_connect_passive",
+          "network_send_binary",
+          "network_send_text",
           "network_socket_bluetooth",
           "network_socket_tcp",
           "network_socket_udp",
+          "network_socket_ws",
+          "network_socket_wss",
           "network_type_connect",
           "network_type_data",
           "network_type_disconnect",
+          "network_type_down",
           "network_type_non_blocking_connect",
-          "of_challen",
+          "network_type_up",
+          "network_type_up_failed",
+          "nineslice_blank",
+          "nineslice_bottom",
+          "nineslice_center",
+          "nineslice_centre",
+          "nineslice_hide",
+          "nineslice_left",
+          "nineslice_mirror",
+          "nineslice_repeat",
+          "nineslice_right",
+          "nineslice_stretch",
+          "nineslice_top",
+          "noone",
+          "of_challenge_lose",
           "of_challenge_tie",
           "of_challenge_win",
-          "os_3ds",
           "os_android",
-          "os_bb10",
+          "os_gdk",
+          "os_gxgames",
           "os_ios",
           "os_linux",
           "os_macosx",
+          "os_operagx",
+          "os_permission_denied",
+          "os_permission_denied_dont_request",
+          "os_permission_granted",
           "os_ps3",
           "os_ps4",
+          "os_ps5",
           "os_psvita",
           "os_switch",
-          "os_symbian",
-          "os_tizen",
           "os_tvos",
           "os_unknown",
           "os_uwp",
-          "os_wiiu",
-          "os_win32",
           "os_win8native",
           "os_windows",
           "os_winphone",
-          "os_xbox360",
           "os_xboxone",
+          "os_xboxseriesxs",
           "other",
-          "ov_achievements",
-          "ov_community",
-          "ov_friends",
-          "ov_gamegroup",
-          "ov_players",
-          "ov_settings",
+          "outlineColor",
+          "outlineColour",
+          "outlineDist",
+          "outlineEnabled",
+          "outlineEnabled",
+          "paragraphSpacing",
           "path_action_continue",
           "path_action_restart",
           "path_action_reverse",
@@ -17251,6 +17786,8 @@
           "phy_particle_group_flag_rigid",
           "phy_particle_group_flag_solid",
           "pi",
+          "pointer_invalid",
+          "pointer_null",
           "pr_linelist",
           "pr_linestrip",
           "pr_pointlist",
@@ -17260,6 +17797,8 @@
           "ps_distr_gaussian",
           "ps_distr_invgaussian",
           "ps_distr_linear",
+          "ps_mode_burst",
+          "ps_mode_stream",
           "ps_shape_diamond",
           "ps_shape_ellipse",
           "ps_shape_line",
@@ -17278,68 +17817,110 @@
           "pt_shape_sphere",
           "pt_shape_square",
           "pt_shape_star",
+          "rollback_chat_message",
+          "rollback_connect_error",
+          "rollback_connect_info",
+          "rollback_connected_to_peer",
+          "rollback_connection_rejected",
+          "rollback_disconnected_from_peer",
+          "rollback_end_game",
+          "rollback_game_full",
+          "rollback_game_info",
+          "rollback_game_interrupted",
+          "rollback_game_resumed",
+          "rollback_high_latency",
+          "rollback_player_prefs",
+          "rollback_protocol_rejected",
+          "rollback_synchronized_with_peer",
+          "rollback_synchronizing_with_peer",
+          "self",
+          "seqaudiokey_loop",
+          "seqaudiokey_oneshot",
+          "seqdir_left",
+          "seqdir_right",
+          "seqinterpolation_assign",
+          "seqinterpolation_lerp",
+          "seqplay_loop",
+          "seqplay_oneshot",
+          "seqplay_pingpong",
+          "seqtextkey_bottom",
+          "seqtextkey_center",
+          "seqtextkey_justify",
+          "seqtextkey_left",
+          "seqtextkey_middle",
+          "seqtextkey_right",
+          "seqtextkey_top",
+          "seqtracktype_audio",
+          "seqtracktype_bool",
+          "seqtracktype_clipmask",
+          "seqtracktype_clipmask_mask",
+          "seqtracktype_clipmask_subject",
+          "seqtracktype_color",
+          "seqtracktype_colour",
+          "seqtracktype_empty",
+          "seqtracktype_graphic",
+          "seqtracktype_group",
+          "seqtracktype_instance",
+          "seqtracktype_message",
+          "seqtracktype_moment",
+          "seqtracktype_particlesystem",
+          "seqtracktype_real",
+          "seqtracktype_sequence",
+          "seqtracktype_spriteframes",
+          "seqtracktype_string",
+          "seqtracktype_text",
+          "shadowColor",
+          "shadowColour",
+          "shadowOffsetX",
+          "shadowOffsetY",
+          "shadowSoftness",
+          "sprite_add_ext_error_cancelled",
+          "sprite_add_ext_error_decompressfailed",
+          "sprite_add_ext_error_loadfailed",
+          "sprite_add_ext_error_setupfailed",
+          "sprite_add_ext_error_spritenotfound",
+          "sprite_add_ext_error_unknown",
           "spritespeed_framespergameframe",
           "spritespeed_framespersecond",
-          "text_type",
+          "surface_r16float",
+          "surface_r32float",
+          "surface_r8unorm",
+          "surface_rg8unorm",
+          "surface_rgba16float",
+          "surface_rgba32float",
+          "surface_rgba4unorm",
+          "surface_rgba8unorm",
+          "texturegroup_status_fetched",
+          "texturegroup_status_loaded",
+          "texturegroup_status_loading",
+          "texturegroup_status_unloaded",
           "tf_anisotropic",
           "tf_linear",
           "tf_point",
+          "thickness",
           "tile_flip",
           "tile_index_mask",
           "tile_mirror",
           "tile_rotate",
+          "time_source_expire_after",
+          "time_source_expire_nearest",
+          "time_source_game",
+          "time_source_global",
+          "time_source_state_active",
+          "time_source_state_initial",
+          "time_source_state_paused",
+          "time_source_state_stopped",
+          "time_source_units_frames",
+          "time_source_units_seconds",
           "timezone_local",
           "timezone_utc",
           "tm_countvsyncs",
           "tm_sleep",
+          "tm_systemtiming",
+          "true",
           "ty_real",
           "ty_string",
-          "ugc_filetype_community",
-          "ugc_filetype_microtrans",
-          "ugc_list_Favorited",
-          "ugc_list_Followed",
-          "ugc_list_Published",
-          "ugc_list_Subscribed",
-          "ugc_list_UsedOrPlayed",
-          "ugc_list_VotedDown",
-          "ugc_list_VotedOn",
-          "ugc_list_VotedUp",
-          "ugc_list_WillVoteLater",
-          "ugc_match_AllGuides",
-          "ugc_match_Artwork",
-          "ugc_match_Collections",
-          "ugc_match_ControllerBindings",
-          "ugc_match_IntegratedGuides",
-          "ugc_match_Items",
-          "ugc_match_Items_Mtx",
-          "ugc_match_Items_ReadyToUse",
-          "ugc_match_Screenshots",
-          "ugc_match_UsableInGame",
-          "ugc_match_Videos",
-          "ugc_match_WebGuides",
-          "ugc_query_AcceptedForGameRankedByAcceptanceDate",
-          "ugc_query_CreatedByFollowedUsersRankedByPublicationDate",
-          "ugc_query_CreatedByFriendsRankedByPublicationDate",
-          "ugc_query_FavoritedByFriendsRankedByPublicationDate",
-          "ugc_query_NotYetRated",
-          "ugc_query_RankedByNumTimesReported",
-          "ugc_query_RankedByPublicationDate",
-          "ugc_query_RankedByTextSearch",
-          "ugc_query_RankedByTotalVotesAsc",
-          "ugc_query_RankedByTrend",
-          "ugc_query_RankedByVote",
-          "ugc_query_RankedByVotesUp",
-          "ugc_result_success",
-          "ugc_sortorder_CreationOrderAsc",
-          "ugc_sortorder_CreationOrderDesc",
-          "ugc_sortorder_ForModeration",
-          "ugc_sortorder_LastUpdatedDesc",
-          "ugc_sortorder_SubscriptionDateDesc",
-          "ugc_sortorder_TitleAsc",
-          "ugc_sortorder_VoteScoreDesc",
-          "ugc_visibility_friends_only",
-          "ugc_visibility_private",
-          "ugc_visibility_public",
+          "undefined",
           "vertex_type_color",
           "vertex_type_colour",
           "vertex_type_float1",
@@ -17360,7 +17941,12 @@
           "vertex_usage_sample",
           "vertex_usage_tangent",
           "vertex_usage_texcoord",
-          "vertex_usage_textcoord",
+          "video_format_rgba",
+          "video_format_yuv",
+          "video_status_closed",
+          "video_status_paused",
+          "video_status_playing",
+          "video_status_preparing",
           "vk_add",
           "vk_alt",
           "vk_anykey",
@@ -17374,6 +17960,9 @@
           "vk_enter",
           "vk_escape",
           "vk_f1",
+          "vk_f10",
+          "vk_f11",
+          "vk_f12",
           "vk_f2",
           "vk_f3",
           "vk_f4",
@@ -17382,9 +17971,6 @@
           "vk_f7",
           "vk_f8",
           "vk_f9",
-          "vk_f10",
-          "vk_f11",
-          "vk_f12",
           "vk_home",
           "vk_insert",
           "vk_lalt",
@@ -17416,7 +18002,10 @@
           "vk_space",
           "vk_subtract",
           "vk_tab",
-          "vk_up"
+          "vk_up",
+          "wallpaper_config",
+          "wallpaper_subscription_data",
+          "wrap"
         ];
         const LANGUAGE_VARIABLES = [
           "alarm",
@@ -17439,7 +18028,6 @@
           "argument14",
           "argument15",
           "argument_count",
-          "argument_relative",
           "async_load",
           "background_color",
           "background_colour",
@@ -17451,9 +18039,7 @@
           "bbox_top",
           "browser_height",
           "browser_width",
-          "caption_health",
-          "caption_lives",
-          "caption_score",
+          "colour?ColourTrack",
           "current_day",
           "current_hour",
           "current_minute",
@@ -17468,13 +18054,13 @@
           "depth",
           "direction",
           "display_aa",
-          "error_last",
-          "error_occurred",
+          "drawn_by_sequence",
           "event_action",
           "event_data",
           "event_number",
           "event_object",
           "event_type",
+          "font_texture_page_size",
           "fps",
           "fps_real",
           "friction",
@@ -17482,15 +18068,12 @@
           "game_id",
           "game_project_name",
           "game_save_id",
-          "gamemaker_pro",
-          "gamemaker_registered",
-          "gamemaker_version",
           "gravity",
           "gravity_direction",
           "health",
           "hspeed",
           "iap_data",
-          "id|0",
+          "id",
           "image_alpha",
           "image_angle",
           "image_blend",
@@ -17499,6 +18082,8 @@
           "image_speed",
           "image_xscale",
           "image_yscale",
+          "in_collision_tree",
+          "in_sequence",
           "instance_count",
           "instance_id",
           "keyboard_key",
@@ -17507,7 +18092,10 @@
           "keyboard_string",
           "layer",
           "lives",
+          "longMessage",
+          "managed",
           "mask_index",
+          "message",
           "mouse_button",
           "mouse_lastbutton",
           "mouse_x",
@@ -17553,9 +18141,20 @@
           "phy_speed",
           "phy_speed_x",
           "phy_speed_y",
+          "player_avatar_sprite",
+          "player_avatar_url",
+          "player_id",
+          "player_local",
+          "player_type",
+          "player_user_id",
           "program_directory",
+          "rollback_api_server",
+          "rollback_confirmed_frame",
+          "rollback_current_frame",
+          "rollback_event_id",
+          "rollback_event_param",
+          "rollback_game_running",
           "room",
-          "room_caption",
           "room_first",
           "room_height",
           "room_last",
@@ -17563,10 +18162,8 @@
           "room_speed",
           "room_width",
           "score",
-          "self",
-          "show_health",
-          "show_lives",
-          "show_score",
+          "script",
+          "sequence_instance",
           "solid",
           "speed",
           "sprite_height",
@@ -17574,41 +18171,32 @@
           "sprite_width",
           "sprite_xoffset",
           "sprite_yoffset",
+          "stacktrace",
           "temp_directory",
           "timeline_index",
           "timeline_loop",
           "timeline_position",
           "timeline_running",
           "timeline_speed",
-          "view_angle",
           "view_camera",
           "view_current",
           "view_enabled",
-          "view_hborder",
           "view_hport",
-          "view_hspeed",
-          "view_hview",
-          "view_object",
           "view_surface_id",
-          "view_vborder",
           "view_visible",
-          "view_vspeed",
           "view_wport",
-          "view_wview",
           "view_xport",
-          "view_xview",
           "view_yport",
-          "view_yview",
           "visible",
           "vspeed",
           "webgl_enabled",
           "working_directory",
+          "x",
           "xprevious",
           "xstart",
-          "x|0",
+          "y",
           "yprevious",
-          "ystart",
-          "y|0"
+          "ystart"
         ];
         return {
           name: "GML",
@@ -17617,7 +18205,6 @@
           keywords: {
             keyword: KEYWORDS2,
             built_in: BUILT_INS2,
-            literal: LITERALS2,
             symbol: SYMBOLS,
             "variable.language": LANGUAGE_VARIABLES
           },
@@ -17739,10 +18326,30 @@
               className: "number",
               variants: [
                 {
-                  begin: hljs.C_NUMBER_RE + "[i]",
-                  relevance: 1
+                  match: /-?\b0[xX]\.[a-fA-F0-9](_?[a-fA-F0-9])*[pP][+-]?\d(_?\d)*i?/,
+                  // hex without a present digit before . (making a digit afterwards required)
+                  relevance: 0
                 },
-                hljs.C_NUMBER_MODE
+                {
+                  match: /-?\b0[xX](_?[a-fA-F0-9])+((\.([a-fA-F0-9](_?[a-fA-F0-9])*)?)?[pP][+-]?\d(_?\d)*)?i?/,
+                  // hex with a present digit before . (making a digit afterwards optional)
+                  relevance: 0
+                },
+                {
+                  match: /-?\b0[oO](_?[0-7])*i?/,
+                  // leading 0o octal
+                  relevance: 0
+                },
+                {
+                  match: /-?\.\d(_?\d)*([eE][+-]?\d(_?\d)*)?i?/,
+                  // decimal without a present digit before . (making a digit afterwards required)
+                  relevance: 0
+                },
+                {
+                  match: /-?\b\d(_?\d)*(\.(\d(_?\d)*)?)?([eE][+-]?\d(_?\d)*)?i?/,
+                  // decimal with a present digit before . (making a digit afterwards optional)
+                  relevance: 0
+                }
               ]
             },
             {
@@ -18174,7 +18781,7 @@
         );
         const CLASS_DEFINITION = {
           match: [
-            /(class|interface|trait|enum|extends|implements)/,
+            /(class|interface|trait|enum|record|extends|implements)/,
             /\s+/,
             hljs.UNDERSCORE_IDENT_RE
           ],
@@ -18234,7 +18841,8 @@
           "import",
           "package",
           "return",
-          "instanceof"
+          "instanceof",
+          "var"
         ];
         return {
           name: "Groovy",
@@ -18643,8 +19251,24 @@
   var require_haskell = __commonJS({
     "node_modules/highlight.js/lib/languages/haskell.js"(exports, module) {
       function haskell(hljs) {
+        const decimalDigits = "([0-9]_*)+";
+        const hexDigits = "([0-9a-fA-F]_*)+";
+        const binaryDigits = "([01]_*)+";
+        const octalDigits = "([0-7]_*)+";
+        const ascSymbol = "[!#$%&*+.\\/<=>?@\\\\^~-]";
+        const uniSymbol = "(\\p{S}|\\p{P})";
+        const special = "[(),;\\[\\]`|{}]";
+        const symbol = `(${ascSymbol}|(?!(${special}|[_:"']))${uniSymbol})`;
         const COMMENT = { variants: [
-          hljs.COMMENT("--", "$"),
+          // Double dash forms a valid comment only if it's not part of legal lexeme.
+          // See: Haskell 98 report: https://www.haskell.org/onlinereport/lexemes.html
+          //
+          // The commented code does the job, but we can't use negative lookbehind,
+          // due to poor support by Safari browser.
+          // > hljs.COMMENT(`(?<!${symbol})--+(?!${symbol})`, '$'),
+          // So instead, we'll add a no-markup rule before the COMMENT rule in the rules list
+          // to match the problematic infix operators that contain double dash.
+          hljs.COMMENT("--+", "$"),
           hljs.COMMENT(
             /\{-/,
             /-\}/,
@@ -18687,10 +19311,6 @@
           end: /\}/,
           contains: LIST.contains
         };
-        const decimalDigits = "([0-9]_*)+";
-        const hexDigits = "([0-9a-fA-F]_*)+";
-        const binaryDigits = "([01]_*)+";
-        const octalDigits = "([0-7]_*)+";
         const NUMBER = {
           className: "number",
           relevance: 0,
@@ -18709,6 +19329,7 @@
           name: "Haskell",
           aliases: ["hs"],
           keywords: "let in if then else case of where do module import hiding qualified type data newtype deriving class instance as default infix infixl infixr foreign export ccall stdcall cplusplus jvm dotnet safe unsafe family forall mdo proc rec",
+          unicodeRegex: true,
           contains: [
             // Top-level constructions.
             {
@@ -18791,11 +19412,24 @@
             PRAGMA,
             PREPROCESSOR,
             // Literals and names.
-            // TODO: characters.
+            // Single characters.
+            {
+              scope: "string",
+              begin: /'(?=\\?.')/,
+              end: /'/,
+              contains: [
+                {
+                  scope: "char.escape",
+                  match: /\\./
+                }
+              ]
+            },
             hljs.QUOTE_STRING_MODE,
             NUMBER,
             CONSTRUCTOR,
             hljs.inherit(hljs.TITLE_MODE, { begin: "^[_a-z][\\w']*" }),
+            // No markup, prevents infix operators from being recognized as comments.
+            { begin: `(?!-)${symbol}--+|--+(?!-)${symbol}` },
             COMMENT,
             {
               // No markup, relevance booster
@@ -18812,12 +19446,14 @@
   var require_haxe = __commonJS({
     "node_modules/highlight.js/lib/languages/haxe.js"(exports, module) {
       function haxe(hljs) {
+        const IDENT_RE2 = "[a-zA-Z_$][a-zA-Z0-9_$]*";
+        const HAXE_NUMBER_RE = /(-?)(\b0[xX][a-fA-F0-9_]+|(\b\d+(\.[\d_]*)?|\.[\d_]+)(([eE][-+]?\d+)|i32|u32|i64|f64)?)/;
         const HAXE_BASIC_TYPES = "Int Float String Bool Dynamic Void Array ";
         return {
           name: "Haxe",
           aliases: ["hx"],
           keywords: {
-            keyword: "break case cast catch continue default do dynamic else enum extern for function here if import in inline never new override package private get set public return static super switch this throw trace try typedef untyped using var while " + HAXE_BASIC_TYPES,
+            keyword: "abstract break case cast catch continue default do dynamic else enum extern final for function here if import in inline is macro never new override package private get set public return static super switch this throw trace try typedef untyped using var while " + HAXE_BASIC_TYPES,
             built_in: "trace this",
             literal: "true false null _"
           },
@@ -18832,13 +19468,13 @@
                 {
                   className: "subst",
                   // interpolation
-                  begin: "\\$\\{",
-                  end: "\\}"
+                  begin: /\$\{/,
+                  end: /\}/
                 },
                 {
                   className: "subst",
                   // interpolation
-                  begin: "\\$",
+                  begin: /\$/,
                   end: /\W\}/
                 }
               ]
@@ -18846,12 +19482,21 @@
             hljs.QUOTE_STRING_MODE,
             hljs.C_LINE_COMMENT_MODE,
             hljs.C_BLOCK_COMMENT_MODE,
-            hljs.C_NUMBER_MODE,
+            {
+              className: "number",
+              begin: HAXE_NUMBER_RE,
+              relevance: 0
+            },
+            {
+              className: "variable",
+              begin: "\\$" + IDENT_RE2
+            },
             {
               className: "meta",
               // compiler meta
-              begin: "@:",
-              end: "$"
+              begin: /@:?/,
+              end: /\(|$/,
+              excludeEnd: true
             },
             {
               className: "meta",
@@ -18863,8 +19508,8 @@
             {
               className: "type",
               // function types
-              begin: ":[ 	]*",
-              end: "[^A-Za-z0-9_ 	\\->]",
+              begin: /:[ \t]*/,
+              end: /[^A-Za-z0-9_ \t\->]/,
               excludeBegin: true,
               excludeEnd: true,
               relevance: 0
@@ -18872,50 +19517,50 @@
             {
               className: "type",
               // types
-              begin: ":[ 	]*",
-              end: "\\W",
+              begin: /:[ \t]*/,
+              end: /\W/,
               excludeBegin: true,
               excludeEnd: true
             },
             {
               className: "type",
               // instantiation
-              begin: "new *",
-              end: "\\W",
+              beginKeywords: "new",
+              end: /\W/,
               excludeBegin: true,
               excludeEnd: true
             },
             {
-              className: "class",
+              className: "title.class",
               // enums
               beginKeywords: "enum",
-              end: "\\{",
+              end: /\{/,
               contains: [hljs.TITLE_MODE]
             },
             {
-              className: "class",
+              className: "title.class",
               // abstracts
-              beginKeywords: "abstract",
-              end: "[\\{$]",
+              begin: "\\babstract\\b(?=\\s*" + hljs.IDENT_RE + "\\s*\\()",
+              end: /[\{$]/,
               contains: [
                 {
                   className: "type",
-                  begin: "\\(",
-                  end: "\\)",
+                  begin: /\(/,
+                  end: /\)/,
                   excludeBegin: true,
                   excludeEnd: true
                 },
                 {
                   className: "type",
-                  begin: "from +",
-                  end: "\\W",
+                  begin: /from +/,
+                  end: /\W/,
                   excludeBegin: true,
                   excludeEnd: true
                 },
                 {
                   className: "type",
-                  begin: "to +",
-                  end: "\\W",
+                  begin: /to +/,
+                  end: /\W/,
                   excludeBegin: true,
                   excludeEnd: true
                 },
@@ -18924,16 +19569,16 @@
               keywords: { keyword: "abstract from to" }
             },
             {
-              className: "class",
+              className: "title.class",
               // classes
-              begin: "\\b(class|interface) +",
-              end: "[\\{$]",
+              begin: /\b(class|interface) +/,
+              end: /[\{$]/,
               excludeEnd: true,
               keywords: "class interface",
               contains: [
                 {
                   className: "keyword",
-                  begin: "\\b(extends|implements) +",
+                  begin: /\b(extends|implements) +/,
                   keywords: "extends implements",
                   contains: [
                     {
@@ -18947,11 +19592,11 @@
               ]
             },
             {
-              className: "function",
+              className: "title.function",
               beginKeywords: "function",
-              end: "\\(",
+              end: /\(/,
               excludeEnd: true,
-              illegal: "\\S",
+              illegal: /\S/,
               contains: [hljs.TITLE_MODE]
             }
           ],
@@ -19019,7 +19664,7 @@
     "node_modules/highlight.js/lib/languages/http.js"(exports, module) {
       function http(hljs) {
         const regex = hljs.regex;
-        const VERSION = "HTTP/(2|1\\.[01])";
+        const VERSION = "HTTP/([32]|1\\.[01])";
         const HEADER_NAME = /[A-Za-z][A-Za-z0-9-]*/;
         const HEADER = {
           className: "attribute",
@@ -19796,7 +20441,8 @@
           "do",
           "sealed",
           "yield",
-          "permits"
+          "permits",
+          "goto"
         ];
         const BUILT_INS2 = [
           "super",
@@ -20116,6 +20762,7 @@
         "window",
         "document",
         "localStorage",
+        "sessionStorage",
         "module",
         "global"
         // Node.js
@@ -20215,7 +20862,7 @@
           // defined later
         };
         const HTML_TEMPLATE = {
-          begin: "html`",
+          begin: ".?html`",
           end: "",
           starts: {
             end: "`",
@@ -20228,7 +20875,7 @@
           }
         };
         const CSS_TEMPLATE = {
-          begin: "css`",
+          begin: ".?css`",
           end: "",
           starts: {
             end: "`",
@@ -20238,6 +20885,19 @@
               SUBST
             ],
             subLanguage: "css"
+          }
+        };
+        const GRAPHQL_TEMPLATE = {
+          begin: ".?gql`",
+          end: "",
+          starts: {
+            end: "`",
+            returnEnd: false,
+            contains: [
+              hljs.BACKSLASH_ESCAPE,
+              SUBST
+            ],
+            subLanguage: "graphql"
           }
         };
         const TEMPLATE_STRING = {
@@ -20301,6 +20961,7 @@
           hljs.QUOTE_STRING_MODE,
           HTML_TEMPLATE,
           CSS_TEMPLATE,
+          GRAPHQL_TEMPLATE,
           TEMPLATE_STRING,
           // Skip numbers when they are part of a variable name
           { match: /\$\d+/ },
@@ -20323,7 +20984,7 @@
         const PARAMS_CONTAINS = SUBST_AND_COMMENTS.concat([
           // eat recursive parens in sub expressions
           {
-            begin: /\(/,
+            begin: /(\s*)\(/,
             end: /\)/,
             keywords: KEYWORDS$1,
             contains: ["self"].concat(SUBST_AND_COMMENTS)
@@ -20331,7 +20992,9 @@
         ]);
         const PARAMS = {
           className: "params",
-          begin: /\(/,
+          // convert this to negative lookbehind in v12
+          begin: /(\s*)\(/,
+          // to match the parms with 
           end: /\)/,
           excludeBegin: true,
           excludeEnd: true,
@@ -20444,9 +21107,9 @@
               ...BUILT_IN_GLOBALS2,
               "super",
               "import"
-            ]),
+            ].map((x) => `${x}\\s*\\(`)),
             IDENT_RE$1,
-            regex.lookahead(/\(/)
+            regex.lookahead(/\s*\(/)
           ),
           className: "title.function",
           relevance: 0
@@ -20502,7 +21165,7 @@
           ]
         };
         return {
-          name: "Javascript",
+          name: "JavaScript",
           aliases: ["js", "jsx", "mjs", "cjs"],
           keywords: KEYWORDS$1,
           // this will be extended by TypeScript
@@ -20519,6 +21182,7 @@
             hljs.QUOTE_STRING_MODE,
             HTML_TEMPLATE,
             CSS_TEMPLATE,
+            GRAPHQL_TEMPLATE,
             TEMPLATE_STRING,
             COMMENT,
             // Skip numbers when they are part of a variable name
@@ -20561,7 +21225,7 @@
                           skip: true
                         },
                         {
-                          begin: /\(/,
+                          begin: /(\s*)\(/,
                           end: /\)/,
                           excludeBegin: true,
                           excludeEnd: true,
@@ -20741,6 +21405,7 @@
         };
         return {
           name: "JSON",
+          aliases: ["jsonc"],
           keywords: {
             literal: LITERALS2
           },
@@ -21883,42 +22548,89 @@
   var require_leaf = __commonJS({
     "node_modules/highlight.js/lib/languages/leaf.js"(exports, module) {
       function leaf(hljs) {
+        const IDENT = /([A-Za-z_][A-Za-z_0-9]*)?/;
+        const LITERALS2 = [
+          "true",
+          "false",
+          "in"
+        ];
+        const PARAMS = {
+          scope: "params",
+          begin: /\(/,
+          end: /\)(?=\:?)/,
+          endsParent: true,
+          relevance: 7,
+          contains: [
+            {
+              scope: "string",
+              begin: '"',
+              end: '"'
+            },
+            {
+              scope: "keyword",
+              match: LITERALS2.join("|")
+            },
+            {
+              scope: "variable",
+              match: /[A-Za-z_][A-Za-z_0-9]*/
+            },
+            {
+              scope: "operator",
+              match: /\+|\-|\*|\/|\%|\=\=|\=|\!|\>|\<|\&\&|\|\|/
+            }
+          ]
+        };
+        const INSIDE_DISPATCH = {
+          match: [
+            IDENT,
+            /(?=\()/
+          ],
+          scope: {
+            1: "keyword"
+          },
+          contains: [PARAMS]
+        };
+        PARAMS.contains.unshift(INSIDE_DISPATCH);
         return {
           name: "Leaf",
           contains: [
+            // #ident():
             {
-              className: "function",
-              begin: "#+[A-Za-z_0-9]*\\(",
-              end: / \{/,
-              returnBegin: true,
-              excludeEnd: true,
+              match: [
+                /#+/,
+                IDENT,
+                /(?=\()/
+              ],
+              scope: {
+                1: "punctuation",
+                2: "keyword"
+              },
+              // will start up after the ending `)` match from line ~44
+              // just to grab the trailing `:` if we can match it
+              starts: {
+                contains: [
+                  {
+                    match: /\:/,
+                    scope: "punctuation"
+                  }
+                ]
+              },
               contains: [
-                {
-                  className: "keyword",
-                  begin: "#+"
-                },
-                {
-                  className: "title",
-                  begin: "[A-Za-z_][A-Za-z_0-9]*"
-                },
-                {
-                  className: "params",
-                  begin: "\\(",
-                  end: "\\)",
-                  endsParent: true,
-                  contains: [
-                    {
-                      className: "string",
-                      begin: '"',
-                      end: '"'
-                    },
-                    {
-                      className: "variable",
-                      begin: "[A-Za-z_][A-Za-z_0-9]*"
-                    }
-                  ]
-                }
+                PARAMS
               ]
+            },
+            // #ident or #ident:
+            {
+              match: [
+                /#+/,
+                IDENT,
+                /:?/
+              ],
+              scope: {
+                1: "punctuation",
+                2: "keyword",
+                3: "punctuation"
+              }
             }
           ]
         };
@@ -21962,11 +22674,11 @@
           },
           CSS_VARIABLE: {
             className: "attr",
-            begin: /--[A-Za-z][A-Za-z0-9_-]*/
+            begin: /--[A-Za-z_][A-Za-z0-9_-]*/
           }
         };
       };
-      var TAGS3 = [
+      var HTML_TAGS3 = [
         "a",
         "abbr",
         "address",
@@ -22018,11 +22730,16 @@
         "nav",
         "object",
         "ol",
+        "optgroup",
+        "option",
         "p",
+        "picture",
         "q",
         "quote",
         "samp",
         "section",
+        "select",
+        "source",
         "span",
         "strong",
         "summary",
@@ -22039,6 +22756,53 @@
         "ul",
         "var",
         "video"
+      ];
+      var SVG_TAGS3 = [
+        "defs",
+        "g",
+        "marker",
+        "mask",
+        "pattern",
+        "svg",
+        "switch",
+        "symbol",
+        "feBlend",
+        "feColorMatrix",
+        "feComponentTransfer",
+        "feComposite",
+        "feConvolveMatrix",
+        "feDiffuseLighting",
+        "feDisplacementMap",
+        "feFlood",
+        "feGaussianBlur",
+        "feImage",
+        "feMerge",
+        "feMorphology",
+        "feOffset",
+        "feSpecularLighting",
+        "feTile",
+        "feTurbulence",
+        "linearGradient",
+        "radialGradient",
+        "stop",
+        "circle",
+        "ellipse",
+        "image",
+        "line",
+        "path",
+        "polygon",
+        "polyline",
+        "rect",
+        "text",
+        "use",
+        "textPath",
+        "tspan",
+        "foreignObject",
+        "clipPath"
+      ];
+      var TAGS3 = [
+        ...HTML_TAGS3,
+        ...SVG_TAGS3
       ];
       var MEDIA_FEATURES3 = [
         "any-hover",
@@ -22075,7 +22839,7 @@
         "max-width",
         "min-height",
         "max-height"
-      ];
+      ].sort().reverse();
       var PSEUDO_CLASSES3 = [
         "active",
         "any-link",
@@ -22150,7 +22914,7 @@
         "visited",
         "where"
         // where()
-      ];
+      ].sort().reverse();
       var PSEUDO_ELEMENTS3 = [
         "after",
         "backdrop",
@@ -22166,11 +22930,13 @@
         "selection",
         "slotted",
         "spelling-error"
-      ];
+      ].sort().reverse();
       var ATTRIBUTES3 = [
+        "accent-color",
         "align-content",
         "align-items",
         "align-self",
+        "alignment-baseline",
         "all",
         "animation",
         "animation-delay",
@@ -22181,6 +22947,7 @@
         "animation-name",
         "animation-play-state",
         "animation-timing-function",
+        "appearance",
         "backface-visibility",
         "background",
         "background-attachment",
@@ -22192,6 +22959,7 @@
         "background-position",
         "background-repeat",
         "background-size",
+        "baseline-shift",
         "block-size",
         "border",
         "border-block",
@@ -22238,10 +23006,14 @@
         "border-left-width",
         "border-radius",
         "border-right",
+        "border-end-end-radius",
+        "border-end-start-radius",
         "border-right-color",
         "border-right-style",
         "border-right-width",
         "border-spacing",
+        "border-start-end-radius",
+        "border-start-start-radius",
         "border-style",
         "border-top",
         "border-top-color",
@@ -22257,6 +23029,8 @@
         "break-after",
         "break-before",
         "break-inside",
+        "cx",
+        "cy",
         "caption-side",
         "caret-color",
         "clear",
@@ -22264,6 +23038,11 @@
         "clip-path",
         "clip-rule",
         "color",
+        "color-interpolation",
+        "color-interpolation-filters",
+        "color-profile",
+        "color-rendering",
+        "color-scheme",
         "column-count",
         "column-fill",
         "column-gap",
@@ -22285,7 +23064,12 @@
         "cursor",
         "direction",
         "display",
+        "dominant-baseline",
         "empty-cells",
+        "enable-background",
+        "fill",
+        "fill-opacity",
+        "fill-rule",
         "filter",
         "flex",
         "flex-basis",
@@ -22296,6 +23080,8 @@
         "flex-wrap",
         "float",
         "flow",
+        "flood-color",
+        "flood-opacity",
         "font",
         "font-display",
         "font-family",
@@ -22317,6 +23103,7 @@
         "font-variation-settings",
         "font-weight",
         "gap",
+        "glyph-orientation-horizontal",
         "glyph-orientation-vertical",
         "grid",
         "grid-area",
@@ -22343,16 +23130,32 @@
         "image-resolution",
         "ime-mode",
         "inline-size",
+        "inset",
+        "inset-block",
+        "inset-block-end",
+        "inset-block-start",
+        "inset-inline",
+        "inset-inline-end",
+        "inset-inline-start",
         "isolation",
+        "kerning",
         "justify-content",
+        "justify-items",
+        "justify-self",
         "left",
         "letter-spacing",
+        "lighting-color",
         "line-break",
         "line-height",
         "list-style",
         "list-style-image",
         "list-style-position",
         "list-style-type",
+        "marker",
+        "marker-end",
+        "marker-mid",
+        "marker-start",
+        "mask",
         "margin",
         "margin-block",
         "margin-block-end",
@@ -22434,12 +23237,15 @@
         "pointer-events",
         "position",
         "quotes",
+        "r",
         "resize",
         "rest",
         "rest-after",
         "rest-before",
         "right",
+        "rotate",
         "row-gap",
+        "scale",
         "scroll-margin",
         "scroll-margin-block",
         "scroll-margin-block-end",
@@ -22471,12 +23277,24 @@
         "shape-image-threshold",
         "shape-margin",
         "shape-outside",
+        "shape-rendering",
+        "stop-color",
+        "stop-opacity",
+        "stroke",
+        "stroke-dasharray",
+        "stroke-dashoffset",
+        "stroke-linecap",
+        "stroke-linejoin",
+        "stroke-miterlimit",
+        "stroke-opacity",
+        "stroke-width",
         "speak",
         "speak-as",
         "src",
         // @font-face
         "tab-size",
         "table-layout",
+        "text-anchor",
         "text-align",
         "text-align-all",
         "text-align-last",
@@ -22484,7 +23302,9 @@
         "text-decoration",
         "text-decoration-color",
         "text-decoration-line",
+        "text-decoration-skip-ink",
         "text-decoration-style",
+        "text-decoration-thickness",
         "text-emphasis",
         "text-emphasis-color",
         "text-emphasis-position",
@@ -22496,6 +23316,7 @@
         "text-rendering",
         "text-shadow",
         "text-transform",
+        "text-underline-offset",
         "text-underline-position",
         "top",
         "transform",
@@ -22507,7 +23328,9 @@
         "transition-duration",
         "transition-property",
         "transition-timing-function",
+        "translate",
         "unicode-bidi",
+        "vector-effect",
         "vertical-align",
         "visibility",
         "voice-balance",
@@ -22526,11 +23349,11 @@
         "word-spacing",
         "word-wrap",
         "writing-mode",
+        "x",
+        "y",
         "z-index"
-        // reverse makes sure longer attributes `font-weight` are matched fully
-        // instead of getting false positives on say `font`
-      ].reverse();
-      var PSEUDO_SELECTORS = PSEUDO_CLASSES3.concat(PSEUDO_ELEMENTS3);
+      ].sort().reverse();
+      var PSEUDO_SELECTORS = PSEUDO_CLASSES3.concat(PSEUDO_ELEMENTS3).sort().reverse();
       function less(hljs) {
         const modes = MODES3(hljs);
         const PSEUDO_SELECTORS$1 = PSEUDO_SELECTORS;
@@ -23403,7 +24226,10 @@
         return {
           name: "LLVM IR",
           // TODO: split into different categories of keywords
-          keywords: "begin end true false declare define global constant private linker_private internal available_externally linkonce linkonce_odr weak weak_odr appending dllimport dllexport common default hidden protected extern_weak external thread_local zeroinitializer undef null to tail target triple datalayout volatile nuw nsw nnan ninf nsz arcp fast exact inbounds align addrspace section alias module asm sideeffect gc dbg linker_private_weak attributes blockaddress initialexec localdynamic localexec prefix unnamed_addr ccc fastcc coldcc x86_stdcallcc x86_fastcallcc arm_apcscc arm_aapcscc arm_aapcs_vfpcc ptx_device ptx_kernel intel_ocl_bicc msp430_intrcc spir_func spir_kernel x86_64_sysvcc x86_64_win64cc x86_thiscallcc cc c signext zeroext inreg sret nounwind noreturn noalias nocapture byval nest readnone readonly inlinehint noinline alwaysinline optsize ssp sspreq noredzone noimplicitfloat naked builtin cold nobuiltin noduplicate nonlazybind optnone returns_twice sanitize_address sanitize_memory sanitize_thread sspstrong uwtable returned type opaque eq ne slt sgt sle sge ult ugt ule uge oeq one olt ogt ole oge ord uno ueq une x acq_rel acquire alignstack atomic catch cleanup filter inteldialect max min monotonic nand personality release seq_cst singlethread umax umin unordered xchg add fadd sub fsub mul fmul udiv sdiv fdiv urem srem frem shl lshr ashr and or xor icmp fcmp phi call trunc zext sext fptrunc fpext uitofp sitofp fptoui fptosi inttoptr ptrtoint bitcast addrspacecast select va_arg ret br switch invoke unwind unreachable indirectbr landingpad resume malloc alloca free load store getelementptr extractelement insertelement shufflevector getresult extractvalue insertvalue atomicrmw cmpxchg fence argmemonly double",
+          keywords: {
+            keyword: "begin end true false declare define global constant private linker_private internal available_externally linkonce linkonce_odr weak weak_odr appending dllimport dllexport common default hidden protected extern_weak external thread_local zeroinitializer undef null to tail target triple datalayout volatile nuw nsw nnan ninf nsz arcp fast exact inbounds align addrspace section alias module asm sideeffect gc dbg linker_private_weak attributes blockaddress initialexec localdynamic localexec prefix unnamed_addr ccc fastcc coldcc x86_stdcallcc x86_fastcallcc arm_apcscc arm_aapcscc arm_aapcs_vfpcc ptx_device ptx_kernel intel_ocl_bicc msp430_intrcc spir_func spir_kernel x86_64_sysvcc x86_64_win64cc x86_thiscallcc cc c signext zeroext inreg sret nounwind noreturn noalias nocapture byval nest readnone readonly inlinehint noinline alwaysinline optsize ssp sspreq noredzone noimplicitfloat naked builtin cold nobuiltin noduplicate nonlazybind optnone returns_twice sanitize_address sanitize_memory sanitize_thread sspstrong uwtable returned type opaque eq ne slt sgt sle sge ult ugt ule uge oeq one olt ogt ole oge ord uno ueq une x acq_rel acquire alignstack atomic catch cleanup filter inteldialect max min monotonic nand personality release seq_cst singlethread umax umin unordered xchg add fadd sub fsub mul fmul udiv sdiv fdiv urem srem frem shl lshr ashr and or xor icmp fcmp phi call trunc zext sext fptrunc fpext uitofp sitofp fptoui fptosi inttoptr ptrtoint bitcast addrspacecast select va_arg ret br switch invoke unwind unreachable indirectbr landingpad resume malloc alloca free load store getelementptr extractelement insertelement shufflevector getresult extractvalue insertvalue atomicrmw cmpxchg fence argmemonly",
+            type: "void half bfloat float double fp128 x86_fp80 ppc_fp128 x86_amx x86_mmx ptr label token metadata opaque"
+          },
           contains: [
             TYPE,
             // this matches "empty comments"...
@@ -23670,6 +24496,14 @@
         "Accumulate",
         "Accuracy",
         "AccuracyGoal",
+        "AcousticAbsorbingValue",
+        "AcousticImpedanceValue",
+        "AcousticNormalVelocityValue",
+        "AcousticPDEComponent",
+        "AcousticPressureCondition",
+        "AcousticRadiationValue",
+        "AcousticSoundHardValue",
+        "AcousticSoundSoftCondition",
         "ActionDelay",
         "ActionMenu",
         "ActionMenuBox",
@@ -23692,6 +24526,7 @@
         "AdjacencyList",
         "AdjacencyMatrix",
         "AdjacentMeshCells",
+        "Adjugate",
         "AdjustmentBox",
         "AdjustmentBoxOptions",
         "AdjustTimeSeriesForecast",
@@ -23706,6 +24541,7 @@
         "AircraftData",
         "AirportData",
         "AirPressureData",
+        "AirSoundAttenuation",
         "AirTemperatureData",
         "AiryAi",
         "AiryAiPrime",
@@ -23728,6 +24564,7 @@
         "AlignmentPoint",
         "All",
         "AllowAdultContent",
+        "AllowChatServices",
         "AllowedCloudExtraParameters",
         "AllowedCloudParameterExtensions",
         "AllowedDimensions",
@@ -23772,6 +24609,7 @@
         "AngleVector",
         "AngularGauge",
         "Animate",
+        "AnimatedImage",
         "AnimationCycleOffset",
         "AnimationCycleRepetitions",
         "AnimationDirection",
@@ -23781,6 +24619,7 @@
         "AnimationRunning",
         "AnimationRunTime",
         "AnimationTimeIndex",
+        "AnimationVideo",
         "Animator",
         "AnimatorBox",
         "AnimatorBoxOptions",
@@ -23799,6 +24638,7 @@
         "AnomalyDetectorFunction",
         "Anonymous",
         "Antialiasing",
+        "Antihermitian",
         "AntihermitianMatrixQ",
         "Antisymmetric",
         "AntisymmetricMatrixQ",
@@ -23817,8 +24657,11 @@
         "AppendCheck",
         "AppendLayer",
         "AppendTo",
+        "Application",
         "Apply",
+        "ApplyReaction",
         "ApplySides",
+        "ApplyTo",
         "ArcCos",
         "ArcCosh",
         "ArcCot",
@@ -23840,6 +24683,7 @@
         "ArgMax",
         "ArgMin",
         "ArgumentCountQ",
+        "ArgumentsOptions",
         "ARIMAProcess",
         "ArithmeticGeometricMean",
         "ARMAProcess",
@@ -23854,7 +24698,9 @@
         "ArrayMesh",
         "ArrayPad",
         "ArrayPlot",
+        "ArrayPlot3D",
         "ArrayQ",
+        "ArrayReduce",
         "ArrayResample",
         "ArrayReshape",
         "ArrayRules",
@@ -23876,6 +24722,8 @@
         "AspectRatio",
         "AspectRatioFixed",
         "Assert",
+        "AssessmentFunction",
+        "AssessmentResultObject",
         "AssociateTo",
         "Association",
         "AssociationFormat",
@@ -23885,17 +24733,33 @@
         "AssumeDeterministic",
         "Assuming",
         "Assumptions",
+        "AstroAngularSeparation",
+        "AstroBackground",
+        "AstroCenter",
+        "AstroDistance",
+        "AstroGraphics",
+        "AstroGridLines",
+        "AstroGridLinesStyle",
         "AstronomicalData",
+        "AstroPosition",
+        "AstroProjection",
+        "AstroRange",
+        "AstroRangePadding",
+        "AstroReferenceFrame",
+        "AstroStyling",
+        "AstroZoomLevel",
         "Asymptotic",
         "AsymptoticDSolveValue",
         "AsymptoticEqual",
         "AsymptoticEquivalent",
+        "AsymptoticExpectation",
         "AsymptoticGreater",
         "AsymptoticGreaterEqual",
         "AsymptoticIntegrate",
         "AsymptoticLess",
         "AsymptoticLessEqual",
         "AsymptoticOutputTracker",
+        "AsymptoticProbability",
         "AsymptoticProduct",
         "AsymptoticRSolveValue",
         "AsymptoticSolve",
@@ -23907,8 +24771,12 @@
         "AtomCoordinates",
         "AtomCount",
         "AtomDiagramCoordinates",
+        "AtomLabels",
+        "AtomLabelStyle",
         "AtomList",
         "AtomQ",
+        "AttachCell",
+        "AttachedCell",
         "AttentionLayer",
         "Attributes",
         "Audio",
@@ -23967,7 +24835,8 @@
         "AudioStream",
         "AudioStreams",
         "AudioTimeStretch",
-        "AudioTracks",
+        "AudioTrackApply",
+        "AudioTrackSelection",
         "AudioTrim",
         "AudioType",
         "AugmentedPolyhedron",
@@ -23994,6 +24863,7 @@
         "AutoNumberFormatting",
         "AutoOpenNotebooks",
         "AutoOpenPalettes",
+        "AutoOperatorRenderings",
         "AutoQuoteCharacters",
         "AutoRefreshed",
         "AutoRemove",
@@ -24011,8 +24881,22 @@
         "AxesStyle",
         "AxiomaticTheory",
         "Axis",
+        "Axis3DBox",
+        "Axis3DBoxOptions",
+        "AxisBox",
+        "AxisBoxOptions",
+        "AxisLabel",
+        "AxisObject",
+        "AxisStyle",
         "BabyMonsterGroupB",
         "Back",
+        "BackFaceColor",
+        "BackFaceGlowColor",
+        "BackFaceOpacity",
+        "BackFaceSpecularColor",
+        "BackFaceSpecularExponent",
+        "BackFaceSurfaceAppearance",
+        "BackFaceTexture",
         "Background",
         "BackgroundAppearance",
         "BackgroundTasksSettings",
@@ -24057,7 +24941,6 @@
         "Before",
         "Begin",
         "BeginDialogPacket",
-        "BeginFrontEndInteractionPacket",
         "BeginPackage",
         "BellB",
         "BellY",
@@ -24071,6 +24954,7 @@
         "BernoulliGraphDistribution",
         "BernoulliProcess",
         "BernsteinBasis",
+        "BesagL",
         "BesselFilterModel",
         "BesselI",
         "BesselJ",
@@ -24086,6 +24970,7 @@
         "BetaRegularized",
         "Between",
         "BetweennessCentrality",
+        "Beveled",
         "BeveledPolyhedron",
         "BezierCurve",
         "BezierCurve3DBox",
@@ -24094,6 +24979,8 @@
         "BezierCurveBoxOptions",
         "BezierFunction",
         "BilateralFilter",
+        "BilateralLaplaceTransform",
+        "BilateralZTransform",
         "Binarize",
         "BinaryDeserialize",
         "BinaryDistance",
@@ -24105,11 +24992,23 @@
         "BinaryWrite",
         "BinCounts",
         "BinLists",
+        "BinnedVariogramList",
         "Binomial",
         "BinomialDistribution",
+        "BinomialPointProcess",
         "BinomialProcess",
         "BinormalDistribution",
         "BiorthogonalSplineWavelet",
+        "BioSequence",
+        "BioSequenceBackTranslateList",
+        "BioSequenceComplement",
+        "BioSequenceInstances",
+        "BioSequenceModify",
+        "BioSequencePlot",
+        "BioSequenceQ",
+        "BioSequenceReverseComplement",
+        "BioSequenceTranscribe",
+        "BioSequenceTranslate",
         "BipartiteGraphQ",
         "BiquadraticFilterModel",
         "BirnbaumImportance",
@@ -24120,6 +25019,7 @@
         "BitLength",
         "BitNot",
         "BitOr",
+        "BitRate",
         "BitSet",
         "BitShiftLeft",
         "BitShiftRight",
@@ -24149,17 +25049,23 @@
         "BlockchainTransactionData",
         "BlockchainTransactionSign",
         "BlockchainTransactionSubmit",
+        "BlockDiagonalMatrix",
+        "BlockLowerTriangularMatrix",
         "BlockMap",
         "BlockRandom",
+        "BlockUpperTriangularMatrix",
         "BlomqvistBeta",
         "BlomqvistBetaTest",
         "Blue",
         "Blur",
+        "Blurring",
         "BodePlot",
         "BohmanWindow",
         "Bold",
         "Bond",
         "BondCount",
+        "BondLabels",
+        "BondLabelStyle",
         "BondList",
         "BondQ",
         "Bookmarks",
@@ -24236,6 +25142,8 @@
         "BubbleChart3D",
         "BubbleScale",
         "BubbleSizes",
+        "BuckyballGraph",
+        "BuildCompiledComponent",
         "BuildingData",
         "BulletGauge",
         "BusinessDayQ",
@@ -24262,6 +25170,7 @@
         "Byte",
         "ByteArray",
         "ByteArrayFormat",
+        "ByteArrayFormatQ",
         "ByteArrayQ",
         "ByteArrayToString",
         "ByteCount",
@@ -24284,25 +25193,37 @@
         "CanonicalGraph",
         "CanonicalizePolygon",
         "CanonicalizePolyhedron",
+        "CanonicalizeRegion",
         "CanonicalName",
         "CanonicalWarpingCorrespondence",
         "CanonicalWarpingDistance",
         "CantorMesh",
         "CantorStaircase",
+        "Canvas",
         "Cap",
         "CapForm",
         "CapitalDifferentialD",
         "Capitalize",
         "CapsuleShape",
         "CaptureRunning",
+        "CaputoD",
         "CardinalBSplineBasis",
         "CarlemanLinearize",
+        "CarlsonRC",
+        "CarlsonRD",
+        "CarlsonRE",
+        "CarlsonRF",
+        "CarlsonRG",
+        "CarlsonRJ",
+        "CarlsonRK",
+        "CarlsonRM",
         "CarmichaelLambda",
         "CaseOrdering",
         "Cases",
         "CaseSensitive",
         "Cashflow",
         "Casoratian",
+        "Cast",
         "Catalan",
         "CatalanNumber",
         "Catch",
@@ -24310,6 +25231,8 @@
         "Catenate",
         "CatenateLayer",
         "CauchyDistribution",
+        "CauchyMatrix",
+        "CauchyPointProcess",
         "CauchyWindow",
         "CayleyGraph",
         "CDF",
@@ -24327,6 +25250,7 @@
         "CellContents",
         "CellContext",
         "CellDingbat",
+        "CellDingbatMargin",
         "CellDynamicExpression",
         "CellEditDuplicate",
         "CellElementsBoundingBox",
@@ -24341,12 +25265,14 @@
         "CellFrameLabelMargins",
         "CellFrameLabels",
         "CellFrameMargins",
+        "CellFrameStyle",
         "CellGroup",
         "CellGroupData",
         "CellGrouping",
         "CellGroupingRules",
         "CellHorizontalScrolling",
         "CellID",
+        "CellInsertionPointCell",
         "CellLabel",
         "CellLabelAutoDelete",
         "CellLabelMargins",
@@ -24362,12 +25288,15 @@
         "CellSize",
         "CellStyle",
         "CellTags",
+        "CellTrayPosition",
+        "CellTrayWidgets",
         "CellularAutomaton",
         "CensoredDistribution",
         "Censoring",
         "Center",
         "CenterArray",
         "CenterDot",
+        "CenteredInterval",
         "CentralFeature",
         "CentralMoment",
         "CentralMomentGeneratingFunction",
@@ -24418,11 +25347,16 @@
         "Check",
         "CheckAbort",
         "CheckAll",
+        "CheckArguments",
         "Checkbox",
         "CheckboxBar",
         "CheckboxBox",
         "CheckboxBoxOptions",
+        "ChemicalConvert",
         "ChemicalData",
+        "ChemicalFormula",
+        "ChemicalInstance",
+        "ChemicalReaction",
         "ChessboardDistance",
         "ChiDistribution",
         "ChineseRemainder",
@@ -24443,6 +25377,7 @@
         "CircleThrough",
         "CircleTimes",
         "CirculantGraph",
+        "CircularArcThrough",
         "CircularOrthogonalMatrixDistribution",
         "CircularQuaternionMatrixDistribution",
         "CircularRealMatrixDistribution",
@@ -24464,6 +25399,8 @@
         "ClearSystemCache",
         "ClebschGordan",
         "ClickPane",
+        "ClickToCopy",
+        "ClickToCopyEnabled",
         "Clip",
         "ClipboardNotebook",
         "ClipFill",
@@ -24481,7 +25418,6 @@
         "Closing",
         "ClosingAutoSave",
         "ClosingEvent",
-        "ClosingSaveDialog",
         "CloudAccountData",
         "CloudBase",
         "CloudConnect",
@@ -24515,6 +25451,7 @@
         "ClusterClassify",
         "ClusterDissimilarityFunction",
         "ClusteringComponents",
+        "ClusteringMeasurements",
         "ClusteringTree",
         "CMYKColor",
         "Coarse",
@@ -24526,6 +25463,7 @@
         "CoefficientRules",
         "CoifletWavelet",
         "Collect",
+        "CollinearPoints",
         "Colon",
         "ColonForm",
         "ColorBalance",
@@ -24537,6 +25475,7 @@
         "ColorDetect",
         "ColorDistance",
         "ColorFunction",
+        "ColorFunctionBinning",
         "ColorFunctionScaling",
         "Colorize",
         "ColorNegate",
@@ -24563,6 +25502,13 @@
         "ColumnsEqual",
         "ColumnSpacings",
         "ColumnWidths",
+        "CombinatorB",
+        "CombinatorC",
+        "CombinatorI",
+        "CombinatorK",
+        "CombinatorS",
+        "CombinatorW",
+        "CombinatorY",
         "CombinedEntityClass",
         "CombinerFunction",
         "CometData",
@@ -24582,15 +25528,25 @@
         "Compile",
         "Compiled",
         "CompiledCodeFunction",
+        "CompiledComponent",
+        "CompiledExpressionDeclaration",
         "CompiledFunction",
+        "CompiledLayer",
+        "CompilerCallback",
+        "CompilerEnvironment",
+        "CompilerEnvironmentAppend",
+        "CompilerEnvironmentAppendTo",
+        "CompilerEnvironmentObject",
         "CompilerOptions",
         "Complement",
         "ComplementedEntityClass",
         "CompleteGraph",
         "CompleteGraphQ",
+        "CompleteIntegral",
         "CompleteKaryTree",
         "CompletionsListPacket",
         "Complex",
+        "ComplexArrayPlot",
         "ComplexContourPlot",
         "Complexes",
         "ComplexExpand",
@@ -24618,6 +25574,7 @@
         "CompressedData",
         "CompressionLevel",
         "ComputeUncertainty",
+        "ConcaveHullMesh",
         "Condition",
         "ConditionalExpression",
         "Conditioned",
@@ -24627,12 +25584,21 @@
         "ConfidenceRange",
         "ConfidenceTransform",
         "ConfigurationPath",
+        "Confirm",
+        "ConfirmAssert",
+        "ConfirmBy",
+        "ConfirmMatch",
+        "ConfirmQuiet",
+        "ConformationMethod",
         "ConformAudio",
         "ConformImages",
         "Congruent",
+        "ConicGradientFilling",
         "ConicHullRegion",
         "ConicHullRegion3DBox",
+        "ConicHullRegion3DBoxOptions",
         "ConicHullRegionBox",
+        "ConicHullRegionBoxOptions",
         "ConicOptimization",
         "Conjugate",
         "ConjugateTranspose",
@@ -24647,10 +25613,11 @@
         "ConnectionSettings",
         "ConnectLibraryCallbackFunction",
         "ConnectSystemModelComponents",
+        "ConnectSystemModelController",
         "ConnesWindow",
         "ConoverTest",
+        "ConservativeConvectionPDETerm",
         "ConsoleMessage",
-        "ConsoleMessagePacket",
         "Constant",
         "ConstantArray",
         "ConstantArrayLayer",
@@ -24669,6 +25636,7 @@
         "ContainsExactly",
         "ContainsNone",
         "ContainsOnly",
+        "ContentDetectorFunction",
         "ContentFieldOptions",
         "ContentLocationFunction",
         "ContentObject",
@@ -24722,15 +25690,18 @@
         "ControlPlacement",
         "ControlsRendering",
         "ControlType",
+        "ConvectionPDETerm",
         "Convergents",
         "ConversionOptions",
         "ConversionRules",
-        "ConvertToBitmapPacket",
         "ConvertToPostScript",
         "ConvertToPostScriptPacket",
         "ConvexHullMesh",
+        "ConvexHullRegion",
+        "ConvexOptimization",
         "ConvexPolygonQ",
         "ConvexPolyhedronQ",
+        "ConvexRegionQ",
         "ConvolutionLayer",
         "Convolve",
         "ConwayGroupCo1",
@@ -24746,6 +25717,7 @@
         "CoordinatesToolOptions",
         "CoordinateTransform",
         "CoordinateTransformData",
+        "CoplanarPoints",
         "CoprimeQ",
         "Coproduct",
         "CopulaDistribution",
@@ -24753,8 +25725,10 @@
         "CopyDatabin",
         "CopyDirectory",
         "CopyFile",
+        "CopyFunction",
         "CopyTag",
         "CopyToClipboard",
+        "CoreNilpotentDecomposition",
         "CornerFilter",
         "CornerNeighbors",
         "Correlation",
@@ -24769,6 +25743,10 @@
         "CosIntegral",
         "Cot",
         "Coth",
+        "CoulombF",
+        "CoulombG",
+        "CoulombH1",
+        "CoulombH2",
         "Count",
         "CountDistinct",
         "CountDistinctBy",
@@ -24797,6 +25775,7 @@
         "CreateCellID",
         "CreateChannel",
         "CreateCloudExpression",
+        "CreateCompilerEnvironment",
         "CreateDatabin",
         "CreateDataStructure",
         "CreateDataSystemModel",
@@ -24805,16 +25784,17 @@
         "CreateDocument",
         "CreateFile",
         "CreateIntermediateDirectories",
+        "CreateLicenseEntitlement",
         "CreateManagedLibraryExpression",
         "CreateNotebook",
         "CreatePacletArchive",
         "CreatePalette",
-        "CreatePalettePacket",
         "CreatePermissionsGroup",
         "CreateScheduledTask",
         "CreateSearchIndex",
         "CreateSystemModel",
         "CreateTemporary",
+        "CreateTypeInstance",
         "CreateUUID",
         "CreateWindow",
         "CriterionFunction",
@@ -24829,14 +25809,19 @@
         "CrossMatrix",
         "Csc",
         "Csch",
+        "CSGRegion",
+        "CSGRegionQ",
+        "CSGRegionTree",
         "CTCLossLayer",
         "Cube",
         "CubeRoot",
         "Cubics",
         "Cuboid",
         "CuboidBox",
+        "CuboidBoxOptions",
         "Cumulant",
         "CumulantGeneratingFunction",
+        "CumulativeFeatureImpactPlot",
         "Cup",
         "CupCap",
         "Curl",
@@ -24845,7 +25830,6 @@
         "CurrencyConvert",
         "CurrentDate",
         "CurrentImage",
-        "CurrentlySpeakingPacket",
         "CurrentNotebookImage",
         "CurrentScreenImage",
         "CurrentValue",
@@ -24861,7 +25845,9 @@
         "Cyclotomic",
         "Cylinder",
         "CylinderBox",
+        "CylinderBoxOptions",
         "CylindricalDecomposition",
+        "CylindricalDecompositionFunction",
         "D",
         "DagumDistribution",
         "DamData",
@@ -24877,6 +25863,7 @@
         "DatabinAdd",
         "DatabinRemove",
         "Databins",
+        "DatabinSubmit",
         "DatabinUpload",
         "DataCompression",
         "DataDistribution",
@@ -24884,6 +25871,7 @@
         "DataReversed",
         "Dataset",
         "DatasetDisplayPanel",
+        "DatasetTheme",
         "DataStructure",
         "DataStructureQ",
         "Date",
@@ -24894,6 +25882,7 @@
         "DatedUnit",
         "DateFormat",
         "DateFunction",
+        "DateGranularity",
         "DateHistogram",
         "DateInterval",
         "DateList",
@@ -24907,6 +25896,8 @@
         "DatePlus",
         "DateRange",
         "DateReduction",
+        "DateScale",
+        "DateSelect",
         "DateString",
         "DateTicksFormat",
         "DateValue",
@@ -24931,6 +25922,7 @@
         "Decapitalize",
         "Decimal",
         "DecimalForm",
+        "DeclareCompiledComponent",
         "DeclareKnownSymbols",
         "DeclarePackage",
         "Decompose",
@@ -24941,12 +25933,16 @@
         "DedekindEta",
         "DeepSpaceProbeData",
         "Default",
+        "Default2DTool",
+        "Default3DTool",
+        "DefaultAttachedCellStyle",
         "DefaultAxesStyle",
         "DefaultBaseStyle",
         "DefaultBoxStyle",
         "DefaultButton",
         "DefaultColor",
         "DefaultControlPlacement",
+        "DefaultDockedCellStyle",
         "DefaultDuplicateCellStyle",
         "DefaultDuration",
         "DefaultElement",
@@ -24955,7 +25951,6 @@
         "DefaultFont",
         "DefaultFontProperties",
         "DefaultFormatType",
-        "DefaultFormatTypeForStyle",
         "DefaultFrameStyle",
         "DefaultFrameTicksStyle",
         "DefaultGridLinesStyle",
@@ -24997,6 +25992,7 @@
         "Delayed",
         "Deletable",
         "Delete",
+        "DeleteAdjacentDuplicates",
         "DeleteAnomalies",
         "DeleteBorderComponents",
         "DeleteCases",
@@ -25006,6 +26002,7 @@
         "DeleteDirectory",
         "DeleteDuplicates",
         "DeleteDuplicatesBy",
+        "DeleteElements",
         "DeleteFile",
         "DeleteMissing",
         "DeleteObject",
@@ -25018,6 +26015,7 @@
         "DelimitedArray",
         "DelimitedSequence",
         "Delimiter",
+        "DelimiterAutoMatching",
         "DelimiterFlashTime",
         "DelimiterMatching",
         "Delimiters",
@@ -25035,6 +26033,7 @@
         "DepthFirstScan",
         "Derivative",
         "DerivativeFilter",
+        "DerivativePDETerm",
         "DerivedKey",
         "DescriptorStateSpace",
         "DesignMatrix",
@@ -25085,6 +26084,9 @@
         "DifferentialRoot",
         "DifferentialRootReduce",
         "DifferentiatorFilter",
+        "DiffusionPDETerm",
+        "DiggleGatesPointProcess",
+        "DiggleGrattonPointProcess",
         "DigitalSignature",
         "DigitBlock",
         "DigitBlockMinimum",
@@ -25108,6 +26110,7 @@
         "DirectedGraphQ",
         "DirectedInfinity",
         "Direction",
+        "DirectionalLight",
         "Directive",
         "Directory",
         "DirectoryName",
@@ -25131,6 +26134,7 @@
         "DiscreteDelta",
         "DiscreteHadamardTransform",
         "DiscreteIndicator",
+        "DiscreteInputOutputModel",
         "DiscreteLimit",
         "DiscreteLQEstimatorGains",
         "DiscreteLQRegulatorGains",
@@ -25156,6 +26160,7 @@
         "Disjunction",
         "Disk",
         "DiskBox",
+        "DiskBoxOptions",
         "DiskMatrix",
         "DiskSegment",
         "Dispatch",
@@ -25164,12 +26169,10 @@
         "Display",
         "DisplayAllSteps",
         "DisplayEndPacket",
-        "DisplayFlushImagePacket",
         "DisplayForm",
         "DisplayFunction",
         "DisplayPacket",
         "DisplayRules",
-        "DisplaySetSizePacket",
         "DisplayString",
         "DisplayTemporary",
         "DisplayWith",
@@ -25201,6 +26204,7 @@
         "DMSList",
         "DMSString",
         "Do",
+        "DockedCell",
         "DockedCells",
         "DocumentGenerator",
         "DocumentGeneratorInformation",
@@ -25211,6 +26215,8 @@
         "Dodecahedron",
         "DomainRegistrationInformation",
         "DominantColors",
+        "DominatorTreeGraph",
+        "DominatorVertexList",
         "DOSTextFormat",
         "Dot",
         "DotDashed",
@@ -25248,16 +26254,22 @@
         "DownTee",
         "DownTeeArrow",
         "DownValues",
+        "DownValuesFunction",
         "DragAndDrop",
+        "DrawBackFaces",
         "DrawEdges",
         "DrawFrontFaces",
         "DrawHighlighted",
+        "DrazinInverse",
         "Drop",
         "DropoutLayer",
+        "DropShadowing",
         "DSolve",
+        "DSolveChangeVariables",
         "DSolveValue",
         "Dt",
         "DualLinearProgramming",
+        "DualPlanarGraph",
         "DualPolyhedron",
         "DualSystemsModel",
         "DumpGet",
@@ -25289,12 +26301,16 @@
         "EarthquakeData",
         "EccentricityCentrality",
         "Echo",
+        "EchoEvaluation",
         "EchoFunction",
+        "EchoLabel",
+        "EchoTiming",
         "EclipseType",
         "EdgeAdd",
         "EdgeBetweennessCentrality",
         "EdgeCapacity",
         "EdgeCapForm",
+        "EdgeChromaticNumber",
         "EdgeColor",
         "EdgeConnectivity",
         "EdgeContract",
@@ -25322,6 +26338,9 @@
         "EdgeTaggedGraphQ",
         "EdgeTags",
         "EdgeThickness",
+        "EdgeTransitiveGraphQ",
+        "EdgeValueRange",
+        "EdgeValueSizes",
         "EdgeWeight",
         "EdgeWeightedGraphQ",
         "Editable",
@@ -25355,6 +26374,8 @@
         "EmbedCode",
         "EmbeddedHTML",
         "EmbeddedService",
+        "EmbeddedSQLEntityClass",
+        "EmbeddedSQLExpression",
         "EmbeddingLayer",
         "EmbeddingObject",
         "EmitSound",
@@ -25363,8 +26384,10 @@
         "Empty",
         "EmptyGraphQ",
         "EmptyRegion",
+        "EmptySpaceF",
         "EnableConsolePrintPacket",
         "Enabled",
+        "Enclose",
         "Encode",
         "Encrypt",
         "EncryptedObject",
@@ -25372,7 +26395,6 @@
         "End",
         "EndAdd",
         "EndDialogPacket",
-        "EndFrontEndInteractionPacket",
         "EndOfBuffer",
         "EndOfFile",
         "EndOfLine",
@@ -25430,7 +26452,10 @@
         "EscapeRadius",
         "EstimatedBackground",
         "EstimatedDistribution",
+        "EstimatedPointNormals",
+        "EstimatedPointProcess",
         "EstimatedProcess",
+        "EstimatedVariogramModel",
         "EstimatorGains",
         "EstimatorRegulator",
         "EuclideanDistance",
@@ -25457,6 +26482,8 @@
         "EvaluationNotebook",
         "EvaluationObject",
         "EvaluationOrder",
+        "EvaluationPrivileges",
+        "EvaluationRateLimit",
         "Evaluator",
         "EvaluatorNames",
         "EvenQ",
@@ -25471,6 +26498,7 @@
         "ExactRootIsolation",
         "ExampleData",
         "Except",
+        "ExcludedContexts",
         "ExcludedForms",
         "ExcludedLines",
         "ExcludedPhysicalQuantities",
@@ -25513,6 +26541,7 @@
         "ExpressionCell",
         "ExpressionGraph",
         "ExpressionPacket",
+        "ExpressionTree",
         "ExpressionUUID",
         "ExpToTrig",
         "ExtendedEntityClass",
@@ -25549,6 +26578,7 @@
         "FaceForm",
         "FaceGrids",
         "FaceGridsStyle",
+        "FaceRecognize",
         "FacialFeatures",
         "Factor",
         "FactorComplete",
@@ -25576,11 +26606,14 @@
         "FeatureExtraction",
         "FeatureExtractor",
         "FeatureExtractorFunction",
+        "FeatureImpactPlot",
         "FeatureNames",
         "FeatureNearest",
         "FeatureSpacePlot",
         "FeatureSpacePlot3D",
         "FeatureTypes",
+        "FeatureValueDependencyPlot",
+        "FeatureValueImpactPlot",
         "FEDisableConsolePrintPacket",
         "FeedbackLinearize",
         "FeedbackSector",
@@ -25603,6 +26636,8 @@
         "FileExistsQ",
         "FileExtension",
         "FileFormat",
+        "FileFormatProperties",
+        "FileFormatQ",
         "FileHandler",
         "FileHash",
         "FileInformation",
@@ -25616,16 +26651,20 @@
         "FileNameSetter",
         "FileNameSplit",
         "FileNameTake",
+        "FileNameToFormatList",
         "FilePrint",
         "FileSize",
         "FileSystemMap",
         "FileSystemScan",
+        "FileSystemTree",
         "FileTemplate",
         "FileTemplateApply",
         "FileType",
         "FilledCurve",
         "FilledCurveBox",
         "FilledCurveBoxOptions",
+        "FilledTorus",
+        "FillForm",
         "Filling",
         "FillingStyle",
         "FillingTransform",
@@ -25649,6 +26688,7 @@
         "FindDistribution",
         "FindDistributionParameters",
         "FindDivisions",
+        "FindEdgeColoring",
         "FindEdgeCover",
         "FindEdgeCut",
         "FindEdgeIndependentPaths",
@@ -25675,6 +26715,8 @@
         "FindIndependentVertexSet",
         "FindInstance",
         "FindIntegerNullVector",
+        "FindIsomers",
+        "FindIsomorphicSubgraph",
         "FindKClan",
         "FindKClique",
         "FindKClub",
@@ -25696,8 +26738,11 @@
         "FindPath",
         "FindPeaks",
         "FindPermutation",
+        "FindPlanarColoring",
+        "FindPointProcessParameters",
         "FindPostmanTour",
         "FindProcessParameters",
+        "FindRegionTransform",
         "FindRepeat",
         "FindRoot",
         "FindSequenceFunction",
@@ -25705,10 +26750,12 @@
         "FindShortestPath",
         "FindShortestTour",
         "FindSpanningTree",
+        "FindSubgraphIsomorphism",
         "FindSystemModelEquilibrium",
         "FindTextualAnswer",
         "FindThreshold",
         "FindTransientRepeat",
+        "FindVertexColoring",
         "FindVertexCover",
         "FindVertexCut",
         "FindVertexIndependentPaths",
@@ -25736,18 +26783,21 @@
         "FixedPointList",
         "FlashSelection",
         "Flat",
+        "FlatShading",
         "Flatten",
         "FlattenAt",
         "FlattenLayer",
         "FlatTopWindow",
+        "FlightData",
         "FlipView",
         "Floor",
         "FlowPolynomial",
-        "FlushPrintOutputPacket",
         "Fold",
         "FoldList",
         "FoldPair",
         "FoldPairList",
+        "FoldWhile",
+        "FoldWhileList",
         "FollowRedirects",
         "Font",
         "FontColor",
@@ -25766,6 +26816,7 @@
         "FontWeight",
         "For",
         "ForAll",
+        "ForAllType",
         "ForceVersionInstall",
         "Format",
         "FormatRules",
@@ -25779,12 +26830,14 @@
         "FormLayoutFunction",
         "FormObject",
         "FormPage",
+        "FormProtectionMethod",
         "FormTheme",
         "FormulaData",
         "FormulaLookup",
         "FortranForm",
         "Forward",
         "ForwardBackward",
+        "ForwardCloudCredentials",
         "Fourier",
         "FourierCoefficient",
         "FourierCosCoefficient",
@@ -25804,7 +26857,10 @@
         "FourierSinTransform",
         "FourierTransform",
         "FourierTrigSeries",
+        "FoxH",
+        "FoxHReduce",
         "FractionalBrownianMotionProcess",
+        "FractionalD",
         "FractionalGaussianNoiseProcess",
         "FractionalPart",
         "FractionBox",
@@ -25817,6 +26873,7 @@
         "FrameInset",
         "FrameLabel",
         "Frameless",
+        "FrameListVideo",
         "FrameMargins",
         "FrameRate",
         "FrameStyle",
@@ -25839,12 +26896,14 @@
         "FromCoefficientRules",
         "FromContinuedFraction",
         "FromDate",
+        "FromDateString",
         "FromDigits",
         "FromDMS",
         "FromEntity",
         "FromJulianDate",
         "FromLetterNumber",
         "FromPolarCoordinates",
+        "FromRawPointer",
         "FromRomanNumeral",
         "FromSphericalCoordinates",
         "FromUnixTime",
@@ -25861,7 +26920,12 @@
         "FrontEndValueCache",
         "FrontEndVersion",
         "FrontFaceColor",
+        "FrontFaceGlowColor",
         "FrontFaceOpacity",
+        "FrontFaceSpecularColor",
+        "FrontFaceSpecularExponent",
+        "FrontFaceSurfaceAppearance",
+        "FrontFaceTexture",
         "Full",
         "FullAxes",
         "FullDefinition",
@@ -25872,17 +26936,31 @@
         "FullRegion",
         "FullSimplify",
         "Function",
+        "FunctionAnalytic",
+        "FunctionBijective",
         "FunctionCompile",
         "FunctionCompileExport",
         "FunctionCompileExportByteArray",
         "FunctionCompileExportLibrary",
         "FunctionCompileExportString",
+        "FunctionContinuous",
+        "FunctionConvexity",
+        "FunctionDeclaration",
+        "FunctionDiscontinuities",
         "FunctionDomain",
         "FunctionExpand",
+        "FunctionInjective",
         "FunctionInterpolation",
+        "FunctionLayer",
+        "FunctionMeromorphic",
+        "FunctionMonotonicity",
         "FunctionPeriod",
+        "FunctionPoles",
         "FunctionRange",
+        "FunctionSign",
+        "FunctionSingularities",
         "FunctionSpace",
+        "FunctionSurjective",
         "FussellVeselyImportance",
         "GaborFilter",
         "GaborMatrix",
@@ -25920,7 +26998,10 @@
         "GeneralizedLinearModelFit",
         "GenerateAsymmetricKeyPair",
         "GenerateConditions",
+        "GeneratedAssetFormat",
+        "GeneratedAssetLocation",
         "GeneratedCell",
+        "GeneratedCellStyles",
         "GeneratedDocumentBinding",
         "GenerateDerivedKey",
         "GenerateDigitalSignature",
@@ -25943,9 +27024,11 @@
         "GeoArea",
         "GeoArraySize",
         "GeoBackground",
+        "GeoBoundary",
         "GeoBoundingBox",
         "GeoBounds",
         "GeoBoundsRegion",
+        "GeoBoundsRegionBoundary",
         "GeoBubbleChart",
         "GeoCenter",
         "GeoCircle",
@@ -25955,6 +27038,7 @@
         "GeodesicDilation",
         "GeodesicErosion",
         "GeodesicOpening",
+        "GeodesicPolyhedron",
         "GeoDestination",
         "GeodesyData",
         "GeoDirection",
@@ -25965,6 +27049,8 @@
         "GeoElevationData",
         "GeoEntities",
         "GeoGraphics",
+        "GeoGraphPlot",
+        "GeoGraphValuePlot",
         "GeogravityModelData",
         "GeoGridDirectionDifference",
         "GeoGridLines",
@@ -25995,6 +27081,9 @@
         "GeometricMeanFilter",
         "GeometricOptimization",
         "GeometricScene",
+        "GeometricStep",
+        "GeometricStylingRules",
+        "GeometricTest",
         "GeometricTransformation",
         "GeometricTransformation3DBox",
         "GeometricTransformation3DBoxOptions",
@@ -26002,7 +27091,9 @@
         "GeometricTransformationBoxOptions",
         "GeoModel",
         "GeoNearest",
+        "GeoOrientationData",
         "GeoPath",
+        "GeoPolygon",
         "GeoPosition",
         "GeoPositionENU",
         "GeoPositionXYZ",
@@ -26030,14 +27121,11 @@
         "GestureHandler",
         "GestureHandlerTag",
         "Get",
-        "GetBoundingBoxSizePacket",
         "GetContext",
         "GetEnvironment",
         "GetFileName",
-        "GetFrontEndOptionsDataPacket",
         "GetLinebreakInformationPacket",
-        "GetMenusPacket",
-        "GetPageBreakInformationPacket",
+        "GibbsPointProcess",
         "Glaisher",
         "GlobalClusteringCoefficient",
         "GlobalPreferences",
@@ -26050,9 +27138,11 @@
         "GoodmanKruskalGamma",
         "GoodmanKruskalGammaTest",
         "Goto",
+        "GouraudShading",
         "Grad",
         "Gradient",
         "GradientFilter",
+        "GradientFittedMesh",
         "GradientOrientationFilter",
         "GrammarApply",
         "GrammarRules",
@@ -26070,7 +27160,6 @@
         "GraphDisjointUnion",
         "GraphDistance",
         "GraphDistanceMatrix",
-        "GraphElementData",
         "GraphEmbedding",
         "GraphHighlight",
         "GraphHighlightStyle",
@@ -26105,18 +27194,25 @@
         "GraphicsSpacing",
         "GraphicsStyle",
         "GraphIntersection",
+        "GraphJoin",
+        "GraphLayerLabels",
+        "GraphLayers",
+        "GraphLayerStyle",
         "GraphLayout",
         "GraphLinkEfficiency",
         "GraphPeriphery",
         "GraphPlot",
         "GraphPlot3D",
         "GraphPower",
+        "GraphProduct",
         "GraphPropertyDistribution",
         "GraphQ",
         "GraphRadius",
         "GraphReciprocity",
         "GraphRoot",
         "GraphStyle",
+        "GraphSum",
+        "GraphTree",
         "GraphUnion",
         "Gray",
         "GrayLevel",
@@ -26130,6 +27226,7 @@
         "GreaterSlantEqual",
         "GreaterThan",
         "GreaterTilde",
+        "GreekStyle",
         "Green",
         "GreenFunction",
         "Grid",
@@ -26151,6 +27248,7 @@
         "GridGraph",
         "GridLines",
         "GridLinesStyle",
+        "GridVideo",
         "GroebnerBasis",
         "GroupActionBase",
         "GroupBy",
@@ -26163,6 +27261,8 @@
         "GroupGenerators",
         "Groupings",
         "GroupMultiplicationTable",
+        "GroupOpenerColor",
+        "GroupOpenerInsideFrame",
         "GroupOrbits",
         "GroupOrder",
         "GroupPageBreakWithin",
@@ -26195,6 +27295,7 @@
         "HannWindow",
         "HaradaNortonGroupHN",
         "HararyGraph",
+        "HardcorePointProcess",
         "HarmonicMean",
         "HarmonicMeanFilter",
         "HarmonicNumber",
@@ -26209,20 +27310,32 @@
         "HeaderBackground",
         "HeaderDisplayFunction",
         "HeaderLines",
+        "Headers",
         "HeaderSize",
         "HeaderStyle",
         "Heads",
+        "HeatFluxValue",
+        "HeatInsulationValue",
+        "HeatOutflowValue",
+        "HeatRadiationValue",
+        "HeatSymmetryValue",
+        "HeatTemperatureCondition",
+        "HeatTransferPDEComponent",
+        "HeatTransferValue",
         "HeavisideLambda",
         "HeavisidePi",
         "HeavisideTheta",
         "HeldGroupHe",
         "HeldPart",
+        "HelmholtzPDEComponent",
         "HelpBrowserLookup",
         "HelpBrowserNotebook",
         "HelpBrowserSettings",
+        "HelpViewerSettings",
         "Here",
         "HermiteDecomposition",
         "HermiteH",
+        "Hermitian",
         "HermitianMatrixQ",
         "HessenbergDecomposition",
         "Hessian",
@@ -26247,6 +27360,7 @@
         "HighlightGraph",
         "HighlightImage",
         "HighlightMesh",
+        "HighlightString",
         "HighpassFilter",
         "HigmanSimsGroupHS",
         "HilbertCurve",
@@ -26256,6 +27370,7 @@
         "Histogram3D",
         "HistogramDistribution",
         "HistogramList",
+        "HistogramPointDensity",
         "HistogramTransform",
         "HistogramTransformInterpolation",
         "HistoricalPeriodData",
@@ -26327,10 +27442,13 @@
         "Identity",
         "IdentityMatrix",
         "If",
+        "IfCompiled",
         "IgnoreCase",
         "IgnoreDiacritics",
+        "IgnoreIsotopes",
         "IgnorePunctuation",
         "IgnoreSpellCheck",
+        "IgnoreStereochemistry",
         "IgnoringInactive",
         "Im",
         "Image",
@@ -26372,6 +27490,7 @@
         "ImageDimensions",
         "ImageDisplacements",
         "ImageDistance",
+        "ImageEditMode",
         "ImageEffect",
         "ImageExposureCombine",
         "ImageFeatureTrack",
@@ -26426,6 +27545,7 @@
         "ImageSizeCache",
         "ImageSizeMultipliers",
         "ImageSizeRaw",
+        "ImageStitch",
         "ImageSubtract",
         "ImageTake",
         "ImageTransformation",
@@ -26433,23 +27553,29 @@
         "ImageType",
         "ImageValue",
         "ImageValuePositions",
+        "ImageVectorscopePlot",
+        "ImageWaveformPlot",
         "ImagingDevice",
+        "ImplicitD",
         "ImplicitRegion",
         "Implies",
         "Import",
         "ImportAutoReplacements",
         "ImportByteArray",
+        "ImportedObject",
         "ImportOptions",
         "ImportString",
         "ImprovementImportance",
         "In",
         "Inactivate",
         "Inactive",
+        "InactiveStyle",
         "IncidenceGraph",
         "IncidenceList",
         "IncidenceMatrix",
         "IncludeAromaticBonds",
         "IncludeConstantBasis",
+        "IncludedContexts",
         "IncludeDefinitions",
         "IncludeDirectories",
         "IncludeFileExtension",
@@ -26460,6 +27586,7 @@
         "IncludePods",
         "IncludeQuantities",
         "IncludeRelatedTables",
+        "IncludeSingularSolutions",
         "IncludeSingularTerm",
         "IncludeWindowTimes",
         "Increment",
@@ -26481,10 +27608,13 @@
         "IndexGraph",
         "IndexTag",
         "Inequality",
+        "InertEvaluate",
+        "InertExpression",
         "InexactNumberQ",
         "InexactNumbers",
         "InfiniteFuture",
         "InfiniteLine",
+        "InfiniteLineThrough",
         "InfinitePast",
         "InfinitePlane",
         "Infinity",
@@ -26496,12 +27626,14 @@
         "InformationDataGrid",
         "Inherited",
         "InheritScope",
+        "InhomogeneousPoissonPointProcess",
         "InhomogeneousPoissonProcess",
         "InitialEvaluationHistory",
         "Initialization",
         "InitializationCell",
         "InitializationCellEvaluation",
         "InitializationCellWarning",
+        "InitializationObject",
         "InitializationObjects",
         "InitializationValue",
         "Initialize",
@@ -26525,6 +27657,7 @@
         "InputNamePacket",
         "InputNotebook",
         "InputPacket",
+        "InputPorts",
         "InputSettings",
         "InputStream",
         "InputString",
@@ -26558,8 +27691,10 @@
         "IntegerString",
         "Integral",
         "Integrate",
+        "IntegrateChangeVariables",
         "Interactive",
         "InteractiveTradingChart",
+        "InterfaceSwitched",
         "Interlaced",
         "Interleaving",
         "InternallyBalancedDecomposition",
@@ -26591,6 +27726,8 @@
         "Into",
         "Inverse",
         "InverseBetaRegularized",
+        "InverseBilateralLaplaceTransform",
+        "InverseBilateralZTransform",
         "InverseCDF",
         "InverseChiSquareDistribution",
         "InverseContinuousWaveletTransform",
@@ -26646,6 +27783,7 @@
         "IslandData",
         "IsolatingInterval",
         "IsomorphicGraphQ",
+        "IsomorphicSubgraphQ",
         "IsotopeData",
         "Italic",
         "Item",
@@ -26665,6 +27803,7 @@
         "JacobiDC",
         "JacobiDN",
         "JacobiDS",
+        "JacobiEpsilon",
         "JacobiNC",
         "JacobiND",
         "JacobiNS",
@@ -26674,6 +27813,7 @@
         "JacobiSN",
         "JacobiSymbol",
         "JacobiZeta",
+        "JacobiZN",
         "JankoGroupJ1",
         "JankoGroupJ2",
         "JankoGroupJ3",
@@ -26714,6 +27854,7 @@
         "KelvinKer",
         "KendallTau",
         "KendallTauTest",
+        "KernelConfiguration",
         "KernelExecute",
         "KernelFunction",
         "KernelMixtureDistribution",
@@ -26772,6 +27913,12 @@
         "LakeData",
         "LambdaComponents",
         "LambertW",
+        "LameC",
+        "LameCPrime",
+        "LameEigenvalueA",
+        "LameEigenvalueB",
+        "LameS",
+        "LameSPrime",
         "LaminaData",
         "LanczosWindow",
         "LandauDistribution",
@@ -26785,6 +27932,7 @@
         "Laplacian",
         "LaplacianFilter",
         "LaplacianGaussianFilter",
+        "LaplacianPDETerm",
         "Large",
         "Larger",
         "Last",
@@ -26795,12 +27943,14 @@
         "Launch",
         "LaunchKernels",
         "LayeredGraphPlot",
+        "LayeredGraphPlot3D",
         "LayerSizeFunction",
         "LayoutInformation",
         "LCHColor",
         "LCM",
         "LeaderSize",
         "LeafCount",
+        "LeapVariant",
         "LeapYearQ",
         "LearnDistribution",
         "LearnedDistribution",
@@ -26862,15 +28012,21 @@
         "LeviCivitaTensor",
         "LevyDistribution",
         "Lexicographic",
+        "LexicographicOrder",
+        "LexicographicSort",
         "LibraryDataType",
         "LibraryFunction",
+        "LibraryFunctionDeclaration",
         "LibraryFunctionError",
         "LibraryFunctionInformation",
         "LibraryFunctionLoad",
         "LibraryFunctionUnload",
         "LibraryLoad",
         "LibraryUnload",
+        "LicenseEntitlementObject",
+        "LicenseEntitlements",
         "LicenseID",
+        "LicensingSettings",
         "LiftingFilterData",
         "LiftingWaveletTransform",
         "LightBlue",
@@ -26899,6 +28055,7 @@
         "LinearFilter",
         "LinearFractionalOptimization",
         "LinearFractionalTransform",
+        "LinearGradientFilling",
         "LinearGradientImage",
         "LinearizingTransformationData",
         "LinearLayer",
@@ -26969,6 +28126,7 @@
         "ListInterpolation",
         "ListLineIntegralConvolutionPlot",
         "ListLinePlot",
+        "ListLinePlot3D",
         "ListLogLinearPlot",
         "ListLogLogPlot",
         "ListLogPlot",
@@ -26988,16 +28146,22 @@
         "ListStepPlot",
         "ListStreamDensityPlot",
         "ListStreamPlot",
+        "ListStreamPlot3D",
         "ListSurfacePlot3D",
         "ListVectorDensityPlot",
+        "ListVectorDisplacementPlot",
+        "ListVectorDisplacementPlot3D",
         "ListVectorPlot",
         "ListVectorPlot3D",
         "ListZTransform",
         "Literal",
         "LiteralSearch",
+        "LiteralType",
+        "LoadCompiledComponent",
         "LocalAdaptiveBinarize",
         "LocalCache",
         "LocalClusteringCoefficient",
+        "LocalEvaluate",
         "LocalizeDefinitions",
         "LocalizeVariables",
         "LocalObject",
@@ -27062,6 +28226,7 @@
         "LowerLeftArrow",
         "LowerRightArrow",
         "LowerTriangularize",
+        "LowerTriangularMatrix",
         "LowerTriangularMatrixQ",
         "LowpassFilter",
         "LQEstimatorGains",
@@ -27117,6 +28282,7 @@
         "Manual",
         "Map",
         "MapAll",
+        "MapApply",
         "MapAt",
         "MapIndexed",
         "MAProcess",
@@ -27129,11 +28295,20 @@
         "MarginalDistribution",
         "MarkovProcessProperties",
         "Masking",
+        "MassConcentrationCondition",
+        "MassFluxValue",
+        "MassImpermeableBoundaryValue",
+        "MassOutflowValue",
+        "MassSymmetryValue",
+        "MassTransferValue",
+        "MassTransportPDEComponent",
         "MatchingDissimilarity",
         "MatchLocalNameQ",
         "MatchLocalNames",
         "MatchQ",
         "Material",
+        "MaterialShading",
+        "MaternPointProcess",
         "MathematicalFunctionData",
         "MathematicaNotation",
         "MathieuC",
@@ -27168,6 +28343,7 @@
         "MaxColorDistance",
         "MaxDate",
         "MaxDetect",
+        "MaxDisplayedChildren",
         "MaxDuration",
         "MaxExtraBandwidths",
         "MaxExtraConditions",
@@ -27203,6 +28379,7 @@
         "MeanFilter",
         "MeanGraphDistance",
         "MeanNeighborDegree",
+        "MeanPointDensity",
         "MeanShift",
         "MeanShiftFilter",
         "MeanSquaredLossLayer",
@@ -27277,6 +28454,7 @@
         "MexicanHatWavelet",
         "MeyerWavelet",
         "Midpoint",
+        "MIMETypeToFormatList",
         "Min",
         "MinColorDistance",
         "MinDate",
@@ -27294,6 +28472,7 @@
         "MinMax",
         "MinorPlanetData",
         "Minors",
+        "MinPointSeparation",
         "MinRecursion",
         "MinSize",
         "MinStableDistribution",
@@ -27308,6 +28487,7 @@
         "MissingString",
         "MissingStyle",
         "MissingValuePattern",
+        "MissingValueSynthesis",
         "MittagLefflerE",
         "MixedFractionParts",
         "MixedGraphQ",
@@ -27319,6 +28499,7 @@
         "Mod",
         "Modal",
         "Mode",
+        "ModelPredictiveController",
         "Modular",
         "ModularInverse",
         "ModularLambda",
@@ -27326,19 +28507,25 @@
         "Modulus",
         "MoebiusMu",
         "Molecule",
+        "MoleculeAlign",
         "MoleculeContainsQ",
+        "MoleculeDraw",
         "MoleculeEquivalentQ",
+        "MoleculeFreeQ",
         "MoleculeGraph",
+        "MoleculeMatchQ",
+        "MoleculeMaximumCommonSubstructure",
         "MoleculeModify",
+        "MoleculeName",
         "MoleculePattern",
         "MoleculePlot",
         "MoleculePlot3D",
         "MoleculeProperty",
         "MoleculeQ",
         "MoleculeRecognize",
+        "MoleculeSubstructureCount",
         "MoleculeValue",
         "Moment",
-        "Momentary",
         "MomentConvert",
         "MomentEvaluate",
         "MomentGeneratingFunction",
@@ -27373,6 +28560,7 @@
         "MovingMap",
         "MovingMedian",
         "MoyalDistribution",
+        "MultiaxisArrangement",
         "Multicolumn",
         "MultiedgeStyle",
         "MultigraphQ",
@@ -27386,6 +28574,7 @@
         "MultiplicativeOrder",
         "Multiplicity",
         "MultiplySides",
+        "MultiscriptBoxOptions",
         "Multiselection",
         "MultivariateHypergeometricDistribution",
         "MultivariatePoissonDistribution",
@@ -27403,6 +28592,7 @@
         "NBodySimulation",
         "NBodySimulationData",
         "NCache",
+        "NCaputoD",
         "NDEigensystem",
         "NDEigenvalues",
         "NDSolve",
@@ -27410,17 +28600,17 @@
         "Nearest",
         "NearestFunction",
         "NearestMeshCells",
+        "NearestNeighborG",
         "NearestNeighborGraph",
         "NearestTo",
         "NebulaData",
-        "NeedCurrentFrontEndPackagePacket",
-        "NeedCurrentFrontEndSymbolsPacket",
         "NeedlemanWunschSimilarity",
         "Needs",
         "Negative",
         "NegativeBinomialDistribution",
         "NegativeDefiniteMatrixQ",
         "NegativeIntegers",
+        "NegativelyOrientedPoints",
         "NegativeMultinomialDistribution",
         "NegativeRationals",
         "NegativeReals",
@@ -27433,9 +28623,12 @@
         "NestedScriptRules",
         "NestGraph",
         "NestList",
+        "NestTree",
         "NestWhile",
         "NestWhileList",
         "NetAppend",
+        "NetArray",
+        "NetArrayLayer",
         "NetBidirectionalOperator",
         "NetChain",
         "NetDecoder",
@@ -27443,6 +28636,7 @@
         "NetDrop",
         "NetEncoder",
         "NetEvaluationMode",
+        "NetExternalObject",
         "NetExtract",
         "NetFlatten",
         "NetFoldOperator",
@@ -27470,6 +28664,7 @@
         "NetTake",
         "NetTrain",
         "NetTrainResultsObject",
+        "NetUnfold",
         "NetworkPacketCapture",
         "NetworkPacketRecording",
         "NetworkPacketRecordingDuring",
@@ -27486,6 +28681,8 @@
         "NextDate",
         "NextPrime",
         "NextScheduledTaskTime",
+        "NeymanScottPointProcess",
+        "NFractionalD",
         "NHoldAll",
         "NHoldFirst",
         "NHoldRest",
@@ -27497,6 +28694,7 @@
         "NMaxValue",
         "NMinimize",
         "NMinValue",
+        "NominalScale",
         "NominalVariables",
         "NonAssociative",
         "NoncentralBetaDistribution",
@@ -27539,10 +28737,10 @@
         "Notebook",
         "NotebookApply",
         "NotebookAutoSave",
+        "NotebookBrowseDirectory",
         "NotebookClose",
         "NotebookConvertSettings",
         "NotebookCreate",
-        "NotebookCreateReturnObject",
         "NotebookDefault",
         "NotebookDelete",
         "NotebookDirectory",
@@ -27551,28 +28749,20 @@
         "NotebookEventActions",
         "NotebookFileName",
         "NotebookFind",
-        "NotebookFindReturnObject",
         "NotebookGet",
-        "NotebookGetLayoutInformationPacket",
-        "NotebookGetMisspellingsPacket",
         "NotebookImport",
         "NotebookInformation",
         "NotebookInterfaceObject",
         "NotebookLocate",
         "NotebookObject",
         "NotebookOpen",
-        "NotebookOpenReturnObject",
         "NotebookPath",
         "NotebookPrint",
         "NotebookPut",
-        "NotebookPutReturnObject",
         "NotebookRead",
-        "NotebookResetGeneratedCells",
         "Notebooks",
         "NotebookSave",
-        "NotebookSaveAs",
         "NotebookSelection",
-        "NotebookSetupLayoutInformationPacket",
         "NotebooksMenu",
         "NotebookTemplate",
         "NotebookWrite",
@@ -27634,6 +28824,7 @@
         "NProductFactors",
         "NRoots",
         "NSolve",
+        "NSolveValues",
         "NSum",
         "NSumTerms",
         "NuclearExplosionData",
@@ -27645,6 +28836,7 @@
         "Number",
         "NumberCompose",
         "NumberDecompose",
+        "NumberDigit",
         "NumberExpand",
         "NumberFieldClassNumber",
         "NumberFieldDiscriminant",
@@ -27679,6 +28871,7 @@
         "NyquistGridLines",
         "NyquistPlot",
         "O",
+        "ObjectExistsQ",
         "ObservabilityGramian",
         "ObservabilityMatrix",
         "ObservableDecomposition",
@@ -27732,6 +28925,7 @@
         "OrderingLayer",
         "Orderless",
         "OrderlessPatternSequence",
+        "OrdinalScale",
         "OrnsteinUhlenbeckProcess",
         "Orthogonalize",
         "OrthogonalMatrixQ",
@@ -27747,6 +28941,7 @@
         "OutputGrouping",
         "OutputMathEditExpression",
         "OutputNamePacket",
+        "OutputPorts",
         "OutputResponse",
         "OutputSizeLimit",
         "OutputStream",
@@ -27759,6 +28954,7 @@
         "Overlay",
         "OverlayBox",
         "OverlayBoxOptions",
+        "OverlayVideo",
         "Overscript",
         "OverscriptBox",
         "OverscriptBoxOptions",
@@ -27791,6 +28987,7 @@
         "PacletSites",
         "PacletSiteUnregister",
         "PacletSiteUpdate",
+        "PacletSymbol",
         "PacletUninstall",
         "PacletUpdate",
         "PaddedForm",
@@ -27812,6 +29009,7 @@
         "PageTheme",
         "PageWidth",
         "Pagination",
+        "PairCorrelationG",
         "PairedBarChart",
         "PairedHistogram",
         "PairedSmoothHistogram",
@@ -27819,6 +29017,7 @@
         "PairedZTest",
         "PaletteNotebook",
         "PalettePath",
+        "PalettesMenuSettings",
         "PalindromeQ",
         "Pane",
         "PaneBox",
@@ -27835,12 +29034,14 @@
         "ParagraphIndent",
         "ParagraphSpacing",
         "ParallelArray",
+        "ParallelAxisPlot",
         "ParallelCombine",
         "ParallelDo",
         "Parallelepiped",
         "ParallelEvaluate",
         "Parallelization",
         "Parallelize",
+        "ParallelKernels",
         "ParallelMap",
         "ParallelNeeds",
         "Parallelogram",
@@ -27853,6 +29054,7 @@
         "ParameterEstimator",
         "ParameterMixtureDistribution",
         "ParameterVariables",
+        "ParametricConvexOptimization",
         "ParametricFunction",
         "ParametricNDSolve",
         "ParametricNDSolveValue",
@@ -27864,6 +29066,12 @@
         "ParentCell",
         "ParentConnect",
         "ParentDirectory",
+        "ParentEdgeLabel",
+        "ParentEdgeLabelFunction",
+        "ParentEdgeLabelStyle",
+        "ParentEdgeShapeFunction",
+        "ParentEdgeStyle",
+        "ParentEdgeStyleFunction",
         "ParentForm",
         "Parenthesize",
         "ParentList",
@@ -27897,6 +29105,7 @@
         "PathGraphQ",
         "Pattern",
         "PatternFilling",
+        "PatternReaction",
         "PatternSequence",
         "PatternTest",
         "PauliMatrix",
@@ -27909,6 +29118,7 @@
         "PearsonChiSquareTest",
         "PearsonCorrelationTest",
         "PearsonDistribution",
+        "PenttinenPointProcess",
         "PercentForm",
         "PerfectNumber",
         "PerfectNumberQ",
@@ -27931,6 +29141,7 @@
         "PermutationLength",
         "PermutationList",
         "PermutationListQ",
+        "PermutationMatrix",
         "PermutationMax",
         "PermutationMin",
         "PermutationOrder",
@@ -27947,15 +29158,19 @@
         "PersistenceTime",
         "PersistentObject",
         "PersistentObjects",
+        "PersistentSymbol",
         "PersistentValue",
         "PersonData",
         "PERTDistribution",
         "PetersenGraph",
         "PhaseMargins",
         "PhaseRange",
+        "PhongShading",
         "PhysicalSystemData",
         "Pi",
         "Pick",
+        "PickedElements",
+        "PickMode",
         "PIDData",
         "PIDDerivativeFilter",
         "PIDFeedforward",
@@ -27975,9 +29190,11 @@
         "PixelValuePositions",
         "Placed",
         "Placeholder",
+        "PlaceholderLayer",
         "PlaceholderReplace",
         "Plain",
         "PlanarAngle",
+        "PlanarFaceList",
         "PlanarGraph",
         "PlanarGraphQ",
         "PlanckRadiationLaw",
@@ -27986,6 +29203,7 @@
         "PlanetData",
         "PlantData",
         "Play",
+        "PlaybackSettings",
         "PlayRange",
         "Plot",
         "Plot3D",
@@ -28016,11 +29234,23 @@
         "Point3DBoxOptions",
         "PointBox",
         "PointBoxOptions",
+        "PointCountDistribution",
+        "PointDensity",
+        "PointDensityFunction",
         "PointFigureChart",
         "PointLegend",
+        "PointLight",
+        "PointProcessEstimator",
+        "PointProcessFitTest",
+        "PointProcessParameterAssumptions",
+        "PointProcessParameterQ",
         "PointSize",
+        "PointStatisticFunction",
+        "PointValuePlot",
         "PoissonConsulDistribution",
         "PoissonDistribution",
+        "PoissonPDEComponent",
+        "PoissonPointProcess",
         "PoissonProcess",
         "PoissonWindow",
         "PolarAxes",
@@ -28045,11 +29275,14 @@
         "PolygonScale",
         "Polyhedron",
         "PolyhedronAngle",
+        "PolyhedronBox",
+        "PolyhedronBoxOptions",
         "PolyhedronCoordinates",
         "PolyhedronData",
         "PolyhedronDecomposition",
         "PolyhedronGenus",
         "PolyLog",
+        "PolynomialExpressionQ",
         "PolynomialExtendedGCD",
         "PolynomialForm",
         "PolynomialGCD",
@@ -28061,6 +29294,7 @@
         "PolynomialReduce",
         "PolynomialRemainder",
         "Polynomials",
+        "PolynomialSumOfSquaresList",
         "PoolingLayer",
         "PopupMenu",
         "PopupMenuBox",
@@ -28069,9 +29303,12 @@
         "PopupWindow",
         "Position",
         "PositionIndex",
+        "PositionLargest",
+        "PositionSmallest",
         "Positive",
         "PositiveDefiniteMatrixQ",
         "PositiveIntegers",
+        "PositivelyOrientedPoints",
         "PositiveRationals",
         "PositiveReals",
         "PositiveSemidefiniteMatrixQ",
@@ -28104,6 +29341,7 @@
         "PredictorMeasurementsObject",
         "PreemptProtect",
         "PreferencesPath",
+        "PreferencesSettings",
         "Prefix",
         "PreIncrement",
         "Prepend",
@@ -28177,10 +29415,12 @@
         "ProgressIndicator",
         "ProgressIndicatorBox",
         "ProgressIndicatorBoxOptions",
+        "ProgressReporting",
         "Projection",
         "Prolog",
         "PromptForm",
         "ProofObject",
+        "PropagateAborts",
         "Properties",
         "Property",
         "PropertyList",
@@ -28232,13 +29472,20 @@
         "Quartiles",
         "QuartileSkewness",
         "Query",
+        "QuestionGenerator",
+        "QuestionInterface",
+        "QuestionObject",
+        "QuestionSelector",
         "QueueingNetworkProcess",
         "QueueingProcess",
         "QueueProperties",
         "Quiet",
+        "QuietEcho",
         "Quit",
         "Quotient",
         "QuotientRemainder",
+        "RadialAxisPlot",
+        "RadialGradientFilling",
         "RadialGradientImage",
         "RadialityCentrality",
         "RadicalBox",
@@ -28255,11 +29502,14 @@
         "RamanujanTauZ",
         "Ramp",
         "Random",
+        "RandomArrayLayer",
         "RandomChoice",
         "RandomColor",
         "RandomComplex",
+        "RandomDate",
         "RandomEntity",
         "RandomFunction",
+        "RandomGeneratorState",
         "RandomGeoPosition",
         "RandomGraph",
         "RandomImage",
@@ -28267,6 +29517,7 @@
         "RandomInteger",
         "RandomPermutation",
         "RandomPoint",
+        "RandomPointConfiguration",
         "RandomPolygon",
         "RandomPolyhedron",
         "RandomPrime",
@@ -28274,6 +29525,8 @@
         "RandomSample",
         "RandomSeed",
         "RandomSeeding",
+        "RandomTime",
+        "RandomTree",
         "RandomVariate",
         "RandomWalkProcess",
         "RandomWord",
@@ -28293,6 +29546,7 @@
         "Rasterize",
         "RasterSize",
         "Rational",
+        "RationalExpressionQ",
         "RationalFunctions",
         "Rationalize",
         "Rationals",
@@ -28303,6 +29557,9 @@
         "RawMedium",
         "RayleighDistribution",
         "Re",
+        "ReactionBalance",
+        "ReactionBalancedQ",
+        "ReactionPDETerm",
         "Read",
         "ReadByteArray",
         "ReadLine",
@@ -28318,8 +29575,10 @@
         "RealSign",
         "Reap",
         "RebuildPacletData",
+        "RecalibrationFunction",
         "RecognitionPrior",
         "RecognitionThreshold",
+        "ReconstructionMesh",
         "Record",
         "RecordLists",
         "RecordSeparators",
@@ -28349,14 +29608,19 @@
         "RegionBoundaryStyle",
         "RegionBounds",
         "RegionCentroid",
+        "RegionCongruent",
+        "RegionConvert",
         "RegionDifference",
+        "RegionDilation",
         "RegionDimension",
         "RegionDisjoint",
         "RegionDistance",
         "RegionDistanceFunction",
         "RegionEmbeddingDimension",
         "RegionEqual",
+        "RegionErosion",
         "RegionFillingStyle",
+        "RegionFit",
         "RegionFunction",
         "RegionImage",
         "RegionIntersection",
@@ -28371,6 +29635,7 @@
         "RegionProduct",
         "RegionQ",
         "RegionResize",
+        "RegionSimilar",
         "RegionSize",
         "RegionSymmetricDifference",
         "RegionUnion",
@@ -28393,11 +29658,22 @@
         "ReliefImage",
         "ReliefPlot",
         "RemoteAuthorizationCaching",
+        "RemoteBatchJobAbort",
+        "RemoteBatchJobObject",
+        "RemoteBatchJobs",
+        "RemoteBatchMapSubmit",
+        "RemoteBatchSubmissionEnvironment",
+        "RemoteBatchSubmit",
         "RemoteConnect",
         "RemoteConnectionObject",
+        "RemoteEvaluate",
         "RemoteFile",
+        "RemoteInputFiles",
+        "RemoteKernelObject",
+        "RemoteProviderSettings",
         "RemoteRun",
         "RemoteRunProcess",
+        "RemovalConditions",
         "Remove",
         "RemoveAlphaChannel",
         "RemoveAsynchronousTask",
@@ -28427,6 +29703,7 @@
         "RepeatingElement",
         "Replace",
         "ReplaceAll",
+        "ReplaceAt",
         "ReplaceHeldPart",
         "ReplaceImageValue",
         "ReplaceList",
@@ -28441,12 +29718,13 @@
         "Rescale",
         "RescalingTransform",
         "ResetDirectory",
-        "ResetMenusPacket",
         "ResetScheduledTask",
         "ReshapeLayer",
         "Residue",
+        "ResidueSum",
         "ResizeLayer",
         "Resolve",
+        "ResolveContextAliases",
         "ResourceAcquire",
         "ResourceData",
         "ResourceFunction",
@@ -28467,6 +29745,7 @@
         "Resultant",
         "ResumePacket",
         "Return",
+        "ReturnCreatesNewCell",
         "ReturnEntersInput",
         "ReturnExpressionPacket",
         "ReturnInputFormPacket",
@@ -28514,8 +29793,11 @@
         "RightUpVectorBar",
         "RightVector",
         "RightVectorBar",
+        "RipleyK",
+        "RipleyRassonRegion",
         "RiskAchievementImportance",
         "RiskReductionImportance",
+        "RobustConvexOptimization",
         "RogersTanimotoDissimilarity",
         "RollPitchYawAngles",
         "RollPitchYawMatrix",
@@ -28529,6 +29811,7 @@
         "RootReduce",
         "Roots",
         "RootSum",
+        "RootTree",
         "Rotate",
         "RotateLabel",
         "RotateLeft",
@@ -28561,6 +29844,7 @@
         "RuleForm",
         "RulePlot",
         "RulerUnits",
+        "RulesTree",
         "Run",
         "RunProcess",
         "RunScheduledTask",
@@ -28568,6 +29852,7 @@
         "RuntimeAttributes",
         "RuntimeOptions",
         "RussellRaoDissimilarity",
+        "SameAs",
         "SameQ",
         "SameTest",
         "SameTestProperties",
@@ -28644,6 +29929,7 @@
         "SectorSpacing",
         "SecuredAuthenticationKey",
         "SecuredAuthenticationKeys",
+        "SecurityCertificate",
         "SeedRandom",
         "Select",
         "Selectable",
@@ -28659,12 +29945,10 @@
         "SelectionCellParentStyle",
         "SelectionCreateCell",
         "SelectionDebuggerTag",
-        "SelectionDuplicateCell",
         "SelectionEvaluate",
         "SelectionEvaluateCreateCell",
         "SelectionMove",
         "SelectionPlaceholder",
-        "SelectionSetStyle",
         "SelectWithContents",
         "SelfLoops",
         "SelfLoopStyle",
@@ -28684,6 +29968,7 @@
         "SequenceFoldList",
         "SequenceForm",
         "SequenceHold",
+        "SequenceIndicesLayer",
         "SequenceLastLayer",
         "SequenceMostLayer",
         "SequencePosition",
@@ -28711,16 +29996,13 @@
         "SetAlphaChannel",
         "SetAttributes",
         "Setbacks",
-        "SetBoxFormNamesPacket",
         "SetCloudDirectory",
         "SetCookies",
         "SetDelayed",
         "SetDirectory",
         "SetEnvironment",
-        "SetEvaluationNotebook",
         "SetFileDate",
-        "SetFileLoadingContext",
-        "SetNotebookStatusLine",
+        "SetFileFormatProperties",
         "SetOptions",
         "SetOptionsPacket",
         "SetPermissions",
@@ -28730,7 +30012,6 @@
         "SetSelectedNotebook",
         "SetSharedFunction",
         "SetSharedVariable",
-        "SetSpeechParametersPacket",
         "SetStreamPosition",
         "SetSystemModel",
         "SetSystemOptions",
@@ -28740,7 +30021,6 @@
         "SetterBoxOptions",
         "Setting",
         "SetUsers",
-        "SetValue",
         "Shading",
         "Shallow",
         "ShannonWavelet",
@@ -28838,6 +30118,7 @@
         "Slider2DBoxOptions",
         "SliderBox",
         "SliderBoxOptions",
+        "SlideShowVideo",
         "SlideView",
         "Slot",
         "SlotSequence",
@@ -28851,8 +30132,10 @@
         "SmoothHistogram",
         "SmoothHistogram3D",
         "SmoothKernelDistribution",
+        "SmoothPointDensity",
         "SnDispersion",
         "Snippet",
+        "SnippetsVideo",
         "SnubPolyhedron",
         "SocialMediaData",
         "Socket",
@@ -28870,12 +30153,20 @@
         "SokalSneathDissimilarity",
         "SolarEclipse",
         "SolarSystemFeatureData",
+        "SolarTime",
         "SolidAngle",
+        "SolidBoundaryLoadValue",
         "SolidData",
+        "SolidDisplacementCondition",
+        "SolidFixedCondition",
+        "SolidMechanicsPDEComponent",
+        "SolidMechanicsStrain",
+        "SolidMechanicsStress",
         "SolidRegionQ",
         "Solve",
         "SolveAlways",
         "SolveDelayed",
+        "SolveValues",
         "Sort",
         "SortBy",
         "SortedBy",
@@ -28885,6 +30176,7 @@
         "SoundNote",
         "SoundVolume",
         "SourceLink",
+        "SourcePDETerm",
         "Sow",
         "Space",
         "SpaceCurveData",
@@ -28903,12 +30195,23 @@
         "SpanningCharacters",
         "SpanSymmetric",
         "SparseArray",
+        "SparseArrayQ",
+        "SpatialBinnedPointData",
+        "SpatialBoundaryCorrection",
+        "SpatialEstimate",
+        "SpatialEstimatorFunction",
         "SpatialGraphDistribution",
+        "SpatialJ",
         "SpatialMedian",
+        "SpatialNoiseLevel",
+        "SpatialObservationRegionQ",
+        "SpatialPointData",
+        "SpatialPointSelect",
+        "SpatialRandomnessTest",
         "SpatialTransformationLayer",
+        "SpatialTrendFunction",
         "Speak",
         "SpeakerMatchQ",
-        "SpeakTextPacket",
         "SpearmanRankTest",
         "SpearmanRho",
         "SpeciesData",
@@ -28926,9 +30229,9 @@
         "SpellingDictionaries",
         "SpellingDictionariesPath",
         "SpellingOptions",
-        "SpellingSuggestionsPacket",
         "Sphere",
         "SphereBox",
+        "SphereBoxOptions",
         "SpherePoints",
         "SphericalBesselJ",
         "SphericalBesselY",
@@ -28958,6 +30261,7 @@
         "Split",
         "SplitBy",
         "SpokenString",
+        "SpotLight",
         "Sqrt",
         "SqrtBox",
         "SqrtBoxOptions",
@@ -29030,16 +30334,20 @@
         "StopScheduledTask",
         "StrataVariables",
         "StratonovichProcess",
+        "StraussHardcorePointProcess",
+        "StraussPointProcess",
         "StreamColorFunction",
         "StreamColorFunctionScaling",
         "StreamDensityPlot",
         "StreamMarkers",
         "StreamPlot",
+        "StreamPlot3D",
         "StreamPoints",
         "StreamPosition",
         "Streams",
         "StreamScale",
         "StreamStyle",
+        "StrictInequalities",
         "String",
         "StringBreak",
         "StringByteCount",
@@ -29053,6 +30361,7 @@
         "StringExtract",
         "StringForm",
         "StringFormat",
+        "StringFormatQ",
         "StringFreeQ",
         "StringInsert",
         "StringJoin",
@@ -29076,14 +30385,17 @@
         "StringSplit",
         "StringStartsQ",
         "StringTake",
+        "StringTakeDrop",
         "StringTemplate",
         "StringToByteArray",
         "StringToStream",
         "StringTrim",
         "StripBoxes",
         "StripOnInput",
+        "StripStyleOnPaste",
         "StripWrapperBoxes",
         "StrokeForm",
+        "Struckthrough",
         "StructuralImportance",
         "StructuredArray",
         "StructuredArrayHeadQ",
@@ -29133,7 +30445,7 @@
         "SubsuperscriptBox",
         "SubsuperscriptBoxOptions",
         "SubtitleEncoding",
-        "SubtitleTracks",
+        "SubtitleTrackSelection",
         "Subtract",
         "SubtractFrom",
         "SubtractSides",
@@ -29181,6 +30493,7 @@
         "SymbolName",
         "SymletWavelet",
         "Symmetric",
+        "SymmetricDifference",
         "SymmetricGroup",
         "SymmetricKey",
         "SymmetricMatrixQ",
@@ -29218,6 +30531,7 @@
         "SystemModeler",
         "SystemModelExamples",
         "SystemModelLinearize",
+        "SystemModelMeasurements",
         "SystemModelParametricSimulate",
         "SystemModelPlot",
         "SystemModelProgressReporting",
@@ -29231,6 +30545,7 @@
         "SystemProcessData",
         "SystemProcesses",
         "SystemsConnectionsModel",
+        "SystemsModelControllerData",
         "SystemsModelDelay",
         "SystemsModelDelayApproximate",
         "SystemsModelDelete",
@@ -29258,8 +30573,11 @@
         "TableSpacing",
         "TableView",
         "TableViewBox",
+        "TableViewBoxAlignment",
         "TableViewBoxBackground",
+        "TableViewBoxHeaders",
         "TableViewBoxItemSize",
+        "TableViewBoxItemStyle",
         "TableViewBoxOptions",
         "TabSpacings",
         "TabView",
@@ -29326,6 +30644,9 @@
         "TensorSymmetry",
         "TensorTranspose",
         "TensorWedge",
+        "TerminatedEvaluation",
+        "TernaryListPlot",
+        "TernaryPlotCorners",
         "TestID",
         "TestReport",
         "TestReportObject",
@@ -29375,8 +30696,10 @@
         "Thin",
         "Thinning",
         "ThisLink",
+        "ThomasPointProcess",
         "ThompsonGroupTh",
         "Thread",
+        "Threaded",
         "ThreadingLayer",
         "ThreeJSymbol",
         "Threshold",
@@ -29385,6 +30708,12 @@
         "ThueMorse",
         "Thumbnail",
         "Thursday",
+        "TickDirection",
+        "TickLabelOrientation",
+        "TickLabelPositioning",
+        "TickLabels",
+        "TickLengths",
+        "TickPositions",
         "Ticks",
         "TicksStyle",
         "TideData",
@@ -29417,6 +30746,8 @@
         "TimeSeriesShift",
         "TimeSeriesThread",
         "TimeSeriesWindow",
+        "TimeSystem",
+        "TimeSystemConvert",
         "TimeUsed",
         "TimeValue",
         "TimeWarpingCorrespondence",
@@ -29465,7 +30796,10 @@
         "ToPolarCoordinates",
         "TopologicalSort",
         "ToRadicals",
+        "ToRawPointer",
         "ToRules",
+        "Torus",
+        "TorusGraph",
         "ToSphericalCoordinates",
         "ToString",
         "Total",
@@ -29477,6 +30811,7 @@
         "TouchscreenAutoZoom",
         "TouchscreenControlPlacement",
         "ToUpperCase",
+        "TourVideo",
         "Tr",
         "Trace",
         "TraceAbove",
@@ -29492,6 +30827,7 @@
         "TraceOriginal",
         "TracePrint",
         "TraceScan",
+        "TrackCellChangeTimes",
         "TrackedSymbols",
         "TrackingFunction",
         "TracyWidomDistribution",
@@ -29500,12 +30836,14 @@
         "TraditionalFunctionNotation",
         "TraditionalNotation",
         "TraditionalOrder",
+        "TrainImageContentDetector",
         "TrainingProgressCheckpointing",
         "TrainingProgressFunction",
         "TrainingProgressMeasurements",
         "TrainingProgressReporting",
         "TrainingStoppingCriterion",
         "TrainingUpdateSchedule",
+        "TrainTextContentDetector",
         "TransferFunctionCancel",
         "TransferFunctionExpand",
         "TransferFunctionFactor",
@@ -29534,6 +30872,7 @@
         "TransparentColor",
         "Transpose",
         "TransposeLayer",
+        "TrapEnterKey",
         "TrapSelection",
         "TravelDirections",
         "TravelDirectionsData",
@@ -29541,10 +30880,47 @@
         "TravelDistanceList",
         "TravelMethod",
         "TravelTime",
+        "Tree",
+        "TreeCases",
+        "TreeChildren",
+        "TreeCount",
+        "TreeData",
+        "TreeDelete",
+        "TreeDepth",
+        "TreeElementCoordinates",
+        "TreeElementLabel",
+        "TreeElementLabelFunction",
+        "TreeElementLabelStyle",
+        "TreeElementShape",
+        "TreeElementShapeFunction",
+        "TreeElementSize",
+        "TreeElementSizeFunction",
+        "TreeElementStyle",
+        "TreeElementStyleFunction",
+        "TreeExpression",
+        "TreeExtract",
+        "TreeFold",
         "TreeForm",
         "TreeGraph",
         "TreeGraphQ",
+        "TreeInsert",
+        "TreeLayout",
+        "TreeLeafCount",
+        "TreeLeafQ",
+        "TreeLeaves",
+        "TreeLevel",
+        "TreeMap",
+        "TreeMapAt",
+        "TreeOutline",
         "TreePlot",
+        "TreePosition",
+        "TreeQ",
+        "TreeReplacePart",
+        "TreeRules",
+        "TreeScan",
+        "TreeSelect",
+        "TreeSize",
+        "TreeTraversalOrder",
         "TrendStyle",
         "Triangle",
         "TriangleCenter",
@@ -29587,6 +30963,10 @@
         "TuttePolynomial",
         "TwoWayRule",
         "Typed",
+        "TypeDeclaration",
+        "TypeEvaluate",
+        "TypeHint",
+        "TypeOf",
         "TypeSpecifier",
         "UnateQ",
         "Uncompress",
@@ -29619,6 +30999,7 @@
         "UnionedEntityClass",
         "UnionPlus",
         "Unique",
+        "UniqueElements",
         "UnitaryMatrixQ",
         "UnitBox",
         "UnitConvert",
@@ -29635,12 +31016,15 @@
         "UniverseModelData",
         "UniversityData",
         "UnixTime",
+        "UnlabeledTree",
+        "UnmanageObject",
         "Unprotect",
         "UnregisterExternalEvaluator",
         "UnsameQ",
         "UnsavedVariables",
         "Unset",
         "UnsetShared",
+        "Until",
         "UntrackedVariables",
         "Up",
         "UpArrow",
@@ -29658,6 +31042,7 @@
         "UpperLeftArrow",
         "UpperRightArrow",
         "UpperTriangularize",
+        "UpperTriangularMatrix",
         "UpperTriangularMatrixQ",
         "Upsample",
         "UpSet",
@@ -29686,6 +31071,7 @@
         "URLSaveAsynchronous",
         "URLShorten",
         "URLSubmit",
+        "UseEmbeddedLibrary",
         "UseGraphicsRange",
         "UserDefinedWavelet",
         "Using",
@@ -29693,9 +31079,9 @@
         "UtilityFunction",
         "V2Get",
         "ValenceErrorHandling",
+        "ValenceFilling",
         "ValidationLength",
         "ValidationSet",
-        "Value",
         "ValueBox",
         "ValueBoxOptions",
         "ValueDimensions",
@@ -29704,18 +31090,24 @@
         "ValueQ",
         "Values",
         "ValuesData",
+        "VandermondeMatrix",
         "Variables",
         "Variance",
         "VarianceEquivalenceTest",
         "VarianceEstimatorFunction",
         "VarianceGammaDistribution",
+        "VarianceGammaPointProcess",
         "VarianceTest",
+        "VariogramFunction",
+        "VariogramModel",
         "VectorAngle",
         "VectorAround",
         "VectorAspectRatio",
         "VectorColorFunction",
         "VectorColorFunctionScaling",
         "VectorDensityPlot",
+        "VectorDisplacementPlot",
+        "VectorDisplacementPlot3D",
         "VectorGlyphData",
         "VectorGreater",
         "VectorGreaterEqual",
@@ -29735,7 +31127,6 @@
         "Vee",
         "Verbatim",
         "Verbose",
-        "VerboseConvertToPostScriptPacket",
         "VerificationTest",
         "VerifyConvergence",
         "VerifyDerivedKey",
@@ -29745,11 +31136,10 @@
         "VerifySecurityCertificates",
         "VerifySolutions",
         "VerifyTestAssumptions",
-        "Version",
         "VersionedPreferences",
-        "VersionNumber",
         "VertexAdd",
         "VertexCapacity",
+        "VertexChromaticNumber",
         "VertexColors",
         "VertexComponent",
         "VertexConnectivity",
@@ -29766,6 +31156,7 @@
         "VertexDiceSimilarity",
         "VertexEccentricity",
         "VertexInComponent",
+        "VertexInComponentGraph",
         "VertexInDegree",
         "VertexIndex",
         "VertexJaccardSimilarity",
@@ -29775,6 +31166,7 @@
         "VertexList",
         "VertexNormals",
         "VertexOutComponent",
+        "VertexOutComponentGraph",
         "VertexOutDegree",
         "VertexQ",
         "VertexRenderingFunction",
@@ -29784,6 +31176,7 @@
         "VertexSize",
         "VertexStyle",
         "VertexTextureCoordinates",
+        "VertexTransitiveGraphQ",
         "VertexWeight",
         "VertexWeightedGraphQ",
         "Vertical",
@@ -29794,18 +31187,35 @@
         "VerticalSlider",
         "VerticalTilde",
         "Video",
+        "VideoCapture",
+        "VideoCombine",
+        "VideoDelete",
         "VideoEncoding",
         "VideoExtractFrames",
         "VideoFrameList",
         "VideoFrameMap",
+        "VideoGenerator",
+        "VideoInsert",
+        "VideoIntervals",
+        "VideoJoin",
+        "VideoMap",
+        "VideoMapList",
+        "VideoMapTimeSeries",
+        "VideoPadding",
         "VideoPause",
         "VideoPlay",
         "VideoQ",
+        "VideoRecord",
+        "VideoReplace",
+        "VideoScreenCapture",
+        "VideoSplit",
         "VideoStop",
         "VideoStream",
         "VideoStreams",
-        "VideoTimeSeries",
-        "VideoTracks",
+        "VideoTimeStretch",
+        "VideoTrackSelection",
+        "VideoTranscode",
+        "VideoTransparency",
         "VideoTrim",
         "ViewAngle",
         "ViewCenter",
@@ -29849,6 +31259,7 @@
         "WaveletScale",
         "WaveletScalogram",
         "WaveletThreshold",
+        "WavePDEComponent",
         "WeaklyConnectedComponents",
         "WeaklyConnectedGraphComponents",
         "WeaklyConnectedGraphQ",
@@ -29856,11 +31267,15 @@
         "WeatherData",
         "WeatherForecastData",
         "WebAudioSearch",
+        "WebColumn",
         "WebElementObject",
         "WeberE",
         "WebExecute",
         "WebImage",
         "WebImageSearch",
+        "WebItem",
+        "WebPageMetaInformation",
+        "WebRow",
         "WebSearch",
         "WebSessionObject",
         "WebSessions",
@@ -29902,6 +31317,7 @@
         "WhitespaceCharacter",
         "WhittakerM",
         "WhittakerW",
+        "WholeCellGroupOpener",
         "WienerFilter",
         "WienerProcess",
         "WignerD",
@@ -29936,10 +31352,13 @@
         "WinsorizedVariance",
         "WishartMatrixDistribution",
         "With",
+        "WithCleanup",
+        "WithLock",
         "WolframAlpha",
         "WolframAlphaDate",
         "WolframAlphaQuantity",
         "WolframAlphaResult",
+        "WolframCloudSettings",
         "WolframLanguageData",
         "Word",
         "WordBoundary",
@@ -30031,14 +31450,17 @@
         "$CloudWolframEngineVersionNumber",
         "$CommandLine",
         "$CompilationTarget",
+        "$CompilerEnvironment",
         "$ConditionHold",
         "$ConfiguredKernels",
         "$Context",
+        "$ContextAliases",
         "$ContextPath",
         "$ControlActiveSetting",
         "$Cookies",
         "$CookieStore",
         "$CreationDate",
+        "$CryptographicEllipticCurveNames",
         "$CurrentLink",
         "$CurrentTask",
         "$CurrentWebSession",
@@ -30049,11 +31471,15 @@
         "$DefaultFont",
         "$DefaultFrontEnd",
         "$DefaultImagingDevice",
+        "$DefaultKernels",
         "$DefaultLocalBase",
+        "$DefaultLocalKernel",
         "$DefaultMailbox",
         "$DefaultNetworkInterface",
         "$DefaultPath",
         "$DefaultProxyRules",
+        "$DefaultRemoteBatchSubmissionEnvironment",
+        "$DefaultRemoteKernel",
         "$DefaultSystemCredentialStore",
         "$Display",
         "$DisplayFunction",
@@ -30076,6 +31502,7 @@
         "$FormatType",
         "$FrontEnd",
         "$FrontEndSession",
+        "$GeneratedAssetLocation",
         "$GeoEntityTypes",
         "$GeoLocation",
         "$GeoLocationCity",
@@ -30131,6 +31558,7 @@
         "$MachineName",
         "$MachinePrecision",
         "$MachineType",
+        "$MaxDisplayedChildren",
         "$MaxExtraPrecision",
         "$MaxLicenseProcesses",
         "$MaxLicenseSubprocesses",
@@ -30192,15 +31620,21 @@
         "$ProcessorType",
         "$ProductInformation",
         "$ProgramName",
+        "$ProgressReporting",
         "$PublisherID",
+        "$RandomGeneratorState",
         "$RandomState",
         "$RecursionLimit",
         "$RegisteredDeviceClasses",
         "$RegisteredUserName",
         "$ReleaseNumber",
         "$RequesterAddress",
+        "$RequesterCloudUserID",
+        "$RequesterCloudUserUUID",
         "$RequesterWolframID",
         "$RequesterWolframUUID",
+        "$ResourceSystemBase",
+        "$ResourceSystemPath",
         "$RootDirectory",
         "$ScheduledTask",
         "$ScriptCommandLine",
@@ -30230,6 +31664,7 @@
         "$SystemShell",
         "$SystemTimeZone",
         "$SystemWordLength",
+        "$TargetSystems",
         "$TemplatePath",
         "$TemporaryDirectory",
         "$TemporaryPrefix",
@@ -30741,6 +32176,7 @@
           "chown",
           "chr",
           "chroot",
+          "class",
           "close",
           "closedir",
           "connect",
@@ -30770,6 +32206,7 @@
           "exit",
           "exp",
           "fcntl",
+          "field",
           "fileno",
           "flock",
           "for",
@@ -30829,6 +32266,7 @@
           "lt",
           "ma",
           "map",
+          "method",
           "mkdir",
           "msgctl",
           "msgget",
@@ -30971,19 +32409,46 @@
           end: /\}/
           // contains defined later
         };
-        const VAR = { variants: [
-          { begin: /\$\d/ },
-          { begin: regex.concat(
-            /[$%@](\^\w\b|#\w+(::\w+)*|\{\w+\}|\w+(::\w*)*)/,
-            // negative look-ahead tries to avoid matching patterns that are not
-            // Perl at all like $ident$, @ident@, etc.
-            `(?![A-Za-z])(?![@$%])`
-          ) },
-          {
-            begin: /[$%@][^\s\w{]/,
-            relevance: 0
-          }
-        ] };
+        const ATTR = {
+          scope: "attr",
+          match: /\s+:\s*\w+(\s*\(.*?\))?/
+        };
+        const VAR = {
+          scope: "variable",
+          variants: [
+            { begin: /\$\d/ },
+            {
+              begin: regex.concat(
+                /[$%@](?!")(\^\w\b|#\w+(::\w+)*|\{\w+\}|\w+(::\w*)*)/,
+                // negative look-ahead tries to avoid matching patterns that are not
+                // Perl at all like $ident$, @ident@, etc.
+                `(?![A-Za-z])(?![@$%])`
+              )
+            },
+            {
+              // Only $= is a special Perl variable and one can't declare @= or %=.
+              begin: /[$%@](?!")[^\s\w{=]|\$=/,
+              relevance: 0
+            }
+          ],
+          contains: [ATTR]
+        };
+        const NUMBER = {
+          className: "number",
+          variants: [
+            // decimal numbers:
+            // include the case where a number starts with a dot (eg. .9), and
+            // the leading 0? avoids mixing the first and second match on 0.x cases
+            { match: /0?\.[0-9][0-9_]+\b/ },
+            // include the special versioned number (eg. v5.38)
+            { match: /\bv?(0|[1-9][0-9_]*(\.[0-9_]+)?|[1-9][0-9_]*)\b/ },
+            // non-decimal numbers:
+            { match: /\b0[0-7][0-7_]*\b/ },
+            { match: /\b0x[0-9a-fA-F][0-9a-fA-F_]*\b/ },
+            { match: /\b0b[0-1][0-1_]*\b/ }
+          ],
+          relevance: 0
+        };
         const STRING_CONTAINS = [
           hljs.BACKSLASH_ESCAPE,
           SUBST,
@@ -31088,11 +32553,7 @@
               }
             ]
           },
-          {
-            className: "number",
-            begin: "(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",
-            relevance: 0
-          },
+          NUMBER,
           {
             // regexp container
             begin: "(\\/\\/|" + hljs.RE_STARTERS_RE + "|\\b(split|return|print|reverse|grep)\\b)\\s*",
@@ -31135,11 +32596,19 @@
           },
           {
             className: "function",
-            beginKeywords: "sub",
+            beginKeywords: "sub method",
             end: "(\\s*\\(.*?\\))?[;{]",
             excludeEnd: true,
             relevance: 5,
-            contains: [hljs.TITLE_MODE]
+            contains: [hljs.TITLE_MODE, ATTR]
+          },
+          {
+            className: "class",
+            beginKeywords: "class",
+            end: "[;{]",
+            excludeEnd: true,
+            relevance: 5,
+            contains: [hljs.TITLE_MODE, ATTR, NUMBER]
           },
           {
             begin: "-\\w\\b",
@@ -32526,6 +33995,7 @@
           "addincludedir",
           "addplugindir",
           "appendfile",
+          "assert",
           "cd",
           "define",
           "delfile",
@@ -33842,10 +35312,21 @@
           illegal: null,
           contains: hljs.QUOTE_STRING_MODE.contains.concat(SUBST)
         });
-        const HEREDOC = hljs.END_SAME_AS_BEGIN({
-          begin: /<<<[ \t]*(\w+)\n/,
+        const HEREDOC = {
+          begin: /<<<[ \t]*(?:(\w+)|"(\w+)")\n/,
           end: /[ \t]*(\w+)\b/,
-          contains: hljs.QUOTE_STRING_MODE.contains.concat(SUBST)
+          contains: hljs.QUOTE_STRING_MODE.contains.concat(SUBST),
+          "on:begin": (m, resp) => {
+            resp.data._beginMatch = m[1] || m[2];
+          },
+          "on:end": (m, resp) => {
+            if (resp.data._beginMatch !== m[1])
+              resp.ignoreMatch();
+          }
+        };
+        const NOWDOC = hljs.END_SAME_AS_BEGIN({
+          begin: /<<<[ \t]*'(\w+)'\n/,
+          end: /[ \t]*(\w+)\b/
         });
         const WHITESPACE = "[ 	\n]";
         const STRING = {
@@ -33853,7 +35334,8 @@
           variants: [
             DOUBLE_QUOTED,
             SINGLE_QUOTED,
-            HEREDOC
+            HEREDOC,
+            NOWDOC
           ]
         };
         const NUMBER = {
@@ -35427,6 +36909,7 @@
         };
         return {
           name: "Protocol Buffers",
+          aliases: ["proto"],
           keywords: {
             keyword: KEYWORDS2,
             type: TYPES2,
@@ -35985,13 +37468,14 @@
           ],
           unicodeRegex: true,
           keywords: KEYWORDS2,
-          illegal: /(<\/|->|\?)|=>/,
+          illegal: /(<\/|\?)|=>/,
           contains: [
             PROMPT,
             NUMBER,
             {
               // very common convention
-              begin: /\bself\b/
+              scope: "variable.language",
+              match: /\bself\b/
             },
             {
               // eat "if" prior to string so that it won't accidentally be
@@ -35999,6 +37483,7 @@
               beginKeywords: "if",
               relevance: 0
             },
+            { match: /\bor\b/, scope: "keyword" },
             STRING,
             COMMENT_TYPE,
             hljs.HASH_COMMENT_MODE,
@@ -36489,272 +37974,139 @@
   var require_reasonml = __commonJS({
     "node_modules/highlight.js/lib/languages/reasonml.js"(exports, module) {
       function reasonml(hljs) {
-        function orReValues(ops) {
-          return ops.map(function(op) {
-            return op.split("").map(function(char) {
-              return "\\" + char;
-            }).join("");
-          }).join("|");
-        }
-        const RE_IDENT = "~?[a-z$_][0-9a-zA-Z$_]*";
-        const RE_MODULE_IDENT = "`?[A-Z$_][0-9a-zA-Z$_]*";
-        const RE_PARAM_TYPEPARAM = "'?[a-z$_][0-9a-z$_]*";
-        const RE_PARAM_TYPE = "\\s*:\\s*[a-z$_][0-9a-z$_]*(\\(\\s*(" + RE_PARAM_TYPEPARAM + "\\s*(," + RE_PARAM_TYPEPARAM + "\\s*)*)?\\))?";
-        const RE_PARAM = RE_IDENT + "(" + RE_PARAM_TYPE + "){0,2}";
-        const RE_OPERATOR = "(" + orReValues([
-          "||",
-          "++",
-          "**",
-          "+.",
-          "*",
-          "/",
-          "*.",
-          "/.",
-          "..."
-        ]) + "|\\|>|&&|==|===)";
-        const RE_OPERATOR_SPACED = "\\s+" + RE_OPERATOR + "\\s+";
-        const KEYWORDS2 = {
-          keyword: "and as asr assert begin class constraint do done downto else end exception external for fun function functor if in include inherit initializer land lazy let lor lsl lsr lxor match method mod module mutable new nonrec object of open or private rec sig struct then to try type val virtual when while with",
-          built_in: "array bool bytes char exn|5 float int int32 int64 list lazy_t|5 nativeint|5 ref string unit ",
-          literal: "true false"
-        };
-        const RE_NUMBER = "\\b(0[xX][a-fA-F0-9_]+[Lln]?|0[oO][0-7_]+[Lln]?|0[bB][01_]+[Lln]?|[0-9][0-9_]*([Lln]|(\\.[0-9_]*)?([eE][-+]?[0-9_]+)?)?)";
-        const NUMBER_MODE = {
-          className: "number",
-          relevance: 0,
-          variants: [
-            { begin: RE_NUMBER },
-            { begin: "\\(-" + RE_NUMBER + "\\)" }
-          ]
-        };
-        const OPERATOR_MODE = {
-          className: "operator",
-          relevance: 0,
-          begin: RE_OPERATOR
-        };
-        const LIST_CONTENTS_MODES = [
-          {
-            className: "identifier",
-            relevance: 0,
-            begin: RE_IDENT
-          },
-          OPERATOR_MODE,
-          NUMBER_MODE
+        const BUILT_IN_TYPES = [
+          "array",
+          "bool",
+          "bytes",
+          "char",
+          "exn|5",
+          "float",
+          "int",
+          "int32",
+          "int64",
+          "list",
+          "lazy_t|5",
+          "nativeint|5",
+          "ref",
+          "string",
+          "unit"
         ];
-        const MODULE_ACCESS_CONTENTS = [
-          hljs.QUOTE_STRING_MODE,
-          OPERATOR_MODE,
-          {
-            className: "module",
-            begin: "\\b" + RE_MODULE_IDENT,
-            returnBegin: true,
-            relevance: 0,
-            end: ".",
-            contains: [
-              {
-                className: "identifier",
-                begin: RE_MODULE_IDENT,
-                relevance: 0
-              }
-            ]
-          }
-        ];
-        const PARAMS_CONTENTS = [
-          {
-            className: "module",
-            begin: "\\b" + RE_MODULE_IDENT,
-            returnBegin: true,
-            end: ".",
-            relevance: 0,
-            contains: [
-              {
-                className: "identifier",
-                begin: RE_MODULE_IDENT,
-                relevance: 0
-              }
-            ]
-          }
-        ];
-        const PARAMS_MODE = {
-          begin: RE_IDENT,
-          end: "(,|\\n|\\))",
-          relevance: 0,
-          contains: [
-            OPERATOR_MODE,
-            {
-              className: "typing",
-              begin: ":",
-              end: "(,|\\n)",
-              returnBegin: true,
-              relevance: 0,
-              contains: PARAMS_CONTENTS
-            }
-          ]
-        };
-        const FUNCTION_BLOCK_MODE = {
-          className: "function",
-          relevance: 0,
-          keywords: KEYWORDS2,
-          variants: [
-            {
-              begin: "\\s(\\(\\.?.*?\\)|" + RE_IDENT + ")\\s*=>",
-              end: "\\s*=>",
-              returnBegin: true,
-              relevance: 0,
-              contains: [
-                {
-                  className: "params",
-                  variants: [
-                    { begin: RE_IDENT },
-                    { begin: RE_PARAM },
-                    { begin: /\(\s*\)/ }
-                  ]
-                }
-              ]
-            },
-            {
-              begin: "\\s\\(\\.?[^;\\|]*\\)\\s*=>",
-              end: "\\s=>",
-              returnBegin: true,
-              relevance: 0,
-              contains: [
-                {
-                  className: "params",
-                  relevance: 0,
-                  variants: [PARAMS_MODE]
-                }
-              ]
-            },
-            { begin: "\\(\\.\\s" + RE_IDENT + "\\)\\s*=>" }
-          ]
-        };
-        MODULE_ACCESS_CONTENTS.push(FUNCTION_BLOCK_MODE);
-        const CONSTRUCTOR_MODE = {
-          className: "constructor",
-          begin: RE_MODULE_IDENT + "\\(",
-          end: "\\)",
-          illegal: "\\n",
-          keywords: KEYWORDS2,
-          contains: [
-            hljs.QUOTE_STRING_MODE,
-            OPERATOR_MODE,
-            {
-              className: "params",
-              begin: "\\b" + RE_IDENT
-            }
-          ]
-        };
-        const PATTERN_MATCH_BLOCK_MODE = {
-          className: "pattern-match",
-          begin: "\\|",
-          returnBegin: true,
-          keywords: KEYWORDS2,
-          end: "=>",
-          relevance: 0,
-          contains: [
-            CONSTRUCTOR_MODE,
-            OPERATOR_MODE,
-            {
-              relevance: 0,
-              className: "constructor",
-              begin: RE_MODULE_IDENT
-            }
-          ]
-        };
-        const MODULE_ACCESS_MODE = {
-          className: "module-access",
-          keywords: KEYWORDS2,
-          returnBegin: true,
-          variants: [
-            { begin: "\\b(" + RE_MODULE_IDENT + "\\.)+" + RE_IDENT },
-            {
-              begin: "\\b(" + RE_MODULE_IDENT + "\\.)+\\(",
-              end: "\\)",
-              returnBegin: true,
-              contains: [
-                FUNCTION_BLOCK_MODE,
-                {
-                  begin: "\\(",
-                  end: "\\)",
-                  relevance: 0,
-                  skip: true
-                }
-              ].concat(MODULE_ACCESS_CONTENTS)
-            },
-            {
-              begin: "\\b(" + RE_MODULE_IDENT + "\\.)+\\{",
-              end: /\}/
-            }
-          ],
-          contains: MODULE_ACCESS_CONTENTS
-        };
-        PARAMS_CONTENTS.push(MODULE_ACCESS_MODE);
         return {
           name: "ReasonML",
           aliases: ["re"],
-          keywords: KEYWORDS2,
-          illegal: "(:-|:=|\\$\\{|\\+=)",
+          keywords: {
+            $pattern: /[a-z_]\w*!?/,
+            keyword: [
+              "and",
+              "as",
+              "asr",
+              "assert",
+              "begin",
+              "class",
+              "constraint",
+              "do",
+              "done",
+              "downto",
+              "else",
+              "end",
+              "esfun",
+              "exception",
+              "external",
+              "for",
+              "fun",
+              "function",
+              "functor",
+              "if",
+              "in",
+              "include",
+              "inherit",
+              "initializer",
+              "land",
+              "lazy",
+              "let",
+              "lor",
+              "lsl",
+              "lsr",
+              "lxor",
+              "mod",
+              "module",
+              "mutable",
+              "new",
+              "nonrec",
+              "object",
+              "of",
+              "open",
+              "or",
+              "pri",
+              "pub",
+              "rec",
+              "sig",
+              "struct",
+              "switch",
+              "then",
+              "to",
+              "try",
+              "type",
+              "val",
+              "virtual",
+              "when",
+              "while",
+              "with"
+            ],
+            built_in: BUILT_IN_TYPES,
+            literal: ["true", "false"]
+          },
+          illegal: /(:-|:=|\$\{|\+=)/,
           contains: [
-            hljs.COMMENT("/\\*", "\\*/", { illegal: "^(#,\\/\\/)" }),
             {
-              className: "character",
-              begin: "'(\\\\[^']+|[^'])'",
-              illegal: "\\n",
+              scope: "literal",
+              match: /\[(\|\|)?\]|\(\)/,
               relevance: 0
             },
-            hljs.QUOTE_STRING_MODE,
-            {
-              className: "literal",
-              begin: "\\(\\)",
-              relevance: 0
-            },
-            {
-              className: "literal",
-              begin: "\\[\\|",
-              end: "\\|\\]",
-              relevance: 0,
-              contains: LIST_CONTENTS_MODES
-            },
-            {
-              className: "literal",
-              begin: "\\[",
-              end: "\\]",
-              relevance: 0,
-              contains: LIST_CONTENTS_MODES
-            },
-            CONSTRUCTOR_MODE,
-            {
-              className: "operator",
-              begin: RE_OPERATOR_SPACED,
-              illegal: "-->",
-              relevance: 0
-            },
-            NUMBER_MODE,
             hljs.C_LINE_COMMENT_MODE,
-            PATTERN_MATCH_BLOCK_MODE,
-            FUNCTION_BLOCK_MODE,
+            hljs.COMMENT(/\/\*/, /\*\//, { illegal: /^(#,\/\/)/ }),
             {
-              className: "module-def",
-              begin: "\\bmodule\\s+" + RE_IDENT + "\\s+" + RE_MODULE_IDENT + "\\s+=\\s+\\{",
-              end: /\}/,
-              returnBegin: true,
-              keywords: KEYWORDS2,
-              relevance: 0,
-              contains: [
-                {
-                  className: "module",
-                  relevance: 0,
-                  begin: RE_MODULE_IDENT
-                },
-                {
-                  begin: /\{/,
-                  end: /\}/,
-                  relevance: 0,
-                  skip: true
-                }
-              ].concat(MODULE_ACCESS_CONTENTS)
+              /* type variable */
+              scope: "symbol",
+              match: /\'[A-Za-z_](?!\')[\w\']*/
+              /* the grammar is ambiguous on how 'a'b should be interpreted but not the compiler */
             },
-            MODULE_ACCESS_MODE
+            {
+              /* polymorphic variant */
+              scope: "type",
+              match: /`[A-Z][\w\']*/
+            },
+            {
+              /* module or constructor */
+              scope: "type",
+              match: /\b[A-Z][\w\']*/,
+              relevance: 0
+            },
+            {
+              /* don't color identifiers, but safely catch all identifiers with ' */
+              match: /[a-z_]\w*\'[\w\']*/,
+              relevance: 0
+            },
+            {
+              scope: "operator",
+              match: /\s+(\|\||\+[\+\.]?|\*[\*\/\.]?|\/[\.]?|\.\.\.|\|>|&&|===?)\s+/,
+              relevance: 0
+            },
+            hljs.inherit(hljs.APOS_STRING_MODE, {
+              scope: "string",
+              relevance: 0
+            }),
+            hljs.inherit(hljs.QUOTE_STRING_MODE, { illegal: null }),
+            {
+              scope: "number",
+              variants: [
+                { match: /\b0[xX][a-fA-F0-9_]+[Lln]?/ },
+                { match: /\b0[oO][0-7_]+[Lln]?/ },
+                { match: /\b0[bB][01_]+[Lln]?/ },
+                { match: /\b[0-9][0-9_]*([Lln]|(\.[0-9_]*)?([eE][-+]?[0-9_]+)?)/ }
+              ],
+              relevance: 0
+            }
           ]
         };
       }
@@ -37188,13 +38540,16 @@
     "node_modules/highlight.js/lib/languages/rust.js"(exports, module) {
       function rust(hljs) {
         const regex = hljs.regex;
+        const RAW_IDENTIFIER = /(r#)?/;
+        const UNDERSCORE_IDENT_RE = regex.concat(RAW_IDENTIFIER, hljs.UNDERSCORE_IDENT_RE);
+        const IDENT_RE2 = regex.concat(RAW_IDENTIFIER, hljs.IDENT_RE);
         const FUNCTION_INVOKE = {
           className: "title.function.invoke",
           relevance: 0,
           begin: regex.concat(
             /\b/,
-            /(?!let\b)/,
-            hljs.IDENT_RE,
+            /(?!let|for|while|if|else|match\b)/,
+            IDENT_RE2,
             regex.lookahead(/\s*\(/)
           )
         };
@@ -37244,6 +38599,7 @@
           "try",
           "type",
           "typeof",
+          "union",
           "unsafe",
           "unsized",
           "use",
@@ -37303,6 +38659,7 @@
           "debug_assert!",
           "debug_assert_eq!",
           "env!",
+          "eprintln!",
           "panic!",
           "file!",
           "format!",
@@ -37394,7 +38751,7 @@
               begin: [
                 /fn/,
                 /\s+/,
-                hljs.UNDERSCORE_IDENT_RE
+                UNDERSCORE_IDENT_RE
               ],
               className: {
                 1: "keyword",
@@ -37409,7 +38766,10 @@
                 {
                   className: "string",
                   begin: /"/,
-                  end: /"/
+                  end: /"/,
+                  contains: [
+                    hljs.BACKSLASH_ESCAPE
+                  ]
                 }
               ]
             },
@@ -37418,7 +38778,7 @@
                 /let/,
                 /\s+/,
                 /(?:mut\s+)?/,
-                hljs.UNDERSCORE_IDENT_RE
+                UNDERSCORE_IDENT_RE
               ],
               className: {
                 1: "keyword",
@@ -37431,7 +38791,7 @@
               begin: [
                 /for/,
                 /\s+/,
-                hljs.UNDERSCORE_IDENT_RE,
+                UNDERSCORE_IDENT_RE,
                 /\s+/,
                 /in/
               ],
@@ -37445,7 +38805,7 @@
               begin: [
                 /type/,
                 /\s+/,
-                hljs.UNDERSCORE_IDENT_RE
+                UNDERSCORE_IDENT_RE
               ],
               className: {
                 1: "keyword",
@@ -37456,7 +38816,7 @@
               begin: [
                 /(?:trait|enum|struct|union|impl|for)/,
                 /\s+/,
-                hljs.UNDERSCORE_IDENT_RE
+                UNDERSCORE_IDENT_RE
               ],
               className: {
                 1: "keyword",
@@ -38109,7 +39469,11 @@
               excludeBegin: true,
               excludeEnd: true,
               relevance: 0,
-              contains: [TYPE]
+              contains: [
+                TYPE,
+                hljs.C_LINE_COMMENT_MODE,
+                hljs.C_BLOCK_COMMENT_MODE
+              ]
             },
             {
               className: "params",
@@ -38118,7 +39482,11 @@
               excludeBegin: true,
               excludeEnd: true,
               relevance: 0,
-              contains: [TYPE]
+              contains: [
+                TYPE,
+                hljs.C_LINE_COMMENT_MODE,
+                hljs.C_BLOCK_COMMENT_MODE
+              ]
             },
             NAME
           ]
@@ -38170,6 +39538,28 @@
           ],
           beginScope: { 2: "keyword" }
         };
+        const DIRECTIVE_VALUE = {
+          className: "string",
+          begin: /\S+/
+        };
+        const USING_DIRECTIVE = {
+          begin: [
+            "//>",
+            /\s+/,
+            /using/,
+            /\s+/,
+            /\S+/
+          ],
+          beginScope: {
+            1: "comment",
+            3: "keyword",
+            5: "type"
+          },
+          end: /$/,
+          contains: [
+            DIRECTIVE_VALUE
+          ]
+        };
         return {
           name: "Scala",
           keywords: {
@@ -38177,6 +39567,7 @@
             keyword: "type yield lazy override def with val var sealed abstract private trait object if then forSome for while do throw finally protected extends import final return else break new catch super class case package default try this match continue throws implicit export enum given transparent"
           },
           contains: [
+            USING_DIRECTIVE,
             hljs.C_LINE_COMMENT_MODE,
             hljs.C_BLOCK_COMMENT_MODE,
             STRING,
@@ -38438,11 +39829,11 @@
           },
           CSS_VARIABLE: {
             className: "attr",
-            begin: /--[A-Za-z][A-Za-z0-9_-]*/
+            begin: /--[A-Za-z_][A-Za-z0-9_-]*/
           }
         };
       };
-      var TAGS3 = [
+      var HTML_TAGS3 = [
         "a",
         "abbr",
         "address",
@@ -38494,11 +39885,16 @@
         "nav",
         "object",
         "ol",
+        "optgroup",
+        "option",
         "p",
+        "picture",
         "q",
         "quote",
         "samp",
         "section",
+        "select",
+        "source",
         "span",
         "strong",
         "summary",
@@ -38515,6 +39911,53 @@
         "ul",
         "var",
         "video"
+      ];
+      var SVG_TAGS3 = [
+        "defs",
+        "g",
+        "marker",
+        "mask",
+        "pattern",
+        "svg",
+        "switch",
+        "symbol",
+        "feBlend",
+        "feColorMatrix",
+        "feComponentTransfer",
+        "feComposite",
+        "feConvolveMatrix",
+        "feDiffuseLighting",
+        "feDisplacementMap",
+        "feFlood",
+        "feGaussianBlur",
+        "feImage",
+        "feMerge",
+        "feMorphology",
+        "feOffset",
+        "feSpecularLighting",
+        "feTile",
+        "feTurbulence",
+        "linearGradient",
+        "radialGradient",
+        "stop",
+        "circle",
+        "ellipse",
+        "image",
+        "line",
+        "path",
+        "polygon",
+        "polyline",
+        "rect",
+        "text",
+        "use",
+        "textPath",
+        "tspan",
+        "foreignObject",
+        "clipPath"
+      ];
+      var TAGS3 = [
+        ...HTML_TAGS3,
+        ...SVG_TAGS3
       ];
       var MEDIA_FEATURES3 = [
         "any-hover",
@@ -38551,7 +39994,7 @@
         "max-width",
         "min-height",
         "max-height"
-      ];
+      ].sort().reverse();
       var PSEUDO_CLASSES3 = [
         "active",
         "any-link",
@@ -38626,7 +40069,7 @@
         "visited",
         "where"
         // where()
-      ];
+      ].sort().reverse();
       var PSEUDO_ELEMENTS3 = [
         "after",
         "backdrop",
@@ -38642,11 +40085,13 @@
         "selection",
         "slotted",
         "spelling-error"
-      ];
+      ].sort().reverse();
       var ATTRIBUTES3 = [
+        "accent-color",
         "align-content",
         "align-items",
         "align-self",
+        "alignment-baseline",
         "all",
         "animation",
         "animation-delay",
@@ -38657,6 +40102,7 @@
         "animation-name",
         "animation-play-state",
         "animation-timing-function",
+        "appearance",
         "backface-visibility",
         "background",
         "background-attachment",
@@ -38668,6 +40114,7 @@
         "background-position",
         "background-repeat",
         "background-size",
+        "baseline-shift",
         "block-size",
         "border",
         "border-block",
@@ -38714,10 +40161,14 @@
         "border-left-width",
         "border-radius",
         "border-right",
+        "border-end-end-radius",
+        "border-end-start-radius",
         "border-right-color",
         "border-right-style",
         "border-right-width",
         "border-spacing",
+        "border-start-end-radius",
+        "border-start-start-radius",
         "border-style",
         "border-top",
         "border-top-color",
@@ -38733,6 +40184,8 @@
         "break-after",
         "break-before",
         "break-inside",
+        "cx",
+        "cy",
         "caption-side",
         "caret-color",
         "clear",
@@ -38740,6 +40193,11 @@
         "clip-path",
         "clip-rule",
         "color",
+        "color-interpolation",
+        "color-interpolation-filters",
+        "color-profile",
+        "color-rendering",
+        "color-scheme",
         "column-count",
         "column-fill",
         "column-gap",
@@ -38761,7 +40219,12 @@
         "cursor",
         "direction",
         "display",
+        "dominant-baseline",
         "empty-cells",
+        "enable-background",
+        "fill",
+        "fill-opacity",
+        "fill-rule",
         "filter",
         "flex",
         "flex-basis",
@@ -38772,6 +40235,8 @@
         "flex-wrap",
         "float",
         "flow",
+        "flood-color",
+        "flood-opacity",
         "font",
         "font-display",
         "font-family",
@@ -38793,6 +40258,7 @@
         "font-variation-settings",
         "font-weight",
         "gap",
+        "glyph-orientation-horizontal",
         "glyph-orientation-vertical",
         "grid",
         "grid-area",
@@ -38819,16 +40285,32 @@
         "image-resolution",
         "ime-mode",
         "inline-size",
+        "inset",
+        "inset-block",
+        "inset-block-end",
+        "inset-block-start",
+        "inset-inline",
+        "inset-inline-end",
+        "inset-inline-start",
         "isolation",
+        "kerning",
         "justify-content",
+        "justify-items",
+        "justify-self",
         "left",
         "letter-spacing",
+        "lighting-color",
         "line-break",
         "line-height",
         "list-style",
         "list-style-image",
         "list-style-position",
         "list-style-type",
+        "marker",
+        "marker-end",
+        "marker-mid",
+        "marker-start",
+        "mask",
         "margin",
         "margin-block",
         "margin-block-end",
@@ -38910,12 +40392,15 @@
         "pointer-events",
         "position",
         "quotes",
+        "r",
         "resize",
         "rest",
         "rest-after",
         "rest-before",
         "right",
+        "rotate",
         "row-gap",
+        "scale",
         "scroll-margin",
         "scroll-margin-block",
         "scroll-margin-block-end",
@@ -38947,12 +40432,24 @@
         "shape-image-threshold",
         "shape-margin",
         "shape-outside",
+        "shape-rendering",
+        "stop-color",
+        "stop-opacity",
+        "stroke",
+        "stroke-dasharray",
+        "stroke-dashoffset",
+        "stroke-linecap",
+        "stroke-linejoin",
+        "stroke-miterlimit",
+        "stroke-opacity",
+        "stroke-width",
         "speak",
         "speak-as",
         "src",
         // @font-face
         "tab-size",
         "table-layout",
+        "text-anchor",
         "text-align",
         "text-align-all",
         "text-align-last",
@@ -38960,7 +40457,9 @@
         "text-decoration",
         "text-decoration-color",
         "text-decoration-line",
+        "text-decoration-skip-ink",
         "text-decoration-style",
+        "text-decoration-thickness",
         "text-emphasis",
         "text-emphasis-color",
         "text-emphasis-position",
@@ -38972,6 +40471,7 @@
         "text-rendering",
         "text-shadow",
         "text-transform",
+        "text-underline-offset",
         "text-underline-position",
         "top",
         "transform",
@@ -38983,7 +40483,9 @@
         "transition-duration",
         "transition-property",
         "transition-timing-function",
+        "translate",
         "unicode-bidi",
+        "vector-effect",
         "vertical-align",
         "visibility",
         "voice-balance",
@@ -39002,10 +40504,10 @@
         "word-spacing",
         "word-wrap",
         "writing-mode",
+        "x",
+        "y",
         "z-index"
-        // reverse makes sure longer attributes `font-weight` are matched fully
-        // instead of getting false positives on say `font`
-      ].reverse();
+      ].sort().reverse();
       function scss2(hljs) {
         const modes = MODES3(hljs);
         const PSEUDO_ELEMENTS$1 = PSEUDO_ELEMENTS3;
@@ -39425,7 +40927,7 @@
         };
         const FUNCTION = {
           className: "title",
-          begin: /[a-zA-Z]\w+_fnc_\w+/
+          begin: /[a-zA-Z][a-zA-Z_0-9]*_fnc_[a-zA-Z_0-9]+/
         };
         const STRINGS = {
           className: "string",
@@ -39453,8 +40955,14 @@
           ]
         };
         const KEYWORDS2 = [
+          "break",
+          "breakWith",
+          "breakOut",
+          "breakTo",
           "case",
           "catch",
+          "continue",
+          "continueWith",
           "default",
           "do",
           "else",
@@ -39464,8 +40972,10 @@
           "forEach",
           "from",
           "if",
+          "local",
           "private",
           "switch",
+          "step",
           "then",
           "throw",
           "to",
@@ -39480,6 +40990,7 @@
           "configNull",
           "controlNull",
           "displayNull",
+          "diaryRecordNull",
           "east",
           "endl",
           "false",
@@ -39495,6 +41006,8 @@
           "scriptNull",
           "sideAmbientLife",
           "sideEmpty",
+          "sideEnemy",
+          "sideFriendly",
           "sideLogic",
           "sideUnknown",
           "taskNull",
@@ -39509,6 +41022,7 @@
           "action",
           "actionIDs",
           "actionKeys",
+          "actionKeysEx",
           "actionKeysImages",
           "actionKeysNames",
           "actionKeysNamesArray",
@@ -39517,6 +41031,7 @@
           "activateAddons",
           "activatedAddons",
           "activateKey",
+          "activeTitleEffectParams",
           "add3DENConnection",
           "add3DENEventHandler",
           "add3DENLayer",
@@ -39576,6 +41091,7 @@
           "addToRemainsCollector",
           "addTorque",
           "addUniform",
+          "addUserActionEventHandler",
           "addVehicle",
           "addVest",
           "addWaypoint",
@@ -39609,20 +41125,26 @@
           "allCutLayers",
           "allDead",
           "allDeadMen",
+          "allDiaryRecords",
           "allDiarySubjects",
           "allDisplays",
+          "allEnv3DSoundSources",
           "allGroups",
+          "allLODs",
           "allMapMarkers",
           "allMines",
           "allMissionObjects",
+          "allObjects",
           "allow3DMode",
           "allowCrewInImmobile",
           "allowCuratorLogicIgnoreAreas",
           "allowDamage",
           "allowDammage",
+          "allowedService",
           "allowFileOperations",
           "allowFleeing",
           "allowGetIn",
+          "allowService",
           "allowSprint",
           "allPlayers",
           "allSimpleObjects",
@@ -39630,7 +41152,9 @@
           "allTurrets",
           "allUnits",
           "allUnitsUAV",
+          "allUsers",
           "allVariables",
+          "ambientTemperature",
           "ammo",
           "ammoOnPylon",
           "and",
@@ -39662,12 +41186,14 @@
           "assignedCargo",
           "assignedCommander",
           "assignedDriver",
+          "assignedGroup",
           "assignedGunner",
           "assignedItems",
           "assignedTarget",
           "assignedTeam",
           "assignedVehicle",
           "assignedVehicleRole",
+          "assignedVehicles",
           "assignItem",
           "assignTeam",
           "assignToAirport",
@@ -39681,13 +41207,13 @@
           "attachObject",
           "attachTo",
           "attackEnabled",
+          "awake",
           "backpack",
           "backpackCargo",
           "backpackContainer",
           "backpackItems",
           "backpackMagazines",
           "backpackSpaceFor",
-          "batteryChargeRTD",
           "behaviour",
           "benchmark",
           "bezierInterpolation",
@@ -39697,10 +41223,7 @@
           "boundingBox",
           "boundingBoxReal",
           "boundingCenter",
-          "break",
-          "breakOut",
-          "breakTo",
-          "breakWith",
+          "brakesDisabled",
           "briefingName",
           "buildingExit",
           "buildingPos",
@@ -39755,6 +41278,7 @@
           "canAddItemToUniform",
           "canAddItemToVest",
           "cancelSimpleTaskDestination",
+          "canDeployWeapon",
           "canFire",
           "canMove",
           "canSlingLoad",
@@ -39788,7 +41312,6 @@
           "clearMagazinePool",
           "clearOverlay",
           "clearRadio",
-          "clearVehicleInit",
           "clearWeaponCargo",
           "clearWeaponCargoGlobal",
           "clearWeaponPool",
@@ -39799,6 +41322,7 @@
           "collapseObjectTree",
           "collect3DENHistory",
           "collectiveRTD",
+          "collisionDisabledWith",
           "combatBehaviour",
           "combatMode",
           "commandArtilleryFire",
@@ -39817,6 +41341,8 @@
           "commandWatch",
           "comment",
           "commitOverlay",
+          "compatibleItems",
+          "compatibleMagazines",
           "compile",
           "compileFinal",
           "compileScript",
@@ -39834,9 +41360,8 @@
           "confirmSensorTarget",
           "connectTerminalToUAV",
           "connectToServer",
-          "continue",
-          "continueWith",
           "controlsGroupCtrl",
+          "conversationDisabled",
           "copyFromClipboard",
           "copyToClipboard",
           "copyWaypoints",
@@ -39872,7 +41397,6 @@
           "createSimpleTask",
           "createSite",
           "createSoundSource",
-          "createTarget",
           "createTask",
           "createTeam",
           "createTrigger",
@@ -39897,9 +41421,11 @@
           "ctrlAngle",
           "ctrlAnimateModel",
           "ctrlAnimationPhaseModel",
+          "ctrlAt",
           "ctrlAutoScrollDelay",
           "ctrlAutoScrollRewind",
           "ctrlAutoScrollSpeed",
+          "ctrlBackgroundColor",
           "ctrlChecked",
           "ctrlClassName",
           "ctrlCommit",
@@ -39910,6 +41436,7 @@
           "ctrlEnabled",
           "ctrlFade",
           "ctrlFontHeight",
+          "ctrlForegroundColor",
           "ctrlHTMLLoaded",
           "ctrlIDC",
           "ctrlIDD",
@@ -39919,8 +41446,10 @@
           "ctrlMapAnimDone",
           "ctrlMapCursor",
           "ctrlMapMouseOver",
+          "ctrlMapPosition",
           "ctrlMapScale",
           "ctrlMapScreenToWorld",
+          "ctrlMapSetPosition",
           "ctrlMapWorldToScreen",
           "ctrlModel",
           "ctrlModelDirAndUp",
@@ -39981,6 +41510,7 @@
           "ctrlSetPositionY",
           "ctrlSetScale",
           "ctrlSetScrollValues",
+          "ctrlSetShadow",
           "ctrlSetStructuredText",
           "ctrlSetText",
           "ctrlSetTextColor",
@@ -39991,7 +41521,10 @@
           "ctrlSetTooltipColorBox",
           "ctrlSetTooltipColorShade",
           "ctrlSetTooltipColorText",
+          "ctrlSetTooltipMaxWidth",
           "ctrlSetURL",
+          "ctrlSetURLOverlayMode",
+          "ctrlShadow",
           "ctrlShow",
           "ctrlShown",
           "ctrlStyle",
@@ -40004,6 +41537,7 @@
           "ctrlTooltip",
           "ctrlType",
           "ctrlURL",
+          "ctrlURLOverlayMode",
           "ctrlVisible",
           "ctRowControls",
           "ctRowCount",
@@ -40057,7 +41591,7 @@
           "damage",
           "date",
           "dateToNumber",
-          "daytime",
+          "dayTime",
           "deActivateKey",
           "debriefingText",
           "debugFSM",
@@ -40079,7 +41613,6 @@
           "deleteResources",
           "deleteSite",
           "deleteStatus",
-          "deleteTarget",
           "deleteTeam",
           "deleteVehicle",
           "deleteVehicleCrew",
@@ -40088,39 +41621,42 @@
           "detectedMines",
           "diag_activeMissionFSMs",
           "diag_activeScripts",
-          "diag_activeSQSScripts",
-          "diag_captureFrameToFile",
-          "diag_captureSlowFrame",
-          "diag_deltaTime",
-          "diag_drawMode",
-          "diag_enable",
-          "diag_enabled",
-          "diag_fps",
-          "diag_fpsMin",
-          "diag_frameNo",
-          "diag_list",
-          "diag_mergeConfigFile",
-          "diag_scope",
           "diag_activeSQFScripts",
+          "diag_activeSQSScripts",
           "diag_allMissionEventHandlers",
           "diag_captureFrame",
+          "diag_captureFrameToFile",
+          "diag_captureSlowFrame",
           "diag_codePerformance",
+          "diag_deltaTime",
+          "diag_drawmode",
           "diag_dumpCalltraceToLog",
+          "diag_dumpScriptAssembly",
           "diag_dumpTerrainSynth",
           "diag_dynamicSimulationEnd",
+          "diag_enable",
+          "diag_enabled",
           "diag_exportConfig",
           "diag_exportTerrainSVG",
+          "diag_fps",
+          "diag_fpsmin",
+          "diag_frameno",
+          "diag_getTerrainSegmentOffset",
           "diag_lightNewLoad",
+          "diag_list",
           "diag_localized",
           "diag_log",
           "diag_logSlowFrame",
+          "diag_mergeConfigFile",
           "diag_recordTurretLimits",
-          "diag_resetShapes",
+          "diag_resetFSM",
+          "diag_resetshapes",
+          "diag_scope",
           "diag_setLightNew",
+          "diag_stacktrace",
           "diag_tickTime",
           "diag_toggle",
           "dialog",
-          "diaryRecordNull",
           "diarySubjectExists",
           "didJIP",
           "didJIPOwner",
@@ -40129,8 +41665,10 @@
           "difficultyEnabledRTD",
           "difficultyOption",
           "direction",
+          "directionStabilizationEnabled",
           "directSay",
           "disableAI",
+          "disableBrakes",
           "disableCollisionWith",
           "disableConversation",
           "disableDebriefingStats",
@@ -40142,11 +41680,14 @@
           "disableUAVConnectability",
           "disableUserInput",
           "displayAddEventHandler",
+          "displayChild",
           "displayCtrl",
           "displayParent",
           "displayRemoveAllEventHandlers",
           "displayRemoveEventHandler",
           "displaySetEventHandler",
+          "displayUniqueName",
+          "displayUpdate",
           "dissolveTeam",
           "distance",
           "distance2D",
@@ -40168,6 +41709,7 @@
           "drawEllipse",
           "drawIcon",
           "drawIcon3D",
+          "drawLaser",
           "drawLine",
           "drawLine3D",
           "drawLink",
@@ -40202,6 +41744,7 @@
           "enableCopilot",
           "enableDebriefingStats",
           "enableDiagLegend",
+          "enableDirectionStabilization",
           "enableDynamicSimulation",
           "enableDynamicSimulationSystem",
           "enableEndDialog",
@@ -40232,7 +41775,6 @@
           "enableWeaponDisassembly",
           "endLoadingScreen",
           "endMission",
-          "enemy",
           "engineOn",
           "enginesIsOnRTD",
           "enginesPowerRTD",
@@ -40241,6 +41783,7 @@
           "entities",
           "environmentEnabled",
           "environmentVolume",
+          "equipmentDisabled",
           "estimatedEndServerTime",
           "estimatedTimeLeft",
           "evalObjectArgument",
@@ -40253,7 +41796,6 @@
           "exp",
           "expectedDestination",
           "exportJIPMessages",
-          "exportLandscapeXYZ",
           "eyeDirection",
           "eyePos",
           "face",
@@ -40267,6 +41809,7 @@
           "fileExists",
           "fillWeaponsFromPool",
           "find",
+          "findAny",
           "findCover",
           "findDisplay",
           "findEditorObject",
@@ -40321,14 +41864,15 @@
           "formationTask",
           "formatText",
           "formLeader",
+          "freeExtension",
           "freeLook",
-          "friendly",
           "fromEditor",
           "fuel",
           "fullCrew",
           "gearIDCAmmoCount",
           "gearSlotAmmoCount",
           "gearSlotData",
+          "gestureState",
           "get",
           "get3DENActionState",
           "get3DENAttribute",
@@ -40344,6 +41888,7 @@
           "get3DENMouseOver",
           "get3DENSelected",
           "getAimingCoef",
+          "getAllEnv3DSoundControllers",
           "getAllEnvSoundControllers",
           "getAllHitPointsDamage",
           "getAllOwnedMines",
@@ -40373,12 +41918,16 @@
           "getClientStateNumber",
           "getCompatiblePylonMagazines",
           "getConnectedUAV",
+          "getConnectedUAVUnit",
           "getContainerMaxLoad",
+          "getCorpse",
+          "getCruiseControl",
           "getCursorObjectParams",
           "getCustomAimCoef",
           "getCustomSoundController",
           "getCustomSoundControllerCount",
           "getDammage",
+          "getDebriefingText",
           "getDescription",
           "getDir",
           "getDirVisual",
@@ -40391,10 +41940,14 @@
           "getEditorMode",
           "getEditorObjectScope",
           "getElevationOffset",
+          "getEngineTargetRPMRTD",
+          "getEnv3DSoundController",
           "getEnvSoundController",
+          "getEventHandlerInfo",
           "getFatigue",
           "getFieldManualStartPage",
           "getForcedFlagTexture",
+          "getForcedSpeed",
           "getFriend",
           "getFSMVariable",
           "getFuelCargo",
@@ -40430,25 +41983,28 @@
           "getObjectChildren",
           "getObjectDLC",
           "getObjectFOV",
+          "getObjectID",
           "getObjectMaterials",
           "getObjectProxy",
           "getObjectScale",
           "getObjectTextures",
           "getObjectType",
           "getObjectViewDistance",
+          "getOpticsMode",
           "getOrDefault",
+          "getOrDefaultCall",
           "getOxygenRemaining",
           "getPersonUsedDLCs",
           "getPilotCameraDirection",
           "getPilotCameraPosition",
           "getPilotCameraRotation",
           "getPilotCameraTarget",
+          "getPiPViewDistance",
           "getPlateNumber",
           "getPlayerChannel",
           "getPlayerID",
           "getPlayerScores",
           "getPlayerUID",
-          "getPlayerUIDOld",
           "getPlayerVoNVolume",
           "getPos",
           "getPosASL",
@@ -40467,6 +42023,8 @@
           "getResolution",
           "getRoadInfo",
           "getRotorBrakeRTD",
+          "getSensorTargets",
+          "getSensorThreats",
           "getShadowDistance",
           "getShotParents",
           "getSlingLoad",
@@ -40479,24 +42037,32 @@
           "getSubtitleOptions",
           "getSuppression",
           "getTerrainGrid",
+          "getTerrainHeight",
           "getTerrainHeightASL",
+          "getTerrainInfo",
           "getText",
           "getTextRaw",
+          "getTextureInfo",
           "getTextWidth",
+          "getTiParameters",
           "getTotalDLCUsageTime",
           "getTrimOffsetRTD",
+          "getTurretLimits",
+          "getTurretOpticsMode",
+          "getUnitFreefallInfo",
           "getUnitLoadout",
           "getUnitTrait",
+          "getUnloadInCombat",
+          "getUserInfo",
           "getUserMFDText",
           "getUserMFDValue",
           "getVariable",
           "getVehicleCargo",
-          "getVehicleTIPars",
+          "getVehicleTiPars",
           "getWeaponCargo",
           "getWeaponSway",
           "getWingsOrientationRTD",
           "getWingsPositionRTD",
-          "getWorld",
           "getWPPos",
           "glanceAt",
           "globalChat",
@@ -40508,9 +42074,10 @@
           "groupFromNetId",
           "groupIconSelectable",
           "groupIconsVisible",
-          "groupId",
+          "groupID",
           "groupOwner",
           "groupRadio",
+          "groups",
           "groupSelectedUnits",
           "groupSelectUnit",
           "gunner",
@@ -40520,6 +42087,7 @@
           "handgunMagazine",
           "handgunWeapon",
           "handsHit",
+          "hashValue",
           "hasInterface",
           "hasPilotCamera",
           "hasWeapon",
@@ -40534,12 +42102,10 @@
           "hcShowBar",
           "hcShownBar",
           "headgear",
-          "hideBehindScripted",
           "hideBody",
           "hideObject",
           "hideObjectGlobal",
           "hideSelection",
-          "hierarchyObjectsCount",
           "hint",
           "hintC",
           "hintCadet",
@@ -40567,6 +42133,8 @@
           "initAmbientLife",
           "inPolygon",
           "inputAction",
+          "inputController",
+          "inputMouse",
           "inRangeOfArtillery",
           "insert",
           "insertEditorObject",
@@ -40578,12 +42146,14 @@
           "isActionMenuVisible",
           "isAgent",
           "isAimPrecisionEnabled",
+          "isAllowedCrewInImmobile",
           "isArray",
           "isAutoHoverOn",
           "isAutonomous",
           "isAutoStartUpEnabledRTD",
           "isAutotest",
           "isAutoTrimOnRTD",
+          "isAwake",
           "isBleeding",
           "isBurning",
           "isClass",
@@ -40593,6 +42163,7 @@
           "isDedicated",
           "isDLCAvailable",
           "isEngineOn",
+          "isEqualRef",
           "isEqualTo",
           "isEqualType",
           "isEqualTypeAll",
@@ -40609,7 +42180,6 @@
           "isGamePaused",
           "isGroupDeletedWhenEmpty",
           "isHidden",
-          "isHideBehindScripted",
           "isInRemainsCollector",
           "isInstructorFigureEnabled",
           "isIRLaserOn",
@@ -40620,9 +42190,11 @@
           "isLocalized",
           "isManualFire",
           "isMarkedForCollection",
+          "isMissionProfileNamespaceLoaded",
           "isMultiplayer",
           "isMultiplayerSolo",
           "isNil",
+          "isNotEqualRef",
           "isNotEqualTo",
           "isNull",
           "isNumber",
@@ -40634,6 +42206,7 @@
           "isRealTime",
           "isRemoteExecuted",
           "isRemoteExecutedJIP",
+          "isSaving",
           "isSensorTargetConfirmed",
           "isServer",
           "isShowing3DIcons",
@@ -40641,6 +42214,7 @@
           "isSprintAllowed",
           "isStaminaEnabled",
           "isSteamMission",
+          "isSteamOverlayEnabled",
           "isStreamFriendlyUIEnabled",
           "isStressDamageEnabled",
           "isText",
@@ -40714,9 +42288,11 @@
           "lbSetValue",
           "lbSize",
           "lbSort",
+          "lbSortBy",
           "lbSortByValue",
           "lbText",
           "lbTextRight",
+          "lbTooltip",
           "lbValue",
           "leader",
           "leaderboardDeInit",
@@ -40778,6 +42354,7 @@
           "lnbSetValue",
           "lnbSize",
           "lnbSort",
+          "lnbSortBy",
           "lnbSortByValue",
           "lnbText",
           "lnbTextRight",
@@ -40785,6 +42362,7 @@
           "load",
           "loadAbs",
           "loadBackpack",
+          "loadConfig",
           "loadFile",
           "loadGame",
           "loadIdentity",
@@ -40793,7 +42371,6 @@
           "loadStatus",
           "loadUniform",
           "loadVest",
-          "local",
           "localize",
           "localNamespace",
           "locationPosition",
@@ -40802,6 +42379,7 @@
           "lockCargo",
           "lockDriver",
           "locked",
+          "lockedCameraTo",
           "lockedCargo",
           "lockedDriver",
           "lockedInventory",
@@ -40809,7 +42387,7 @@
           "lockIdentity",
           "lockInventory",
           "lockTurret",
-          "lockWP",
+          "lockWp",
           "log",
           "logEntities",
           "logNetwork",
@@ -40850,6 +42428,7 @@
           "matrixMultiply",
           "matrixTranspose",
           "max",
+          "maxLoad",
           "members",
           "menuAction",
           "menuAdd",
@@ -40886,9 +42465,11 @@
           "missileTargetPos",
           "missionConfigFile",
           "missionDifficulty",
+          "missionEnd",
           "missionName",
           "missionNameSource",
           "missionNamespace",
+          "missionProfileNamespace",
           "missionStart",
           "missionVersion",
           "mod",
@@ -40910,7 +42491,6 @@
           "moveInTurret",
           "moveObjectToEnd",
           "moveOut",
-          "moveTarget",
           "moveTime",
           "moveTo",
           "moveToCompleted",
@@ -40924,6 +42504,7 @@
           "nearestLocation",
           "nearestLocations",
           "nearestLocationWithDubbing",
+          "nearestMines",
           "nearestObject",
           "nearestObjects",
           "nearestTerrainObjects",
@@ -40933,6 +42514,7 @@
           "nearSupplies",
           "nearTargets",
           "needReload",
+          "needService",
           "netId",
           "netObjNull",
           "newOverlay",
@@ -40942,12 +42524,10 @@
           "not",
           "numberOfEnginesRTD",
           "numberToDate",
-          "object",
           "objectCurators",
           "objectFromNetId",
           "objectParent",
           "objStatus",
-          "onBriefingGear",
           "onBriefingGroup",
           "onBriefingNotes",
           "onBriefingPlan",
@@ -40968,7 +42548,6 @@
           "onTeamSwitch",
           "openCuratorInterface",
           "openDLCPage",
-          "openDSInterface",
           "openGPS",
           "openMap",
           "openSteamApp",
@@ -41009,6 +42588,8 @@
           "playScriptedMission",
           "playSound",
           "playSound3D",
+          "playSoundUI",
+          "pose",
           "position",
           "positionCameraToWorld",
           "posScreenToWorld",
@@ -41034,7 +42615,6 @@
           "primaryWeaponMagazine",
           "priority",
           "processDiaryLink",
-          "processInitCommands",
           "productVersion",
           "profileName",
           "profileNamespace",
@@ -41058,14 +42638,19 @@
           "radioChannelRemove",
           "radioChannelSetCallSign",
           "radioChannelSetLabel",
+          "radioEnabled",
           "radioVolume",
           "rain",
           "rainbow",
+          "rainParams",
           "random",
           "rank",
           "rankId",
           "rating",
           "rectangular",
+          "regexFind",
+          "regexMatch",
+          "regexReplace",
           "registeredTasks",
           "registerTask",
           "reload",
@@ -41096,11 +42681,11 @@
           "removeAllOwnedMines",
           "removeAllPrimaryWeaponItems",
           "removeAllSecondaryWeaponItems",
+          "removeAllUserActionEventHandlers",
           "removeAllWeapons",
           "removeBackpack",
           "removeBackpackGlobal",
           "removeBinocularItem",
-          "removeClothing",
           "removeCuratorAddons",
           "removeCuratorCameraArea",
           "removeCuratorEditableObjects",
@@ -41136,6 +42721,7 @@
           "removeSwitchableUnit",
           "removeTeamMember",
           "removeUniform",
+          "removeUserActionEventHandler",
           "removeVest",
           "removeWeapon",
           "removeWeaponAttachmentCargo",
@@ -41168,8 +42754,8 @@
           "ropeEndPosition",
           "ropeLength",
           "ropes",
+          "ropesAttachedTo",
           "ropeSegments",
-          "ropeSetCargoMass",
           "ropeUnwind",
           "ropeUnwound",
           "rotorsForcesRTD",
@@ -41186,6 +42772,7 @@
           "saveGame",
           "saveIdentity",
           "saveJoysticks",
+          "saveMissionProfileNamespace",
           "saveOverlay",
           "saveProfileNamespace",
           "saveStatus",
@@ -41212,6 +42799,7 @@
           "selectEditorObject",
           "selectionNames",
           "selectionPosition",
+          "selectionVectorDirAndUp",
           "selectLeader",
           "selectMax",
           "selectMin",
@@ -41226,10 +42814,12 @@
           "sendTask",
           "sendTaskResult",
           "sendUDPMessage",
+          "sentencesEnabled",
           "serverCommand",
           "serverCommandAvailable",
           "serverCommandExecutable",
           "serverName",
+          "serverNamespace",
           "serverTime",
           "set",
           "set3DENAttribute",
@@ -41254,21 +42844,17 @@
           "setAnimSpeedCoef",
           "setAperture",
           "setApertureNew",
-          "setAPURTD",
           "setArmoryPoints",
           "setAttributes",
           "setAutonomous",
-          "setBatteryChargeRTD",
-          "setBatteryRTD",
           "setBehaviour",
           "setBehaviourStrong",
           "setBleedingRemaining",
           "setBrakesRTD",
-          "setCameraEffect",
           "setCameraInterest",
           "setCamShakeDefParams",
           "setCamShakeParams",
-          "setCamUseTI",
+          "setCamUseTi",
           "setCaptive",
           "setCenterOfMass",
           "setCollisionLight",
@@ -41276,6 +42862,7 @@
           "setCombatMode",
           "setCompassOscillation",
           "setConvoySeparation",
+          "setCruiseControl",
           "setCuratorCameraAreaCeiling",
           "setCuratorCoef",
           "setCuratorEditingAreaType",
@@ -41284,7 +42871,7 @@
           "setCurrentTask",
           "setCurrentWaypoint",
           "setCustomAimCoef",
-          "setCustomMissionData",
+          "SetCustomMissionData",
           "setCustomSoundController",
           "setCustomWeightRTD",
           "setDamage",
@@ -41307,10 +42894,9 @@
           "setEditorObjectScope",
           "setEffectCondition",
           "setEffectiveCommander",
-          "setEngineRPMRTD",
           "setEngineRpmRTD",
           "setFace",
-          "setFaceAnimation",
+          "setFaceanimation",
           "setFatigue",
           "setFeatureType",
           "setFlagAnimationPhase",
@@ -41331,7 +42917,7 @@
           "setGroupIconParams",
           "setGroupIconsSelectable",
           "setGroupIconsVisible",
-          "setGroupId",
+          "setGroupid",
           "setGroupIdGlobal",
           "setGroupOwner",
           "setGusts",
@@ -41341,6 +42927,7 @@
           "setHitPointDamage",
           "setHorizonParallaxCoef",
           "setHUDMovementLevels",
+          "setHumidity",
           "setIdentity",
           "setImportance",
           "setInfoPanel",
@@ -41349,12 +42936,15 @@
           "setLightAttenuation",
           "setLightBrightness",
           "setLightColor",
+          "setLightConePars",
           "setLightDayLight",
           "setLightFlareMaxDistance",
           "setLightFlareSize",
           "setLightIntensity",
+          "setLightIR",
           "setLightnings",
           "setLightUseFlare",
+          "setLightVolumeShape",
           "setLocalWindParams",
           "setMagazineTurretAmmo",
           "setMarkerAlpha",
@@ -41380,6 +42970,7 @@
           "setMarkerType",
           "setMarkerTypeLocal",
           "setMass",
+          "setMaxLoad",
           "setMimic",
           "setMissileTarget",
           "setMissileTargetPos",
@@ -41396,6 +42987,7 @@
           "setObjectTexture",
           "setObjectTextureGlobal",
           "setObjectViewDistance",
+          "setOpticsMode",
           "setOvercast",
           "setOwner",
           "setOxygenRemaining",
@@ -41409,6 +43001,7 @@
           "setPilotCameraTarget",
           "setPilotLight",
           "setPiPEffect",
+          "setPiPViewDistance",
           "setPitch",
           "setPlateNumber",
           "setPlayable",
@@ -41450,7 +43043,6 @@
           "setSpeedMode",
           "setStamina",
           "setStaminaScheme",
-          "setStarterRTD",
           "setStatValue",
           "setSuppression",
           "setSystemOfUnits",
@@ -41459,12 +43051,12 @@
           "setTaskResult",
           "setTaskState",
           "setTerrainGrid",
+          "setTerrainHeight",
           "setText",
-          "setThrottleRTD",
           "setTimeMultiplier",
+          "setTiParameter",
           "setTitleEffect",
-          "setToneMapping",
-          "setToneMappingParams",
+          "setTowParent",
           "setTrafficDensity",
           "setTrafficDistance",
           "setTrafficGap",
@@ -41476,10 +43068,13 @@
           "setTriggerText",
           "setTriggerTimeout",
           "setTriggerType",
+          "setTurretLimits",
+          "setTurretOpticsMode",
           "setType",
           "setUnconscious",
           "setUnitAbility",
           "setUnitCombatMode",
+          "setUnitFreefallHeight",
           "setUnitLoadout",
           "setUnitPos",
           "setUnitPosWeak",
@@ -41499,14 +43094,13 @@
           "setVehicleArmor",
           "setVehicleCargo",
           "setVehicleId",
-          "setVehicleInit",
           "setVehicleLock",
           "setVehiclePosition",
           "setVehicleRadar",
           "setVehicleReceiveRemoteTargets",
           "setVehicleReportOwnPosition",
           "setVehicleReportRemoteTargets",
-          "setVehicleTIPars",
+          "setVehicleTiPars",
           "setVehicleVarName",
           "setVelocity",
           "setVelocityModelSpace",
@@ -41547,7 +43141,7 @@
           "showCommandingMenu",
           "showCompass",
           "showCuratorCompass",
-          "showGPS",
+          "showGps",
           "showHUD",
           "showLegend",
           "showMap",
@@ -41556,12 +43150,13 @@
           "shownCompass",
           "shownCuratorCompass",
           "showNewEditorObject",
-          "shownGPS",
+          "shownGps",
           "shownHUD",
           "shownMap",
           "shownPad",
           "shownRadio",
           "shownScoretable",
+          "shownSubtitles",
           "shownUAVFeed",
           "shownWarrant",
           "shownWatch",
@@ -41576,16 +43171,12 @@
           "showWaypoints",
           "side",
           "sideChat",
-          "sideEmpty",
-          "sideEnemy",
-          "sideFriendly",
           "sideRadio",
           "simpleTasks",
           "simulationEnabled",
           "simulCloudDensity",
           "simulCloudOcclusion",
           "simulInClouds",
-          "simulSetHumidity",
           "simulWeatherSync",
           "sin",
           "size",
@@ -41615,7 +43206,6 @@
           "squadParams",
           "stance",
           "startLoadingScreen",
-          "step",
           "stop",
           "stopEngineRTD",
           "stopped",
@@ -41677,7 +43267,6 @@
           "textLog",
           "textLogFormat",
           "tg",
-          "throttleRTD",
           "time",
           "timeMultiplier",
           "titleCut",
@@ -41762,6 +43351,7 @@
           "uniformContainer",
           "uniformItems",
           "uniformMagazines",
+          "uniqueUnitItems",
           "unitAddons",
           "unitAimPosition",
           "unitAimPositionVisual",
@@ -41784,6 +43374,7 @@
           "useAISteeringComponent",
           "useAudioTimeForMoves",
           "userInputDisabled",
+          "values",
           "vectorAdd",
           "vectorCos",
           "vectorCrossProduct",
@@ -41824,7 +43415,7 @@
           "vestMagazines",
           "viewDistance",
           "visibleCompass",
-          "visibleGPS",
+          "visibleGps",
           "visibleMap",
           "visiblePosition",
           "visiblePositionASL",
@@ -41863,7 +43454,9 @@
           "weaponDirection",
           "weaponInertia",
           "weaponLowered",
+          "weaponReloadingTime",
           "weapons",
+          "weaponsInfo",
           "weaponsItems",
           "weaponsItemsCargo",
           "weaponState",
@@ -41885,7 +43478,7 @@
           className: "meta",
           begin: /#\s*[a-z]+\b/,
           end: /$/,
-          keywords: { keyword: "define undef ifdef ifndef else endif include" },
+          keywords: "define undef ifdef ifndef else endif include if",
           contains: [
             {
               begin: /\\\n/,
@@ -41893,7 +43486,6 @@
             },
             hljs.inherit(STRINGS, { className: "string" }),
             {
-              className: "string",
               begin: /<[^\n>]*>/,
               end: /$/,
               illegal: "\\n"
@@ -41919,7 +43511,21 @@
             STRINGS,
             PREPROCESSOR
           ],
-          illegal: /#|^\$ /
+          illegal: [
+            //$ is only valid when used with Hex numbers (e.g. $FF)
+            /\$[^a-fA-F0-9]/,
+            /\w\$/,
+            /\?/,
+            //There's no ? in SQF
+            /@/,
+            //There's no @ in SQF
+            // Brute-force-fixing the build error. See https://github.com/highlightjs/highlight.js/pull/3193#issuecomment-843088729
+            / \| /,
+            // . is only used in numbers
+            /[a-zA-Z_]\./,
+            /\:\=/,
+            /\[\:/
+          ]
         };
       }
       module.exports = sqf;
@@ -42499,7 +44105,7 @@
         });
         const VARIABLE = {
           className: "variable",
-          begin: /@[a-z0-9]+/
+          begin: /@[a-z0-9][a-z0-9_]*/
         };
         const OPERATOR = {
           className: "operator",
@@ -42595,16 +44201,20 @@
         ];
         const TYPES2 = [
           "array",
+          "tuple",
           "complex",
           "int",
           "real",
           "vector",
+          "complex_vector",
           "ordered",
           "positive_ordered",
           "simplex",
           "unit_vector",
           "row_vector",
+          "complex_row_vector",
           "matrix",
+          "complex_matrix",
           "cholesky_factor_corr|10",
           "cholesky_factor_cov|10",
           "corr_matrix|10",
@@ -42612,8 +44222,6 @@
           "void"
         ];
         const FUNCTIONS = [
-          "Phi",
-          "Phi_approx",
           "abs",
           "acos",
           "acosh",
@@ -42631,7 +44239,6 @@
           "bessel_first_kind",
           "bessel_second_kind",
           "binary_log_loss",
-          "binomial_coefficient_log",
           "block",
           "cbrt",
           "ceil",
@@ -42642,37 +44249,48 @@
           "cols",
           "columns_dot_product",
           "columns_dot_self",
+          "complex_schur_decompose",
+          "complex_schur_decompose_t",
+          "complex_schur_decompose_u",
           "conj",
           "cos",
           "cosh",
           "cov_exp_quad",
           "crossprod",
+          "csr_extract",
           "csr_extract_u",
           "csr_extract_v",
           "csr_extract_w",
           "csr_matrix_times_vector",
           "csr_to_dense_matrix",
           "cumulative_sum",
+          "dae",
+          "dae_tol",
           "determinant",
           "diag_matrix",
+          "diagonal",
           "diag_post_multiply",
           "diag_pre_multiply",
-          "diagonal",
           "digamma",
           "dims",
           "distance",
           "dot_product",
           "dot_self",
+          "eigendecompose",
+          "eigendecompose_sym",
+          "eigenvalues",
           "eigenvalues_sym",
+          "eigenvectors",
           "eigenvectors_sym",
           "erf",
           "erfc",
           "exp",
           "exp2",
           "expm1",
-          "fabs",
           "falling_factorial",
           "fdim",
+          "fft",
+          "fft2",
           "floor",
           "fma",
           "fmax",
@@ -42682,7 +44300,6 @@
           "gamma_q",
           "generalized_inverse",
           "get_imag",
-          "get_lp",
           "get_real",
           "head",
           "hmm_hidden_state_prob",
@@ -42690,20 +44307,24 @@
           "hypot",
           "identity_matrix",
           "inc_beta",
-          "int_step",
           "integrate_1d",
           "integrate_ode",
           "integrate_ode_adams",
           "integrate_ode_bdf",
           "integrate_ode_rk45",
+          "int_step",
           "inv",
-          "inv_Phi",
           "inv_cloglog",
-          "inv_logit",
-          "inv_sqrt",
-          "inv_square",
+          "inv_erfc",
           "inverse",
           "inverse_spd",
+          "inv_fft",
+          "inv_fft2",
+          "inv_inc_beta",
+          "inv_logit",
+          "inv_Phi",
+          "inv_sqrt",
+          "inv_square",
           "is_inf",
           "is_nan",
           "lambert_w0",
@@ -42729,12 +44350,12 @@
           "log_falling_factorial",
           "log_inv_logit",
           "log_inv_logit_diff",
+          "logit",
           "log_mix",
           "log_modified_bessel_first_kind",
           "log_rising_factorial",
           "log_softmax",
           "log_sum_exp",
-          "logit",
           "machine_precision",
           "map_rect",
           "matrix_exp",
@@ -42749,10 +44370,11 @@
           "min",
           "modified_bessel_first_kind",
           "modified_bessel_second_kind",
-          "multiply_log",
           "multiply_lower_tri_self_transpose",
           "negative_infinity",
           "norm",
+          "norm1",
+          "norm2",
           "not_a_number",
           "num_elements",
           "ode_adams",
@@ -42773,14 +44395,18 @@
           "ones_row_vector",
           "ones_vector",
           "owens_t",
+          "Phi",
+          "Phi_approx",
           "polar",
           "positive_infinity",
           "pow",
           "print",
           "prod",
           "proj",
+          "qr",
           "qr_Q",
           "qr_R",
+          "qr_thin",
           "qr_thin_Q",
           "qr_thin_R",
           "quad_form",
@@ -42820,6 +44446,7 @@
           "sub_col",
           "sub_row",
           "sum",
+          "svd",
           "svd_U",
           "svd_V",
           "symmetrize_from_lower_tri",
@@ -42832,6 +44459,7 @@
           "to_array_1d",
           "to_array_2d",
           "to_complex",
+          "to_int",
           "to_matrix",
           "to_row_vector",
           "to_vector",
@@ -42874,18 +44502,22 @@
           "inv_chi_square",
           "inv_gamma",
           "inv_wishart",
+          "inv_wishart_cholesky",
           "lkj_corr",
           "lkj_corr_cholesky",
           "logistic",
+          "loglogistic",
           "lognormal",
           "multi_gp",
           "multi_gp_cholesky",
+          "multinomial",
+          "multinomial_logit",
           "multi_normal",
           "multi_normal_cholesky",
           "multi_normal_prec",
+          "multi_student_cholesky_t",
           "multi_student_t",
-          "multinomial",
-          "multinomial_logit",
+          "multi_student_t_cholesky",
           "neg_binomial",
           "neg_binomial_2",
           "neg_binomial_2_log",
@@ -42905,12 +44537,14 @@
           "skew_double_exponential",
           "skew_normal",
           "std_normal",
+          "std_normal_log",
           "student_t",
           "uniform",
           "von_mises",
           "weibull",
           "wiener",
-          "wishart"
+          "wishart",
+          "wishart_cholesky"
         ];
         const BLOCK_COMMENT = hljs.COMMENT(
           /\/\*/,
@@ -43183,11 +44817,11 @@
           },
           CSS_VARIABLE: {
             className: "attr",
-            begin: /--[A-Za-z][A-Za-z0-9_-]*/
+            begin: /--[A-Za-z_][A-Za-z0-9_-]*/
           }
         };
       };
-      var TAGS3 = [
+      var HTML_TAGS3 = [
         "a",
         "abbr",
         "address",
@@ -43239,11 +44873,16 @@
         "nav",
         "object",
         "ol",
+        "optgroup",
+        "option",
         "p",
+        "picture",
         "q",
         "quote",
         "samp",
         "section",
+        "select",
+        "source",
         "span",
         "strong",
         "summary",
@@ -43260,6 +44899,53 @@
         "ul",
         "var",
         "video"
+      ];
+      var SVG_TAGS3 = [
+        "defs",
+        "g",
+        "marker",
+        "mask",
+        "pattern",
+        "svg",
+        "switch",
+        "symbol",
+        "feBlend",
+        "feColorMatrix",
+        "feComponentTransfer",
+        "feComposite",
+        "feConvolveMatrix",
+        "feDiffuseLighting",
+        "feDisplacementMap",
+        "feFlood",
+        "feGaussianBlur",
+        "feImage",
+        "feMerge",
+        "feMorphology",
+        "feOffset",
+        "feSpecularLighting",
+        "feTile",
+        "feTurbulence",
+        "linearGradient",
+        "radialGradient",
+        "stop",
+        "circle",
+        "ellipse",
+        "image",
+        "line",
+        "path",
+        "polygon",
+        "polyline",
+        "rect",
+        "text",
+        "use",
+        "textPath",
+        "tspan",
+        "foreignObject",
+        "clipPath"
+      ];
+      var TAGS3 = [
+        ...HTML_TAGS3,
+        ...SVG_TAGS3
       ];
       var MEDIA_FEATURES3 = [
         "any-hover",
@@ -43296,7 +44982,7 @@
         "max-width",
         "min-height",
         "max-height"
-      ];
+      ].sort().reverse();
       var PSEUDO_CLASSES3 = [
         "active",
         "any-link",
@@ -43371,7 +45057,7 @@
         "visited",
         "where"
         // where()
-      ];
+      ].sort().reverse();
       var PSEUDO_ELEMENTS3 = [
         "after",
         "backdrop",
@@ -43387,11 +45073,13 @@
         "selection",
         "slotted",
         "spelling-error"
-      ];
+      ].sort().reverse();
       var ATTRIBUTES3 = [
+        "accent-color",
         "align-content",
         "align-items",
         "align-self",
+        "alignment-baseline",
         "all",
         "animation",
         "animation-delay",
@@ -43402,6 +45090,7 @@
         "animation-name",
         "animation-play-state",
         "animation-timing-function",
+        "appearance",
         "backface-visibility",
         "background",
         "background-attachment",
@@ -43413,6 +45102,7 @@
         "background-position",
         "background-repeat",
         "background-size",
+        "baseline-shift",
         "block-size",
         "border",
         "border-block",
@@ -43459,10 +45149,14 @@
         "border-left-width",
         "border-radius",
         "border-right",
+        "border-end-end-radius",
+        "border-end-start-radius",
         "border-right-color",
         "border-right-style",
         "border-right-width",
         "border-spacing",
+        "border-start-end-radius",
+        "border-start-start-radius",
         "border-style",
         "border-top",
         "border-top-color",
@@ -43478,6 +45172,8 @@
         "break-after",
         "break-before",
         "break-inside",
+        "cx",
+        "cy",
         "caption-side",
         "caret-color",
         "clear",
@@ -43485,6 +45181,11 @@
         "clip-path",
         "clip-rule",
         "color",
+        "color-interpolation",
+        "color-interpolation-filters",
+        "color-profile",
+        "color-rendering",
+        "color-scheme",
         "column-count",
         "column-fill",
         "column-gap",
@@ -43506,7 +45207,12 @@
         "cursor",
         "direction",
         "display",
+        "dominant-baseline",
         "empty-cells",
+        "enable-background",
+        "fill",
+        "fill-opacity",
+        "fill-rule",
         "filter",
         "flex",
         "flex-basis",
@@ -43517,6 +45223,8 @@
         "flex-wrap",
         "float",
         "flow",
+        "flood-color",
+        "flood-opacity",
         "font",
         "font-display",
         "font-family",
@@ -43538,6 +45246,7 @@
         "font-variation-settings",
         "font-weight",
         "gap",
+        "glyph-orientation-horizontal",
         "glyph-orientation-vertical",
         "grid",
         "grid-area",
@@ -43564,16 +45273,32 @@
         "image-resolution",
         "ime-mode",
         "inline-size",
+        "inset",
+        "inset-block",
+        "inset-block-end",
+        "inset-block-start",
+        "inset-inline",
+        "inset-inline-end",
+        "inset-inline-start",
         "isolation",
+        "kerning",
         "justify-content",
+        "justify-items",
+        "justify-self",
         "left",
         "letter-spacing",
+        "lighting-color",
         "line-break",
         "line-height",
         "list-style",
         "list-style-image",
         "list-style-position",
         "list-style-type",
+        "marker",
+        "marker-end",
+        "marker-mid",
+        "marker-start",
+        "mask",
         "margin",
         "margin-block",
         "margin-block-end",
@@ -43655,12 +45380,15 @@
         "pointer-events",
         "position",
         "quotes",
+        "r",
         "resize",
         "rest",
         "rest-after",
         "rest-before",
         "right",
+        "rotate",
         "row-gap",
+        "scale",
         "scroll-margin",
         "scroll-margin-block",
         "scroll-margin-block-end",
@@ -43692,12 +45420,24 @@
         "shape-image-threshold",
         "shape-margin",
         "shape-outside",
+        "shape-rendering",
+        "stop-color",
+        "stop-opacity",
+        "stroke",
+        "stroke-dasharray",
+        "stroke-dashoffset",
+        "stroke-linecap",
+        "stroke-linejoin",
+        "stroke-miterlimit",
+        "stroke-opacity",
+        "stroke-width",
         "speak",
         "speak-as",
         "src",
         // @font-face
         "tab-size",
         "table-layout",
+        "text-anchor",
         "text-align",
         "text-align-all",
         "text-align-last",
@@ -43705,7 +45445,9 @@
         "text-decoration",
         "text-decoration-color",
         "text-decoration-line",
+        "text-decoration-skip-ink",
         "text-decoration-style",
+        "text-decoration-thickness",
         "text-emphasis",
         "text-emphasis-color",
         "text-emphasis-position",
@@ -43717,6 +45459,7 @@
         "text-rendering",
         "text-shadow",
         "text-transform",
+        "text-underline-offset",
         "text-underline-position",
         "top",
         "transform",
@@ -43728,7 +45471,9 @@
         "transition-duration",
         "transition-property",
         "transition-timing-function",
+        "translate",
         "unicode-bidi",
+        "vector-effect",
         "vertical-align",
         "visibility",
         "voice-balance",
@@ -43747,10 +45492,10 @@
         "word-spacing",
         "word-wrap",
         "writing-mode",
+        "x",
+        "y",
         "z-index"
-        // reverse makes sure longer attributes `font-weight` are matched fully
-        // instead of getting false positives on say `font`
-      ].reverse();
+      ].sort().reverse();
       function stylus(hljs) {
         const modes = MODES3(hljs);
         const AT_MODIFIERS = "and or not only";
@@ -44026,12 +45771,20 @@
         // operator
         "as",
         // operator
+        "borrowing",
+        // contextual
         "break",
         "case",
         "catch",
         "class",
+        "consume",
+        // contextual
+        "consuming",
+        // contextual
         "continue",
         "convenience",
+        // contextual
+        "copy",
         // contextual
         "default",
         "defer",
@@ -44042,6 +45795,7 @@
         "do",
         "dynamic",
         // contextual
+        "each",
         "else",
         "enum",
         "extension",
@@ -44076,6 +45830,7 @@
         "lazy",
         // contextual
         "let",
+        "macro",
         "mutating",
         // contextual
         "nonmutating",
@@ -44089,6 +45844,7 @@
         // contextual
         "override",
         // contextual
+        "package",
         "postfix",
         // contextual
         "precedencegroup",
@@ -44169,7 +45925,6 @@
         "#line",
         "#selector",
         "#sourceLocation",
-        "#warn_unqualified_access",
         "#warning"
       ];
       var builtIns = [
@@ -44266,12 +46021,14 @@
       var identifier = concat(identifierHead, identifierCharacter, "*");
       var typeIdentifier = concat(/[A-Z]/, identifierCharacter, "*");
       var keywordAttributes = [
+        "attached",
         "autoclosure",
         concat(/convention\(/, either("swift", "block", "c"), /\)/),
         "discardableResult",
         "dynamicCallable",
         "dynamicMemberLookup",
         "escaping",
+        "freestanding",
         "frozen",
         "GKInspectable",
         "IBAction",
@@ -44291,10 +46048,13 @@
         "propertyWrapper",
         "requires_stored_property_inits",
         "resultBuilder",
+        "Sendable",
         "testable",
         "UIApplicationMain",
+        "unchecked",
         "unknown",
-        "usableFromInline"
+        "usableFromInline",
+        "warn_unqualified_access"
       ];
       var availabilityKeywords = [
         "iOS",
@@ -44456,6 +46216,45 @@
             SINGLE_LINE_STRING("###")
           ]
         };
+        const REGEXP_CONTENTS = [
+          hljs.BACKSLASH_ESCAPE,
+          {
+            begin: /\[/,
+            end: /\]/,
+            relevance: 0,
+            contains: [hljs.BACKSLASH_ESCAPE]
+          }
+        ];
+        const BARE_REGEXP_LITERAL = {
+          begin: /\/[^\s](?=[^/\n]*\/)/,
+          end: /\//,
+          contains: REGEXP_CONTENTS
+        };
+        const EXTENDED_REGEXP_LITERAL = (rawDelimiter) => {
+          const begin = concat(rawDelimiter, /\//);
+          const end2 = concat(/\//, rawDelimiter);
+          return {
+            begin,
+            end: end2,
+            contains: [
+              ...REGEXP_CONTENTS,
+              {
+                scope: "comment",
+                begin: `#(?!.*${end2})`,
+                end: /$/
+              }
+            ]
+          };
+        };
+        const REGEXP = {
+          scope: "regexp",
+          variants: [
+            EXTENDED_REGEXP_LITERAL("###"),
+            EXTENDED_REGEXP_LITERAL("##"),
+            EXTENDED_REGEXP_LITERAL("#"),
+            BARE_REGEXP_LITERAL
+          ]
+        };
         const QUOTED_IDENTIFIER = { match: concat(/`/, identifier, /`/) };
         const IMPLICIT_PARAMETER = {
           className: "variable",
@@ -44472,7 +46271,7 @@
         ];
         const AVAILABLE_ATTRIBUTE = {
           match: /(@|#(un)?)available/,
-          className: "keyword",
+          scope: "keyword",
           starts: { contains: [
             {
               begin: /\(/,
@@ -44487,11 +46286,11 @@
           ] }
         };
         const KEYWORD_ATTRIBUTE = {
-          className: "keyword",
-          match: concat(/@/, either(...keywordAttributes))
+          scope: "keyword",
+          match: concat(/@/, either(...keywordAttributes), lookahead(either(/\(/, /\s+/)))
         };
         const USER_DEFINED_ATTRIBUTE = {
-          className: "meta",
+          scope: "meta",
           match: concat(/@/, identifier)
         };
         const ATTRIBUTES3 = [
@@ -44558,6 +46357,7 @@
             "self",
             TUPLE_ELEMENT_NAME,
             ...COMMENTS,
+            REGEXP,
             ...KEYWORD_MODES,
             ...BUILT_INS2,
             ...OPERATORS,
@@ -44571,6 +46371,7 @@
         const GENERIC_PARAMETERS = {
           begin: /</,
           end: />/,
+          keywords: "repeat each",
           contains: [
             ...COMMENTS,
             TYPE
@@ -44612,9 +46413,9 @@
           endsParent: true,
           illegal: /["']/
         };
-        const FUNCTION = {
+        const FUNCTION_OR_MACRO = {
           match: [
-            /func/,
+            /(func|macro)/,
             /\s+/,
             either(QUOTED_IDENTIFIER.match, identifier, operator)
           ],
@@ -44673,6 +46474,36 @@
           ],
           end: /}/
         };
+        const TYPE_DECLARATION = {
+          begin: [
+            /(struct|protocol|class|extension|enum|actor)/,
+            /\s+/,
+            identifier,
+            /\s*/
+          ],
+          beginScope: {
+            1: "keyword",
+            3: "title.class"
+          },
+          keywords: KEYWORDS2,
+          contains: [
+            GENERIC_PARAMETERS,
+            ...KEYWORD_MODES,
+            {
+              begin: /:/,
+              end: /\{/,
+              keywords: KEYWORDS2,
+              contains: [
+                {
+                  scope: "title.class.inherited",
+                  match: typeIdentifier
+                },
+                ...KEYWORD_MODES
+              ],
+              relevance: 0
+            }
+          ]
+        };
         for (const variant of STRING.variants) {
           const interpolation = variant.contains.find((mode) => mode.label === "interpol");
           interpolation.keywords = KEYWORDS2;
@@ -44701,21 +46532,9 @@
           keywords: KEYWORDS2,
           contains: [
             ...COMMENTS,
-            FUNCTION,
+            FUNCTION_OR_MACRO,
             INIT_SUBSCRIPT,
-            {
-              beginKeywords: "struct protocol class extension enum actor",
-              end: "\\{",
-              excludeEnd: true,
-              keywords: KEYWORDS2,
-              contains: [
-                hljs.inherit(hljs.TITLE_MODE, {
-                  className: "title.class",
-                  begin: /[A-Za-z$_][\u00C0-\u02B80-9A-Za-z$_]*/
-                }),
-                ...KEYWORD_MODES
-              ]
-            },
+            TYPE_DECLARATION,
             OPERATOR_DECLARATION,
             PRECEDENCEGROUP,
             {
@@ -44724,6 +46543,7 @@
               contains: [...COMMENTS],
               relevance: 0
             },
+            REGEXP,
             ...KEYWORD_MODES,
             ...BUILT_INS2,
             ...OPERATORS,
@@ -44801,14 +46621,15 @@
         const KEY = {
           className: "attr",
           variants: [
-            { begin: "\\w[\\w :\\/.-]*:(?=[ 	]|$)" },
+            // added brackets support 
+            { begin: /\w[\w :()\./-]*:(?=[ \t]|$)/ },
             {
-              // double quoted keys
-              begin: '"\\w[\\w :\\/.-]*":(?=[ 	]|$)'
+              // double quoted keys - with brackets
+              begin: /"\w[\w :()\./-]*":(?=[ \t]|$)/
             },
             {
-              // single quoted keys
-              begin: "'\\w[\\w :\\/.-]*':(?=[ 	]|$)"
+              // single quoted keys - with brackets
+              begin: /'\w[\w :()\./-]*':(?=[ \t]|$)/
             }
           ]
         };
@@ -45842,6 +47663,7 @@
         "window",
         "document",
         "localStorage",
+        "sessionStorage",
         "module",
         "global"
         // Node.js
@@ -45941,7 +47763,7 @@
           // defined later
         };
         const HTML_TEMPLATE = {
-          begin: "html`",
+          begin: ".?html`",
           end: "",
           starts: {
             end: "`",
@@ -45954,7 +47776,7 @@
           }
         };
         const CSS_TEMPLATE = {
-          begin: "css`",
+          begin: ".?css`",
           end: "",
           starts: {
             end: "`",
@@ -45964,6 +47786,19 @@
               SUBST
             ],
             subLanguage: "css"
+          }
+        };
+        const GRAPHQL_TEMPLATE = {
+          begin: ".?gql`",
+          end: "",
+          starts: {
+            end: "`",
+            returnEnd: false,
+            contains: [
+              hljs.BACKSLASH_ESCAPE,
+              SUBST
+            ],
+            subLanguage: "graphql"
           }
         };
         const TEMPLATE_STRING = {
@@ -46027,6 +47862,7 @@
           hljs.QUOTE_STRING_MODE,
           HTML_TEMPLATE,
           CSS_TEMPLATE,
+          GRAPHQL_TEMPLATE,
           TEMPLATE_STRING,
           // Skip numbers when they are part of a variable name
           { match: /\$\d+/ },
@@ -46049,7 +47885,7 @@
         const PARAMS_CONTAINS = SUBST_AND_COMMENTS.concat([
           // eat recursive parens in sub expressions
           {
-            begin: /\(/,
+            begin: /(\s*)\(/,
             end: /\)/,
             keywords: KEYWORDS$1,
             contains: ["self"].concat(SUBST_AND_COMMENTS)
@@ -46057,7 +47893,9 @@
         ]);
         const PARAMS = {
           className: "params",
-          begin: /\(/,
+          // convert this to negative lookbehind in v12
+          begin: /(\s*)\(/,
+          // to match the parms with 
           end: /\)/,
           excludeBegin: true,
           excludeEnd: true,
@@ -46170,9 +48008,9 @@
               ...BUILT_IN_GLOBALS2,
               "super",
               "import"
-            ]),
+            ].map((x) => `${x}\\s*\\(`)),
             IDENT_RE$1,
-            regex.lookahead(/\(/)
+            regex.lookahead(/\s*\(/)
           ),
           className: "title.function",
           relevance: 0
@@ -46228,7 +48066,7 @@
           ]
         };
         return {
-          name: "Javascript",
+          name: "JavaScript",
           aliases: ["js", "jsx", "mjs", "cjs"],
           keywords: KEYWORDS$1,
           // this will be extended by TypeScript
@@ -46245,6 +48083,7 @@
             hljs.QUOTE_STRING_MODE,
             HTML_TEMPLATE,
             CSS_TEMPLATE,
+            GRAPHQL_TEMPLATE,
             TEMPLATE_STRING,
             COMMENT,
             // Skip numbers when they are part of a variable name
@@ -46287,7 +48126,7 @@
                           skip: true
                         },
                         {
-                          begin: /\(/,
+                          begin: /(\s*)\(/,
                           end: /\)/,
                           excludeBegin: true,
                           excludeEnd: true,
@@ -46396,10 +48235,15 @@
           "unknown"
         ];
         const NAMESPACE = {
-          beginKeywords: "namespace",
-          end: /\{/,
-          excludeEnd: true,
-          contains: [tsLanguage.exports.CLASS_REFERENCE]
+          begin: [
+            /namespace/,
+            /\s+/,
+            hljs.IDENT_RE
+          ],
+          beginScope: {
+            1: "keyword",
+            3: "title.class"
+          }
         };
         const INTERFACE = {
           beginKeywords: "interface",
@@ -46418,7 +48262,7 @@
         };
         const TS_SPECIFIC_KEYWORDS = [
           "type",
-          "namespace",
+          // "namespace",
           "interface",
           "public",
           "private",
@@ -46428,7 +48272,8 @@
           "abstract",
           "readonly",
           "enum",
-          "override"
+          "override",
+          "satisfies"
         ];
         const KEYWORDS$1 = {
           $pattern: IDENT_RE2,
@@ -46450,6 +48295,13 @@
         };
         Object.assign(tsLanguage.keywords, KEYWORDS$1);
         tsLanguage.exports.PARAMS_CONTAINS.push(DECORATOR);
+        const ATTRIBUTE_HIGHLIGHT = tsLanguage.contains.find((c) => c.className === "attr");
+        tsLanguage.exports.PARAMS_CONTAINS.push([
+          tsLanguage.exports.CLASS_REFERENCE,
+          // class reference for highlighting the params types
+          ATTRIBUTE_HIGHLIGHT
+          // highlight the params key
+        ]);
         tsLanguage.contains = tsLanguage.contains.concat([
           DECORATOR,
           NAMESPACE,
@@ -46463,7 +48315,9 @@
           name: "TypeScript",
           aliases: [
             "ts",
-            "tsx"
+            "tsx",
+            "mts",
+            "cts"
           ]
         });
         return tsLanguage;
@@ -48733,7 +50587,8 @@
           name: "XQuery",
           aliases: [
             "xpath",
-            "xq"
+            "xq",
+            "xqm"
           ],
           case_insensitive: false,
           illegal: /(proc)|(abstract)|(extends)|(until)|(#)/,
@@ -49213,23 +51068,23 @@
       }
     }
   };
-  var descriptorPattern = /^(?:(.+?)(?:\.(.+?))?(?:@(window|document))?->)?(.+?)(?:#([^:]+?))(?::(.+))?$/;
+  var descriptorPattern = /^(?:(?:([^.]+?)\+)?(.+?)(?:\.(.+?))?(?:@(window|document))?->)?(.+?)(?:#([^:]+?))(?::(.+))?$/;
   function parseActionDescriptorString(descriptorString) {
     const source = descriptorString.trim();
     const matches = source.match(descriptorPattern) || [];
-    let eventName = matches[1];
-    let keyFilter = matches[2];
+    let eventName = matches[2];
+    let keyFilter = matches[3];
     if (keyFilter && !["keydown", "keyup", "keypress"].includes(eventName)) {
       eventName += `.${keyFilter}`;
       keyFilter = "";
     }
     return {
-      eventTarget: parseEventTarget(matches[3]),
+      eventTarget: parseEventTarget(matches[4]),
       eventName,
-      eventOptions: matches[6] ? parseEventOptions(matches[6]) : {},
-      identifier: matches[4],
-      methodName: matches[5],
-      keyFilter
+      eventOptions: matches[7] ? parseEventOptions(matches[7]) : {},
+      identifier: matches[5],
+      methodName: matches[6],
+      keyFilter: matches[1] || keyFilter
     };
   }
   function parseEventTarget(eventTargetName) {
@@ -49264,6 +51119,13 @@
   function tokenize(value) {
     return value.match(/[^\s]+/g) || [];
   }
+  function isSomething(object) {
+    return object !== null && object !== void 0;
+  }
+  function hasProperty(object, property) {
+    return Object.prototype.hasOwnProperty.call(object, property);
+  }
+  var allModifiers = ["meta", "ctrl", "alt", "shift"];
   var Action = class {
     constructor(element, index, descriptor, schema) {
       this.element = element;
@@ -49284,24 +51146,32 @@
       const eventTarget = this.eventTargetName ? `@${this.eventTargetName}` : "";
       return `${this.eventName}${eventFilter}${eventTarget}->${this.identifier}#${this.methodName}`;
     }
-    isFilterTarget(event) {
+    shouldIgnoreKeyboardEvent(event) {
       if (!this.keyFilter) {
         return false;
       }
-      const filteres = this.keyFilter.split("+");
-      const modifiers = ["meta", "ctrl", "alt", "shift"];
-      const [meta, ctrl, alt, shift] = modifiers.map((modifier) => filteres.includes(modifier));
-      if (event.metaKey !== meta || event.ctrlKey !== ctrl || event.altKey !== alt || event.shiftKey !== shift) {
+      const filters = this.keyFilter.split("+");
+      if (this.keyFilterDissatisfied(event, filters)) {
         return true;
       }
-      const standardFilter = filteres.filter((key) => !modifiers.includes(key))[0];
+      const standardFilter = filters.filter((key) => !allModifiers.includes(key))[0];
       if (!standardFilter) {
         return false;
       }
-      if (!Object.prototype.hasOwnProperty.call(this.keyMappings, standardFilter)) {
+      if (!hasProperty(this.keyMappings, standardFilter)) {
         error(`contains unknown key filter: ${this.keyFilter}`);
       }
       return this.keyMappings[standardFilter].toLowerCase() !== event.key.toLowerCase();
+    }
+    shouldIgnoreMouseEvent(event) {
+      if (!this.keyFilter) {
+        return false;
+      }
+      const filters = [this.keyFilter];
+      if (this.keyFilterDissatisfied(event, filters)) {
+        return true;
+      }
+      return false;
     }
     get params() {
       const params = {};
@@ -49320,6 +51190,10 @@
     }
     get keyMappings() {
       return this.schema.keyMappings;
+    }
+    keyFilterDissatisfied(event, filters) {
+      const [meta, ctrl, alt, shift] = allModifiers.map((modifier) => filters.includes(modifier));
+      return event.metaKey !== meta || event.ctrlKey !== ctrl || event.altKey !== alt || event.shiftKey !== shift;
     }
   };
   var defaultEventNames = {
@@ -49365,8 +51239,9 @@
       return this.context.identifier;
     }
     handleEvent(event) {
-      if (this.willBeInvokedByEvent(event) && this.applyEventModifiers(event)) {
-        this.invokeWithEvent(event);
+      const actionEvent = this.prepareActionEvent(event);
+      if (this.willBeInvokedByEvent(event) && this.applyEventModifiers(actionEvent)) {
+        this.invokeWithEvent(actionEvent);
       }
     }
     get eventName() {
@@ -49382,23 +51257,25 @@
     applyEventModifiers(event) {
       const { element } = this.action;
       const { actionDescriptorFilters } = this.context.application;
+      const { controller } = this.context;
       let passes = true;
       for (const [name, value] of Object.entries(this.eventOptions)) {
         if (name in actionDescriptorFilters) {
           const filter = actionDescriptorFilters[name];
-          passes = passes && filter({ name, value, event, element });
+          passes = passes && filter({ name, value, event, element, controller });
         } else {
           continue;
         }
       }
       return passes;
     }
+    prepareActionEvent(event) {
+      return Object.assign(event, { params: this.action.params });
+    }
     invokeWithEvent(event) {
       const { target, currentTarget } = event;
       try {
-        const { params } = this.action;
-        const actionEvent = Object.assign(event, { params });
-        this.method.call(this.controller, actionEvent);
+        this.method.call(this.controller, event);
         this.context.logDebugActivity(this.methodName, { event, target, currentTarget, action: this.methodName });
       } catch (error2) {
         const { identifier, controller, element, index } = this;
@@ -49408,7 +51285,10 @@
     }
     willBeInvokedByEvent(event) {
       const eventTarget = event.target;
-      if (event instanceof KeyboardEvent && this.action.isFilterTarget(event)) {
+      if (event instanceof KeyboardEvent && this.action.shouldIgnoreKeyboardEvent(event)) {
+        return false;
+      }
+      if (event instanceof MouseEvent && this.action.shouldIgnoreMouseEvent(event)) {
         return false;
       }
       if (this.element === eventTarget) {
@@ -49494,8 +51374,7 @@
         this.processAddedNodes(mutation.addedNodes);
       }
     }
-    processAttributeChange(node, attributeName) {
-      const element = node;
+    processAttributeChange(element, attributeName) {
       if (this.elements.has(element)) {
         if (this.delegate.elementAttributeChanged && this.matchElement(element)) {
           this.delegate.elementAttributeChanged(element, attributeName);
@@ -49677,8 +51556,8 @@
     }
   };
   var SelectorObserver = class {
-    constructor(element, selector, delegate, details = {}) {
-      this.selector = selector;
+    constructor(element, selector, delegate, details) {
+      this._selector = selector;
       this.details = details;
       this.elementObserver = new ElementObserver(element, this);
       this.delegate = delegate;
@@ -49686,6 +51565,13 @@
     }
     get started() {
       return this.elementObserver.started;
+    }
+    get selector() {
+      return this._selector;
+    }
+    set selector(selector) {
+      this._selector = selector;
+      this.refresh();
     }
     start() {
       this.elementObserver.start();
@@ -49703,39 +51589,58 @@
       return this.elementObserver.element;
     }
     matchElement(element) {
-      const matches = element.matches(this.selector);
-      if (this.delegate.selectorMatchElement) {
-        return matches && this.delegate.selectorMatchElement(element, this.details);
+      const { selector } = this;
+      if (selector) {
+        const matches = element.matches(selector);
+        if (this.delegate.selectorMatchElement) {
+          return matches && this.delegate.selectorMatchElement(element, this.details);
+        }
+        return matches;
+      } else {
+        return false;
       }
-      return matches;
     }
     matchElementsInTree(tree) {
-      const match = this.matchElement(tree) ? [tree] : [];
-      const matches = Array.from(tree.querySelectorAll(this.selector)).filter((match2) => this.matchElement(match2));
-      return match.concat(matches);
+      const { selector } = this;
+      if (selector) {
+        const match = this.matchElement(tree) ? [tree] : [];
+        const matches = Array.from(tree.querySelectorAll(selector)).filter((match2) => this.matchElement(match2));
+        return match.concat(matches);
+      } else {
+        return [];
+      }
     }
     elementMatched(element) {
-      this.selectorMatched(element);
+      const { selector } = this;
+      if (selector) {
+        this.selectorMatched(element, selector);
+      }
     }
     elementUnmatched(element) {
-      this.selectorUnmatched(element);
+      const selectors = this.matchesByElement.getKeysForValue(element);
+      for (const selector of selectors) {
+        this.selectorUnmatched(element, selector);
+      }
     }
     elementAttributeChanged(element, _attributeName) {
-      const matches = this.matchElement(element);
-      const matchedBefore = this.matchesByElement.has(this.selector, element);
-      if (!matches && matchedBefore) {
-        this.selectorUnmatched(element);
+      const { selector } = this;
+      if (selector) {
+        const matches = this.matchElement(element);
+        const matchedBefore = this.matchesByElement.has(selector, element);
+        if (matches && !matchedBefore) {
+          this.selectorMatched(element, selector);
+        } else if (!matches && matchedBefore) {
+          this.selectorUnmatched(element, selector);
+        }
       }
     }
-    selectorMatched(element) {
-      if (this.delegate.selectorMatched) {
-        this.delegate.selectorMatched(element, this.selector, this.details);
-        this.matchesByElement.add(this.selector, element);
-      }
+    selectorMatched(element, selector) {
+      this.delegate.selectorMatched(element, selector, this.details);
+      this.matchesByElement.add(selector, element);
     }
-    selectorUnmatched(element) {
-      this.delegate.selectorUnmatched(element, this.selector, this.details);
-      this.matchesByElement.delete(this.selector, element);
+    selectorUnmatched(element, selector) {
+      this.delegate.selectorUnmatched(element, selector, this.details);
+      this.matchesByElement.delete(selector, element);
     }
   };
   var StringMapObserver = class {
@@ -50215,34 +52120,47 @@
   }
   var OutletObserver = class {
     constructor(context, delegate) {
+      this.started = false;
       this.context = context;
       this.delegate = delegate;
       this.outletsByName = new Multimap();
       this.outletElementsByName = new Multimap();
       this.selectorObserverMap = /* @__PURE__ */ new Map();
+      this.attributeObserverMap = /* @__PURE__ */ new Map();
     }
     start() {
-      if (this.selectorObserverMap.size === 0) {
+      if (!this.started) {
         this.outletDefinitions.forEach((outletName) => {
-          const selector = this.selector(outletName);
-          const details = { outletName };
-          if (selector) {
-            this.selectorObserverMap.set(outletName, new SelectorObserver(document.body, selector, this, details));
-          }
+          this.setupSelectorObserverForOutlet(outletName);
+          this.setupAttributeObserverForOutlet(outletName);
         });
-        this.selectorObserverMap.forEach((observer) => observer.start());
-      }
-      this.dependentContexts.forEach((context) => context.refresh());
-    }
-    stop() {
-      if (this.selectorObserverMap.size > 0) {
-        this.disconnectAllOutlets();
-        this.selectorObserverMap.forEach((observer) => observer.stop());
-        this.selectorObserverMap.clear();
+        this.started = true;
+        this.dependentContexts.forEach((context) => context.refresh());
       }
     }
     refresh() {
       this.selectorObserverMap.forEach((observer) => observer.refresh());
+      this.attributeObserverMap.forEach((observer) => observer.refresh());
+    }
+    stop() {
+      if (this.started) {
+        this.started = false;
+        this.disconnectAllOutlets();
+        this.stopSelectorObservers();
+        this.stopAttributeObservers();
+      }
+    }
+    stopSelectorObservers() {
+      if (this.selectorObserverMap.size > 0) {
+        this.selectorObserverMap.forEach((observer) => observer.stop());
+        this.selectorObserverMap.clear();
+      }
+    }
+    stopAttributeObservers() {
+      if (this.attributeObserverMap.size > 0) {
+        this.attributeObserverMap.forEach((observer) => observer.stop());
+        this.attributeObserverMap.clear();
+      }
     }
     selectorMatched(element, _selector, { outletName }) {
       const outlet = this.getOutlet(element, outletName);
@@ -50257,7 +52175,32 @@
       }
     }
     selectorMatchElement(element, { outletName }) {
-      return this.hasOutlet(element, outletName) && element.matches(`[${this.context.application.schema.controllerAttribute}~=${outletName}]`);
+      const selector = this.selector(outletName);
+      const hasOutlet = this.hasOutlet(element, outletName);
+      const hasOutletController = element.matches(`[${this.schema.controllerAttribute}~=${outletName}]`);
+      if (selector) {
+        return hasOutlet && hasOutletController && element.matches(selector);
+      } else {
+        return false;
+      }
+    }
+    elementMatchedAttribute(_element, attributeName) {
+      const outletName = this.getOutletNameFromOutletAttributeName(attributeName);
+      if (outletName) {
+        this.updateSelectorObserverForOutlet(outletName);
+      }
+    }
+    elementAttributeValueChanged(_element, attributeName) {
+      const outletName = this.getOutletNameFromOutletAttributeName(attributeName);
+      if (outletName) {
+        this.updateSelectorObserverForOutlet(outletName);
+      }
+    }
+    elementUnmatchedAttribute(_element, attributeName) {
+      const outletName = this.getOutletNameFromOutletAttributeName(attributeName);
+      if (outletName) {
+        this.updateSelectorObserverForOutlet(outletName);
+      }
     }
     connectOutlet(outlet, element, outletName) {
       var _a;
@@ -50284,8 +52227,32 @@
         }
       }
     }
+    updateSelectorObserverForOutlet(outletName) {
+      const observer = this.selectorObserverMap.get(outletName);
+      if (observer) {
+        observer.selector = this.selector(outletName);
+      }
+    }
+    setupSelectorObserverForOutlet(outletName) {
+      const selector = this.selector(outletName);
+      const selectorObserver = new SelectorObserver(document.body, selector, this, { outletName });
+      this.selectorObserverMap.set(outletName, selectorObserver);
+      selectorObserver.start();
+    }
+    setupAttributeObserverForOutlet(outletName) {
+      const attributeName = this.attributeNameForOutletName(outletName);
+      const attributeObserver = new AttributeObserver(this.scope.element, attributeName, this);
+      this.attributeObserverMap.set(outletName, attributeObserver);
+      attributeObserver.start();
+    }
     selector(outletName) {
       return this.scope.outlets.getSelectorForOutletName(outletName);
+    }
+    attributeNameForOutletName(outletName) {
+      return this.scope.schema.outletAttributeForScope(this.identifier, outletName);
+    }
+    getOutletNameFromOutletAttributeName(attributeName) {
+      return this.outletDefinitions.find((outletName) => this.attributeNameForOutletName(outletName) === attributeName);
     }
     get outletDependencies() {
       const dependencies = new Multimap();
@@ -50317,6 +52284,9 @@
     }
     get scope() {
       return this.context.scope;
+    }
+    get schema() {
+      return this.context.schema;
     }
     get identifier() {
       return this.context.identifier;
@@ -50785,6 +52755,9 @@
     }
     parseValueForToken(token) {
       const { element, content: identifier } = token;
+      return this.parseValueForElementAndIdentifier(element, identifier);
+    }
+    parseValueForElementAndIdentifier(element, identifier) {
       const scopesByIdentifier = this.fetchScopesByIdentifierForElement(element);
       let scope = scopesByIdentifier.get(identifier);
       if (!scope) {
@@ -50855,7 +52828,7 @@
       this.connectModule(module);
       const afterLoad = definition.controllerConstructor.afterLoad;
       if (afterLoad) {
-        afterLoad(definition.identifier, this.application);
+        afterLoad.call(definition.controllerConstructor, definition.identifier, this.application);
       }
     }
     unloadIdentifier(identifier) {
@@ -50868,6 +52841,14 @@
       const module = this.modulesByIdentifier.get(identifier);
       if (module) {
         return module.contexts.find((context) => context.element == element);
+      }
+    }
+    proposeToConnectScopeForElementAndIdentifier(element, identifier) {
+      const scope = this.scopeObserver.parseValueForElementAndIdentifier(element, identifier);
+      if (scope) {
+        this.scopeObserver.elementMatchedValue(scope.element, scope);
+      } else {
+        console.error(`Couldn't find or create scope for identifier: "${identifier}" and element:`, element);
       }
     }
     handleError(error2, message, detail) {
@@ -50907,7 +52888,7 @@
     targetAttribute: "data-target",
     targetAttributeForScope: (identifier) => `data-${identifier}-target`,
     outletAttributeForScope: (identifier, outlet) => `data-${identifier}-${outlet}-outlet`,
-    keyMappings: Object.assign(Object.assign({ enter: "Enter", tab: "Tab", esc: "Escape", space: " ", up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight", home: "Home", end: "End" }, objectFromEntries("abcdefghijklmnopqrstuvwxyz".split("").map((c) => [c, c]))), objectFromEntries("0123456789".split("").map((n) => [n, n])))
+    keyMappings: Object.assign(Object.assign({ enter: "Enter", tab: "Tab", esc: "Escape", space: " ", up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight", home: "Home", end: "End", page_up: "PageUp", page_down: "PageDown" }, objectFromEntries("abcdefghijklmnopqrstuvwxyz".split("").map((c) => [c, c]))), objectFromEntries("0123456789".split("").map((n) => [n, n])))
   };
   function objectFromEntries(array) {
     return array.reduce((memo, [k, v]) => Object.assign(Object.assign({}, memo), { [k]: v }), {});
@@ -51032,34 +53013,43 @@
       return Object.assign(properties, propertiesForOutletDefinition(outletDefinition));
     }, {});
   }
+  function getOutletController(controller, element, identifier) {
+    return controller.application.getControllerForElementAndIdentifier(element, identifier);
+  }
+  function getControllerAndEnsureConnectedScope(controller, element, outletName) {
+    let outletController = getOutletController(controller, element, outletName);
+    if (outletController)
+      return outletController;
+    controller.application.router.proposeToConnectScopeForElementAndIdentifier(element, outletName);
+    outletController = getOutletController(controller, element, outletName);
+    if (outletController)
+      return outletController;
+  }
   function propertiesForOutletDefinition(name) {
     const camelizedName = namespaceCamelize(name);
     return {
       [`${camelizedName}Outlet`]: {
         get() {
-          const outlet = this.outlets.find(name);
-          if (outlet) {
-            const outletController = this.application.getControllerForElementAndIdentifier(outlet, name);
-            if (outletController) {
+          const outletElement = this.outlets.find(name);
+          const selector = this.outlets.getSelectorForOutletName(name);
+          if (outletElement) {
+            const outletController = getControllerAndEnsureConnectedScope(this, outletElement, name);
+            if (outletController)
               return outletController;
-            } else {
-              throw new Error(`Missing "data-controller=${name}" attribute on outlet element for "${this.identifier}" controller`);
-            }
+            throw new Error(`The provided outlet element is missing an outlet controller "${name}" instance for host controller "${this.identifier}"`);
           }
-          throw new Error(`Missing outlet element "${name}" for "${this.identifier}" controller`);
+          throw new Error(`Missing outlet element "${name}" for host controller "${this.identifier}". Stimulus couldn't find a matching outlet element using selector "${selector}".`);
         }
       },
       [`${camelizedName}Outlets`]: {
         get() {
           const outlets = this.outlets.findAll(name);
           if (outlets.length > 0) {
-            return outlets.map((outlet) => {
-              const controller = this.application.getControllerForElementAndIdentifier(outlet, name);
-              if (controller) {
-                return controller;
-              } else {
-                console.warn(`The provided outlet element is missing the outlet controller "${name}" for "${this.identifier}"`, outlet);
-              }
+            return outlets.map((outletElement) => {
+              const outletController = getControllerAndEnsureConnectedScope(this, outletElement, name);
+              if (outletController)
+                return outletController;
+              console.warn(`The provided outlet element is missing an outlet controller "${name}" instance for host controller "${this.identifier}"`, outletElement);
             }).filter((controller) => controller);
           }
           return [];
@@ -51067,11 +53057,12 @@
       },
       [`${camelizedName}OutletElement`]: {
         get() {
-          const outlet = this.outlets.find(name);
-          if (outlet) {
-            return outlet;
+          const outletElement = this.outlets.find(name);
+          const selector = this.outlets.getSelectorForOutletName(name);
+          if (outletElement) {
+            return outletElement;
           } else {
-            throw new Error(`Missing outlet element "${name}" for "${this.identifier}" controller`);
+            throw new Error(`Missing outlet element "${name}" for host controller "${this.identifier}". Stimulus couldn't find a matching outlet element using selector "${selector}".`);
           }
         }
       },
@@ -51198,51 +53189,67 @@
       return "object";
   }
   function parseValueTypeObject(payload) {
-    const typeFromObject = parseValueTypeConstant(payload.typeObject.type);
-    if (!typeFromObject)
-      return;
-    const defaultValueType = parseValueTypeDefault(payload.typeObject.default);
-    if (typeFromObject !== defaultValueType) {
-      const propertyPath = payload.controller ? `${payload.controller}.${payload.token}` : payload.token;
-      throw new Error(`The specified default value for the Stimulus Value "${propertyPath}" must match the defined type "${typeFromObject}". The provided default value of "${payload.typeObject.default}" is of type "${defaultValueType}".`);
+    const { controller, token, typeObject } = payload;
+    const hasType = isSomething(typeObject.type);
+    const hasDefault = isSomething(typeObject.default);
+    const fullObject = hasType && hasDefault;
+    const onlyType = hasType && !hasDefault;
+    const onlyDefault = !hasType && hasDefault;
+    const typeFromObject = parseValueTypeConstant(typeObject.type);
+    const typeFromDefaultValue = parseValueTypeDefault(payload.typeObject.default);
+    if (onlyType)
+      return typeFromObject;
+    if (onlyDefault)
+      return typeFromDefaultValue;
+    if (typeFromObject !== typeFromDefaultValue) {
+      const propertyPath = controller ? `${controller}.${token}` : token;
+      throw new Error(`The specified default value for the Stimulus Value "${propertyPath}" must match the defined type "${typeFromObject}". The provided default value of "${typeObject.default}" is of type "${typeFromDefaultValue}".`);
     }
-    return typeFromObject;
+    if (fullObject)
+      return typeFromObject;
   }
   function parseValueTypeDefinition(payload) {
-    const typeFromObject = parseValueTypeObject({
-      controller: payload.controller,
-      token: payload.token,
-      typeObject: payload.typeDefinition
-    });
-    const typeFromDefaultValue = parseValueTypeDefault(payload.typeDefinition);
-    const typeFromConstant = parseValueTypeConstant(payload.typeDefinition);
+    const { controller, token, typeDefinition } = payload;
+    const typeObject = { controller, token, typeObject: typeDefinition };
+    const typeFromObject = parseValueTypeObject(typeObject);
+    const typeFromDefaultValue = parseValueTypeDefault(typeDefinition);
+    const typeFromConstant = parseValueTypeConstant(typeDefinition);
     const type = typeFromObject || typeFromDefaultValue || typeFromConstant;
     if (type)
       return type;
-    const propertyPath = payload.controller ? `${payload.controller}.${payload.typeDefinition}` : payload.token;
-    throw new Error(`Unknown value type "${propertyPath}" for "${payload.token}" value`);
+    const propertyPath = controller ? `${controller}.${typeDefinition}` : token;
+    throw new Error(`Unknown value type "${propertyPath}" for "${token}" value`);
   }
   function defaultValueForDefinition(typeDefinition) {
     const constant = parseValueTypeConstant(typeDefinition);
     if (constant)
       return defaultValuesByType[constant];
-    const defaultValue = typeDefinition.default;
-    if (defaultValue !== void 0)
-      return defaultValue;
+    const hasDefault = hasProperty(typeDefinition, "default");
+    const hasType = hasProperty(typeDefinition, "type");
+    const typeObject = typeDefinition;
+    if (hasDefault)
+      return typeObject.default;
+    if (hasType) {
+      const { type } = typeObject;
+      const constantFromType = parseValueTypeConstant(type);
+      if (constantFromType)
+        return defaultValuesByType[constantFromType];
+    }
     return typeDefinition;
   }
   function valueDescriptorForTokenAndTypeDefinition(payload) {
-    const key = `${dasherize(payload.token)}-value`;
+    const { token, typeDefinition } = payload;
+    const key = `${dasherize(token)}-value`;
     const type = parseValueTypeDefinition(payload);
     return {
       type,
       key,
       name: camelize(key),
       get defaultValue() {
-        return defaultValueForDefinition(payload.typeDefinition);
+        return defaultValueForDefinition(typeDefinition);
       },
       get hasCustomDefaultValue() {
-        return parseValueTypeDefault(payload.typeDefinition) !== void 0;
+        return parseValueTypeDefault(typeDefinition) !== void 0;
       },
       reader: readers[type],
       writer: writers[type] || writers.default
@@ -51271,7 +53278,7 @@
       return !(value == "0" || String(value).toLowerCase() == "false");
     },
     number(value) {
-      return Number(value);
+      return Number(value.replace(/_/g, ""));
     },
     object(value) {
       const object = JSON.parse(value);
@@ -51746,15 +53753,7 @@
         return;
       }
     }
-    if (true) {
-      if (!isHTMLElement(arrowElement)) {
-        console.error(['Popper: "arrow" element must be an HTMLElement (not an SVGElement).', "To use an SVG arrow, wrap it in an HTMLElement that will be used as", "the arrow."].join(" "));
-      }
-    }
     if (!contains(state.elements.popper, arrowElement)) {
-      if (true) {
-        console.error(['Popper: "arrow" modifier\'s `element` must be a child of the popper', "element."].join(" "));
-      }
       return;
     }
     state.elements.arrow = arrowElement;
@@ -51859,14 +53858,6 @@
   function computeStyles(_ref5) {
     var state = _ref5.state, options = _ref5.options;
     var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
-    if (true) {
-      var transitionProperty = getComputedStyle2(state.elements.popper).transitionProperty || "";
-      if (adaptive && ["transform", "top", "right", "bottom", "left"].some(function(property) {
-        return transitionProperty.indexOf(property) >= 0;
-      })) {
-        console.warn(["Popper: Detected CSS transitions on at least one of the following", 'CSS properties: "transform", "top", "right", "bottom", "left".', "\n\n", 'Disable the "computeStyles" modifier\'s `adaptive` option to allow', "for smooth transitions, or remove these properties from the CSS", "transition declaration on the popper element if only transitioning", "opacity or background-color for example.", "\n\n", "We recommend using the popper element as a wrapper around an inner", "element that can have any CSS property transitioned for animations."].join(" "));
-      }
-    }
     var commonStyles = {
       placement: getBasePlacement(state.placement),
       variation: getVariation(state.placement),
@@ -52226,9 +54217,6 @@
     });
     if (allowedPlacements.length === 0) {
       allowedPlacements = placements2;
-      if (true) {
-        console.error(["Popper: The `allowedAutoPlacements` option did not allow any", "placements. Ensure the `placement` option matches the variation", "of the allowed placements.", 'For example, "auto" cannot be used to allow "bottom-start".', 'Use "auto-start" instead.'].join(" "));
-      }
     }
     var overflows = allowedPlacements.reduce(function(acc, placement2) {
       acc[placement2] = detectOverflow(state, {
@@ -52673,92 +54661,6 @@
     };
   }
 
-  // node_modules/@popperjs/core/lib/utils/format.js
-  function format(str) {
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-    return [].concat(args).reduce(function(p, c) {
-      return p.replace(/%s/, c);
-    }, str);
-  }
-
-  // node_modules/@popperjs/core/lib/utils/validateModifiers.js
-  var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
-  var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
-  var VALID_PROPERTIES = ["name", "enabled", "phase", "fn", "effect", "requires", "options"];
-  function validateModifiers(modifiers) {
-    modifiers.forEach(function(modifier) {
-      [].concat(Object.keys(modifier), VALID_PROPERTIES).filter(function(value, index, self) {
-        return self.indexOf(value) === index;
-      }).forEach(function(key) {
-        switch (key) {
-          case "name":
-            if (typeof modifier.name !== "string") {
-              console.error(format(INVALID_MODIFIER_ERROR, String(modifier.name), '"name"', '"string"', '"' + String(modifier.name) + '"'));
-            }
-            break;
-          case "enabled":
-            if (typeof modifier.enabled !== "boolean") {
-              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"enabled"', '"boolean"', '"' + String(modifier.enabled) + '"'));
-            }
-            break;
-          case "phase":
-            if (modifierPhases.indexOf(modifier.phase) < 0) {
-              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"phase"', "either " + modifierPhases.join(", "), '"' + String(modifier.phase) + '"'));
-            }
-            break;
-          case "fn":
-            if (typeof modifier.fn !== "function") {
-              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"fn"', '"function"', '"' + String(modifier.fn) + '"'));
-            }
-            break;
-          case "effect":
-            if (modifier.effect != null && typeof modifier.effect !== "function") {
-              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"effect"', '"function"', '"' + String(modifier.fn) + '"'));
-            }
-            break;
-          case "requires":
-            if (modifier.requires != null && !Array.isArray(modifier.requires)) {
-              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requires"', '"array"', '"' + String(modifier.requires) + '"'));
-            }
-            break;
-          case "requiresIfExists":
-            if (!Array.isArray(modifier.requiresIfExists)) {
-              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requiresIfExists"', '"array"', '"' + String(modifier.requiresIfExists) + '"'));
-            }
-            break;
-          case "options":
-          case "data":
-            break;
-          default:
-            console.error('PopperJS: an invalid property has been provided to the "' + modifier.name + '" modifier, valid properties are ' + VALID_PROPERTIES.map(function(s) {
-              return '"' + s + '"';
-            }).join(", ") + '; but "' + key + '" was provided.');
-        }
-        modifier.requires && modifier.requires.forEach(function(requirement) {
-          if (modifiers.find(function(mod) {
-            return mod.name === requirement;
-          }) == null) {
-            console.error(format(MISSING_DEPENDENCY_ERROR, String(modifier.name), requirement, requirement));
-          }
-        });
-      });
-    });
-  }
-
-  // node_modules/@popperjs/core/lib/utils/uniqueBy.js
-  function uniqueBy(arr, fn2) {
-    var identifiers = /* @__PURE__ */ new Set();
-    return arr.filter(function(item) {
-      var identifier = fn2(item);
-      if (!identifiers.has(identifier)) {
-        identifiers.add(identifier);
-        return true;
-      }
-    });
-  }
-
   // node_modules/@popperjs/core/lib/utils/mergeByName.js
   function mergeByName(modifiers) {
     var merged = modifiers.reduce(function(merged2, current) {
@@ -52775,8 +54677,6 @@
   }
 
   // node_modules/@popperjs/core/lib/createPopper.js
-  var INVALID_ELEMENT_ERROR = "Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.";
-  var INFINITE_LOOP_ERROR = "Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.";
   var DEFAULT_OPTIONS = {
     placement: "bottom",
     modifiers: [],
@@ -52827,28 +54727,6 @@
           state.orderedModifiers = orderedModifiers.filter(function(m) {
             return m.enabled;
           });
-          if (true) {
-            var modifiers = uniqueBy([].concat(orderedModifiers, state.options.modifiers), function(_ref) {
-              var name = _ref.name;
-              return name;
-            });
-            validateModifiers(modifiers);
-            if (getBasePlacement(state.options.placement) === auto) {
-              var flipModifier = state.orderedModifiers.find(function(_ref2) {
-                var name = _ref2.name;
-                return name === "flip";
-              });
-              if (!flipModifier) {
-                console.error(['Popper: "auto" placements require the "flip" modifier be', "present and enabled to work."].join(" "));
-              }
-            }
-            var _getComputedStyle = getComputedStyle2(popper2), marginTop = _getComputedStyle.marginTop, marginRight = _getComputedStyle.marginRight, marginBottom = _getComputedStyle.marginBottom, marginLeft = _getComputedStyle.marginLeft;
-            if ([marginTop, marginRight, marginBottom, marginLeft].some(function(margin) {
-              return parseFloat(margin);
-            })) {
-              console.warn(['Popper: CSS "margin" styles cannot be used to apply padding', "between the popper and its reference element or boundary.", "To replicate margin, use the `offset` modifier, as well as", "the `padding` option in the `preventOverflow` and `flip`", "modifiers."].join(" "));
-            }
-          }
           runModifierEffects();
           return instance.update();
         },
@@ -52863,9 +54741,6 @@
           }
           var _state$elements = state.elements, reference3 = _state$elements.reference, popper3 = _state$elements.popper;
           if (!areValidElements(reference3, popper3)) {
-            if (true) {
-              console.error(INVALID_ELEMENT_ERROR);
-            }
             return;
           }
           state.rects = {
@@ -52877,15 +54752,7 @@
           state.orderedModifiers.forEach(function(modifier) {
             return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
           });
-          var __debug_loops__ = 0;
           for (var index = 0; index < state.orderedModifiers.length; index++) {
-            if (true) {
-              __debug_loops__ += 1;
-              if (__debug_loops__ > 100) {
-                console.error(INFINITE_LOOP_ERROR);
-                break;
-              }
-            }
             if (state.reset === true) {
               state.reset = false;
               index = -1;
@@ -52916,9 +54783,6 @@
         }
       };
       if (!areValidElements(reference2, popper2)) {
-        if (true) {
-          console.error(INVALID_ELEMENT_ERROR);
-        }
         return instance;
       }
       instance.setOptions(options).then(function(state2) {
@@ -52927,8 +54791,8 @@
         }
       });
       function runModifierEffects() {
-        state.orderedModifiers.forEach(function(_ref3) {
-          var name = _ref3.name, _ref3$options = _ref3.options, options2 = _ref3$options === void 0 ? {} : _ref3$options, effect5 = _ref3.effect;
+        state.orderedModifiers.forEach(function(_ref) {
+          var name = _ref.name, _ref$options = _ref.options, options2 = _ref$options === void 0 ? {} : _ref$options, effect5 = _ref.effect;
           if (typeof effect5 === "function") {
             var cleanupFn = effect5({
               state,
@@ -54388,6 +56252,18 @@
       end: /\)/,
       contains: [hljs.BACKSLASH_ESCAPE]
     };
+    const COMMENT = hljs.inherit(
+      hljs.COMMENT(),
+      {
+        match: [
+          /(^|\s)/,
+          /#.*$/
+        ],
+        scope: {
+          2: "comment"
+        }
+      }
+    );
     const HERE_DOC = {
       begin: /<<-?\s*(?=\w+)/,
       starts: { contains: [
@@ -54410,13 +56286,15 @@
     };
     SUBST.contains.push(QUOTE_STRING);
     const ESCAPED_QUOTE = {
-      className: "",
-      begin: /\\"/
+      match: /\\"/
     };
     const APOS_STRING = {
       className: "string",
       begin: /'/,
       end: /'/
+    };
+    const ESCAPED_APOS = {
+      match: /\\'/
     };
     const ARITHMETIC = {
       begin: /\$?\(\(/,
@@ -54460,12 +56338,14 @@
       "fi",
       "for",
       "while",
+      "until",
       "in",
       "do",
       "done",
       "case",
       "esac",
-      "function"
+      "function",
+      "select"
     ];
     const LITERALS2 = [
       "true",
@@ -54510,6 +56390,7 @@
       "read",
       "readarray",
       "source",
+      "sudo",
       "type",
       "typeset",
       "ulimit",
@@ -54692,7 +56573,10 @@
     ];
     return {
       name: "Bash",
-      aliases: ["sh"],
+      aliases: [
+        "sh",
+        "zsh"
+      ],
       keywords: {
         $pattern: /\b[a-z][a-z0-9._-]+\b/,
         keyword: KEYWORDS2,
@@ -54714,12 +56598,13 @@
         // to catch unknown shells but still highlight the shebang
         FUNCTION,
         ARITHMETIC,
-        hljs.HASH_COMMENT_MODE,
+        COMMENT,
         HERE_DOC,
         PATH_MODE,
         QUOTE_STRING,
         ESCAPED_QUOTE,
         APOS_STRING,
+        ESCAPED_APOS,
         VAR
       ]
     };
@@ -54867,6 +56752,7 @@
     "window",
     "document",
     "localStorage",
+    "sessionStorage",
     "module",
     "global"
     // Node.js
@@ -54966,7 +56852,7 @@
       // defined later
     };
     const HTML_TEMPLATE = {
-      begin: "html`",
+      begin: ".?html`",
       end: "",
       starts: {
         end: "`",
@@ -54979,7 +56865,7 @@
       }
     };
     const CSS_TEMPLATE = {
-      begin: "css`",
+      begin: ".?css`",
       end: "",
       starts: {
         end: "`",
@@ -54989,6 +56875,19 @@
           SUBST
         ],
         subLanguage: "css"
+      }
+    };
+    const GRAPHQL_TEMPLATE = {
+      begin: ".?gql`",
+      end: "",
+      starts: {
+        end: "`",
+        returnEnd: false,
+        contains: [
+          hljs.BACKSLASH_ESCAPE,
+          SUBST
+        ],
+        subLanguage: "graphql"
       }
     };
     const TEMPLATE_STRING = {
@@ -55052,6 +56951,7 @@
       hljs.QUOTE_STRING_MODE,
       HTML_TEMPLATE,
       CSS_TEMPLATE,
+      GRAPHQL_TEMPLATE,
       TEMPLATE_STRING,
       // Skip numbers when they are part of a variable name
       { match: /\$\d+/ },
@@ -55074,7 +56974,7 @@
     const PARAMS_CONTAINS = SUBST_AND_COMMENTS.concat([
       // eat recursive parens in sub expressions
       {
-        begin: /\(/,
+        begin: /(\s*)\(/,
         end: /\)/,
         keywords: KEYWORDS$1,
         contains: ["self"].concat(SUBST_AND_COMMENTS)
@@ -55082,7 +56982,9 @@
     ]);
     const PARAMS = {
       className: "params",
-      begin: /\(/,
+      // convert this to negative lookbehind in v12
+      begin: /(\s*)\(/,
+      // to match the parms with 
       end: /\)/,
       excludeBegin: true,
       excludeEnd: true,
@@ -55195,9 +57097,9 @@
           ...BUILT_IN_GLOBALS,
           "super",
           "import"
-        ]),
+        ].map((x) => `${x}\\s*\\(`)),
         IDENT_RE$1,
-        regex.lookahead(/\(/)
+        regex.lookahead(/\s*\(/)
       ),
       className: "title.function",
       relevance: 0
@@ -55253,7 +57155,7 @@
       ]
     };
     return {
-      name: "Javascript",
+      name: "JavaScript",
       aliases: ["js", "jsx", "mjs", "cjs"],
       keywords: KEYWORDS$1,
       // this will be extended by TypeScript
@@ -55270,6 +57172,7 @@
         hljs.QUOTE_STRING_MODE,
         HTML_TEMPLATE,
         CSS_TEMPLATE,
+        GRAPHQL_TEMPLATE,
         TEMPLATE_STRING,
         COMMENT,
         // Skip numbers when they are part of a variable name
@@ -55312,7 +57215,7 @@
                       skip: true
                     },
                     {
-                      begin: /\(/,
+                      begin: /(\s*)\(/,
                       end: /\)/,
                       excludeBegin: true,
                       excludeEnd: true,
@@ -55439,11 +57342,11 @@
       },
       CSS_VARIABLE: {
         className: "attr",
-        begin: /--[A-Za-z][A-Za-z0-9_-]*/
+        begin: /--[A-Za-z_][A-Za-z0-9_-]*/
       }
     };
   };
-  var TAGS = [
+  var HTML_TAGS = [
     "a",
     "abbr",
     "address",
@@ -55495,11 +57398,16 @@
     "nav",
     "object",
     "ol",
+    "optgroup",
+    "option",
     "p",
+    "picture",
     "q",
     "quote",
     "samp",
     "section",
+    "select",
+    "source",
     "span",
     "strong",
     "summary",
@@ -55516,6 +57424,53 @@
     "ul",
     "var",
     "video"
+  ];
+  var SVG_TAGS = [
+    "defs",
+    "g",
+    "marker",
+    "mask",
+    "pattern",
+    "svg",
+    "switch",
+    "symbol",
+    "feBlend",
+    "feColorMatrix",
+    "feComponentTransfer",
+    "feComposite",
+    "feConvolveMatrix",
+    "feDiffuseLighting",
+    "feDisplacementMap",
+    "feFlood",
+    "feGaussianBlur",
+    "feImage",
+    "feMerge",
+    "feMorphology",
+    "feOffset",
+    "feSpecularLighting",
+    "feTile",
+    "feTurbulence",
+    "linearGradient",
+    "radialGradient",
+    "stop",
+    "circle",
+    "ellipse",
+    "image",
+    "line",
+    "path",
+    "polygon",
+    "polyline",
+    "rect",
+    "text",
+    "use",
+    "textPath",
+    "tspan",
+    "foreignObject",
+    "clipPath"
+  ];
+  var TAGS = [
+    ...HTML_TAGS,
+    ...SVG_TAGS
   ];
   var MEDIA_FEATURES = [
     "any-hover",
@@ -55552,7 +57507,7 @@
     "max-width",
     "min-height",
     "max-height"
-  ];
+  ].sort().reverse();
   var PSEUDO_CLASSES = [
     "active",
     "any-link",
@@ -55627,7 +57582,7 @@
     "visited",
     "where"
     // where()
-  ];
+  ].sort().reverse();
   var PSEUDO_ELEMENTS = [
     "after",
     "backdrop",
@@ -55643,11 +57598,13 @@
     "selection",
     "slotted",
     "spelling-error"
-  ];
+  ].sort().reverse();
   var ATTRIBUTES = [
+    "accent-color",
     "align-content",
     "align-items",
     "align-self",
+    "alignment-baseline",
     "all",
     "animation",
     "animation-delay",
@@ -55658,6 +57615,7 @@
     "animation-name",
     "animation-play-state",
     "animation-timing-function",
+    "appearance",
     "backface-visibility",
     "background",
     "background-attachment",
@@ -55669,6 +57627,7 @@
     "background-position",
     "background-repeat",
     "background-size",
+    "baseline-shift",
     "block-size",
     "border",
     "border-block",
@@ -55715,10 +57674,14 @@
     "border-left-width",
     "border-radius",
     "border-right",
+    "border-end-end-radius",
+    "border-end-start-radius",
     "border-right-color",
     "border-right-style",
     "border-right-width",
     "border-spacing",
+    "border-start-end-radius",
+    "border-start-start-radius",
     "border-style",
     "border-top",
     "border-top-color",
@@ -55734,6 +57697,8 @@
     "break-after",
     "break-before",
     "break-inside",
+    "cx",
+    "cy",
     "caption-side",
     "caret-color",
     "clear",
@@ -55741,6 +57706,11 @@
     "clip-path",
     "clip-rule",
     "color",
+    "color-interpolation",
+    "color-interpolation-filters",
+    "color-profile",
+    "color-rendering",
+    "color-scheme",
     "column-count",
     "column-fill",
     "column-gap",
@@ -55762,7 +57732,12 @@
     "cursor",
     "direction",
     "display",
+    "dominant-baseline",
     "empty-cells",
+    "enable-background",
+    "fill",
+    "fill-opacity",
+    "fill-rule",
     "filter",
     "flex",
     "flex-basis",
@@ -55773,6 +57748,8 @@
     "flex-wrap",
     "float",
     "flow",
+    "flood-color",
+    "flood-opacity",
     "font",
     "font-display",
     "font-family",
@@ -55794,6 +57771,7 @@
     "font-variation-settings",
     "font-weight",
     "gap",
+    "glyph-orientation-horizontal",
     "glyph-orientation-vertical",
     "grid",
     "grid-area",
@@ -55820,16 +57798,32 @@
     "image-resolution",
     "ime-mode",
     "inline-size",
+    "inset",
+    "inset-block",
+    "inset-block-end",
+    "inset-block-start",
+    "inset-inline",
+    "inset-inline-end",
+    "inset-inline-start",
     "isolation",
+    "kerning",
     "justify-content",
+    "justify-items",
+    "justify-self",
     "left",
     "letter-spacing",
+    "lighting-color",
     "line-break",
     "line-height",
     "list-style",
     "list-style-image",
     "list-style-position",
     "list-style-type",
+    "marker",
+    "marker-end",
+    "marker-mid",
+    "marker-start",
+    "mask",
     "margin",
     "margin-block",
     "margin-block-end",
@@ -55911,12 +57905,15 @@
     "pointer-events",
     "position",
     "quotes",
+    "r",
     "resize",
     "rest",
     "rest-after",
     "rest-before",
     "right",
+    "rotate",
     "row-gap",
+    "scale",
     "scroll-margin",
     "scroll-margin-block",
     "scroll-margin-block-end",
@@ -55948,12 +57945,24 @@
     "shape-image-threshold",
     "shape-margin",
     "shape-outside",
+    "shape-rendering",
+    "stop-color",
+    "stop-opacity",
+    "stroke",
+    "stroke-dasharray",
+    "stroke-dashoffset",
+    "stroke-linecap",
+    "stroke-linejoin",
+    "stroke-miterlimit",
+    "stroke-opacity",
+    "stroke-width",
     "speak",
     "speak-as",
     "src",
     // @font-face
     "tab-size",
     "table-layout",
+    "text-anchor",
     "text-align",
     "text-align-all",
     "text-align-last",
@@ -55961,7 +57970,9 @@
     "text-decoration",
     "text-decoration-color",
     "text-decoration-line",
+    "text-decoration-skip-ink",
     "text-decoration-style",
+    "text-decoration-thickness",
     "text-emphasis",
     "text-emphasis-color",
     "text-emphasis-position",
@@ -55973,6 +57984,7 @@
     "text-rendering",
     "text-shadow",
     "text-transform",
+    "text-underline-offset",
     "text-underline-position",
     "top",
     "transform",
@@ -55984,7 +57996,9 @@
     "transition-duration",
     "transition-property",
     "transition-timing-function",
+    "translate",
     "unicode-bidi",
+    "vector-effect",
     "vertical-align",
     "visibility",
     "voice-balance",
@@ -56003,10 +58017,10 @@
     "word-spacing",
     "word-wrap",
     "writing-mode",
+    "x",
+    "y",
     "z-index"
-    // reverse makes sure longer attributes `font-weight` are matched fully
-    // instead of getting false positives on say `font`
-  ].reverse();
+  ].sort().reverse();
   function css(hljs) {
     const regex = hljs.regex;
     const modes = MODES(hljs);
@@ -56931,11 +58945,11 @@
       },
       CSS_VARIABLE: {
         className: "attr",
-        begin: /--[A-Za-z][A-Za-z0-9_-]*/
+        begin: /--[A-Za-z_][A-Za-z0-9_-]*/
       }
     };
   };
-  var TAGS2 = [
+  var HTML_TAGS2 = [
     "a",
     "abbr",
     "address",
@@ -56987,11 +59001,16 @@
     "nav",
     "object",
     "ol",
+    "optgroup",
+    "option",
     "p",
+    "picture",
     "q",
     "quote",
     "samp",
     "section",
+    "select",
+    "source",
     "span",
     "strong",
     "summary",
@@ -57008,6 +59027,53 @@
     "ul",
     "var",
     "video"
+  ];
+  var SVG_TAGS2 = [
+    "defs",
+    "g",
+    "marker",
+    "mask",
+    "pattern",
+    "svg",
+    "switch",
+    "symbol",
+    "feBlend",
+    "feColorMatrix",
+    "feComponentTransfer",
+    "feComposite",
+    "feConvolveMatrix",
+    "feDiffuseLighting",
+    "feDisplacementMap",
+    "feFlood",
+    "feGaussianBlur",
+    "feImage",
+    "feMerge",
+    "feMorphology",
+    "feOffset",
+    "feSpecularLighting",
+    "feTile",
+    "feTurbulence",
+    "linearGradient",
+    "radialGradient",
+    "stop",
+    "circle",
+    "ellipse",
+    "image",
+    "line",
+    "path",
+    "polygon",
+    "polyline",
+    "rect",
+    "text",
+    "use",
+    "textPath",
+    "tspan",
+    "foreignObject",
+    "clipPath"
+  ];
+  var TAGS2 = [
+    ...HTML_TAGS2,
+    ...SVG_TAGS2
   ];
   var MEDIA_FEATURES2 = [
     "any-hover",
@@ -57044,7 +59110,7 @@
     "max-width",
     "min-height",
     "max-height"
-  ];
+  ].sort().reverse();
   var PSEUDO_CLASSES2 = [
     "active",
     "any-link",
@@ -57119,7 +59185,7 @@
     "visited",
     "where"
     // where()
-  ];
+  ].sort().reverse();
   var PSEUDO_ELEMENTS2 = [
     "after",
     "backdrop",
@@ -57135,11 +59201,13 @@
     "selection",
     "slotted",
     "spelling-error"
-  ];
+  ].sort().reverse();
   var ATTRIBUTES2 = [
+    "accent-color",
     "align-content",
     "align-items",
     "align-self",
+    "alignment-baseline",
     "all",
     "animation",
     "animation-delay",
@@ -57150,6 +59218,7 @@
     "animation-name",
     "animation-play-state",
     "animation-timing-function",
+    "appearance",
     "backface-visibility",
     "background",
     "background-attachment",
@@ -57161,6 +59230,7 @@
     "background-position",
     "background-repeat",
     "background-size",
+    "baseline-shift",
     "block-size",
     "border",
     "border-block",
@@ -57207,10 +59277,14 @@
     "border-left-width",
     "border-radius",
     "border-right",
+    "border-end-end-radius",
+    "border-end-start-radius",
     "border-right-color",
     "border-right-style",
     "border-right-width",
     "border-spacing",
+    "border-start-end-radius",
+    "border-start-start-radius",
     "border-style",
     "border-top",
     "border-top-color",
@@ -57226,6 +59300,8 @@
     "break-after",
     "break-before",
     "break-inside",
+    "cx",
+    "cy",
     "caption-side",
     "caret-color",
     "clear",
@@ -57233,6 +59309,11 @@
     "clip-path",
     "clip-rule",
     "color",
+    "color-interpolation",
+    "color-interpolation-filters",
+    "color-profile",
+    "color-rendering",
+    "color-scheme",
     "column-count",
     "column-fill",
     "column-gap",
@@ -57254,7 +59335,12 @@
     "cursor",
     "direction",
     "display",
+    "dominant-baseline",
     "empty-cells",
+    "enable-background",
+    "fill",
+    "fill-opacity",
+    "fill-rule",
     "filter",
     "flex",
     "flex-basis",
@@ -57265,6 +59351,8 @@
     "flex-wrap",
     "float",
     "flow",
+    "flood-color",
+    "flood-opacity",
     "font",
     "font-display",
     "font-family",
@@ -57286,6 +59374,7 @@
     "font-variation-settings",
     "font-weight",
     "gap",
+    "glyph-orientation-horizontal",
     "glyph-orientation-vertical",
     "grid",
     "grid-area",
@@ -57312,16 +59401,32 @@
     "image-resolution",
     "ime-mode",
     "inline-size",
+    "inset",
+    "inset-block",
+    "inset-block-end",
+    "inset-block-start",
+    "inset-inline",
+    "inset-inline-end",
+    "inset-inline-start",
     "isolation",
+    "kerning",
     "justify-content",
+    "justify-items",
+    "justify-self",
     "left",
     "letter-spacing",
+    "lighting-color",
     "line-break",
     "line-height",
     "list-style",
     "list-style-image",
     "list-style-position",
     "list-style-type",
+    "marker",
+    "marker-end",
+    "marker-mid",
+    "marker-start",
+    "mask",
     "margin",
     "margin-block",
     "margin-block-end",
@@ -57403,12 +59508,15 @@
     "pointer-events",
     "position",
     "quotes",
+    "r",
     "resize",
     "rest",
     "rest-after",
     "rest-before",
     "right",
+    "rotate",
     "row-gap",
+    "scale",
     "scroll-margin",
     "scroll-margin-block",
     "scroll-margin-block-end",
@@ -57440,12 +59548,24 @@
     "shape-image-threshold",
     "shape-margin",
     "shape-outside",
+    "shape-rendering",
+    "stop-color",
+    "stop-opacity",
+    "stroke",
+    "stroke-dasharray",
+    "stroke-dashoffset",
+    "stroke-linecap",
+    "stroke-linejoin",
+    "stroke-miterlimit",
+    "stroke-opacity",
+    "stroke-width",
     "speak",
     "speak-as",
     "src",
     // @font-face
     "tab-size",
     "table-layout",
+    "text-anchor",
     "text-align",
     "text-align-all",
     "text-align-last",
@@ -57453,7 +59573,9 @@
     "text-decoration",
     "text-decoration-color",
     "text-decoration-line",
+    "text-decoration-skip-ink",
     "text-decoration-style",
+    "text-decoration-thickness",
     "text-emphasis",
     "text-emphasis-color",
     "text-emphasis-position",
@@ -57465,6 +59587,7 @@
     "text-rendering",
     "text-shadow",
     "text-transform",
+    "text-underline-offset",
     "text-underline-position",
     "top",
     "transform",
@@ -57476,7 +59599,9 @@
     "transition-duration",
     "transition-property",
     "transition-timing-function",
+    "translate",
     "unicode-bidi",
+    "vector-effect",
     "vertical-align",
     "visibility",
     "voice-balance",
@@ -57495,10 +59620,10 @@
     "word-spacing",
     "word-wrap",
     "writing-mode",
+    "x",
+    "y",
     "z-index"
-    // reverse makes sure longer attributes `font-weight` are matched fully
-    // instead of getting false positives on say `font`
-  ].reverse();
+  ].sort().reverse();
   function scss(hljs) {
     const modes = MODES2(hljs);
     const PSEUDO_ELEMENTS$1 = PSEUDO_ELEMENTS2;
@@ -57621,14 +59746,15 @@
     const KEY = {
       className: "attr",
       variants: [
-        { begin: "\\w[\\w :\\/.-]*:(?=[ 	]|$)" },
+        // added brackets support 
+        { begin: /\w[\w :()\./-]*:(?=[ \t]|$)/ },
         {
-          // double quoted keys
-          begin: '"\\w[\\w :\\/.-]*":(?=[ 	]|$)'
+          // double quoted keys - with brackets
+          begin: /"\w[\w :()\./-]*":(?=[ \t]|$)/
         },
         {
-          // single quoted keys
-          begin: "'\\w[\\w :\\/.-]*':(?=[ 	]|$)"
+          // single quoted keys - with brackets
+          begin: /'\w[\w :()\./-]*':(?=[ \t]|$)/
         }
       ]
     };
@@ -58381,21 +60507,21 @@
       else if (typeof date !== "string" && date.toFixed !== void 0)
         parsedDate = new Date(date);
       else if (typeof date === "string") {
-        var format2 = givenFormat || (config || defaults).dateFormat;
+        var format = givenFormat || (config || defaults).dateFormat;
         var datestr = String(date).trim();
         if (datestr === "today") {
           parsedDate = /* @__PURE__ */ new Date();
           timeless = true;
         } else if (config && config.parseDate) {
-          parsedDate = config.parseDate(date, format2);
+          parsedDate = config.parseDate(date, format);
         } else if (/Z$/.test(datestr) || /GMT$/.test(datestr)) {
           parsedDate = new Date(date);
         } else {
           var matched = void 0, ops = [];
-          for (var i = 0, matchIndex = 0, regexStr = ""; i < format2.length; i++) {
-            var token = format2[i];
+          for (var i = 0, matchIndex = 0, regexStr = ""; i < format.length; i++) {
+            var token = format[i];
             var isBackSlash = token === "\\";
-            var escaped = format2[i - 1] === "\\" || isBackSlash;
+            var escaped = format[i - 1] === "\\" || isBackSlash;
             if (tokenRegex[token] && !escaped) {
               regexStr += tokenRegex[token];
               var match = new RegExp(regexStr).exec(date);
@@ -59956,28 +62082,28 @@
       self.redraw();
       updateValue(true);
     }
-    function setSelectedDate(inputDate, format2) {
+    function setSelectedDate(inputDate, format) {
       var dates = [];
       if (inputDate instanceof Array)
         dates = inputDate.map(function(d) {
-          return self.parseDate(d, format2);
+          return self.parseDate(d, format);
         });
       else if (inputDate instanceof Date || typeof inputDate === "number")
-        dates = [self.parseDate(inputDate, format2)];
+        dates = [self.parseDate(inputDate, format)];
       else if (typeof inputDate === "string") {
         switch (self.config.mode) {
           case "single":
           case "time":
-            dates = [self.parseDate(inputDate, format2)];
+            dates = [self.parseDate(inputDate, format)];
             break;
           case "multiple":
             dates = inputDate.split(self.config.conjunction).map(function(date) {
-              return self.parseDate(date, format2);
+              return self.parseDate(date, format);
             });
             break;
           case "range":
             dates = inputDate.split(self.l10n.rangeSeparator).map(function(date) {
-              return self.parseDate(date, format2);
+              return self.parseDate(date, format);
             });
             break;
           default:
@@ -59993,16 +62119,16 @@
           return a.getTime() - b.getTime();
         });
     }
-    function setDate(date, triggerChange2, format2) {
+    function setDate(date, triggerChange2, format) {
       if (triggerChange2 === void 0) {
         triggerChange2 = false;
       }
-      if (format2 === void 0) {
-        format2 = self.config.dateFormat;
+      if (format === void 0) {
+        format = self.config.dateFormat;
       }
       if (date !== 0 && !date || date instanceof Array && date.length === 0)
         return self.clear(triggerChange2);
-      setSelectedDate(date, format2);
+      setSelectedDate(date, format);
       self.latestSelectedDateObj = self.selectedDates[self.selectedDates.length - 1];
       self.redraw();
       jumpToDate(void 0, triggerChange2);
@@ -60160,9 +62286,9 @@
       self._hideNextMonthArrow = self.config.maxDate !== void 0 && (self.currentYear === self.config.maxDate.getFullYear() ? self.currentMonth + 1 > self.config.maxDate.getMonth() : self.currentYear > self.config.maxDate.getFullYear());
     }
     function getDateStr(specificFormat) {
-      var format2 = specificFormat || (self.config.altInput ? self.config.altFormat : self.config.dateFormat);
+      var format = specificFormat || (self.config.altInput ? self.config.altFormat : self.config.dateFormat);
       return self.selectedDates.map(function(dObj) {
-        return self.formatDate(dObj, format2);
+        return self.formatDate(dObj, format);
       }).filter(function(d, i, arr) {
         return self.config.mode !== "range" || self.config.enableTime || arr.indexOf(d) === i;
       }).join(self.config.mode !== "range" ? self.config.conjunction : self.l10n.rangeSeparator);
@@ -60359,9 +62485,15 @@
     return composedName;
   };
   var extendedEvent = (type, event, detail) => {
-    const { bubbles, cancelable, composed } = event || { bubbles: true, cancelable: true, composed: true };
+    const { bubbles, cancelable, composed } = event || {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    };
     if (event) {
-      Object.assign(detail, { originalEvent: event });
+      Object.assign(detail, {
+        originalEvent: event
+      });
     }
     const customEvent = new CustomEvent(type, {
       bubbles,
@@ -60398,7 +62530,9 @@
       }
       if (dispatchEvent) {
         const eventName = composeEventName("click:outside", controller, eventPrefix);
-        const clickOutsideEvent = extendedEvent(eventName, event, { controller });
+        const clickOutsideEvent = extendedEvent(eventName, event, {
+          controller
+        });
         targetElement.dispatchEvent(clickOutsideEvent);
       }
     };
@@ -60551,7 +62685,11 @@
       }
     }
     initialState();
-    Object.assign(controller, { enter, leave, toggleTransition });
+    Object.assign(controller, {
+      enter,
+      leave,
+      toggleTransition
+    });
     return [enter, leave, toggleTransition];
   };
   function getAttribute(name, options, dataset) {
