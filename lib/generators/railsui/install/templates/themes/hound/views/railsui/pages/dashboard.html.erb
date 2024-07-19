@@ -1,21 +1,21 @@
-<%%= render "shared/admin/nav", { header_title: "Dashboard" } do %>
-  <%%= render "shared/admin/create_dropdown" %>
-<%% end %>
+<%= render "railsui/shared/admin/nav", { header_title: "Dashboard" } do %>
+  <%= render "railsui/shared/admin/create_dropdown" %>
+<% end %>
 
 <div class="px-4">
   <div class="flex justify-between items-center mt-4 container mx-auto">
     <h2 class="text-base font-medium text-slate-700 dark:text-slate-300 mb-0">
       Recent stats
     </h2>
-    <div data-controller="modal">
-      <button type="button" class="btn btn-white space-x-2" tabindex="0" data-action="click->modal#open">
-        <%%= icon "cog-6-tooth", classes: "stroke-current w-4 h-4 text-slate-600 dark:text-slate-300" %>
+    <div data-controller="railsui-modal">
+      <button type="button" class="btn btn-white gap-2" tabindex="0" data-action="click->railsui-modal#open">
+        <%= icon "cog-6-tooth", class: "size-4 text-slate-600 dark:text-slate-300" %>
         <span class="pointer-events-none">Customize dashboard</span>
       </button>
-      <div aria-labelledby="modal-title" aria-modal="true" data-action="keyup@window->modal#closeWithEsc"
-        data-modal-target="container" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
+      <div aria-labelledby="modal-title" aria-modal="true" data-action="keyup@window->railsui-modal#closeWithEsc"
+        data-railsui-modal-target="container" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
         <div class="h-screen w-full relative">
-          <div data-modal-target="content" data-transition-enter-active="transition ease-out duration-300"
+          <div data-railsui-modal-target="content" data-transition-enter-active="transition ease-out duration-300"
             data-transition-enter-from="transform opacity-0 scale-95"
             data-transition-enter-to="transform opacity-100 scale-100"
             data-transition-leave-active="transition ease-in duration-300"
@@ -26,7 +26,7 @@
               <h2 id="modal-title" class="dark:text-slate-100">Customize dashboard</h2>
               <p>This could be some sort of widget enabling interface for the dashboard</p>
               <div class="flex justify-end items-center flex-wrap space-x-4">
-                <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+                <button class="btn btn-primary" data-action="click->railsui-modal#close">Close</button>
               </div>
             </div>
           </div>
@@ -38,9 +38,9 @@
   <div class="grid grid-cols-12 md:gap-6 gap-4 mt-4 container mx-auto mb-24">
     <div
       class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
-      <div class="flex items-start space-x-3">
-        <div class="rounded-full w-10 h-10 flex items-center justify-center bg-primary-50 dark:bg-primary-600/30">
-          <%%= icon "envelope-open", classes: "w-5 h-5 text-primary-600 stroke-current dark:text-primary-300" %>
+      <div class="flex items-start gap-3">
+        <div class="rounded-full size-10 flex items-center justify-center bg-primary-50 dark:bg-primary-600/30">
+          <%= icon "envelope-open", class: "size-5 text-primary-600 stroke-current dark:text-primary-300" %>
         </div>
         <div class="flex-1">
           <span class="text-primary-500 dark:text-primary-400/90 text-sm font-medium">Open deals</span>
@@ -48,8 +48,7 @@
             <h3 class="h2 tracking-tight">32</h3>
             <p class="text-red-600">-2</p>
           </div>
-          <p class="text-sm text-slate-400">vs last month: <strong
-              class="text-slate-600 dark:text-slate-400">34</strong>
+          <p class="text-sm text-slate-400">vs last month: <strong class="text-slate-600 dark:text-slate-400">34</strong>
           </p>
         </div>
       </div>
@@ -58,7 +57,7 @@
       class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start space-x-3">
         <div class="rounded-full w-10 h-10 flex items-center justify-center bg-red-50 dark:bg-red-500/20">
-          <%%= icon "exclamation-circle", classes: "w-6 h-6 text-red-600 stroke-current dark:text-red-400/90" %>
+          <%= icon "exclamation-circle", class: "size-6 text-red-600 stroke-current dark:text-red-400/90" %>
         </div>
         <div class="flex-1">
           <span class="text-red-400 dark:text-red-400/90 text-sm font-medium">Untouched deals</span>
@@ -66,8 +65,7 @@
             <h3 class="h2 tracking-tight">40</h3>
             <p class="text-green-600">+1</p>
           </div>
-          <p class="text-sm text-slate-500">vs last month: <strong
-              class="text-slate-600 dark:text-slate-400">39</strong>
+          <p class="text-sm text-slate-500">vs last month: <strong class="text-slate-600 dark:text-slate-400">39</strong>
           </p>
         </div>
       </div>
@@ -76,7 +74,7 @@
       class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start space-x-3">
         <div class="rounded-full w-10 h-10 flex items-center justify-center bg-blue-50 dark:bg-blue-500/20">
-          <%%= icon "phone-arrow-up-right", classes: "w-5 h-5 text-blue-600 stroke-current dark:text-blue-400/80" %>
+          <%= icon "phone-arrow-up-right", class: "size-5 text-blue-600 stroke-current dark:text-blue-400/80" %>
         </div>
         <div class="flex-1">
           <span class="text-blue-500 dark:text-blue-300/90 text-sm font-medium">Calls today</span>
@@ -95,7 +93,7 @@
       class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start space-x-3">
         <div class="rounded-full w-10 h-10 flex items-center justify-center bg-green-50 dark:bg-green-500/20">
-          <%%= icon "currency-dollar", classes: "w-6 h-6 text-green-600 stroke-current dark:text-green-400/80" %>
+          <%= icon "currency-dollar", class: "size-6 text-green-600 stroke-current dark:text-green-400/80" %>
         </div>
         <div class="flex-1">
           <span class="text-green-500 dark:text-green-400/90 text-sm font-medium">Revenue this month</span>
@@ -104,8 +102,7 @@
             <h3 class="h3 tracking-tight">$125,302</h3>
             <p class="text-green-600">+2%</p>
           </div>
-          <p class="text-sm text-slate-500">vs last month: <strong
-              class="text-slate-600 dark:text-slate-400">$102,103</strong>
+          <p class="text-sm text-slate-500">vs last month: <strong class="text-slate-600 dark:text-slate-400">$102,103</strong>
           </p>
         </div>
       </div>
@@ -150,11 +147,11 @@
       class="lg:col-span-5 md:col-span-6 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between">
         <h4 class="font-medium text-slate-800 dark:text-slate-300 tracking-tight text-xl m-0">New contacts</h4>
-        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
+        <%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
       </div>
 
       <ul class="divide-y mt-6 text-slate-600 dark:text-slate-300 dark:divide-slate-600">
-      <%% [
+      <% [
         {
           name: "John Smith",
           email: "john.smith@example.com",
@@ -197,25 +194,25 @@
         }].each do |contact| %>
           <li class="flex flex-wrap justify-between items-start py-3">
             <div class="flex items-start space-x-3">
-              <%%= link_to "#", class: "flex items-center sm:mb-0 mb-1" do %>
-                <%%= image_tag demo_avatar_url(id: contact[:img][:id], variant: contact[:img][:variant]), alt: contact[:name], class: "w-10 h-10 rounded-full" %>
-              <%% end %>
+              <%= link_to "#", class: "flex items-center sm:mb-0 mb-1" do %>
+                <%= image_tag demo_avatar_url(id: contact[:img][:id], variant: contact[:img][:variant]), alt: contact[:name], class: "size-10 rounded-full" %>
+              <% end %>
               <div>
-                <%%= link_to contact[:name], "#", class: "font-medium text-slate-700 dark:text-slate-200 block" %>
+                <%= link_to contact[:name], "#", class: "font-medium text-slate-700 dark:text-slate-200 block" %>
                 <span
-                  class="<%%= contact[:tag_classes] %> rounded font-medium px-2 py-1 leading-tight text-xs inline-block sm:mb-0"><%%= contact[:tag] %></span>
+                  class="<%= contact[:tag_classes] %> rounded font-medium px-2 py-1 leading-tight text-xs inline-block sm:mb-0"><%= contact[:tag] %></span>
               </div>
             </div>
             <div class="flex items-center space-x-2">
-              <%%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
-                <%%= icon "envelope", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
-              <%% end %>
-              <%%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
-                <%%= icon "phone", classes: "w-5 h-5 stroke-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
-              <%% end %>
+              <%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
+                <%= icon "envelope", class: "size-5text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
+              <% end %>
+              <%= link_to "#", class: "btn btn-white px-2 py-1 group" do %>
+                <%= icon "phone", class: "size-5 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
+              <% end %>
             </div>
           </li>
-        <%% end %>
+        <% end %>
       </ul>
     </div>
 
@@ -223,15 +220,15 @@
       class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between mb-4">
         <h4 class="text-lg font-medium">Open deals</h4>
-        <%% if respond_to?(:admin_projects_path) %>
-          <%%= link_to "View all", admin_projects_path, class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
-        <%% else %>
-          <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
-        <%% end %>
+        <% if respond_to?(:admin_projects_path) %>
+          <%= link_to "View all", admin_projects_path, class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
+        <% else %>
+          <%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
+        <% end %>
       </div>
 
       <div class="space-y-4 divide-y dark:divide-slate-600">
-      <%% [
+      <% [
           {
             img: {id: "85", variant: "women"},
             name: "Jackie Hacky",
@@ -257,73 +254,69 @@
             close_date: "Jan 18, 2024"
           }
         ].each do | deal | %>
-          <%%= link_to "#", class: "p-2 flex flex-wrap items-center group" do %>
+          <%= link_to "#", class: "p-2 flex flex-wrap items-center group" do %>
             <div class="md:flex-1 md:block flex justify-between w-full">
               <div class="flex items-center space-x-3">
-                <%%= image_tag demo_avatar_url(id: deal[:img][:id], variant: deal[:img][:variant]), alt: deal[:name], class: "md:w-6 w-8 md:h-6 h-8 rounded-full" %>
-                <p class="font-medium hover:text-primary-600 flex-1"><%%= deal[:name] %></p>
+                <%= image_tag demo_avatar_url(id: deal[:img][:id], variant: deal[:img][:variant]), alt: deal[:name], class: "rounded-full md:size-6 size-8" %>
+                <p class="font-medium hover:text-primary-600 flex-1"><%= deal[:name] %></p>
               </div>
               <div class="text-left">
-                <span class="<%%= deal[:tag_classes] %>"><%%= deal[:tag] %></span>
+                <span class="<%= deal[:tag_classes] %>"><%= deal[:tag] %></span>
               </div>
             </div>
 
             <div
               class="md:text-right text-left md:group-hover:-translate-x-1 md:group-hover:transition duration-200 md:group-hover:transform md:w-auto w-full md:pt-0 pt-3">
-              <p class="font-medium text-slate-600 dark:text-slate-300"><%%= deal[:address] %></p>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Closing date: <%%= deal[:close_date] %></p>
+              <p class="font-medium text-slate-600 dark:text-slate-300"><%= deal[:address] %></p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Closing date: <%= deal[:close_date] %></p>
             </div>
             <div
               class="opacity-0 group-hover:opacity-100 transition ease-in-out group-hover:transform group-hover:translate-x-1 md:block hidden">
-              <%%= icon "chevron-right", classes: "w-4 h-4 stroke-current text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
+              <%= icon "chevron-right", class: "size-4 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-300" %>
             </div>
-          <%% end %>
-        <%% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div
       class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between mb-4">
         <h4 class="font-medium text-slate-800 dark:text-slate-300 tracking-tight text-xl m-0">Recent projects</h4>
-        <%%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
+        <%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
       </div>
 
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <%% [
+      <% [
         {
           title: "Enhanced User Authentication System",
-          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores",
         },
         {
           title: "Automated Data Migration Tool",
-          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum",
         },
         {
           title: "Real-time Data Visualization Dashboard",
-          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum",
         },
         {
           title: "Intelligent Chatbot for Customer Support",
-          description: "Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum"
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam consectetur harum, consequatur nemo numquam repudiandae, aut similique dolores ipsum"
         }
       ].each do |project| %>
         <li>
-          <%%= link_to (defined?(admin_project_path) ? admin_project_path : "#"), class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-primary-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
-            <p class="font-medium dark:group-hover:text-primary-300 group-hover:text-primary-600 line-clamp-1 mb-2"><%%= project[:title] %></p>
-            <p class="line-clamp-2 text-sm text-slate-500"><%%= project[:description] %></p>
-          <%% end %>
+          <%= link_to (defined?(admin_project_path) ? admin_project_path : "#"), class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-primary-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
+            <p class="font-medium dark:group-hover:text-primary-300 group-hover:text-primary-600 line-clamp-1 mb-2"><%= project[:title] %></p>
+            <p class="line-clamp-2 text-sm text-slate-500"><%= project[:description] %></p>
+          <% end %>
         </li>
-        <%% end %>
+        <% end %>
       </ul>
     </div>
   </div>
 </div>
 
-<%% content_for :head do %>
+<% content_for :head do %>
 <!--
   ### READ ME ###
   The embedded JavaScript below is for preview purposes only.
@@ -557,7 +550,7 @@ function setTeamChartColors() {
   });
 })();
 </script>
-<%% end %>
+<% end %>
 
 <!--
 ### ⚡️ Stimulus.js ###

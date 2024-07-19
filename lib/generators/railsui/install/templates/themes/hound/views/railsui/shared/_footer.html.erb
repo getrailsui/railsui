@@ -10,38 +10,35 @@
       <li class="py-3 lg:py-0">
         <%= link_to "Features", "#", class: "px-3 py-2 hover:text-primary-700 dark:hover:text-primary-500" %>
       </li>
+      <li class="py-3 lg:py-0">
+        <%= link_to "Pricing", "#", class: "px-3 py-2 hover:text-primary-700 dark:hover:text-primary-500" %>
+      </li>
 
-        <li class="py-3 lg:py-0">
-          <%= link_to "Pricing", "#", class: "px-3 py-2 hover:text-primary-700 dark:hover:text-primary-500" %>
-        </li>
-
-
-        <li class="py-3 lg:py-0">
-          <%= link_to "Company", "#", class: "px-3 py-2 hover:text-primary-700  dark:hover:text-primary-500" %>
-        </li>
-
+      <li class="py-3 lg:py-0">
+        <%= link_to "Company", "#", class: "px-3 py-2 hover:text-primary-700  dark:hover:text-primary-500" %>
+      </li>
     </ul>
   </nav>
 
-  <ul class="flex items-center justify-center space-x-6 mb-6">
+  <ul class="flex items-center justify-center gap-6 mb-6">
     <li>
       <%= link_to "#", class: "group", target: :_blank do %>
-        <%= icon "facebook", path: "social/facebook.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
+        <%= icon "facebook", custom_path: "/social/facebook.svg", classes: "size-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
       <% end %>
     </li>
     <li>
       <%= link_to "#", class: "group", target: :_blank do %>
-        <%= icon "twitter", path: "social/twitter.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
+        <%= icon "x", custom_path: "/social/x.svg", classes: "size-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
       <% end %>
     </li>
     <li>
       <%= link_to "#", class: "group", target: :_blank do %>
-        <%= icon "linkedin", path: "social/linkedin.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
+        <%= icon "linkedin", custom_path: "/social/linkedin.svg", classes: "size-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
       <% end %>
     </li>
     <li>
       <%= link_to "#", class: "group", target: :_blank do %>
-        <%= icon "youtube", path: "social/youtube.svg", classes: "w-6 h-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
+        <%= icon "youtube", custom_path: "/social/youtube.svg", classes: "size-6 fill-current text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
       <% end %>
     </li>
   </ul>

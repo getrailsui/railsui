@@ -25,15 +25,15 @@
   }
 ] %>
 
-<div data-controller="dropdown">
-  <div data-controller="modal">
-    <button data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="trigger"
-      class="btn btn-primary space-x-2 flex sm:pr-2 focus:ring-slate-100/20 group dark:focus:ring-slate-500/20">
+<div data-controller="railsui-dropdown">
+  <div data-controller="railsui-modal">
+    <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
+      class="btn btn-primary gap-2 flex sm:pr-2 focus:ring-slate-100/20 group dark:focus:ring-slate-500/20">
       <span>Create</span>
-      <%= icon "chevron-down", classes: "stroke-current w-3 h-3 text-white group-focus:rotate-180 transition ease-in-out transform" %>
+      <%= icon "chevron-down", class: "size-3 text-white group-focus:rotate-180 transition ease-in-out transform" %>
     </button>
 
-    <ul data-dropdown-target="menu"
+    <ul data-railsui-dropdown-target="menu"
     class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
     data-transition-enter-active="transition ease-out duration-300"
     data-transition-enter-from="transform opacity-0 scale-95" data-transition-enter-to="transform opacity-100 scale-100"
@@ -43,7 +43,7 @@
 
       <% if respond_to?(:admin_projects_path) || respond_to?(:admin_project_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
             <%= icon "plus-small", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Project</span>
           <% end %>
@@ -52,7 +52,7 @@
 
       <% if respond_to?(:admin_messages_path) || respond_to?(:admin_message_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
             <%= icon "paper-airplane", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Message</span>
           <% end %>

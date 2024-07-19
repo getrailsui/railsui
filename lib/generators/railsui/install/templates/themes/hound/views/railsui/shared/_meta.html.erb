@@ -9,7 +9,7 @@ Below are the recommended tags to include for best discoverability between apps 
 Generate icons:
 https://redketchup.io/favicon-generator (generate from an image)
 
-Tip: Before generating icons, I typically start with a icon that is atleast 512x512 in size. It can have a transparent background (.png, .svg). Keep it as simple as possible.
+Tip: Before generating icons, I typically start with a icon that is at least 512x512 in size. It can have a transparent background (.png, .svg). Keep it as simple as possible.
 
 Free editor/vector tool:
 https://figma.com
@@ -27,7 +27,7 @@ Description:
 The description is a good place for one to two sentences describing a page OR what the site is all about. You can tweak this on a per-page basis inside your views or controllers. See the metatags gem documentation on tips for doing so: https://github.com/kpumuk/meta-tags#mirrored-values
 
 Images:
-Swap your own images for placeholder ones inside the "assets/images/meta" folder Rails UI copied to your app (jpg, png).
+Swap your own images for placeholder ones inside the "assets/images/railsui/meta" folder Rails UI copied to your app (jpg, png).
 %>
 
 <%= display_meta_tags(
@@ -41,7 +41,7 @@ Swap your own images for placeholder ones inside the "assets/images/meta" folder
     type: "website",
     url: request.original_url,
     image: [{
-      _: image_url("meta/opengraph.jpg"),
+      _: image_url("railsui/meta/opengraph.jpg"),
       width: 1200,
       height: 630
     }],
@@ -53,7 +53,7 @@ Swap your own images for placeholder ones inside the "assets/images/meta" folder
     description: :description,
     card:  "summary",
     image: {
-      _: image_url("meta/opengraph-mark.jpg"),
+      _: image_url("railsui/meta/opengraph-mark.jpg"),
       width:  400,
       height: 400,
     }
@@ -62,27 +62,27 @@ Swap your own images for placeholder ones inside the "assets/images/meta" folder
   description: "CHANGE ME",
   icon: [
     {
-      href: image_url("meta/favicon.svg"),
+      href: image_url("railsui/meta/favicon.svg"),
       sizes: 'any',
       type: "image/svg+xml"
     },
     {
-      href: image_url("meta/favicon-16x16.png"),
+      href: image_url("railsui/meta/favicon-16x16.png"),
       sizes: "16x16",
       type: "images/png"
     },
     {
-      href: image_url("meta/android-chrome-192x192.png"),
+      href: image_url("railsui/meta/android-chrome-192x192.png"),
       sizes: '192x192',
       type: "image/png"
     },
     {
-      href: image_url("meta/android-chrome-512x512.png"),
+      href: image_url("railsui/meta/android-chrome-512x512.png"),
       sizes: '512x512',
       type: "image/png"
     },
     {
-      href: image_url("meta/apple-touch-icon.png"),
+      href: image_url("railsui/meta/apple-touch-icon.png"),
       sizes: '180x180',
       type: "image/png"
     }

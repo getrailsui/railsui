@@ -1,6 +1,6 @@
-<%%= render "shared/admin/nav", { header_title: "Projects" } do %>
-  <%%= render "shared/admin/create_dropdown" %>
-<%% end %>
+<%= render "railsui/shared/admin/nav", { header_title: "Projects" } do %>
+  <%= render "railsui/shared/admin/create_dropdown" %>
+<% end %>
 
 <div class="container mx-auto sm:my-16 my-10 px-4 sm:px-2">
   <div class="flex items-center mb-6 mt-10">
@@ -10,7 +10,7 @@
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 my-4">
-    <%% [
+    <% [
       {
         title: "Enhanced User Authentication System",
         description: "Lorem ipsum dolor sit amet consectetur,
@@ -68,44 +68,44 @@
       }
     ].each do |item| %>
 
-    <%% if respond_to?(:admin_project_path) %>
-      <%%= link_to admin_project_path, class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
-        <h2
-          class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%%= item[:title] %></h2>
-        <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%%= item[:description] %></p>
-        <div class="flex items-center -space-x-2">
-          <%%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-        </div>
-        <%% end %>
-
-      <%% else %>
-
-        <%%= link_to "#", class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
+      <% if respond_to?(:admin_project_path) %>
+        <%= link_to admin_project_path, class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
           <h2
-            class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%%= item[:title] %></h2>
-          <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%%= item[:description] %></p>
+          class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%= item[:title] %></h2>
+          <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%= item[:description] %></p>
           <div class="flex items-center -space-x-2">
-            <%%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
           </div>
-        <%% end %>
-      <%% end %>
-    <%% end %>
+        <% end %>
+
+      <% else %>
+
+        <%= link_to "#", class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
+          <h2
+            class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%= item[:title] %></h2>
+          <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%= item[:description] %></p>
+          <div class="flex items-center -space-x-2">
+            <%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="flex items-center mt-16 pb-3">
@@ -114,8 +114,8 @@
     <div class="h-px w-1/2 bg-gradient-to-r from-slate-200 dark:from-slate-600"></div>
   </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 my-4">
-    <%% [
+  <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 my-4">
+    <% [
       {
         title: "Enhanced User Authentication System",
         description: "Lorem ipsum dolor sit amet consectetur,
@@ -173,49 +173,49 @@
       }
     ].each do |item| %>
 
-    <%% if respond_to?(:admin_project_path) %>
-      <%%= link_to admin_project_path, class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
-        <h2
-          class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%%= item[:title] %></h2>
-        <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%%= item[:description] %></p>
-        <div class="flex items-center -space-x-2">
-          <%%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-
-          <%%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
-        </div>
-        <%% end %>
-
-      <%% else %>
-
-        <%%= link_to "#", class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
+      <% if respond_to?(:admin_project_path) %>
+        <%= link_to admin_project_path, class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
           <h2
-            class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%%= item[:title] %></h2>
-          <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%%= item[:description] %></p>
+          class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%= item[:title] %></h2>
+          <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%= item[:description] %></p>
           <div class="flex items-center -space-x-2">
-            <%%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
 
-            <%%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "w-8 h-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+            <%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
           </div>
-        <%% end %>
-      <%% end %>
-    <%% end %>
+        <% end %>
+
+      <% else %>
+
+        <%= link_to "#", class: "md:col-span-6 col-span-1 lg:col-span-3 sm:col-span-6 border border-slate-300/80 hover:border-slate-400/70 dark:hover:border-slate-300/40 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-slate-200/50 dark:focus:ring-slate-200/10 bg-white group dark:bg-slate-800 dark:border-slate-600" do %>
+          <h2
+            class="text-base mb-2 line-clamp-1 text-slate-800 dark:text-slate-200 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-300 font-bold"><%= item[:title] %></h2>
+          <p class="mb-4 text-sm text-slate-600 dark:text-slate-300 line-clamp-2"><%= item[:description] %></p>
+          <div class="flex items-center -space-x-2">
+            <%= image_tag demo_avatar_url(id: item[:img_1][:id], variant: item[:img_1][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_2][:id], variant: item[:img_2][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_3][:id], variant: item[:img_3][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_4][:id], variant: item[:img_4][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+
+            <%= image_tag demo_avatar_url(id: item[:img_5][:id], variant: item[:img_5][:variant]), alt: "Avatar", class: "size-8 rounded-full border-2 border-white dark:border-slate-500/50" %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="py-10 sm:flex sm:space-x-6 space-y-3 sm:space-y-0">
-    <%%= link_to "View archived projects", "#", class: "text-center underline text-slate-500 text-sm sm:inline-block block" %>
-    <%%= link_to "Project settings", "#", class: "text-center underline text-slate-500 text-sm sm:inline-block block" %>
-    <%%= link_to "Notification settings", "#", class: "text-center underline text-slate-500 text-sm sm:inline-block block" %>
+    <%= link_to "View archived projects", "#", class: "text-center underline text-slate-500 text-sm sm:inline-block block" %>
+    <%= link_to "Project settings", "#", class: "text-center underline text-slate-500 text-sm sm:inline-block block" %>
+    <%= link_to "Notification settings", "#", class: "text-center underline text-slate-500 text-sm sm:inline-block block" %>
   </div>
 </div>

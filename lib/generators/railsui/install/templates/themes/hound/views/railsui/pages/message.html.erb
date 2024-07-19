@@ -1,57 +1,57 @@
-<%%= render "shared/admin/nav" do %>
+<%= render "shared/admin/nav" do %>
 <div class="flex justify-center py-4">
   <nav aria-label="breadcrumb" class="font-medium flex text-slate-100 dark:text-slate-200 text-sm">
     <ol class="flex items-center space-x-3 list-none m-0 p-0">
       <li>
-        <%% if respond_to?(:admin_dashboard_path) %>
-          <%%= link_to "Dashboard", admin_dashboard_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-        <%% else %>
-          <%%= link_to "Dashboard", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-        <%% end %>
+        <% if respond_to?(:admin_dashboard_path) %>
+          <%= link_to "Dashboard", admin_dashboard_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+        <% else %>
+          <%= link_to "Dashboard", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+        <% end %>
         </li>
-        <li class="flex space-x-3">
+        <li class="flex gap-3">
           <div class="flex items-center">
             <span class="text-slate-500 dark:text-slate-500">/</span>
           </div>
-          <%% if respond_to?(:admin_messages_path) %>
-            <%%= link_to "Messages", admin_messages_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <%% else %>
-            <%%= link_to "Messages", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <%% end %>
+          <% if respond_to?(:admin_messages_path) %>
+            <%= link_to "Messages", admin_messages_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+          <% else %>
+            <%= link_to "Messages", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+          <% end %>
         </li>
-        <li class="flex space-x-3">
+        <li class="flex gap-3">
           <div class="flex items-center">
             <span class="text-slate-500 dark:text-slate-500">/</span>
           </div>
-          <%%= link_to "Thank your for your help!", admin_message_path, class: "text-primary-300 dark:text-primary-500 line-clamp-1", "aria-current": "page" %>
+          <%= link_to "Thank your for your help!", admin_message_path, class: "text-primary-300 dark:text-primary-500 line-clamp-1", "aria-current": "page" %>
         </li>
       </ol>
     </nav>
   </div>
-<%% end %>
+<% end %>
 
 <div class="sm:mt-16 mt-8 relative container mx-auto">
   <div class="flex justify-between absolute sm:left-1 sm:right-1 sm:top-10 top-0 left-2 right-2">
-    <%%= link_to "#", class: "p-2 rounded-lg hover:bg-slate-100 hover:border-slate-300 border border-transparent flex items-center justify-center dark:hover:bg-slate-700 dark:hover:border-slate-600/50" do %>
-      <%%= icon "chevron-left", classes: "w-6 h-6 text-slate-600 dark:text-slate-400 stroke-current" %>
-    <%% end %>
+    <%= link_to "#", class: "p-2 rounded-lg hover:bg-slate-100 hover:border-slate-300 border border-transparent flex items-center justify-center dark:hover:bg-slate-700 dark:hover:border-slate-600/50" do %>
+      <%= icon "chevron-left", class: "size-6 text-slate-600 dark:text-slate-400" %>
+    <% end %>
 
-    <%%= link_to "#", class: "p-2 rounded-lg hover:bg-slate-100 hover:border-slate-300 border border-transparent flex items-center justify-center dark:hover:bg-slate-700 dark:hover:border-slate-600/50" do %>
-      <%%= icon "chevron-right", classes: "w-6 h-6 text-slate-600 stroke-current dark:text-slate-400" %>
+    <%= link_to "#", class: "p-2 rounded-lg hover:bg-slate-100 hover:border-slate-300 border border-transparent flex items-center justify-center dark:hover:bg-slate-700 dark:hover:border-slate-600/50" do %>
+      <%= icon "chevron-right", class: "size-6 text-slate-600 dark:text-slate-400" %>
     <%% end %>
   </div>
 
   <div class="flex justify-center items-center -space-x-4">
-    <%%= image_tag demo_avatar_url, class: "rounded-full sm:w-14 w-12 sm:h-14 h-12 border-2 border-white dark:border-slate-900", alt: "John Doe" %>
-    <%%= image_tag demo_avatar_url(id: "41", variant: "men"), class: "rounded-full sm:w-14 w-12 sm:h-14 h-12 border-2 border-white dark:border-slate-900", alt: "John Doe" %>
+    <%= image_tag demo_avatar_url, class: "rounded-full  border-2 border-white dark:border-slate-900 sm:size-14 size-12", alt: "John Doe" %>
+    <%= image_tag demo_avatar_url(id: "41", variant: "men"), class: "rounded-full sm:size-14 size-12 border-2 border-white dark:border-slate-900", alt: "John Doe" %>
   </div>
 
   <div class="w-full text-center mt-3">
-    <%% if respond_to?(:admin_project_path) %>
-      <%%= link_to "Onboarding Improvments", admin_project_path, class: "text-primary-600 hover:text-primary-700 text-sm font-medium hover:underline dark:text-primary-400 dark:hover:text-primary-500" %>
-    <%% else %>
-      <%%= link_to "Onboarding Improvments", "#", class: "text-primary-600 hover:text-primary-700 text-sm font-medium hover:underline dark:text-primary-400 dark:hover:text-primary-500" %>
-    <%% end %>
+    <% if respond_to?(:admin_project_path) %>
+      <%= link_to "Onboarding Improvments", admin_project_path, class: "text-primary-600 hover:text-primary-700 text-sm font-medium hover:underline dark:text-primary-400 dark:hover:text-primary-500" %>
+    <% else %>
+      <%= link_to "Onboarding Improvments", "#", class: "text-primary-600 hover:text-primary-700 text-sm font-medium hover:underline dark:text-primary-400 dark:hover:text-primary-500" %>
+    <% end %>
 
     <h1 class="sm:mt-4 mt-2 md:text-5xl text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight line-clamp-2">Thank You for Your Help!</h1>
 
@@ -63,7 +63,7 @@
     <div class="border rounded-lg shadow shadow-slate-300/30 bg-white pt-10 sm:pb-16 pb-10 sm:px-16 px-6 dark:bg-slate-800 dark:shadow-slate-950 dark:border-none">
       <div class="sm:flex justify-between items-center flex-1">
         <div class="flex items-center space-x-6">
-          <%%= image_tag demo_avatar_url(id: "41", variant: "men"), class: "rounded-full w-16 h-16", alt: "Matthew Martinez" %>
+          <%= image_tag demo_avatar_url(id: "41", variant: "men"), class: "rounded-full size-16", alt: "Matthew Martinez" %>
           <div>
             <p class="font-semibold text-slate-800 dark:text-slate-200">Matthew Martinez</p>
             <p class="text-sm text-slate-500 dark:text-slate-400">Notified 1 Person</p>
@@ -73,50 +73,50 @@
 
         <div class="flex items-center space-x-4 relative sm:mt-4 mt-4">
           <button class="p-1 rounded focus:ring-2   focus:ring-slate-100 group dark:focus:ring-slate-600/50">
-            <%%= icon "star", classes: "w-6 h-6 text-slate-500 stroke-current group-hover:text-amber-400 group-active:text-amber-400" %>
+            <%= icon "star", class: "size-6 text-slate-500 group-hover:text-amber-400 group-active:text-amber-400" %>
           </button>
 
           <button class="p-1 rounded focus:ring-2 focus:ring-slate-100 group dark:focus:ring-slate-600/50">
-            <%%= icon "arrow-uturn-left", classes: "w-6 h-6 text-slate-500 stroke-current group-hover:text-blue-400 group-active:text-blue-400" %>
+            <%= icon "arrow-uturn-left", class: "size-6 text-slate-500 group-hover:text-blue-400 group-active:text-blue-400" %>
           </button>
 
-          <div class="sm:relative" data-controller="dropdown">
-            <button class="flex items-center justify-center group focus:ring-4 focus:ring-primary-50 p-1 rounded-lg dark:focus:ring-slate-600/50" data-action="click->dropdown#toggle click@window->dropdown#hide">
-              <%%= icon "ellipsis-horizontal", classes: "w-6 h-6 text-slate-500 stroke-current group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+          <div class="sm:relative" data-controller="railsui-dropdown">
+            <button class="flex items-center justify-center group focus:ring-4 focus:ring-primary-50 p-1 rounded-lg dark:focus:ring-slate-600/50" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+              <%= icon "ellipsis-horizontal", class: "size-6 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             </button>
 
-            <ul data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200" data-transition-enter-active="transition ease-out duration-300" data-transition-enter-from="transform opacity-0 scale-95"
+            <ul data-railsui-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200" data-transition-enter-active="transition ease-out duration-300" data-transition-enter-from="transform opacity-0 scale-95"
             data-transition-enter-to="transform opacity-100 scale-100"
             data-transition-leave-active="transition ease-in duration-200"
             data-transition-leave-from="transform opacity-100 scale-100"
             data-transition-leave-to="transform opacity-0 scale-95">
               <li>
-                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
-                  <%%= icon "link", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
+                  <%= icon "link", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                   <span>Copy link</span>
-                <%% end %>
+                <% end %>
               </li>
 
               <li>
-                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
-                  <%%= icon "arrow-small-right", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
+                  <%= icon "arrow-small-right", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                   <span>Forward</span>
-                <%% end %>
+                <% end %>
               </li>
 
               <li>
-                <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
-                  <%%= icon "eye-slash", classes: "stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
+                  <%= icon "eye-slash", class: "size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
 
                   <span>Mark unread</span>
-                <%% end %>
+                <% end %>
               </li>
 
               <li>
-                <%%= link_to "#", class: "py-2 px-4 hover:text-red-600 focus:text-red-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-red-400" do %>
-                  <%%= icon "trash", classes: "flex-shrink-0 stroke-current w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
+                <%= link_to "#", class: "py-2 px-4 hover:text-red-600 focus:text-red-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-red-400" do %>
+                  <%= icon "trash", class: "flex-shrink-0 w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
                   <span>Delete</span>
-                <%% end %>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -124,58 +124,58 @@
       </div>
 
       <div class="sm:pl-[5.5rem] prose lg:prose-lg prose-slate sm:pt-10 pt-5 dark:prose-invert prose-a:text-primary-600 prose-a:hover:text-primary-700 prose-a:hover:underline prose-a:font-medium max-w-full sm:mb-16 mb-8 dark:prose-a:text-primary-400 dark:prose-a:hover:text-primary-500">
-        <div class="flex items-center space-x-2 m-0">
+        <div class="flex items-center gap-2 m-0">
           <span>Hi</span>
-          <%%= image_tag demo_avatar_url, class: "w-6 h-6 rounded-full !mb-0 !mt-0" %>
+          <%= image_tag demo_avatar_url, class: "size-6 rounded-full !mb-0 !mt-0" %>
           <span>John,</span>
         </div>
-        <p>Find the attached file containing the mockup. We would love to hear your thoughts, suggestions, and any improvements you might recommend. Your feedback will play a significant role in refining the design and making it even better. I posted another message for the team <%%= link_to "here", "#" %>.</p>
+        <p>Find the attached file containing the mockup. We would love to hear your thoughts, suggestions, and any improvements you might recommend. Your feedback will play a significant role in refining the design and making it even better. I posted another message for the team <%= link_to "here", "#" %>.</p>
       </div>
 
       <div class="sm:pl-20 mt-10">
-        <%%= link_to "#", class: "inline-flex items-center space-x-2 rounded-lg py-2 px-3 hover:bg-slate-50/25 hover:border-slate-200 border focus:ring-4 focus:ring-primary-50/50 group border-slate-200/80 bg-white hover:shadow-sm transition dark:border-none dark:bg-slate-700/30 dark:text-slate-500 dark:hover:bg-slate-900/50 dark:focus:ring-slate-600/20" do %>
+        <%= link_to "#", class: "inline-flex items-center space-x-2 rounded-lg py-2 px-3 hover:bg-slate-50/25 hover:border-slate-200 border focus:ring-4 focus:ring-primary-50/50 group border-slate-200/80 bg-white hover:shadow-sm transition dark:border-none dark:bg-slate-700/30 dark:text-slate-500 dark:hover:bg-slate-900/50 dark:focus:ring-slate-600/20" do %>
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEnklEQVR4nO2b6UtVQRiH/Ve6bdAGBVFCy4eKdvrWLcu0xTSsKNojMCrTylYiooygKAPDFk2I9n2hIiwrixYrSzMzzawc9RfDfPF4zr3da/ec986c9wfz4S4c4XnOvO+cmWtCAofD4XA4HA6nC0EwAK3G1G65RokmBxr0uQRymEGfSyAHGYxstB3bZqYEarCIcIiaz2ZK0EmAMFGCbgKEaRJ0FCBMkqCrAGGKBJ0FCBMk6C5A6C7BBAFCZwmmCBC6SjBJgNBRgmkChG4STBQgdJJgqgChiwSTBQgdJJguQMS7BD8IEPEswS8CRAgJ1Px9JUA4SKDmr40AuDSo+bMA6lDfgeAZQA8BXILoQYBoUFcgLkHUob4DwTOAHgK4BHkEYeEI4FoRUP8FaPkDVD4H9q9iAZ7AXzQSaKiDY45tIZPgnx5w4ThC5nczkDaYBbgGf1p3oLkJYZO/jgW4JiAj0Q785B7razlDuAS5JGDZWLuA3Yutr2+cZgGu3YFpg+0Cjm+1vr56kgW41wN6AL9+WoE/usIlyNNV0JNbVuCdhRQ4HBl6MPwjoHA3wiYvgwW4KmDlxPAClo5hAa7PgvcVzvCbfwDTe7IA1wUczXEWIBsyQf33Vw8IBoDU/kBTg10A7wV5KOHUPruA3Lk8AzwTsG2+XcCze2q/iEuQBwKuFDr3gf2rWYDr8JN6Ao3fnAU0fQcyh3kuwV9NeFMywub5fc+Xo/4ScP2UFfj3WudtahbgAvzUAerkq2M2zADKblrfa29XW9U8A2Is4MBaK+jqSrXySR9qPyuWotZM4RIUUwFvy62QT2y39oZWYf38Rz2wapL1GrI/ZA4H1k8DtqYBOxeqZ4jVk4GkXtwDEAr+hiQrXAlbHlN2/M7eZar8dIxcMRXkATfPAB9e2SV1njWXTkR9uO+PJvzgghXW7RLn7507hP9ObZUqaywgoCAsGQW0t1khZQXVZ7JsbJwJFB8EPrxEzBLFAb/5M+B6kRXOx1eqbsszYFnnuxJZiuQJ261i4G4pUPnCXrpYQABYOhpoa+0i5Fag4Wvoz0UL8OmN6g2NnURKsSwgoJpnNJFL0/NH1IadfG5I7hP+F3Wh8viazwWkDwFK8iO7+989Awp3ASsmhL7e5lTgdVlk8OVhfxTPEGYJyEgESg8Df36Fh/StGjh7AFg+LrrrZ6cAFwuAumr7NeXfvH8eWDE+qmuaISC5D1C0F2j5HR780ztAXnpsNtxm9VM9Rh72y4czudPahevoLyA7RdXuf63NJahYzrYYDX0FzOqrlpKRJGc2OWizBMgmK5tnJJH/ERMHoM0RMGcgUPU6IvaQ+/3zBpFDNkuA/Bm5U40XLfb3d2SSAzZLQEo/+9q+uhKoeW+HL5eLcQDYLAFyuRdJKh4CM3qTwzVPgPydf31NePhvy1WfiAO45gmQY/sCtVHmlLulwNz4brr6C5Aja6p6qv3ZqH7Z/OiyeiCLA6D+EGDQSKAONQCwAHoI4BlADwJEg7oCcQmiDvUdCJ4B9BDAJYgeBIgGdQXiEkQd6jsQPAPoIYBLED0IEA3qCsThcDgcDoeToGX+ArpFl2v/8LnNAAAAAElFTkSuQmCC" alt="PDF" class="w-9">
           <div>
             <p class="font-medium text-sm dark:text-slate-400">mockup.pdf</p>
             <p class="text-sm text-slate-500">1.2 MB</p>
           </div>
           <div class="pl-10">
-            <%%= icon "arrow-down-tray", classes: "w-6 h-6 text-slate-300 stroke-current group-focus:text-slate-400 group-hover:text-slate-400 dark:group-hover:text-slate-400 dark:text-slate-500 dark:group-focus:text-slate-400" %>
+            <%= icon "arrow-down-tray", class: "size-6 text-slate-300 group-focus:text-slate-400 group-hover:text-slate-400 dark:group-hover:text-slate-400 dark:text-slate-500 dark:group-focus:text-slate-400" %>
           </div>
-        <%% end %>
+        <% end %>
       </div>
 
       <div class="border-t mt-10 sm:py-16 py-10 sm:-mx-16 sm:px-16 -mx-6 px-6 dark:border-slate-700">
-        <div class="relative" data-controller="dropdown">
-          <button class="flex items-center justify-center group focus:ring-4 focus:ring-primary-50 p-1 rounded-lg absolute top-0 right-0 dark:focus:ring-slate-600/50" data-action="click->dropdown#toggle click@window->dropdown#hide">
-            <%%= icon "ellipsis-horizontal", classes: "w-6 h-6 text-slate-500 stroke-current group-hover:text-primary-600" %>
+        <div class="relative" data-controller="railsui-dropdown">
+          <button class="flex items-center justify-center group focus:ring-4 focus:ring-primary-50 p-1 rounded-lg absolute top-0 right-0 dark:focus:ring-slate-600/50" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+            <%%= icon "ellipsis-horizontal", class: "size-6 text-slate-500 group-hover:text-primary-600" %>
           </button>
-          <ul data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+          <ul data-railsui-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
           data-transition-enter-active="transition ease-out duration-300" data-transition-enter-from="transform opacity-0 scale-95"
           data-transition-enter-to="transform opacity-100 scale-100"
           data-transition-leave-active="transition ease-in duration-200"
           data-transition-leave-from="transform opacity-100 scale-100"
           data-transition-leave-to="transform opacity-0 scale-95">
             <li>
-              <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
-                <%%= icon "pencil-square", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
+                <%= icon "pencil-square", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                 <span>Edit</span>
-              <%% end %>
+              <% end %>
             </li>
 
             <li>
-              <%%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
-                <%%= icon "link", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
+                <%= icon "link", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                 <span>Copy link</span>
-              <%% end %>
+              <% end %>
             </li>
 
             <li>
-              <%%= link_to "#", class: "py-2 px-4 hover:text-red-600 focus:text-red-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-red-400" do %>
-                <%%= icon "trash", classes: "flex-shrink-0 stroke-current w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
+              <%= link_to "#", class: "py-2 px-4 hover:text-red-600 focus:text-red-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-red-400" do %>
+                <%= icon "trash", class: "flex-shrink-0 w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
 
                 <span>Delete</span>
-              <%% end %>
+              <% end %>
             </li>
           </ul>
         </div>
@@ -185,11 +185,11 @@
             <time class="text-sm text-slate-500 sm:mt-4 mt-2 block" datetime="2023-07-02T12:03">Jul 2</time>
           </div>
           <div class="sm:pl-12 flex items-start space-x-6">
-            <%%= image_tag demo_avatar_url(id: "22", variant: "men"), class: "rounded-full sm:w-14 w-102 sm:h-14 h-12" %>
+            <%= image_tag demo_avatar_url(id: "22", variant: "men"), class: "rounded-full sm:w-14 w-102 sm:h-14 h-12" %>
             <div class="prose prose-slate dark:prose-invert prose-a:text-primary-600 prose-a:hover:text-primary-700 prose-a:hover:underline prose-a:font-medium max-w-full">
               <div class="flex items-center space-x-2 m-0">
                 <span>Hey</span>
-                <%%= image_tag demo_avatar_url(id: "41", variant: "men"), alt: "Avatar", class: "w-6 h-6 rounded-full !mb-0 !mt-0" %>
+                <%= image_tag demo_avatar_url(id: "41", variant: "men"), alt: "Avatar", class: "size-6 rounded-full !mb-0 !mt-0" %>
                 <span>Matthew,</span>
               </div>
               <p>Thanks for sharing the mockup! I've downloaded the file and will take a look right away. I appreciate the opportunity to provide feedback and contribute to refining the design. I'll carefully review it and jot down any thoughts, suggestions, or improvements that come to mind. Expect my feedback shortly.</p>
@@ -208,7 +208,7 @@
         </div>
 
         <div class="sm:pl-12 flex-1 sm:flex items-start sm:space-x-6 sm:pr-16">
-          <%%= image_tag demo_avatar_url(id: "22", variant: "men"), class: "rounded-full sm:w-14 w-8 sm:h-14 h-8 sm:mb-0 mb-3" %>
+          <%= image_tag demo_avatar_url(id: "22", variant: "men"), class: "rounded-full sm:w-14 w-8 sm:h-14 h-8 sm:mb-0 mb-3" %>
 
           <!-- ActionText -->
           <div class="sm:flex-1 w-full">

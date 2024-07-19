@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
-  <title>Admin | <%= Railsui.config.application_name || "Rails UI" %></title>
+  <title>
+    <%= Railsui.config.application_name || "Rails UI" %>
+  </title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application" "data-turbo-track": "reload" %>
 
   <%= railsui_head %>
 </head>
