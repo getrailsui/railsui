@@ -79,7 +79,19 @@ module Railsui
       Railsui.build_css
     end
 
-    def update
+    def self.update(params={})
+      config = load!
+
+      params.each do |key, value|
+        if key == "colors"
+          config.colors = convert_keys_to_strings(value)
+        elsif config.respond_to?("#{key}=")
+          config.send("#{key}=", value)
+        end
+      end
+      config.pages = Railsui::Pages.theme_pages.keys
+      config.save
+
       Railsui.run_command "rails g railsui:update"
     end
 
@@ -103,6 +115,14 @@ module Railsui
 
         # Save the updated configuration back to the file
         File.write(config_path, config.to_yaml)
+      end
+    end
+
+    def self.convert_keys_to_strings(hash)
+      hash.each_with_object({}) do |(key, value), result|
+        new_key = key.to_s
+        new_value = value.is_a?(Hash) ? convert_keys_to_strings(value) : value
+        result[new_key] = new_value
       end
     end
 
