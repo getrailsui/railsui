@@ -1,20 +1,108 @@
 <div class="py-8" data-railsui-configuration-target="frameworks">
-  <%= heading text: "Templates", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
+
+  <%#% if Railsui.config.theme.present? %>
+  <%#% render "railsui/admin/fields/theme_active", f: f %>
+  <%#% else %>
+  <%#% render "railsui/admin/fields/theme_setup", f: f %>
+  <%# end %>
+
+  <%= heading text: "Theme", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
 
   <div class="prose prose-neutral dark:prose-invert mb-6">
-    <% if Railsui.config.theme.present? %>
-      <p>Your active template is <span class="bg-neutral-800/10 text-neutral-900 dark:bg-neutral-500/30 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span>.
-        All colors and theming conventions can be customized inside the tailwind.config.js file.
-      </p>
-    <% else %>
-      <p>Select a template to base your application off of. Rails UI uses Tailwind CSS as the underlaying CSS framework. <%= link_to "Read more about themes", "https://railsui.com/docs/themes", target: :_blank %>.</p>
-    <% end %>
+    <p>Select a theme to use for you application. Have a look at the FAQS for more information.</p>
+    <p>Active theme: <span class="bg-neutral-200/80 text-neutral-800 dark:bg-neutral-600/70 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span>. </p>
   </div>
 
-  <% if Railsui.config.theme.present? %>
-    <%= render "railsui/admin/fields/theme_active", f: f %>
-  <% else %>
-    <%= render "railsui/admin/fields/theme_setup", f: f %>
-  <% end %>
+  <ul class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-16">
+    <% Railsui::Default::THEMES.each do |key, theme| %>
+      <li>
+        <% theme_id = key.to_s %>
+
+        <input type="radio" id="configuration_theme_<%= theme_id %>" value="<%= key %>" name="configuration[theme]" class="sr-only peer group" <% if theme_id == Railsui.config.theme %>checked<% end %>>
+
+        <label data-railsui-configuration-target="theme" for="configuration_theme_<%= theme_id %>" class="bg-white rounded-lg overflow-clip block border border-neutral-300 focus:ring-4 focus:ring-white transition duration-300 dark:bg-neutral-700 dark:border-neutral-600 hover:shadow-xl peer-checked:ring-4 peer-checked:ring-black relative peer-checked:before:content-['Active']
+      peer-checked:before:text-sm
+      peer-checked:before:absolute
+      peer-checked:before:top-0
+      peer-checked:before:left-0
+      peer-checked:before:bg-black/95
+      dark:peer-checked:before:bg-amber-300
+      dark:peer-checked:before:text-neutral-950
+      dark:peer-checked:ring-amber-300
+      peer-checked:before:backdrop-blur
+      peer-checked:before:w-16 peer-checked:before:px-1 peer-checked:before:py-0.5 peer-checked:before:text-white peer-checked:before:font-medium
+      peer-checked:before:rounded-br-lg
+      peer-checked:before:transition
+      peer-checked:before:animate-fade-in
+      peer-checked:before:text-center
+      peer-checked:shadow-xl
+      peer-checked:shadow-black/10">
+          <%= image_tag theme[:thumbnail], alt: "#{theme[:name]} theme" %>
+        </label>
+        <div class="flex items-center justify-between mt-3">
+          <p class="font-semibold text-base"><%= theme[:name] %></p>
+          <%= link_to theme[:preview_link], target: :_blank, class: "rui-btn rui-btn-transparent" do %>
+            <span class="sr-only">Preview</span>
+            <%= icon "eye", class: "size-5 stroke-current text-neutral-500", title: "Preview theme" %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <p class="py-4 tracking-wide text-neutral-500">Theme FAQs</p>
+
+  <dl class="mt-2 divide-y divide-gray-200 dark:divide-neutral-700 mb-10">
+    <details class="group py-4">
+      <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 group-open:dark:text-neutral-400 [&::-webkit-details-marker]:hidden">
+        Can I change my theme?
+        <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+      </summary>
+
+      <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
+        <p>Yes, you can change your theme at any time. We strive to make this as easy as possible but it's not without some caveats.</p>
+
+        <p>Here's what happens when you change your theme:</p>
+        <ul>
+          <li>
+            Rails UI generated pages (<code>app/views/railsui</code>) and images (<code>app/assets/images/railsui</code>) are replaced with the newly chosen theme's files.
+            <ul>
+              <li>
+                <strong>Tip:</strong> To keep using any pages in the <code>app/views/railsui</code> directory or images in the <code>app/assets/images/railsui</code> directory, copy these files to a backup location or elsewhere in your app before making changes. Consider pages as code snippets for your app, and treat them as read-only.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Your color scheme will be preserved.
+            <ul>
+              <li>
+                <p><strong>Tip:</strong> Check your logs after changing your theme and saving changes to see output of the default colors. To modify them, save time by copying and pasting them into your <code>railsui.yml</code> config file directly. Come back to this page and save your changes to see the new colors appear. You can also use the <code>rails g railsui:update</code> generator to quickly update your colors.</p>
+              </li>
+
+            </li>
+          </ul>
+        </li>
+        <li>
+          Your <code>tailwind.config.js</code> file will be scanned and optimized to use the new theme's <a href="https://www.npmjs.com/package/railsui-tailwind-presets">Rails UI preset</a> along with other necessary Rails UI configuration settings.
+        </li>
+      </ul>
+
+    </div>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 group-open:dark:text-neutral-400 [&::-webkit-details-marker]:hidden">
+      Do I need to use this form?
+
+      <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+    </summary>
+    <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
+      <p>No, you don't need to use this form. You can change your theme, colors, or pages at any time directly in the <code>config/railsui.yml</code> file. Use the Rails UI  generators (Run <code>rails g</code> to see the list of available railsui generators) to update your configuration via the command line.</p>
+
+      <p>You can check <a href="https://railsui.com/docs" target="_blank">the documentation</a> to see a list of available default colors and pages bundled with each Rails UI theme.</p>
+
+    </div>
+  </details>
+</dl>
 
 </div>

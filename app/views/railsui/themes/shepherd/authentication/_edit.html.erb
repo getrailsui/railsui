@@ -1,182 +1,182 @@
 <%= render layout: example, locals: { heading: "Edit account", section: "Authentication" } do %>
-<div class="rounded-xl border-zinc-200 dark:border-zinc-600/80 overflow-hidden border dark:bg-zinc-900 pointer-events-none select-none">
-<header
+  <div class="rounded-xl border-zinc-200 dark:border-zinc-600/80 overflow-hidden border dark:bg-zinc-900 pointer-events-none select-none">
+    <header
   class="bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b border-zinc-300/80 relative z-50 dark:border-zinc-700/80 pointer-events-none select-none"
   data-controller="nav">
-  <div class="md:flex items-center justify-between">
-    <div class="md:flex items-center md:space-x-4 md:flex-1">
-      <div class="md:flex items-center justify-between w-full md:space-x-3">
-        <div class="flex items-center justify-between md:w-auto w-full">
-          <h1>
-            <a href="#" data-controller="prevent" data-action="click->prevent#prevent">
-              <svg xmlns="http://www.w3.org/2000/svg" width="49" height="49" viewBox="0 0 49 49" fill="none"
+      <div class="md:flex items-center justify-between">
+        <div class="md:flex items-center md:space-x-4 md:flex-1">
+          <div class="md:flex items-center justify-between w-full md:space-x-3">
+            <div class="flex items-center justify-between md:w-auto w-full">
+              <h1>
+                <a href="#" data-controller="prevent" data-action="click->prevent#prevent">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="49" height="49" viewBox="0 0 49 49" fill="none"
                 class="text-zinc-900 dark:text-white fill-current w-10 h-10" role="img"
                 aria-labelledby="ar03c9o073ppb053d4lv3cs98acqldaz">
-                <title id="ar03c9o073ppb053d4lv3cs98acqldaz">Logo</title>
-                <path fill-rule="evenodd" clip-rule="evenodd"
+                    <title id="ar03c9o073ppb053d4lv3cs98acqldaz">Logo</title>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M6 49C2.68629 49 4.04954e-06 46.3137 4.33923e-06 43L7.57388e-06 6C7.86357e-06 2.68629 2.6863 -2.34175e-07 6.00001 5.55182e-08L43 3.29016e-06C46.3137 3.57985e-06 49 2.68629 49 6L49 43C49 46.3137 46.3137 49 43 49L6 49ZM27.0487 7.19884C26.7537 7.15423 26.5152 7.4441 26.5152 7.74239L26.5152 14.1001C26.5152 17.1779 29.847 19.1015 32.5124 17.5626C33.4762 17.0062 34.7087 17.3364 35.2652 18.3002C35.8216 19.2641 35.4914 20.4965 34.5276 21.053C31.8332 22.6085 31.8332 26.4974 34.5276 28.053C35.4914 28.6095 35.8216 29.8419 35.2652 30.8057C34.7087 31.7696 33.4762 32.0998 32.5124 31.5433C29.847 30.0044 26.5151 31.9281 26.5151 35.0059L26.5151 36.5643C26.5151 39.5009 29.1413 41.8187 31.8044 40.5812C37.8253 37.7836 42 31.6824 42 24.6061C42 15.7849 35.5127 8.4789 27.0487 7.19884ZM6.78789 24.6061C6.78789 15.7175 13.3747 8.3674 21.9335 7.17056C22.2405 7.12763 22.4848 7.43239 22.4848 7.74239L22.4848 14.218C22.4848 17.2767 19.1737 19.1884 16.5247 17.6591C15.5609 17.1026 14.3284 17.4328 13.772 18.3967C13.2155 19.3605 13.5457 20.5929 14.5096 21.1494C17.1297 22.6621 17.1297 26.4439 14.5096 27.9566C13.5457 28.513 13.2155 29.7455 13.772 30.7093C14.3284 31.6732 15.5609 32.0034 16.5247 31.4469C19.1737 29.9175 22.4848 31.8293 22.4848 34.888L22.4848 36.5904C22.4848 39.5379 19.8674 41.8799 17.1792 40.6708C11.0533 37.9153 6.78789 31.7588 6.78789 24.6061Z">
-                </path>
-              </svg>
+                    </path>
+                  </svg>
 
-              <span class="sr-only">Shepherd</span>
-            </a>
-          </h1>
+                  <span class="sr-only">Shepherd</span>
+                </a>
+              </h1>
 
-          <button type="button" data-action="click->nav#toggle"
-            class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
-            role="Mobile navigation toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              <button type="button" data-action="click->nav#toggle"
+                class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+                role="Mobile navigation toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" aria-hidden="true"
               class="stroke-current w-8 h-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100"
               role="img" aria-labelledby="al9xdh8ihrep75ki6v7ova75rwtmsfzm">
-              <title id="al9xdh8ihrep75ki6v7ova75rwtmsfzm">Bars 3 center left</title>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5">
-              </path>
-            </svg>
+                  <title id="al9xdh8ihrep75ki6v7ova75rwtmsfzm">Bars 3 center left</title>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5">
+                  </path>
+                </svg>
 
-          </button>
-        </div>
+              </button>
+            </div>
 
-        <div data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200"
+            <div data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200"
           data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100"
           data-transition-leave-from="opacity-100 scale-100"
           data-transition-leave-active="transition ease-in duration-200" data-transition-leave-to="opacity-0 scale-95"
           class="origin-top-left md:flex items-center w-full hidden">
-          <nav role="primary navigation" class="flex-1">
-            <ul class="md:flex items-center md:space-y-0 space-y-4">
-              <div class="flex-1 md:flex items-center">
+              <nav role="primary navigation" class="flex-1">
+                <ul class="md:flex items-center md:space-y-0 space-y-4">
+                  <div class="flex-1 md:flex items-center">
 
-              </div>
+                  </div>
 
-              <li>
-                <div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative" data-controller="dropdown">
-                  <button type="button"
+                  <li>
+                    <div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative" data-controller="dropdown">
+                      <button type="button"
                     class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400 focus:ring-4 focus:ring-zinc-100 hover:border-zinc-400/80 dark:border-zinc-600 dark:focus:ring-zinc-700 dark:focus:border-zinc-400"
                     data-action="click->dropdown#toggle click@window->dropdown#hide">
-                    <div class="relative">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        <div class="relative">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" aria-hidden="true"
                         class="text-zinc-500 md:w-5 md:h-5 w-6 h-6 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 dark:text-zinc-400 stroke-current"
                         role="img" aria-labelledby="amrzf0rwyhnhalpqi5zg0hch6jkw4fcy">
-                        <title id="amrzf0rwyhnhalpqi5zg0hch6jkw4fcy">Bell</title>
-                        <path stroke-linecap="round" stroke-linejoin="round"
+                            <title id="amrzf0rwyhnhalpqi5zg0hch6jkw4fcy">Bell</title>
+                            <path stroke-linecap="round" stroke-linejoin="round"
                           d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0">
-                        </path>
-                      </svg>
+                            </path>
+                          </svg>
 
-                      <span
+                          <span
                         class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
-                    </div>
-                  </button>
-                  <div
+                        </div>
+                      </button>
+                      <div
                     class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200"
                     data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
                     data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100"
                     data-transition-leave-to="opacity-0 scale-95">
-                    <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
-                      <div class="flex-1">
-                        <div class="flex items-start space-x-2">
-                          <img class="w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1"
-                            src="https://randomuser.me/api/portraits/men/10.jpg">
+                        <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                           <div class="flex-1">
-                            <p class="truncate">John D. replied to <a
+                            <div class="flex items-start space-x-2">
+                              <img class="w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1"
+                            src="https://randomuser.me/api/portraits/men/10.jpg">
+                              <div class="flex-1">
+                                <p class="truncate">John D. replied to <a
                                 class="underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"
                                 href="#">your comment</a></p>
-                            <p class="text-xs text-zinc-500 dark:text-zinc-400">Just now</p>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400">Just now</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <button
+                          <button
                         class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-zinc-50/50 group border border-zinc-200 hover:border-zinc-300 focus:ring-4 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:border-zinc-600 dark:hover:bg-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                           stroke="currentColor" aria-hidden="true"
                           class="w-3 h-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current"
                           role="img" aria-labelledby="aph9s69lak15ncvgwlm0ddosez1fqlsd">
-                          <title id="aph9s69lak15ncvgwlm0ddosez1fqlsd">X mark</title>
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
+                              <title id="aph9s69lak15ncvgwlm0ddosez1fqlsd">X mark</title>
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
 
-                      </button>
-                    </div>
-                    <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
-                      <div class="flex-1">
-                        <div class="flex items-start space-x-2">
-                          <img alt="Avatar" class="w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1"
-                            src="https://randomuser.me/api/portraits/women/14.jpg">
+                          </button>
+                        </div>
+                        <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                           <div class="flex-1">
-                            <p>Jane D. posted <a
+                            <div class="flex items-start space-x-2">
+                              <img alt="Avatar" class="w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1"
+                            src="https://randomuser.me/api/portraits/women/14.jpg">
+                              <div class="flex-1">
+                                <p>Jane D. posted <a
                                 class="underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"
                                 href="#">an update</a></p>
-                            <p class="text-xs text-zinc-500 dark:text-zinc-400">15 mins ago</p>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400">15 mins ago</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <button
+                          <button
                         class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-zinc-50/50 group border border-zinc-200 hover:border-zinc-300 focus:ring-4 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:border-zinc-600 dark:hover:bg-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                           stroke="currentColor" aria-hidden="true"
                           class="w-3 h-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current"
                           role="img" aria-labelledby="ahowa5psoz1i6a1tqnj2uc50thz38xlc">
-                          <title id="ahowa5psoz1i6a1tqnj2uc50thz38xlc">X mark</title>
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
+                              <title id="ahowa5psoz1i6a1tqnj2uc50thz38xlc">X mark</title>
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
 
-                      </button>
-                    </div>
-                    <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
-                      <div class="flex-1">
-                        <div class="flex items-start space-x-2">
-                          <img alt="Avatar" class="w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1"
-                            src="https://randomuser.me/api/portraits/men/24.jpg">
+                          </button>
+                        </div>
+                        <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                           <div class="flex-1">
-                            <p>Scotty P. shared <a
+                            <div class="flex items-start space-x-2">
+                              <img alt="Avatar" class="w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1"
+                            src="https://randomuser.me/api/portraits/men/24.jpg">
+                              <div class="flex-1">
+                                <p>Scotty P. shared <a
                                 class="underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"
                                 href="#">a repository</a></p>
-                            <p class="text-xs text-zinc-500 dark:text-zinc-400">2 hours ago</p>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400">2 hours ago</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <button
+                          <button
                         class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-zinc-50/50 group border border-zinc-200 hover:border-zinc-300 focus:ring-4 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:border-zinc-600 dark:hover:bg-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                           stroke="currentColor" aria-hidden="true"
                           class="w-3 h-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current"
                           role="img" aria-labelledby="adz5m3f4a1yim5qxbix2otgf59dt4fyf">
-                          <title id="adz5m3f4a1yim5qxbix2otgf59dt4fyf">X mark</title>
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
+                              <title id="adz5m3f4a1yim5qxbix2otgf59dt4fyf">X mark</title>
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
 
-                      </button>
-                    </div>
-                    <div>
-                      <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:text-primary-500 text-sm group font-medium text-zinc-500 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-white"
+                          </button>
+                        </div>
+                        <div>
+                          <a class="flex items-center justify-between group px-4 pt-3 pb-2 hover:text-primary-500 text-sm group font-medium text-zinc-500 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-white"
                         href="#">
-                        <span>View all notifications</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            <span>View all notifications</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                           stroke="currentColor" aria-hidden="true"
                           class="group-hover:tranzinc-x-1 transform transition ease-in-out w-4 h-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current"
                           role="img" aria-labelledby="accuiapq2x67kc6fwpahox2muohhpnp0">
-                          <title id="accuiapq2x67kc6fwpahox2muohhpnp0">Chevron right</title>
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
-                        </svg>
+                              <title id="accuiapq2x67kc6fwpahox2muohhpnp0">Chevron right</title>
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+                            </svg>
 
-                      </a>
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </li>
+                  </li>
 
-              <li>
-                <div data-controller="dropdown" class="md:flex relative">
-                  <button data-action="click->dropdown#toggle click@window->dropdown#hide"
-                    data-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
-                    focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
-                    dark:focus:border-zinc-300/90">
+                  <li>
+                    <div data-controller="dropdown" class="md:flex relative">
+                      <button data-action="click->dropdown#toggle click@window->dropdown#hide"
+                        data-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
+                        focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
+                        dark:focus:border-zinc-300/90">
 
-                    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), alt: "Shepherd user", class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
-                  </button>
+                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), alt: "Shepherd user", class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
+                      </button>
 
-                  <ul data-dropdown-target="menu"
+                      <ul data-dropdown-target="menu"
                     class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-4 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading space-y-3"
                     data-transition-enter-active="transition ease-out duration-300"
                     data-transition-enter-from="transform opacity-0 scale-95"
@@ -185,431 +185,431 @@
                     data-transition-leave-from="transform opacity-100 scale-100"
                     data-transition-leave-to="transform opacity-0 scale-95">
 
-                    <li class="border-b border-zinc-300/80 dark:border-zinc-700/80"></li>
+                        <li class="border-b border-zinc-300/80 dark:border-zinc-700/80"></li>
 
-                    <li>
-                      <a class="py-1 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm"
+                        <li>
+                          <a class="py-1 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm"
                         href="/users/edit">Account</a>
-                    </li>
+                        </li>
 
-                    <li>
-                      <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method"
+                        <li>
+                          <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method"
                           value="delete" autocomplete="off"><button
                           class="py-1 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left"
                           type="submit">Sign out</button><input type="hidden" name="authenticity_token"
                           value="Srwd3EPYvldVH0PxTXuqyUKm2Yo98S7FLyPYQKSgMfFc7EI0Ezl3F2dis6ID9x_qJjcsOP3a0IQyiHwl0Ms5_Q"
                           autocomplete="off"></form>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </nav>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-</header>
+    </header>
 
-<div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
-  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+    <div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
+      <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
     bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
-  <div class="relative z-20">
-    <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account
-    </h1>
+      <div class="relative z-20">
+        <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account
+        </h1>
 
-    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
-      convenient place.</p>
-  </div>
-</div>
+        <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
+          convenient place.</p>
+      </div>
+    </div>
 
-<div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
-  <div class="text-zinc-600 dark:text-zinc-100 sm:px-10 px-4 sm:justify-center flex font-heading text-base">
-    <nav role="navigation" class="overflow-y-hidden overflow-x-auto snap-x flex">
+    <div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
+      <div class="text-zinc-600 dark:text-zinc-100 sm:px-10 px-4 sm:justify-center flex font-heading text-base">
+        <nav role="navigation" class="overflow-y-hidden overflow-x-auto snap-x flex">
 
-      <a class="py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500"
+          <a class="py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500"
         href="/users/edit">Profile</a>
 
-    </nav>
-  </div>
+        </nav>
+      </div>
 
-  <form data-turbo="false" class="edit_user" id="edit_user" enctype="multipart/form-data" action="#"
+      <form data-turbo="false" class="edit_user" id="edit_user" enctype="multipart/form-data" action="#"
     accept-charset="UTF-8" method="post" data-controller="prevent" data-action="submit->prevent#prevent">
-    <input type="hidden" name="_method" value="put" autocomplete="off">
+        <input type="hidden" name="_method" value="put" autocomplete="off">
 
-      <div class="max-w-xl mx-auto">
+        <div class="max-w-xl mx-auto">
 
-        <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Profile
-        </h2>
-        <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
-          <p>Edit your profile details.</p>
-        </div>
+          <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Profile
+          </h2>
+          <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
+            <p>Edit your profile details.</p>
+          </div>
 
-        <!-- Avatar -->
-        <div class="form-group">
-          <label class="form-label" for="user_avatar">Avatar</label>
+          <!-- Avatar -->
+          <div class="form-group">
+            <label class="form-label" for="user_avatar">Avatar</label>
 
-          <div class="flex items-center space-x-3">
-            <div
+            <div class="flex items-center space-x-3">
+              <div
             class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" aria-hidden="true" class="w-6 h-6 text-zinc-500" role="img"
               aria-labelledby="accnrz81yjvy491sklpfcjjf3m8wzkve">
-                <title id="accnrz81yjvy491sklpfcjjf3m8wzkve">User</title>
-                <path stroke-linecap="round" stroke-linejoin="round"
+                  <title id="accnrz81yjvy491sklpfcjjf3m8wzkve">User</title>
+                  <path stroke-linecap="round" stroke-linejoin="round"
                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z">
-                </path>
-              </svg>
+                  </path>
+                </svg>
 
+              </div>
+
+              <label class="block" for="user_avatar">
+                <input class="form-file" type="file" name="user[avatar]" id="user_avatar">
+              </label>
             </div>
 
-            <label class="block" for="user_avatar">
-              <input class="form-file" type="file" name="user[avatar]" id="user_avatar">
-            </label>
           </div>
 
-        </div>
+          <div class="form-group">
+            <label class="form-label" for="user_name">Name</label>
+            <input class="form-input" type="text" value="John Doe" name="user[name]" id="user_name">
+          </div>
 
-        <div class="form-group">
-          <label class="form-label" for="user_name">Name</label>
-          <input class="form-input" type="text" value="John Doe" name="user[name]" id="user_name">
-        </div>
-
-        <!-- Email -->
-        <div class="form-group">
-          <label class="form-label form-label-required" for="user_email">Email</label>
-          <input autocomplete="email" class="form-input" type="email" value="john.doe@example.com" name="user[email]"
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label form-label-required" for="user_email">Email</label>
+            <input autocomplete="email" class="form-input" type="email" value="john.doe@example.com" name="user[email]"
           id="user_email">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="user_password">Password</label>
-          <input autocomplete="new-password" class="form-input" type="password" name="user[password]" id="user_password">
-          <div
-          class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
-            <p>6 characters minimum</p>
-            <p>Leave this blank if you don't want to change it</p>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label class="form-label" for="user_password_confirmation">Password confirmation</label>
-          <input autocomplete="new-password" class="form-input" type="password" name="user[password_confirmation]"
+          <div class="form-group">
+            <label class="form-label" for="user_password">Password</label>
+            <input autocomplete="new-password" class="form-input" type="password" name="user[password]" id="user_password">
+            <div
+          class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+              <p>6 characters minimum</p>
+              <p>Leave this blank if you don't want to change it</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="user_password_confirmation">Password confirmation</label>
+            <input autocomplete="new-password" class="form-input" type="password" name="user[password_confirmation]"
           id="user_password_confirmation">
-        </div>
+          </div>
 
-        <div class="from-group">
-          <label class="form-label form-label-required" for="user_current_password">Current password</label>
-          <input autocomplete="current-password" class="form-input" type="password" name="user[current_password]"
+          <div class="from-group">
+            <label class="form-label form-label-required" for="user_current_password">Current password</label>
+            <input autocomplete="current-password" class="form-input" type="password" name="user[current_password]"
           id="user_current_password">
-          <div
+            <div
           class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
-            <p>Your current password is required to update your account.</p>
+              <p>Your current password is required to update your account.</p>
+            </div>
           </div>
-        </div>
 
-        <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight pt-10">Social media
-        </h4>
+          <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight pt-10">Social media
+          </h4>
 
-        <div class="prose prose-zinc dark:prose-invert mb-6">
-          <p>You could optionally add social media accounts in this section.</p>
-        </div>
+          <div class="prose prose-zinc dark:prose-invert mb-6">
+            <p>You could optionally add social media accounts in this section.</p>
+          </div>
 
-        <div class="form-group">
-          <label for="user[x]" class="form-label sr-only">X</label>
-          <div class="relative">
-            <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
-            <span
+          <div class="form-group">
+            <label for="user[x]" class="form-label sr-only">X</label>
+            <div class="relative">
+              <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
+              <span
             class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5"
               role="img" aria-labelledby="agcom5irdhya171fo018m2cq3cyilz88">
-                <title id="agcom5irdhya171fo018m2cq3cyilz88">X</title>
-                <g fill="#6e757c">
-                  <path
+                  <title id="agcom5irdhya171fo018m2cq3cyilz88">X</title>
+                  <g fill="#6e757c">
+                    <path
                   d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z">
-                  </path>
-                </g>
-              </svg>
+                    </path>
+                  </g>
+                </svg>
 
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="user[facebook]" class="form-label sr-only">Facebook</label>
-          <div class="relative">
-            <input type="text" id="user[facebook]" class="form-input w-full pl-14"
+          <div class="form-group">
+            <label for="user[facebook]" class="form-label sr-only">Facebook</label>
+            <div class="relative">
+              <input type="text" id="user[facebook]" class="form-input w-full pl-14"
             placeholder="https://facebook.com/username">
-            <span
+              <span
             class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:border-zinc-600/80 dark:bg-zinc-800  dark:text-zinc-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
               class="w-5 h-5 fill-current" role="img" aria-labelledby="asyxuban87y8gjcy4gi0an5q0z35mcxw">
-                <title id="asyxuban87y8gjcy4gi0an5q0z35mcxw">Facebook</title>
-                <path
+                  <title id="asyxuban87y8gjcy4gi0an5q0z35mcxw">Facebook</title>
+                  <path
                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-                </path>
-              </svg>
+                  </path>
+                </svg>
 
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="user[github]" class="form-label sr-only">GitHub</label>
-          <div class="relative">
-            <input type="text" id="user[github]" class="form-input w-full pl-14"
+          <div class="form-group">
+            <label for="user[github]" class="form-label sr-only">GitHub</label>
+            <div class="relative">
+              <input type="text" id="user[github]" class="form-input w-full pl-14"
             placeholder="https://github.com/username">
-            <span
+              <span
             class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
               class="w-5 h-5 fill-current" role="img" aria-labelledby="al27mni2r0hq8zfzdmrjnr4rf7j3begd">
-                <title id="al27mni2r0hq8zfzdmrjnr4rf7j3begd">Github</title>
-                <path
+                  <title id="al27mni2r0hq8zfzdmrjnr4rf7j3begd">Github</title>
+                  <path
                 d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12">
-                </path>
-              </svg>
+                  </path>
+                </svg>
 
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
-          <div class="relative">
-            <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
+          <div class="form-group">
+            <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
+            <div class="relative">
+              <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
             placeholder="https://linkedin.com/in/username">
-            <span
+              <span
             class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
               class="w-5 h-5 fill-current" role="img" aria-labelledby="ad8atzm476nc2adkxcbx0qwd0xmz2lzp">
-                <title id="ad8atzm476nc2adkxcbx0qwd0xmz2lzp">Linkedin</title>
-                <path
+                  <title id="ad8atzm476nc2adkxcbx0qwd0xmz2lzp">Linkedin</title>
+                  <path
                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z">
-                </path>
-              </svg>
+                  </path>
+                </svg>
 
-            </span>
+              </span>
+            </div>
           </div>
+
+          <input type="submit" name="commit" value="Save changes" class="btn btn-primary" data-disable-with="Save changes" data-controller="prevent" data-action="click->prevent#prevent">
         </div>
-
-        <input type="submit" name="commit" value="Save changes" class="btn btn-primary" data-disable-with="Save changes" data-controller="prevent" data-action="click->prevent#prevent">
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 
-<% content_for :example, flush: true do %>
-<% content_for :html, flush: true do %>
+  <% content_for :example, flush: true do %>
+    <% content_for :html, flush: true do %>
 
-<% end %>
+    <% end %>
 
-<% content_for :erb, flush: true do %>
-<!-- app/views/devise/registrations/edit.html.erb -->
-<div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
-  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+    <% content_for :erb, flush: true do %>
+      <!-- app/views/devise/registrations/edit.html.erb -->
+      <div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
+        <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
     bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
-  <div class="relative z-20">
-    <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
+        <div class="relative z-20">
+          <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
 
-    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
-      convenient place.</p>
-  </div>
-</div>
-
-<div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
-  <!-- Dynamic tabs relative to what pages are installed -->
-  <%%= render "shared/account/tabs" %>
-
-  <%% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div class="bg-blue-50/90 text-blue-700 border-l-4 border-blue-700 py-4 px-6 text-sm dark:bg-blue-50/10 dark:text-blue-50 dark:border-blue-400 rounded-r-xl rounded-l my-4">
-      <p class="text-blue-800 dark:text-blue-400 font-normal font-heading">Currently waiting on confirmation for: <span class="font-medium"><%%= resource.unconfirmed_email %></span></p>
-    </div>
-  <%% end %>
-
-  <%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
-
-  <div class="max-w-xl mx-auto">
-    <%%= render "shared/error_messages", resource: resource %>
-      <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Profile</h2>
-      <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
-        <p>Edit your profile details.</p>
+          <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
+            convenient place.</p>
+        </div>
       </div>
 
-      <div class="form-group">
-        <%%= f.label :avatar, class: "form-label" %>
+      <div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
+        <!-- Dynamic tabs relative to what pages are installed -->
+        <%%= render "shared/account/tabs" %>
 
-        <div class="flex items-center space-x-3">
-          <%% if f.object.avatar.attached? %>
-            <%%= image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none" %>
-          <%% else %>
-            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
-              <%%= icon "user", classes: "w-6 h-6 text-zinc-500" %>
+        <%% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="bg-blue-50/90 text-blue-700 border-l-4 border-blue-700 py-4 px-6 text-sm dark:bg-blue-50/10 dark:text-blue-50 dark:border-blue-400 rounded-r-xl rounded-l my-4">
+          <p class="text-blue-800 dark:text-blue-400 font-normal font-heading">Currently waiting on confirmation for: <span class="font-medium"><%%= resource.unconfirmed_email %></span></p>
+        </div>
+        <%% end %>
+
+        <%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+
+          <div class="max-w-xl mx-auto">
+            <%%= render "shared/error_messages", resource: resource %>
+            <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Profile</h2>
+            <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
+              <p>Edit your profile details.</p>
             </div>
-          <%% end %>
 
-          <%%= f.label :avatar, class: "block" do %>
-            <%%= f.file_field :avatar, class: "form-file" %>
-          <%% end %>
-        </div>
+            <div class="form-group">
+              <%%= f.label :avatar, class: "form-label" %>
 
-      </div>
+              <div class="flex items-center space-x-3">
+                <%% if f.object.avatar.attached? %>
+                <%%= image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none" %>
+                <%% else %>
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
+                  <%%= icon "user", class:  "w-6 h-6 text-zinc-500" %>
+                </div>
+                <%% end %>
 
-      <div class="form-group">
-        <%%= f.label :name, class: "form-label" %>
-        <%%= f.text_field :name, class: "form-input" %>
-      </div>
+                <%%= f.label :avatar, class: "block" do %>
+                  <%%= f.file_field :avatar, class: "form-file" %>
+                  <%% end %>
+                </div>
 
-      <!-- Email -->
-      <div class="form-group">
-        <%%= f.label :email, class: "form-label form-label-required" %>
-        <%%= f.email_field :email, autocomplete: "email", class: "form-input" %>
-      </div>
+              </div>
 
-      <div class="form-group">
-        <%%= f.label :password, class: "form-label" %>
-        <%%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
-        <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
-          <%% if @minimum_password_length %>
-            <p><%%= @minimum_password_length %> characters minimum</p>
-          <%% end %>
-          <p>Leave this blank if you don't want to change it</p>
-        </div>
-      </div>
+              <div class="form-group">
+                <%%= f.label :name, class: "form-label" %>
+                <%%= f.text_field :name, class: "form-input" %>
+              </div>
 
-      <div class="form-group">
-        <%%= f.label :password_confirmation, class: "form-label" %>
-        <%%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
-      </div>
+              <!-- Email -->
+              <div class="form-group">
+                <%%= f.label :email, class: "form-label form-label-required" %>
+                <%%= f.email_field :email, autocomplete: "email", class: "form-input" %>
+              </div>
 
-      <div class="from-group">
-        <%%= f.label :current_password, class: "form-label form-label-required" %>
-        <%%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
-        <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
-          <p>Your current password is required to update your account.</p>
-        </div>
-      </div>
+              <div class="form-group">
+                <%%= f.label :password, class: "form-label" %>
+                <%%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+                <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+                  <%% if @minimum_password_length %>
+                  <p><%%= @minimum_password_length %> characters minimum</p>
+                  <%% end %>
+                  <p>Leave this blank if you don't want to change it</p>
+                </div>
+              </div>
 
-      <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight pt-10">Social media</h4>
+              <div class="form-group">
+                <%%= f.label :password_confirmation, class: "form-label" %>
+                <%%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+              </div>
 
-      <div class="prose prose-zinc dark:prose-invert mb-6">
-        <p>You could optionally add social media accounts in this section.</p>
-      </div>
+              <div class="from-group">
+                <%%= f.label :current_password, class: "form-label form-label-required" %>
+                <%%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
+                <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+                  <p>Your current password is required to update your account.</p>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="user[x]" class="form-label sr-only">X</label>
-        <div class="relative">
-          <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
-          <span
+              <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight pt-10">Social media</h4>
+
+              <div class="prose prose-zinc dark:prose-invert mb-6">
+                <p>You could optionally add social media accounts in this section.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="user[x]" class="form-label sr-only">X</label>
+                <div class="relative">
+                  <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
+                  <span
           class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-            <%%= icon "x", path: "social/x.svg", classes: "w-5 h-5", variant: :solid %>
-          </span>
-        </div>
-      </div>
+                    <%%= icon "x", path: "social/x.svg", class:  "w-5 h-5", variant: :solid %>
+                  </span>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="user[facebook]" class="form-label sr-only">Facebook</label>
-        <div class="relative">
-          <input type="text" id="user[facebook]" class="form-input w-full pl-14"
+              <div class="form-group">
+                <label for="user[facebook]" class="form-label sr-only">Facebook</label>
+                <div class="relative">
+                  <input type="text" id="user[facebook]" class="form-input w-full pl-14"
           placeholder="https://facebook.com/username">
-          <span
+                  <span
           class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-            <%%= icon "facebook", path: "social/facebook.svg", classes: "w-5 h-5 fill-current" %>
-          </span>
-        </div>
-      </div>
+                    <%%= icon "facebook", path: "social/facebook.svg", class:  "w-5 h-5 fill-current" %>
+                  </span>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="user[github]" class="form-label sr-only">GitHub</label>
-        <div class="relative">
-          <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
-          <span
+              <div class="form-group">
+                <label for="user[github]" class="form-label sr-only">GitHub</label>
+                <div class="relative">
+                  <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
+                  <span
           class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-            <%%= icon "github", path: "social/github.svg", classes: "w-5 h-5 fill-current" %>
-          </span>
-        </div>
-      </div>
+                    <%%= icon "github", path: "social/github.svg", class:  "w-5 h-5 fill-current" %>
+                  </span>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
-        <div class="relative">
-          <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
+              <div class="form-group">
+                <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
+                <div class="relative">
+                  <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
           placeholder="https://linkedin.com/in/username">
-          <span
+                  <span
           class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-            <%%= icon "linkedin", path: "social/linkedin.svg", classes: "w-5 h-5 fill-current" %>
-          </span>
-        </div>
-      </div>
+                    <%%= icon "linkedin", path: "social/linkedin.svg", class:  "w-5 h-5 fill-current" %>
+                  </span>
+                </div>
+              </div>
 
-      <%%= f.submit "Save changes", class:"btn btn-primary" %>
-    <%% end %>
-  </div>
-</div>
-<% end %>
+              <%%= f.submit "Save changes", class:"btn btn-primary" %>
+              <%% end %>
+            </div>
+          </div>
+        <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/devise/registrations/edit.haml.erb
-.max-w-4xl.mx-auto.px-4.my-10
-  %h1.sm:text-4xl.text-3xl Account
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    .text-blue-700.border-l-4.border-blue-700.py-4.pr-4.pl-6.text-sm.dark:text-blue-50.dark:border-blue-400.mt-6{class: "bg-blue-50/90 dark:bg-blue-50/10"}
-      %p.text-blue-800.dark:text-blue-400
-        Currently waiting on confirmation for:
-        %span.font-semibold= resource.unconfirmed_email
-  .my-6
-    %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Profile
-    %p.text-sm.text-slate-600.dark:text-slate-400 This information will often be displayed publically.
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f|
-    = render "shared/error_messages", resource: resource
-    .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-end.pb-6
-      %div
-        = f.label :name, class: "form-label"
-        = f.email_field :name, class: "form-input"
-      %div
-        .flex.items-center
+        <% content_for :haml, flush: true do %>
+          / app/views/devise/registrations/edit.haml.erb
+          .max-w-4xl.mx-auto.px-4.my-10
+          %h1.sm:text-4xl.text-3xl Account
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          .text-blue-700.border-l-4.border-blue-700.py-4.pr-4.pl-6.text-sm.dark:text-blue-50.dark:border-blue-400.mt-6{class: "bg-blue-50/90 dark:bg-blue-50/10"}
+          %p.text-blue-800.dark:text-blue-400
+          Currently waiting on confirmation for:
+          %span.font-semibold= resource.unconfirmed_email
+          .my-6
+          %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Profile
+          %p.text-sm.text-slate-600.dark:text-slate-400 This information will often be displayed publically.
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f|
+          = render "shared/error_messages", resource: resource
+          .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-end.pb-6
+          %div
+          = f.label :name, class: "form-label"
+          = f.email_field :name, class: "form-input"
+          %div
+          .flex.items-center
           - if f.object.avatar.attached?
-            = image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border-2 border-slate-200 pointer-events-none select-none"
+          = image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border-2 border-slate-200 pointer-events-none select-none"
           - else
-            .w-14.h-14.flex.items-center.justify-center.rounded-full.pointer-events-none.select-none.border-2.border-slate-200{class: "bg-slate-300/50"}
-              = icon "user", classes: "w-6 h-6 text-white"
+          .w-14.h-14.flex.items-center.justify-center.rounded-full.pointer-events-none.select-none.border-2.border-slate-200{class: "bg-slate-300/50"}
+          = icon "user", class:  "w-6 h-6 text-white"
           .flex-1.pl-4
-            = f.label :avatar, class: "block" do
-              = f.file_field :avatar, class: "form-file"
-    .py-10.mt-6.border-t.border-slate-200.dark:border-slate-700
-      %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Personal details
-      %p.text-sm.text-slate-600.dark:text-slate-400 This information will not be displayed publically.
-    .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
-      %div
-        = f.label :email, class: "form-label"
-        = f.email_field :email, autocomplete: "email", class: "form-input"
-      %div
-        = f.label :password, class: "form-label"
-        = f.password_field :password, autocomplete: "new-password", class: "form-input"
-        %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Leave this blank if you don't want to change it
-        - if @minimum_password_length
+          = f.label :avatar, class: "block" do
+          = f.file_field :avatar, class: "form-file"
+          .py-10.mt-6.border-t.border-slate-200.dark:border-slate-700
+          %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Personal details
+          %p.text-sm.text-slate-600.dark:text-slate-400 This information will not be displayed publically.
+          .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
+          %div
+          = f.label :email, class: "form-label"
+          = f.email_field :email, autocomplete: "email", class: "form-input"
+          %div
+          = f.label :password, class: "form-label"
+          = f.password_field :password, autocomplete: "new-password", class: "form-input"
+          %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Leave this blank if you don't want to change it
+          - if @minimum_password_length
           %p.text-xs.text-slate-700.dark:text-slate-400
-            = @minimum_password_length
-            characters minimum
-    .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
-      %div
-        = f.label :password_confirmation, class: "form-label"
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
-      %div
-        = f.label :current_password, class: "form-label"
-        = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
-        %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Your current password is required to update your account.
-    .flex.items-center.space-x-4.pt-10.border-t.mt-10.border-slate-200.dark:border-slate-700
-      = f.submit "Update", class: "btn btn-primary"
-      = link_to "Cancel", root_path, class: "btn btn-white", data: { turbo: false }
-  .flex.justify-end
-    = button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8"
-<% end %>
+          = @minimum_password_length
+          characters minimum
+          .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
+          %div
+          = f.label :password_confirmation, class: "form-label"
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
+          %div
+          = f.label :current_password, class: "form-label"
+          = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
+          %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Your current password is required to update your account.
+          .flex.items-center.space-x-4.pt-10.border-t.mt-10.border-slate-200.dark:border-slate-700
+          = f.submit "Update", class: "btn btn-primary"
+          = link_to "Cancel", root_path, class: "btn btn-white", data: { turbo: false }
+          .flex.justify-end
+          = button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8"
+        <% end %>
 
-<%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
-<% end %>
-<% end %>
+        <%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+      <% end %>
+    <% end %>
 
-<%= system_pagination(prev_path: systems_authentication_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_unlocks_path, next_text: "Unlock") %>
+    <%= system_pagination(prev_path: systems_authentication_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_unlocks_path, next_text: "Unlock") %>

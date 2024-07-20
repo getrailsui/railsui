@@ -1,19 +1,16 @@
 <div class="pb-8">
   <%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-3xl text-2xl text-neutral-800 font-bold dark:text-white mb-2 tracking-tight" %>
   <div class="prose dark:!prose-invert prose-neutral max-w-full prose-lg mb-6">
-    <p>Choose a theme, add optional pages, then go build 🚀.</p>
+    <p>Choose a template, customize colors or stick with the defaults, add optional pages, and go build. 🚀</p>
   </div>
-
-  <%= render callout do %>
-    <p><strong>Heads up</strong>: Rails UI is only meant for brand new Ruby on Rails applications at this time.</p>
-  <% end %>
-
 </div>
 
 <%= form_with model: @config, url: configuration_path, class: "h-full block relative pb-24", data: {
   action: "submit->railsui-configuration#saveChanges",
-  controller: "railsui-configuration"
+  controller: "railsui-configuration railsui-reload"
   } do |f| %>
+
+  <%= f.hidden_field :theme, value: Railsui.config.theme %>
 
   <%= render "railsui/admin/fields/general", f: f %>
 
@@ -21,11 +18,13 @@
 
   <%= render "railsui/admin/fields/theme", f: f %>
 
-  <% if Railsui.config.theme.present? %>
-    <hr class="border-neutral-200/80 dark:border-neutral-700/80 mb-6">
+  <hr class="border-neutral-200/80 dark:border-neutral-700/80 mb-6">
 
-    <%= render "railsui/admin/fields/pages", f: f %>
-  <% end %>
+  <%= render "railsui/admin/fields/color", f: f %>
+
+  <hr class="border-neutral-200/80 dark:border-neutral-700/80 mb-6">
+
+  <%= render "railsui/admin/fields/pages", f: f %>
 
   <%= render "railsui/admin/fields/commit", f: f %>
 

@@ -4,14 +4,14 @@ hound:
     description: Company or organization about page.
     tags:
       - marketing
-    path: about_path
+    path: railsui_about_path
     add_to_nav: true
   pricing:
     title: Pricing
     description: SaaS-like pricing; 3 plans types by default.
     tags:
       - marketing
-    path: pricing_path
+    path: railsui_pricing_path
     add_to_nav: true
   dashboard:
     title: Dashboard
@@ -19,7 +19,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_dashboard_path
+    path: railsui_dashboard_path
     add_to_nav: true
   projects:
     title: Projects
@@ -27,7 +27,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_projects_path
+    path: railsui_projects_path
     add_to_nav: true
   project:
     title: Project
@@ -35,7 +35,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_project_path
+    path: railsui_project_path
     add_to_nav: false
   messages:
     title: Messages
@@ -43,7 +43,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_messages_path
+    path: railsui_messages_path
     add_to_nav: true
   message:
     title: Message
@@ -51,7 +51,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_message_path
+    path: railsui_message_path
     add_to_nav: false
   assignments:
     title: Assignments
@@ -59,7 +59,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_assignments_path
+    path: railsui_assignments_path
     add_to_nav: true
   calendar:
     title: Calendar
@@ -67,7 +67,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_calendar_path
+    path: railsui_calendar_path
     add_to_nav: true
   people:
     title: People
@@ -75,7 +75,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_people_path
+    path: railsui_people_path
     add_to_nav: true
   profile:
     title: Profile
@@ -83,7 +83,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_profile_path
+    path: railsui_profile_path
     add_to_nav: false
   activity:
     title: Activity
@@ -91,7 +91,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_activity_path
+    path: railsui_activity_path
     add_to_nav: true
   settings:
     title: Settings
@@ -99,7 +99,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_settings_path
+    path: railsui_settings_path
     add_to_nav: false
   notifications:
     title: Notifications
@@ -107,7 +107,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_notifications_path
+    path: railsui_notifications_path
     add_to_nav: false
   billing:
     title: Billing
@@ -115,7 +115,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_billing_path
+    path: railsui_billing_path
     add_to_nav: false
   team:
     title: Team
@@ -123,7 +123,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_team_path
+    path: railsui_team_path
     add_to_nav: false
   integrations:
     title: Integrations
@@ -131,7 +131,7 @@ hound:
     namespace: admin
     tags:
       - admin
-    path: admin_integrations_path
+    path: railsui_integrations_path
     add_to_nav: false
 shepherd:
   about:
@@ -139,14 +139,14 @@ shepherd:
     description: Company or organization about page.
     tags:
       - marketing
-    path: about_path
+    path: railsui_about_path
     add_to_nav: true
   pricing:
     title: Pricing
     description: SaaS-like pricing; 3 plans types by default.
     tags:
       - marketing
-    path: pricing_path
+    path: railsui_pricing_path
     add_to_nav: true
   dashboard:
     title: Dashboard
@@ -154,7 +154,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_dashboard_path
+    path: railsui_dashboard_path
     add_to_nav: true
   properties:
     title: Properties
@@ -162,7 +162,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_properties_path
+    path: railsui_properties_path
     add_to_nav: true
   inbox:
     title: Inbox
@@ -170,7 +170,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_inbox_path
+    path: railsui_inbox_path
     add_to_nav: true
   calendar:
     title: Calendar
@@ -178,7 +178,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_calendar_path
+    path: railsui_calendar_path
     add_to_nav: true
   insights:
     title: Insights
@@ -186,7 +186,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_insights_path
+    path: railsui_insights_path
     add_to_nav: true
   bookings:
     title: Bookings
@@ -194,7 +194,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_bookings_path
+    path: railsui_bookings_path
     add_to_nav: true
   new_booking:
     title: New Booking
@@ -202,7 +202,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_new_booking_path
+    path: railsui_new_booking_path
     add_to_nav: false
   booking:
     title: "Booking"
@@ -210,7 +210,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_booking_path
+    path: railsui_booking_path
     add_to_nav: false
   edit_booking:
     title: Edit Booking
@@ -218,7 +218,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_edit_booking_path
+    path: railsui_edit_booking_path
     add_to_nav: false
   help_center:
     title: Help Center
@@ -226,7 +226,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_help_center_path
+    path: railsui_help_center_path
     add_to_nav: true
   changelog:
     title: Changelog
@@ -234,7 +234,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_changelog_path
+    path: railsui_changelog_path
     add_to_nav: true
   api:
     title: API
@@ -242,7 +242,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_api_path
+    path: railsui_api_path
     add_to_nav: true
   privacy_policy:
     title: Privacy Policy
@@ -250,7 +250,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_privacy_policy_path
+    path: railsui_privacy_policy_path
     add_to_nav: false
   terms:
     title: Terms
@@ -258,7 +258,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_terms_path
+    path: railsui_terms_path
     add_to_nav: false
   contact:
     title: Contact
@@ -266,7 +266,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_contact_path
+    path: railsui_contact_path
     add_to_nav: false
   account_payment_methods:
     title: "Account: Payment Methods"
@@ -274,7 +274,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_account_payment_methods_path
+    path: railsui_account_payment_methods_path
     add_to_nav: false
   account_payouts:
     title: "Account: Payouts"
@@ -282,7 +282,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_account_payouts_path
+    path: railsui_account_payouts_path
     add_to_nav: false
   account_notifications:
     title: "Account: Notifications"
@@ -290,7 +290,7 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_account_notifications_path
+    path: railsui_account_notifications_path
     add_to_nav: false
   account_preferences:
     title: "Account: Preferences"
@@ -298,5 +298,5 @@ shepherd:
     namespace: admin
     tags:
       - admin
-    path: admin_account_preferences_path
+    path: railsui_account_preferences_path
     add_to_nav: false

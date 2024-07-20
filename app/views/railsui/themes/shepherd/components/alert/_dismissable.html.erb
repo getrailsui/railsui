@@ -1,50 +1,50 @@
 <div id="alert-dismissable">
-<%= render layout: example, locals: { heading: "Dismissable", section: "Alert" } do %>
+  <%= render layout: example, locals: { heading: "Dismissable", section: "Alert" } do %>
 
-<div class="bg-secondary-50/90 text-secondary-700 rounded-xl py-4 px-6 text-sm flex justify-between items-center dark:bg-secondary-50/10 dark:text-secondary-100">
-  <div class="flex-1">
-    <p class="text-secondary-800 font-heading dark:text-secondary-300 font-medium">A dismissible notice</p>
-    <p class="my-1 pr-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.</p>
-  </div>
-  <button type="button" class="w-8 h-8 rounded-full bg-transparent hover:bg-secondary-700/80 transition ease-in-out duration-300 flex items-center justify-center group dark:hover:bg-secondary-500/80">
-    <%= icon "x-mark", classes: "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss" %>
-  </button>
-</div>
+    <div class="bg-secondary-50/90 text-secondary-700 rounded-xl py-4 px-6 text-sm flex justify-between items-center dark:bg-secondary-50/10 dark:text-secondary-100">
+      <div class="flex-1">
+        <p class="text-secondary-800 font-heading dark:text-secondary-300 font-medium">A dismissible notice</p>
+        <p class="my-1 pr-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.</p>
+      </div>
+      <button type="button" class="w-8 h-8 rounded-full bg-transparent hover:bg-secondary-700/80 transition ease-in-out duration-300 flex items-center justify-center group dark:hover:bg-secondary-500/80">
+        <%= icon "x-mark", class:  "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss" %>
+      </button>
+    </div>
 
-<% content_for :example, flush: true do %>
-<% content_for :html, flush: true do %>
-<div class="bg-secondary-50/90 text-secondary-700 rounded-xl py-4 px-6 text-sm flex justify-between items-center dark:bg-secondary-50/10 dark:text-secondary-100">
-  <div class="flex-1">
-    <p class="text-secondary-800 font-heading dark:text-secondary-300 font-medium">A dismissible notice</p>
-    <p class="my-1 pr-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.</p>
-  </div>
-  <button type="button" class="w-8 h-8 rounded-full bg-transparent hover:bg-secondary-700/80 transition ease-in-out duration-300 flex items-center justify-center group dark:hover:bg-secondary-500/80">
-    <%%= icon "x-mark", classes: "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss" %>
-  </button>
-</div>
-<% end %>
+    <% content_for :example, flush: true do %>
+      <% content_for :html, flush: true do %>
+        <div class="bg-secondary-50/90 text-secondary-700 rounded-xl py-4 px-6 text-sm flex justify-between items-center dark:bg-secondary-50/10 dark:text-secondary-100">
+          <div class="flex-1">
+            <p class="text-secondary-800 font-heading dark:text-secondary-300 font-medium">A dismissible notice</p>
+            <p class="my-1 pr-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.</p>
+          </div>
+          <button type="button" class="w-8 h-8 rounded-full bg-transparent hover:bg-secondary-700/80 transition ease-in-out duration-300 flex items-center justify-center group dark:hover:bg-secondary-500/80">
+            <%%= icon "x-mark", class:  "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss" %>
+          </button>
+        </div>
+      <% end %>
 
-<% content_for :erb, flush: true do %>
-<div class="bg-secondary-50/90 text-secondary-700 rounded-xl py-4 px-6 text-sm flex justify-between items-center dark:bg-secondary-50/10 dark:text-secondary-100">
-  <div class="flex-1">
-    <p class="text-secondary-800 font-heading dark:text-secondary-300 font-medium">A dismissible notice</p>
-    <p class="my-1 pr-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.</p>
-  </div>
-  <button type="button" class="w-8 h-8 rounded-full bg-transparent hover:bg-secondary-700/80 transition ease-in-out duration-300 flex items-center justify-center group dark:hover:bg-secondary-500/80">
-    <%%= icon "x-mark", classes: "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss" %>
-  </button>
-</div>
-<% end %>
+      <% content_for :erb, flush: true do %>
+        <div class="bg-secondary-50/90 text-secondary-700 rounded-xl py-4 px-6 text-sm flex justify-between items-center dark:bg-secondary-50/10 dark:text-secondary-100">
+          <div class="flex-1">
+            <p class="text-secondary-800 font-heading dark:text-secondary-300 font-medium">A dismissible notice</p>
+            <p class="my-1 pr-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.</p>
+          </div>
+          <button type="button" class="w-8 h-8 rounded-full bg-transparent hover:bg-secondary-700/80 transition ease-in-out duration-300 flex items-center justify-center group dark:hover:bg-secondary-500/80">
+            <%%= icon "x-mark", class:  "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss" %>
+          </button>
+        </div>
+      <% end %>
 
-<% content_for :haml, flush: true do %>
-.text-secondary-700.rounded-xl.py-4.px-6.text-sm.flex.justify-between.items-center.dark:text-secondary-100(class="bg-secondary-50/90 dark:bg-secondary-50/10")
-  .flex-1
-    %p.text-secondary-800.font-heading.dark:text-secondary-300.font-medium A dismissible notice
-    %p.my-1.pr-4 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.
-  %button.w-8.h-8.rounded-full.bg-transparent.transition.ease-in-out.duration-300.flex.items-center.justify-center.group(class="hover:bg-secondary-700/80 dark:hover:bg-secondary-500/80" type="button")
-    = icon "x-mark", classes: "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss"
-<% end %>
-<%= render_snippet %>
-<% end %>
-<% end %>
+      <% content_for :haml, flush: true do %>
+        .text-secondary-700.rounded-xl.py-4.px-6.text-sm.flex.justify-between.items-center.dark:text-secondary-100(class="bg-secondary-50/90 dark:bg-secondary-50/10")
+        .flex-1
+        %p.text-secondary-800.font-heading.dark:text-secondary-300.font-medium A dismissible notice
+        %p.my-1.pr-4 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque minus dolor ratione debitis mollitia architecto officii.
+        %button.w-8.h-8.rounded-full.bg-transparent.transition.ease-in-out.duration-300.flex.items-center.justify-center.group(class="hover:bg-secondary-700/80 dark:hover:bg-secondary-500/80" type="button")
+        = icon "x-mark", class:  "w-5 h-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss"
+      <% end %>
+      <%= render_snippet %>
+    <% end %>
+  <% end %>
 </div>

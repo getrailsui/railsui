@@ -14,7 +14,7 @@
 
     <div class="prose prose-sm max-w-full prose-neutral dark:!prose-invert">
       <h4>Adding pages</h4>
-      <p>Installed pages are found inside the <code>app/views/page</code> folder in your app and won't be overwritten.</p>
+      <p>Installed pages are found inside the <code>app/views/railsui/pages</code> folder.</p>
     </div>
   </div>
 
@@ -27,35 +27,18 @@
 
     <div class="prose prose-sm max-w-full prose-neutral dark:!prose-invert">
       <h4>Best practices</h4>
-      <p>Pages are a starting point. Copy them to other views you're working on and make changes there as opposed to directly inside the <code>app/views/page</code> directory.</p>
+      <p>Pages are a starting point. Copy them to other views you're working on and make changes there as opposed to directly inside the <code>app/views/railsui/pages</code> directory.</p>
     </div>
   </div>
 
   <div class="border border-neutral-200/80 rounded-md mb-10 dark:border-neutral-700/80">
-    <% unless Railsui::Pages.all_pages_installed? %>
-      <div class="flex items-center relative px-6 py-4 rounded-t-md bg-neutral-50 border-b border-neutral-200/80 dark:bg-neutral-800/50 dark:border-neutral-700/80">
-        <%= check_box_tag "checkAll", "1", false, class: "rui-form-input-switch", data: { action: "railsui-pages#checkAll" } %>
-        <%= label_tag "checkAll", "Check all" %>
-      </div>
-    <% end %>
 
     <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80 px-6">
-      <% if @theme_pages.present? %>
-        <% @theme_pages.each do |page, details| %>
-          <div class="flex flex-wrap items-start justify-between py-6">
-            <% if page_exists?(page) %>
-              <%= render "railsui/admin/fields/active_page", page: page, details: details %>
-            <% else %>
-              <%= render "railsui/admin/fields/inactive_page", page: page, details: details %>
-            <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        <div class="bg-yellow-50 rounded p-3 text-yellow-800 dark:bg-yellow-500/30 dark:text-yellow-50">
-          <p>Hopefully you don't see this message but it looks like no pages were found for the current theme. Contact me if this persists or you can <%= link_to "create a new issue on Github", "https://github.com/getrailsui/railsui", class: "underline" %> for the free version of Rails UI.</p>
+      <% @theme_pages.each do |page, details| %>
+        <div class="flex flex-wrap items-start justify-between py-6">
+          <%= render "railsui/admin/fields/page", page: page, details: details %>
         </div>
       <% end %>
     </div>
   </div>
-
 </div>

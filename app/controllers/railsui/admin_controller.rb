@@ -5,7 +5,7 @@ module Railsui
     layout "railsui/fullwidth"
     def show
       @config = Railsui::Configuration.load!
-      @theme_pages = Railsui::Pages.theme_pages
+      @theme_pages = Railsui::Pages.installed_pages
       if @config.theme.present?
         @theme_colors = Railsui::Colors.theme_colors(@config.theme)
       else

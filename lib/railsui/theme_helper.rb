@@ -91,7 +91,14 @@ module Railsui
     end
 
     def railsui_body_classes
-      Railsui.config.body_classes ||= ""
+      # Fetch any additional body classes set in content_for :body_classes
+      content_classes = content_for(:body_classes).to_s.strip
+
+      # Combine existing Railsui config classes with any additional classes
+      combined_classes = [Railsui.config.body_classes.to_s.strip, content_classes].reject(&:empty?).join(' ')
+
+      # Return the combined classes or an empty string if none
+      combined_classes.presence || ""
     end
   end
 end

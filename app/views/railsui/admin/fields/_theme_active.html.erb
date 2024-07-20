@@ -19,7 +19,3 @@
 
   <%= image_tag "tailwind-#{theme_name.parameterize}-thumbnail.jpg", class: "md:max-w-[460px] h-[260px] object-cover object-top mx-auto  dark:border-neutral-500 w-full rounded-t-md mr-10 shadow-lg" %>
 </div>
-
-<%= f.hidden_field :theme, value: Railsui.config.theme %>
-
-<%= render "railsui/admin/fields/color", f: f %>

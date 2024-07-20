@@ -1,10 +1,10 @@
 <%# Card - Property User card %>
 <div id="card-property-card">
-<%= render layout: example, locals: { heading: "Property user card", section: "Card" } do %>
+  <%= render layout: example, locals: { heading: "Property user card", section: "Card" } do %>
 
-<%= render preview "zinc" do %>
- <div class="grid md:w-[300px]">
-  <%= render "railsui/themes/shepherd/components/card/preview/property_user_card", locals: {
+    <%= render preview "zinc" do %>
+      <div class="grid md:w-[300px]">
+        <%= render "railsui/themes/shepherd/components/card/preview/property_user_card", locals: {
     name: "Dannie White",
     avatar_id: "78",
     avatar_variant: "women",
@@ -12,68 +12,68 @@
     title: "Mountain Vista Chalet",
     booking_date: "Aug 24, 3pm"
   } %>
-</div>
-<% end %>
+      </div>
+    <% end %>
 
-<% content_for :example, flush: true do %>
-<% content_for :html, flush: true do %>
-<div
+    <% content_for :example, flush: true do %>
+      <% content_for :html, flush: true do %>
+        <div
   class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
-  <%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
-  <div class="flex items-center space-x-3 mt-4">
-    <%= image_tag demo_avatar_url(variant: "women", id: "78"), class: "w-10 h-10 rounded-full object-cover", alt: "Dannie White" %>
-    <div class="flex-1">
-      <p class="font-medium dark:text-white font-heading text-zinc-900">Dannie White</p>
-      <p class="font-light text-sm text-zinc-600 font-heading dark:text-zinc-400">Mountain Vista Chalet</p>
-    </div>
-  </div>
-  <div class="flex justify-between items-end pt-3">
-    <div class="flex items-center space-x-2">
-      <%%= icon "clock", classes: "w-5 h-5 text-zinc-500 stroke-current dark:text-zinc-300" %>
-      <span class="text-zinc-600 dark:text-zinc-400 text-sm">Aug 24, 3pm</span>
-    </div>
-    <a href="#" class="btn btn-white">View</a>
-  </div>
-</div>
-<% end %>
+          <%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
+          <div class="flex items-center space-x-3 mt-4">
+            <%= image_tag demo_avatar_url(variant: "women", id: "78"), class: "w-10 h-10 rounded-full object-cover", alt: "Dannie White" %>
+            <div class="flex-1">
+              <p class="font-medium dark:text-white font-heading text-zinc-900">Dannie White</p>
+              <p class="font-light text-sm text-zinc-600 font-heading dark:text-zinc-400">Mountain Vista Chalet</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="flex items-center space-x-2">
+              <%%= icon "clock", class:  "w-5 h-5 text-zinc-500 stroke-current dark:text-zinc-300" %>
+              <span class="text-zinc-600 dark:text-zinc-400 text-sm">Aug 24, 3pm</span>
+            </div>
+            <a href="#" class="btn btn-white">View</a>
+          </div>
+        </div>
+      <% end %>
 
-<% content_for :erb, flush: true do %>
-<div
+      <% content_for :erb, flush: true do %>
+        <div
   class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
-  <%%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
-  <div class="flex items-center space-x-3 mt-4">
-    <%%= image_tag demo_avatar_url(variant: "women", id: "78"), class: "w-10 h-10 rounded-full object-cover", alt: "Dannie White" %>
-    <div class="flex-1">
-      <p class="font-medium dark:text-white font-heading text-zinc-900">Dannie White</p>
-      <p class="font-light text-sm text-zinc-600 font-heading dark:text-zinc-400">Mountain Vista Chalet</p>
-    </div>
-  </div>
-  <div class="flex justify-between items-end pt-3">
-    <div class="flex items-center space-x-2">
-      <%%= icon "clock", classes: "w-5 h-5 text-zinc-500 stroke-current dark:text-zinc-300" %>
-      <span class="text-zinc-600 dark:text-zinc-400 text-sm">Aug 24, 3pm</span>
-    </div>
-    <%%= link_to "View", "#", class: "btn btn-white" %>
-  </div>
-</div>
-<% end %>
+          <%%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
+          <div class="flex items-center space-x-3 mt-4">
+            <%%= image_tag demo_avatar_url(variant: "women", id: "78"), class: "w-10 h-10 rounded-full object-cover", alt: "Dannie White" %>
+            <div class="flex-1">
+              <p class="font-medium dark:text-white font-heading text-zinc-900">Dannie White</p>
+              <p class="font-light text-sm text-zinc-600 font-heading dark:text-zinc-400">Mountain Vista Chalet</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="flex items-center space-x-2">
+              <%%= icon "clock", class:  "w-5 h-5 text-zinc-500 stroke-current dark:text-zinc-300" %>
+              <span class="text-zinc-600 dark:text-zinc-400 text-sm">Aug 24, 3pm</span>
+            </div>
+            <%%= link_to "View", "#", class: "btn btn-white" %>
+          </div>
+        </div>
+      <% end %>
 
-<% content_for :haml, flush: true do %>
-.border.shadow-sm.rounded-lg.p-3.dark:focus:border-zinc-600{class: "border-zinc-300/90 shadow-zinc-300/20 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30"}
-  = image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent"
-  .flex.items-center.space-x-3.mt-4
-    = image_tag demo_avatar_url(variant: "women", id: "78"), class: "w-10 h-10 rounded-full object-cover", alt: "Dannie White"
-    .flex-1
-      %p.font-medium.dark:text-white.font-heading.text-zinc-900 Dannie White
-      %p.font-light.text-sm.text-zinc-600.font-heading.dark:text-zinc-400 Mountain Vista Chalet
-  .flex.justify-between.items-end.pt-3
-    .flex.items-center.space-x-2
-      = icon "clock", classes: "w-5 h-5 text-zinc-500 stroke-current dark:text-zinc-300"
-      %span.text-zinc-600.dark:text-zinc-400.text-sm Aug 24, 3pm
-    = link_to "View", "#", class: "btn btn-white"
-<% end %>
+      <% content_for :haml, flush: true do %>
+        .border.shadow-sm.rounded-lg.p-3.dark:focus:border-zinc-600{class: "border-zinc-300/90 shadow-zinc-300/20 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30"}
+        = image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent"
+        .flex.items-center.space-x-3.mt-4
+        = image_tag demo_avatar_url(variant: "women", id: "78"), class: "w-10 h-10 rounded-full object-cover", alt: "Dannie White"
+        .flex-1
+        %p.font-medium.dark:text-white.font-heading.text-zinc-900 Dannie White
+        %p.font-light.text-sm.text-zinc-600.font-heading.dark:text-zinc-400 Mountain Vista Chalet
+        .flex.justify-between.items-end.pt-3
+        .flex.items-center.space-x-2
+        = icon "clock", class:  "w-5 h-5 text-zinc-500 stroke-current dark:text-zinc-300"
+        %span.text-zinc-600.dark:text-zinc-400.text-sm Aug 24, 3pm
+        = link_to "View", "#", class: "btn btn-white"
+      <% end %>
 
-<%= render_snippet %>
-<% end %>
-<% end %>
+      <%= render_snippet %>
+    <% end %>
+  <% end %>
 </div>

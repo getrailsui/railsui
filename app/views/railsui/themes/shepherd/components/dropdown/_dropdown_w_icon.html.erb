@@ -1,7 +1,7 @@
 <div data-controller="railsui-dropdown" class="relative md:inline-block block md:w-auto w-full">
   <button type="button" data-action="click->railsui-dropdown#toggle click@window->dropdown#hide" class="btn <%= local_assigns[:class] %> pr-3">
     <%= local_assigns[:label] %>
-    <%= icon "chevron-down", classes: "w-3 h-3 ml-2" %>
+    <%= icon "chevron-down", class:  "w-3 h-3 ml-2" %>
   </button>
   <div
     class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-100 font-heading"
@@ -12,15 +12,15 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <a href="#" class="group flex items-center justify-start space-x-3 px-4 py-1.5 hover:text-zinc-950 dark:hover:text-white">
-      <%= icon "bookmark", classes: "w-4 h-4 dark:text-zinc-200 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-primary-500 flex-shrink-0" %>
+      <%= icon "bookmark", class:  "w-4 h-4 dark:text-zinc-200 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-primary-500 flex-shrink-0" %>
       <span>Bookmark</span>
     </a>
     <a href="#" class="group flex items-center justify-start space-x-3 px-4 py-1.5 hover:text-zinc-950 dark:hover:text-white">
-      <%= icon "flag", classes: "w-4 h-4 dark:text-zinc-200 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-primary-500 flex-shrink-0" %>
+      <%= icon "flag", class:  "w-4 h-4 dark:text-zinc-200 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-primary-500 flex-shrink-0" %>
       <span>Report</span>
     </a>
     <a href="#" class="group flex items-center justify-start space-x-3 px-4 py-1.5 hover:text-zinc-950 dark:hover:text-white">
-    <%= icon "arrow-down-tray", classes: "w-4 h-4 dark:text-zinc-200 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-primary-500 flex-shrink-0" %>
+      <%= icon "arrow-down-tray", class:  "w-4 h-4 dark:text-zinc-200 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-primary-500 flex-shrink-0" %>
       <span>Export</span>
     </a>
   </div>

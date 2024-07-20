@@ -27,6 +27,10 @@ module Railsui
       theme_pages.keys.all? { |page| page_exists?(page) }
     end
 
+    def self.installed_pages
+      theme_pages.select { |page, details| page_enabled?(page) && page_exists?(page) }
+    end
+
     private
 
     def self.load_pages_config

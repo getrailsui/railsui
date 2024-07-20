@@ -1,49 +1,49 @@
 <div id="auth-prerequisites">
-<%= render callout do %>
-  <p>Rails UI authentication templates map to the <a href="https://rubygems.org/gems/devise/" target="_blank">Devise</a> gem's <a href="https://github.com/heartcombo/devise/tree/main/app/views/devise" target="_blank">view templates</a> at this time. There may be future support for different authentication libraries or a solution built from scratch in the future.</p>
-<% end %>
+  <%= render callout do %>
+    <p>Rails UI authentication templates map to the <a href="https://rubygems.org/gems/devise/" target="_blank">Devise</a> gem's <a href="https://github.com/heartcombo/devise/tree/main/app/views/devise" target="_blank">view templates</a> at this time. There may be future support for different authentication libraries or a solution built from scratch in the future.</p>
+  <% end %>
 
-<div class="prose prose-neutral dark:prose-invert mb-6">
-  <p>Before diving into your Rails UI configuration there are some patterns in use for more efficient front-end development. Most of those patterns involve abstractions where it makes sense and others are a bit more opinionated.</p>
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <p>Before diving into your Rails UI configuration there are some patterns in use for more efficient front-end development. Most of those patterns involve abstractions where it makes sense and others are a bit more opinionated.</p>
   </div>
 </div>
 
 <div id="auth-global-layout" class="py-6">
-<div class="prose prose-neutral dark:prose-invert mb-6">
-  <h3>Use a global authentication layout partial</h3>
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <h3>Use a global authentication layout partial</h3>
 
-  <p>Rails UI uses a reusable partial with a block pattern designed to repeat the existing authentication design. Because Devise ships with many different authentication strategies and forms it makes sense to extract repeatable code away.</p>
-</div>
-
-<% content_for :erb, flush: true do %>
-<!-- render auth_layout partial with block (app/views/devise/_auth_layout.html.erb) -->
-<%%= render "auth_layout" do %>
-  <!-- Devise view code -->
-<%% end %>
-<% end %>
-
-<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb") %>
-
-  <div class="prose dark:prose-invert">
-    <p>Each corresponding view makes use of the layout partial as a means to keep code DRY. From there you can simply swap out forms and featured content relative to the Rails UI theme you choose.</p>
+    <p>Rails UI uses a reusable partial with a block pattern designed to repeat the existing authentication design. Because Devise ships with many different authentication strategies and forms it makes sense to extract repeatable code away.</p>
   </div>
 
-<% content_for :html, flush: true do %>
-
-<% end %>
-
-<% content_for :erb, flush: true do %>
-<!-- app/views/devise/_auth_layout.html.erb -->
-<div class="md:flex grid flex-wrap md:w-screen md:h-[calc(100vh-60px)]">
-  <div class="md:w-1/2 flex items-center justify-center p-10 md:order-1 order-2">
-    <div class="md:w-[400px] w-full">
-      <%%= link_to root_path, class: "group inline-block mb-6" do %>
-        <%%= icon "logo", path: "logo.svg", classes: "group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 w-10 h-10 text-primary-500 fill-current" %>
+  <% content_for :erb, flush: true do %>
+    <!-- render auth_layout partial with block (app/views/devise/_auth_layout.html.erb) -->
+    <%%= render "auth_layout" do %>
+      <!-- Devise view code -->
       <%% end %>
+    <% end %>
 
-      <%%= yield %>
+    <%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb") %>
 
-      <!--
+    <div class="prose dark:prose-invert">
+      <p>Each corresponding view makes use of the layout partial as a means to keep code DRY. From there you can simply swap out forms and featured content relative to the Rails UI theme you choose.</p>
+    </div>
+
+    <% content_for :html, flush: true do %>
+
+    <% end %>
+
+    <% content_for :erb, flush: true do %>
+      <!-- app/views/devise/_auth_layout.html.erb -->
+      <div class="md:flex grid flex-wrap md:w-screen md:h-[calc(100vh-60px)]">
+        <div class="md:w-1/2 flex items-center justify-center p-10 md:order-1 order-2">
+          <div class="md:w-[400px] w-full">
+            <%%= link_to root_path, class: "group inline-block mb-6" do %>
+              <%%= icon "logo", path: "logo.svg", class:  "group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 w-10 h-10 text-primary-500 fill-current" %>
+              <%% end %>
+
+              <%%= yield %>
+
+              <!--
       Add additional provider SVG icons in app/assets/images/omniauth as necessary.
       Default options include: Google, LinkedIn, Twitter, Facebook.
 
@@ -51,179 +51,179 @@
       not included in Rails UI for omniauth support.**
       -->
 
-      <%% if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name) %>
+              <%% if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name) %>
 
-        <hr class="mt-8 border-zinc-100" />
+              <hr class="mt-8 border-zinc-100" />
 
-        <div class="space-y-3 mt-10">
-          <%% resource_class.omniauth_providers.each do |provider| %>
-            <%%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do %>
-              <div class="flex items-center space-x-2">
-                <%%= inline_svg "omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "w-4 h-4 text-zinc-600 fill-current" %>
-                <span>"Sign in with <%%= OmniAuth::Utils.camelize(provider) %></span>
+              <div class="space-y-3 mt-10">
+                <%% resource_class.omniauth_providers.each do |provider| %>
+                  <%%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do %>
+                    <div class="flex items-center space-x-2">
+                      <%%= inline_svg "omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "w-4 h-4 text-zinc-600 fill-current" %>
+                      <span>"Sign in with <%%= OmniAuth::Utils.camelize(provider) %></span>
+                    </div>
+                    <%% end %>
+                    <%% end %>
+                  </div>
+                  <%% end %>
+
+                  <div class="mt-4">
+                    <%%= render "devise/shared/links" %>
+                  </div>
+                </div>
               </div>
-            <%% end %>
-          <%% end %>
-        </div>
-      <%% end %>
+              <div class="md:w-1/2 md:order-2 order-1 bg-zinc-900 overflow-hidden">
+                <%%= image_tag ["auth-cabin.jpg", "auth-desert.jpg"].sample, class: "object-cover md:h-screen h-[140px] w-full animate-fadeIn", alt: "Sign in to Shepherd" %>
+              </div>
+            </div>
+          <% end %>
 
-      <div class="mt-4">
-        <%%= render "devise/shared/links" %>
-      </div>
-    </div>
-  </div>
-  <div class="md:w-1/2 md:order-2 order-1 bg-zinc-900 overflow-hidden">
-    <%%= image_tag ["auth-cabin.jpg", "auth-desert.jpg"].sample, class: "object-cover md:h-screen h-[140px] w-full animate-fadeIn", alt: "Sign in to Shepherd" %>
-  </div>
-</div>
-<% end %>
+          <% content_for :haml, flush: true do %>
+            / app/views/devise/_auth_layout.html.erb
+            .md:flex.grid.flex-wrap.md:w-screen(class="md:h-[calc(100vh-60px)]")
+            .flex.items-center.justify-center.p-10.md:order-1.order-2(class="md:w-1/2")
+            .w-full(class="md:w-[400px]")
+            = link_to root_path, class: "group inline-block mb-6" do
+            = icon "logo", path: "logo.svg", class:  "group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 w-10 h-10 text-primary-500 fill-current"
+            = yield
+            /
+            Add additional provider SVG icons in app/assets/images/omniauth as necessary.
+            Default options include: Google, LinkedIn, Twitter, Facebook.
 
-<% content_for :haml, flush: true do %>
-/ app/views/devise/_auth_layout.html.erb
-.md:flex.grid.flex-wrap.md:w-screen(class="md:h-[calc(100vh-60px)]")
-  .flex.items-center.justify-center.p-10.md:order-1.order-2(class="md:w-1/2")
-    .w-full(class="md:w-[400px]")
-      = link_to root_path, class: "group inline-block mb-6" do
-        = icon "logo", path: "logo.svg", classes: "group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 w-10 h-10 text-primary-500 fill-current"
-      = yield
-      /
-        Add additional provider SVG icons in app/assets/images/omniauth as necessary.
-        Default options include: Google, LinkedIn, Twitter, Facebook.
-
-        **You will need to install additional dependencies
-        not included in Rails UI for omniauth support.**
-      - if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name)
-        %hr.mt-8.border-zinc-100/
-        .space-y-3.mt-10
-          - resource_class.omniauth_providers.each do |provider|
+            **You will need to install additional dependencies
+            not included in Rails UI for omniauth support.**
+            - if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name)
+            %hr.mt-8.border-zinc-100/
+            .space-y-3.mt-10
+            - resource_class.omniauth_providers.each do |provider|
             = button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do
-              .flex.items-center.space-x-2
-                = inline_svg "omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "w-4 h-4 text-zinc-600 fill-current"
-                %span
-                  "Sign in with #{OmniAuth::Utils.camelize(provider)}
-      .mt-4
-        = render "devise/shared/links"
-  .md:order-2.order-1.bg-zinc-900.overflow-hidden(class="md:w-1/2")
-    = image_tag ["auth-cabin.jpg", "auth-desert.jpg"].sample, class: "object-cover md:h-screen h-[140px] w-full animate-fadeIn", alt: "Sign in to Shepherd"
-<% end %>
+            .flex.items-center.space-x-2
+            = inline_svg "omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "w-4 h-4 text-zinc-600 fill-current"
+            %span
+            "Sign in with #{OmniAuth::Utils.camelize(provider)}
+            .mt-4
+            = render "devise/shared/links"
+            .md:order-2.order-1.bg-zinc-900.overflow-hidden(class="md:w-1/2")
+            = image_tag ["auth-cabin.jpg", "auth-desert.jpg"].sample, class: "object-cover md:h-screen h-[140px] w-full animate-fadeIn", alt: "Sign in to Shepherd"
+          <% end %>
 
-<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb", haml_filename: "_auth_layout.haml.erb") %>
-</div>
+          <%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb", haml_filename: "_auth_layout.haml.erb") %>
+        </div>
 
-<%= divider %>
+        <%= divider %>
 
-<div id="auth-links-partial" class="py-6">
-  <div class="prose dark:prose-invert my-6">
-    <h2>Modified devise links partial</h2>
-    <p>Rails UI modifies the default <code>app/views/devise/shared/_links.html.erb</code> partial supplied by the Devise gem for a more improved user experience. During the configuration phase of installing Rails UI the modified partial is copied over to your app so you needn't worry about updating this manually.</p>
-    <p>If you were to ever reinstall devise or use their supplied view template generator this would be overwritten.</p>
-  </div>
+        <div id="auth-links-partial" class="py-6">
+          <div class="prose dark:prose-invert my-6">
+            <h2>Modified devise links partial</h2>
+            <p>Rails UI modifies the default <code>app/views/devise/shared/_links.html.erb</code> partial supplied by the Devise gem for a more improved user experience. During the configuration phase of installing Rails UI the modified partial is copied over to your app so you needn't worry about updating this manually.</p>
+            <p>If you were to ever reinstall devise or use their supplied view template generator this would be overwritten.</p>
+          </div>
 
-<% content_for :erb, flush: true do %>
-<!-- app/views/devise/shared/_links -->
-<%#- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-<%#= link_to "Forgot your password?", new_password_path(resource_name) %>
-<%# end %>
+          <% content_for :erb, flush: true do %>
+            <!-- app/views/devise/shared/_links -->
+            <%#- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%#= link_to "Forgot your password?", new_password_path(resource_name) %>
+            <%# end %>
 
-<%% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <div class="prose prose-sm prose-zinc dark:prose-invert py-3 text-center">
-    <%%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
-  </div>
-<%% end %>
+            <%% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+            <div class="prose prose-sm prose-zinc dark:prose-invert py-3 text-center">
+              <%%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+            </div>
+            <%% end %>
 
-<%% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <div class="prose prose-sm prose-zinc dark:prose-invert py-3 text-center">
-    <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
-  </div>
-<%% end %>
+            <%% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+            <div class="prose prose-sm prose-zinc dark:prose-invert py-3 text-center">
+              <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
+            </div>
+            <%% end %>
 
-<% end %>
+          <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/devise/shared/_links
-- if devise_mapping.confirmable? && controller_name != 'confirmations'
-  .prose.prose-sm.prose-zinc.dark:prose-invert.py-3.text-center
-    = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
-- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  .prose.prose-sm.prose-zinc.dark:prose-invert.py-3.text-center
-    = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
-<% end %>
+          <% content_for :haml, flush: true do %>
+            / app/views/devise/shared/_links
+            - if devise_mapping.confirmable? && controller_name != 'confirmations'
+            .prose.prose-sm.prose-zinc.dark:prose-invert.py-3.text-center
+            = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+            - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+            .prose.prose-sm.prose-zinc.dark:prose-invert.py-3.text-center
+            = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
+          <% end %>
 
-<%= render_snippet(active_tab: "erb", erb_filename: "_links.html.erb", haml_filename: "_links.haml.erb") %>
-</div>
+          <%= render_snippet(active_tab: "erb", erb_filename: "_links.html.erb", haml_filename: "_links.haml.erb") %>
+        </div>
 
-<%= divider %>
+        <%= divider %>
 
-<div id="auth-omniauth-ui" class="py-6">
-  <div class="prose dark:prose-invert my-6">
-    <h3>OmniAuth</h3>
-    <p>The <%= theme_name.humanize %> theme supports themed and branded Omniauth provider buttons for Facebook, Twitter, LinkedIn, and Google. Icons for those providers are dynamically service to the view from <code>app/assets/images/omniauth</code>.</p>
+        <div id="auth-omniauth-ui" class="py-6">
+          <div class="prose dark:prose-invert my-6">
+            <h3>OmniAuth</h3>
+            <p>The <%= theme_name.humanize %> theme supports themed and branded Omniauth provider buttons for Facebook, Twitter, LinkedIn, and Google. Icons for those providers are dynamically service to the view from <code>app/assets/images/omniauth</code>.</p>
 
-    <p>Note: The logic in the layout assumes you've installed <%= link_to "OmniAuth", "https://github.com/omniauth/omniauth", target: :_blank %> which doesn't come pre-installed with Rails UI.</p>
-  </div>
-</div>
+            <p>Note: The logic in the layout assumes you've installed <%= link_to "OmniAuth", "https://github.com/omniauth/omniauth", target: :_blank %> which doesn't come pre-installed with Rails UI.</p>
+          </div>
+        </div>
 
-<%= divider %>
+        <%= divider %>
 
-<div id="auth-error-messages" class="py-6">
-<%= render layout: example, locals: { heading: "_error_messages partial" } do %>
-  <div class="prose prose-neutral dark:prose-invert mb-6">
-    <p>By default Rails UI copies over a pre-styled error partial made to work out of the box and save you time during development.</p>
+        <div id="auth-error-messages" class="py-6">
+          <%= render layout: example, locals: { heading: "_error_messages partial" } do %>
+            <div class="prose prose-neutral dark:prose-invert mb-6">
+              <p>By default Rails UI copies over a pre-styled error partial made to work out of the box and save you time during development.</p>
 
-    <p>This file is called <code>_error_messages.html.erb</code>. Unlike what ships with Devise, this partial lives in the root view directory within <code>app/views/shared</code> and is used throughout the app.</p>
+              <p>This file is called <code>_error_messages.html.erb</code>. Unlike what ships with Devise, this partial lives in the root view directory within <code>app/views/shared</code> and is used throughout the app.</p>
 
-    <p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent.</p>
-  </div>
+              <p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent.</p>
+            </div>
 
-<%= render preview 'zinc' do %>
-  <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
-    <p class="font-semibold font-heading">1 error prohibited this post from being saved:</p>
-    <ul class="list-disc mt-3 ml-4">
-      <li>Title must exist</li>
-    </ul>
-  </div>
-<% end %>
+            <%= render preview 'zinc' do %>
+              <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
+                <p class="font-semibold font-heading">1 error prohibited this post from being saved:</p>
+                <ul class="list-disc mt-3 ml-4">
+                  <li>Title must exist</li>
+                </ul>
+              </div>
+            <% end %>
 
-<% content_for :example, flush: true do %>
-<%= content_for :erb, flush: true do %>
-<!-- app/views/shared/_error_messages.html.erb -->
-<%% if resource.errors.any? %>
-  <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
-    <p class="font-semibold font-heading"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
-    <ul class="list-disc mt-3 ml-4">
-      <%% resource.errors.each do |error| %>
-        <li><%%= error.full_message %></li>
-      <%% end %>
-    </ul>
-  </div>
-<%% end %>
-<% end %>
+            <% content_for :example, flush: true do %>
+              <%= content_for :erb, flush: true do %>
+                <!-- app/views/shared/_error_messages.html.erb -->
+                <%% if resource.errors.any? %>
+                <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
+                  <p class="font-semibold font-heading"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+                  <ul class="list-disc mt-3 ml-4">
+                    <%% resource.errors.each do |error| %>
+                      <li><%%= error.full_message %></li>
+                      <%% end %>
+                    </ul>
+                  </div>
+                  <%% end %>
+                <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/shared/_error_messages.html.erb
-- if resource.errors.any?
-  .text-primary-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-primary-50.text-sm(class="bg-primary-50/50 dark:bg-primary-400/10 dark:border-primary-400/20" role="alert")
-    %p.font-semibold.font-heading
-      = pluralize(resource.errors.count, "error")
-      prohibited this post from being saved:
-    %ul.list-disc.mt-3.ml-4
-      - resource.errors.each do |error|
-        %li= error.full_message
-<% end %>
+                <% content_for :haml, flush: true do %>
+                  / app/views/shared/_error_messages.html.erb
+                  - if resource.errors.any?
+                  .text-primary-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-primary-50.text-sm(class="bg-primary-50/50 dark:bg-primary-400/10 dark:border-primary-400/20" role="alert")
+                  %p.font-semibold.font-heading
+                  = pluralize(resource.errors.count, "error")
+                  prohibited this post from being saved:
+                  %ul.list-disc.mt-3.ml-4
+                  - resource.errors.each do |error|
+                  %li= error.full_message
+                <% end %>
 
-<%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>
-<% end %>
-<% end %>
-</div>
+                <%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>
+              <% end %>
+            <% end %>
+          </div>
 
-<%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_signup_path, next_text: "Sign up") %>
+          <%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_signup_path, next_text: "Sign up") %>
 
-<%= content_for :component_nav do %>
-  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
-    <%= component_link "Prerequisites", "#auth-prerequisites" %>
-    <%= component_link "Global auth layout", "#auth-global-layout" %>
-    <%= component_link "Links partial", "#auth-links-partial" %>
-    <%= component_link "OmniAuth UI", "#auth-omniauth-ui" %>
-    <%= component_link "Error messages", "#auth-error-messages" %>
-  <% end %>
-<% end %>
+          <%= content_for :component_nav do %>
+            <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+              <%= component_link "Prerequisites", "#auth-prerequisites" %>
+              <%= component_link "Global auth layout", "#auth-global-layout" %>
+              <%= component_link "Links partial", "#auth-links-partial" %>
+              <%= component_link "OmniAuth UI", "#auth-omniauth-ui" %>
+              <%= component_link "Error messages", "#auth-error-messages" %>
+            <% end %>
+          <% end %>

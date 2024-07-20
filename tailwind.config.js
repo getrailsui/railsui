@@ -5,7 +5,7 @@ const rails_ui_template_path = outputRailsUI.trim() + "/**/*.html.erb"
 
 const defaultTheme = require("tailwindcss/defaultTheme")
 module.exports = {
-  important: true,
+  //important: true,
   content: [
     "./app/helpers/**/*.rb",
     "./app/views/**/*.html.erb",

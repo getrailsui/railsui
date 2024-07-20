@@ -16,7 +16,10 @@ import RailsuiCanvasController from "./railsui_canvas_controller.js"
 application.register("railsui-canvas", RailsuiCanvasController)
 
 import RailsuiDateRangePickerController from "./railsui_date_range_picker_controller.js"
-application.register("railsui-date-range-picker", RailsuiDateRangePickerController)
+application.register(
+  "railsui-date-range-picker",
+  RailsuiDateRangePickerController
+)
 
 import RailsuiDialogController from "./railsui_dialog_controller.js"
 application.register("railsui-dialog", RailsuiDialogController)
@@ -68,3 +71,6 @@ application.register("railsui-toggle", RailsuiToggleController)
 
 import RailsuiTooltipController from "./railsui_tooltip_controller.js"
 application.register("railsui-tooltip", RailsuiTooltipController)
+
+import RailsuiReload from "./railsui_reload_controller.js"
+application.register("railsui-reload", RailsuiReload)

@@ -1,1 +1,8 @@
-
+<!-- Add your own nav links here. Below are links to the default non-admin-basedpages installed with Rails UI. -->
+<% Railsui::Pages.installed_pages.each do |page, details| %>
+  <% if respond_to?(details['path'].to_sym) && details['add_to_nav'] && details['namespace'] != 'admin' %>
+    <%= content_tag :li do %>
+      <%= nav_link_to details['title'], send(details['path'].to_sym), class: "nav-link" %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -31,8 +31,8 @@ module Railsui
         # Add a GUI for easier theme configuration
         copy_railsui_routes
 
-        # rails ui icons
-        install_railsui_icon
+        # gems
+        install_gems
 
         # action_text
         # Needed for the rich text editor

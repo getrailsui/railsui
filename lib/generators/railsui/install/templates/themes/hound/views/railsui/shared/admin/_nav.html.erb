@@ -14,10 +14,10 @@
         class="lg:hidden block px-1 py-px rounded focus:ring-2 focus:ring-slate-100/30 focus:bg-slate-700 focus:shadow-sm active:bg-slate-700 group dark:focus:bg-slate-800 dark:focus:ring-slate-600 dark:focus:shadow-sm"
         role="Mobile navigation toggle">
         <div role="none" data-nav-target="menuBars">
-          <%= icon "bars-3-bottom-left", classes: "stroke-current w-9 h-9 text-slate-300 group-focus:text-primary-200 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          <%= icon "bars-3-bottom-left", class:  "stroke-current w-9 h-9 text-slate-300 group-focus:text-primary-200 dark:text-slate-400 dark:group-focus:text-slate-100" %>
         </div>
         <div role="none" data-nav-target="menuCross" class="hidden">
-          <%= icon "x-mark", classes: "stroke-current w-9 h-9 text-slate-300 group-focus:text-primary-200 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          <%= icon "x-mark", class:  "stroke-current w-9 h-9 text-slate-300 group-focus:text-primary-200 dark:text-slate-400 dark:group-focus:text-slate-100" %>
         </div>
       </button>
     </div>
@@ -28,7 +28,7 @@
 
       <nav class="flex-1">
         <ul class="lg:flex md:flex-nowrap flex-wrap items-center sm:mx-0 -mx-2 lg:space-x-px space-y-px lg:space-y-0">
-          <%= render "shared/admin/nav_links" %>
+          <%= render "railsui/shared/admin/nav_links" %>
         </ul>
       </nav>
 
@@ -38,7 +38,7 @@
         <button type="button" class="flex group sm:justify-center items-center md:w-auto w-full px-2 py-3 md:p-0"
           data-action="click->dropdown#toggle click@window->dropdown#hide">
           <div class="relative">
-            <%= icon "bell", classes: "text-slate-300 w-6 h-6 group-hover:text-slate-400 dark:group-hover:text-slate-300 stroke-current" %>
+            <%= icon "bell", class:  "text-slate-300 w-6 h-6 group-hover:text-slate-400 dark:group-hover:text-slate-300 stroke-current" %>
             <span
               class="w-[10px] h-[10px] bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-400"></span>
           </div>
@@ -64,7 +64,7 @@
 
             <button
               class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
-              <%= icon "x-mark", classes: "w-3 h-3 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
+              <%= icon "x-mark", class:  "w-3 h-3 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
             </button>
           </div>
           <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -79,7 +79,7 @@
             </div>
             <button
               class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
-              <%= icon "x-mark", classes: "w-3 h-3 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
+              <%= icon "x-mark", class:  "w-3 h-3 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
             </button>
           </div>
           <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -94,13 +94,13 @@
             </div>
             <button
               class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-slate-50/50 group border border-slate-200 hover:border-slate-300 focus:ring-4 focus:ring-slate-100/75 bg-white/50 dark:bg-slate-500/75 dark:focus:ring-slate-100/10 dark:border-slate-400 dark:hover:bg-white/20">
-              <%= icon "x-mark", classes: "w-3 h-3 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
+              <%= icon "x-mark", class:  "w-3 h-3 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-slate-100 dark:text-slate-50 stroke-current" %>
             </button>
           </div>
           <div>
             <%= link_to "#", class: "flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-primary-500 text-sm group font-medium text-slate-500 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white" do %>
               <span>View all notifications</span>
-              <%= icon "chevron-right", classes: "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current" %>
+              <%= icon "chevron-right", class:  "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current" %>
             <% end %>
           </div>
         </div>
@@ -123,7 +123,7 @@
           <% if respond_to?(:admin_settings_path) %>
             <li>
               <%= link_to admin_settings_path, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-                <%= icon "cog-6-tooth", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= icon "cog-6-tooth", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                 <span>Settings</span>
               <% end %>
             </li>
@@ -131,7 +131,7 @@
           <% if respond_to?(:admin_billing_path) %>
             <li>
               <%= link_to admin_billing_path, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-                <%= icon "banknotes", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= icon "banknotes", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                 <span>Billing</span>
               <% end %>
             </li>
@@ -139,7 +139,7 @@
           <% if respond_to?(:destroy_user_session_path) %>
             <li>
               <%= button_to destroy_user_session_path, method: :delete, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-                <%= icon "arrow-right-on-rectangle", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= icon "arrow-right-on-rectangle", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                 <span>Sign out</span>
               <% end %>
             </li>

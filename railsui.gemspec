@@ -26,6 +26,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 7.0'
   spec.add_dependency 'psych'
-  spec.add_dependency "railsui_icon"
-  spec.add_dependency "meta-tags"
+
 end

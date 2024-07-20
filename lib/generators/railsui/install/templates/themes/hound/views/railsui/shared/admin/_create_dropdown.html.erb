@@ -44,7 +44,7 @@
       <% if respond_to?(:admin_projects_path) || respond_to?(:admin_project_path) %>
         <li>
           <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-            <%= icon "plus-small", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+            <%= icon "plus-small", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Project</span>
           <% end %>
         </li>
@@ -53,7 +53,7 @@
       <% if respond_to?(:admin_messages_path) || respond_to?(:admin_message_path) %>
         <li>
           <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-            <%= icon "paper-airplane", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+            <%= icon "paper-airplane", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Message</span>
           <% end %>
         </li>
@@ -62,7 +62,7 @@
       <% if respond_to?(:admin_assignments_path) %>
         <li>
           <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3", data: { action: "click->modal#open" } do %>
-            <%= icon "pencil-square", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 pointer-events-none" %>
+            <%= icon "pencil-square", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 pointer-events-none" %>
             <span class="pointer-events-none">Assignment</span>
           <% end %>
         </li>
@@ -71,7 +71,7 @@
       <% if respond_to?(:admin_calendar_path) %>
         <li>
           <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
-            <%= icon "calendar-days", classes: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+            <%= icon "calendar-days", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Event</span>
           <% end %>
         </li>
@@ -92,7 +92,7 @@
           <button
             class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 group"
             data-action="click->modal#close">
-            <%= icon "x-mark", classes: "w-6 h-6 text-slate-500 stroke-current dark:group-hover:text-slate-300" %>
+            <%= icon "x-mark", class:  "w-6 h-6 text-slate-500 stroke-current dark:group-hover:text-slate-300" %>
           </button>
           <div>
             <h2 id="assignment-modal-title" class="mb-6 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Add Assignment</h2>
@@ -114,7 +114,7 @@
                   <%= text_field_tag :combobox, nil, class: "form-input sm:pr-12 shadow-sm w-full", role: "combobox", "aria-controls": "options", "aria-expanded": "false", data: { action: "keydown->combo-select#handleKeyboardNavigation click->combo-select#toggle click@window->combo-select#hide","combo-select-target": "input" }, readonly: true %>
 
                   <button type="button" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-                    <%= icon "chevron-up-down", classes: "h-5 w-5 text-slate-400" %>
+                    <%= icon "chevron-up-down", class:  "h-5 w-5 text-slate-400" %>
                   </button>
 
                   <div data-combo-select-target="active" data-action="click->combo-select#toggle"

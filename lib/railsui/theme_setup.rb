@@ -6,7 +6,6 @@ module Railsui
   module ThemeSetup
 
     # Assets
-    #
     def copy_theme_javascript(theme)
       say("Adding theme-specific stimulus.js controllers", :yellow)
 
@@ -16,7 +15,7 @@ module Railsui
       index_js_path = Rails.root.join("app/javascript/controllers/index.js")
 
       # Copy the directory
-      directory source_path, destination_path
+      directory source_path, destination_path, force: true
 
       # Get the list of controller files
       controller_files = Dir.children(Rails.root.join(destination_path)).select { |f| f.end_with?("_controller.js") }
@@ -138,9 +137,11 @@ module Railsui
       run "yarn add #{packages.join(' ')} --latest"
     end
 
-    def install_railsui_icon
+    def install_gems
       gem "railsui_icon"
       run "rails g railsui_icon:install"
+
+      gem "meta-tags"
     end
 
     def insert_stimulus_controllers
@@ -235,9 +236,7 @@ module Railsui
       end
     end
 
-    ################################################################
     # Mailers
-    ################################################################
     def generate_sample_mailers(theme)
       say "Adding Rails UI mailers", :yellow
 
@@ -271,8 +270,7 @@ module Railsui
       insert_into_file "#{Rails.root}/app/mailers/application_mailer.rb", "  #{content}\n", after: "class ApplicationMailer < ActionMailer::Base\n"
     end
 
-   ################################################################
-
+    # Routes
     def copy_railsui_routes
   content = <<-RUBY
   if Rails.env.development?
@@ -280,40 +278,38 @@ module Railsui
   end
 
   # Inherits from Railsui::PageController#index
-  # To overide, add your own page#index view or change to a new root
+  # To override, add your own page#index view or change to a new root
   # Visit the start page for Rails UI any time at /railsui/start
   root action: :index, controller: "railsui/default"
   RUBY
 
-      insert_into_file "#{Rails.root}/config/routes.rb", "\n#{content}\n", after: "Rails.application.routes.draw do\n"
+      insert_into_file "#{Rails.root}/config/routes.rb", "\n#{content}\n", after: "Rails.application.routes.draw do\n", force: true
     end
 
     def copy_railsui_pages_routes
-      # Path to the routes file
       routes_file = Rails.root.join('config/routes.rb')
+
+      # Define the regex pattern for the `railsui` namespace block
+      namespace_pattern = /^\s*namespace :railsui do.*?end\n/m
+
+      # Generate new routes content based on the active pages
+      new_routes = Railsui::Pages.theme_pages.keys.map do |page|
+        "    get '#{page}', to: 'pages##{page}'"
+      end.join("\n")
+
+      # Define the routes block to be inserted within the namespace
+      routes_block = "\n  namespace :railsui do\n#{new_routes}\n  end\n"
 
       # Read the current content of the routes file
       route_content = File.read(routes_file)
 
-      # Remove existing routes associated with railsui/pages
-      existing_routes = route_content.scan(/^\s*get\s+'(\w+)',\s+to:\s+'railsui\/pages#(\w+)'/)
-
-      if existing_routes.any?
-        existing_routes.each do |route|
-          remove_route(routes_file, route[0])
-        end
+      if route_content.match?(namespace_pattern)
+        # Remove the existing `railsui` namespace block if present
+        gsub_file routes_file, namespace_pattern, ''
       end
 
-      # Generate new routes content based on the active pages with proper indentation
-      new_routes = Railsui.config.pages.map do |page|
-        "  get '#{page}', to: 'railsui/pages##{page}'"
-      end.join("\n")
-
-      # Define the routes block to be inserted
-      routes_block = "\n#{new_routes}\n"
-
-      # Insert the routes block into the routes file
-      insert_into_file(routes_file, routes_block, after: "Rails.application.routes.draw do\n")
+      # Append the new routes block at the end of the file if not present
+      insert_into_file routes_file, routes_block, after: "Rails.application.routes.draw do\n", force: true
     end
 
     # Pages

@@ -1,13 +1,13 @@
 <div id="dropdown-with-dividers">
-<%= render layout: example, locals: { heading: "With dividers", section: "Dropdown" } do %>
+  <%= render layout: example, locals: { heading: "With dividers", section: "Dropdown" } do %>
 
-<%= render preview 'gray' do %>
-<div data-controller="railsui-dropdown" class="relative md:inline-block block md:w-auto w-full">
-  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="btn btn-white gap-2 pr-2.5">
-    Dropdown with dividers
-    <%= icon "chevron-down", classes: "size-3" %>
-  </button>
-  <div
+    <%= render preview 'gray' do %>
+      <div data-controller="railsui-dropdown" class="relative md:inline-block block md:w-auto w-full">
+        <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="btn btn-white gap-2 pr-2.5">
+          Dropdown with dividers
+          <%= icon "chevron-down", class:  "size-3" %>
+        </button>
+        <div
     class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200 divide-y dark:divide-slate-500/75"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
@@ -15,28 +15,28 @@
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95"
     >
-    <div role="none" class="pb-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Edit</a>
-    </div>
-    <div role="none" class="py-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Share</a>
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
-    </div>
-    <div role="none" class="pt-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Delete</a>
-    </div>
-  </div>
-</div>
-<% end %>
+          <div role="none" class="pb-1">
+            <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Edit</a>
+          </div>
+          <div role="none" class="py-1">
+            <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Share</a>
+            <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+          </div>
+          <div role="none" class="pt-1">
+            <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Delete</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
-<% content_for :example, flush: true do %>
-<% content_for :html, flush: true do %>
-<div data-controller="dropdown" class="relative inline-block">
-  <button type="button" data-action="click->dropdown#toggle click@window->dropdown#hide" class="btn btn-white gap-2 pr-2.5">
-    Dropdown with dividers
-    <%%= icon "chevron-down", classes: "size-3" %>
-  </button>
-  <div
+    <% content_for :example, flush: true do %>
+      <% content_for :html, flush: true do %>
+        <div data-controller="dropdown" class="relative inline-block">
+          <button type="button" data-action="click->dropdown#toggle click@window->dropdown#hide" class="btn btn-white gap-2 pr-2.5">
+            Dropdown with dividers
+            <%%= icon "chevron-down", class:  "size-3" %>
+          </button>
+          <div
     class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200 divide-y dark:divide-slate-500/75"
     data-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
@@ -44,27 +44,27 @@
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95"
     >
-    <div role="none" class="pb-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Edit</a>
-    </div>
-    <div role="none" class="py-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Share</a>
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Export</a>
-    </div>
-    <div role="none" class="pt-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Delete</a>
-    </div>
-  </div>
-</div>
-<% end %>
+            <div role="none" class="pb-1">
+              <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Edit</a>
+            </div>
+            <div role="none" class="py-1">
+              <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Share</a>
+              <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Export</a>
+            </div>
+            <div role="none" class="pt-1">
+              <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Delete</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
-<% content_for :erb, flush: true do %>
-<div data-controller="dropdown" class="relative inline-block">
-  <%%= button_tag data: { action: "click->dropdown#toggle click@window->dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do %>
-    Dropdown with dividers
-    <%%= icon "chevron-down", classes: "size-3" %>
-  <%% end %>
-  <div
+      <% content_for :erb, flush: true do %>
+        <div data-controller="dropdown" class="relative inline-block">
+          <%%= button_tag data: { action: "click->dropdown#toggle click@window->dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do %>
+            Dropdown with dividers
+            <%%= icon "chevron-down", class:  "size-3" %>
+            <%% end %>
+            <div
     class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200 divide-y dark:divide-slate-500/75"
     data-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
@@ -72,36 +72,36 @@
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95"
     >
-    <div role="none" class="pb-1">
-      <%%= link_to "Edit", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
-    </div>
-    <div role="none" class="py-1">
-      <%%= link_to "Share", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
-      <%%= link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
-    </div>
-    <div role="none" class="pt-1">
-      <%%= link_to "Delete", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
-    </div>
+              <div role="none" class="pb-1">
+                <%%= link_to "Edit", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
+              </div>
+              <div role="none" class="py-1">
+                <%%= link_to "Share", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
+                <%%= link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
+              </div>
+              <div role="none" class="pt-1">
+                <%%= link_to "Delete", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <% content_for :haml, flush: true do %>
+          .relative.inline-block{"data-controller" => "dropdown"}
+          = button_tag data: { action: "click->dropdown#toggle click@window->dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do
+          Dropdown with dividers
+          #{icon "chevron-down", class:  "size-3"}
+          .hidden.transition.transform.origin-top-left.absolute.left-0.top-10.bg-white.rounded-lg.shadow-xl.border.border-slate-200.w-full.z-50.py-2.dark:bg-slate-700.md:text-sm.text-base.font-medium.text-slate-600.dark:text-slate-200.divide-y{class: "shadow-slate-900/10 md:w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60 dark:divide-slate-500/75", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+          .pb-1{role: "none"}
+          = link_to "Edit", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
+          .py-1{role: "none"}
+          = link_to "Share", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
+          = link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
+          .pt-1{role: "none"}
+          = link_to "Delete", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
+        <% end %>
+
+        <%= render_snippet %>
+      <% end %>
+    <% end %>
   </div>
-</div>
-<% end %>
-
-<% content_for :haml, flush: true do %>
-.relative.inline-block{"data-controller" => "dropdown"}
-  = button_tag data: { action: "click->dropdown#toggle click@window->dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do
-    Dropdown with dividers
-    #{icon "chevron-down", classes: "size-3"}
-  .hidden.transition.transform.origin-top-left.absolute.left-0.top-10.bg-white.rounded-lg.shadow-xl.border.border-slate-200.w-full.z-50.py-2.dark:bg-slate-700.md:text-sm.text-base.font-medium.text-slate-600.dark:text-slate-200.divide-y{class: "shadow-slate-900/10 md:w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60 dark:divide-slate-500/75", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-    .pb-1{role: "none"}
-      = link_to "Edit", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
-    .py-1{role: "none"}
-      = link_to "Share", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
-      = link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
-    .pt-1{role: "none"}
-      = link_to "Delete", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block"
-<% end %>
-
-<%= render_snippet %>
-<% end %>
-<% end %>
-</div>

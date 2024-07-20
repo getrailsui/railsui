@@ -63144,13 +63144,34 @@
     allowHtml: Boolean
   });
 
+  // app/javascript/controllers/railsui_reload_controller.js
+  var railsui_reload_controller_default = class extends Controller {
+    connect() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("update") === "true") {
+        setTimeout(() => {
+          this.removeURLParameter("update");
+          window.location.reload();
+        }, 3e3);
+      }
+    }
+    removeURLParameter(param) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete(param);
+      window.history.replaceState({}, "", url);
+    }
+  };
+
   // app/javascript/controllers/index.js
   application.register("railsui-anchor", railsui_anchor_controller_default);
   application.register("railsui-clipboard", railsui_clipboard_controller_default);
   application.register("railsui-configuration", railsui_configuration_controller_default);
   application.register("railsui-code", railsui_code_controller_default);
   application.register("railsui-canvas", railsui_canvas_controller_default);
-  application.register("railsui-date-range-picker", railsui_date_range_picker_controller_default);
+  application.register(
+    "railsui-date-range-picker",
+    railsui_date_range_picker_controller_default
+  );
   application.register("railsui-dialog", railsui_dialog_controller_default);
   application.register("railsui-dropdown", railsui_dropdown_controller_default);
   application.register("railsui-flash", railsui_flash_controller_default);
@@ -63168,5 +63189,6 @@
   application.register("railsui-pages", railsui_pages_controller_default);
   application.register("railsui-toggle", railsui_toggle_controller_default);
   application.register("railsui-tooltip", railsui_tooltip_controller_default);
+  application.register("railsui-reload", railsui_reload_controller_default);
 })();
 //# sourceMappingURL=application.js.map

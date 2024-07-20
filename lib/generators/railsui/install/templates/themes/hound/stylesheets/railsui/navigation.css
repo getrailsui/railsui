@@ -24,14 +24,14 @@
   @apply hidden;
 }
 
-.rui-admin .nav-link {
+.nav-link--admin {
   @apply px-4 lg:py-2 py-3 rounded-md transition ease-in-out duration-200 lg:inline-block block text-white md:text-base text-base;
 }
 
-.rui-admin .nav-link.nav-link-active {
+.nav-link--admin.nav-link-active {
   @apply px-4 lg:py-2 py-3 rounded-md transition ease-in-out duration-200 lg:inline-block block bg-slate-900 hover:bg-slate-900 text-white md:text-base text-base;
 }
 
-.rui-admin .nav-link:after {
+.nav-link--admin:after {
   @apply hidden;
 }
