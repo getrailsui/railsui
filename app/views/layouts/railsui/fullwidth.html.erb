@@ -32,13 +32,13 @@
   <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-800/80 selection:text-neutral-100 antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy">
     <div class="flex md:flex-row flex-col items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
 
-    <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.09] dark:opacity-20 z-0" %>
+      <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.09] dark:opacity-20 z-0" %>
 
       <%= render "railsui/shared/global_nav" %>
 
       <div class="md:flex-1 h-full md:pt-2 md:w-auto w-full md:overflow-y-auto scrollbar relative z-30">
         <div class="max-w-4xl mx-auto md:px-10 md:pb-10 md:pt-6 p-4">
-          <%= render "railsui/shared/flash" %>
+          <%= render "railsui/shared/flash_messages" %>
           <%= yield %>
           <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>
         </div>

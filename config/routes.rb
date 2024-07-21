@@ -1,6 +1,8 @@
 Railsui::Engine.routes.draw do
   resource :admin, only: :show
-  resource :configuration, only: [:create, :update]
+  resource :configuration, only: [:create, :update] do
+    get 'reset_colors', on: :collection
+  end
   resource :systems, only: :show
   resource :routes, only: :show
   resources :mailers, only: [:index, :show]

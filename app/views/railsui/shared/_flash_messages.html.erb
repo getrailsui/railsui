@@ -1,0 +1,11 @@
+<% if notice %>
+  <div class="bg-gradient-to-br from-indigo-700 to-indigo-600 text-white text-center py-1.5 z-50 relative rounded-lg mb-3" role="alert" data-controller="railsui-flash">
+    <p><%= sanitize notice %></p>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="bg-gradient-to-br from-red-600 to-red-400 text-white text-center py-1.5 z-50 relative rounded-lg mb-3" role="alert" data-controller="railsui-flash">
+    <p><%= sanitize alert %></p>
+  </div>
+<% end %>

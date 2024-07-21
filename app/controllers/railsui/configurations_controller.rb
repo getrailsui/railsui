@@ -24,6 +24,20 @@ module Railsui
       redirect_to root_path, notice: "✅ Page removed successfully"
     end
 
+    def reset_colors
+      theme = Railsui.config.theme
+
+      # Reset colors to the default values for the current theme
+      default_colors = Railsui::Colors.theme_colors(theme)
+      Railsui::Configuration.update(colors: default_colors)
+      Railsui.bundle
+      Railsui.build_css
+      sleep 2
+      Railsui.restart
+
+      redirect_to root_path(update: true), notice: "✅ Colors reset to default for #{theme.humanize} theme"
+    end
+
     private
 
     def configuration_params

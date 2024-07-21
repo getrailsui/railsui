@@ -56139,28 +56139,17 @@
 
   // app/javascript/controllers/railsui_configuration_controller.js
   var railsui_configuration_controller_default = class extends Controller {
-    connect() {
-      if (this.hasChosenThemeValue) {
-        let value = this.chosenThemeValue;
-        switch (value) {
-          case "bootstrap":
-            this.frameworksTarget.classList.remove("hidden");
-            this.submitContainerTarget.classList.remove("hidden");
-            if (this.hasBootstrapTarget) {
-              this.bootstrapTarget.classList.remove("hidden");
-            }
-            break;
-          case "tailwind":
-            this.frameworksTarget.classList.remove("hidden");
-            this.submitContainerTarget.classList.remove("hidden");
-            if (this.hasTailwindTarget) {
-              this.tailwindTarget.classList.remove("hidden");
-            }
-            break;
-          default:
-            this._toggleAllThemes();
-        }
+    initialize() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("update") === "true") {
+        setTimeout(() => {
+          this.removeURLParameter("update");
+          window.location.reload();
+        }, 3e3);
       }
+    }
+    connect() {
+      this.toggleLoader();
     }
     saveChanges(event) {
       event.preventDefault();
@@ -56169,50 +56158,17 @@
       this.submitTarget.setAttribute("disabled", true);
       this.element.submit();
     }
-    toggleTheme(event) {
-      switch (event.target.value) {
-        case "bootstrap":
-          this._toggleAllThemes();
-          this.frameworksTarget.classList.remove("hidden");
-          this.bootstrapTarget.classList.remove("hidden");
-          this.submitContainerTarget.classList.remove("hidden");
-          this.bootstrapTarget.querySelector("label").control.checked = true;
-          break;
-        case "tailwind":
-          this._toggleAllThemes();
-          this.frameworksTarget.classList.remove("hidden");
-          this.tailwindTarget.classList.remove("hidden");
-          this.submitContainerTarget.classList.remove("hidden");
-          this.tailwindTarget.querySelector("label").control.checked = true;
-          break;
-        default:
-          this._toggleAllThemes();
-      }
-    }
-    _toggleAllThemes() {
-      let all = [
-        this.bootstrapTarget,
-        this.tailwindTarget,
-        this.frameworksTarget,
-        this.submitContainerTarget
-      ];
-      all.forEach((t) => t.classList.add("hidden"));
+    toggleLoader() {
       this.savingTarget.classList.remove("config-loader--active");
       document.body.classList.remove("overflow-hidden");
     }
+    removeURLParameter(param) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete(param);
+      window.history.replaceState({}, "", url);
+    }
   };
-  __publicField(railsui_configuration_controller_default, "targets", [
-    "bootstrap",
-    "tailwind",
-    "frameworks",
-    "submit",
-    "submitContainer",
-    "saving",
-    "theme"
-  ]);
-  __publicField(railsui_configuration_controller_default, "values", {
-    chosenTheme: String
-  });
+  __publicField(railsui_configuration_controller_default, "targets", ["submit", "submitContainer", "saving"]);
 
   // node_modules/highlight.js/es/index.js
   var import_lib = __toESM(require_lib(), 1);
@@ -63144,23 +63100,16 @@
     allowHtml: Boolean
   });
 
-  // app/javascript/controllers/railsui_reload_controller.js
-  var railsui_reload_controller_default = class extends Controller {
-    connect() {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get("update") === "true") {
-        setTimeout(() => {
-          this.removeURLParameter("update");
-          window.location.reload();
-        }, 3e3);
-      }
-    }
-    removeURLParameter(param) {
-      const url = new URL(window.location.href);
-      url.searchParams.delete(param);
-      window.history.replaceState({}, "", url);
+  // app/javascript/controllers/railsui_loading_controller.js
+  var railsui_loading_controller_default = class extends Controller {
+    start() {
+      this.contentTarget.innerHTML = this.labelValue;
     }
   };
+  __publicField(railsui_loading_controller_default, "targets", ["content"]);
+  __publicField(railsui_loading_controller_default, "values", {
+    label: { type: String, default: "Loading..." }
+  });
 
   // app/javascript/controllers/index.js
   application.register("railsui-anchor", railsui_anchor_controller_default);
@@ -63189,6 +63138,6 @@
   application.register("railsui-pages", railsui_pages_controller_default);
   application.register("railsui-toggle", railsui_toggle_controller_default);
   application.register("railsui-tooltip", railsui_tooltip_controller_default);
-  application.register("railsui-reload", railsui_reload_controller_default);
+  application.register("railsui-loading", railsui_loading_controller_default);
 })();
 //# sourceMappingURL=application.js.map

@@ -4,34 +4,36 @@
   <div class="prose prose-neutral dark:prose-invert max-w-full mb-6">
     <p>Rails UI comes with two custom colors: <span class="size-4 bg-primary-500 inline-block rounded-sm relative top-0.5 mr-1"></span>primary and <span class="size-4 bg-secondary-500 inline-block rounded-sm relative top-0.5 mr-1"></span>secondary. You can edit these below or in your <code>railsui.yml</code> configuration file.</p>
 
-    <p>This allows you to easily use your brand's colors without changing Tailwind CSS settings. Your component library will automatically update to match the colors you choose. All default Tailwind colors are still accessible.</p>
+    <p>This allows you to easily use your brand's colors without changing Tailwind CSS settings. Your component library and Rails UI generated pages will automatically update to match the colors you choose. All default Tailwind colors are still accessible.</p>
   </div>
 
   <% if @theme_colors.present? %>
     <% if @config.colors.present? %>
-      <div class="border border-neutral-200/80 rounded-md dark:border-neutral-700/80 pt-3 bg-white dark:bg-transparent">
-        <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80 px-6">
-          <% @config.colors.each do |collection, colors| %>
-            <div class="py-3">
-              <h3 class="font-semibold my-3"><%= collection.capitalize %> Colors</h3>
-              <div class="grid grid-cols-1 md:grid-cols-11 gap-2 mb-8">
-                <% colors.each do |shade, hex| %>
-                  <div class="color-item md:block flex items-center gap-2">
-                    <%= label_tag "#{collection}_#{shade}", "#{shade.capitalize} Color", class: "sr-only" %>
+      <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80">
+        <% @config.colors.each do |collection, colors| %>
+          <div class="py-3">
+            <h3 class="font-semibold my-3"><%= collection.capitalize %> Colors</h3>
+            <div class="grid grid-cols-1 md:grid-cols-11 gap-2 mb-8">
+              <% colors.each do |shade, hex| %>
+                <div class="color-item md:block flex items-center gap-2">
+                  <%= label_tag "#{collection}_#{shade}", "#{shade.capitalize} Color", class: "sr-only" %>
 
-                    <%= f.color_field :colors, value: @config.colors[collection][shade], name: "configuration[colors][#{collection}][#{shade}]", class: "rui-form-input-color" %>
+                  <%= f.color_field :colors, value: @config.colors[collection][shade], name: "configuration[colors][#{collection}][#{shade}]", class: "rui-form-input-color" %>
 
-                    <div class="text-left mt-1 leading-none">
-                      <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200"><%= shade %></p>
-                      <code class="font-mono text-xs text-neutral-600 selection:bg-indigo-500 selection:text-white dark:text-neutral-400"><%= hex %></code>
-                    </div>
+                  <div class="text-left mt-1 leading-none">
+                    <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200"><%= shade %></p>
+                    <code class="font-mono text-xs text-neutral-600 selection:bg-indigo-500 selection:text-white dark:text-neutral-400"><%= hex %></code>
                   </div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
+  <% end %>
+
+  <%= link_to reset_colors_configuration_path, class: "font-medium underline text-sm", data: { controller: "railsui-loading", action: "click->railsui-loading#start" } do %>
+    <span data-railsui-loading-target="content">Reset to <%= Railsui.config.theme.humanize %> theme default colors</span>
   <% end %>
 </div>

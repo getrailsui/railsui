@@ -7,7 +7,7 @@
 
 <%= form_with model: @config, url: configuration_path, class: "h-full block relative pb-24", data: {
   action: "submit->railsui-configuration#saveChanges",
-  controller: "railsui-configuration railsui-reload"
+  controller: "railsui-configuration"
   } do |f| %>
 
   <%= f.hidden_field :theme, value: Railsui.config.theme %>

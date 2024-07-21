@@ -72,5 +72,5 @@ application.register("railsui-toggle", RailsuiToggleController)
 import RailsuiTooltipController from "./railsui_tooltip_controller.js"
 application.register("railsui-tooltip", RailsuiTooltipController)
 
-import RailsuiReload from "./railsui_reload_controller.js"
-application.register("railsui-reload", RailsuiReload)
+import RailsuiLoadingController from "./railsui_loading_controller.js"
+application.register("railsui-loading", RailsuiLoadingController)

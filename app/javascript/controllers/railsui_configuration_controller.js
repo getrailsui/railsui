@@ -1,45 +1,22 @@
-const BOOTSTRAP = "Bootstrap"
-const TAILWIND = "Tailwind CSS"
-const NONE = "None"
-
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [
-    "bootstrap",
-    "tailwind",
-    "frameworks",
-    "submit",
-    "submitContainer",
-    "saving",
-    "theme",
-  ]
-  static values = {
-    chosenTheme: String,
-  }
-  connect() {
-    if (this.hasChosenThemeValue) {
-      let value = this.chosenThemeValue
+  static targets = ["submit", "submitContainer", "saving"]
 
-      switch (value) {
-        case "bootstrap":
-          this.frameworksTarget.classList.remove("hidden")
-          this.submitContainerTarget.classList.remove("hidden")
-          if (this.hasBootstrapTarget) {
-            this.bootstrapTarget.classList.remove("hidden")
-          }
-          break
-        case "tailwind":
-          this.frameworksTarget.classList.remove("hidden")
-          this.submitContainerTarget.classList.remove("hidden")
-          if (this.hasTailwindTarget) {
-            this.tailwindTarget.classList.remove("hidden")
-          }
-          break
-        default:
-          this._toggleAllThemes()
-      }
+  initialize() {
+    const urlParams = new URLSearchParams(window.location.search)
+
+    if (urlParams.get("update") === "true") {
+      // Reload the page
+      setTimeout(() => {
+        this.removeURLParameter("update")
+        window.location.reload()
+      }, 3000)
     }
+  }
+
+  connect() {
+    this.toggleLoader()
   }
 
   saveChanges(event) {
@@ -53,38 +30,15 @@ export default class extends Controller {
     this.element.submit()
   }
 
-  toggleTheme(event) {
-    switch (event.target.value) {
-      case "bootstrap":
-        this._toggleAllThemes()
-        this.frameworksTarget.classList.remove("hidden")
-        this.bootstrapTarget.classList.remove("hidden")
-        this.submitContainerTarget.classList.remove("hidden")
-        this.bootstrapTarget.querySelector("label").control.checked = true
-
-        break
-      case "tailwind":
-        this._toggleAllThemes()
-        this.frameworksTarget.classList.remove("hidden")
-        this.tailwindTarget.classList.remove("hidden")
-        this.submitContainerTarget.classList.remove("hidden")
-        this.tailwindTarget.querySelector("label").control.checked = true
-        break
-      default:
-        this._toggleAllThemes()
-    }
-  }
-
-  _toggleAllThemes() {
-    let all = [
-      this.bootstrapTarget,
-      this.tailwindTarget,
-      this.frameworksTarget,
-      this.submitContainerTarget,
-    ]
-    all.forEach((t) => t.classList.add("hidden"))
+  toggleLoader() {
     // Remove loader
     this.savingTarget.classList.remove("config-loader--active")
     document.body.classList.remove("overflow-hidden")
+  }
+
+  removeURLParameter(param) {
+    const url = new URL(window.location.href)
+    url.searchParams.delete(param)
+    window.history.replaceState({}, "", url)
   }
 }
