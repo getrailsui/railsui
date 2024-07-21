@@ -1,9 +1,20 @@
 # frozen_string_literal: true
 
 require 'fileutils'
+require "railsui/user_setup"
 
 module Railsui
   module ThemeSetup
+    include Railsui::UserSetup
+
+    # gems
+    def install_gems
+      gem "railsui_icon"
+      run "rails g railsui_icon:install"
+      gem "meta-tags"
+      gem "devise"
+      gem "name_of_person"
+    end
 
     # Assets
     def copy_theme_javascript(theme)
@@ -137,12 +148,7 @@ module Railsui
       run "yarn add #{packages.join(' ')} --latest"
     end
 
-    def install_gems
-      gem "railsui_icon"
-      run "rails g railsui_icon:install"
 
-      gem "meta-tags"
-    end
 
     def insert_stimulus_controllers
       js_content = <<-JAVASCRIPT.strip_heredoc

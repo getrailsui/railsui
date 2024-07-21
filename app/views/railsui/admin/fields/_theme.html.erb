@@ -1,16 +1,10 @@
-<div class="py-8" data-railsui-configuration-target="frameworks">
-
-  <%#% if Railsui.config.theme.present? %>
-  <%#% render "railsui/admin/fields/theme_active", f: f %>
-  <%#% else %>
-  <%#% render "railsui/admin/fields/theme_setup", f: f %>
-  <%# end %>
-
+<div class="py-8">
   <%= heading text: "Theme", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
 
   <div class="prose prose-neutral dark:prose-invert mb-6">
-    <p>Select a theme to use for you application. Have a look at the FAQS for more information.</p>
-    <p>Active theme: <span class="bg-neutral-200/80 text-neutral-800 dark:bg-neutral-600/70 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span>. </p>
+    <p>A theme is a set of <%= link_to "pre-built components", systems_path %> and <%= link_to "optional pages", root_path(anchor: "pages"), data: { action: "click->railsui-smooth#scroll
+"} %> that look great with the <%= theme_name.humanize %> theme. Use both to rapidly create a consistent look and feel for your application.</p>
+    <p>Your active theme: <span class="bg-neutral-200/80 text-neutral-800 dark:bg-neutral-600/70 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span></p>
   </div>
 
   <ul class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-16">
@@ -39,11 +33,12 @@
       peer-checked:shadow-black/10">
           <%= image_tag theme[:thumbnail], alt: "#{theme[:name]} theme" %>
         </label>
-        <div class="flex items-center justify-between mt-3">
-          <p class="font-semibold text-base"><%= theme[:name] %></p>
-          <%= link_to theme[:preview_link], target: :_blank, class: "rui-btn rui-btn-transparent" do %>
-            <span class="sr-only">Preview</span>
-            <%= icon "eye", class: "size-5 stroke-current text-neutral-500", title: "Preview theme" %>
+        <div class="mt-4 flex items-center justify-between gap-2">
+          <p class="font-semibold text-base my-2">
+            <%= theme[:name] %>
+          </p>
+          <%= link_to theme[:preview_link], target: :_blank, class: "inline-flex text-sm items-center gap-2 font-medium text-sm py-1 px-2 rounded-md border border-neutral-300 dark:border-neutral-600 hover:shadow-sm" do %>
+            <span>Preview</span>
           <% end %>
         </div>
       </li>
@@ -85,7 +80,6 @@
           Your <code>tailwind.config.js</code> file will be scanned and optimized to use the new theme's <a href="https://www.npmjs.com/package/railsui-tailwind-presets">Rails UI preset</a> along with other necessary Rails UI configuration settings.
         </li>
       </ul>
-
     </div>
   </details>
 
@@ -104,4 +98,7 @@
   </details>
 </dl>
 
+<div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
+  <p>Read more about <a href="https://railsui.com/docs/templates" target="_blank">themes</a> and <a href="https://railsui.com/docs/design_patterns" target="_blank">design patterns (components)</a> in the Rails UI documentation.</p>
+</div>
 </div>

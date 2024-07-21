@@ -26,6 +26,10 @@ module Railsui
         # view related
         copy_railsui_shared_directory(@config.theme)
 
+        # devise stuff
+        update_devise_mailer_sender
+        copy_railsui_devise_views(@config.theme)
+
         # tailwind related
         update_tailwind_preset(@config.theme)
         update_body_classes
@@ -47,7 +51,7 @@ module Railsui
         default_colors = Railsui::Colors.theme_colors(theme)
         output = default_colors
 
-        say "📌 To change the default colors for this theme, update your config/railsui.yml file directly or use the Rails UI configuration form. If editing the railsui.yml file, copy and paste the hex codes below."
+        say "📌Tip: Run `bin/rails railsui:colors` to print the default colors for this theme."
         say "🎨 Default colors for #{theme.humanize} theme:", :yellow
         puts output.to_yaml
       end

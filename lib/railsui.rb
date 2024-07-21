@@ -8,6 +8,7 @@ module Railsui
   autoload :Themes, "railsui/themes"
   autoload :ThemeHelper, "railsui/theme_helper"
   autoload :ThemeSetup, "railsui/theme_setup"
+  autoload :UserSetup, "railsui/user_setup"
 
   mattr_accessor :config
   @@config = Railsui::Configuration.new

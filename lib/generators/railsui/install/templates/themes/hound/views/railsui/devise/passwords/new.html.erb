@@ -1,0 +1,22 @@
+<% content_for :masthead do %>
+  <div class="text-center">
+    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight my-3">Forget your password?</h1>
+    <p class="mb-6 text-slate-700 dark:text-slate-200">Reset it in an instant</p>
+  </div>
+  <%= render "shared/error_messages", resource: resource %>
+<% end %>
+
+<%= render "auth_layout" do %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :email, class: "form-label" %>
+      <div class="relative">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input peer focus:pl-10 transition", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address" %>
+        <%= icon "envelope", classes: "w-5 h-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-primary-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-primary-400" %>
+      </div>
+    </div>
+
+    <%= f.submit "Send me reset password instructions", class: "btn btn-primary w-full" %>
+  <% end %>
+<% end %>

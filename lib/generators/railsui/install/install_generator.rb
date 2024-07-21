@@ -1,9 +1,11 @@
 require "railsui/theme_setup"
+require "railsui/user_setup"
 
 module Railsui
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include Railsui::ThemeSetup
+      include Railsui::UserSetup
 
       source_root File.expand_path("templates", __dir__)
 
@@ -33,6 +35,11 @@ module Railsui
 
         # gems
         install_gems
+
+        # add users
+        setup_users
+        add_devise_email_previews(@theme)
+        copy_railsui_devise_views(@theme)
 
         # action_text
         # Needed for the rich text editor

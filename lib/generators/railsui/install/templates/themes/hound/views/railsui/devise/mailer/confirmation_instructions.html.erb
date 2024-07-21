@@ -1,0 +1,7 @@
+<p>Hi <%= @email %>,</p>
+
+<p>Thanks for signing up. Before you access your new account we want to make sure it's really you.</p>
+
+<p>Confirm your account by clicking the button below.</p>
+
+<%= email_action "Confirm my account", confirmation_url(@resource, confirmation_token: @token), fullwidth: true %>

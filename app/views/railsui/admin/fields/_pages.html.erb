@@ -8,7 +8,7 @@
   <div class="mb-10">
     <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80 py-2.5">
       <% @theme_pages.each do |page, details| %>
-        <div class="flex flex-wrap items-start justify-between py-2.5">
+        <div class="flex flex-wrap items-start justify-between py-3">
           <%= render "railsui/admin/fields/page", page: page, details: details %>
         </div>
       <% end %>
@@ -40,5 +40,4 @@
       <p>Pages are a starting point. Copy them to other views you're working on and make changes there as opposed to directly inside the <code>app/views/railsui/pages</code> directory.</p>
     </div>
   </div>
-
 </div>
