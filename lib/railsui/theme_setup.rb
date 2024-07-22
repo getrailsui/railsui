@@ -148,8 +148,6 @@ module Railsui
       run "yarn add #{packages.join(' ')} --latest"
     end
 
-
-
     def insert_stimulus_controllers
       js_content = <<-JAVASCRIPT.strip_heredoc
         import { RailsuiClipboard, RailsuiCountUp, RailsuiDateRangePicker, RailsuiDropdown, RailsuiModal, RailsuiTabs, RailsuiToast, RailsuiToggle, RailsuiTooltip } from 'railsui-stimulus'
@@ -260,12 +258,12 @@ module Railsui
     end
 
     def update_railsui_mailer_layout(theme)
-      source_file = Rails.root.join('app/views/layouts/railsui/railsui_mailer.html.erb')
+      source_file = Rails.root.join('app/views/layouts/rui/railsui_mailer.html.erb')
       if File.exist?(source_file)
         remove_file source_file
       end
 
-      copy_file "themes/#{theme}/views/layouts/railsui/railsui_mailer.html.erb", source_file, force: true
+      copy_file "themes/#{theme}/views/layouts/rui/railsui_mailer.html.erb", source_file, force: true
     end
 
     def update_application_mailer
@@ -304,7 +302,7 @@ module Railsui
       end.join("\n")
 
       # Define the routes block to be inserted within the namespace
-      routes_block = "\n  namespace :railsui do\n#{new_routes}\n  end\n"
+      routes_block = "\n  namespace :rui do\n#{new_routes}\n  end\n"
 
       # Read the current content of the routes file
       route_content = File.read(routes_file)
@@ -320,17 +318,17 @@ module Railsui
 
     # Pages
     def copy_railsui_page_controller(theme)
-      copy_file "themes/#{theme}/controllers/railsui/pages_controller.rb", "app/controllers/railsui/pages_controller.rb", force: true
+      copy_file "themes/#{theme}/controllers/rui/pages_controller.rb", "app/controllers/rui/pages_controller.rb", force: true
     end
 
     def copy_railsui_pages(theme)
       Railsui::Pages.theme_pages.each do | page, details |
         if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)
-          copy_file "themes/#{theme}/views/railsui/pages/#{page}.html.erb", "app/views/railsui/pages/#{page}.html.erb", force: true
+          copy_file "themes/#{theme}/views/rui/pages/#{page}.html.erb", "app/views/rui/pages/#{page}.html.erb", force: true
         end
       end
 
-      copy_file "themes/#{theme}/views/layouts/railsui/railsui.html.erb", "app/views/layouts/railsui/railsui.html.erb", force: true
+      copy_file "themes/#{theme}/views/layouts/rui/railsui.html.erb", "app/views/layouts/rui/railsui.html.erb", force: true
     end
 
     def update_body_classes
@@ -396,8 +394,8 @@ module Railsui
     end
 
     def copy_railsui_shared_directory(theme)
-      theme_dir = "themes/#{theme}/views/railsui/shared"
-      target_dir = Rails.root.join("app/views/railsui/shared")
+      theme_dir = "themes/#{theme}/views/rui/shared"
+      target_dir = Rails.root.join("app/views/rui/shared")
 
       remove_directory(target_dir, "shared views")
       directory theme_dir, target_dir, force: true

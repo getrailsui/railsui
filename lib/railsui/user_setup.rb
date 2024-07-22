@@ -4,8 +4,20 @@ require 'fileutils'
 
 module Railsui
   module UserSetup
+    # Note: Devise views are copied directly in generators
+    def copy_railsui_devise_views(theme)
+      # Copy Devise views
+      directory "themes/#{theme}/views/rui/devise", "app/views/rui/devise", force: true
+      # Copy Devise layout
+      copy_file "themes/#{theme}/views/layouts/rui/devise.html.erb", "app/views/layouts/rui/devise.html.erb", force: true
+    end
+
+    def add_devise_email_previews(theme)
+      # Add devise email preview support in # test/mailers/previews/devise_mailer_preview.rb
+      copy_file "themes/#{theme}/mail/devise_mailer_preview.rb", Rails.root.join("test/mailers/previews/devise_mailer_preview.rb"), force: true
+    end
+
     def setup_users
-      # Note: Devise views are copied directly in generators
       unless devise_installed?
         # Install Devise
         generate "devise:install"
@@ -71,17 +83,17 @@ module Railsui
     def set_devise_view_and_layout_paths
 content = <<-RUBY
   config.to_prepare do
-    Devise::SessionsController.prepend_view_path "app/views/railsui"
-    Devise::RegistrationsController.prepend_view_path "app/views/railsui"
-    Devise::ConfirmationsController.prepend_view_path "app/views/railsui"
-    Devise::UnlocksController.prepend_view_path "app/views/railsui"
-    Devise::PasswordsController.prepend_view_path "app/views/railsui"
+    Devise::SessionsController.prepend_view_path "app/views/rui"
+    Devise::RegistrationsController.prepend_view_path "app/views/rui"
+    Devise::ConfirmationsController.prepend_view_path "app/views/rui"
+    Devise::UnlocksController.prepend_view_path "app/views/rui"
+    Devise::PasswordsController.prepend_view_path "app/views/rui"
 
-    Devise::SessionsController.layout "railsui/devise"
-    Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "railsui/railsui" : "railsui/devise" }
-    Devise::ConfirmationsController.layout "railsui/devise"
-    Devise::PasswordsController.layout "railsui/devise"
-    Devise::UnlocksController.layout "railsui/devise"
+    Devise::SessionsController.layout "rui/devise"
+    Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "rui/rui" : "rui/devise" }
+    Devise::ConfirmationsController.layout "rui/devise"
+    Devise::PasswordsController.layout "rui/devise"
+    Devise::UnlocksController.layout "rui/devise"
     Devise::Mailer.helper Railsui::MailHelper
   end
 RUBY
@@ -114,18 +126,6 @@ RUBY
       else
         say "Devise initializer file not found.", :red
       end
-    end
-
-    def copy_railsui_devise_views(theme)
-      # Copy Devise views
-      directory "themes/#{theme}/views/railsui/devise", "app/views/railsui/devise", force: true
-      # Copy Devise layout
-      copy_file "themes/#{theme}/views/layouts/railsui/devise.html.erb", "app/views/layouts/railsui/devise.html.erb", force: true
-    end
-
-    def add_devise_email_previews(theme)
-      # Add devise email preview support in # test/mailers/previews/devise_mailer_preview.rb
-      copy_file "themes/#{theme}/mail/devise_mailer_preview.rb", Rails.root.join("test/mailers/previews/devise_mailer_preview.rb"), force: true
     end
 
     private

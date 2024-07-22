@@ -1,0 +1,78 @@
+<div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
+  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+    bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+
+  <div class="relative z-20">
+    <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
+
+    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in oneconvenient place.</p>
+  </div>
+</div>
+
+<%= render "rui/shared/account/tabs" %>
+
+<div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
+  <div class="max-w-xl mx-auto">
+    <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Perferences</h2>
+    <div class="prose prose-zinc mb-6 pb-3 font-light font-heading dark:prose-invert">
+      <p>Edit preferences related to language, currency, and timezone here.</p>
+    </div>
+    <form action="#">
+      <h3 class="mb-6 text-xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Global</h3>
+      <div class="form-group">
+        <label for="account[language]" class="form-label form-label-required">Preferred language</label>
+        <select name="account[language]" id="account[language]" class="form-select">
+          <option value="">Select one</option>
+          <option value="english" selected>English</option>
+          <option value="spanish">Spanish</option>
+          <option value="french">French</option>
+          <option value="german">German</option>
+          <option value="italian">Italian</option>
+          <option value="chinese">Chinese</option>
+          <option value="japanese">Japanese</option>
+          <option value="korean">Korean</option>
+          <option value="arabic">Arabic</option>
+          <option value="russian">Russian</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 form-group">
+        <div class="sm:col-span-2">
+          <label for="account[currency]" class="form-label form-label-required">Currency</label>
+          <select name="account[currency]" id="account[currency]" class="form-select">
+            <option value="">Select one</option>
+            <option value="usd" selected>USD</option>
+            <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="jpy">JPY</option>
+            <option value="aud">AUD</option>
+            <option value="cad">CAD</option>
+            <option value="chf">CHF</option>
+            <option value="cny">CNY</option>
+            <option value="inr">INR</option>
+            <option value="krw">KRW</option>
+          </select>
+        </div>
+
+        <div class="sm:col-span-3">
+          <label for="account[time_zone]" class="form-label form-label-required">Time zone</label>
+          <select name="account[time_zone]" id="account[time_zone]" class="form-select">
+            <option value="">Select one</option>
+            <option value="pacific/midway">(UTC-11:00) Midway Island</option>
+            <option value="pacific/honolulu">(UTC-10:00) Hawaii</option>
+            <option value="america/los_angeles">(UTC-08:00) Pacific Time (US & Canada)</option>
+            <option value="america/denver">(UTC-07:00) Mountain Time (US & Canada)</option>
+            <option value="america/chicago" selected>(UTC-06:00) Central Time (US & Canada)</option>
+            <option value="america/new_york">(UTC-05:00) Eastern Time (US & Canada)</option>
+            <option value="america/caracas">(UTC-04:30) Caracas</option>
+            <option value="america/halifax">(UTC-04:00) Atlantic Time (Canada)</option>
+            <option value="america/st_johns">(UTC-03:30) Newfoundland</option>
+            <option value="america/argentina/buenos_aires">(UTC-03:00) Buenos Aires</option>
+          </select>
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary mt-6" value="Save changes" />
+    </form>
+  </div>
+</div>

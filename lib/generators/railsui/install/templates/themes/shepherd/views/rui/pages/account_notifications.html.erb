@@ -1,0 +1,85 @@
+<div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
+  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+    bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+
+  <div class="relative z-20">
+    <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
+
+    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in oneconvenient place.</p>
+  </div>
+</div>
+
+<%= render "rui/shared/account/tabs" %>
+
+<div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
+  <div class="max-w-xl mx-auto">
+    <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Notifications</h2>
+    <div class="prose prose-zinc mb-6 pb-3 font-light font-heading dark:prose-invert">
+      <p>Configure how you get notified of happenings in Shepherd.</p>
+    </div>
+
+    <form action="#">
+      <div class="pb-10">
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account activity</h3>
+          <div class="prose prose-zinc font-light font-heading dark:prose-invert">
+            <p>Recieve updates about global account activity.</p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input id="account_notification[activity_email]" type="checkbox" class="form-input-switch" />
+          <label for="account_notification[activity_email]">Email</label>
+        </div>
+
+        <div class="mb-3">
+          <input id="account_notification[activity_sms]" type="checkbox" class="form-input-switch" />
+          <label for="account_notification[activity_sms]">SMS</label>
+        </div>
+      </div>
+
+      <hr class="dark:border-zinc-700/80">
+
+      <div class="py-10">
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Property activity</h3>
+          <div class="prose prose-zinc font-light font-heading dark:prose-invert">
+            <p>Recieve updates about activity specific to a given property.</p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input id="account_notification[property_activity_email]" type="checkbox" class="form-input-switch" />
+          <label for="account_notification[property_activity_email]">Email</label>
+        </div>
+
+        <div class="mb-3">
+          <input id="account_notification[property_activity_sms]" type="checkbox" class="form-input-switch" />
+          <label for="account_notification[property_activity_sms]">SMS</label>
+        </div>
+      </div>
+
+      <hr class="dark:border-zinc-700/80">
+
+      <div class="py-10">
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Reminders</h3>
+          <div class="prose prose-zinc font-light font-heading dark:prose-invert">
+            <p>Recieve updates about reminders you might set for yourself.</p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input id="account_notification[reminder_email]" type="checkbox" class="form-input-switch" />
+          <label for="account_notification[reminder_email]">Email</label>
+        </div>
+
+        <div class="mb-3">
+          <input id="account_notification[reminder_sms]" type="checkbox" class="form-input-switch" />
+          <label for="account_notification[reminder_sms]">SMS</label>
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary mt-6" value="Save changes" />
+    </form>
+  </div>
+</div>

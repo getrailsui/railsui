@@ -1,0 +1,57 @@
+<div class="container mx-auto px-4 md:py-16 py-10 mb-24">
+  <div
+    class="prose prose-zinc font-heading mx-auto prose-headings:font-semibold text-center dark:prose-invert font-light">
+    <h1>Changelog</h1>
+
+    <p>Take a look behind the scenes and see where we are headed.</p>
+  </div>
+
+  <ul class="max-w-2xl mx-auto py-10 divide-y divide-zinc-200 dark:divide-zinc-700 space-y-10">
+    <% [
+      {
+        title: "Multi-language support",
+        body: "We've added support for multiple languages, making it easier for hosts and guests from around the world to use our platform.",
+        tag: "New features",
+        date: "Aug 1, 2024"
+      },
+      {
+        title: "Calendar Sync Fix",
+        body: "We've resolved an issue where some bookings were not syncing correctly with hosts' calendars.",
+        tag: "Bug fix",
+        date: "Jul 24, 2024"
+      },
+      {
+        title: "Enhanced Data Encryption",
+        body: "We've strengthened data encryption to safeguard user information and improve overall platform security.",
+        tag: "Enhancement",
+        date: "Jul 23, 2024"
+      },
+      {
+        title: "Search Filter Accuracy",
+        body: "We've fixed a bug that was causing inaccurate search results when applying multiple filters.",
+        tag: "Bug fix",
+        date: "Jul 22, 2024"
+      }].each do |changelog| %>
+      <li class="py-6">
+        <article>
+          <time class="text-sm font-sans text-zinc-600 dark:text-zinc-400"><%= changelog[:date] %></time>
+          <h1 class="my-2 text-xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= changelog[:title] %></h1>
+          <div class="prose-sm prose-zinc font-heading font-light mb-2 dark:prose-invert">
+            <p><%= changelog[:body] %></p>
+          </div>
+          <div>
+            <% if changelog[:tag] == "New features" %>
+              <span class="text-xs font-medium rounded font-sans bg-blue-50 text-blue-600 px-2 py-1 tracking-tight dark:bg-blue-500/20 dark:text-blue-200">New features</span>
+            <% elsif changelog[:tag] == "Enhancement" %>
+              <span class="text-xs font-medium rounded font-sans bg-indigo-50 text-indigo-600 px-2 py-1 tracking-tight dark:bg-indigo-500/20 dark:text-indigo-200">Enhancement</span>
+            <% else %>
+              <span class="text-xs font-medium rounded font-sans bg-red-50 text-red-600 px-2 py-1 tracking-tight dark:bg-red-500/20 dark:text-red-200">Bug fix</span>
+            <% end %>
+          </div>
+        </article>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= render "rui/shared/footer" %>

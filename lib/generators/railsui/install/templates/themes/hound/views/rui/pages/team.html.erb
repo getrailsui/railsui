@@ -1,0 +1,234 @@
+<% content_for :body_classes, "text-slate-800 dark:bg-slate-900 dark:text-slate-100 bg-white" %>
+
+<%= render "rui/shared/admin/nav", { header_title: "Team" } %>
+
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+    <nav role="messages nav">
+      <ul
+        class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+
+        <% if respond_to?(:admin_settings_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%= nav_link_to "Account", admin_settings_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <% end %>
+
+        <% if respond_to?(:admin_notifications_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%= nav_link_to "Notifications", admin_notifications_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <% end %>
+
+        <% if respond_to?(:admin_billing_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%= nav_link_to "Billing", admin_billing_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <% end %>
+
+        <% if respond_to?(:admin_team_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%= nav_link_to "Team", admin_team_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <% end %>
+
+        <% if respond_to?(:admin_integrations_path) %>
+          <li class="flex justify-center items-center sm:block">
+            <%= nav_link_to "Integrations", admin_integrations_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="container mx-auto pb-24 px-4 my-16">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-2">Team</h1>
+    <p class="text-lg text-slate-500 dark:text-slate-400 mb-6">Team management made simple and stress-free.</p>
+
+    <div class="flex items-center justify-between py-2 mb-4">
+      <%= form_tag("#") do %>
+        <%= text_field_tag(:search, nil, type: :search, placeholder: "Search team members", class: "form-input min-w-[300px] text-sm shadow-none bg-slate-100/50 border-slate-50 dark:bg-slate-800 dark:border-slate-700") %>
+      <% end %>
+
+      <div class="flex items-center space-x-1">
+        <button type="button" class="group px-3 py-1 hover:bg-slate-50 rounded dark:hover:bg-slate-700">
+          <%= icon "bars-arrow-up", class: "w-5 h-5 text-slate-500 group-hover:text-primary-500 stroke-current dark:group-hover:text-primary-400 dark:text-slate-400" %>
+        </button>
+        <button type="button" class="group px-3 py-1 hover:bg-slate-50 rounded dark:hover:bg-slate-700">
+          <%= icon "bars-arrow-down", class: "w-5 h-5 text-slate-500 group-hover:text-primary-500 stroke-current dark:group-hover:text-primary-400 dark:text-slate-400" %>
+        </button>
+      </div>
+    </div>
+
+    <ul class="divide-y divide-slate-300/80 mb-10 dark:divide-slate-700">
+      <% [
+      {
+          img: { id: "32", variant: "women" },
+          name: "Jennifer Thompson",
+          username: "@jthompson",
+          date: "Jan 01, 2023",
+          role: "Sales Lead",
+          report: "John Smith"
+        },
+        {
+          img: { id: "42", variant: "women" },
+          name: "Emily Wilson",
+          username: "@ewilson",
+          date: "Feb 10, 2023",
+          role: "Sales Associate",
+          report: "Michael Johnson"
+        },
+        {
+          img: { id: "46", variant: "men" },
+          name: "David Roberts",
+          username: "@droberts",
+          date: "Mar 05, 2023",
+          role: "Sales Representative",
+          report: "Sarah Davis"
+        },
+        {
+          img: { id: "16", variant: "women" },
+          name: "Samantha Reed",
+          username: "@sreed",
+          date: "Apr 22, 2023",
+          role: "Sales Lead",
+          report: "Daniel Thompson"
+        },
+        {
+          img: { id: "59", variant: "men" },
+          name: "Brian Johnson",
+          username: "@bjohnson",
+          date: "May 17, 2023",
+          role: "Sales Associate",
+          report: "Jennifer Thompson"
+        },
+        {
+          img: { id: "71", variant: "women" },
+          name: "Olivia Green",
+          username: "@ogreen",
+          date: "Jun 08, 2023",
+          role: "Sales Representative",
+          report: "Emily Wilson"
+        },
+        {
+          img: { id: "71", variant: "men" },
+          name: "Robert Anderson",
+          username: "@randerson",
+          date: "Jul 14, 2023",
+          role: "Sales Lead",
+          report: "Samantha Reed"
+        },
+        {
+          img: { id: "51", variant: "women" },
+          name: "Jessica Taylor",
+          username: "@jtaylor",
+          date: "Aug 19, 2023",
+          role: "Sales Associate",
+          report: "Brian Johnson",
+        },
+        {
+          img: { id: "82", variant: "men" },
+          name: "Michael Clark",
+          username: "@mclark",
+          date: "Aug 19, 2023",
+          role: "Sales Representative",
+          report: "Brian Johnson"
+        },
+        {
+          img: { id: "82", variant: "women" },
+          name: "Ashley Martinez",
+          username: "@amartinez",
+          date: "Oct 30, 2023",
+          role: "Sales Lead",
+          report: "Robert Anderson"
+        }
+      ].each do |team_member| %>
+        <!-- Start Team Member -->
+        <li class="px-4 py-5 sm:text-base text-sm items-start grid grid-cols-2 sm:grid-cols-12 gap-3 sm:gap-0">
+          <div class="flex items-center space-x-3 sm:col-span-3 sm:mb-0 mb-4 col-span-2">
+            <% if respond_to?(:admin_profile_path) %>
+              <%= link_to admin_profile_path do %>
+                <%= image_tag demo_avatar_url(id: team_member[:img][:id], variant: team_member[:img][:variant]), class: "rounded-full sm:w-10 w-14 sm:h-10 h-14", alt: team_member[:name] %>
+              <% end %>
+            <% else %>
+              <%= link_to "#" do %>
+                <%= image_tag demo_avatar_url(id: team_member[:img][:id], variant: team_member[:img][:variant]), class: "rounded-full sm:w-10 w-14 sm:h-10 h-14", alt: team_member[:name] %>
+              <% end %>
+            <% end %>
+
+            <div>
+              <% if respond_to?(:admin_profile_path) %>
+                <%= link_to team_member[:name], admin_profile_path, class: "sm:font-medium text-slate-900 hover:text-primary-600 sm:text-base text-lg font-semibold dark:hover:text-primary-400 dark:text-slate-300" %>
+              <% else %>
+                <%= link_to team_member[:name], "#", class: "sm:font-medium text-slate-900 hover:text-primary-600 sm:text-base text-lg font-semibold dark:hover:text-primary-400 dark:text-slate-300" %>
+              <% end %>
+
+              <p class="text-slate-500 text-sm"><%= team_member[:username] %></p>
+            </div>
+          </div>
+          <div class="sm:col-span-2 col-span-1">
+            <p><%= team_member[:date] %></p>
+            <p class="text-sm text-slate-500">Join date</p>
+          </div>
+          <div class="sm:col-span-3 col-span-1">
+            <p><%= team_member[:role] %></p>
+            <p class="text-sm text-slate-500">Role</p>
+          </div>
+          <div class="sm:col-span-3 col-span-1">
+            <p><% team_member[:report] %></p>
+            <p class="text-sm text-slate-500">Report</p>
+          </div>
+          <div data-controller="railsui-dropdown" class="sm:col-span-1 relative col-span-2">
+            <div class="flex justify-end">
+              <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
+                class="-mt-1 block group p-2 rounded-lg focus:ring-4 focus:ring-primary-50 dark:focus:ring-slate-600/30">
+                <%= icon "cog-6-tooth", class: "size-6 stroke-current text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              </button>
+            </div>
+            <ul data-railsui-dropdown-target="menu"
+            class="hidden transition transform origin-to-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+            data-transition-enter-active="transition ease-out duration-300"
+            data-transition-enter-from="transform opacity-0 scale-95"
+            data-transition-enter-to="transform opacity-100 scale-100"
+            data-transition-leave-active="transition ease-in duration-300"
+            data-transition-leave-from="transform opacity-100 scale-100"
+            data-transition-leave-to="transform opacity-0 scale-95">
+              <li>
+                <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do  %>
+                  <%= icon "pencil-square", class: "stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                  <span>Edit</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
+                  <%= icon "paper-airplane", class: "stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                  <span>Message</span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- End Team Member -->
+      <% end %>
+    </ul>
+
+    <div class="flex items-center justify-center pb-16 space-x-3">
+      <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
+      <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
+        class="text-slate-300 stroke-current size-6">
+        <g fill="none" fill-rule="evenodd">
+          <g transform="translate(1 1)" stroke-width="2">
+            <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+            <path d="M36 18c0-9.94-8.06-18-18-18">
+              <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s"
+                repeatCount="indefinite" />
+            </path>
+          </g>
+        </g>
+      </svg>
+      <p class="text-sm text-slate-400 font-medium">Loading...</p>
+    </div>
+  </div>
+</div>

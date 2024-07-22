@@ -59,7 +59,7 @@ module Railsui
       def sync_pages
         if @config.pages.any?
           # Remove old theme's pages. Forcefully for now.
-          pages_directory = Rails.root.join("app/views/railsui/pages")
+          pages_directory = Rails.root.join("app/views/rui/pages")
           FileUtils.rm_rf(Dir.glob("#{pages_directory}/*"))
 
           # Copy new theme's pages
@@ -80,8 +80,8 @@ module Railsui
         new_theme_pages = Railsui::Pages.get_pages(theme)
 
         new_theme_pages.each do |page|
-          source_path = "themes/#{theme}/views/railsui/pages/#{page}.html.erb"
-          destination_path = Rails.root.join("app/views/railsui/pages", "#{page}.html.erb")
+          source_path = "themes/#{theme}/views/rui/pages/#{page}.html.erb"
+          destination_path = Rails.root.join("app/views/rui/pages", "#{page}.html.erb")
 
           # Overwrite existing view files
           copy_file source_path, destination_path, force: true

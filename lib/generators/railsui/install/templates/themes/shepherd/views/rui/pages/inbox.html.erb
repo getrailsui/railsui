@@ -1,0 +1,500 @@
+<div class="flex flex-wrap items-start justify-between md:h-[calc(100vh-74px)] h-full w-full relative" data-controller="inbox">
+  <!-- Left pane -->
+  <div class="lg:w-[360px] w-full lg:h-[calc(100vh-74px)] p-4 lg:border-r lg:border-zinc-300/80 overflow-y-auto overflow-x-hidden md:block hidden lg:pb-0 pb-16 dark:lg:border-zinc-700" data-inbox-target="inboxContainer">
+
+    <div class="flex items-center space-x-2">
+      <form action="#" class="flex items-center justify-between flex-1">
+        <input type="search" class="form-input w-full" placeholder="Search inbox" />
+      </form>
+      <div data-controller="railsui-dropdown" class="relative">
+        <button type="button"
+          class="bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1.5 flex items-center justify-center border border-transparent focus:border-zinc-300/80 focus:bg-white focus:ring-4 focus:ring-zinc-300/20 transition ease-in-out duration-200 group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70"
+          data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+
+          <%= icon "adjustments-horizontal", class: "size-5 stroke-current text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-600 group-focus:text-zinc-600 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200" %>
+        </button>
+        <ul
+          class="hidden origin-top-right absolute mt-3 top-8 right-0 shadow-xl rounded-xl py-1 md:w-[200px] w-[320px] shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600 font-heading"
+          data-transition-enter-active="transition ease-out duration-100"
+          data-transition-enter-from="transform opacity-0 scale-95"
+          data-transition-enter-to="transform opacity-100 scale-100"
+          data-transition-leave-active="transition ease-in duration-100"
+          data-transition-leave-from="transform opacity-100 scale-100"
+          data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+          <li>
+            <label for="filter_archived"
+              class="py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center group select-none">
+              <input id="filter_archived" type="radio" class="form-input-radio" name="filter" />
+              <span class="pl-2">Archived</span>
+            </label>
+          </li>
+          <li>
+            <label for="filter_starred"
+              class="py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center group select-none">
+              <input id="filter_starred" type="radio" class="form-input-radio" name="filter" />
+              <span class="pl-2">Starred</span>
+            </label>
+          </li>
+          <li>
+            <label for="filter_needs_response"
+              class="py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center group select-none">
+              <input id="filter_needs_response" type="radio" class="form-input-radio" name="filter" />
+              <span class="pl-2">Needs response</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <ol class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
+      <% [
+        {
+          name: "Jared Sanders",
+          avatar: demo_avatar_url(id: "12", variant: "men"),
+          excerpt: "Hi, We're in town a little early and w...",
+          booking_date: "Sep 1-4",
+          property: "Cozy Mountain A-Frame",
+          is_new: true,
+          is_active: true
+        },
+        {
+          name: "Dannie White",
+          avatar: demo_avatar_url(id: "10", variant: "women"),
+          excerpt: "You: Reminder Your scheduled che...",
+          booking_date: "Aug 24-26",
+          property: "Mountain Vista Chalet",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Olivia White",
+          avatar: demo_avatar_url(id: "40", variant: "women"),
+          excerpt: "We're so excited to come! Is there a...",
+          booking_date: "Sep 1-6",
+          property: "Alpine Retreat Haven",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Emma Taylor",
+          avatar: demo_avatar_url(id: "63", variant: "women"),
+          excerpt: "You: Your trip is coming up soon. Pl...",
+          booking_date: "Sep 11-16",
+          property: "Mountain Vista Chalet",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Jackson Brown",
+          avatar: demo_avatar_url(id: "63", variant: "men"),
+          excerpt: "You: Thanks!",
+          booking_date: "Sep 16-18",
+          property: "Mountain Vista Chalet",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Ethan Smith",
+          avatar: demo_avatar_url(id: "71", variant: "men"),
+          excerpt: "Fantastic. I'll keep in touch!",
+          booking_date: "Aug 23-26",
+          property: "Cozy Mountain A-Frame",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Noah Martinez",
+          avatar: demo_avatar_url(id: "86", variant: "men"),
+          excerpt: "Hi! Is there any way we can get in a...",
+          booking_date: "Aug 24-28",
+          property: "Alpine Retreat Haven",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Mia Turner",
+          avatar: demo_avatar_url(id: "89", variant: "women"),
+          excerpt: "When will we receive access instru...",
+          booking_date: "Aug 21-24",
+          property: "Alpine Retreat Haven",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Ava Harris",
+          avatar: demo_avatar_url(id: "43", variant: "women"),
+          excerpt: "We're having a great time. I have on...",
+          booking_date: "Aug 26-30",
+          property: "Cozy Mountain A-Frame",
+          is_new: false,
+          is_active: false
+        },
+        {
+          name: "Veronica Duna",
+          avatar: demo_avatar_url(id: "96", variant: "women"),
+          excerpt: "You: Thanks so much!",
+          booking_date: "July 29-31",
+          property: "Alpine Retreat Haven",
+          is_new: false,
+          is_active: false
+        }
+      ].each do |message| %>
+        <li class="py-2">
+          <%= link_to "#", class: "flex items-start space-x-4 font-heading p-2 relative rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition ease-in-out duration-200 #{"bg-zinc-100/80 dark:bg-zinc-800/80" if message[:is_active]==true}" do %>
+
+            <%= image_tag message[:avatar], class: "rounded-full w-14 h-14", alt: message[:name] %>
+            <div class="flex-1">
+              <p class="md:font-normal font-medium md:text-[15px] text-base text-zinc-700 dark:text-zinc-50 tracking-tight"><%= message[:name] %></p>
+              <p class="text-zinc-500 dark:text-zinc-300/90 my-1 md:text-sm text-base font-light line-clamp-1"><%= message[:excerpt] %></p>
+              <p class="text-zinc-500/80 dark:text-zinc-400/80 my-1 text-[12px] font-light line-clamp-1">
+                <%= message[:booking_date] %>&mdash;<%= message[:property] %></p>
+            </div>
+
+            <% if message[:is_new] == true %>
+              <span class="bg-primary-500 text-white font-normal text-[10px] px-1 py-px flex items-center rounded absolute top-2 right-2">New</span>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+
+  <!-- Center pane -->
+  <div class="lg:flex-1 w-full lg:h-[calc(100vh-74px)] pt-6 lg:px-10 font-heading overflow-y-auto px-4" data-inbox-target="messageContainer">
+    <div class="flex flex-col h-full max-w-3xl mx-auto lg:pb-3 pb-48">
+      <div class="flex-1">
+
+        <!-- Message header -->
+        <div class="lg:flex items-center pb-4">
+          <h1 class="flex-1 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Jared Sanders</h1>
+          <div class="flex items-center space-x-3 lg:pt-0 pt-3">
+            <button type="button"
+              class="bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1.5 flex items-center justify-center border border-transparent focus:border-zinc-300/80 focus:bg-white focus:ring-4 focus:ring-zinc-300/20 transition ease-in-out duration-200 group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70">
+              <%= icon "phone", class: "text-zinc-700 dark:text-zinc-400 lg:w-5 lg:h-5 w-7 h-7 stroke-current" %>
+            </button>
+            <button type="button"
+              class="bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1.5 flex items-center justify-center border border-transparent focus:border-zinc-300/80 focus:bg-white focus:ring-4 focus:ring-zinc-300/20 transition ease-in-out duration-200 group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70">
+              <%= icon "star", class: "text-zinc-700 dark:text-zinc-400 lg:w-5 lg:h-5 w-7 h-7 stroke-current" %>
+            </button>
+            <button type="button"
+              class="bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1.5 flex items-center justify-center border border-transparent focus:border-zinc-300/80 focus:bg-white focus:ring-4 focus:ring-zinc-300/20 transition ease-in-out duration-200 group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70">
+              <%= icon "archive-box-arrow-down", class: "text-zinc-700 dark:text-zinc-400 lg:w-5 lg:h-5 w-7 h-7 stroke-current" %>
+            </button>
+            <div data-controller="railsui-dropdown" class="relative">
+              <button
+                class="bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1.5 flex items-center justify-center border border-transparent focus:border-zinc-300/80 focus:bg-white focus:ring-4 focus:ring-zinc-300/20 transition ease-in-out duration-200 group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70"
+                data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+                <%= icon "ellipsis-horizontal", class: "text-zinc-700 dark:text-zinc-400 lg:w-5 lg:h-5 w-7 h-7 stroke-current" %>
+              </button>
+              <ul
+                class="hidden transition transform origin-top-right absolute md:right-0 md:left-auto left-0 top-10 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 font-heading md:w-[200px] w-[240px]"
+                data-transition-enter-active="transition ease-out duration-100"
+                data-transition-enter-from="transform opacity-0 scale-95"
+                data-transition-enter-to="transform opacity-100 scale-100"
+                data-transition-leave-active="transition ease-in duration-100"
+                data-transition-leave-from="transform opacity-100 scale-100"
+                data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
+                <li>
+                  <%= link_to "View profile", "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
+                </li>
+                <li>
+                  <%= link_to "Modify booking", "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
+                </li>
+                <li>
+                  <%= link_to "Get help", (defined?(admin_help_center_path) ? admin_help_center_path : "#"), class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
+                </li>
+                <li>
+                  <%= link_to "Report Jared", "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message timestamp -->
+        <div class="flex items-center justify-center space-x-4 py-2 font-sans">
+          <div class="bg-zinc-200 dark:bg-zinc-700 h-px flex-1"></div>
+          <time class="text-xs text-zinc-600/80 dark:text-zinc-300/80 font-normal" datetime="#add_time_stamp">Aug 4, 2023</time>
+          <div class="bg-zinc-200 dark:bg-zinc-700 h-px flex-1"></div>
+        </div>
+
+        <div class="bg-zinc-50 flex justify-center w-full rounded-full items-center space-x-3 text-sm py-1.5 mb-6 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+          <%= icon "banknotes", class: "w-5 h-5 text-zinc-600 stroke-current dark:text-zinc-400" %>
+          <span>Jared booked your place!</span>
+        </div>
+
+        <section class="space-y-8">
+          <!-- Message timestamp -->
+          <div class="flex items-center justify-center space-x-4 py-2 font-sans">
+            <div class="bg-zinc-200 dark:bg-zinc-700 h-px flex-1"></div>
+            <time class="text-xs text-zinc-600/80 dark:text-zinc-300/80 font-normal" datetime="#add_time_stamp">Aug 12, 2023</time>
+            <div class="bg-zinc-200 dark:bg-zinc-700 h-px flex-1"></div>
+          </div>
+
+          <% [
+            {
+              name: "Jared",
+              avatar: demo_avatar_url(id: "12", variant: "men"),
+              message: "Hi, we are coming in for a little family reunion to visit our sister + brother in law for a baseball game! Beautiful home!",
+              time: "11:54 AM",
+              is_new: false
+            },
+            {
+              name: "Justin",
+              avatar: demo_avatar_url(id: "32", variant: "men"),
+              message: "Sounds fun! We'd love to host you all.",
+              time: "12:14 PM",
+              is_new: false
+            },
+
+          ].each do |message| %>
+            <article class="flex items-start justify-start space-x-3">
+              <div>
+                <%= image_tag message[:avatar], alt: message[:name], class: "rounded-full w-12 h-12 border border-zinc-300/80 dark:border-zinc-700/80" %>
+              </div>
+              <div class="flex-1">
+                <header>
+                  <div class="flex items-center space-x-2 flex-wrap">
+                    <h2 class="text-base font-semibold dark:text-zinc-100/90"><%= message[:name] %></h2>
+                    <time class="text-sm text-zinc-500/80 dark:text-zinc-400/80 font-normal font-sans" datetime="#"><%= message[:time] %></time>
+                    <% if message[:is_new] == true %>
+                      <span class="bg-primary-500 text-white font-normal text-[10px] px-1 py-px flex items-center rounded">New</span>
+                    <% end %>
+                  </div>
+                </header>
+                <div
+                class="prose prose-primary prose-p:text-zinc-600 font-heading font-light pt-1 dark:prose-invert dark:prose-p:text-zinc-200">
+                  <p><%= message[:message] %></p>
+                </div>
+              </div>
+            </article>
+          <% end %>
+
+          <!-- Message timestamp -->
+          <div class="flex items-center justify-center space-x-4 py-2 font-sans">
+            <div class="bg-zinc-200 dark:bg-zinc-700 h-px flex-1"></div>
+            <time class="text-xs text-zinc-600/80 dark:text-zinc-300/80 font-normal" datetime="#add_time_stamp">Aug 12, 2023</time>
+            <div class="bg-zinc-200 dark:bg-zinc-700 h-px flex-1"></div>
+          </div>
+
+          <% [
+            {
+              name: "Jared",
+              avatar: demo_avatar_url(id: "12", variant: "men"),
+              message: "Justin, is there any way we can get in a little early to the house and at least drop our bags off? If not, no problem.",
+              time: "5:54 PM",
+              is_new: false
+            },
+            {
+              name: "Justin",
+              avatar: demo_avatar_url(id: "32", variant: "men"),
+              message: "Hey Jared, Sure that should be possible. Let me check with my cleaning team to confirm a good time and I'll get back to you.",
+              time: "6:00 PM",
+              is_new: false
+            },
+            {
+              name: "Jared",
+              avatar: demo_avatar_url(id: "12", variant: "men"),
+              message: "Amazing, thank you!",
+              time: "6:23 PM",
+              is_new: false
+            },
+            {
+              name: "Justin",
+              avatar: demo_avatar_url(id: "32", variant: "men"),
+              message: "Jared, you're welcome to come as soon as 2:00 P.M. Any earlier and I'm afraid the home just won't be ready for your group. Let me know if that works or not.",
+              time: "7:02 PM",
+              is_new: false
+            },
+            {
+              name: "Jared",
+              avatar: demo_avatar_url(id: "12", variant: "men"),
+              message: "That works for us. Thanks again!",
+              time: "6:23 PM",
+              is_new: true
+            },
+
+          ].each do |message| %>
+
+            <article class="flex items-start justify-start space-x-3">
+              <div>
+                <%= image_tag message[:avatar], alt: message[:name], class: "rounded-full w-12 h-12 border border-zinc-300/80 dark:border-zinc-700/80" %>
+              </div>
+              <div class="flex-1">
+                <header>
+                  <div class="flex items-center space-x-2 flex-wrap">
+                    <h2 class="text-base font-semibold dark:text-zinc-100/90"><%= message[:name] %></h2>
+                    <time class="text-sm text-zinc-500/80 dark:text-zinc-400/80 font-normal font-sans" datetime="#"><%= message[:time] %></time>
+                    <% if message[:is_new] == true %>
+                      <span class="bg-primary-500 text-white font-normal text-[10px] px-1 py-px flex items-center rounded">New</span>
+                    <% end %>
+                  </div>
+                </header>
+                <div
+                class="prose prose-primary prose-p:text-zinc-600 font-heading font-light pt-1 dark:prose-invert dark:prose-p:text-zinc-200">
+                  <p><%= message[:message] %></p>
+                </div>
+              </div>
+            </article>
+          <% end %>
+        </section>
+      </div>
+
+      <div
+        class="lg:sticky fixed md:bottom-0 bottom-14 w-full left-0 right-0 px-4 bg-gradient-to-t from-white dark:from-zinc-900 lg:-mx-10 lg:px-0 pt-6 pb-3">
+        <form action="#">
+          <div class="relative">
+            <%= link_to "#", class: "absolute left-4 top-3 group" do %>
+              <%= icon "squares-plus", class: "text-zinc-500 dark:text-zinc-400 w-6 h-6 stroke-current group-hover:text-primary-500 dark:group-hover:text-primary-500" %>
+            <% end %>
+            <textarea class="form-input w-full pl-12 py-3 font-sans resize-none overflow-hidden h-auto !ring-opacity-80"
+              placeholder="Start typing..." rows="1" data-controller="auto-expand-text-area"
+              data-action="input->auto-expand-text-area#expand"></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right pane -->
+  <div
+    class="lg:w-[320px] w-full lg:h-[calc(100vh-74px)] p-4 md:border-l lg:border-zinc-300/80 dark:lg:border-zinc-700 font-heading lg:block hidden overflow-y-auto lg:pb-10 pb-24" data-inbox-target="bookingContainer">
+
+    <h3 class="h5 mb-4 dark:text-zinc-100">Traveler details</h3>
+
+    <%= link_to "#", class: "flex items-center space-x-3 mb-3" do %>
+      <%= image_tag demo_avatar_url(id: "12", variant: "men"), class: "w-10 h-10 rounded-full border border-zinc-200/80 dark:border-zinc-700", alt: "Jared Sanders" %>
+      <div class="flex-1">
+        <p class="font-normal text-sm pb-1">Jared Sanders</p>
+        <div class="flex items-center space-x-1">
+          <%= icon "star", class: "w-5 h-5 stroke-current text-amber-300" %>
+          <span class="font-sans text-xs text-zinc-600 dark:text-zinc-400">4.9 rating &bull; 12 ratings</span>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="font-normal lg:text-sm text-base py-3 font-sans">
+      <h4 class="text-zinc-600 lg:text-sm text-base font-normal font-sans pb-1 dark:text-zinc-400">Number of trips</h4>
+      <p class="text-zinc-500 dark:text-zinc-200">2</p>
+    </div>
+
+    <div class="font-normal lg:text-sm text-base py-3 font-sans">
+      <h4 class="text-zinc-600 lg:text-sm text-base font-normal font-sans pb-1 dark:text-zinc-400">Location</h4>
+      <p class="text-zinc-500 dark:text-zinc-200">Los Angleles, CA</p>
+    </div>
+
+    <hr class="border-zinc-200/80 my-3 dark:border-zinc-700" />
+
+    <h3 class="h5 mt-6 dark:text-zinc-100">Booking details</h3>
+
+    <div class="font-normal lg:text-sm text-base py-3 flex flex-wrap items-center justify-between">
+      <%= link_to (defined?(admin_properties_path) ? admin_properties_path : "#"), class: "block font-sans" do %>
+        <h4 class="text-zinc-600 text-sm font-normal font-sans pb-1 dark:text-zinc-400">Property</h4>
+        <p class="text-zinc-500 dark:text-zinc-200">Cozy Mountain A-Frame</p>
+      <% end %>
+
+      <%= image_tag "property-2.jpg", alt: "Cozy Mountain A-Frame", class: "w-12 h-12 object-cover rounded flex-shrink-0" %>
+    </div>
+
+    <div class="font-normal lg:text-sm text-base py-3 font-sans">
+      <h4 class="text-zinc-600 lg:text-sm text-base font-normal font-sans pb-1 dark:text-zinc-400">Party</h4>
+      <p class="text-zinc-500 dark:text-zinc-200">2 Adults</p>
+    </div>
+
+    <div class="font-normal lg:text-sm text-base py-3 font-sans">
+      <h4 class="text-zinc-600 lg:text-sm text-base font-normal font-sans pb-1 dark:text-zinc-400">Arrival time</h4>
+      <p class="text-zinc-500 dark:text-zinc-200">Fri, Sep 1, 2023 – 3:00 P.M. CST</p>
+    </div>
+
+    <div class="font-normal lg:text-sm text-base py-3 font-sans">
+      <h4 class="text-zinc-600 lg:text-sm text-base font-normal font-sans pb-1 dark:text-zinc-400">Departure time</h4>
+      <p class="text-zinc-500 dark:text-zinc-200">Mon, Sep 4, 2023 – 10:00 A.M. CST</p>
+    </div>
+
+    <div class="font-normal lg:text-sm text-base py-3 font-sans">
+      <h4 class="text-zinc-600 lg:text-sm text-base font-normal font-sans pb-1 dark:text-zinc-400">Booked on</h4>
+      <p class="text-zinc-500 dark:text-zinc-200">Mon, Aug 4, 2023</p>
+    </div>
+
+    <hr class="border-zinc-200/80 my-3 dark:border-zinc-700" />
+
+    <h3 class="h5 mt-6 mb-3 dark:text-zinc-100">Transaction details</h3>
+
+    <h4 class="font-semibold font-sans py-3 lg:text-sm text-base dark:text-zinc-100">Jared's payment</h4>
+
+    <ul class="font-sans lg:text-sm text-base text-zinc-600 space-y-3 mb-6 dark:text-zinc-400">
+      <li class="flex items-center justify-between w-full">
+        <div class="flex-1">$234 x 3 nights</div>
+        <div class="text-right">$702.00</div>
+      </li>
+      <li class="flex items-center justify-between w-full">
+        <div class="flex-1">Cleaning fee</div>
+        <div class="text-right">$150.00</div>
+      </li>
+      <li class="flex items-center justify-between w-full">
+        <div class="flex-1">Taxes</div>
+        <div class="text-right">$175.32</div>
+      </li>
+      <li class="flex items-center justify-between w-full">
+        <div class="flex-1">Platform fee</div>
+        <div class="text-right">$32.34</div>
+      </li>
+      <li class="flex items-center justify-between w-full font-semibold text-zinc-800 pt-3 dark:text-zinc-100">
+        <div class="flex-1">Total (USD)</div>
+        <div class="text-right">$1,059.66</div>
+      </li>
+    </ul>
+
+    <h4 class="font-semibold font-sans py-3 text-sm dark:text-zinc-200">Your earnings</h4>
+
+    <ul class="font-sans lg:text-sm text-base text-zinc-600 space-y-3 dark:text-zinc-400">
+      <li class="flex items-start justify-between w-full">
+        <div class="flex-1">
+          <details>
+            <summary>3 nights</summary>
+            <div class="flex items-center justify-between">
+              <p>$234 x 1</p>
+              <p class="text-right">$234</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p>$234 x 1</p>
+              <p class="text-right">$234</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p>$234 x 1</p>
+              <p class="text-right">$234</p>
+            </div>
+          </details>
+        </div>
+        <div class="text-right">$702</div>
+      </li>
+      <li class="flex items-center justify-between w-full">
+        <div class="flex-1">Cleaning fee</div>
+        <div class="text-right">$150.00</div>
+      </li>
+      <li class="flex items-center justify-between w-full">
+        <div class="flex-1">Platform fee (2%)</div>
+        <div class="text-right">$150.00</div>
+      </li>
+      <li class="flex items-center justify-between w-full font-semibold text-zinc-800 pt-3 dark:text-zinc-100">
+        <div class="flex-1">Total (USD)</div>
+        <div class="text-right">$834.96</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- mobile nav -->
+  <div class="lg:hidden flex items-center justify-center w-full fixed inset-x-0 bottom-0 h-16 bg-white px-4 border-t border-zinc-300 space-x-6 overflow-hidden text-zinc-600 dark:border-zinc-700 dark:text-zinc-300 dark:bg-zinc-800">
+    <button type="button" class="p-4 rounded-lg" data-inbox-target="inboxBtn" data-action="click->inbox#toggle"
+      data-button-value="inbox">
+      <%= icon "inbox", class: "w-8 h-8 stroke-current pointer-events-none" %>
+    </button>
+    <button type="button" class="p-4 rounded-lg text-primary-600" data-inbox-target="inboxBtn" data-button-value="message"
+      data-action="click->inbox#toggle">
+      <%= icon "bars-3-bottom-left", class: "w-8 h-8 stroke-current pointer-events-none" %>
+    </button>
+    <button type="button" class="p-4 rounded-lg" data-inbox-target="inboxBtn" data-action="click->inbox#toggle" data-button-value="booking">
+      <%= icon "information-circle", class: "w-8 h-8 stroke-current pointer-events-none" %>
+    </button>
+  </div>
+</div>

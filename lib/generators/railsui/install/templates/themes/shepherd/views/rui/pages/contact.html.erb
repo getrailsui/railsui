@@ -1,0 +1,41 @@
+<div class="container mx-auto px-4 md:py-16 py-6 mb-24">
+  <div class="prose prose-zinc font-heading mx-auto prose-headings:font-semibold pb-24 dark:prose-invert">
+    <h1>Contact</h1>
+
+    <p>We're here to help. Reach out below using your preferred form of communication.</p>
+
+    <div class="not-prose space-y-4">
+      <%= link_to "#", class: "border rounded-lg border-zinc-300 p-6 block shadow-sm hover:shadow-lg transition ease-in-out duration-200 group dark:border-zinc-500 dark:hover:shadow-zinc-950/80" do %>
+        <div class="flex items-start gap-4">
+          <%= icon "chat-bubble-bottom-center-text", class: "size-6 text-zinc-600 dark:text-zinc-400 stroke-current relative top-1 group-hover:text-primary-600" %>
+          <div class="flex-1">
+            <h4 class="font-normal text-lg dark:text-zinc-100 font-heading">Chat with us</h4>
+            <p class="text-sm font-sans text-zinc-600 dark:text-zinc-400">Current wait times: Up to 24 hours</p>
+          </div>
+        </div>
+      <% end %>
+
+      <%= link_to "#", class: "border rounded-lg border-zinc-300 p-6 block shadow-sm hover:shadow-lg transition ease-in-out duration-200 group dark:border-zinc-500 dark:hover:shadow-zinc-950/80" do %>
+        <div class="flex items-start gap-4">
+          <%= icon "ticket", class: "size-6 text-zinc-600 dark:text-zinc-400 stroke-current relative top-1 group-hover:text-primary-600" %>
+          <div class="flex-1">
+            <h4 class="font-normal text-lg dark:text-zinc-100 font-heading">Submit a ticket</h4>
+            <p class="text-sm font-sans text-zinc-600 dark:text-zinc-400">Receive support asynchronously</p>
+          </div>
+        </div>
+      <% end %>
+
+      <%= link_to "#", class: "border rounded-lg border-zinc-300 p-6 block shadow-sm hover:shadow-lg transition ease-in-out duration-200 group dark:border-zinc-500 dark:hover:shadow-zinc-950/80" do %>
+        <div class="flex items-start gap-4">
+          <%= icon "phone", class: "size-6 text-zinc-600 dark:text-zinc-400 stroke-current relative top-1 group-hover:text-primary-600" %>
+          <div class="flex-1">
+            <h4 class="font-normal text-lg dark:text-zinc-100 font-heading">Give us a call</h4>
+            <p class="text-sm font-sans text-zinc-600 dark:text-zinc-400">Current wait times: 5 minutes</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/footer" %>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= Railsui.config.application_name || "Rails UI " %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= railsui_head %>
+  </head>
+
+  <body class="<%= railsui_body_classes %>" data-controller="dark-mode">
+    <%= render "rui/shared/flash" %>
+    <%= yield %>
+    <%= railsui_launcher if Rails.env.development? %>
+  </body>
+</html>

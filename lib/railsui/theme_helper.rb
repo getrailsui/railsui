@@ -83,7 +83,7 @@ module Railsui
     end
 
     def railsui_head
-      render "railsui/shared/railsui_head"
+      render "rui/shared/railsui_head"
     end
 
     def page_exists?(page)

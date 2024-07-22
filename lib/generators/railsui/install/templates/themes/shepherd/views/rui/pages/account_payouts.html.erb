@@ -1,0 +1,57 @@
+<div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
+  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+    bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+
+  <div class="relative z-20">
+    <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
+
+    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in oneconvenient place.</p>
+  </div>
+</div>
+
+<%= render "rui/shared/account/tabs" %>
+
+<div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
+  <div class="max-w-xl mx-auto">
+    <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Payouts</h2>
+    <div class="prose prose-zinc mb-6 pb-3 font-light font-heading dark:prose-invert">
+      <p>You can send your money to one or more payout methods. To manage your payout method(s) or assign a taxpayer, use the edit menu next to each payout method.</p>
+    </div>
+
+    <h4 class="pb-3 mb-6 border-b border-zinc-300/70 text-lg font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight dark:border-zinc-700/80">Bank accounts</h4>
+
+    <form action="#">
+      <dl class="divide-y divide-zinc-300/80 form-group text-sm dark:divide-zinc-700/80">
+        <div class="flex items-center justify-between font-sans py-8 first:pt-2">
+          <div class="flex-1 flex items-start space-x-3">
+            <%= icon "building-library", class: "size-6 text-zinc-700 dark:text-zinc-400" %>
+            <div>
+              <p>Bank Account</p>
+              <p class="text-zinc-600 dark:text-zinc-300">John Doe, Checking ••••1302 (USD)</p>
+            </div>
+          </div>
+          <div>
+            <%= link_to "Edit", "#", class: "font-sans font-medium text-zinc-800 dark:text-zinc-300 underline text-sm" %>
+          </div>
+        </div>
+        <div class="flex items-center justify-between font-sans py-3">
+          <div class="flex-1 flex items-start space-x-3">
+            <%= icon "building-library", class: "size-6 text-zinc-700 dark:text-zinc-400" %>
+            <div>
+              <p>Bank Account</p>
+              <p class="text-zinc-600 dark:text-zinc-300">John Doe, Checking ••••3857 (USD)</p>
+            </div>
+          </div>
+          <div>
+            <%= link_to "Edit", "#", class: "font-sans font-medium text-zinc-800 underline text-sm dark:text-zinc-300" %>
+          </div>
+        </div>
+      </dl>
+      <div class="mt-6">
+        <%= link_to "Add financial institution", "#", class: "btn btn-white inline-flex" %>
+      </div>
+
+      <input type="submit" class="btn btn-primary mt-10" value="Save changes" />
+    </form>
+  </div>
+</div>

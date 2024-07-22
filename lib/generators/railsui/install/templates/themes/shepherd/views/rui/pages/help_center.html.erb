@@ -1,0 +1,213 @@
+<div class="relative min-h-[320px] md:py-16 py-14 border-b border-zinc-200 dark:border-zinc-700/80 px-4">
+  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+    bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+
+  <div class="relative z-20">
+    <h2 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Justin, how can we help?</h2>
+    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Find answers in our help documentation or chat with us for more expert help.</p>
+  </div>
+
+  <!--
+    See: help_search_controller.js for logic
+    - Pass JSON as values for recent data on search and/or top results
+    - Pass custom link styles
+    -->
+  <div class="flex justify-center">
+    <form action="#" class="md:w-1/3 w-full relative" data-controller="help-search"
+        data-help-search-link-classes-value="text-zinc-600 hover:text-primary-600 font-heading hover:bg-zinc-50/50 p-4 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:hover:text-primary-500"
+        data-help-search-recent-data-value='[
+        {
+          "title": "transaction history",
+          "url": "#"
+        },
+        {
+          "title": "direct booking",
+          "url": "#"
+        },
+        {
+          "title": "coupon",
+          "url": "#"
+        },
+        {
+          "title": "Rails UI rules",
+          "url": "#"
+        },
+        {
+          "title": "issue with guest",
+          "url": "#"
+        },
+        {
+          "title": "chat",
+          "url": "#"
+        }]'>
+      <input type="text" class="form-input text-lg font-normal placeholder-zinc-500 font-heading px-6 py-3 w-full"
+          data-action="focus->help-search#toggle click@window->help-search#hide" placeholder="Search for answers"
+      tabindex="0" />
+      <button type="submit" class="btn btn-primary py-2 px-4 absolute top-1.5 right-2">
+        <%= icon "magnifying-glass", class:  "size-6" %>
+      </button>
+      <ul
+          class="absolute top-16 w-full hidden origin-top rounded-3xl border border-zinc-400/60 bg-white space-y-1 overflow-hidden shadow-xl shadow-zinc-600/20 dark:bg-zinc-800 dark:text-zinc-200 dark:shadow-zinc-950/20 dark:border-zinc-700/80"
+          data-help-search-target="searchMenu" data-transition-enter-active="transition ease-out duration-200"
+          data-transition-enter-from="transform opacity-0 scale-95"
+          data-transition-enter-to="transform opacity-100 scale-100"
+          data-transition-leave-active="transition ease-in duration-200"
+          data-transition-leave-from="transform opacity-100 scale-100"
+          data-transition-leave-to="transform opacity-0 scale-95">
+      </ul>
+    </form>
+  </div>
+</div>
+
+<div class="container mx-auto px-4 pb-24 pt-1">
+  <nav>
+    <ul class="flex items-center overflow-x-auto snap-x snap-proximity font-heading text-base">
+      <li class="snap-center">
+        <%= link_to "Hosting", "#", class: "px-5 py-4 block text-primary-600 border-b-2 border-primary-600 whitespace-nowrap" %>
+      </li>
+      <li class="snap-center">
+        <%= link_to "Guest experience", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+      </li>
+      <li class="snap-center">
+        <%= link_to "Properties", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+      </li>
+      <li class="snap-center">
+        <%= link_to "Integrations", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+      </li>
+      <li class="snap-center">
+        <%= link_to "Reporting", "#", class: "px-5 py-4 block whitespace-nowrap" %>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="flex items-center justify-between mb-10 pt-24">
+    <h2 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Guides</h2>
+    <%= link_to "View all guides", "#", class: "font-heading text-[15px] hover:text-primary-600" %>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <% [
+       {
+        title: "Getting Started as a Host",
+        image: "help-1.png",
+        excerpt: "Learn the basics of hosting on our platform and how to create a welcoming space for guests."
+       },
+       {
+        title: "Managing your properties",
+        image: "help-2.png",
+        excerpt: "Discover how to effectively list and manage your real estate properties to attract more guests."
+       },
+       {
+        title: "Tips and tricks for hosting remotely",
+        image: "help-3.png",
+        excerpt: "Manage your real estate properties to attract more guests from abroad."
+       },
+       {
+        title: "Thinking hospitality",
+        image: "help-4.png",
+        excerpt: "Tips and best practices for communicating
+    with guests to help make their experience unforgettable."
+       }].each do |card| %>
+      <article>
+        <div class="flex items-start space-x-6">
+          <%= link_to "#", class: "block overflow-hidden md:w-40 w-24 md:h-40 h-24 group rounded-xl" do %>
+            <%= image_tag card[:image], class: "w-40 h-auto rounded-xl object-cover group-hover:scale-110 transition ease-in-out duration-300", alt: card[:title] %>
+          <% end %>
+          <div class="flex-1">
+            <header>
+              <%= link_to  "#" do %>
+                <h1 class="font-semibold text-base dark:text-zinc-100"><%= card[:title] %></h1>
+              <% end %>
+            </header>
+
+            <div class="prose prose-zinc dark:prose-invert font-heading font-light my-3 max-w-md">
+              <p><%= card[:excerpt] %></p>
+            </div>
+            <footer>
+              <%= link_to "Read now", "#", class: "btn btn-white md:mt-1 mt-2 inline-flex items-center" %>
+            </footer>
+          </div>
+        </div>
+      </article>
+    <% end %>
+  </div>
+
+  <div class="flex items-center justify-between mb-10 pt-24">
+    <h2 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Articles</h2>
+    <%= link_to "View all articles", "#", class: "font-heading text-[15px] hover:text-primary-600" %>
+  </div>
+
+  <div class="flex flex-wrap items-start md:space-x-10">
+    <div class="md:w-[240px] font-heading w-full pb-6 md:pb-0">
+      <h3 class="font-normal text-base">Top rates articles</h3>
+      <ul class="space-y-4 mt-4 md:text-sm">
+        <li>
+          <%= link_to "Creating an appealing listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+        </li>
+        <li>
+          <%= link_to "Pricing strategies for hosts", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+        </li>
+        <li>
+          <%= link_to "Dealing with guest issues", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+        </li>
+        <li>
+          <%= link_to "Seeing success with direct bookin...", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+        </li>
+        <li>
+          <%= link_to "Adding a new listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+        </li>
+        <li>
+          <%= link_to "Creating an appealing listing", "#", class: "dark:text-secondary-400 dark:hover:text-secondary-600 text-secondary-600 hover:text-secondary-800" %>
+        </li>
+      </ul>
+    </div>
+    <div class="flex-1 flex flex-wrap items-center justify-between">
+      <% [
+        {
+          title: "Creating an Appealing Listing",
+          body: "Learn how to craft an eye-catching property listing that attracts more guests and maximizes your bookings."
+        },
+        {
+          title: "Housekeeping and Cleaning Tips",
+          body: "Discover best practices for keeping your property clean and well-maintained between guest stays."
+        },
+        {
+          title: "Pricing Strategies for Hosts",
+          body: "Explore different pricing strategies to optimize your property's rental income while remaining competitive."
+        },
+        {
+          title: "Handling Guest Inquiries and Messages",
+          body: "Learn how to respond promptly and professionally to guest inquiries and messages to build positive guest relationships."
+        },
+        {
+          title: "Managing Booking Requests",
+          body: "Get insights into handling booking requests efficiently and ensuring a smooth reservation process for your guests."
+        },
+        {
+          title: "Managing Guest Reviews",
+          body: "Find out how to handle guest reviews, both positive and negative, and use them to enhance your hosting experience."
+        },
+        {
+          title: "Setting Flexible Check-In and Check-Out Times",
+          body: "Understand how to offer flexible check-in and check-out options to accommodate guests and improve your ratings."
+        },
+        {
+          title: "Dealing with Guest Issues",
+          body: "Learn effective ways to address common guest issues and ensure a comfortable stay for everyone."
+        }].each do |article| %>
+        <div class="md:w-1/2">
+          <article class="md:px-6 md:pb-6 py-6">
+            <%= link_to "#", class: "group block mb-3" do %>
+              <h1 class="font-semibold text-base group-hover:text-secondary-600 dark:text-zinc-100 dark:group-hover:text-secondary-400 font-heading"><%= article[:title] %></h1>
+            <% end %>
+            <div class="prose prose-zinc font-heading prose-p:font-light dark:prose-invert">
+              <p><%= article[:body] %></p>
+            </div>
+          </article>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/footer" %>
