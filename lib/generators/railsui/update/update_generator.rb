@@ -32,7 +32,9 @@ module Railsui
 
         # tailwind related
         update_tailwind_preset(@config.theme)
-        update_body_classes
+
+        # update body classes
+        update_railsui_theme_classes
 
         # sync pages
         sync_pages
@@ -86,6 +88,10 @@ module Railsui
           # Overwrite existing view files
           copy_file source_path, destination_path, force: true
         end
+      end
+
+      def update_railsui_theme_classes
+        @config.body_classes =  Railsui::Themes.theme_classes[@config.theme]['body_classes']
       end
 
       def update_railsui_config_with_new_pages(theme)

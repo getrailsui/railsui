@@ -28,12 +28,12 @@
 
       <nav class="flex-1">
         <ul class="lg:flex md:flex-nowrap flex-wrap items-center sm:mx-0 -mx-2 lg:space-x-px space-y-px lg:space-y-0">
-          <%= render "railsui/shared/admin/nav_links" %>
+          <%= render "rui/shared/admin/nav_links" %>
         </ul>
       </nav>
 
       <%# Notifications Dropdown %>
-      <div class="sm:flex justify-end flex-1 md:mr-6 mr-3 md:mt-3 relative" data-controller="dropdown">
+      <div class="sm:flex justify-end flex-1 md:mr-6 mr-3 md:mt-3 relative" data-controller="railsui-dropdown">
 
         <button type="button" class="flex group sm:justify-center items-center md:w-auto w-full px-2 py-3 md:p-0"
           data-action="click->dropdown#toggle click@window->dropdown#hide">

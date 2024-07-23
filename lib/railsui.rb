@@ -38,6 +38,7 @@ module Railsui
     "https://f001.backblazeb2.com/file/railsui"
   end
 
+
   def self.run_command(command)
     Bundler.with_original_env do
       system command

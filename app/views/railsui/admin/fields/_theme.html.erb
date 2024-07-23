@@ -3,7 +3,7 @@
 
   <div class="prose prose-neutral dark:prose-invert mb-6">
     <p>A theme is a set of <%= link_to "pre-built components", systems_path %> and <%= link_to "optional pages", root_path(anchor: "pages"), data: { action: "click->railsui-smooth#scroll
-"} %> that look great with the <%= theme_name.humanize %> theme. Use both to rapidly create a consistent look and feel for your application.</p>
+"} %> that make it easy to get a massive head start on the design of your application.</p>
     <p>Your active theme: <span class="bg-neutral-200/80 text-neutral-800 dark:bg-neutral-600/70 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span></p>
   </div>
 
@@ -60,18 +60,18 @@
         <p>Here's what happens when you change your theme:</p>
         <ul>
           <li>
-            Rails UI generated pages (<code>app/views/railsui</code>) and images (<code>app/assets/images/railsui</code>) are replaced with the newly chosen theme's files.
+            Rails UI generated pages (<code>app/views/rui</code>) and images (<code>app/assets/images/railsui</code>) are replaced with the newly chosen theme's files.
             <ul>
               <li>
-                <strong>Tip:</strong> To keep using any pages in the <code>app/views/railsui</code> directory or images in the <code>app/assets/images/railsui</code> directory, copy these files to a backup location or elsewhere in your app before making changes. Consider pages as code snippets for your app, and treat them as read-only.
+                <strong>Tip:</strong> To keep using any pages in the <code>app/views/rui</code> directory or images in the <code>app/assets/images/railsui</code> directory, copy these files to a backup location or elsewhere in your app before making changes. For best results, consider pages as code snippets for your app and treat them as read-only.
               </li>
             </ul>
           </li>
           <li>
-            Your color scheme will be preserved.
+            Your custom colors will be preserved.
             <ul>
               <li>
-                <p><strong>Tip:</strong> Run <code>rails g railsui:colors</code> to quickly see the default colors of your selected theme. If you want to see another theme's colors, run <code>rails 'railsui:colors[theme_name]'</code>. You can also use the <code>rails g railsui:update</code> generator to quickly update your colors and Rails UI configuration without having to use this form.</p>
+                <p><strong>Tip:</strong> Run <code>rails railsui:colors</code> to quickly see the default colors of your selected theme. If you want to see another theme's colors, run <code>rails 'railsui:colors[theme_name]'</code>.</p>
               </li>
             </li>
           </ul>
@@ -90,7 +90,7 @@
       <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
     </summary>
     <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
-      <p>No, you don't need to use this form. You can change your theme, colors, or pages at any time directly in the <code>config/railsui.yml</code> file. Use the Rails UI  generators (Run <code>rails g</code> to see the list of available railsui generators) to update your configuration via the command line.</p>
+      <p>No, you don't need to use this form. You can change your theme, colors, or pages at any time directly in the <code>config/railsui.yml</code> file. Use the Rails UI  generators (Run <code>rails g --help | grep 'railsui:'</code> to see the list of available railsui generators) to update your configuration via the command line.</p>
 
       <p>You can check <a href="https://railsui.com/docs" target="_blank">the documentation</a> to see a list of available default colors and pages bundled with each Rails UI theme.</p>
 

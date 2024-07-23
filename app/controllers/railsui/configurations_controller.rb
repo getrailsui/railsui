@@ -46,6 +46,7 @@ module Railsui
           :application_name,
           :support_email,
           :theme,
+          :body_classes,
           pages: [],
           colors: {}
         )
