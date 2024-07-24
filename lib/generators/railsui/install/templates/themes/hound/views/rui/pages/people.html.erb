@@ -1,5 +1,7 @@
-<%= render "rui/shared/admin/nav", { header_title: "People" } do %>
-  <%= render "rui/shared/admin/create_dropdown" %>
+<% content_for :header do %>
+  <%= render "rui/shared/admin/nav", { header_title: "People" } do %>
+    <%= render "rui/shared/admin/create_dropdown" %>
+  <% end %>
 <% end %>
 
 <div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">

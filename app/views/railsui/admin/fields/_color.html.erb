@@ -2,9 +2,8 @@
   <%= heading text: "Color", id: "color", tag: "h3", class: "font-bold text-3xl tracking-tight mb-3" %>
 
   <div class="prose prose-neutral dark:prose-invert max-w-full mb-6">
-    <p>Rails UI comes with two custom colors: <span class="size-4 bg-primary-500 inline-block rounded-sm relative top-0.5 mr-1"></span>primary and <span class="size-4 bg-secondary-500 inline-block rounded-sm relative top-0.5 mr-1"></span>secondary. You can edit these below or in your <code>railsui.yml</code> configuration file.</p>
+    <p>Rails UI includes two custom colors: <span class="size-4 bg-primary-500 inline-block rounded-sm relative top-0.5 mr-0.5"></span> primary and <span class="size-4 bg-secondary-500 inline-block rounded-sm relative top-0.5 mr-0.5"></span> secondary. You can adjust these colors in the <code>railsui.yml</code> file below using the color pickers.</p>
 
-    <p>This allows you to easily use your brand's colors without changing Tailwind CSS settings. Your component library and Rails UI generated pages will automatically update to match the colors you choose. All default Tailwind colors are still accessible.</p>
   </div>
 
   <% if @theme_colors.present? %>
@@ -33,7 +32,16 @@
     <% end %>
   <% end %>
 
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <p>Your components and Rails UI pages will automatically update with your selected colors. All default Tailwind colors are still available.</p>
+
+  </div>
+
+  <%= render callout do %>
+    <p>To view default theme colors, run <code>bin/rails railsui:colors</code>. For a specific theme, use <code>bin/rails 'railsui:colors[theme_name]'</code>.</p>
+  <% end %>
+
   <%= link_to reset_colors_configuration_path, class: "font-medium underline text-sm", data: { controller: "railsui-loading", action: "click->railsui-loading#start" } do %>
-    <span data-railsui-loading-target="content">Reset to <%= Railsui.config.theme.humanize %> theme default colors</span>
+    <span data-railsui-loading-target="content">Reset to default colors for active theme</span>
   <% end %>
 </div>

@@ -1,27 +1,29 @@
-<%= render "rui/shared/admin/nav" do %>
-  <div class="flex justify-between w-full py-4">
-    <nav aria-label="breadcrumb" class="font-medium flex text-slate-100 dark:text-slate-200 text-sm flex-1">
-      <ol class="flex items-center gap-3 list-none m-0 p-0">
-        <li class="flex gap-3">
-          <% if respond_to?(:admin_projects_path) %>
-            <%= link_to "Projects", admin_projects_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <% else %>
-            <%= link_to "Projects", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <% end %>
-        </li>
-        <li class="flex gap-3">
-          <div class="flex items-center">
-            <span class="text-slate-500 dark:text-slate-500">/</span>
-          </div>
-          <%= link_to "Enhanced User Authentication System", "#", class: "text-primary-300 dark:text-primary-400 line-clamp-1", "aria-current": "page" %>
-        </li>
-      </ol>
-    </nav>
-    <%= link_to "#", class: "btn btn-transparent space-x-1 rounded-full text-slate-50 border-slate-100 group focus:ring-slate-700 dark:border-slate-500 dark:text-slate-200" do %>
-      <%= icon "cog-6-tooth", class: "size-5 text-slate-100 stroke-current group-hover:text-slate-800 dark:group-hover:text-slate-300 dark:text-slate-300" %>
-      <span>Settings</span>
-    <% end %>
-  </div>
+<% content_for :header do %>
+  <%= render "rui/shared/admin/nav" do %>
+    <div class="flex justify-between w-full py-4">
+      <nav aria-label="breadcrumb" class="font-medium flex text-slate-100 dark:text-slate-200 text-sm flex-1">
+        <ol class="flex items-center gap-3 list-none m-0 p-0">
+          <li class="flex gap-3">
+            <% if respond_to?(:admin_projects_path) %>
+              <%= link_to "Projects", admin_projects_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+            <% else %>
+              <%= link_to "Projects", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+            <% end %>
+          </li>
+          <li class="flex gap-3">
+            <div class="flex items-center">
+              <span class="text-slate-500 dark:text-slate-500">/</span>
+            </div>
+            <%= link_to "Enhanced User Authentication System", "#", class: "text-primary-300 dark:text-primary-400 line-clamp-1", "aria-current": "page" %>
+          </li>
+        </ol>
+      </nav>
+      <%= link_to "#", class: "btn btn-transparent space-x-1 rounded-full text-slate-50 border-slate-100 group focus:ring-slate-700 dark:border-slate-500 dark:text-slate-200" do %>
+        <%= icon "cog-6-tooth", class: "size-5 text-slate-100 stroke-current group-hover:text-slate-800 dark:group-hover:text-slate-300 dark:text-slate-300" %>
+        <span>Settings</span>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 
 <div class="sm:mt-16 mt-8 container mx-auto relative">

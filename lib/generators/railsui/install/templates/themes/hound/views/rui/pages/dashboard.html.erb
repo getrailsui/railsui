@@ -1,6 +1,8 @@
-<%= render "rui/shared/admin/nav", { header_title: "Dashboard" } do %>
-  <%= render "rui/shared/admin/create_dropdown" %>
-<% end %>
+<% content_for :header do %>
+  <%= render "rui/shared/admin/nav", { header_title: "Dashboard" } do %>
+    <%= render "rui/shared/admin/create_dropdown" %>
+  <% end %>
+<% end%>
 
 <div class="px-4">
   <div class="flex justify-between items-center mt-4 container mx-auto">

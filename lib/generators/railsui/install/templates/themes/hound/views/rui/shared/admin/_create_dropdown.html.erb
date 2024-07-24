@@ -41,48 +41,48 @@
     data-transition-leave-from="transform opacity-100 scale-100"
     data-transition-leave-to="transform opacity-0 scale-95">
 
-      <% if respond_to?(:admin_projects_path) || respond_to?(:admin_project_path) %>
+      <% if respond_to?(:rui_projects_path) || respond_to?(:rui_project_path) %>
         <li>
           <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-            <%= icon "plus-small", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+            <%= icon "plus-small", class:  "flex-shrink-0 stroke-current size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Project</span>
           <% end %>
         </li>
       <% end %>
 
-      <% if respond_to?(:admin_messages_path) || respond_to?(:admin_message_path) %>
+      <% if respond_to?(:rui_messages_path) || respond_to?(:rui_message_path) %>
         <li>
           <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-            <%= icon "paper-airplane", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+            <%= icon "paper-airplane", class:  "flex-shrink-0 stroke-current size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Message</span>
           <% end %>
         </li>
       <% end %>
 
-      <% if respond_to?(:admin_assignments_path) %>
+      <% if respond_to?(:rui_assignments_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3", data: { action: "click->modal#open" } do %>
-            <%= icon "pencil-square", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 pointer-events-none" %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3", data: { action: "click->railsui-modal#open" } do %>
+            <%= icon "pencil-square", class:  "flex-shrink-0 stroke-current size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 pointer-events-none" %>
             <span class="pointer-events-none">Assignment</span>
           <% end %>
         </li>
       <% end %>
 
-      <% if respond_to?(:admin_calendar_path) %>
+      <% if respond_to?(:rui_calendar_path) %>
         <li>
-          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start space-x-3" do %>
-            <%= icon "calendar-days", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+          <%= link_to "#", class: "px-4 py-2 hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
+            <%= icon "calendar-days", class:  "flex-shrink-0 stroke-current size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
             <span>Event</span>
           <% end %>
         </li>
       <% end %>
     </ul>
 
-    <div aria-labelledby="modal-title" aria-modal="true" data-action="keyup@window->modal#closeWithEsc"
-      data-modal-target="container" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
+    <div aria-labelledby="modal-title" aria-modal="true" data-action="keyup@window->railsui-modal#closeWithEsc"
+      data-railsui-modal-target="container" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
       <div class="h-screen w-full relative">
         <div
-          data-modal-target="content" data-transition-enter-active="transition ease-out duration-300"
+          data-railsui-modal-target="content" data-transition-enter-active="transition ease-out duration-300"
           data-transition-enter-from="transform opacity-0 scale-95"
           data-transition-enter-to="transform opacity-100 scale-100"
           data-transition-leave-active="transition ease-in duration-300"
@@ -91,8 +91,8 @@
           class="hidden rounded shadow-xl max-w-2xl h-auto mx-auto bg-white m-4 p-8 relative dark:bg-slate-700">
           <button
             class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 group"
-            data-action="click->modal#close">
-            <%= icon "x-mark", class:  "w-6 h-6 text-slate-500 stroke-current dark:group-hover:text-slate-300" %>
+            data-action="click->railsui-modal#close">
+            <%= icon "x-mark", class:  "size-6 text-slate-500 stroke-current dark:group-hover:text-slate-300" %>
           </button>
           <div>
             <h2 id="assignment-modal-title" class="mb-6 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Add Assignment</h2>

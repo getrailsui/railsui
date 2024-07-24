@@ -1,6 +1,8 @@
 <% content_for :body_classes, "text-slate-800 dark:bg-slate-900 dark:text-slate-100 bg-white" %>
 
-<%= render "rui/shared/admin/nav", { header_title: "Team" } %>
+<% content_for :header do %>
+  <%= render "rui/shared/admin/nav", { header_title: "Team" } %>
+<% end %>
 
 <div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
   <div class="container mx-auto sm:flex flex-wrap justify-between items-center">

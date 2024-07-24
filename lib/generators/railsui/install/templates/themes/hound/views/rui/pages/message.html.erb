@@ -1,33 +1,35 @@
-<%= render "rui/shared/admin/nav" do %>
-  <div class="flex justify-center py-4">
-    <nav aria-label="breadcrumb" class="font-medium flex text-slate-100 dark:text-slate-200 text-sm">
-      <ol class="flex items-center space-x-3 list-none m-0 p-0">
-        <li>
-          <% if respond_to?(:admin_dashboard_path) %>
-            <%= link_to "Dashboard", admin_dashboard_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <% else %>
-            <%= link_to "Dashboard", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <% end %>
-        </li>
-        <li class="flex gap-3">
-          <div class="flex items-center">
-            <span class="text-slate-500 dark:text-slate-500">/</span>
-          </div>
-          <% if respond_to?(:admin_messages_path) %>
-            <%= link_to "Messages", admin_messages_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <% else %>
-            <%= link_to "Messages", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
-          <% end %>
-        </li>
-        <li class="flex gap-3">
-          <div class="flex items-center">
-            <span class="text-slate-500 dark:text-slate-500">/</span>
-          </div>
-          <%= link_to "Thank your for your help!", admin_message_path, class: "text-primary-300 dark:text-primary-500 line-clamp-1", "aria-current": "page" %>
-        </li>
-      </ol>
-    </nav>
-  </div>
+<% content_for :header do %>
+  <%= render "rui/shared/admin/nav" do %>
+    <div class="flex justify-center py-4">
+      <nav aria-label="breadcrumb" class="font-medium flex text-slate-100 dark:text-slate-200 text-sm">
+        <ol class="flex items-center space-x-3 list-none m-0 p-0">
+          <li>
+            <% if respond_to?(:admin_dashboard_path) %>
+              <%= link_to "Dashboard", admin_dashboard_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+            <% else %>
+              <%= link_to "Dashboard", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+            <% end %>
+          </li>
+          <li class="flex gap-3">
+            <div class="flex items-center">
+              <span class="text-slate-500 dark:text-slate-500">/</span>
+            </div>
+            <% if respond_to?(:admin_messages_path) %>
+              <%= link_to "Messages", admin_messages_path, class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+            <% else %>
+              <%= link_to "Messages", "#", class: "hover:underline hover:text-slate-300 dark:hover:text-slate-400" %>
+            <% end %>
+          </li>
+          <li class="flex gap-3">
+            <div class="flex items-center">
+              <span class="text-slate-500 dark:text-slate-500">/</span>
+            </div>
+            <%= link_to "Thank your for your help!", admin_message_path, class: "text-primary-300 dark:text-primary-500 line-clamp-1", "aria-current": "page" %>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <% end %>
 <% end %>
 
 <div class="sm:mt-16 mt-8 relative container mx-auto">

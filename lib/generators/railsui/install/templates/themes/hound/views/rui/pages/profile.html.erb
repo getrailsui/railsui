@@ -1,5 +1,7 @@
-<%= render "rui/shared/admin/nav",  { header_title: "John Smith" } do %>
-  <%= link_to "Message John", "#", class:"btn btn-primary" %>
+<% content_for :header do %>
+  <%= render "rui/shared/admin/nav",  { header_title: "John Smith" } do %>
+    <%= link_to "Message John", "#", class:"btn btn-primary" %>
+  <% end %>
 <% end %>
 
 <div class="container mx-auto sm:my-16 my-10 px-4 grid md:grid-cols-12 md:gap-16 gap-0">
