@@ -222,15 +222,7 @@
     }
 
     + label {
-      @apply inline-flex cursor-pointer text-base leading-6 select-none relative;
-
-      &:before {
-        @apply content-[""] block bg-slate-300 rounded-full h-6 w-10 mr-2 transition-colors ease-out flex-shrink-0 dark:bg-slate-500;
-      }
-
-      &:after {
-        @apply content-[""] block bg-white rounded-full w-4 h-4 absolute top-[4px] left-[4px] transition-transform ease-out shadow-sm;
-      }
+      @apply inline-flex cursor-pointer text-base leading-6 select-none relative before:content-[''] before:block before:bg-slate-300 before:rounded-full before:h-6 before:w-10 before:mr-4 before:transition-colors before:ease-out before:flex-shrink-0 before:dark:bg-slate-500 after:content-[""] after:absolute after:block after:bg-white after:rounded-full after:size-4 after:left-[4px] after:top-[4px] after:transition-transform after:ease-out after:shadow-sm;
     }
   }
 }

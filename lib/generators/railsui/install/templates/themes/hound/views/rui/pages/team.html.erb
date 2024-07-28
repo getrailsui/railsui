@@ -4,50 +4,14 @@
   <%= render "rui/shared/admin/nav", { header_title: "Team" } %>
 <% end %>
 
-<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
-  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
-    <nav role="messages nav">
-      <ul
-        class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
-
-        <% if respond_to?(:admin_settings_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Account", admin_settings_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_notifications_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Notifications", admin_notifications_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_billing_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Billing", admin_billing_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_team_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Team", admin_team_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_integrations_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Integrations", admin_integrations_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</div>
+<%= render "rui/shared/admin/settings_nav" %>
 
 <div class="container mx-auto pb-24 px-4 my-16">
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-2">Team</h1>
-    <p class="text-lg text-slate-500 dark:text-slate-400 mb-6">Team management made simple and stress-free.</p>
+    <h1 class="md:h2 h3 mb-2">Team</h1>
+    <div class="prose-lg prose-slate dark:prose-invert mb-6">
+      <p>Team management made simple and stress-free.</p>
+    </div>
 
     <div class="flex items-center justify-between py-2 mb-4">
       <%= form_tag("#") do %>

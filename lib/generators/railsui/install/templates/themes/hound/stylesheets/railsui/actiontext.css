@@ -1,58 +1,78 @@
 /***************************************
-  ActionText
+  Default ActionText
 ****************************************/
-trix-toolbar {
-  .trix-button-row .trix-button-group {
-    @apply border-transparent;
+@import "https://cdn.jsdelivr.net/npm/trix@2.1.3/dist/trix.min.css";
 
-    &:not(:first-child) {
-      @apply ml-0;
-    }
+.trix-content .attachment-gallery > action-text-attachment,
+.trix-content .attachment-gallery > .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+}
 
-    .trix-button {
-      @apply border-transparent hover:bg-primary-50/50 rounded dark:hover:bg-slate-500/50 dark:hover:text-white;
+.trix-content
+  .attachment-gallery.attachment-gallery--2
+  > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
+.trix-content
+  .attachment-gallery.attachment-gallery--4
+  > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+}
 
-      &[disabled] {
-        @apply dark:rounded dark:hover:bg-transparent dark:hover:text-slate-500/10 hover:cursor-not-allowed;
-      }
+.trix-content action-text-attachment .attachment {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
 
-      &:before {
-        @apply dark:hover:opacity-100 dark:hover:text-white;
-      }
-    }
+/***************************************
+  Custom ActionText
+****************************************/
 
-    .trix-button.trix-active {
-      @apply rounded bg-primary-50 text-primary-700 dark:bg-primary-600 dark:text-white;
+trix-toolbar .trix-button-group {
+  @apply border-none gap-px;
+}
 
-      &[disabled] {
-        @apply dark:rounded dark:hover:bg-primary-600/30 dark:hover:text-primary-300;
-      }
-    }
+trix-toolbar .trix-button-row {
+  @apply scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-200 dark:scrollbar-track-transparent dark:scrollbar-thumb-slate-700;
+}
+
+trix-toolbar .trix-button {
+  @apply border-transparent hover:bg-primary-50/50 rounded dark:hover:bg-slate-500/50 dark:hover:text-white dark:bg-transparent dark:before:invert;
+
+  &[disabled] {
+    @apply dark:rounded dark:hover:bg-transparent dark:hover:text-slate-500/10 hover:cursor-not-allowed;
   }
 
-  .trix-button--icon::before {
-    @apply dark:!invert dark:!opacity-80;
+  &:before {
+    @apply dark:hover:opacity-100 dark:hover:text-white;
   }
 
-  .trix-button--icon:disabled::before {
-    @apply dark:opacity-25 dark:hover:bg-slate-800 !important;
+  &:not(:first-child) {
+    @apply border-l-0 !important;
   }
+}
 
-  .trix-dialog {
-    @apply shadow-lg p-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-900 !important;
+trix-toolbar .trix-button.trix-active {
+  @apply bg-primary-500/25 dark:bg-primary-500/30 dark:before:text-primary-50;
+}
 
-    .trix-input--dialog {
-      @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 pr-32 focus:ring-primary-50 focus:border-primary-500 text-slate-900 focus:shadow-none dark:border-slate-400 dark:placeholder:text-slate-400 dark:focus:ring-primary-500/30 dark:focus:border-primary-500/50 dark:bg-slate-800 dark:text-white !important;
-    }
+trix-toolbar .trix-dialog__link-fields .trix-button-group {
+  @apply gap-1.5;
 
-    .trix-button-group {
-      @apply border-transparent absolute right-8 top-[21px];
-    }
-
-    .trix-button:not(:first-child) {
-      @apply border-l-0 !important;
-    }
+  &:not(:first-child) .trix-button--dialog {
+    @apply border-l !important;
   }
+}
+
+trix-toolbar .trix-dialog {
+  @apply shadow-lg p-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-900 !important;
+}
+
+trix-toolbar .trix-input--dialog {
+  @apply px-3 py-1 text-sm border border-slate-300 shadow-inner bg-white font-normal placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 pr-32 focus:ring-primary-50 focus:border-primary-500 text-slate-900 focus:shadow-none dark:border-slate-600/70 dark:placeholder:text-slate-400 dark:focus:ring-primary-500/30 dark:focus:border-primary-500/50 dark:bg-slate-800 dark:text-white !important;
 }
 
 trix-toolbar .trix-button.trix-button--dialog {
@@ -71,39 +91,87 @@ trix-toolbar .trix-button.trix-button--dialog {
 
 /* prose style content */
 trix-editor {
-  @apply rounded border border-slate-300 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 bg-white shadow-inner p-3 text-base dark:bg-slate-800 dark:text-white dark:focus:ring-primary-500/20 dark:border-slate-700 !important;
+  @apply rounded border border-slate-300 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 focus-within:ring-primary-50 focus-within:border-primary-500 focus:outline-none bg-white shadow-inner p-3 text-base dark:bg-slate-800 dark:text-white dark:focus:ring-primary-500/20 dark:border-slate-700 !important;
 }
 
 trix-editor,
 .trix-content {
-  @apply overflow-x-auto dark:text-white;
+  @apply leading-normal font-sans text-base break-words;
 
-  blockquote {
-    @apply text-xl font-normal text-slate-800 dark:text-white;
+  * {
+    @apply box-border m-0 p-0;
   }
 
   h1 {
-    @apply text-3xl;
+    @apply text-4xl leading-tight font-extrabold -tracking-[0.03em];
   }
 
-  ul,
-  ol {
-    @apply pl-6;
+  blockquote {
+    @apply border-0 border-solid border-gray-300 border-l-4 ml-3 pl-6;
   }
 
-  ul {
-    @apply list-disc;
+  [dir="rtl"] blockquote,
+  blockquote[dir="rtl"] {
+    @apply border-0 border-r-4 mr-3 pr-6;
   }
 
-  ol {
-    @apply list-decimal;
+  li {
+    @apply ml-4;
+  }
+
+  [dir="rtl"] li {
+    @apply mr-4;
   }
 
   pre {
-    @apply p-4 bg-slate-50 font-mono text-base rounded whitespace-pre dark:bg-slate-900;
+    @apply inline-block w-full align-top font-mono text-sm p-2 whitespace-pre bg-gray-200 overflow-x-auto;
   }
 
-  a {
-    @apply text-primary-600 dark:text-primary-400 underline font-medium;
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  .attachment__caption {
+    @apply mt-2 text-center;
+
+    .attachment__name + .attachment__size::before {
+      content: " \2022 ";
+    }
+  }
+
+  .attachment {
+    @apply inline-block relative max-w-full;
+
+    a {
+      @apply text-inherit no-underline;
+
+      &:hover,
+      &:visited:hover {
+        @apply text-inherit;
+      }
+    }
+
+    &--preview {
+      @apply w-full text-center;
+    }
+
+    &--file {
+      @apply text-gray-800 leading-none m-0.5 p-2 border border-solid border-gray-400 rounded-md;
+    }
+  }
+
+  .attachment-gallery {
+    @apply flex flex-wrap relative;
+
+    .attachment {
+      @apply flex-1 basis-1/3 px-2 max-w-[33%];
+    }
+
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
+      .attachment {
+        @apply basis-1/2 max-w-[50%];
+      }
+    }
   }
 }

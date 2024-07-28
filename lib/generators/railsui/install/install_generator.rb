@@ -68,6 +68,9 @@ module Railsui
         # Each theme requires unique body classes. Instead of blowing away the layout, we'll just add the classes to the config.
         update_body_classes
 
+        # cleanup
+        remove_action_text_defaults
+
         # If pages are present, copy the pages related files.
         if Railsui.config.pages.any?
           copy_railsui_pages_routes
@@ -79,7 +82,6 @@ module Railsui
         rails_command "db:migrate"
 
         config.save
-
 say "
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM

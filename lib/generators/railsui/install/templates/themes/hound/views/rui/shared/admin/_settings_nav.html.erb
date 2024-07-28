@@ -1,0 +1,29 @@
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+
+    <nav role="navigation">
+      <ul class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+
+        <li class="flex justify-center items-center sm:block">
+          <%= nav_link_to "Account", rui_settings_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+        </li>
+
+        <li class="flex justify-center items-center sm:block">
+          <%= nav_link_to "Notifications", rui_notifications_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+        </li>
+
+        <li class="flex justify-center items-center sm:block">
+          <%= nav_link_to "Billing", rui_billing_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+        </li>
+
+        <li class="flex justify-center items-center sm:block">
+          <%= nav_link_to "Team", rui_team_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+        </li>
+
+        <li class="flex justify-center items-center sm:block">
+          <%= nav_link_to "Integrations", rui_integrations_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center space-x-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

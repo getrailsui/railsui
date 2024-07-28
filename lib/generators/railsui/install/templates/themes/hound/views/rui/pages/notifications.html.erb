@@ -3,86 +3,54 @@
 <% content_for :header do %>
   <%= render "rui/shared/admin/nav", { header_title: "Notifications" } %>
 <% end %>
-
-<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
-  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
-    <nav role="settings nav">
-      <ul class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
-
-        <% if respond_to?(:admin_settings_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Account", admin_settings_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center gap-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_notifications_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Notifications", admin_notifications_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center gap-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_billing_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Billing", admin_billing_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center gap-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_team_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Team", admin_team_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center gap-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-
-        <% if respond_to?(:admin_integrations_path) %>
-          <li class="flex justify-center items-center sm:block">
-            <%= nav_link_to "Integrations", admin_integrations_path, active_class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2 dark:hover:bg-slate-900/80", inactive_class: "py-2 px-4 rounded-lg transition ease-in-out duration-300 hover:bg-slate-50 hover:text-primary-600 dark:hover:text-primary-400 font-medium flex items-center gap-2 group dark:text-slate-300 dark:hover:bg-slate-900" %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</div>
+<%= render "rui/shared/admin/settings_nav" %>
 
 <div class="container mx-auto pb-24 px-4 my-16">
   <div class="max-w-4xl mx-auto">
-    <h1 class="mb-2 text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Notifications</h1>
-    <p class="text-lg text-slate-500 dark:text-slate-400 mb-6">Adjust how the app notifies you of new events, changes, and communications.</p>
+    <h1 class="md:h2 h3 mb-2">Notifications</h1>
+    <div class="prose-lg prose-slate dark:prose-invert mb-16">
+      <p>Adjust how the app notifies you of new events, changes, and communications.</p>
+    </div>
 
     <%= form_tag "#" do %>
       <div class="grid grid-cols-1 sm:grid-cols-12 sm:gap-16 gap-6">
         <div class="sm:col-span-5">
-          <h3 class="text-lg text-slate-700 font-normal mb-0 dark:text-slate-300">Email Notifications</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-500 mb-4">What should we email you about?</p>
+          <h3 class="h6 mb-2">Email Notifications</h3>
+          <div class="prose prose-slate dark:prose-invert mb-6">
+            <p>What should we email you about?</p>
+          </div>
+
         </div>
         <div class="sm:col-span-7 sm:pt-8">
           <div class="form-group flex flex-wrap items-center">
             <%= check_box_tag "emailNotification1", "", true, class: "form-input-switch", id: "emailNotification1" %>
-            <%= label_tag "emailNotification1", "New messages", class: "ml-2" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
+            <%= label_tag "emailNotification1", "New messages", class: "ml-2 font-semibold tracking-tight" %>
+
+            <div class="pl-16 text-sm text-slate-600 dark:text-slate-400">
               <p>Receive an email when someone messages you.</p>
             </div>
           </div>
 
           <div class="form-group flex flex-wrap items-center">
             <%= check_box_tag "emailNotification2", "", false, class: "form-input-switch", id: "emailNotification2" %>
-            <%= label_tag "emailNotification2", "Account updates", class: "ml-2" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
+            <%= label_tag "emailNotification2", "Account updates", class: "ml-2 font-semibold tracking-tight" %>
+            <div class="pl-16 text-sm text-slate-600 dark:text-slate-400">
               <p>Receive an email when your account gets updated.</p>
             </div>
           </div>
 
           <div class="form-group flex flex-wrap items-center">
             <%= check_box_tag "emailNotification3", "", true, class: "form-input-switch", id: "emailNotification3" %>
-            <%= label_tag "emailNotification3", "Upcoming events", class: "ml-2" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
+            <%= label_tag "emailNotification3", "Upcoming events", class: "ml-2 font-semibold tracking-tight" %>
+            <div class="pl-16 text-sm text-slate-600 dark:text-slate-400">
               <p>Receive an email when upcoming events are scheduled to occur.</p>
             </div>
           </div>
 
           <div class="form-group flex flex-wrap items-center">
             <%= check_box_tag "emailNotification4", "", true, class: "form-input-switch", id: "emailNotification4" %>
-            <%= label_tag "emailNotification4", "New mentions", class: "ml-2" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
+            <%= label_tag "emailNotification4", "New mentions", class: "ml-2 font-semibold tracking-tight" %>
+            <div class="pl-16 text-sm text-slate-600 dark:text-slate-400">
               <p>Receive an email when someone mentions you.</p>
             </div>
           </div>
@@ -91,31 +59,33 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-12 sm:gap-16 mt-10 pt-10 border-t gap-6 dark:border-slate-700">
         <div class="sm:col-span-5">
-          <h3 class="text-lg text-slate-700 font-normal mb-0 dark:text-slate-300">Push Notifications</h3>
-          <p class="text-sm text-slate-500 mb-4">Send push notifications to your device.</p>
+          <h3 class="h6 mb-2">Push Notifications</h3>
+          <div class="prose prose-slate dark:prose-invert mb-6">
+            <p>Send push notifications to your device.</p>
+          </div>
         </div>
 
         <div class="sm:col-span-7">
           <div class="form-group flex flex-wrap items-center">
             <%= check_box_tag "pushNotification1", "", true, class: "form-input-switch", id: "pushNotification1" %>
-            <%= label_tag "pushNotification1", "New messages", class: "ml-2" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
+            <%= label_tag "pushNotification1", "New messages", class: "ml-2 font-semibold tracking-tight" %>
+            <div class="pl-16 text-sm text-slate-600 dark:text-slate-400">
               <p>Receive a device notification when someone mentions you.</p>
             </div>
           </div>
 
           <div class="form-group flex flex-wrap items-center">
             <%= check_box_tag "pushNotification2", "", true, class: "form-input-switch", id: "pushNotification2" %>
-            <%= label_tag "pushNotification2", "Upcoming events", class: "ml-2" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
+            <%= label_tag "pushNotification2", "Upcoming events", class: "ml-2 font-semibold tracking-tight" %>
+            <div class="pl-16 text-sm text-slate-600 dark:text-slate-400">
               <p>Receive a device notification when upcoming events you belong to are scheduled to occur.</p>
             </div>
           </div>
 
           <div class="form-group flex flex-wrap items-center">
             <%= check_box_tag "pushNotification3", "", true, class: "form-input-switch", id: "pushNotification3" %>
-            <%= label_tag "pushNotification3", "New mentions", class: "ml-2" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
+            <%= label_tag "pushNotification3", "New mentions", class: "ml-2 font-semibold tracking-tight" %>
+            <div class="pl-16 text-sm text-slate-600 dark:text-slate-400">
               <p>Receive a device notification when someone mentions you.</p>
             </div>
           </div>

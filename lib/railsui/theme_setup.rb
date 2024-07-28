@@ -113,6 +113,7 @@ module Railsui
 
      def install_action_text
       rails_command "action_text:install"
+
     end
 
     def setup_stimulus(theme)
@@ -125,6 +126,13 @@ module Railsui
       copy_tailwind_config(theme)
     end
 
+    def remove_action_text_defaults
+      say "Remove default ActionText CSS"
+      remove_file "app/assets/stylesheets/actiontext.css"
+
+      gsub_file "app/assets/stylesheets/application.tailwind.css", /@import 'actiontext.css';/, ""
+    end
+
     def humanize_theme(theme)
       theme.humanize
     end
@@ -132,15 +140,15 @@ module Railsui
     def theme_dependencies(theme)
       case theme
       when "hound"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
       when "shepherd"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "hotkeys-js", "photoswipe", "apexcharts", "railsui-stimulus", "railsui-tailwind-presets"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "hotkeys-js", "photoswipe", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwindcss", "tippy.js"]
       when "retriever"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "flatpickr", "apexcharts", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
       when "setter"
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
       else
-        ["tailwindcss", "postcss", "autoprefixer", "postcss-import", "postcss-nesting", "@tailwindcss/forms", "@tailwindcss/typography", "stimulus-use", "tippy.js", "tailwind-scrollbar", "railsui-stimulus", "railsui-tailwind-presets"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
       end
     end
 

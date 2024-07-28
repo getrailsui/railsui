@@ -7,8 +7,8 @@
   <div class="container mx-auto px-4">
     <div class="text-center py-20 relative z-20">
       <p class="font-semibold text-center uppercase text-sm text-primary-600 mb-4 dark:text-primary-500">Pricing</p>
-      <h1 class="text-5xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-4">Priced with you in mind</h1>
-      <p class="text-lg text-slate-700 dark:text-slate-200 max-w-xl mx-auto">Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+      <h1 class="md:h1 h2 mb-4">Priced with you in mind</h1>
+      <p class="text-lg text-slate-700 dark:text-slate-200 max-w-2xl mx-auto">Choose the plan that fits your needs. Our flexible pricing options cater to businesses of all sizes, from startups to enterprise-level organizations.</p>
     </div>
   </div>
 </header>
@@ -30,8 +30,8 @@
       <p class="lg:hidden block font-semibold text-slate-700 dark:text-slate-200">Startup</p>
       <p class="font-extrabold text-slate-900 text-4xl dark:text-slate-200">$49<span class="text-sm font-normal text-slate-500 dark:text-slate-400">/mo</span>
       </p>
-      <p class="text-slate-700 dark:text-slate-200 leading-tight my-4">
-        Cras justo odio, dapibus ac facilisis in, egestas eget.
+      <p class="text-slate-700 dark:text-slate-200 leading-normal my-4 text-sm">
+        Ideal for growing businesses looking to scale their operations and reach.
       </p>
       <%= link_to "Try Startup for free", "#", class: "btn btn-primary w-full" %>
     </div>
@@ -39,20 +39,20 @@
       <p class="lg:hidden block font-semibold text-slate-700 dark:text-slate-200">Professional</p>
       <p class="font-extrabold text-slate-900 text-4xl dark:text-slate-200">$99<span class="text-sm font-normal text-slate-500 dark:text-slate-400">/mo</span>
       </p>
-      <p class="text-slate-700 leading-tight my-4 dark:text-slate-300">
-        Cras justo odio, dapibus ac facilisis in, egestas eget.
+      <p class="text-slate-700 leading-normal my-4 dark:text-slate-300 text-sm">
+        Everything in startup plus advanced data insights and reporting capabilities.
       </p>
-      <%= link_to "Try Professional for free", "#", class: "btn btn-primary w-full" %>
+      <%= link_to "Try Professional for free", "#", class: "btn btn-secondary w-full" %>
     </div>
     <div>
       <p class="lg:hidden block font-semibold text-slate-700 dark:text-slate-200">Premium</p>
       <p class="font-extrabold text-slate-900 dark:text-slate-100 text-4xl">$199<span
           class="text-sm font-normal text-slate-500">/mo</span>
       </p>
-      <p class="text-slate-700 dark:text-slate-200 leading-tight my-4">
-        Cras justo odio, dapibus ac facilisis in, egestas eget.
+      <p class="text-slate-700 dark:text-slate-200 leading-normal my-4 text-sm">
+        Unlock all features and get dedicated support. We'll reach out to kick off the process.
       </p>
-      <a href="#" class="btn btn-primary w-full">Try Premium for free</a>
+      <a href="#" class="btn btn-dark w-full">Try Premium for free</a>
     </div>
   </div>
 
@@ -62,27 +62,23 @@
     <li class="py-4">
       <ul class="list-none grid grid-cols-3 lg:grid-cols-4 lg:gap-10 gap-4 items-center lg:px-4">
         <li class="lg:col-span-1 col-span-3">
-          Justo magna vestibulum
+          Advanced analytics dashboard
         </li>
         <li class="flex justify-center items-center">
           <div class="flex items-center">
-            <svg class="fill-current text-green-500 size-4 flex-shrink-0" width="16" height="12" viewBox="0 0 16 12"
-              fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M0.707106 7.10711C0.316582 6.71658 0.316583 6.08342 0.707107 5.69289L0.892893 5.50711C1.28342 5.11658 1.91658 5.11658 2.30711 5.50711L5.6 8.8L13.6929 0.707108C14.0834 0.316583 14.7166 0.316583 15.1071 0.707107L15.2929 0.892893C15.6834 1.28342 15.6834 1.91658 15.2929 2.30711L5.6 12L0.707106 7.10711Z" />
-            </svg>
+            <%= icon "check", class: "text-green-500 size-5 flex-shrink-0", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
         <li class="flex justify-center items-center">
           <div class="flex items-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Pro</span>
           </div>
         </li>
         <li class="flex justify-center items-center">
           <div class="flex items-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -91,23 +87,23 @@
     <li class="py-4">
       <ul class="list-none grid grid-cols-3 lg:grid-cols-4 lg:gap-10 gap-4 items-center lg:px-4">
         <li class="lg:col-span-1 col-span-3">
-          Magna parturient aenean
+          Real-time data visualization
         </li>
         <li class="flex justify-center items-center">
           <div class="flex items-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Pro</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -116,11 +112,36 @@
     <li class="py-4">
       <ul class="list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center lg:px-4">
         <li class="col-span-3 lg:col-span-1">
-          Nullam id dolor id nibh ultricies vehicula ut id elit.
+          Custom report generation and export options
         </li>
         <li class="flex justify-center">
           <div class="flex justify-center items-center">
-            <%= icon "minus", class: "size-4 flex-shrink-0 text-slate-400", variant: :solid %>
+            <%= icon "minus", class: "size-5 flex-shrink-0 text-slate-400", variant: :solid %>
+            <span class="block lg:hidden w-full ml-2">Startup</span>
+          </div>
+        </li>
+        <li class="flex justify-center">
+          <div class="flex items-center justify-center">
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
+            <span class="block lg:hidden w-full ml-2">Pro</span>
+          </div>
+        </li>
+        <li class="flex justify-center">
+          <div class="flex items-center justify-center">
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
+            <span class="block lg:hidden w-full ml-2">Premium</span>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li class="py-4">
+      <ul class="list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center lg:px-4">
+        <li class="lg:col-span-1 col-span-3">
+          Advanced user segmentation
+        </li>
+        <li class="flex justify-center">
+          <div class="flex items-center justify-center">
+            <%= icon "minus", class: "size-5 flex-shrink-0 text-slate-400", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
@@ -141,48 +162,23 @@
     <li class="py-4">
       <ul class="list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center lg:px-4">
         <li class="lg:col-span-1 col-span-3">
-          Ornare tortor magna
-        </li>
-        <li class="flex justify-center">
-          <div class="flex items-center justify-center">
-            <%= icon "minus", class: "size-4 flex-shrink-0 text-slate-400", variant: :solid %>
-            <span class="block lg:hidden w-full ml-2">Startup</span>
-          </div>
-        </li>
-        <li class="flex justify-center">
-          <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
-            <span class="block lg:hidden w-full ml-2">Pro</span>
-          </div>
-        </li>
-        <li class="flex justify-center">
-          <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
-            <span class="block lg:hidden w-full ml-2">Premium</span>
-          </div>
-        </li>
-      </ul>
-    </li>
-    <li class="py-4">
-      <ul class="list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center lg:px-4">
-        <li class="lg:col-span-1 col-span-3">
-          Inceptos cursus risus ligula
+          AI-powered predictive analytics
         </li>
         <li class="flex justify-center">
           <div class="flex justify-center items-center">
-            <%= icon "minus", class: "size-4 flex-shrink-0 text-slate-400", variant: :solid %>
+            <%= icon "minus", class: "size-5 flex-shrink-0 text-slate-400", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "minus", class: "size-4 flex-shrink-0 text-slate-400", variant: :solid %>
+            <%= icon "minus", class: "size-5 flex-shrink-0 text-slate-400", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Pro</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -196,23 +192,23 @@
     <li class="py-4">
       <ul class="list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center lg:px-4">
         <li class="lg:col-span-1 col-span-3">
-          Ridiculus vestibulum euismod
+          24/7 email support
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "minus", class: "size-4 flex-shrink-0 text-slate-400", variant: :solid %>
+            <%= icon "minus", class: "size-5 flex-shrink-0 text-slate-400", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Pro</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -221,23 +217,23 @@
     <li class="py-4">
       <ul class="lg:px-4 list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center">
         <li class="lg:col-span-1 col-span-3">
-          Magna parturient aenean
+          Priority phone support
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Pro</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -246,23 +242,23 @@
     <li class="py-4">
       <ul class="lg:px-4 list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center">
         <li class="lg:col-span-1 col-span-3">
-          Etiam v ehicula sem
+          Dedicated account manager
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Pro</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -271,11 +267,11 @@
     <li class="py-4">
       <ul class="lg:px-4 list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center">
         <li class="lg:col-span-1 col-span-3">
-          Ornare tortor magna
+          Custom onboarding
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
@@ -287,7 +283,7 @@
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -296,23 +292,23 @@
     <li class="py-4">
       <ul class="lg:px-4 list-none grid lg:grid-cols-4 grid-cols-3 lg:gap-10 gap-4 items-center">
         <li class="lg:col-span-1 col-span-3">
-          Inceptos cursus risus ligula
+          24/7 phone support
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "minus", class: "size-4 flex-shrink-0 text-slate-400", variant: :solid %>
+            <%= icon "minus", class: "size-5 flex-shrink-0 text-slate-400", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Startup</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "minus", class: "size-4 flex-shrink-0 text-slate-400", variant: :solid %>
+            <%= icon "minus", class: "size-5 flex-shrink-0 text-slate-400", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Pro</span>
           </div>
         </li>
         <li class="flex justify-center">
           <div class="flex items-center justify-center">
-            <%= icon "check", class: "size-4 flex-shrink-0 text-green-500", variant: :solid %>
+            <%= icon "check", class: "size-5 flex-shrink-0 text-green-500", variant: :solid %>
             <span class="block lg:hidden w-full ml-2">Premium</span>
           </div>
         </li>
@@ -326,45 +322,47 @@
       <%= link_to "Try Startup for free", "#", class: "btn btn-primary w-full" %>
     </li>
     <li>
-      <%= link_to "Try Professional for free", "#", class: "btn btn-primary w-full" %>
+      <%= link_to "Try Professional for free", "#", class: "btn btn-secondary w-full" %>
     </li>
     <li>
-      <%= link_to "Try Premium for free", "#", class: "btn btn-primary w-full" %>
+      <%= link_to "Try Premium for free", "#", class: "btn btn-dark w-full" %>
     </li>
   </ul>
 </div>
 
-<div class="max-w-2xl py-16 mx-auto px-4 lg:px-0">
-  <h2 class="font-extrabold mb-6 text-4xl">FAQs</h2>
+<div class="container mx-auto px-4 my-24">
 
-  <div class="my-6">
-    <h3 class="font-extrabold mb-3 text-xl">Aenean lacinia bibendum nulla sed consectetur?</h3>
-    <div class="prose prose-primary dark:prose-invert">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque laboriosam sed aliquam sit minima? Magni impedit porro deleniti, aliquam obcaecati esse facilis corporis voluptatem officia dolores minus at, fugit neque.</p>
+  <div class="max-w-2xl mx-auto mt-6">
+    <h2 class="h3">FAQs</h2>
+    <div class="my-6">
+      <h3 class="mb-3 h6">What payment methods do you accept?</h3>
+      <div class="prose prose-primary dark:prose-invert">
+        <p>We accept all major credit cards, including Visa, MasterCard, American Express, and Discover. We also support payments through PayPal and bank transfers for annual subscriptions. If you have any specific payment requirements, please don't hesitate to contact our support team.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="my-6">
-    <h3 class="font-extrabold mb-3 text-xl">Cras mattis consectetur purus sit amet fermentum?</h3>
-    <div class="prose prose-primary dark:prose-invert">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque laboriosam sed aliquam sit minima? Magni impedit porro deleniti, aliquam obcaecati esse facilis corporis voluptatem officia dolores minus at, fugit neque.</p>
+    <div class="my-6">
+      <h3 class="mb-3 h6">Can I upgrade or downgrade my plan at any time?</h3>
+      <div class="prose prose-primary dark:prose-invert">
+        <p>Yes, you can upgrade or downgrade your plan at any time. When you upgrade, the new features will be immediately available, and we'll prorate the cost for the remainder of your billing cycle. If you downgrade, the changes will take effect at the start of your next billing cycle.</p>
 
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque laboriosam sed aliquam sit minima? Magni impedit porro deleniti, aliquam obcaecati esse facilis corporis voluptatem officia dolores minus at, fugit neque.</p>
+        <p>Keep in mind that downgrading may result in the loss of certain features or reduced usage limits. We recommend reviewing the plan details carefully before making any changes to ensure it meets your needs.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="my-6">
-    <h3 class="font-extrabold mb-3 text-xl">Donec sed odio dui?</h3>
-    <div class="prose prose-primary dark:prose-invert">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque laboriosam sed aliquam sit minima? Magni impedit porro deleniti, aliquam obcaecati esse facilis corporis voluptatem officia dolores minus at, fugit neque.</p>
+    <div class="my-6">
+      <h3 class="mb-3 h6">Is there a free trial available?</h3>
+      <div class="prose prose-primary dark:prose-invert">
+        <p>Yes, we offer a 14-day free trial for all our plans. During this period, you'll have full access to all the features included in your chosen plan. No credit card is required to start the trial, and you can cancel at any time before the trial period ends without any charges.</p>
 
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque laboriosam sed aliquam sit minima? Magni impedit porro deleniti, aliquam obcaecati esse facilis corporis voluptatem officia dolores minus at, fugit neque.</p>
+        <p>If you decide to continue using our service after the trial, you can easily upgrade to a paid plan. Your data and settings will be preserved, ensuring a smooth transition from the trial to a full subscription.</p>
+      </div>
     </div>
-  </div>
-  <div class="my-6">
-    <h3 class="font-extrabold mb-3 text-xl">Nulla vitae elit libero, a pharetra augue?</h3>
-    <div class="prose prose-primary dark:prose-invert">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque laboriosam sed aliquam sit minima? Magni impedit porro deleniti, aliquam obcaecati esse facilis corporis voluptatem officia dolores minus at, fugit neque.</p>
+    <div class="my-6">
+      <h3 class="mb-3 h6">What kind of customer support do you provide?</h3>
+      <div class="prose prose-primary dark:prose-invert">
+        <p>We offer comprehensive customer support to ensure you have the best experience with our product. Our support channels include email, live chat, and phone support during business hours. Additionally, we have an extensive knowledge base and FAQ section on our website, which covers most common questions and issues. For enterprise customers, we also provide dedicated account managers for personalized assistance.</p>
+      </div>
     </div>
   </div>
 </div>
