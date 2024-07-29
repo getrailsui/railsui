@@ -71,13 +71,12 @@ module Railsui
         # cleanup
         remove_action_text_defaults
 
-        # If pages are present, copy the pages related files.
-        if Railsui.config.pages.any?
-          copy_railsui_pages_routes
-          copy_railsui_page_controller(@theme)
-          copy_railsui_images(@theme)
-          copy_railsui_pages(@theme)
-        end
+        # Copy the pages related files.
+        copy_railsui_pages_routes
+        copy_railsui_page_controller(@theme)
+        copy_railsui_images(@theme)
+        copy_railsui_pages(@theme)
+
 
         rails_command "db:migrate"
 

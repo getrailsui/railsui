@@ -4,7 +4,7 @@
 # or run the task without an argument to get the default theme colors
 
 namespace :railsui do
-  desc "Show theme colors"
+  desc "Show Rails UI theme colors"
   task :colors, [:theme] => :environment do |t, args|
     # Default to Railsui.config.theme if no argument is provided
     theme = args.theme || Railsui.config.theme

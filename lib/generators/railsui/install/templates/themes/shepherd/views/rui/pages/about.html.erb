@@ -3,8 +3,8 @@
 
   <div class="bg-cover h-auto z-40 relative">
     <header class="py-4 container mx-auto px-4 text-[15px] lg:flex items-center justify-between" data-controller="railsui-dropdown">
-      <div class="lg:w-auto w-full flex items-center justify-between lg:space-x-3">
-        <%= link_to (defined?(root_path) ? root_path : "#"), class: "group" do %>
+      <div class="lg:w-auto w-full flex items-center justify-between lg:gap-3">
+        <%= link_to root_path, class: "group" do %>
           <svg
             class="group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 text-zinc-900 fill-current w-10 h-10 dark:text-zinc-100"
             width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +13,7 @@
           </svg>
         <% end %>
 
-        <button class="lg:hidden block btn btn-white hover:bg-white px-3 dark:hover:bg-zinc-800" role="Mobile navigation toggle" data-action="click->railsui-dropdown#toggle click@window->dropdown#hide">
+        <button type="button" class="lg:hidden block btn btn-white hover:bg-white px-3 dark:hover:bg-zinc-800" role="Mobile navigation toggle" data-action="click->railsui-dropdown#toggle click@window->dropdown#hide">
           <%= icon "bars-3-center-left", class: "stroke-current w-8 h-8 text-zinc-600 group-focus:text-primary-500 dark:text-zinc-200" %>
         </button>
       </div>
@@ -25,7 +25,7 @@
         data-transition-leave-to="transform opacity-0 scale-95">
         <nav class="flex-1" role="Primary navigation">
           <ul
-            class="lg:flex items-center lg:space-x-3 lg:pl-8 lg:mt-0 mt-4 font-heading text-zinc-800 lg:text-[15px] text-lg">
+            class="lg:flex items-center lg:gap-3 lg:pl-8 lg:mt-0 mt-4 font-heading text-zinc-800 lg:text-[15px] text-lg">
             <li>
               <%= nav_link_to "Features", "#", inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
             </li>
@@ -33,10 +33,10 @@
               <%= nav_link_to "Testimonials", "#", inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
             </li>
             <li>
-              <%= nav_link_to "Pricing", (defined?(rui_pricing_path) ? rui_pricing_path : "#"), inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
+              <%= nav_link_to "Pricing", rui_pricing_path, inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
             </li>
             <li>
-              <%= nav_link_to "About", (defined?(rui_about_path) ? rui_about_path : "#"), inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
+              <%= nav_link_to "About", rui_about_path, inactive_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal dark:text-zinc-100 dark:hover:text-primary-500 dark:focus:ring-zinc-800", active_class: "lg:px-3 py-2 lg:inline-block block hover:bg-opacity-50 rounded hover:text-primary-600 focus:ring-4 focus:ring-zinc-50 font-normal text-primary-600 dark:text-primary-500 dark:focus:ring-zinc-800" %>
             </li>
           </ul>
         </nav>
@@ -61,13 +61,13 @@
         <p>With vacation rentals money is left on the table if you don't optimize. <br class="lg:block hidden" /> Our solutions and products give investors more say in what they earn.</p>
       </div>
 
-      <div class="lg:flex justify-center items-center mt-6 lg:space-x-4 lg:space-y-0 space-y-4">
+      <div class="lg:flex justify-center items-center mt-6 lg:gap-4 lg:space-y-0 space-y-4">
 
         <%= link_to "Learn more", "#", class: "btn btn-primary lg:w-auto w-full text-center" %>
 
         <%= link_to "#", class: "btn btn-white flex items-center lg:w-auto w-full justify-center" do %>
           <span>Join our team</span>
-          <%= icon "user-plus", class: "ml-2 stroke-current text-zinc-600 w-4 h-4 dark:text-zinc-300" %>
+          <%= icon "user-plus", class: "ml-2 stroke-current text-zinc-600 size-4 dark:text-zinc-300" %>
         <% end %>
       </div>
     </div>
@@ -92,17 +92,17 @@
     </svg>
 
     <div class="container mx-auto px-4 lg:absolute top-0 right-0 lg:flex items-start lg:justify-end justify-start lg:space-x-24 lg:pt-16 lg:pr-16 lg:space-y-0 space-y-6">
-      <div class="flex items-center space-x-4">
-        <%= image_tag "railsui/jackie-jones.png", alt: "Jackie Jones", class: "lg:w-24 w-16 h-16 lg:h-24 rounded-full" %>
+      <div class="flex items-center gap-4">
+        <%= image_tag "railsui/jackie-jones.png", alt: "Jackie Jones", class: "lg:size-24 size-16 rounded-full" %>
         <div>
           <p class="text-zinc-800 dark:text-zinc-200 font-semibold">Jackie Jones</p>
           <p class="dark:text-zinc-400">Co-founder</p>
         </div>
         <div class="flex-1 h-px bg-secondary-50 lg:hidden block"></div>
       </div>
-      <div class="flex items-center space-x-4 lg:pt-8 justify-end">
+      <div class="flex items-center gap-4 lg:pt-8 justify-end">
         <div class="flex-1 w-24 h-px bg-zinc-200 lg:hidden block"></div>
-        <%= image_tag "railsui/jake-jones.png", alt: "Jake Jones", class: "lg:w-24 lg:h-24 w-16 h-16 rounded-full" %>
+        <%= image_tag "railsui/jake-jones.png", alt: "Jake Jones", class: "lg:size-24 size-16 rounded-full" %>
         <div>
           <p class="text-zinc-800 dark:text-zinc-200 font-semibold">Jake Jones</p>
           <p class="dark:text-zinc-400">Co-founder</p>
@@ -112,26 +112,25 @@
   </div>
 
   <div class="container mx-auto px-4 xl:-mt-20 mt-10 pb-16">
-    <h2 class="font-heading tracking-tight lg:text-5xl text-4xl mb-3 relative z-10 dark:text-white font-semibold">Born out of the travel industry</h2>
-    <p class="text-primary-500 text-lg">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
+    <h2 class="md:h1 h2 mb-3 relative z-10">Born out of the travel industry</h2>
+    <p class="text-primary-500 text-lg">Empowering investors with data-driven insights and innovative tools.</p>
     <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-10 gap-6 lg:mt-10 mt-6">
       <div class="prose prose-zinc dark:prose-invert">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+        <p>At our core, we believe that real estate investing should be accessible to everyone. Our platform is designed to demystify the complexities of property investment, providing you with the tools and knowledge to make informed decisions.</p>
 
-        <p> Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+        <p>We understand that each investor's journey is unique. That's why we offer personalized strategies tailored to your goals, risk tolerance, and financial situation. Whether you're a first-time investor or a seasoned pro, we're here to support your growth.</p>
 
-        <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+        <p>Our commitment to transparency and education sets us apart. We provide comprehensive market analyses, property valuations, and investment forecasts, empowering you to navigate the real estate landscape with confidence and clarity.</p>
       </div>
       <div class="prose prose-zinc dark:prose-invert">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consecteturet.</p>
+        <p>Innovation is at the heart of what we do. We continuously update our platform with cutting-edge features and insights, ensuring you stay ahead in a dynamic market. From AI-powered property matching to advanced portfolio management tools, we're dedicated to enhancing your investment experience.</p>
 
-        <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+        <p>We believe in the power of community. Our platform connects you with fellow investors, industry experts, and local market specialists. Share experiences, gain insights, and build valuable networks that can propel your investment success to new heights.</p>
       </div>
 
       <div class="prose prose-zinc dark:prose-invert">
-        <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+        <p>Your success is our success. We measure our performance by the achievements of our investors. That's why we offer ongoing support, educational resources, and expert guidance to help you navigate challenges and capitalize on opportunities in the ever-evolving real estate market.</p>
+        <p>Join us in revolutionizing real estate investment. Whether you're looking to build long-term wealth, generate passive income, or diversify your portfolio, we provide the expertise, tools, and support you need to turn your investment goals into reality.</p>
       </div>
     </div>
   </div>
@@ -148,9 +147,9 @@
     <div class="container mx-auto px-4 grid lg:grid-cols-12 grid-cols-1 gap-6 relative z-50 items-center">
       <div class="lg:col-span-5 flex flex-col h-full lg:pt-16">
         <div class="flex-1">
-          <h2 class="font-heading tracking-tight lg:text-5xl text-4xl mb-3 dark:text-white font-semibold">Trusted by over 200,000 real estate investors</h2>
+          <h2 class="md:h2 h3 mb-3">Trusted by over 200,000 real estate investors</h2>
           <div class="prose prose-zinc dark:prose-invert">
-            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p>Our innovative platform combines advanced analytics with user-friendly tools, empowering you to make informed investment decisions and achieve your financial goals.</p>
           </div>
           <div class="grid grid-cols-3 gap-6 mt-6">
             <div>
@@ -180,27 +179,24 @@
 
   <div class="bg-zinc-900 lg:py-24 py-16">
     <div class="container mx-auto px-4">
-      <h2 class="font-semibold font-heading lg:text-4xl text-3xl text-primary-500">Determined to help investors become financially free</h2>
+      <h2 class="md:h2 h3 !text-primary-500">Empowering investors to achieve financial independence</h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-8">
         <div class="prose text-white dark:prose-invert">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget
-            urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consecteturet.</p>
+          <p>At our core, we believe that financial freedom should be accessible to everyone. Our team of experienced professionals is dedicated to providing you with the tools, knowledge, and support needed to make informed investment decisions.</p>
 
-          <p>Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-          </p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laborum? Alias optio quo saepe dolorem sit. Nostrum consequatur ipsa, fugit, eos inventore officiis ea vero, aperiam recusandae debitis amet dolorum.</p>
+          <p>We understand that the world of investing can be complex and overwhelming. That's why we've developed a user-friendly platform that simplifies the process, allowing you to focus on what matters most - growing your wealth and securing your financial future.</p>
+          <p>Our comprehensive approach combines cutting-edge technology with personalized guidance. We offer a wide range of investment options, from stocks and bonds to real estate and alternative assets, tailored to suit your individual goals and risk tolerance.</p>
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente vero, sit eum voluptate cumque obcaecati sed fugiat, quo similique eos adipisci consequuntur non asperiores veritatis laborum sunt fuga ullam nemo.</p>
+          <p>Education is a key component of our mission. Through our extensive library of resources, webinars, and one-on-one consultations, we empower you with the knowledge to make confident financial decisions and navigate the ever-changing market landscape.</p>
         </div>
         <div class="prose text-white dark:prose-invert">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget
-            urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-          <h4 class="font-heading text-2xl text-zinc-200">Duis mollis, est non commodo luctus, nisi erat</h4>
+          <p>We're not just another investment platform; we're your partner in building long-term wealth. Our team of analysts continuously monitors market trends and opportunities, providing you with timely insights and recommendations to optimize your portfolio.</p>
+          <h4 class="font-heading text-2xl text-zinc-200">Your success is our success</h4>
           <p>
-            Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+            We believe in aligning our interests with yours. That's why we've structured our fees to be transparent and performance-based. We only succeed when you succeed, ensuring that our team is fully committed to helping you reach your financial goals.
           </p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nihil deserunt aliquid accusantium, delectus facere doloremque impedit quam maiores corporis commodi, nemo omnis officiis tempore perspiciati maxime tenetur velit beatae.</p>
+          <p>Join thousands of investors who have already taken control of their financial future with our platform. Whether you're just starting out or looking to optimize an existing portfolio, we have the tools and expertise to help you on your journey to financial freedom.</p>
         </div>
       </div>
     </div>
@@ -286,7 +282,7 @@
             stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
 
-        <h3 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight mt-6">Want to read more about what <br class="lg:block hidden" /> we're up to every week?</h3>
+        <h3 class="md:h4 h5 mt-6">Want to read more about what <br class="lg:block hidden" /> we're up to every week?</h3>
         <div class="prose prose-zinc dark:prose-invert mt-4">
           <p>Dive into our weekly newsletter for exclusive insights on the latest in real estate, AI-driven investments, and Shepherd's innovative solutions.</p>
         </div>

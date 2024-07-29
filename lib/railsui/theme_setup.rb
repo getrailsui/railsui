@@ -47,7 +47,7 @@ module Railsui
       new_index_js_content = index_js_content.gsub(/import .* from "\.\/railsui\/.*";\napplication\.register\(".*", .*;\n*/, "")
 
       # Add the new import and register statements
-      new_index_js_content += "\n#{import_statements}\n"
+      new_index_js_content += "#{import_statements}\n"
 
       # Write the updated content back to index.js
       File.write(index_js_path, new_index_js_content)
@@ -99,7 +99,7 @@ module Railsui
         cleaned_css_content.strip,  # Preserving existing content
         import_statements,
         tailwind_imports_bottom
-      ].join("\n\n")
+      ].join("\n")
 
       # Write the updated content back to application.tailwind.css
       File.write(application_css_path, new_application_css_content)

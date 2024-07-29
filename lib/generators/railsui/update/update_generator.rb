@@ -59,23 +59,21 @@ module Railsui
       end
 
       def sync_pages
-        if @config.pages.any?
-          # Remove old theme's pages. Forcefully for now.
-          pages_directory = Rails.root.join("app/views/rui/pages")
-          FileUtils.rm_rf(Dir.glob("#{pages_directory}/*"))
+        # Remove old theme's pages. Forcefully for now.
+        pages_directory = Rails.root.join("app/views/rui/pages")
+        FileUtils.rm_rf(Dir.glob("#{pages_directory}/*"))
 
-          # Copy new theme's pages
-          copy_new_theme_pages(@config.theme)
+        # Copy new theme's pages
+        copy_new_theme_pages(@config.theme)
 
-          # Update rails ui config with new pages
-          update_railsui_config_with_new_pages(@config.theme)
+        # Update rails ui config with new pages
+        update_railsui_config_with_new_pages(@config.theme)
 
-          # Copy new theme's pages routes
-          copy_railsui_pages_routes
+        # Copy new theme's pages routes
+        copy_railsui_pages_routes
 
-          # Copy new theme's images
-          copy_railsui_images(@config.theme)
-        end
+        # Copy new theme's images
+        copy_railsui_images(@config.theme)
       end
 
       def copy_new_theme_pages(theme)
@@ -88,6 +86,8 @@ module Railsui
           # Overwrite existing view files
           copy_file source_path, destination_path, force: true
         end
+
+        copy_file "themes/#{theme}/views/layouts/rui/railsui.html.erb", "app/views/layouts/rui/railsui.html.erb", force: true
       end
 
       def update_railsui_theme_classes

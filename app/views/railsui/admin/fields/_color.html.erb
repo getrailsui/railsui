@@ -1,47 +1,145 @@
 <div class="py-8">
-  <%= heading text: "Color", id: "color", tag: "h3", class: "font-bold text-3xl tracking-tight mb-3" %>
 
-  <div class="prose prose-neutral dark:prose-invert max-w-full mb-6">
-    <p>Rails UI includes two custom colors: <span class="size-4 bg-primary-500 inline-block rounded-sm relative top-0.5 mr-0.5"></span> primary and <span class="size-4 bg-secondary-500 inline-block rounded-sm relative top-0.5 mr-0.5"></span> secondary. You can adjust these colors in the <code>railsui.yml</code> file below using the color pickers.</p>
+  <div class="">
+    <div class="flex items-center justify-between mb-6 gap-2">
+      <%= heading text: "Color", id: "color", tag: "h3", class: "font-bold text-3xl tracking-tight mb-3" %>
 
-  </div>
+      <%= link_to reset_colors_configuration_path, class: "rui-btn rui-btn-white", data: { controller: "railsui-loading", action: "click->railsui-loading#start" } do %>
+        <span data-railsui-loading-target="content">Reset to default colors for active theme</span>
+      <% end %>
+    </div>
 
-  <% if @theme_colors.present? %>
-    <% if @config.colors.present? %>
-      <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80">
-        <% @config.colors.each do |collection, colors| %>
-          <div class="py-3">
-            <h3 class="font-semibold my-3"><%= collection.capitalize %> Colors</h3>
-            <div class="grid grid-cols-1 md:grid-cols-11 gap-2 mb-8">
-              <% colors.each do |shade, hex| %>
-                <div class="color-item md:block flex items-center gap-2">
-                  <%= label_tag "#{collection}_#{shade}", "#{shade.capitalize} Color", class: "sr-only" %>
+    <div class="prose prose-neutral dark:prose-invert max-w-full mb-6">
+      <p>Rails UI includes two custom colors: <span class="size-4 bg-primary-500 inline-block rounded-sm relative top-0.5 mr-0.5"></span> primary and <span class="size-4 bg-secondary-500 inline-block rounded-sm relative top-0.5 mr-0.5"></span> secondary. You can adjust these colors in your <code>railsui.yml</code> file or below using the color pickers.</p>
+    </div>
 
-                  <%= f.color_field :colors, value: @config.colors[collection][shade], name: "configuration[colors][#{collection}][#{shade}]", class: "rui-form-input-color" %>
+    <% if @theme_colors.present? %>
+      <% if @config.colors.present? %>
+        <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80">
+          <% @config.colors.each do |collection, colors| %>
+            <div class="py-3">
+              <h3 class="font-semibold my-3"><%= collection.capitalize %> Colors</h3>
+              <div class="grid grid-cols-1 md:grid-cols-11 gap-2 mb-8">
+                <% colors.each do |shade, hex| %>
+                  <div class="color-item md:block flex items-center gap-2">
+                    <%= label_tag "#{collection}_#{shade}", "#{shade.capitalize} Color", class: "sr-only" %>
 
-                  <div class="text-left mt-1 leading-none">
-                    <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200"><%= shade %></p>
-                    <code class="font-mono text-xs text-neutral-600 selection:bg-indigo-500 selection:text-white dark:text-neutral-400"><%= hex %></code>
+                    <%= f.color_field :colors, value: @config.colors[collection][shade], name: "configuration[colors][#{collection}][#{shade}]", class: "rui-form-input-color" %>
+
+                    <div class="text-left mt-1 leading-none">
+                      <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200"><%= shade %></p>
+                      <code class="font-mono text-xs text-neutral-600 selection:bg-indigo-500 selection:text-white dark:text-neutral-400"><%= hex %></code>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <div class="prose prose-neutral dark:prose-invert mb-6">
-    <p>Your components and Rails UI pages will automatically update with your selected colors. All default Tailwind colors are still available.</p>
+    <p class="py-4 tracking-wide text-neutral-500">Color FAQs</p>
 
-  </div>
+    <dl class="mt-2 divide-y divide-gray-200 dark:divide-neutral-700 mb-10">
+      <details class="group py-4">
+        <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 group-open:dark:text-neutral-400 [&::-webkit-details-marker]:hidden">
+          <div class="flex items-center gap-2">
+            How do I use custom colors?
+          </div>
+          <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+        </summary>
 
-  <%= render callout do %>
-    <p>To view default theme colors, run <code>bin/rails railsui:colors</code>. For a specific theme, use <code>bin/rails 'railsui:colors[theme_name]'</code>.</p>
-  <% end %>
+        <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
+          <p>Much like Tailwind you can use both primary and secondary Rails UI colors using the 11-point shading classes. Each theme has a unique set of colors associated with it by default. Your components and Rails UI pages will automatically update with your chosen colors. All default Tailwind colors are still accessible.</p>
+          <p>For example, to use the primary color use it's key name and shade variant:</p>
+          <div class="not-prose">
+            <% content_for :html do %>
+              <div class="bg-primary-500 rounded-sm p-1 text-white">Primary</div>
+            <% end %>
+            <%= render_snippet %>
+          </div>
 
-  <%= link_to reset_colors_configuration_path, class: "font-medium underline text-sm", data: { controller: "railsui-loading", action: "click->railsui-loading#start" } do %>
-    <span data-railsui-loading-target="content">Reset to default colors for active theme</span>
-  <% end %>
-</div>
+        </div>
+      </details>
+      <details class="group py-4">
+        <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 group-open:dark:text-neutral-400 [&::-webkit-details-marker]:hidden">
+          <div class="flex items-center gap-2">
+            Do I need to use the default theme colors?
+          </div>
+          <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+        </summary>
+
+        <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
+          <p>No, you can change colors at any time. In fact, I encourage it. For best results you'll need the 11-shade equivalent. There are <a href="https://uicolors.app/create" target="_blank">online tools</a> to aid with this. </p>
+        </div>
+      </details>
+      <details class="group py-4">
+        <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 group-open:dark:text-neutral-400 [&::-webkit-details-marker]:hidden">
+          <div class="flex items-center gap-2">
+            What happens to my colors if I change themes?
+          </div>
+          <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+        </summary>
+
+        <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
+          <p>The short answer is nothing. When installing Rails UI we pre-load the <code>Hound</code> theme's colors because it's the default theme. When you change themes you can either maintain the current color palette, add your custom color palatte, or click the button to reset to default colors for your currently active theme.</p>
+          <p>If you aren't sure of the color scheme you want to use yet I recommend resetting to the defaults for each theme until you dial that part in.</p>
+        </div>
+      </details>
+      <details class="group py-4">
+        <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 group-open:dark:text-neutral-400 [&::-webkit-details-marker]:hidden">
+          <div class="flex items-center gap-2">
+            Is there a way to preview theme colors?
+          </div>
+          <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+        </summary>
+
+        <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
+          <p>Yes. To view default theme colors, run:</p>
+
+          <div class="not-prose">
+            <% content_for :html, flush: true do %>
+
+            <% end %>
+            <% content_for :bash, flush: true do %>
+# Lists colors for active theme
+bin/rails railsui:colors
+# List colors for specific theme. Pass the theme name.
+bin/rails 'railsui:colors[hound]'
+
+# Example output:
+# Colors for Hound theme:
+# ---
+# primary:
+#  '50': "#eef2ff"
+#  '100': "#e0e7ff"
+#  '200': "#c7d2fe"
+#  '300': "#a5b4fc"
+#  '400': "#818cf8"
+#  '500': "#6366f1"
+#  '600': "#4f46e5"
+#  '700': "#4338ca"
+#  '800': "#3730a3"
+#  '900': "#312e81"
+#  '950': "#1e1b4b"
+# secondary:
+#   '50': "#f8fafc"
+#   '100': "#f1f5f9"
+#   '200': "#e2e8f0"
+#   '300': "#cbd5e1"
+#   '400': "#94a3b8"
+#   '500': "#64748b"
+#   '600': "#475569"
+#   '700': "#334155"
+#   '800': "#1e293b"
+#   '900': "#0f172a"
+#   '950': "#020617"
+            <% end %>
+            <%= render_snippet active_tab: :bash %>
+          </div>
+
+        </div>
+      </details>
+
+    </div>
