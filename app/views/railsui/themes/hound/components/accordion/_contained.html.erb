@@ -1,0 +1,118 @@
+<div id="accordion-contained">
+<%= render layout: example, locals: { heading: "Contained", section: "Accordion" } do %>
+
+<%= render preview 'gray' do %>
+<dl class="my-6 divide-y divide-slate-100 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200 dark:divide-slate-700 dark:border-slate-700 dark:shadow-black/20">
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white">
+      This is the first accordion item
+      <%= icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block" %>
+      <%= icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate dark:!prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque explicabo voluptates odio atque reiciendis, dolore magni quos quibusdam numquam, ad distinctio minima reprehenderit nemo harum, in perferendis delectus tempora.
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white">
+      This is the second accordion item
+      <%= icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block" %>
+      <%= icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate dark:!prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates maxime temporibus porro aut quis adipisci aliquid vitae labore modi harum facere, commodi molestiae repellat dicta eos officiis enim quae ullam.
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white">
+      This is the third accordion item
+      <%= icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block" %>
+      <%= icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate dark:!prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus excepturi aliquam quod deleniti sit mollitia at? Voluptates suscipit, perspiciatis fuga nesciunt atque, repellat minus distinctio iure cupiditate tenetur ipsam voluptatem?
+      </div>
+    </div>
+  </details>
+</dl>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<dl class="my-6 divide-y divide-slate-100 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200 dark:divide-slate-700 dark:border-slate-700 dark:shadow-black/20">
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white">
+      This is the first accordion item
+      <%%= icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block" %>
+      <%%= icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque explicabo voluptates odio atque reiciendis, dolore magni quos quibusdam numquam, ad distinctio minima reprehenderit nemo harum, in perferendis delectus tempora.
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white">
+      This is the second accordion item
+      <%%= icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block" %>
+      <%%= icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates maxime temporibus porro aut quis adipisci aliquid vitae labore modi harum facere, commodi molestiae repellat dicta eos officiis enim quae ullam.
+      </div>
+    </div>
+  </details>
+  <details class="group p-4 marker:content-['']">
+    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white">
+      This is the third accordion item
+      <%%= icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block" %>
+      <%%= icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden" %>
+    </summary>
+    <div class="pt-6 pb-6">
+      <div class="prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus excepturi aliquam quod deleniti sit mollitia at? Voluptates suscipit, perspiciatis fuga nesciunt atque, repellat minus distinctio iure cupiditate tenetur ipsam voluptatem?
+      </div>
+    </div>
+  </details>
+</dl>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%dl.my-6.divide-y.divide-slate-100.rounded-lg.shadow-xl.border.border-slate-200.dark:divide-slate-700.dark:border-slate-700{class: "shadow-slate-100/50 dark:shadow-black/20"}
+  %details.group.p-4{class: "marker:content-['']"}
+    %summary.flex.w-full.cursor-pointer.select-none.justify-between.text-left.text-base.font-semibold.leading-7.text-slate-900.group-open:text-primary-600.dark:group-open:text-primary-300.dark:text-white{class: "[&::-webkit-details-marker]:hidden"}
+      This is the first accordion item
+      = icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block"
+      = icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden"
+    .pt-6.pb-6
+      .prose.prose-slate.dark:prose-invert.max-w-none.prose-a:font-semibold.prose-a:text-primary-600.hover:prose-a:text-primary-500.dark:prose-a:text-primary-400.dark:hover:prose-a:text-primary-300
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque explicabo voluptates odio atque reiciendis, dolore magni quos quibusdam numquam, ad distinctio minima reprehenderit nemo harum, in perferendis delectus tempora.
+  %details.group.p-4{class: "marker:content-['']"}
+    %summary.flex.w-full.cursor-pointer.select-none.justify-between.text-left.text-base.font-semibold.leading-7.text-slate-900.group-open:text-primary-600.dark:group-open:text-primary-300.dark:text-white{class: "[&::-webkit-details-marker]:hidden"}
+      This is the second accordion item
+      = icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block"
+      = icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden"
+    .pt-6.pb-6
+      .prose.prose-slate.dark:prose-invert.max-w-none.prose-a:font-semibold.prose-a:text-primary-600.hover:prose-a:text-primary-500.dark:prose-a:text-primary-400.dark:hover:prose-a:text-primary-300
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates maxime temporibus porro aut quis adipisci aliquid vitae labore modi harum facere, commodi molestiae repellat dicta eos officiis enim quae ullam.
+  %details.group.p-4{class: "marker:content-['']"}
+    %summary.flex.w-full.cursor-pointer.select-none.justify-between.text-left.text-base.font-semibold.leading-7.text-slate-900.group-open:text-primary-600.dark:group-open:text-primary-300.dark:text-white{class: "[&::-webkit-details-marker]:hidden"}
+      This is the third accordion item
+      = icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block"
+      = icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden"
+    .pt-6.pb-6
+      .prose.prose-slate.dark:prose-invert.max-w-none.prose-a:font-semibold.prose-a:text-primary-600.hover:prose-a:text-primary-500.dark:prose-a:text-primary-400.dark:hover:prose-a:text-primary-300
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus excepturi aliquam quod deleniti sit mollitia at? Voluptates suscipit, perspiciatis fuga nesciunt atque, repellat minus distinctio iure cupiditate tenetur ipsam voluptatem?
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

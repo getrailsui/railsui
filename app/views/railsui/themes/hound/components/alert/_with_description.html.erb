@@ -1,0 +1,48 @@
+<div id="alert-with-description">
+<%= render layout: example, locals: { heading: "With description", section: "Alert" } do %>
+
+<%= render preview 'gray' do %>
+<div class="bg-yellow-50/90 text-yellow-700 p-4 rounded flex items-start justify-between gap-3 text-sm dark:bg-yellow-300/10 dark:border dark:border-yellow-400/30 dark:text-yellow-50 dark:selection:bg-yellow-50/10">
+  <%= icon "exclamation-triangle", class: "text-yellow-400 size-5 flex-shrink-0 dark:text-yellow-400/90", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-yellow-800 dark:text-yellow-400/90 font-semibold">Action required</p>
+    <p class="leading-snug my-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="bg-yellow-50/90 text-yellow-700 p-4 rounded flex items-start justify-between gap-3 text-sm dark:bg-yellow-300/10 dark:border dark:border-yellow-400/30 dark:text-yellow-50 dark:selection:bg-yellow-50/10">
+  <%%= icon "exclamation-triangle", class: "text-yellow-400 size-5 flex-shrink-0 dark:text-yellow-400/90", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-yellow-800 dark:text-yellow-400/90 font-semibold">Action required</p>
+    <p class="leading-snug my-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.</p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= tag.div class:"bg-yellow-50/90 text-yellow-700 p-4 rounded flex items-start justify-between gap-3 text-sm dark:bg-yellow-300/10 dark:border dark:border-yellow-400/20 dark:text-yellow-50 dark:selection:bg-yellow-50/10" do %>
+  <%%= icon "exclamation-triangle", class: "text-yellow-400 size-5 flex-shrink-0 dark:text-yellow-400/90", variant: :solid %>
+  <%% tag.div class: "flex-1"  do %>
+    <%%= tag.p "Action required", class: "text-yellow-800 dark:text-yellow-400/90 font-semibold" %>
+    <%% tag.p class: "leading-snug my-1" do %>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.
+    <%% end %>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.text-yellow-700.p-4.rounded.flex.items-start.justify-between.gap-3.text-sm.dark:border{class: "bg-yellow-50/90 dark:bg-yellow-300/10 dark:border-yellow-400/30 dark:text-yellow-50 dark:selection:bg-yellow-50/10"}
+  = icon "exclamation-triangle", class: "text-yellow-400 size-5 flex-shrink-0 dark:text-yellow-400/90", variant: :solid
+  .flex-1
+    %p.text-yellow-800.font-semibold{class: "dark:text-yellow-400/90"} Action required
+    %p.leading-snug.my-1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque sed quisquam, numquam.
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>
