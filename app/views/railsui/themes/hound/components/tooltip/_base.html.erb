@@ -8,15 +8,15 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true  do %>
-<button data-controller="tooltip" data-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
 <% end %>
 
 <% content_for :erb, flush: true  do %>
-<%%= button_tag "#", class: "btn btn-primary", data: { controller: "tooltip", tooltip_content_value: "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!", tooltip_allow_html_value: "true" } %>
+<%%= button_tag "#", class: "btn btn-primary", data: { controller: "railsui-tooltip", railsui_tooltip_content_value: "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!", railsui_tooltip_allow_html_value: "true" } %>
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%button.btn.btn-primary{"data-controller" => "tooltip", "data-tooltip-allow-html-value" => "true", "data-tooltip-content-value" => "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!"} Tooltip with HTML demo
+%button.btn.btn-primary{"data-controller" => "railsui-tooltip", "data-railsui-tooltip-allow-html-value" => "true", "data-railsui-tooltip-content-value" => "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!"} Tooltip with HTML demo
 <% end %>
 
 <% content_for :js, flush: true do %>
