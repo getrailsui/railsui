@@ -32,77 +32,77 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
-<div data-controller="tabs"
-    data-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 rounded-t"
+<div data-controller="railsui-tabs"
+    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 rounded-t"
     >
   <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
     <nav role="navigation" class="-mb-px">
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-transparent">Activity</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Account</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Billing</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Team</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-transparent">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Account</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Billing</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 bg-white dark:bg-transparent inline-block whitespace-nowrap">Team</a>
     </nav>
   </div>
-   <div class="p-4" data-tabs-target="panel">
+   <div class="p-4" data-railsui-tabs-target="panel">
     Some activities...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Account information...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Billing information...
   </div>
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Team information...
   </div>
 </div>
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="tabs"
-    data-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 rounded-t">
+<div data-controller="railsui-tabs"
+    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 rounded-t">
   <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
     <nav role="navigation" class="-mb-px">
-      <%%= link_to "Activity", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-transparent" %>
-      <%%= link_to "Account", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent" %>
-      <%%= link_to "Billing", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent" %>
-      <%%= link_to "Team", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent" %>
+      <%%= link_to "Activity", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-3 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-transparent" %>
+      <%%= link_to "Account", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent" %>
+      <%%= link_to "Billing", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent" %>
+      <%%= link_to "Team", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent" %>
     </nav>
   </div>
-   <div class="p-4" data-tabs-target="panel">
+   <div class="p-4" data-railsui-tabs-target="panel">
     Some activities...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Account information...
   </div>
 
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Billing information...
   </div>
-  <div class="hidden p-4" data-tabs-target="panel">
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
     Team information...
   </div>
 </div>
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%div{"data-controller" => "tabs", "data-tabs-active-tab" => "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 rounded-t"}
-  .border-slate-200.border-b.text-slate-600.font-medium.text-sm.dark:text-slate-100.dark:border-slate-600
+%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 rounded-t"}
+  .border-slate-200.border-b.text-slate-600.dark:text-slate-100.dark:border-slate-600.font-medium.text-sm
     %nav.-mb-px{role: "navigation"}
-      = link_to "Activity", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-transparent"
-      = link_to "Account", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent"
-      = link_to "Billing", "#", data: { action: "click-tabs#change", tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent"
-      = link_to "Team", "#", data: { action: "click-tabs#change", tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent"
-  .p-4{"data-tabs-target" => "panel"}
+      = link_to "Activity", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-3 px-4 border-b border-primary-600 inline-block bg-white whitespace-nowrap dark:bg-transparent"
+      = link_to "Account", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent"
+      = link_to "Billing", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent"
+      = link_to "Team", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-3 px-4 bg-white inline-block whitespace-nowrap dark:bg-transparent"
+  .p-4{"data-railsui-tabs-target" => "panel"}
     Some activities...
-  .hidden.p-4{"data-tabs-target" => "panel"}
+  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
     Account information...
-  .hidden.p-4{"data-tabs-target" => "panel"}
+  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
     Billing information...
-  .hidden.p-4{"data-tabs-target" => "panel"}
+  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
     Team information...
 <% end %>
 
