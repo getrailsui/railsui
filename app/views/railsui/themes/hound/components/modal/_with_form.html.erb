@@ -87,89 +87,138 @@
       </div>
     </div>
 
-    <% content_for :example, flush: true do %>
-      <% content_for :html, flush: true do %>
-        <div data-controller="modal">
-          <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
-            Open modal with form
-          </button>
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-modal">
+  <button type="button" data-action="click->railsui-modal#open" class="btn btn-primary" tabindex="0">
+    Open modal with form
+  </button>
 
-          <div
-    aria-labelledby="modal-with-form"
-    aria-modal="true"
-    data-modal-target="container"
-    data-action="keyup@window->modal#closeWithEsc"
-            class="hidden fixed inset-0 z-50 overflow-y-auto"
-            role="dialog"
-            >
-            <div class="h-screen w-full relative flex items-center justify-center">
-              <div
-      data-modal-target="content"
-      data-transition-enter-active="transition ease-out duration-300"
-      data-transition-enter-from="transform opacity-0 scale-95"
-      data-transition-enter-to="transform opacity-100 scale-100"
-      data-transition-leave-active="transition ease-in duration-300"
-      data-transition-leave-from="transform opacity-100 scale-100"
-      data-transition-leave-to="transform opacity-0 scale-95"
-      class="hidden rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
-                <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50" data-action="click->modal#close">
-                  <%%= icon "x-mark", class:  "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
-                </button>
+  <div aria-labelledby="modal-with-form" aria-modal="true" data-railsui-modal-target="container" data-action="keyup@window->railsui-modal#closeWithEsc" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div data-railsui-modal-target="content"
+data-transition-enter-active="transition ease-out duration-300"
+data-transition-enter-from="transform opacity-0 scale-95"
+data-transition-enter-to="transform opacity-100 scale-100"
+data-transition-leave-active="transition ease-in duration-300"
+data-transition-leave-from="transform opacity-100 scale-100"
+data-transition-leave-to="transform opacity-0 scale-95"
+class="hidden rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50" data-action="click->railsui-modal#close">
+          <%%= icon "x-mark", class:  "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
+        </button>
 
-                <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
+        <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
 
-                <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
-                </div>
-
-                <form action="#">
-                  <div class="form-group">
-                    <label for="email_demo" class="form-label">E-mail</label>
-                    <input id="email_demo" type="email" class="form-input" placeholder="saasquatch@railsui.com">
-                  </div>
-                  <div class="form-group">
-                    <label for="reason_demo" class="form-label">Reason for joining</label>
-                    <textarea name="reason" id="reason_demo" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
-                  </div>
-                </form>
-
-                <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
-                  <button class="btn btn-primary">Subscribe</button>
-                  <button class="btn btn-white" data-action="click->modal#close">Cancel</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.</p>
         </div>
-      <% end %>
 
-      <% content_for :haml, flush: true do %>
-        %div{"data-controller" => "modal"}
-        %button.btn.btn-primary{"data-action" => "click->modal#open", tabindex: "0", type: "button"}
-        Open modal with form
-        .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "modal-with-form", "aria-modal" => "true", "data-action" => "keyup@window->modal#closeWithEsc", "data-modal-target" => "container", role: "dialog"}
-        .h-screen.w-full.relative.flex.items-center.justify-center
-        .hidden.rounded.shadow-xl.mx-auto.max-w-lg.bg-white.m-1.p-8.origin-bottom.relative.dark:bg-slate-700.dark:text-slate-200{"data-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
-        %button.absolute.top-2.right-2.w-8.h-8.bg-transparent.hover:bg-slate-50.flex.items-center.justify-center.rounded-full.group{class: "dark:hover:bg-slate-50/50", "data-action" => "click->modal#close", type: "button"}
-        = icon "x-mark", class:  "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400"
+        <form action="#">
+          <div class="form-group">
+            <label for="email_demo" class="form-label">E-mail</label>
+            <input id="email_demo" type="email" class="form-input" placeholder="saasquatch@railsui.com">
+          </div>
+          <div class="form-group">
+            <label for="reason_demo" class="form-label">Reason for joining</label>
+            <textarea name="reason" id="reason_demo" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
+          </div>
+        </form>
+
+        <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+          <button class="btn btn-primary">Subscribe</button>
+          <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%div{"data-controller" => "railsui-modal"}
+  %button.btn.btn-primary{"data-action" => "click->railsui-modal#open", tabindex: "0", type: "button"}
+    Open modal with form
+  .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "modal-with-form", "aria-modal" => "true", "data-action" => "keyup@window->railsui-modal#closeWithEsc", "data-railsui-modal-target" => "container", role: "dialog"}
+    .h-screen.w-full.relative.flex.items-center.justify-center
+      .hidden.rounded.shadow-xl.mx-auto.max-w-lg.bg-white.m-1.p-8.origin-bottom.relative.dark:bg-slate-700.dark:text-slate-200{"data-railsui-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
+        %button.absolute.top-2.right-2.w-8.h-8.bg-transparent.hover:bg-slate-50.flex.items-center.justify-center.rounded-full.group{class: "dark:hover:bg-slate-50/50", "data-action" => "click->railsui-modal#close", type: "button"}
+          = icon "x-mark", class:  "text-slate-400 w-6 h-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400"
         %h3#modal-with-form.mb-3.text-2xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Subscribe
         .prose.prose-slate.dark:prose-invert.mt-2.mb-6
-        %p Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.
+          %p Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, veritatis! Nulla, enim incidunt.
         %form{action: "#"}
-        .form-group
-        %label.form-label{for: "email_demo"} E-mail
-        %input#email_demo.form-input{placeholder: "saasquatch@railsui.com", type: "email"}/
-        .form-group
-        %label.form-label{for: "reason_demo"} Reason for joining
-        %textarea#reason_demo.form-input{name: "reason", placeholder: "In a couple sentences let us know your reason for joining the Rails UI community"}
+          .form-group
+            %label.form-label{for: "email_demo"} E-mail
+            %input#email_demo.form-input{placeholder: "saasquatch@railsui.com", type: "email"}/
+          .form-group
+            %label.form-label{for: "reason_demo"} Reason for joining
+            %textarea#reason_demo.form-input{name: "reason", placeholder: "In a couple sentences let us know your reason for joining the Rails UI community"}
         .mt-8.flex.justify-start.items-center.flex-wrap.bg-gray-50.px-8.py-4.-mx-8.-mb-8.border-t.border-slate-300.rounded-b.shadow-inner.space-x-4.dark:bg-slate-700.dark:text-slate-200{class: "dark:border-slate-600/70"}
-        %button.btn.btn-primary Subscribe
-        %button.btn.btn-white{"data-action" => "click->modal#close"} Cancel
-      <% end %>
+          %button.btn.btn-primary Subscribe
+          %button.btn.btn-white{"data-action" => "click->railsui-modal#close"} Cancel
+<% end %>
 
-      <% content_for :js, flush: true do %>
-        <%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/modal/modal_js" %>
-      <% end %>
+<% content_for :js, flush: true do %>
+// app/javascript/controllers/modal_controller.js
+
+import { Controller } from "@hotwired/stimulus"
+import { useTransition, useClickOutside } from 'stimulus-use'
+
+export default class extends Controller {
+  static targets = ['container', 'content']
+
+  connect() {
+    useTransition(this, {
+      element: this.contentTarget
+    })
+
+    useClickOutside(this, {
+      element: this.contentTarget
+    })
+  }
+
+  open(event) {
+    event.preventDefault()
+    this.enableAppearance()
+    this.toggleTransition()
+  }
+
+  close(event) {
+    event.preventDefault()
+    this.leave()
+    this.disableAppearance()
+  }
+
+  clickOutside(event) {
+    const action = event.target.dataset.action
+    if (action == "click->modal#open" || action == "click->modal#open:prevent") {
+      return
+    }
+    this.close(event)
+  }
+
+  closeWithEsc(event){
+    if (event.keyCode === 27 && !this.containerTarget.classList.contains('hidden')) {
+      this.close(event)
+    }
+  }
+
+  enableAppearance() {
+    this.containerTarget.classList.add("bg-black/80")
+    this.containerTarget.classList.remove('hidden')
+  }
+
+  disableAppearance() {
+    this.containerTarget.classList.add('hidden')
+    this.containerTarget.classList.remove("bg-black/80")
+  }
+
+  disconnect() {
+    this.toggleTransition()
+  }
+}
+<% end %>
 
       <%= render_snippet(js_filename: "modal_controller.js") %>
     <% end %>

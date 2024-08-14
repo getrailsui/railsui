@@ -5,66 +5,66 @@
       <p>Extend form errors to leverage Rails UI + Tailwind CSS.</p>
     </div>
 
-    <%= render preview('gray') do %>
-      <form action="#">
-        <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
-          <div class="flex items-start space-x-4">
-            <%= icon "shield-exclamation", class:  "w-6 h-6 text-rose-700 flex-shrink-0 dark:text-rose-400", variant: :solid %>
-            <div class="flex-1">
-              <p class="font-bold">3 errors prohibited this post from being saved:</p>
-              <ul class="list-disc mt-3 ml-4">
-                <li>Title can't be blank</li>
-                <li>Body can't be blank</li>
-              </ul>
-            </div>
-          </div>
+<%= render preview('gray') do %>
+  <form action="#">
+    <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
+      <div class="flex items-start space-x-4">
+        <%= icon "shield-exclamation", class:  "w-6 h-6 text-rose-700 flex-shrink-0 dark:text-rose-400", variant: :solid %>
+        <div class="flex-1">
+          <p class="font-bold">3 errors prohibited this post from being saved:</p>
+          <ul class="list-disc mt-3 ml-4">
+            <li>Title can't be blank</li>
+            <li>Body can't be blank</li>
+          </ul>
         </div>
-        <div class="form-group">
-          <label for="validation_1" class="form-label">Example field</label>
-          <input type="text" class="form-input form-input-error" id="validation_1" placeholder="Example field">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="validation_1" class="form-label">Example field</label>
+      <input type="text" class="form-input form-input-error" id="validation_1" placeholder="Example field">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<% end %>
 
-    <% content_for :example, flush: true do %>
-      <% content_for :erb, flush: true do %>
-        <!-- app/views/shared/error_messages.html.erb -->
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<!-- app/views/shared/error_messages.html.erb -->
 
-        <%% if resource.errors.any? %>
-        <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
-          <div class="flex items-start space-x-4">
-            <%%= icon "shield-exclamation", class:  "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid %>
-            <div class="flex-1">
-              <p class="font-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
-              <ul class="list-disc mt-3 ml-4">
-                <%% resource.errors.each do |error| %>
-                  <li><%%= error.full_message %></li>
-                  <%% end %>
-                </ul>
-              </div>
-            </div>
-          </div>
+<%% if resource.errors.any? %>
+<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
+  <div class="flex items-start space-x-4">
+    <%%= icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid %>
+    <div class="flex-1">
+      <p class="font-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+      <ul class="list-disc mt-3 ml-4">
+        <%% resource.errors.each do |error| %>
+          <li><%%= error.full_message %></li>
           <%% end %>
-        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <%% end %>
+<% end %>
 
-        <% content_for :haml, flush: true do %>
-          / app/views/shared/error_messages.haml.erb
+<% content_for :haml, flush: true do %>
+/ app/views/shared/error_messages.haml.erb
 
-          .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6{role: "alert"}
-          .flex.items-start.space-x-4
-          = icon "shield-exclamation", class:  "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid
-          .flex-1
-          %p.font-bold
-          = pluralize(resource.errors.count, "error")
-          prohibited this post from being saved:
-          %ul.list-disc.mt-3.ml-4
-          - resource.errors.each do |error|
-          %li= error.full_message
-        <% end %>
-        <%= render_snippet active_tab: "erb" %>
-      <% end %>
-    <% end %>
+.bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6{role: "alert"}
+  .flex.items-start.space-x-4
+    = icon "shield-exclamation", class:  "w-6 h-6 text-rose-700 flex-shrink-0", variant: :solid
+  .flex-1
+    %p.font-bold
+      = pluralize(resource.errors.count, "error")
+  prohibited this post from being saved:
+    %ul.list-disc.mt-3.ml-4
+      - resource.errors.each do |error|
+        %li= error.full_message
+<% end %>
+<%= render_snippet active_tab: "erb" %>
+<% end %>
+<% end %>
 
     <%= system_pagination(prev_path: systems_forms_action_text_path, prev_text: "ActionText", next_path: systems_components_accordion_path, next_text: "Accordion") %>
   </div>
