@@ -52,49 +52,41 @@
 <% end %>
 <%= render_snippet(active_tab: "erb") %>
 
-<div id="mailers-buttons">
-    <h3 class="font-bold text-xl mb-3">Buttons</h3>
-    <div class="primary dark:primary-invert">
-      <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
+<div id="mailers-buttons" class="mb-10">
+  <h3 class="font-bold text-xl mb-3">Buttons</h3>
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
 
-      <p>Rails UI supports two themes (primary, secondary) which can be customized in the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
-    </div>
-    <div class="mt-5 mb-8 first:mt-0 last:mb-0 bg-slate-800 rounded-xl shadow-lg overflow-hidden dark:ring-1 dark:ring-white/10 dark:ring-inset selection:bg-salmon-500 selection:bg-opacity-25 relative text-slate-200 p-6">
-      <code class="text-white text-lg">email_action(action, path, options)</code>
-      <h4 class="uppercase text-xs text-slate-400 font-semibold tracking-wider my-4 pb-2 border-b border-slate-700">Required parameters</h4>
-      <ul class="space-y-2">
-        <li>
-          <p><code class="text-pink-400 font-mono font-semibold">action</code>  <em class="text-slate-400">- required</em></p>
-          <p>The button label</p>
-        </li>
-        <li>
-          <p><code class="text-pink-400 font-mono font-semibold">path</code> <em class="text-slate-400">- required</em></p>
-          <p>The url for the button. Be sure to use url helpers and not path helpers in an email </p>
-        </li>
-      </ul>
-      <h4 class="uppercase text-xs text-slate-400 font-semibold tracking-wider my-4 pb-2 border-b border-slate-700">Additional options</h4>
-      <ul class="space-y-2">
-        <li>
-          <p><code class="text-pink-400 font-mono font-semibold">theme</code></p>
-          <p>
-            <span class="font-medium text-sky-400 font-mono">primary</span> or <span class="font-medium text-sky-400 font-mono">secondary</span>. Default: <span class="font-medium text-sky-400 font-mono">primary</span>.
-          </p>
-        </li>
-        <li>
-          <p><code class="text-pink-400 font-mono font-semibold">align</code></p>
-          <p>Align button to
-            <span class="font-medium text-sky-400 font-mono">center</span>, <span class="font-medium text-sky-400 font-mono">left</span>, or <span class="font-medium text-sky-400 font-mono">right</span>.
-            Default: <span class="font-medium text-sky-400 font-mono">left</span>
-          </p>
-        </li>
-        <li>
-          <p><code class="text-pink-400 font-mono font-semibold">fullwidth</code></p>
-          <p>(boolean) <span class="font-medium text-sky-400 font-mono">true</span> / <span class="font-medium text-sky-400 font-mono">false</span>
-          </p>
-        </li>
-      </ul>
+    <p class="mb-0">Rails UI supports two themes (primary, secondary) which can be customized in the <%= link_to "mailer layout", systems_mailers_layout_path %> css.</p>
+
+  <div>
+    <code class="text-white">email_action(action, path, options)</code>
+    <h4>Required parameters</h4>
+    <ul>
+      <li>
+        <p><code class="text-pink-600 font-mono font-semibold">action</code><em> required</em> &mdash; The button label</p>
+
+      </li>
+      <li>
+        <p><code class="text-pink-600 font-mono font-semibold">path</code><em> required</em> &mdash; The url for the button. Be sure to use url helpers (absolute) and not path helpers (relative) in an email.</p>
+      </li>
+    </ul>
+    <h4>Additional options</h4>
+    <ul>
+      <li>
+        <p><code class="text-pink-600 font-mono font-semibold">theme</code> &mdash; <code class="font-semibold text-sky-600 font-mono">primary</code> or <code class="font-semibold text-sky-600 font-mono">secondary</code>. Default: <code class="font-semibold text-sky-600 font-mono">primary</code></p>
+      </li>
+      <li>
+        <p><code class="text-pink-600 font-mono font-semibold">align</code> &mdash; <span>Align button to <code class="font-semibold text-sky-600 font-mono">center</code>, <code class="font-semibold text-sky-600 font-mono">left</code>, or <code class="font-semibold text-sky-600 font-mono">right</code>. Default: <code class="font-semibold text-sky-600 font-mono">left</code></span>
+        </p>
+      </li>
+      <li>
+        <p><code class="text-pink-600 font-mono font-semibold">fullwidth</code> &mdash; (boolean) <code class="font-semibold text-sky-600 font-mono">true</code> / <code class="font-semibold text-sky-600 font-mono">false</code></p>
+      </li>
+    </ul>
     </div>
   </div>
+
 <% content_for :erb, flush: true do %>
 <!-- all available options shown in use -->
 <%%= email_action("View notification", root_url, theme: "primary", align: "center") %>
@@ -116,8 +108,9 @@
   </tr>
 </table>
 <% end %>
-
 <%= render_snippet(active_tab: "erb" ) %>
+ </div>
+
 <div id="mailers-callouts">
 <div class="prose prose-neutral dark:prose-invert">
   <h3>Callouts</h3>

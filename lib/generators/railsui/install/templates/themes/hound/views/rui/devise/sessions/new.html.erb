@@ -1,6 +1,6 @@
 <% content_for :masthead do %>
   <div class="text-center">
-    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight my-3">Sign in to your account</h1>
+    <h1 class="md:h3 h4 my-3">Sign in to your account</h1>
     <p class="mb-6 text-slate-700 dark:text-slate-200">Or <%= link_to "sign up", new_registration_path(resource_name), class: "btn-link" %> for an account</p>
   </div>
   <%= render "rui/shared/error_messages", resource: resource %>

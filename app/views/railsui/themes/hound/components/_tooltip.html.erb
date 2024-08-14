@@ -32,8 +32,7 @@ export default class extends Controller {
     this.tippy.destroy()
   }
 }
-
-  <% end %>
+<% end %>
   <%= render_snippet active_tab: "js", js_filename: "tooltip_controller.js" %>
 </div>
 
@@ -45,9 +44,9 @@ export default class extends Controller {
   <% content_for :js, flush: true do %>
 
   <% end %>
-  <% content_for :html, flush: true do %>
-    <button data-controller="tooltip" class="btn btn-primary">Tooltip demo</button>
-  <% end %>
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" class="btn btn-primary">Tooltip demo</button>
+<% end %>
   <%= render_snippet %>
 </div>
 
@@ -60,9 +59,9 @@ export default class extends Controller {
   <% content_for :js, flush: true do %>
 
   <% end %>
-  <% content_for :html, flush: true do %>
-    <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
-  <% end %>
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+<% end %>
   <%= render_snippet %>
 </div>
 
@@ -74,16 +73,16 @@ export default class extends Controller {
   <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
 
 
-  <% content_for :js, flush: true do %>
+<% content_for :js, flush: true do %>
 
-  <% end %>
+<% end %>
 
-  <% content_for :html, flush: true do %>
-    <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
-  <% end %>
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+<% end %>
 
-  <%= render_snippet %>
-  </div>
+<%= render_snippet %>
+</div>
 <% end %>
 
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/tooltip" %>

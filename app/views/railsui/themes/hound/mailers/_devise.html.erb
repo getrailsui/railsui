@@ -48,7 +48,7 @@
 
 <%= render "#{theme_path}/unlock_instructions" %>
 
-<%= system_pagination(prev_path: systems_mailers_transactional_path, prev_text: "Transactional", next_path: systems_authentication_overview_path, next_text: "Authentication") %>
+<%= system_pagination(prev_path: systems_mailers_transactional_path, prev_text: "Transactional", next_path: systems_path, next_text: "Design patterns") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
