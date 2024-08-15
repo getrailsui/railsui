@@ -2,7 +2,7 @@
   <div class="md:flex items-center md:space-x-4 md:flex-1">
     <div class="md:flex items-center justify-between w-full md:space-x-3">
       <div class="flex items-center justify-between md:w-auto w-full">
-        <%= link_to (defined?(admin_dashboard_path) ? admin_dashboard_path : "#") do %>
+        <%= link_to (defined?(rui_dashboard_path) ? rui_dashboard_path : "#") do %>
           <h1>
             <%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
             <span class="sr-only">Shepherd</span>
@@ -24,11 +24,11 @@
         <nav role="primary navigation" class="flex-1">
           <ul class="md:flex items-center md:space-y-0 space-y-4">
             <div class="flex-1 md:flex items-center">
-              <%= render "railsui/shared/admin/nav_links" %>
+              <%= render "rui/shared/admin/nav_links" %>
             </div>
 
             <% if user_signed_in? %>
-              <%= render "railsui/shared/notifications" %>
+              <%= render "rui/shared/notifications" %>
               <li>
                 <div data-controller="railsui-dropdown" class="md:flex relative">
                   <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
@@ -53,15 +53,15 @@
                     data-transition-leave-to="transform opacity-0 scale-95">
 
                     <li>
-                      <%= link_to "Inbox", (defined?(admin_inbox_path) ? admin_inbox_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      <%= link_to "Inbox", (defined?(rui_inbox_path) ? rui_inbox_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
                     </li>
 
                     <li>
-                      <%= link_to "Manage properties", (defined?(admin_properties_path) ? admin_properties_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      <%= link_to "Manage properties", (defined?(rui_properties_path) ? rui_properties_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
                     </li>
 
                     <li>
-                      <%= link_to "Add booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      <%= link_to "Add booking", (defined?(rui_new_booking_path) ? rui_new_booking_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
                     </li>
 
                     <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
@@ -76,7 +76,7 @@
                 </div>
               </li>
             <% else %>
-              <div class="md:flex items-center md:gap-0 gap-3">
+              <div class="md:flex items-center gap-3">
                 <%= link_to "Sign in", new_user_session_path, class: "btn btn-transparent" %>
 
                 <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>

@@ -1,11 +1,11 @@
 <%= render "rui/devise/auth_layout" do %>
-  <h1 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Change your password</h1>
+  <h1 class="h3 mb-6">Change your password</h1>
 
   <div class="prose prose-sm prose-zinc dark:prose-invert mt-3 mb-10">
     <p>Enter a new password to update and secure your account.</p>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "rui/shared/error_messages", resource: resource %>
 
     <%= f.hidden_field :reset_password_token %>

@@ -20,7 +20,7 @@
           data-transition-enter-to="transform opacity-100 scale-100"
           data-transition-leave-active="transition ease-in duration-100"
           data-transition-leave-from="transform opacity-100 scale-100"
-          data-transition-leave-to="transform opacity-0 scale-95" data-dropdown-target="menu">
+          data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
           <li>
             <label for="filter_archived"
               class="py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 space-x-2 flex items-center group select-none">
@@ -188,12 +188,13 @@
               </button>
               <ul
                 class="hidden transition transform origin-top-right absolute md:right-0 md:left-auto left-0 top-10 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 font-heading md:w-[200px] w-[240px]"
+                data-railsui-dropdown-target="menu"
                 data-transition-enter-active="transition ease-out duration-100"
                 data-transition-enter-from="transform opacity-0 scale-95"
                 data-transition-enter-to="transform opacity-100 scale-100"
                 data-transition-leave-active="transition ease-in duration-100"
                 data-transition-leave-from="transform opacity-100 scale-100"
-                data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
+                data-transition-leave-to="transform opacity-0 scale-95">
                 <li>
                   <%= link_to "View profile", "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
                 </li>
@@ -201,7 +202,7 @@
                   <%= link_to "Modify booking", "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
                 </li>
                 <li>
-                  <%= link_to "Get help", (defined?(admin_help_center_path) ? admin_help_center_path : "#"), class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
+                  <%= link_to "Get help", (defined?(rui_help_center_path) ? rui_help_center_path : "#"), class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
                 </li>
                 <li>
                   <%= link_to "Report Jared", "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" %>
@@ -367,7 +368,7 @@
       <div class="flex-1">
         <p class="font-normal text-sm pb-1">Jared Sanders</p>
         <div class="flex items-center space-x-1">
-          <%= icon "star", class: "w-5 h-5 stroke-current text-amber-300" %>
+          <%= icon "star", class: "size-5 stroke-current text-amber-300" %>
           <span class="font-sans text-xs text-zinc-600 dark:text-zinc-400">4.9 rating &bull; 12 ratings</span>
         </div>
       </div>
@@ -388,12 +389,12 @@
     <h3 class="h5 mt-6 dark:text-zinc-100">Booking details</h3>
 
     <div class="font-normal lg:text-sm text-base py-3 flex flex-wrap items-center justify-between">
-      <%= link_to (defined?(admin_properties_path) ? admin_properties_path : "#"), class: "block font-sans" do %>
+      <%= link_to (defined?(rui_properties_path) ? rui_properties_path : "#"), class: "block font-sans" do %>
         <h4 class="text-zinc-600 text-sm font-normal font-sans pb-1 dark:text-zinc-400">Property</h4>
         <p class="text-zinc-500 dark:text-zinc-200">Cozy Mountain A-Frame</p>
       <% end %>
 
-      <%= image_tag "property-2.jpg", alt: "Cozy Mountain A-Frame", class: "w-12 h-12 object-cover rounded flex-shrink-0" %>
+      <%= image_tag "railsui/property-2.jpg", alt: "Cozy Mountain A-Frame", class: "w-12 h-12 object-cover rounded flex-shrink-0" %>
     </div>
 
     <div class="font-normal lg:text-sm text-base py-3 font-sans">

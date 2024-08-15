@@ -475,7 +475,7 @@
       <!-- end Length of stay tab -->
 
       <!-- Nightly rate tab -->
-      <div class="hidden" data-tabs-target="panel">
+      <div class="hidden" data-railsui-tabs-target="panel">
         <div class="flex items-center justify-between pb-6">
           <h3 class="flex-1 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Nightly Rate</h3>
 
@@ -493,11 +493,11 @@
         <div class="sm:p-0 p-4 rounded-3xl bg-zinc-50 sm:bg-transparent sm:rounded-none">
           <ul class="flex flex-wrap sm:justify-start justify-center items-center sm:gap-3 sm:space-y-0 space-y-3">
             <!-- Property filter-->
-            <li class="relative sm:w-auto w-full sm:block flex justify-center" data-controller="dropdown">
-              <button type="button" class="btn btn-white whitespace-nowrap sm:w-auto w-full" data-action="click->dropdown#toggle click@window->dropdown#hide">All properties</button>
+            <li class="relative sm:w-auto w-full sm:block flex justify-center" data-controller="railsui-dropdown">
+              <button type="button" class="btn btn-white whitespace-nowrap sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">All properties</button>
               <ul
                 class="md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300/80 text-left dark:divide-zinc-700 hidden transition transform md:origin-top origin-top-left absolute left-0 top-12 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[320px] w-full z-50 dark:bg-zinc-900 dark:shadow-zinc-950/40 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200"
-                data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
+                data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100"
                 data-transition-leave-to="opacity-0 scale-95">
                 <li>
@@ -529,10 +529,10 @@
 
             <!-- Date range -->
             <li class="sm:w-auto w-full sm:block flex justify-center">
-              <button type="button" data-controller="date-range-picker" class="btn btn-white sm:w-[188px] gap-3 flex items-center whitespace-nowrap w-full justify-center">
+              <button type="button" data-controller="railsui-date-range-picker" class="btn btn-white sm:w-[188px] gap-3 flex items-center whitespace-nowrap w-full justify-center">
                 <%= icon "calendar-days", class: "size-5 text-zinc-500 dark:text-zinc-400" %>
-                <span data-date-range-picker-target="label"></span>
-                <input type="hidden" data-date-range-picker-target="input">
+                <span data-railsui-date-range-picker-target="label"></span>
+                <input type="hidden" data-railsui-date-range-picker-target="input">
               </button>
             </li>
 
@@ -595,7 +595,7 @@
                   </ul>
 
                   <div class="flex justify-between items-center pt-4">
-                    <a href="#" data-action="click->dropdown#toggle" class="underline select-none">Cancel</a>
+                    <a href="#" data-action="click->railsui-dropdown#toggle" class="underline select-none">Cancel</a>
                     <input type="submit" value="Apply" class="btn btn-primary">
                   </div>
                 </form>

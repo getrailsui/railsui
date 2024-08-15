@@ -56,19 +56,19 @@
       <% [
         {
           title: "Cozy Mountain A-Frame",
-          image: "property-1.jpg",
+          image: "railsui/property-1.jpg",
           subtitle: "Nature's Nook",
           color: "bg-secondary-600"
         },
         {
           title: "Alpine Retreat Haven",
-          image: "property-2.jpg",
+          image: "railsui/property-2.jpg",
           subtitle: "The Haven",
           color: "bg-blue-600"
         },
         {
           title: "Mountain Vista Chalet",
-          image: "property-3.jpg",
+          image: "railsui/property-3.jpg",
           subtitle: "The Mountain Majesty",
           color: "bg-primary-600"
         }
@@ -93,7 +93,6 @@
     <div class="flex justify-between items-center gap-3 bg-white sm:bg-transparent sm:static absolute left-0 z-50 top-0 sm:border-none border-b border-zinc-300/80 overflow-x-auto sm:overflow-auto sm:overflow-y-auto overflow-y-hidden py-2 px-2 sm:px-4 scroll-smooth snap-x snap-start w-full dark:bg-zinc-900 dark:border-zinc-700/80">
       <div class="flex items-center space-x-4">
         <button type="button" data-controller="railsui-date-range-picker"
-          data-railsui-date-range-picker-range-value='["2023-11-18", "2023-11-25"]'
           class="btn btn-white w-[188px] gap-3 flex items-center">
           <%= icon "calendar-days", class: "size-5 text-zinc-500 dark:text-zinc-300" %>
 
@@ -104,7 +103,7 @@
         <button type="button" class="btn btn-white">Today</button>
       </div>
       <div>
-        <%= link_to "Create Booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "btn btn-primary whitespace-nowrap" %>
+        <%= link_to "Create Booking", rui_new_booking_path, class: "btn btn-primary whitespace-nowrap" %>
       </div>
     </div>
 

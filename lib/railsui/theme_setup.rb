@@ -306,7 +306,7 @@ module Railsui
 
       # Generate new routes content based on the active pages
       new_routes = Railsui::Pages.theme_pages.keys.map do |page|
-        "    get '#{page}', to: 'pages##{page}'"
+        "    get \"#{page}\", to: \"pages##{page}\""
       end.join("\n")
 
       # Define the routes block to be inserted within the namespace

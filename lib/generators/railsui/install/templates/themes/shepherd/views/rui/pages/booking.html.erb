@@ -3,7 +3,7 @@
     <nav class="font-heading text-sm mb-6 text-zinc-700 dark:text-zinc-300">
       <ul class="flex items-center space-x-3">
         <li class="after:content-['/'] after:relative after:text-zinc-300 after:left-1 dark:after:text-zinc-500">
-          <%= link_to "Bookings", (defined?(bookings_path) ? bookings_path : "#"), class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
+          <%= link_to "Bookings", rui_bookings_path, class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
         </li>
         <li>
           <p>Jared Sanders</p>
@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="flex md:justify-end space-x-3 md:w-auto w-full">
-        <%= link_to "Message Jared", (defined?(admin_inbox_path) ? admin_inbox_path : "#"), class: "btn btn-primary" %>
-        <%= link_to "Edit Booking", (defined?(admin_edit_booking_path) ? admin_edit_booking_path : "#"), class: "btn btn-white" %>
+        <%= link_to "Message Jared", rui_inbox_path, class: "btn btn-primary" %>
+        <%= link_to "Edit Booking", rui_edit_booking_path, class: "btn btn-white" %>
       </div>
     </div>
   </div>

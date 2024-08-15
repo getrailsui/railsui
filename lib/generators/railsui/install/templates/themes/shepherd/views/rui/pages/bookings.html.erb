@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <%= link_to "Create booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "btn btn-primary md:mt-0 mt-6" %>
+      <%= link_to "Create booking", rui_new_booking_path, class: "btn btn-primary md:mt-0 mt-6" %>
     </div>
   </div>
 
@@ -263,7 +263,7 @@
                       data-transition-leave-from="transform opacity-100 scale-100"
                       data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
                           <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
@@ -459,7 +459,7 @@
                       data-transition-leave-from="transform opacity-100 scale-100"
                       data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
                           <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
@@ -578,7 +578,7 @@
                       data-transition-leave-from="transform opacity-100 scale-100"
                       data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
                           <%= icon "chevron-right", class:  "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
@@ -924,7 +924,7 @@
                       data-transition-leave-from="transform opacity-100 scale-100"
                       data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
                       <li>
-                        <%= link_to (defined?(admin_booking_path) ? admin_booking_path : "#"), class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
+                        <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
                           <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
@@ -977,4 +977,4 @@
   </nav>
 </div>
 
-<%= render "railsui/shared/footer" %>
+<%= render "rui/shared/footer" %>

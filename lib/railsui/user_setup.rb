@@ -90,7 +90,7 @@ content = <<-RUBY
     Devise::PasswordsController.prepend_view_path "app/views/rui"
 
     Devise::SessionsController.layout "rui/devise"
-    Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "rui/rui" : "rui/devise" }
+    Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "rui/railsui" : "rui/devise" }
     Devise::ConfirmationsController.layout "rui/devise"
     Devise::PasswordsController.layout "rui/devise"
     Devise::UnlocksController.layout "rui/devise"

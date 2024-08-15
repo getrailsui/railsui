@@ -4,7 +4,7 @@
       <div class="md:flex items-center md:space-x-4 md:flex-1">
         <div class="md:flex items-center justify-between w-full md:space-x-3">
           <div class="flex items-center justify-between md:w-auto w-full">
-            <%= link_to (defined?(admin_dashboard_path) ? admin_dashboard_path : root_path) do %>
+            <%= link_to root_path do %>
               <h1>
                 <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
                 class="text-zinc-900 dark:text-white fill-current w-10 h-10">
@@ -37,7 +37,7 @@
                     <%= nav_link_to "Guides", "#", class: "nav-link" %>
                   </li>
                   <li>
-                    <%= nav_link_to "Changelog", (defined?(admin_changelog_path) ? admin_changelog_path : "#"), class: "nav-link" %>
+                    <%= nav_link_to "Changelog", rui_changelog_path, class: "nav-link" %>
                   </li>
                 </div>
 
@@ -106,24 +106,24 @@
                     data-transition-leave-from="transform opacity-100 scale-100"
                     data-transition-leave-to="transform opacity-0 scale-95">
                       <li>
-                        <%= link_to "Inbox", (defined?(admin_inbox_path) ? admin_inbox_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%= link_to "Inbox", rui_inbox_path, class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
                       </li>
 
                       <li>
-                        <%= link_to "Manage properties", (defined?(admin_properties_path) ? admin_properties_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%= link_to "Manage properties", rui_properties_path, class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
                       </li>
 
                       <li>
-                        <%= link_to "Add booking", (defined?(admin_new_booking_path) ? admin_new_booking_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%= link_to "Add booking", rui_new_booking_path, class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
                       </li>
 
                       <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
                       <li>
-                        <%= link_to "Account", (defined?(edit_user_registration_path) ? edit_user_registration_path : "#"), class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm block" %>
+                        <%= link_to "Account", edit_user_registration_path, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm block" %>
                       </li>
 
                       <li>
-                        <%= button_to "Sign out",(defined?(destroy_user_session_path) ? destroy_user_session_path : "#"), method: :delete, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm text-left block" %>
+                        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm text-left block" %>
                       </li>
                     </ul>
                   </div>

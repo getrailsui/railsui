@@ -1,7 +1,7 @@
 <%= render "rui/devise/auth_layout" do %>
-  <h1 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight mb-6">Forget your password?</h1>
+  <h1 class="h3 mb-6">Forget your password?</h1>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "rui/shared/error_messages", resource: resource %>
 
     <div class="form-group">

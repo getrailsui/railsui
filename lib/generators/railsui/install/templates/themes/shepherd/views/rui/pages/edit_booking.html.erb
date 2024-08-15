@@ -2,7 +2,7 @@
   <nav class="font-heading text-sm mb-6 text-zinc-700 dark:text-zinc-200">
     <ul class="flex items-center space-x-3">
       <li class="after:content-['/'] after:relative after:text-zinc-300 after:left-1 dark:after:text-zinc-500">
-        <%= link_to "Bookings", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
+        <%= link_to "Bookings", rui_bookings_path, class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
       </li>
       <li>
         <p>Edit Booking</p>
@@ -137,7 +137,7 @@
     </div>
 
     <div class="grid grid-cols-2 gap-6 pt-10">
-      <%= link_to "Go Back", (defined?(admin_bookings_path) ? admin_bookings_path : "#"), class: "btn btn-white text-center" %>
+      <%= link_to "Go Back", rui_bookings_path, class: "btn btn-white text-center" %>
       <input type="submit" value="Update booking" class="btn btn-primary w-full">
     </div>
   </form>

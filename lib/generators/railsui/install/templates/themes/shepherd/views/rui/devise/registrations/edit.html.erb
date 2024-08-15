@@ -3,7 +3,7 @@
     bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
   <div class="relative z-20">
-    <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
+    <h1 class="h2 text-center">Account</h1>
 
     <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
       convenient place.</p>
@@ -20,11 +20,11 @@
     </div>
   <% end %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
     <div class="max-w-xl mx-auto">
       <%= render "rui/shared/error_messages", resource: resource %>
-      <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Profile</h2>
+      <h2 class="mt-6 mb-3 h3">Profile</h2>
       <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
         <p>Edit your profile details.</p>
       </div>
@@ -95,7 +95,7 @@
           <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
           <span
           class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-            <%= icon "x", custom_path: "/social/x.svg", class: "size-5 fill-current" %>
+            <%= icon "x", custom_path: "/railsui/social/x.svg", class: "size-5 fill-current" %>
           </span>
         </div>
       </div>
@@ -107,7 +107,7 @@
           placeholder="https://facebook.com/username">
           <span
           class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600dark:text-zinc-400 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-            <%= icon "facebook", custom_path: "/social/facebook.svg", class: "size-5 fill-current" %>
+            <%= icon "facebook", custom_path: "/railsui/social/facebook.svg", class: "size-5 fill-current" %>
           </span>
         </div>
       </div>
@@ -118,7 +118,7 @@
           <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
           <span
           class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-            <%= icon "github", custom_path: "/social/github.svg", class: "size-5 fill-current" %>
+            <%= icon "github", custom_path: "/railsui/social/github.svg", class: "size-5 fill-current" %>
           </span>
         </div>
       </div>
