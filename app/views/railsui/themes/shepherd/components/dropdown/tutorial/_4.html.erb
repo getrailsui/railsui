@@ -8,12 +8,13 @@
 <% content_for :js, flush: true do %>
 
 <% end %>
+
 <% content_for :html, flush: true do %>
-<div data-controller="dropdown">
-  <button data-action="click->dropdown#toggle click@window->dropdown#hide">Dropdown</button>
+<div data-controller="railsui-dropdown">
+  <button data-action="click->railsui-dropdown#toggle click@window->dropdown#hide">Dropdown</button>
   <div
     class="hidden"
-    data-dropdown-target="menu"
+    data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
