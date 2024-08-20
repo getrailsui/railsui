@@ -4,37 +4,20 @@
 
 <h2>1. Initializing the Stimulus.js controller</h2>
 
-<p>The <%= Railsui.config.theme.humanize %> theme ships with the <%= code "tooltip_controller.js" %> controller file by default. Below is the file for reference. <%= link_to "Tippy.js", "https://atomiks.github.io/tippyjs/", target: :_blank %> is required to make the tooltip component function properly. You may customize Tippy to your needs but we started of with some simple defaults. </p>
+<p>The <%= Railsui.config.theme.humanize %> theme ships with the Tooltip Stimulus controller from <a href="https://github.com/getrailsui/railsui-stimulus" target="_blank">railsui-stimulus</a> by default. If the tooltip controller is not already registered, you can do so using the code below. You will need <a href="https://stimulus.hotwired.dev/" target="_blank">stimulus.js</a> installed if it's not already.</p>
 
 <div class="not-prose">
 <%= content_for :js, flush: true do %>
-import { Controller } from "@hotwired/stimulus"
-import tippy from "tippy.js"
+// Start Stimulus
+import { Application } from '@hotwired/stimulus'
 
-export default class extends Controller {
-  static values = {
-    content: String,
-    allowHtml: Boolean
-  }
+const application = Application.start()
 
-  connect() {
-    let options = {}
-    if (this.hasContentValue) {
-      options["content"] = this.contentValue
-    }
-    if (this.hasAllowHtmlValue) {
-      options["allowHTML"] = this.allowHtmlValue
-    }
-    this.tippy = tippy(this.element, options)
-  }
-
-  disconnect() {
-    this.tippy.destroy()
-  }
-}
-
-  <% end %>
-  <%= render_snippet active_tab: "js", js_filename: "tooltip_controller.js" %>
+// Import components adhoc.
+import { RailsuiTooltip } from 'railsui-stimulus'
+application.register('railsui-tooltip', RailsuiTooltip)
+<% end %>
+<%= render_snippet active_tab: "js", js_filename: "index.js" %>
 </div>
 
 <h2>2. Initialize the controller in your views</h2>
@@ -42,12 +25,12 @@ export default class extends Controller {
 <p>Add the data attribute <code>data-controller='tooltip'</code> to an HTML element.</p>
 
 <div class="not-prose">
-  <% content_for :js, flush: true do %>
+<% content_for :js, flush: true do %>
 
-  <% end %>
-  <% content_for :html, flush: true do %>
-    <button data-controller="tooltip" class="btn btn-primary">Tooltip demo</button>
-  <% end %>
+<% end %>
+<% content_for :html, flush: true do %>
+  <button data-controller="railsui-tooltip" class="btn btn-primary">Tooltip demo</button>
+<% end %>
   <%= render_snippet %>
 </div>
 
@@ -73,17 +56,16 @@ export default class extends Controller {
 <div class="not-prose">
   <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
 
+<% content_for :js, flush: true do %>
 
-  <% content_for :js, flush: true do %>
+<% end %>
 
-  <% end %>
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+<% end %>
 
-  <% content_for :html, flush: true do %>
-    <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
-  <% end %>
-
-  <%= render_snippet %>
-  </div>
+<%= render_snippet %>
+</div>
 <% end %>
 
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/tooltip" %>
@@ -91,7 +73,6 @@ export default class extends Controller {
 <%= render "#{path}/base" %>
 
 <%= system_pagination(prev_path: systems_components_toast_path, prev_text: "Toast", next_path: systems_authentication_overview_path, next_text: "Authentication") %>
-
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

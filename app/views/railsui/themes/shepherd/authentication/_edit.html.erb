@@ -49,10 +49,10 @@
                   </div>
 
                   <li>
-                    <div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative" data-controller="dropdown">
+                    <div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative" data-controller="railsui-dropdown">
                       <button type="button"
                     class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400 focus:ring-4 focus:ring-zinc-100 hover:border-zinc-400/80 dark:border-zinc-600 dark:focus:ring-zinc-700 dark:focus:border-zinc-400"
-                    data-action="click->dropdown#toggle click@window->dropdown#hide">
+                    data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
                         <div class="relative">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" aria-hidden="true"
@@ -63,14 +63,13 @@
                           d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0">
                             </path>
                           </svg>
-
                           <span
                         class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
                         </div>
                       </button>
                       <div
                     class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200"
-                    data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
+                    data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
                     data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100"
                     data-transition-leave-to="opacity-0 scale-95">
                         <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -167,16 +166,16 @@
                   </li>
 
                   <li>
-                    <div data-controller="dropdown" class="md:flex relative">
-                      <button data-action="click->dropdown#toggle click@window->dropdown#hide"
-                        data-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
+                    <div data-controller="railsui-dropdown" class="md:flex relative">
+                      <button data-action="click->railsui-dropdown#toggle click@window->dropdown#hide"
+                        data-railsui-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 w-12 h-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
                         focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
                         dark:focus:border-zinc-300/90">
 
                         <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), alt: "Shepherd user", class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
                       </button>
 
-                      <ul data-dropdown-target="menu"
+                      <ul data-railsui-dropdown-target="menu"
                     class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-4 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading space-y-3"
                     data-transition-enter-active="transition ease-out duration-300"
                     data-transition-enter-from="transform opacity-0 scale-95"
@@ -217,8 +216,7 @@
     bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
       <div class="relative z-20">
-        <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account
-        </h1>
+        <h1 class="h2 text-center">Account</h1>
 
         <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
           convenient place.</p>
@@ -400,216 +398,241 @@
     </div>
   </div>
 
-  <% content_for :example, flush: true do %>
-    <% content_for :html, flush: true do %>
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
 
-    <% end %>
+<% end %>
 
-    <% content_for :erb, flush: true do %>
-      <!-- app/views/devise/registrations/edit.html.erb -->
-      <div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
-        <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
-    bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/registrations/edit.html.erb -->
+<div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
+<div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
-        <div class="relative z-20">
-          <h1 class="text-center text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Account</h1>
+<div class="relative z-20">
+<h1 class="h2 text-center">Account</h1>
 
-          <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
-            convenient place.</p>
-        </div>
+<p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
+  convenient place.</p>
+</div>
+</div>
+
+<div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
+<!-- Dynamic tabs relative to what pages are installed -->
+<%%= render "rui/shared/account/tabs" %>
+
+<%% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<div class="bg-blue-50/90 text-blue-700 border-l-4 border-blue-700 py-4 px-6 text-sm dark:bg-blue-50/10 dark:text-blue-50 dark:border-blue-400 rounded-r-xl rounded-l my-4">
+<p class="text-blue-800 dark:text-blue-400 font-normal font-heading">Currently waiting on confirmation for: <span class="font-medium"><%%= resource.unconfirmed_email %></span></p>
+</div>
+<%% end %>
+
+<%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+<div class="max-w-xl mx-auto">
+  <%%= render "rui/shared/error_messages", resource: resource %>
+
+  <h2 class="mt-6 mb-3 h3">Profile</h2>
+  <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
+    <p>Edit your profile details.</p>
+  </div>
+
+  <div class="form-group">
+    <%%= f.label :avatar, class: "form-label" %>
+
+    <div class="flex items-center space-x-3">
+      <%% if f.object.avatar.attached? %>
+      <%%= image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none" %>
+      <%% else %>
+      <div class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
+        <%%= icon "user", class: "w-6 h-6 text-zinc-500" %>
       </div>
+      <%% end %>
 
-      <div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
-        <!-- Dynamic tabs relative to what pages are installed -->
-        <%%= render "shared/account/tabs" %>
-
-        <%% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div class="bg-blue-50/90 text-blue-700 border-l-4 border-blue-700 py-4 px-6 text-sm dark:bg-blue-50/10 dark:text-blue-50 dark:border-blue-400 rounded-r-xl rounded-l my-4">
-          <p class="text-blue-800 dark:text-blue-400 font-normal font-heading">Currently waiting on confirmation for: <span class="font-medium"><%%= resource.unconfirmed_email %></span></p>
-        </div>
+      <%%= f.label :avatar, class: "block" do %>
+        <%%= f.file_field :avatar, class: "form-file" %>
         <%% end %>
+      </div>
+    </div>
 
-        <%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+    <div class="form-group">
+      <%%= f.label :name, class: "form-label" %>
+      <%%= f.text_field :name, class: "form-input" %>
+    </div>
 
-          <div class="max-w-xl mx-auto">
-            <%%= render "shared/error_messages", resource: resource %>
-            <h2 class="mt-6 mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Profile</h2>
-            <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
-              <p>Edit your profile details.</p>
-            </div>
+    <!-- Email -->
+    <div class="form-group">
+      <%%= f.label :email, class: "form-label form-label-required" %>
+      <%%= f.email_field :email, autocomplete: "email", class: "form-input" %>
+    </div>
 
-            <div class="form-group">
-              <%%= f.label :avatar, class: "form-label" %>
+    <div class="form-group">
+      <%%= f.label :password, class: "form-label" %>
+      <%%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+      <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+        <%% if @minimum_password_length %>
+        <p><%%= @minimum_password_length %> characters minimum</p>
+        <%% end %>
+        <p>Leave this blank if you don't want to change it</p>
+      </div>
+    </div>
 
-              <div class="flex items-center space-x-3">
-                <%% if f.object.avatar.attached? %>
-                <%%= image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none" %>
-                <%% else %>
-                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
-                  <%%= icon "user", class:  "w-6 h-6 text-zinc-500" %>
-                </div>
-                <%% end %>
+    <div class="form-group">
+      <%%= f.label :password_confirmation, class: "form-label" %>
+      <%%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+    </div>
 
-                <%%= f.label :avatar, class: "block" do %>
-                  <%%= f.file_field :avatar, class: "form-file" %>
-                  <%% end %>
-                </div>
+    <div class="from-group">
+      <%%= f.label :current_password, class: "form-label form-label-required" %>
+      <%%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
+      <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+        <p>Your current password is required to update your account.</p>
+      </div>
+    </div>
 
-              </div>
+    <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight pt-10">Social media</h4>
 
-              <div class="form-group">
-                <%%= f.label :name, class: "form-label" %>
-                <%%= f.text_field :name, class: "form-input" %>
-              </div>
+    <div class="prose prose-zinc dark:prose-invert mb-6">
+      <p>You could optionally add social media accounts in this section.</p>
+    </div>
 
-              <!-- Email -->
-              <div class="form-group">
-                <%%= f.label :email, class: "form-label form-label-required" %>
-                <%%= f.email_field :email, autocomplete: "email", class: "form-input" %>
-              </div>
+    <div class="form-group">
+      <label for="user[x]" class="form-label sr-only">X</label>
+      <div class="relative">
+        <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
+        <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+          <%%= icon "x", custom_path: "railsui/social/x.svg", class: "w-5 h-5", variant: :solid %>
+        </span>
+      </div>
+    </div>
 
-              <div class="form-group">
-                <%%= f.label :password, class: "form-label" %>
-                <%%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
-                <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
-                  <%% if @minimum_password_length %>
-                  <p><%%= @minimum_password_length %> characters minimum</p>
-                  <%% end %>
-                  <p>Leave this blank if you don't want to change it</p>
-                </div>
-              </div>
+    <div class="form-group">
+      <label for="user[facebook]" class="form-label sr-only">Facebook</label>
+      <div class="relative">
+        <input type="text" id="user[facebook]" class="form-input w-full pl-14"
+placeholder="https://facebook.com/username">
+        <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+          <%%= icon "facebook", custom_path: "railsui/social/facebook.svg", class:  "w-5 h-5 fill-current" %>
+        </span>
+      </div>
+    </div>
 
-              <div class="form-group">
-                <%%= f.label :password_confirmation, class: "form-label" %>
-                <%%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
-              </div>
+    <div class="form-group">
+      <label for="user[github]" class="form-label sr-only">GitHub</label>
+      <div class="relative">
+        <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
+        <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+          <%%= icon "github", custom_path: "railsui/social/github.svg", class: "w-5 h-5 fill-current" %>
+        </span>
+      </div>
+    </div>
 
-              <div class="from-group">
-                <%%= f.label :current_password, class: "form-label form-label-required" %>
-                <%%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
-                <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
-                  <p>Your current password is required to update your account.</p>
-                </div>
-              </div>
+    <div class="form-group">
+      <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
+      <div class="relative">
+        <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
+placeholder="https://linkedin.com/in/username">
+        <span
+class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+          <%%= icon "linkedin", custom_path: "railsui/social/linkedin.svg", class: "w-5 h-5 fill-current" %>
+        </span>
+      </div>
+    </div>
 
-              <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight pt-10">Social media</h4>
+    <%%= f.submit "Save changes", class:"btn btn-primary" %>
+    <%% end %>
+  </div>
+</div>
+<% end %>
 
-              <div class="prose prose-zinc dark:prose-invert mb-6">
-                <p>You could optionally add social media accounts in this section.</p>
-              </div>
-
-              <div class="form-group">
-                <label for="user[x]" class="form-label sr-only">X</label>
-                <div class="relative">
-                  <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
-                  <span
-          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-                    <%%= icon "x", path: "social/x.svg", class:  "w-5 h-5", variant: :solid %>
-                  </span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="user[facebook]" class="form-label sr-only">Facebook</label>
-                <div class="relative">
-                  <input type="text" id="user[facebook]" class="form-input w-full pl-14"
-          placeholder="https://facebook.com/username">
-                  <span
-          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-                    <%%= icon "facebook", path: "social/facebook.svg", class:  "w-5 h-5 fill-current" %>
-                  </span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="user[github]" class="form-label sr-only">GitHub</label>
-                <div class="relative">
-                  <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
-                  <span
-          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-                    <%%= icon "github", path: "social/github.svg", class:  "w-5 h-5 fill-current" %>
-                  </span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
-                <div class="relative">
-                  <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
-          placeholder="https://linkedin.com/in/username">
-                  <span
-          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-                    <%%= icon "linkedin", path: "social/linkedin.svg", class:  "w-5 h-5 fill-current" %>
-                  </span>
-                </div>
-              </div>
-
-              <%%= f.submit "Save changes", class:"btn btn-primary" %>
-              <%% end %>
-            </div>
-          </div>
-        <% end %>
-
-        <% content_for :haml, flush: true do %>
-          / app/views/devise/registrations/edit.haml.erb
-          .max-w-4xl.mx-auto.px-4.my-10
-          %h1.sm:text-4xl.text-3xl Account
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          .text-blue-700.border-l-4.border-blue-700.py-4.pr-4.pl-6.text-sm.dark:text-blue-50.dark:border-blue-400.mt-6{class: "bg-blue-50/90 dark:bg-blue-50/10"}
-          %p.text-blue-800.dark:text-blue-400
-          Currently waiting on confirmation for:
-          %span.font-semibold= resource.unconfirmed_email
-          .my-6
-          %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Profile
-          %p.text-sm.text-slate-600.dark:text-slate-400 This information will often be displayed publically.
-          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f|
-          = render "shared/error_messages", resource: resource
-          .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-end.pb-6
-          %div
-          = f.label :name, class: "form-label"
-          = f.email_field :name, class: "form-input"
-          %div
-          .flex.items-center
+<% content_for :haml, flush: true do %>
+/ app/views/rui/devise/registrations/edit.html.erb
+.relative.md:py-10.py-8.border-b{class: "min-h-[160px] border-zinc-200/80 dark:border-zinc-700/80"}
+  .opacity-5.blur-4xl.absolute.inset-0.w-full.h-full.bg-gradient-to-r.from-white.z-0{class: "via-primary-500/40 via-[24.79%] to-[#177BB5]"}
+  .relative.z-20
+    %h1.h2.text-center Account
+    %p.font-light.font-heading.text-center.py-4.text-zinc-700.dark:text-zinc-300
+      Manage everything in one
+      convenient place.
+.container.mx-auto.px-4.md:pb-16.pb-6.mb-24
+  / Dynamic tabs relative to what pages are installed
+  = render "rui/shared/account/tabs"
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    .text-blue-700.border-l-4.border-blue-700.py-4.px-6.text-sm.dark:text-blue-50.dark:border-blue-400.rounded-r-xl.rounded-l.my-4{class: "bg-blue-50/90 dark:bg-blue-50/10"}
+      %p.text-blue-800.dark:text-blue-400.font-normal.font-heading
+        Currently waiting on confirmation for:
+        %span.font-medium= resource.unconfirmed_email
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f|
+    .max-w-xl.mx-auto
+      = render "rui/shared/error_messages", resource: resource
+      %h2.mt-6.mb-3.h3 Profile
+      .prose.prose-zinc.mb-6.pb-3.dark:prose-invert
+        %p Edit your profile details.
+      .form-group
+        = f.label :avatar, class: "form-label"
+        .flex.items-center.space-x-3
           - if f.object.avatar.attached?
-          = image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border-2 border-slate-200 pointer-events-none select-none"
+            = image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none"
           - else
-          .w-14.h-14.flex.items-center.justify-center.rounded-full.pointer-events-none.select-none.border-2.border-slate-200{class: "bg-slate-300/50"}
-          = icon "user", class:  "w-6 h-6 text-white"
-          .flex-1.pl-4
+            .w-14.h-14.flex.items-center.justify-center.rounded-full.bg-white.border.border-zinc-200.pointer-events-none.select-none.shadow-sm
+              = icon "user", class: "w-6 h-6 text-zinc-500"
           = f.label :avatar, class: "block" do
-          = f.file_field :avatar, class: "form-file"
-          .py-10.mt-6.border-t.border-slate-200.dark:border-slate-700
-          %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Personal details
-          %p.text-sm.text-slate-600.dark:text-slate-400 This information will not be displayed publically.
-          .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
-          %div
-          = f.label :email, class: "form-label"
-          = f.email_field :email, autocomplete: "email", class: "form-input"
-          %div
-          = f.label :password, class: "form-label"
-          = f.password_field :password, autocomplete: "new-password", class: "form-input"
-          %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Leave this blank if you don't want to change it
+            = f.file_field :avatar, class: "form-file"
+      .form-group
+        = f.label :name, class: "form-label"
+        = f.text_field :name, class: "form-input"
+      / Email
+      .form-group
+        = f.label :email, class: "form-label form-label-required"
+        = f.email_field :email, autocomplete: "email", class: "form-input"
+      .form-group
+        = f.label :password, class: "form-label"
+        = f.password_field :password, autocomplete: "new-password", class: "form-input"
+        .flex.justify-between.items-center.prose.prose-sm.text-xs.prose-zinc.dark:prose-invert.prose-p:m-0.my-2.max-w-full
           - if @minimum_password_length
-          %p.text-xs.text-slate-700.dark:text-slate-400
-          = @minimum_password_length
-          characters minimum
-          .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
-          %div
-          = f.label :password_confirmation, class: "form-label"
-          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
-          %div
-          = f.label :current_password, class: "form-label"
-          = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
-          %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Your current password is required to update your account.
-          .flex.items-center.space-x-4.pt-10.border-t.mt-10.border-slate-200.dark:border-slate-700
-          = f.submit "Update", class: "btn btn-primary"
-          = link_to "Cancel", root_path, class: "btn btn-white", data: { turbo: false }
-          .flex.justify-end
-          = button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8"
-        <% end %>
+            %p
+              = @minimum_password_length
+              characters minimum
+          %p Leave this blank if you don't want to change it
+      .form-group
+        = f.label :password_confirmation, class: "form-label"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
+      .from-group
+        = f.label :current_password, class: "form-label form-label-required"
+        = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
+        .flex.justify-between.items-center.prose.prose-sm.text-xs.prose-zinc.dark:prose-invert.prose-p:m-0.my-2.max-w-full
+          %p Your current password is required to update your account.
+      %h4.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight.pt-10 Social media
+      .prose.prose-zinc.dark:prose-invert.mb-6
+        %p You could optionally add social media accounts in this section.
+      .form-group
+        %label.form-label.sr-only{for: "user[x]"} X
+        .relative
+          %input.form-input.w-full.pl-14{id: "user[x]", placeholder: "https://x.com/username", type: "text"}/
+          %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
+            = icon "x", custom_path: "railsui/social/x.svg", class: "w-5 h-5", variant: :solid
+      .form-group
+        %label.form-label.sr-only{for: "user[facebook]"} Facebook
+        .relative
+          %input.form-input.w-full.pl-14{id: "user[facebook]", placeholder: "https://facebook.com/username", type: "text"}/
+          %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
+            = icon "facebook", custom_path: "railsui/social/facebook.svg", class:  "w-5 h-5 fill-current"
+      .form-group
+        %label.form-label.sr-only{for: "user[github]"} GitHub
+        .relative
+          %input.form-input.w-full.pl-14{id: "user[github]", placeholder: "https://github.com/username", type: "text"}/
+          %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
+            = icon "github", custom_path: "railsui/social/github.svg", class: "w-5 h-5 fill-current"
+      .form-group
+        %label.form-label.sr-only{for: "user[linkedin]"} LinkedIn
+        .relative
+          %input.form-input.w-full.pl-14{id: "user[linkedin]", placeholder: "https://linkedin.com/in/username", type: "text"}/
+          %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
+            = icon "linkedin", custom_path: "railsui/social/linkedin.svg", class: "w-5 h-5 fill-current"
+      = f.submit "Save changes", class:"btn btn-primary"
+<% end %>
 
-        <%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
-      <% end %>
-    <% end %>
+<%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+<% end %>
+<% end %>
 
     <%= system_pagination(prev_path: systems_authentication_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_unlocks_path, next_text: "Unlock") %>
