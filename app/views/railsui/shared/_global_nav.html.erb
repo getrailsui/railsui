@@ -26,7 +26,7 @@
         <div class="pl-8 font-normal text-[14px] -mx-2 pt-px">
           <a href="#configuration" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">General</a>
 
-          <a href="#theme" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Template</a>
+          <a href="#theme" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Theme</a>
 
           <% if Railsui.config.theme.present? %>
             <a href="#color" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Color</a>
@@ -37,7 +37,7 @@
       <% end %>
 
       <% if Railsui.config.theme.present? %>
-        <%= render "railsui/shared/global_nav_item", path: systems_path, icon: "cube", label:"Design patterns" %>
+        <%= render "railsui/shared/global_nav_item", path: systems_path, icon: "cube", label:"Components" %>
 
         <% if params[:controller].include?('systems') %>
           <%= render "railsui/shared/system_nav" %>

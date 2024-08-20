@@ -3,6 +3,6 @@
     <%= yield %>
   </div>
   <span class="absolute top-[50%] -mb-7 left-[50%] -ml-7">
-    <%= inline_svg "r.svg", class: "w-14 h-14  fill-current #{local_assigns[:dark] == true ? "text-zinc-900/50" : "text-zinc-200/70 dark:text-zinc-900"}" %>
+    <%= icon "r", custom_path: "/r.svg", class: "w-14 h-14  fill-current #{local_assigns[:dark] == true ? "text-zinc-900/50" : "text-zinc-200/70 dark:text-zinc-900"}" %>
   </span>
 </div>
