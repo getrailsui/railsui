@@ -1,0 +1,51 @@
+<div id="alert-with-list">
+<%= render layout: example, locals: { heading: "With list", section: "Alert" } do %>
+
+<div class="bg-primary-50/90 text-primary-700 py-4 px-6 rounded-xl flex items-start justify-between space-x-3 text-sm dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 dark:selection:bg-primary-50/10">
+  <%= icon "shield-exclamation", class: "text-primary-600/80 size-5 flex-shrink-0 dark:text-primary-400", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-primary-800 font-medium dark:text-primary-300 font-heading">There was 1 error trying to process your request.</p>
+    <ul class="list-disc pl-4 mt-1">
+      <li>Your name must be as cool as Andy.</li>
+    </ul>
+  </div>
+</div>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="bg-primary-50/90 text-primary-700 py-4 px-6 rounded-xl flex items-start justify-between space-x-3 text-sm dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 dark:selection:bg-primary-50/10">
+  <%%= icon "shield-exclamation", class: "text-primary-600/80 size-5 flex-shrink-0 dark:text-primary-400", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-primary-800 font-medium dark:text-primary-300 font-heading">There was 1 error trying to process your request.</p>
+    <ul class="list-disc pl-4 mt-1">
+      <li>Your name must be as cool as Andy.</li>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="bg-primary-50/90 text-primary-700 py-4 px-6 rounded-xl flex items-start justify-between space-x-3 text-sm dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 dark:selection:bg-primary-50/10">
+  <%%= icon "shield-exclamation", class: "text-primary-600/80 size-5 flex-shrink-0 dark:text-primary-400", variant: :solid %>
+  <div class="flex-1">
+    <p class="text-primary-800 font-medium dark:text-primary-300 font-heading">There was 1 error trying to process your request.</p>
+    <ul class="list-disc pl-4 mt-1">
+      <li>Your name must be as cool as Andy.</li>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.text-primary-700.py-4.px-6.rounded-xl.flex.items-start.justify-between.space-x-3.text-sm.dark:border.dark:text-primary-50(class="bg-primary-50/90 dark:bg-primary-400/10 dark:border-primary-400/20 dark:selection:bg-primary-50/10")
+  = icon "shield-exclamation", class: "text-primary-600/80 size-5 flex-shrink-0 dark:text-primary-400", variant: :solid
+  .flex-1
+    %p.text-primary-800.font-medium.dark:text-primary-300.font-heading There was 1 error trying to process your request.
+    %ul.list-disc.pl-4.mt-1
+      %li Your name must be as cool as Andy.
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

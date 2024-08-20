@@ -1,0 +1,70 @@
+<%# Card - User card with actions %>
+<div id="card-user-card-with-actions">
+<%= render layout: example, locals: { heading: "User card with action", section: "Card" } do %>
+
+<%= render preview "zinc" do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40 flex items-center flex-wrap">
+  <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "object-cover size-12 rounded-full flex-shrink-0" %>
+  <div class="pl-3 flex-1 flex flex-col items-start space-y-px text-zinc-700">
+    <p class="font-medium dark:text-white font-heading">John Doe</p>
+    <p class="text-sm dark:text-zinc-300">Property Manager at <a href="#" class="underline" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">Pizza Hut</a></p>
+  </div>
+  <div class="flex items-center lg:pt-0 pt-3 gap-3 w-full lg:w-auto">
+    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="btn btn-white flex items-center gap-3 group">
+      <%= icon "envelope", class: "size-5 text-zinc-400 dark:text-zinc-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
+      <span>Message</span>
+    </a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40 flex items-center flex-wrap">
+  <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "object-cover size-12 rounded-full flex-shrink-0" %>
+  <div class="pl-3 flex-1 flex flex-col items-start space-y-px text-zinc-700">
+    <p class="font-medium dark:text-white font-heading">John Doe</p>
+    <p class="text-sm dark:text-zinc-300">Property Manager at <a href="#" class="underline">Pizza Hut</a></p>
+  </div>
+  <div class="flex items-center lg:pt-0 pt-3 gap-3 w-full lg:w-auto">
+    <a href="#" class="btn btn-white flex items-center gap-3 group">
+      <%%= icon "envelope", class: "size-5 text-zinc-400 dark:text-zinc-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
+      <span>Message</span>
+    </a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="rounded-lg shadow-sm shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300/90 dark:border-zinc-600/80 dark:shadow-zinc-950/40 flex items-center flex-wrap">
+  <%%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "object-cover size-12 rounded-full flex-shrink-0" %>
+  <div class="pl-3 flex-1 flex flex-col items-start space-y-px text-zinc-700">
+    <p class="font-medium dark:text-white font-heading">John Doe</p>
+    <p class="text-sm dark:text-zinc-300">Property Manager at <%%= link_to "Pizza Hut", "#", class: "underline" %></p>
+  </div>
+  <div class="flex items-center lg:pt-0 pt-3 gap-3 w-full lg:w-auto">
+    <%%= link_to "#", class: "btn btn-white flex items-center gap-3 group" do %>
+      <%%= icon "envelope", class: "size-5 text-zinc-400 dark:text-zinc-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" %>
+      <span>Message</span>
+    <%% end %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-lg.shadow-sm.bg-white.p-6.dark:bg-zinc-800.dark:text-white.border.flex.items-center.flex-wrap{class: "shadow-zinc-400/20 dark:border-zinc-600/80 dark:shadow-zinc-950/40 border-zinc-300/90"}
+  = image_tag demo_avatar_url(id: "32", variant: "men"), class: "object-cover size-12 rounded-full flex-shrink-0"
+  .pl-3.flex-1.flex.flex-col.items-start.space-y-px.text-zinc-700
+    %p.font-medium.dark:text-white.font-heading John Doe
+    %p.text-sm.dark:text-zinc-300
+      Property Manager at #{link_to "Pizza Hut", "#", class: "underline"}
+  .flex.items-center.lg:pt-0.pt-3.gap-3.w-full.lg:w-auto
+    = link_to "#", class: "btn btn-white flex items-center gap-3 group" do
+      = icon "envelope", class: "size-5 text-zinc-400 dark:text-zinc-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
+      %span Message
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

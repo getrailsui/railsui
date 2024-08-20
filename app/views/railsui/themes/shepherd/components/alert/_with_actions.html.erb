@@ -1,0 +1,66 @@
+<div id="alert-with-actions">
+<%= render layout: example, locals: { heading: "With actions", section: "Alert" } do %>
+
+<div class="bg-secondary-50/90 text-secondary-700 py-4 px-6 rounded-xl text-sm sm:flex items-center justify-between dark:bg-secondary-50/10 dark:text-secondary-50 dark:border dark:border-secondary-400/30">
+  <div class="flex items-start justify-between gap-3">
+    <%= icon "star", class: "text-secondary-500 size-5 flex-shrink-0 dark:text-secondary-400", variant: :solid %>
+    <div class="flex-1">
+      <p class="text-secondary-800 dark:text-secondary-300 font-medium font-heading">Your response is requested</p>
+      <p class="my-1">Vote for your favorite dog breed today.</p>
+    </div>
+  </div>
+  <div class="flex items-center space-x-6 sm:pt-0 pt-3 sm:pl-0 sm:pr-4 pr-0 pl-8">
+    <a href="#" class="font-semibold underline">Vote now</a>
+    <a href="#" class="font-semibold underline">Dismiss</a>
+  </div>
+</div>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="bg-secondary-50/90 text-secondary-700 py-4 px-6 rounded-xl text-sm sm:flex items-center justify-between dark:bg-secondary-50/10 dark:text-secondary-50 dark:border dark:border-secondary-400/30">
+  <div class="flex items-start justify-between gap-3">
+    <%%= icon "star", class: "text-secondary-500 size-5 flex-shrink-0 dark:text-secondary-400", variant: :solid %>
+    <div class="flex-1">
+      <p class="text-secondary-800 dark:text-secondary-300 font-medium font-heading">Your response is requested</p>
+      <p class="my-1">Vote for your favorite dog breed today.</p>
+    </div>
+  </div>
+  <div class="flex items-center space-x-6 sm:pt-0 pt-3 sm:pl-0 sm:pr-4 pr-0 pl-8">
+    <a href="#" class="btn-link">Vote now</a>
+    <a href="#" class="btn-link">Dismiss</a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= tag.div class: "bg-secondary-50/90 text-secondary-700 py-4 px-6 rounded-xl text-sm sm:flex items-center justify-between dark:bg-secondary-50/10 dark:text-secondary-50 dark:border dark:border-secondary-400/30" do %>
+  <%%= tag.div class: "flex items-start justify-between gap-3" do %>
+    <%%= icon "star", class: "text-secondary-500 size-5 flex-shrink-0 dark:text-secondary-400", variant: :solid %>
+    <%%= tag.div class: "flex-1"  do %>
+      <%%= tag.p "Your response is requested", class: "text-secondary-800 dark:text-secondary-300 font-medium font-heading" %>
+      <%%= tag.p "Vote for your favorite dog breed today.", class: "my-1" %>
+    <%% end %>
+  <%% end %>
+  <%%= tag.div class: "flex items-center space-x-6 sm:pt-0 pt-3 sm:pl-0 sm:pr-4 pr-0 pl-8" do %>
+    <%%= link_to "Vote now", "#", class: "btn-link" %>
+    <%%= link_to "Dismiss", "#", class: "btn-link" %>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= tag.div class: "bg-secondary-50/90 text-secondary-700 py-4 px-6 rounded-xl text-sm sm:flex items-center justify-between dark:bg-secondary-50/10 dark:text-secondary-50 dark:border dark:border-secondary-400/30" do
+  = tag.div class: "flex items-start justify-between gap-3" do
+    = icon "star", class: "text-secondary-500 size-5 flex-shrink-0 dark:text-secondary-400", variant: :solid
+    = tag.div class: "flex-1"  do
+      = tag.p "Your response is requested", class: "text-secondary-800 dark:text-secondary-300 font-medium font-heading"
+      = tag.p "Vote for your favorite dog breed today.", class: "my-1"
+  = tag.div class: "flex items-center space-x-6 sm:pt-0 pt-3 sm:pl-0 sm:pr-4 pr-0 pl-8" do
+    = link_to "Vote now", "#", class: "btn-link"
+    = link_to "Dismiss", "#", class: "btn-link"
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

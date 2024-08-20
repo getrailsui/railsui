@@ -7,16 +7,19 @@
   </div>
 
 <% content_for :head do %>
+
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 <% end %>
 
 <div class="my-10">
+<%= render preview('zinc') do %>
   <form action="#">
     <div class="form-group">
       <input id="x" type="hidden" name="content">
       <trix-editor input="x"></trix-editor>
     </div>
   </form>
+<% end %>
 </div>
 
 <% content_for :example, flush: true do %>
@@ -38,9 +41,9 @@
 <%= render_snippet active_tab: "erb" %>
 <% end %>
 <% end %>
-</div>
 
 <%= system_pagination(prev_path: systems_forms_switch_path, prev_text: "Switch", next_path: systems_forms_validation_path, next_text: "Validation") %>
+</div>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

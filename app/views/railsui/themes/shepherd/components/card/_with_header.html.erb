@@ -18,26 +18,11 @@
         <div class="md:w-1/12 md:block hidden"></div>
       </div>
       <ul class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
-        <%= render "railsui/themes/shepherd/components/card/list_item", locals: {
-          property: image_url('themes/shepherd/property-1.jpg'),
-          title: "Cozy Mountain A-Frame",
-          nickname: "Nature's Nook",
-          listings: "3",
-         } %>
+        <%= render "railsui/themes/shepherd/components/card/list_item", property: image_url('themes/shepherd/property-1.jpg'), title: "Cozy Mountain A-Frame", nickname: "Nature's Nook", listings: "3"  %>
 
-        <%= render "railsui/themes/shepherd/components/card/list_item", locals: {
-          property: image_url('themes/shepherd/property-2.jpg'),
-          title: "Alpine Retreat Haven",
-          nickname: "The Haven",
-          listings: "3",
-         } %>
+        <%= render "railsui/themes/shepherd/components/card/list_item", property: image_url('themes/shepherd/property-2.jpg'), title: "Alpine Retreat Haven", nickname: "The Haven", listings: "3" %>
 
-        <%= render "railsui/themes/shepherd/components/card/list_item", locals: {
-          property: image_url('themes/shepherd/property-3.jpg'),
-          title: "Mountain Vista Chalet",
-          nickname: "The Mountain Majesty",
-          listings: "3",
-         } %>
+        <%= render "railsui/themes/shepherd/components/card/list_item",  property: image_url('themes/shepherd/property-3.jpg'), title: "Mountain Vista Chalet", nickname: "The Mountain Majesty", listings: "3" %>
       </ul>
     </div>
   </div>

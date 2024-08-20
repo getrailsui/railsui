@@ -40,7 +40,7 @@ trix-toolbar .trix-button-row {
 }
 
 trix-toolbar .trix-button {
-  @apply border-transparent hover:bg-secondary-50/50 rounded dark:hover:bg-zinc-500/50 dark:hover:text-white dark:bg-transparent dark:before:invert;
+  @apply border-transparent hover:bg-zinc-50/50 rounded dark:hover:bg-zinc-500/50 dark:hover:text-white dark:bg-transparent dark:before:invert;
 
   &[disabled] {
     @apply dark:rounded dark:hover:bg-transparent dark:hover:text-zinc-500/10 hover:cursor-not-allowed;
@@ -56,7 +56,7 @@ trix-toolbar .trix-button {
 }
 
 trix-toolbar .trix-button.trix-active {
-  @apply bg-secondary-500/25 dark:bg-secondary-500/30 dark:before:text-secondary-50;
+  @apply bg-zinc-500/25 dark:bg-zinc-500/30 dark:before:text-zinc-50;
 }
 
 trix-toolbar .trix-dialog__link-fields .trix-button-group {
@@ -72,11 +72,11 @@ trix-toolbar .trix-dialog {
 }
 
 trix-toolbar .trix-input--dialog {
-  @apply px-3 py-1 text-sm border border-zinc-300 shadow-inner bg-white font-normal placeholder:text-zinc-500 rounded block w-full focus:outline-none focus:ring-4 pr-32 focus:ring-secondary-50 focus:border-secondary-500 text-zinc-900 focus:shadow-none dark:border-zinc-600/70 dark:placeholder:text-zinc-400 dark:focus:ring-secondary-500/30 dark:focus:border-secondary-500/50 dark:bg-zinc-800 dark:text-white !important;
+  @apply px-3 py-1 text-sm border border-zinc-300 shadow-inner bg-white font-normal placeholder:text-zinc-500 rounded block w-full focus:outline-none focus:ring-4 pr-32 focus:ring-zinc-50 focus:border-zinc-500 text-zinc-900 focus:shadow-none dark:border-zinc-600/70 dark:placeholder:text-zinc-400 dark:focus:ring-zinc-500/30 dark:focus:border-zinc-500/50 dark:bg-zinc-800 dark:text-white !important;
 }
 
 trix-toolbar .trix-button.trix-button--dialog {
-  @apply border-zinc-300 bg-white dark:bg-zinc-900 dark:text-zinc-100 dark:focus:ring-secondary-500/30 dark:hover:bg-zinc-800/50 text-sm text-zinc-800 px-2 py-1 focus:ring-4 focus:ring-secondary-50 focus:border-secondary-500 hover:bg-zinc-50/50 shadow-sm font-medium dark:border-zinc-600 !important;
+  @apply border-zinc-300 bg-white dark:bg-zinc-900 dark:text-zinc-100 dark:focus:ring-zinc-500/30 dark:hover:bg-zinc-800/50 text-sm text-zinc-800 px-2 py-1 focus:ring-4 focus:ring-zinc-50 focus:border-zinc-500 hover:bg-zinc-50/50 shadow-sm font-medium dark:border-zinc-600 !important;
   border: 1px;
   border-style: solid;
 
@@ -91,7 +91,7 @@ trix-toolbar .trix-button.trix-button--dialog {
 
 /* prose style content */
 trix-editor {
-  @apply rounded border border-zinc-300 focus:ring-4 focus:ring-secondary-50 focus:border-secondary-500 focus-within:ring-secondary-50 focus-within:border-secondary-500 focus:outline-none bg-white shadow-inner p-3 text-base dark:bg-zinc-800 dark:text-white dark:focus:ring-secondary-500/20 dark:border-zinc-700 !important;
+  @apply rounded border border-zinc-300 focus:ring-4 focus:ring-zinc-50 focus:border-zinc-500 focus-within:ring-zinc-50 focus-within:border-zinc-500 focus:outline-none bg-white shadow-inner p-3 text-base dark:bg-zinc-800 dark:text-white dark:focus:ring-zinc-500/20 dark:border-zinc-700 !important;
 }
 
 trix-editor,
