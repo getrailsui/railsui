@@ -8,7 +8,6 @@ module Railsui
   autoload :Themes, "railsui/themes"
   autoload :ThemeHelper, "railsui/theme_helper"
   autoload :ThemeSetup, "railsui/theme_setup"
-  autoload :UserSetup, "railsui/user_setup"
 
   mattr_accessor :config
   @@config = Railsui::Configuration.new
@@ -26,7 +25,16 @@ module Railsui
   end
 
   def self.build_css
-    run_command "yarn build:css"
+    if File.exist?("#{Rails.root}/package.json")
+      package_json = JSON.parse(File.read("#{Rails.root}/package.json"))
+      if package_json["scripts"] && package_json["scripts"]["build:css"]
+        run_command "yarn build:css"
+      else
+        puts "'build:css' script not found in package.json, skipping"
+      end
+    else
+      puts "package.json not found in the application root, skipping"
+    end
   end
 
   def self.theme_logo_url

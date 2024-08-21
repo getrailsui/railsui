@@ -157,31 +157,6 @@
   <%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%%= render "rui/shared/error_messages", resource: resource %>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-4 items-end pb-6">
-      <div>
-        <%%= f.label :name, class: "form-label" %>
-        <%%= f.email_field :name, class: "form-input" %>
-      </div>
-
-      <div>
-        <div class="flex items-center">
-          <%% if f.object.avatar.attached? %>
-            <%%= image_tag f.object.avatar, class: "size-14 rounded-full object-cover border-2 border-slate-200 pointer-events-none select-none" %>
-          <%% else %>
-            <div class="size-14 flex items-center justify-center rounded-full bg-slate-300/50 pointer-events-none select-none border-2 border-slate-200">
-              <%%= icon "user", class: "size-6 text-white" %>
-            </div>
-          <%% end %>
-
-          <div class="flex-1 pl-4">
-            <%%= f.label :avatar, class: "block" do %>
-              <%%= f.file_field :avatar, class: "form-file" %>
-            <%% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="py-10 mt-6 border-t border-slate-200 dark:border-slate-700">
       <h2 class="font-normal text-lg text-slate-700 dark:text-slate-200 mb-2">Personal details</h2>
       <p class="text-sm text-slate-600 dark:text-slate-400">This information will not be displayed publically.</p>
@@ -242,20 +217,6 @@
     %p.text-sm.text-slate-600.dark:text-slate-400 This information will often be displayed publically.
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     = render "rui/shared/error_messages", resource: resource
-    .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-end.pb-6
-      %div
-        = f.label :name, class: "form-label"
-        = f.email_field :name, class: "form-input"
-      %div
-        .flex.items-center
-          - if f.object.avatar.attached?
-            = image_tag f.object.avatar, class: "size-14 rounded-full object-cover border-2 border-slate-200 pointer-events-none select-none"
-          - else
-            .w-14.h-14.flex.items-center.justify-center.rounded-full.pointer-events-none.select-none.border-2.border-slate-200{class: "bg-slate-300/50"}
-              = icon "user", class: "size-6 text-white"
-          .flex-1.pl-4
-            = f.label :avatar, class: "block" do
-              = f.file_field :avatar, class: "form-file"
     .py-10.mt-6.border-t.border-slate-200.dark:border-slate-700
       %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Personal details
       %p.text-sm.text-slate-600.dark:text-slate-400 This information will not be displayed publically.

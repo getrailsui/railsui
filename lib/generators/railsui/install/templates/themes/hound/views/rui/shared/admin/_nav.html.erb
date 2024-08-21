@@ -122,26 +122,24 @@
 
           <li>
             <%= link_to rui_settings_path, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-              <%= icon "cog-6-tooth", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= icon "cog-6-tooth", class: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               <span>Settings</span>
             <% end %>
           </li>
 
           <li>
             <%= link_to rui_billing_path, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-              <%= icon "banknotes", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= icon "banknotes", class: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               <span>Billing</span>
             <% end %>
           </li>
 
-          <% if user_signed_in?%>
-            <li>
-              <%= button_to destroy_user_session_path, method: :delete, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-                <%= icon "arrow-right-on-rectangle", class:  "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
-                <span>Sign out</span>
-              <% end %>
-            </li>
-          <% end %>
+          <li>
+            <%= button_to "#", method: :delete, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
+              <%= icon "arrow-right-on-rectangle", class: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <span>Sign out</span>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

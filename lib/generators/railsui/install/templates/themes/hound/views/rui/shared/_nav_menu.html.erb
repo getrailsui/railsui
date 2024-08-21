@@ -48,33 +48,24 @@
 
         <nav role="Secondary navigation">
           <ul class="lg:flex flex-wrap items-center lg:justify-center justify-between lg:space-x-4">
-            <% if user_signed_in? %>
-              <li class="lg:mt-0 mt-4 flex flex-col items-center relative" data-controller="railsui-dropdown">
-                <button class="group" type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
-                  <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), alt: "current profile photo", class: "rounded-full lg:w-10 w-12 lg:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" %>
-                </button>
+            <li class="lg:mt-0 mt-4 flex flex-col items-center relative" data-controller="railsui-dropdown">
+              <button class="group" type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+                <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), alt: "current profile photo", class: "rounded-full lg:w-10 w-12 lg:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" %>
+              </button>
 
-                <div class="hidden transition transform origin-to-right lg:absolute right-0 top-10 bg-white rounded-lg lg:shadow-xl lg:shadow-slate-900/10 lg:border border-slate-200 lg:min-w-[200px] z-50 py-1 divide-y lg:w-auto w-full lg:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
-              data-transition-enter-from="opacity-0 scale-95"
-              data-transition-enter-to="opacity-100 scale-100"
-              data-transition-leave-from="opacity-100 scale-100"
-              data-transition-leave-to="opacity-0 scale-95">
-                  <div role="none">
-                    <%= link_to "Edit account", edit_user_registration_path, class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block", data: { turbo: false } %>
-                  </div>
-                  <div role="none">
-                    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block w-full lg:!text-left !text-center", data: { turbo: false  } %>
-                  </div>
+              <div class="hidden transition transform origin-to-right lg:absolute right-0 top-10 bg-white rounded-lg lg:shadow-xl lg:shadow-slate-900/10 lg:border border-slate-200 lg:min-w-[200px] z-50 py-1 divide-y lg:w-auto w-full lg:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
+            data-transition-enter-from="opacity-0 scale-95"
+            data-transition-enter-to="opacity-100 scale-100"
+            data-transition-leave-from="opacity-100 scale-100"
+            data-transition-leave-to="opacity-0 scale-95">
+                <div role="none">
+                  <%= link_to "Edit account", "#", class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block", data: { turbo: false } %>
                 </div>
-              </li>
-            <% else %>
-              <li class="w-full lg:w-auto lg:mb-0 col-span-2 mb-2">
-                <%= link_to "Sign in", new_user_session_path, class: "btn btn-transparent lg:w-auto w-full", data: { turbo: false } %>
-              </li>
-              <li class="lg:pl-3 w-full lg:w-auto col-span-2">
-                <%= link_to "Sign up", new_user_registration_path, class: "btn btn-dark lg:w-auto w-full", data: { turbo: false } %>
-              </li>
-            <% end %>
+                <div role="none">
+                  <%= button_to "Sign out", "#", method: :delete, class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block w-full lg:!text-left !text-center", data: { turbo: false  } %>
+                </div>
+              </div>
+            </li>
           </ul>
         </nav>
       </div>

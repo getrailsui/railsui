@@ -228,7 +228,7 @@
         <nav role="navigation" class="overflow-y-hidden overflow-x-auto snap-x flex">
 
           <a class="py-4 px-4 border-b border-primary-500 inline-block bg-white whitespace-nowrap dark:bg-zinc-900 text-primary-500"
-        href="/users/edit">Profile</a>
+        href="#">Profile</a>
 
         </nav>
       </div>
@@ -243,36 +243,6 @@
           </h2>
           <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
             <p>Edit your profile details.</p>
-          </div>
-
-          <!-- Avatar -->
-          <div class="form-group">
-            <label class="form-label" for="user_avatar">Avatar</label>
-
-            <div class="flex items-center space-x-3">
-              <div
-            class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" aria-hidden="true" class="w-6 h-6 text-zinc-500" role="img"
-              aria-labelledby="accnrz81yjvy491sklpfcjjf3m8wzkve">
-                  <title id="accnrz81yjvy491sklpfcjjf3m8wzkve">User</title>
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z">
-                  </path>
-                </svg>
-
-              </div>
-
-              <label class="block" for="user_avatar">
-                <input class="form-file" type="file" name="user[avatar]" id="user_avatar">
-              </label>
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="user_name">Name</label>
-            <input class="form-input" type="text" value="John Doe" name="user[name]" id="user_name">
           </div>
 
           <!-- Email -->
@@ -435,29 +405,6 @@ bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></
   <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
     <p>Edit your profile details.</p>
   </div>
-
-  <div class="form-group">
-    <%%= f.label :avatar, class: "form-label" %>
-
-    <div class="flex items-center space-x-3">
-      <%% if f.object.avatar.attached? %>
-      <%%= image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none" %>
-      <%% else %>
-      <div class="w-14 h-14 flex items-center justify-center rounded-full bg-white border border-zinc-200 pointer-events-none select-none shadow-sm">
-        <%%= icon "user", class: "w-6 h-6 text-zinc-500" %>
-      </div>
-      <%% end %>
-
-      <%%= f.label :avatar, class: "block" do %>
-        <%%= f.file_field :avatar, class: "form-file" %>
-        <%% end %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%%= f.label :name, class: "form-label" %>
-      <%%= f.text_field :name, class: "form-input" %>
-    </div>
 
     <!-- Email -->
     <div class="form-group">

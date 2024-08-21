@@ -13,11 +13,7 @@
                 end %>
 
   <div class="relative z-20">
-    <% if user_signed_in? %>
-      <h2 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight text-center"><%= "#{greeting}, #{current_user.first_name}" %></h2>
-    <% else %>
-      <h2 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight text-center"><%= "#{greeting}" %></h2>
-    <% end %>
+    <h2 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight text-center"><%= "#{greeting}" %>, John</h2>
     <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Here is what's happening today
     </p>
 

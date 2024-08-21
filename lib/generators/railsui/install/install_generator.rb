@@ -1,11 +1,9 @@
 require "railsui/theme_setup"
-require "railsui/user_setup"
 
 module Railsui
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include Railsui::ThemeSetup
-      include Railsui::UserSetup
 
       source_root File.expand_path("templates", __dir__)
 
@@ -27,60 +25,59 @@ module Railsui
         config = Railsui::Configuration.load!
 
         @theme = Railsui.config.theme
-        say "🔥 Installing #{@theme.humanize} theme."
 
-        # Add engine routes
-        # Add a GUI for easier theme configuration
-        copy_railsui_routes
+        if File.exist?("#{Rails.root}/config/importmap.rb")
+          say "❌ Detected importmaps which is not supported by Rails UI. For best results, please use another bundling solution from jsbundling-rails (esbuild, bun, webpack) before installing", :yellow
+        else
+          say "🔥 Installing #{@theme.humanize} theme."
 
-        # gems
-        install_gems
+          # Add engine routes
+          # Add a GUI for easier theme configuration
+          copy_railsui_routes
 
-        # add users
-        setup_users
-        add_devise_email_previews(@theme)
-        copy_railsui_devise_views(@theme)
+          # gems
+          install_gems
 
-        # action_text
-        # Needed for the rich text editor
-        install_action_text
+          # action_text
+          # Needed for the rich text editor
+          install_action_text
 
-        # mailers
-        update_application_mailer
-        update_railsui_mailer_layout(@theme)
-        generate_sample_mailers(@theme)
+          # mailers
+          update_application_mailer
+          update_railsui_mailer_layout(@theme)
+          generate_sample_mailers(@theme)
 
-        # rails ui deps
-        install_theme_dependencies(@theme)
-        setup_stimulus(@theme)
+          # rails ui deps
+          install_theme_dependencies(@theme)
+          setup_stimulus(@theme)
 
-        # themed assets
-        copy_theme_javascript(@theme)
-        copy_theme_stylesheets(@theme)
+          # themed assets
+          copy_theme_javascript(@theme)
+          copy_theme_stylesheets(@theme)
 
-        # view related
-        copy_railsui_head(@theme)
-        copy_railsui_launcher(@theme)
-        copy_railsui_shared_directory(@theme)
+          # view related
+          copy_railsui_head(@theme)
+          copy_railsui_launcher(@theme)
+          copy_railsui_shared_directory(@theme)
 
-        # tailwind related
-        update_tailwind_config(@theme)
-        # Each theme requires unique body classes. Instead of blowing away the layout, we'll just add the classes to the config.
-        update_body_classes
+          # tailwind related
+          update_tailwind_config(@theme)
+          # Each theme requires unique body classes. Instead of blowing away the layout, we'll just add the classes to the config.
+          update_body_classes
 
-        # cleanup
-        remove_action_text_defaults
+          # cleanup
+          remove_action_text_defaults
 
-        # Copy the pages related files.
-        copy_railsui_pages_routes
-        copy_railsui_page_controller(@theme)
-        copy_railsui_images(@theme)
-        copy_railsui_pages(@theme)
+          # Copy the pages related files.
+          copy_railsui_pages_routes
+          copy_railsui_page_controller(@theme)
+          copy_railsui_images(@theme)
+          copy_railsui_pages(@theme)
 
 
-        rails_command "db:migrate"
+          rails_command "db:migrate"
 
-        config.save
+          config.save
 say "
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
@@ -106,9 +103,10 @@ MMMMMMMMMNxldk0XNWMMMMMWNKkl,.  .lKWMMMMMXo. ,xNMMMMMMMMMMMM
 MMMMMMMMMWWMMMMMMMMMMMMMMMMMW0kkKWMMMMMMMMWKONMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 "
-say "✅ Install complete", :green
-say "--"
-say "📌 Tip: To change your theme options modify your config/railsui.yml file or use the Rails UI configuration form. Read the docs at https://railsui.com/docs for available options."
+          say "✅ Install complete", :green
+          say "--"
+          say "📌 Tip: To change your theme options modify your config/railsui.yml file or use the Rails UI configuration form. Read the docs at https://railsui.com/docs for available options."
+        end
       end
     end
   end

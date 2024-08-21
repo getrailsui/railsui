@@ -1,19 +1,14 @@
 # frozen_string_literal: true
 
 require 'fileutils'
-require "railsui/user_setup"
 
 module Railsui
   module ThemeSetup
-    include Railsui::UserSetup
-
     # gems
     def install_gems
       gem "railsui_icon"
       run "rails g railsui_icon:install"
       gem "meta-tags"
-      gem "devise"
-      gem "name_of_person"
     end
 
     # Assets

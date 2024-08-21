@@ -2,7 +2,7 @@
   <div class="md:flex items-center md:space-x-4 md:flex-1">
     <div class="md:flex items-center justify-between w-full md:space-x-3">
       <div class="flex items-center justify-between md:w-auto w-full">
-        <%= link_to (defined?(rui_dashboard_path) ? rui_dashboard_path : "#") do %>
+        <%= link_to rui_dashboard_path do %>
           <h1>
             <%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
             <span class="sr-only">Shepherd</span>
@@ -26,62 +26,49 @@
             <div class="flex-1 md:flex items-center">
               <%= render "rui/shared/admin/nav_links" %>
             </div>
+            <%= render "rui/shared/notifications" %>
+            <li>
+              <div data-controller="railsui-dropdown" class="md:flex relative">
+                <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
+                  data-railsui-dropdown-target="trigger" class="rounded-full sm:size-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
+                  focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
+                  dark:focus:border-zinc-300/90">
+                  <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "sm:size-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none", alt: "Shepherd user" %>
+                </button>
 
-            <% if user_signed_in? %>
-              <%= render "rui/shared/notifications" %>
-              <li>
-                <div data-controller="railsui-dropdown" class="md:flex relative">
-                  <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
-                    data-railsui-dropdown-target="trigger" class="rounded-full sm:size-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
-                    focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
-                    dark:focus:border-zinc-300/90">
+                <ul data-railsui-dropdown-target="menu"
+                  class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                  data-transition-enter-active="transition ease-out duration-300"
+                  data-transition-enter-from="transform opacity-0 scale-95"
+                  data-transition-enter-to="transform opacity-100 scale-100"
+                  data-transition-leave-active="transition ease-in duration-300"
+                  data-transition-leave-from="transform opacity-100 scale-100"
+                  data-transition-leave-to="transform opacity-0 scale-95">
 
-                    <% if current_user.avatar.attached? %>
-                      <%= image_tag current_user.avatar, class: "sm:size-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
-                    <% else %>
-                      <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "sm:size-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none", alt: "Shepherd user" %>
-                    <% end %>
-                  </button>
+                  <li>
+                    <%= link_to "Inbox", rui_inbox_path, class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                  </li>
 
-                  <ul data-railsui-dropdown-target="menu"
-                    class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
-                    data-transition-enter-active="transition ease-out duration-300"
-                    data-transition-enter-from="transform opacity-0 scale-95"
-                    data-transition-enter-to="transform opacity-100 scale-100"
-                    data-transition-leave-active="transition ease-in duration-300"
-                    data-transition-leave-from="transform opacity-100 scale-100"
-                    data-transition-leave-to="transform opacity-0 scale-95">
+                  <li>
+                    <%= link_to "Manage properties", rui_properties_path, class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                  </li>
 
-                    <li>
-                      <%= link_to "Inbox", (defined?(rui_inbox_path) ? rui_inbox_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
-                    </li>
+                  <li>
+                    <%= link_to "Add booking", rui_new_booking_path, class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                  </li>
 
-                    <li>
-                      <%= link_to "Manage properties", (defined?(rui_properties_path) ? rui_properties_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
-                    </li>
+                  <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
+                  <li>
+                    <%= link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm block" %>
+                  </li>
 
-                    <li>
-                      <%= link_to "Add booking", (defined?(rui_new_booking_path) ? rui_new_booking_path : "#"), class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
-                    </li>
-
-                    <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
-                    <li>
-                      <%= link_to "Account", (defined?(edit_user_registration_path) ? edit_user_registration_path : "#"), class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm block" %>
-                    </li>
-
-                    <li>
-                      <%= button_to "Sign out",(defined?(destroy_user_session_path) ? destroy_user_session_path : "#"), method: :delete, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm text-left block" %>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            <% else %>
-              <div class="md:flex items-center gap-3">
-                <%= link_to "Sign in", new_user_session_path, class: "btn btn-transparent" %>
-
-                <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+                  <li>
+                    <%= button_to "Sign out", "#", method: :delete, class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light md:text-sm text-left block" %>
+                  </li>
+                </ul>
               </div>
-            <% end %>
+            </li>
+
           </ul>
         </nav>
       </div>

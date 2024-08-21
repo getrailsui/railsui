@@ -26,10 +26,6 @@ module Railsui
         # view related
         copy_railsui_shared_directory(@config.theme)
 
-        # devise stuff
-        update_devise_mailer_sender
-        copy_railsui_devise_views(@config.theme)
-
         # tailwind related
         update_tailwind_preset(@config.theme)
 

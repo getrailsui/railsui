@@ -61,10 +61,10 @@
               data-transition-leave-from="opacity-100 scale-100"
               data-transition-leave-to="opacity-0 scale-95">
                   <div role="none">
-                    <%= link_to "Edit account", edit_user_registration_path, class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block", data: { turbo: false } %>
+                    <%= link_to "Edit account", "#", class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block", data: { turbo: false } %>
                   </div>
                   <div role="none">
-                    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block w-full lg:!text-left !text-center", data: { turbo: false  } %>
+                    <%= button_to "Sign out", "#", method: :delete, class: "px-4 py-2 lg:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block w-full lg:!text-left !text-center", data: { turbo: false  } %>
                   </div>
                 </div>
               </li>
