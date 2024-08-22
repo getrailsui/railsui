@@ -198,5 +198,21 @@ module Railsui
     def system_nav_item(label:, path:)
       render "railsui/shared/system_nav_item", label: label, path: path
     end
+
+    def rui_badge(label, variant: :blue)
+      variant_class = case variant
+        when :blue
+          "bg-blue-500 text-white"
+        when :green
+          "bg-green-500 text-white"
+        when :red
+          "bg-red-500 text-white"
+        when :yellow
+          "bg-yellow-500 text-black"
+        when :gray
+          "bg-neutral-200 text-neutral-700"
+      end
+      content_tag :div, label, class: "#{variant_class} rounded-full px-2 py-1 text-xs font-semibold inline-flex my-0"
+    end
   end
 end

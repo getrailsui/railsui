@@ -138,7 +138,6 @@ For all Rails UI themes and components, I leverage [heroicons](https://heroicons
 #### Email Templates
 
 - Include a custom mailer layout and helpers for easy email design and coding.
-- Provide pre-built email templates (minimal, promotional, transactional) and Devise email support.
 
 </details>
 

@@ -1,0 +1,121 @@
+<%= render layout: example, locals: { heading: "Devise: Sign In", section: "Authentication" } do %>
+<div class="rounded-xl border-zinc-200 dark:border-zinc-600/80 overflow-hidden border dark:bg-zinc-900">
+ <div class="md:flex grid flex-wrap md:w-full md:h-[calc(100vh-60px)]">
+  <div class="md:w-1/2 flex items-center justify-center p-10 md:order-1 order-2">
+    <div class="md:w-[400px] w-full">
+      <a class="group inline-block mb-6" href="#" data-controller="prevent" data-action="click->prevent#prevent">
+        <!-- Shepherd logo -->
+        <svg class="group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 w-10 h-10 text-primary-500 fill-current" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M42 0C45.3137 0 48 2.68629 48 6V42C48 45.3137 45.3137 48 42 48H6C2.68629 48 0 45.3137 0 42V6C0 2.68629 2.68629 0 6 0H42ZM21.5033 40.9481C21.7923 40.9918 22.026 40.7078 22.026 40.4156V34.1876C22.026 31.1727 18.7622 29.2883 16.1511 30.7958C15.207 31.3409 13.9997 31.0174 13.4545 30.0732C12.9094 29.1291 13.2329 27.9218 14.1771 27.3767C16.8164 25.8529 16.8164 22.0433 14.1771 20.5195C13.2329 19.9744 12.9094 18.7671 13.4545 17.8229C13.9997 16.8788 15.207 16.5553 16.1511 17.1004C18.7622 18.6079 22.026 16.7235 22.026 13.7085V12.1819C22.026 9.30521 19.4534 7.03474 16.8446 8.24694C10.9466 10.9875 6.85714 16.9642 6.85714 23.8961C6.85714 32.5373 13.2121 39.6941 21.5033 40.9481ZM41.3507 23.8961C41.3507 32.6033 34.8983 39.8034 26.5142 40.9758C26.2134 41.0178 25.974 40.7193 25.974 40.4156V34.0722C25.974 31.0759 29.2176 29.2032 31.8125 30.7013C32.7567 31.2464 33.964 30.9229 34.5091 29.9788C35.0542 29.0346 34.7307 27.8273 33.7865 27.2822C31.2199 25.8004 31.2199 22.0958 33.7865 20.614C34.7307 20.0689 35.0542 18.8616 34.5091 17.9174C33.964 16.9732 32.7567 16.6497 31.8125 17.1949C29.2176 18.693 25.974 16.8203 25.974 13.824V12.1564C25.974 9.26895 28.5381 6.9748 31.1714 8.15925C37.1723 10.8585 41.3507 16.8893 41.3507 23.8961Z"></path></svg></a>
+
+  <h1 class="h2 mb-6">Sign in</h1>
+
+  <form data-turbo="false" class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="#" autocomplete="off">
+
+    <div class="form-group">
+      <label class="form-label" for="user_email">Email</label>
+      <input autofocus="autofocus" autocomplete="email" class="form-input" pattern="[^@ ]+@[^@ ]+.[^@ ]+" title="Invalid email address" type="email" value="" name="user[email]" id="user_email">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="user_password">Password</label>
+      <input autocomplete="current-password" class="form-input" type="password" name="user[password]" id="user_password">
+    </div>
+
+    <div class="flex flex-wrap justify-between items-center form-group">
+      <div class="flex items-center">
+        <input name="user[remember_me]" type="hidden" value="0" autocomplete="off"><input class="form-input-checkbox" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+        <label class="form-check-label ml-2" for="user_remember_me">Remember me</label>
+      </div>
+      <a class="btn-link text-sm" href="#" data-controller="prevent" data-action="click->prevent#prevent">Forgot your password?</a>
+    </div>
+
+    <input type="submit" name="commit" value="Sign in" class="btn btn-primary hover:cursor-pointer w-full" data-disable-with="Sign in" data-controller="prevent" data-action="click->prevent#prevent">
+
+    <div class="prose prose-sm text-center prose-zinc mt-6 dark:prose-invert">
+      <p>Don't have an account? <a class="btn-link" href="#" data-controller="prevent" data-action="click->prevent#prevent">Sign up</a>.</p>
+    </div>
+    </form>
+    </div>
+  </div>
+  <div class="md:w-1/2 md:order-2 order-1 bg-zinc-900 overflow-hidden">
+    <%= image_tag ["themes/shepherd/auth-cabin.jpg", "themes/shepherd/auth-desert.jpg"].sample, class: "object-cover md:h-screen h-[140px] w-full animate-fadeIn" %>
+  </div>
+</div>
+</div>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/sessions/new.html.erb -->
+<%%= render "devise/auth_layout" do %>
+  <h1 class="h2 mb-6">Sign in</h1>
+
+  <%%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%%= render "rui/shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%%= f.label :email, class: "form-label" %>
+      <%%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address" %>
+    </div>
+
+    <div class="form-group">
+      <%%= f.label :password, class: "form-label" %>
+      <%%= f.password_field :password, autocomplete: "current-password", class: "form-input" %>
+    </div>
+
+    <div class="flex flex-wrap justify-between items-center form-group">
+      <%% if devise_mapping.rememberable? %>
+        <div class="flex items-center">
+          <%%= f.check_box :remember_me, class: "form-input-checkbox" %>
+          <%%= f.label :remember_me, class: "form-check-label ml-2" %>
+        </div>
+      <%% end %>
+
+      <%% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn-link text-sm" %>
+      <%% end %>
+    </div>
+
+    <%%= f.submit "Sign in", class: "btn btn-primary hover:cursor-pointer w-full" %>
+
+    <div class="prose prose-sm text-center prose-zinc mt-6 dark:prose-invert">
+      <p>Don't have an account? <%%= link_to "Sign up", new_registration_path(resource_name), class: "btn-link" %>.</p>
+    </div>
+  <%% end %>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/devise/sessions/new.html.erb
+= render "devise/auth_layout" do
+  %h1.h3.mb-6 Sign in
+  = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
+    = render "rui/shared/error_messages", resource: resource
+    .form-group
+      = f.label :email, class: "form-label"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address"
+    .form-group
+      = f.label :password, class: "form-label"
+      = f.password_field :password, autocomplete: "current-password", class: "form-input"
+    .flex.flex-wrap.justify-between.items-center.form-group
+      - if devise_mapping.rememberable?
+        .flex.items-center
+          = f.check_box :remember_me, class: "form-input-checkbox"
+          = f.label :remember_me, class: "form-check-label ml-2"
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        = link_to "Forgot your password?", new_password_path(resource_name), class: "btn-link text-sm"
+    = f.submit "Sign in", class: "btn btn-primary hover:cursor-pointer w-full"
+    .prose.prose-sm.text-center.prose-zinc.mt-6.dark:prose-invert
+      %p
+        Don't have an account? #{link_to "Sign up", new_registration_path(resource_name), class: "btn-link"}.
+<% end %>
+
+<%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+
+<% end %>
+<% end %>
+
+<%= system_pagination(prev_path: systems_authentication_devise_signup_path, prev_text: "Sign up", next_path: systems_authentication_devise_change_password_path, next_text: "Change password") %>

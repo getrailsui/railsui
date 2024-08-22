@@ -72,25 +72,58 @@
     </li>
 
     <li>
-      <%= nav_link_to systems_authentication_overview_path, inactive_class:"font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block hover:bg-neutral-100/80 dark:hover:bg-neutral-800/90 border-l-2 border-transparent", active_class: "transition-colors duration-200 ease-linear relative border-l-2 border-neutral-800 text-neutral-900 bg-neutral-100/80 font-medium dark:text-white dark:border-neutral-50 dark:bg-neutral-800/90 px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block" do %>
-        <span>Authentication</span>
-      <% end %>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Authentication</p>
 
-      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+      <%= system_nav_item(label: "Overview", path:  systems_authentication_overview_path) %>
 
-        <%= system_nav_item(label: "Sign up", path:  systems_authentication_signup_path) %>
+      <ul class="ml-3">
+        <details class="marker:content-[''] group" <%= "open" if controller_name == "devise" %>>
+          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between">
+            <p class="font-medium">Devise</p>
+            <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
+            <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>
+          </summary>
+          <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+            <%= system_nav_item(label: "Overview", path:  systems_authentication_devise_overview_path) %>
 
-        <%= system_nav_item(label: "Sign in", path:  systems_authentication_signin_path) %>
+            <%= system_nav_item(label: "Sign up", path:  systems_authentication_devise_signup_path) %>
 
-        <%= system_nav_item(label: "Change password", path:  systems_authentication_change_password_path) %>
+            <%= system_nav_item(label: "Sign in", path:  systems_authentication_devise_signin_path) %>
 
-        <%= system_nav_item(label: "Reset password", path:  systems_authentication_reset_password_path) %>
+            <%= system_nav_item(label: "Change password", path:  systems_authentication_devise_change_password_path) %>
 
-        <%= system_nav_item(label: "Confirmation", path:  systems_authentication_confirmation_path) %>
+            <%= system_nav_item(label: "Reset password", path: systems_authentication_devise_reset_password_path) %>
 
-        <%= system_nav_item(label: "Edit account", path:  systems_authentication_edit_path) %>
+            <%= system_nav_item(label: "Confirmation", path:  systems_authentication_devise_confirmation_path) %>
 
-        <%= system_nav_item(label: "Unlock", path:  systems_authentication_unlocks_path) %>
+            <%= system_nav_item(label: "Edit account", path:  systems_authentication_devise_edit_path) %>
+
+            <%= system_nav_item(label: "Unlock", path:  systems_authentication_devise_unlocks_path) %>
+          </ul>
+        </details>
+
+        <details class="marker:content-[''] group" <%= "open" if controller_name == "static" %>>
+          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between">
+            <p class="font-medium">Static</p>
+            <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
+            <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>
+          </summary>
+          <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+            <%= system_nav_item(label: "Sign up", path:  systems_authentication_static_signup_path) %>
+
+            <%= system_nav_item(label: "Sign in", path:  systems_authentication_static_signin_path) %>
+
+            <%= system_nav_item(label: "Change password", path:  systems_authentication_static_change_password_path) %>
+
+            <%= system_nav_item(label: "Reset password", path: systems_authentication_static_reset_password_path) %>
+
+            <%= system_nav_item(label: "Confirmation", path:  systems_authentication_static_confirmation_path) %>
+
+            <%= system_nav_item(label: "Edit account", path:  systems_authentication_static_edit_path) %>
+
+            <%= system_nav_item(label: "Unlock", path:  systems_authentication_static_unlocks_path) %>
+          </ul>
+        </details>
       </ul>
     </li>
 

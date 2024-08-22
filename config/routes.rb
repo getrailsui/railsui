@@ -20,14 +20,29 @@ Railsui::Engine.routes.draw do
     get :scaffolds
 
     namespace :authentication do
-      get :confirmation
-      get :edit
       get :overview
-      get :change_password
-      get :reset_password
-      get :signin
-      get :signup
-      get :unlocks
+
+      namespace :devise do
+        get :confirmation
+        get :edit
+        get :overview
+        get :change_password
+        get :reset_password
+        get :signin
+        get :signup
+        get :unlocks
+      end
+
+      namespace :static do
+        get :confirmation
+        get :edit
+        get :overview
+        get :change_password
+        get :reset_password
+        get :signin
+        get :signup
+        get :unlocks
+      end
     end
 
     namespace :content do
