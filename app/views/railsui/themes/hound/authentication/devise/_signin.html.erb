@@ -78,7 +78,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/rui/devise/sessions/new.html.erb -->
+<!-- app/views/devise/sessions/new.html.erb -->
 <%% content_for :masthead do %>
   <div class="text-center">
     <h1 class="md:h3 h4 my-3">Sign in to your account</h1>
@@ -87,7 +87,7 @@
   <%%= render "rui/shared/error_messages", resource: resource %>
 <%% end %>
 
-<%%= render "rui/devise/auth_layout" do %>
+<%%= render "devise/auth_layout" do %>
   <%%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="form-group">
@@ -113,6 +113,7 @@
           <%%= f.label :remember_me, class: "form-check-label ml-2" %>
       </div>
       <%% end %>
+
       <%% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
         <%%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn-link text-sm" %>
       <%% end %>
@@ -125,14 +126,14 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-/ app/views/rui/devise/sessions/new.haml.erb
+/ app/views/devise/sessions/new.haml.erb
 - content_for :masthead do
   .text-center
     %h1.md:h3.h4.my-3 Sign in to your account
     %p.mb-6.text-slate-700.dark:text-slate-200
       Or #{link_to "sign up", new_registration_path(resource_name), class: "btn-link"} for an account
   = render "rui/shared/error_messages", resource: resource
-= render "rui/devise/auth_layout" do
+= render "devise/auth_layout" do
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-group
       = f.label :email, class: "form-label"

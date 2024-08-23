@@ -139,22 +139,16 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/rui/devise/registrations/edit.html.erb -->
+<!-- app/views/users/registrations/edit.html.erb -->
 <div class="max-w-4xl mx-auto px-4 my-10">
   <h1 class="h2">Account</h1>
-
-  <%% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div class="bg-blue-50/90 text-blue-700 border-l-4 border-blue-700 py-4 pr-4 pl-6 text-sm dark:bg-blue-50/10 dark:text-blue-50 dark:border-blue-400 mt-6">
-      <p class="text-blue-800 dark:text-blue-400 ">Currently waiting on confirmation for: <span class="font-semibold"><%%= resource.unconfirmed_email %></span></p>
-    </div>
-  <%% end %>
 
   <div class="my-6">
     <h2 class="font-normal text-lg text-slate-700 dark:text-slate-200 mb-2">Profile</h2>
     <p class="text-sm text-slate-600 dark:text-slate-400">This information will often be displayed publically.</p>
   </div>
 
-  <%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%%= form_with model: @user, method: :put do |f| %>
     <%%= render "rui/shared/error_messages", resource: resource %>
 
     <div class="py-10 mt-6 border-t border-slate-200 dark:border-slate-700">
@@ -198,24 +192,19 @@
   <%% end %>
 
   <div class="flex justify-end">
-    <%%= button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8" %>
+    <%%= button_to "Cancel account", "/users", data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8" %>
   </div>
 </div>
 <% end %>
 
 <% content_for :haml, flush: true do %>
-/ app/views/rui/devise/registrations/edit.haml.erb
+/ app/views/users/registrations/edit.html.erb
 .max-w-4xl.mx-auto.px-4.my-10
-  %h1.text-4xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Account
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    .text-blue-700.border-l-4.border-blue-700.py-4.pr-4.pl-6.text-sm.dark:text-blue-50.dark:border-blue-400.mt-6{class: "bg-blue-50/90 dark:bg-blue-50/10"}
-      %p.text-blue-800.dark:text-blue-400
-        Currently waiting on confirmation for:
-        %span.font-semibold= resource.unconfirmed_email
+  %h1.h2 Account
   .my-6
     %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Profile
     %p.text-sm.text-slate-600.dark:text-slate-400 This information will often be displayed publically.
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = form_with model: @user, method: :put do |f|
     = render "rui/shared/error_messages", resource: resource
     .py-10.mt-6.border-t.border-slate-200.dark:border-slate-700
       %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Personal details
@@ -244,7 +233,7 @@
       = f.submit "Update", class: "btn btn-primary"
       = link_to "Cancel", root_path, class: "btn btn-white", data: { turbo: false }
   .flex.justify-end
-    = button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8"
+    = button_to "Cancel account", "/users", data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8"
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
@@ -252,4 +241,4 @@
 <% end %>
 <% end %>
 
-<%= system_pagination(prev_path: systems_authentication_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_unlocks_path, next_text: "Unlock") %>
+<%= system_pagination(prev_path: systems_authentication_static_confirmation_path, prev_text: "Confirmation", next_path: systems_authentication_static_unlocks_path, next_text: "Unlock") %>

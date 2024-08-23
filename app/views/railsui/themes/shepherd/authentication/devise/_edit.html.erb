@@ -447,7 +447,7 @@ bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></
       <div class="relative">
         <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
         <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "x", custom_path: "railsui/social/x.svg", class: "w-5 h-5", variant: :solid %>
+          <%%= icon "x", custom_path: "/railsui/social/x.svg", class: "w-5 h-5", variant: :solid %>
         </span>
       </div>
     </div>
@@ -458,7 +458,7 @@ bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></
         <input type="text" id="user[facebook]" class="form-input w-full pl-14"
 placeholder="https://facebook.com/username">
         <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "facebook", custom_path: "railsui/social/facebook.svg", class:  "w-5 h-5 fill-current" %>
+          <%%= icon "facebook", custom_path: "/railsui/social/facebook.svg", class:  "w-5 h-5 fill-current" %>
         </span>
       </div>
     </div>
@@ -468,7 +468,7 @@ placeholder="https://facebook.com/username">
       <div class="relative">
         <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
         <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "github", custom_path: "railsui/social/github.svg", class: "w-5 h-5 fill-current" %>
+          <%%= icon "github", custom_path: "/railsui/social/github.svg", class: "w-5 h-5 fill-current" %>
         </span>
       </div>
     </div>
@@ -480,7 +480,7 @@ placeholder="https://facebook.com/username">
 placeholder="https://linkedin.com/in/username">
         <span
 class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "linkedin", custom_path: "railsui/social/linkedin.svg", class: "w-5 h-5 fill-current" %>
+          <%%= icon "linkedin", custom_path: "/railsui/social/linkedin.svg", class: "w-5 h-5 fill-current" %>
         </span>
       </div>
     </div>
@@ -556,25 +556,25 @@ class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-cent
         .relative
           %input.form-input.w-full.pl-14{id: "user[x]", placeholder: "https://x.com/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "x", custom_path: "railsui/social/x.svg", class: "w-5 h-5", variant: :solid
+            = icon "x", custom_path: "/railsui/social/x.svg", class: "w-5 h-5", variant: :solid
       .form-group
         %label.form-label.sr-only{for: "user[facebook]"} Facebook
         .relative
           %input.form-input.w-full.pl-14{id: "user[facebook]", placeholder: "https://facebook.com/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "facebook", custom_path: "railsui/social/facebook.svg", class:  "w-5 h-5 fill-current"
+            = icon "facebook", custom_path: "/railsui/social/facebook.svg", class:  "w-5 h-5 fill-current"
       .form-group
         %label.form-label.sr-only{for: "user[github]"} GitHub
         .relative
           %input.form-input.w-full.pl-14{id: "user[github]", placeholder: "https://github.com/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "github", custom_path: "railsui/social/github.svg", class: "w-5 h-5 fill-current"
+            = icon "github", custom_path: "/railsui/social/github.svg", class: "w-5 h-5 fill-current"
       .form-group
         %label.form-label.sr-only{for: "user[linkedin]"} LinkedIn
         .relative
           %input.form-input.w-full.pl-14{id: "user[linkedin]", placeholder: "https://linkedin.com/in/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "linkedin", custom_path: "railsui/social/linkedin.svg", class: "w-5 h-5 fill-current"
+            = icon "linkedin", custom_path: "/railsui/social/linkedin.svg", class: "w-5 h-5 fill-current"
       = f.submit "Save changes", class:"btn btn-primary"
 <% end %>
 

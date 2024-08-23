@@ -53,7 +53,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/rui/devise/confirmations/new.html.erb -->
+<!-- app/views/devise/confirmations/new.html.erb -->
 <%% content_for :masthead do %>
   <div class="text-center">
     <h1 class="h4 my-3">Resend confirmation instuctions</h1>
@@ -63,7 +63,7 @@
   <%%= render "rui/shared/error_messages", resource: resource %>
 <%% end %>
 
-<%%= render "rui/devise/auth_layout" do %>
+<%%= render "devise/auth_layout" do %>
   <%%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
 
     <div class="form-group">
@@ -81,7 +81,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-/ app/views/rui/devise/confirmations/new.haml.erb
+/ app/views/devise/confirmations/new.haml.erb
 - content_for :masthead do
   .text-center
     %h1.h4.my-3 Resend confirmation instuctions
@@ -90,7 +90,7 @@
       = succeed "You've" do
         %br.sm:block.hidden/
   = render "rui/shared/error_messages", resource: resource
-= render "rui/devise/auth_layout" do
+= render "devise/auth_layout" do
   = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
     .form-group
       = f.label :email, class: "form-label"

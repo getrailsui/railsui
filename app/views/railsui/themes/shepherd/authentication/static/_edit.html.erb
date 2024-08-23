@@ -374,37 +374,31 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/devise/registrations/edit.html.erb -->
+<!-- app/views/users/registrations/edit.html.erb -->
 <div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
-<div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
-bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+  <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
+  bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
-<div class="relative z-20">
-<h1 class="h2 text-center">Account</h1>
+  <div class="relative z-20">
+    <h1 class="h2 text-center">Account</h1>
 
-<p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one
-  convenient place.</p>
-</div>
+    <p class="font-light font-heading text-center py-4 text-zinc-700 dark:text-zinc-300">Manage everything in one convenient place.</p>
+  </div>
 </div>
 
 <div class="container mx-auto px-4 md:pb-16 pb-6 mb-24">
-<!-- Dynamic tabs relative to what pages are installed -->
-<%%= render "rui/shared/account/tabs" %>
+  <!-- Dynamic tabs relative to what pages are installed -->
+  <%%= render "rui/shared/account/tabs" %>
 
-<%% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-<div class="bg-blue-50/90 text-blue-700 border-l-4 border-blue-700 py-4 px-6 text-sm dark:bg-blue-50/10 dark:text-blue-50 dark:border-blue-400 rounded-r-xl rounded-l my-4">
-<p class="text-blue-800 dark:text-blue-400 font-normal font-heading">Currently waiting on confirmation for: <span class="font-medium"><%%= resource.unconfirmed_email %></span></p>
-</div>
-<%% end %>
+  <%%= form_with(model: @user, method: :put) do |f| %>
+  <div class="max-w-xl mx-auto">
+    <%%= render "rui/shared/error_messages", resource: f.object %>
 
-<%%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
-<div class="max-w-xl mx-auto">
-  <%%= render "rui/shared/error_messages", resource: resource %>
+    <h2 class="mt-6 mb-3 h3">Profile</h2>
 
-  <h2 class="mt-6 mb-3 h3">Profile</h2>
-  <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
-    <p>Edit your profile details.</p>
-  </div>
+    <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
+      <p>Edit your profile details.</p>
+    </div>
 
     <!-- Email -->
     <div class="form-group">
@@ -417,7 +411,7 @@ bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></
       <%%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
       <div class="flex justify-between items-center prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
         <%% if @minimum_password_length %>
-        <p><%%= @minimum_password_length %> characters minimum</p>
+         <p><%%= @minimum_password_length %> characters minimum</p>
         <%% end %>
         <p>Leave this blank if you don't want to change it</p>
       </div>
@@ -447,7 +441,7 @@ bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></
       <div class="relative">
         <input type="text" id="user[x]" class="form-input w-full pl-14" placeholder="https://x.com/username">
         <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "x", custom_path: "railsui/social/x.svg", class: "w-5 h-5", variant: :solid %>
+          <%%= icon "x", custom_path: "/railsui/social/x.svg", class: "w-5 h-5", variant: :solid %>
         </span>
       </div>
     </div>
@@ -455,10 +449,9 @@ bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></
     <div class="form-group">
       <label for="user[facebook]" class="form-label sr-only">Facebook</label>
       <div class="relative">
-        <input type="text" id="user[facebook]" class="form-input w-full pl-14"
-placeholder="https://facebook.com/username">
+        <input type="text" id="user[facebook]" class="form-input w-full pl-14" placeholder="https://facebook.com/username">
         <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "facebook", custom_path: "railsui/social/facebook.svg", class:  "w-5 h-5 fill-current" %>
+          <%%= icon "facebook", custom_path: "/railsui/social/facebook.svg", class:  "w-5 h-5 fill-current" %>
         </span>
       </div>
     </div>
@@ -468,7 +461,7 @@ placeholder="https://facebook.com/username">
       <div class="relative">
         <input type="text" id="user[github]" class="form-input w-full pl-14" placeholder="https://github.com/username">
         <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "github", custom_path: "railsui/social/github.svg", class: "w-5 h-5 fill-current" %>
+          <%%= icon "github", custom_path: "/railsui/social/github.svg", class: "w-5 h-5 fill-current" %>
         </span>
       </div>
     </div>
@@ -476,11 +469,9 @@ placeholder="https://facebook.com/username">
     <div class="form-group">
       <label for="user[linkedin]" class="form-label sr-only">LinkedIn</label>
       <div class="relative">
-        <input type="text" id="user[linkedin]" class="form-input w-full pl-14"
-placeholder="https://linkedin.com/in/username">
-        <span
-class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
-          <%%= icon "linkedin", custom_path: "railsui/social/linkedin.svg", class: "w-5 h-5 fill-current" %>
+        <input type="text" id="user[linkedin]" class="form-input w-full pl-14" placeholder="https://linkedin.com/in/username">
+        <span class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:border-zinc-600/80 dark:text-zinc-400">
+          <%%= icon "linkedin", custom_path: "/railsui/social/linkedin.svg", class: "w-5 h-5 fill-current" %>
         </span>
       </div>
     </div>
@@ -492,41 +483,21 @@ class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-cent
 <% end %>
 
 <% content_for :haml, flush: true do %>
-/ app/views/rui/devise/registrations/edit.html.erb
+/ app/views/users/registrations/edit.html.erb
 .relative.md:py-10.py-8.border-b{class: "min-h-[160px] border-zinc-200/80 dark:border-zinc-700/80"}
   .opacity-5.blur-4xl.absolute.inset-0.w-full.h-full.bg-gradient-to-r.from-white.z-0{class: "via-primary-500/40 via-[24.79%] to-[#177BB5]"}
   .relative.z-20
     %h1.h2.text-center Account
-    %p.font-light.font-heading.text-center.py-4.text-zinc-700.dark:text-zinc-300
-      Manage everything in one
-      convenient place.
+    %p.font-light.font-heading.text-center.py-4.text-zinc-700.dark:text-zinc-300 Manage everything in one convenient place.
 .container.mx-auto.px-4.md:pb-16.pb-6.mb-24
   / Dynamic tabs relative to what pages are installed
   = render "rui/shared/account/tabs"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    .text-blue-700.border-l-4.border-blue-700.py-4.px-6.text-sm.dark:text-blue-50.dark:border-blue-400.rounded-r-xl.rounded-l.my-4{class: "bg-blue-50/90 dark:bg-blue-50/10"}
-      %p.text-blue-800.dark:text-blue-400.font-normal.font-heading
-        Currently waiting on confirmation for:
-        %span.font-medium= resource.unconfirmed_email
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f|
+  = form_with(model: @user, method: :put) do |f|
     .max-w-xl.mx-auto
-      = render "rui/shared/error_messages", resource: resource
+      = render "rui/shared/error_messages", resource: f.object
       %h2.mt-6.mb-3.h3 Profile
       .prose.prose-zinc.mb-6.pb-3.dark:prose-invert
         %p Edit your profile details.
-      .form-group
-        = f.label :avatar, class: "form-label"
-        .flex.items-center.space-x-3
-          - if f.object.avatar.attached?
-            = image_tag f.object.avatar, class: "w-14 h-14 rounded-full object-cover border border-zinc-200 pointer-events-none select-none"
-          - else
-            .w-14.h-14.flex.items-center.justify-center.rounded-full.bg-white.border.border-zinc-200.pointer-events-none.select-none.shadow-sm
-              = icon "user", class: "w-6 h-6 text-zinc-500"
-          = f.label :avatar, class: "block" do
-            = f.file_field :avatar, class: "form-file"
-      .form-group
-        = f.label :name, class: "form-label"
-        = f.text_field :name, class: "form-input"
       / Email
       .form-group
         = f.label :email, class: "form-label form-label-required"
@@ -556,25 +527,25 @@ class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-cent
         .relative
           %input.form-input.w-full.pl-14{id: "user[x]", placeholder: "https://x.com/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "x", custom_path: "railsui/social/x.svg", class: "w-5 h-5", variant: :solid
+            = icon "x", custom_path: "/railsui/social/x.svg", class: "w-5 h-5", variant: :solid
       .form-group
         %label.form-label.sr-only{for: "user[facebook]"} Facebook
         .relative
           %input.form-input.w-full.pl-14{id: "user[facebook]", placeholder: "https://facebook.com/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "facebook", custom_path: "railsui/social/facebook.svg", class:  "w-5 h-5 fill-current"
+            = icon "facebook", custom_path: "/railsui/social/facebook.svg", class:  "w-5 h-5 fill-current"
       .form-group
         %label.form-label.sr-only{for: "user[github]"} GitHub
         .relative
           %input.form-input.w-full.pl-14{id: "user[github]", placeholder: "https://github.com/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "github", custom_path: "railsui/social/github.svg", class: "w-5 h-5 fill-current"
+            = icon "github", custom_path: "/railsui/social/github.svg", class: "w-5 h-5 fill-current"
       .form-group
         %label.form-label.sr-only{for: "user[linkedin]"} LinkedIn
         .relative
           %input.form-input.w-full.pl-14{id: "user[linkedin]", placeholder: "https://linkedin.com/in/username", type: "text"}/
           %span.w-12.bg-white.rounded-l-full.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] border-zinc-300/800 dark:border-zinc-600/80"}
-            = icon "linkedin", custom_path: "railsui/social/linkedin.svg", class: "w-5 h-5 fill-current"
+            = icon "linkedin", custom_path: "/railsui/social/linkedin.svg", class: "w-5 h-5 fill-current"
       = f.submit "Save changes", class:"btn btn-primary"
 <% end %>
 

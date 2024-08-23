@@ -4,7 +4,20 @@
 
     <p>In the version 3 of Rails UI, direct integration with <a href="https://rubygems.org/gems/devise/" target="_blank">Devise</a> was dropped in favor of a more flexible approach that is based on code snippets you copy and paste into your app.</p>
 
-    <p>If you use Devise, these snippets should give you a head start on all the views generated when running/having run <code>rails generate devise:views</code>.</p>
+    <p>If you use Devise, these snippets should give you a head start on all the views generated when running/having run <code>rails generate devise:views</code>. Not using Devise? Check out the <%= link_to "static version", systems_authentication_static_overview_path %>.</p>
+
+
+   <p>Here are the pages you'll find in the Devise authentication system:</p>
+
+    <ul>
+      <li><%= link_to("Sign up", systems_authentication_devise_signup_path) %></li>
+      <li><%= link_to("Sign in", systems_authentication_devise_signin_path) %></li>
+      <li><%= link_to("Change password", systems_authentication_devise_change_password_path) %></li>
+      <li><%= link_to("Reset password", path: systems_authentication_devise_reset_password_path) %></li>
+      <li><%= link_to("Confirmation", systems_authentication_devise_confirmation_path) %></li>
+      <li><%= link_to("Edit account", systems_authentication_devise_edit_path) %></li>
+      <li><%= link_to("Unlock", systems_authentication_devise_unlocks_path) %></li>
+    </ul>
   </div>
 </div>
 
@@ -12,7 +25,7 @@
 <div id="auth-global-layout" class="py-6">
   <div class="prose prose-neutral dark:prose-invert my-6 max-w-full">
     <h3>Main Layout</h3>
-    <p>Consider extracting this to a reusable partial. For the examples shown it's assumed you've added this partial in the <code>app/views/devise</code> directory.</p>
+    <p>Consider extracting the layout partial to a reusable partial. For the examples shown it's assumed you've added this partial in the <code>app/views/devise</code> directory.</p>
   </div>
 
 <% content_for :html, flush: true do %>
@@ -20,13 +33,13 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- Hound theme: app/views/devise/_auth_layout.html.erb -->
+<!-- app/views/devise/_auth_layout.html.erb -->
 <div class="sm:h-[calc(100vh_-_52px)] pt-10 sm:pt-0 flex flex-col items-center justify-center bg-cover bg-center px-4" style="background-image: url('<%%= asset_url('railsui/fusion.png') %>')" >
   <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
     <div>
       <div class="flex justify-center">
         <%%= link_to root_path do %>
-          <%%= image_tag "logo.svg", alt: "Hound logo", class: "w-10 h-auto" %>
+          <%= icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto" %>
         <%% end %>
       </div>
 
@@ -41,7 +54,7 @@
 
         <!--
         Add additional provider SVG icons in app/assets/images/railsui/omniauth as necessary.
-        Default options include: Google, LinkedIn, Twitter, Facebook.
+        Default options include: Google, LinkedIn, X, Facebook, GitHub, YouTube, Instagram.
 
         **You will need to install additional dependencies
         not included in Rails UI for omniauth support.**
@@ -52,7 +65,7 @@
           <%% resource_class.omniauth_providers.each do |provider| %>
             <div class="my-2">
             <%%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do %>
-              <%%= icon "#{provider.gsub(/\s+/, '').downcase}", "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5" %>
+              <%%= icon "#{provider.gsub(/\s+/, '').downcase}", custom_path: "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5" %>
               <span>"Sign in with <%%= OmniAuth::Utils.camelize(provider) %></span>
             <%% end %>
             </div>
@@ -75,7 +88,7 @@
     %div
       .flex.justify-center
         = link_to root_path do
-          = image_tag "logo.svg", alt: "Hound logo", class: "w-10 h-auto"
+          = icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto"
       .mt-6
         = yield :masthead
       .bg-white.shadow-sm.rounded-lg.p-8.border{class: "border-slate-300/60"}
@@ -87,7 +100,7 @@
               = button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do
                 = icon "#{provider.gsub(/\s+/, '').downcase}", custom_path: "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5"
                 %span
-                  "Sign in with #{OmniAuth::Utils.camelize(provider)}
+                  Continue with #{OmniAuth::Utils.camelize(provider)}
       .mt-4
         = render "devise/shared/links"
 <% end %>
@@ -156,50 +169,50 @@
 
 <%= divider %>
 
-
 <div id="auth-omniauth-ui" class="py-6">
 <div class="prose prose-neutral dark:prose-invert my-6 max-w-full">
 
 <h3>OmniAuth</h3>
-<p>The <%= theme_name.humanize %> theme supports themed and branded Omniauth provider buttons for Facebook, Twitter, LinkedIn, and Google. Icons for those providers are rendered from <code>app/assets/images/railsui/omniauth</code>.</p>
+<p>The <%= theme_name.humanize %> theme has support for themed and branded Omniauth provider icons. Icons for those providers are rendered from <code>app/assets/images/railsui/omniauth</code>.</p>
 
 <%= render callout do %>
-  <%= link_to "OmniAuth", "https://github.com/omniauth/omniauth", target: :_blank %> will need to be installed and configured to work with your Devise install.
+  <%= link_to "OmniAuth", "https://github.com/omniauth/omniauth", target: :_blank %> will need to be installed and configured to work with the <%= theme_name.humanize %> theme.
 <% end %>
 
 <p>Here's an example of the UI with various providers:</p>
 
-<%= render preview('zinc') do %>
+<%= render preview do %>
 <div class="flex flex-col gap-4 items-center justify-center max-w-xs mx-auto">
   <button class="btn btn-white w-full">
     <div class="flex items-center gap-2">
       <%= icon "google", custom_path: "/railsui/omniauth/google.svg", class: "size-4 text-[#4285f4] fill-current" %>
-      <span>Sign in with Google</span>
+      <span>Continue with Google</span>
     </div>
   </button>
 
    <button class="btn btn-white w-full">
     <div class="flex items-center gap-2">
       <%= icon "github", custom_path: "/railsui/omniauth/github.svg", class: "size-4 text-zinc-900 fill-current" %>
-      <span>Sign in with GitHub</span>
+      <span>Continue with GitHub</span>
     </div>
   </button>
 
   <button class="btn btn-white w-full">
     <div class="flex items-center gap-2">
       <%= icon "x", custom_path: "/railsui/omniauth/x.svg", class: "size-4 text-zinc-900 fill-current" %>
-      <span>Sign in with X</span>
+      <span>Continue with X</span>
     </div>
   </button>
 
   <button class="btn btn-white w-full">
     <div class="flex items-center gap-2">
       <%= icon "linkedin", custom_path: "/railsui/omniauth/linkedin.svg", class: "size-4 text-[#0a66c2] fill-current" %>
-      <span>Sign in with LinkedIn</span>
+      <span>Continue with LinkedIn</span>
     </div>
   </button>
 </div>
 <% end %>
+</div>
 </div>
 
 <%= divider %>
@@ -305,7 +318,7 @@
 <% end %>
 </div>
 
-<%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_signup_path, next_text: "Sign up") %>
+<%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_devise_signup_path, next_text: "Sign up") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

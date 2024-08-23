@@ -33,8 +33,8 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/rui/devise/confirmations/new.html.erb -->
-<%%= render "rui/devise/auth_layout" do %>
+<!-- app/views/devise/confirmations/new.html.erb -->
+<%%= render "devise/auth_layout" do %>
   <h1 class="h3 mb-6">Resend confirmation instuctions</h1>
 
   <%%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>

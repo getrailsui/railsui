@@ -81,7 +81,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- app/views/rui/devise/registrations/new.html.erb-->
+<!-- app/views/devise/registrations/new.html.erb-->
 <%% content_for :masthead do %>
   <div class="text-center">
     <h1 class="md:h3 h4 my-3">Sign up for an account</h1>
@@ -90,7 +90,7 @@
   <%%= render "rui/shared/error_messages", resource: resource %>
 <%% end %>
 
-<%%= render "rui/devise/auth_layout" do %>
+<%%= render "devise/auth_layout" do %>
   <%%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
     <div class="form-group">
@@ -126,14 +126,14 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-/ app/views/rui/devise/registrations/new.haml.erb
+/ app/views/devise/registrations/new.haml.erb
 - content_for :masthead do
   .text-center
     %h1.md:h3.h4.my-3 Sign up for an account
     %p.mb-6.text-slate-700.dark:text-slate-200
       Already have an account? #{link_to "Sign in", new_session_path(resource_name), class: "btn-link"}
   = render "rui/shared/error_messages", resource: resource
-= render "rui/devise/auth_layout" do
+= render "devise/auth_layout" do
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     .form-group
       = f.label :email, class: "form-label"

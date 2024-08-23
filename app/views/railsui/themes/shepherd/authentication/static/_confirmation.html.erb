@@ -37,14 +37,14 @@
 <%%= render "rui/devise/auth_layout" do %>
   <h1 class="h3 mb-6">Resend confirmation instuctions</h1>
 
-  <%%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%%= form_with(model: @user, method: :post) do |f| %>
 
-    <%%= render "rui/shared/error_messages", resource: resource %>
+    <%%= render "rui/shared/error_messages", resource: f.object %>
 
     <div class="form-group">
       <%%= f.label :email, class: "form-label" %>
 
-      <%%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com" %>
+      <%%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com" %>
     </div>
 
     <%%= f.submit "Resend confirmation instructions", class: "btn btn-primary w-full" %>
@@ -56,11 +56,11 @@
 / app/views/rui/devise/confirmations/new.html.erb
 = render "rui/devise/auth_layout" do
   %h1.h3.mb-6 Resend confirmation instuctions
-  = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-    = render "rui/shared/error_messages", resource: resource
+  = form_with(model: @user, method: :post) do |f| do |f|
+    = render "rui/shared/error_messages", resource: f.object
     .form-group
       = f.label :email, class: "form-label"
-      = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com"
     = f.submit "Resend confirmation instructions", class: "btn btn-primary w-full"
 <% end %>
 

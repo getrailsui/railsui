@@ -74,16 +74,18 @@
     <li>
       <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Authentication</p>
 
-      <%= system_nav_item(label: "Overview", path:  systems_authentication_overview_path) %>
+     <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Overview", path:  systems_authentication_overview_path) %>
+      </ul>
 
-      <ul class="ml-3">
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
         <details class="marker:content-[''] group" <%= "open" if controller_name == "devise" %>>
           <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between">
             <p class="font-medium">Devise</p>
             <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
             <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>
           </summary>
-          <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+          <ul class="ml-2">
             <%= system_nav_item(label: "Overview", path:  systems_authentication_devise_overview_path) %>
 
             <%= system_nav_item(label: "Sign up", path:  systems_authentication_devise_signup_path) %>
@@ -108,7 +110,9 @@
             <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
             <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>
           </summary>
-          <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+          <ul class="ml-2">
+            <%= system_nav_item(label: "Overview", path:  systems_authentication_static_overview_path) %>
+
             <%= system_nav_item(label: "Sign up", path:  systems_authentication_static_signup_path) %>
 
             <%= system_nav_item(label: "Sign in", path:  systems_authentication_static_signin_path) %>
