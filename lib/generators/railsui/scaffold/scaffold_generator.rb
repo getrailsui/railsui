@@ -1,3 +1,4 @@
+require "rails/generators"
 require "rails/generators/rails/scaffold/scaffold_generator"
 
 module Railsui
@@ -5,12 +6,11 @@ module Railsui
     class ScaffoldGenerator < Rails::Generators::ScaffoldGenerator
       source_root File.expand_path('templates', __dir__)
 
-      def add_theme_files
-        return unless Railsui.config.theme.present?
-
-        theme = Railsui.config.theme
-
-        directory "themes/#{theme}/views", "app/views"
+      # Custom view generation
+      def create_custom_views
+        %w[index show new edit _form].each do |view|
+          template "themes/#{Railsui.config.theme}/views/#{view}.html.erb", File.join("app/views", file_name.pluralize, "#{view}.html.erb"), force: true
+        end
       end
     end
   end
