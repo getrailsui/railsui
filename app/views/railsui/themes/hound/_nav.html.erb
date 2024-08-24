@@ -130,11 +130,11 @@
     </li>
 
     <li>
-      <%= nav_link_to systems_mailers_path, inactive_class:"font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block hover:bg-neutral-100/80 dark:hover:bg-neutral-800/90 border-l-2 border-transparent", active_class: "transition-colors duration-200 ease-linear relative border-l-2 border-neutral-800 text-neutral-900 bg-neutral-100/80 font-medium dark:text-white dark:border-neutral-50 dark:bg-neutral-800/90 px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px] block" do %>
-        <span>Mailers</span>
-      <% end %>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Mailers</p>
 
       <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Overview", path:  systems_mailers_path) %>
+
         <%= system_nav_item(label: "Layout", path:  systems_mailers_layout_path) %>
 
         <%= system_nav_item(label: "Minimal", path:  systems_mailers_minimal_path) %>

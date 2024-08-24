@@ -8,25 +8,8 @@
 <% theme_path = "railsui/themes/#{Railsui.config.theme.downcase}/mailers/devise" %>
 
 <div class="mb-16 mt-6">
-  <div class="prose prose-neutral dark:prose-invert mb-10">
-    <p>Devise ships with optional views you can generate on command. Most of these should work out of the box with Rails UI so you needn't generate them yourself. The views in <code>app/views/devise/mailer/</code> have the <%= Railsui.config.theme.humanize %> theme applied.</p>
-
-    <%= render callout do %>
-      <p>When you configured your app Rails UI generated and copied these mailer templates over automatically so there is no need to generate the views.</p>
-    <% end %>
-
-    <h3>Configuration</h3>
-
-    <p>Rails UI takes care of the following:</p>
-    <ol>
-      <li>Installs the latest version of the Devise gem</li>
-      <li>Copies over custom views and mailer templates based on the active Rails UI Theme (yours is currently: <%= Railsui.config.theme.humanize %>). </li>
-      <li>Adds a <%= link_to"few helpers", systems_mailers_url(anchor: "mailers-helpers") %> via a bundled module in the Rails UI engine.</li>
-    </ol>
-
-    <p>Depending on your application you can enable different features from Devise so we'll leave the rest up to you to configure.</p>
-
-    <p>Be sure to update your <code>config/initializers/devise.rb</code> file to suite your needs.</p>
+  <div class="prose dark:prose-invert mb-10">
+    <p>Devise ships with optional views you can generate on command. Those views include mailer templates. Below are snippets you can use after having run <code>rails generate devise:views</code>. The snippets below assume you're using <%= link_to "the customized Rails UI layout file", systems_mailers_layout_path %> for emails.</p>
   </div>
 </div>
 
