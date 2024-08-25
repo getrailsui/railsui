@@ -1,9 +1,26 @@
-<div class="prose dark:prose-invert my-6">
-  <p>Rails UI supplies pre-designed scaffolds.</p>
 
+<div id="scaffolds-overview" class="prose dark:prose-invert my-6 max-w-full">
+  <p>Rails UI supplies pre-designed scaffolds in addition to the Rails defaults. To accomplish this you can run an alternative generator when scaffolding a new resource.</p>
 
+  <h3>Custom scaffold generator</h3>
+  <div class="not-prose">
+    <% content_for :bash, flush: true do %>
+    rails generate railsui:scaffold ModelName
+    <% end %>
+    <%= render_snippet active_tab: "bash" %>
+  </div>
+
+  <p>The custom scaffold generator performs the same function as the default but uses alternative view templates when generating. Below is an example of each template for the <%= Railsui.config.theme.humanize %> theme.</p>
 
 </div>
+
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render callout do %>
+  <p>Remember: If you made a resource before and then change your Rails UI theme, your old scaffolds won't change to match the new theme.</p>
+<% end %>
 
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/index" %>
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/show" %>

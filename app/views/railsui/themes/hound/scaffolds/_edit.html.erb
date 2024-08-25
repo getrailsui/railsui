@@ -13,12 +13,12 @@
           <div class="flex items-center">
             <span class="text-slate-300 dark:text-slate-500">/</span>
           </div>
-          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">Edit</span>
+          <span class="text-primary-600 dark:text-primary-500" aria-current="page">Edit</span>
         </li>
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Edit Post</h1>
+      <h1 class="h2">Edit Post</h1>
         <form data-turbo-confirm="Are you sure?" class="button_to" method="post" action="#"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="btn btn-light" type="submit">Delete</button><input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
       </div>
     </div>
@@ -63,12 +63,12 @@
           <div class="flex items-center">
             <span class="text-slate-300 dark:text-slate-500">/</span>
           </div>
-          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">Edit</span>
+          <span class="text-primary-600 dark:text-primary-500" aria-current="page">Edit</span>
         </li>
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Edit Post</h1>
+      <h1 class="h2">Edit Post</h1>
       <%%= button_to "Delete", @post, method: :delete, class: "btn btn-light", form: { data: { turbo_confirm: "Are you sure?" } } %>
     </div>
   </div>
@@ -90,9 +90,9 @@
         %li.flex.space-x-3
           .flex.items-center
             %span.text-slate-300.dark:text-slate-500 /
-          %span.text-indigo-600.dark:text-indigo-500{"aria-current" => "page"} Edit
+          %span.text-primary-600.dark:text-primary-500{"aria-current" => "page"} Edit
     .flex.items-center.justify-between
-      %h1.text-4xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Edit Post
+      %h1.h2 Edit Post
       = button_to "Delete", @post, method: :delete, class: "btn btn-light", form: { data: { turbo_confirm: "Are you sure?" } }
   %div
     = render "form", post: @post

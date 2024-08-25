@@ -1,29 +1,26 @@
-<div id="scaffolds-overview">
-<div class="prose dark:prose-invert my-6 max-w-full">
-  <p>Rails let's you get moving quick with scaffolds. Under the hood files and code are generated to remove the repetative nature of setting up new logic. The <em><%= theme_name.humanize %></em> theme provides some sensible defaults to make design work quickly for you as well.</p>
 
-  <p>When you install Rails UI the installer adds a generator configuration to your app's <code>config/application.rb</code> file </p>
+<div id="scaffolds-overview" class="prose dark:prose-invert my-6 max-w-full">
+  <p>Rails UI supplies pre-designed scaffolds in addition to the Rails defaults. To accomplish this you can run an alternative generator when scaffolding a new resource.</p>
 
-<div class="not-prose">
-<% content_for :ruby, flush: true do %>
-module <%= theme_name.humanize %>
-  class Application < Rails::Application
-    config.generators do |g|
-      g.template_engine :railsui
-      # more generator stuff
-    end
-  end
-end
+  <h3>Custom scaffold generator</h3>
+  <div class="not-prose">
+    <% content_for :bash, flush: true do %>
+    rails generate railsui:scaffold ModelName
+    <% end %>
+    <%= render_snippet active_tab: "bash" %>
+  </div>
+
+  <p>The custom scaffold generator performs the same function as the default but uses alternative view templates when generating. Below is an example of each template for the <%= Railsui.config.theme.humanize %> theme.</p>
+
+</div>
+
+<% content_for :bash, flush: true do %>
+
 <% end %>
-<%= render_snippet active_tab: "ruby", ruby_filename: "application.rb" %>
-</div>
-<p>If you'd prefer the default scaffolding templates, remove the line <code>g.template_engine :railsui</code> from your <code>application.rb</code> file as shown in the example above.</p>
-</div>
 
 <%= render callout do %>
-  <p>For the sake of example it's assumed we'll generate a scaffold with a <code>Post</code> model. Substitute your own resouce when referring to the snippets below.</p>
+  <p>Remember: If you made a resource before and then change your Rails UI theme, your old scaffolds won't change to match the new theme.</p>
 <% end %>
-</div>
 
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/index" %>
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/show" %>
@@ -31,7 +28,7 @@ end
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/edit" %>
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/partial" %>
 
-<%= system_pagination(prev_path: systems_content_image_path, prev_text: "Image", next_path: systems_forms_input_path, next_text: "Input") %>
+<%= system_pagination(prev_path: systems_pages_path, prev_text: "Pages", next_path: systems_forms_path, next_text: "Forms") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

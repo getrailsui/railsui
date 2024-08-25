@@ -76,3 +76,24 @@
   <% end %>
 <% end %>
 </div>
+
+<div id="typography-responsive" class="prose prose-netural dark:prose-invert max-w-full prose-headings:tracking-tight">
+<h3>Responsive heading design</h3>
+<p>Change heading sizes relative to viewports with Tailwind CSS responsive utilities.</p>
+
+<div class="not-prose">
+<% content_for :html, flush: true do %>
+  <h1 class="md:h1 h2">My sample title</>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
+</div>
+</div>

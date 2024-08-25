@@ -5,11 +5,11 @@
 <div class="max-w-3xl mx-auto px-4 my-16">
   <div class="mb-4 pb-6 border-b dark:border-zinc-700 border-zinc-200">
     <nav aria-label="breadcrumb" class="my-6 font-heading flex text-zinc-500 dark:text-zinc-200 text-sm">
-      <ol class="flex flex-wrap items-center space-x-3 list-none m-0 p-0">
+      <ol class="flex flex-wrap items-center gap-3 list-none m-0 p-0">
         <li>
           <a href="#" class="hover:underline text-primary-600 dark:text-primary-500" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">Posts</a>
         </li>
-        <li class="flex space-x-3">
+        <li class="flex gap-3">
           <div class="flex items-center">
             <span class="text-zinc-300 dark:text-zinc-500">/</span>
           </div>
@@ -17,7 +17,7 @@
         </li>
       </ol>
     </nav>
-    <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">New Post</h1>
+    <h1 class="h2">New Post</h1>
     </div>
     <div>
       <form action="#" accept-charset="UTF-8" method="post">
@@ -49,11 +49,11 @@
 <div class="max-w-3xl mx-auto px-4 my-16">
   <div class="mb-4 pb-6 border-b dark:border-zinc-700">
     <nav aria-label="breadcrumb" class="my-6 font-heading flex text-zinc-500 dark:text-zinc-200 text-sm">
-      <ol class="flex flex-wrap items-center space-x-3 list-none m-0 p-0">
+      <ol class="flex flex-wrap items-center gap-3 list-none m-0 p-0">
         <li>
           <%%= link_to "Posts", "#", class: "hover:underline text-primary-600 dark:text-primary-500" %>
         </li>
-        <li class="flex space-x-3">
+        <li class="flex gap-3">
           <div class="flex items-center">
             <span class="text-zinc-300 dark:text-zinc-500">/</span>
           </div>
@@ -61,7 +61,7 @@
         </li>
       </ol>
     </nav>
-    <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">New Post</h1>
+    <h1 class="h2">New Post</h1>
   </div>
 
   <div>
@@ -75,14 +75,14 @@
 .max-w-3xl.mx-auto.px-4.my-16
   .mb-4.pb-6.border-b.dark:border-zinc-700
     %nav.my-6.font-heading.flex.text-zinc-500.dark:text-zinc-200.text-sm(aria-label="breadcrumb")
-      %ol.flex.flex-wrap.items-center.space-x-3.list-none.m-0.p-0
+      %ol.flex.flex-wrap.items-center.gap-3.list-none.m-0.p-0
         %li
           = link_to "Posts", "#", class: "hover:underline text-primary-600 dark:text-primary-500"
-        %li.flex.space-x-3
+        %li.flex.gap-3
           .flex.items-center
             %span.text-zinc-300.dark:text-zinc-500 /
           = link_to "New", "#", class: "text-zinc-600 dark:text-zinc-100", "aria-current": "page"
-    %h1.text-4xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight New Post
+    %h1.h2 New Post
   %div
     = render "form", post: @post
 <% end %>

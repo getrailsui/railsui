@@ -18,7 +18,7 @@
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight flex-1">Post #1</h1>
+      <h1 class="h2 flex-1">Post #1</h1>
       <a href="#" class="btn btn-white">Edit</a>
     </div>
   </div>
@@ -64,7 +64,7 @@
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight flex-1">Post <%%= @post.id %></h1>
+      <h1 class="h2 flex-1">Post <%%= @post.id %></h1>
       <%%= link_to "Edit", "#", class: "btn btn-white" %>
     </div>
   </div>
@@ -85,7 +85,7 @@
             %span.text-zinc-300.dark:text-zinc-500 /
           = link_to "##{@post.id}", "#", class: "text-zinc-600 dark:text-zinc-100", "aria-current": "page"
     .flex.items-center.justify-between
-      %h1.text-4xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight.flex-1 Post &lt;%= @post.id %&gt;
+      %h1.h1.flex-1 Post &lt;%= @post.id %&gt;
       = link_to "Edit", "#", class: "btn btn-white"
   = render @post
 <% end %>

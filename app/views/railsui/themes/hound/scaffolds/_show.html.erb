@@ -4,22 +4,22 @@
 <div class="max-w-3xl mx-auto px-4 my-16">
   <div class="pb-6 border-b dark:border-slate-700">
     <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
-      <ol class="flex flex-wrap items-center space-x-3">
+      <ol class="flex flex-wrap items-center gap-3">
         <li>
           <a href="#" class="hover:underline hover:text-slate-600 dark:hover:text-slate-400">Posts</a>
         </li>
-        <li class="flex space-x-3">
+        <li class="flex gap-3">
           <div class="flex items-center">
             <span class="text-slate-300 dark:text-slate-500">/</span>
           </div>
-          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">
+          <span class="text-primary-600 dark:text-primary-500" aria-current="page">
             #1
           </span>
         </li>
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight flex-1">post #1</h1>
+      <h1 class="h2 flex-1">post #1</h1>
       <a href="#" class="btn btn-light">Edit</a>
     </div>
   </div>
@@ -54,22 +54,22 @@
 <div class="max-w-3xl mx-auto px-4 my-16">
   <div class="pb-6 border-b dark:border-slate-700">
     <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
-      <ol class="flex flex-wrap items-center space-x-3">
+      <ol class="flex flex-wrap items-center gap-3">
         <li>
           <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
         </li>
-        <li class="flex space-x-3">
+        <li class="flex gap-3">
           <div class="flex items-center">
             <span class="text-slate-300 dark:text-slate-500">/</span>
           </div>
-          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">
+          <span class="text-primary-600 dark:text-primary-500" aria-current="page">
             #<%%= @post.id %>
           </span>
         </li>
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight flex-1">post #<%%= @post.id %></h1>
+      <h1 class="h2 flex-1">post #<%%= @post.id %></h1>
       <%%= link_to "Edit", edit_post_path(@post), class: "btn btn-light" %>
     </div>
   </div>
@@ -82,16 +82,16 @@
 .max-w-3xl.mx-auto.px-4.my-16
   .pb-6.border-b.dark:border-slate-700
     %nav.my-6.font-medium.flex.text-slate-500.dark:text-slate-200.text-sm{"aria-label" => "breadcrumb"}
-      %ol.flex.flex-wrap.items-center.space-x-3
+      %ol.flex.flex-wrap.items-center.gap-3
         %li
           = link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
-        %li.flex.space-x-3
+        %li.flex.gap-3
           .flex.items-center
             %span.text-slate-300.dark:text-slate-500 /
-          %span.text-indigo-600.dark:text-indigo-500{"aria-current" => "page"}
+          %span.text-primary-600.dark:text-primary-500{"aria-current" => "page"}
             \##{@post.id}
     .flex.items-center.justify-between
-      %h1.text-4xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight.flex-1
+      %h1.h2.flex-1
         post ##{@post.id}
       = link_to "Edit", edit_post_path(@post), class: "btn btn-light"
   = render @post

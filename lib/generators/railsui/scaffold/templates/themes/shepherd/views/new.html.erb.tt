@@ -13,7 +13,7 @@
         </li>
       </ol>
     </nav>
-    <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">New <%= singular_table_name.titleize %></h1>
+    <h1 class="h2">New <%= singular_table_name.titleize %></h1>
   </div>
 
   <div>

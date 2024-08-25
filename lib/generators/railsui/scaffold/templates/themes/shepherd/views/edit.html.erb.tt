@@ -14,7 +14,7 @@
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Edit <%= singular_table_name.titleize %></h1>
+      <h1 class="h2 flex-1">Edit <%= singular_table_name.titleize %></h1>
       <%%= button_to "Delete", @<%= singular_table_name %>, method: :delete, class: "btn btn-white", form: { data: { turbo_confirm: "Are you sure?" } } %>
     </div>
   </div>

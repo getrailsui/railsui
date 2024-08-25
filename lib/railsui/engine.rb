@@ -33,8 +33,8 @@ module Railsui
         app.config.assets.precompile << %w[*.svg]
       end
 
-      config.app_generators do |g|
-        g.templates.unshift File::expand_path('../templates', __FILE__)
-      end
+      # config.app_generators do |g|
+      #   g.templates.unshift File::expand_path('../templates', __FILE__)
+      # end
    end
  end

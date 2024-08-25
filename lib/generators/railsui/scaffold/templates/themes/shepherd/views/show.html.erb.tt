@@ -16,7 +16,7 @@
       </ol>
     </nav>
     <div class="flex items-center justify-between">
-      <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight flex-1"><%= singular_table_name %> #<%%= @<%= singular_table_name %>.id %></h1>
+      <h1 class="h2 flex-1"><%= singular_table_name %> #<%%= @<%= singular_table_name %>.id %></h1>
       <%%= link_to "Edit", edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-white" %>
     </div>
   </div>
