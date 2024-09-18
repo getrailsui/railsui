@@ -6,9 +6,7 @@ module Railsui
   module ThemeSetup
     # gems
     def install_gems
-      gem "railsui_icon"
-      run "rails g railsui_icon:install"
-      gem "meta-tags"
+      rails_command "generate railsui_icon:install"
     end
 
     # Assets
@@ -19,36 +17,62 @@ module Railsui
       source_path = "themes/#{theme}/javascript/controllers/railsui"
       destination_path = "app/javascript/controllers/railsui"
       index_js_path = Rails.root.join("app/javascript/controllers/index.js")
+      railsui_index_js_path = Rails.root.join("app/javascript/controllers/railsui/index.js")
+
+      # Empty the railsui folder
+      remove_dir destination_path
+      empty_directory destination_path
 
       # Copy the directory
       directory source_path, destination_path, force: true
 
       # Get the list of controller files
       controller_files = Dir.children(Rails.root.join(destination_path)).select { |f| f.end_with?("_controller.js") }
-      puts "Controller files: 🗄️ #{controller_files}"
+      say("Controller files: 🗄️ #{controller_files}", :cyan)
 
-      # Generate import and register statements
-      import_statements = controller_files.map do |file|
+      # Generate import and register statements for railsui/index.js
+      railsui_index_content = controller_files.map do |file|
         controller_name = File.basename(file, ".js").sub("_controller", "")
         import_name = controller_name.camelize
         registration_name = controller_name.dasherize
-        "import #{import_name}Controller from \"./railsui/#{File.basename(file, '.js')}\";\napplication.register(\"#{registration_name}\", #{import_name}Controller);"
+        "import #{import_name}Controller from \"./#{File.basename(file, '.js')}\";\napplication.register(\"#{registration_name}\", #{import_name}Controller);"
       end.join("\n")
 
-      # Read the existing index.js content
+      js_content = <<-JAVASCRIPT.strip_heredoc
+        import { RailsuiClipboard, RailsuiCountUp, RailsuiDateRangePicker, RailsuiDropdown, RailsuiModal, RailsuiTabs, RailsuiToast, RailsuiToggle, RailsuiTooltip } from 'railsui-stimulus'
+
+        application.register('railsui-clipboard', RailsuiClipboard)
+        application.register('railsui-count-up', RailsuiCountUp)
+        application.register('railsui-date-range-picker', RailsuiDateRangePicker)
+        application.register('railsui-dropdown', RailsuiDropdown)
+        application.register('railsui-modal', RailsuiModal)
+        application.register('railsui-tabs', RailsuiTabs)
+        application.register('railsui-toast', RailsuiToast)
+        application.register('railsui-toggle', RailsuiToggle)
+        application.register('railsui-tooltip', RailsuiTooltip)
+      JAVASCRIPT
+
+      # Add js_content to railsui_index_content
+      railsui_index_content += "\n\n#{js_content}"
+
+      # Write the railsui/index.js file
+      create_file railsui_index_js_path, "import { application } from \"../application\"\n\n#{railsui_index_content}", force: true
+
+      # Read the existing main index.js content
       index_js_content = File.exist?(index_js_path) ? File.read(index_js_path) : ""
 
-      # Remove old import and register statements for railsui controllers
-      new_index_js_content = index_js_content.gsub(/import .* from "\.\/railsui\/.*";\napplication\.register\(".*", .*;\n*/, "")
+      # Remove old import statements for railsui controllers
+      new_index_js_content = index_js_content.gsub(/import .* from "\.\/railsui\/.*";\n*/, "")
 
-      # Add the new import and register statements
-      new_index_js_content += "#{import_statements}\n"
+      # Add the new import statement for railsui/index.js if not already present
+      unless new_index_js_content.include?('import "./railsui"')
+        new_index_js_content += "import \"./railsui\"\n"
+      end
 
-      # Write the updated content back to index.js
-      File.write(index_js_path, new_index_js_content)
-      say("Updated app/javascript/controllers/index.js successfully.", :green)
+      # Write the updated content back to main index.js
+      create_file index_js_path, new_index_js_content, force: true
+      say("Updated app/javascript/controllers/index.js and created app/javascript/controllers/railsui/index.js successfully.", :green)
     end
-
     def copy_theme_stylesheets(theme)
       say("Copying theme-specific stylesheets", :yellow)
 
@@ -106,14 +130,13 @@ module Railsui
       add_yarn_packages(theme_dependencies(theme))
     end
 
-     def install_action_text
-      rails_command "action_text:install"
-
-    end
-
-    def setup_stimulus(theme)
-      say("Setting up Stimulus controllers", :yellow)
-      insert_stimulus_controllers
+    def install_action_text
+      if !defined?(ActionText)
+        say "Installing Action Text...", :yellow
+        rails_command "action_text:install"
+      else
+        say "Action Text is already installed, Skipping.", :green
+      end
     end
 
     def update_tailwind_config(theme)
@@ -123,7 +146,8 @@ module Railsui
 
     def remove_action_text_defaults
       say "Remove default ActionText CSS"
-      remove_file "app/assets/stylesheets/actiontext.css"
+      # Probably shouldn't remove if any customizations were added.
+      # remove_file "app/assets/stylesheets/actiontext.css"
 
       gsub_file "app/assets/stylesheets/application.tailwind.css", /@import 'actiontext.css';/, ""
     end
@@ -149,24 +173,6 @@ module Railsui
 
     def add_yarn_packages(packages)
       run "yarn add #{packages.join(' ')} --latest"
-    end
-
-    def insert_stimulus_controllers
-      js_content = <<-JAVASCRIPT.strip_heredoc
-        import { RailsuiClipboard, RailsuiCountUp, RailsuiDateRangePicker, RailsuiDropdown, RailsuiModal, RailsuiTabs, RailsuiToast, RailsuiToggle, RailsuiTooltip } from 'railsui-stimulus'
-
-        application.register('railsui-clipboard', RailsuiClipboard)
-        application.register('railsui-count-up', RailsuiCountUp)
-        application.register('railsui-date-range-picker', RailsuiDateRangePicker)
-        application.register('railsui-dropdown', RailsuiDropdown)
-        application.register('railsui-modal', RailsuiModal)
-        application.register('railsui-tabs', RailsuiTabs)
-        application.register('railsui-toast', RailsuiToast)
-        application.register('railsui-toggle', RailsuiToggle)
-        application.register('railsui-tooltip', RailsuiTooltip)
-      JAVASCRIPT
-
-      insert_into_file "#{Rails.root}/app/javascript/controllers/index.js", "\n#{js_content}", after: 'import { application } from "./application"'
     end
 
     def copy_tailwind_config(theme)
@@ -249,9 +255,9 @@ module Railsui
 
       rails_command "generate mailer Railsui minimal promotion transactional"
 
-      copy_sample_mailers(theme)
-
       insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, '  layout "railsui/railsui_mailer"', after: "class RailsuiMailer < ApplicationMailer\n"
+
+      copy_sample_mailers(theme)
     end
 
     def copy_sample_mailers(theme)
@@ -279,18 +285,27 @@ module Railsui
 
     # Routes
     def copy_railsui_routes
-  content = <<-RUBY
+      routes_file = "#{Rails.root}/config/routes.rb"
+      route_content = File.read(routes_file)
+
+      content = <<-RUBY
   if Rails.env.development?
+     # Visit the start page for Rails UI any time at /railsui/start
     mount Railsui::Engine, at: "/railsui"
   end
 
+      RUBY
+
+      # Check if a root route already exists
+      unless route_content.match?(/^\s*root\s+/)
+        content += <<-RUBY
   # Inherits from Railsui::PageController#index
   # To override, add your own page#index view or change to a new root
-  # Visit the start page for Rails UI any time at /railsui/start
   root action: :index, controller: "railsui/default"
-  RUBY
+        RUBY
+      end
 
-      insert_into_file "#{Rails.root}/config/routes.rb", "\n#{content}\n", after: "Rails.application.routes.draw do\n", force: true
+      insert_into_file routes_file, "\n#{content}\n", after: "Rails.application.routes.draw do\n", force: true
     end
 
     def copy_railsui_pages_routes
@@ -332,33 +347,6 @@ module Railsui
       end
 
       copy_file "themes/#{theme}/views/layouts/rui/railsui.html.erb", "app/views/layouts/rui/railsui.html.erb", force: true
-    end
-
-    def update_body_classes
-      layout_file = Rails.root.join("app/views/layouts/application.html.erb")
-
-      if File.exist?(layout_file)
-        # Read the entire layout file
-        layout_content = File.read(layout_file)
-
-        # Check if the body tag already has the helper
-        if layout_content.include?('<%= railsui_body_classes %>')
-          say("Body classes helper already added.", :yellow)
-        else
-          # Append the railsui_body_classes helper to the body tag
-          updated_content = layout_content.gsub(
-            /<body([^>]*)class="([^"]*)"/,
-            '<body\1class="\2 <%= railsui_body_classes %>"'
-          )
-
-          # Write the updated content back to the layout file
-          File.open(layout_file, "w") { |file| file.write(updated_content) }
-
-          say("Body classes updated successfully.", :yellow)
-        end
-      else
-        say("Layout file not found!", :red)
-      end
     end
 
     def copy_railsui_head(theme)

@@ -4,9 +4,10 @@
     <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
       <div>
         <div class="flex justify-center">
-          <%= link_to "#" do %>
-            <%= icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto", alt: "#{Railsui.config.theme} logo" %>
-          <% end %>
+          <%= link_to "#", class: "size-12 flex justify-center" do %>
+          <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
+          <span class="sr-only"><%= Railsui.config.application_name %></span>
+        <% end %>
         </div>
 
         <div class="mt-6">
@@ -94,4 +95,4 @@
 <% end %>
 <% end %>
 
-<%= system_pagination(prev_path: systems_authentication_devise_edit_path, prev_text: "Edit", next_path: systems_mailers_path, next_text: "Mailers") %>
+<%= system_pagination(prev_path: systems_authentication_devise_edit_path, prev_text: "Edit", next_path: systems_authentication_static_overview_path, next_text: "Static: Overview") %>

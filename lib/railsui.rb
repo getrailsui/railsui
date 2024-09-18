@@ -1,5 +1,7 @@
 require "railsui/version"
 require "railsui/engine"
+require 'railsui_icon'
+require 'meta-tags'
 
 module Railsui
   autoload :Colors, "railsui/colors"

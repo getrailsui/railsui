@@ -63111,6 +63111,29 @@
     label: { type: String, default: "Loading..." }
   });
 
+  // app/javascript/controllers/toast_controller.js
+  var toast_controller_default = class extends Controller {
+    connect() {
+      useTransition(this, {
+        element: this.element
+      });
+      this.toggleTransition();
+    }
+    toggle() {
+      this.toggleTransition();
+    }
+    hide() {
+      this.leave();
+      let self = this;
+      setTimeout(() => {
+        self.toggleTransition();
+      }, 1e3);
+    }
+    disconnect() {
+      this.leave();
+    }
+  };
+
   // app/javascript/controllers/index.js
   application.register("railsui-anchor", railsui_anchor_controller_default);
   application.register("railsui-clipboard", railsui_clipboard_controller_default);
@@ -63139,5 +63162,6 @@
   application.register("railsui-toggle", railsui_toggle_controller_default);
   application.register("railsui-tooltip", railsui_tooltip_controller_default);
   application.register("railsui-loading", railsui_loading_controller_default);
+  application.register("toast", toast_controller_default);
 })();
 //# sourceMappingURL=application.js.map

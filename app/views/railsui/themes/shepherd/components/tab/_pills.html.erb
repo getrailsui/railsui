@@ -2,7 +2,9 @@
 <%= render layout: example, locals: { heading: "Pill", section: "Tab" } do %>
 
 <%= render preview "zinc" do %>
-<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white" data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">
+<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white" data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+>
   <div class="text-zinc-600 dark:text-zinc-300">
     <nav role="navigation" class="flex items-center space-x-1 text-[15px] font-heading font-normal">
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Activity</a>
@@ -30,74 +32,78 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
-<div data-controller="tabs" data-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white" data-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">
+<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white" data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+>
   <div class="text-zinc-600 dark:text-zinc-300">
      <nav role="navigation" class="flex items-center space-x-1 text-[15px] font-heading font-normal">
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Activity</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Account</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Billing</a>
-      <a href="#" data-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Team</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Account</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->tabs#change" class="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Billing</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">Team</a>
     </nav>
   </div>
-   <div class="p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+   <div class="p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Some activities...</p>
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Account information...</p>
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Billing information...</p>
   </div>
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Team information...</p>
   </div>
 </div>
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="tabs" data-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white" data-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">
+<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white" data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+>
   <div class="text-zinc-600 dark:text-zinc-300">
     <nav role="navigation" class="flex items-center space-x-1 text-[15px] font-heading font-normal">
-      <%%= link_to "Activity", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out" %>
-      <%%= link_to "Account", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out" %>
-      <%%= link_to "Billing", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out" %>
-      <%%= link_to "Team", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out" %>
+      <%%= link_to "Activity", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out" %>
+      <%%= link_to "Account", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out" %>
+      <%%= link_to "Billing", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out" %>
+      <%%= link_to "Team", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out" %>
     </nav>
   </div>
-   <div class="p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+   <div class="p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Some activities...</p>
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Account information...</p>
   </div>
 
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Billing information...</p>
   </div>
-  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-tabs-target="panel">
+  <div class="hidden p-4 prose prose-zinc dark:prose-invert" data-railsui-tabs-target="panel">
     <p>Team information...</p>
   </div>
 </div>
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%div{"data-controller" => "tabs", "data-tabs-active-tab" => "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white", "data-tabs-inactive-tab" => "py-2 px-4 rounded-full dark:bg-transparent dark:hover:bg-zinc-800/75"}
+%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white", "data-railsui-tabs-inactive-tab" => "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"}
   .text-zinc-600.dark:text-zinc-300
     %nav.flex.items-center.space-x-1.font-heading.font-normal{class: "text-[15px]", role: "navigation"}
-      = link_to "Activity", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out"
-      = link_to "Account", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
-      = link_to "Billing", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
-      = link_to "Team", "#", data: { action: "click->tabs#change", tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
-  .p-4.prose.prose-zinc.dark:prose-invert{"data-tabs-target" => "panel"}
+      = link_to "Activity", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out"
+      = link_to "Account", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+      = link_to "Billing", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+      = link_to "Team", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
+  .p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
     %p Some activities...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-tabs-target" => "panel"}
+  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
     %p Account information...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-tabs-target" => "panel"}
+  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
     %p Billing information...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-tabs-target" => "panel"}
+  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
     %p Team information...
 <% end %>
 

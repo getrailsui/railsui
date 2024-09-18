@@ -247,7 +247,7 @@
 <% end %>
 </div>
 
-<%= system_pagination(prev_path: systems_components_tooltip_path, prev_text: "Tooltip", next_path: systems_authentication_devise_signup_path, next_text: "Sign up") %>
+<%= system_pagination(prev_path: systems_authentication_devise_unlocks_path, prev_text: "Devise: Unlocks", next_path: systems_authentication_static_signup_path, next_text: "Sign up") %>
 
 <%= content_for :component_nav do %>
 <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

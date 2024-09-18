@@ -4,7 +4,7 @@
   }
 
   .rui-form-label {
-    @apply block mb-2 font-medium text-[14px];
+    @apply block mb-2 font-medium text-[14px] dark:text-white;
   }
 
   .rui-form-input-switch {

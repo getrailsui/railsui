@@ -74,3 +74,6 @@ application.register("railsui-tooltip", RailsuiTooltipController)
 
 import RailsuiLoadingController from "./railsui_loading_controller.js"
 application.register("railsui-loading", RailsuiLoadingController)
+
+import ToastController from "./toast_controller.js"
+application.register("toast", ToastController)

@@ -5,6 +5,7 @@
   js_content = yield :js
   bash_content = yield :bash
   ruby_content = yield :ruby
+  css_content = yield :css
 %>
 
 <div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg overflow-clip dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 relative scrollbar border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
@@ -68,6 +69,16 @@
           <span class="w-px h-11 bg-gradient-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>
+
+      <% if content_for?(:css) %>
+        <li class="flex items-center">
+          <a href="#css"
+          @click.prevent="active = 'css'"
+          :class="active == 'css' ? 'text-fuchsia-400 border-fuchsia-400' : 'border-transparent text-white/90'"
+          class="-ml-2 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-fuchsia-400 hover:border-fuchsia-400"><%= local_assigns[:css_filename] %></a>
+          <span class="w-px h-11 bg-gradient-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+        </li>
+      <% end %>
     </ul>
   </div>
   <div role="tabpanels" class="overflow-y-auto max-h-[650px] scrollbar scrollbar-track-neutral-950 scrollbar-thumb-neutral-500">
@@ -82,7 +93,7 @@
           type="button">
           <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
         </button>
-        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-html scrollbar"><%= html_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-html scrollbar"><%= html_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:erb) %>
@@ -96,7 +107,7 @@
           type="button">
           <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
         </button>
-        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-erb scrollbar"><%= erb_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-erb scrollbar"><%= erb_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:haml) %>
@@ -110,7 +121,7 @@
           type="button">
           <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
         </button>
-        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-haml scrollbar"><%= haml_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-haml scrollbar"><%= haml_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:bash) %>
@@ -124,7 +135,7 @@
           type="button">
           <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
         </button>
-        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-bash scrollbar"><%= bash_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-bash scrollbar"><%= bash_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:js) %>
@@ -138,7 +149,7 @@
           type="button">
           <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
         </button>
-        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-javascript scrollbar"><%= js_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-javascript scrollbar"><%= js_content.to_param.strip %></code></pre>
       </div>
     <% end %>
     <% if content_for(:ruby) %>
@@ -152,7 +163,21 @@
           type="button">
           <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
         </button>
-        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-ruby scrollbar"><%= ruby_content.to_param.strip %></code></pre>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-ruby scrollbar"><%= ruby_content.to_param.strip %></code></pre>
+      </div>
+    <% end %>
+     <% if content_for(:css) %>
+      <div
+        role="tabpanel"
+        x-show="active == 'css'"
+        data-controller="railsui-clipboard"
+        >
+        <button data-action="click->railsui-clipboard#copy"
+          class="bg-white/10 backdrop-blur-sm p-1 rounded-lg absolute right-2 top-2 hover:bg-gradient-to-br hover:to-fuchsia-600 hover:from-fuchsia-400 transition ease-in-out w-duration-200"
+          type="button">
+          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+        </button>
+        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-css scrollbar"><%= css_content.to_param.strip %></code></pre>
       </div>
     <% end %>
   </div>

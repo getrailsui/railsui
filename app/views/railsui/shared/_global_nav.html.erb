@@ -9,7 +9,7 @@
         <% end %>
 
         <%= link_to params[:controller].include?('systems') ? systems_path : root_path, class: "relative -left-0.5" do %>
-          <%= icon "railsui-logo", custom_path: "/railsui-logo.svg", class: "fill-current text-neutral-900 w-20 h-auto dark:text-neutral-50" %>
+          <%= image_tag "railsui-logo.svg", class: "w-20 h-auto dark:invert" %>
         <% end %>
       </div>
 
@@ -46,7 +46,9 @@
 
       <%= render "railsui/shared/global_nav_item", path: "https://railsui.com/docs", icon: "document-magnifying-glass", label: "Docs" %>
 
-      <%= render "railsui/shared/global_nav_item", path: "https://railsui.com/pricing", icon: "rocket-launch", label: "Get full access" %>
+      <%= render "railsui/shared/global_nav_item", path: start_url, icon: "rocket-launch", label:"Launchpad" %>
+
+      <%= render "railsui/shared/global_nav_item", path: "https://railsui.com/pricing", icon: "lock-open", label: "Get full access" %>
 
       <%= yield :additional_global_nav_items %>
     </div>

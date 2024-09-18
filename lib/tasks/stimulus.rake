@@ -5,7 +5,7 @@ namespace :stimulus do
     desc "Overwrite the default manifest update behavior to do nothing"
     task update: :environment do
       alert = %(
-        Skipping stimulus:manifest:update to avoid overwriting Rails UI Stimulus controllers.
+        Skipping stimulus:manifest:update to avoid overwriting index.js
       ).strip
       puts "\e[33m#{alert}\e[0m"
     end

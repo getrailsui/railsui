@@ -7,7 +7,7 @@
       <li>Subject:</li>
     </ul>
     <ul>
-      <li>andy<%= "@#{Railsui.config.application_name.parameterize}.com" %></li>
+      <li><%= Railsui.config.support_email || "john.doe@example.com" %></li>
       <li>saasquatch@railsui.com</li>
       <li><%= Date.today.to_formatted_s(:long) %></li>
       <li class="font-semibold"><%= local_assigns[:subject] %></li>

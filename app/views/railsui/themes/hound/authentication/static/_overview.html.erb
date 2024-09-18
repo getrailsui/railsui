@@ -39,7 +39,7 @@
     <div>
       <div class="flex justify-center">
         <%%= link_to root_path do %>
-          <%%= image_tag "logo.svg", alt: "Hound logo", class: "w-10 h-auto" %>
+          <%%= icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto" %>
         <%% end %>
       </div>
 
@@ -58,7 +58,7 @@
           <%% resource_class.omniauth_providers.each do |provider| %>
             <div class="my-2">
             <%%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do %>
-              <%%= icon "#{provider.gsub(/\s+/, '').downcase}", "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5" %>
+              <%%= icon "#{provider.gsub(/\s+/, '').downcase}", custom_path: "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5" %>
               <span>"Sign in with <%%= OmniAuth::Utils.camelize(provider) %></span>
             <%% end %>
             </div>
@@ -203,9 +203,10 @@
   <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
     <div>
       <div class="flex justify-center">
-        <a href="/">
-          <img alt="Hound logo" class="w-10 h-auto" src="https://f001.backblazeb2.com/file/railsui/themes/hound/logo.svg">
-        </a>
+        <%= link_to "#", class: "size-12 flex justify-center" do %>
+          <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
+          <span class="sr-only"><%= Railsui.config.application_name %></span>
+        <% end %>
       </div>
 
       <div class="mt-6">
@@ -288,7 +289,7 @@
 <% end %>
 </div>
 
-<%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_static_signup_path, next_text: "Sign up") %>
+<%= system_pagination(prev_path: systems_authentication_devise_unlocks_path, prev_text: "Devise: Unlocks", next_path: systems_authentication_static_signup_path, next_text: "Sign up") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

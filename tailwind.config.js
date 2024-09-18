@@ -58,14 +58,27 @@ module.exports = {
           950: "rgb(var(--secondary-950) / <alpha-value>)",
         },
       },
+      animation: {
+        "fade-in": "fade-in 0.3s ease-in-out",
+        "toast-from-right":
+          "toast-from-right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+        "toast-from-left":
+          "toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+      },
+
       keyframes: {
         "fade-in": {
           "0%": { opacity: "0%" },
           "100%": { opacity: "100%" },
         },
-      },
-      animation: {
-        "fade-in": "fade-in 0.3s ease-in-out",
+        "toast-from-right": {
+          "0%": { transform: "translateX(50%)", opacity: "0%" },
+          "100%": { transform: "translateX(0)", opacity: "100%" },
+        },
+        "toast-from-left": {
+          "0%": { transform: "translateX(-50%)", opacity: "0%" },
+          "100%": { transform: "translateX(0)", opacity: "100%" },
+        },
       },
     },
   },

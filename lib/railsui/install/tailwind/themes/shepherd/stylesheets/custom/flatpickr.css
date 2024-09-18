@@ -235,7 +235,7 @@
 
 .flatpickr-months .flatpickr-prev-month:hover svg,
 .flatpickr-months .flatpickr-next-month:hover svg {
-  fill: #f64747;
+  fill: theme("colors.primary.500");
 }
 
 .flatpickr-months .flatpickr-prev-month svg,

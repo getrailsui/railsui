@@ -17,7 +17,7 @@
         <div class="flex items-center justify-between md:w-auto w-full">
           <a href="#">
             <h1>
-              <%%= icon "logo", path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
+              <%%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
               <span class="sr-only">Shepherd</span>
             </h1>
           </a>
@@ -167,7 +167,7 @@
         <div class="flex items-center justify-between md:w-auto w-full">
           <%%= link_to "#" do %>
             <h1>
-              <%%= icon "logo", path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
+              <%%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
               <span class="sr-only">Shepherd</span>
             </h1>
           <%% end %>
@@ -319,7 +319,7 @@
         .flex.items-center.justify-between.md:w-auto.w-full
           = link_to "#" do
             %h1
-              = icon "logo", path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10"
+              = icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10"
               %span.sr-only Shepherd
           %button.md:hidden.flex.items-center.justify-center.size-12.rounded-full.focus:ring-4.focus:ring-zinc-50.focus:bg-white.focus:shadow-sm.group.dark:focus:bg-zinc-800.dark:focus:ring-zinc-600.dark:focus:shadow-sm{"data-action" => "click->nav#toggle", role: "Mobile navigation toggle", type: "button"}
             = icon "bars-3-center-left", class: "stroke-current size-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100"

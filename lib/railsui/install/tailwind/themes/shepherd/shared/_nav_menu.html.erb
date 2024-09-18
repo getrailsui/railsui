@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between md:w-auto w-full">
         <%= link_to (defined?(admin_dashboard_path) ? admin_dashboard_path : "#") do %>
           <h1>
-            <%= icon "logo", path: "logo.svg", classes: "text-zinc-900 dark:text-white fill-current w-10 h-10" %>
+            <%= icon "logo", custom_path: "/railsui/logo.svg", classes: "text-zinc-900 dark:text-white fill-current w-10 h-10" %>
             <span class="sr-only">Shepherd</span>
           </h1>
         <% end %>

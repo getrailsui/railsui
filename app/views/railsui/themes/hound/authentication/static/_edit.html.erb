@@ -5,8 +5,8 @@
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
-        <%= link_to "#", class: "size-10 flex justify-center" do %>
-          <%= icon Railsui.config.theme, custom_path: "/themes/#{Railsui.config.theme}/logo.svg", class: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
+        <%= link_to "#", class: "size-8 flex justify-center" do %>
+          <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-8 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
           <span class="sr-only"><%= Railsui.config.application_name %></span>
         <% end %>
         <button id="dropdowns-nav-toggle" data-action="click->railsui-nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">

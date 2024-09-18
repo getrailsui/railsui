@@ -37,7 +37,7 @@
     </li>
     <li>
       <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Components</p>
-        <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
 
         <%= system_nav_item(label: "Accordion", path:  systems_components_accordion_path) %>
 
@@ -69,16 +69,16 @@
       </ul>
     </li>
 
-   <li>
-    <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Authentication</p>
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Authentication</p>
 
-    <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
-      <%= system_nav_item(label: "Overview", path:  systems_authentication_overview_path) %>
-    </ul>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Overview", path:  systems_authentication_overview_path) %>
+      </ul>
 
       <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
         <details class="marker:content-[''] group" <%= "open" if controller_name == "devise" %>>
-          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between">
+          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between dark:hover:bg-neutral-700/80">
             <p class="font-medium">Devise</p>
             <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
             <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>
@@ -103,7 +103,7 @@
         </details>
 
         <details class="marker:content-[''] group" <%= "open" if controller_name == "static" %>>
-          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between">
+          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between dark:hover:bg-neutral-700/80">
             <p class="font-medium">Static</p>
             <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
             <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>

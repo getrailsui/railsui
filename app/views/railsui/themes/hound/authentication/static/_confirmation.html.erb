@@ -5,7 +5,7 @@
     <div>
       <div class="flex justify-center">
         <%= link_to "#", class: "size-12 flex justify-center" do %>
-          <%= icon Railsui.config.theme, custom_path: "/themes/#{Railsui.config.theme}/logo.svg", class: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
+          <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
           <span class="sr-only"><%= Railsui.config.application_name %></span>
         <% end %>
       </div>

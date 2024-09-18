@@ -1,6 +1,139 @@
-<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/toast" %>
+<% path = "railsui/themes/#{Railsui.config.theme}/components/toast" %>
 
 <%= render "#{path}/base" %>
+
+<div class="prose prose-neutral dark:prose-invert mb-8 max-w-full">
+
+<p>Use toasts to deliver real-time updates to a user without disrupting their flow.</p>
+<h3>Usage</h3>
+
+<div class="not-prose">
+<% content_for :js, flush: true do %>
+import { Controller } from "@hotwired/stimulus"
+import { useTransition } from "stimulus-use"
+
+export default class extends Controller {
+  connect() {
+    useTransition(this, {
+      element: this.element,
+    })
+
+    // Trigger toggle
+    this.toggleTransition()
+  }
+
+  toggle() {
+    this.toggleTransition()
+  }
+
+  hide() {
+    this.leave()
+
+    let self = this
+    setTimeout(() => {
+      self.toggleTransition()
+    }, 1000)
+  }
+
+  disconnect() {
+    this.leave()
+  }
+}
+
+<% end %>
+
+<%= render_snippet js_filename: "toast_controller.js" %>
+</div>
+
+<h3>Requirements</h3>
+
+<p>Toasts typically enter the screen from the left or right side of the viewport. This example accounts for those two variants by extending Tailwind. Extend your tailwind.config.js file as follows:</p>
+<div class="not-prose">
+<% content_for :js, flush: true do %>
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        'toast-from-right': {
+          '0%': { transform: 'translateX(50%)', opacity: '0%' },
+          '100%': { transform: 'translateX(0)', opacity: '100%' },
+        },
+        'toast-from-left': {
+          '0%': { transform: 'translateX(-50%)', opacity: '0%' },
+          '100%': { transform: 'translateX(0)', opacity: '100%' },
+        },
+      },
+      animation: {
+        'toast-from-right': 'toast-from-right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+        'toast-from-left': 'toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+      },
+    },
+  },
+  plugins: [],
+}
+<% end %>
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+
+<% end %>
+
+
+<%= render_snippet active_tab: :js, js_filename: "tailwind.config.js" %>
+</div>
+
+<p>If you'd rather just add custom CSS, that's fine too:</p>
+<div class="not-prose">
+<% content_for :js, flush: true do %>
+
+<% end %>
+<% content_for :css, flush: true do %>
+/* my-stylesheet.css */
+
+@keyframes toast-from-right {
+  0% {
+    transform: translateX(50%);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes toast-from-left {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+.toast-from-right {
+  animation: toast-from-right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.toast-from-left {
+  animation: toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+<% end %>
+<%= render_snippet active_tab: :css, css_filename: "index.css" %>
+</div>
+<hr>
+</div>
 
 <%= system_pagination(prev_path: systems_components_tab_path, prev_text: "Tab", next_path: systems_components_tooltip_path, next_text: "Tooltip") %>
 

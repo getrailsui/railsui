@@ -39,7 +39,7 @@
     <div>
       <div class="flex justify-center">
         <%%= link_to root_path do %>
-          <%= icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto" %>
+          <%%= icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto" %>
         <%% end %>
       </div>
 
@@ -233,9 +233,10 @@
   <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
     <div>
       <div class="flex justify-center">
-        <a href="/">
-          <img alt="Hound logo" class="w-10 h-auto" src="https://f001.backblazeb2.com/file/railsui/themes/hound/logo.svg">
-        </a>
+        <%= link_to "#", class: "size-12 flex justify-center" do %>
+          <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
+          <span class="sr-only"><%= Railsui.config.application_name %></span>
+        <% end %>
       </div>
 
       <div class="mt-6">
@@ -318,7 +319,7 @@
 <% end %>
 </div>
 
-<%= system_pagination(prev_path: systems_mailers_devise_path, prev_text: "Devise", next_path: systems_authentication_devise_signup_path, next_text: "Sign up") %>
+<%= system_pagination(prev_path: systems_authentication_overview_path, prev_text: "Authentication Overview", next_path: systems_authentication_devise_signup_path, next_text: "Sign up") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

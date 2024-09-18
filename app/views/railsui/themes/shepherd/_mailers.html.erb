@@ -1,7 +1,5 @@
 <div class="prose prose-neutral dark:prose-invert mb-16">
   <div id="mailers-overview">
-    <p>Rails UI has email templates ready for you to use. You can change these templates as your needs change.</p>
-
     <p>There are many email programs out there. Each one handles CSS and HTML differently. Rails UI works with most of them, using some clever tricks to make your emails look good.</p>
   </div>
 </div>
@@ -9,27 +7,23 @@
 <div id="mailers-styling-considerations" class="prose prose-neutral dark:prose-invert mb-16">
   <h3>How to Style Your Emails</h3>
 
-  <p>It's best to put your CSS directly in your email. Tailwind CSS doesn't work well in emails. That's why we put all the CSS in the <%= link_to "mailer layout template",  systems_mailers_layout_path %>.</p>
+  <p>It's best to inline your CSS directly in your email. Tailwind CSS doesn't work this way. That's why we put all the CSS in the <%= link_to "mailer layout template",  systems_mailers_layout_path %>.</p>
 
-  <p>If you want to use a separate CSS file, we suggest using a tool like <%= link_to "premailer", "https://github.com/premailer/premailer" %>. This tool puts your CSS directly in your email, so it looks right.</p>
+  <p>If you want to use a separate CSS file, I suggest using a tool like <%= link_to "premailer", "https://github.com/premailer/premailer" %>. This tool inlines your CSS directly in your email, so it renders properly.</p>
 </div>
 
 <div id="mailers-helpers" class="prose prose-neutral dark:prose-invert mb-16">
   <h2>Helpful Tools</h2>
 
   <p>Rails UI comes with a small helper called <code>MailHelper</code>. This helper module makes it easier to add buttons and space between parts of your email. These things can be tricky in emails, so the helper saves you time.</p>
-
-  <p>Email designs often use tables for layout. Writing these tables can be boring, but they work well in most email programs. Our helpers make this easier for you.</p>
 </div>
 
 <div id="mailers-spacers" class="prose prose-neutral dark:prose-invert mb-16">
   <h3>Adding Space</h3>
 
-  <p>The spacer helper adds space between parts of your email. It uses a table to do this, which works better than regular spacing in many email programs.</p>
+  <p>The spacer helper adds space between parts of your email. It uses a table to do this, which works better than CSS-driven spacing in many email clients.</p>
 
-  <p>Instead of writing this table yourself, you can use the spacer helper. It's much easier.</p>
-
-<p>You can choose how much space to add. Just tell the helper how many pixels of space you want.</p>
+<p>Pass a number to the helper to denote the amount of spacing you require.</p>
 
 
 <div class="not-prose">

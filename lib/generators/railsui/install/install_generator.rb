@@ -27,9 +27,9 @@ module Railsui
         @theme = Railsui.config.theme
 
         if File.exist?("#{Rails.root}/config/importmap.rb")
-          say "❌ Detected importmaps which is not supported by Rails UI. For best results, please use another bundling solution from jsbundling-rails (esbuild, bun, webpack) before installing", :yellow
+          say "❌ Detected importmaps which is not supported by Rails UI. For best results, please use another bundling solution from jsbundling-rails (i.e., esbuild, bun) before installing", :yellow
         else
-          say "🔥 Installing #{@theme.humanize} theme."
+          say "🔥 Installing default theme: #{@theme.humanize} 🐶. Don't worry, you can change this."
 
           # Add engine routes
           # Add a GUI for easier theme configuration
@@ -49,9 +49,8 @@ module Railsui
 
           # rails ui deps
           install_theme_dependencies(@theme)
-          setup_stimulus(@theme)
 
-          # themed assets
+          # assets
           copy_theme_javascript(@theme)
           copy_theme_stylesheets(@theme)
 
@@ -62,8 +61,6 @@ module Railsui
 
           # tailwind related
           update_tailwind_config(@theme)
-          # Each theme requires unique body classes. Instead of blowing away the layout, we'll just add the classes to the config.
-          update_body_classes
 
           # cleanup
           remove_action_text_defaults
@@ -74,7 +71,7 @@ module Railsui
           copy_railsui_images(@theme)
           copy_railsui_pages(@theme)
 
-
+          # migrate
           rails_command "db:migrate"
 
           config.save

@@ -2,11 +2,10 @@
   <div class="md:flex items-center md:space-x-4 md:flex-1">
     <div class="md:flex items-center justify-between w-full md:space-x-3">
       <div class="flex items-center justify-between md:w-auto w-full">
-        <%= link_to rui_dashboard_path do %>
-          <h1>
-            <%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
-            <span class="sr-only">Shepherd</span>
-          </h1>
+        <%= link_to root_path, class: "size-12 flex justify-center" do %>
+          <%= icon "logo", custom_path: "/railsui/logo.svg", class: "group-hover:brightness-105 group-hover:scale-95 transform ease-in-out duration-200 transition-transform group-hover:-rotate-2 w-10 h-10 text-zinc-800 hover:text-zinc-900 fill-current dark:text-zinc-100 dark:hover:text-zinc-200" %>
+
+          <span class="sr-only"><%= Railsui.config.application_name %></span>
         <% end %>
 
         <button type="button" data-action="click->nav#toggle"

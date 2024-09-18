@@ -39,7 +39,7 @@
       <% end %>
     <% end %>
 
-    <p class="py-4 tracking-wide text-neutral-500">Color FAQs</p>
+    <p class="py-4 tracking-wide text-neutral-500 dark:text-white">Color FAQs</p>
 
     <dl class="mt-2 divide-y divide-gray-200 dark:divide-neutral-700 mb-10">
       <details class="group py-4">
@@ -98,46 +98,46 @@
         <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 hover:prose-a:text-neutral-500 prose-ol:list-decimal py-6">
           <p>Yes. To view default theme colors, run:</p>
 
-          <div class="not-prose">
-            <% content_for :html, flush: true do %>
+<div class="not-prose">
+<% content_for :html, flush: true do %>
 
-            <% end %>
-            <% content_for :bash, flush: true do %>
-# Lists colors for active theme
-bin/rails railsui:colors
-# List colors for specific theme. Pass the theme name.
-bin/rails 'railsui:colors[hound]'
+<% end %>
+<% content_for :bash, flush: true do %>
+  # Lists colors for active theme
+  bin/rails railsui:colors
+  # List colors for specific theme. Pass the theme name.
+  bin/rails 'railsui:colors[hound]'
 
-# Example output:
-# Colors for Hound theme:
-# ---
-# primary:
-#  '50': "#eef2ff"
-#  '100': "#e0e7ff"
-#  '200': "#c7d2fe"
-#  '300': "#a5b4fc"
-#  '400': "#818cf8"
-#  '500': "#6366f1"
-#  '600': "#4f46e5"
-#  '700': "#4338ca"
-#  '800': "#3730a3"
-#  '900': "#312e81"
-#  '950': "#1e1b4b"
-# secondary:
-#   '50': "#f8fafc"
-#   '100': "#f1f5f9"
-#   '200': "#e2e8f0"
-#   '300': "#cbd5e1"
-#   '400': "#94a3b8"
-#   '500': "#64748b"
-#   '600': "#475569"
-#   '700': "#334155"
-#   '800': "#1e293b"
-#   '900': "#0f172a"
-#   '950': "#020617"
-            <% end %>
-            <%= render_snippet active_tab: :bash %>
-          </div>
+  # Example output:
+  # Colors for Hound theme:
+  # ---
+  # primary:
+  #  '50': "#eef2ff"
+  #  '100': "#e0e7ff"
+  #  '200': "#c7d2fe"
+  #  '300': "#a5b4fc"
+  #  '400': "#818cf8"
+  #  '500': "#6366f1"
+  #  '600': "#4f46e5"
+  #  '700': "#4338ca"
+  #  '800': "#3730a3"
+  #  '900': "#312e81"
+  #  '950': "#1e1b4b"
+  # secondary:
+  #   '50': "#f8fafc"
+  #   '100': "#f1f5f9"
+  #   '200': "#e2e8f0"
+  #   '300': "#cbd5e1"
+  #   '400': "#94a3b8"
+  #   '500': "#64748b"
+  #   '600': "#475569"
+  #   '700': "#334155"
+  #   '800': "#1e293b"
+  #   '900': "#0f172a"
+  #   '950': "#020617"
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
 
         </div>
       </details>

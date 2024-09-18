@@ -51,6 +51,7 @@ module Railsui
       haml_filename = options[:haml_filename] ||= ".haml.erb"
       js_filename = options[:js_filename] ||= ".js"
       ruby_filename = options[:ruby_filename] ||= ".rb"
+      css_filename = options[:css_filename] ||= ".css"
 
 
       render partial: "railsui/shared/snippet", locals: {
@@ -59,7 +60,8 @@ module Railsui
         erb_filename: erb_filename,
         haml_filename: haml_filename,
         js_filename: js_filename,
-        ruby_filename: ruby_filename
+        ruby_filename: ruby_filename,
+        css_filename: css_filename
       }
     end
 
@@ -197,6 +199,10 @@ module Railsui
 
     def system_nav_item(label:, path:)
       render "railsui/shared/system_nav_item", label: label, path: path
+    end
+
+    def engine_icon_path(icon_path)
+      "/#{Railsui::Engine.root.join("app/assets/images/#{icon_path}")}"
     end
 
     def rui_badge(label, variant: :blue)
