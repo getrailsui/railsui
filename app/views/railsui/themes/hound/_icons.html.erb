@@ -49,12 +49,12 @@
   </div>
 
   <h3>Custom icons</h3>
-  <p>Need to add some of your own icons? You can add those to <%= code "app/assets/images" %>.</p>
+  <p>Need to add some of your own SVG icons? You can add those to <%= code "app/assets/images" %>.</p>
 
   <p>If you require something more custom, use the <code>custom_path</code> option to pass a unique path to the helper for rendering. Treat paths as relative. A forward slash prefix is required: <code>/icon_name.svg</code>.</p>
 
   <div class="my-6">
-    <%= icon "eye-close", custom_path: "/eye-close.svg", class: "text-pink-400 stroke-current w-10 h-10" %>
+    <%= icon "eye-close", custom_path: engine_icon_path("eye-close.svg"), class: "text-pink-400 stroke-current w-10 h-10" %>
   </div>
 
 <div class="not-prose">

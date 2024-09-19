@@ -49,16 +49,16 @@
             <ul
               class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
               <li>
-                <a href="#" class="nav-link nav-link-active" data-action="click->railsui-prevent#prevent">Dashboard</a>
+                <a href="#" class="rui-nav-link rui-nav-link-active" data-action="click->railsui-prevent#prevent">Dashboard</a>
               </li>
               <li>
-                <a href="#" class="nav-link" data-action="click->railsui-prevent#prevent">Metrics</a>
+                <a href="#" class="rui-nav-link" data-action="click->railsui-prevent#prevent">Metrics</a>
               </li>
               <li>
-                <a href="#" class="nav-link" data-action="click->railsui-prevent#prevent">Settings</a>
+                <a href="#" class="rui-nav-link" data-action="click->railsui-prevent#prevent">Settings</a>
               </li>
               <li data-controller="railsui-dropdown" class="relative">
-                <button class="nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+                <button class="rui-nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
                   <span>More</span>
                   <%= icon "chevron-down", class: "size-3 text-slate-500" %>
                 </button>
@@ -253,16 +253,16 @@
             <ul
               class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
               <li>
-                <a href="#" class="nav-link nav-link-active">Dashboard</a>
+                <a href="#" class="rui-nav-link rui-nav-link-active">Dashboard</a>
               </li>
               <li>
-                <a href="#" class="nav-link">Metrics</a>
+                <a href="#" class="rui-nav-link">Metrics</a>
               </li>
               <li>
-                <a href="#" class="nav-link">Settings</a>
+                <a href="#" class="rui-nav-link">Settings</a>
               </li>
               <li data-controller="railsui-dropdown" class="relative">
-                <button class="nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+                <button class="rui-nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
                   <span>More</span>
                   <%%= icon "chevron-down", class: "size-3 text-slate-500" %>
                 </button>
@@ -457,16 +457,16 @@
             <ul
               class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
               <li>
-                <%%= nav_link_to "Dashboard", "#" %>
+                <%%= nav_link_to "Dashboard", "#", class: "rui-nav-link" %>
               </li>
               <li>
-                <%%= nav_link_to "Metrics", "#" %>
+                <%%= nav_link_to "Metrics", "#", class: "rui-nav-link" %>
               </li>
               <li>
-                <%%= nav_link_to "Settings", "#" %>
+                <%%= nav_link_to "Settings", "#", class: "rui-nav-link" %>
               </li>
               <li data-controller="railsui-dropdown" class="relative">
-                <button class="nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+                <button class="rui-nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
                   <span>More</span>
                   <%%= icon "chevron-down", class: "size-3 text-slate-500" %>
                 </button>
@@ -632,13 +632,13 @@
           %nav{role: "Primary navigation"}
             %ul.md:flex.block.items-center.flex-wrap.space-x-0.md:space-x-3.md:text-base.md:leading-normal.leading-relaxed.space-y-1.md:space-y-0.md:mb-0.mb-2
               %li
-                = nav_link_to "Dashboard", "#"
+                = nav_link_to "Dashboard", "#", class: "rui-nav-link"
               %li
-                = nav_link_to "Metrics", "#"
+                = nav_link_to "Metrics", "#", class: "rui-nav-link"
               %li
-                = nav_link_to "Settings", "#"
+                = nav_link_to "Settings", "#", class: "rui-nav-link"
               %li.relative{"data-controller" => "railsui-dropdown"}
-                %button.nav-link.flex.justify-center.items-center.space-x-2.sm:w-auto.w-full{"data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"}
+                %button.rui-nav-link.flex.justify-center.items-center.space-x-2.sm:w-auto.w-full{"data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"}
                   %span More
                   = icon "chevron-down", class: "size-3 text-slate-500"
                 .hidden.transition.transform.origin-to-right.md:absolute.left-0.md:mt-0.mt-2.top-12.bg-white.md:rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.py-1.md:text-sm.dark:bg-slate-700.sm:text-sm.text-base.font-medium.text-slate-600.dark:text-slate-200{class: "shadow-slate-900/10 md:min-w-[180px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}

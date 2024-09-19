@@ -47,7 +47,7 @@
           <div class="flex-1">
 
             <div class="md:grid grid-cols-12 items-start gap-4">
-              <div class="<%= content_for?(:component_nav).present? ? "col-span-9" : "col-span-12" %>">
+              <div class="pb-10 <%= content_for?(:component_nav).present? ? "col-span-9" : "col-span-12" %>">
                 <%= yield %>
               </div>
               <% if content_for?(:component_nav).present? %>

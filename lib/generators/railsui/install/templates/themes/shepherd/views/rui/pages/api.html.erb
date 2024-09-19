@@ -31,13 +31,13 @@
               <ul class="md:flex items-center md:space-y-0 space-y-4">
                 <div class="flex-1 md:flex items-center">
                   <li>
-                    <%= nav_link_to "API Reference", "#", class: "nav-link" %>
+                    <%= nav_link_to "API Reference", "#", class: "rui-nav-link" %>
                   </li>
                   <li>
-                    <%= nav_link_to "Guides", "#", class: "nav-link" %>
+                    <%= nav_link_to "Guides", "#", class: "rui-nav-link" %>
                   </li>
                   <li>
-                    <%= nav_link_to "Changelog", rui_changelog_path, class: "nav-link" %>
+                    <%= nav_link_to "Changelog", rui_changelog_path, class: "rui-nav-link" %>
                   </li>
                 </div>
 
@@ -54,7 +54,7 @@
                 <li class="md:mx-2">
                   <div data-controller="railsui-dropdown" class="relative">
                     <button class="btn btn-white md:px-3"
-                    data-action="click->railsui-dropdown#toggle click@window->dropdown#hide">
+                    data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
                       <%= icon "sun", class: "text-zinc-700 dark:text-zinc-400 lg:w-5 lg:h-5 w-7 h-7 stroke-current" %>
                     </button>
                     <ul

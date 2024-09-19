@@ -30,10 +30,10 @@
           <nav role="primary navigation" class="flex-1">
             <ul class="md:flex items-center md:space-y-0 space-y-4">
               <li class="flex-1 md:flex items-center">
-                <%= nav_link_to "Nav link" , "#", class: "nav-link", data: { controller: "prevent", action: "click->prevent#prevent" } %>
+                <%= nav_link_to "Nav link" , "#", class: "rui-nav-link", data: { controller: "prevent", action: "click->prevent#prevent" } %>
 
                 <div data-controller="railsui-dropdown" class="relative inline-block">
-                  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="nav-link flex items-center justify-center">
+                  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="rui-nav-link flex items-center justify-center">
                     Dropdown
                     <%= icon "chevron-down", class: "size-3 ml-2" %>
                   </button>
@@ -198,16 +198,16 @@
           <nav role="primary navigation" class="flex-1">
             <ul class="md:flex items-center md:space-y-0 space-y-4">
               <li class="flex-1 md:flex items-center">
-                <a href="#" class="nav-link">Nav link</a>
+                <a href="#" class="rui-nav-link">Nav link</a>
 
-                <div data-controller="dropdown" class="relative inline-block">
-                  <button type="button" data-action="click->dropdown#toggle click@window->dropdown#hide" class="nav-link flex items-center justify-center">
+                <div data-controller="railsui-dropdown" class="relative inline-block">
+                  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="rui-nav-link flex items-center justify-center">
                     Dropdown
                     <%%= icon "chevron-down", class: "size-3 ml-2" %>
                   </button>
                   <div
                     class="hidden transition transform origin-top absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 text-zinc-600 dark:text-zinc-100 font-heading text-[15px]"
-                    data-dropdown-target="menu"
+                    data-railsui-dropdown-target="menu"
                     data-transition-enter-from="opacity-0 scale-95"
                     data-transition-enter-to="opacity-100 scale-100"
                     data-transition-leave-from="opacity-100 scale-100"
@@ -365,10 +365,10 @@
           <nav role="primary navigation" class="flex-1">
             <ul class="md:flex items-center md:space-y-0 space-y-4">
               <li class="flex-1 md:flex items-center">
-                <%%= nav_link_to "Nav link", "#", class: "nav-link" %>
+                <%%= nav_link_to "Nav link", "#", class: "rui-nav-link" %>
 
                 <div data-controller="railsui-dropdown" class="relative inline-block">
-                  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="nav-link flex items-center justify-center">
+                  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="rui-nav-link flex items-center justify-center">
                     Dropdown
                     <%%= icon "chevron-down", class: "size-3 ml-2" %>
                   </button>
@@ -518,9 +518,9 @@
           %nav.flex-1{role: "primary navigation"}
             %ul.md:flex.items-center.md:space-y-0.space-y-4
               %li.flex-1.md:flex.items-center
-                = nav_link_to "Nav link", "#", class: "nav-link"
+                = nav_link_to "Nav link", "#", class: "rui-nav-link"
                 .relative.inline-block{"data-controller" => "railsui-dropdown"}
-                  %button.nav-link.flex.items-center.justify-center{"data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide", type: "button"}
+                  %button.rui-nav-link.flex.items-center.justify-center{"data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide", type: "button"}
                     Dropdown
                     \#{icon "chevron-down", class: "size-3 ml-2"}
                   .hidden.transition.transform.origin-top.absolute.left-0.top-14.bg-white.rounded-xl.shadow-xl.border.border-zinc-200.z-50.py-2.dark:bg-zinc-900.text-zinc-600.dark:text-zinc-100.font-heading{class: "shadow-zinc-900/10 w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-600/80 text-[15px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}

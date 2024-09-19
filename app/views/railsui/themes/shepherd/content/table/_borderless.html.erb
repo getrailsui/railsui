@@ -1,6 +1,6 @@
 <div id="table-borderless">
 <%= render layout: example, locals: { heading: "Borderless" } do %>
-<%= render preview('zinc') do %>
+
 <table class="table-auto w-full">
 	<thead>
 		<tr>
@@ -26,7 +26,7 @@
 		</tr>
 	</tbody>
 </table>
-<% end %>
+
 
 <% content_for :example, flush: true do %>
 <%# .html %>

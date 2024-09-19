@@ -2,7 +2,7 @@
 <% Railsui::Pages.installed_pages.each do |page, details| %>
   <% if respond_to?(details['path'].to_sym) && details['add_to_nav'] && details['namespace'] != 'admin' %>
     <%= content_tag :li do %>
-      <%= nav_link_to details['title'], send(details['path'].to_sym), class: "nav-link" %>
+      <%= nav_link_to details['title'], send(details['path'].to_sym), class: "rui-nav-link" %>
     <% end %>
   <% end %>
 <% end %>
