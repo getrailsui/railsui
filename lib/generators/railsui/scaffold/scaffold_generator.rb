@@ -20,6 +20,15 @@ module Railsui
         end
       end
 
+      def append_to_controller
+        # add rui/railsui layout
+        controller_file = File.join("app/controllers", "#{controller_file_name}_controller.rb")
+
+        if File.exist?(controller_file)
+          insert_into_file(controller_file, "\n  layout 'rui/railsui'\n", after: "class #{controller_file_name.camelcase}Controller < ApplicationController")
+        end
+      end
+
       private
 
       def available_views

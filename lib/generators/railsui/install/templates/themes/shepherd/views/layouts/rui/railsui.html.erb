@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= Railsui.config.application_name || "Rails UI " %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      <%= Railsui.config.application_name || "Rails UI" %>
+    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= stylesheet_link_tag "application", "https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css", "data-turbo-track": "reload" %>
+    <%= yield :head %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 
     <%= railsui_head %>
   </head>

@@ -3,7 +3,7 @@
 <div class="border dark:border-slate-700 rounded pointer-events-none select none dark:bg-slate-900">
     <header class="relative dark:bg-slate-900 bg-white border-b border-slate-200 dark:border-slate-700 py-1" data-controller="railsui-nav">
   <div class="container mx-auto px-4">
-    <div class="md:flex items-center flex-wrap md:space-x-2">
+    <div class="md:flex items-center flex-wrap gap-4">
       <div class="md:block flex items-center justify-between">
         <%= link_to "#", class: "size-8 flex justify-center" do %>
           <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-8 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
@@ -29,7 +29,7 @@
           <nav role="Primary navigation">
             <ul class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base  md:leading-normal leading-relaxed space-y-1 md:space-y-0 md:mb-0 mb-2">
               <li>
-                <a class="nav-link" data-turbo="false" href="/">Home</a>
+                <a class="rui-nav-link" data-turbo="false" href="/">Home</a>
               </li>
             </ul>
           </nav>
