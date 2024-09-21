@@ -311,8 +311,8 @@ module Railsui
     def copy_railsui_pages_routes
       routes_file = Rails.root.join('config/routes.rb')
 
-      # Define the regex pattern for the `railsui` namespace block
-      namespace_pattern = /^\s*namespace :railsui do.*?end\n/m
+      # Define the regex pattern for the `rui` namespace block
+      namespace_pattern = /^\s*namespace :rui do.*?end\n/m
 
       # Generate new routes content based on the active pages
       new_routes = Railsui::Pages.theme_pages.keys.map do |page|
@@ -325,18 +325,19 @@ module Railsui
       # Read the current content of the routes file
       route_content = File.read(routes_file)
 
-      if route_content.match?(namespace_pattern)
-        # Remove the existing `railsui` namespace block if present
-        gsub_file routes_file, namespace_pattern, ''
-      end
+      # Remove the existing `rui` namespace block if present
+      updated_content = route_content.gsub(namespace_pattern, '')
 
-      # Append the new routes block at the end of the file if not present
-      insert_into_file routes_file, routes_block, after: "Rails.application.routes.draw do\n", force: true
+      # Append the new routes block after the initial `Rails.application.routes.draw do` line
+      updated_content.sub!("Rails.application.routes.draw do\n", "Rails.application.routes.draw do\n#{routes_block}")
+
+      # Write the updated content back to the routes file
+      File.open(routes_file, 'w') { |file| file.write(updated_content) }
     end
 
     # Pages
     def copy_railsui_page_controller(theme)
-      copy_file "themes/#{theme}/controllers/rui/pages_controller.rb", "app/controllers/rui/pages_controller.rb", force: true
+      copy_file "controllers/pages_controller.rb", "app/controllers/rui/pages_controller.rb", force: true
     end
 
     def copy_railsui_pages(theme)
