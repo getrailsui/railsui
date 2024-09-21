@@ -84,7 +84,12 @@ module Railsui
         end
 
         copy_file "themes/#{theme}/views/layouts/rui/railsui.html.erb", "app/views/layouts/rui/railsui.html.erb", force: true
+
+        if File.exist?("themes/#{theme}/views/layouts/rui/railsui_admin.html.erb")
+          copy_file "themes/#{theme}/views/layouts/rui/railsui_admin.html.erb", "app/views/layouts/rui/railsui_admin.html.erb", force: true
+        end
       end
+
 
       def update_railsui_theme_classes
         @config.body_classes =  Railsui::Themes.theme_classes[@config.theme]['body_classes']
