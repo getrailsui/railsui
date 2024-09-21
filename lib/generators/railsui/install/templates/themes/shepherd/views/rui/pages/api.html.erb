@@ -43,7 +43,7 @@
 
                 <li class="md:mx-2">
                   <div class="relative">
-                    <%= icon "magnifying-glass", class:  "stroke-current w-5 h-5 text-zinc-300 dark:text-zinc-600 absolute left-3 top-[11px]" %>
+                    <%= icon "magnifying-glass", class:  "stroke-current size-5 text-zinc-300 dark:text-zinc-600 absolute left-3 top-[11px]" %>
                     <input type="text" placeholder="Search" class="form-input pl-9 w-full"
                     data-action="focus->search#toggle" data-search-target="anchor" />
                     <span class="absolute right-4 top-3 rounded text-xs font-semibold text-zinc-600 dark:text-zinc-500">
@@ -73,14 +73,14 @@
                       </li>
                       <li>
                         <%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "light" } do %>
-                          <%= icon "sun", class: "w-5 h-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
+                          <%= icon "sun", class: "size-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
                           <span>Light</span>
                         <% end %>
                       </li>
 
                       <li>
                         <%= link_to "#", class: "px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-start space-x-2 dark:text-zinc-200 dark:hover:text-white group", data: { action: "click->dark-mode#toggle", theme: "system" } do %>
-                          <%= icon "computer-desktop", class: "w-5 h-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
+                          <%= icon "computer-desktop", class: "size-5 text-zinc-500 stroke-current group-hover:text-primary-600 pointer-events-none" %>
                           <span>System</span>
                         <% end %>
                       </li>
@@ -144,7 +144,7 @@
   <div class="lg:w-[240px] w-full lg:pl-6">
     <div data-controller="visibility">
       <button data-action="click->visibility#toggle" class="lg:hidden btn btn-white flex items-center space-x-3">
-        <%= icon "code-bracket-square", class: "w-6 h-6 stroke-current text-primary-600" %>
+        <%= icon "code-bracket-square", class: "size-6 stroke-current text-primary-600" %>
         <span>Toggle API Menu</span>
       </button>
       <div data-visibility-target="container" class="lg:block origin-top-left pt-6 lg:pt-0 lg:pl-0 pl-4"
@@ -161,7 +161,7 @@
           <li class="relative">
             <%= link_to "#", class: "pl-1 pr-2 py-1.5 flex items-center space-x-3 text-primary-600" do %>
               <span>
-                <%= icon "eye", class: "stroke-current text-primary-600 w-4 h-4" %>
+                <%= icon "eye", class: "stroke-current text-primary-600 size-4" %>
               </span>
 
               <span>Introduction</span>
@@ -318,7 +318,7 @@
   <aside class="lg:w-[200px] text-zinc-600 dark:text-zinc-200 lg:sticky lg:top-4 lg:pb-0 pb-24">
     <h4 class="text-base flex space-x-3 items-center font-normal text-zinc-600 mb-3 dark:text-zinc-200">
       <span>
-        <%= icon "list-bullet", class: "text-zinc-600 dark:text-zinc-300 w-5 h-5 stroke-current" %>
+        <%= icon "list-bullet", class: "text-zinc-600 dark:text-zinc-300 size-5 stroke-current" %>
       </span>
       <span>Table of contents</span>
     </h4>

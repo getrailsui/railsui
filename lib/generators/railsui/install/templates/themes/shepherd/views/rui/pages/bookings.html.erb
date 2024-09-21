@@ -9,7 +9,7 @@
       <!-- Utility nav-->
       <div class="flex lg:flex-row flex-row-reverse flex-wrap items-center lg:space-x-6 lg:w-auto w-full justify-between">
         <button type="button" class="btn btn-white lg:order-1 order-2 py-2 lg:hidden block peer group">
-          <%= icon "magnifying-glass", class: "stroke-current dark:text-zinc-400 w-6 h-6 dark:group-focus:text-primary-500/90" %>
+          <%= icon "magnifying-glass", class: "stroke-current dark:text-zinc-400 size-6 dark:group-focus:text-primary-500/90" %>
         </button>
         <form action="#" class="lg:block hidden peer-focus:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto">
           <input type="search" class="form-input lg:w-auto w-full" placeholder="Search" />
@@ -18,7 +18,7 @@
           <div data-controller="railsui-dropdown" class="relative">
             <button data-action="click->railsui-dropdown#toggle click@window->dropdown#hide"
               type="button" class="btn btn-white rounded-l-full rounded-r-none border-r-0 group py-2">
-              <%= icon "adjustments-horizontal", class: "text-zinc-600 w-6 h-6 stroke-current group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500" %>
+              <%= icon "adjustments-horizontal", class: "text-zinc-600 size-6 stroke-current group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500" %>
             </button>
 
             <ul data-railsui-dropdown-target="menu"
@@ -36,7 +36,7 @@
                     <input id="sort_ascending" type="radio" class="form-input-radio" name="sort" />
                     <span class="pl-2">Ascending</span>
                   </div>
-                  <%= icon "bars-arrow-up", class: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                  <%= icon "bars-arrow-up", class: "text-zinc-500 size-4 group-hover:text-primary-600/90" %>
                 </label>
               </li>
               <li>
@@ -48,16 +48,16 @@
                     <span class="pl-2">Descending</span>
                   </div>
 
-                  <%= icon "bars-arrow-down", class: "text-zinc-500 w-4 h-4 group-hover:text-primary-600/90" %>
+                  <%= icon "bars-arrow-down", class: "text-zinc-500 size-4 group-hover:text-primary-600/90" %>
                 </label>
               </li>
             </ul>
           </div>
           <button type="button" class="btn py-2 rounded-none btn-white group">
-            <%= icon "printer", class: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+            <%= icon "printer", class: "size-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
           </button>
           <button type="button" class="btn btn-white group rounded-r-full rounded-l-none border-l-0 py-2">
-            <%= icon "arrow-down-tray", class: "w-6 h-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
+            <%= icon "arrow-down-tray", class: "size-6 text-zinc-600 group-hover:text-primary-600 dark:text-zinc-300/80 dark:group-hover:text-primary-500 pointer-events-none" %>
           </button>
         </div>
       </div>
@@ -247,11 +247,11 @@
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
                       data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -265,7 +265,7 @@
                       <li>
                         <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                          <%= icon "chevron-right", class: "md:hidden block size-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
                       </li>
                     </ul>
@@ -443,11 +443,11 @@
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
                       data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -461,7 +461,7 @@
                       <li>
                         <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                          <%= icon "chevron-right", class: "md:hidden block size-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
                       </li>
                     </ul>
@@ -562,11 +562,11 @@
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
                       data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -580,7 +580,7 @@
                       <li>
                         <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%= icon "chevron-right", class:  "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                          <%= icon "chevron-right", class:  "md:hidden block size-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
                       </li>
                     </ul>
@@ -908,11 +908,11 @@
                     <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
                       data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                      <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                       <span class="md:hidden block">Actions</span>
 
-                      <%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                      <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                     </button>
 
                     <ul
@@ -926,7 +926,7 @@
                       <li>
                         <%= link_to rui_booking_path, class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
                           <span>Go to Booking</span>
-                          <%= icon "chevron-right", class: "md:hidden block w-5 h-5 text-zinc-500/60 dark:text-zinc-400" %>
+                          <%= icon "chevron-right", class: "md:hidden block size-5 text-zinc-500/60 dark:text-zinc-400" %>
                         <% end %>
                       </li>
                     </ul>

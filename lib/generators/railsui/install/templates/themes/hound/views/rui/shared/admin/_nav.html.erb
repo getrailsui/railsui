@@ -38,7 +38,7 @@
         <button type="button" class="flex group sm:justify-center items-center md:w-auto w-full px-2 py-3 md:p-0"
           data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
           <div class="relative">
-            <%= icon "bell", class:  "text-slate-300 w-6 h-6 group-hover:text-slate-400 dark:group-hover:text-slate-300 stroke-current" %>
+            <%= icon "bell", class:  "text-slate-300 size-6 group-hover:text-slate-400 dark:group-hover:text-slate-300 stroke-current" %>
             <span
               class="w-[10px] h-[10px] bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-400"></span>
           </div>
@@ -54,7 +54,7 @@
           <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
             <div class="flex-1">
               <div class="flex items-start space-x-2">
-                <%= image_tag demo_avatar_url(id: "10"), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
+                <%= image_tag demo_avatar_url(id: "10"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
                 <div class="flex-1">
                   <p class="truncate">John D. replied to <%= link_to "your comment", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400" %></p>
                   <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
@@ -70,7 +70,7 @@
           <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
             <div class="flex-1">
               <div class="flex items-start space-x-2">
-                <%= image_tag demo_avatar_url(id: "14", variant: "women"), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                <%= image_tag demo_avatar_url(id: "14", variant: "women"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
                 <div class="flex-1">
                   <p>Jane D. posted  <%= link_to "an update", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400" %></p>
                   <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
@@ -85,7 +85,7 @@
           <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
             <div class="flex-1">
               <div class="flex items-start space-x-2">
-                <%= image_tag demo_avatar_url(id: "24"), class: "w-6 h-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                <%= image_tag demo_avatar_url(id: "24"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
                 <div class="flex-1">
                   <p>Scotty P. shared <%= link_to "a repository", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400" %></p>
                   <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
@@ -100,7 +100,7 @@
           <div>
             <%= link_to "#", class: "flex items-center justify-between group px-4 pt-3 pb-2 hover:bg-slate-50 hover:text-primary-500 text-sm group font-medium text-slate-500 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white" do %>
               <span>View all notifications</span>
-              <%= icon "chevron-right", class:  "group-hover:translate-x-1 transform transition ease-in-out w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current" %>
+              <%= icon "chevron-right", class:  "group-hover:translate-x-1 transform transition ease-in-out size-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current" %>
             <% end %>
           </div>
         </div>
@@ -122,21 +122,21 @@
 
           <li>
             <%= link_to rui_settings_path, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-              <%= icon "cog-6-tooth", class: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= icon "cog-6-tooth", class: "flex-shrink-0 stroke-current size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               <span>Settings</span>
             <% end %>
           </li>
 
           <li>
             <%= link_to rui_billing_path, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-              <%= icon "banknotes", class: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= icon "banknotes", class: "flex-shrink-0 stroke-current size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               <span>Billing</span>
             <% end %>
           </li>
 
           <li>
             <%= button_to "#", method: :delete, class: "py-2 px-4 hover:text-primary-600 focus:text-primary-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-primary-400" do %>
-              <%= icon "arrow-right-on-rectangle", class: "flex-shrink-0 stroke-current w-5 h-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= icon "arrow-right-on-rectangle", class: "flex-shrink-0 stroke-current size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               <span>Sign out</span>
             <% end %>
           </li>

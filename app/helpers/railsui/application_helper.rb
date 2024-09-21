@@ -91,7 +91,7 @@ module Railsui
     end
 
     def box_check_classes
-      "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 w-5 h-5
+      "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 size-5
       focus:dark:ring-slate-700
       focus:dark:ring-opacity-20
       focus:dark:bg-slate-600  dark:bg-slate-700

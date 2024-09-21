@@ -122,11 +122,11 @@
         <td class="align-top pt-2">
           <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
             <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
-              <%%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+              <%%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
               <span class="md:hidden block">Actions</span>
 
-              <%%= icon "chevron-down", class: "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+              <%%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
             </button>
 
             <ul class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
@@ -140,7 +140,7 @@
                 <a href="#"
           class="px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white">
                   <span>Go to Booking</span>
-                  <%%= icon "chevron-right", class:  "md:hidden block w-5 h-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+                  <%%= icon "chevron-right", class:  "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
                 </a>
               </li>
             </ul>
@@ -196,11 +196,11 @@
         <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
         <button class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-          <%%= icon "ellipsis-horizontal", class:  "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+          <%%= icon "ellipsis-horizontal", class:  "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
           <span class="md:hidden block">Actions</span>
 
-          <%%= icon "chevron-down", class:  "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+          <%%= icon "chevron-down", class:  "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
         </button>
 
         <ul
@@ -214,7 +214,7 @@
           <li>
             <%%= link_to "#", class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
               <span>Go to Booking</span>
-              <%%= icon "chevron-right", class:  "md:hidden block w-5 h-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+              <%%= icon "chevron-right", class:  "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
               <%% end %>
             </li>
           </ul>
@@ -263,14 +263,14 @@
         %td.align-top.pt-2
           .relative.md:flex.md:justify-end.justify-start{"data-controller" => "railsui-dropdown"}
             %button.flex.relative.z-40.md:w-10.md:h-9.py-3.px-4.md:px-0.md:py-0.w-full.md:rounded-xl.rounded-full.bg-white.focus:ring-4.items-center.md:justify-center.justify-between.border.md:border-transparent.focus:border-zinc-300.hover:border-zinc-300.dark:hover:bg-zinc-800.dark:hover:border-zinc-600.dark:focus:bg-zinc-800.dark:focus:border-zinc-500.dark:text-white{class: "focus:ring-zinc-300/30 border-zinc-300/80 dark:bg-zinc-700/60 dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80", "data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"}
-              = icon "ellipsis-horizontal", class:  "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200"
+              = icon "ellipsis-horizontal", class:  "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200"
               %span.md:hidden.block Actions
-              = icon "chevron-down", class:  "md:hidden block w-4 h-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400"
+              = icon "chevron-down", class:  "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400"
             %ul.hidden.origin-top-right.absolute.md:top-12.mt-3.md:mt-0.top-10.right-0.w-48.md:shadow-sm.md:rounded-xl.rounded-3xl.py-2.z-50.bg-white.text-base.border.dark:bg-zinc-800.dark:border-zinc-600{class: "shadow-zinc-300/20 md:text-[15px] dark:shadow-zinc-950/20", "data-railsui-dropdown-target" => "menu", "data-transition-enter-active" => "transition ease-out duration-100", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-100", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
               %li
                 = link_to "", class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do
                   %span Go to Booking
-                  = icon "chevron-right", class:  "md:hidden block w-5 h-5 stroke-current text-zinc-500/60 dark:text-zinc-400"
+                  = icon "chevron-right", class:  "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400"
       / more booking list items
 <% end %>
 

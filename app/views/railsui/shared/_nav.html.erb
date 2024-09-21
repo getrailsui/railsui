@@ -3,7 +3,7 @@
     <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
       <%= link_to systems_content_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-gradient-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group" do %>
         <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
-          <%= icon "content", custom_path: "/content.svg", class: "stroke-current w-5 h-5 text-indigo-500 group-hover:text-indigo-700 dark:group-hover:text-indigo-300" %>
+          <%= icon "content", custom_path: "/content.svg", class: "stroke-current size-5 text-indigo-500 group-hover:text-indigo-700 dark:group-hover:text-indigo-300" %>
         </div>
         <span>Content</span>
       <% end %>
@@ -25,7 +25,7 @@
     <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
       <%= link_to systems_forms_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-gradient-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-neutral-700 "  do %>
         <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
-          <%= icon "forms", custom_path:"/forms.svg", class: "stroke-current w-5 h-5 text-teal-500" %>
+          <%= icon "forms", custom_path:"/forms.svg", class: "stroke-current size-5 text-teal-500" %>
         </div>
         <span>Forms</span>
       <% end %>
@@ -55,7 +55,7 @@
 
       <%= link_to systems_components_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-gradient-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-neutral-700"  do %>
         <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
-          <%= icon "components", custom_path: "/components.svg", class: "stroke-current w-5 h-5 text-rose-500" %>
+          <%= icon "components", custom_path: "/components.svg", class: "stroke-current size-5 text-rose-500" %>
         </div>
         <span>Components</span>
       <% end %>
@@ -110,7 +110,7 @@
 
       <%= link_to systems_mailers_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-gradient-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-neutral-700"  do %>
         <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
-          <%= icon "mail", custom_path:"/mail.svg", class: "stroke-current w-5 h-5 text-blue-500" %>
+          <%= icon "mail", custom_path:"/mail.svg", class: "stroke-current size-5 text-blue-500" %>
         </div>
         <span>Mailers</span>
       <% end %>

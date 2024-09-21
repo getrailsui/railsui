@@ -229,7 +229,7 @@
       }
 
       &:after {
-        @apply content-[""] block bg-white rounded-full w-4 h-4 absolute top-[4px] left-[4px] transition-transform ease-out shadow-sm;
+        @apply content-[""] block bg-white rounded-full size-4 absolute top-[4px] left-[4px] transition-transform ease-out shadow-sm;
       }
     }
   }
