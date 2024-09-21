@@ -100,5 +100,18 @@ module Railsui
       # Return the combined classes or an empty string if none
       combined_classes.presence || ""
     end
+
+    def fake_git_hash
+      characters = "abcdef0123456789"
+      hash_length = 7
+      hash = ""
+
+      hash_length.times do
+        random_index = rand(characters.length)
+        hash += characters[random_index]
+      end
+
+      hash
+    end
   end
 end

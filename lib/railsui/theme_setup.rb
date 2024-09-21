@@ -341,17 +341,27 @@ module Railsui
     end
 
     def copy_railsui_pages(theme)
-      Railsui::Pages.theme_pages.each do | page, details |
+      # Ensure directories exist
+      FileUtils.mkdir_p("app/views/rui/pages")
+      FileUtils.mkdir_p("app/views/layouts/rui")
+
+      Railsui::Pages.theme_pages.each do |page, details|
         if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)
           copy_file "themes/#{theme}/views/rui/pages/#{page}.html.erb", "app/views/rui/pages/#{page}.html.erb", force: true
         end
       end
 
+      # Copy default layout
       copy_file "themes/#{theme}/views/layouts/rui/railsui.html.erb", "app/views/layouts/rui/railsui.html.erb", force: true
 
-      if File.exist?("themes/#{theme}/views/layouts/rui/railsui_admin.html.erb")
-        copy_file "themes/#{theme}/views/layouts/rui/railsui_admin.html.erb", "app/views/layouts/rui/railsui_admin.html.erb", force: true
-      end
+      # Copy admin layout if it exists
+      copy_admin_layout_if_exists(theme)
+    end
+
+    def copy_admin_layout_if_exists(theme)
+      admin_layout = "themes/#{theme}/views/layouts/rui/railsui_admin.html.erb"
+
+      copy_file admin_layout, "app/views/layouts/rui/railsui_admin.html.erb", force: true if File.exist?(admin_layout)
     end
 
     def copy_railsui_head(theme)

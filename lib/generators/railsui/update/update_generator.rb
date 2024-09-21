@@ -72,9 +72,15 @@ module Railsui
         copy_railsui_images(@config.theme)
       end
 
-      def copy_new_theme_pages(theme)
+       def copy_new_theme_pages(theme)
+        # Get the new theme pages
         new_theme_pages = Railsui::Pages.get_pages(theme)
 
+        # Ensure directories exist
+        FileUtils.mkdir_p("app/views/rui/pages")
+        FileUtils.mkdir_p("app/views/layouts/rui")
+
+        # Loop through and copy each theme page
         new_theme_pages.each do |page|
           source_path = "themes/#{theme}/views/rui/pages/#{page}.html.erb"
           destination_path = Rails.root.join("app/views/rui/pages", "#{page}.html.erb")
@@ -83,13 +89,19 @@ module Railsui
           copy_file source_path, destination_path, force: true
         end
 
+        # Copy default layout
         copy_file "themes/#{theme}/views/layouts/rui/railsui.html.erb", "app/views/layouts/rui/railsui.html.erb", force: true
 
-        if File.exist?("themes/#{theme}/views/layouts/rui/railsui_admin.html.erb")
-          copy_file "themes/#{theme}/views/layouts/rui/railsui_admin.html.erb", "app/views/layouts/rui/railsui_admin.html.erb", force: true
-        end
+        # Copy admin layout if it exists
+        copy_admin_layout_if_exists(theme)
       end
 
+      # Helper method to copy the admin layout if it exists
+      def copy_admin_layout_if_exists(theme)
+        admin_layout = "themes/#{theme}/views/layouts/rui/railsui_admin.html.erb"
+
+        copy_file admin_layout, "app/views/layouts/rui/railsui_admin.html.erb", force: true if File.exist?(admin_layout)
+      end
 
       def update_railsui_theme_classes
         @config.body_classes =  Railsui::Themes.theme_classes[@config.theme]['body_classes']
