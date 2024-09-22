@@ -1,18 +1,21 @@
 <!-- Rails UI Launcher - Only visible in development -->
-<div data-controller="railsui-dropdown" class="relative inline-block">
+<div data-controller="railsui-dropdown">
   <div class="rui-launcher">
     <button type="button" data-turbo="false" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
       <%= image_tag "r.svg", class: "rui-r invert" %>
     </button>
     <nav class="hidden" data-railsui-dropdown-target="menu">
       <ul>
-
         <li>
           <%= link_to "Configuration", railsui.root_path, data: { turbo: false } %>
         </li>
 
         <li>
           <%= link_to "Components", railsui.systems_path, data: { turbo: false } %>
+        </li>
+
+         <li>
+          <%= link_to "Pages", railsui.root_path(anchor: "pages"), data: { turbo: false } %>
         </li>
 
         <li>

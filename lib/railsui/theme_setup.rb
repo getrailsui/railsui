@@ -358,10 +358,18 @@ module Railsui
       copy_admin_layout_if_exists(theme)
     end
 
+     # Helper method to copy the admin layout if it exists
     def copy_admin_layout_if_exists(theme)
-      admin_layout = "themes/#{theme}/views/layouts/rui/railsui_admin.html.erb"
+      # Manually build the path to the file in the source directory
+      admin_layout = File.expand_path("themes/#{theme}/views/layouts/rui/railsui_admin.html.erb", self.class.source_root)
 
-      copy_file admin_layout, "app/views/layouts/rui/railsui_admin.html.erb", force: true if File.exist?(admin_layout)
+      # Check if the file exists before attempting to copy it
+      if File.exist?(admin_layout)
+        copy_file admin_layout, "app/views/layouts/rui/railsui_admin.html.erb", force: true
+      else
+        # Optionally, log that the admin layout is being skipped.
+        say "Skipping admin layout for #{theme}, file not required."
+      end
     end
 
     def copy_railsui_head(theme)
