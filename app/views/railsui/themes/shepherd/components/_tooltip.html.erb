@@ -4,32 +4,27 @@
 
 <h2>1. Initializing the Stimulus.js controller</h2>
 
-<p>The <%= Railsui.config.theme.humanize %> theme ships with the Tooltip Stimulus controller from <a href="https://github.com/getrailsui/railsui-stimulus" target="_blank">railsui-stimulus</a> by default. If the tooltip controller is not already registered, you can do so using the code below. You will need <a href="https://stimulus.hotwired.dev/" target="_blank">stimulus.js</a> installed if it's not already.</p>
+<p>Leverage the Railsui Tooltip Stimulus controller from <a href="https://github.com/getrailsui/railsui-stimulus" target="_blank">railsui-stimulus</a> for drop-in tooltips.</p>
 
 <div class="not-prose">
 <%= content_for :js, flush: true do %>
-// Start Stimulus
-import { Application } from '@hotwired/stimulus'
-
-const application = Application.start()
-
 // Import components adhoc.
 import { RailsuiTooltip } from 'railsui-stimulus'
 application.register('railsui-tooltip', RailsuiTooltip)
 <% end %>
-<%= render_snippet active_tab: "js", js_filename: "index.js" %>
+  <%= render_snippet active_tab: "js", js_filename: "index.js" %>
 </div>
 
 <h2>2. Initialize the controller in your views</h2>
 
-<p>Add the data attribute <code>data-controller='tooltip'</code> to an HTML element.</p>
+<p>Add the data attribute <code>data-controller='railsui-tooltip'</code> to an HTML element.</p>
 
 <div class="not-prose">
 <% content_for :js, flush: true do %>
 
 <% end %>
 <% content_for :html, flush: true do %>
-  <button data-controller="railsui-tooltip" class="btn btn-primary">Tooltip demo</button>
+<button data-controller="railsui-tooltip" class="btn btn-primary">Tooltip demo</button>
 <% end %>
   <%= render_snippet %>
 </div>
@@ -43,9 +38,9 @@ application.register('railsui-tooltip', RailsuiTooltip)
   <% content_for :js, flush: true do %>
 
   <% end %>
-  <% content_for :html, flush: true do %>
-    <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
-  <% end %>
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+<% end %>
   <%= render_snippet %>
 </div>
 
@@ -55,6 +50,7 @@ application.register('railsui-tooltip', RailsuiTooltip)
 
 <div class="not-prose">
   <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+
 
 <% content_for :js, flush: true do %>
 
@@ -68,7 +64,7 @@ application.register('railsui-tooltip', RailsuiTooltip)
 </div>
 <% end %>
 
-<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/tooltip" %>
+<% path = "railsui/themes/#{Railsui.config.theme}/components/tooltip" %>
 
 <%= render "#{path}/base" %>
 

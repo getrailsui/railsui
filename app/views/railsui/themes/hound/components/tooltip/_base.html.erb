@@ -20,22 +20,24 @@
 <% end %>
 
 <% content_for :js, flush: true do %>
-import { Controller } from "@hotwired/stimulus"
-import tippy from "tippy.js"
+// https://github.com/getrailsui/railsui-stimulus/blob/main/src/railsui_tooltip.js
+
+import { Controller } from '@hotwired/stimulus'
+import tippy from 'tippy.js'
 
 export default class extends Controller {
   static values = {
     content: String,
-    allowHtml: Boolean
+    allowHtml: { type: Boolean, default: false },
   }
 
   connect() {
     let options = {}
     if (this.hasContentValue) {
-      options["content"] = this.contentValue
+      options['content'] = this.contentValue
     }
     if (this.hasAllowHtmlValue) {
-      options["allowHTML"] = this.allowHtmlValue
+      options['allowHTML'] = this.allowHtmlValue
     }
     this.tippy = tippy(this.element, options)
   }

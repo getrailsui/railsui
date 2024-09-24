@@ -2,10 +2,8 @@
 <%= render layout: example, locals: { heading: "Base", section: "Tooltip" } do %>
 
 <%= render preview 'zinc' do %>
-<div class="flex items-center gap-3">
 <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="Hi, from the tips of tools" class="btn btn-primary">Hover here</button>
 <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="We raised over $1 billion to engineer the greatest tooltip of our lives. <strong>What's super cool</strong> is that HTML can be embedded into the tooltip for max emphasis." data-railsui-tooltip-allow-html-value="true" class="btn btn-white">and here</button>
-</div>
 <% end %>
 
 <% content_for :example, flush: true do %>
@@ -14,25 +12,43 @@
 <% end %>
 
 <% content_for :erb, flush: true  do %>
-<%%= button_tag "#", class: "btn btn-primary", data: { controller: "tooltip", tooltip_content_value: "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!", tooltip_allow_html_value: "true" } %>
+<%%= button_tag "#", class: "btn btn-primary", data: { controller: "railsui-tooltip", railsui_tooltip_content_value: "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!", railsui_tooltip_allow_html_value: "true" } %>
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%button.btn.btn-primary{"data-controller" => "tooltip", "data-tooltip-allow-html-value" => "true", "data-tooltip-content-value" => "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!"} Tooltip with HTML demo
+%button.btn.btn-primary{"data-controller" => "railsui-tooltip", "data-railsui-tooltip-allow-html-value" => "true", "data-railsui-tooltip-content-value" => "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!"} Tooltip with HTML demo
 <% end %>
 
 <% content_for :js, flush: true do %>
-// Start Stimulus
-import { Application } from '@hotwired/stimulus'
+// https://github.com/getrailsui/railsui-stimulus/blob/main/src/railsui_tooltip.js
 
-const application = Application.start()
+import { Controller } from '@hotwired/stimulus'
+import tippy from 'tippy.js'
 
-// Import components adhoc.
-import { RailsuiTooltip } from 'railsui-stimulus'
-application.register('railsui-tooltip', RailsuiTooltip)
+export default class extends Controller {
+  static values = {
+    content: String,
+    allowHtml: { type: Boolean, default: false },
+  }
+
+  connect() {
+    let options = {}
+    if (this.hasContentValue) {
+      options['content'] = this.contentValue
+    }
+    if (this.hasAllowHtmlValue) {
+      options['allowHTML'] = this.allowHtmlValue
+    }a
+    this.tippy = tippy(this.element, options)
+  }
+
+  disconnect() {
+    this.tippy.destroy()
+  }
+}
 <% end %>
 
-<%= render_snippet js_filename: "index.js" %>
+<%= render_snippet js_filename: "tooltip_controller.js" %>
 <% end %>
 <% end %>
 </div>

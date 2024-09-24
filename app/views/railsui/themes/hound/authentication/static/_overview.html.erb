@@ -49,21 +49,6 @@
 
       <div class="bg-white shadow-sm rounded-lg p-8 border border-slate-300/60">
         <%%= yield %>
-
-        <!-- Add additional provider svg icons in app/assets/images/railsui/omniauth as necessary. These should ideally be full color versions of each provider's logo for max consistency. File name conventions should be lowercase without hyphens or spaces (i.e., google, linkedin, twitter, facebook)
-        Default: Google, LinkedIn, Twitter, Facebook. -->
-
-        <%% if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name) %>
-          <hr class="my-6"/>
-          <%% resource_class.omniauth_providers.each do |provider| %>
-            <div class="my-2">
-            <%%= button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do %>
-              <%%= icon "#{provider.gsub(/\s+/, '').downcase}", custom_path: "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5" %>
-              <span>"Sign in with <%%= OmniAuth::Utils.camelize(provider) %></span>
-            <%% end %>
-            </div>
-          <%% end %>
-        <%% end %>
       </div>
 
       <div class="mt-4">
@@ -86,14 +71,6 @@
         = yield :masthead
       .bg-white.shadow-sm.rounded-lg.p-8.border{class: "border-slate-300/60"}
         = yield
-        - if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name)
-          %hr.my-6/
-          - resource_class.omniauth_providers.each do |provider|
-            .my-2
-              = button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do
-                = icon "#{provider.gsub(/\s+/, '').downcase}", custom_path: "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5"
-                %span
-                  Continue with #{OmniAuth::Utils.camelize(provider)}
       .mt-4
         = yield :links
 <% end %>

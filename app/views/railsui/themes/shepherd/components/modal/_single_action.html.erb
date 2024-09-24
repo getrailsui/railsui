@@ -156,16 +156,12 @@
 <% end %>
 
 <% content_for :js, flush: true do %>
-// Start Stimulus
-import { Application } from '@hotwired/stimulus'
-
-const application = Application.start()
-
 import { RailsuiModal } from 'railsui-stimulus'
+
 application.register('railsui-modal', RailsuiModal)
 <% end %>
 
-<%= render_snippet(js_filename: "modal_controller.js") %>
+<%= render_snippet(js_filename: "index.js") %>
 <% end %>
 <% end %>
 </div>
