@@ -255,7 +255,7 @@ module Railsui
 
       rails_command "generate mailer Railsui minimal promotion transactional"
 
-      insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, '  layout "railsui/railsui_mailer"', after: "class RailsuiMailer < ApplicationMailer\n"
+      insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, '  layout "rui/railsui_mailer"', after: "class RailsuiMailer < ApplicationMailer\n"
 
       copy_sample_mailers(theme)
     end
