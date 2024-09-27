@@ -24,11 +24,11 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
-<!-- app/views/shared/error_messages.html.erb -->
+<!-- app/views/rui/shared/_error_messages.html.erb -->
 
 <%% if resource.errors.any? %>
 <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
-  <p class="font-semibold font-heading"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+  <p class="font-semibold font-heading"><%%= pluralize(resource.errors.count, "error") %> prohibited this <%%= resource.class.name.downcase %> from being saved:</p>
   <ul class="list-disc mt-3 ml-4">
     <%% resource.errors.each do |error| %>
       <li><%%= error.full_message %></li>
@@ -39,12 +39,12 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-/ app/views/shared/error_messages.html.erb
+/ app/views/rui/shared/_error_messages.html.erb
 - if resource.errors.any?
-  .text-primary-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-primary-50.text-sm(class="bg-primary-50/50 dark:bg-primary-400/10 dark:border-primary-400/20" role="alert")
+  .text-primary-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-primary-50.text-sm{class: "bg-primary-50/50 dark:bg-primary-400/10 dark:border-primary-400/20", role: "alert"}
     %p.font-semibold.font-heading
       = pluralize(resource.errors.count, "error")
-      prohibited this post from being saved:
+      prohibited this #{resource.class.name.downcase} from being saved:
     %ul.list-disc.mt-3.ml-4
       - resource.errors.each do |error|
         %li= error.full_message
