@@ -3,7 +3,7 @@
     <div class="flex items-start gap-4">
       <%= icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid %>
       <div class="flex-1">
-        <p class="font-bold"><%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+        <p class="font-bold"><%= pluralize(resource.errors.count, "error") %> prohibited this <%= resource.class.name.downcase %> from being saved:</p>
         <ul class="list-disc mt-3 ml-4">
           <% resource.errors.each do |error| %>
             <li><%= error.full_message %></li>
