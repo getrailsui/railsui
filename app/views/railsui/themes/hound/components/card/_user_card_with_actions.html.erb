@@ -9,11 +9,11 @@
   </div>
   <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
     <a data-action="click->railsui-prevent#prevent" href="#" class="btn btn-white flex items-center gap-2">
-      <%= icon "phone", classes: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <%= icon "phone", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
       <span>Phone</span>
     </a>
     <a data-action="click->railsui-prevent#prevent" href="#" class="btn btn-white flex items-center gap-2">
-      <%= icon "envelope", classes: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <%= icon "envelope", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
       <span>Email</span>
     </a>
   </div>
@@ -34,13 +34,13 @@
   </div>
   <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
     <%%= link_to "#", class: "btn btn-white flex items-center gap-2 group" do %>
-      <%%= icon "phone", classes: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <%%= icon "phone", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
       <span>Phone</span>
     <%% end %>
 
     <!-- * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit -->
     <%% mail_content = capture do %>
-      <%%= icon "envelope", classes: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <%%= icon "envelope", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
       <span>Email</span>
     <%% end %>
 
@@ -59,11 +59,11 @@
       %a.btn-link(href="#") Amazon
   .grid.gap-3.grid-cols-2.lg:pt-0.pt-3.w-full.lg:w-auto
     = link_to "#", class: "btn btn-white flex items-center gap-2 group" do
-      = icon "phone", classes: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
+      = icon "phone", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
       %span Phone
     / * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit
     - mail_content = capture do
-      = icon "envelope", classes: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
+      = icon "envelope", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
       %span Email
     = mail_to "railsui@example.com", mail_content, class: "btn btn-white flex items-center gap-2 group"
 <% end %>

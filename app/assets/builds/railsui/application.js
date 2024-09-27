@@ -9,13 +9,13 @@
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
-  var __copyProps = (to, from, except, desc) => {
+  var __copyProps = (to2, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
       for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+        if (!__hasOwnProp.call(to2, key) && key !== except)
+          __defProp(to2, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
-    return to;
+    return to2;
   };
   var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
     // If the importer is in node compatibility mode or this is not an ESM
@@ -278,21 +278,21 @@
           return true;
         }
       };
-      function source(re) {
-        if (!re)
+      function source(re2) {
+        if (!re2)
           return null;
-        if (typeof re === "string")
-          return re;
-        return re.source;
+        if (typeof re2 === "string")
+          return re2;
+        return re2.source;
       }
-      function lookahead(re) {
-        return concat("(?=", re, ")");
+      function lookahead(re2) {
+        return concat("(?=", re2, ")");
       }
-      function anyNumberOfTimes(re) {
-        return concat("(?:", re, ")*");
+      function anyNumberOfTimes(re2) {
+        return concat("(?:", re2, ")*");
       }
-      function optional(re) {
-        return concat("(?:", re, ")?");
+      function optional(re2) {
+        return concat("(?:", re2, ")?");
       }
       function concat(...args) {
         const joined = args.map((x) => source(x)).join("");
@@ -312,11 +312,11 @@
         const joined = "(" + (opts.capture ? "" : "?:") + args.map((x) => source(x)).join("|") + ")";
         return joined;
       }
-      function countMatchGroups(re) {
-        return new RegExp(re.toString() + "|").exec("").length - 1;
+      function countMatchGroups(re2) {
+        return new RegExp(re2.toString() + "|").exec("").length - 1;
       }
-      function startsWith(re, lexeme) {
-        const match = re && re.exec(lexeme);
+      function startsWith(re2, lexeme) {
+        const match = re2 && re2.exec(lexeme);
         return match && match.index === 0;
       }
       var BACKREF_RE = /\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\./;
@@ -324,19 +324,19 @@
         let numCaptures = 0;
         return regexps.map((regex) => {
           numCaptures += 1;
-          const offset2 = numCaptures;
-          let re = source(regex);
+          const offset = numCaptures;
+          let re2 = source(regex);
           let out = "";
-          while (re.length > 0) {
-            const match = BACKREF_RE.exec(re);
+          while (re2.length > 0) {
+            const match = BACKREF_RE.exec(re2);
             if (!match) {
-              out += re;
+              out += re2;
               break;
             }
-            out += re.substring(0, match.index);
-            re = re.substring(match.index + match[0].length);
+            out += re2.substring(0, match.index);
+            re2 = re2.substring(match.index + match[0].length);
             if (match[0][0] === "\\" && match[1]) {
-              out += "\\" + String(Number(match[1]) + offset2);
+              out += "\\" + String(Number(match[1]) + offset);
             } else {
               out += match[0];
               if (match[0] === "(") {
@@ -345,7 +345,7 @@
             }
           }
           return out;
-        }).map((re) => `(${re})`).join(joinWith);
+        }).map((re2) => `(${re2})`).join(joinWith);
       }
       var MATCH_NOTHING_RE = /\b\B/;
       var IDENT_RE2 = "[a-zA-Z]\\w*";
@@ -397,12 +397,12 @@
       var PHRASAL_WORDS_MODE = {
         begin: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|they|like|more)\b/
       };
-      var COMMENT = function(begin, end2, modeOptions = {}) {
+      var COMMENT = function(begin, end, modeOptions = {}) {
         const mode = inherit$1(
           {
             scope: "comment",
             begin,
-            end: end2,
+            end,
             contains: []
           },
           modeOptions
@@ -682,14 +682,14 @@
       };
       var MultiClassError = new Error();
       function remapScopeNames(mode, regexes, { key }) {
-        let offset2 = 0;
+        let offset = 0;
         const scopeNames = mode[key];
         const emit = {};
         const positions = {};
         for (let i = 1; i <= regexes.length; i++) {
-          positions[i + offset2] = scopeNames[i];
-          emit[i + offset2] = true;
-          offset2 += countMatchGroups(regexes[i - 1]);
+          positions[i + offset] = scopeNames[i];
+          emit[i + offset] = true;
+          offset += countMatchGroups(regexes[i - 1]);
         }
         mode[key] = positions;
         mode[key]._emit = emit;
@@ -755,11 +755,11 @@
             this.position = 0;
           }
           // @ts-ignore
-          addRule(re, opts) {
+          addRule(re2, opts) {
             opts.position = this.position++;
             this.matchIndexes[this.matchAt] = opts;
-            this.regexes.push([opts, re]);
-            this.matchAt += countMatchGroups(re) + 1;
+            this.regexes.push([opts, re2]);
+            this.matchAt += countMatchGroups(re2) + 1;
           }
           compile() {
             if (this.regexes.length === 0) {
@@ -795,7 +795,7 @@
             if (this.multiRegexes[index])
               return this.multiRegexes[index];
             const matcher = new MultiRegex();
-            this.rules.slice(index).forEach(([re, opts]) => matcher.addRule(re, opts));
+            this.rules.slice(index).forEach(([re2, opts]) => matcher.addRule(re2, opts));
             matcher.compile();
             this.multiRegexes[index] = matcher;
             return matcher;
@@ -807,8 +807,8 @@
             this.regexIndex = 0;
           }
           // @ts-ignore
-          addRule(re, opts) {
-            this.rules.push([re, opts]);
+          addRule(re2, opts) {
+            this.rules.push([re2, opts]);
             if (opts.type === "begin")
               this.count++;
           }
@@ -1032,18 +1032,18 @@
             return mode.keywords[matchText];
           }
           function processKeywords() {
-            if (!top2.keywords) {
+            if (!top.keywords) {
               emitter.addText(modeBuffer);
               return;
             }
             let lastIndex = 0;
-            top2.keywordPatternRe.lastIndex = 0;
-            let match = top2.keywordPatternRe.exec(modeBuffer);
+            top.keywordPatternRe.lastIndex = 0;
+            let match = top.keywordPatternRe.exec(modeBuffer);
             let buf = "";
             while (match) {
               buf += modeBuffer.substring(lastIndex, match.index);
               const word = language.case_insensitive ? match[0].toLowerCase() : match[0];
-              const data = keywordData(top2, word);
+              const data = keywordData(top, word);
               if (data) {
                 const [kind, keywordRelevance] = data;
                 emitter.addText(buf);
@@ -1060,8 +1060,8 @@
               } else {
                 buf += match[0];
               }
-              lastIndex = top2.keywordPatternRe.lastIndex;
-              match = top2.keywordPatternRe.exec(modeBuffer);
+              lastIndex = top.keywordPatternRe.lastIndex;
+              match = top.keywordPatternRe.exec(modeBuffer);
             }
             buf += modeBuffer.substring(lastIndex);
             emitter.addText(buf);
@@ -1070,24 +1070,24 @@
             if (modeBuffer === "")
               return;
             let result2 = null;
-            if (typeof top2.subLanguage === "string") {
-              if (!languages[top2.subLanguage]) {
+            if (typeof top.subLanguage === "string") {
+              if (!languages[top.subLanguage]) {
                 emitter.addText(modeBuffer);
                 return;
               }
-              result2 = _highlight(top2.subLanguage, modeBuffer, true, continuations[top2.subLanguage]);
-              continuations[top2.subLanguage] = /** @type {CompiledMode} */
+              result2 = _highlight(top.subLanguage, modeBuffer, true, continuations[top.subLanguage]);
+              continuations[top.subLanguage] = /** @type {CompiledMode} */
               result2._top;
             } else {
-              result2 = highlightAuto(modeBuffer, top2.subLanguage.length ? top2.subLanguage : null);
+              result2 = highlightAuto(modeBuffer, top.subLanguage.length ? top.subLanguage : null);
             }
-            if (top2.relevance > 0) {
+            if (top.relevance > 0) {
               relevance += result2.relevance;
             }
             emitter.__addSublanguage(result2._emitter, result2.language);
           }
           function processBuffer() {
-            if (top2.subLanguage != null) {
+            if (top.subLanguage != null) {
               processSubLanguage();
             } else {
               processKeywords();
@@ -1103,8 +1103,8 @@
           }
           function emitMultiClass(scope, match) {
             let i = 1;
-            const max2 = match.length - 1;
-            while (i <= max2) {
+            const max = match.length - 1;
+            while (i <= max) {
               if (!scope._emit[i]) {
                 i++;
                 continue;
@@ -1134,8 +1134,8 @@
                 modeBuffer = "";
               }
             }
-            top2 = Object.create(mode, { parent: { value: top2 } });
-            return top2;
+            top = Object.create(mode, { parent: { value: top } });
+            return top;
           }
           function endOfMode(mode, match, matchPlusRemainder) {
             let matched = startsWith(mode.endRe, matchPlusRemainder);
@@ -1158,7 +1158,7 @@
             }
           }
           function doIgnore(lexeme) {
-            if (top2.matcher.regexIndex === 0) {
+            if (top.matcher.regexIndex === 0) {
               modeBuffer += lexeme[0];
               return 1;
             } else {
@@ -1195,17 +1195,17 @@
           function doEndMatch(match) {
             const lexeme = match[0];
             const matchPlusRemainder = codeToHighlight.substring(match.index);
-            const endMode = endOfMode(top2, match, matchPlusRemainder);
+            const endMode = endOfMode(top, match, matchPlusRemainder);
             if (!endMode) {
               return NO_MATCH;
             }
-            const origin = top2;
-            if (top2.endScope && top2.endScope._wrap) {
+            const origin = top;
+            if (top.endScope && top.endScope._wrap) {
               processBuffer();
-              emitKeyword(lexeme, top2.endScope._wrap);
-            } else if (top2.endScope && top2.endScope._multi) {
+              emitKeyword(lexeme, top.endScope._wrap);
+            } else if (top.endScope && top.endScope._multi) {
               processBuffer();
-              emitMultiClass(top2.endScope, match);
+              emitMultiClass(top.endScope, match);
             } else if (origin.skip) {
               modeBuffer += lexeme;
             } else {
@@ -1218,14 +1218,14 @@
               }
             }
             do {
-              if (top2.scope) {
+              if (top.scope) {
                 emitter.closeNode();
               }
-              if (!top2.skip && !top2.subLanguage) {
-                relevance += top2.relevance;
+              if (!top.skip && !top.subLanguage) {
+                relevance += top.relevance;
               }
-              top2 = top2.parent;
-            } while (top2 !== endMode.parent);
+              top = top.parent;
+            } while (top !== endMode.parent);
             if (endMode.starts) {
               startNewMode(endMode.starts, match);
             }
@@ -1233,7 +1233,7 @@
           }
           function processContinuations() {
             const list = [];
-            for (let current = top2; current !== language; current = current.parent) {
+            for (let current = top; current !== language; current = current.parent) {
               if (current.scope) {
                 list.unshift(current.scope);
               }
@@ -1262,8 +1262,8 @@
             if (match.type === "begin") {
               return doBeginMatch(match);
             } else if (match.type === "illegal" && !ignoreIllegals) {
-              const err = new Error('Illegal lexeme "' + lexeme + '" for mode "' + (top2.scope || "<unnamed>") + '"');
-              err.mode = top2;
+              const err = new Error('Illegal lexeme "' + lexeme + '" for mode "' + (top.scope || "<unnamed>") + '"');
+              err.mode = top;
               throw err;
             } else if (match.type === "end") {
               const processed = doEndMatch(match);
@@ -1288,7 +1288,7 @@
           }
           const md = compileLanguage(language);
           let result = "";
-          let top2 = continuation || md;
+          let top = continuation || md;
           const continuations = {};
           const emitter = new options.__emitter(options);
           processContinuations();
@@ -1299,16 +1299,16 @@
           let resumeScanAtSamePosition = false;
           try {
             if (!language.__emitTokens) {
-              top2.matcher.considerAll();
+              top.matcher.considerAll();
               for (; ; ) {
                 iterations++;
                 if (resumeScanAtSamePosition) {
                   resumeScanAtSamePosition = false;
                 } else {
-                  top2.matcher.considerAll();
+                  top.matcher.considerAll();
                 }
-                top2.matcher.lastIndex = index;
-                const match = top2.matcher.exec(codeToHighlight);
+                top.matcher.lastIndex = index;
+                const match = top.matcher.exec(codeToHighlight);
                 if (!match)
                   break;
                 const beforeMatch = codeToHighlight.substring(index, match.index);
@@ -1327,7 +1327,7 @@
               relevance,
               illegal: false,
               _emitter: emitter,
-              _top: top2
+              _top: top
             };
           } catch (err) {
             if (err.message && err.message.includes("Illegal")) {
@@ -1353,7 +1353,7 @@
                 relevance: 0,
                 errorRaised: err,
                 _emitter: emitter,
-                _top: top2
+                _top: top
               };
             } else {
               throw err;
@@ -6769,7 +6769,7 @@
   // node_modules/highlight.js/lib/languages/clean.js
   var require_clean = __commonJS({
     "node_modules/highlight.js/lib/languages/clean.js"(exports, module) {
-      function clean2(hljs) {
+      function clean(hljs) {
         const KEYWORDS2 = [
           "if",
           "let",
@@ -6826,7 +6826,7 @@
           ]
         };
       }
-      module.exports = clean2;
+      module.exports = clean;
     }
   });
 
@@ -8611,15 +8611,15 @@
           ],
           keywords: CRYSTAL_KEYWORDS
         };
-        function recursiveParen(begin, end2) {
-          const contains2 = [
+        function recursiveParen(begin, end) {
+          const contains = [
             {
               begin,
-              end: end2
+              end
             }
           ];
-          contains2[0].contains = contains2;
-          return contains2;
+          contains[0].contains = contains;
+          return contains;
         }
         const STRING = {
           className: "string",
@@ -11807,10 +11807,10 @@
             end: />/
           }
         ];
-        const escapeSigilEnd = (end2) => {
+        const escapeSigilEnd = (end) => {
           return {
             scope: "char.escape",
-            begin: regex.concat(/\\/, end2),
+            begin: regex.concat(/\\/, end),
             relevance: 0
           };
         };
@@ -14018,15 +14018,15 @@
       function escape(value) {
         return new RegExp(value.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "m");
       }
-      function source(re) {
-        if (!re)
+      function source(re2) {
+        if (!re2)
           return null;
-        if (typeof re === "string")
-          return re;
-        return re.source;
+        if (typeof re2 === "string")
+          return re2;
+        return re2.source;
       }
-      function lookahead(re) {
-        return concat("(?=", re, ")");
+      function lookahead(re2) {
+        return concat("(?=", re2, ")");
       }
       function concat(...args) {
         const joined = args.map((x) => source(x)).join("");
@@ -14820,12 +14820,12 @@
           begin: hljs.UNDERSCORE_IDENT_RE,
           relevance: 0
         };
-        const DEFINITION = function(beginKeywords, end2, inherits) {
+        const DEFINITION = function(beginKeywords, end, inherits) {
           const mode = hljs.inherit(
             {
               className: "function",
               beginKeywords,
-              end: end2,
+              end,
               excludeEnd: true,
               contains: [].concat(PARSE_PARAMS)
             },
@@ -18224,7 +18224,7 @@
   // node_modules/highlight.js/lib/languages/go.js
   var require_go = __commonJS({
     "node_modules/highlight.js/lib/languages/go.js"(exports, module) {
-      function go(hljs) {
+      function go2(hljs) {
         const LITERALS2 = [
           "true",
           "false",
@@ -18376,7 +18376,7 @@
           ]
         };
       }
-      module.exports = go;
+      module.exports = go2;
     }
   });
 
@@ -20388,11 +20388,11 @@
         ],
         relevance: 0
       };
-      function recurRegex(re, substitution, depth) {
+      function recurRegex(re2, substitution, depth) {
         if (depth === -1)
           return "";
-        return re.replace(substitution, (_) => {
-          return recurRegex(re, substitution, depth - 1);
+        return re2.replace(substitution, (_) => {
+          return recurRegex(re2, substitution, depth - 1);
         });
       }
       function java(hljs) {
@@ -45708,15 +45708,15 @@
   // node_modules/highlight.js/lib/languages/swift.js
   var require_swift = __commonJS({
     "node_modules/highlight.js/lib/languages/swift.js"(exports, module) {
-      function source(re) {
-        if (!re)
+      function source(re2) {
+        if (!re2)
           return null;
-        if (typeof re === "string")
-          return re;
-        return re.source;
+        if (typeof re2 === "string")
+          return re2;
+        return re2.source;
       }
-      function lookahead(re) {
-        return concat("(?=", re, ")");
+      function lookahead(re2) {
+        return concat("(?=", re2, ")");
       }
       function concat(...args) {
         const joined = args.map((x) => source(x)).join("");
@@ -46232,15 +46232,15 @@
         };
         const EXTENDED_REGEXP_LITERAL = (rawDelimiter) => {
           const begin = concat(rawDelimiter, /\//);
-          const end2 = concat(/\//, rawDelimiter);
+          const end = concat(/\//, rawDelimiter);
           return {
             begin,
-            end: end2,
+            end,
             contains: [
               ...REGEXP_CONTENTS,
               {
                 scope: "comment",
-                begin: `#(?!.*${end2})`,
+                begin: `#(?!.*${end})`,
                 end: /$/
               }
             ]
@@ -50932,12 +50932,12 @@
       this.unorderedBindings.delete(binding);
     }
     handleEvent(event) {
-      const extendedEvent2 = extendEvent(event);
+      const extendedEvent = extendEvent(event);
       for (const binding of this.bindings) {
-        if (extendedEvent2.immediatePropagationStopped) {
+        if (extendedEvent.immediatePropagationStopped) {
           break;
         } else {
-          binding.handleEvent(extendedEvent2);
+          binding.handleEvent(extendedEvent);
         }
       }
     }
@@ -50945,8 +50945,8 @@
       return this.unorderedBindings.size > 0;
     }
     get bindings() {
-      return Array.from(this.unorderedBindings).sort((left2, right2) => {
-        const leftIndex = left2.index, rightIndex = right2.index;
+      return Array.from(this.unorderedBindings).sort((left, right) => {
+        const leftIndex = left.index, rightIndex = right.index;
         return leftIndex < rightIndex ? -1 : leftIndex > rightIndex ? 1 : 0;
       });
     }
@@ -51801,12 +51801,12 @@
   function parseTokenString(tokenString, element, attributeName) {
     return tokenString.trim().split(/\s+/).filter((content) => content.length).map((content, index) => ({ element, attributeName, content, index }));
   }
-  function zip(left2, right2) {
-    const length = Math.max(left2.length, right2.length);
-    return Array.from({ length }, (_, index) => [left2[index], right2[index]]);
+  function zip(left, right) {
+    const length = Math.max(left.length, right.length);
+    return Array.from({ length }, (_, index) => [left[index], right[index]]);
   }
-  function tokensAreEqual(left2, right2) {
-    return left2 && right2 && left2.index == right2.index && left2.content == right2.content;
+  function tokensAreEqual(left, right) {
+    return left && right && left.index == right.index && left.content == right.content;
   }
   var ValueListObserver = class {
     constructor(element, attributeName, delegate) {
@@ -53127,13 +53127,13 @@
   }
   function propertiesForValueDefinitionPair(valueDefinitionPair, controller) {
     const definition = parseValueDefinitionPair(valueDefinitionPair, controller);
-    const { key, name, reader: read2, writer: write2 } = definition;
+    const { key, name, reader: read, writer: write } = definition;
     return {
       [name]: {
         get() {
           const value = this.data.get(key);
           if (value !== null) {
-            return read2(value);
+            return read(value);
           } else {
             return definition.defaultValue;
           }
@@ -53142,7 +53142,7 @@
           if (value === void 0) {
             this.data.delete(key);
           } else {
-            this.data.set(key, write2(value));
+            this.data.set(key, write(value));
           }
         }
       },
@@ -53364,2745 +53364,6 @@
   application.debug = false;
   window.Stimulus = application;
 
-  // node_modules/@popperjs/core/lib/enums.js
-  var top = "top";
-  var bottom = "bottom";
-  var right = "right";
-  var left = "left";
-  var auto = "auto";
-  var basePlacements = [top, bottom, right, left];
-  var start = "start";
-  var end = "end";
-  var clippingParents = "clippingParents";
-  var viewport = "viewport";
-  var popper = "popper";
-  var reference = "reference";
-  var variationPlacements = /* @__PURE__ */ basePlacements.reduce(function(acc, placement) {
-    return acc.concat([placement + "-" + start, placement + "-" + end]);
-  }, []);
-  var placements = /* @__PURE__ */ [].concat(basePlacements, [auto]).reduce(function(acc, placement) {
-    return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
-  }, []);
-  var beforeRead = "beforeRead";
-  var read = "read";
-  var afterRead = "afterRead";
-  var beforeMain = "beforeMain";
-  var main = "main";
-  var afterMain = "afterMain";
-  var beforeWrite = "beforeWrite";
-  var write = "write";
-  var afterWrite = "afterWrite";
-  var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
-
-  // node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
-  function getNodeName(element) {
-    return element ? (element.nodeName || "").toLowerCase() : null;
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getWindow.js
-  function getWindow(node) {
-    if (node == null) {
-      return window;
-    }
-    if (node.toString() !== "[object Window]") {
-      var ownerDocument = node.ownerDocument;
-      return ownerDocument ? ownerDocument.defaultView || window : window;
-    }
-    return node;
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
-  function isElement(node) {
-    var OwnElement = getWindow(node).Element;
-    return node instanceof OwnElement || node instanceof Element;
-  }
-  function isHTMLElement(node) {
-    var OwnElement = getWindow(node).HTMLElement;
-    return node instanceof OwnElement || node instanceof HTMLElement;
-  }
-  function isShadowRoot(node) {
-    if (typeof ShadowRoot === "undefined") {
-      return false;
-    }
-    var OwnElement = getWindow(node).ShadowRoot;
-    return node instanceof OwnElement || node instanceof ShadowRoot;
-  }
-
-  // node_modules/@popperjs/core/lib/modifiers/applyStyles.js
-  function applyStyles(_ref) {
-    var state = _ref.state;
-    Object.keys(state.elements).forEach(function(name) {
-      var style = state.styles[name] || {};
-      var attributes = state.attributes[name] || {};
-      var element = state.elements[name];
-      if (!isHTMLElement(element) || !getNodeName(element)) {
-        return;
-      }
-      Object.assign(element.style, style);
-      Object.keys(attributes).forEach(function(name2) {
-        var value = attributes[name2];
-        if (value === false) {
-          element.removeAttribute(name2);
-        } else {
-          element.setAttribute(name2, value === true ? "" : value);
-        }
-      });
-    });
-  }
-  function effect(_ref2) {
-    var state = _ref2.state;
-    var initialStyles = {
-      popper: {
-        position: state.options.strategy,
-        left: "0",
-        top: "0",
-        margin: "0"
-      },
-      arrow: {
-        position: "absolute"
-      },
-      reference: {}
-    };
-    Object.assign(state.elements.popper.style, initialStyles.popper);
-    state.styles = initialStyles;
-    if (state.elements.arrow) {
-      Object.assign(state.elements.arrow.style, initialStyles.arrow);
-    }
-    return function() {
-      Object.keys(state.elements).forEach(function(name) {
-        var element = state.elements[name];
-        var attributes = state.attributes[name] || {};
-        var styleProperties = Object.keys(state.styles.hasOwnProperty(name) ? state.styles[name] : initialStyles[name]);
-        var style = styleProperties.reduce(function(style2, property) {
-          style2[property] = "";
-          return style2;
-        }, {});
-        if (!isHTMLElement(element) || !getNodeName(element)) {
-          return;
-        }
-        Object.assign(element.style, style);
-        Object.keys(attributes).forEach(function(attribute) {
-          element.removeAttribute(attribute);
-        });
-      });
-    };
-  }
-  var applyStyles_default = {
-    name: "applyStyles",
-    enabled: true,
-    phase: "write",
-    fn: applyStyles,
-    effect,
-    requires: ["computeStyles"]
-  };
-
-  // node_modules/@popperjs/core/lib/utils/getBasePlacement.js
-  function getBasePlacement(placement) {
-    return placement.split("-")[0];
-  }
-
-  // node_modules/@popperjs/core/lib/utils/math.js
-  var max = Math.max;
-  var min = Math.min;
-  var round = Math.round;
-
-  // node_modules/@popperjs/core/lib/utils/userAgent.js
-  function getUAString() {
-    var uaData = navigator.userAgentData;
-    if (uaData != null && uaData.brands && Array.isArray(uaData.brands)) {
-      return uaData.brands.map(function(item) {
-        return item.brand + "/" + item.version;
-      }).join(" ");
-    }
-    return navigator.userAgent;
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js
-  function isLayoutViewport() {
-    return !/^((?!chrome|android).)*safari/i.test(getUAString());
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
-  function getBoundingClientRect(element, includeScale, isFixedStrategy) {
-    if (includeScale === void 0) {
-      includeScale = false;
-    }
-    if (isFixedStrategy === void 0) {
-      isFixedStrategy = false;
-    }
-    var clientRect = element.getBoundingClientRect();
-    var scaleX = 1;
-    var scaleY = 1;
-    if (includeScale && isHTMLElement(element)) {
-      scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
-      scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
-    }
-    var _ref = isElement(element) ? getWindow(element) : window, visualViewport = _ref.visualViewport;
-    var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
-    var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
-    var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
-    var width = clientRect.width / scaleX;
-    var height = clientRect.height / scaleY;
-    return {
-      width,
-      height,
-      top: y,
-      right: x + width,
-      bottom: y + height,
-      left: x,
-      x,
-      y
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
-  function getLayoutRect(element) {
-    var clientRect = getBoundingClientRect(element);
-    var width = element.offsetWidth;
-    var height = element.offsetHeight;
-    if (Math.abs(clientRect.width - width) <= 1) {
-      width = clientRect.width;
-    }
-    if (Math.abs(clientRect.height - height) <= 1) {
-      height = clientRect.height;
-    }
-    return {
-      x: element.offsetLeft,
-      y: element.offsetTop,
-      width,
-      height
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/contains.js
-  function contains(parent, child) {
-    var rootNode = child.getRootNode && child.getRootNode();
-    if (parent.contains(child)) {
-      return true;
-    } else if (rootNode && isShadowRoot(rootNode)) {
-      var next = child;
-      do {
-        if (next && parent.isSameNode(next)) {
-          return true;
-        }
-        next = next.parentNode || next.host;
-      } while (next);
-    }
-    return false;
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
-  function getComputedStyle2(element) {
-    return getWindow(element).getComputedStyle(element);
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
-  function isTableElement(element) {
-    return ["table", "td", "th"].indexOf(getNodeName(element)) >= 0;
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
-  function getDocumentElement(element) {
-    return ((isElement(element) ? element.ownerDocument : (
-      // $FlowFixMe[prop-missing]
-      element.document
-    )) || window.document).documentElement;
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
-  function getParentNode(element) {
-    if (getNodeName(element) === "html") {
-      return element;
-    }
-    return (
-      // this is a quicker (but less type safe) way to save quite some bytes from the bundle
-      // $FlowFixMe[incompatible-return]
-      // $FlowFixMe[prop-missing]
-      element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
-      element.parentNode || // DOM Element detected
-      (isShadowRoot(element) ? element.host : null) || // ShadowRoot detected
-      // $FlowFixMe[incompatible-call]: HTMLElement is a Node
-      getDocumentElement(element)
-    );
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
-  function getTrueOffsetParent(element) {
-    if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
-    getComputedStyle2(element).position === "fixed") {
-      return null;
-    }
-    return element.offsetParent;
-  }
-  function getContainingBlock(element) {
-    var isFirefox = /firefox/i.test(getUAString());
-    var isIE = /Trident/i.test(getUAString());
-    if (isIE && isHTMLElement(element)) {
-      var elementCss = getComputedStyle2(element);
-      if (elementCss.position === "fixed") {
-        return null;
-      }
-    }
-    var currentNode = getParentNode(element);
-    if (isShadowRoot(currentNode)) {
-      currentNode = currentNode.host;
-    }
-    while (isHTMLElement(currentNode) && ["html", "body"].indexOf(getNodeName(currentNode)) < 0) {
-      var css2 = getComputedStyle2(currentNode);
-      if (css2.transform !== "none" || css2.perspective !== "none" || css2.contain === "paint" || ["transform", "perspective"].indexOf(css2.willChange) !== -1 || isFirefox && css2.willChange === "filter" || isFirefox && css2.filter && css2.filter !== "none") {
-        return currentNode;
-      } else {
-        currentNode = currentNode.parentNode;
-      }
-    }
-    return null;
-  }
-  function getOffsetParent(element) {
-    var window2 = getWindow(element);
-    var offsetParent = getTrueOffsetParent(element);
-    while (offsetParent && isTableElement(offsetParent) && getComputedStyle2(offsetParent).position === "static") {
-      offsetParent = getTrueOffsetParent(offsetParent);
-    }
-    if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle2(offsetParent).position === "static")) {
-      return window2;
-    }
-    return offsetParent || getContainingBlock(element) || window2;
-  }
-
-  // node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js
-  function getMainAxisFromPlacement(placement) {
-    return ["top", "bottom"].indexOf(placement) >= 0 ? "x" : "y";
-  }
-
-  // node_modules/@popperjs/core/lib/utils/within.js
-  function within(min2, value, max2) {
-    return max(min2, min(value, max2));
-  }
-  function withinMaxClamp(min2, value, max2) {
-    var v = within(min2, value, max2);
-    return v > max2 ? max2 : v;
-  }
-
-  // node_modules/@popperjs/core/lib/utils/getFreshSideObject.js
-  function getFreshSideObject() {
-    return {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/utils/mergePaddingObject.js
-  function mergePaddingObject(paddingObject) {
-    return Object.assign({}, getFreshSideObject(), paddingObject);
-  }
-
-  // node_modules/@popperjs/core/lib/utils/expandToHashMap.js
-  function expandToHashMap(value, keys) {
-    return keys.reduce(function(hashMap, key) {
-      hashMap[key] = value;
-      return hashMap;
-    }, {});
-  }
-
-  // node_modules/@popperjs/core/lib/modifiers/arrow.js
-  var toPaddingObject = function toPaddingObject2(padding, state) {
-    padding = typeof padding === "function" ? padding(Object.assign({}, state.rects, {
-      placement: state.placement
-    })) : padding;
-    return mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
-  };
-  function arrow(_ref) {
-    var _state$modifiersData$;
-    var state = _ref.state, name = _ref.name, options = _ref.options;
-    var arrowElement = state.elements.arrow;
-    var popperOffsets2 = state.modifiersData.popperOffsets;
-    var basePlacement = getBasePlacement(state.placement);
-    var axis = getMainAxisFromPlacement(basePlacement);
-    var isVertical = [left, right].indexOf(basePlacement) >= 0;
-    var len = isVertical ? "height" : "width";
-    if (!arrowElement || !popperOffsets2) {
-      return;
-    }
-    var paddingObject = toPaddingObject(options.padding, state);
-    var arrowRect = getLayoutRect(arrowElement);
-    var minProp = axis === "y" ? top : left;
-    var maxProp = axis === "y" ? bottom : right;
-    var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets2[axis] - state.rects.popper[len];
-    var startDiff = popperOffsets2[axis] - state.rects.reference[axis];
-    var arrowOffsetParent = getOffsetParent(arrowElement);
-    var clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
-    var centerToReference = endDiff / 2 - startDiff / 2;
-    var min2 = paddingObject[minProp];
-    var max2 = clientSize - arrowRect[len] - paddingObject[maxProp];
-    var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
-    var offset2 = within(min2, center, max2);
-    var axisProp = axis;
-    state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset2, _state$modifiersData$.centerOffset = offset2 - center, _state$modifiersData$);
-  }
-  function effect2(_ref2) {
-    var state = _ref2.state, options = _ref2.options;
-    var _options$element = options.element, arrowElement = _options$element === void 0 ? "[data-popper-arrow]" : _options$element;
-    if (arrowElement == null) {
-      return;
-    }
-    if (typeof arrowElement === "string") {
-      arrowElement = state.elements.popper.querySelector(arrowElement);
-      if (!arrowElement) {
-        return;
-      }
-    }
-    if (!contains(state.elements.popper, arrowElement)) {
-      return;
-    }
-    state.elements.arrow = arrowElement;
-  }
-  var arrow_default = {
-    name: "arrow",
-    enabled: true,
-    phase: "main",
-    fn: arrow,
-    effect: effect2,
-    requires: ["popperOffsets"],
-    requiresIfExists: ["preventOverflow"]
-  };
-
-  // node_modules/@popperjs/core/lib/utils/getVariation.js
-  function getVariation(placement) {
-    return placement.split("-")[1];
-  }
-
-  // node_modules/@popperjs/core/lib/modifiers/computeStyles.js
-  var unsetSides = {
-    top: "auto",
-    right: "auto",
-    bottom: "auto",
-    left: "auto"
-  };
-  function roundOffsetsByDPR(_ref, win) {
-    var x = _ref.x, y = _ref.y;
-    var dpr = win.devicePixelRatio || 1;
-    return {
-      x: round(x * dpr) / dpr || 0,
-      y: round(y * dpr) / dpr || 0
-    };
-  }
-  function mapToStyles(_ref2) {
-    var _Object$assign2;
-    var popper2 = _ref2.popper, popperRect = _ref2.popperRect, placement = _ref2.placement, variation = _ref2.variation, offsets = _ref2.offsets, position = _ref2.position, gpuAcceleration = _ref2.gpuAcceleration, adaptive = _ref2.adaptive, roundOffsets = _ref2.roundOffsets, isFixed = _ref2.isFixed;
-    var _offsets$x = offsets.x, x = _offsets$x === void 0 ? 0 : _offsets$x, _offsets$y = offsets.y, y = _offsets$y === void 0 ? 0 : _offsets$y;
-    var _ref3 = typeof roundOffsets === "function" ? roundOffsets({
-      x,
-      y
-    }) : {
-      x,
-      y
-    };
-    x = _ref3.x;
-    y = _ref3.y;
-    var hasX = offsets.hasOwnProperty("x");
-    var hasY = offsets.hasOwnProperty("y");
-    var sideX = left;
-    var sideY = top;
-    var win = window;
-    if (adaptive) {
-      var offsetParent = getOffsetParent(popper2);
-      var heightProp = "clientHeight";
-      var widthProp = "clientWidth";
-      if (offsetParent === getWindow(popper2)) {
-        offsetParent = getDocumentElement(popper2);
-        if (getComputedStyle2(offsetParent).position !== "static" && position === "absolute") {
-          heightProp = "scrollHeight";
-          widthProp = "scrollWidth";
-        }
-      }
-      offsetParent = offsetParent;
-      if (placement === top || (placement === left || placement === right) && variation === end) {
-        sideY = bottom;
-        var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : (
-          // $FlowFixMe[prop-missing]
-          offsetParent[heightProp]
-        );
-        y -= offsetY - popperRect.height;
-        y *= gpuAcceleration ? 1 : -1;
-      }
-      if (placement === left || (placement === top || placement === bottom) && variation === end) {
-        sideX = right;
-        var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : (
-          // $FlowFixMe[prop-missing]
-          offsetParent[widthProp]
-        );
-        x -= offsetX - popperRect.width;
-        x *= gpuAcceleration ? 1 : -1;
-      }
-    }
-    var commonStyles = Object.assign({
-      position
-    }, adaptive && unsetSides);
-    var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
-      x,
-      y
-    }, getWindow(popper2)) : {
-      x,
-      y
-    };
-    x = _ref4.x;
-    y = _ref4.y;
-    if (gpuAcceleration) {
-      var _Object$assign;
-      return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
-    }
-    return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "", _Object$assign2[sideX] = hasX ? x + "px" : "", _Object$assign2.transform = "", _Object$assign2));
-  }
-  function computeStyles(_ref5) {
-    var state = _ref5.state, options = _ref5.options;
-    var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
-    var commonStyles = {
-      placement: getBasePlacement(state.placement),
-      variation: getVariation(state.placement),
-      popper: state.elements.popper,
-      popperRect: state.rects.popper,
-      gpuAcceleration,
-      isFixed: state.options.strategy === "fixed"
-    };
-    if (state.modifiersData.popperOffsets != null) {
-      state.styles.popper = Object.assign({}, state.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
-        offsets: state.modifiersData.popperOffsets,
-        position: state.options.strategy,
-        adaptive,
-        roundOffsets
-      })));
-    }
-    if (state.modifiersData.arrow != null) {
-      state.styles.arrow = Object.assign({}, state.styles.arrow, mapToStyles(Object.assign({}, commonStyles, {
-        offsets: state.modifiersData.arrow,
-        position: "absolute",
-        adaptive: false,
-        roundOffsets
-      })));
-    }
-    state.attributes.popper = Object.assign({}, state.attributes.popper, {
-      "data-popper-placement": state.placement
-    });
-  }
-  var computeStyles_default = {
-    name: "computeStyles",
-    enabled: true,
-    phase: "beforeWrite",
-    fn: computeStyles,
-    data: {}
-  };
-
-  // node_modules/@popperjs/core/lib/modifiers/eventListeners.js
-  var passive = {
-    passive: true
-  };
-  function effect3(_ref) {
-    var state = _ref.state, instance = _ref.instance, options = _ref.options;
-    var _options$scroll = options.scroll, scroll = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
-    var window2 = getWindow(state.elements.popper);
-    var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
-    if (scroll) {
-      scrollParents.forEach(function(scrollParent) {
-        scrollParent.addEventListener("scroll", instance.update, passive);
-      });
-    }
-    if (resize) {
-      window2.addEventListener("resize", instance.update, passive);
-    }
-    return function() {
-      if (scroll) {
-        scrollParents.forEach(function(scrollParent) {
-          scrollParent.removeEventListener("scroll", instance.update, passive);
-        });
-      }
-      if (resize) {
-        window2.removeEventListener("resize", instance.update, passive);
-      }
-    };
-  }
-  var eventListeners_default = {
-    name: "eventListeners",
-    enabled: true,
-    phase: "write",
-    fn: function fn() {
-    },
-    effect: effect3,
-    data: {}
-  };
-
-  // node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
-  var hash = {
-    left: "right",
-    right: "left",
-    bottom: "top",
-    top: "bottom"
-  };
-  function getOppositePlacement(placement) {
-    return placement.replace(/left|right|bottom|top/g, function(matched) {
-      return hash[matched];
-    });
-  }
-
-  // node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js
-  var hash2 = {
-    start: "end",
-    end: "start"
-  };
-  function getOppositeVariationPlacement(placement) {
-    return placement.replace(/start|end/g, function(matched) {
-      return hash2[matched];
-    });
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
-  function getWindowScroll(node) {
-    var win = getWindow(node);
-    var scrollLeft = win.pageXOffset;
-    var scrollTop = win.pageYOffset;
-    return {
-      scrollLeft,
-      scrollTop
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
-  function getWindowScrollBarX(element) {
-    return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
-  function getViewportRect(element, strategy) {
-    var win = getWindow(element);
-    var html = getDocumentElement(element);
-    var visualViewport = win.visualViewport;
-    var width = html.clientWidth;
-    var height = html.clientHeight;
-    var x = 0;
-    var y = 0;
-    if (visualViewport) {
-      width = visualViewport.width;
-      height = visualViewport.height;
-      var layoutViewport = isLayoutViewport();
-      if (layoutViewport || !layoutViewport && strategy === "fixed") {
-        x = visualViewport.offsetLeft;
-        y = visualViewport.offsetTop;
-      }
-    }
-    return {
-      width,
-      height,
-      x: x + getWindowScrollBarX(element),
-      y
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js
-  function getDocumentRect(element) {
-    var _element$ownerDocumen;
-    var html = getDocumentElement(element);
-    var winScroll = getWindowScroll(element);
-    var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-    var width = max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-    var height = max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
-    var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
-    var y = -winScroll.scrollTop;
-    if (getComputedStyle2(body || html).direction === "rtl") {
-      x += max(html.clientWidth, body ? body.clientWidth : 0) - width;
-    }
-    return {
-      width,
-      height,
-      x,
-      y
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js
-  function isScrollParent(element) {
-    var _getComputedStyle = getComputedStyle2(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
-    return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js
-  function getScrollParent(node) {
-    if (["html", "body", "#document"].indexOf(getNodeName(node)) >= 0) {
-      return node.ownerDocument.body;
-    }
-    if (isHTMLElement(node) && isScrollParent(node)) {
-      return node;
-    }
-    return getScrollParent(getParentNode(node));
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js
-  function listScrollParents(element, list) {
-    var _element$ownerDocumen;
-    if (list === void 0) {
-      list = [];
-    }
-    var scrollParent = getScrollParent(element);
-    var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
-    var win = getWindow(scrollParent);
-    var target = isBody ? [win].concat(win.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
-    var updatedList = list.concat(target);
-    return isBody ? updatedList : (
-      // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
-      updatedList.concat(listScrollParents(getParentNode(target)))
-    );
-  }
-
-  // node_modules/@popperjs/core/lib/utils/rectToClientRect.js
-  function rectToClientRect(rect) {
-    return Object.assign({}, rect, {
-      left: rect.x,
-      top: rect.y,
-      right: rect.x + rect.width,
-      bottom: rect.y + rect.height
-    });
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js
-  function getInnerBoundingClientRect(element, strategy) {
-    var rect = getBoundingClientRect(element, false, strategy === "fixed");
-    rect.top = rect.top + element.clientTop;
-    rect.left = rect.left + element.clientLeft;
-    rect.bottom = rect.top + element.clientHeight;
-    rect.right = rect.left + element.clientWidth;
-    rect.width = element.clientWidth;
-    rect.height = element.clientHeight;
-    rect.x = rect.left;
-    rect.y = rect.top;
-    return rect;
-  }
-  function getClientRectFromMixedType(element, clippingParent, strategy) {
-    return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
-  }
-  function getClippingParents(element) {
-    var clippingParents2 = listScrollParents(getParentNode(element));
-    var canEscapeClipping = ["absolute", "fixed"].indexOf(getComputedStyle2(element).position) >= 0;
-    var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
-    if (!isElement(clipperElement)) {
-      return [];
-    }
-    return clippingParents2.filter(function(clippingParent) {
-      return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== "body";
-    });
-  }
-  function getClippingRect(element, boundary, rootBoundary, strategy) {
-    var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
-    var clippingParents2 = [].concat(mainClippingParents, [rootBoundary]);
-    var firstClippingParent = clippingParents2[0];
-    var clippingRect = clippingParents2.reduce(function(accRect, clippingParent) {
-      var rect = getClientRectFromMixedType(element, clippingParent, strategy);
-      accRect.top = max(rect.top, accRect.top);
-      accRect.right = min(rect.right, accRect.right);
-      accRect.bottom = min(rect.bottom, accRect.bottom);
-      accRect.left = max(rect.left, accRect.left);
-      return accRect;
-    }, getClientRectFromMixedType(element, firstClippingParent, strategy));
-    clippingRect.width = clippingRect.right - clippingRect.left;
-    clippingRect.height = clippingRect.bottom - clippingRect.top;
-    clippingRect.x = clippingRect.left;
-    clippingRect.y = clippingRect.top;
-    return clippingRect;
-  }
-
-  // node_modules/@popperjs/core/lib/utils/computeOffsets.js
-  function computeOffsets(_ref) {
-    var reference2 = _ref.reference, element = _ref.element, placement = _ref.placement;
-    var basePlacement = placement ? getBasePlacement(placement) : null;
-    var variation = placement ? getVariation(placement) : null;
-    var commonX = reference2.x + reference2.width / 2 - element.width / 2;
-    var commonY = reference2.y + reference2.height / 2 - element.height / 2;
-    var offsets;
-    switch (basePlacement) {
-      case top:
-        offsets = {
-          x: commonX,
-          y: reference2.y - element.height
-        };
-        break;
-      case bottom:
-        offsets = {
-          x: commonX,
-          y: reference2.y + reference2.height
-        };
-        break;
-      case right:
-        offsets = {
-          x: reference2.x + reference2.width,
-          y: commonY
-        };
-        break;
-      case left:
-        offsets = {
-          x: reference2.x - element.width,
-          y: commonY
-        };
-        break;
-      default:
-        offsets = {
-          x: reference2.x,
-          y: reference2.y
-        };
-    }
-    var mainAxis = basePlacement ? getMainAxisFromPlacement(basePlacement) : null;
-    if (mainAxis != null) {
-      var len = mainAxis === "y" ? "height" : "width";
-      switch (variation) {
-        case start:
-          offsets[mainAxis] = offsets[mainAxis] - (reference2[len] / 2 - element[len] / 2);
-          break;
-        case end:
-          offsets[mainAxis] = offsets[mainAxis] + (reference2[len] / 2 - element[len] / 2);
-          break;
-        default:
-      }
-    }
-    return offsets;
-  }
-
-  // node_modules/@popperjs/core/lib/utils/detectOverflow.js
-  function detectOverflow(state, options) {
-    if (options === void 0) {
-      options = {};
-    }
-    var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$strategy = _options.strategy, strategy = _options$strategy === void 0 ? state.strategy : _options$strategy, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
-    var paddingObject = mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
-    var altContext = elementContext === popper ? reference : popper;
-    var popperRect = state.rects.popper;
-    var element = state.elements[altBoundary ? altContext : elementContext];
-    var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
-    var referenceClientRect = getBoundingClientRect(state.elements.reference);
-    var popperOffsets2 = computeOffsets({
-      reference: referenceClientRect,
-      element: popperRect,
-      strategy: "absolute",
-      placement
-    });
-    var popperClientRect = rectToClientRect(Object.assign({}, popperRect, popperOffsets2));
-    var elementClientRect = elementContext === popper ? popperClientRect : referenceClientRect;
-    var overflowOffsets = {
-      top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
-      bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
-      left: clippingClientRect.left - elementClientRect.left + paddingObject.left,
-      right: elementClientRect.right - clippingClientRect.right + paddingObject.right
-    };
-    var offsetData = state.modifiersData.offset;
-    if (elementContext === popper && offsetData) {
-      var offset2 = offsetData[placement];
-      Object.keys(overflowOffsets).forEach(function(key) {
-        var multiply = [right, bottom].indexOf(key) >= 0 ? 1 : -1;
-        var axis = [top, bottom].indexOf(key) >= 0 ? "y" : "x";
-        overflowOffsets[key] += offset2[axis] * multiply;
-      });
-    }
-    return overflowOffsets;
-  }
-
-  // node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js
-  function computeAutoPlacement(state, options) {
-    if (options === void 0) {
-      options = {};
-    }
-    var _options = options, placement = _options.placement, boundary = _options.boundary, rootBoundary = _options.rootBoundary, padding = _options.padding, flipVariations = _options.flipVariations, _options$allowedAutoP = _options.allowedAutoPlacements, allowedAutoPlacements = _options$allowedAutoP === void 0 ? placements : _options$allowedAutoP;
-    var variation = getVariation(placement);
-    var placements2 = variation ? flipVariations ? variationPlacements : variationPlacements.filter(function(placement2) {
-      return getVariation(placement2) === variation;
-    }) : basePlacements;
-    var allowedPlacements = placements2.filter(function(placement2) {
-      return allowedAutoPlacements.indexOf(placement2) >= 0;
-    });
-    if (allowedPlacements.length === 0) {
-      allowedPlacements = placements2;
-    }
-    var overflows = allowedPlacements.reduce(function(acc, placement2) {
-      acc[placement2] = detectOverflow(state, {
-        placement: placement2,
-        boundary,
-        rootBoundary,
-        padding
-      })[getBasePlacement(placement2)];
-      return acc;
-    }, {});
-    return Object.keys(overflows).sort(function(a, b) {
-      return overflows[a] - overflows[b];
-    });
-  }
-
-  // node_modules/@popperjs/core/lib/modifiers/flip.js
-  function getExpandedFallbackPlacements(placement) {
-    if (getBasePlacement(placement) === auto) {
-      return [];
-    }
-    var oppositePlacement = getOppositePlacement(placement);
-    return [getOppositeVariationPlacement(placement), oppositePlacement, getOppositeVariationPlacement(oppositePlacement)];
-  }
-  function flip(_ref) {
-    var state = _ref.state, options = _ref.options, name = _ref.name;
-    if (state.modifiersData[name]._skip) {
-      return;
-    }
-    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis, specifiedFallbackPlacements = options.fallbackPlacements, padding = options.padding, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, _options$flipVariatio = options.flipVariations, flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio, allowedAutoPlacements = options.allowedAutoPlacements;
-    var preferredPlacement = state.options.placement;
-    var basePlacement = getBasePlacement(preferredPlacement);
-    var isBasePlacement = basePlacement === preferredPlacement;
-    var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [getOppositePlacement(preferredPlacement)] : getExpandedFallbackPlacements(preferredPlacement));
-    var placements2 = [preferredPlacement].concat(fallbackPlacements).reduce(function(acc, placement2) {
-      return acc.concat(getBasePlacement(placement2) === auto ? computeAutoPlacement(state, {
-        placement: placement2,
-        boundary,
-        rootBoundary,
-        padding,
-        flipVariations,
-        allowedAutoPlacements
-      }) : placement2);
-    }, []);
-    var referenceRect = state.rects.reference;
-    var popperRect = state.rects.popper;
-    var checksMap = /* @__PURE__ */ new Map();
-    var makeFallbackChecks = true;
-    var firstFittingPlacement = placements2[0];
-    for (var i = 0; i < placements2.length; i++) {
-      var placement = placements2[i];
-      var _basePlacement = getBasePlacement(placement);
-      var isStartVariation = getVariation(placement) === start;
-      var isVertical = [top, bottom].indexOf(_basePlacement) >= 0;
-      var len = isVertical ? "width" : "height";
-      var overflow = detectOverflow(state, {
-        placement,
-        boundary,
-        rootBoundary,
-        altBoundary,
-        padding
-      });
-      var mainVariationSide = isVertical ? isStartVariation ? right : left : isStartVariation ? bottom : top;
-      if (referenceRect[len] > popperRect[len]) {
-        mainVariationSide = getOppositePlacement(mainVariationSide);
-      }
-      var altVariationSide = getOppositePlacement(mainVariationSide);
-      var checks = [];
-      if (checkMainAxis) {
-        checks.push(overflow[_basePlacement] <= 0);
-      }
-      if (checkAltAxis) {
-        checks.push(overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0);
-      }
-      if (checks.every(function(check) {
-        return check;
-      })) {
-        firstFittingPlacement = placement;
-        makeFallbackChecks = false;
-        break;
-      }
-      checksMap.set(placement, checks);
-    }
-    if (makeFallbackChecks) {
-      var numberOfChecks = flipVariations ? 3 : 1;
-      var _loop = function _loop2(_i2) {
-        var fittingPlacement = placements2.find(function(placement2) {
-          var checks2 = checksMap.get(placement2);
-          if (checks2) {
-            return checks2.slice(0, _i2).every(function(check) {
-              return check;
-            });
-          }
-        });
-        if (fittingPlacement) {
-          firstFittingPlacement = fittingPlacement;
-          return "break";
-        }
-      };
-      for (var _i = numberOfChecks; _i > 0; _i--) {
-        var _ret = _loop(_i);
-        if (_ret === "break")
-          break;
-      }
-    }
-    if (state.placement !== firstFittingPlacement) {
-      state.modifiersData[name]._skip = true;
-      state.placement = firstFittingPlacement;
-      state.reset = true;
-    }
-  }
-  var flip_default = {
-    name: "flip",
-    enabled: true,
-    phase: "main",
-    fn: flip,
-    requiresIfExists: ["offset"],
-    data: {
-      _skip: false
-    }
-  };
-
-  // node_modules/@popperjs/core/lib/modifiers/hide.js
-  function getSideOffsets(overflow, rect, preventedOffsets) {
-    if (preventedOffsets === void 0) {
-      preventedOffsets = {
-        x: 0,
-        y: 0
-      };
-    }
-    return {
-      top: overflow.top - rect.height - preventedOffsets.y,
-      right: overflow.right - rect.width + preventedOffsets.x,
-      bottom: overflow.bottom - rect.height + preventedOffsets.y,
-      left: overflow.left - rect.width - preventedOffsets.x
-    };
-  }
-  function isAnySideFullyClipped(overflow) {
-    return [top, right, bottom, left].some(function(side) {
-      return overflow[side] >= 0;
-    });
-  }
-  function hide(_ref) {
-    var state = _ref.state, name = _ref.name;
-    var referenceRect = state.rects.reference;
-    var popperRect = state.rects.popper;
-    var preventedOffsets = state.modifiersData.preventOverflow;
-    var referenceOverflow = detectOverflow(state, {
-      elementContext: "reference"
-    });
-    var popperAltOverflow = detectOverflow(state, {
-      altBoundary: true
-    });
-    var referenceClippingOffsets = getSideOffsets(referenceOverflow, referenceRect);
-    var popperEscapeOffsets = getSideOffsets(popperAltOverflow, popperRect, preventedOffsets);
-    var isReferenceHidden = isAnySideFullyClipped(referenceClippingOffsets);
-    var hasPopperEscaped = isAnySideFullyClipped(popperEscapeOffsets);
-    state.modifiersData[name] = {
-      referenceClippingOffsets,
-      popperEscapeOffsets,
-      isReferenceHidden,
-      hasPopperEscaped
-    };
-    state.attributes.popper = Object.assign({}, state.attributes.popper, {
-      "data-popper-reference-hidden": isReferenceHidden,
-      "data-popper-escaped": hasPopperEscaped
-    });
-  }
-  var hide_default = {
-    name: "hide",
-    enabled: true,
-    phase: "main",
-    requiresIfExists: ["preventOverflow"],
-    fn: hide
-  };
-
-  // node_modules/@popperjs/core/lib/modifiers/offset.js
-  function distanceAndSkiddingToXY(placement, rects, offset2) {
-    var basePlacement = getBasePlacement(placement);
-    var invertDistance = [left, top].indexOf(basePlacement) >= 0 ? -1 : 1;
-    var _ref = typeof offset2 === "function" ? offset2(Object.assign({}, rects, {
-      placement
-    })) : offset2, skidding = _ref[0], distance = _ref[1];
-    skidding = skidding || 0;
-    distance = (distance || 0) * invertDistance;
-    return [left, right].indexOf(basePlacement) >= 0 ? {
-      x: distance,
-      y: skidding
-    } : {
-      x: skidding,
-      y: distance
-    };
-  }
-  function offset(_ref2) {
-    var state = _ref2.state, options = _ref2.options, name = _ref2.name;
-    var _options$offset = options.offset, offset2 = _options$offset === void 0 ? [0, 0] : _options$offset;
-    var data = placements.reduce(function(acc, placement) {
-      acc[placement] = distanceAndSkiddingToXY(placement, state.rects, offset2);
-      return acc;
-    }, {});
-    var _data$state$placement = data[state.placement], x = _data$state$placement.x, y = _data$state$placement.y;
-    if (state.modifiersData.popperOffsets != null) {
-      state.modifiersData.popperOffsets.x += x;
-      state.modifiersData.popperOffsets.y += y;
-    }
-    state.modifiersData[name] = data;
-  }
-  var offset_default = {
-    name: "offset",
-    enabled: true,
-    phase: "main",
-    requires: ["popperOffsets"],
-    fn: offset
-  };
-
-  // node_modules/@popperjs/core/lib/modifiers/popperOffsets.js
-  function popperOffsets(_ref) {
-    var state = _ref.state, name = _ref.name;
-    state.modifiersData[name] = computeOffsets({
-      reference: state.rects.reference,
-      element: state.rects.popper,
-      strategy: "absolute",
-      placement: state.placement
-    });
-  }
-  var popperOffsets_default = {
-    name: "popperOffsets",
-    enabled: true,
-    phase: "read",
-    fn: popperOffsets,
-    data: {}
-  };
-
-  // node_modules/@popperjs/core/lib/utils/getAltAxis.js
-  function getAltAxis(axis) {
-    return axis === "x" ? "y" : "x";
-  }
-
-  // node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
-  function preventOverflow(_ref) {
-    var state = _ref.state, options = _ref.options, name = _ref.name;
-    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, padding = options.padding, _options$tether = options.tether, tether = _options$tether === void 0 ? true : _options$tether, _options$tetherOffset = options.tetherOffset, tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
-    var overflow = detectOverflow(state, {
-      boundary,
-      rootBoundary,
-      padding,
-      altBoundary
-    });
-    var basePlacement = getBasePlacement(state.placement);
-    var variation = getVariation(state.placement);
-    var isBasePlacement = !variation;
-    var mainAxis = getMainAxisFromPlacement(basePlacement);
-    var altAxis = getAltAxis(mainAxis);
-    var popperOffsets2 = state.modifiersData.popperOffsets;
-    var referenceRect = state.rects.reference;
-    var popperRect = state.rects.popper;
-    var tetherOffsetValue = typeof tetherOffset === "function" ? tetherOffset(Object.assign({}, state.rects, {
-      placement: state.placement
-    })) : tetherOffset;
-    var normalizedTetherOffsetValue = typeof tetherOffsetValue === "number" ? {
-      mainAxis: tetherOffsetValue,
-      altAxis: tetherOffsetValue
-    } : Object.assign({
-      mainAxis: 0,
-      altAxis: 0
-    }, tetherOffsetValue);
-    var offsetModifierState = state.modifiersData.offset ? state.modifiersData.offset[state.placement] : null;
-    var data = {
-      x: 0,
-      y: 0
-    };
-    if (!popperOffsets2) {
-      return;
-    }
-    if (checkMainAxis) {
-      var _offsetModifierState$;
-      var mainSide = mainAxis === "y" ? top : left;
-      var altSide = mainAxis === "y" ? bottom : right;
-      var len = mainAxis === "y" ? "height" : "width";
-      var offset2 = popperOffsets2[mainAxis];
-      var min2 = offset2 + overflow[mainSide];
-      var max2 = offset2 - overflow[altSide];
-      var additive = tether ? -popperRect[len] / 2 : 0;
-      var minLen = variation === start ? referenceRect[len] : popperRect[len];
-      var maxLen = variation === start ? -popperRect[len] : -referenceRect[len];
-      var arrowElement = state.elements.arrow;
-      var arrowRect = tether && arrowElement ? getLayoutRect(arrowElement) : {
-        width: 0,
-        height: 0
-      };
-      var arrowPaddingObject = state.modifiersData["arrow#persistent"] ? state.modifiersData["arrow#persistent"].padding : getFreshSideObject();
-      var arrowPaddingMin = arrowPaddingObject[mainSide];
-      var arrowPaddingMax = arrowPaddingObject[altSide];
-      var arrowLen = within(0, referenceRect[len], arrowRect[len]);
-      var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
-      var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
-      var arrowOffsetParent = state.elements.arrow && getOffsetParent(state.elements.arrow);
-      var clientOffset = arrowOffsetParent ? mainAxis === "y" ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
-      var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
-      var tetherMin = offset2 + minOffset - offsetModifierValue - clientOffset;
-      var tetherMax = offset2 + maxOffset - offsetModifierValue;
-      var preventedOffset = within(tether ? min(min2, tetherMin) : min2, offset2, tether ? max(max2, tetherMax) : max2);
-      popperOffsets2[mainAxis] = preventedOffset;
-      data[mainAxis] = preventedOffset - offset2;
-    }
-    if (checkAltAxis) {
-      var _offsetModifierState$2;
-      var _mainSide = mainAxis === "x" ? top : left;
-      var _altSide = mainAxis === "x" ? bottom : right;
-      var _offset = popperOffsets2[altAxis];
-      var _len = altAxis === "y" ? "height" : "width";
-      var _min = _offset + overflow[_mainSide];
-      var _max = _offset - overflow[_altSide];
-      var isOriginSide = [top, left].indexOf(basePlacement) !== -1;
-      var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
-      var _tetherMin = isOriginSide ? _min : _offset - referenceRect[_len] - popperRect[_len] - _offsetModifierValue + normalizedTetherOffsetValue.altAxis;
-      var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
-      var _preventedOffset = tether && isOriginSide ? withinMaxClamp(_tetherMin, _offset, _tetherMax) : within(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
-      popperOffsets2[altAxis] = _preventedOffset;
-      data[altAxis] = _preventedOffset - _offset;
-    }
-    state.modifiersData[name] = data;
-  }
-  var preventOverflow_default = {
-    name: "preventOverflow",
-    enabled: true,
-    phase: "main",
-    fn: preventOverflow,
-    requiresIfExists: ["offset"]
-  };
-
-  // node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
-  function getHTMLElementScroll(element) {
-    return {
-      scrollLeft: element.scrollLeft,
-      scrollTop: element.scrollTop
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js
-  function getNodeScroll(node) {
-    if (node === getWindow(node) || !isHTMLElement(node)) {
-      return getWindowScroll(node);
-    } else {
-      return getHTMLElementScroll(node);
-    }
-  }
-
-  // node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
-  function isElementScaled(element) {
-    var rect = element.getBoundingClientRect();
-    var scaleX = round(rect.width) / element.offsetWidth || 1;
-    var scaleY = round(rect.height) / element.offsetHeight || 1;
-    return scaleX !== 1 || scaleY !== 1;
-  }
-  function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
-    if (isFixed === void 0) {
-      isFixed = false;
-    }
-    var isOffsetParentAnElement = isHTMLElement(offsetParent);
-    var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
-    var documentElement = getDocumentElement(offsetParent);
-    var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
-    var scroll = {
-      scrollLeft: 0,
-      scrollTop: 0
-    };
-    var offsets = {
-      x: 0,
-      y: 0
-    };
-    if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
-      if (getNodeName(offsetParent) !== "body" || // https://github.com/popperjs/popper-core/issues/1078
-      isScrollParent(documentElement)) {
-        scroll = getNodeScroll(offsetParent);
-      }
-      if (isHTMLElement(offsetParent)) {
-        offsets = getBoundingClientRect(offsetParent, true);
-        offsets.x += offsetParent.clientLeft;
-        offsets.y += offsetParent.clientTop;
-      } else if (documentElement) {
-        offsets.x = getWindowScrollBarX(documentElement);
-      }
-    }
-    return {
-      x: rect.left + scroll.scrollLeft - offsets.x,
-      y: rect.top + scroll.scrollTop - offsets.y,
-      width: rect.width,
-      height: rect.height
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/utils/orderModifiers.js
-  function order(modifiers) {
-    var map = /* @__PURE__ */ new Map();
-    var visited = /* @__PURE__ */ new Set();
-    var result = [];
-    modifiers.forEach(function(modifier) {
-      map.set(modifier.name, modifier);
-    });
-    function sort(modifier) {
-      visited.add(modifier.name);
-      var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
-      requires.forEach(function(dep) {
-        if (!visited.has(dep)) {
-          var depModifier = map.get(dep);
-          if (depModifier) {
-            sort(depModifier);
-          }
-        }
-      });
-      result.push(modifier);
-    }
-    modifiers.forEach(function(modifier) {
-      if (!visited.has(modifier.name)) {
-        sort(modifier);
-      }
-    });
-    return result;
-  }
-  function orderModifiers(modifiers) {
-    var orderedModifiers = order(modifiers);
-    return modifierPhases.reduce(function(acc, phase) {
-      return acc.concat(orderedModifiers.filter(function(modifier) {
-        return modifier.phase === phase;
-      }));
-    }, []);
-  }
-
-  // node_modules/@popperjs/core/lib/utils/debounce.js
-  function debounce(fn2) {
-    var pending;
-    return function() {
-      if (!pending) {
-        pending = new Promise(function(resolve) {
-          Promise.resolve().then(function() {
-            pending = void 0;
-            resolve(fn2());
-          });
-        });
-      }
-      return pending;
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/utils/mergeByName.js
-  function mergeByName(modifiers) {
-    var merged = modifiers.reduce(function(merged2, current) {
-      var existing = merged2[current.name];
-      merged2[current.name] = existing ? Object.assign({}, existing, current, {
-        options: Object.assign({}, existing.options, current.options),
-        data: Object.assign({}, existing.data, current.data)
-      }) : current;
-      return merged2;
-    }, {});
-    return Object.keys(merged).map(function(key) {
-      return merged[key];
-    });
-  }
-
-  // node_modules/@popperjs/core/lib/createPopper.js
-  var DEFAULT_OPTIONS = {
-    placement: "bottom",
-    modifiers: [],
-    strategy: "absolute"
-  };
-  function areValidElements() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    return !args.some(function(element) {
-      return !(element && typeof element.getBoundingClientRect === "function");
-    });
-  }
-  function popperGenerator(generatorOptions) {
-    if (generatorOptions === void 0) {
-      generatorOptions = {};
-    }
-    var _generatorOptions = generatorOptions, _generatorOptions$def = _generatorOptions.defaultModifiers, defaultModifiers2 = _generatorOptions$def === void 0 ? [] : _generatorOptions$def, _generatorOptions$def2 = _generatorOptions.defaultOptions, defaultOptions2 = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
-    return function createPopper2(reference2, popper2, options) {
-      if (options === void 0) {
-        options = defaultOptions2;
-      }
-      var state = {
-        placement: "bottom",
-        orderedModifiers: [],
-        options: Object.assign({}, DEFAULT_OPTIONS, defaultOptions2),
-        modifiersData: {},
-        elements: {
-          reference: reference2,
-          popper: popper2
-        },
-        attributes: {},
-        styles: {}
-      };
-      var effectCleanupFns = [];
-      var isDestroyed = false;
-      var instance = {
-        state,
-        setOptions: function setOptions(setOptionsAction) {
-          var options2 = typeof setOptionsAction === "function" ? setOptionsAction(state.options) : setOptionsAction;
-          cleanupModifierEffects();
-          state.options = Object.assign({}, defaultOptions2, state.options, options2);
-          state.scrollParents = {
-            reference: isElement(reference2) ? listScrollParents(reference2) : reference2.contextElement ? listScrollParents(reference2.contextElement) : [],
-            popper: listScrollParents(popper2)
-          };
-          var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers2, state.options.modifiers)));
-          state.orderedModifiers = orderedModifiers.filter(function(m) {
-            return m.enabled;
-          });
-          runModifierEffects();
-          return instance.update();
-        },
-        // Sync update – it will always be executed, even if not necessary. This
-        // is useful for low frequency updates where sync behavior simplifies the
-        // logic.
-        // For high frequency updates (e.g. `resize` and `scroll` events), always
-        // prefer the async Popper#update method
-        forceUpdate: function forceUpdate() {
-          if (isDestroyed) {
-            return;
-          }
-          var _state$elements = state.elements, reference3 = _state$elements.reference, popper3 = _state$elements.popper;
-          if (!areValidElements(reference3, popper3)) {
-            return;
-          }
-          state.rects = {
-            reference: getCompositeRect(reference3, getOffsetParent(popper3), state.options.strategy === "fixed"),
-            popper: getLayoutRect(popper3)
-          };
-          state.reset = false;
-          state.placement = state.options.placement;
-          state.orderedModifiers.forEach(function(modifier) {
-            return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
-          });
-          for (var index = 0; index < state.orderedModifiers.length; index++) {
-            if (state.reset === true) {
-              state.reset = false;
-              index = -1;
-              continue;
-            }
-            var _state$orderedModifie = state.orderedModifiers[index], fn2 = _state$orderedModifie.fn, _state$orderedModifie2 = _state$orderedModifie.options, _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2, name = _state$orderedModifie.name;
-            if (typeof fn2 === "function") {
-              state = fn2({
-                state,
-                options: _options,
-                name,
-                instance
-              }) || state;
-            }
-          }
-        },
-        // Async and optimistically optimized update – it will not be executed if
-        // not necessary (debounced to run at most once-per-tick)
-        update: debounce(function() {
-          return new Promise(function(resolve) {
-            instance.forceUpdate();
-            resolve(state);
-          });
-        }),
-        destroy: function destroy() {
-          cleanupModifierEffects();
-          isDestroyed = true;
-        }
-      };
-      if (!areValidElements(reference2, popper2)) {
-        return instance;
-      }
-      instance.setOptions(options).then(function(state2) {
-        if (!isDestroyed && options.onFirstUpdate) {
-          options.onFirstUpdate(state2);
-        }
-      });
-      function runModifierEffects() {
-        state.orderedModifiers.forEach(function(_ref) {
-          var name = _ref.name, _ref$options = _ref.options, options2 = _ref$options === void 0 ? {} : _ref$options, effect5 = _ref.effect;
-          if (typeof effect5 === "function") {
-            var cleanupFn = effect5({
-              state,
-              name,
-              instance,
-              options: options2
-            });
-            var noopFn = function noopFn2() {
-            };
-            effectCleanupFns.push(cleanupFn || noopFn);
-          }
-        });
-      }
-      function cleanupModifierEffects() {
-        effectCleanupFns.forEach(function(fn2) {
-          return fn2();
-        });
-        effectCleanupFns = [];
-      }
-      return instance;
-    };
-  }
-
-  // node_modules/@popperjs/core/lib/popper.js
-  var defaultModifiers = [eventListeners_default, popperOffsets_default, computeStyles_default, applyStyles_default, offset_default, flip_default, preventOverflow_default, arrow_default, hide_default];
-  var createPopper = /* @__PURE__ */ popperGenerator({
-    defaultModifiers
-  });
-
-  // node_modules/tippy.js/dist/tippy.esm.js
-  var BOX_CLASS = "tippy-box";
-  var CONTENT_CLASS = "tippy-content";
-  var BACKDROP_CLASS = "tippy-backdrop";
-  var ARROW_CLASS = "tippy-arrow";
-  var SVG_ARROW_CLASS = "tippy-svg-arrow";
-  var TOUCH_OPTIONS = {
-    passive: true,
-    capture: true
-  };
-  var TIPPY_DEFAULT_APPEND_TO = function TIPPY_DEFAULT_APPEND_TO2() {
-    return document.body;
-  };
-  function hasOwnProperty(obj, key) {
-    return {}.hasOwnProperty.call(obj, key);
-  }
-  function getValueAtIndexOrReturn(value, index, defaultValue) {
-    if (Array.isArray(value)) {
-      var v = value[index];
-      return v == null ? Array.isArray(defaultValue) ? defaultValue[index] : defaultValue : v;
-    }
-    return value;
-  }
-  function isType(value, type) {
-    var str = {}.toString.call(value);
-    return str.indexOf("[object") === 0 && str.indexOf(type + "]") > -1;
-  }
-  function invokeWithArgsOrReturn(value, args) {
-    return typeof value === "function" ? value.apply(void 0, args) : value;
-  }
-  function debounce2(fn2, ms) {
-    if (ms === 0) {
-      return fn2;
-    }
-    var timeout;
-    return function(arg) {
-      clearTimeout(timeout);
-      timeout = setTimeout(function() {
-        fn2(arg);
-      }, ms);
-    };
-  }
-  function removeProperties(obj, keys) {
-    var clone = Object.assign({}, obj);
-    keys.forEach(function(key) {
-      delete clone[key];
-    });
-    return clone;
-  }
-  function splitBySpaces(value) {
-    return value.split(/\s+/).filter(Boolean);
-  }
-  function normalizeToArray(value) {
-    return [].concat(value);
-  }
-  function pushIfUnique(arr, value) {
-    if (arr.indexOf(value) === -1) {
-      arr.push(value);
-    }
-  }
-  function unique(arr) {
-    return arr.filter(function(item, index) {
-      return arr.indexOf(item) === index;
-    });
-  }
-  function getBasePlacement2(placement) {
-    return placement.split("-")[0];
-  }
-  function arrayFrom(value) {
-    return [].slice.call(value);
-  }
-  function removeUndefinedProps(obj) {
-    return Object.keys(obj).reduce(function(acc, key) {
-      if (obj[key] !== void 0) {
-        acc[key] = obj[key];
-      }
-      return acc;
-    }, {});
-  }
-  function div() {
-    return document.createElement("div");
-  }
-  function isElement2(value) {
-    return ["Element", "Fragment"].some(function(type) {
-      return isType(value, type);
-    });
-  }
-  function isNodeList(value) {
-    return isType(value, "NodeList");
-  }
-  function isMouseEvent(value) {
-    return isType(value, "MouseEvent");
-  }
-  function isReferenceElement(value) {
-    return !!(value && value._tippy && value._tippy.reference === value);
-  }
-  function getArrayOfElements(value) {
-    if (isElement2(value)) {
-      return [value];
-    }
-    if (isNodeList(value)) {
-      return arrayFrom(value);
-    }
-    if (Array.isArray(value)) {
-      return value;
-    }
-    return arrayFrom(document.querySelectorAll(value));
-  }
-  function setTransitionDuration(els, value) {
-    els.forEach(function(el) {
-      if (el) {
-        el.style.transitionDuration = value + "ms";
-      }
-    });
-  }
-  function setVisibilityState(els, state) {
-    els.forEach(function(el) {
-      if (el) {
-        el.setAttribute("data-state", state);
-      }
-    });
-  }
-  function getOwnerDocument(elementOrElements) {
-    var _element$ownerDocumen;
-    var _normalizeToArray = normalizeToArray(elementOrElements), element = _normalizeToArray[0];
-    return element != null && (_element$ownerDocumen = element.ownerDocument) != null && _element$ownerDocumen.body ? element.ownerDocument : document;
-  }
-  function isCursorOutsideInteractiveBorder(popperTreeData, event) {
-    var clientX = event.clientX, clientY = event.clientY;
-    return popperTreeData.every(function(_ref) {
-      var popperRect = _ref.popperRect, popperState = _ref.popperState, props = _ref.props;
-      var interactiveBorder = props.interactiveBorder;
-      var basePlacement = getBasePlacement2(popperState.placement);
-      var offsetData = popperState.modifiersData.offset;
-      if (!offsetData) {
-        return true;
-      }
-      var topDistance = basePlacement === "bottom" ? offsetData.top.y : 0;
-      var bottomDistance = basePlacement === "top" ? offsetData.bottom.y : 0;
-      var leftDistance = basePlacement === "right" ? offsetData.left.x : 0;
-      var rightDistance = basePlacement === "left" ? offsetData.right.x : 0;
-      var exceedsTop = popperRect.top - clientY + topDistance > interactiveBorder;
-      var exceedsBottom = clientY - popperRect.bottom - bottomDistance > interactiveBorder;
-      var exceedsLeft = popperRect.left - clientX + leftDistance > interactiveBorder;
-      var exceedsRight = clientX - popperRect.right - rightDistance > interactiveBorder;
-      return exceedsTop || exceedsBottom || exceedsLeft || exceedsRight;
-    });
-  }
-  function updateTransitionEndListener(box, action, listener) {
-    var method = action + "EventListener";
-    ["transitionend", "webkitTransitionEnd"].forEach(function(event) {
-      box[method](event, listener);
-    });
-  }
-  function actualContains(parent, child) {
-    var target = child;
-    while (target) {
-      var _target$getRootNode;
-      if (parent.contains(target)) {
-        return true;
-      }
-      target = target.getRootNode == null ? void 0 : (_target$getRootNode = target.getRootNode()) == null ? void 0 : _target$getRootNode.host;
-    }
-    return false;
-  }
-  var currentInput = {
-    isTouch: false
-  };
-  var lastMouseMoveTime = 0;
-  function onDocumentTouchStart() {
-    if (currentInput.isTouch) {
-      return;
-    }
-    currentInput.isTouch = true;
-    if (window.performance) {
-      document.addEventListener("mousemove", onDocumentMouseMove);
-    }
-  }
-  function onDocumentMouseMove() {
-    var now = performance.now();
-    if (now - lastMouseMoveTime < 20) {
-      currentInput.isTouch = false;
-      document.removeEventListener("mousemove", onDocumentMouseMove);
-    }
-    lastMouseMoveTime = now;
-  }
-  function onWindowBlur() {
-    var activeElement = document.activeElement;
-    if (isReferenceElement(activeElement)) {
-      var instance = activeElement._tippy;
-      if (activeElement.blur && !instance.state.isVisible) {
-        activeElement.blur();
-      }
-    }
-  }
-  function bindGlobalEventListeners() {
-    document.addEventListener("touchstart", onDocumentTouchStart, TOUCH_OPTIONS);
-    window.addEventListener("blur", onWindowBlur);
-  }
-  var isBrowser = typeof window !== "undefined" && typeof document !== "undefined";
-  var isIE11 = isBrowser ? (
-    // @ts-ignore
-    !!window.msCrypto
-  ) : false;
-  function createMemoryLeakWarning(method) {
-    var txt = method === "destroy" ? "n already-" : " ";
-    return [method + "() was called on a" + txt + "destroyed instance. This is a no-op but", "indicates a potential memory leak."].join(" ");
-  }
-  function clean(value) {
-    var spacesAndTabs = /[ \t]{2,}/g;
-    var lineStartWithSpaces = /^[ \t]*/gm;
-    return value.replace(spacesAndTabs, " ").replace(lineStartWithSpaces, "").trim();
-  }
-  function getDevMessage(message) {
-    return clean("\n  %ctippy.js\n\n  %c" + clean(message) + "\n\n  %c\u{1F477}\u200D This is a development-only message. It will be removed in production.\n  ");
-  }
-  function getFormattedMessage(message) {
-    return [
-      getDevMessage(message),
-      // title
-      "color: #00C584; font-size: 1.3em; font-weight: bold;",
-      // message
-      "line-height: 1.5",
-      // footer
-      "color: #a6a095;"
-    ];
-  }
-  var visitedMessages;
-  if (true) {
-    resetVisitedMessages();
-  }
-  function resetVisitedMessages() {
-    visitedMessages = /* @__PURE__ */ new Set();
-  }
-  function warnWhen(condition, message) {
-    if (condition && !visitedMessages.has(message)) {
-      var _console;
-      visitedMessages.add(message);
-      (_console = console).warn.apply(_console, getFormattedMessage(message));
-    }
-  }
-  function errorWhen(condition, message) {
-    if (condition && !visitedMessages.has(message)) {
-      var _console2;
-      visitedMessages.add(message);
-      (_console2 = console).error.apply(_console2, getFormattedMessage(message));
-    }
-  }
-  function validateTargets(targets) {
-    var didPassFalsyValue = !targets;
-    var didPassPlainObject = Object.prototype.toString.call(targets) === "[object Object]" && !targets.addEventListener;
-    errorWhen(didPassFalsyValue, ["tippy() was passed", "`" + String(targets) + "`", "as its targets (first) argument. Valid types are: String, Element,", "Element[], or NodeList."].join(" "));
-    errorWhen(didPassPlainObject, ["tippy() was passed a plain object which is not supported as an argument", "for virtual positioning. Use props.getReferenceClientRect instead."].join(" "));
-  }
-  var pluginProps = {
-    animateFill: false,
-    followCursor: false,
-    inlinePositioning: false,
-    sticky: false
-  };
-  var renderProps = {
-    allowHTML: false,
-    animation: "fade",
-    arrow: true,
-    content: "",
-    inertia: false,
-    maxWidth: 350,
-    role: "tooltip",
-    theme: "",
-    zIndex: 9999
-  };
-  var defaultProps = Object.assign({
-    appendTo: TIPPY_DEFAULT_APPEND_TO,
-    aria: {
-      content: "auto",
-      expanded: "auto"
-    },
-    delay: 0,
-    duration: [300, 250],
-    getReferenceClientRect: null,
-    hideOnClick: true,
-    ignoreAttributes: false,
-    interactive: false,
-    interactiveBorder: 2,
-    interactiveDebounce: 0,
-    moveTransition: "",
-    offset: [0, 10],
-    onAfterUpdate: function onAfterUpdate() {
-    },
-    onBeforeUpdate: function onBeforeUpdate() {
-    },
-    onCreate: function onCreate() {
-    },
-    onDestroy: function onDestroy() {
-    },
-    onHidden: function onHidden() {
-    },
-    onHide: function onHide() {
-    },
-    onMount: function onMount() {
-    },
-    onShow: function onShow() {
-    },
-    onShown: function onShown() {
-    },
-    onTrigger: function onTrigger() {
-    },
-    onUntrigger: function onUntrigger() {
-    },
-    onClickOutside: function onClickOutside() {
-    },
-    placement: "top",
-    plugins: [],
-    popperOptions: {},
-    render: null,
-    showOnCreate: false,
-    touch: true,
-    trigger: "mouseenter focus",
-    triggerTarget: null
-  }, pluginProps, renderProps);
-  var defaultKeys = Object.keys(defaultProps);
-  var setDefaultProps = function setDefaultProps2(partialProps) {
-    if (true) {
-      validateProps(partialProps, []);
-    }
-    var keys = Object.keys(partialProps);
-    keys.forEach(function(key) {
-      defaultProps[key] = partialProps[key];
-    });
-  };
-  function getExtendedPassedProps(passedProps) {
-    var plugins = passedProps.plugins || [];
-    var pluginProps2 = plugins.reduce(function(acc, plugin) {
-      var name = plugin.name, defaultValue = plugin.defaultValue;
-      if (name) {
-        var _name;
-        acc[name] = passedProps[name] !== void 0 ? passedProps[name] : (_name = defaultProps[name]) != null ? _name : defaultValue;
-      }
-      return acc;
-    }, {});
-    return Object.assign({}, passedProps, pluginProps2);
-  }
-  function getDataAttributeProps(reference2, plugins) {
-    var propKeys = plugins ? Object.keys(getExtendedPassedProps(Object.assign({}, defaultProps, {
-      plugins
-    }))) : defaultKeys;
-    var props = propKeys.reduce(function(acc, key) {
-      var valueAsString = (reference2.getAttribute("data-tippy-" + key) || "").trim();
-      if (!valueAsString) {
-        return acc;
-      }
-      if (key === "content") {
-        acc[key] = valueAsString;
-      } else {
-        try {
-          acc[key] = JSON.parse(valueAsString);
-        } catch (e) {
-          acc[key] = valueAsString;
-        }
-      }
-      return acc;
-    }, {});
-    return props;
-  }
-  function evaluateProps(reference2, props) {
-    var out = Object.assign({}, props, {
-      content: invokeWithArgsOrReturn(props.content, [reference2])
-    }, props.ignoreAttributes ? {} : getDataAttributeProps(reference2, props.plugins));
-    out.aria = Object.assign({}, defaultProps.aria, out.aria);
-    out.aria = {
-      expanded: out.aria.expanded === "auto" ? props.interactive : out.aria.expanded,
-      content: out.aria.content === "auto" ? props.interactive ? null : "describedby" : out.aria.content
-    };
-    return out;
-  }
-  function validateProps(partialProps, plugins) {
-    if (partialProps === void 0) {
-      partialProps = {};
-    }
-    if (plugins === void 0) {
-      plugins = [];
-    }
-    var keys = Object.keys(partialProps);
-    keys.forEach(function(prop) {
-      var nonPluginProps = removeProperties(defaultProps, Object.keys(pluginProps));
-      var didPassUnknownProp = !hasOwnProperty(nonPluginProps, prop);
-      if (didPassUnknownProp) {
-        didPassUnknownProp = plugins.filter(function(plugin) {
-          return plugin.name === prop;
-        }).length === 0;
-      }
-      warnWhen(didPassUnknownProp, ["`" + prop + "`", "is not a valid prop. You may have spelled it incorrectly, or if it's", "a plugin, forgot to pass it in an array as props.plugins.", "\n\n", "All props: https://atomiks.github.io/tippyjs/v6/all-props/\n", "Plugins: https://atomiks.github.io/tippyjs/v6/plugins/"].join(" "));
-    });
-  }
-  var innerHTML = function innerHTML2() {
-    return "innerHTML";
-  };
-  function dangerouslySetInnerHTML(element, html) {
-    element[innerHTML()] = html;
-  }
-  function createArrowElement(value) {
-    var arrow2 = div();
-    if (value === true) {
-      arrow2.className = ARROW_CLASS;
-    } else {
-      arrow2.className = SVG_ARROW_CLASS;
-      if (isElement2(value)) {
-        arrow2.appendChild(value);
-      } else {
-        dangerouslySetInnerHTML(arrow2, value);
-      }
-    }
-    return arrow2;
-  }
-  function setContent(content, props) {
-    if (isElement2(props.content)) {
-      dangerouslySetInnerHTML(content, "");
-      content.appendChild(props.content);
-    } else if (typeof props.content !== "function") {
-      if (props.allowHTML) {
-        dangerouslySetInnerHTML(content, props.content);
-      } else {
-        content.textContent = props.content;
-      }
-    }
-  }
-  function getChildren(popper2) {
-    var box = popper2.firstElementChild;
-    var boxChildren = arrayFrom(box.children);
-    return {
-      box,
-      content: boxChildren.find(function(node) {
-        return node.classList.contains(CONTENT_CLASS);
-      }),
-      arrow: boxChildren.find(function(node) {
-        return node.classList.contains(ARROW_CLASS) || node.classList.contains(SVG_ARROW_CLASS);
-      }),
-      backdrop: boxChildren.find(function(node) {
-        return node.classList.contains(BACKDROP_CLASS);
-      })
-    };
-  }
-  function render(instance) {
-    var popper2 = div();
-    var box = div();
-    box.className = BOX_CLASS;
-    box.setAttribute("data-state", "hidden");
-    box.setAttribute("tabindex", "-1");
-    var content = div();
-    content.className = CONTENT_CLASS;
-    content.setAttribute("data-state", "hidden");
-    setContent(content, instance.props);
-    popper2.appendChild(box);
-    box.appendChild(content);
-    onUpdate(instance.props, instance.props);
-    function onUpdate(prevProps, nextProps) {
-      var _getChildren = getChildren(popper2), box2 = _getChildren.box, content2 = _getChildren.content, arrow2 = _getChildren.arrow;
-      if (nextProps.theme) {
-        box2.setAttribute("data-theme", nextProps.theme);
-      } else {
-        box2.removeAttribute("data-theme");
-      }
-      if (typeof nextProps.animation === "string") {
-        box2.setAttribute("data-animation", nextProps.animation);
-      } else {
-        box2.removeAttribute("data-animation");
-      }
-      if (nextProps.inertia) {
-        box2.setAttribute("data-inertia", "");
-      } else {
-        box2.removeAttribute("data-inertia");
-      }
-      box2.style.maxWidth = typeof nextProps.maxWidth === "number" ? nextProps.maxWidth + "px" : nextProps.maxWidth;
-      if (nextProps.role) {
-        box2.setAttribute("role", nextProps.role);
-      } else {
-        box2.removeAttribute("role");
-      }
-      if (prevProps.content !== nextProps.content || prevProps.allowHTML !== nextProps.allowHTML) {
-        setContent(content2, instance.props);
-      }
-      if (nextProps.arrow) {
-        if (!arrow2) {
-          box2.appendChild(createArrowElement(nextProps.arrow));
-        } else if (prevProps.arrow !== nextProps.arrow) {
-          box2.removeChild(arrow2);
-          box2.appendChild(createArrowElement(nextProps.arrow));
-        }
-      } else if (arrow2) {
-        box2.removeChild(arrow2);
-      }
-    }
-    return {
-      popper: popper2,
-      onUpdate
-    };
-  }
-  render.$$tippy = true;
-  var idCounter = 1;
-  var mouseMoveListeners = [];
-  var mountedInstances = [];
-  function createTippy(reference2, passedProps) {
-    var props = evaluateProps(reference2, Object.assign({}, defaultProps, getExtendedPassedProps(removeUndefinedProps(passedProps))));
-    var showTimeout;
-    var hideTimeout;
-    var scheduleHideAnimationFrame;
-    var isVisibleFromClick = false;
-    var didHideDueToDocumentMouseDown = false;
-    var didTouchMove = false;
-    var ignoreOnFirstUpdate = false;
-    var lastTriggerEvent;
-    var currentTransitionEndListener;
-    var onFirstUpdate;
-    var listeners = [];
-    var debouncedOnMouseMove = debounce2(onMouseMove, props.interactiveDebounce);
-    var currentTarget;
-    var id = idCounter++;
-    var popperInstance = null;
-    var plugins = unique(props.plugins);
-    var state = {
-      // Is the instance currently enabled?
-      isEnabled: true,
-      // Is the tippy currently showing and not transitioning out?
-      isVisible: false,
-      // Has the instance been destroyed?
-      isDestroyed: false,
-      // Is the tippy currently mounted to the DOM?
-      isMounted: false,
-      // Has the tippy finished transitioning in?
-      isShown: false
-    };
-    var instance = {
-      // properties
-      id,
-      reference: reference2,
-      popper: div(),
-      popperInstance,
-      props,
-      state,
-      plugins,
-      // methods
-      clearDelayTimeouts,
-      setProps,
-      setContent: setContent2,
-      show,
-      hide: hide2,
-      hideWithInteractivity,
-      enable,
-      disable,
-      unmount,
-      destroy
-    };
-    if (!props.render) {
-      if (true) {
-        errorWhen(true, "render() function has not been supplied.");
-      }
-      return instance;
-    }
-    var _props$render = props.render(instance), popper2 = _props$render.popper, onUpdate = _props$render.onUpdate;
-    popper2.setAttribute("data-tippy-root", "");
-    popper2.id = "tippy-" + instance.id;
-    instance.popper = popper2;
-    reference2._tippy = instance;
-    popper2._tippy = instance;
-    var pluginsHooks = plugins.map(function(plugin) {
-      return plugin.fn(instance);
-    });
-    var hasAriaExpanded = reference2.hasAttribute("aria-expanded");
-    addListeners();
-    handleAriaExpandedAttribute();
-    handleStyles();
-    invokeHook("onCreate", [instance]);
-    if (props.showOnCreate) {
-      scheduleShow();
-    }
-    popper2.addEventListener("mouseenter", function() {
-      if (instance.props.interactive && instance.state.isVisible) {
-        instance.clearDelayTimeouts();
-      }
-    });
-    popper2.addEventListener("mouseleave", function() {
-      if (instance.props.interactive && instance.props.trigger.indexOf("mouseenter") >= 0) {
-        getDocument().addEventListener("mousemove", debouncedOnMouseMove);
-      }
-    });
-    return instance;
-    function getNormalizedTouchSettings() {
-      var touch = instance.props.touch;
-      return Array.isArray(touch) ? touch : [touch, 0];
-    }
-    function getIsCustomTouchBehavior() {
-      return getNormalizedTouchSettings()[0] === "hold";
-    }
-    function getIsDefaultRenderFn() {
-      var _instance$props$rende;
-      return !!((_instance$props$rende = instance.props.render) != null && _instance$props$rende.$$tippy);
-    }
-    function getCurrentTarget() {
-      return currentTarget || reference2;
-    }
-    function getDocument() {
-      var parent = getCurrentTarget().parentNode;
-      return parent ? getOwnerDocument(parent) : document;
-    }
-    function getDefaultTemplateChildren() {
-      return getChildren(popper2);
-    }
-    function getDelay(isShow) {
-      if (instance.state.isMounted && !instance.state.isVisible || currentInput.isTouch || lastTriggerEvent && lastTriggerEvent.type === "focus") {
-        return 0;
-      }
-      return getValueAtIndexOrReturn(instance.props.delay, isShow ? 0 : 1, defaultProps.delay);
-    }
-    function handleStyles(fromHide) {
-      if (fromHide === void 0) {
-        fromHide = false;
-      }
-      popper2.style.pointerEvents = instance.props.interactive && !fromHide ? "" : "none";
-      popper2.style.zIndex = "" + instance.props.zIndex;
-    }
-    function invokeHook(hook, args, shouldInvokePropsHook) {
-      if (shouldInvokePropsHook === void 0) {
-        shouldInvokePropsHook = true;
-      }
-      pluginsHooks.forEach(function(pluginHooks) {
-        if (pluginHooks[hook]) {
-          pluginHooks[hook].apply(pluginHooks, args);
-        }
-      });
-      if (shouldInvokePropsHook) {
-        var _instance$props;
-        (_instance$props = instance.props)[hook].apply(_instance$props, args);
-      }
-    }
-    function handleAriaContentAttribute() {
-      var aria = instance.props.aria;
-      if (!aria.content) {
-        return;
-      }
-      var attr = "aria-" + aria.content;
-      var id2 = popper2.id;
-      var nodes = normalizeToArray(instance.props.triggerTarget || reference2);
-      nodes.forEach(function(node) {
-        var currentValue = node.getAttribute(attr);
-        if (instance.state.isVisible) {
-          node.setAttribute(attr, currentValue ? currentValue + " " + id2 : id2);
-        } else {
-          var nextValue = currentValue && currentValue.replace(id2, "").trim();
-          if (nextValue) {
-            node.setAttribute(attr, nextValue);
-          } else {
-            node.removeAttribute(attr);
-          }
-        }
-      });
-    }
-    function handleAriaExpandedAttribute() {
-      if (hasAriaExpanded || !instance.props.aria.expanded) {
-        return;
-      }
-      var nodes = normalizeToArray(instance.props.triggerTarget || reference2);
-      nodes.forEach(function(node) {
-        if (instance.props.interactive) {
-          node.setAttribute("aria-expanded", instance.state.isVisible && node === getCurrentTarget() ? "true" : "false");
-        } else {
-          node.removeAttribute("aria-expanded");
-        }
-      });
-    }
-    function cleanupInteractiveMouseListeners() {
-      getDocument().removeEventListener("mousemove", debouncedOnMouseMove);
-      mouseMoveListeners = mouseMoveListeners.filter(function(listener) {
-        return listener !== debouncedOnMouseMove;
-      });
-    }
-    function onDocumentPress(event) {
-      if (currentInput.isTouch) {
-        if (didTouchMove || event.type === "mousedown") {
-          return;
-        }
-      }
-      var actualTarget = event.composedPath && event.composedPath()[0] || event.target;
-      if (instance.props.interactive && actualContains(popper2, actualTarget)) {
-        return;
-      }
-      if (normalizeToArray(instance.props.triggerTarget || reference2).some(function(el) {
-        return actualContains(el, actualTarget);
-      })) {
-        if (currentInput.isTouch) {
-          return;
-        }
-        if (instance.state.isVisible && instance.props.trigger.indexOf("click") >= 0) {
-          return;
-        }
-      } else {
-        invokeHook("onClickOutside", [instance, event]);
-      }
-      if (instance.props.hideOnClick === true) {
-        instance.clearDelayTimeouts();
-        instance.hide();
-        didHideDueToDocumentMouseDown = true;
-        setTimeout(function() {
-          didHideDueToDocumentMouseDown = false;
-        });
-        if (!instance.state.isMounted) {
-          removeDocumentPress();
-        }
-      }
-    }
-    function onTouchMove() {
-      didTouchMove = true;
-    }
-    function onTouchStart() {
-      didTouchMove = false;
-    }
-    function addDocumentPress() {
-      var doc = getDocument();
-      doc.addEventListener("mousedown", onDocumentPress, true);
-      doc.addEventListener("touchend", onDocumentPress, TOUCH_OPTIONS);
-      doc.addEventListener("touchstart", onTouchStart, TOUCH_OPTIONS);
-      doc.addEventListener("touchmove", onTouchMove, TOUCH_OPTIONS);
-    }
-    function removeDocumentPress() {
-      var doc = getDocument();
-      doc.removeEventListener("mousedown", onDocumentPress, true);
-      doc.removeEventListener("touchend", onDocumentPress, TOUCH_OPTIONS);
-      doc.removeEventListener("touchstart", onTouchStart, TOUCH_OPTIONS);
-      doc.removeEventListener("touchmove", onTouchMove, TOUCH_OPTIONS);
-    }
-    function onTransitionedOut(duration2, callback) {
-      onTransitionEnd(duration2, function() {
-        if (!instance.state.isVisible && popper2.parentNode && popper2.parentNode.contains(popper2)) {
-          callback();
-        }
-      });
-    }
-    function onTransitionedIn(duration2, callback) {
-      onTransitionEnd(duration2, callback);
-    }
-    function onTransitionEnd(duration2, callback) {
-      var box = getDefaultTemplateChildren().box;
-      function listener(event) {
-        if (event.target === box) {
-          updateTransitionEndListener(box, "remove", listener);
-          callback();
-        }
-      }
-      if (duration2 === 0) {
-        return callback();
-      }
-      updateTransitionEndListener(box, "remove", currentTransitionEndListener);
-      updateTransitionEndListener(box, "add", listener);
-      currentTransitionEndListener = listener;
-    }
-    function on(eventType, handler, options) {
-      if (options === void 0) {
-        options = false;
-      }
-      var nodes = normalizeToArray(instance.props.triggerTarget || reference2);
-      nodes.forEach(function(node) {
-        node.addEventListener(eventType, handler, options);
-        listeners.push({
-          node,
-          eventType,
-          handler,
-          options
-        });
-      });
-    }
-    function addListeners() {
-      if (getIsCustomTouchBehavior()) {
-        on("touchstart", onTrigger2, {
-          passive: true
-        });
-        on("touchend", onMouseLeave, {
-          passive: true
-        });
-      }
-      splitBySpaces(instance.props.trigger).forEach(function(eventType) {
-        if (eventType === "manual") {
-          return;
-        }
-        on(eventType, onTrigger2);
-        switch (eventType) {
-          case "mouseenter":
-            on("mouseleave", onMouseLeave);
-            break;
-          case "focus":
-            on(isIE11 ? "focusout" : "blur", onBlurOrFocusOut);
-            break;
-          case "focusin":
-            on("focusout", onBlurOrFocusOut);
-            break;
-        }
-      });
-    }
-    function removeListeners() {
-      listeners.forEach(function(_ref) {
-        var node = _ref.node, eventType = _ref.eventType, handler = _ref.handler, options = _ref.options;
-        node.removeEventListener(eventType, handler, options);
-      });
-      listeners = [];
-    }
-    function onTrigger2(event) {
-      var _lastTriggerEvent;
-      var shouldScheduleClickHide = false;
-      if (!instance.state.isEnabled || isEventListenerStopped(event) || didHideDueToDocumentMouseDown) {
-        return;
-      }
-      var wasFocused = ((_lastTriggerEvent = lastTriggerEvent) == null ? void 0 : _lastTriggerEvent.type) === "focus";
-      lastTriggerEvent = event;
-      currentTarget = event.currentTarget;
-      handleAriaExpandedAttribute();
-      if (!instance.state.isVisible && isMouseEvent(event)) {
-        mouseMoveListeners.forEach(function(listener) {
-          return listener(event);
-        });
-      }
-      if (event.type === "click" && (instance.props.trigger.indexOf("mouseenter") < 0 || isVisibleFromClick) && instance.props.hideOnClick !== false && instance.state.isVisible) {
-        shouldScheduleClickHide = true;
-      } else {
-        scheduleShow(event);
-      }
-      if (event.type === "click") {
-        isVisibleFromClick = !shouldScheduleClickHide;
-      }
-      if (shouldScheduleClickHide && !wasFocused) {
-        scheduleHide(event);
-      }
-    }
-    function onMouseMove(event) {
-      var target = event.target;
-      var isCursorOverReferenceOrPopper = getCurrentTarget().contains(target) || popper2.contains(target);
-      if (event.type === "mousemove" && isCursorOverReferenceOrPopper) {
-        return;
-      }
-      var popperTreeData = getNestedPopperTree().concat(popper2).map(function(popper3) {
-        var _instance$popperInsta;
-        var instance2 = popper3._tippy;
-        var state2 = (_instance$popperInsta = instance2.popperInstance) == null ? void 0 : _instance$popperInsta.state;
-        if (state2) {
-          return {
-            popperRect: popper3.getBoundingClientRect(),
-            popperState: state2,
-            props
-          };
-        }
-        return null;
-      }).filter(Boolean);
-      if (isCursorOutsideInteractiveBorder(popperTreeData, event)) {
-        cleanupInteractiveMouseListeners();
-        scheduleHide(event);
-      }
-    }
-    function onMouseLeave(event) {
-      var shouldBail = isEventListenerStopped(event) || instance.props.trigger.indexOf("click") >= 0 && isVisibleFromClick;
-      if (shouldBail) {
-        return;
-      }
-      if (instance.props.interactive) {
-        instance.hideWithInteractivity(event);
-        return;
-      }
-      scheduleHide(event);
-    }
-    function onBlurOrFocusOut(event) {
-      if (instance.props.trigger.indexOf("focusin") < 0 && event.target !== getCurrentTarget()) {
-        return;
-      }
-      if (instance.props.interactive && event.relatedTarget && popper2.contains(event.relatedTarget)) {
-        return;
-      }
-      scheduleHide(event);
-    }
-    function isEventListenerStopped(event) {
-      return currentInput.isTouch ? getIsCustomTouchBehavior() !== event.type.indexOf("touch") >= 0 : false;
-    }
-    function createPopperInstance() {
-      destroyPopperInstance();
-      var _instance$props2 = instance.props, popperOptions = _instance$props2.popperOptions, placement = _instance$props2.placement, offset2 = _instance$props2.offset, getReferenceClientRect = _instance$props2.getReferenceClientRect, moveTransition = _instance$props2.moveTransition;
-      var arrow2 = getIsDefaultRenderFn() ? getChildren(popper2).arrow : null;
-      var computedReference = getReferenceClientRect ? {
-        getBoundingClientRect: getReferenceClientRect,
-        contextElement: getReferenceClientRect.contextElement || getCurrentTarget()
-      } : reference2;
-      var tippyModifier = {
-        name: "$$tippy",
-        enabled: true,
-        phase: "beforeWrite",
-        requires: ["computeStyles"],
-        fn: function fn2(_ref2) {
-          var state2 = _ref2.state;
-          if (getIsDefaultRenderFn()) {
-            var _getDefaultTemplateCh = getDefaultTemplateChildren(), box = _getDefaultTemplateCh.box;
-            ["placement", "reference-hidden", "escaped"].forEach(function(attr) {
-              if (attr === "placement") {
-                box.setAttribute("data-placement", state2.placement);
-              } else {
-                if (state2.attributes.popper["data-popper-" + attr]) {
-                  box.setAttribute("data-" + attr, "");
-                } else {
-                  box.removeAttribute("data-" + attr);
-                }
-              }
-            });
-            state2.attributes.popper = {};
-          }
-        }
-      };
-      var modifiers = [{
-        name: "offset",
-        options: {
-          offset: offset2
-        }
-      }, {
-        name: "preventOverflow",
-        options: {
-          padding: {
-            top: 2,
-            bottom: 2,
-            left: 5,
-            right: 5
-          }
-        }
-      }, {
-        name: "flip",
-        options: {
-          padding: 5
-        }
-      }, {
-        name: "computeStyles",
-        options: {
-          adaptive: !moveTransition
-        }
-      }, tippyModifier];
-      if (getIsDefaultRenderFn() && arrow2) {
-        modifiers.push({
-          name: "arrow",
-          options: {
-            element: arrow2,
-            padding: 3
-          }
-        });
-      }
-      modifiers.push.apply(modifiers, (popperOptions == null ? void 0 : popperOptions.modifiers) || []);
-      instance.popperInstance = createPopper(computedReference, popper2, Object.assign({}, popperOptions, {
-        placement,
-        onFirstUpdate,
-        modifiers
-      }));
-    }
-    function destroyPopperInstance() {
-      if (instance.popperInstance) {
-        instance.popperInstance.destroy();
-        instance.popperInstance = null;
-      }
-    }
-    function mount() {
-      var appendTo = instance.props.appendTo;
-      var parentNode;
-      var node = getCurrentTarget();
-      if (instance.props.interactive && appendTo === TIPPY_DEFAULT_APPEND_TO || appendTo === "parent") {
-        parentNode = node.parentNode;
-      } else {
-        parentNode = invokeWithArgsOrReturn(appendTo, [node]);
-      }
-      if (!parentNode.contains(popper2)) {
-        parentNode.appendChild(popper2);
-      }
-      instance.state.isMounted = true;
-      createPopperInstance();
-      if (true) {
-        warnWhen(instance.props.interactive && appendTo === defaultProps.appendTo && node.nextElementSibling !== popper2, ["Interactive tippy element may not be accessible via keyboard", "navigation because it is not directly after the reference element", "in the DOM source order.", "\n\n", "Using a wrapper <div> or <span> tag around the reference element", "solves this by creating a new parentNode context.", "\n\n", "Specifying `appendTo: document.body` silences this warning, but it", "assumes you are using a focus management solution to handle", "keyboard navigation.", "\n\n", "See: https://atomiks.github.io/tippyjs/v6/accessibility/#interactivity"].join(" "));
-      }
-    }
-    function getNestedPopperTree() {
-      return arrayFrom(popper2.querySelectorAll("[data-tippy-root]"));
-    }
-    function scheduleShow(event) {
-      instance.clearDelayTimeouts();
-      if (event) {
-        invokeHook("onTrigger", [instance, event]);
-      }
-      addDocumentPress();
-      var delay = getDelay(true);
-      var _getNormalizedTouchSe = getNormalizedTouchSettings(), touchValue = _getNormalizedTouchSe[0], touchDelay = _getNormalizedTouchSe[1];
-      if (currentInput.isTouch && touchValue === "hold" && touchDelay) {
-        delay = touchDelay;
-      }
-      if (delay) {
-        showTimeout = setTimeout(function() {
-          instance.show();
-        }, delay);
-      } else {
-        instance.show();
-      }
-    }
-    function scheduleHide(event) {
-      instance.clearDelayTimeouts();
-      invokeHook("onUntrigger", [instance, event]);
-      if (!instance.state.isVisible) {
-        removeDocumentPress();
-        return;
-      }
-      if (instance.props.trigger.indexOf("mouseenter") >= 0 && instance.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(event.type) >= 0 && isVisibleFromClick) {
-        return;
-      }
-      var delay = getDelay(false);
-      if (delay) {
-        hideTimeout = setTimeout(function() {
-          if (instance.state.isVisible) {
-            instance.hide();
-          }
-        }, delay);
-      } else {
-        scheduleHideAnimationFrame = requestAnimationFrame(function() {
-          instance.hide();
-        });
-      }
-    }
-    function enable() {
-      instance.state.isEnabled = true;
-    }
-    function disable() {
-      instance.hide();
-      instance.state.isEnabled = false;
-    }
-    function clearDelayTimeouts() {
-      clearTimeout(showTimeout);
-      clearTimeout(hideTimeout);
-      cancelAnimationFrame(scheduleHideAnimationFrame);
-    }
-    function setProps(partialProps) {
-      if (true) {
-        warnWhen(instance.state.isDestroyed, createMemoryLeakWarning("setProps"));
-      }
-      if (instance.state.isDestroyed) {
-        return;
-      }
-      invokeHook("onBeforeUpdate", [instance, partialProps]);
-      removeListeners();
-      var prevProps = instance.props;
-      var nextProps = evaluateProps(reference2, Object.assign({}, prevProps, removeUndefinedProps(partialProps), {
-        ignoreAttributes: true
-      }));
-      instance.props = nextProps;
-      addListeners();
-      if (prevProps.interactiveDebounce !== nextProps.interactiveDebounce) {
-        cleanupInteractiveMouseListeners();
-        debouncedOnMouseMove = debounce2(onMouseMove, nextProps.interactiveDebounce);
-      }
-      if (prevProps.triggerTarget && !nextProps.triggerTarget) {
-        normalizeToArray(prevProps.triggerTarget).forEach(function(node) {
-          node.removeAttribute("aria-expanded");
-        });
-      } else if (nextProps.triggerTarget) {
-        reference2.removeAttribute("aria-expanded");
-      }
-      handleAriaExpandedAttribute();
-      handleStyles();
-      if (onUpdate) {
-        onUpdate(prevProps, nextProps);
-      }
-      if (instance.popperInstance) {
-        createPopperInstance();
-        getNestedPopperTree().forEach(function(nestedPopper) {
-          requestAnimationFrame(nestedPopper._tippy.popperInstance.forceUpdate);
-        });
-      }
-      invokeHook("onAfterUpdate", [instance, partialProps]);
-    }
-    function setContent2(content) {
-      instance.setProps({
-        content
-      });
-    }
-    function show() {
-      if (true) {
-        warnWhen(instance.state.isDestroyed, createMemoryLeakWarning("show"));
-      }
-      var isAlreadyVisible = instance.state.isVisible;
-      var isDestroyed = instance.state.isDestroyed;
-      var isDisabled = !instance.state.isEnabled;
-      var isTouchAndTouchDisabled = currentInput.isTouch && !instance.props.touch;
-      var duration2 = getValueAtIndexOrReturn(instance.props.duration, 0, defaultProps.duration);
-      if (isAlreadyVisible || isDestroyed || isDisabled || isTouchAndTouchDisabled) {
-        return;
-      }
-      if (getCurrentTarget().hasAttribute("disabled")) {
-        return;
-      }
-      invokeHook("onShow", [instance], false);
-      if (instance.props.onShow(instance) === false) {
-        return;
-      }
-      instance.state.isVisible = true;
-      if (getIsDefaultRenderFn()) {
-        popper2.style.visibility = "visible";
-      }
-      handleStyles();
-      addDocumentPress();
-      if (!instance.state.isMounted) {
-        popper2.style.transition = "none";
-      }
-      if (getIsDefaultRenderFn()) {
-        var _getDefaultTemplateCh2 = getDefaultTemplateChildren(), box = _getDefaultTemplateCh2.box, content = _getDefaultTemplateCh2.content;
-        setTransitionDuration([box, content], 0);
-      }
-      onFirstUpdate = function onFirstUpdate2() {
-        var _instance$popperInsta2;
-        if (!instance.state.isVisible || ignoreOnFirstUpdate) {
-          return;
-        }
-        ignoreOnFirstUpdate = true;
-        void popper2.offsetHeight;
-        popper2.style.transition = instance.props.moveTransition;
-        if (getIsDefaultRenderFn() && instance.props.animation) {
-          var _getDefaultTemplateCh3 = getDefaultTemplateChildren(), _box = _getDefaultTemplateCh3.box, _content = _getDefaultTemplateCh3.content;
-          setTransitionDuration([_box, _content], duration2);
-          setVisibilityState([_box, _content], "visible");
-        }
-        handleAriaContentAttribute();
-        handleAriaExpandedAttribute();
-        pushIfUnique(mountedInstances, instance);
-        (_instance$popperInsta2 = instance.popperInstance) == null ? void 0 : _instance$popperInsta2.forceUpdate();
-        invokeHook("onMount", [instance]);
-        if (instance.props.animation && getIsDefaultRenderFn()) {
-          onTransitionedIn(duration2, function() {
-            instance.state.isShown = true;
-            invokeHook("onShown", [instance]);
-          });
-        }
-      };
-      mount();
-    }
-    function hide2() {
-      if (true) {
-        warnWhen(instance.state.isDestroyed, createMemoryLeakWarning("hide"));
-      }
-      var isAlreadyHidden = !instance.state.isVisible;
-      var isDestroyed = instance.state.isDestroyed;
-      var isDisabled = !instance.state.isEnabled;
-      var duration2 = getValueAtIndexOrReturn(instance.props.duration, 1, defaultProps.duration);
-      if (isAlreadyHidden || isDestroyed || isDisabled) {
-        return;
-      }
-      invokeHook("onHide", [instance], false);
-      if (instance.props.onHide(instance) === false) {
-        return;
-      }
-      instance.state.isVisible = false;
-      instance.state.isShown = false;
-      ignoreOnFirstUpdate = false;
-      isVisibleFromClick = false;
-      if (getIsDefaultRenderFn()) {
-        popper2.style.visibility = "hidden";
-      }
-      cleanupInteractiveMouseListeners();
-      removeDocumentPress();
-      handleStyles(true);
-      if (getIsDefaultRenderFn()) {
-        var _getDefaultTemplateCh4 = getDefaultTemplateChildren(), box = _getDefaultTemplateCh4.box, content = _getDefaultTemplateCh4.content;
-        if (instance.props.animation) {
-          setTransitionDuration([box, content], duration2);
-          setVisibilityState([box, content], "hidden");
-        }
-      }
-      handleAriaContentAttribute();
-      handleAriaExpandedAttribute();
-      if (instance.props.animation) {
-        if (getIsDefaultRenderFn()) {
-          onTransitionedOut(duration2, instance.unmount);
-        }
-      } else {
-        instance.unmount();
-      }
-    }
-    function hideWithInteractivity(event) {
-      if (true) {
-        warnWhen(instance.state.isDestroyed, createMemoryLeakWarning("hideWithInteractivity"));
-      }
-      getDocument().addEventListener("mousemove", debouncedOnMouseMove);
-      pushIfUnique(mouseMoveListeners, debouncedOnMouseMove);
-      debouncedOnMouseMove(event);
-    }
-    function unmount() {
-      if (true) {
-        warnWhen(instance.state.isDestroyed, createMemoryLeakWarning("unmount"));
-      }
-      if (instance.state.isVisible) {
-        instance.hide();
-      }
-      if (!instance.state.isMounted) {
-        return;
-      }
-      destroyPopperInstance();
-      getNestedPopperTree().forEach(function(nestedPopper) {
-        nestedPopper._tippy.unmount();
-      });
-      if (popper2.parentNode) {
-        popper2.parentNode.removeChild(popper2);
-      }
-      mountedInstances = mountedInstances.filter(function(i) {
-        return i !== instance;
-      });
-      instance.state.isMounted = false;
-      invokeHook("onHidden", [instance]);
-    }
-    function destroy() {
-      if (true) {
-        warnWhen(instance.state.isDestroyed, createMemoryLeakWarning("destroy"));
-      }
-      if (instance.state.isDestroyed) {
-        return;
-      }
-      instance.clearDelayTimeouts();
-      instance.unmount();
-      removeListeners();
-      delete reference2._tippy;
-      instance.state.isDestroyed = true;
-      invokeHook("onDestroy", [instance]);
-    }
-  }
-  function tippy(targets, optionalProps) {
-    if (optionalProps === void 0) {
-      optionalProps = {};
-    }
-    var plugins = defaultProps.plugins.concat(optionalProps.plugins || []);
-    if (true) {
-      validateTargets(targets);
-      validateProps(optionalProps, plugins);
-    }
-    bindGlobalEventListeners();
-    var passedProps = Object.assign({}, optionalProps, {
-      plugins
-    });
-    var elements = getArrayOfElements(targets);
-    if (true) {
-      var isSingleContentElement = isElement2(passedProps.content);
-      var isMoreThanOneReferenceElement = elements.length > 1;
-      warnWhen(isSingleContentElement && isMoreThanOneReferenceElement, ["tippy() was passed an Element as the `content` prop, but more than", "one tippy instance was created by this invocation. This means the", "content element will only be appended to the last tippy instance.", "\n\n", "Instead, pass the .innerHTML of the element, or use a function that", "returns a cloned version of the element instead.", "\n\n", "1) content: element.innerHTML\n", "2) content: () => element.cloneNode(true)"].join(" "));
-    }
-    var instances = elements.reduce(function(acc, reference2) {
-      var instance = reference2 && createTippy(reference2, passedProps);
-      if (instance) {
-        acc.push(instance);
-      }
-      return acc;
-    }, []);
-    return isElement2(targets) ? instances[0] : instances;
-  }
-  tippy.defaultProps = defaultProps;
-  tippy.setDefaultProps = setDefaultProps;
-  tippy.currentInput = currentInput;
-  var applyStylesModifier = Object.assign({}, applyStyles_default, {
-    effect: function effect4(_ref) {
-      var state = _ref.state;
-      var initialStyles = {
-        popper: {
-          position: state.options.strategy,
-          left: "0",
-          top: "0",
-          margin: "0"
-        },
-        arrow: {
-          position: "absolute"
-        },
-        reference: {}
-      };
-      Object.assign(state.elements.popper.style, initialStyles.popper);
-      state.styles = initialStyles;
-      if (state.elements.arrow) {
-        Object.assign(state.elements.arrow.style, initialStyles.arrow);
-      }
-    }
-  });
-  tippy.setDefaultProps({
-    render
-  });
-  var tippy_esm_default = tippy;
-
   // app/javascript/controllers/railsui_anchor_controller.js
   var railsui_anchor_controller_default = class extends Controller {
     copy(event) {
@@ -56113,29 +53374,6 @@
   __publicField(railsui_anchor_controller_default, "values", {
     url: String
   });
-
-  // app/javascript/controllers/railsui_clipboard_controller.js
-  var railsui_clipboard_controller_default = class extends Controller {
-    copy(event) {
-      event.preventDefault();
-      navigator.clipboard.writeText(this.textToCopy);
-      this.showFeedback(event.currentTarget, "Copied!");
-    }
-    get textToCopy() {
-      const { value, innerText } = this.sourceTarget;
-      return value || innerText;
-    }
-    showFeedback(element, message) {
-      tippy_esm_default(element, {
-        content: message,
-        showOnCreate: true,
-        onHidden: (instance) => {
-          instance.destroy();
-        }
-      });
-    }
-  };
-  __publicField(railsui_clipboard_controller_default, "targets", ["source"]);
 
   // app/javascript/controllers/railsui_configuration_controller.js
   var railsui_configuration_controller_default = class extends Controller {
@@ -59920,8 +57158,8 @@
           strokeColor: "transparent",
           level: 0.65,
           curved: true
-        }, rand = function(min2, max2) {
-          return Math.floor(Math.random() * (max2 - min2 + 1) + min2);
+        }, rand = function(min, max) {
+          return Math.floor(Math.random() * (max - min + 1) + min);
         }, ease = function(t, b, c2, d) {
           if ((t /= d / 2) < 1)
             return c2 / 2 * t * t + b;
@@ -60032,2386 +57270,6 @@
     }
   };
 
-  // node_modules/flatpickr/dist/esm/types/options.js
-  var HOOKS = [
-    "onChange",
-    "onClose",
-    "onDayCreate",
-    "onDestroy",
-    "onKeyDown",
-    "onMonthChange",
-    "onOpen",
-    "onParseConfig",
-    "onReady",
-    "onValueUpdate",
-    "onYearChange",
-    "onPreCalendarPosition"
-  ];
-  var defaults = {
-    _disable: [],
-    allowInput: false,
-    allowInvalidPreload: false,
-    altFormat: "F j, Y",
-    altInput: false,
-    altInputClass: "form-control input",
-    animate: typeof window === "object" && window.navigator.userAgent.indexOf("MSIE") === -1,
-    ariaDateFormat: "F j, Y",
-    autoFillDefaultTime: true,
-    clickOpens: true,
-    closeOnSelect: true,
-    conjunction: ", ",
-    dateFormat: "Y-m-d",
-    defaultHour: 12,
-    defaultMinute: 0,
-    defaultSeconds: 0,
-    disable: [],
-    disableMobile: false,
-    enableSeconds: false,
-    enableTime: false,
-    errorHandler: function(err) {
-      return typeof console !== "undefined" && console.warn(err);
-    },
-    getWeek: function(givenDate) {
-      var date = new Date(givenDate.getTime());
-      date.setHours(0, 0, 0, 0);
-      date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
-      var week1 = new Date(date.getFullYear(), 0, 4);
-      return 1 + Math.round(((date.getTime() - week1.getTime()) / 864e5 - 3 + (week1.getDay() + 6) % 7) / 7);
-    },
-    hourIncrement: 1,
-    ignoredFocusElements: [],
-    inline: false,
-    locale: "default",
-    minuteIncrement: 5,
-    mode: "single",
-    monthSelectorType: "dropdown",
-    nextArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z' /></svg>",
-    noCalendar: false,
-    now: /* @__PURE__ */ new Date(),
-    onChange: [],
-    onClose: [],
-    onDayCreate: [],
-    onDestroy: [],
-    onKeyDown: [],
-    onMonthChange: [],
-    onOpen: [],
-    onParseConfig: [],
-    onReady: [],
-    onValueUpdate: [],
-    onYearChange: [],
-    onPreCalendarPosition: [],
-    plugins: [],
-    position: "auto",
-    positionElement: void 0,
-    prevArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z' /></svg>",
-    shorthandCurrentMonth: false,
-    showMonths: 1,
-    static: false,
-    time_24hr: false,
-    weekNumbers: false,
-    wrap: false
-  };
-
-  // node_modules/flatpickr/dist/esm/l10n/default.js
-  var english = {
-    weekdays: {
-      shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-      longhand: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ]
-    },
-    months: {
-      shorthand: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ],
-      longhand: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ]
-    },
-    daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-    firstDayOfWeek: 0,
-    ordinal: function(nth) {
-      var s = nth % 100;
-      if (s > 3 && s < 21)
-        return "th";
-      switch (s % 10) {
-        case 1:
-          return "st";
-        case 2:
-          return "nd";
-        case 3:
-          return "rd";
-        default:
-          return "th";
-      }
-    },
-    rangeSeparator: " to ",
-    weekAbbreviation: "Wk",
-    scrollTitle: "Scroll to increment",
-    toggleTitle: "Click to toggle",
-    amPM: ["AM", "PM"],
-    yearAriaLabel: "Year",
-    monthAriaLabel: "Month",
-    hourAriaLabel: "Hour",
-    minuteAriaLabel: "Minute",
-    time_24hr: false
-  };
-  var default_default = english;
-
-  // node_modules/flatpickr/dist/esm/utils/index.js
-  var pad = function(number, length) {
-    if (length === void 0) {
-      length = 2;
-    }
-    return ("000" + number).slice(length * -1);
-  };
-  var int = function(bool) {
-    return bool === true ? 1 : 0;
-  };
-  function debounce3(fn2, wait) {
-    var t;
-    return function() {
-      var _this = this;
-      var args = arguments;
-      clearTimeout(t);
-      t = setTimeout(function() {
-        return fn2.apply(_this, args);
-      }, wait);
-    };
-  }
-  var arrayify = function(obj) {
-    return obj instanceof Array ? obj : [obj];
-  };
-
-  // node_modules/flatpickr/dist/esm/utils/dom.js
-  function toggleClass(elem, className, bool) {
-    if (bool === true)
-      return elem.classList.add(className);
-    elem.classList.remove(className);
-  }
-  function createElement(tag, className, content) {
-    var e = window.document.createElement(tag);
-    className = className || "";
-    content = content || "";
-    e.className = className;
-    if (content !== void 0)
-      e.textContent = content;
-    return e;
-  }
-  function clearNode(node) {
-    while (node.firstChild)
-      node.removeChild(node.firstChild);
-  }
-  function findParent(node, condition) {
-    if (condition(node))
-      return node;
-    else if (node.parentNode)
-      return findParent(node.parentNode, condition);
-    return void 0;
-  }
-  function createNumberInput(inputClassName, opts) {
-    var wrapper = createElement("div", "numInputWrapper"), numInput = createElement("input", "numInput " + inputClassName), arrowUp = createElement("span", "arrowUp"), arrowDown = createElement("span", "arrowDown");
-    if (navigator.userAgent.indexOf("MSIE 9.0") === -1) {
-      numInput.type = "number";
-    } else {
-      numInput.type = "text";
-      numInput.pattern = "\\d*";
-    }
-    if (opts !== void 0)
-      for (var key in opts)
-        numInput.setAttribute(key, opts[key]);
-    wrapper.appendChild(numInput);
-    wrapper.appendChild(arrowUp);
-    wrapper.appendChild(arrowDown);
-    return wrapper;
-  }
-  function getEventTarget(event) {
-    try {
-      if (typeof event.composedPath === "function") {
-        var path = event.composedPath();
-        return path[0];
-      }
-      return event.target;
-    } catch (error2) {
-      return event.target;
-    }
-  }
-
-  // node_modules/flatpickr/dist/esm/utils/formatting.js
-  var doNothing = function() {
-    return void 0;
-  };
-  var monthToStr = function(monthNumber, shorthand, locale) {
-    return locale.months[shorthand ? "shorthand" : "longhand"][monthNumber];
-  };
-  var revFormat = {
-    D: doNothing,
-    F: function(dateObj, monthName, locale) {
-      dateObj.setMonth(locale.months.longhand.indexOf(monthName));
-    },
-    G: function(dateObj, hour) {
-      dateObj.setHours((dateObj.getHours() >= 12 ? 12 : 0) + parseFloat(hour));
-    },
-    H: function(dateObj, hour) {
-      dateObj.setHours(parseFloat(hour));
-    },
-    J: function(dateObj, day) {
-      dateObj.setDate(parseFloat(day));
-    },
-    K: function(dateObj, amPM, locale) {
-      dateObj.setHours(dateObj.getHours() % 12 + 12 * int(new RegExp(locale.amPM[1], "i").test(amPM)));
-    },
-    M: function(dateObj, shortMonth, locale) {
-      dateObj.setMonth(locale.months.shorthand.indexOf(shortMonth));
-    },
-    S: function(dateObj, seconds) {
-      dateObj.setSeconds(parseFloat(seconds));
-    },
-    U: function(_, unixSeconds) {
-      return new Date(parseFloat(unixSeconds) * 1e3);
-    },
-    W: function(dateObj, weekNum, locale) {
-      var weekNumber = parseInt(weekNum);
-      var date = new Date(dateObj.getFullYear(), 0, 2 + (weekNumber - 1) * 7, 0, 0, 0, 0);
-      date.setDate(date.getDate() - date.getDay() + locale.firstDayOfWeek);
-      return date;
-    },
-    Y: function(dateObj, year) {
-      dateObj.setFullYear(parseFloat(year));
-    },
-    Z: function(_, ISODate) {
-      return new Date(ISODate);
-    },
-    d: function(dateObj, day) {
-      dateObj.setDate(parseFloat(day));
-    },
-    h: function(dateObj, hour) {
-      dateObj.setHours((dateObj.getHours() >= 12 ? 12 : 0) + parseFloat(hour));
-    },
-    i: function(dateObj, minutes) {
-      dateObj.setMinutes(parseFloat(minutes));
-    },
-    j: function(dateObj, day) {
-      dateObj.setDate(parseFloat(day));
-    },
-    l: doNothing,
-    m: function(dateObj, month) {
-      dateObj.setMonth(parseFloat(month) - 1);
-    },
-    n: function(dateObj, month) {
-      dateObj.setMonth(parseFloat(month) - 1);
-    },
-    s: function(dateObj, seconds) {
-      dateObj.setSeconds(parseFloat(seconds));
-    },
-    u: function(_, unixMillSeconds) {
-      return new Date(parseFloat(unixMillSeconds));
-    },
-    w: doNothing,
-    y: function(dateObj, year) {
-      dateObj.setFullYear(2e3 + parseFloat(year));
-    }
-  };
-  var tokenRegex = {
-    D: "",
-    F: "",
-    G: "(\\d\\d|\\d)",
-    H: "(\\d\\d|\\d)",
-    J: "(\\d\\d|\\d)\\w+",
-    K: "",
-    M: "",
-    S: "(\\d\\d|\\d)",
-    U: "(.+)",
-    W: "(\\d\\d|\\d)",
-    Y: "(\\d{4})",
-    Z: "(.+)",
-    d: "(\\d\\d|\\d)",
-    h: "(\\d\\d|\\d)",
-    i: "(\\d\\d|\\d)",
-    j: "(\\d\\d|\\d)",
-    l: "",
-    m: "(\\d\\d|\\d)",
-    n: "(\\d\\d|\\d)",
-    s: "(\\d\\d|\\d)",
-    u: "(.+)",
-    w: "(\\d\\d|\\d)",
-    y: "(\\d{2})"
-  };
-  var formats = {
-    Z: function(date) {
-      return date.toISOString();
-    },
-    D: function(date, locale, options) {
-      return locale.weekdays.shorthand[formats.w(date, locale, options)];
-    },
-    F: function(date, locale, options) {
-      return monthToStr(formats.n(date, locale, options) - 1, false, locale);
-    },
-    G: function(date, locale, options) {
-      return pad(formats.h(date, locale, options));
-    },
-    H: function(date) {
-      return pad(date.getHours());
-    },
-    J: function(date, locale) {
-      return locale.ordinal !== void 0 ? date.getDate() + locale.ordinal(date.getDate()) : date.getDate();
-    },
-    K: function(date, locale) {
-      return locale.amPM[int(date.getHours() > 11)];
-    },
-    M: function(date, locale) {
-      return monthToStr(date.getMonth(), true, locale);
-    },
-    S: function(date) {
-      return pad(date.getSeconds());
-    },
-    U: function(date) {
-      return date.getTime() / 1e3;
-    },
-    W: function(date, _, options) {
-      return options.getWeek(date);
-    },
-    Y: function(date) {
-      return pad(date.getFullYear(), 4);
-    },
-    d: function(date) {
-      return pad(date.getDate());
-    },
-    h: function(date) {
-      return date.getHours() % 12 ? date.getHours() % 12 : 12;
-    },
-    i: function(date) {
-      return pad(date.getMinutes());
-    },
-    j: function(date) {
-      return date.getDate();
-    },
-    l: function(date, locale) {
-      return locale.weekdays.longhand[date.getDay()];
-    },
-    m: function(date) {
-      return pad(date.getMonth() + 1);
-    },
-    n: function(date) {
-      return date.getMonth() + 1;
-    },
-    s: function(date) {
-      return date.getSeconds();
-    },
-    u: function(date) {
-      return date.getTime();
-    },
-    w: function(date) {
-      return date.getDay();
-    },
-    y: function(date) {
-      return String(date.getFullYear()).substring(2);
-    }
-  };
-
-  // node_modules/flatpickr/dist/esm/utils/dates.js
-  var createDateFormatter = function(_a) {
-    var _b = _a.config, config = _b === void 0 ? defaults : _b, _c = _a.l10n, l10n = _c === void 0 ? english : _c, _d = _a.isMobile, isMobile = _d === void 0 ? false : _d;
-    return function(dateObj, frmt, overrideLocale) {
-      var locale = overrideLocale || l10n;
-      if (config.formatDate !== void 0 && !isMobile) {
-        return config.formatDate(dateObj, frmt, locale);
-      }
-      return frmt.split("").map(function(c, i, arr) {
-        return formats[c] && arr[i - 1] !== "\\" ? formats[c](dateObj, locale, config) : c !== "\\" ? c : "";
-      }).join("");
-    };
-  };
-  var createDateParser = function(_a) {
-    var _b = _a.config, config = _b === void 0 ? defaults : _b, _c = _a.l10n, l10n = _c === void 0 ? english : _c;
-    return function(date, givenFormat, timeless, customLocale) {
-      if (date !== 0 && !date)
-        return void 0;
-      var locale = customLocale || l10n;
-      var parsedDate;
-      var dateOrig = date;
-      if (date instanceof Date)
-        parsedDate = new Date(date.getTime());
-      else if (typeof date !== "string" && date.toFixed !== void 0)
-        parsedDate = new Date(date);
-      else if (typeof date === "string") {
-        var format = givenFormat || (config || defaults).dateFormat;
-        var datestr = String(date).trim();
-        if (datestr === "today") {
-          parsedDate = /* @__PURE__ */ new Date();
-          timeless = true;
-        } else if (config && config.parseDate) {
-          parsedDate = config.parseDate(date, format);
-        } else if (/Z$/.test(datestr) || /GMT$/.test(datestr)) {
-          parsedDate = new Date(date);
-        } else {
-          var matched = void 0, ops = [];
-          for (var i = 0, matchIndex = 0, regexStr = ""; i < format.length; i++) {
-            var token = format[i];
-            var isBackSlash = token === "\\";
-            var escaped = format[i - 1] === "\\" || isBackSlash;
-            if (tokenRegex[token] && !escaped) {
-              regexStr += tokenRegex[token];
-              var match = new RegExp(regexStr).exec(date);
-              if (match && (matched = true)) {
-                ops[token !== "Y" ? "push" : "unshift"]({
-                  fn: revFormat[token],
-                  val: match[++matchIndex]
-                });
-              }
-            } else if (!isBackSlash)
-              regexStr += ".";
-          }
-          parsedDate = !config || !config.noCalendar ? new Date((/* @__PURE__ */ new Date()).getFullYear(), 0, 1, 0, 0, 0, 0) : new Date((/* @__PURE__ */ new Date()).setHours(0, 0, 0, 0));
-          ops.forEach(function(_a2) {
-            var fn2 = _a2.fn, val = _a2.val;
-            return parsedDate = fn2(parsedDate, val, locale) || parsedDate;
-          });
-          parsedDate = matched ? parsedDate : void 0;
-        }
-      }
-      if (!(parsedDate instanceof Date && !isNaN(parsedDate.getTime()))) {
-        config.errorHandler(new Error("Invalid date provided: " + dateOrig));
-        return void 0;
-      }
-      if (timeless === true)
-        parsedDate.setHours(0, 0, 0, 0);
-      return parsedDate;
-    };
-  };
-  function compareDates(date1, date2, timeless) {
-    if (timeless === void 0) {
-      timeless = true;
-    }
-    if (timeless !== false) {
-      return new Date(date1.getTime()).setHours(0, 0, 0, 0) - new Date(date2.getTime()).setHours(0, 0, 0, 0);
-    }
-    return date1.getTime() - date2.getTime();
-  }
-  var isBetween = function(ts, ts1, ts2) {
-    return ts > Math.min(ts1, ts2) && ts < Math.max(ts1, ts2);
-  };
-  var calculateSecondsSinceMidnight = function(hours, minutes, seconds) {
-    return hours * 3600 + minutes * 60 + seconds;
-  };
-  var parseSeconds = function(secondsSinceMidnight) {
-    var hours = Math.floor(secondsSinceMidnight / 3600), minutes = (secondsSinceMidnight - hours * 3600) / 60;
-    return [hours, minutes, secondsSinceMidnight - hours * 3600 - minutes * 60];
-  };
-  var duration = {
-    DAY: 864e5
-  };
-  function getDefaultHours(config) {
-    var hours = config.defaultHour;
-    var minutes = config.defaultMinute;
-    var seconds = config.defaultSeconds;
-    if (config.minDate !== void 0) {
-      var minHour = config.minDate.getHours();
-      var minMinutes = config.minDate.getMinutes();
-      var minSeconds = config.minDate.getSeconds();
-      if (hours < minHour) {
-        hours = minHour;
-      }
-      if (hours === minHour && minutes < minMinutes) {
-        minutes = minMinutes;
-      }
-      if (hours === minHour && minutes === minMinutes && seconds < minSeconds)
-        seconds = config.minDate.getSeconds();
-    }
-    if (config.maxDate !== void 0) {
-      var maxHr = config.maxDate.getHours();
-      var maxMinutes = config.maxDate.getMinutes();
-      hours = Math.min(hours, maxHr);
-      if (hours === maxHr)
-        minutes = Math.min(maxMinutes, minutes);
-      if (hours === maxHr && minutes === maxMinutes)
-        seconds = config.maxDate.getSeconds();
-    }
-    return { hours, minutes, seconds };
-  }
-
-  // node_modules/flatpickr/dist/esm/utils/polyfills.js
-  if (typeof Object.assign !== "function") {
-    Object.assign = function(target) {
-      var args = [];
-      for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
-      }
-      if (!target) {
-        throw TypeError("Cannot convert undefined or null to object");
-      }
-      var _loop_1 = function(source2) {
-        if (source2) {
-          Object.keys(source2).forEach(function(key) {
-            return target[key] = source2[key];
-          });
-        }
-      };
-      for (var _a = 0, args_1 = args; _a < args_1.length; _a++) {
-        var source = args_1[_a];
-        _loop_1(source);
-      }
-      return target;
-    };
-  }
-
-  // node_modules/flatpickr/dist/esm/index.js
-  var __assign = function() {
-    __assign = Object.assign || function(t) {
-      for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s)
-          if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-      }
-      return t;
-    };
-    return __assign.apply(this, arguments);
-  };
-  var __spreadArrays = function() {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++)
-      s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-      for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-        r[k] = a[j];
-    return r;
-  };
-  var DEBOUNCED_CHANGE_MS = 300;
-  function FlatpickrInstance(element, instanceConfig) {
-    var self = {
-      config: __assign(__assign({}, defaults), flatpickr.defaultConfig),
-      l10n: default_default
-    };
-    self.parseDate = createDateParser({ config: self.config, l10n: self.l10n });
-    self._handlers = [];
-    self.pluginElements = [];
-    self.loadedPlugins = [];
-    self._bind = bind;
-    self._setHoursFromDate = setHoursFromDate;
-    self._positionCalendar = positionCalendar;
-    self.changeMonth = changeMonth;
-    self.changeYear = changeYear;
-    self.clear = clear;
-    self.close = close;
-    self.onMouseOver = onMouseOver;
-    self._createElement = createElement;
-    self.createDay = createDay;
-    self.destroy = destroy;
-    self.isEnabled = isEnabled;
-    self.jumpToDate = jumpToDate;
-    self.updateValue = updateValue;
-    self.open = open;
-    self.redraw = redraw;
-    self.set = set;
-    self.setDate = setDate;
-    self.toggle = toggle;
-    function setupHelperFunctions() {
-      self.utils = {
-        getDaysInMonth: function(month, yr) {
-          if (month === void 0) {
-            month = self.currentMonth;
-          }
-          if (yr === void 0) {
-            yr = self.currentYear;
-          }
-          if (month === 1 && (yr % 4 === 0 && yr % 100 !== 0 || yr % 400 === 0))
-            return 29;
-          return self.l10n.daysInMonth[month];
-        }
-      };
-    }
-    function init() {
-      self.element = self.input = element;
-      self.isOpen = false;
-      parseConfig();
-      setupLocale();
-      setupInputs();
-      setupDates();
-      setupHelperFunctions();
-      if (!self.isMobile)
-        build();
-      bindEvents();
-      if (self.selectedDates.length || self.config.noCalendar) {
-        if (self.config.enableTime) {
-          setHoursFromDate(self.config.noCalendar ? self.latestSelectedDateObj : void 0);
-        }
-        updateValue(false);
-      }
-      setCalendarWidth();
-      var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-      if (!self.isMobile && isSafari) {
-        positionCalendar();
-      }
-      triggerEvent("onReady");
-    }
-    function getClosestActiveElement() {
-      var _a;
-      return ((_a = self.calendarContainer) === null || _a === void 0 ? void 0 : _a.getRootNode()).activeElement || document.activeElement;
-    }
-    function bindToInstance(fn2) {
-      return fn2.bind(self);
-    }
-    function setCalendarWidth() {
-      var config = self.config;
-      if (config.weekNumbers === false && config.showMonths === 1) {
-        return;
-      } else if (config.noCalendar !== true) {
-        window.requestAnimationFrame(function() {
-          if (self.calendarContainer !== void 0) {
-            self.calendarContainer.style.visibility = "hidden";
-            self.calendarContainer.style.display = "block";
-          }
-          if (self.daysContainer !== void 0) {
-            var daysWidth = (self.days.offsetWidth + 1) * config.showMonths;
-            self.daysContainer.style.width = daysWidth + "px";
-            self.calendarContainer.style.width = daysWidth + (self.weekWrapper !== void 0 ? self.weekWrapper.offsetWidth : 0) + "px";
-            self.calendarContainer.style.removeProperty("visibility");
-            self.calendarContainer.style.removeProperty("display");
-          }
-        });
-      }
-    }
-    function updateTime(e) {
-      if (self.selectedDates.length === 0) {
-        var defaultDate = self.config.minDate === void 0 || compareDates(/* @__PURE__ */ new Date(), self.config.minDate) >= 0 ? /* @__PURE__ */ new Date() : new Date(self.config.minDate.getTime());
-        var defaults2 = getDefaultHours(self.config);
-        defaultDate.setHours(defaults2.hours, defaults2.minutes, defaults2.seconds, defaultDate.getMilliseconds());
-        self.selectedDates = [defaultDate];
-        self.latestSelectedDateObj = defaultDate;
-      }
-      if (e !== void 0 && e.type !== "blur") {
-        timeWrapper(e);
-      }
-      var prevValue = self._input.value;
-      setHoursFromInputs();
-      updateValue();
-      if (self._input.value !== prevValue) {
-        self._debouncedChange();
-      }
-    }
-    function ampm2military(hour, amPM) {
-      return hour % 12 + 12 * int(amPM === self.l10n.amPM[1]);
-    }
-    function military2ampm(hour) {
-      switch (hour % 24) {
-        case 0:
-        case 12:
-          return 12;
-        default:
-          return hour % 12;
-      }
-    }
-    function setHoursFromInputs() {
-      if (self.hourElement === void 0 || self.minuteElement === void 0)
-        return;
-      var hours = (parseInt(self.hourElement.value.slice(-2), 10) || 0) % 24, minutes = (parseInt(self.minuteElement.value, 10) || 0) % 60, seconds = self.secondElement !== void 0 ? (parseInt(self.secondElement.value, 10) || 0) % 60 : 0;
-      if (self.amPM !== void 0) {
-        hours = ampm2military(hours, self.amPM.textContent);
-      }
-      var limitMinHours = self.config.minTime !== void 0 || self.config.minDate && self.minDateHasTime && self.latestSelectedDateObj && compareDates(self.latestSelectedDateObj, self.config.minDate, true) === 0;
-      var limitMaxHours = self.config.maxTime !== void 0 || self.config.maxDate && self.maxDateHasTime && self.latestSelectedDateObj && compareDates(self.latestSelectedDateObj, self.config.maxDate, true) === 0;
-      if (self.config.maxTime !== void 0 && self.config.minTime !== void 0 && self.config.minTime > self.config.maxTime) {
-        var minBound = calculateSecondsSinceMidnight(self.config.minTime.getHours(), self.config.minTime.getMinutes(), self.config.minTime.getSeconds());
-        var maxBound = calculateSecondsSinceMidnight(self.config.maxTime.getHours(), self.config.maxTime.getMinutes(), self.config.maxTime.getSeconds());
-        var currentTime = calculateSecondsSinceMidnight(hours, minutes, seconds);
-        if (currentTime > maxBound && currentTime < minBound) {
-          var result = parseSeconds(minBound);
-          hours = result[0];
-          minutes = result[1];
-          seconds = result[2];
-        }
-      } else {
-        if (limitMaxHours) {
-          var maxTime = self.config.maxTime !== void 0 ? self.config.maxTime : self.config.maxDate;
-          hours = Math.min(hours, maxTime.getHours());
-          if (hours === maxTime.getHours())
-            minutes = Math.min(minutes, maxTime.getMinutes());
-          if (minutes === maxTime.getMinutes())
-            seconds = Math.min(seconds, maxTime.getSeconds());
-        }
-        if (limitMinHours) {
-          var minTime = self.config.minTime !== void 0 ? self.config.minTime : self.config.minDate;
-          hours = Math.max(hours, minTime.getHours());
-          if (hours === minTime.getHours() && minutes < minTime.getMinutes())
-            minutes = minTime.getMinutes();
-          if (minutes === minTime.getMinutes())
-            seconds = Math.max(seconds, minTime.getSeconds());
-        }
-      }
-      setHours(hours, minutes, seconds);
-    }
-    function setHoursFromDate(dateObj) {
-      var date = dateObj || self.latestSelectedDateObj;
-      if (date && date instanceof Date) {
-        setHours(date.getHours(), date.getMinutes(), date.getSeconds());
-      }
-    }
-    function setHours(hours, minutes, seconds) {
-      if (self.latestSelectedDateObj !== void 0) {
-        self.latestSelectedDateObj.setHours(hours % 24, minutes, seconds || 0, 0);
-      }
-      if (!self.hourElement || !self.minuteElement || self.isMobile)
-        return;
-      self.hourElement.value = pad(!self.config.time_24hr ? (12 + hours) % 12 + 12 * int(hours % 12 === 0) : hours);
-      self.minuteElement.value = pad(minutes);
-      if (self.amPM !== void 0)
-        self.amPM.textContent = self.l10n.amPM[int(hours >= 12)];
-      if (self.secondElement !== void 0)
-        self.secondElement.value = pad(seconds);
-    }
-    function onYearInput(event) {
-      var eventTarget = getEventTarget(event);
-      var year = parseInt(eventTarget.value) + (event.delta || 0);
-      if (year / 1e3 > 1 || event.key === "Enter" && !/[^\d]/.test(year.toString())) {
-        changeYear(year);
-      }
-    }
-    function bind(element2, event, handler, options) {
-      if (event instanceof Array)
-        return event.forEach(function(ev) {
-          return bind(element2, ev, handler, options);
-        });
-      if (element2 instanceof Array)
-        return element2.forEach(function(el) {
-          return bind(el, event, handler, options);
-        });
-      element2.addEventListener(event, handler, options);
-      self._handlers.push({
-        remove: function() {
-          return element2.removeEventListener(event, handler, options);
-        }
-      });
-    }
-    function triggerChange() {
-      triggerEvent("onChange");
-    }
-    function bindEvents() {
-      if (self.config.wrap) {
-        ["open", "close", "toggle", "clear"].forEach(function(evt) {
-          Array.prototype.forEach.call(self.element.querySelectorAll("[data-" + evt + "]"), function(el) {
-            return bind(el, "click", self[evt]);
-          });
-        });
-      }
-      if (self.isMobile) {
-        setupMobile();
-        return;
-      }
-      var debouncedResize = debounce3(onResize, 50);
-      self._debouncedChange = debounce3(triggerChange, DEBOUNCED_CHANGE_MS);
-      if (self.daysContainer && !/iPhone|iPad|iPod/i.test(navigator.userAgent))
-        bind(self.daysContainer, "mouseover", function(e) {
-          if (self.config.mode === "range")
-            onMouseOver(getEventTarget(e));
-        });
-      bind(self._input, "keydown", onKeyDown);
-      if (self.calendarContainer !== void 0) {
-        bind(self.calendarContainer, "keydown", onKeyDown);
-      }
-      if (!self.config.inline && !self.config.static)
-        bind(window, "resize", debouncedResize);
-      if (window.ontouchstart !== void 0)
-        bind(window.document, "touchstart", documentClick);
-      else
-        bind(window.document, "mousedown", documentClick);
-      bind(window.document, "focus", documentClick, { capture: true });
-      if (self.config.clickOpens === true) {
-        bind(self._input, "focus", self.open);
-        bind(self._input, "click", self.open);
-      }
-      if (self.daysContainer !== void 0) {
-        bind(self.monthNav, "click", onMonthNavClick);
-        bind(self.monthNav, ["keyup", "increment"], onYearInput);
-        bind(self.daysContainer, "click", selectDate);
-      }
-      if (self.timeContainer !== void 0 && self.minuteElement !== void 0 && self.hourElement !== void 0) {
-        var selText = function(e) {
-          return getEventTarget(e).select();
-        };
-        bind(self.timeContainer, ["increment"], updateTime);
-        bind(self.timeContainer, "blur", updateTime, { capture: true });
-        bind(self.timeContainer, "click", timeIncrement);
-        bind([self.hourElement, self.minuteElement], ["focus", "click"], selText);
-        if (self.secondElement !== void 0)
-          bind(self.secondElement, "focus", function() {
-            return self.secondElement && self.secondElement.select();
-          });
-        if (self.amPM !== void 0) {
-          bind(self.amPM, "click", function(e) {
-            updateTime(e);
-          });
-        }
-      }
-      if (self.config.allowInput) {
-        bind(self._input, "blur", onBlur);
-      }
-    }
-    function jumpToDate(jumpDate, triggerChange2) {
-      var jumpTo = jumpDate !== void 0 ? self.parseDate(jumpDate) : self.latestSelectedDateObj || (self.config.minDate && self.config.minDate > self.now ? self.config.minDate : self.config.maxDate && self.config.maxDate < self.now ? self.config.maxDate : self.now);
-      var oldYear = self.currentYear;
-      var oldMonth = self.currentMonth;
-      try {
-        if (jumpTo !== void 0) {
-          self.currentYear = jumpTo.getFullYear();
-          self.currentMonth = jumpTo.getMonth();
-        }
-      } catch (e) {
-        e.message = "Invalid date supplied: " + jumpTo;
-        self.config.errorHandler(e);
-      }
-      if (triggerChange2 && self.currentYear !== oldYear) {
-        triggerEvent("onYearChange");
-        buildMonthSwitch();
-      }
-      if (triggerChange2 && (self.currentYear !== oldYear || self.currentMonth !== oldMonth)) {
-        triggerEvent("onMonthChange");
-      }
-      self.redraw();
-    }
-    function timeIncrement(e) {
-      var eventTarget = getEventTarget(e);
-      if (~eventTarget.className.indexOf("arrow"))
-        incrementNumInput(e, eventTarget.classList.contains("arrowUp") ? 1 : -1);
-    }
-    function incrementNumInput(e, delta, inputElem) {
-      var target = e && getEventTarget(e);
-      var input = inputElem || target && target.parentNode && target.parentNode.firstChild;
-      var event = createEvent("increment");
-      event.delta = delta;
-      input && input.dispatchEvent(event);
-    }
-    function build() {
-      var fragment = window.document.createDocumentFragment();
-      self.calendarContainer = createElement("div", "flatpickr-calendar");
-      self.calendarContainer.tabIndex = -1;
-      if (!self.config.noCalendar) {
-        fragment.appendChild(buildMonthNav());
-        self.innerContainer = createElement("div", "flatpickr-innerContainer");
-        if (self.config.weekNumbers) {
-          var _a = buildWeeks(), weekWrapper = _a.weekWrapper, weekNumbers = _a.weekNumbers;
-          self.innerContainer.appendChild(weekWrapper);
-          self.weekNumbers = weekNumbers;
-          self.weekWrapper = weekWrapper;
-        }
-        self.rContainer = createElement("div", "flatpickr-rContainer");
-        self.rContainer.appendChild(buildWeekdays());
-        if (!self.daysContainer) {
-          self.daysContainer = createElement("div", "flatpickr-days");
-          self.daysContainer.tabIndex = -1;
-        }
-        buildDays();
-        self.rContainer.appendChild(self.daysContainer);
-        self.innerContainer.appendChild(self.rContainer);
-        fragment.appendChild(self.innerContainer);
-      }
-      if (self.config.enableTime) {
-        fragment.appendChild(buildTime());
-      }
-      toggleClass(self.calendarContainer, "rangeMode", self.config.mode === "range");
-      toggleClass(self.calendarContainer, "animate", self.config.animate === true);
-      toggleClass(self.calendarContainer, "multiMonth", self.config.showMonths > 1);
-      self.calendarContainer.appendChild(fragment);
-      var customAppend = self.config.appendTo !== void 0 && self.config.appendTo.nodeType !== void 0;
-      if (self.config.inline || self.config.static) {
-        self.calendarContainer.classList.add(self.config.inline ? "inline" : "static");
-        if (self.config.inline) {
-          if (!customAppend && self.element.parentNode)
-            self.element.parentNode.insertBefore(self.calendarContainer, self._input.nextSibling);
-          else if (self.config.appendTo !== void 0)
-            self.config.appendTo.appendChild(self.calendarContainer);
-        }
-        if (self.config.static) {
-          var wrapper = createElement("div", "flatpickr-wrapper");
-          if (self.element.parentNode)
-            self.element.parentNode.insertBefore(wrapper, self.element);
-          wrapper.appendChild(self.element);
-          if (self.altInput)
-            wrapper.appendChild(self.altInput);
-          wrapper.appendChild(self.calendarContainer);
-        }
-      }
-      if (!self.config.static && !self.config.inline)
-        (self.config.appendTo !== void 0 ? self.config.appendTo : window.document.body).appendChild(self.calendarContainer);
-    }
-    function createDay(className, date, _dayNumber, i) {
-      var dateIsEnabled = isEnabled(date, true), dayElement = createElement("span", className, date.getDate().toString());
-      dayElement.dateObj = date;
-      dayElement.$i = i;
-      dayElement.setAttribute("aria-label", self.formatDate(date, self.config.ariaDateFormat));
-      if (className.indexOf("hidden") === -1 && compareDates(date, self.now) === 0) {
-        self.todayDateElem = dayElement;
-        dayElement.classList.add("today");
-        dayElement.setAttribute("aria-current", "date");
-      }
-      if (dateIsEnabled) {
-        dayElement.tabIndex = -1;
-        if (isDateSelected(date)) {
-          dayElement.classList.add("selected");
-          self.selectedDateElem = dayElement;
-          if (self.config.mode === "range") {
-            toggleClass(dayElement, "startRange", self.selectedDates[0] && compareDates(date, self.selectedDates[0], true) === 0);
-            toggleClass(dayElement, "endRange", self.selectedDates[1] && compareDates(date, self.selectedDates[1], true) === 0);
-            if (className === "nextMonthDay")
-              dayElement.classList.add("inRange");
-          }
-        }
-      } else {
-        dayElement.classList.add("flatpickr-disabled");
-      }
-      if (self.config.mode === "range") {
-        if (isDateInRange(date) && !isDateSelected(date))
-          dayElement.classList.add("inRange");
-      }
-      if (self.weekNumbers && self.config.showMonths === 1 && className !== "prevMonthDay" && i % 7 === 6) {
-        self.weekNumbers.insertAdjacentHTML("beforeend", "<span class='flatpickr-day'>" + self.config.getWeek(date) + "</span>");
-      }
-      triggerEvent("onDayCreate", dayElement);
-      return dayElement;
-    }
-    function focusOnDayElem(targetNode) {
-      targetNode.focus();
-      if (self.config.mode === "range")
-        onMouseOver(targetNode);
-    }
-    function getFirstAvailableDay(delta) {
-      var startMonth = delta > 0 ? 0 : self.config.showMonths - 1;
-      var endMonth = delta > 0 ? self.config.showMonths : -1;
-      for (var m = startMonth; m != endMonth; m += delta) {
-        var month = self.daysContainer.children[m];
-        var startIndex = delta > 0 ? 0 : month.children.length - 1;
-        var endIndex = delta > 0 ? month.children.length : -1;
-        for (var i = startIndex; i != endIndex; i += delta) {
-          var c = month.children[i];
-          if (c.className.indexOf("hidden") === -1 && isEnabled(c.dateObj))
-            return c;
-        }
-      }
-      return void 0;
-    }
-    function getNextAvailableDay(current, delta) {
-      var givenMonth = current.className.indexOf("Month") === -1 ? current.dateObj.getMonth() : self.currentMonth;
-      var endMonth = delta > 0 ? self.config.showMonths : -1;
-      var loopDelta = delta > 0 ? 1 : -1;
-      for (var m = givenMonth - self.currentMonth; m != endMonth; m += loopDelta) {
-        var month = self.daysContainer.children[m];
-        var startIndex = givenMonth - self.currentMonth === m ? current.$i + delta : delta < 0 ? month.children.length - 1 : 0;
-        var numMonthDays = month.children.length;
-        for (var i = startIndex; i >= 0 && i < numMonthDays && i != (delta > 0 ? numMonthDays : -1); i += loopDelta) {
-          var c = month.children[i];
-          if (c.className.indexOf("hidden") === -1 && isEnabled(c.dateObj) && Math.abs(current.$i - i) >= Math.abs(delta))
-            return focusOnDayElem(c);
-        }
-      }
-      self.changeMonth(loopDelta);
-      focusOnDay(getFirstAvailableDay(loopDelta), 0);
-      return void 0;
-    }
-    function focusOnDay(current, offset2) {
-      var activeElement = getClosestActiveElement();
-      var dayFocused = isInView(activeElement || document.body);
-      var startElem = current !== void 0 ? current : dayFocused ? activeElement : self.selectedDateElem !== void 0 && isInView(self.selectedDateElem) ? self.selectedDateElem : self.todayDateElem !== void 0 && isInView(self.todayDateElem) ? self.todayDateElem : getFirstAvailableDay(offset2 > 0 ? 1 : -1);
-      if (startElem === void 0) {
-        self._input.focus();
-      } else if (!dayFocused) {
-        focusOnDayElem(startElem);
-      } else {
-        getNextAvailableDay(startElem, offset2);
-      }
-    }
-    function buildMonthDays(year, month) {
-      var firstOfMonth = (new Date(year, month, 1).getDay() - self.l10n.firstDayOfWeek + 7) % 7;
-      var prevMonthDays = self.utils.getDaysInMonth((month - 1 + 12) % 12, year);
-      var daysInMonth = self.utils.getDaysInMonth(month, year), days = window.document.createDocumentFragment(), isMultiMonth = self.config.showMonths > 1, prevMonthDayClass = isMultiMonth ? "prevMonthDay hidden" : "prevMonthDay", nextMonthDayClass = isMultiMonth ? "nextMonthDay hidden" : "nextMonthDay";
-      var dayNumber = prevMonthDays + 1 - firstOfMonth, dayIndex = 0;
-      for (; dayNumber <= prevMonthDays; dayNumber++, dayIndex++) {
-        days.appendChild(createDay("flatpickr-day " + prevMonthDayClass, new Date(year, month - 1, dayNumber), dayNumber, dayIndex));
-      }
-      for (dayNumber = 1; dayNumber <= daysInMonth; dayNumber++, dayIndex++) {
-        days.appendChild(createDay("flatpickr-day", new Date(year, month, dayNumber), dayNumber, dayIndex));
-      }
-      for (var dayNum = daysInMonth + 1; dayNum <= 42 - firstOfMonth && (self.config.showMonths === 1 || dayIndex % 7 !== 0); dayNum++, dayIndex++) {
-        days.appendChild(createDay("flatpickr-day " + nextMonthDayClass, new Date(year, month + 1, dayNum % daysInMonth), dayNum, dayIndex));
-      }
-      var dayContainer = createElement("div", "dayContainer");
-      dayContainer.appendChild(days);
-      return dayContainer;
-    }
-    function buildDays() {
-      if (self.daysContainer === void 0) {
-        return;
-      }
-      clearNode(self.daysContainer);
-      if (self.weekNumbers)
-        clearNode(self.weekNumbers);
-      var frag = document.createDocumentFragment();
-      for (var i = 0; i < self.config.showMonths; i++) {
-        var d = new Date(self.currentYear, self.currentMonth, 1);
-        d.setMonth(self.currentMonth + i);
-        frag.appendChild(buildMonthDays(d.getFullYear(), d.getMonth()));
-      }
-      self.daysContainer.appendChild(frag);
-      self.days = self.daysContainer.firstChild;
-      if (self.config.mode === "range" && self.selectedDates.length === 1) {
-        onMouseOver();
-      }
-    }
-    function buildMonthSwitch() {
-      if (self.config.showMonths > 1 || self.config.monthSelectorType !== "dropdown")
-        return;
-      var shouldBuildMonth = function(month2) {
-        if (self.config.minDate !== void 0 && self.currentYear === self.config.minDate.getFullYear() && month2 < self.config.minDate.getMonth()) {
-          return false;
-        }
-        return !(self.config.maxDate !== void 0 && self.currentYear === self.config.maxDate.getFullYear() && month2 > self.config.maxDate.getMonth());
-      };
-      self.monthsDropdownContainer.tabIndex = -1;
-      self.monthsDropdownContainer.innerHTML = "";
-      for (var i = 0; i < 12; i++) {
-        if (!shouldBuildMonth(i))
-          continue;
-        var month = createElement("option", "flatpickr-monthDropdown-month");
-        month.value = new Date(self.currentYear, i).getMonth().toString();
-        month.textContent = monthToStr(i, self.config.shorthandCurrentMonth, self.l10n);
-        month.tabIndex = -1;
-        if (self.currentMonth === i) {
-          month.selected = true;
-        }
-        self.monthsDropdownContainer.appendChild(month);
-      }
-    }
-    function buildMonth() {
-      var container = createElement("div", "flatpickr-month");
-      var monthNavFragment = window.document.createDocumentFragment();
-      var monthElement;
-      if (self.config.showMonths > 1 || self.config.monthSelectorType === "static") {
-        monthElement = createElement("span", "cur-month");
-      } else {
-        self.monthsDropdownContainer = createElement("select", "flatpickr-monthDropdown-months");
-        self.monthsDropdownContainer.setAttribute("aria-label", self.l10n.monthAriaLabel);
-        bind(self.monthsDropdownContainer, "change", function(e) {
-          var target = getEventTarget(e);
-          var selectedMonth = parseInt(target.value, 10);
-          self.changeMonth(selectedMonth - self.currentMonth);
-          triggerEvent("onMonthChange");
-        });
-        buildMonthSwitch();
-        monthElement = self.monthsDropdownContainer;
-      }
-      var yearInput = createNumberInput("cur-year", { tabindex: "-1" });
-      var yearElement = yearInput.getElementsByTagName("input")[0];
-      yearElement.setAttribute("aria-label", self.l10n.yearAriaLabel);
-      if (self.config.minDate) {
-        yearElement.setAttribute("min", self.config.minDate.getFullYear().toString());
-      }
-      if (self.config.maxDate) {
-        yearElement.setAttribute("max", self.config.maxDate.getFullYear().toString());
-        yearElement.disabled = !!self.config.minDate && self.config.minDate.getFullYear() === self.config.maxDate.getFullYear();
-      }
-      var currentMonth = createElement("div", "flatpickr-current-month");
-      currentMonth.appendChild(monthElement);
-      currentMonth.appendChild(yearInput);
-      monthNavFragment.appendChild(currentMonth);
-      container.appendChild(monthNavFragment);
-      return {
-        container,
-        yearElement,
-        monthElement
-      };
-    }
-    function buildMonths() {
-      clearNode(self.monthNav);
-      self.monthNav.appendChild(self.prevMonthNav);
-      if (self.config.showMonths) {
-        self.yearElements = [];
-        self.monthElements = [];
-      }
-      for (var m = self.config.showMonths; m--; ) {
-        var month = buildMonth();
-        self.yearElements.push(month.yearElement);
-        self.monthElements.push(month.monthElement);
-        self.monthNav.appendChild(month.container);
-      }
-      self.monthNav.appendChild(self.nextMonthNav);
-    }
-    function buildMonthNav() {
-      self.monthNav = createElement("div", "flatpickr-months");
-      self.yearElements = [];
-      self.monthElements = [];
-      self.prevMonthNav = createElement("span", "flatpickr-prev-month");
-      self.prevMonthNav.innerHTML = self.config.prevArrow;
-      self.nextMonthNav = createElement("span", "flatpickr-next-month");
-      self.nextMonthNav.innerHTML = self.config.nextArrow;
-      buildMonths();
-      Object.defineProperty(self, "_hidePrevMonthArrow", {
-        get: function() {
-          return self.__hidePrevMonthArrow;
-        },
-        set: function(bool) {
-          if (self.__hidePrevMonthArrow !== bool) {
-            toggleClass(self.prevMonthNav, "flatpickr-disabled", bool);
-            self.__hidePrevMonthArrow = bool;
-          }
-        }
-      });
-      Object.defineProperty(self, "_hideNextMonthArrow", {
-        get: function() {
-          return self.__hideNextMonthArrow;
-        },
-        set: function(bool) {
-          if (self.__hideNextMonthArrow !== bool) {
-            toggleClass(self.nextMonthNav, "flatpickr-disabled", bool);
-            self.__hideNextMonthArrow = bool;
-          }
-        }
-      });
-      self.currentYearElement = self.yearElements[0];
-      updateNavigationCurrentMonth();
-      return self.monthNav;
-    }
-    function buildTime() {
-      self.calendarContainer.classList.add("hasTime");
-      if (self.config.noCalendar)
-        self.calendarContainer.classList.add("noCalendar");
-      var defaults2 = getDefaultHours(self.config);
-      self.timeContainer = createElement("div", "flatpickr-time");
-      self.timeContainer.tabIndex = -1;
-      var separator = createElement("span", "flatpickr-time-separator", ":");
-      var hourInput = createNumberInput("flatpickr-hour", {
-        "aria-label": self.l10n.hourAriaLabel
-      });
-      self.hourElement = hourInput.getElementsByTagName("input")[0];
-      var minuteInput = createNumberInput("flatpickr-minute", {
-        "aria-label": self.l10n.minuteAriaLabel
-      });
-      self.minuteElement = minuteInput.getElementsByTagName("input")[0];
-      self.hourElement.tabIndex = self.minuteElement.tabIndex = -1;
-      self.hourElement.value = pad(self.latestSelectedDateObj ? self.latestSelectedDateObj.getHours() : self.config.time_24hr ? defaults2.hours : military2ampm(defaults2.hours));
-      self.minuteElement.value = pad(self.latestSelectedDateObj ? self.latestSelectedDateObj.getMinutes() : defaults2.minutes);
-      self.hourElement.setAttribute("step", self.config.hourIncrement.toString());
-      self.minuteElement.setAttribute("step", self.config.minuteIncrement.toString());
-      self.hourElement.setAttribute("min", self.config.time_24hr ? "0" : "1");
-      self.hourElement.setAttribute("max", self.config.time_24hr ? "23" : "12");
-      self.hourElement.setAttribute("maxlength", "2");
-      self.minuteElement.setAttribute("min", "0");
-      self.minuteElement.setAttribute("max", "59");
-      self.minuteElement.setAttribute("maxlength", "2");
-      self.timeContainer.appendChild(hourInput);
-      self.timeContainer.appendChild(separator);
-      self.timeContainer.appendChild(minuteInput);
-      if (self.config.time_24hr)
-        self.timeContainer.classList.add("time24hr");
-      if (self.config.enableSeconds) {
-        self.timeContainer.classList.add("hasSeconds");
-        var secondInput = createNumberInput("flatpickr-second");
-        self.secondElement = secondInput.getElementsByTagName("input")[0];
-        self.secondElement.value = pad(self.latestSelectedDateObj ? self.latestSelectedDateObj.getSeconds() : defaults2.seconds);
-        self.secondElement.setAttribute("step", self.minuteElement.getAttribute("step"));
-        self.secondElement.setAttribute("min", "0");
-        self.secondElement.setAttribute("max", "59");
-        self.secondElement.setAttribute("maxlength", "2");
-        self.timeContainer.appendChild(createElement("span", "flatpickr-time-separator", ":"));
-        self.timeContainer.appendChild(secondInput);
-      }
-      if (!self.config.time_24hr) {
-        self.amPM = createElement("span", "flatpickr-am-pm", self.l10n.amPM[int((self.latestSelectedDateObj ? self.hourElement.value : self.config.defaultHour) > 11)]);
-        self.amPM.title = self.l10n.toggleTitle;
-        self.amPM.tabIndex = -1;
-        self.timeContainer.appendChild(self.amPM);
-      }
-      return self.timeContainer;
-    }
-    function buildWeekdays() {
-      if (!self.weekdayContainer)
-        self.weekdayContainer = createElement("div", "flatpickr-weekdays");
-      else
-        clearNode(self.weekdayContainer);
-      for (var i = self.config.showMonths; i--; ) {
-        var container = createElement("div", "flatpickr-weekdaycontainer");
-        self.weekdayContainer.appendChild(container);
-      }
-      updateWeekdays();
-      return self.weekdayContainer;
-    }
-    function updateWeekdays() {
-      if (!self.weekdayContainer) {
-        return;
-      }
-      var firstDayOfWeek = self.l10n.firstDayOfWeek;
-      var weekdays = __spreadArrays(self.l10n.weekdays.shorthand);
-      if (firstDayOfWeek > 0 && firstDayOfWeek < weekdays.length) {
-        weekdays = __spreadArrays(weekdays.splice(firstDayOfWeek, weekdays.length), weekdays.splice(0, firstDayOfWeek));
-      }
-      for (var i = self.config.showMonths; i--; ) {
-        self.weekdayContainer.children[i].innerHTML = "\n      <span class='flatpickr-weekday'>\n        " + weekdays.join("</span><span class='flatpickr-weekday'>") + "\n      </span>\n      ";
-      }
-    }
-    function buildWeeks() {
-      self.calendarContainer.classList.add("hasWeeks");
-      var weekWrapper = createElement("div", "flatpickr-weekwrapper");
-      weekWrapper.appendChild(createElement("span", "flatpickr-weekday", self.l10n.weekAbbreviation));
-      var weekNumbers = createElement("div", "flatpickr-weeks");
-      weekWrapper.appendChild(weekNumbers);
-      return {
-        weekWrapper,
-        weekNumbers
-      };
-    }
-    function changeMonth(value, isOffset) {
-      if (isOffset === void 0) {
-        isOffset = true;
-      }
-      var delta = isOffset ? value : value - self.currentMonth;
-      if (delta < 0 && self._hidePrevMonthArrow === true || delta > 0 && self._hideNextMonthArrow === true)
-        return;
-      self.currentMonth += delta;
-      if (self.currentMonth < 0 || self.currentMonth > 11) {
-        self.currentYear += self.currentMonth > 11 ? 1 : -1;
-        self.currentMonth = (self.currentMonth + 12) % 12;
-        triggerEvent("onYearChange");
-        buildMonthSwitch();
-      }
-      buildDays();
-      triggerEvent("onMonthChange");
-      updateNavigationCurrentMonth();
-    }
-    function clear(triggerChangeEvent, toInitial) {
-      if (triggerChangeEvent === void 0) {
-        triggerChangeEvent = true;
-      }
-      if (toInitial === void 0) {
-        toInitial = true;
-      }
-      self.input.value = "";
-      if (self.altInput !== void 0)
-        self.altInput.value = "";
-      if (self.mobileInput !== void 0)
-        self.mobileInput.value = "";
-      self.selectedDates = [];
-      self.latestSelectedDateObj = void 0;
-      if (toInitial === true) {
-        self.currentYear = self._initialDate.getFullYear();
-        self.currentMonth = self._initialDate.getMonth();
-      }
-      if (self.config.enableTime === true) {
-        var _a = getDefaultHours(self.config), hours = _a.hours, minutes = _a.minutes, seconds = _a.seconds;
-        setHours(hours, minutes, seconds);
-      }
-      self.redraw();
-      if (triggerChangeEvent)
-        triggerEvent("onChange");
-    }
-    function close() {
-      self.isOpen = false;
-      if (!self.isMobile) {
-        if (self.calendarContainer !== void 0) {
-          self.calendarContainer.classList.remove("open");
-        }
-        if (self._input !== void 0) {
-          self._input.classList.remove("active");
-        }
-      }
-      triggerEvent("onClose");
-    }
-    function destroy() {
-      if (self.config !== void 0)
-        triggerEvent("onDestroy");
-      for (var i = self._handlers.length; i--; ) {
-        self._handlers[i].remove();
-      }
-      self._handlers = [];
-      if (self.mobileInput) {
-        if (self.mobileInput.parentNode)
-          self.mobileInput.parentNode.removeChild(self.mobileInput);
-        self.mobileInput = void 0;
-      } else if (self.calendarContainer && self.calendarContainer.parentNode) {
-        if (self.config.static && self.calendarContainer.parentNode) {
-          var wrapper = self.calendarContainer.parentNode;
-          wrapper.lastChild && wrapper.removeChild(wrapper.lastChild);
-          if (wrapper.parentNode) {
-            while (wrapper.firstChild)
-              wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
-            wrapper.parentNode.removeChild(wrapper);
-          }
-        } else
-          self.calendarContainer.parentNode.removeChild(self.calendarContainer);
-      }
-      if (self.altInput) {
-        self.input.type = "text";
-        if (self.altInput.parentNode)
-          self.altInput.parentNode.removeChild(self.altInput);
-        delete self.altInput;
-      }
-      if (self.input) {
-        self.input.type = self.input._type;
-        self.input.classList.remove("flatpickr-input");
-        self.input.removeAttribute("readonly");
-      }
-      [
-        "_showTimeInput",
-        "latestSelectedDateObj",
-        "_hideNextMonthArrow",
-        "_hidePrevMonthArrow",
-        "__hideNextMonthArrow",
-        "__hidePrevMonthArrow",
-        "isMobile",
-        "isOpen",
-        "selectedDateElem",
-        "minDateHasTime",
-        "maxDateHasTime",
-        "days",
-        "daysContainer",
-        "_input",
-        "_positionElement",
-        "innerContainer",
-        "rContainer",
-        "monthNav",
-        "todayDateElem",
-        "calendarContainer",
-        "weekdayContainer",
-        "prevMonthNav",
-        "nextMonthNav",
-        "monthsDropdownContainer",
-        "currentMonthElement",
-        "currentYearElement",
-        "navigationCurrentMonth",
-        "selectedDateElem",
-        "config"
-      ].forEach(function(k) {
-        try {
-          delete self[k];
-        } catch (_) {
-        }
-      });
-    }
-    function isCalendarElem(elem) {
-      return self.calendarContainer.contains(elem);
-    }
-    function documentClick(e) {
-      if (self.isOpen && !self.config.inline) {
-        var eventTarget_1 = getEventTarget(e);
-        var isCalendarElement = isCalendarElem(eventTarget_1);
-        var isInput = eventTarget_1 === self.input || eventTarget_1 === self.altInput || self.element.contains(eventTarget_1) || e.path && e.path.indexOf && (~e.path.indexOf(self.input) || ~e.path.indexOf(self.altInput));
-        var lostFocus = !isInput && !isCalendarElement && !isCalendarElem(e.relatedTarget);
-        var isIgnored = !self.config.ignoredFocusElements.some(function(elem) {
-          return elem.contains(eventTarget_1);
-        });
-        if (lostFocus && isIgnored) {
-          if (self.config.allowInput) {
-            self.setDate(self._input.value, false, self.config.altInput ? self.config.altFormat : self.config.dateFormat);
-          }
-          if (self.timeContainer !== void 0 && self.minuteElement !== void 0 && self.hourElement !== void 0 && self.input.value !== "" && self.input.value !== void 0) {
-            updateTime();
-          }
-          self.close();
-          if (self.config && self.config.mode === "range" && self.selectedDates.length === 1)
-            self.clear(false);
-        }
-      }
-    }
-    function changeYear(newYear) {
-      if (!newYear || self.config.minDate && newYear < self.config.minDate.getFullYear() || self.config.maxDate && newYear > self.config.maxDate.getFullYear())
-        return;
-      var newYearNum = newYear, isNewYear = self.currentYear !== newYearNum;
-      self.currentYear = newYearNum || self.currentYear;
-      if (self.config.maxDate && self.currentYear === self.config.maxDate.getFullYear()) {
-        self.currentMonth = Math.min(self.config.maxDate.getMonth(), self.currentMonth);
-      } else if (self.config.minDate && self.currentYear === self.config.minDate.getFullYear()) {
-        self.currentMonth = Math.max(self.config.minDate.getMonth(), self.currentMonth);
-      }
-      if (isNewYear) {
-        self.redraw();
-        triggerEvent("onYearChange");
-        buildMonthSwitch();
-      }
-    }
-    function isEnabled(date, timeless) {
-      var _a;
-      if (timeless === void 0) {
-        timeless = true;
-      }
-      var dateToCheck = self.parseDate(date, void 0, timeless);
-      if (self.config.minDate && dateToCheck && compareDates(dateToCheck, self.config.minDate, timeless !== void 0 ? timeless : !self.minDateHasTime) < 0 || self.config.maxDate && dateToCheck && compareDates(dateToCheck, self.config.maxDate, timeless !== void 0 ? timeless : !self.maxDateHasTime) > 0)
-        return false;
-      if (!self.config.enable && self.config.disable.length === 0)
-        return true;
-      if (dateToCheck === void 0)
-        return false;
-      var bool = !!self.config.enable, array = (_a = self.config.enable) !== null && _a !== void 0 ? _a : self.config.disable;
-      for (var i = 0, d = void 0; i < array.length; i++) {
-        d = array[i];
-        if (typeof d === "function" && d(dateToCheck))
-          return bool;
-        else if (d instanceof Date && dateToCheck !== void 0 && d.getTime() === dateToCheck.getTime())
-          return bool;
-        else if (typeof d === "string") {
-          var parsed = self.parseDate(d, void 0, true);
-          return parsed && parsed.getTime() === dateToCheck.getTime() ? bool : !bool;
-        } else if (typeof d === "object" && dateToCheck !== void 0 && d.from && d.to && dateToCheck.getTime() >= d.from.getTime() && dateToCheck.getTime() <= d.to.getTime())
-          return bool;
-      }
-      return !bool;
-    }
-    function isInView(elem) {
-      if (self.daysContainer !== void 0)
-        return elem.className.indexOf("hidden") === -1 && elem.className.indexOf("flatpickr-disabled") === -1 && self.daysContainer.contains(elem);
-      return false;
-    }
-    function onBlur(e) {
-      var isInput = e.target === self._input;
-      var valueChanged = self._input.value.trimEnd() !== getDateStr();
-      if (isInput && valueChanged && !(e.relatedTarget && isCalendarElem(e.relatedTarget))) {
-        self.setDate(self._input.value, true, e.target === self.altInput ? self.config.altFormat : self.config.dateFormat);
-      }
-    }
-    function onKeyDown(e) {
-      var eventTarget = getEventTarget(e);
-      var isInput = self.config.wrap ? element.contains(eventTarget) : eventTarget === self._input;
-      var allowInput = self.config.allowInput;
-      var allowKeydown = self.isOpen && (!allowInput || !isInput);
-      var allowInlineKeydown = self.config.inline && isInput && !allowInput;
-      if (e.keyCode === 13 && isInput) {
-        if (allowInput) {
-          self.setDate(self._input.value, true, eventTarget === self.altInput ? self.config.altFormat : self.config.dateFormat);
-          self.close();
-          return eventTarget.blur();
-        } else {
-          self.open();
-        }
-      } else if (isCalendarElem(eventTarget) || allowKeydown || allowInlineKeydown) {
-        var isTimeObj = !!self.timeContainer && self.timeContainer.contains(eventTarget);
-        switch (e.keyCode) {
-          case 13:
-            if (isTimeObj) {
-              e.preventDefault();
-              updateTime();
-              focusAndClose();
-            } else
-              selectDate(e);
-            break;
-          case 27:
-            e.preventDefault();
-            focusAndClose();
-            break;
-          case 8:
-          case 46:
-            if (isInput && !self.config.allowInput) {
-              e.preventDefault();
-              self.clear();
-            }
-            break;
-          case 37:
-          case 39:
-            if (!isTimeObj && !isInput) {
-              e.preventDefault();
-              var activeElement = getClosestActiveElement();
-              if (self.daysContainer !== void 0 && (allowInput === false || activeElement && isInView(activeElement))) {
-                var delta_1 = e.keyCode === 39 ? 1 : -1;
-                if (!e.ctrlKey)
-                  focusOnDay(void 0, delta_1);
-                else {
-                  e.stopPropagation();
-                  changeMonth(delta_1);
-                  focusOnDay(getFirstAvailableDay(1), 0);
-                }
-              }
-            } else if (self.hourElement)
-              self.hourElement.focus();
-            break;
-          case 38:
-          case 40:
-            e.preventDefault();
-            var delta = e.keyCode === 40 ? 1 : -1;
-            if (self.daysContainer && eventTarget.$i !== void 0 || eventTarget === self.input || eventTarget === self.altInput) {
-              if (e.ctrlKey) {
-                e.stopPropagation();
-                changeYear(self.currentYear - delta);
-                focusOnDay(getFirstAvailableDay(1), 0);
-              } else if (!isTimeObj)
-                focusOnDay(void 0, delta * 7);
-            } else if (eventTarget === self.currentYearElement) {
-              changeYear(self.currentYear - delta);
-            } else if (self.config.enableTime) {
-              if (!isTimeObj && self.hourElement)
-                self.hourElement.focus();
-              updateTime(e);
-              self._debouncedChange();
-            }
-            break;
-          case 9:
-            if (isTimeObj) {
-              var elems = [
-                self.hourElement,
-                self.minuteElement,
-                self.secondElement,
-                self.amPM
-              ].concat(self.pluginElements).filter(function(x) {
-                return x;
-              });
-              var i = elems.indexOf(eventTarget);
-              if (i !== -1) {
-                var target = elems[i + (e.shiftKey ? -1 : 1)];
-                e.preventDefault();
-                (target || self._input).focus();
-              }
-            } else if (!self.config.noCalendar && self.daysContainer && self.daysContainer.contains(eventTarget) && e.shiftKey) {
-              e.preventDefault();
-              self._input.focus();
-            }
-            break;
-          default:
-            break;
-        }
-      }
-      if (self.amPM !== void 0 && eventTarget === self.amPM) {
-        switch (e.key) {
-          case self.l10n.amPM[0].charAt(0):
-          case self.l10n.amPM[0].charAt(0).toLowerCase():
-            self.amPM.textContent = self.l10n.amPM[0];
-            setHoursFromInputs();
-            updateValue();
-            break;
-          case self.l10n.amPM[1].charAt(0):
-          case self.l10n.amPM[1].charAt(0).toLowerCase():
-            self.amPM.textContent = self.l10n.amPM[1];
-            setHoursFromInputs();
-            updateValue();
-            break;
-        }
-      }
-      if (isInput || isCalendarElem(eventTarget)) {
-        triggerEvent("onKeyDown", e);
-      }
-    }
-    function onMouseOver(elem, cellClass) {
-      if (cellClass === void 0) {
-        cellClass = "flatpickr-day";
-      }
-      if (self.selectedDates.length !== 1 || elem && (!elem.classList.contains(cellClass) || elem.classList.contains("flatpickr-disabled")))
-        return;
-      var hoverDate = elem ? elem.dateObj.getTime() : self.days.firstElementChild.dateObj.getTime(), initialDate = self.parseDate(self.selectedDates[0], void 0, true).getTime(), rangeStartDate = Math.min(hoverDate, self.selectedDates[0].getTime()), rangeEndDate = Math.max(hoverDate, self.selectedDates[0].getTime());
-      var containsDisabled = false;
-      var minRange = 0, maxRange = 0;
-      for (var t = rangeStartDate; t < rangeEndDate; t += duration.DAY) {
-        if (!isEnabled(new Date(t), true)) {
-          containsDisabled = containsDisabled || t > rangeStartDate && t < rangeEndDate;
-          if (t < initialDate && (!minRange || t > minRange))
-            minRange = t;
-          else if (t > initialDate && (!maxRange || t < maxRange))
-            maxRange = t;
-        }
-      }
-      var hoverableCells = Array.from(self.rContainer.querySelectorAll("*:nth-child(-n+" + self.config.showMonths + ") > ." + cellClass));
-      hoverableCells.forEach(function(dayElem) {
-        var date = dayElem.dateObj;
-        var timestamp = date.getTime();
-        var outOfRange = minRange > 0 && timestamp < minRange || maxRange > 0 && timestamp > maxRange;
-        if (outOfRange) {
-          dayElem.classList.add("notAllowed");
-          ["inRange", "startRange", "endRange"].forEach(function(c) {
-            dayElem.classList.remove(c);
-          });
-          return;
-        } else if (containsDisabled && !outOfRange)
-          return;
-        ["startRange", "inRange", "endRange", "notAllowed"].forEach(function(c) {
-          dayElem.classList.remove(c);
-        });
-        if (elem !== void 0) {
-          elem.classList.add(hoverDate <= self.selectedDates[0].getTime() ? "startRange" : "endRange");
-          if (initialDate < hoverDate && timestamp === initialDate)
-            dayElem.classList.add("startRange");
-          else if (initialDate > hoverDate && timestamp === initialDate)
-            dayElem.classList.add("endRange");
-          if (timestamp >= minRange && (maxRange === 0 || timestamp <= maxRange) && isBetween(timestamp, initialDate, hoverDate))
-            dayElem.classList.add("inRange");
-        }
-      });
-    }
-    function onResize() {
-      if (self.isOpen && !self.config.static && !self.config.inline)
-        positionCalendar();
-    }
-    function open(e, positionElement) {
-      if (positionElement === void 0) {
-        positionElement = self._positionElement;
-      }
-      if (self.isMobile === true) {
-        if (e) {
-          e.preventDefault();
-          var eventTarget = getEventTarget(e);
-          if (eventTarget) {
-            eventTarget.blur();
-          }
-        }
-        if (self.mobileInput !== void 0) {
-          self.mobileInput.focus();
-          self.mobileInput.click();
-        }
-        triggerEvent("onOpen");
-        return;
-      } else if (self._input.disabled || self.config.inline) {
-        return;
-      }
-      var wasOpen = self.isOpen;
-      self.isOpen = true;
-      if (!wasOpen) {
-        self.calendarContainer.classList.add("open");
-        self._input.classList.add("active");
-        triggerEvent("onOpen");
-        positionCalendar(positionElement);
-      }
-      if (self.config.enableTime === true && self.config.noCalendar === true) {
-        if (self.config.allowInput === false && (e === void 0 || !self.timeContainer.contains(e.relatedTarget))) {
-          setTimeout(function() {
-            return self.hourElement.select();
-          }, 50);
-        }
-      }
-    }
-    function minMaxDateSetter(type) {
-      return function(date) {
-        var dateObj = self.config["_" + type + "Date"] = self.parseDate(date, self.config.dateFormat);
-        var inverseDateObj = self.config["_" + (type === "min" ? "max" : "min") + "Date"];
-        if (dateObj !== void 0) {
-          self[type === "min" ? "minDateHasTime" : "maxDateHasTime"] = dateObj.getHours() > 0 || dateObj.getMinutes() > 0 || dateObj.getSeconds() > 0;
-        }
-        if (self.selectedDates) {
-          self.selectedDates = self.selectedDates.filter(function(d) {
-            return isEnabled(d);
-          });
-          if (!self.selectedDates.length && type === "min")
-            setHoursFromDate(dateObj);
-          updateValue();
-        }
-        if (self.daysContainer) {
-          redraw();
-          if (dateObj !== void 0)
-            self.currentYearElement[type] = dateObj.getFullYear().toString();
-          else
-            self.currentYearElement.removeAttribute(type);
-          self.currentYearElement.disabled = !!inverseDateObj && dateObj !== void 0 && inverseDateObj.getFullYear() === dateObj.getFullYear();
-        }
-      };
-    }
-    function parseConfig() {
-      var boolOpts = [
-        "wrap",
-        "weekNumbers",
-        "allowInput",
-        "allowInvalidPreload",
-        "clickOpens",
-        "time_24hr",
-        "enableTime",
-        "noCalendar",
-        "altInput",
-        "shorthandCurrentMonth",
-        "inline",
-        "static",
-        "enableSeconds",
-        "disableMobile"
-      ];
-      var userConfig = __assign(__assign({}, JSON.parse(JSON.stringify(element.dataset || {}))), instanceConfig);
-      var formats2 = {};
-      self.config.parseDate = userConfig.parseDate;
-      self.config.formatDate = userConfig.formatDate;
-      Object.defineProperty(self.config, "enable", {
-        get: function() {
-          return self.config._enable;
-        },
-        set: function(dates) {
-          self.config._enable = parseDateRules(dates);
-        }
-      });
-      Object.defineProperty(self.config, "disable", {
-        get: function() {
-          return self.config._disable;
-        },
-        set: function(dates) {
-          self.config._disable = parseDateRules(dates);
-        }
-      });
-      var timeMode = userConfig.mode === "time";
-      if (!userConfig.dateFormat && (userConfig.enableTime || timeMode)) {
-        var defaultDateFormat = flatpickr.defaultConfig.dateFormat || defaults.dateFormat;
-        formats2.dateFormat = userConfig.noCalendar || timeMode ? "H:i" + (userConfig.enableSeconds ? ":S" : "") : defaultDateFormat + " H:i" + (userConfig.enableSeconds ? ":S" : "");
-      }
-      if (userConfig.altInput && (userConfig.enableTime || timeMode) && !userConfig.altFormat) {
-        var defaultAltFormat = flatpickr.defaultConfig.altFormat || defaults.altFormat;
-        formats2.altFormat = userConfig.noCalendar || timeMode ? "h:i" + (userConfig.enableSeconds ? ":S K" : " K") : defaultAltFormat + (" h:i" + (userConfig.enableSeconds ? ":S" : "") + " K");
-      }
-      Object.defineProperty(self.config, "minDate", {
-        get: function() {
-          return self.config._minDate;
-        },
-        set: minMaxDateSetter("min")
-      });
-      Object.defineProperty(self.config, "maxDate", {
-        get: function() {
-          return self.config._maxDate;
-        },
-        set: minMaxDateSetter("max")
-      });
-      var minMaxTimeSetter = function(type) {
-        return function(val) {
-          self.config[type === "min" ? "_minTime" : "_maxTime"] = self.parseDate(val, "H:i:S");
-        };
-      };
-      Object.defineProperty(self.config, "minTime", {
-        get: function() {
-          return self.config._minTime;
-        },
-        set: minMaxTimeSetter("min")
-      });
-      Object.defineProperty(self.config, "maxTime", {
-        get: function() {
-          return self.config._maxTime;
-        },
-        set: minMaxTimeSetter("max")
-      });
-      if (userConfig.mode === "time") {
-        self.config.noCalendar = true;
-        self.config.enableTime = true;
-      }
-      Object.assign(self.config, formats2, userConfig);
-      for (var i = 0; i < boolOpts.length; i++)
-        self.config[boolOpts[i]] = self.config[boolOpts[i]] === true || self.config[boolOpts[i]] === "true";
-      HOOKS.filter(function(hook) {
-        return self.config[hook] !== void 0;
-      }).forEach(function(hook) {
-        self.config[hook] = arrayify(self.config[hook] || []).map(bindToInstance);
-      });
-      self.isMobile = !self.config.disableMobile && !self.config.inline && self.config.mode === "single" && !self.config.disable.length && !self.config.enable && !self.config.weekNumbers && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      for (var i = 0; i < self.config.plugins.length; i++) {
-        var pluginConf = self.config.plugins[i](self) || {};
-        for (var key in pluginConf) {
-          if (HOOKS.indexOf(key) > -1) {
-            self.config[key] = arrayify(pluginConf[key]).map(bindToInstance).concat(self.config[key]);
-          } else if (typeof userConfig[key] === "undefined")
-            self.config[key] = pluginConf[key];
-        }
-      }
-      if (!userConfig.altInputClass) {
-        self.config.altInputClass = getInputElem().className + " " + self.config.altInputClass;
-      }
-      triggerEvent("onParseConfig");
-    }
-    function getInputElem() {
-      return self.config.wrap ? element.querySelector("[data-input]") : element;
-    }
-    function setupLocale() {
-      if (typeof self.config.locale !== "object" && typeof flatpickr.l10ns[self.config.locale] === "undefined")
-        self.config.errorHandler(new Error("flatpickr: invalid locale " + self.config.locale));
-      self.l10n = __assign(__assign({}, flatpickr.l10ns.default), typeof self.config.locale === "object" ? self.config.locale : self.config.locale !== "default" ? flatpickr.l10ns[self.config.locale] : void 0);
-      tokenRegex.D = "(" + self.l10n.weekdays.shorthand.join("|") + ")";
-      tokenRegex.l = "(" + self.l10n.weekdays.longhand.join("|") + ")";
-      tokenRegex.M = "(" + self.l10n.months.shorthand.join("|") + ")";
-      tokenRegex.F = "(" + self.l10n.months.longhand.join("|") + ")";
-      tokenRegex.K = "(" + self.l10n.amPM[0] + "|" + self.l10n.amPM[1] + "|" + self.l10n.amPM[0].toLowerCase() + "|" + self.l10n.amPM[1].toLowerCase() + ")";
-      var userConfig = __assign(__assign({}, instanceConfig), JSON.parse(JSON.stringify(element.dataset || {})));
-      if (userConfig.time_24hr === void 0 && flatpickr.defaultConfig.time_24hr === void 0) {
-        self.config.time_24hr = self.l10n.time_24hr;
-      }
-      self.formatDate = createDateFormatter(self);
-      self.parseDate = createDateParser({ config: self.config, l10n: self.l10n });
-    }
-    function positionCalendar(customPositionElement) {
-      if (typeof self.config.position === "function") {
-        return void self.config.position(self, customPositionElement);
-      }
-      if (self.calendarContainer === void 0)
-        return;
-      triggerEvent("onPreCalendarPosition");
-      var positionElement = customPositionElement || self._positionElement;
-      var calendarHeight = Array.prototype.reduce.call(self.calendarContainer.children, function(acc, child) {
-        return acc + child.offsetHeight;
-      }, 0), calendarWidth = self.calendarContainer.offsetWidth, configPos = self.config.position.split(" "), configPosVertical = configPos[0], configPosHorizontal = configPos.length > 1 ? configPos[1] : null, inputBounds = positionElement.getBoundingClientRect(), distanceFromBottom = window.innerHeight - inputBounds.bottom, showOnTop = configPosVertical === "above" || configPosVertical !== "below" && distanceFromBottom < calendarHeight && inputBounds.top > calendarHeight;
-      var top2 = window.pageYOffset + inputBounds.top + (!showOnTop ? positionElement.offsetHeight + 2 : -calendarHeight - 2);
-      toggleClass(self.calendarContainer, "arrowTop", !showOnTop);
-      toggleClass(self.calendarContainer, "arrowBottom", showOnTop);
-      if (self.config.inline)
-        return;
-      var left2 = window.pageXOffset + inputBounds.left;
-      var isCenter = false;
-      var isRight = false;
-      if (configPosHorizontal === "center") {
-        left2 -= (calendarWidth - inputBounds.width) / 2;
-        isCenter = true;
-      } else if (configPosHorizontal === "right") {
-        left2 -= calendarWidth - inputBounds.width;
-        isRight = true;
-      }
-      toggleClass(self.calendarContainer, "arrowLeft", !isCenter && !isRight);
-      toggleClass(self.calendarContainer, "arrowCenter", isCenter);
-      toggleClass(self.calendarContainer, "arrowRight", isRight);
-      var right2 = window.document.body.offsetWidth - (window.pageXOffset + inputBounds.right);
-      var rightMost = left2 + calendarWidth > window.document.body.offsetWidth;
-      var centerMost = right2 + calendarWidth > window.document.body.offsetWidth;
-      toggleClass(self.calendarContainer, "rightMost", rightMost);
-      if (self.config.static)
-        return;
-      self.calendarContainer.style.top = top2 + "px";
-      if (!rightMost) {
-        self.calendarContainer.style.left = left2 + "px";
-        self.calendarContainer.style.right = "auto";
-      } else if (!centerMost) {
-        self.calendarContainer.style.left = "auto";
-        self.calendarContainer.style.right = right2 + "px";
-      } else {
-        var doc = getDocumentStyleSheet();
-        if (doc === void 0)
-          return;
-        var bodyWidth = window.document.body.offsetWidth;
-        var centerLeft = Math.max(0, bodyWidth / 2 - calendarWidth / 2);
-        var centerBefore = ".flatpickr-calendar.centerMost:before";
-        var centerAfter = ".flatpickr-calendar.centerMost:after";
-        var centerIndex = doc.cssRules.length;
-        var centerStyle = "{left:" + inputBounds.left + "px;right:auto;}";
-        toggleClass(self.calendarContainer, "rightMost", false);
-        toggleClass(self.calendarContainer, "centerMost", true);
-        doc.insertRule(centerBefore + "," + centerAfter + centerStyle, centerIndex);
-        self.calendarContainer.style.left = centerLeft + "px";
-        self.calendarContainer.style.right = "auto";
-      }
-    }
-    function getDocumentStyleSheet() {
-      var editableSheet = null;
-      for (var i = 0; i < document.styleSheets.length; i++) {
-        var sheet = document.styleSheets[i];
-        if (!sheet.cssRules)
-          continue;
-        try {
-          sheet.cssRules;
-        } catch (err) {
-          continue;
-        }
-        editableSheet = sheet;
-        break;
-      }
-      return editableSheet != null ? editableSheet : createStyleSheet();
-    }
-    function createStyleSheet() {
-      var style = document.createElement("style");
-      document.head.appendChild(style);
-      return style.sheet;
-    }
-    function redraw() {
-      if (self.config.noCalendar || self.isMobile)
-        return;
-      buildMonthSwitch();
-      updateNavigationCurrentMonth();
-      buildDays();
-    }
-    function focusAndClose() {
-      self._input.focus();
-      if (window.navigator.userAgent.indexOf("MSIE") !== -1 || navigator.msMaxTouchPoints !== void 0) {
-        setTimeout(self.close, 0);
-      } else {
-        self.close();
-      }
-    }
-    function selectDate(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var isSelectable = function(day) {
-        return day.classList && day.classList.contains("flatpickr-day") && !day.classList.contains("flatpickr-disabled") && !day.classList.contains("notAllowed");
-      };
-      var t = findParent(getEventTarget(e), isSelectable);
-      if (t === void 0)
-        return;
-      var target = t;
-      var selectedDate = self.latestSelectedDateObj = new Date(target.dateObj.getTime());
-      var shouldChangeMonth = (selectedDate.getMonth() < self.currentMonth || selectedDate.getMonth() > self.currentMonth + self.config.showMonths - 1) && self.config.mode !== "range";
-      self.selectedDateElem = target;
-      if (self.config.mode === "single")
-        self.selectedDates = [selectedDate];
-      else if (self.config.mode === "multiple") {
-        var selectedIndex = isDateSelected(selectedDate);
-        if (selectedIndex)
-          self.selectedDates.splice(parseInt(selectedIndex), 1);
-        else
-          self.selectedDates.push(selectedDate);
-      } else if (self.config.mode === "range") {
-        if (self.selectedDates.length === 2) {
-          self.clear(false, false);
-        }
-        self.latestSelectedDateObj = selectedDate;
-        self.selectedDates.push(selectedDate);
-        if (compareDates(selectedDate, self.selectedDates[0], true) !== 0)
-          self.selectedDates.sort(function(a, b) {
-            return a.getTime() - b.getTime();
-          });
-      }
-      setHoursFromInputs();
-      if (shouldChangeMonth) {
-        var isNewYear = self.currentYear !== selectedDate.getFullYear();
-        self.currentYear = selectedDate.getFullYear();
-        self.currentMonth = selectedDate.getMonth();
-        if (isNewYear) {
-          triggerEvent("onYearChange");
-          buildMonthSwitch();
-        }
-        triggerEvent("onMonthChange");
-      }
-      updateNavigationCurrentMonth();
-      buildDays();
-      updateValue();
-      if (!shouldChangeMonth && self.config.mode !== "range" && self.config.showMonths === 1)
-        focusOnDayElem(target);
-      else if (self.selectedDateElem !== void 0 && self.hourElement === void 0) {
-        self.selectedDateElem && self.selectedDateElem.focus();
-      }
-      if (self.hourElement !== void 0)
-        self.hourElement !== void 0 && self.hourElement.focus();
-      if (self.config.closeOnSelect) {
-        var single = self.config.mode === "single" && !self.config.enableTime;
-        var range = self.config.mode === "range" && self.selectedDates.length === 2 && !self.config.enableTime;
-        if (single || range) {
-          focusAndClose();
-        }
-      }
-      triggerChange();
-    }
-    var CALLBACKS = {
-      locale: [setupLocale, updateWeekdays],
-      showMonths: [buildMonths, setCalendarWidth, buildWeekdays],
-      minDate: [jumpToDate],
-      maxDate: [jumpToDate],
-      positionElement: [updatePositionElement],
-      clickOpens: [
-        function() {
-          if (self.config.clickOpens === true) {
-            bind(self._input, "focus", self.open);
-            bind(self._input, "click", self.open);
-          } else {
-            self._input.removeEventListener("focus", self.open);
-            self._input.removeEventListener("click", self.open);
-          }
-        }
-      ]
-    };
-    function set(option, value) {
-      if (option !== null && typeof option === "object") {
-        Object.assign(self.config, option);
-        for (var key in option) {
-          if (CALLBACKS[key] !== void 0)
-            CALLBACKS[key].forEach(function(x) {
-              return x();
-            });
-        }
-      } else {
-        self.config[option] = value;
-        if (CALLBACKS[option] !== void 0)
-          CALLBACKS[option].forEach(function(x) {
-            return x();
-          });
-        else if (HOOKS.indexOf(option) > -1)
-          self.config[option] = arrayify(value);
-      }
-      self.redraw();
-      updateValue(true);
-    }
-    function setSelectedDate(inputDate, format) {
-      var dates = [];
-      if (inputDate instanceof Array)
-        dates = inputDate.map(function(d) {
-          return self.parseDate(d, format);
-        });
-      else if (inputDate instanceof Date || typeof inputDate === "number")
-        dates = [self.parseDate(inputDate, format)];
-      else if (typeof inputDate === "string") {
-        switch (self.config.mode) {
-          case "single":
-          case "time":
-            dates = [self.parseDate(inputDate, format)];
-            break;
-          case "multiple":
-            dates = inputDate.split(self.config.conjunction).map(function(date) {
-              return self.parseDate(date, format);
-            });
-            break;
-          case "range":
-            dates = inputDate.split(self.l10n.rangeSeparator).map(function(date) {
-              return self.parseDate(date, format);
-            });
-            break;
-          default:
-            break;
-        }
-      } else
-        self.config.errorHandler(new Error("Invalid date supplied: " + JSON.stringify(inputDate)));
-      self.selectedDates = self.config.allowInvalidPreload ? dates : dates.filter(function(d) {
-        return d instanceof Date && isEnabled(d, false);
-      });
-      if (self.config.mode === "range")
-        self.selectedDates.sort(function(a, b) {
-          return a.getTime() - b.getTime();
-        });
-    }
-    function setDate(date, triggerChange2, format) {
-      if (triggerChange2 === void 0) {
-        triggerChange2 = false;
-      }
-      if (format === void 0) {
-        format = self.config.dateFormat;
-      }
-      if (date !== 0 && !date || date instanceof Array && date.length === 0)
-        return self.clear(triggerChange2);
-      setSelectedDate(date, format);
-      self.latestSelectedDateObj = self.selectedDates[self.selectedDates.length - 1];
-      self.redraw();
-      jumpToDate(void 0, triggerChange2);
-      setHoursFromDate();
-      if (self.selectedDates.length === 0) {
-        self.clear(false);
-      }
-      updateValue(triggerChange2);
-      if (triggerChange2)
-        triggerEvent("onChange");
-    }
-    function parseDateRules(arr) {
-      return arr.slice().map(function(rule) {
-        if (typeof rule === "string" || typeof rule === "number" || rule instanceof Date) {
-          return self.parseDate(rule, void 0, true);
-        } else if (rule && typeof rule === "object" && rule.from && rule.to)
-          return {
-            from: self.parseDate(rule.from, void 0),
-            to: self.parseDate(rule.to, void 0)
-          };
-        return rule;
-      }).filter(function(x) {
-        return x;
-      });
-    }
-    function setupDates() {
-      self.selectedDates = [];
-      self.now = self.parseDate(self.config.now) || /* @__PURE__ */ new Date();
-      var preloadedDate = self.config.defaultDate || ((self.input.nodeName === "INPUT" || self.input.nodeName === "TEXTAREA") && self.input.placeholder && self.input.value === self.input.placeholder ? null : self.input.value);
-      if (preloadedDate)
-        setSelectedDate(preloadedDate, self.config.dateFormat);
-      self._initialDate = self.selectedDates.length > 0 ? self.selectedDates[0] : self.config.minDate && self.config.minDate.getTime() > self.now.getTime() ? self.config.minDate : self.config.maxDate && self.config.maxDate.getTime() < self.now.getTime() ? self.config.maxDate : self.now;
-      self.currentYear = self._initialDate.getFullYear();
-      self.currentMonth = self._initialDate.getMonth();
-      if (self.selectedDates.length > 0)
-        self.latestSelectedDateObj = self.selectedDates[0];
-      if (self.config.minTime !== void 0)
-        self.config.minTime = self.parseDate(self.config.minTime, "H:i");
-      if (self.config.maxTime !== void 0)
-        self.config.maxTime = self.parseDate(self.config.maxTime, "H:i");
-      self.minDateHasTime = !!self.config.minDate && (self.config.minDate.getHours() > 0 || self.config.minDate.getMinutes() > 0 || self.config.minDate.getSeconds() > 0);
-      self.maxDateHasTime = !!self.config.maxDate && (self.config.maxDate.getHours() > 0 || self.config.maxDate.getMinutes() > 0 || self.config.maxDate.getSeconds() > 0);
-    }
-    function setupInputs() {
-      self.input = getInputElem();
-      if (!self.input) {
-        self.config.errorHandler(new Error("Invalid input element specified"));
-        return;
-      }
-      self.input._type = self.input.type;
-      self.input.type = "text";
-      self.input.classList.add("flatpickr-input");
-      self._input = self.input;
-      if (self.config.altInput) {
-        self.altInput = createElement(self.input.nodeName, self.config.altInputClass);
-        self._input = self.altInput;
-        self.altInput.placeholder = self.input.placeholder;
-        self.altInput.disabled = self.input.disabled;
-        self.altInput.required = self.input.required;
-        self.altInput.tabIndex = self.input.tabIndex;
-        self.altInput.type = "text";
-        self.input.setAttribute("type", "hidden");
-        if (!self.config.static && self.input.parentNode)
-          self.input.parentNode.insertBefore(self.altInput, self.input.nextSibling);
-      }
-      if (!self.config.allowInput)
-        self._input.setAttribute("readonly", "readonly");
-      updatePositionElement();
-    }
-    function updatePositionElement() {
-      self._positionElement = self.config.positionElement || self._input;
-    }
-    function setupMobile() {
-      var inputType = self.config.enableTime ? self.config.noCalendar ? "time" : "datetime-local" : "date";
-      self.mobileInput = createElement("input", self.input.className + " flatpickr-mobile");
-      self.mobileInput.tabIndex = 1;
-      self.mobileInput.type = inputType;
-      self.mobileInput.disabled = self.input.disabled;
-      self.mobileInput.required = self.input.required;
-      self.mobileInput.placeholder = self.input.placeholder;
-      self.mobileFormatStr = inputType === "datetime-local" ? "Y-m-d\\TH:i:S" : inputType === "date" ? "Y-m-d" : "H:i:S";
-      if (self.selectedDates.length > 0) {
-        self.mobileInput.defaultValue = self.mobileInput.value = self.formatDate(self.selectedDates[0], self.mobileFormatStr);
-      }
-      if (self.config.minDate)
-        self.mobileInput.min = self.formatDate(self.config.minDate, "Y-m-d");
-      if (self.config.maxDate)
-        self.mobileInput.max = self.formatDate(self.config.maxDate, "Y-m-d");
-      if (self.input.getAttribute("step"))
-        self.mobileInput.step = String(self.input.getAttribute("step"));
-      self.input.type = "hidden";
-      if (self.altInput !== void 0)
-        self.altInput.type = "hidden";
-      try {
-        if (self.input.parentNode)
-          self.input.parentNode.insertBefore(self.mobileInput, self.input.nextSibling);
-      } catch (_a) {
-      }
-      bind(self.mobileInput, "change", function(e) {
-        self.setDate(getEventTarget(e).value, false, self.mobileFormatStr);
-        triggerEvent("onChange");
-        triggerEvent("onClose");
-      });
-    }
-    function toggle(e) {
-      if (self.isOpen === true)
-        return self.close();
-      self.open(e);
-    }
-    function triggerEvent(event, data) {
-      if (self.config === void 0)
-        return;
-      var hooks = self.config[event];
-      if (hooks !== void 0 && hooks.length > 0) {
-        for (var i = 0; hooks[i] && i < hooks.length; i++)
-          hooks[i](self.selectedDates, self.input.value, self, data);
-      }
-      if (event === "onChange") {
-        self.input.dispatchEvent(createEvent("change"));
-        self.input.dispatchEvent(createEvent("input"));
-      }
-    }
-    function createEvent(name) {
-      var e = document.createEvent("Event");
-      e.initEvent(name, true, true);
-      return e;
-    }
-    function isDateSelected(date) {
-      for (var i = 0; i < self.selectedDates.length; i++) {
-        var selectedDate = self.selectedDates[i];
-        if (selectedDate instanceof Date && compareDates(selectedDate, date) === 0)
-          return "" + i;
-      }
-      return false;
-    }
-    function isDateInRange(date) {
-      if (self.config.mode !== "range" || self.selectedDates.length < 2)
-        return false;
-      return compareDates(date, self.selectedDates[0]) >= 0 && compareDates(date, self.selectedDates[1]) <= 0;
-    }
-    function updateNavigationCurrentMonth() {
-      if (self.config.noCalendar || self.isMobile || !self.monthNav)
-        return;
-      self.yearElements.forEach(function(yearElement, i) {
-        var d = new Date(self.currentYear, self.currentMonth, 1);
-        d.setMonth(self.currentMonth + i);
-        if (self.config.showMonths > 1 || self.config.monthSelectorType === "static") {
-          self.monthElements[i].textContent = monthToStr(d.getMonth(), self.config.shorthandCurrentMonth, self.l10n) + " ";
-        } else {
-          self.monthsDropdownContainer.value = d.getMonth().toString();
-        }
-        yearElement.value = d.getFullYear().toString();
-      });
-      self._hidePrevMonthArrow = self.config.minDate !== void 0 && (self.currentYear === self.config.minDate.getFullYear() ? self.currentMonth <= self.config.minDate.getMonth() : self.currentYear < self.config.minDate.getFullYear());
-      self._hideNextMonthArrow = self.config.maxDate !== void 0 && (self.currentYear === self.config.maxDate.getFullYear() ? self.currentMonth + 1 > self.config.maxDate.getMonth() : self.currentYear > self.config.maxDate.getFullYear());
-    }
-    function getDateStr(specificFormat) {
-      var format = specificFormat || (self.config.altInput ? self.config.altFormat : self.config.dateFormat);
-      return self.selectedDates.map(function(dObj) {
-        return self.formatDate(dObj, format);
-      }).filter(function(d, i, arr) {
-        return self.config.mode !== "range" || self.config.enableTime || arr.indexOf(d) === i;
-      }).join(self.config.mode !== "range" ? self.config.conjunction : self.l10n.rangeSeparator);
-    }
-    function updateValue(triggerChange2) {
-      if (triggerChange2 === void 0) {
-        triggerChange2 = true;
-      }
-      if (self.mobileInput !== void 0 && self.mobileFormatStr) {
-        self.mobileInput.value = self.latestSelectedDateObj !== void 0 ? self.formatDate(self.latestSelectedDateObj, self.mobileFormatStr) : "";
-      }
-      self.input.value = getDateStr(self.config.dateFormat);
-      if (self.altInput !== void 0) {
-        self.altInput.value = getDateStr(self.config.altFormat);
-      }
-      if (triggerChange2 !== false)
-        triggerEvent("onValueUpdate");
-    }
-    function onMonthNavClick(e) {
-      var eventTarget = getEventTarget(e);
-      var isPrevMonth = self.prevMonthNav.contains(eventTarget);
-      var isNextMonth = self.nextMonthNav.contains(eventTarget);
-      if (isPrevMonth || isNextMonth) {
-        changeMonth(isPrevMonth ? -1 : 1);
-      } else if (self.yearElements.indexOf(eventTarget) >= 0) {
-        eventTarget.select();
-      } else if (eventTarget.classList.contains("arrowUp")) {
-        self.changeYear(self.currentYear + 1);
-      } else if (eventTarget.classList.contains("arrowDown")) {
-        self.changeYear(self.currentYear - 1);
-      }
-    }
-    function timeWrapper(e) {
-      e.preventDefault();
-      var isKeyDown = e.type === "keydown", eventTarget = getEventTarget(e), input = eventTarget;
-      if (self.amPM !== void 0 && eventTarget === self.amPM) {
-        self.amPM.textContent = self.l10n.amPM[int(self.amPM.textContent === self.l10n.amPM[0])];
-      }
-      var min2 = parseFloat(input.getAttribute("min")), max2 = parseFloat(input.getAttribute("max")), step = parseFloat(input.getAttribute("step")), curValue = parseInt(input.value, 10), delta = e.delta || (isKeyDown ? e.which === 38 ? 1 : -1 : 0);
-      var newValue = curValue + step * delta;
-      if (typeof input.value !== "undefined" && input.value.length === 2) {
-        var isHourElem = input === self.hourElement, isMinuteElem = input === self.minuteElement;
-        if (newValue < min2) {
-          newValue = max2 + newValue + int(!isHourElem) + (int(isHourElem) && int(!self.amPM));
-          if (isMinuteElem)
-            incrementNumInput(void 0, -1, self.hourElement);
-        } else if (newValue > max2) {
-          newValue = input === self.hourElement ? newValue - max2 - int(!self.amPM) : min2;
-          if (isMinuteElem)
-            incrementNumInput(void 0, 1, self.hourElement);
-        }
-        if (self.amPM && isHourElem && (step === 1 ? newValue + curValue === 23 : Math.abs(newValue - curValue) > step)) {
-          self.amPM.textContent = self.l10n.amPM[int(self.amPM.textContent === self.l10n.amPM[0])];
-        }
-        input.value = pad(newValue);
-      }
-    }
-    init();
-    return self;
-  }
-  function _flatpickr(nodeList, config) {
-    var nodes = Array.prototype.slice.call(nodeList).filter(function(x) {
-      return x instanceof HTMLElement;
-    });
-    var instances = [];
-    for (var i = 0; i < nodes.length; i++) {
-      var node = nodes[i];
-      try {
-        if (node.getAttribute("data-fp-omit") !== null)
-          continue;
-        if (node._flatpickr !== void 0) {
-          node._flatpickr.destroy();
-          node._flatpickr = void 0;
-        }
-        node._flatpickr = FlatpickrInstance(node, config || {});
-        instances.push(node._flatpickr);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    return instances.length === 1 ? instances[0] : instances;
-  }
-  if (typeof HTMLElement !== "undefined" && typeof HTMLCollection !== "undefined" && typeof NodeList !== "undefined") {
-    HTMLCollection.prototype.flatpickr = NodeList.prototype.flatpickr = function(config) {
-      return _flatpickr(this, config);
-    };
-    HTMLElement.prototype.flatpickr = function(config) {
-      return _flatpickr([this], config);
-    };
-  }
-  var flatpickr = function(selector, config) {
-    if (typeof selector === "string") {
-      return _flatpickr(window.document.querySelectorAll(selector), config);
-    } else if (selector instanceof Node) {
-      return _flatpickr([selector], config);
-    } else {
-      return _flatpickr(selector, config);
-    }
-  };
-  flatpickr.defaultConfig = {};
-  flatpickr.l10ns = {
-    en: __assign({}, default_default),
-    default: __assign({}, default_default)
-  };
-  flatpickr.localize = function(l10n) {
-    flatpickr.l10ns.default = __assign(__assign({}, flatpickr.l10ns.default), l10n);
-  };
-  flatpickr.setDefaults = function(config) {
-    flatpickr.defaultConfig = __assign(__assign({}, flatpickr.defaultConfig), config);
-  };
-  flatpickr.parseDate = createDateParser({});
-  flatpickr.formatDate = createDateFormatter({});
-  flatpickr.compareDates = compareDates;
-  if (typeof jQuery !== "undefined" && typeof jQuery.fn !== "undefined") {
-    jQuery.fn.flatpickr = function(config) {
-      return _flatpickr(this, config);
-    };
-  }
-  Date.prototype.fp_incr = function(days) {
-    return new Date(this.getFullYear(), this.getMonth(), this.getDate() + (typeof days === "string" ? parseInt(days, 10) : days));
-  };
-  if (typeof window !== "undefined") {
-    window.flatpickr = flatpickr;
-  }
-  var esm_default = flatpickr;
-
-  // app/javascript/controllers/railsui_date_range_picker_controller.js
-  var currentDate = /* @__PURE__ */ new Date();
-  var oneWeekLater = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1e3);
-  var railsui_date_range_picker_controller_default = class extends Controller {
-    connect() {
-      this.rangeValue = this.rangeValue.map((dateString) => new Date(dateString));
-      let self = this;
-      const picker = esm_default(this.element, {
-        mode: "range",
-        minDate: this.minDateValue,
-        dateFormat: this.dateFormatValue,
-        defaultDate: this.rangeValue,
-        onChange: function(selectedDates, dateStr, instance) {
-          self.setCurrentRange(instance);
-        }
-      });
-      this.setCurrentRange(picker);
-    }
-    setCurrentRange(picker) {
-      const formatDate = (date) => {
-        const options = { month: "short", day: "numeric" };
-        return date.toLocaleDateString("en-US", options);
-      };
-      const range = picker.selectedDates.map(formatDate).join(" - ");
-      if (this.hasLabelTarget) {
-        this.labelTarget.textContent = range;
-        this.inputTarget.value = picker.selectedDates;
-      }
-    }
-  };
-  __publicField(railsui_date_range_picker_controller_default, "targets", ["label", "input"]);
-  __publicField(railsui_date_range_picker_controller_default, "values", {
-    mode: String || "",
-    minDate: String || "today",
-    dateFormat: String || "Y-m-d",
-    range: {
-      type: Array,
-      default: [currentDate, oneWeekLater]
-    }
-  });
-
   // app/javascript/controllers/railsui_dialog_controller.js
   var railsui_dialog_controller_default = class extends Controller {
     launch(event) {
@@ -62430,88 +57288,39 @@
   };
   __publicField(railsui_dialog_controller_default, "targets", ["dialog", "button", "cancel"]);
 
+  // app/javascript/controllers/railsui_flash_controller.js
+  var railsui_flash_controller_default = class extends Controller {
+    connect() {
+      if (this.element) {
+        setTimeout(() => {
+          this.element.remove();
+        }, 4e3);
+      }
+    }
+  };
+
+  // app/javascript/controllers/railsui_helper_controller.js
+  var railsui_helper_controller_default = class extends Controller {
+    togglePath(event) {
+      event.preventDefault();
+      this.extensionTargets.forEach((t) => {
+        t.textContent = this.pathValue;
+      });
+    }
+    toggleUrl(event) {
+      event.preventDefault();
+      this.extensionTargets.forEach((t) => {
+        t.textContent = this.urlValue;
+      });
+    }
+  };
+  __publicField(railsui_helper_controller_default, "targets", ["extension"]);
+  __publicField(railsui_helper_controller_default, "values", {
+    path: String,
+    url: String
+  });
+
   // node_modules/stimulus-use/dist/index.js
-  var composeEventName = (name, controller, eventPrefix) => {
-    let composedName = name;
-    if (eventPrefix === true) {
-      composedName = `${controller.identifier}:${name}`;
-    } else if (typeof eventPrefix === "string") {
-      composedName = `${eventPrefix}:${name}`;
-    }
-    return composedName;
-  };
-  var extendedEvent = (type, event, detail) => {
-    const { bubbles, cancelable, composed } = event || {
-      bubbles: true,
-      cancelable: true,
-      composed: true
-    };
-    if (event) {
-      Object.assign(detail, {
-        originalEvent: event
-      });
-    }
-    const customEvent = new CustomEvent(type, {
-      bubbles,
-      cancelable,
-      composed,
-      detail
-    });
-    return customEvent;
-  };
-  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-    const vertInView = rect.top <= windowHeight && rect.top + rect.height > 0;
-    const horInView = rect.left <= windowWidth && rect.left + rect.width > 0;
-    return vertInView && horInView;
-  }
-  var defaultOptions$5 = {
-    events: ["click", "touchend"],
-    onlyVisible: true,
-    dispatchEvent: true,
-    eventPrefix: true
-  };
-  var useClickOutside = (composableController, options = {}) => {
-    const controller = composableController;
-    const { onlyVisible, dispatchEvent, events, eventPrefix } = Object.assign({}, defaultOptions$5, options);
-    const onEvent = (event) => {
-      const targetElement = (options === null || options === void 0 ? void 0 : options.element) || controller.element;
-      if (targetElement.contains(event.target) || !isElementInViewport(targetElement) && onlyVisible) {
-        return;
-      }
-      if (controller.clickOutside) {
-        controller.clickOutside(event);
-      }
-      if (dispatchEvent) {
-        const eventName = composeEventName("click:outside", controller, eventPrefix);
-        const clickOutsideEvent = extendedEvent(eventName, event, {
-          controller
-        });
-        targetElement.dispatchEvent(clickOutsideEvent);
-      }
-    };
-    const observe = () => {
-      events === null || events === void 0 ? void 0 : events.forEach((event) => {
-        window.addEventListener(event, onEvent, true);
-      });
-    };
-    const unobserve = () => {
-      events === null || events === void 0 ? void 0 : events.forEach((event) => {
-        window.removeEventListener(event, onEvent, true);
-      });
-    };
-    const controllerDisconnect = controller.disconnect.bind(controller);
-    Object.assign(controller, {
-      disconnect() {
-        unobserve();
-        controllerDisconnect();
-      }
-    });
-    observe();
-    return [observe, unobserve];
-  };
   var DebounceController = class extends Controller {
   };
   DebounceController.debounces = [];
@@ -62656,10 +57465,10 @@
   }
   async function afterTransition(element) {
     return new Promise((resolve) => {
-      const duration2 = Number(getComputedStyle(element).transitionDuration.split(",")[0].replace("s", "")) * 1e3;
+      const duration = Number(getComputedStyle(element).transitionDuration.split(",")[0].replace("s", "")) * 1e3;
       setTimeout(() => {
-        resolve(duration2);
-      }, duration2);
+        resolve(duration);
+      }, duration);
     });
   }
   async function nextAnimationFrame() {
@@ -62672,102 +57481,6 @@
   function isEmpty(str) {
     return str.length === 0 || !str.trim();
   }
-
-  // app/javascript/controllers/railsui_dropdown_controller.js
-  var railsui_dropdown_controller_default = class extends Controller {
-    connect() {
-      useTransition(this, {
-        element: this.menuTarget
-      });
-    }
-    toggle() {
-      this.toggleTransition();
-    }
-    hide(event) {
-      if (!this.element.contains(event.target) && !this.menuTarget.classList.contains("hidden")) {
-        this.leave();
-      }
-    }
-  };
-  __publicField(railsui_dropdown_controller_default, "targets", ["menu", "trigger"]);
-
-  // app/javascript/controllers/railsui_flash_controller.js
-  var railsui_flash_controller_default = class extends Controller {
-    connect() {
-      if (this.element) {
-        setTimeout(() => {
-          this.element.remove();
-        }, 4e3);
-      }
-    }
-  };
-
-  // app/javascript/controllers/railsui_helper_controller.js
-  var railsui_helper_controller_default = class extends Controller {
-    togglePath(event) {
-      event.preventDefault();
-      this.extensionTargets.forEach((t) => {
-        t.textContent = this.pathValue;
-      });
-    }
-    toggleUrl(event) {
-      event.preventDefault();
-      this.extensionTargets.forEach((t) => {
-        t.textContent = this.urlValue;
-      });
-    }
-  };
-  __publicField(railsui_helper_controller_default, "targets", ["extension"]);
-  __publicField(railsui_helper_controller_default, "values", {
-    path: String,
-    url: String
-  });
-
-  // app/javascript/controllers/railsui_modal_controller.js
-  var railsui_modal_controller_default = class extends Controller {
-    connect() {
-      useTransition(this, {
-        element: this.contentTarget
-      });
-      useClickOutside(this, {
-        element: this.contentTarget
-      });
-    }
-    open(event) {
-      event.preventDefault();
-      this.enableAppearance();
-      this.toggleTransition();
-    }
-    close(event) {
-      event.preventDefault();
-      this.leave();
-      this.disableAppearance();
-    }
-    clickOutside(event) {
-      const action = event.target.dataset.action;
-      if (action == "click->modal#open" || action == "click->modal#open:prevent") {
-        return;
-      }
-      this.close(event);
-    }
-    closeWithEsc(event) {
-      if (event.keyCode === 27 && !this.containerTarget.classList.contains("hidden")) {
-        this.close(event);
-      }
-    }
-    enableAppearance() {
-      this.containerTarget.classList.add("bg-black/80");
-      this.containerTarget.classList.remove("hidden");
-    }
-    disableAppearance() {
-      this.containerTarget.classList.add("hidden");
-      this.containerTarget.classList.remove("bg-black/80");
-    }
-    disconnect() {
-      this.toggleTransition();
-    }
-  };
-  __publicField(railsui_modal_controller_default, "targets", ["container", "content"]);
 
   // app/javascript/controllers/railsui_nav_controller.js
   var railsui_nav_controller_default = class extends Controller {
@@ -63008,56 +57721,6 @@
   };
   __publicField(railsui_snippet_controller_default, "targets", ["preview", "previewBtn", "code", "codeBtn"]);
 
-  // app/javascript/controllers/railsui_tabs_controller.js
-  var railsui_tabs_controller_default = class extends Controller {
-    connect() {
-      this.activeTabClasses = (this.data.get("activeTab") || "active").split(" ");
-      this.inactiveTabClasses = (this.data.get("inactiveTab") || "inactive").split(" ");
-      if (this.anchor)
-        this.index = this.tabTargets.findIndex((tab) => tab.id === this.anchor);
-      this.showTab();
-    }
-    change(event) {
-      event.preventDefault();
-      if (event.currentTarget.dataset.index) {
-        this.index = event.currentTarget.dataset.index;
-      } else if (event.currentTarget.dataset.id) {
-        this.index = this.tabTargets.findIndex((tab) => tab.id == event.currentTarget.dataset.id);
-      } else {
-        this.index = this.tabTargets.indexOf(event.currentTarget);
-      }
-      window.dispatchEvent(new CustomEvent("tsc:tab-change"));
-    }
-    showTab() {
-      this.tabTargets.forEach((tab, index) => {
-        const panel = this.panelTargets[index];
-        if (index === this.index) {
-          panel.classList.remove("hidden");
-          tab.classList.remove(...this.inactiveTabClasses);
-          tab.classList.add(...this.activeTabClasses);
-          if (tab.id) {
-            location.hash = tab.id;
-          }
-        } else {
-          panel.classList.add("hidden");
-          tab.classList.remove(...this.activeTabClasses);
-          tab.classList.add(...this.inactiveTabClasses);
-        }
-      });
-    }
-    get index() {
-      return parseInt(this.data.get("index") || 0);
-    }
-    set index(value) {
-      this.data.set("index", value >= 0 ? value : 0);
-      this.showTab();
-    }
-    get anchor() {
-      return document.URL.split("#").length > 1 ? document.URL.split("#")[1] : null;
-    }
-  };
-  __publicField(railsui_tabs_controller_default, "targets", ["tab", "panel"]);
-
   // app/javascript/controllers/railsui_pages_controller.js
   var railsui_pages_controller_default = class extends Controller {
     checkAll() {
@@ -63071,84 +57734,2563 @@
   };
   __publicField(railsui_pages_controller_default, "targets", ["checkbox"]);
 
-  // app/javascript/controllers/railsui_toggle_controller.js
-  var railsui_toggle_controller_default = class extends Controller {
-    toggle() {
-      this.toggleableTarget.classList.toggle("hidden");
-    }
-  };
-  __publicField(railsui_toggle_controller_default, "targets", ["toggleable"]);
-
-  // app/javascript/controllers/railsui_tooltip_controller.js
-  var railsui_tooltip_controller_default = class extends Controller {
-    connect() {
-      let options = {};
-      if (this.hasContentValue) {
-        options["content"] = this.contentValue;
-      }
-      if (this.hasAllowHtmlValue) {
-        options["allowHTML"] = this.allowHtmlValue;
-      }
-      this.tippy = tippy_esm_default(this.element, options);
-    }
-    disconnect() {
-      this.tippy.destroy();
-    }
-  };
-  __publicField(railsui_tooltip_controller_default, "values", {
-    content: String,
-    allowHtml: Boolean
-  });
-
   // app/javascript/controllers/railsui_loading_controller.js
   var railsui_loading_controller_default = class extends Controller {
+    initialize() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("update") === "true") {
+        setTimeout(() => {
+          this.removeURLParameter("update");
+          window.location.reload();
+        }, 3e3);
+      }
+    }
     start() {
       this.contentTarget.innerHTML = this.labelValue;
+      this.savingTarget.classList.add("config-loader--active");
+      document.body.classList.add("overflow-hidden");
+    }
+    connect() {
+      this.toggleLoader();
+    }
+    toggleLoader() {
+      this.savingTarget.classList.remove("config-loader--active");
+      document.body.classList.remove("overflow-hidden");
+    }
+    removeURLParameter(param) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete(param);
+      window.history.replaceState({}, "", url);
     }
   };
-  __publicField(railsui_loading_controller_default, "targets", ["content"]);
+  __publicField(railsui_loading_controller_default, "targets", ["content", "saving"]);
   __publicField(railsui_loading_controller_default, "values", {
     label: { type: String, default: "Loading..." }
   });
 
-  // app/javascript/controllers/toast_controller.js
-  var toast_controller_default = class extends Controller {
-    connect() {
-      useTransition(this, {
-        element: this.element
+  // node_modules/railsui-stimulus/dist/railsui-stimulus.module.js
+  var ti = Object.defineProperty;
+  var ni = (t, n, e) => n in t ? ti(t, n, { enumerable: true, configurable: true, writable: true, value: e }) : t[n] = e;
+  var re = (t, n, e) => (ni(t, typeof n != "symbol" ? n + "" : n, e), e);
+  var G = "top";
+  var ie = "bottom";
+  var te = "right";
+  var Q = "left";
+  var Gt = "auto";
+  var rt = [G, ie, te, Q];
+  var Je = "start";
+  var pt = "end";
+  var er = "clippingParents";
+  var Qt = "viewport";
+  var Mt = "popper";
+  var tr = "reference";
+  var Tn = rt.reduce(function(t, n) {
+    return t.concat([n + "-" + Je, n + "-" + pt]);
+  }, []);
+  var Zt = [].concat(rt, [Gt]).reduce(function(t, n) {
+    return t.concat([n, n + "-" + Je, n + "-" + pt]);
+  }, []);
+  var ri = "beforeRead";
+  var ii = "read";
+  var oi = "afterRead";
+  var ai = "beforeMain";
+  var si = "main";
+  var ci = "afterMain";
+  var li = "beforeWrite";
+  var ui = "write";
+  var fi = "afterWrite";
+  var nr = [ri, ii, oi, ai, si, ci, li, ui, fi];
+  function se(t) {
+    return t ? (t.nodeName || "").toLowerCase() : null;
+  }
+  function J(t) {
+    if (t == null)
+      return window;
+    if (t.toString() !== "[object Window]") {
+      var n = t.ownerDocument;
+      return n && n.defaultView || window;
+    }
+    return t;
+  }
+  function Te(t) {
+    var n = J(t).Element;
+    return t instanceof n || t instanceof Element;
+  }
+  function oe(t) {
+    var n = J(t).HTMLElement;
+    return t instanceof n || t instanceof HTMLElement;
+  }
+  function Tt(t) {
+    if (typeof ShadowRoot > "u")
+      return false;
+    var n = J(t).ShadowRoot;
+    return t instanceof n || t instanceof ShadowRoot;
+  }
+  function di(t) {
+    var n = t.state;
+    Object.keys(n.elements).forEach(function(e) {
+      var o = n.styles[e] || {}, a = n.attributes[e] || {}, c = n.elements[e];
+      !oe(c) || !se(c) || (Object.assign(c.style, o), Object.keys(a).forEach(function(d) {
+        var p = a[d];
+        p === false ? c.removeAttribute(d) : c.setAttribute(d, p === true ? "" : p);
+      }));
+    });
+  }
+  function pi(t) {
+    var n = t.state, e = { popper: { position: n.options.strategy, left: "0", top: "0", margin: "0" }, arrow: { position: "absolute" }, reference: {} };
+    return Object.assign(n.elements.popper.style, e.popper), n.styles = e, n.elements.arrow && Object.assign(n.elements.arrow.style, e.arrow), function() {
+      Object.keys(n.elements).forEach(function(o) {
+        var a = n.elements[o], c = n.attributes[o] || {}, d = Object.keys(n.styles.hasOwnProperty(o) ? n.styles[o] : e[o]), p = d.reduce(function(u, b) {
+          return u[b] = "", u;
+        }, {});
+        !oe(a) || !se(a) || (Object.assign(a.style, p), Object.keys(c).forEach(function(u) {
+          a.removeAttribute(u);
+        }));
       });
+    };
+  }
+  var Ft = { name: "applyStyles", enabled: true, phase: "write", fn: di, effect: pi, requires: ["computeStyles"] };
+  function ce(t) {
+    return t.split("-")[0];
+  }
+  var je = Math.max;
+  var mt = Math.min;
+  var Ge = Math.round;
+  function At() {
+    var t = navigator.userAgentData;
+    return t != null && t.brands && Array.isArray(t.brands) ? t.brands.map(function(n) {
+      return n.brand + "/" + n.version;
+    }).join(" ") : navigator.userAgent;
+  }
+  function jt() {
+    return !/^((?!chrome|android).)*safari/i.test(At());
+  }
+  function Ae(t, n, e) {
+    n === void 0 && (n = false), e === void 0 && (e = false);
+    var o = t.getBoundingClientRect(), a = 1, c = 1;
+    n && oe(t) && (a = t.offsetWidth > 0 && Ge(o.width) / t.offsetWidth || 1, c = t.offsetHeight > 0 && Ge(o.height) / t.offsetHeight || 1);
+    var d = Te(t) ? J(t) : window, p = d.visualViewport, u = !jt() && e, b = (o.left + (u && p ? p.offsetLeft : 0)) / a, h = (o.top + (u && p ? p.offsetTop : 0)) / c, M = o.width / a, O = o.height / c;
+    return { width: M, height: O, top: h, right: b + M, bottom: h + O, left: b, x: b, y: h };
+  }
+  function ht(t) {
+    var n = Ae(t), e = t.offsetWidth, o = t.offsetHeight;
+    return Math.abs(n.width - e) <= 1 && (e = n.width), Math.abs(n.height - o) <= 1 && (o = n.height), { x: t.offsetLeft, y: t.offsetTop, width: e, height: o };
+  }
+  function Rt(t, n) {
+    var e = n.getRootNode && n.getRootNode();
+    if (t.contains(n))
+      return true;
+    if (e && Tt(e)) {
+      var o = n;
+      do {
+        if (o && t.isSameNode(o))
+          return true;
+        o = o.parentNode || o.host;
+      } while (o);
+    }
+    return false;
+  }
+  function be(t) {
+    return J(t).getComputedStyle(t);
+  }
+  function An(t) {
+    return ["table", "td", "th"].indexOf(se(t)) >= 0;
+  }
+  function de(t) {
+    return ((Te(t) ? t.ownerDocument : t.document) || window.document).documentElement;
+  }
+  function Qe(t) {
+    return se(t) === "html" ? t : t.assignedSlot || t.parentNode || (Tt(t) ? t.host : null) || de(t);
+  }
+  function rr(t) {
+    return !oe(t) || be(t).position === "fixed" ? null : t.offsetParent;
+  }
+  function mi(t) {
+    var n = /firefox/i.test(At()), e = /Trident/i.test(At());
+    if (e && oe(t)) {
+      var o = be(t);
+      if (o.position === "fixed")
+        return null;
+    }
+    var a = Qe(t);
+    for (Tt(a) && (a = a.host); oe(a) && ["html", "body"].indexOf(se(a)) < 0; ) {
+      var c = be(a);
+      if (c.transform !== "none" || c.perspective !== "none" || c.contain === "paint" || ["transform", "perspective"].indexOf(c.willChange) !== -1 || n && c.willChange === "filter" || n && c.filter && c.filter !== "none")
+        return a;
+      a = a.parentNode;
+    }
+    return null;
+  }
+  function Re(t) {
+    for (var n = J(t), e = rr(t); e && An(e) && be(e).position === "static"; )
+      e = rr(e);
+    return e && (se(e) === "html" || se(e) === "body" && be(e).position === "static") ? n : e || mi(t) || n;
+  }
+  function vt(t) {
+    return ["top", "bottom"].indexOf(t) >= 0 ? "x" : "y";
+  }
+  function gt(t, n, e) {
+    return je(t, mt(n, e));
+  }
+  function ir(t, n, e) {
+    var o = gt(t, n, e);
+    return o > e ? e : o;
+  }
+  function _t() {
+    return { top: 0, right: 0, bottom: 0, left: 0 };
+  }
+  function Ht(t) {
+    return Object.assign({}, _t(), t);
+  }
+  function Vt(t, n) {
+    return n.reduce(function(e, o) {
+      return e[o] = t, e;
+    }, {});
+  }
+  var hi = function(n, e) {
+    return n = typeof n == "function" ? n(Object.assign({}, e.rects, { placement: e.placement })) : n, Ht(typeof n != "number" ? n : Vt(n, rt));
+  };
+  function vi(t) {
+    var n, e = t.state, o = t.name, a = t.options, c = e.elements.arrow, d = e.modifiersData.popperOffsets, p = ce(e.placement), u = vt(p), b = [Q, te].indexOf(p) >= 0, h = b ? "height" : "width";
+    if (!(!c || !d)) {
+      var M = hi(a.padding, e), O = ht(c), E = u === "y" ? G : Q, k = u === "y" ? ie : te, w = e.rects.reference[h] + e.rects.reference[u] - d[u] - e.rects.popper[h], P = d[u] - e.rects.reference[u], V = Re(c), I = V ? u === "y" ? V.clientHeight || 0 : V.clientWidth || 0 : 0, _ = w / 2 - P / 2, l = M[E], F = I - O[h] - M[k], x = I / 2 - O[h] / 2 + _, H = gt(l, x, F), Y = u;
+      e.modifiersData[o] = (n = {}, n[Y] = H, n.centerOffset = H - x, n);
+    }
+  }
+  function gi(t) {
+    var n = t.state, e = t.options, o = e.element, a = o === void 0 ? "[data-popper-arrow]" : o;
+    a != null && (typeof a == "string" && (a = n.elements.popper.querySelector(a), !a) || Rt(n.elements.popper, a) && (n.elements.arrow = a));
+  }
+  var or = { name: "arrow", enabled: true, phase: "main", fn: vi, effect: gi, requires: ["popperOffsets"], requiresIfExists: ["preventOverflow"] };
+  function Pe(t) {
+    return t.split("-")[1];
+  }
+  var bi = { top: "auto", right: "auto", bottom: "auto", left: "auto" };
+  function yi(t, n) {
+    var e = t.x, o = t.y, a = n.devicePixelRatio || 1;
+    return { x: Ge(e * a) / a || 0, y: Ge(o * a) / a || 0 };
+  }
+  function ar(t) {
+    var n, e = t.popper, o = t.popperRect, a = t.placement, c = t.variation, d = t.offsets, p = t.position, u = t.gpuAcceleration, b = t.adaptive, h = t.roundOffsets, M = t.isFixed, O = d.x, E = O === void 0 ? 0 : O, k = d.y, w = k === void 0 ? 0 : k, P = typeof h == "function" ? h({ x: E, y: w }) : { x: E, y: w };
+    E = P.x, w = P.y;
+    var V = d.hasOwnProperty("x"), I = d.hasOwnProperty("y"), _ = Q, l = G, F = window;
+    if (b) {
+      var x = Re(e), H = "clientHeight", Y = "clientWidth";
+      if (x === J(e) && (x = de(e), be(x).position !== "static" && p === "absolute" && (H = "scrollHeight", Y = "scrollWidth")), x = x, a === G || (a === Q || a === te) && c === pt) {
+        l = ie;
+        var A = M && x === F && F.visualViewport ? F.visualViewport.height : x[H];
+        w -= A - o.height, w *= u ? 1 : -1;
+      }
+      if (a === Q || (a === G || a === ie) && c === pt) {
+        _ = te;
+        var N = M && x === F && F.visualViewport ? F.visualViewport.width : x[Y];
+        E -= N - o.width, E *= u ? 1 : -1;
+      }
+    }
+    var z = Object.assign({ position: p }, b && bi), B = h === true ? yi({ x: E, y: w }, J(e)) : { x: E, y: w };
+    if (E = B.x, w = B.y, u) {
+      var j;
+      return Object.assign({}, z, (j = {}, j[l] = I ? "0" : "", j[_] = V ? "0" : "", j.transform = (F.devicePixelRatio || 1) <= 1 ? "translate(" + E + "px, " + w + "px)" : "translate3d(" + E + "px, " + w + "px, 0)", j));
+    }
+    return Object.assign({}, z, (n = {}, n[l] = I ? w + "px" : "", n[_] = V ? E + "px" : "", n.transform = "", n));
+  }
+  function wi(t) {
+    var n = t.state, e = t.options, o = e.gpuAcceleration, a = o === void 0 ? true : o, c = e.adaptive, d = c === void 0 ? true : c, p = e.roundOffsets, u = p === void 0 ? true : p, b = { placement: ce(n.placement), variation: Pe(n.placement), popper: n.elements.popper, popperRect: n.rects.popper, gpuAcceleration: a, isFixed: n.options.strategy === "fixed" };
+    n.modifiersData.popperOffsets != null && (n.styles.popper = Object.assign({}, n.styles.popper, ar(Object.assign({}, b, { offsets: n.modifiersData.popperOffsets, position: n.options.strategy, adaptive: d, roundOffsets: u })))), n.modifiersData.arrow != null && (n.styles.arrow = Object.assign({}, n.styles.arrow, ar(Object.assign({}, b, { offsets: n.modifiersData.arrow, position: "absolute", adaptive: false, roundOffsets: u })))), n.attributes.popper = Object.assign({}, n.attributes.popper, { "data-popper-placement": n.placement });
+  }
+  var sr = { name: "computeStyles", enabled: true, phase: "beforeWrite", fn: wi, data: {} };
+  var en = { passive: true };
+  function xi(t) {
+    var n = t.state, e = t.instance, o = t.options, a = o.scroll, c = a === void 0 ? true : a, d = o.resize, p = d === void 0 ? true : d, u = J(n.elements.popper), b = [].concat(n.scrollParents.reference, n.scrollParents.popper);
+    return c && b.forEach(function(h) {
+      h.addEventListener("scroll", e.update, en);
+    }), p && u.addEventListener("resize", e.update, en), function() {
+      c && b.forEach(function(h) {
+        h.removeEventListener("scroll", e.update, en);
+      }), p && u.removeEventListener("resize", e.update, en);
+    };
+  }
+  var cr = { name: "eventListeners", enabled: true, phase: "write", fn: function() {
+  }, effect: xi, data: {} };
+  var Di = { left: "right", right: "left", bottom: "top", top: "bottom" };
+  function Pt(t) {
+    return t.replace(/left|right|bottom|top/g, function(n) {
+      return Di[n];
+    });
+  }
+  var Ei = { start: "end", end: "start" };
+  function tn(t) {
+    return t.replace(/start|end/g, function(n) {
+      return Ei[n];
+    });
+  }
+  function bt(t) {
+    var n = J(t), e = n.pageXOffset, o = n.pageYOffset;
+    return { scrollLeft: e, scrollTop: o };
+  }
+  function yt(t) {
+    return Ae(de(t)).left + bt(t).scrollLeft;
+  }
+  function Pn(t, n) {
+    var e = J(t), o = de(t), a = e.visualViewport, c = o.clientWidth, d = o.clientHeight, p = 0, u = 0;
+    if (a) {
+      c = a.width, d = a.height;
+      var b = jt();
+      (b || !b && n === "fixed") && (p = a.offsetLeft, u = a.offsetTop);
+    }
+    return { width: c, height: d, x: p + yt(t), y: u };
+  }
+  function Sn(t) {
+    var n, e = de(t), o = bt(t), a = (n = t.ownerDocument) == null ? void 0 : n.body, c = je(e.scrollWidth, e.clientWidth, a ? a.scrollWidth : 0, a ? a.clientWidth : 0), d = je(e.scrollHeight, e.clientHeight, a ? a.scrollHeight : 0, a ? a.clientHeight : 0), p = -o.scrollLeft + yt(t), u = -o.scrollTop;
+    return be(a || e).direction === "rtl" && (p += je(e.clientWidth, a ? a.clientWidth : 0) - c), { width: c, height: d, x: p, y: u };
+  }
+  function wt(t) {
+    var n = be(t), e = n.overflow, o = n.overflowX, a = n.overflowY;
+    return /auto|scroll|overlay|hidden/.test(e + a + o);
+  }
+  function nn(t) {
+    return ["html", "body", "#document"].indexOf(se(t)) >= 0 ? t.ownerDocument.body : oe(t) && wt(t) ? t : nn(Qe(t));
+  }
+  function it(t, n) {
+    var e;
+    n === void 0 && (n = []);
+    var o = nn(t), a = o === ((e = t.ownerDocument) == null ? void 0 : e.body), c = J(o), d = a ? [c].concat(c.visualViewport || [], wt(o) ? o : []) : o, p = n.concat(d);
+    return a ? p : p.concat(it(Qe(d)));
+  }
+  function St(t) {
+    return Object.assign({}, t, { left: t.x, top: t.y, right: t.x + t.width, bottom: t.y + t.height });
+  }
+  function Ci(t, n) {
+    var e = Ae(t, false, n === "fixed");
+    return e.top = e.top + t.clientTop, e.left = e.left + t.clientLeft, e.bottom = e.top + t.clientHeight, e.right = e.left + t.clientWidth, e.width = t.clientWidth, e.height = t.clientHeight, e.x = e.left, e.y = e.top, e;
+  }
+  function lr(t, n, e) {
+    return n === Qt ? St(Pn(t, e)) : Te(n) ? Ci(n, e) : St(Sn(de(t)));
+  }
+  function Oi(t) {
+    var n = it(Qe(t)), e = ["absolute", "fixed"].indexOf(be(t).position) >= 0, o = e && oe(t) ? Re(t) : t;
+    return Te(o) ? n.filter(function(a) {
+      return Te(a) && Rt(a, o) && se(a) !== "body";
+    }) : [];
+  }
+  function kn(t, n, e, o) {
+    var a = n === "clippingParents" ? Oi(t) : [].concat(n), c = [].concat(a, [e]), d = c[0], p = c.reduce(function(u, b) {
+      var h = lr(t, b, o);
+      return u.top = je(h.top, u.top), u.right = mt(h.right, u.right), u.bottom = mt(h.bottom, u.bottom), u.left = je(h.left, u.left), u;
+    }, lr(t, d, o));
+    return p.width = p.right - p.left, p.height = p.bottom - p.top, p.x = p.left, p.y = p.top, p;
+  }
+  function Bt(t) {
+    var n = t.reference, e = t.element, o = t.placement, a = o ? ce(o) : null, c = o ? Pe(o) : null, d = n.x + n.width / 2 - e.width / 2, p = n.y + n.height / 2 - e.height / 2, u;
+    switch (a) {
+      case G:
+        u = { x: d, y: n.y - e.height };
+        break;
+      case ie:
+        u = { x: d, y: n.y + n.height };
+        break;
+      case te:
+        u = { x: n.x + n.width, y: p };
+        break;
+      case Q:
+        u = { x: n.x - e.width, y: p };
+        break;
+      default:
+        u = { x: n.x, y: n.y };
+    }
+    var b = a ? vt(a) : null;
+    if (b != null) {
+      var h = b === "y" ? "height" : "width";
+      switch (c) {
+        case Je:
+          u[b] = u[b] - (n[h] / 2 - e[h] / 2);
+          break;
+        case pt:
+          u[b] = u[b] + (n[h] / 2 - e[h] / 2);
+          break;
+        default:
+      }
+    }
+    return u;
+  }
+  function _e(t, n) {
+    n === void 0 && (n = {});
+    var e = n, o = e.placement, a = o === void 0 ? t.placement : o, c = e.strategy, d = c === void 0 ? t.strategy : c, p = e.boundary, u = p === void 0 ? er : p, b = e.rootBoundary, h = b === void 0 ? Qt : b, M = e.elementContext, O = M === void 0 ? Mt : M, E = e.altBoundary, k = E === void 0 ? false : E, w = e.padding, P = w === void 0 ? 0 : w, V = Ht(typeof P != "number" ? P : Vt(P, rt)), I = O === Mt ? tr : Mt, _ = t.rects.popper, l = t.elements[k ? I : O], F = kn(Te(l) ? l : l.contextElement || de(t.elements.popper), u, h, d), x = Ae(t.elements.reference), H = Bt({ reference: x, element: _, strategy: "absolute", placement: a }), Y = St(Object.assign({}, _, H)), A = O === Mt ? Y : x, N = { top: F.top - A.top + V.top, bottom: A.bottom - F.bottom + V.bottom, left: F.left - A.left + V.left, right: A.right - F.right + V.right }, z = t.modifiersData.offset;
+    if (O === Mt && z) {
+      var B = z[a];
+      Object.keys(N).forEach(function(j) {
+        var le = [te, ie].indexOf(j) >= 0 ? 1 : -1, ae = [G, ie].indexOf(j) >= 0 ? "y" : "x";
+        N[j] += B[ae] * le;
+      });
+    }
+    return N;
+  }
+  function Nn(t, n) {
+    n === void 0 && (n = {});
+    var e = n, o = e.placement, a = e.boundary, c = e.rootBoundary, d = e.padding, p = e.flipVariations, u = e.allowedAutoPlacements, b = u === void 0 ? Zt : u, h = Pe(o), M = h ? p ? Tn : Tn.filter(function(k) {
+      return Pe(k) === h;
+    }) : rt, O = M.filter(function(k) {
+      return b.indexOf(k) >= 0;
+    });
+    O.length === 0 && (O = M);
+    var E = O.reduce(function(k, w) {
+      return k[w] = _e(t, { placement: w, boundary: a, rootBoundary: c, padding: d })[ce(w)], k;
+    }, {});
+    return Object.keys(E).sort(function(k, w) {
+      return E[k] - E[w];
+    });
+  }
+  function Mi(t) {
+    if (ce(t) === Gt)
+      return [];
+    var n = Pt(t);
+    return [tn(t), n, tn(n)];
+  }
+  function Ti(t) {
+    var n = t.state, e = t.options, o = t.name;
+    if (!n.modifiersData[o]._skip) {
+      for (var a = e.mainAxis, c = a === void 0 ? true : a, d = e.altAxis, p = d === void 0 ? true : d, u = e.fallbackPlacements, b = e.padding, h = e.boundary, M = e.rootBoundary, O = e.altBoundary, E = e.flipVariations, k = E === void 0 ? true : E, w = e.allowedAutoPlacements, P = n.options.placement, V = ce(P), I = V === P, _ = u || (I || !k ? [Pt(P)] : Mi(P)), l = [P].concat(_).reduce(function(ke, ue) {
+        return ke.concat(ce(ue) === Gt ? Nn(n, { placement: ue, boundary: h, rootBoundary: M, padding: b, flipVariations: k, allowedAutoPlacements: w }) : ue);
+      }, []), F = n.rects.reference, x = n.rects.popper, H = /* @__PURE__ */ new Map(), Y = true, A = l[0], N = 0; N < l.length; N++) {
+        var z = l[N], B = ce(z), j = Pe(z) === Je, le = [G, ie].indexOf(B) >= 0, ae = le ? "width" : "height", K = _e(n, { placement: z, boundary: h, rootBoundary: M, altBoundary: O, padding: b }), q = le ? j ? te : Q : j ? ie : G;
+        F[ae] > x[ae] && (q = Pt(q));
+        var Z = Pt(q), De = [];
+        if (c && De.push(K[B] <= 0), p && De.push(K[q] <= 0, K[Z] <= 0), De.every(function(ke) {
+          return ke;
+        })) {
+          A = z, Y = false;
+          break;
+        }
+        H.set(z, De);
+      }
+      if (Y)
+        for (var Oe = k ? 3 : 1, Se = function(ue) {
+          var Ee = l.find(function(Ne) {
+            var fe = H.get(Ne);
+            if (fe)
+              return fe.slice(0, ue).every(function(Le) {
+                return Le;
+              });
+          });
+          if (Ee)
+            return A = Ee, "break";
+        }, Me = Oe; Me > 0; Me--) {
+          var $e = Se(Me);
+          if ($e === "break")
+            break;
+        }
+      n.placement !== A && (n.modifiersData[o]._skip = true, n.placement = A, n.reset = true);
+    }
+  }
+  var ur = { name: "flip", enabled: true, phase: "main", fn: Ti, requiresIfExists: ["offset"], data: { _skip: false } };
+  function fr(t, n, e) {
+    return e === void 0 && (e = { x: 0, y: 0 }), { top: t.top - n.height - e.y, right: t.right - n.width + e.x, bottom: t.bottom - n.height + e.y, left: t.left - n.width - e.x };
+  }
+  function dr(t) {
+    return [G, te, ie, Q].some(function(n) {
+      return t[n] >= 0;
+    });
+  }
+  function Ai(t) {
+    var n = t.state, e = t.name, o = n.rects.reference, a = n.rects.popper, c = n.modifiersData.preventOverflow, d = _e(n, { elementContext: "reference" }), p = _e(n, { altBoundary: true }), u = fr(d, o), b = fr(p, a, c), h = dr(u), M = dr(b);
+    n.modifiersData[e] = { referenceClippingOffsets: u, popperEscapeOffsets: b, isReferenceHidden: h, hasPopperEscaped: M }, n.attributes.popper = Object.assign({}, n.attributes.popper, { "data-popper-reference-hidden": h, "data-popper-escaped": M });
+  }
+  var pr = { name: "hide", enabled: true, phase: "main", requiresIfExists: ["preventOverflow"], fn: Ai };
+  function Pi(t, n, e) {
+    var o = ce(t), a = [Q, G].indexOf(o) >= 0 ? -1 : 1, c = typeof e == "function" ? e(Object.assign({}, n, { placement: t })) : e, d = c[0], p = c[1];
+    return d = d || 0, p = (p || 0) * a, [Q, te].indexOf(o) >= 0 ? { x: p, y: d } : { x: d, y: p };
+  }
+  function Si(t) {
+    var n = t.state, e = t.options, o = t.name, a = e.offset, c = a === void 0 ? [0, 0] : a, d = Zt.reduce(function(h, M) {
+      return h[M] = Pi(M, n.rects, c), h;
+    }, {}), p = d[n.placement], u = p.x, b = p.y;
+    n.modifiersData.popperOffsets != null && (n.modifiersData.popperOffsets.x += u, n.modifiersData.popperOffsets.y += b), n.modifiersData[o] = d;
+  }
+  var mr = { name: "offset", enabled: true, phase: "main", requires: ["popperOffsets"], fn: Si };
+  function ki(t) {
+    var n = t.state, e = t.name;
+    n.modifiersData[e] = Bt({ reference: n.rects.reference, element: n.rects.popper, strategy: "absolute", placement: n.placement });
+  }
+  var hr = { name: "popperOffsets", enabled: true, phase: "read", fn: ki, data: {} };
+  function Ln(t) {
+    return t === "x" ? "y" : "x";
+  }
+  function Ni(t) {
+    var n = t.state, e = t.options, o = t.name, a = e.mainAxis, c = a === void 0 ? true : a, d = e.altAxis, p = d === void 0 ? false : d, u = e.boundary, b = e.rootBoundary, h = e.altBoundary, M = e.padding, O = e.tether, E = O === void 0 ? true : O, k = e.tetherOffset, w = k === void 0 ? 0 : k, P = _e(n, { boundary: u, rootBoundary: b, padding: M, altBoundary: h }), V = ce(n.placement), I = Pe(n.placement), _ = !I, l = vt(V), F = Ln(l), x = n.modifiersData.popperOffsets, H = n.rects.reference, Y = n.rects.popper, A = typeof w == "function" ? w(Object.assign({}, n.rects, { placement: n.placement })) : w, N = typeof A == "number" ? { mainAxis: A, altAxis: A } : Object.assign({ mainAxis: 0, altAxis: 0 }, A), z = n.modifiersData.offset ? n.modifiersData.offset[n.placement] : null, B = { x: 0, y: 0 };
+    if (x) {
+      if (c) {
+        var j, le = l === "y" ? G : Q, ae = l === "y" ? ie : te, K = l === "y" ? "height" : "width", q = x[l], Z = q + P[le], De = q - P[ae], Oe = E ? -Y[K] / 2 : 0, Se = I === Je ? H[K] : Y[K], Me = I === Je ? -Y[K] : -H[K], $e = n.elements.arrow, ke = E && $e ? ht($e) : { width: 0, height: 0 }, ue = n.modifiersData["arrow#persistent"] ? n.modifiersData["arrow#persistent"].padding : _t(), Ee = ue[le], Ne = ue[ae], fe = gt(0, H[K], ke[K]), Le = _ ? H[K] / 2 - Oe - fe - Ee - N.mainAxis : Se - fe - Ee - N.mainAxis, Ve = _ ? -H[K] / 2 + Oe + fe + Ne + N.mainAxis : Me + fe + Ne + N.mainAxis, Ue = n.elements.arrow && Re(n.elements.arrow), qe = Ue ? l === "y" ? Ue.clientTop || 0 : Ue.clientLeft || 0 : 0, ct = (j = z?.[l]) != null ? j : 0, Dt = q + Le - ct - qe, lt = q + Ve - ct, ut = gt(E ? mt(Z, Dt) : Z, q, E ? je(De, lt) : De);
+        x[l] = ut, B[l] = ut - q;
+      }
+      if (p) {
+        var et, ft = l === "x" ? G : Q, ze = l === "x" ? ie : te, Ie = x[F], Be = F === "y" ? "height" : "width", tt = Ie + P[ft], Fe = Ie - P[ze], nt = [G, Q].indexOf(V) !== -1, Xe = (et = z?.[F]) != null ? et : 0, Et = nt ? tt : Ie - H[Be] - Y[Be] - Xe + N.altAxis, dt = nt ? Ie + H[Be] + Y[Be] - Xe - N.altAxis : Fe, Ct = E && nt ? ir(Et, Ie, dt) : gt(E ? Et : tt, Ie, E ? dt : Fe);
+        x[F] = Ct, B[F] = Ct - Ie;
+      }
+      n.modifiersData[o] = B;
+    }
+  }
+  var vr = { name: "preventOverflow", enabled: true, phase: "main", fn: Ni, requiresIfExists: ["offset"] };
+  function In(t) {
+    return { scrollLeft: t.scrollLeft, scrollTop: t.scrollTop };
+  }
+  function Fn(t) {
+    return t === J(t) || !oe(t) ? bt(t) : In(t);
+  }
+  function Li(t) {
+    var n = t.getBoundingClientRect(), e = Ge(n.width) / t.offsetWidth || 1, o = Ge(n.height) / t.offsetHeight || 1;
+    return e !== 1 || o !== 1;
+  }
+  function jn(t, n, e) {
+    e === void 0 && (e = false);
+    var o = oe(n), a = oe(n) && Li(n), c = de(n), d = Ae(t, a, e), p = { scrollLeft: 0, scrollTop: 0 }, u = { x: 0, y: 0 };
+    return (o || !o && !e) && ((se(n) !== "body" || wt(c)) && (p = Fn(n)), oe(n) ? (u = Ae(n, true), u.x += n.clientLeft, u.y += n.clientTop) : c && (u.x = yt(c))), { x: d.left + p.scrollLeft - u.x, y: d.top + p.scrollTop - u.y, width: d.width, height: d.height };
+  }
+  function Ii(t) {
+    var n = /* @__PURE__ */ new Map(), e = /* @__PURE__ */ new Set(), o = [];
+    t.forEach(function(c) {
+      n.set(c.name, c);
+    });
+    function a(c) {
+      e.add(c.name);
+      var d = [].concat(c.requires || [], c.requiresIfExists || []);
+      d.forEach(function(p) {
+        if (!e.has(p)) {
+          var u = n.get(p);
+          u && a(u);
+        }
+      }), o.push(c);
+    }
+    return t.forEach(function(c) {
+      e.has(c.name) || a(c);
+    }), o;
+  }
+  function Rn(t) {
+    var n = Ii(t);
+    return nr.reduce(function(e, o) {
+      return e.concat(n.filter(function(a) {
+        return a.phase === o;
+      }));
+    }, []);
+  }
+  function _n(t) {
+    var n;
+    return function() {
+      return n || (n = new Promise(function(e) {
+        Promise.resolve().then(function() {
+          n = void 0, e(t());
+        });
+      })), n;
+    };
+  }
+  function Hn(t) {
+    var n = t.reduce(function(e, o) {
+      var a = e[o.name];
+      return e[o.name] = a ? Object.assign({}, a, o, { options: Object.assign({}, a.options, o.options), data: Object.assign({}, a.data, o.data) }) : o, e;
+    }, {});
+    return Object.keys(n).map(function(e) {
+      return n[e];
+    });
+  }
+  var gr = { placement: "bottom", modifiers: [], strategy: "absolute" };
+  function br() {
+    for (var t = arguments.length, n = new Array(t), e = 0; e < t; e++)
+      n[e] = arguments[e];
+    return !n.some(function(o) {
+      return !(o && typeof o.getBoundingClientRect == "function");
+    });
+  }
+  function yr(t) {
+    t === void 0 && (t = {});
+    var n = t, e = n.defaultModifiers, o = e === void 0 ? [] : e, a = n.defaultOptions, c = a === void 0 ? gr : a;
+    return function(p, u, b) {
+      b === void 0 && (b = c);
+      var h = { placement: "bottom", orderedModifiers: [], options: Object.assign({}, gr, c), modifiersData: {}, elements: { reference: p, popper: u }, attributes: {}, styles: {} }, M = [], O = false, E = { state: h, setOptions: function(V) {
+        var I = typeof V == "function" ? V(h.options) : V;
+        w(), h.options = Object.assign({}, c, h.options, I), h.scrollParents = { reference: Te(p) ? it(p) : p.contextElement ? it(p.contextElement) : [], popper: it(u) };
+        var _ = Rn(Hn([].concat(o, h.options.modifiers)));
+        return h.orderedModifiers = _.filter(function(l) {
+          return l.enabled;
+        }), k(), E.update();
+      }, forceUpdate: function() {
+        if (!O) {
+          var V = h.elements, I = V.reference, _ = V.popper;
+          if (br(I, _)) {
+            h.rects = { reference: jn(I, Re(_), h.options.strategy === "fixed"), popper: ht(_) }, h.reset = false, h.placement = h.options.placement, h.orderedModifiers.forEach(function(N) {
+              return h.modifiersData[N.name] = Object.assign({}, N.data);
+            });
+            for (var l = 0; l < h.orderedModifiers.length; l++) {
+              if (h.reset === true) {
+                h.reset = false, l = -1;
+                continue;
+              }
+              var F = h.orderedModifiers[l], x = F.fn, H = F.options, Y = H === void 0 ? {} : H, A = F.name;
+              typeof x == "function" && (h = x({ state: h, options: Y, name: A, instance: E }) || h);
+            }
+          }
+        }
+      }, update: _n(function() {
+        return new Promise(function(P) {
+          E.forceUpdate(), P(h);
+        });
+      }), destroy: function() {
+        w(), O = true;
+      } };
+      if (!br(p, u))
+        return E;
+      E.setOptions(b).then(function(P) {
+        !O && b.onFirstUpdate && b.onFirstUpdate(P);
+      });
+      function k() {
+        h.orderedModifiers.forEach(function(P) {
+          var V = P.name, I = P.options, _ = I === void 0 ? {} : I, l = P.effect;
+          if (typeof l == "function") {
+            var F = l({ state: h, name: V, instance: E, options: _ }), x = function() {
+            };
+            M.push(F || x);
+          }
+        });
+      }
+      function w() {
+        M.forEach(function(P) {
+          return P();
+        }), M = [];
+      }
+      return E;
+    };
+  }
+  var Fi = [cr, hr, sr, Ft, mr, ur, vr, or, pr];
+  var Vn = yr({ defaultModifiers: Fi });
+  var ji = "tippy-box";
+  var Pr = "tippy-content";
+  var Ri = "tippy-backdrop";
+  var Sr = "tippy-arrow";
+  var kr = "tippy-svg-arrow";
+  var xt = { passive: true, capture: true };
+  var Nr = function() {
+    return document.body;
+  };
+  function Bn(t, n, e) {
+    if (Array.isArray(t)) {
+      var o = t[n];
+      return o ?? (Array.isArray(e) ? e[n] : e);
+    }
+    return t;
+  }
+  function zn(t, n) {
+    var e = {}.toString.call(t);
+    return e.indexOf("[object") === 0 && e.indexOf(n + "]") > -1;
+  }
+  function Lr(t, n) {
+    return typeof t == "function" ? t.apply(void 0, n) : t;
+  }
+  function wr(t, n) {
+    if (n === 0)
+      return t;
+    var e;
+    return function(o) {
+      clearTimeout(e), e = setTimeout(function() {
+        t(o);
+      }, n);
+    };
+  }
+  function _i(t) {
+    return t.split(/\s+/).filter(Boolean);
+  }
+  function kt(t) {
+    return [].concat(t);
+  }
+  function xr(t, n) {
+    t.indexOf(n) === -1 && t.push(n);
+  }
+  function Hi(t) {
+    return t.filter(function(n, e) {
+      return t.indexOf(n) === e;
+    });
+  }
+  function Vi(t) {
+    return t.split("-")[0];
+  }
+  function on(t) {
+    return [].slice.call(t);
+  }
+  function Dr(t) {
+    return Object.keys(t).reduce(function(n, e) {
+      return t[e] !== void 0 && (n[e] = t[e]), n;
+    }, {});
+  }
+  function Wt() {
+    return document.createElement("div");
+  }
+  function an(t) {
+    return ["Element", "Fragment"].some(function(n) {
+      return zn(t, n);
+    });
+  }
+  function Bi(t) {
+    return zn(t, "NodeList");
+  }
+  function Wi(t) {
+    return zn(t, "MouseEvent");
+  }
+  function Yi(t) {
+    return !!(t && t._tippy && t._tippy.reference === t);
+  }
+  function $i(t) {
+    return an(t) ? [t] : Bi(t) ? on(t) : Array.isArray(t) ? t : on(document.querySelectorAll(t));
+  }
+  function Wn(t, n) {
+    t.forEach(function(e) {
+      e && (e.style.transitionDuration = n + "ms");
+    });
+  }
+  function Er(t, n) {
+    t.forEach(function(e) {
+      e && e.setAttribute("data-state", n);
+    });
+  }
+  function Ui(t) {
+    var n, e = kt(t), o = e[0];
+    return o != null && (n = o.ownerDocument) != null && n.body ? o.ownerDocument : document;
+  }
+  function qi(t, n) {
+    var e = n.clientX, o = n.clientY;
+    return t.every(function(a) {
+      var c = a.popperRect, d = a.popperState, p = a.props, u = p.interactiveBorder, b = Vi(d.placement), h = d.modifiersData.offset;
+      if (!h)
+        return true;
+      var M = b === "bottom" ? h.top.y : 0, O = b === "top" ? h.bottom.y : 0, E = b === "right" ? h.left.x : 0, k = b === "left" ? h.right.x : 0, w = c.top - o + M > u, P = o - c.bottom - O > u, V = c.left - e + E > u, I = e - c.right - k > u;
+      return w || P || V || I;
+    });
+  }
+  function Yn(t, n, e) {
+    var o = n + "EventListener";
+    ["transitionend", "webkitTransitionEnd"].forEach(function(a) {
+      t[o](a, e);
+    });
+  }
+  function Cr(t, n) {
+    for (var e = n; e; ) {
+      var o;
+      if (t.contains(e))
+        return true;
+      e = e.getRootNode == null || (o = e.getRootNode()) == null ? void 0 : o.host;
+    }
+    return false;
+  }
+  var Ye = { isTouch: false };
+  var Or = 0;
+  function zi() {
+    Ye.isTouch || (Ye.isTouch = true, window.performance && document.addEventListener("mousemove", Ir));
+  }
+  function Ir() {
+    var t = performance.now();
+    t - Or < 20 && (Ye.isTouch = false, document.removeEventListener("mousemove", Ir)), Or = t;
+  }
+  function Xi() {
+    var t = document.activeElement;
+    if (Yi(t)) {
+      var n = t._tippy;
+      t.blur && !n.state.isVisible && t.blur();
+    }
+  }
+  function Ki() {
+    document.addEventListener("touchstart", zi, xt), window.addEventListener("blur", Xi);
+  }
+  var Ji = typeof window < "u" && typeof document < "u";
+  var Gi = Ji ? !!window.msCrypto : false;
+  var Qi = { animateFill: false, followCursor: false, inlinePositioning: false, sticky: false };
+  var Zi = { allowHTML: false, animation: "fade", arrow: true, content: "", inertia: false, maxWidth: 350, role: "tooltip", theme: "", zIndex: 9999 };
+  var He = Object.assign({ appendTo: Nr, aria: { content: "auto", expanded: "auto" }, delay: 0, duration: [300, 250], getReferenceClientRect: null, hideOnClick: true, ignoreAttributes: false, interactive: false, interactiveBorder: 2, interactiveDebounce: 0, moveTransition: "", offset: [0, 10], onAfterUpdate: function() {
+  }, onBeforeUpdate: function() {
+  }, onCreate: function() {
+  }, onDestroy: function() {
+  }, onHidden: function() {
+  }, onHide: function() {
+  }, onMount: function() {
+  }, onShow: function() {
+  }, onShown: function() {
+  }, onTrigger: function() {
+  }, onUntrigger: function() {
+  }, onClickOutside: function() {
+  }, placement: "top", plugins: [], popperOptions: {}, render: null, showOnCreate: false, touch: true, trigger: "mouseenter focus", triggerTarget: null }, Qi, Zi);
+  var eo = Object.keys(He);
+  var to = function(n) {
+    var e = Object.keys(n);
+    e.forEach(function(o) {
+      He[o] = n[o];
+    });
+  };
+  function Fr(t) {
+    var n = t.plugins || [], e = n.reduce(function(o, a) {
+      var c = a.name, d = a.defaultValue;
+      if (c) {
+        var p;
+        o[c] = t[c] !== void 0 ? t[c] : (p = He[c]) != null ? p : d;
+      }
+      return o;
+    }, {});
+    return Object.assign({}, t, e);
+  }
+  function no(t, n) {
+    var e = n ? Object.keys(Fr(Object.assign({}, He, { plugins: n }))) : eo, o = e.reduce(function(a, c) {
+      var d = (t.getAttribute("data-tippy-" + c) || "").trim();
+      if (!d)
+        return a;
+      if (c === "content")
+        a[c] = d;
+      else
+        try {
+          a[c] = JSON.parse(d);
+        } catch {
+          a[c] = d;
+        }
+      return a;
+    }, {});
+    return o;
+  }
+  function Mr(t, n) {
+    var e = Object.assign({}, n, { content: Lr(n.content, [t]) }, n.ignoreAttributes ? {} : no(t, n.plugins));
+    return e.aria = Object.assign({}, He.aria, e.aria), e.aria = { expanded: e.aria.expanded === "auto" ? n.interactive : e.aria.expanded, content: e.aria.content === "auto" ? n.interactive ? null : "describedby" : e.aria.content }, e;
+  }
+  var ro = function() {
+    return "innerHTML";
+  };
+  function Un(t, n) {
+    t[ro()] = n;
+  }
+  function Tr(t) {
+    var n = Wt();
+    return t === true ? n.className = Sr : (n.className = kr, an(t) ? n.appendChild(t) : Un(n, t)), n;
+  }
+  function Ar(t, n) {
+    an(n.content) ? (Un(t, ""), t.appendChild(n.content)) : typeof n.content != "function" && (n.allowHTML ? Un(t, n.content) : t.textContent = n.content);
+  }
+  function qn(t) {
+    var n = t.firstElementChild, e = on(n.children);
+    return { box: n, content: e.find(function(o) {
+      return o.classList.contains(Pr);
+    }), arrow: e.find(function(o) {
+      return o.classList.contains(Sr) || o.classList.contains(kr);
+    }), backdrop: e.find(function(o) {
+      return o.classList.contains(Ri);
+    }) };
+  }
+  function jr(t) {
+    var n = Wt(), e = Wt();
+    e.className = ji, e.setAttribute("data-state", "hidden"), e.setAttribute("tabindex", "-1");
+    var o = Wt();
+    o.className = Pr, o.setAttribute("data-state", "hidden"), Ar(o, t.props), n.appendChild(e), e.appendChild(o), a(t.props, t.props);
+    function a(c, d) {
+      var p = qn(n), u = p.box, b = p.content, h = p.arrow;
+      d.theme ? u.setAttribute("data-theme", d.theme) : u.removeAttribute("data-theme"), typeof d.animation == "string" ? u.setAttribute("data-animation", d.animation) : u.removeAttribute("data-animation"), d.inertia ? u.setAttribute("data-inertia", "") : u.removeAttribute("data-inertia"), u.style.maxWidth = typeof d.maxWidth == "number" ? d.maxWidth + "px" : d.maxWidth, d.role ? u.setAttribute("role", d.role) : u.removeAttribute("role"), (c.content !== d.content || c.allowHTML !== d.allowHTML) && Ar(b, t.props), d.arrow ? h ? c.arrow !== d.arrow && (u.removeChild(h), u.appendChild(Tr(d.arrow))) : u.appendChild(Tr(d.arrow)) : h && u.removeChild(h);
+    }
+    return { popper: n, onUpdate: a };
+  }
+  jr.$$tippy = true;
+  var io = 1;
+  var rn = [];
+  var $n = [];
+  function oo(t, n) {
+    var e = Mr(t, Object.assign({}, He, Fr(Dr(n)))), o, a, c, d = false, p = false, u = false, b = false, h, M, O, E = [], k = wr(Dt, e.interactiveDebounce), w, P = io++, V = null, I = Hi(e.plugins), _ = { isEnabled: true, isVisible: false, isDestroyed: false, isMounted: false, isShown: false }, l = { id: P, reference: t, popper: Wt(), popperInstance: V, props: e, state: _, plugins: I, clearDelayTimeouts: Et, setProps: dt, setContent: Ct, show: Xt, hide: En, hideWithInteractivity: Cn, enable: nt, disable: Xe, unmount: Kt, destroy: On };
+    if (!e.render)
+      return l;
+    var F = e.render(l), x = F.popper, H = F.onUpdate;
+    x.setAttribute("data-tippy-root", ""), x.id = "tippy-" + l.id, l.popper = x, t._tippy = l, x._tippy = l;
+    var Y = I.map(function(m) {
+      return m.fn(l);
+    }), A = t.hasAttribute("aria-expanded");
+    return Ue(), Oe(), q(), Z("onCreate", [l]), e.showOnCreate && tt(), x.addEventListener("mouseenter", function() {
+      l.props.interactive && l.state.isVisible && l.clearDelayTimeouts();
+    }), x.addEventListener("mouseleave", function() {
+      l.props.interactive && l.props.trigger.indexOf("mouseenter") >= 0 && le().addEventListener("mousemove", k);
+    }), l;
+    function N() {
+      var m = l.props.touch;
+      return Array.isArray(m) ? m : [m, 0];
+    }
+    function z() {
+      return N()[0] === "hold";
+    }
+    function B() {
+      var m;
+      return !!((m = l.props.render) != null && m.$$tippy);
+    }
+    function j() {
+      return w || t;
+    }
+    function le() {
+      var m = j().parentNode;
+      return m ? Ui(m) : document;
+    }
+    function ae() {
+      return qn(x);
+    }
+    function K(m) {
+      return l.state.isMounted && !l.state.isVisible || Ye.isTouch || h && h.type === "focus" ? 0 : Bn(l.props.delay, m ? 0 : 1, He.delay);
+    }
+    function q(m) {
+      m === void 0 && (m = false), x.style.pointerEvents = l.props.interactive && !m ? "" : "none", x.style.zIndex = "" + l.props.zIndex;
+    }
+    function Z(m, g, T) {
+      if (T === void 0 && (T = true), Y.forEach(function(W) {
+        W[m] && W[m].apply(W, g);
+      }), T) {
+        var $;
+        ($ = l.props)[m].apply($, g);
+      }
+    }
+    function De() {
+      var m = l.props.aria;
+      if (m.content) {
+        var g = "aria-" + m.content, T = x.id, $ = kt(l.props.triggerTarget || t);
+        $.forEach(function(W) {
+          var ee = W.getAttribute(g);
+          if (l.state.isVisible)
+            W.setAttribute(g, ee ? ee + " " + T : T);
+          else {
+            var pe = ee && ee.replace(T, "").trim();
+            pe ? W.setAttribute(g, pe) : W.removeAttribute(g);
+          }
+        });
+      }
+    }
+    function Oe() {
+      if (!(A || !l.props.aria.expanded)) {
+        var m = kt(l.props.triggerTarget || t);
+        m.forEach(function(g) {
+          l.props.interactive ? g.setAttribute("aria-expanded", l.state.isVisible && g === j() ? "true" : "false") : g.removeAttribute("aria-expanded");
+        });
+      }
+    }
+    function Se() {
+      le().removeEventListener("mousemove", k), rn = rn.filter(function(m) {
+        return m !== k;
+      });
+    }
+    function Me(m) {
+      if (!(Ye.isTouch && (u || m.type === "mousedown"))) {
+        var g = m.composedPath && m.composedPath()[0] || m.target;
+        if (!(l.props.interactive && Cr(x, g))) {
+          if (kt(l.props.triggerTarget || t).some(function(T) {
+            return Cr(T, g);
+          })) {
+            if (Ye.isTouch || l.state.isVisible && l.props.trigger.indexOf("click") >= 0)
+              return;
+          } else
+            Z("onClickOutside", [l, m]);
+          l.props.hideOnClick === true && (l.clearDelayTimeouts(), l.hide(), p = true, setTimeout(function() {
+            p = false;
+          }), l.state.isMounted || Ee());
+        }
+      }
+    }
+    function $e() {
+      u = true;
+    }
+    function ke() {
+      u = false;
+    }
+    function ue() {
+      var m = le();
+      m.addEventListener("mousedown", Me, true), m.addEventListener("touchend", Me, xt), m.addEventListener("touchstart", ke, xt), m.addEventListener("touchmove", $e, xt);
+    }
+    function Ee() {
+      var m = le();
+      m.removeEventListener("mousedown", Me, true), m.removeEventListener("touchend", Me, xt), m.removeEventListener("touchstart", ke, xt), m.removeEventListener("touchmove", $e, xt);
+    }
+    function Ne(m, g) {
+      Le(m, function() {
+        !l.state.isVisible && x.parentNode && x.parentNode.contains(x) && g();
+      });
+    }
+    function fe(m, g) {
+      Le(m, g);
+    }
+    function Le(m, g) {
+      var T = ae().box;
+      function $(W) {
+        W.target === T && (Yn(T, "remove", $), g());
+      }
+      if (m === 0)
+        return g();
+      Yn(T, "remove", M), Yn(T, "add", $), M = $;
+    }
+    function Ve(m, g, T) {
+      T === void 0 && (T = false);
+      var $ = kt(l.props.triggerTarget || t);
+      $.forEach(function(W) {
+        W.addEventListener(m, g, T), E.push({ node: W, eventType: m, handler: g, options: T });
+      });
+    }
+    function Ue() {
+      z() && (Ve("touchstart", ct, { passive: true }), Ve("touchend", lt, { passive: true })), _i(l.props.trigger).forEach(function(m) {
+        if (m !== "manual")
+          switch (Ve(m, ct), m) {
+            case "mouseenter":
+              Ve("mouseleave", lt);
+              break;
+            case "focus":
+              Ve(Gi ? "focusout" : "blur", ut);
+              break;
+            case "focusin":
+              Ve("focusout", ut);
+              break;
+          }
+      });
+    }
+    function qe() {
+      E.forEach(function(m) {
+        var g = m.node, T = m.eventType, $ = m.handler, W = m.options;
+        g.removeEventListener(T, $, W);
+      }), E = [];
+    }
+    function ct(m) {
+      var g, T = false;
+      if (!(!l.state.isEnabled || et(m) || p)) {
+        var $ = ((g = h) == null ? void 0 : g.type) === "focus";
+        h = m, w = m.currentTarget, Oe(), !l.state.isVisible && Wi(m) && rn.forEach(function(W) {
+          return W(m);
+        }), m.type === "click" && (l.props.trigger.indexOf("mouseenter") < 0 || d) && l.props.hideOnClick !== false && l.state.isVisible ? T = true : tt(m), m.type === "click" && (d = !T), T && !$ && Fe(m);
+      }
+    }
+    function Dt(m) {
+      var g = m.target, T = j().contains(g) || x.contains(g);
+      if (!(m.type === "mousemove" && T)) {
+        var $ = Be().concat(x).map(function(W) {
+          var ee, pe = W._tippy, me = (ee = pe.popperInstance) == null ? void 0 : ee.state;
+          return me ? { popperRect: W.getBoundingClientRect(), popperState: me, props: e } : null;
+        }).filter(Boolean);
+        qi($, m) && (Se(), Fe(m));
+      }
+    }
+    function lt(m) {
+      var g = et(m) || l.props.trigger.indexOf("click") >= 0 && d;
+      if (!g) {
+        if (l.props.interactive) {
+          l.hideWithInteractivity(m);
+          return;
+        }
+        Fe(m);
+      }
+    }
+    function ut(m) {
+      l.props.trigger.indexOf("focusin") < 0 && m.target !== j() || l.props.interactive && m.relatedTarget && x.contains(m.relatedTarget) || Fe(m);
+    }
+    function et(m) {
+      return Ye.isTouch ? z() !== m.type.indexOf("touch") >= 0 : false;
+    }
+    function ft() {
+      ze();
+      var m = l.props, g = m.popperOptions, T = m.placement, $ = m.offset, W = m.getReferenceClientRect, ee = m.moveTransition, pe = B() ? qn(x).arrow : null, me = W ? { getBoundingClientRect: W, contextElement: W.contextElement || j() } : t, Jt = { name: "$$tippy", enabled: true, phase: "beforeWrite", requires: ["computeStyles"], fn: function(i) {
+        var s = i.state;
+        if (B()) {
+          var f = ae(), v = f.box;
+          ["placement", "reference-hidden", "escaped"].forEach(function(y) {
+            y === "placement" ? v.setAttribute("data-placement", s.placement) : s.attributes.popper["data-popper-" + y] ? v.setAttribute("data-" + y, "") : v.removeAttribute("data-" + y);
+          }), s.attributes.popper = {};
+        }
+      } }, Ke = [{ name: "offset", options: { offset: $ } }, { name: "preventOverflow", options: { padding: { top: 2, bottom: 2, left: 5, right: 5 } } }, { name: "flip", options: { padding: 5 } }, { name: "computeStyles", options: { adaptive: !ee } }, Jt];
+      B() && pe && Ke.push({ name: "arrow", options: { element: pe, padding: 3 } }), Ke.push.apply(Ke, g?.modifiers || []), l.popperInstance = Vn(me, x, Object.assign({}, g, { placement: T, onFirstUpdate: O, modifiers: Ke }));
+    }
+    function ze() {
+      l.popperInstance && (l.popperInstance.destroy(), l.popperInstance = null);
+    }
+    function Ie() {
+      var m = l.props.appendTo, g, T = j();
+      l.props.interactive && m === Nr || m === "parent" ? g = T.parentNode : g = Lr(m, [T]), g.contains(x) || g.appendChild(x), l.state.isMounted = true, ft();
+    }
+    function Be() {
+      return on(x.querySelectorAll("[data-tippy-root]"));
+    }
+    function tt(m) {
+      l.clearDelayTimeouts(), m && Z("onTrigger", [l, m]), ue();
+      var g = K(true), T = N(), $ = T[0], W = T[1];
+      Ye.isTouch && $ === "hold" && W && (g = W), g ? o = setTimeout(function() {
+        l.show();
+      }, g) : l.show();
+    }
+    function Fe(m) {
+      if (l.clearDelayTimeouts(), Z("onUntrigger", [l, m]), !l.state.isVisible) {
+        Ee();
+        return;
+      }
+      if (!(l.props.trigger.indexOf("mouseenter") >= 0 && l.props.trigger.indexOf("click") >= 0 && ["mouseleave", "mousemove"].indexOf(m.type) >= 0 && d)) {
+        var g = K(false);
+        g ? a = setTimeout(function() {
+          l.state.isVisible && l.hide();
+        }, g) : c = requestAnimationFrame(function() {
+          l.hide();
+        });
+      }
+    }
+    function nt() {
+      l.state.isEnabled = true;
+    }
+    function Xe() {
+      l.hide(), l.state.isEnabled = false;
+    }
+    function Et() {
+      clearTimeout(o), clearTimeout(a), cancelAnimationFrame(c);
+    }
+    function dt(m) {
+      if (!l.state.isDestroyed) {
+        Z("onBeforeUpdate", [l, m]), qe();
+        var g = l.props, T = Mr(t, Object.assign({}, g, Dr(m), { ignoreAttributes: true }));
+        l.props = T, Ue(), g.interactiveDebounce !== T.interactiveDebounce && (Se(), k = wr(Dt, T.interactiveDebounce)), g.triggerTarget && !T.triggerTarget ? kt(g.triggerTarget).forEach(function($) {
+          $.removeAttribute("aria-expanded");
+        }) : T.triggerTarget && t.removeAttribute("aria-expanded"), Oe(), q(), H && H(g, T), l.popperInstance && (ft(), Be().forEach(function($) {
+          requestAnimationFrame($._tippy.popperInstance.forceUpdate);
+        })), Z("onAfterUpdate", [l, m]);
+      }
+    }
+    function Ct(m) {
+      l.setProps({ content: m });
+    }
+    function Xt() {
+      var m = l.state.isVisible, g = l.state.isDestroyed, T = !l.state.isEnabled, $ = Ye.isTouch && !l.props.touch, W = Bn(l.props.duration, 0, He.duration);
+      if (!(m || g || T || $) && !j().hasAttribute("disabled") && (Z("onShow", [l], false), l.props.onShow(l) !== false)) {
+        if (l.state.isVisible = true, B() && (x.style.visibility = "visible"), q(), ue(), l.state.isMounted || (x.style.transition = "none"), B()) {
+          var ee = ae(), pe = ee.box, me = ee.content;
+          Wn([pe, me], 0);
+        }
+        O = function() {
+          var Ke;
+          if (!(!l.state.isVisible || b)) {
+            if (b = true, x.offsetHeight, x.style.transition = l.props.moveTransition, B() && l.props.animation) {
+              var r = ae(), i = r.box, s = r.content;
+              Wn([i, s], W), Er([i, s], "visible");
+            }
+            De(), Oe(), xr($n, l), (Ke = l.popperInstance) == null || Ke.forceUpdate(), Z("onMount", [l]), l.props.animation && B() && fe(W, function() {
+              l.state.isShown = true, Z("onShown", [l]);
+            });
+          }
+        }, Ie();
+      }
+    }
+    function En() {
+      var m = !l.state.isVisible, g = l.state.isDestroyed, T = !l.state.isEnabled, $ = Bn(l.props.duration, 1, He.duration);
+      if (!(m || g || T) && (Z("onHide", [l], false), l.props.onHide(l) !== false)) {
+        if (l.state.isVisible = false, l.state.isShown = false, b = false, d = false, B() && (x.style.visibility = "hidden"), Se(), Ee(), q(true), B()) {
+          var W = ae(), ee = W.box, pe = W.content;
+          l.props.animation && (Wn([ee, pe], $), Er([ee, pe], "hidden"));
+        }
+        De(), Oe(), l.props.animation ? B() && Ne($, l.unmount) : l.unmount();
+      }
+    }
+    function Cn(m) {
+      le().addEventListener("mousemove", k), xr(rn, k), k(m);
+    }
+    function Kt() {
+      l.state.isVisible && l.hide(), l.state.isMounted && (ze(), Be().forEach(function(m) {
+        m._tippy.unmount();
+      }), x.parentNode && x.parentNode.removeChild(x), $n = $n.filter(function(m) {
+        return m !== l;
+      }), l.state.isMounted = false, Z("onHidden", [l]));
+    }
+    function On() {
+      l.state.isDestroyed || (l.clearDelayTimeouts(), l.unmount(), qe(), delete t._tippy, l.state.isDestroyed = true, Z("onDestroy", [l]));
+    }
+  }
+  function Yt(t, n) {
+    n === void 0 && (n = {});
+    var e = He.plugins.concat(n.plugins || []);
+    Ki();
+    var o = Object.assign({}, n, { plugins: e }), a = $i(t);
+    if (0)
+      var c, d;
+    var p = a.reduce(function(u, b) {
+      var h = b && oo(b, o);
+      return h && u.push(h), u;
+    }, []);
+    return an(t) ? p[0] : p;
+  }
+  Yt.defaultProps = He;
+  Yt.setDefaultProps = to;
+  Yt.currentInput = Ye;
+  var Ol = Object.assign({}, Ft, { effect: function(n) {
+    var e = n.state, o = { popper: { position: e.options.strategy, left: "0", top: "0", margin: "0" }, arrow: { position: "absolute" }, reference: {} };
+    Object.assign(e.elements.popper.style, o.popper), e.styles = o, e.elements.arrow && Object.assign(e.elements.arrow.style, o.arrow);
+  } });
+  Yt.setDefaultProps({ render: jr });
+  var sn = Yt;
+  var cn = class extends Controller {
+    copy(t) {
+      t.preventDefault(), navigator.clipboard.writeText(this.textToCopy), this.showFeedback(t.currentTarget, "Copied!");
+    }
+    get textToCopy() {
+      let { value: t, innerText: n } = this.contentTarget;
+      return t || n;
+    }
+    showFeedback(t, n) {
+      sn(t, { content: n, showOnCreate: true, onHidden: (e) => {
+        e.destroy();
+      } });
+    }
+  };
+  re(cn, "targets", ["content"]);
+  var ln = class extends Controller {
+    connect() {
+      this.createObserver();
+    }
+    createObserver() {
+      let t = { root: null, rootMargin: "0px", threshold: 0.1 };
+      this.observer = new IntersectionObserver(this.handleIntersect.bind(this), t), this.observer.observe(this.element);
+    }
+    handleIntersect(t) {
+      t.forEach((n) => {
+        n.isIntersecting && (this.animateCountUp(), this.observer.unobserve(this.element));
+      });
+    }
+    animateCountUp() {
+      let n = this.targetValue, e = this.durationValue, o = 60, a = Math.round(e / 1e3 * o), c = (n - 0) / a, d = 0, p = 0, u = setInterval(() => {
+        d += c, p++, p >= a && (clearInterval(u), d = n), this.updateDisplay(d);
+      }, 1e3 / o);
+    }
+    updateDisplay(t) {
+      this.hasPercentage() ? this.element.textContent = `${t.toFixed(1)}%` : this.element.textContent = this.formatNumber(t);
+    }
+    hasPercentage() {
+      return this.element.dataset.railsuiCountUp && this.element.dataset.railsuiCountUp.includes("%");
+    }
+    formatNumber(t) {
+      return Math.round(t).toLocaleString();
+    }
+  };
+  re(ln, "values", { target: Number, duration: { type: Number, default: 2e3 } });
+  var un = ["onChange", "onClose", "onDayCreate", "onDestroy", "onKeyDown", "onMonthChange", "onOpen", "onParseConfig", "onReady", "onValueUpdate", "onYearChange", "onPreCalendarPosition"];
+  var ot = { _disable: [], allowInput: false, allowInvalidPreload: false, altFormat: "F j, Y", altInput: false, altInputClass: "form-control input", animate: typeof window == "object" && window.navigator.userAgent.indexOf("MSIE") === -1, ariaDateFormat: "F j, Y", autoFillDefaultTime: true, clickOpens: true, closeOnSelect: true, conjunction: ", ", dateFormat: "Y-m-d", defaultHour: 12, defaultMinute: 0, defaultSeconds: 0, disable: [], disableMobile: false, enableSeconds: false, enableTime: false, errorHandler: function(t) {
+    return typeof console < "u" && console.warn(t);
+  }, getWeek: function(t) {
+    var n = new Date(t.getTime());
+    n.setHours(0, 0, 0, 0), n.setDate(n.getDate() + 3 - (n.getDay() + 6) % 7);
+    var e = new Date(n.getFullYear(), 0, 4);
+    return 1 + Math.round(((n.getTime() - e.getTime()) / 864e5 - 3 + (e.getDay() + 6) % 7) / 7);
+  }, hourIncrement: 1, ignoredFocusElements: [], inline: false, locale: "default", minuteIncrement: 5, mode: "single", monthSelectorType: "dropdown", nextArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z' /></svg>", noCalendar: false, now: /* @__PURE__ */ new Date(), onChange: [], onClose: [], onDayCreate: [], onDestroy: [], onKeyDown: [], onMonthChange: [], onOpen: [], onParseConfig: [], onReady: [], onValueUpdate: [], onYearChange: [], onPreCalendarPosition: [], plugins: [], position: "auto", positionElement: void 0, prevArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z' /></svg>", shorthandCurrentMonth: false, showMonths: 1, static: false, time_24hr: false, weekNumbers: false, wrap: false };
+  var fn = { weekdays: { shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], longhand: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] }, months: { shorthand: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], longhand: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] }, daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], firstDayOfWeek: 0, ordinal: function(t) {
+    var n = t % 100;
+    if (n > 3 && n < 21)
+      return "th";
+    switch (n % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  }, rangeSeparator: " to ", weekAbbreviation: "Wk", scrollTitle: "Scroll to increment", toggleTitle: "Click to toggle", amPM: ["AM", "PM"], yearAriaLabel: "Year", monthAriaLabel: "Month", hourAriaLabel: "Hour", minuteAriaLabel: "Minute", time_24hr: false };
+  var dn = fn;
+  var he = function(t, n) {
+    return n === void 0 && (n = 2), ("000" + t).slice(n * -1);
+  };
+  var ye = function(t) {
+    return t === true ? 1 : 0;
+  };
+  function Xn(t, n) {
+    var e;
+    return function() {
+      var o = this, a = arguments;
+      clearTimeout(e), e = setTimeout(function() {
+        return t.apply(o, a);
+      }, n);
+    };
+  }
+  var pn = function(t) {
+    return t instanceof Array ? t : [t];
+  };
+  function ve(t, n, e) {
+    if (e === true)
+      return t.classList.add(n);
+    t.classList.remove(n);
+  }
+  function U(t, n, e) {
+    var o = window.document.createElement(t);
+    return n = n || "", e = e || "", o.className = n, e !== void 0 && (o.textContent = e), o;
+  }
+  function $t(t) {
+    for (; t.firstChild; )
+      t.removeChild(t.firstChild);
+  }
+  function Kn(t, n) {
+    if (n(t))
+      return t;
+    if (t.parentNode)
+      return Kn(t.parentNode, n);
+  }
+  function Ut(t, n) {
+    var e = U("div", "numInputWrapper"), o = U("input", "numInput " + t), a = U("span", "arrowUp"), c = U("span", "arrowDown");
+    if (navigator.userAgent.indexOf("MSIE 9.0") === -1 ? o.type = "number" : (o.type = "text", o.pattern = "\\d*"), n !== void 0)
+      for (var d in n)
+        o.setAttribute(d, n[d]);
+    return e.appendChild(o), e.appendChild(a), e.appendChild(c), e;
+  }
+  function we(t) {
+    try {
+      if (typeof t.composedPath == "function") {
+        var n = t.composedPath();
+        return n[0];
+      }
+      return t.target;
+    } catch {
+      return t.target;
+    }
+  }
+  var Jn = function() {
+  };
+  var qt = function(t, n, e) {
+    return e.months[n ? "shorthand" : "longhand"][t];
+  };
+  var Rr = { D: Jn, F: function(t, n, e) {
+    t.setMonth(e.months.longhand.indexOf(n));
+  }, G: function(t, n) {
+    t.setHours((t.getHours() >= 12 ? 12 : 0) + parseFloat(n));
+  }, H: function(t, n) {
+    t.setHours(parseFloat(n));
+  }, J: function(t, n) {
+    t.setDate(parseFloat(n));
+  }, K: function(t, n, e) {
+    t.setHours(t.getHours() % 12 + 12 * ye(new RegExp(e.amPM[1], "i").test(n)));
+  }, M: function(t, n, e) {
+    t.setMonth(e.months.shorthand.indexOf(n));
+  }, S: function(t, n) {
+    t.setSeconds(parseFloat(n));
+  }, U: function(t, n) {
+    return new Date(parseFloat(n) * 1e3);
+  }, W: function(t, n, e) {
+    var o = parseInt(n), a = new Date(t.getFullYear(), 0, 2 + (o - 1) * 7, 0, 0, 0, 0);
+    return a.setDate(a.getDate() - a.getDay() + e.firstDayOfWeek), a;
+  }, Y: function(t, n) {
+    t.setFullYear(parseFloat(n));
+  }, Z: function(t, n) {
+    return new Date(n);
+  }, d: function(t, n) {
+    t.setDate(parseFloat(n));
+  }, h: function(t, n) {
+    t.setHours((t.getHours() >= 12 ? 12 : 0) + parseFloat(n));
+  }, i: function(t, n) {
+    t.setMinutes(parseFloat(n));
+  }, j: function(t, n) {
+    t.setDate(parseFloat(n));
+  }, l: Jn, m: function(t, n) {
+    t.setMonth(parseFloat(n) - 1);
+  }, n: function(t, n) {
+    t.setMonth(parseFloat(n) - 1);
+  }, s: function(t, n) {
+    t.setSeconds(parseFloat(n));
+  }, u: function(t, n) {
+    return new Date(parseFloat(n));
+  }, w: Jn, y: function(t, n) {
+    t.setFullYear(2e3 + parseFloat(n));
+  } };
+  var Ze = { D: "", F: "", G: "(\\d\\d|\\d)", H: "(\\d\\d|\\d)", J: "(\\d\\d|\\d)\\w+", K: "", M: "", S: "(\\d\\d|\\d)", U: "(.+)", W: "(\\d\\d|\\d)", Y: "(\\d{4})", Z: "(.+)", d: "(\\d\\d|\\d)", h: "(\\d\\d|\\d)", i: "(\\d\\d|\\d)", j: "(\\d\\d|\\d)", l: "", m: "(\\d\\d|\\d)", n: "(\\d\\d|\\d)", s: "(\\d\\d|\\d)", u: "(.+)", w: "(\\d\\d|\\d)", y: "(\\d{2})" };
+  var Nt = { Z: function(t) {
+    return t.toISOString();
+  }, D: function(t, n, e) {
+    return n.weekdays.shorthand[Nt.w(t, n, e)];
+  }, F: function(t, n, e) {
+    return qt(Nt.n(t, n, e) - 1, false, n);
+  }, G: function(t, n, e) {
+    return he(Nt.h(t, n, e));
+  }, H: function(t) {
+    return he(t.getHours());
+  }, J: function(t, n) {
+    return n.ordinal !== void 0 ? t.getDate() + n.ordinal(t.getDate()) : t.getDate();
+  }, K: function(t, n) {
+    return n.amPM[ye(t.getHours() > 11)];
+  }, M: function(t, n) {
+    return qt(t.getMonth(), true, n);
+  }, S: function(t) {
+    return he(t.getSeconds());
+  }, U: function(t) {
+    return t.getTime() / 1e3;
+  }, W: function(t, n, e) {
+    return e.getWeek(t);
+  }, Y: function(t) {
+    return he(t.getFullYear(), 4);
+  }, d: function(t) {
+    return he(t.getDate());
+  }, h: function(t) {
+    return t.getHours() % 12 ? t.getHours() % 12 : 12;
+  }, i: function(t) {
+    return he(t.getMinutes());
+  }, j: function(t) {
+    return t.getDate();
+  }, l: function(t, n) {
+    return n.weekdays.longhand[t.getDay()];
+  }, m: function(t) {
+    return he(t.getMonth() + 1);
+  }, n: function(t) {
+    return t.getMonth() + 1;
+  }, s: function(t) {
+    return t.getSeconds();
+  }, u: function(t) {
+    return t.getTime();
+  }, w: function(t) {
+    return t.getDay();
+  }, y: function(t) {
+    return String(t.getFullYear()).substring(2);
+  } };
+  var Gn = function(t) {
+    var n = t.config, e = n === void 0 ? ot : n, o = t.l10n, a = o === void 0 ? fn : o, c = t.isMobile, d = c === void 0 ? false : c;
+    return function(p, u, b) {
+      var h = b || a;
+      return e.formatDate !== void 0 && !d ? e.formatDate(p, u, h) : u.split("").map(function(M, O, E) {
+        return Nt[M] && E[O - 1] !== "\\" ? Nt[M](p, h, e) : M !== "\\" ? M : "";
+      }).join("");
+    };
+  };
+  var mn = function(t) {
+    var n = t.config, e = n === void 0 ? ot : n, o = t.l10n, a = o === void 0 ? fn : o;
+    return function(c, d, p, u) {
+      if (!(c !== 0 && !c)) {
+        var b = u || a, h, M = c;
+        if (c instanceof Date)
+          h = new Date(c.getTime());
+        else if (typeof c != "string" && c.toFixed !== void 0)
+          h = new Date(c);
+        else if (typeof c == "string") {
+          var O = d || (e || ot).dateFormat, E = String(c).trim();
+          if (E === "today")
+            h = /* @__PURE__ */ new Date(), p = true;
+          else if (e && e.parseDate)
+            h = e.parseDate(c, O);
+          else if (/Z$/.test(E) || /GMT$/.test(E))
+            h = new Date(c);
+          else {
+            for (var k = void 0, w = [], P = 0, V = 0, I = ""; P < O.length; P++) {
+              var _ = O[P], l = _ === "\\", F = O[P - 1] === "\\" || l;
+              if (Ze[_] && !F) {
+                I += Ze[_];
+                var x = new RegExp(I).exec(c);
+                x && (k = true) && w[_ !== "Y" ? "push" : "unshift"]({ fn: Rr[_], val: x[++V] });
+              } else
+                l || (I += ".");
+            }
+            h = !e || !e.noCalendar ? new Date((/* @__PURE__ */ new Date()).getFullYear(), 0, 1, 0, 0, 0, 0) : new Date((/* @__PURE__ */ new Date()).setHours(0, 0, 0, 0)), w.forEach(function(H) {
+              var Y = H.fn, A = H.val;
+              return h = Y(h, A, b) || h;
+            }), h = k ? h : void 0;
+          }
+        }
+        if (!(h instanceof Date && !isNaN(h.getTime()))) {
+          e.errorHandler(new Error("Invalid date provided: " + M));
+          return;
+        }
+        return p === true && h.setHours(0, 0, 0, 0), h;
+      }
+    };
+  };
+  function xe(t, n, e) {
+    return e === void 0 && (e = true), e !== false ? new Date(t.getTime()).setHours(0, 0, 0, 0) - new Date(n.getTime()).setHours(0, 0, 0, 0) : t.getTime() - n.getTime();
+  }
+  var _r = function(t, n, e) {
+    return t > Math.min(n, e) && t < Math.max(n, e);
+  };
+  var hn = function(t, n, e) {
+    return t * 3600 + n * 60 + e;
+  };
+  var Hr = function(t) {
+    var n = Math.floor(t / 3600), e = (t - n * 3600) / 60;
+    return [n, e, t - n * 3600 - e * 60];
+  };
+  var Vr = { DAY: 864e5 };
+  function vn(t) {
+    var n = t.defaultHour, e = t.defaultMinute, o = t.defaultSeconds;
+    if (t.minDate !== void 0) {
+      var a = t.minDate.getHours(), c = t.minDate.getMinutes(), d = t.minDate.getSeconds();
+      n < a && (n = a), n === a && e < c && (e = c), n === a && e === c && o < d && (o = t.minDate.getSeconds());
+    }
+    if (t.maxDate !== void 0) {
+      var p = t.maxDate.getHours(), u = t.maxDate.getMinutes();
+      n = Math.min(n, p), n === p && (e = Math.min(u, e)), n === p && e === u && (o = t.maxDate.getSeconds());
+    }
+    return { hours: n, minutes: e, seconds: o };
+  }
+  typeof Object.assign != "function" && (Object.assign = function(t) {
+    for (var n = [], e = 1; e < arguments.length; e++)
+      n[e - 1] = arguments[e];
+    if (!t)
+      throw TypeError("Cannot convert undefined or null to object");
+    for (var o = function(p) {
+      p && Object.keys(p).forEach(function(u) {
+        return t[u] = p[u];
+      });
+    }, a = 0, c = n; a < c.length; a++) {
+      var d = c[a];
+      o(d);
+    }
+    return t;
+  });
+  var ge = function() {
+    return ge = Object.assign || function(t) {
+      for (var n, e = 1, o = arguments.length; e < o; e++) {
+        n = arguments[e];
+        for (var a in n)
+          Object.prototype.hasOwnProperty.call(n, a) && (t[a] = n[a]);
+      }
+      return t;
+    }, ge.apply(this, arguments);
+  };
+  var Br = function() {
+    for (var t = 0, n = 0, e = arguments.length; n < e; n++)
+      t += arguments[n].length;
+    for (var o = Array(t), a = 0, n = 0; n < e; n++)
+      for (var c = arguments[n], d = 0, p = c.length; d < p; d++, a++)
+        o[a] = c[d];
+    return o;
+  };
+  var co = 300;
+  function lo(t, n) {
+    var e = { config: ge(ge({}, ot), ne.defaultConfig), l10n: dn };
+    e.parseDate = mn({ config: e.config, l10n: e.l10n }), e._handlers = [], e.pluginElements = [], e.loadedPlugins = [], e._bind = w, e._setHoursFromDate = O, e._positionCalendar = ze, e.changeMonth = Se, e.changeYear = Ne, e.clear = Me, e.close = $e, e.onMouseOver = qe, e._createElement = U, e.createDay = x, e.destroy = ke, e.isEnabled = fe, e.jumpToDate = I, e.updateValue = me, e.open = Dt, e.redraw = tt, e.set = Et, e.setDate = Ct, e.toggle = m;
+    function o() {
+      e.utils = { getDaysInMonth: function(r, i) {
+        return r === void 0 && (r = e.currentMonth), i === void 0 && (i = e.currentYear), r === 1 && (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) ? 29 : e.l10n.daysInMonth[r];
+      } };
+    }
+    function a() {
+      e.element = e.input = t, e.isOpen = false, ut(), ft(), Cn(), En(), o(), e.isMobile || F(), V(), (e.selectedDates.length || e.config.noCalendar) && (e.config.enableTime && O(e.config.noCalendar ? e.latestSelectedDateObj : void 0), me(false)), p();
+      var r = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      !e.isMobile && r && ze(), g("onReady");
+    }
+    function c() {
+      var r;
+      return ((r = e.calendarContainer) === null || r === void 0 ? void 0 : r.getRootNode()).activeElement || document.activeElement;
+    }
+    function d(r) {
+      return r.bind(e);
+    }
+    function p() {
+      var r = e.config;
+      r.weekNumbers === false && r.showMonths === 1 || r.noCalendar !== true && window.requestAnimationFrame(function() {
+        if (e.calendarContainer !== void 0 && (e.calendarContainer.style.visibility = "hidden", e.calendarContainer.style.display = "block"), e.daysContainer !== void 0) {
+          var i = (e.days.offsetWidth + 1) * r.showMonths;
+          e.daysContainer.style.width = i + "px", e.calendarContainer.style.width = i + (e.weekWrapper !== void 0 ? e.weekWrapper.offsetWidth : 0) + "px", e.calendarContainer.style.removeProperty("visibility"), e.calendarContainer.style.removeProperty("display");
+        }
+      });
+    }
+    function u(r) {
+      if (e.selectedDates.length === 0) {
+        var i = e.config.minDate === void 0 || xe(/* @__PURE__ */ new Date(), e.config.minDate) >= 0 ? /* @__PURE__ */ new Date() : new Date(e.config.minDate.getTime()), s = vn(e.config);
+        i.setHours(s.hours, s.minutes, s.seconds, i.getMilliseconds()), e.selectedDates = [i], e.latestSelectedDateObj = i;
+      }
+      r !== void 0 && r.type !== "blur" && Ke(r);
+      var f = e._input.value;
+      M(), me(), e._input.value !== f && e._debouncedChange();
+    }
+    function b(r, i) {
+      return r % 12 + 12 * ye(i === e.l10n.amPM[1]);
+    }
+    function h(r) {
+      switch (r % 24) {
+        case 0:
+        case 12:
+          return 12;
+        default:
+          return r % 12;
+      }
+    }
+    function M() {
+      if (!(e.hourElement === void 0 || e.minuteElement === void 0)) {
+        var r = (parseInt(e.hourElement.value.slice(-2), 10) || 0) % 24, i = (parseInt(e.minuteElement.value, 10) || 0) % 60, s = e.secondElement !== void 0 ? (parseInt(e.secondElement.value, 10) || 0) % 60 : 0;
+        e.amPM !== void 0 && (r = b(r, e.amPM.textContent));
+        var f = e.config.minTime !== void 0 || e.config.minDate && e.minDateHasTime && e.latestSelectedDateObj && xe(e.latestSelectedDateObj, e.config.minDate, true) === 0, v = e.config.maxTime !== void 0 || e.config.maxDate && e.maxDateHasTime && e.latestSelectedDateObj && xe(e.latestSelectedDateObj, e.config.maxDate, true) === 0;
+        if (e.config.maxTime !== void 0 && e.config.minTime !== void 0 && e.config.minTime > e.config.maxTime) {
+          var y = hn(e.config.minTime.getHours(), e.config.minTime.getMinutes(), e.config.minTime.getSeconds()), L = hn(e.config.maxTime.getHours(), e.config.maxTime.getMinutes(), e.config.maxTime.getSeconds()), C = hn(r, i, s);
+          if (C > L && C < y) {
+            var R = Hr(y);
+            r = R[0], i = R[1], s = R[2];
+          }
+        } else {
+          if (v) {
+            var D = e.config.maxTime !== void 0 ? e.config.maxTime : e.config.maxDate;
+            r = Math.min(r, D.getHours()), r === D.getHours() && (i = Math.min(i, D.getMinutes())), i === D.getMinutes() && (s = Math.min(s, D.getSeconds()));
+          }
+          if (f) {
+            var S = e.config.minTime !== void 0 ? e.config.minTime : e.config.minDate;
+            r = Math.max(r, S.getHours()), r === S.getHours() && i < S.getMinutes() && (i = S.getMinutes()), i === S.getMinutes() && (s = Math.max(s, S.getSeconds()));
+          }
+        }
+        E(r, i, s);
+      }
+    }
+    function O(r) {
+      var i = r || e.latestSelectedDateObj;
+      i && i instanceof Date && E(i.getHours(), i.getMinutes(), i.getSeconds());
+    }
+    function E(r, i, s) {
+      e.latestSelectedDateObj !== void 0 && e.latestSelectedDateObj.setHours(r % 24, i, s || 0, 0), !(!e.hourElement || !e.minuteElement || e.isMobile) && (e.hourElement.value = he(e.config.time_24hr ? r : (12 + r) % 12 + 12 * ye(r % 12 === 0)), e.minuteElement.value = he(i), e.amPM !== void 0 && (e.amPM.textContent = e.l10n.amPM[ye(r >= 12)]), e.secondElement !== void 0 && (e.secondElement.value = he(s)));
+    }
+    function k(r) {
+      var i = we(r), s = parseInt(i.value) + (r.delta || 0);
+      (s / 1e3 > 1 || r.key === "Enter" && !/[^\d]/.test(s.toString())) && Ne(s);
+    }
+    function w(r, i, s, f) {
+      if (i instanceof Array)
+        return i.forEach(function(v) {
+          return w(r, v, s, f);
+        });
+      if (r instanceof Array)
+        return r.forEach(function(v) {
+          return w(v, i, s, f);
+        });
+      r.addEventListener(i, s, f), e._handlers.push({ remove: function() {
+        return r.removeEventListener(i, s, f);
+      } });
+    }
+    function P() {
+      g("onChange");
+    }
+    function V() {
+      if (e.config.wrap && ["open", "close", "toggle", "clear"].forEach(function(s) {
+        Array.prototype.forEach.call(e.element.querySelectorAll("[data-" + s + "]"), function(f) {
+          return w(f, "click", e[s]);
+        });
+      }), e.isMobile) {
+        On();
+        return;
+      }
+      var r = Xn(ct, 50);
+      if (e._debouncedChange = Xn(P, co), e.daysContainer && !/iPhone|iPad|iPod/i.test(navigator.userAgent) && w(e.daysContainer, "mouseover", function(s) {
+        e.config.mode === "range" && qe(we(s));
+      }), w(e._input, "keydown", Ue), e.calendarContainer !== void 0 && w(e.calendarContainer, "keydown", Ue), !e.config.inline && !e.config.static && w(window, "resize", r), window.ontouchstart !== void 0 ? w(window.document, "touchstart", Ee) : w(window.document, "mousedown", Ee), w(window.document, "focus", Ee, { capture: true }), e.config.clickOpens === true && (w(e._input, "focus", e.open), w(e._input, "click", e.open)), e.daysContainer !== void 0 && (w(e.monthNav, "click", Jt), w(e.monthNav, ["keyup", "increment"], k), w(e.daysContainer, "click", nt)), e.timeContainer !== void 0 && e.minuteElement !== void 0 && e.hourElement !== void 0) {
+        var i = function(s) {
+          return we(s).select();
+        };
+        w(e.timeContainer, ["increment"], u), w(e.timeContainer, "blur", u, { capture: true }), w(e.timeContainer, "click", _), w([e.hourElement, e.minuteElement], ["focus", "click"], i), e.secondElement !== void 0 && w(e.secondElement, "focus", function() {
+          return e.secondElement && e.secondElement.select();
+        }), e.amPM !== void 0 && w(e.amPM, "click", function(s) {
+          u(s);
+        });
+      }
+      e.config.allowInput && w(e._input, "blur", Ve);
+    }
+    function I(r, i) {
+      var s = r !== void 0 ? e.parseDate(r) : e.latestSelectedDateObj || (e.config.minDate && e.config.minDate > e.now ? e.config.minDate : e.config.maxDate && e.config.maxDate < e.now ? e.config.maxDate : e.now), f = e.currentYear, v = e.currentMonth;
+      try {
+        s !== void 0 && (e.currentYear = s.getFullYear(), e.currentMonth = s.getMonth());
+      } catch (y) {
+        y.message = "Invalid date supplied: " + s, e.config.errorHandler(y);
+      }
+      i && e.currentYear !== f && (g("onYearChange"), j()), i && (e.currentYear !== f || e.currentMonth !== v) && g("onMonthChange"), e.redraw();
+    }
+    function _(r) {
+      var i = we(r);
+      ~i.className.indexOf("arrow") && l(r, i.classList.contains("arrowUp") ? 1 : -1);
+    }
+    function l(r, i, s) {
+      var f = r && we(r), v = s || f && f.parentNode && f.parentNode.firstChild, y = T("increment");
+      y.delta = i, v && v.dispatchEvent(y);
+    }
+    function F() {
+      var r = window.document.createDocumentFragment();
+      if (e.calendarContainer = U("div", "flatpickr-calendar"), e.calendarContainer.tabIndex = -1, !e.config.noCalendar) {
+        if (r.appendChild(K()), e.innerContainer = U("div", "flatpickr-innerContainer"), e.config.weekNumbers) {
+          var i = Oe(), s = i.weekWrapper, f = i.weekNumbers;
+          e.innerContainer.appendChild(s), e.weekNumbers = f, e.weekWrapper = s;
+        }
+        e.rContainer = U("div", "flatpickr-rContainer"), e.rContainer.appendChild(Z()), e.daysContainer || (e.daysContainer = U("div", "flatpickr-days"), e.daysContainer.tabIndex = -1), B(), e.rContainer.appendChild(e.daysContainer), e.innerContainer.appendChild(e.rContainer), r.appendChild(e.innerContainer);
+      }
+      e.config.enableTime && r.appendChild(q()), ve(e.calendarContainer, "rangeMode", e.config.mode === "range"), ve(e.calendarContainer, "animate", e.config.animate === true), ve(e.calendarContainer, "multiMonth", e.config.showMonths > 1), e.calendarContainer.appendChild(r);
+      var v = e.config.appendTo !== void 0 && e.config.appendTo.nodeType !== void 0;
+      if ((e.config.inline || e.config.static) && (e.calendarContainer.classList.add(e.config.inline ? "inline" : "static"), e.config.inline && (!v && e.element.parentNode ? e.element.parentNode.insertBefore(e.calendarContainer, e._input.nextSibling) : e.config.appendTo !== void 0 && e.config.appendTo.appendChild(e.calendarContainer)), e.config.static)) {
+        var y = U("div", "flatpickr-wrapper");
+        e.element.parentNode && e.element.parentNode.insertBefore(y, e.element), y.appendChild(e.element), e.altInput && y.appendChild(e.altInput), y.appendChild(e.calendarContainer);
+      }
+      !e.config.static && !e.config.inline && (e.config.appendTo !== void 0 ? e.config.appendTo : window.document.body).appendChild(e.calendarContainer);
+    }
+    function x(r, i, s, f) {
+      var v = fe(i, true), y = U("span", r, i.getDate().toString());
+      return y.dateObj = i, y.$i = f, y.setAttribute("aria-label", e.formatDate(i, e.config.ariaDateFormat)), r.indexOf("hidden") === -1 && xe(i, e.now) === 0 && (e.todayDateElem = y, y.classList.add("today"), y.setAttribute("aria-current", "date")), v ? (y.tabIndex = -1, $(i) && (y.classList.add("selected"), e.selectedDateElem = y, e.config.mode === "range" && (ve(y, "startRange", e.selectedDates[0] && xe(i, e.selectedDates[0], true) === 0), ve(y, "endRange", e.selectedDates[1] && xe(i, e.selectedDates[1], true) === 0), r === "nextMonthDay" && y.classList.add("inRange")))) : y.classList.add("flatpickr-disabled"), e.config.mode === "range" && W(i) && !$(i) && y.classList.add("inRange"), e.weekNumbers && e.config.showMonths === 1 && r !== "prevMonthDay" && f % 7 === 6 && e.weekNumbers.insertAdjacentHTML("beforeend", "<span class='flatpickr-day'>" + e.config.getWeek(i) + "</span>"), g("onDayCreate", y), y;
+    }
+    function H(r) {
+      r.focus(), e.config.mode === "range" && qe(r);
+    }
+    function Y(r) {
+      for (var i = r > 0 ? 0 : e.config.showMonths - 1, s = r > 0 ? e.config.showMonths : -1, f = i; f != s; f += r)
+        for (var v = e.daysContainer.children[f], y = r > 0 ? 0 : v.children.length - 1, L = r > 0 ? v.children.length : -1, C = y; C != L; C += r) {
+          var R = v.children[C];
+          if (R.className.indexOf("hidden") === -1 && fe(R.dateObj))
+            return R;
+        }
+    }
+    function A(r, i) {
+      for (var s = r.className.indexOf("Month") === -1 ? r.dateObj.getMonth() : e.currentMonth, f = i > 0 ? e.config.showMonths : -1, v = i > 0 ? 1 : -1, y = s - e.currentMonth; y != f; y += v)
+        for (var L = e.daysContainer.children[y], C = s - e.currentMonth === y ? r.$i + i : i < 0 ? L.children.length - 1 : 0, R = L.children.length, D = C; D >= 0 && D < R && D != (i > 0 ? R : -1); D += v) {
+          var S = L.children[D];
+          if (S.className.indexOf("hidden") === -1 && fe(S.dateObj) && Math.abs(r.$i - D) >= Math.abs(i))
+            return H(S);
+        }
+      e.changeMonth(v), N(Y(v), 0);
+    }
+    function N(r, i) {
+      var s = c(), f = Le(s || document.body), v = r !== void 0 ? r : f ? s : e.selectedDateElem !== void 0 && Le(e.selectedDateElem) ? e.selectedDateElem : e.todayDateElem !== void 0 && Le(e.todayDateElem) ? e.todayDateElem : Y(i > 0 ? 1 : -1);
+      v === void 0 ? e._input.focus() : f ? A(v, i) : H(v);
+    }
+    function z(r, i) {
+      for (var s = (new Date(r, i, 1).getDay() - e.l10n.firstDayOfWeek + 7) % 7, f = e.utils.getDaysInMonth((i - 1 + 12) % 12, r), v = e.utils.getDaysInMonth(i, r), y = window.document.createDocumentFragment(), L = e.config.showMonths > 1, C = L ? "prevMonthDay hidden" : "prevMonthDay", R = L ? "nextMonthDay hidden" : "nextMonthDay", D = f + 1 - s, S = 0; D <= f; D++, S++)
+        y.appendChild(x("flatpickr-day " + C, new Date(r, i - 1, D), D, S));
+      for (D = 1; D <= v; D++, S++)
+        y.appendChild(x("flatpickr-day", new Date(r, i, D), D, S));
+      for (var X = v + 1; X <= 42 - s && (e.config.showMonths === 1 || S % 7 !== 0); X++, S++)
+        y.appendChild(x("flatpickr-day " + R, new Date(r, i + 1, X % v), X, S));
+      var We = U("div", "dayContainer");
+      return We.appendChild(y), We;
+    }
+    function B() {
+      if (e.daysContainer !== void 0) {
+        $t(e.daysContainer), e.weekNumbers && $t(e.weekNumbers);
+        for (var r = document.createDocumentFragment(), i = 0; i < e.config.showMonths; i++) {
+          var s = new Date(e.currentYear, e.currentMonth, 1);
+          s.setMonth(e.currentMonth + i), r.appendChild(z(s.getFullYear(), s.getMonth()));
+        }
+        e.daysContainer.appendChild(r), e.days = e.daysContainer.firstChild, e.config.mode === "range" && e.selectedDates.length === 1 && qe();
+      }
+    }
+    function j() {
+      if (!(e.config.showMonths > 1 || e.config.monthSelectorType !== "dropdown")) {
+        var r = function(f) {
+          return e.config.minDate !== void 0 && e.currentYear === e.config.minDate.getFullYear() && f < e.config.minDate.getMonth() ? false : !(e.config.maxDate !== void 0 && e.currentYear === e.config.maxDate.getFullYear() && f > e.config.maxDate.getMonth());
+        };
+        e.monthsDropdownContainer.tabIndex = -1, e.monthsDropdownContainer.innerHTML = "";
+        for (var i = 0; i < 12; i++)
+          if (r(i)) {
+            var s = U("option", "flatpickr-monthDropdown-month");
+            s.value = new Date(e.currentYear, i).getMonth().toString(), s.textContent = qt(i, e.config.shorthandCurrentMonth, e.l10n), s.tabIndex = -1, e.currentMonth === i && (s.selected = true), e.monthsDropdownContainer.appendChild(s);
+          }
+      }
+    }
+    function le() {
+      var r = U("div", "flatpickr-month"), i = window.document.createDocumentFragment(), s;
+      e.config.showMonths > 1 || e.config.monthSelectorType === "static" ? s = U("span", "cur-month") : (e.monthsDropdownContainer = U("select", "flatpickr-monthDropdown-months"), e.monthsDropdownContainer.setAttribute("aria-label", e.l10n.monthAriaLabel), w(e.monthsDropdownContainer, "change", function(L) {
+        var C = we(L), R = parseInt(C.value, 10);
+        e.changeMonth(R - e.currentMonth), g("onMonthChange");
+      }), j(), s = e.monthsDropdownContainer);
+      var f = Ut("cur-year", { tabindex: "-1" }), v = f.getElementsByTagName("input")[0];
+      v.setAttribute("aria-label", e.l10n.yearAriaLabel), e.config.minDate && v.setAttribute("min", e.config.minDate.getFullYear().toString()), e.config.maxDate && (v.setAttribute("max", e.config.maxDate.getFullYear().toString()), v.disabled = !!e.config.minDate && e.config.minDate.getFullYear() === e.config.maxDate.getFullYear());
+      var y = U("div", "flatpickr-current-month");
+      return y.appendChild(s), y.appendChild(f), i.appendChild(y), r.appendChild(i), { container: r, yearElement: v, monthElement: s };
+    }
+    function ae() {
+      $t(e.monthNav), e.monthNav.appendChild(e.prevMonthNav), e.config.showMonths && (e.yearElements = [], e.monthElements = []);
+      for (var r = e.config.showMonths; r--; ) {
+        var i = le();
+        e.yearElements.push(i.yearElement), e.monthElements.push(i.monthElement), e.monthNav.appendChild(i.container);
+      }
+      e.monthNav.appendChild(e.nextMonthNav);
+    }
+    function K() {
+      return e.monthNav = U("div", "flatpickr-months"), e.yearElements = [], e.monthElements = [], e.prevMonthNav = U("span", "flatpickr-prev-month"), e.prevMonthNav.innerHTML = e.config.prevArrow, e.nextMonthNav = U("span", "flatpickr-next-month"), e.nextMonthNav.innerHTML = e.config.nextArrow, ae(), Object.defineProperty(e, "_hidePrevMonthArrow", { get: function() {
+        return e.__hidePrevMonthArrow;
+      }, set: function(r) {
+        e.__hidePrevMonthArrow !== r && (ve(e.prevMonthNav, "flatpickr-disabled", r), e.__hidePrevMonthArrow = r);
+      } }), Object.defineProperty(e, "_hideNextMonthArrow", { get: function() {
+        return e.__hideNextMonthArrow;
+      }, set: function(r) {
+        e.__hideNextMonthArrow !== r && (ve(e.nextMonthNav, "flatpickr-disabled", r), e.__hideNextMonthArrow = r);
+      } }), e.currentYearElement = e.yearElements[0], ee(), e.monthNav;
+    }
+    function q() {
+      e.calendarContainer.classList.add("hasTime"), e.config.noCalendar && e.calendarContainer.classList.add("noCalendar");
+      var r = vn(e.config);
+      e.timeContainer = U("div", "flatpickr-time"), e.timeContainer.tabIndex = -1;
+      var i = U("span", "flatpickr-time-separator", ":"), s = Ut("flatpickr-hour", { "aria-label": e.l10n.hourAriaLabel });
+      e.hourElement = s.getElementsByTagName("input")[0];
+      var f = Ut("flatpickr-minute", { "aria-label": e.l10n.minuteAriaLabel });
+      if (e.minuteElement = f.getElementsByTagName("input")[0], e.hourElement.tabIndex = e.minuteElement.tabIndex = -1, e.hourElement.value = he(e.latestSelectedDateObj ? e.latestSelectedDateObj.getHours() : e.config.time_24hr ? r.hours : h(r.hours)), e.minuteElement.value = he(e.latestSelectedDateObj ? e.latestSelectedDateObj.getMinutes() : r.minutes), e.hourElement.setAttribute("step", e.config.hourIncrement.toString()), e.minuteElement.setAttribute("step", e.config.minuteIncrement.toString()), e.hourElement.setAttribute("min", e.config.time_24hr ? "0" : "1"), e.hourElement.setAttribute("max", e.config.time_24hr ? "23" : "12"), e.hourElement.setAttribute("maxlength", "2"), e.minuteElement.setAttribute("min", "0"), e.minuteElement.setAttribute("max", "59"), e.minuteElement.setAttribute("maxlength", "2"), e.timeContainer.appendChild(s), e.timeContainer.appendChild(i), e.timeContainer.appendChild(f), e.config.time_24hr && e.timeContainer.classList.add("time24hr"), e.config.enableSeconds) {
+        e.timeContainer.classList.add("hasSeconds");
+        var v = Ut("flatpickr-second");
+        e.secondElement = v.getElementsByTagName("input")[0], e.secondElement.value = he(e.latestSelectedDateObj ? e.latestSelectedDateObj.getSeconds() : r.seconds), e.secondElement.setAttribute("step", e.minuteElement.getAttribute("step")), e.secondElement.setAttribute("min", "0"), e.secondElement.setAttribute("max", "59"), e.secondElement.setAttribute("maxlength", "2"), e.timeContainer.appendChild(U("span", "flatpickr-time-separator", ":")), e.timeContainer.appendChild(v);
+      }
+      return e.config.time_24hr || (e.amPM = U("span", "flatpickr-am-pm", e.l10n.amPM[ye((e.latestSelectedDateObj ? e.hourElement.value : e.config.defaultHour) > 11)]), e.amPM.title = e.l10n.toggleTitle, e.amPM.tabIndex = -1, e.timeContainer.appendChild(e.amPM)), e.timeContainer;
+    }
+    function Z() {
+      e.weekdayContainer ? $t(e.weekdayContainer) : e.weekdayContainer = U("div", "flatpickr-weekdays");
+      for (var r = e.config.showMonths; r--; ) {
+        var i = U("div", "flatpickr-weekdaycontainer");
+        e.weekdayContainer.appendChild(i);
+      }
+      return De(), e.weekdayContainer;
+    }
+    function De() {
+      if (e.weekdayContainer) {
+        var r = e.l10n.firstDayOfWeek, i = Br(e.l10n.weekdays.shorthand);
+        r > 0 && r < i.length && (i = Br(i.splice(r, i.length), i.splice(0, r)));
+        for (var s = e.config.showMonths; s--; )
+          e.weekdayContainer.children[s].innerHTML = `
+      <span class='flatpickr-weekday'>
+        ` + i.join("</span><span class='flatpickr-weekday'>") + `
+      </span>
+      `;
+      }
+    }
+    function Oe() {
+      e.calendarContainer.classList.add("hasWeeks");
+      var r = U("div", "flatpickr-weekwrapper");
+      r.appendChild(U("span", "flatpickr-weekday", e.l10n.weekAbbreviation));
+      var i = U("div", "flatpickr-weeks");
+      return r.appendChild(i), { weekWrapper: r, weekNumbers: i };
+    }
+    function Se(r, i) {
+      i === void 0 && (i = true);
+      var s = i ? r : r - e.currentMonth;
+      s < 0 && e._hidePrevMonthArrow === true || s > 0 && e._hideNextMonthArrow === true || (e.currentMonth += s, (e.currentMonth < 0 || e.currentMonth > 11) && (e.currentYear += e.currentMonth > 11 ? 1 : -1, e.currentMonth = (e.currentMonth + 12) % 12, g("onYearChange"), j()), B(), g("onMonthChange"), ee());
+    }
+    function Me(r, i) {
+      if (r === void 0 && (r = true), i === void 0 && (i = true), e.input.value = "", e.altInput !== void 0 && (e.altInput.value = ""), e.mobileInput !== void 0 && (e.mobileInput.value = ""), e.selectedDates = [], e.latestSelectedDateObj = void 0, i === true && (e.currentYear = e._initialDate.getFullYear(), e.currentMonth = e._initialDate.getMonth()), e.config.enableTime === true) {
+        var s = vn(e.config), f = s.hours, v = s.minutes, y = s.seconds;
+        E(f, v, y);
+      }
+      e.redraw(), r && g("onChange");
+    }
+    function $e() {
+      e.isOpen = false, e.isMobile || (e.calendarContainer !== void 0 && e.calendarContainer.classList.remove("open"), e._input !== void 0 && e._input.classList.remove("active")), g("onClose");
+    }
+    function ke() {
+      e.config !== void 0 && g("onDestroy");
+      for (var r = e._handlers.length; r--; )
+        e._handlers[r].remove();
+      if (e._handlers = [], e.mobileInput)
+        e.mobileInput.parentNode && e.mobileInput.parentNode.removeChild(e.mobileInput), e.mobileInput = void 0;
+      else if (e.calendarContainer && e.calendarContainer.parentNode)
+        if (e.config.static && e.calendarContainer.parentNode) {
+          var i = e.calendarContainer.parentNode;
+          if (i.lastChild && i.removeChild(i.lastChild), i.parentNode) {
+            for (; i.firstChild; )
+              i.parentNode.insertBefore(i.firstChild, i);
+            i.parentNode.removeChild(i);
+          }
+        } else
+          e.calendarContainer.parentNode.removeChild(e.calendarContainer);
+      e.altInput && (e.input.type = "text", e.altInput.parentNode && e.altInput.parentNode.removeChild(e.altInput), delete e.altInput), e.input && (e.input.type = e.input._type, e.input.classList.remove("flatpickr-input"), e.input.removeAttribute("readonly")), ["_showTimeInput", "latestSelectedDateObj", "_hideNextMonthArrow", "_hidePrevMonthArrow", "__hideNextMonthArrow", "__hidePrevMonthArrow", "isMobile", "isOpen", "selectedDateElem", "minDateHasTime", "maxDateHasTime", "days", "daysContainer", "_input", "_positionElement", "innerContainer", "rContainer", "monthNav", "todayDateElem", "calendarContainer", "weekdayContainer", "prevMonthNav", "nextMonthNav", "monthsDropdownContainer", "currentMonthElement", "currentYearElement", "navigationCurrentMonth", "selectedDateElem", "config"].forEach(function(s) {
+        try {
+          delete e[s];
+        } catch {
+        }
+      });
+    }
+    function ue(r) {
+      return e.calendarContainer.contains(r);
+    }
+    function Ee(r) {
+      if (e.isOpen && !e.config.inline) {
+        var i = we(r), s = ue(i), f = i === e.input || i === e.altInput || e.element.contains(i) || r.path && r.path.indexOf && (~r.path.indexOf(e.input) || ~r.path.indexOf(e.altInput)), v = !f && !s && !ue(r.relatedTarget), y = !e.config.ignoredFocusElements.some(function(L) {
+          return L.contains(i);
+        });
+        v && y && (e.config.allowInput && e.setDate(e._input.value, false, e.config.altInput ? e.config.altFormat : e.config.dateFormat), e.timeContainer !== void 0 && e.minuteElement !== void 0 && e.hourElement !== void 0 && e.input.value !== "" && e.input.value !== void 0 && u(), e.close(), e.config && e.config.mode === "range" && e.selectedDates.length === 1 && e.clear(false));
+      }
+    }
+    function Ne(r) {
+      if (!(!r || e.config.minDate && r < e.config.minDate.getFullYear() || e.config.maxDate && r > e.config.maxDate.getFullYear())) {
+        var i = r, s = e.currentYear !== i;
+        e.currentYear = i || e.currentYear, e.config.maxDate && e.currentYear === e.config.maxDate.getFullYear() ? e.currentMonth = Math.min(e.config.maxDate.getMonth(), e.currentMonth) : e.config.minDate && e.currentYear === e.config.minDate.getFullYear() && (e.currentMonth = Math.max(e.config.minDate.getMonth(), e.currentMonth)), s && (e.redraw(), g("onYearChange"), j());
+      }
+    }
+    function fe(r, i) {
+      var s;
+      i === void 0 && (i = true);
+      var f = e.parseDate(r, void 0, i);
+      if (e.config.minDate && f && xe(f, e.config.minDate, i !== void 0 ? i : !e.minDateHasTime) < 0 || e.config.maxDate && f && xe(f, e.config.maxDate, i !== void 0 ? i : !e.maxDateHasTime) > 0)
+        return false;
+      if (!e.config.enable && e.config.disable.length === 0)
+        return true;
+      if (f === void 0)
+        return false;
+      for (var v = !!e.config.enable, y = (s = e.config.enable) !== null && s !== void 0 ? s : e.config.disable, L = 0, C = void 0; L < y.length; L++) {
+        if (C = y[L], typeof C == "function" && C(f))
+          return v;
+        if (C instanceof Date && f !== void 0 && C.getTime() === f.getTime())
+          return v;
+        if (typeof C == "string") {
+          var R = e.parseDate(C, void 0, true);
+          return R && R.getTime() === f.getTime() ? v : !v;
+        } else if (typeof C == "object" && f !== void 0 && C.from && C.to && f.getTime() >= C.from.getTime() && f.getTime() <= C.to.getTime())
+          return v;
+      }
+      return !v;
+    }
+    function Le(r) {
+      return e.daysContainer !== void 0 ? r.className.indexOf("hidden") === -1 && r.className.indexOf("flatpickr-disabled") === -1 && e.daysContainer.contains(r) : false;
+    }
+    function Ve(r) {
+      var i = r.target === e._input, s = e._input.value.trimEnd() !== pe();
+      i && s && !(r.relatedTarget && ue(r.relatedTarget)) && e.setDate(e._input.value, true, r.target === e.altInput ? e.config.altFormat : e.config.dateFormat);
+    }
+    function Ue(r) {
+      var i = we(r), s = e.config.wrap ? t.contains(i) : i === e._input, f = e.config.allowInput, v = e.isOpen && (!f || !s), y = e.config.inline && s && !f;
+      if (r.keyCode === 13 && s) {
+        if (f)
+          return e.setDate(e._input.value, true, i === e.altInput ? e.config.altFormat : e.config.dateFormat), e.close(), i.blur();
+        e.open();
+      } else if (ue(i) || v || y) {
+        var L = !!e.timeContainer && e.timeContainer.contains(i);
+        switch (r.keyCode) {
+          case 13:
+            L ? (r.preventDefault(), u(), Fe()) : nt(r);
+            break;
+          case 27:
+            r.preventDefault(), Fe();
+            break;
+          case 8:
+          case 46:
+            s && !e.config.allowInput && (r.preventDefault(), e.clear());
+            break;
+          case 37:
+          case 39:
+            if (!L && !s) {
+              r.preventDefault();
+              var C = c();
+              if (e.daysContainer !== void 0 && (f === false || C && Le(C))) {
+                var R = r.keyCode === 39 ? 1 : -1;
+                r.ctrlKey ? (r.stopPropagation(), Se(R), N(Y(1), 0)) : N(void 0, R);
+              }
+            } else
+              e.hourElement && e.hourElement.focus();
+            break;
+          case 38:
+          case 40:
+            r.preventDefault();
+            var D = r.keyCode === 40 ? 1 : -1;
+            e.daysContainer && i.$i !== void 0 || i === e.input || i === e.altInput ? r.ctrlKey ? (r.stopPropagation(), Ne(e.currentYear - D), N(Y(1), 0)) : L || N(void 0, D * 7) : i === e.currentYearElement ? Ne(e.currentYear - D) : e.config.enableTime && (!L && e.hourElement && e.hourElement.focus(), u(r), e._debouncedChange());
+            break;
+          case 9:
+            if (L) {
+              var S = [e.hourElement, e.minuteElement, e.secondElement, e.amPM].concat(e.pluginElements).filter(function(Ce) {
+                return Ce;
+              }), X = S.indexOf(i);
+              if (X !== -1) {
+                var We = S[X + (r.shiftKey ? -1 : 1)];
+                r.preventDefault(), (We || e._input).focus();
+              }
+            } else
+              !e.config.noCalendar && e.daysContainer && e.daysContainer.contains(i) && r.shiftKey && (r.preventDefault(), e._input.focus());
+            break;
+          default:
+            break;
+        }
+      }
+      if (e.amPM !== void 0 && i === e.amPM)
+        switch (r.key) {
+          case e.l10n.amPM[0].charAt(0):
+          case e.l10n.amPM[0].charAt(0).toLowerCase():
+            e.amPM.textContent = e.l10n.amPM[0], M(), me();
+            break;
+          case e.l10n.amPM[1].charAt(0):
+          case e.l10n.amPM[1].charAt(0).toLowerCase():
+            e.amPM.textContent = e.l10n.amPM[1], M(), me();
+            break;
+        }
+      (s || ue(i)) && g("onKeyDown", r);
+    }
+    function qe(r, i) {
+      if (i === void 0 && (i = "flatpickr-day"), !(e.selectedDates.length !== 1 || r && (!r.classList.contains(i) || r.classList.contains("flatpickr-disabled")))) {
+        for (var s = r ? r.dateObj.getTime() : e.days.firstElementChild.dateObj.getTime(), f = e.parseDate(e.selectedDates[0], void 0, true).getTime(), v = Math.min(s, e.selectedDates[0].getTime()), y = Math.max(s, e.selectedDates[0].getTime()), L = false, C = 0, R = 0, D = v; D < y; D += Vr.DAY)
+          fe(new Date(D), true) || (L = L || D > v && D < y, D < f && (!C || D > C) ? C = D : D > f && (!R || D < R) && (R = D));
+        var S = Array.from(e.rContainer.querySelectorAll("*:nth-child(-n+" + e.config.showMonths + ") > ." + i));
+        S.forEach(function(X) {
+          var We = X.dateObj, Ce = We.getTime(), It = C > 0 && Ce < C || R > 0 && Ce > R;
+          if (It) {
+            X.classList.add("notAllowed"), ["inRange", "startRange", "endRange"].forEach(function(Ot) {
+              X.classList.remove(Ot);
+            });
+            return;
+          } else if (L && !It)
+            return;
+          ["startRange", "inRange", "endRange", "notAllowed"].forEach(function(Ot) {
+            X.classList.remove(Ot);
+          }), r !== void 0 && (r.classList.add(s <= e.selectedDates[0].getTime() ? "startRange" : "endRange"), f < s && Ce === f ? X.classList.add("startRange") : f > s && Ce === f && X.classList.add("endRange"), Ce >= C && (R === 0 || Ce <= R) && _r(Ce, f, s) && X.classList.add("inRange"));
+        });
+      }
+    }
+    function ct() {
+      e.isOpen && !e.config.static && !e.config.inline && ze();
+    }
+    function Dt(r, i) {
+      if (i === void 0 && (i = e._positionElement), e.isMobile === true) {
+        if (r) {
+          r.preventDefault();
+          var s = we(r);
+          s && s.blur();
+        }
+        e.mobileInput !== void 0 && (e.mobileInput.focus(), e.mobileInput.click()), g("onOpen");
+        return;
+      } else if (e._input.disabled || e.config.inline)
+        return;
+      var f = e.isOpen;
+      e.isOpen = true, f || (e.calendarContainer.classList.add("open"), e._input.classList.add("active"), g("onOpen"), ze(i)), e.config.enableTime === true && e.config.noCalendar === true && e.config.allowInput === false && (r === void 0 || !e.timeContainer.contains(r.relatedTarget)) && setTimeout(function() {
+        return e.hourElement.select();
+      }, 50);
+    }
+    function lt(r) {
+      return function(i) {
+        var s = e.config["_" + r + "Date"] = e.parseDate(i, e.config.dateFormat), f = e.config["_" + (r === "min" ? "max" : "min") + "Date"];
+        s !== void 0 && (e[r === "min" ? "minDateHasTime" : "maxDateHasTime"] = s.getHours() > 0 || s.getMinutes() > 0 || s.getSeconds() > 0), e.selectedDates && (e.selectedDates = e.selectedDates.filter(function(v) {
+          return fe(v);
+        }), !e.selectedDates.length && r === "min" && O(s), me()), e.daysContainer && (tt(), s !== void 0 ? e.currentYearElement[r] = s.getFullYear().toString() : e.currentYearElement.removeAttribute(r), e.currentYearElement.disabled = !!f && s !== void 0 && f.getFullYear() === s.getFullYear());
+      };
+    }
+    function ut() {
+      var r = ["wrap", "weekNumbers", "allowInput", "allowInvalidPreload", "clickOpens", "time_24hr", "enableTime", "noCalendar", "altInput", "shorthandCurrentMonth", "inline", "static", "enableSeconds", "disableMobile"], i = ge(ge({}, JSON.parse(JSON.stringify(t.dataset || {}))), n), s = {};
+      e.config.parseDate = i.parseDate, e.config.formatDate = i.formatDate, Object.defineProperty(e.config, "enable", { get: function() {
+        return e.config._enable;
+      }, set: function(S) {
+        e.config._enable = Xt(S);
+      } }), Object.defineProperty(e.config, "disable", { get: function() {
+        return e.config._disable;
+      }, set: function(S) {
+        e.config._disable = Xt(S);
+      } });
+      var f = i.mode === "time";
+      if (!i.dateFormat && (i.enableTime || f)) {
+        var v = ne.defaultConfig.dateFormat || ot.dateFormat;
+        s.dateFormat = i.noCalendar || f ? "H:i" + (i.enableSeconds ? ":S" : "") : v + " H:i" + (i.enableSeconds ? ":S" : "");
+      }
+      if (i.altInput && (i.enableTime || f) && !i.altFormat) {
+        var y = ne.defaultConfig.altFormat || ot.altFormat;
+        s.altFormat = i.noCalendar || f ? "h:i" + (i.enableSeconds ? ":S K" : " K") : y + (" h:i" + (i.enableSeconds ? ":S" : "") + " K");
+      }
+      Object.defineProperty(e.config, "minDate", { get: function() {
+        return e.config._minDate;
+      }, set: lt("min") }), Object.defineProperty(e.config, "maxDate", { get: function() {
+        return e.config._maxDate;
+      }, set: lt("max") });
+      var L = function(S) {
+        return function(X) {
+          e.config[S === "min" ? "_minTime" : "_maxTime"] = e.parseDate(X, "H:i:S");
+        };
+      };
+      Object.defineProperty(e.config, "minTime", { get: function() {
+        return e.config._minTime;
+      }, set: L("min") }), Object.defineProperty(e.config, "maxTime", { get: function() {
+        return e.config._maxTime;
+      }, set: L("max") }), i.mode === "time" && (e.config.noCalendar = true, e.config.enableTime = true), Object.assign(e.config, s, i);
+      for (var C = 0; C < r.length; C++)
+        e.config[r[C]] = e.config[r[C]] === true || e.config[r[C]] === "true";
+      un.filter(function(S) {
+        return e.config[S] !== void 0;
+      }).forEach(function(S) {
+        e.config[S] = pn(e.config[S] || []).map(d);
+      }), e.isMobile = !e.config.disableMobile && !e.config.inline && e.config.mode === "single" && !e.config.disable.length && !e.config.enable && !e.config.weekNumbers && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      for (var C = 0; C < e.config.plugins.length; C++) {
+        var R = e.config.plugins[C](e) || {};
+        for (var D in R)
+          un.indexOf(D) > -1 ? e.config[D] = pn(R[D]).map(d).concat(e.config[D]) : typeof i[D] > "u" && (e.config[D] = R[D]);
+      }
+      i.altInputClass || (e.config.altInputClass = et().className + " " + e.config.altInputClass), g("onParseConfig");
+    }
+    function et() {
+      return e.config.wrap ? t.querySelector("[data-input]") : t;
+    }
+    function ft() {
+      typeof e.config.locale != "object" && typeof ne.l10ns[e.config.locale] > "u" && e.config.errorHandler(new Error("flatpickr: invalid locale " + e.config.locale)), e.l10n = ge(ge({}, ne.l10ns.default), typeof e.config.locale == "object" ? e.config.locale : e.config.locale !== "default" ? ne.l10ns[e.config.locale] : void 0), Ze.D = "(" + e.l10n.weekdays.shorthand.join("|") + ")", Ze.l = "(" + e.l10n.weekdays.longhand.join("|") + ")", Ze.M = "(" + e.l10n.months.shorthand.join("|") + ")", Ze.F = "(" + e.l10n.months.longhand.join("|") + ")", Ze.K = "(" + e.l10n.amPM[0] + "|" + e.l10n.amPM[1] + "|" + e.l10n.amPM[0].toLowerCase() + "|" + e.l10n.amPM[1].toLowerCase() + ")";
+      var r = ge(ge({}, n), JSON.parse(JSON.stringify(t.dataset || {})));
+      r.time_24hr === void 0 && ne.defaultConfig.time_24hr === void 0 && (e.config.time_24hr = e.l10n.time_24hr), e.formatDate = Gn(e), e.parseDate = mn({ config: e.config, l10n: e.l10n });
+    }
+    function ze(r) {
+      if (typeof e.config.position == "function")
+        return void e.config.position(e, r);
+      if (e.calendarContainer !== void 0) {
+        g("onPreCalendarPosition");
+        var i = r || e._positionElement, s = Array.prototype.reduce.call(e.calendarContainer.children, function(Zr, ei) {
+          return Zr + ei.offsetHeight;
+        }, 0), f = e.calendarContainer.offsetWidth, v = e.config.position.split(" "), y = v[0], L = v.length > 1 ? v[1] : null, C = i.getBoundingClientRect(), R = window.innerHeight - C.bottom, D = y === "above" || y !== "below" && R < s && C.top > s, S = window.pageYOffset + C.top + (D ? -s - 2 : i.offsetHeight + 2);
+        if (ve(e.calendarContainer, "arrowTop", !D), ve(e.calendarContainer, "arrowBottom", D), !e.config.inline) {
+          var X = window.pageXOffset + C.left, We = false, Ce = false;
+          L === "center" ? (X -= (f - C.width) / 2, We = true) : L === "right" && (X -= f - C.width, Ce = true), ve(e.calendarContainer, "arrowLeft", !We && !Ce), ve(e.calendarContainer, "arrowCenter", We), ve(e.calendarContainer, "arrowRight", Ce);
+          var It = window.document.body.offsetWidth - (window.pageXOffset + C.right), Ot = X + f > window.document.body.offsetWidth, qr = It + f > window.document.body.offsetWidth;
+          if (ve(e.calendarContainer, "rightMost", Ot), !e.config.static)
+            if (e.calendarContainer.style.top = S + "px", !Ot)
+              e.calendarContainer.style.left = X + "px", e.calendarContainer.style.right = "auto";
+            else if (!qr)
+              e.calendarContainer.style.left = "auto", e.calendarContainer.style.right = It + "px";
+            else {
+              var Mn = Ie();
+              if (Mn === void 0)
+                return;
+              var zr = window.document.body.offsetWidth, Xr = Math.max(0, zr / 2 - f / 2), Kr = ".flatpickr-calendar.centerMost:before", Jr = ".flatpickr-calendar.centerMost:after", Gr = Mn.cssRules.length, Qr = "{left:" + C.left + "px;right:auto;}";
+              ve(e.calendarContainer, "rightMost", false), ve(e.calendarContainer, "centerMost", true), Mn.insertRule(Kr + "," + Jr + Qr, Gr), e.calendarContainer.style.left = Xr + "px", e.calendarContainer.style.right = "auto";
+            }
+        }
+      }
+    }
+    function Ie() {
+      for (var r = null, i = 0; i < document.styleSheets.length; i++) {
+        var s = document.styleSheets[i];
+        if (s.cssRules) {
+          try {
+            s.cssRules;
+          } catch {
+            continue;
+          }
+          r = s;
+          break;
+        }
+      }
+      return r ?? Be();
+    }
+    function Be() {
+      var r = document.createElement("style");
+      return document.head.appendChild(r), r.sheet;
+    }
+    function tt() {
+      e.config.noCalendar || e.isMobile || (j(), ee(), B());
+    }
+    function Fe() {
+      e._input.focus(), window.navigator.userAgent.indexOf("MSIE") !== -1 || navigator.msMaxTouchPoints !== void 0 ? setTimeout(e.close, 0) : e.close();
+    }
+    function nt(r) {
+      r.preventDefault(), r.stopPropagation();
+      var i = function(S) {
+        return S.classList && S.classList.contains("flatpickr-day") && !S.classList.contains("flatpickr-disabled") && !S.classList.contains("notAllowed");
+      }, s = Kn(we(r), i);
+      if (s !== void 0) {
+        var f = s, v = e.latestSelectedDateObj = new Date(f.dateObj.getTime()), y = (v.getMonth() < e.currentMonth || v.getMonth() > e.currentMonth + e.config.showMonths - 1) && e.config.mode !== "range";
+        if (e.selectedDateElem = f, e.config.mode === "single")
+          e.selectedDates = [v];
+        else if (e.config.mode === "multiple") {
+          var L = $(v);
+          L ? e.selectedDates.splice(parseInt(L), 1) : e.selectedDates.push(v);
+        } else
+          e.config.mode === "range" && (e.selectedDates.length === 2 && e.clear(false, false), e.latestSelectedDateObj = v, e.selectedDates.push(v), xe(v, e.selectedDates[0], true) !== 0 && e.selectedDates.sort(function(S, X) {
+            return S.getTime() - X.getTime();
+          }));
+        if (M(), y) {
+          var C = e.currentYear !== v.getFullYear();
+          e.currentYear = v.getFullYear(), e.currentMonth = v.getMonth(), C && (g("onYearChange"), j()), g("onMonthChange");
+        }
+        if (ee(), B(), me(), !y && e.config.mode !== "range" && e.config.showMonths === 1 ? H(f) : e.selectedDateElem !== void 0 && e.hourElement === void 0 && e.selectedDateElem && e.selectedDateElem.focus(), e.hourElement !== void 0 && e.hourElement !== void 0 && e.hourElement.focus(), e.config.closeOnSelect) {
+          var R = e.config.mode === "single" && !e.config.enableTime, D = e.config.mode === "range" && e.selectedDates.length === 2 && !e.config.enableTime;
+          (R || D) && Fe();
+        }
+        P();
+      }
+    }
+    var Xe = { locale: [ft, De], showMonths: [ae, p, Z], minDate: [I], maxDate: [I], positionElement: [Kt], clickOpens: [function() {
+      e.config.clickOpens === true ? (w(e._input, "focus", e.open), w(e._input, "click", e.open)) : (e._input.removeEventListener("focus", e.open), e._input.removeEventListener("click", e.open));
+    }] };
+    function Et(r, i) {
+      if (r !== null && typeof r == "object") {
+        Object.assign(e.config, r);
+        for (var s in r)
+          Xe[s] !== void 0 && Xe[s].forEach(function(f) {
+            return f();
+          });
+      } else
+        e.config[r] = i, Xe[r] !== void 0 ? Xe[r].forEach(function(f) {
+          return f();
+        }) : un.indexOf(r) > -1 && (e.config[r] = pn(i));
+      e.redraw(), me(true);
+    }
+    function dt(r, i) {
+      var s = [];
+      if (r instanceof Array)
+        s = r.map(function(f) {
+          return e.parseDate(f, i);
+        });
+      else if (r instanceof Date || typeof r == "number")
+        s = [e.parseDate(r, i)];
+      else if (typeof r == "string")
+        switch (e.config.mode) {
+          case "single":
+          case "time":
+            s = [e.parseDate(r, i)];
+            break;
+          case "multiple":
+            s = r.split(e.config.conjunction).map(function(f) {
+              return e.parseDate(f, i);
+            });
+            break;
+          case "range":
+            s = r.split(e.l10n.rangeSeparator).map(function(f) {
+              return e.parseDate(f, i);
+            });
+            break;
+          default:
+            break;
+        }
+      else
+        e.config.errorHandler(new Error("Invalid date supplied: " + JSON.stringify(r)));
+      e.selectedDates = e.config.allowInvalidPreload ? s : s.filter(function(f) {
+        return f instanceof Date && fe(f, false);
+      }), e.config.mode === "range" && e.selectedDates.sort(function(f, v) {
+        return f.getTime() - v.getTime();
+      });
+    }
+    function Ct(r, i, s) {
+      if (i === void 0 && (i = false), s === void 0 && (s = e.config.dateFormat), r !== 0 && !r || r instanceof Array && r.length === 0)
+        return e.clear(i);
+      dt(r, s), e.latestSelectedDateObj = e.selectedDates[e.selectedDates.length - 1], e.redraw(), I(void 0, i), O(), e.selectedDates.length === 0 && e.clear(false), me(i), i && g("onChange");
+    }
+    function Xt(r) {
+      return r.slice().map(function(i) {
+        return typeof i == "string" || typeof i == "number" || i instanceof Date ? e.parseDate(i, void 0, true) : i && typeof i == "object" && i.from && i.to ? { from: e.parseDate(i.from, void 0), to: e.parseDate(i.to, void 0) } : i;
+      }).filter(function(i) {
+        return i;
+      });
+    }
+    function En() {
+      e.selectedDates = [], e.now = e.parseDate(e.config.now) || /* @__PURE__ */ new Date();
+      var r = e.config.defaultDate || ((e.input.nodeName === "INPUT" || e.input.nodeName === "TEXTAREA") && e.input.placeholder && e.input.value === e.input.placeholder ? null : e.input.value);
+      r && dt(r, e.config.dateFormat), e._initialDate = e.selectedDates.length > 0 ? e.selectedDates[0] : e.config.minDate && e.config.minDate.getTime() > e.now.getTime() ? e.config.minDate : e.config.maxDate && e.config.maxDate.getTime() < e.now.getTime() ? e.config.maxDate : e.now, e.currentYear = e._initialDate.getFullYear(), e.currentMonth = e._initialDate.getMonth(), e.selectedDates.length > 0 && (e.latestSelectedDateObj = e.selectedDates[0]), e.config.minTime !== void 0 && (e.config.minTime = e.parseDate(e.config.minTime, "H:i")), e.config.maxTime !== void 0 && (e.config.maxTime = e.parseDate(e.config.maxTime, "H:i")), e.minDateHasTime = !!e.config.minDate && (e.config.minDate.getHours() > 0 || e.config.minDate.getMinutes() > 0 || e.config.minDate.getSeconds() > 0), e.maxDateHasTime = !!e.config.maxDate && (e.config.maxDate.getHours() > 0 || e.config.maxDate.getMinutes() > 0 || e.config.maxDate.getSeconds() > 0);
+    }
+    function Cn() {
+      if (e.input = et(), !e.input) {
+        e.config.errorHandler(new Error("Invalid input element specified"));
+        return;
+      }
+      e.input._type = e.input.type, e.input.type = "text", e.input.classList.add("flatpickr-input"), e._input = e.input, e.config.altInput && (e.altInput = U(e.input.nodeName, e.config.altInputClass), e._input = e.altInput, e.altInput.placeholder = e.input.placeholder, e.altInput.disabled = e.input.disabled, e.altInput.required = e.input.required, e.altInput.tabIndex = e.input.tabIndex, e.altInput.type = "text", e.input.setAttribute("type", "hidden"), !e.config.static && e.input.parentNode && e.input.parentNode.insertBefore(e.altInput, e.input.nextSibling)), e.config.allowInput || e._input.setAttribute("readonly", "readonly"), Kt();
+    }
+    function Kt() {
+      e._positionElement = e.config.positionElement || e._input;
+    }
+    function On() {
+      var r = e.config.enableTime ? e.config.noCalendar ? "time" : "datetime-local" : "date";
+      e.mobileInput = U("input", e.input.className + " flatpickr-mobile"), e.mobileInput.tabIndex = 1, e.mobileInput.type = r, e.mobileInput.disabled = e.input.disabled, e.mobileInput.required = e.input.required, e.mobileInput.placeholder = e.input.placeholder, e.mobileFormatStr = r === "datetime-local" ? "Y-m-d\\TH:i:S" : r === "date" ? "Y-m-d" : "H:i:S", e.selectedDates.length > 0 && (e.mobileInput.defaultValue = e.mobileInput.value = e.formatDate(e.selectedDates[0], e.mobileFormatStr)), e.config.minDate && (e.mobileInput.min = e.formatDate(e.config.minDate, "Y-m-d")), e.config.maxDate && (e.mobileInput.max = e.formatDate(e.config.maxDate, "Y-m-d")), e.input.getAttribute("step") && (e.mobileInput.step = String(e.input.getAttribute("step"))), e.input.type = "hidden", e.altInput !== void 0 && (e.altInput.type = "hidden");
+      try {
+        e.input.parentNode && e.input.parentNode.insertBefore(e.mobileInput, e.input.nextSibling);
+      } catch {
+      }
+      w(e.mobileInput, "change", function(i) {
+        e.setDate(we(i).value, false, e.mobileFormatStr), g("onChange"), g("onClose");
+      });
+    }
+    function m(r) {
+      if (e.isOpen === true)
+        return e.close();
+      e.open(r);
+    }
+    function g(r, i) {
+      if (e.config !== void 0) {
+        var s = e.config[r];
+        if (s !== void 0 && s.length > 0)
+          for (var f = 0; s[f] && f < s.length; f++)
+            s[f](e.selectedDates, e.input.value, e, i);
+        r === "onChange" && (e.input.dispatchEvent(T("change")), e.input.dispatchEvent(T("input")));
+      }
+    }
+    function T(r) {
+      var i = document.createEvent("Event");
+      return i.initEvent(r, true, true), i;
+    }
+    function $(r) {
+      for (var i = 0; i < e.selectedDates.length; i++) {
+        var s = e.selectedDates[i];
+        if (s instanceof Date && xe(s, r) === 0)
+          return "" + i;
+      }
+      return false;
+    }
+    function W(r) {
+      return e.config.mode !== "range" || e.selectedDates.length < 2 ? false : xe(r, e.selectedDates[0]) >= 0 && xe(r, e.selectedDates[1]) <= 0;
+    }
+    function ee() {
+      e.config.noCalendar || e.isMobile || !e.monthNav || (e.yearElements.forEach(function(r, i) {
+        var s = new Date(e.currentYear, e.currentMonth, 1);
+        s.setMonth(e.currentMonth + i), e.config.showMonths > 1 || e.config.monthSelectorType === "static" ? e.monthElements[i].textContent = qt(s.getMonth(), e.config.shorthandCurrentMonth, e.l10n) + " " : e.monthsDropdownContainer.value = s.getMonth().toString(), r.value = s.getFullYear().toString();
+      }), e._hidePrevMonthArrow = e.config.minDate !== void 0 && (e.currentYear === e.config.minDate.getFullYear() ? e.currentMonth <= e.config.minDate.getMonth() : e.currentYear < e.config.minDate.getFullYear()), e._hideNextMonthArrow = e.config.maxDate !== void 0 && (e.currentYear === e.config.maxDate.getFullYear() ? e.currentMonth + 1 > e.config.maxDate.getMonth() : e.currentYear > e.config.maxDate.getFullYear()));
+    }
+    function pe(r) {
+      var i = r || (e.config.altInput ? e.config.altFormat : e.config.dateFormat);
+      return e.selectedDates.map(function(s) {
+        return e.formatDate(s, i);
+      }).filter(function(s, f, v) {
+        return e.config.mode !== "range" || e.config.enableTime || v.indexOf(s) === f;
+      }).join(e.config.mode !== "range" ? e.config.conjunction : e.l10n.rangeSeparator);
+    }
+    function me(r) {
+      r === void 0 && (r = true), e.mobileInput !== void 0 && e.mobileFormatStr && (e.mobileInput.value = e.latestSelectedDateObj !== void 0 ? e.formatDate(e.latestSelectedDateObj, e.mobileFormatStr) : ""), e.input.value = pe(e.config.dateFormat), e.altInput !== void 0 && (e.altInput.value = pe(e.config.altFormat)), r !== false && g("onValueUpdate");
+    }
+    function Jt(r) {
+      var i = we(r), s = e.prevMonthNav.contains(i), f = e.nextMonthNav.contains(i);
+      s || f ? Se(s ? -1 : 1) : e.yearElements.indexOf(i) >= 0 ? i.select() : i.classList.contains("arrowUp") ? e.changeYear(e.currentYear + 1) : i.classList.contains("arrowDown") && e.changeYear(e.currentYear - 1);
+    }
+    function Ke(r) {
+      r.preventDefault();
+      var i = r.type === "keydown", s = we(r), f = s;
+      e.amPM !== void 0 && s === e.amPM && (e.amPM.textContent = e.l10n.amPM[ye(e.amPM.textContent === e.l10n.amPM[0])]);
+      var v = parseFloat(f.getAttribute("min")), y = parseFloat(f.getAttribute("max")), L = parseFloat(f.getAttribute("step")), C = parseInt(f.value, 10), R = r.delta || (i ? r.which === 38 ? 1 : -1 : 0), D = C + L * R;
+      if (typeof f.value < "u" && f.value.length === 2) {
+        var S = f === e.hourElement, X = f === e.minuteElement;
+        D < v ? (D = y + D + ye(!S) + (ye(S) && ye(!e.amPM)), X && l(void 0, -1, e.hourElement)) : D > y && (D = f === e.hourElement ? D - y - ye(!e.amPM) : v, X && l(void 0, 1, e.hourElement)), e.amPM && S && (L === 1 ? D + C === 23 : Math.abs(D - C) > L) && (e.amPM.textContent = e.l10n.amPM[ye(e.amPM.textContent === e.l10n.amPM[0])]), f.value = he(D);
+      }
+    }
+    return a(), e;
+  }
+  function Lt(t, n) {
+    for (var e = Array.prototype.slice.call(t).filter(function(d) {
+      return d instanceof HTMLElement;
+    }), o = [], a = 0; a < e.length; a++) {
+      var c = e[a];
+      try {
+        if (c.getAttribute("data-fp-omit") !== null)
+          continue;
+        c._flatpickr !== void 0 && (c._flatpickr.destroy(), c._flatpickr = void 0), c._flatpickr = lo(c, n || {}), o.push(c._flatpickr);
+      } catch (d) {
+        console.error(d);
+      }
+    }
+    return o.length === 1 ? o[0] : o;
+  }
+  typeof HTMLElement < "u" && typeof HTMLCollection < "u" && typeof NodeList < "u" && (HTMLCollection.prototype.flatpickr = NodeList.prototype.flatpickr = function(t) {
+    return Lt(this, t);
+  }, HTMLElement.prototype.flatpickr = function(t) {
+    return Lt([this], t);
+  });
+  var ne = function(t, n) {
+    return typeof t == "string" ? Lt(window.document.querySelectorAll(t), n) : t instanceof Node ? Lt([t], n) : Lt(t, n);
+  };
+  ne.defaultConfig = {};
+  ne.l10ns = { en: ge({}, dn), default: ge({}, dn) };
+  ne.localize = function(t) {
+    ne.l10ns.default = ge(ge({}, ne.l10ns.default), t);
+  };
+  ne.setDefaults = function(t) {
+    ne.defaultConfig = ge(ge({}, ne.defaultConfig), t);
+  };
+  ne.parseDate = mn({});
+  ne.formatDate = Gn({});
+  ne.compareDates = xe;
+  typeof jQuery < "u" && typeof jQuery.fn < "u" && (jQuery.fn.flatpickr = function(t) {
+    return Lt(this, t);
+  });
+  Date.prototype.fp_incr = function(t) {
+    return new Date(this.getFullYear(), this.getMonth(), this.getDate() + (typeof t == "string" ? parseInt(t, 10) : t));
+  };
+  typeof window < "u" && (window.flatpickr = ne);
+  var Wr = ne;
+  var Yr = /* @__PURE__ */ new Date();
+  var fo = new Date(Yr.getTime() + 7 * 24 * 60 * 60 * 1e3);
+  var zt = class extends Controller {
+    connect() {
+      this.rangeValue = this.rangeValue.map((e) => new Date(e));
+      let t = this, n = Wr(this.element, { mode: this.modeValue, minDate: this.minDateValue, dateFormat: this.dateFormatValue, defaultDate: this.rangeValue, onChange: function(e, o, a) {
+        t.setCurrentRange(a);
+      } });
+      this.setCurrentRange(n);
+    }
+    setCurrentRange(t) {
+      let n = (o) => {
+        let a = { month: "short", day: "numeric" };
+        return o.toLocaleDateString("en-US", a);
+      }, e = t.selectedDates.map(n).join(" - ");
+      this.hasLabelTarget && (this.labelTarget.textContent = e, this.inputTarget.value = t.selectedDates);
+    }
+  };
+  re(zt, "targets", ["label", "input"]), re(zt, "values", { mode: { type: String, default: "range" }, minDate: { type: String, default: "today" }, dateFormat: { type: String, default: "Y-m-d" }, range: { type: Array, default: [Yr, fo] } });
+  var po = (t, n, e) => {
+    let o = t;
+    return e === true ? o = `${n.identifier}:${t}` : typeof e == "string" && (o = `${e}:${t}`), o;
+  };
+  var mo = (t, n, e) => {
+    let { bubbles: o, cancelable: a, composed: c } = n || { bubbles: true, cancelable: true, composed: true };
+    return n && Object.assign(e, { originalEvent: n }), new CustomEvent(t, { bubbles: o, cancelable: a, composed: c, detail: e });
+  };
+  function ho(t) {
+    let n = t.getBoundingClientRect(), e = window.innerHeight || document.documentElement.clientHeight, o = window.innerWidth || document.documentElement.clientWidth, a = n.top <= e && n.top + n.height > 0, c = n.left <= o && n.left + n.width > 0;
+    return a && c;
+  }
+  var vo = { events: ["click", "touchend"], onlyVisible: true, dispatchEvent: true, eventPrefix: true };
+  var Ur = (t, n = {}) => {
+    let e = t, { onlyVisible: o, dispatchEvent: a, events: c, eventPrefix: d } = Object.assign({}, vo, n), p = (M) => {
+      let O = n?.element || e.element;
+      if (!(O.contains(M.target) || !ho(O) && o) && (e.clickOutside && e.clickOutside(M), a)) {
+        let E = po("click:outside", e, d), k = mo(E, M, { controller: e });
+        O.dispatchEvent(k);
+      }
+    }, u = () => {
+      c?.forEach((M) => {
+        window.addEventListener(M, p, true);
+      });
+    }, b = () => {
+      c?.forEach((M) => {
+        window.removeEventListener(M, p, true);
+      });
+    }, h = e.disconnect.bind(e);
+    return Object.assign(e, { disconnect() {
+      b(), h();
+    } }), u(), [u, b];
+  };
+  var Qn = class extends Controller {
+  };
+  Qn.debounces = [];
+  var Zn = class extends Controller {
+  };
+  Zn.throttles = [];
+  var go = { enterFromClass: "enter", enterActiveClass: "enterStart", enterToClass: "enterEnd", leaveFromClass: "leave", leaveActiveClass: "leaveStart", leaveToClass: "leaveEnd" };
+  var bo = { transitioned: false, hiddenClass: "hidden", preserveOriginalClass: true, removeToClasses: true };
+  var st = (t, n = {}) => {
+    var e, o, a;
+    let c = t, d = c.element.dataset.transitionTarget, p;
+    d && (p = c[`${d}Target`]);
+    let u = n?.element || p || c.element;
+    if (!(u instanceof HTMLElement || u instanceof SVGElement))
+      return;
+    let b = u.dataset, h = parseInt(b.leaveAfter || "") || n.leaveAfter || 0, { transitioned: M, hiddenClass: O, preserveOriginalClass: E, removeToClasses: k } = Object.assign({}, bo, n), w = (e = c.enter) === null || e === void 0 ? void 0 : e.bind(c), P = (o = c.leave) === null || o === void 0 ? void 0 : o.bind(c), V = (a = c.toggleTransition) === null || a === void 0 ? void 0 : a.bind(c);
+    async function I(A) {
+      if (c.transitioned)
+        return;
+      c.transitioned = true, w && w(A);
+      let N = at("enterFrom", n, b), z = at("enterActive", n, b), B = at("enterTo", n, b), j = at("leaveTo", n, b);
+      O && u.classList.remove(O), k || Y(u, j), await F(u, N, z, B, O, E, k), h > 0 && setTimeout(() => {
+        _(A);
+      }, h);
+    }
+    async function _(A) {
+      if (!c.transitioned)
+        return;
+      c.transitioned = false, P && P(A);
+      let N = at("leaveFrom", n, b), z = at("leaveActive", n, b), B = at("leaveTo", n, b), j = at("enterTo", n, b);
+      k || Y(u, j), await F(u, N, z, B, O, E, k), O && u.classList.add(O);
+    }
+    function l(A) {
+      V && V(A), c.transitioned ? _() : I();
+    }
+    async function F(A, N, z, B, j, le, ae) {
+      let K = [];
+      le && (N.forEach((q) => A.classList.contains(q) && q !== j && K.push(q)), z.forEach((q) => A.classList.contains(q) && q !== j && K.push(q)), B.forEach((q) => A.classList.contains(q) && q !== j && K.push(q))), H(A, N), Y(A, K), H(A, z), await wo(), Y(A, N), H(A, B), await yo(A), Y(A, z), ae && Y(A, B), H(A, K);
+    }
+    function x() {
+      c.transitioned = M, M ? (O && u.classList.remove(O), I()) : (O && u.classList.add(O), _());
+    }
+    function H(A, N) {
+      N.length > 0 && A.classList.add(...N);
+    }
+    function Y(A, N) {
+      N.length > 0 && A.classList.remove(...N);
+    }
+    return x(), Object.assign(c, { enter: I, leave: _, toggleTransition: l }), [I, _, l];
+  };
+  function at(t, n, e) {
+    let o = `transition${t[0].toUpperCase()}${t.substr(1)}`, a = go[t], c = n[t] || e[o] || e[a] || " ";
+    return xo(c) ? [] : c.split(" ");
+  }
+  async function yo(t) {
+    return new Promise((n) => {
+      let e = Number(getComputedStyle(t).transitionDuration.split(",")[0].replace("s", "")) * 1e3;
+      setTimeout(() => {
+        n(e);
+      }, e);
+    });
+  }
+  async function wo() {
+    return new Promise((t) => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(t);
+      });
+    });
+  }
+  function xo(t) {
+    return t.length === 0 || !t.trim();
+  }
+  var gn = class extends Controller {
+    connect() {
+      st(this, { element: this.menuTarget });
+    }
+    toggle() {
       this.toggleTransition();
+    }
+    hide(t) {
+      !this.element.contains(t.target) && !this.menuTarget.classList.contains("hidden") && this.leave();
+    }
+  };
+  re(gn, "targets", ["menu", "trigger"]);
+  var bn = class extends Controller {
+    connect() {
+      st(this, { element: this.contentTarget }), Ur(this, { element: this.contentTarget });
+    }
+    open(t) {
+      t.preventDefault(), this.enableAppearance(), this.toggleTransition();
+    }
+    close(t) {
+      t.preventDefault(), this.leave(), this.disableAppearance();
+    }
+    clickOutside(t) {
+      let n = t.target.dataset.action;
+      n == "click->modal#open" || n == "click->modal#open:prevent" || this.close(t);
+    }
+    closeWithEsc(t) {
+      t.keyCode === 27 && !this.containerTarget.classList.contains("hidden") && this.close(t);
+    }
+    enableAppearance() {
+      this.containerTarget.classList.add("bg-black/80"), this.containerTarget.classList.remove("hidden");
+    }
+    disableAppearance() {
+      this.containerTarget.classList.add("hidden"), this.containerTarget.classList.remove("bg-black/80");
+    }
+    disconnect() {
+      this.toggleTransition();
+    }
+  };
+  re(bn, "targets", ["container", "content"]);
+  var yn = class extends Controller {
+    connect() {
+      this.activeTabClasses = (this.data.get("activeTab") || "active").split(" "), this.inactiveTabClasses = (this.data.get("inactiveTab") || "inactive").split(" "), this.anchor && (this.index = this.tabTargets.findIndex((t) => t.id === this.anchor)), this.showTab();
+    }
+    change(t) {
+      t.preventDefault(), t.currentTarget.dataset.index ? this.index = t.currentTarget.dataset.index : t.currentTarget.dataset.id ? this.index = this.tabTargets.findIndex((n) => n.id == t.currentTarget.dataset.id) : this.index = this.tabTargets.indexOf(t.currentTarget), window.dispatchEvent(new CustomEvent("tsc:tab-change"));
+    }
+    showTab() {
+      this.tabTargets.forEach((t, n) => {
+        let e = this.panelTargets[n];
+        n === this.index ? (e.classList.remove("hidden"), t.classList.remove(...this.inactiveTabClasses), t.classList.add(...this.activeTabClasses), t.id && (location.hash = t.id)) : (e.classList.add("hidden"), t.classList.remove(...this.activeTabClasses), t.classList.add(...this.inactiveTabClasses));
+      });
+    }
+    get index() {
+      return parseInt(this.data.get("index") || 0);
+    }
+    set index(t) {
+      this.data.set("index", t >= 0 ? t : 0), this.showTab();
+    }
+    get anchor() {
+      return document.URL.split("#").length > 1 ? document.URL.split("#")[1] : null;
+    }
+  };
+  re(yn, "targets", ["tab", "panel"]);
+  var wn = class extends Controller {
+    connect() {
+      st(this, { element: this.element }), this.triggerOnLoadValue && this.toggleTransition();
     }
     toggle() {
       this.toggleTransition();
     }
     hide() {
       this.leave();
-      let self = this;
-      setTimeout(() => {
-        self.toggleTransition();
-      }, 1e3);
     }
     disconnect() {
       this.leave();
     }
   };
+  re(wn, "values", { triggerOnLoad: { type: Boolean, default: false } });
+  var xn = class extends Controller {
+    connect() {
+      st(this, { element: this.toggleableTarget });
+    }
+    toggle() {
+      this.toggleTransition();
+    }
+  };
+  re(xn, "targets", ["toggleable"]);
+  var Dn = class extends Controller {
+    connect() {
+      let t = {};
+      this.hasContentValue && (t.content = this.contentValue), this.hasAllowHtmlValue && (t.allowHTML = this.allowHtmlValue), this.tippy = sn(this.element, t);
+    }
+    disconnect() {
+      this.tippy.destroy();
+    }
+  };
+  re(Dn, "values", { content: String, allowHtml: { type: Boolean, default: false } });
 
   // app/javascript/controllers/index.js
   application.register("railsui-anchor", railsui_anchor_controller_default);
-  application.register("railsui-clipboard", railsui_clipboard_controller_default);
   application.register("railsui-configuration", railsui_configuration_controller_default);
   application.register("railsui-code", railsui_code_controller_default);
   application.register("railsui-canvas", railsui_canvas_controller_default);
-  application.register(
-    "railsui-date-range-picker",
-    railsui_date_range_picker_controller_default
-  );
   application.register("railsui-dialog", railsui_dialog_controller_default);
-  application.register("railsui-dropdown", railsui_dropdown_controller_default);
   application.register("railsui-flash", railsui_flash_controller_default);
   application.register("railsui-helper", railsui_helper_controller_default);
-  application.register("railsui-modal", railsui_modal_controller_default);
   application.register("railsui-nav", railsui_nav_controller_default);
   application.register("railsui-prevent", railsui_prevent_controller_default);
   application.register("railsui-scroll", railsui_scroll_controller_default);
@@ -63157,11 +60299,16 @@
   application.register("railsui-select-all", railsui_select_all_controller_default);
   application.register("railsui-smooth", railsui_smooth_controller_default);
   application.register("railsui-snippet", railsui_snippet_controller_default);
-  application.register("railsui-tabs", railsui_tabs_controller_default);
   application.register("railsui-pages", railsui_pages_controller_default);
-  application.register("railsui-toggle", railsui_toggle_controller_default);
-  application.register("railsui-tooltip", railsui_tooltip_controller_default);
   application.register("railsui-loading", railsui_loading_controller_default);
-  application.register("toast", toast_controller_default);
+  application.register("railsui-clipboard", cn);
+  application.register("railsui-count-up", ln);
+  application.register("railsui-date-range-picker", zt);
+  application.register("railsui-dropdown", gn);
+  application.register("railsui-modal", bn);
+  application.register("railsui-tabs", yn);
+  application.register("railsui-toast", wn);
+  application.register("railsui-toggle", xn);
+  application.register("railsui-tooltip", Dn);
 })();
 //# sourceMappingURL=application.js.map

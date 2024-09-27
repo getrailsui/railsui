@@ -13,7 +13,7 @@
                   <%= icon "copy", class: "size-3 fill-current text-neutral-400 dark:text-neutral-100" %>
                 </div>
                 <div
-              data-railsui-clipboard-target="source"
+              data-railsui-clipboard-target="content"
               class="group-hover:text-neutral-600 dark:group-hover:text-neutral-400 font-medium text-lg">
                   <%= route[:name] %><span data-railsui-helper-target="extension">_path</span>
                 </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="sm:col-span-6 md:pt-0 pt-2">
           <div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br rounded-lg border from-neutral-900 to-neutral-700 border-neutral-700 selection:bg-salmon-500 selection:bg-opacity-25 relative text-base text-white">
-            <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-bash text-neutral-100"># Path
+            <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-bash text-neutral-100"># Path
 <%= route[:path].to_param.strip %>
 
 # Controller/Action
@@ -52,7 +52,7 @@
           <div class="sm:col-span-5"></div>
           <div class="sm:col-span-6">
             <div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br rounded-lg overflow-hidden border from-neutral-900 to-neutral-700 border-neutral-700 selection:bg-salmon-500 selection:bg-opacity-25 relative text-base text-white">
-              <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="source" class="language-bash text-neutral-100"># Path
+              <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-bash text-neutral-100"># Path
 <%= route[:path].to_param.strip %>
 
 # Controller/Action

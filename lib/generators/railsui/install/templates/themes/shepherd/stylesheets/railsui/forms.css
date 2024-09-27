@@ -122,6 +122,14 @@
       @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-900 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-500;
     }
 
+    &::-moz-range-thumb {
+      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-900 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-500;
+    }
+
+    &::-ms-thumb {
+      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-900 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-500;
+    }
+
     &::-ms-track {
       @apply cursor-pointer bg-transparent border-transparent text-transparent;
     }
@@ -130,11 +138,11 @@
       @apply bg-zinc-200 dark:bg-zinc-600 rounded-lg h-4 w-full;
     }
 
-    &::-moz-slider-runnable-track {
+    &::-moz-range-track {
       @apply bg-zinc-200 dark:bg-zinc-600 rounded-lg h-4 w-full;
     }
 
-    &::-ms-slider-runnable-track {
+    &::-ms-track {
       @apply bg-zinc-200 dark:bg-zinc-600 rounded-lg h-4 w-full;
     }
 
@@ -142,11 +150,11 @@
       @apply bg-zinc-200 dark:bg-zinc-600;
     }
 
-    &:focus::-moz-slider-runnable-track {
+    &:focus::-moz-range-track {
       @apply bg-zinc-200 dark:bg-zinc-600;
     }
 
-    &:focus::-ms-slider-runnable-track {
+    &:focus::-ms-track {
       @apply bg-zinc-200 dark:bg-zinc-600;
     }
   }

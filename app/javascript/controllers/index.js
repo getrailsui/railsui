@@ -3,9 +3,6 @@ import { application } from "./application"
 import RailsuiAnchorController from "./railsui_anchor_controller.js"
 application.register("railsui-anchor", RailsuiAnchorController)
 
-import RailsuiClipboardController from "./railsui_clipboard_controller.js"
-application.register("railsui-clipboard", RailsuiClipboardController)
-
 import RailsuiConfigurationController from "./railsui_configuration_controller.js"
 application.register("railsui-configuration", RailsuiConfigurationController)
 
@@ -15,26 +12,14 @@ application.register("railsui-code", RailsuiCodeController)
 import RailsuiCanvasController from "./railsui_canvas_controller.js"
 application.register("railsui-canvas", RailsuiCanvasController)
 
-import RailsuiDateRangePickerController from "./railsui_date_range_picker_controller.js"
-application.register(
-  "railsui-date-range-picker",
-  RailsuiDateRangePickerController
-)
-
 import RailsuiDialogController from "./railsui_dialog_controller.js"
 application.register("railsui-dialog", RailsuiDialogController)
-
-import RailsuiDropdownController from "./railsui_dropdown_controller.js"
-application.register("railsui-dropdown", RailsuiDropdownController)
 
 import RailsuiFlashController from "./railsui_flash_controller.js"
 application.register("railsui-flash", RailsuiFlashController)
 
 import RailsuiHelperController from "./railsui_helper_controller.js"
 application.register("railsui-helper", RailsuiHelperController)
-
-import RailsuiModalController from "./railsui_modal_controller.js"
-application.register("railsui-modal", RailsuiModalController)
 
 import RailsuiNavController from "./railsui_nav_controller.js"
 application.register("railsui-nav", RailsuiNavController)
@@ -60,20 +45,31 @@ application.register("railsui-smooth", RailsuiSmoothController)
 import RailsuiSnippetController from "./railsui_snippet_controller.js"
 application.register("railsui-snippet", RailsuiSnippetController)
 
-import RailsuiTabsController from "./railsui_tabs_controller.js"
-application.register("railsui-tabs", RailsuiTabsController)
-
 import RailsuiPagesController from "./railsui_pages_controller.js"
 application.register("railsui-pages", RailsuiPagesController)
-
-import RailsuiToggleController from "./railsui_toggle_controller.js"
-application.register("railsui-toggle", RailsuiToggleController)
-
-import RailsuiTooltipController from "./railsui_tooltip_controller.js"
-application.register("railsui-tooltip", RailsuiTooltipController)
 
 import RailsuiLoadingController from "./railsui_loading_controller.js"
 application.register("railsui-loading", RailsuiLoadingController)
 
-import ToastController from "./toast_controller.js"
-application.register("toast", ToastController)
+// Import components adhoc.
+import {
+  RailsuiClipboard,
+  RailsuiCountUp,
+  RailsuiDateRangePicker,
+  RailsuiDropdown,
+  RailsuiModal,
+  RailsuiTabs,
+  RailsuiToast,
+  RailsuiToggle,
+  RailsuiTooltip,
+} from "railsui-stimulus"
+
+application.register("railsui-clipboard", RailsuiClipboard)
+application.register("railsui-count-up", RailsuiCountUp)
+application.register("railsui-date-range-picker", RailsuiDateRangePicker)
+application.register("railsui-dropdown", RailsuiDropdown)
+application.register("railsui-modal", RailsuiModal)
+application.register("railsui-tabs", RailsuiTabs)
+application.register("railsui-toast", RailsuiToast)
+application.register("railsui-toggle", RailsuiToggle)
+application.register("railsui-tooltip", RailsuiTooltip)

@@ -106,17 +106,11 @@ data-railsui-tabs-inactive-tab="py-3 px-4 bg-white dark:bg-transparent inline-bl
 <% end %>
 
 <% content_for :js, flush: true do %>
-// Start Stimulus
-import { Application } from '@hotwired/stimulus'
-
-const application = Application.start()
-
-// Register Stimulus Controller
 import { RailsuiTabs } from 'railsui-stimulus'
 application.register('railsui-tabs', RailsuiTabs)
 <% end %>
 
-<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "tabs_controller.js" %>
+<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "index.js" %>
 <% end %>
 <% end %>
 </div>

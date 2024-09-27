@@ -4,9 +4,11 @@
     <p>Resize an element’s content to stay contained within its container using <code>.object-contain</code>.</p>
   </div>
 
-  <div class="bg-slate-50 flex items-center justify-center p-6 rounded-lg border border-slate-200 dark:bg-slate-700 dark:border-slate-600">
-    <img src="https://picsum.photos/900/700" alt="" class="object-contain h-48 w-96 rounded-lg shadow-xl bg-blue-100">
-  </div>
+  <%= render preview('gray') do %>
+    <div class="flex items-center justify-center">
+      <img src="https://picsum.photos/900/700" alt="" class="object-contain h-48 w-96 rounded-lg shadow-xl bg-blue-100">
+    </div>
+  <% end %>
 
 <% content_for :example, flush: true do %>
 <%# .html %>
