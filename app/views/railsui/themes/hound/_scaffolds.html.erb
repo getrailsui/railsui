@@ -28,7 +28,7 @@
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/edit" %>
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/partial" %>
 
-<%= system_pagination(prev_path: systems_pages_path, prev_text: "Pages", next_path: systems_forms_path, next_text: "Forms") %>
+<%= system_pagination(prev_path: systems_content_image_path, prev_text: "Image", next_path: systems_forms_path, next_text: "Forms") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
