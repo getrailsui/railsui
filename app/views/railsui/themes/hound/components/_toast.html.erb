@@ -45,6 +45,14 @@ export default class extends Controller {
 <%= render_snippet js_filename: "toast_controller.js" %>
 </div>
 
+<h3>Options</h3>
+
+<ul>
+  <li>
+    <code>triggerOnLoad</code>(<code>data-railsui-toast-trigger-on-load-value="true"</code>): Make the toast notification appear as soon as initialized. Defaults to <code>false</code>.
+  </li>
+</ul>
+
 <h3>Requirements</h3>
 
 <p>Toasts typically enter the screen from the left or right side of the viewport. This example accounts for those two variants by extending Tailwind. Extend your tailwind.config.js file as follows:</p>

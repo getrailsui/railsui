@@ -1,4 +1,4 @@
-<% path = "railsui/themes/#{Railsui.config.theme}/components/toast" %>
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/toast" %>
 
 <%= render "#{path}/base" %>
 
@@ -9,41 +9,20 @@
 
 <div class="not-prose">
 <% content_for :js, flush: true do %>
-import { Controller } from "@hotwired/stimulus"
-import { useTransition } from "stimulus-use"
-
-export default class extends Controller {
-  connect() {
-    useTransition(this, {
-      element: this.element,
-    })
-
-    // Trigger toggle
-    this.toggleTransition()
-  }
-
-  toggle() {
-    this.toggleTransition()
-  }
-
-  hide() {
-    this.leave()
-
-    let self = this
-    setTimeout(() => {
-      self.toggleTransition()
-    }, 1000)
-  }
-
-  disconnect() {
-    this.leave()
-  }
-}
-
+import { RailsuiToast } from 'railsui-stimulus'
+application.register('railsui-toast', RailsuiToast)
 <% end %>
 
-<%= render_snippet js_filename: "toast_controller.js" %>
+<%= render_snippet active_tab: :js, js_filename: "index.js" %>
 </div>
+
+<h3>Options</h3>
+
+<ul>
+  <li>
+    <code>triggerOnLoad</code>(<code>data-railsui-toast-trigger-on-load-value="true"</code>): Make the toast notification appear as soon as initialized. Defaults to <code>false</code>.
+  </li>
+</ul>
 
 <h3>Requirements</h3>
 
@@ -134,6 +113,7 @@ module.exports = {
 </div>
 <hr>
 </div>
+
 
 <%= system_pagination(prev_path: systems_components_tab_path, prev_text: "Tab", next_path: systems_components_tooltip_path, next_text: "Tooltip") %>
 
