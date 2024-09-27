@@ -4,7 +4,7 @@
     <div class="flex items-center justify-between mb-6 gap-2">
       <%= heading text: "Color", id: "color", tag: "h3", class: "font-bold text-3xl tracking-tight mb-3" %>
 
-      <%= link_to reset_colors_configuration_path, class: "rui-btn rui-btn-white", data: { controller: "railsui-loading", action: "click->railsui-loading#start" } do %>
+      <%= link_to reset_colors_configuration_path, class: "rui-btn rui-btn-white", data: { action: "click->railsui-loading#start" } do %>
         <span data-railsui-loading-target="content">Reset to default colors for active theme</span>
       <% end %>
     </div>
