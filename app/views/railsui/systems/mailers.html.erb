@@ -1,2 +1,225 @@
 <%= render "railsui/shared/header" %>
-<%= render "railsui/themes/#{Railsui.config.theme}/mailers" %>
+
+<%= render "railsui/shared/header" %>
+<div class="prose prose-neutral dark:prose-invert mb-16">
+  <div id="mailers-overview">
+    <p>Email templates are ready for use with Rails UI. They are a starting point for you to tweak as the content you send your users evolves.</p>
+
+    <p>Many email clients are out in the wild, and each has different areas of support regarding CSS and HTML. Rails UI includes essential support with some clever hacks you can use to do more with your templates.</p>
+
+    <h3>Styling considerations</h3>
+
+    <p>It's recommended that CSS be inlined to work best inside any email, Tailwind CSS will not work well inside the templates. All included CSS resides inside the <%= link_to "mailer layout template",  systems_mailers_layout_path %> for this reason.</p>
+
+    <p>If you prefer to write your CSS in another stylesheet and include it in your layout, we recommend using something like <%= link_to "premailer", "https://github.com/premailer/premailer" %> to ensure any additional styles you include render correctly inline.</p>
+  </div>
+
+  <div id="mailers-helpers">
+    <h3>Helpers</h3>
+
+    <p>Bundled with Rails UI is a small set of helpers. These helpers are useful for displaying buttons and adding dependable spacing between HTML elements in a given template, as you can't rely on CSS much of the time.</p>
+
+    <p>HTML emails require tables to layout a given design. Writing these is a chore, but they are more dependable across clients if appropriately authored. I hope these helpers should save you time and headache!</p>
+
+    <p>The helpers are added automatically when you install Rails UI and appended to your <code>application_helper.rb</code> file.</p>
+
+    <p>For context this is what they look like and are purely for extraction sake:</p>
+
+  <div class="not-prose">
+<% content_for :ruby, flush: true do %>
+def spacer(amount=16)
+  render "rui/shared/email_spacer", amount: amount
+end
+
+def email_action(action, url, options={})
+  align = options[:align] ||= "left"
+  theme = options[:theme] ||= "primary"
+  fullwidth = options[:fullwidth] ||= false
+  render "rui/shared/email_action", align: align, theme: theme, action: action, url: url, fullwidth: fullwidth
+end
+
+def email_callout(&block)
+  render "rui/shared/email_callout", block: block
+end
+<% end %>
+
+    <%= render_snippet active_tab: :ruby, ruby_filename: "application_helper.rb" %>
+     </div>
+<p>You'll find the partials referenced above inside the <code>rui/shared</code> view directory.</p>
+  </div>
+
+  <div id="mailers-spacers">
+    <h3>Spacers</h3>
+
+    <p>The spacer helper is an extraction for rendering a new table between elements inside an email template. Emails and margin/padding don't always behave across mail clients, so this is a sure way to get that extra space between elements.</p>
+
+    <p>The helper renders an empty table with some inline styles and height attributes intact. Rather than write this HTML by hand, the spacer helper makes it easy.</p>
+
+    <p>Pass an amount to the helper for more or less space to suit your needs. The amount passed will render in pixel units.</p>
+  </div>
+</div>
+
+<% content_for :html, flush: true do %>
+<!-- compiled output -->
+<p>Some text...</p>
+<table class="spacer">
+  <tbody>
+    <tr>
+      <td height="16" style="font-size:16px;line-height:16px;">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>Another paragraph</p>
+<% end %>
+<% content_for :erb, flush: true do %>
+<p>Some text....</p>
+<%%= spacer(16) %>
+<p>Another paragraph</p>
+<% end %>
+<%= render_snippet(active_tab: "erb") %>
+
+<div id="mailers-buttons">
+    <h3 class="font-bold text-xl mb-3">Buttons</h3>
+    <div class="primary dark:primary-invert">
+      <p>To make authoring buttons way easier in emails, we extracted the logic to do so out into another helper called <%= code("email_action") %>. The helper accepts two parameters and an options hash for further customization.</p>
+
+      <p>Rails UI supports two themes (primary, secondary) which can be customized in the <%= link_to "mailer layout", systems_mailers_layout_path %> css. </p>
+    </div>
+    <div class="mt-5 mb-8 first:mt-0 last:mb-0 bg-slate-800 rounded-xl shadow-lg overflow-hidden dark:ring-1 dark:ring-white/10 dark:ring-inset selection:bg-salmon-500 selection:bg-opacity-25 relative text-slate-200 p-6">
+      <code class="text-white text-lg">email_action(action, path, options)</code>
+      <h4 class="uppercase text-xs text-slate-400 font-semibold tracking-wider my-4 pb-2 border-b border-slate-700">Required parameters</h4>
+      <ul class="space-y-2">
+        <li>
+          <p><code class="text-pink-400 font-mono font-semibold">action</code>  <em class="text-slate-400">- required</em></p>
+          <p>The button label</p>
+        </li>
+        <li>
+          <p><code class="text-pink-400 font-mono font-semibold">path</code> <em class="text-slate-400">- required</em></p>
+          <p>The url for the button. Be sure to use url helpers and not path helpers in an email </p>
+        </li>
+      </ul>
+      <h4 class="uppercase text-xs text-slate-400 font-semibold tracking-wider my-4 pb-2 border-b border-slate-700">Additional options</h4>
+      <ul class="space-y-2">
+        <li>
+          <p><code class="text-pink-400 font-mono font-semibold">theme</code></p>
+          <p>
+            <span class="font-medium text-sky-400 font-mono">primary</span> or <span class="font-medium text-sky-400 font-mono">secondary</span>. Default: <span class="font-medium text-sky-400 font-mono">primary</span>.
+          </p>
+        </li>
+        <li>
+          <p><code class="text-pink-400 font-mono font-semibold">align</code></p>
+          <p>Align button to
+            <span class="font-medium text-sky-400 font-mono">center</span>, <span class="font-medium text-sky-400 font-mono">left</span>, or <span class="font-medium text-sky-400 font-mono">right</span>.
+            Default: <span class="font-medium text-sky-400 font-mono">left</span>
+          </p>
+        </li>
+        <li>
+          <p><code class="text-pink-400 font-mono font-semibold">fullwidth</code></p>
+          <p>(boolean) <span class="font-medium text-sky-400 font-mono">true</span> / <span class="font-medium text-sky-400 font-mono">false</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+<% content_for :erb, flush: true do %>
+<!-- all available options shown in use -->
+<%%= email_action("View notification", root_url, theme: "primary", align: "center") %>
+<% end %>
+
+<% content_for :html, flush: true do %>
+<!-- what outputs from mail_action -->
+<table class="action" align="center">
+  <tr>
+    <td align="center">
+      <a href="<%= root_url %>" class="action__link  action__link--primary" target="_blank">View notification</a>
+      <div itemscope itemtype="http://schema.org/EmailMessage">
+        <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
+          <link itemprop="target" href="#"/>
+          <meta itemprop="name" content="View notification"/>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<% end %>
+
+<%= render_snippet(active_tab: "erb" ) %>
+
+</div>
+
+<%= divider %>
+
+<div id="mailers-callouts">
+<div class="prose prose-neutral dark:prose-invert">
+  <h3>Callouts</h3>
+  <p>Callouts help you highlight important information in an email. Rails UI has a simple helper that lets you add callouts easily. You can add your content and basic HTML to format it. You can change how callouts look in the <%= link_to "mailer layout", systems_mailers_layout_path %> CSS.</p>
+</div>
+
+<%= email_viewer("Callout example") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+    <h3>He made many woofs</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+    <p>Facere provident quia eaque dolor. Saepe consequatur illum laborum suscipit ex accusantium exercitationem dolores, aliquid mollitia recusandae ipsa iusto quas, deleniti aut.</p>
+
+    <table class="callout">
+      <tbody>
+        <td>
+          <p>This is my neat email callout.</p>
+        </td>
+      </tbody>
+    </table>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur veritatis quibusdam molestias nam culpa quasi facere nulla. Nisi, eius magni, tempora cupiditate atque sed optio iure necessitatibus ad minus ratione?</p>
+  <% end %>
+<% end %>
+
+<% content_for :html, flush: true do %>
+<table class="callout">
+  <tbody>
+    <td>
+      <p>This is my neat email callout.</p>
+    </td>
+  </tbody>
+</table>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= email_callout do %>
+  <p>This is my neat email callout.</p>
+<%% end %>
+<% end %>
+
+<%= render_snippet(active_tab: "erb" ) %>
+</div>
+
+<%= divider %>
+
+<div id="mailers-templates">
+  <div class="prose prose-neutral dark:prose-invert mt-8 mb-6">
+    <h3>Templates</h3>
+  </div>
+
+  <%= render layout: "railsui/shared/linkables" do %>
+    <%= render "railsui/shared/linkable", path: systems_mailers_layout_path, title: "Layout", description: "The backbone of your mailers." %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_minimal_path, title: "Minimal", description: "A simple starting point for HTML-based email templates." %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_promotion_path, title: "Promotion", description: "A simple promotional email template design." %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_transactional_path, title: "Transactional", description: "The core use case for most SaaS app email templates" %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_devise_path, title: "Devise", description: "Save time with pre-themed Devise templates." %>
+  <% end %>
+</div>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Overview", "#mailers-overview" %>
+    <%= component_link "Styling considerations", "#mailers-styling-considerations" %>
+    <%= component_link "Helpers", "#mailers-helpers" %>
+    <%= component_link "Spacers", "#mailers-spacers" %>
+    <%= component_link "Buttons", "#mailers-buttons" %>
+    <%= component_link "Callouts", "#mailers-callouts" %>
+    <%= component_link "Templates", "#mailers-templates" %>
+  <% end %>
+<% end %>
