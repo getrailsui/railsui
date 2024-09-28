@@ -43,7 +43,7 @@ module Railsui
           install_action_text
 
           # mailers
-          update_application_mailer
+          update_application_helper
           update_railsui_mailer_layout(@theme)
           generate_sample_mailers(@theme)
 

@@ -15,12 +15,6 @@ module Railsui
         end
       end
 
-      initializer "railsui.mailer_helper" do
-        ActiveSupport.on_load :action_mailer do
-          helper Railsui::MailHelper
-        end
-      end
-
       initializer 'railsui.setup' do |app|
         if Rails.env.development?
           config.assets.precompile << "railsui_manifest.js"

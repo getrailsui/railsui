@@ -255,7 +255,12 @@ module Railsui
 
       rails_command "generate mailer Railsui minimal promotion transactional"
 
-      insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, '  layout "rui/railsui_mailer"', after: "class RailsuiMailer < ApplicationMailer\n"
+combined_mailer_setup = <<-RUBY
+  layout "rui/railsui_mailer"
+  helper :application
+RUBY
+
+      insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, combined_mailer_setup, after: "class RailsuiMailer < ApplicationMailer\n"
 
       copy_sample_mailers(theme)
     end
@@ -275,12 +280,25 @@ module Railsui
       copy_file "themes/#{theme}/views/layouts/rui/railsui_mailer.html.erb", source_file, force: true
     end
 
-    def update_application_mailer
-      content = <<-RUBY.strip_heredoc
-      helper Railsui::MailHelper
-      RUBY
+    def update_application_helper
+content = <<-RUBY
+  def spacer(amount = 16)
+    render "rui/shared/email_spacer", amount: amount
+  end
 
-      insert_into_file "#{Rails.root}/app/mailers/application_mailer.rb", "  #{content}\n", after: "class ApplicationMailer < ActionMailer::Base\n"
+  def email_action(action, url, options={})
+    align = options[:align] ||= "left"
+    theme = options[:theme] ||= "primary"
+    fullwidth = options[:fullwidth] ||= false
+    render "rui/shared/email_action", align: align, theme: theme, action: action, url: url, fullwidth: fullwidth
+  end
+
+  def email_callout(&block)
+    render "rui/shared/email_callout", block: block
+  end
+RUBY
+
+      insert_into_file "#{Rails.root}/app/helpers/application_helper.rb", content, after: "module ApplicationHelper\n"
     end
 
     # Routes
