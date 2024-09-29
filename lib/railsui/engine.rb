@@ -8,6 +8,12 @@ Gem.loaded_specs['railsui'].dependencies.each do |d|
       isolate_namespace Railsui
       engine_name = "railsui"
 
+      config.autoload_once_paths << File.expand_path("../../app/helpers", __dir__)
+
+      initializer "railsui.load_helpers", before: :set_autoload_paths do |app|
+        app.config.autoload_once_paths << File.expand_path("../../app/helpers", __dir__)
+      end
+
       config.to_prepare do
         Railsui::Engine.config.host_app_stylesheet = 'application'
       end
@@ -27,8 +33,9 @@ Gem.loaded_specs['railsui'].dependencies.each do |d|
        end
       end
 
-      initializer "railsui.mailer_helper" do
+      initializer "railsui.mailer_helper", after: :set_autoload_paths do
         ActiveSupport.on_load :action_mailer do
+          require_relative "../../app/helpers/railsui/mail_helper"
           helper Railsui::MailHelper
         end
       end
