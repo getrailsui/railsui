@@ -17,7 +17,7 @@ Professionally designed templates and components for Ruby on Rails. Leverage bre
 
 #### New Rails Apps
 
-For new apps, use the `-c tailwind` flag to install Tailwind CSS. Rails UI uses Tailwind CSS is required for styling.
+Tailwind CSS is required for Rails UI. For new apps, use the `-c tailwind` flag to install Tailwind CSS.
 
 It's recommended to use the `-j` flag to one of the bundling solutions from the [`jsbundling-rails`](https://github.com/rails/jsbundling-rails) gem (bun, esbuild rollup, webpack) for max compatibility.
 
@@ -25,8 +25,8 @@ Support for [importmaps](https://github.com/rails/importmap-rails) or [propshaft
 
 Example new app command:
 
-```
-rails new app_name -c tailwind -j bun
+```bash
+rails new app_name -c tailwind -j esbuild
 ```
 
 #### Existing Rails Apps
@@ -39,7 +39,9 @@ If you're adding Tailwind to an existing app, you may need to run if you never h
 /bin/rails tailwindcss:install
 ```
 
-Your configuration may vary depending on your setup. So please refer to the [tailwindcss-rails documentation](https://github.com/rails/tailwindcss-rails) for more information.
+Your configuration may vary depending on your setup.
+
+Adding Tailwind CSS to an existing app _may_ result in CSS class name conflicts. We've done our best to make it integrate with your existing setup.
 
 #### New and existing Rails apps
 
@@ -66,9 +68,9 @@ After installing Rails UI, run your server using the `bin/dev` command and proce
 
 ## Configuration
 
-Configuration is a simple process where you configure your app's details, brand colors, choose a theme, and install any one-off pages you want.
+Configuration is a simple process where you configure your app's details, brand colors, and theme.
 
-Each theme comes with different pages and are designed for different niches in mind. They reside in the `app/views/rui` directory once installed.
+Each theme comes with different pages and are designed for different niches in mind. They reside in the `app/views/rui` directory once installed and should be treated as read-only.
 
 Updating your configuration at anytime will overwrite the pages so if you want to keep your changes, you'll need to copy the files to your application in another view directory.
 
@@ -78,15 +80,13 @@ Updating your configuration at anytime will overwrite the pages so if you want t
 - `railsui:colors[theme]` - Pass a theme name to output default color palette or don't pass an argument to show active colors.
 - `railsui:pages` - List all pages for the active theme.
 
-### Adding pages
+### Pages
 
-Because we take a theme-first approach to design with Rails UI, you can install pre-designed one-off pages.
+Pages are a suggestion of UI/UX components that can be used in your application. They are completely optional and are a great starting point for your application. We'll be adding more pages over time so the options will grow.
 
 ## Included components
 
-After you configure Rails UI, you can preview the design system. Here you will find a collection of components and best practices for real-world usage of components and pages.
-
-Use this as a guide to add a new design to your application, but please don't take it as gospel.
+After installing Rails UI and choosing a theme you'll find a collection of components and best practices for real-world applications at your disposal.
 
 Design is less rigid than programming and often needs a little tweaking as you go. The goal is to give you a hell of a good head start.
 
@@ -113,8 +113,8 @@ Installing Rails UI is a quick process that goes something like this:
 1. Install the gem
 2. Run the installer `rails railsui:install`
 3. Boot your server and load the Rails UI landing page and click "Configure app"
-4. Set a application name, support email and choose a template.
-5. Optionally install pre-designed pages bundled with your chosen template.
+4. Set a application name, support email and choose a theme.
+5. Get pages and components for your application.
 
 ### Dependencies included by default
 
@@ -140,9 +140,7 @@ bundle add railsui_icon
 
 Rails UI includes a set of email templates for your disposal including a custom mailer layout.
 
-You can find these in the `app/views/railsui_mailer` directory and the layout in `app/views/layouts/rui/railsui_mailer.html.erb`. You can customize these templates to your liking but treat them as read-only. We recommend copying these files to another view or directory in your application and customizing them there.
-
-Updating your Rails UI configuration will overwrite these files.
+You can find these in the `app/views/railsui_mailer` directory and the layout in `app/views/layouts/rui/railsui_mailer.html.erb`. We recommend copying these files to another view or directory in your application and customizing them there as updating your Rails UI configuration will overwrite these files.
 
 </details>
 
@@ -151,8 +149,6 @@ Updating your Rails UI configuration will overwrite these files.
 
 No. Well, kind of, but mostly this is a hybrid Rails engine not like other engines you've probably used. You can think of Rails UI as a source of truth for design elements, components, and views that significantly influence what your end users see when interacting with your app. It takes the guesswork out of the design problem.
 
-**Rails UI is meant for brand new Rails applications.** You'll want to use it on the "first run" so you can establish the foundation for assets and design patterns early on. To use Rails UI you need to choose a theme (more themes coming soon) that will act as the basis for future design elements.
-
 </details>
 
 <details>
@@ -160,22 +156,20 @@ No. Well, kind of, but mostly this is a hybrid Rails engine not like other engin
 
 - A custom configuration yaml file `railsui.yml` is added to your application in the `config` directory.
 - Dependencies and any necessary assets are installed and/or copied to your application.
-- A custom design system for repeatable web elements is inititalized. Think of this as a system for providing design direction when creating new features. This includes typography, font elements, and SVG icons.
+- A custom design system full of useful components for is inititalized. Think of this as a system for providing design direction when creating new features. This includes typography, font elements, and SVG icons.
 - One-off pages are copied over (i.e. About us, Pricing, etc...). Use these as a starting point. Consider them read-only as updating your configuration will overide them.
 - After installing the Rails UI gem and running the installer, you may configure your application preferences.
 </details>
 
 <details>
   <summary>Where are all the Turbo goodies?</summary>
-
 We're just hitting ground with Rails UI so expect to see additional components and solutions in the future. We have loads of ideas but would always love to hear yours as well.
-
 </details>
 
 <details>
   <summary>Is this code open-sourced?</summary>
 
-Rails UI it is free and clear to try out but not redistribute. There's a [pro version](https://railsui.com/pricing) that comes with more themes, components, and bells and whistles.
+Rails UI it is free and clear to try out but not redistribute. There's a [premium version](https://railsui.com/pricing) that comes with more themes, components, and bells and whistles.
 
 The _eventual_ license model will be a non-exclusive one, which essentially means you don't have permission to modify or share Rails UI as your own product but you can use it freely in your projects. New themes and components will be a part ongoing development.
 
@@ -183,11 +177,11 @@ The _eventual_ license model will be a non-exclusive one, which essentially mean
 
 ## Updates
 
-Rails UI ships as a gem. Future releases are available to clone/pull from a private git-hosted group to which you will have access if you purchase the pro version.
+Rails UI ships as a gem. Future releases are available to clone/pull from a private git-hosted group to which you will have access if you purchase the premium version.
 
 ## Is it free?
 
-Rails UI comes in two flavors, free and pro. The free version is available here. The [pro version](https://railsui.com/pricing) requires a subscription. We happily maintain both.
+Rails UI comes in two flavors, free and premium. The free version is available here. The [premium version](https://railsui.com/pricing) requires a subscription. We happily maintain both.
 
 **Free**
 
@@ -195,4 +189,4 @@ The free version has a handful of templates and components anyone can make use o
 
 **Premium**
 
-The [pro version](https://railsui.com/pricing) contains both free and premium templates. This version includes exclusive templates, pages, components, and tools only subscribers have access to in addition to the free version.
+The [premium version](https://railsui.com/pricing) contains both free and premium templates. This version includes exclusive templates, pages, components, and tools only subscribers have access to in addition to the free version.

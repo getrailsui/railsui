@@ -2,8 +2,7 @@
   <%= heading text: "Theme", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
 
   <div class="prose prose-neutral dark:prose-invert mb-6">
-    <p>A theme is a set of <%= link_to "pre-built components", systems_path %> and <%= link_to "optional pages", root_path(anchor: "pages"), data: { action: "click->railsui-smooth#scroll
-"} %> that make it easy to get a massive head start on the design of your application.</p>
+    <p>A theme is a set of <%= link_to "pre-built components", systems_path %> and <%= link_to "optional pages", root_path(anchor: "pages"), data: { action: "click->railsui-smooth#scroll"} %> that make it easy to get a massive head start on the design of your application.</p>
     <p>Your active theme: <span class="bg-neutral-200/80 text-neutral-800 dark:bg-neutral-600/70 dark:text-neutral-200 font-medium text-sm rounded px-1 py-0.5"><%= Railsui.config.theme.humanize %></span></p>
   </div>
 
