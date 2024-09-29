@@ -66,6 +66,7 @@ if Railsui.config.theme == nil
   say "✉️ Update mail sender"
   update_mailer_sender
   copy_sample_mailers
+  update_application_helper
 
   # Migrate
   rails_command "db:create"

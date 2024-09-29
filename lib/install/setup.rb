@@ -144,7 +144,6 @@ Rails.application.config.to_prepare do
   Devise::ConfirmationsController.layout "devise"
   Devise::PasswordsController.layout "devise"
   Devise::UnlocksController.layout "devise"
-  Devise::Mailer.helper Railsui::MailHelper
 end
 RUBY
 
@@ -208,8 +207,29 @@ def copy_hero_icons
 end
 
 def copy_application_mailer
-   copy_file "#{__dir__}/application_mailer.rb", Rails.root.join("app/mailers/application_mailer.rb"), force: true
+  copy_file "#{__dir__}/application_mailer.rb", Rails.root.join("app/mailers/application_mailer.rb"), force: true
 end
+
+def update_application_helper
+content = <<-RUBY
+  def spacer(amount = 16)
+    render "shared/email_spacer", amount: amount
+  end
+
+  def email_action(action, url, options={})
+    align = options[:align] ||= "left"
+    theme = options[:theme] ||= "primary"
+    fullwidth = options[:fullwidth] ||= false
+    render "shared/email_action", align: align, theme: theme, action: action, url: url, fullwidth: fullwidth
+  end
+
+  def email_callout(&block)
+    render "shared/email_callout", block: block
+  end
+RUBY
+
+      insert_into_file "#{Rails.root}/app/helpers/application_helper.rb", content, after: "module ApplicationHelper\n"
+    end
 
 # Extend this gems helper into the client app + extend devise
 def add_application_controller_code
