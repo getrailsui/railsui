@@ -12,6 +12,7 @@ Professionally designed themes and components for Ruby on Rails. Leverage breath
 - [Discussions](https://github.com/getrailsui/railsui/discussions)
 - [Updates](https://railsui.com/updates)
 - [Follow on X](https://x.com/railsui_)
+- [Migrating from v2](https://railsui.com/docs/updates)
 
 ## Installation
 
@@ -137,7 +138,27 @@ All Rails UI components are built on top of Stimulus.js. A theme includes custom
 
 ## Updates
 
-Run `bundle update railsui` from within your project and it should fetch the most recent version of the gem/engine directly from GitHub. I'll be tagging major releases once features are more solidified.
+Run `bundle update railsui` from within your project and it should fetch the most recent version of the gem/engine directly from GitHub.
+
+### Legacy v2
+
+Version 2 of Rails UI has since been sunset. Unfortunately, there is no upgrade path we can share.
+
+Version 3 was a rewrite of the gem and how Rails UI works to enable better flexibility. Version 3 offers the ability to swap themes, install on new and existing rails apps, and countless other smaller features. We chose this direction to enable more efficient development in the future and allow folks with existing apps the ability to use Rails UI.
+
+You can find version 2 on a dedicated branch on the Github repo. If you're an active user of this version be sure to update your Gemfile with the appropriate branch.
+
+```ruby
+gem "railsui", github: "getrailsui/railsui", branch: "v2"
+```
+
+### v3+
+
+Version 3 resides on the main branch.
+
+```ruby
+gem "railsui", github: "railsui/railsui", branch: "main"
+```
 
 ## Frequently Asked Questions
 
