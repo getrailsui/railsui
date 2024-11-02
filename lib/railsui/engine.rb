@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require "generators/railsui/scaffold/scaffold_generator"
-
 module Railsui
    class Engine < ::Rails::Engine
       isolate_namespace Railsui
@@ -26,9 +24,5 @@ module Railsui
         app.config.assets.precompile << "railsui/application.css"
         app.config.assets.precompile << %w[*.svg]
       end
-
-      # config.app_generators do |g|
-      #   g.templates.unshift File::expand_path('../templates', __FILE__)
-      # end
    end
  end

@@ -1,0 +1,6 @@
+Description: Creates a new resource with themed views using the Rails UI scaffold generator
+
+Example:
+  rails generate railsui:scaffold Post title:string body:text published:boolean
+
+  This will create a normal Rails scaffold with themed views
