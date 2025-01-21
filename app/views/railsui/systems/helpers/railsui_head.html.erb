@@ -1,0 +1,67 @@
+<% content_for :header_description do %>
+<p>A bundled helper responsible for rendering a collection of partials in the head tags of your app.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<div id="railsui_head">
+<div class="prose prose-neutral dark:prose-invert mb-6">
+  <h3>Rails UI Head</h3>
+  <p>The <code>railsui_head</code> helper is responsible for rendering a collection of partials in the head tags of your app. It's a handy way to include common elements like stylesheets, fonts, JavaScript files, and meta tags without having to repeat them in every view. Assets included vary by theme.</p>
+
+  <p>This helper renders by default for each Rails UI layout when you install Rails UI. You'll find it inside <code>app/views/code/layouts/rui/railsui.html.erb</code> and any other layouts with the <code>railsui_</code> prefix in the name (i.e. <code>railsui_admin.html.erb</code>).</p>
+</div>
+
+<%= render callout do %>
+  <p>You shouldn't need to do much outside of ensure this helper renders in your layouts. Consider this page for reference.</p>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= railsui_head %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+
+<%= divider %>
+
+<% content_for :erb, flush: true do %>
+<!-- app/views/code/layouts/rui/railsui.html.erb -->
+
+<!-- Meta tags via meta-tags gem. Customize yours at app/views/rui/shared/_meta.html.erb -->
+<%%= render "rui/shared/meta" %>
+
+<!-- Custom fonts for each theme -->
+<%%= render "rui/shared/fonts" %>
+
+<!-- CDN links for 3rd party CSS -->
+<%%= stylesheet_link_tag "https://unpkg.com/tippy.js@6.3.7/dist/tippy.css", "https://unpkg.com/trix@2.1.8/dist/trix.css", "data-turbo-track": "reload" %>
+
+<!-- Various 3rd party JavaScript if necessary -->
+
+<!-- Outputs custom colors for each Rails UI theme. This includes colors you might change by configuring the form on /railsui. -->
+<%%= custom_colors_css %>
+
+<%%= yield :head %>
+
+<% end %>
+<%= render_snippet active_tab: :erb, erb_filename: "_railsui_head.html.erb" %>
+
+<div class="prose prose-neutral dark:prose-invert">
+  <h3>yield :head</h3>
+  <p>We've include a <code><%%= yield :head %></code> statement so you can add additional assets in the <code>head</code> tags inside your views as necessary</p>
+</div>
+
+<% content_for :erb, flush: true do %>
+<%% content_for :head do %>
+  <%%= javascript_include_tag "https://unpkg.com/alpinejs@3.12.2/dist/cdn.min.js", "data-turbo-track": "reload" %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb, erb_filename: "index.html.erb" %>
+</div>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Rails UI Head", "#railsui_head" %>
+  <% end %>
+<% end %>
+
+<%= system_pagination(prev_path: systems_helpers_demo_avatar_path, prev_text: "Demo Avatar", next_path: systems_helpers_custom_colors_path, next_text: "Custom colors") %>

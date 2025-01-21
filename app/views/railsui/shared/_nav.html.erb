@@ -108,7 +108,7 @@
 
     <li x-data="{open: window.location.pathname.includes('mailers')}" x-cloak>
 
-      <%= link_to systems_mailers_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-gradient-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-neutral-700"  do %>
+      <%= link_to systems_mailers_overview_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-gradient-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-neutral-700"  do %>
         <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-sm flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
           <%= icon "mail", custom_path:"/mail.svg", class: "stroke-current size-5 text-blue-500" %>
         </div>

@@ -11,7 +11,11 @@
     light_text_color: "#94a3b8",
     callout_bg_color: "#e0e7ff",
     callout_border_color: "#a5b4fc",
-    callout_text_color: "#4338ca"
+    callout_text_color: "#4338ca",
+    button_border_radius: "6px",
+    hr_color: "#e5e7eb",
+    dark_mode_background_color: "#111827",
+    dark_mode_hr_color: "#374151"
   }
 %>
 
@@ -20,6 +24,66 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
+     :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body.rui-mailer {
+          background-color: <%= theme[:dark_mode_background_color] %> !important;
+          color: #ffffff !important;
+        }
+
+        .rui-mailer .content {
+          color: #ffffff !important;
+        }
+
+        .rui-mailer h1,
+        .rui-mailer h2,
+        .rui-mailer h3,
+        .rui-mailer h4 {
+          color: #ffffff !important;
+        }
+
+        .rui-mailer .main {
+          background: <%= theme[:dark_mode_background_color] %> !important;
+        }
+
+        .rui-mailer .footer td,
+        .rui-mailer .footer p,
+        .rui-mailer .footer span,
+        .rui-mailer .footer a {
+          color: <%= theme[:footer_text_color] %> !important;
+        }
+
+        .rui-mailer .small {
+          color: <%= theme[:footer_text_color] %> !important;
+        }
+
+        .rui-mailer table.callout td {
+          background-color: <%= theme[:callout_bg_color] %> !important;
+          color: <%= theme[:callout_text_color] %> !important;
+        }
+
+        .rui-mailer .view-in-browser {
+          color: #9ca3af !important;
+        }
+
+        .rui-mailer .action__link--primary {
+          background-color: <%= theme[:primary] %> !important;
+          border-color: <%= theme[:primary] %> !important;
+        }
+
+        .rui-mailer .action__link--secondary {
+          background-color: <%= theme[:secondary] %> !important;
+          border-color: <%= theme[:secondary] %> !important;
+        }
+        .rui-mailer table hr {
+          border-color: <%= theme[:dark_mode_hr_color] %>;
+        }
+      }
+
       @media all {
         .ExternalClass {
           width: 100%;
@@ -271,20 +335,19 @@
 
       .rui-mailer hr {
         border: 0;
-        border-bottom: 1px solid #f6f6f6;
+        border-bottom: 1px solid <%= theme[:hr_color] %>;
         margin: 20px 0;
       }
 
       .rui-mailer table.callout td {
         background-color: <%= theme[:callout_bg_color] %>;
-        border: 1px solid <%= theme[:callout_border_color] %>;
-        padding: 10px;
-        border-radius: 6px;
+        padding: 16px;
+        border-radius: 8px;
         color: <%= theme[:callout_text_color] %>
       }
 
       .rui-mailer table.callout td p {
-        margin-bottom: 0;
+        margin: 0;
       }
 
       .rui-mailer .view-in-browser {
@@ -293,6 +356,20 @@
         margin-bottom: 10px;
         text-align: center;
         display: block;
+      }
+
+      .rui-mailer table.social-links {
+        width: auto;
+      }
+
+      .rui-mailer table.social-links td {
+        width: 44px;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .rui-mailer table.social-links td img {
+        display: inline;
       }
 
       /* -------------------------------------
@@ -368,18 +445,19 @@
         display: inline-block;
         text-decoration: none !important;
         text-align: center;
-        border-radius: 6px;
+        border-radius: <%= theme[:button_border_radius] %> !important;
         -webkit-text-size-adjust: none;
         color: white !important;
         font-size: 16px;
+        font-weight: bold;
       }
       /* Update your brand colors here */
       .rui-mailer .action__link--primary {
         background-color: <%= theme[:primary] %>;
         border-top: 8px solid  <%= theme[:primary] %>;
-        border-right: 18px solid <%= theme[:primary] %>;
+        border-right: 24px solid <%= theme[:primary] %>;
         border-bottom: 8px solid <%= theme[:primary] %>;
-        border-left: 18px solid <%= theme[:primary] %>;
+        border-left: 24px solid <%= theme[:primary] %>;
       }
 
       .rui-mailer .action__link--secondary {

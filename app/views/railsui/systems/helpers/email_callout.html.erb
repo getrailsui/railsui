@@ -1,0 +1,67 @@
+<% content_for :header_description do %>
+<p>A simple extraction for a callout in an email.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<div id="email_callout">
+<div class="prose prose-neutral dark:prose-invert">
+  <h3>Callouts</h3>
+  <p>Callouts help you highlight important information in an email. Rails UI has a simple helper that lets you add callouts easily. You can add your content and basic HTML to format it. You can change how callouts look in the <%= link_to "mailer layout", systems_mailers_layout_path %> CSS.</p>
+</div>
+
+<%= render layout: example, locals: { heading: "Email Callout"} do %>
+<%= email_viewer("Callout example") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+    <h3>He made many woofs</h3>
+    <p>The playful pup wagged his tail with excitement as he explored the backyard.</p>
+
+    <p>From chasing squirrels to digging holes, our furry friend's day was filled with canine adventures. His boundless energy and enthusiasm brought joy to everyone around him.</p>
+
+    <table class="callout">
+      <tbody>
+        <td>
+          <p>Reminder: Don't forget to give your dog fresh water and a treat!</p>
+        </td>
+      </tbody>
+    </table>
+
+    <p>As the sun began to set, our loyal companion curled up in his favorite spot, dreaming of bones and belly rubs. His presence in our lives reminds us of the unconditional love and happiness that dogs bring to their human families.</p>
+  <% end %>
+<% end %>
+
+<% content_for :example, flush: true do %>
+
+<% content_for :html, flush: true do %>
+<table class="callout">
+  <tbody>
+    <td>
+      <p>This is my neat email callout.</p>
+    </td>
+  </tbody>
+</table>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= email_callout do %>
+  <p>This is my neat email callout.</p>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= email_callout do
+  %p This is my neat email callout.
+<% end %>
+
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+</div>
+
+<%= system_pagination(prev_path: systems_helpers_email_action_path, prev_text: "Email Action", next_path: systems_helpers_spacer_path, next_text: "Email Spacer") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Email Callout", "#email_callout" %>
+  <% end %>
+<% end %>

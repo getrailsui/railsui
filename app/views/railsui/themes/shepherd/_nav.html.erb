@@ -43,6 +43,8 @@
 
         <%= system_nav_item(label: "Alert", path:  systems_components_alert_path) %>
 
+        <%= system_nav_item(label: "Avatar", path:  systems_components_avatar_path) %>
+
         <%= system_nav_item(label: "Badge", path:  systems_components_badge_path) %>
 
         <%= system_nav_item(label: "Breadcrumb", path:  systems_components_breadcrumb_path) %>
@@ -50,6 +52,8 @@
         <%= system_nav_item(label: "Button", path:  systems_components_button_path) %>
 
         <%= system_nav_item(label: "Card", path:  systems_components_card_path) %>
+
+        <%= system_nav_item(label: "Combobox", path:  systems_components_combobox_path) %>
 
         <%= system_nav_item(label: "Datalist", path:  systems_components_datalist_path) %>
 
@@ -135,7 +139,7 @@
       <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Mailers</p>
 
       <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
-        <%= system_nav_item(label: "Overview", path:  systems_mailers_path) %>
+        <%= system_nav_item(label: "Overview", path:  systems_mailers_overview_path) %>
 
         <%= system_nav_item(label: "Layout", path:  systems_mailers_layout_path) %>
 
@@ -147,6 +151,20 @@
 
         <%= system_nav_item(label: "Devise", path:  systems_mailers_devise_path) %>
       </ul>
+    </li>
+
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Helpers</p>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Overview", path:  systems_helpers_overview_path) %>
+        <%= system_nav_item(label: "Icon", path:  systems_helpers_icon_path) %>
+        <%= system_nav_item(label: "Nav Link", path:  systems_helpers_nav_link_path) %>
+        <%= system_nav_item(label: "Email Action", path:  systems_helpers_email_action_path) %>
+        <%= system_nav_item(label: "Email Callout", path:  systems_helpers_email_callout_path) %>
+        <%= system_nav_item(label: "Email Spacer", path:  systems_helpers_spacer_path) %>
+        <%= system_nav_item(label: "Demo Avatar", path:  systems_helpers_demo_avatar_path) %>
+        <%= system_nav_item(label: "Rails UI Head", path:  systems_helpers_railsui_head_path) %>
+        <%= system_nav_item(label: "Custom colors", path:  systems_helpers_custom_colors_path) %>
     </li>
   </ul>
 </div>

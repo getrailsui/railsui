@@ -41,13 +41,17 @@ module Railsui
 
   def self.theme_logo_url
     theme = Railsui.config.theme
-    "https://f001.backblazeb2.com/file/railsui/themes/#{theme}/logo.svg"
+    file_extension = if defined?(Rails.application) && Rails.application.config.action_mailer
+                     "png"
+                   else
+                     "svg"
+                   end
+    "https://f001.backblazeb2.com/file/railsui/themes/#{theme}/logo.#{file_extension}"
   end
 
   def self.asset_url
     "https://f001.backblazeb2.com/file/railsui"
   end
-
 
   def self.run_command(command)
     Bundler.with_original_env do

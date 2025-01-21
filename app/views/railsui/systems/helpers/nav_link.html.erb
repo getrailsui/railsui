@@ -1,0 +1,99 @@
+<% content_for :header_description do %>
+<p>A dynamic nav link helper that makes it easy to add active states to your nav links.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<div id="nav_link">
+<%= render layout: example, locals: { heading: "Nav Link"} do %>
+<%= render preview 'gray' do %>
+<div class="flex items-center gap-3">
+  <%= nav_link_to "Nav Link", "#", class: "btn btn-link", active_class: "btn btn-primary", inactive_class: "btn btn-link" %>
+
+  <%= nav_link_to "#", class: "flex items-center gap-2 btn btn-dark", active_class: "btn btn-secondary", inactive_class: "btn btn-dark" do %>
+    <%= icon "home", class: "size-4 stroke-white flex-shrink-0" %>
+    <span>Home</span>
+  <% end %>
+</div>
+<% end %>
+
+<div class="prose prose-neutral my-6 max-w-full dark:prose-invert">
+<p>The helper includes active and inactive state options along with standard HTML options available in the <code>link_to</code> helper. The Ruby code is for reference only as it's included in the Rails UI gem.</p>
+<h3>Options</h3>
+
+<ul>
+  <li>
+    <code>name</code> - The name of the link.
+  </li>
+  <li>
+    <code>url/path</code> - Pass the url or path to the helper.
+  </li>
+  <li>
+    <code>active_class</code> - The class to apply when the link is active based on the current path.
+  </li>
+  <li>
+    <code>inactive_class</code> - The class to apply when the link is inactive.
+  </li>
+  <li>
+    <code>*html_options</code> - pass any other html options to the link as you would a normal link_to helper.
+  </li>
+</ul>
+</div>
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<div class="flex items-center gap-3">
+  <!-- render inline -->
+  <%%= nav_link_to "Nav Link", "#", class: "btn btn-link", active_class: "btn btn-primary", inactive_class: "btn btn-link" %>
+
+  <!-- render as block -->
+  <%%= nav_link_to "#", class: "flex items-center gap-2 btn btn-dark", active_class: "btn btn-secondary", inactive_class: "btn btn-dark" do %>
+    <%%= icon "home", class: "size-4 stroke-white flex-shrink-0" %>
+    <span>Home</span>
+  <%% end %>
+</div>
+<% end %>
+
+<% content_for :ruby, flush: true do %>
+def nav_link_to(name = nil, options = {}, html_options = {}, &block)
+  if block
+    html_options = options
+    options = name
+    name = block
+  end
+
+  url = url_for(options)
+  starts_with = html_options.delete(:starts_with)
+  html_options[:class] = Array.wrap(html_options[:class])
+  active_class = html_options.delete(:active_class) || "nav-link-active"
+  inactive_class = html_options.delete(:inactive_class) || ""
+
+  active = if (paths = Array.wrap(starts_with)) && paths.present?
+    paths.any? { |path| request.path.start_with?(path) }
+  else
+    request.path == url
+  end
+
+  classes = active ? active_class : inactive_class
+  html_options[:class] << classes unless classes.empty?
+
+  html_options.except!(:class) if html_options[:class].empty?
+
+  return link_to url, html_options, &block if block
+
+  link_to name, url, html_options
+end
+<% end %>
+
+<%= render_snippet active_tab: :erb, erb_filename: "nav.html.erb", ruby_filename: "application_helper.rb" %>
+<% end %>
+<% end %>
+</div>
+
+<%= system_pagination(prev_path: systems_helpers_icon_path, prev_text: "Icon", next_path: systems_helpers_email_action_path, next_text: "Email Action") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Nav Link", "#nav_link" %>
+  <% end %>
+<% end %>

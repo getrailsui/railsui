@@ -1,0 +1,65 @@
+<div id="avatar-rounded">
+<%= render layout: example, locals: { heading: "Rounded", section: "Avatar" } do %>
+
+<%= render preview "gray" do %>
+<div class="flex items-center gap-8">
+  <%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-8 rounded-md object-cover" %>
+  <%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-12 rounded-md object-cover" %>
+  <%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-16 rounded-md object-cover" %>
+  <%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-20 rounded-md object-cover" %>
+  <%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-24 rounded-md object-cover" %>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<!-- size-8 -->
+<%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-8 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-12 -->
+<%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-12 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-16 -->
+<%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-16 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-20 -->
+<%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-20 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-24 -->
+<%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-24 rounded-md object-cover", alt: "Avatar" %>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- size-8 -->
+<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-8 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-12 -->
+<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-12 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-16 -->
+<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-16 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-20 -->
+<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-20 rounded-md object-cover", alt: "Avatar" %>
+
+<!-- size-24 -->
+<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-24 rounded-md object-cover", alt: "Avatar" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ size-8
+\&lt;%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-8 rounded-md object-cover", alt: "Avatar" %&gt;
+/ size-12
+\&lt;%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-12 rounded-md object-cover", alt: "Avatar" %&gt;
+/ size-16
+\&lt;%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-16 rounded-md object-cover", alt: "Avatar" %&gt;
+/ size-20
+\&lt;%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-20 rounded-md object-cover", alt: "Avatar" %&gt;
+/ size-24
+\&lt;%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-24 rounded-md object-cover", alt: "Avatar" %&gt;
+<% end %>
+
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+</div>

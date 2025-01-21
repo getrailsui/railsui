@@ -1,0 +1,464 @@
+<div id="combobox-base">
+
+<div class="prose prose-neutral dark:prose-invert">
+<p>The Combobox component is an accessible real-time search dropdown presented as a select field. Use tab and key commands to navigate with ease.</p>
+
+<p>To use this component you'll need to leverage the <code>RailsuiCombobox</code> module from the <%= link_to "railsui-stimulus", "https://github.com/getrailsui/railsui-stimulus", target: :_blank %> library. This comes pre-installed for your active theme so it's ready-to-use.</p>
+
+<p>For advanced options and values <%= link_to "read the docs", "https://github.com/getrailsui/railsui-stimulus/blob/main/docs/combobox.md", target: :_blank %>.</p>
+</div>
+
+<%= render layout: example, locals: { heading: "Base", section: "Combobox" } do %>
+
+<%= render preview "gray" do %>
+<div class="flex justify-center items-center h-32">
+  <div
+    class="relative w-56"
+    data-controller="railsui-combobox"
+    data-action="click@window->railsui-combobox#handleOutsideClick"
+    data-railsui-combobox-active-class-value="bg-gray-900 text-white hover:bg-gray-950"
+    data-railsui-combobox-inactive-class-value="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
+
+      <!-- Hidden input for form submission -->
+      <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
+
+      <!-- Top-level combobox button -->
+      <div
+        aria-expanded="false"
+        aria-controls="combobox-list"
+        aria-labelledby="combobox-label"
+        data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown"
+        data-railsui-combobox-target="box"
+        role="combobox"
+        tabindex="0"
+        class="form-input flex items-center justify-between pr-1.5 shadow-sm">
+        <span id="combobox-label" class="sr-only">Select a format</span>
+        <span data-railsui-combobox-target="text">Select a format...</span>
+        <%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
+      </div>
+
+    <!-- combobox dropdown -->
+    <div
+      data-railsui-combobox-target="list"
+      data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100"
+      data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-to="opacity-0 scale-95"
+      data-action="keydown.esc->railsui-combobox#hideDropdown"
+      class="absolute z-10 top-12 left-0 border border-gray-300/80 dark:border-gray-700/80 shadow-lg duration-200 origin-top hidden w-full rounded-md overflow-hidden"
+      role="listbox"
+      aria-labelledby="combobox-label">
+
+      <!-- Search input inside dropdown -->
+      <div class="p-2">
+        <label for="combobox-search" class="sr-only">Search</label>
+        <div class="relative">
+          <input
+            id="combobox-search"
+            type="text"
+            placeholder="Search..."
+            autocomplete="off"
+            aria-autocomplete="list"
+            data-railsui-combobox-target="input"
+            data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown"
+            class="form-input text-[15px] pl-8">
+            <%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+        </div>
+      </div>
+
+      <!-- List of options -->
+      <ul role="presentation">
+        <li
+          id="option-1"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="PDF"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
+          tabindex="0"
+          >
+          PDF
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-2"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-value="CSV"
+          data-railsui-combobox-target="option"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
+          tabindex="0">
+          CSV
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-3"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="Excel"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
+          tabindex="0"
+          role="option"
+          >
+          Excel
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-4"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="JPEG"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
+          tabindex="0"
+          role="option"
+          >
+          JPEG
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+      </ul>
+
+      <!-- No results message -->
+      <div
+        data-railsui-combobox-target="noresults"
+        class="hidden px-4 py-2 text-gray-500"
+        aria-hidden="true">
+        No results found
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="flex justify-center items-center h-32">
+  <div
+    class="relative w-56"
+    data-controller="railsui-combobox"
+    data-action="click@window->railsui-combobox#handleOutsideClick"
+    data-railsui-combobox-active-class-value="bg-gray-900 text-white hover:bg-gray-950"
+    data-railsui-combobox-inactive-class-value="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
+
+      <!-- Hidden input for form submission -->
+      <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
+
+      <!-- Top-level combobox button -->
+      <div
+        aria-expanded="false"
+        aria-controls="combobox-list"
+        aria-labelledby="combobox-label"
+        data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown"
+        data-railsui-combobox-target="box"
+        role="combobox"
+        tabindex="0"
+        class="form-input flex items-center justify-between pr-1.5 shadow-sm">
+        <span id="combobox-label" class="sr-only">Select a format</span>
+        <span data-railsui-combobox-target="text">Select a format...</span>
+        <%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
+      </div>
+
+    <!-- combobox dropdown -->
+    <div
+      data-railsui-combobox-target="list"
+      data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100"
+      data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-to="opacity-0 scale-95"
+      data-action="keydown.esc->railsui-combobox#hideDropdown"
+      class="absolute z-10 top-12 left-0 border border-gray-300/80 dark:border-gray-700/80 shadow-lg duration-200 origin-top hidden w-full rounded-md"
+      role="listbox"
+      aria-labelledby="combobox-label">
+
+      <!-- Search input inside dropdown -->
+      <div class="p-2">
+        <label for="combobox-search" class="sr-only">Search</label>
+        <div class="relative">
+          <input
+            id="combobox-search"
+            type="text"
+            placeholder="Search..."
+            autocomplete="off"
+            aria-autocomplete="list"
+            data-railsui-combobox-target="input"
+            data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown"
+            class="form-input text-[15px] pl-8">
+            <%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+        </div>
+      </div>
+
+      <!-- List of options -->
+      <ul role="presentation">
+        <li
+          id="option-1"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="PDF"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
+          tabindex="0"
+          >
+          PDF
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-2"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-value="CSV"
+          data-railsui-combobox-target="option"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
+          tabindex="0">
+          CSV
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-3"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="Excel"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
+          tabindex="0"
+          role="option"
+          >
+          Excel
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-4"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="JPEG"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
+          tabindex="0"
+          role="option"
+          >
+          JPEG
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+      </ul>
+
+      <!-- No results message -->
+      <div
+        data-railsui-combobox-target="noresults"
+        class="hidden px-4 py-2 text-gray-500"
+        aria-hidden="true">
+        No results found
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="flex justify-center items-center h-32">
+  <div
+    class="relative w-56"
+    data-controller="railsui-combobox"
+    data-action="click@window->railsui-combobox#handleOutsideClick"
+    data-railsui-combobox-active-class-value="bg-gray-900 text-white hover:bg-gray-950"
+    data-railsui-combobox-inactive-class-value="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
+
+      <!-- Hidden input for form submission -->
+      <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
+
+      <!-- Top-level combobox button -->
+      <div
+        aria-expanded="false"
+        aria-controls="combobox-list"
+        aria-labelledby="combobox-label"
+        data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown"
+        data-railsui-combobox-target="box"
+        role="combobox"
+        tabindex="0"
+        class="form-input flex items-center justify-between pr-1.5 shadow-sm">
+        <span id="combobox-label" class="sr-only">Select a format</span>
+        <span data-railsui-combobox-target="text">Select a format...</span>
+        <%%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
+      </div>
+
+    <!-- combobox dropdown -->
+    <div
+      data-railsui-combobox-target="list"
+      data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100"
+      data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-to="opacity-0 scale-95"
+      data-action="keydown.esc->railsui-combobox#hideDropdown"
+      class="absolute z-10 top-12 left-0 border border-gray-300/80 dark:border-gray-700/80 shadow-lg duration-200 origin-top hidden w-full rounded-md overflow-hidden"
+      role="listbox"
+      aria-labelledby="combobox-label">
+
+      <!-- Search input inside dropdown -->
+      <div class="p-2">
+        <label for="combobox-search" class="sr-only">Search</label>
+        <div class="relative">
+          <input
+            id="combobox-search"
+            type="text"
+            placeholder="Search..."
+            autocomplete="off"
+            aria-autocomplete="list"
+            data-railsui-combobox-target="input"
+            data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown"
+            class="form-input text-[15px] pl-8">
+            <%%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+        </div>
+      </div>
+
+      <!-- List of options -->
+      <ul role="presentation">
+        <li
+          id="option-1"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="PDF"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
+          tabindex="0"
+          >
+          PDF
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-2"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-value="CSV"
+          data-railsui-combobox-target="option"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
+          tabindex="0">
+          CSV
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-3"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="Excel"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
+          tabindex="0"
+          role="option"
+          >
+          Excel
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+        <li
+          id="option-4"
+          aria-selected="false"
+          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
+          data-railsui-combobox-target="option"
+          data-value="JPEG"
+          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
+          tabindex="0"
+          role="option"
+          >
+          JPEG
+
+          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+            <%%= icon "check", class: "text-gray-100 size-4" %>
+          </span>
+        </li>
+      </ul>
+
+      <!-- No results message -->
+      <div
+        data-railsui-combobox-target="noresults"
+        class="hidden px-4 py-2 text-gray-500"
+        aria-hidden="true">
+        No results found
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.flex.justify-center.items-center.h-32
+  .relative.w-56{"data-action" => "click@window->railsui-combobox#handleOutsideClick", "data-controller" => "railsui-combobox", "data-railsui-combobox-active-class-value" => "bg-gray-900 text-white hover:bg-gray-950", "data-railsui-combobox-inactive-class-value" => "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50 overflow-hidden"}
+    / Hidden input for form submission
+    %input{"data-railsui-combobox-target" => "hiddenInput", name: "selected_option", type: "hidden"}/
+    / Top-level combobox button
+    .form-input.flex.items-center.justify-between.shadow-sm{"aria-controls" => "combobox-list", "aria-expanded" => "false", "aria-labelledby" => "combobox-label", class: "pr-1.5", "data-action" => "click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown", "data-railsui-combobox-target" => "box", role: "combobox", tabindex: "0"}
+      %span#combobox-label.sr-only Select a format
+      %span{"data-railsui-combobox-target" => "text"} Select a format...
+      = icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5"
+    / combobox dropdown
+    .absolute.z-10.top-12.left-0.border.shadow-lg.duration-200.origin-top.hidden.w-full.rounded-md{"aria-labelledby" => "combobox-label", class: "border-gray-300/80 dark:border-gray-700/80", "data-action" => "keydown.esc->railsui-combobox#hideDropdown", "data-railsui-combobox-target" => "list", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95", role: "listbox"}
+      / Search input inside dropdown
+      .p-2
+        %label.sr-only{for: "combobox-search"} Search
+        .relative
+          %input#combobox-search.form-input.pl-8{"aria-autocomplete" => "list", autocomplete: "off", class: "text-[15px]", "data-action" => "input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown", "data-railsui-combobox-target" => "input", placeholder: "Search...", type: "text"}/
+          = icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2"
+      / List of options
+      %ul{role: "presentation"}
+        %li#option-1.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "PDF", role: "option", tabindex: "0"}
+          PDF
+          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
+            = icon "check", class: "text-gray-100 size-4"
+        %li#option-2.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "CSV", role: "option", tabindex: "0"}
+          CSV
+          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
+            = icon "check", class: "text-gray-100 size-4"
+        %li#option-3.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "Excel", role: "option", tabindex: "0"}
+          Excel
+          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
+            = icon "check", class: "text-gray-100 size-4"
+        %li#option-4.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "JPEG", role: "option", tabindex: "0"}
+          JPEG
+          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
+            = icon "check", class: "text-gray-100 size-4"
+      / No results message
+      .hidden.px-4.py-2.text-gray-500{"aria-hidden" => "true", "data-railsui-combobox-target" => "noresults"}
+        No results found
+<% end %>
+
+<% content_for :js, flush: true do %>
+// requires stimulus.js to be configured
+
+import { RailsuiCombobox } from "railsui-stimulus"
+application.register('railsui-combobox', RailsuiCombobox)
+<% end %>
+
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+</div>
