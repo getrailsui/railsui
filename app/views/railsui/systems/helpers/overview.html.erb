@@ -1,0 +1,21 @@
+<% content_for :header_description do %>
+<p>Rails UI includes several useful view helpers to enhance your app and mailer interfaces.</p>
+
+<p>We've taken a lean approach to helpers, focusing on essential functionality while giving you the flexibility to customize and extend your Rails app as needed using your own helpers.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<%= render layout: "railsui/shared/linkables" do %>
+  <%= render "railsui/shared/linkable", path: systems_helpers_icon_path, title: "Icon", description: "Render SVG icons inline using the railsui-icon gem." %>
+  <%= render "railsui/shared/linkable", path: systems_helpers_nav_link_path, title: "Nav Link", description: "A dynamic nav link helper that makes it easy to add active states to your nav links." %>
+  <%= render "railsui/shared/linkable", path: systems_helpers_email_action_path, title: "Email action", description: "Buttons in emails are hard. This helper makes theme easy." %>
+  <%= render "railsui/shared/linkable", path: systems_helpers_email_callout_path, title: "Email callout", description: "A simple extraction for a callout in an email." %>
+  <%= render "railsui/shared/linkable", path: systems_helpers_spacer_path, title: "Email spacer", description: "A clever way to add consistent vertical spacing in emails." %>
+
+  <%= render "railsui/shared/linkable", path: systems_helpers_demo_avatar_path, title: "Demo Avatar", description: "A fun helper that makes rendering placeholder avatars easy." %>
+
+  <%= render "railsui/shared/linkable", path: systems_helpers_railsui_head_path, title: "Rails UI Head", description: "A bundled helper responsible for rendering a collection of partials in the head tags of your app." %>
+
+  <%= render "railsui/shared/linkable", path: systems_helpers_custom_colors_path, title: "Custom colors", description: "A bundled helper responsible for rendering RGB color codes for your primary and secondary color schemes." %>
+<% end %>

@@ -947,10 +947,10 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-railsui-stimulus@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/railsui-stimulus/-/railsui-stimulus-1.0.1.tgz#470d0f4c67388d6e5bcca3fb52fd1b39fdfe8d6f"
-  integrity sha512-XWoSB0IQk2nAUaDOJ0JprAif2vW8fF7YEXD/7hucVShwWb/LhQIeeexy/RSq3t07DBrWLgGlsmo+jLOXnHA55g==
+railsui-stimulus@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/railsui-stimulus/-/railsui-stimulus-1.0.8.tgz#9ac1b7f458f749a21fa80ac2f4dcdde181ef2226"
+  integrity sha512-QG+C231li10/6S3uwuZmMU3mgijFB2hfY+IRQ3drffauObAZl7f8Iz3WJTKvYjtDCUn5FKq8KhbQ4kqlkhRI/A==
   dependencies:
     "@hotwired/stimulus" "^3.2.2"
     esbuild "^0.20.0"

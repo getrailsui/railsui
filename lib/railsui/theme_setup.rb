@@ -39,13 +39,17 @@ module Railsui
       end.join("\n")
 
       js_content = <<-JAVASCRIPT.strip_heredoc
-        import { RailsuiClipboard, RailsuiCountUp, RailsuiDateRangePicker, RailsuiDropdown, RailsuiModal, RailsuiTabs, RailsuiToast, RailsuiToggle, RailsuiTooltip } from 'railsui-stimulus'
+        import { RailsuiClipboard, RailsuiCountUp, RailsuiCombobox, RailsuiDateRangePicker, RailsuiDropdown, RailsuiModal, RailsuiRange, RailsuiReadMore,RailsuiSelectAll, RailsuiTabs, RailsuiToast, RailsuiToggle, RailsuiTooltip } from 'railsui-stimulus'
 
         application.register('railsui-clipboard', RailsuiClipboard)
         application.register('railsui-count-up', RailsuiCountUp)
+        application.register('railsui-combobox', RailsuiCombobox)
         application.register('railsui-date-range-picker', RailsuiDateRangePicker)
         application.register('railsui-dropdown', RailsuiDropdown)
         application.register('railsui-modal', RailsuiModal)
+        application.register('railsui-range', RailsuiRange)
+        application.register('railsui-read-more', RailsuiReadMore)
+        application.register('railsui-select-all', RailsuiSelectAll)
         application.register('railsui-tabs', RailsuiTabs)
         application.register('railsui-toast', RailsuiToast)
         application.register('railsui-toggle', RailsuiToggle)
@@ -359,35 +363,11 @@ RUBY
     end
 
     def copy_railsui_pages(theme)
-      # Ensure directories exist
-      FileUtils.mkdir_p("app/views/rui/pages")
-      FileUtils.mkdir_p("app/views/layouts/rui")
+      # Copy Pages
+      directory "themes/#{theme}/views/rui", "app/views/rui", force: true
 
-      Railsui::Pages.theme_pages.each do |page, details|
-        if Railsui::Pages.page_enabled?(page) && !Railsui::Pages.page_exists?(page)
-          copy_file "themes/#{theme}/views/rui/pages/#{page}.html.erb", "app/views/rui/pages/#{page}.html.erb", force: true
-        end
-      end
-
-      # Copy default layout
-      copy_file "themes/#{theme}/views/layouts/rui/railsui.html.erb", "app/views/layouts/rui/railsui.html.erb", force: true
-
-      # Copy admin layout if it exists
-      copy_admin_layout_if_exists(theme)
-    end
-
-     # Helper method to copy the admin layout if it exists
-    def copy_admin_layout_if_exists(theme)
-      # Manually build the path to the file in the source directory
-      admin_layout = File.expand_path("themes/#{theme}/views/layouts/rui/railsui_admin.html.erb", self.class.source_root)
-
-      # Check if the file exists before attempting to copy it
-      if File.exist?(admin_layout)
-        copy_file admin_layout, "app/views/layouts/rui/railsui_admin.html.erb", force: true
-      else
-        # Optionally, log that the admin layout is being skipped.
-        say "Skipping admin layout for #{theme}, file not required."
-      end
+      # Copy layouts
+      directory "themes/#{theme}/views/layouts/rui", "app/views/layouts/rui", force: true
     end
 
     def copy_railsui_head(theme)
@@ -423,14 +403,6 @@ RUBY
       remove_directory(target_images_dir, "images")
       # add new images based on theme passed
       directory theme_images_dir, target_images_dir, force: true
-    end
-
-    def copy_railsui_shared_directory(theme)
-      theme_dir = "themes/#{theme}/views/rui/shared"
-      target_dir = Rails.root.join("app/views/rui/shared")
-
-      remove_directory(target_dir, "shared views")
-      directory theme_dir, target_dir, force: true
     end
 
     private

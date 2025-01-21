@@ -13,7 +13,7 @@
 <%= render "#{path}/user_card_with_actions" %>
 
 
-<%= system_pagination(prev_path: systems_components_button_path, prev_text: "Button", next_path: systems_components_dropdown_path, next_text: "Dropdown") %>
+<%= system_pagination(prev_path: systems_components_button_path, prev_text: "Button", next_path: systems_components_combobox_path, next_text: "Combobox") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>

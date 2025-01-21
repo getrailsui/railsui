@@ -1,0 +1,41 @@
+<% content_for :header_description do %>
+<p>A clever way to add consistent vertical spacing in emails.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<div id="spacer" class="prose prose-neutral dark:prose-invert">
+<p>The spacer helper adds vertical space between elements in email templates using tables, since margins and padding can be unreliable across email clients.</p>
+
+<p>Instead of writing HTML tables manually, use this helper to add consistent spacing.</p>
+
+<p>Specify the spacing amount in vertical pixels to control the gap size.</p>
+</div>
+
+<% content_for :html, flush: true do %>
+<!-- compiled output -->
+<p>Some text...</p>
+<table class="spacer">
+  <tbody>
+    <tr>
+      <td height="16" style="font-size:16px;line-height:16px;">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>Another paragraph</p>
+<% end %>
+<% content_for :erb, flush: true do %>
+<p>Some text....</p>
+<%%= spacer(16) %>
+<p>Another paragraph</p>
+<% end %>
+
+<%= render_snippet active_tab: :erb %>
+
+<%= system_pagination(prev_path: systems_helpers_email_callout_path, prev_text: "Email Callout", next_path: systems_helpers_demo_avatar_path, next_text: "Demo Avatar") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Email Spacer", "#spacer" %>
+  <% end %>
+<% end %>

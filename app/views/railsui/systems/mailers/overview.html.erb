@@ -1,0 +1,54 @@
+<% content_for :header_description do %>
+  <p>Rails UI comes with ready-to-use mailer templates for generic email designs.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<div class="mb-16 prose prose-neutral dark:prose-invert">
+  <div id="mailers-overview">
+    <p>Rails UI mailer templates are a starting point for you to tweak as the content you send your users evolves.</p>
+
+    <p>Many email clients are out in the wild, and each has different areas of support regarding CSS and HTML. Rails UI includes essential support with some clever hacks you can use to do more with your templates.</p>
+
+    <h3>Styling considerations</h3>
+
+    <p>It's recommended that CSS be inlined to work best inside any email, Tailwind CSS will not work well inside the templates. All included CSS resides inside the <%= link_to "mailer layout template",  systems_mailers_layout_path %> for this reason.</p>
+
+    <p>If you prefer to write your CSS in another stylesheet and include it in your layout, we recommend using something like <%= link_to "premailer", "https://github.com/premailer/premailer" %> to ensure any additional styles you include render correctly inline.</p>
+
+    <h3>Helpers</h3>
+
+    <p>Rails UI includes a few helpers to make your life easier when writing mailers. These are included in the <code>application_mailer.rb</code> file. Read more about them via links below:</p>
+
+    <ul>
+      <li>
+        <%= link_to "Email Action", systems_helpers_email_action_path %>
+      </li>
+      <li>
+        <%= link_to "Email Callout", systems_helpers_email_callout_path %>
+      </li>
+      <li>
+        <%= link_to "Email Spacer", systems_helpers_spacer_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div id="mailers-templates">
+  <div class="mt-8 mb-6 prose prose-neutral dark:prose-invert">
+    <h3>Templates</h3>
+  </div>
+
+  <%= render layout: "railsui/shared/linkables" do %>
+    <%= render "railsui/shared/linkable", path: systems_mailers_layout_path, title: "Layout", description: "The backbone of your mailers." %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_minimal_path, title: "Minimal", description: "A simple starting point for HTML-based email templates." %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_promotion_path, title: "Promotion", description: "A simple promotional email template design." %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_transactional_path, title: "Transactional", description: "The core use case for most SaaS app email templates" %>
+
+    <%= render "railsui/shared/linkable", path: systems_mailers_devise_path, title: "Devise", description: "Save time with pre-themed Devise templates." %>
+  <% end %>
+</div>

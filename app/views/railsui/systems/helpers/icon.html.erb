@@ -1,0 +1,10 @@
+<% content_for :header_description do %>
+<p>Render SVG icons inline using the railsui-icon gem.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<%= render "railsui/themes/#{Railsui.config.theme}/icons", cached: true, hide_pagination: true %>
+
+
+<%= system_pagination(prev_path: systems_helpers_overview_path, prev_text: "Overview", next_path: systems_helpers_nav_link_path, next_text: "Nav Link") %>

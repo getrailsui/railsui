@@ -34,7 +34,10 @@ end
     callout_bg_color: "#e0e7ff",
     callout_border_color: "#a5b4fc",
     callout_text_color: "#4338ca",
-    button_border_radius: "6px"
+    button_border_radius: "6px",
+    hr_color: "#e5e7eb",
+    dark_mode_background_color: "#111827",
+    dark_mode_hr_color: "#374151"
   }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -42,6 +45,66 @@ end
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
+    :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: <%%= theme[:dark_mode_background_color] %> !important;
+          color: #ffffff !important;
+        }
+
+        .content {
+          color: #ffffff !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+          color: #ffffff !important;
+        }
+
+        .main {
+          background: <%%= theme[:dark_mode_background_color] %> !important;
+        }
+
+        .footer td,
+        .footer p,
+        .footer span,
+        .footer a {
+          color: <%%= theme[:footer_text_color] %> !important;
+        }
+
+        .small {
+          color: <%%= theme[:footer_text_color] %> !important;
+        }
+
+        table.callout td {
+          background-color: <%%= theme[:callout_bg_color] %> !important;
+          color: <%%= theme[:callout_text_color] %> !important;
+        }
+
+        .view-in-browser {
+          color: #9ca3af !important;
+        }
+
+        .action__link--primary {
+          background-color: <%%= theme[:primary] %> !important;
+          border-color: <%%= theme[:primary] %> !important;
+        }
+
+        .action__link--secondary {
+          background-color: <%%= theme[:secondary] %> !important;
+          border-color: <%%= theme[:secondary] %> !important;
+        }
+        table hr {
+          border-color: <%%= theme[:dark_mode_hr_color] %>;
+        }
+      }
+
       @media all {
         .ExternalClass {
           width: 100%;
@@ -277,14 +340,13 @@ end
 
       hr {
         border: 0;
-        border-bottom: 1px solid #f6f6f6;
+        border-bottom: 1px solid <%% theme[:hr_color] %>;
         margin: 20px 0;
       }
 
       table.callout td {
         background-color: <%%= theme[:callout_bg_color] %>;
-        border: 1px solid <%%= theme[:callout_border_color] %>;
-        padding: 10px;
+        padding: 16px;
         border-radius: 6px;
         color: <%%= theme[:callout_text_color] %>
       }
@@ -299,6 +361,20 @@ end
         margin-bottom: 10px;
         text-align: center;
         display: block;
+      }
+
+      table.social-links {
+        width: auto;
+      }
+
+      table.social-links td {
+        width: 44px;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      table.social-links td img {
+        display: inline;
       }
 
       @media only screen and (max-width: 620px) {
@@ -374,24 +450,24 @@ end
         border-radius: <%%= theme[:button_border_radius] %> !important;
         -webkit-text-size-adjust: none;
         color: white !important;
-        font-size: 16px;
+        font-size: 15px;
       }
       /* Update your brand colors here */
       .action__link--primary {
         background-color: <%%= theme[:primary] %>;
-        border-top: 8px solid  <%%= theme[:primary] %>;
-        border-right: 18px solid <%%= theme[:primary] %>;
-        border-bottom: 8px solid <%%= theme[:primary] %>;
-        border-left: 18px solid <%%= theme[:primary] %>;
+        border-top: 10px solid  <%%= theme[:primary] %>;
+        border-right: 24px solid <%%= theme[:primary] %>;
+        border-bottom: 10px solid <%%= theme[:primary] %>;
+        border-left: 24px solid <%%= theme[:primary] %>;
       }
 
       .action__link--secondary {
         color: white;
         background-color: <%%= theme[:secondary] %>;
-        border-top: 8px solid <%%= theme[:secondary] %>;
-        border-right: 18px solid <%%= theme[:secondary] %>;
-        border-bottom: 8px solid <%%= theme[:secondary] %>;
-        border-left: 18px solid <%%= theme[:secondary] %>;
+        border-top: 10px solid <%%= theme[:secondary] %>;
+        border-right: 24px solid <%%= theme[:secondary] %>;
+        border-bottom: 10px solid <%%= theme[:secondary] %>;
+        border-left: 24px solid <%%= theme[:secondary] %>;
       }
 
       .action {
@@ -891,29 +967,10 @@ end
               %tr
                 %td
                   Please contact #{mail_to Railsui.config.support_email, Railsui.config.support_email, subject: "Help", body: "I need help...", style: "text-decoration: underline;"} if you have any questions.
-          %table.social-links{align: "center", border: "0", cellpadding: "0", cellspacing: "0"}
-            %tr
-              %td{align: "center"}
-                = link_to "https://x.com/" do
-                  = image_tag "social/x.png", width: 24, height: 24, alt: "X logo"
-              %td{align: "center"}
-                = link_to "https://facebook.com/" do
-                  = image_tag "social/facebook.png", width: 24, height: 24, alt: "Facebook logo"
-              %td{align: "center"}
-                = link_to "https://linkedin.com/" do
-                  = image_tag "social/linkedin.png", width: 24, height: 24, alt: "LinkedIn logo"
-              %td{align: "center"}
-                = link_to "https://instagram.com/" do
-                  = image_tag "social/instagram.png", width: 24, height: 24, alt: "Instagram logo"
-              %td{align: "center"}
-                = link_to "https://youtube.com/" do
-                  = image_tag "social/youtube.png", width: 24, height: 24, alt: "YouTube logo"
-                = link_to "https://github.com/" do
-                  = image_tag "social/github.png", width: 24, height: 24, alt: "Github logo"
         %td
 <% end %>
 
 <%= render_snippet active_tab: "erb", erb_filename: "mailer.html.erb", haml_filename: "mailer.haml.erb" %>
 </div>
 
-<%= system_pagination(prev_path: systems_mailers_path, prev_text: "Mailers", next_path: systems_mailers_minimal_path, next_text: "Minimal") %>
+<%= system_pagination(prev_path: systems_mailers_overview_path, prev_text: "Mailers", next_path: systems_mailers_minimal_path, next_text: "Minimal") %>

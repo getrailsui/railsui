@@ -1,0 +1,77 @@
+<% content_for :header_description do %>
+<p>A fun helper that makes rendering placeholder avatars easy.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<div id="demo_avatar">
+<div class="prose prose-neutral dark:prose-invert mb-6">
+<p>For testing purposes and demos we leverage a homemade helper <code>demo_avatar_url</code>. This can be passed two options <code>id</code> and <code>variant</code> that returns an absolute URL sourcing the website <code>https://randomuser.me</code>.</p>
+</div>
+
+<%= render callout do %>
+<p>The <code>demo_avatar_url</code> helper is accessbile automatically assuming the Rails UI gem is installed. No setup required.</p>
+<% end %>
+
+  <div class="relative text-neutral-800 dark:text-neutral-200 md:p-6 p-4 border border-dashed rounded-md border-neutral-200 dark:border-neutral-700/80 my-6 bg-neutral-50 dark:bg-neutral-950">
+    <code class="font-semibold">demo_avatar_url(id:, variant:)</code>
+    <h4 class="pb-2 my-4 text-xs font-semibold tracking-wider uppercase border-b dark:border-neutral-700/80 opacity-75">Options</h4>
+    <ul class="space-y-2 mb-6">
+      <li>
+        <p><code class="font-mono text-pink-600">id</code></p>
+        <p>A number between 1-100.</p>
+      </li>
+      <li>
+        <p><code class="font-mono text-pink-600">variant</code></p>
+        <p><code>men</code>, <code>women</code></p>
+      </li>
+    </ul>
+  </div>
+
+<%= render layout: example, locals: { heading: "Demo Avatar"} do %>
+
+<%= render preview 'gray' do %>
+<div class="flex items-center gap-4">
+  <%= image_tag demo_avatar_url(id: 46, variant: "men"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover" %>
+  <%= image_tag demo_avatar_url(id: 46, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover" %>
+  <%= image_tag demo_avatar_url(id: 8, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover" %>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<%%= image_tag demo_avatar_url(id: 46, variant: "men"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover" %>
+
+<%%= image_tag demo_avatar_url(id: 46, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover" %>
+
+<%%= image_tag demo_avatar_url(id: 8, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= image_tag demo_avatar_url(id: 46, variant: "men"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover"
+= image_tag demo_avatar_url(id: 46, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover"
+= image_tag demo_avatar_url(id: 8, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover"
+<% end %>
+
+<% content_for :ruby, flush: true do %>
+def demo_avatar_url(options = {})
+  id = options[:id] || "22"
+  variant = options[:variant] || "men"
+
+  "https://randomuser.me/api/portraits/#{variant}/#{id}.jpg"
+end
+<% end %>
+
+<%= render_snippet active_tab: :erb, ruby_filename: "my_helper.rb" %>
+<% end %>
+<% end %>
+</div>
+
+
+<%= system_pagination(prev_path: systems_helpers_spacer_path, prev_text: "Email Spacer", next_path: systems_helpers_railsui_head_path, next_text: "Rails UI Head") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Demo Avatar", "#demo_avatar" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,101 @@
+<% content_for :header_description do %>
+<p>A bundled helper responsible for rendering RGB color codes for your primary and secondary color schemes.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+<div id="custom_colors">
+<div class="prose prose-neutral dark:prose-invert">
+  <p>The <code>custom_colors_css</code> helper is used to generate the RGB color codes for your primary and secondary color schemes. You'll find this helper rendering inside <code>app/views/rui/shared/_railsui_head.html.erb</code></p>
+
+  <h3>What it does</h3>
+  <p>This helper outputs custom styles in your applications head tags that assign RGB values to CSS variables in a dynamic way. The CSS variables are absorbed via your Tailwind configuration and Rails UI configuration which in return adds two additional colors to the default Tailwind CSS color palette.</p>
+
+  <p>Your Rails UI theme dictates the colors that are assigned by default but you may change these colors at any time via the <%= link_to "Rails UI configuration form", root_path(anchor: "color") %>.</p>
+</div>
+
+<%= render layout: example, locals: { heading: "custom_colors_css"} do %>
+
+  <div class="not-prose max-w-full my-6">
+    <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80">
+      <% Railsui.config.colors.each do |collection, colors| %>
+        <div class="py-3">
+          <h3 class="font-semibold my-3"><%= collection.capitalize %> Colors</h3>
+          <div class="grid grid-cols-1 md:grid-cols-11 gap-3 mb-8">
+            <% colors.each do |shade, hex| %>
+              <div class="color-item md:block flex items-center gap-2">
+                <div class="size-8 rounded-md" style="background-color: <%= hex %>;"></div>
+
+                <div class="text-left mt-1 leading-none">
+                  <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200"><%= shade %></p>
+                  <code class="font-mono text-xs text-neutral-600 selection:bg-indigo-500 selection:text-white dark:text-neutral-400"><%= hex %></code>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="flex justify-end">
+      <%= link_to "Change my colors", root_path(anchor: "color"), class: "btn btn-white" %>
+    </div>
+  </div>
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<!-- Find it inside app/views/rui/shared/_railsui_head.html.erb -->
+<%%= custom_colors_css %>
+<% end %>
+<% content_for :haml, flush: true do %>
+= custom_colors_css
+<% end %>
+<% content_for :html, flush: true do %>
+      <!-- example output -->
+<style id="rui-custom-colors">
+:root {
+  --primary-50: 244 249 245;
+  --primary-100: 229 243 233;
+  --primary-200: 204 230 211;
+  --primary-300: 163 210 176;
+  --primary-400: 115 181 134;
+  --primary-500: 79 152 100;
+  --primary-600: 61 124 79;
+  --primary-700: 51 98 64;
+  --primary-800: 46 83 57;
+  --primary-900: 37 66 47;
+  --primary-950: 16 35 22;
+  --secondary-50: 241 243 252;
+  --secondary-100: 229 232 250;
+  --secondary-200: 208 213 245;
+  --secondary-300: 180 186 237;
+  --secondary-400: 149 150 228;
+  --secondary-500: 128 123 217;
+  --secondary-600: 111 97 202;
+  --secondary-700: 95 81 177;
+  --secondary-800: 77 68 143;
+  --secondary-900: 66 60 124;
+  --secondary-950: 46 41 78;
+}
+</style>
+
+    <% end %>
+
+<% content_for :ruby, flush: true do %>
+
+
+<% end %>
+<%= render_snippet %>
+
+  <% end %>
+<% end %>
+</div>
+
+<%= system_pagination(prev_path: systems_helpers_railsui_head_path, prev_text: "Rails UI Head", next_path: systems_content_typography_path, next_text: "Typography") %>
+
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "custom_colors_css", "#custom_colors" %>
+  <% end %>
+<% end %>

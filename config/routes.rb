@@ -15,7 +15,6 @@ Railsui::Engine.routes.draw do
     get :flash
     get :forms
     get :icons
-    get :mailers
     get :pages
     get :scaffolds
 
@@ -66,13 +65,16 @@ Railsui::Engine.routes.draw do
     namespace :components do
       get :accordion
       get :alert
+      get :avatar
       get :badge
       get :breadcrumb
       get :button
       get :card
+      get :combobox
       get :datalist
       get :dropdown
       get :flash
+      get :label
       get :modal
       get :navigation
       get :pagination
@@ -88,6 +90,18 @@ Railsui::Engine.routes.draw do
       get :minimal
       get :promotion
       get :transactional
+    end
+
+    namespace :helpers do
+      get :overview
+      get :demo_avatar
+      get :email_action
+      get :email_callout
+      get :icon
+      get :nav_link
+      get :spacer
+      get :railsui_head
+      get :custom_colors
     end
   end
 

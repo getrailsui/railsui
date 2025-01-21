@@ -2,7 +2,7 @@
   # Refer to Tailwind's colors for max control
   # https://tailwindcss.com/docs/customizing-colors#using-css-variables
   theme = {
-   align_logo: "center",
+    align_logo: "center",
     primary: "#f43f5e",
     secondary: "#1D9AE2",
     heading_text_color: "#0f172a",
@@ -12,7 +12,10 @@
     callout_bg_color: "#fef9c3",
     callout_border_color: "#fef08a",
     callout_text_color: "#a16207",
-    button_border_radius: "25px"
+    button_border_radius: "25px",
+    hr_color: "#e4e4e7",
+    dark_mode_background_color: "#18181b",
+    dark_mode_hr_color: "#3f3f46"
   }
 %>
 
@@ -25,6 +28,66 @@
     https://www.mailgun.com/blog/email/email-dark-mode/
     -->
     <style>
+      :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body.rui-mailer {
+          background-color: <%= theme[:dark_mode_background_color] %> !important;
+          color: #ffffff !important;
+        }
+
+        .rui-mailer .content {
+          color: #ffffff !important;
+        }
+
+        .rui-mailer h1,
+        .rui-mailer h2,
+        .rui-mailer h3,
+        .rui-mailer h4 {
+          color: #ffffff !important;
+        }
+
+        .rui-mailer .main {
+          background: <%= theme[:dark_mode_background_color] %> !important;
+        }
+
+        .rui-mailer .footer td,
+        .rui-mailer .footer p,
+        .rui-mailer .footer span,
+        .rui-mailer .footer a {
+          color: <%= theme[:footer_text_color] %> !important;
+        }
+
+        .rui-mailer .small {
+          color: <%= theme[:footer_text_color] %> !important;
+        }
+
+        .rui-mailer table.callout td {
+          background-color: <%= theme[:callout_bg_color] %> !important;
+          color: <%= theme[:callout_text_color] %> !important;
+        }
+
+        .rui-mailer .view-in-browser {
+          color: #9ca3af !important;
+        }
+
+        .rui-mailer .action__link--primary {
+          background-color: <%= theme[:primary] %> !important;
+          border-color: <%= theme[:primary] %> !important;
+        }
+
+        .rui-mailer .action__link--secondary {
+          background-color: <%= theme[:secondary] %> !important;
+          border-color: <%= theme[:secondary] %> !important;
+        }
+        .rui-mailer table hr {
+          border-color: <%= theme[:dark_mode_hr_color] %>;
+        }
+      }
+
       @media all {
         .ExternalClass {
           width: 100%;
@@ -276,7 +339,7 @@
 
       .rui-mailer hr {
         border: 0;
-        border-bottom: 1px solid #f6f6f6;
+        border-bottom: 1px solid <%= theme[:hr_color] %>;
         margin: 20px 0;
       }
 
@@ -389,7 +452,8 @@
         border-radius: <%= theme[:button_border_radius] %> !important;
         -webkit-text-size-adjust: none;
         color: white !important;
-        font-size: 15px;
+        font-size: 16px;
+        font-weight: bold;
       }
       /* Update your brand colors here */
       .rui-mailer .action__link--primary {
