@@ -163,15 +163,15 @@ module Railsui
     def theme_dependencies(theme)
       case theme
       when "hound"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss@3.4.17", "tippy.js"]
       when "shepherd"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "hotkeys-js", "photoswipe", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwindcss", "tippy.js"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "hotkeys-js", "photoswipe", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwindcss@3.4.17", "tippy.js"]
       when "retriever"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss@3.4.17", "tippy.js"]
       when "setter"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss@3.4.17", "tippy.js"]
       else
-        ["@tailwindcss/forms", "@tailwindcss/typography", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss", "tippy.js"]
+        ["@tailwindcss/forms", "@tailwindcss/typography", "autoprefixer", "postcss", "postcss-import", "postcss-nesting", "railsui-stimulus", "railsui-tailwind-presets", "stimulus-use", "tailwind-scrollbar", "tailwindcss@3.4.17", "tippy.js"]
       end
     end
 
