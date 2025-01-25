@@ -20,7 +20,7 @@ You must already have node and yarn installed on your system. You will also need
 
 ### New applications
 
-The easiest install is on new Rails apps with options passed like so. For new apps, use the `-c tailwind` flag to install it.
+The easiest install is on new Rails apps with options passed like so. For new apps, use the `-c tailwind` flag to install it. Rails UI is using `v3.4.17` of Tailwind CSS temporarily until we update for Tailwind CSS v4 support.
 
 ```bash
 rails new app_name -c tailwind -j esbuild
