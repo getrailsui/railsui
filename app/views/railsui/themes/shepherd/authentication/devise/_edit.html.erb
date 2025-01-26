@@ -23,7 +23,7 @@
               </h1>
 
               <button type="button" data-action="click->nav#toggle"
-                class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+                class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-xs group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-xs"
                 role="Mobile navigation toggle">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" aria-hidden="true"
@@ -75,7 +75,7 @@
                         <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                           <div class="flex-1">
                             <div class="flex items-start space-x-2">
-                              <img class="size-6 object-cover rounded-full flex-shrink-0 mt-1"
+                              <img class="size-6 object-cover rounded-full shrink-0 mt-1"
                             src="https://randomuser.me/api/portraits/men/10.jpg">
                               <div class="flex-1">
                                 <p class="truncate">John D. replied to <a
@@ -100,7 +100,7 @@
                         <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                           <div class="flex-1">
                             <div class="flex items-start space-x-2">
-                              <img alt="Avatar" class="size-6 object-cover rounded-full flex-shrink-0 mt-1"
+                              <img alt="Avatar" class="size-6 object-cover rounded-full shrink-0 mt-1"
                             src="https://randomuser.me/api/portraits/women/14.jpg">
                               <div class="flex-1">
                                 <p>Jane D. posted <a
@@ -125,7 +125,7 @@
                         <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                           <div class="flex-1">
                             <div class="flex items-start space-x-2">
-                              <img alt="Avatar" class="size-6 object-cover rounded-full flex-shrink-0 mt-1"
+                              <img alt="Avatar" class="size-6 object-cover rounded-full shrink-0 mt-1"
                             src="https://randomuser.me/api/portraits/men/24.jpg">
                               <div class="flex-1">
                                 <p>Scotty P. shared <a
@@ -172,7 +172,7 @@
                         focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
                         dark:focus:border-zinc-300/90">
 
-                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), alt: "Shepherd user", class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
+                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), alt: "Shepherd user", class: "md:w-10 md:h-10 w-12 h-12 rounded-full shrink-0 select-none pointer-events-none" %>
                       </button>
 
                       <ul data-railsui-dropdown-target="menu"
@@ -213,7 +213,7 @@
 
     <div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
       <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
-    bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+    bg-linear-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
       <div class="relative z-20">
         <h1 class="h2 text-center">Account</h1>
@@ -377,7 +377,7 @@
 <!-- app/views/devise/registrations/edit.html.erb -->
 <div class="relative min-h-[160px] md:py-10 py-8 border-b border-zinc-200/80 dark:border-zinc-700/80">
 <div class="opacity-5 blur-4xl absolute inset-0 w-full h-full
-bg-gradient-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
+bg-linear-to-r from-white via-primary-500/40 via-[24.79%] to-[#177BB5] z-0"></div>
 
 <div class="relative z-20">
 <h1 class="h2 text-center">Account</h1>
@@ -494,7 +494,7 @@ class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-cent
 <% content_for :haml, flush: true do %>
 / app/views/devise/registrations/edit.html.erb
 .relative.md:py-10.py-8.border-b{class: "min-h-[160px] border-zinc-200/80 dark:border-zinc-700/80"}
-  .opacity-5.blur-4xl.absolute.inset-0.w-full.h-full.bg-gradient-to-r.from-white.z-0{class: "via-primary-500/40 via-[24.79%] to-[#177BB5]"}
+  .opacity-5.blur-4xl.absolute.inset-0.w-full.h-full.bg-linear-to-r.from-white.z-0{class: "via-primary-500/40 via-[24.79%] to-[#177BB5]"}
   .relative.z-20
     %h1.h2.text-center Account
     %p.font-light.font-heading.text-center.py-4.text-zinc-700.dark:text-zinc-300

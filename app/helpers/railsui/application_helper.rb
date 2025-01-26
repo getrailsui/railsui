@@ -41,7 +41,7 @@ module Railsui
     end
 
     def code(code)
-      content_tag :span, html_escape(code), class: "text-neutral-900 font-mono font-semibold text-[15px] dark:text-rose-400 bg-neutral-100 px-1 py-px dark:bg-transparent rounded whitespace-pre"
+      content_tag :span, html_escape(code), class: "text-neutral-900 font-mono font-semibold text-[15px] dark:text-rose-400 bg-neutral-100 px-1 py-px dark:bg-transparent rounded-sm whitespace-pre"
     end
 
     def render_snippet(options={})
@@ -87,14 +87,14 @@ module Railsui
     end
 
     def box_label_classes(options={})
-      "rounded-lg bg-white shadow-sm border border-slate-200 block select-none hover:shadow-none group bg-gradient-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-800 dark:border-slate-600 dark:shadow-sm #{options[:offset] == false ? "px-4 pb-4 pt-1" : "p-4" }"
+      "rounded-lg bg-white shadow-xs border border-slate-200 block select-none hover:shadow-none group bg-linear-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-800 dark:border-slate-600 dark:shadow-xs #{options[:offset] == false ? "px-4 pb-4 pt-1" : "p-4" }"
     end
 
     def box_check_classes
-      "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 size-5
-      focus:dark:ring-slate-700
-      focus:dark:ring-opacity-20
-      focus:dark:bg-slate-600  dark:bg-slate-700
+      "text-indigo-600 form-checkbox rounded focus:outline-hidden ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 size-5
+      dark:focus:ring-slate-700
+      dark:focus:ring-opacity-20
+      dark:focus:bg-slate-600  dark:bg-slate-700
       dark:ring-transparent"
     end
 
@@ -142,7 +142,7 @@ module Railsui
 
     def quick_link(title: nil, component: nil)
       content_tag :li do
-        link_to title.capitalize, "##{component.parameterize}-#{title.parameterize}", class: "text-sm py-1 px-3 rounded font-medium inline-block bg-white border border-slate-300 hover:shadow-sm hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700/80 transition ease-in-out duration-200", data: { action: "click->railsui-smooth#scroll" }
+        link_to title.capitalize, "##{component.parameterize}-#{title.parameterize}", class: "text-sm py-1 px-3 rounded-sm font-medium inline-block bg-white border border-slate-300 hover:shadow-xs hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700/80 transition ease-in-out duration-200", data: { action: "click->railsui-smooth#scroll" }
       end
     end
 
@@ -164,7 +164,7 @@ module Railsui
     end
 
     def tag_label(tag)
-      base_classes = "rounded text-xs px-1 py-px font-semibold inline-flex items-center justify-center"
+      base_classes = "rounded-sm text-xs px-1 py-px font-semibold inline-flex items-center justify-center"
 
       case tag
       when "marketing"

@@ -1,28 +1,26 @@
-.railsui {
-  [x-cloak] {
-    display: none;
-  }
+[x-cloak] {
+  display: none;
+}
 
-  .rui-primary-nav {
-    @apply relative;
-  }
+.rui-primary-nav {
+  @apply relative;
+}
 
-  /* Overrides nav_link_to helper */
-  .rui-primary-nav ul li a.nav-link-active,
-  .rui-primary-nav ul li a:hover {
-    @apply text-neutral-800 border-r-2 border-neutral-200/80 dark:border-amber-300 dark:text-neutral-200 !important;
-  }
+/* Overrides nav_link_to helper */
+.rui-primary-nav ul li a.nav-link-active,
+.rui-primary-nav ul li a:hover {
+  @apply text-neutral-800 border-r-2 border-neutral-200/80 dark:border-amber-300 dark:text-neutral-200;
+}
 
-  .rui-primary-nav ul li a.nav-link-active:after {
-    content: "";
-    background: none;
-  }
+.rui-primary-nav ul li a.nav-link-active:after {
+  content: "";
+  background: none;
+}
 
-  .rui-primary-nav ul li a:hover {
-    @apply dark:bg-neutral-800;
-  }
+.rui-primary-nav ul li a:hover {
+  @apply dark:bg-neutral-800;
+}
 
-  .rui-primary-nav ul li a.nav-link-active {
-    @apply font-semibold bg-indigo-50 dark:bg-neutral-800 dark:text-white;
-  }
+.rui-primary-nav ul li a.nav-link-active {
+  @apply font-semibold bg-indigo-50 dark:bg-neutral-800 dark:text-white;
 }

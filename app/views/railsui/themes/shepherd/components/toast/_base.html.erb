@@ -6,15 +6,15 @@
     <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-zinc-950 dark:border dark:border-zinc-700/80">
       <div class="p-4">
         <div class="flex items-start">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <%= icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400" %>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-zinc-900 dark:text-white">Successfully liked!</p>
             <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-300">John Doe has been notified.</p>
           </div>
-          <div class="ml-4 flex flex-shrink-0">
-            <button type="button" class="inline-flex rounded-sm bg-white text-zinc-400 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 dark:hover:text-zinc-100
+          <div class="ml-4 flex shrink-0">
+            <button type="button" class="inline-flex rounded-sm bg-white text-zinc-400 hover:text-zinc-500 focus:outline-hidden focus:ring-2 focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 dark:hover:text-zinc-100
             dark:focus:text-zinc-100" data-action="click->toast#hide">
               <span class="sr-only">Close</span>
               <%= icon "x-mark", class: "size-5 pointer-events-none" %>
@@ -33,15 +33,15 @@
     <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-zinc-950 dark:border dark:border-zinc-700/80">
       <div class="p-4">
         <div class="flex items-start">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <%%= icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400" %>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-zinc-900 dark:text-white">Successfully liked!</p>
             <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-300">John Doe has been notified.</p>
           </div>
-          <div class="ml-4 flex flex-shrink-0">
-            <button type="button" class="inline-flex rounded-sm bg-white text-zinc-400 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 dark:hover:text-zinc-100
+          <div class="ml-4 flex shrink-0">
+            <button type="button" class="inline-flex rounded-sm bg-white text-zinc-400 hover:text-zinc-500 focus:outline-hidden focus:ring-2 focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 dark:hover:text-zinc-100
             dark:focus:text-zinc-100" data-action="click->toast#hide">
               <span class="sr-only">Close</span>
               <%%= icon "x-mark", class: "size-5" %>
@@ -60,15 +60,15 @@
     <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-zinc-950 dark:border dark:border-zinc-700/80">
       <div class="p-4">
         <div class="flex items-start">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <%%= icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400" %>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-zinc-900 dark:text-white">Successfully liked!</p>
             <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-300">John Doe has been notified.</p>
           </div>
-          <div class="ml-4 flex flex-shrink-0">
-            <button type="button" class="inline-flex rounded-sm bg-white text-zinc-400 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 dark:hover:text-zinc-100
+          <div class="ml-4 flex shrink-0">
+            <button type="button" class="inline-flex rounded-sm bg-white text-zinc-400 hover:text-zinc-500 focus:outline-hidden focus:ring-2 focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 dark:hover:text-zinc-100
             dark:focus:text-zinc-100" data-action="click->toast#hide">
               <span class="sr-only">Close</span>
               <%%= icon "x-mark", class: "size-5" %>
@@ -87,13 +87,13 @@
     .pointer-events-auto.w-full.max-w-sm.overflow-hidden.rounded-md.bg-white.shadow-lg.ring-1.ring-black.ring-opacity-5.dark:bg-zinc-950.dark:border(class="dark:border-zinc-700/80")
       .p-4
         .flex.items-start
-          .flex-shrink-0
+          .shrink-0
             = icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400"
           .ml-3.w-0.flex-1(class="pt-0.5")
             %p.text-sm.font-medium.text-zinc-900.dark:text-white Successfully liked!
             %p.mt-1.text-sm.text-zinc-500.dark:text-zinc-300 John Doe has been notified.
-          .ml-4.flex.flex-shrink-0
-            %button.inline-flex.rounded-sm.bg-white.text-zinc-400.hover:text-zinc-500.focus:outline-none.focus:ring-2.focus:ring-zinc-50.dark:bg-transparent.dark:focus:ring-zinc-500.dark:hover:text-zinc-100.dark:focus:text-zinc-100(data-action="click->toast#hide" type="button")
+          .ml-4.flex.shrink-0
+            %button.inline-flex.rounded-sm.bg-white.text-zinc-400.hover:text-zinc-500.focus:outline-hidden.focus:ring-2.focus:ring-zinc-50.dark:bg-transparent.dark:focus:ring-zinc-500.dark:hover:text-zinc-100.dark:focus:text-zinc-100(data-action="click->toast#hide" type="button")
               %span.sr-only Close
               = icon "x-mark", class: "size-5"
 <% end %>

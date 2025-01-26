@@ -47,7 +47,7 @@
         <%%= yield :masthead %>
       </div>
 
-      <div class="bg-white shadow-sm rounded-lg p-8 border border-slate-300/60">
+      <div class="bg-white shadow-xs rounded-lg p-8 border border-slate-300/60">
         <%%= yield %>
       </div>
 
@@ -193,7 +193,7 @@
         </div>
         <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
           <div class="flex items-start space-x-4">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6 text-rose-700 flex-shrink-0" role="img" aria-labelledby="ahy3wv9uxy3kdaua336c963si7vkifdy"><title id="ahy3wv9uxy3kdaua336c963si7vkifdy">Shield exclamation</title>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6 text-rose-700 shrink-0" role="img" aria-labelledby="ahy3wv9uxy3kdaua336c963si7vkifdy"><title id="ahy3wv9uxy3kdaua336c963si7vkifdy">Shield exclamation</title>
           <path fill-rule="evenodd" d="M11.484 2.17a.75.75 0 011.032 0 11.209 11.209 0 007.877 3.08.75.75 0 01.722.515 12.74 12.74 0 01.635 3.985c0 5.942-4.064 10.933-9.563 12.348a.749.749 0 01-.374 0C6.314 20.683 2.25 15.692 2.25 9.75c0-1.39.223-2.73.635-3.985a.75.75 0 01.722-.516l.143.001c2.996 0 5.718-1.17 7.734-3.08zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zM12 15a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75v-.008a.75.75 0 00-.75-.75H12z" clip-rule="evenodd"></path>
         </svg>
 
@@ -207,7 +207,7 @@
     </div>
   </div>
 
-  <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
+  <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-xs rounded-lg p-8 border border-slate-300/60">
     <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="KFz5ZtupOgfCmPUrSoPOW62TqhAxjRRUVi3LC4quDw3wQCnw7Afy_IwRpt8-SqpMsNyhT8A6NlMo3-6XQ_2sMQ" autocomplete="off">
 
     <div class="form-group">
@@ -233,7 +233,7 @@
 <%% if resource.errors.any? %>
 <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
   <div class="flex items-start gap-4">
-    <%%= icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid %>
+    <%%= icon "shield-exclamation", class: "size-6 text-rose-700 shrink-0", variant: :solid %>
     <div class="flex-1">
       <p class="font-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
       <ul class="list-disc mt-3 ml-4">
@@ -251,7 +251,7 @@
 - if resource.errors.any?
   .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-rose-50.text-sm{class: "dark:bg-rose-400/10 dark:border-rose-400/20", role: "alert"}
     .flex.items-start.gap-4
-      = icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid
+      = icon "shield-exclamation", class: "size-6 text-rose-700 shrink-0", variant: :solid
       .flex-1
         %p.font-bold
           = pluralize(resource.errors.count, "error")   prohibited this post from being saved:

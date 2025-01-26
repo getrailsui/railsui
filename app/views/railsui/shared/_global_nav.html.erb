@@ -1,4 +1,4 @@
- <nav class="text-sm md:pt-3 pt-0 bg-neutral-50/20 md:h-screen md:w-[280px] md:border-r border-neutral-200/90 flex-col flex dark:bg-neutral-900 dark:border-neutral-700/80 w-full overflow-y-auto scrollbar scrollbar-track-transparent md:pl-3 md:!pr-0 px-3 md:pb-10 overflow-x-hidden" data-railsui-scroll-target="scrollitem">
+ <nav class="text-sm md:pt-3 pt-0 bg-neutral-50/20 md:h-screen md:w-[280px] md:border-r border-neutral-200/90 flex-col flex dark:bg-neutral-900 dark:border-neutral-700/80 overflow-y-auto md:pl-3 md:pr-0! px-3 md:pb-10 overflow-x-hidden" data-railsui-scroll-target="scrollitem">
   <div>
     <div class="flex flex-wrap items-center gap-4 justify-between py-2 md:py-1 w-full">
       <div class="flex items-center gap-2 md:mb-3">
@@ -13,7 +13,7 @@
         <% end %>
       </div>
 
-      <button role="toggle nav" class="md:hidden size-10 focus:ring-neutral-300/20 focus:ring-4 rounded-lg dark:focus:ring-neutral-600 flex items-center justify-center flex-shrink-0" data-action="click->railsui-toggle#toggle">
+      <button role="toggle nav" class="md:hidden size-10 focus:ring-neutral-300/20 focus:ring-4 rounded-lg dark:focus:ring-neutral-600 flex items-center justify-center shrink-0" data-action="click->railsui-toggle#toggle">
         <%= icon "menu", custom_path: "/menu.svg", class: "stroke-current w-7 h-7 text-neutral-600 dark:text-neutral-300" %>
       </button>
     </div>
@@ -24,14 +24,14 @@
 
       <% if params[:controller].include?('admin') %>
         <div class="pl-8 font-normal text-[14px] -mx-2 pt-px">
-          <a href="#configuration" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">General</a>
+          <a href="#configuration" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">General</a>
 
-          <a href="#theme" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Theme</a>
+          <a href="#theme" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Theme</a>
 
           <% if Railsui.config.theme.present? %>
-            <a href="#color" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Color</a>
+            <a href="#color" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Color</a>
 
-            <a href="#pages" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Pages</a>
+            <a href="#pages" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Pages</a>
           <% end %>
         </div>
       <% end %>

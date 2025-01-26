@@ -1,6 +1,6 @@
 <%= render layout: example, locals: { heading: "Edit account", section: "Authentication" } do %>
 
-<div class="border dark:border-slate-700 rounded pointer-events-none select none dark:bg-slate-900">
+<div class="border dark:border-slate-700 rounded-sm pointer-events-none select none dark:bg-slate-900">
     <header class="relative dark:bg-slate-900 bg-white border-b border-slate-200 dark:border-slate-700 py-1" data-controller="railsui-nav">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap gap-4">
@@ -9,7 +9,7 @@
           <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-8 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
           <span class="sr-only"><%= Railsui.config.application_name %></span>
         <% end %>
-        <button id="dropdowns-nav-toggle" data-action="click->railsui-nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+        <button id="dropdowns-nav-toggle" data-action="click->railsui-nav#toggle" class="md:hidden block p-1 rounded-sm focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
           <div role="none" data-railsui-nav-target="menuBars">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-8 h-8 text-slate-600 group-focus:text-primary-600             dark:text-slate-400 dark:group-focus:text-slate-100" role="img" aria-labelledby="aizwk09s9b6getl7of67l85n6mj63q6h"><title id="aizwk09s9b6getl7of67l85n6mj63q6h">Bars 3 center left</title>
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"></path>
@@ -46,7 +46,7 @@
                     <a class="px-4 py-2 md:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block" data-turbo="false" href="/users/edit">Edit account</a>
                   </div>
                   <div role="none">
-                    <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="px-4 py-2 md:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block w-full sm:!text-left !text-center" data-turbo="false" type="submit">Sign out</button><input type="hidden" name="authenticity_token" value="247WxI3moLFKETE62nwlgg6q0T9bPTf1f0HE-4DGBZiP-vB8suMy6MyKoGMCsQz5_JIrGB3IkssLkY4DH8za_Q" autocomplete="off"></form>
+                    <form class="button_to" method="post" action="/users/sign_out"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="px-4 py-2 md:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block w-full sm:text-left! text-center!" data-turbo="false" type="submit">Sign out</button><input type="hidden" name="authenticity_token" value="247WxI3moLFKETE62nwlgg6q0T9bPTf1f0HE-4DGBZiP-vB8suMy6MyKoGMCsQz5_JIrGB3IkssLkY4DH8za_Q" autocomplete="off"></form>
                   </div>
                 </div>
               </li>

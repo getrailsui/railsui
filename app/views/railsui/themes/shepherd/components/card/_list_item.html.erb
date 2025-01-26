@@ -2,7 +2,7 @@
 <li class="flex flex-wrap items-center justify-start space-y-3 md:space-y-0 py-6 md:py-4">
   <div class="md:flex-1 w-full">
     <a href="#" class="flex md:items-center items-start space-x-3" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
-      <%= image_tag property, class: "md:w-16 w-24 md:h-10 h-16 rounded", alt: title %>
+      <%= image_tag property, class: "md:w-16 w-24 md:h-10 h-16 rounded-sm", alt: title %>
       <div class="flex-1">
         <h3 class="font-heading md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50"><%= title %></h3>
         <h4 class="font-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80"><%= nickname %></h4>
@@ -19,7 +19,7 @@
   </div>
   <div class="md:w-2/12 w-1/3">
     <span class="md:hidden text-zinc-600 dark:text-zinc-400 text-sm block mb-2">Hosts</span>
-    <%= image_tag demo_avatar_url(id: "32", variant: "men"), alt: "Host", class: "md:w-9 w-5 md:h-9 h-5 rounded-full flex-shrink-0" %>
+    <%= image_tag demo_avatar_url(id: "32", variant: "men"), alt: "Host", class: "md:w-9 w-5 md:h-9 h-5 rounded-full shrink-0" %>
   </div>
   <div class="md:w-1/12 w-full md:pt-0 pt-4">
     <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
@@ -27,11 +27,11 @@
         class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
         data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-        <%= icon "ellipsis-horizontal", class:  "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+        <%= icon "ellipsis-horizontal", class:  "md:block hidden stroke-current size-6 shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
         <span class="md:hidden block">Actions</span>
 
-        <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+        <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
       </button>
 
       <ul

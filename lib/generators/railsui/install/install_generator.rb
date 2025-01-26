@@ -12,7 +12,6 @@ module Railsui
           application_name: "Rails UI",
           support_email: "support@example.com",
           theme: "hound",
-          colors: Railsui::Colors.theme_colors('hound'),
           pages: Railsui::Pages.get_pages('hound')
         }
 
@@ -57,10 +56,6 @@ module Railsui
           # view related
           copy_railsui_head(@theme)
           copy_railsui_launcher(@theme)
-          # copy_railsui_shared_directory(@theme)
-
-          # tailwind related
-          update_tailwind_config(@theme)
 
           # cleanup
           remove_action_text_defaults

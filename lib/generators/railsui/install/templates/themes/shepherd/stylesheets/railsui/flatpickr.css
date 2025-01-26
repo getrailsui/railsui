@@ -40,8 +40,8 @@
   .flatpickr-days
   .dayContainer:nth-child(n + 1)
   .flatpickr-day.inRange:nth-child(7n + 7) {
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .flatpickr-calendar.multiMonth
@@ -306,7 +306,7 @@
 
 .numInputWrapper span.arrowDown:hover,
 .numInputWrapper span.arrowUp:hover {
-  @apply bg-transparent !important;
+  @apply bg-transparent;
 }
 
 .numInputWrapper span.arrowUp:after {

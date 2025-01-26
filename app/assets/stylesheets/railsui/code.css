@@ -1,10 +1,8 @@
 pre code.hljs {
   display: block;
-  overflow: auto !important;
+  overflow: auto;
   padding: 1em;
   font-family: theme("fontFamily.mono");
-
-  @apply scrollbar-track-neutral-950 scrollbar-thumb-neutral-500;
 }
 
 code.hljs {

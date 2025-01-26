@@ -101,7 +101,6 @@ Railsui::Engine.routes.draw do
       get :nav_link
       get :spacer
       get :railsui_head
-      get :custom_colors
     end
   end
 

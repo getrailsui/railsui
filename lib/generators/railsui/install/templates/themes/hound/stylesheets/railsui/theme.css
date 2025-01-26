@@ -1,0 +1,41 @@
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary-50: oklch(0.962 0.0179 272.31); /* #eef2ff */
+  --color-primary-100: oklch(0.93 0.0334 272.79); /* #e0e7ff */
+  --color-primary-200: oklch(0.8699 0.0622 274.04); /* #c7d2fe */
+  --color-primary-300: oklch(0.7853 0.1041 274.71); /* #a5b4fc */
+  --color-primary-400: oklch(0.6801 0.1583 276.93); /* #818cf8 */
+  --color-primary-500: oklch(0.5854 0.2041 277.12); /* #6366f1 */
+  --color-primary-600: oklch(0.5106 0.2301 276.97); /* #4f46e5 */
+  --color-primary-700: oklch(0.4568 0.2146 277.02); /* #4338ca */
+  --color-primary-800: oklch(0.3984 0.1773 277.37); /* #3730a3 */
+  --color-primary-900: oklch(0.3588 0.1354 278.7); /* #312e81 */
+  --color-primary-950: oklch(0.2573 0.0861 281.29); /* #1e1b4b */
+
+  --color-secondary-50: oklch(0.9842 0.0034 247.86); /* #f8fafc */
+  --color-secondary-100: oklch(0.9683 0.0069 247.9); /* #f1f5f9 */
+  --color-secondary-200: oklch(0.9288 0.0126 255.51); /* #e2e8f0 */
+  --color-secondary-300: oklch(0.869 0.0198 252.89); /* #cbd5e1 */
+  --color-secondary-400: oklch(0.7107 0.0351 256.79); /* #94a3b8 */
+  --color-secondary-500: oklch(0.5544 0.0407 257.42); /* #64748b */
+  --color-secondary-600: oklch(0.4455 0.0374 257.28); /* #475569 */
+  --color-secondary-700: oklch(0.3717 0.0392 257.29); /* #334155 */
+  --color-secondary-800: oklch(0.2795 0.0368 260.03); /* #1e293b */
+  --color-secondary-900: oklch(0.2077 0.0398 265.75); /* #1e293b */
+  --color-secondary-950: oklch(0.1288 0.0406 264.7); /* #020617 */
+}
+
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-300, currentColor);
+  }
+}

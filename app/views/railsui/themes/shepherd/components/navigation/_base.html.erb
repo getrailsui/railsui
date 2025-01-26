@@ -23,7 +23,7 @@
           </a>
 
           <button type="button" data-action="click->nav#toggle"
-            class="md:hidden flex items-center justify-center size-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+            class="md:hidden flex items-center justify-center size-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-xs group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-xs"
             role="Mobile navigation toggle">
               <%%= icon "bars-3-center-left", class: "stroke-current size-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
           </button>
@@ -58,7 +58,7 @@
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start space-x-2">
-                          <%= image_tag demo_avatar_url(variant: "men", id: "10"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                          <%= image_tag demo_avatar_url(variant: "men", id: "10"), class: "size-6 object-cover rounded-full shrink-0 mt-1" %>
                           <div class="flex-1">
                             <p class="truncate">John D. replied to <%= link_to "your comment", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400" %></p>
                             <p class="text-xs text-zinc-500 dark:text-zinc-400">Just now</p>
@@ -72,7 +72,7 @@
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start space-x-2">
-                          <%= image_tag demo_avatar_url(id: "14", variant: "women"), alt: "Avatar", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                          <%= image_tag demo_avatar_url(id: "14", variant: "women"), alt: "Avatar", class: "size-6 object-cover rounded-full shrink-0 mt-1" %>
                           <div class="flex-1">
                             <p>Jane D. posted <%= link_to "an update", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400" %></p>
                             <p class="text-xs text-zinc-500 dark:text-zinc-400">15 mins ago</p>
@@ -86,7 +86,7 @@
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start space-x-2">
-                          <%= image_tag demo_avatar_url(id: "24", variant: "men"), alt: "Avatar", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                          <%= image_tag demo_avatar_url(id: "24", variant: "men"), alt: "Avatar", class: "size-6 object-cover rounded-full shrink-0 mt-1" %>
                           <div class="flex-1">
                             <p>Scotty P. shared <%= link_to "a repository", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400" %></p>
                             <p class="text-xs text-zinc-500 dark:text-zinc-400">2 hours ago</p>
@@ -114,7 +114,7 @@
                    class="rounded-full md:w-10 md:h-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
                     focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
                     dark:focus:border-zinc-300/90">
-                    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
+                    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 size-12 rounded-full shrink-0 select-none pointer-events-none" %>
                   </button>
 
                   <ul data-railsui-dropdown-target="menu"
@@ -173,7 +173,7 @@
           <%% end %>
 
           <button type="button" data-action="click->nav#toggle"
-            class="md:hidden flex items-center justify-center size-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+            class="md:hidden flex items-center justify-center size-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-xs group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-xs"
             role="Mobile navigation toggle">
               <%%= icon "bars-3-center-left", class: "stroke-current size-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
           </button>
@@ -208,7 +208,7 @@
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start space-x-2">
-                          <%%= image_tag demo_avatar_url(variant: "men", id: "10"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                          <%%= image_tag demo_avatar_url(variant: "men", id: "10"), class: "size-6 object-cover rounded-full shrink-0 mt-1" %>
                           <div class="flex-1">
                             <p class="truncate">John D. replied to <%%= link_to "your comment", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400" %></p>
                             <p class="text-xs text-zinc-500 dark:text-zinc-400">Just now</p>
@@ -222,7 +222,7 @@
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start space-x-2">
-                          <%%= image_tag demo_avatar_url(id: "14", variant: "women"), alt: "Avatar", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                          <%%= image_tag demo_avatar_url(id: "14", variant: "women"), alt: "Avatar", class: "size-6 object-cover rounded-full shrink-0 mt-1" %>
                           <div class="flex-1">
                             <p>Jane D. posted <%%= link_to "an update", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400" %></p>
                             <p class="text-xs text-zinc-500 dark:text-zinc-400">15 mins ago</p>
@@ -236,7 +236,7 @@
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start space-x-2">
-                          <%%= image_tag demo_avatar_url(id: "24", variant: "men"), alt: "Avatar", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1" %>
+                          <%%= image_tag demo_avatar_url(id: "24", variant: "men"), alt: "Avatar", class: "size-6 object-cover rounded-full shrink-0 mt-1" %>
                           <div class="flex-1">
                             <p>Scotty P. shared <%%= link_to "a repository", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400" %></p>
                             <p class="text-xs text-zinc-500 dark:text-zinc-400">2 hours ago</p>
@@ -265,7 +265,7 @@
                     focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
                     dark:focus:border-zinc-300/90">
 
-                    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
+                    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 size-12 rounded-full shrink-0 select-none pointer-events-none" %>
                   </button>
 
                   <ul data-railsui-dropdown-target="menu"
@@ -321,7 +321,7 @@
             %h1
               = icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10"
               %span.sr-only Shepherd
-          %button.md:hidden.flex.items-center.justify-center.size-12.rounded-full.focus:ring-4.focus:ring-zinc-50.focus:bg-white.focus:shadow-sm.group.dark:focus:bg-zinc-800.dark:focus:ring-zinc-600.dark:focus:shadow-sm{"data-action" => "click->nav#toggle", role: "Mobile navigation toggle", type: "button"}
+          %button.md:hidden.flex.items-center.justify-center.size-12.rounded-full.focus:ring-4.focus:ring-zinc-50.focus:bg-white.focus:shadow-xs.group.dark:focus:bg-zinc-800.dark:focus:ring-zinc-600.dark:focus:shadow-xs{"data-action" => "click->nav#toggle", role: "Mobile navigation toggle", type: "button"}
             = icon "bars-3-center-left", class: "stroke-current size-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100"
         .origin-top.md:flex.items-center.hidden.w-full{"data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
           %nav.flex-1{role: "primary navigation"}
@@ -343,7 +343,7 @@
                     .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                       .flex-1
                         .flex.items-start.space-x-2
-                          = image_tag demo_avatar_url(variant: "men", id: "10"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1"
+                          = image_tag demo_avatar_url(variant: "men", id: "10"), class: "size-6 object-cover rounded-full shrink-0 mt-1"
                           .flex-1
                             %p.truncate
                               John D. replied to #{link_to "your comment", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"}
@@ -353,7 +353,7 @@
                     .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                       .flex-1
                         .flex.items-start.space-x-2
-                          = image_tag demo_avatar_url(id: "14", variant: "women"), alt: "Avatar", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1"
+                          = image_tag demo_avatar_url(id: "14", variant: "women"), alt: "Avatar", class: "size-6 object-cover rounded-full shrink-0 mt-1"
                           .flex-1
                             %p
                               Jane D. posted #{link_to "an update", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"}
@@ -363,7 +363,7 @@
                     .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                       .flex-1
                         .flex.items-start.space-x-2
-                          = image_tag demo_avatar_url(id: "24", variant: "men"), alt: "Avatar", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1"
+                          = image_tag demo_avatar_url(id: "24", variant: "men"), alt: "Avatar", class: "size-6 object-cover rounded-full shrink-0 mt-1"
                           .flex-1
                             %p
                               Scotty P. shared #{link_to "a repository", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"}
@@ -378,7 +378,7 @@
               %li
                 .md:flex.relative{"data-controller" => "railsui-dropdown"}
                   %button.rounded-full.md:w-10.md:h-10.size-12.border-zinc-300.border.flex.items-center.justify-center.focus:border-zinc-400.focus:ring-4.dark:border-zinc-600.dark:focus:ring-zinc-700{class: "focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:focus:border-zinc-300/90", "data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide", "data-railsui-dropdown-target" => "trigger"}
-                    %img.md:w-10.md:h-10.size-12.rounded-full.flex-shrink-0.select-none.pointer-events-none{alt: "Shepherd user", src: "https://randomuser.me/api/portraits/men/61.jpg"}/
+                    %img.md:w-10.md:h-10.size-12.rounded-full.shrink-0.select-none.pointer-events-none{alt: "Shepherd user", src: "https://randomuser.me/api/portraits/men/61.jpg"}/
                   %ul.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.right-0.md:top-12.top-20.bg-white.rounded-lg.shadow-xl.border.border-zinc-200.w-full.z-50.py-4.dark:bg-zinc-900.text-base.font-normal.text-zinc-600.dark:text-zinc-200.font-heading.space-y-3{class: "shadow-zinc-900/10 md:w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
                     %li
                       = link_to "Inbox", "#", class: "py-3 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300"

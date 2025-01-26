@@ -1,0 +1,39 @@
+@utility btn {
+  @apply py-2 px-3 text-sm rounded-md font-medium text-center inline-flex items-center justify-center transition-colors duration-200 no-underline focus:ring-4;
+}
+
+@utility btn-lg {
+  @apply py-3 px-5 text-lg;
+}
+
+@utility btn-sm {
+  @apply py-1 px-2 text-xs;
+}
+
+@utility btn-primary {
+  @apply bg-primary-500 text-white focus:ring-primary-500/20 hover:bg-primary-600;
+}
+
+@utility btn-secondary {
+  @apply bg-secondary-500 text-white focus:ring-secondary-500/20 hover:bg-secondary-600;
+}
+
+@utility btn-dark {
+  @apply bg-slate-900 text-white focus:ring-slate-800/20 hover:bg-slate-950 dark:border dark:border-slate-700 dark:bg-slate-950 dark:hover:text-slate-100 dark:hover:bg-slate-950;
+}
+
+@utility btn-white {
+  @apply bg-white text-slate-700 border border-slate-300 shadow-sm shadow-slate-300/20 focus:ring-slate-300/20 hover:bg-white hover:border-slate-400 dark:text-slate-100 dark:bg-slate-700 dark:border-slate-700 dark:shadow-none dark:focus:ring-slate-600/30 dark:hover:border-slate-600 dark:hover:bg-slate-800;
+}
+
+@utility btn-light {
+  @apply bg-slate-100/90 text-slate-800 focus:ring-slate-300/20 hover:bg-slate-300/80 dark:text-slate-100 dark:bg-slate-700 dark:border dark:border-slate-700 dark:shadow-none dark:focus:ring-slate-600/30 dark:hover:border-slate-600 dark:hover:bg-slate-800;
+}
+
+@utility btn-transparent {
+  @apply bg-transparent text-slate-700 border-transparent shadow-none focus:ring-slate-300/20 hover:bg-slate-100/90 hover:text-slate-800 hover:border-slate-300 dark:text-slate-300 dark:hover:text-slate-100 dark:hover:bg-slate-700 dark:hover:border-slate-700 dark:focus:ring-slate-800/20;
+}
+
+.btn-link {
+  @apply text-primary-600 font-semibold focus:shadow-none hover:text-primary-700 hover:no-underline no-underline dark:text-primary-400 dark:hover:text-primary-500;
+}

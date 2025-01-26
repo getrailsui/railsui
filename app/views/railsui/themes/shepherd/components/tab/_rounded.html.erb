@@ -4,11 +4,11 @@
 <%= render preview "zinc" do %>
 <div
   data-controller="railsui-tabs"
-  data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded text-primary-500 dark:bg-primary-500 dark:text-white"
+  data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-sm text-primary-500 dark:bg-primary-500 dark:text-white"
   data-railsui-tabs-inactive-tab="py-2 px-4 rounded-md dark:text-slate-200 dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">
   <div>
     <nav role="navigation" class="flex items-center text-zinc-600 space-x-1 text-[15px] font-heading">
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 bg-primary-50 rounded text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 bg-primary-50 rounded-sm text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out">Activity</a>
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md transition duration-200 ease-in-out">Account</a>
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md transition duration-200 ease-in-out">Billing</a>
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md transition duration-200 ease-in-out">Team</a>
@@ -35,11 +35,11 @@
 <% content_for :html, flush: true do %>
 <div
   data-controller="railsui-tabs"
-  data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded text-primary-500 dark:bg-primary-500 dark:text-white"
+  data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-sm text-primary-500 dark:bg-primary-500 dark:text-white"
   data-railsui-tabs-inactive-tab="py-2 px-4 rounded-md dark:text-slate-200 dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">
   <div>
     <nav role="navigation" class="flex items-center text-zinc-600 space-x-1 text-[15px] font-heading">
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 bg-primary-50 rounded text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 bg-primary-50 rounded-sm text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out">Activity</a>
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md transition duration-200 ease-in-out">Account</a>
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md transition duration-200 ease-in-out">Billing</a>
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-2 px-4 rounded-md transition duration-200 ease-in-out">Team</a>
@@ -65,7 +65,7 @@
 <% content_for :erb, flush: true do %>
 <div
   data-controller="railsui-tabs"
-  data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded text-primary-500 dark:bg-primary-500 dark:text-white"
+  data-railsui-tabs-active-tab="py-2 px-4 bg-primary-50 rounded-sm text-primary-500 dark:bg-primary-500 dark:text-white"
   data-railsui-tabs-inactive-tab="py-2 px-4 rounded-md dark:text-slate-200 dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out">
   <div>
     <nav role="navigation" class="flex items-center text-zinc-600 space-x-1 font-medium text-sm">
@@ -93,7 +93,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-2 px-4 bg-primary-50 rounded text-primary-500 dark:bg-primary-500 dark:text-white", "data-railsui-tabs-inactive-tab" => "py-2 px-4 rounded-md dark:text-slate-200 dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"}
+%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-2 px-4 bg-primary-50 rounded-sm text-primary-500 dark:bg-primary-500 dark:text-white", "data-railsui-tabs-inactive-tab" => "py-2 px-4 rounded-md dark:text-slate-200 dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"}
   %div
     %nav.flex.items-center.text-zinc-600.space-x-1.font-medium.text-sm{role: "navigation"}
       = link_to "Activity", "#", class: "py-3 px-4 bg-primary-50 rounded-md text-primary-600 dark:bg-primary-600 dark:text-white", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }

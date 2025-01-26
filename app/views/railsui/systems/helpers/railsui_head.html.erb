@@ -37,9 +37,6 @@
 
 <!-- Various 3rd party JavaScript if necessary -->
 
-<!-- Outputs custom colors for each Rails UI theme. This includes colors you might change by configuring the form on /railsui. -->
-<%%= custom_colors_css %>
-
 <%%= yield :head %>
 
 <% end %>
@@ -64,4 +61,4 @@
   <% end %>
 <% end %>
 
-<%= system_pagination(prev_path: systems_helpers_demo_avatar_path, prev_text: "Demo Avatar", next_path: systems_helpers_custom_colors_path, next_text: "Custom colors") %>
+<%= system_pagination(prev_path: systems_helpers_demo_avatar_path, prev_text: "Demo Avatar", next_path: systems_content_typography_path, next_text: "Typography") %>

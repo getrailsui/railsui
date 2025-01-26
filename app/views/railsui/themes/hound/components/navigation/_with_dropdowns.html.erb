@@ -21,7 +21,7 @@
         <button
           id="dropdowns-nav-toggle"
           data-action="click->railsui-nav#toggle"
-          class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+          class="md:hidden block p-1 rounded-sm focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
           <div role="none" data-railsui-nav-target="menuBars">
             <%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600
             dark:text-slate-400 dark:group-focus:text-slate-100" %>
@@ -124,7 +124,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
+                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "John D." %>
                         <div class="flex-1">
                           <p class="truncate">John D. replied to <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400">your comment</a></p>
                           <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
@@ -139,7 +139,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
+                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Jane D." %>
                           <div class="flex-1">
                             <p>Jane D. posted <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400">an update</a></p>
                             <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
@@ -154,7 +154,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                      <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
+                      <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Scotty P." %>
                         <div class="flex-1">
                           <p>Scotty P. shared <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400">a repository</a></p>
                           <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
@@ -225,7 +225,7 @@
         <button
           id="dropdowns-nav-toggle"
           data-action="click->nav#toggle"
-          class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+          class="md:hidden block p-1 rounded-sm focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
           <div role="none" data-nav-target="menuBars">
             <%%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600
             dark:text-slate-400 dark:group-focus:text-slate-100" %>
@@ -328,7 +328,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
+                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "John D." %>
                         <div class="flex-1">
                           <p class="truncate">John D. replied to <a href="#" class="underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400">your comment</a></p>
                           <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
@@ -343,7 +343,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "women"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
+                        <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "women"), class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Jane D." %>
                           <div class="flex-1">
                             <p>Jane D. posted <a href="#" class="underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400">an update</a></p>
                             <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
@@ -358,7 +358,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                      <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
+                      <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: "men"), class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Scotty P." %>
                         <div class="flex-1">
                           <p>Scotty P. shared <a href="#" class="underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400">a repository</a></p>
                           <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
@@ -429,7 +429,7 @@
         <button
           id="dropdowns-nav-toggle"
           data-action="click->nav#toggle"
-          class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+          class="md:hidden block p-1 rounded-sm focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
           <div role="none" data-nav-target="menuBars">
             <%%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600
             dark:text-slate-400 dark:group-focus:text-slate-100" %>
@@ -532,7 +532,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                        <%%= image_tag "#", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D." %>
+                        <%%= image_tag "#", class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "John D." %>
                         <div class="flex-1">
                           <p class="truncate">John D. replied to <%%= link_to "your comment", "#", class:"underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400" %></p>
                           <p class="text-xs text-slate-500 dark:text-slate-400">Just now</p>
@@ -547,7 +547,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                        <%%= image_tag "#", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D." %>
+                        <%%= image_tag "#", class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Jane D." %>
                           <div class="flex-1">
                             <p>Jane D. posted <%%= link_to "an update", "#", class:"underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400" %></p>
                             <p class="text-xs text-slate-500 dark:text-slate-400">15 mins ago</p>
@@ -562,7 +562,7 @@
                   <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                     <div class="flex-1">
                       <div class="flex items-start space-x-2">
-                      <%%= image_tag "#", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P." %>
+                      <%%= image_tag "#", class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Scotty P." %>
                         <div class="flex-1">
                           <p>Scotty P. shared <%%= link_to "a repository", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400" %></p>
                           <p class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</p>
@@ -674,7 +674,7 @@
                   .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                     .flex-1
                       .flex.items-start.space-x-2
-                        = image_tag "#", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "John D."
+                        = image_tag "#", class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "John D."
                         .flex-1
                           %p.truncate
                             John D. replied to #{link_to "your comment", "#", class:"underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400"}
@@ -684,7 +684,7 @@
                   .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                     .flex-1
                       .flex.items-start.space-x-2
-                        = image_tag "#", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Jane D."
+                        = image_tag "#", class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Jane D."
                         .flex-1
                           %p
                             Jane D. posted #{link_to "an update", "#", class:"underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400"}
@@ -694,7 +694,7 @@
                   .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                     .flex-1
                       .flex.items-start.space-x-2
-                        = image_tag "#", class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Scotty P."
+                        = image_tag "#", class: "size-6 object-cover rounded-full shrink-0 mt-1", alt: "Scotty P."
                         .flex-1
                           %p
                             Scotty P. shared #{link_to "a repository", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-400"}

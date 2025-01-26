@@ -1,13 +1,13 @@
 <div>
   <% unless current_page?(local_assigns[:path]) %>
     <%= link_to local_assigns[:path],
-      class: "text-[14px] font-medium py-2.5 px-2 -mx-2 text-neutral-800 focus:text-neutral-600 hover:text-neutral-900 flex items-center gap-2 relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/80 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group" do %>
+      class: "text-[14px] font-medium py-2.5 px-2 -mx-2 text-neutral-800 focus:text-neutral-600 hover:text-neutral-900 flex items-center gap-2 relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/80 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group" do %>
       <%= icon local_assigns[:icon], class: "size-5 stroke-current text-neutral-500 group-hover:text-neutral-800 dark:group-hover:text-neutral-300 dark:text-neutral-400", title: local_assigns[:label] %>
       <span><%= local_assigns[:label] %></span>
     <% end %>
   <% else %>
     <%= link_to local_assigns[:path],
-      class: "text-[14px] font-medium py-2.5 px-2 -mx-2 text-neutral-900 hover:text-neutral-950 flex items-center gap-2 relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white bg-neutral-200/70 rounded transition dark:text-neutral-200 dark:bg-neutral-800/70 dark:text-white group dark:hover:text-white" do %>
+      class: "text-[14px] font-medium py-2.5 px-2 -mx-2 text-neutral-900 hover:text-neutral-950 flex items-center gap-2 relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white bg-neutral-200/70 rounded-sm transition dark:text-neutral-200 dark:bg-neutral-800/70 dark:text-white group dark:hover:text-white" do %>
       <%= icon local_assigns[:icon], class: "size-5 stroke-current text-neutral-500
       group-hover:text-netural-800 dark:group-hover:text-neutral-300 dark:text-neutral-400", title: local_assigns[:label]  %>
       <span><%= local_assigns[:label] %></span>

@@ -1,11 +1,11 @@
 <div id="form-switch">
 <%= render layout: example, locals: { heading: "Base" } do %>
 <%#### Switches %>
-<div class="prose mb-10 max-w-full dark:!prose-invert">
+<div class="prose mb-10 max-w-full dark:prose-invert">
   <p>A corresponding <code>label</code> element must be present <strong>after</strong> the input in order for the switch UI to display.</p>
 </div>
 
-<%= render preview do %>
+<%= render preview 'gray' do %>
 <div class="form-group mb-0">
   <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
   <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>

@@ -2,7 +2,7 @@
   <%= render layout: example, locals: { heading: "With form", section: "Modal" } do %>
 
     <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-slate-800 dark:border-t dark:border-x dark:border-slate-600">
-      <div class="rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
+      <div class="rounded-sm shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
         <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50">
           <%= icon "x-mark", class:  "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
         </button>
@@ -57,7 +57,7 @@
       data-transition-leave-active="transition ease-in duration-300"
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
-      class="hidden rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
+      class="hidden rounded-sm shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
             <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50" data-action="click->railsui-modal#close">
               <%= icon "x-mark", class:  "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
             </button>
@@ -103,7 +103,7 @@ data-transition-enter-to="transform opacity-100 scale-100"
 data-transition-leave-active="transition ease-in duration-300"
 data-transition-leave-from="transform opacity-100 scale-100"
 data-transition-leave-to="transform opacity-0 scale-95"
-class="hidden rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
+class="hidden rounded-sm shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
         <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50" data-action="click->railsui-modal#close">
           <%%= icon "x-mark", class:  "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
         </button>

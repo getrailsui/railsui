@@ -19,7 +19,7 @@
           </a>
 
           <button id="base-nav-toggle" data-action="click->railsui-nav#toggle"
-            class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+            class="md:hidden block p-1 rounded-sm focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
             <div role="none" data-railsui-nav-target="menuBars">
               <%= icon "bars-3-center-left", class:  "size-8 text-slate-600 group-focus:text-primary-600
         dark:text-slate-400 dark:group-focus:text-slate-100" %>
@@ -60,12 +60,12 @@
             <nav role="Secondary navigation">
               <ul class="md:flex flex-wrap items-center justify-center grid grid-cols-2 md:gap-0 gap-4 md:mt-0 mt-6">
                 <li class="md:pr-5">
-                  <a href="#" class="group md:border-none border rounded md:bg-transparent dark:bg-slate-900 dark:border-slate-700 bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-800" data-action="click->railsui-prevent#prevent">
+                  <a href="#" class="group md:border-none border rounded-sm md:bg-transparent dark:bg-slate-900 dark:border-slate-700 bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-800" data-action="click->railsui-prevent#prevent">
                     <%= icon "question-mark-circle", class:  "fill-current size-5 text-primary-600 group-hover:text-primary-700 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid %>
                   </a>
                 </li>
                 <li class="md:pr-3">
-                  <a href="#" class="group md:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" data-action="click->railsui-prevent#prevent">
+                  <a href="#" class="group md:border-none border rounded-sm sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" data-action="click->railsui-prevent#prevent">
                     <%= icon "book-open", class:  "fill-current size-5
               text-primary-600 group-hover:text-primary-700
               transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid %>
@@ -103,7 +103,7 @@
           <span class="sr-only"><%= Railsui.config.theme.humanize %></span>
         </a>
 
-        <button id="base-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+        <button id="base-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded-sm focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
           <div role="none" data-nav-target="menuBars">
             <%%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
           </div>
@@ -137,12 +137,12 @@
           <nav role="Secondary navigation">
             <ul class="md:flex flex-wrap items-center justify-center grid grid-cols-2 md:gap-0 gap-4 md:mt-0 mt-6">
               <li class="md:pr-5">
-                <a href="#" class="group md:border-none border rounded md:bg-transparent dark:bg-slate-900 dark:border-slate-700 bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-800">
+                <a href="#" class="group md:border-none border rounded-sm md:bg-transparent dark:bg-slate-900 dark:border-slate-700 bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-800">
                   <%%= icon "question-mark-circle", class:  "fill-current size-5 text-primary-600 group-hover:text-primary-700 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid %>
                 </a>
               </li>
               <li class="md:pr-3">
-                <a href="#" class="group md:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800">
+                <a href="#" class="group md:border-none border rounded-sm sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800">
                   <%%= icon "book-open", class: "fill-current size-5 text-primary-600 group-hover:text-primary-700 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid %>
                 </a>
               </li>
@@ -176,7 +176,7 @@
           <span class="sr-only"><%= Railsui.config.theme.humanize %></span>
         <%% end %>
 
-      <button id="base-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+      <button id="base-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded-sm focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
         <div role="none" data-nav-target="menuBars">
           <%%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
         </div>
@@ -212,12 +212,12 @@
         <nav role="Secondary navigation">
           <ul class="md:flex flex-wrap items-center justify-center grid grid-cols-2 md:gap-0 gap-4 md:mt-0 mt-6">
             <li class="md:pr-5">
-              <%%= link_to "#", class: "group md:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do %>
+              <%%= link_to "#", class: "group md:border-none border rounded-sm sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do %>
                 <%%= icon "question-mark-circle", class:  "fill-current size-5 text-primary-600 group-hover:text-primary-700 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid %>
               <%% end %>
             </li>
             <li class="md:pr-3">
-              <%%= link_to "#", class: "group md:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do %>
+              <%%= link_to "#", class: "group md:border-none border rounded-sm sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do %>
                 <%%= icon "book-open", class: "fill-current size-5 text-primary-600 group-hover:text-primary-700 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid %>
               <%% end %>
             </li>
@@ -266,10 +266,10 @@
           %nav{role: "Secondary navigation"}
             %ul.md:flex.flex-wrap.items-center.justify-center.grid.grid-cols-2.md:gap-0.gap-4.md:mt-0.mt-6
               %li.md:pr-5
-                = link_to "#", class: "group md:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do
+                = link_to "#", class: "group md:border-none border rounded-sm sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do
                   = icon "question-mark-circle", class:  "fill-current size-5 text-primary-600 group-hover:text-primary-700 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid
               %li.md:pr-3
-                = link_to "#", class: "group md:border-none border rounded sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do
+                = link_to "#", class: "group md:border-none border rounded-sm sm:bg-transparent bg-white flex justify-center items-center md:py-0 py-2 md:px-0 px-3 md:block md:focus:ring-none focus:ring-4 focus:ring-slate-100 dark:bg-slate-900 dark:border-slate-700 dark:focus:ring-slate-800" do
                   = icon "book-open", class: "fill-current size-5 text-primary-600 group-hover:text-primary-700 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-400", variant: :solid
               %li.md:block.hidden.md:pr-3.md:pl-2
                 %span.h-6.w-px.bg-slate-200.block.dark:bg-slate-600

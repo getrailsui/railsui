@@ -2,7 +2,7 @@
 <%= render layout: example, locals: { heading: "User card with actions", section: "Card" } do %>
 
 <div class="py-4 px-6 flex flex-wrap items-center w-auto dark:shadow-slate-900/50 rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 gap-4" data-controller="railsui-prevent">
-<%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: :women), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+<%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: :women), class: "object-cover size-14 rounded-full shrink-0" %>
   <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
     <p class="font-bold dark:text-white">Jane Doe</p>
     <p class="text-sm dark:text-slate-300">Software Architect at <a href="#" class="btn-link" data-action="click->railsui-prevent#prevent">Amazon</a></p>
@@ -27,7 +27,7 @@
 
 <% content_for :erb, flush: true do %>
 <div class="py-4 px-6 flex flex-wrap items-center w-auto dark:shadow-slate-900/50 rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 gap-4">
-<%= image_tag demo_avatar_url(id: "32", variant: :women), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+<%= image_tag demo_avatar_url(id: "32", variant: :women), class: "object-cover size-14 rounded-full shrink-0" %>
   <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
     <p class="font-bold dark:text-white">Jane Doe</p>
     <p class="text-sm dark:text-slate-300">Software Architect at <%= link_to "Amazon", "#", class: "btn-link" %></p>
@@ -51,7 +51,7 @@
 
 <% content_for :haml, flush: true do %>
 .py-4.px-6.flex.flex-wrap.items-center.w-auto.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border.gap-4(class="dark:shadow-slate-900/50 border-slate-300/70 dark:border-slate-600/70")
-  %img.object-cover.size-14.rounded-full.flex-shrink-0(src="https://randomuser.me/api/portraits/women/32.jpg")/
+  %img.object-cover.size-14.rounded-full.shrink-0(src="https://randomuser.me/api/portraits/women/32.jpg")/
   .flex-1.flex.flex-col.items-start.space-y-px.text-slate-900
     %p.font-bold.dark:text-white Jane Doe
     %p.text-sm.dark:text-slate-300

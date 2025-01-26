@@ -57656,7 +57656,7 @@
       "px-3",
       "py-1.5",
       "rounded-md",
-      "shadow",
+      "shadow-sm",
       "flex",
       "items-center",
       "justify-center",

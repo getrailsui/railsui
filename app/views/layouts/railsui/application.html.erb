@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full antialiased scrollbar-track-transparent scrollbar-thumb-neutral-200/60 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 selection:text-neutral-900 selection:bg-neutral-400/80">
+<html class="h-full antialiased selection:text-neutral-900 selection:bg-neutral-400/80">
   <head>
     <title>
       <% if content_for?(:title ) %>
@@ -22,21 +22,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
 
     <% if Railsui.config.theme.present? %>
       <%= render "railsui/themes/#{Railsui.config.theme}/fonts" %>
     <% end %>
 
-    <%= custom_colors_css %>
-
     <%= yield :head %>
   </head>
 
-  <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
+  <body class="railsui" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
       data-railsui-scroll-spy-inactive-class-value="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate">
     <%= render "railsui/shared/flash_messages" %>
-    <div class="flex md:flex-row flex-col items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
+    <div class="flex flex-wrap flex-row items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
 
       <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.02] dark:opacity-5 z-0" %>
 

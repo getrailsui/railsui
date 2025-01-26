@@ -17,8 +17,8 @@
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 <div
-  class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
-  <%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
+  class="border border-zinc-300/90 shadow-xs shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+  <%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow-sm dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
   <div class="flex items-center gap-3 mt-4">
     <%= image_tag demo_avatar_url(variant: "women", id: "78"), class: "size-10 rounded-full object-cover", alt: "Dannie White" %>
     <div class="flex-1">
@@ -38,8 +38,8 @@
 
 <% content_for :erb, flush: true do %>
 <div
-  class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
-  <%%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
+  class="border border-zinc-300/90 shadow-xs shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+  <%%= image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow-sm dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
   <div class="flex items-center gap-3 mt-4">
     <%%= image_tag demo_avatar_url(variant: "women", id: "78"), class: "size-10 rounded-full object-cover", alt: "Dannie White" %>
     <div class="flex-1">
@@ -59,7 +59,7 @@
 
 <% content_for :haml, flush: true do %>
 .border.shadow-sm.rounded-lg.p-3.dark:focus:border-zinc-600{class: "border-zinc-300/90 shadow-zinc-300/20 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30"}
-  = image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent"
+  = image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow-sm dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent"
   .flex.items-center.gap-3.mt-4
     = image_tag demo_avatar_url(variant: "women", id: "78"), class: "size-10 rounded-full object-cover", alt: "Dannie White"
     .flex-1

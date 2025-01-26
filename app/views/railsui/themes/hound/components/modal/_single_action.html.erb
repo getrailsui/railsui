@@ -1,10 +1,10 @@
 <div id="modal-single-action">
 <%= render layout: example, locals: { heading: "Single action", section: "Modal" } do %>
 <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-slate-800 dark:border-t dark:border-x dark:border-slate-600">
-  <div class="rounded mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
+  <div class="rounded-sm mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
     <div class="flex justify-center">
       <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
-        <%= icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0" %>
+        <%= icon "rocket-launch", class: "size-6 text-emerald-600 shrink-0" %>
       </div>
     </div>
 
@@ -43,10 +43,10 @@
       data-transition-leave-active="transition ease-in duration-300"
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
-      class="hidden rounded mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
+      class="hidden rounded-sm mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
         <div class="flex justify-center">
           <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
-            <%= icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0" %>
+            <%= icon "rocket-launch", class: "size-6 text-emerald-600 shrink-0" %>
           </div>
         </div>
 
@@ -86,10 +86,10 @@
       data-transition-leave-active="transition ease-in duration-300"
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
-      class="hidden rounded mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
+      class="hidden rounded-sm mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
         <div class="flex justify-center">
           <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
-            <%%= icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0" %>
+            <%%= icon "rocket-launch", class: "size-6 text-emerald-600 shrink-0" %>
           </div>
         </div>
 
@@ -115,7 +115,7 @@
       .hidden.rounded.mx-auto.shadow-xl.max-w-xs.bg-white.m-1.p-8.origin-bottom.text-center.dark:bg-slate-700.dark:text-slate-200.text-slate-600{"data-action" => "keyup@window->railsui-modal#closeWithEsc", "data-railsui-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
         .flex.justify-center
           .w-12.h-12.rounded-full.bg-emerald-50.flex.items-center.justify-center.mb-3
-            = icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0"
+            = icon "rocket-launch", class: "size-6 text-emerald-600 shrink-0"
         %h3#single-action-modal-title.text-2xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Time to launch
         .prose.prose-slate.dark:prose-invert.mt-2.mb-6
           %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.

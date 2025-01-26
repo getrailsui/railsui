@@ -1,14 +1,25 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+.railsui {
+  @apply font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white antialiased dark:bg-neutral-900 dark:text-neutral-50;
 
-@import "canvas.css";
-@import "config.css";
-@import "nav.css";
-@import "code.css";
-@import "docs.css";
-@import "forms.css";
-@import "buttons.css";
+  @import "tailwindcss";
 
-@import "tailwindcss/utilities";
-@import "tippy.js/dist/tippy.css";
-@import "overrides.css";
+  @import "../../stylesheets/railsui/canvas";
+  @import "../../stylesheets/railsui/config";
+  @import "../../stylesheets/railsui/nav";
+  @import "../../stylesheets/railsui/code";
+  @import "../../stylesheets/railsui/docs";
+  @import "../../stylesheets/railsui/forms";
+  @import "../../stylesheets/railsui/buttons";
+  @import "../../stylesheets/railsui/overrides";
+  @import "tippy.js/dist/tippy.css";
+
+  @layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+      border-color: var(--color-neutral-300, currentColor);
+    }
+  }
+}

@@ -10,9 +10,9 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
-<div class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+<div class="border border-zinc-300/90 shadow-xs shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
   <div class="relative mb-3">
-    <img class="rounded h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent" src="https://picsum.photos/600/600" alt="Image of Nature's Nook">
+    <img class="rounded-sm h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent" src="https://picsum.photos/600/600" alt="Image of Nature's Nook">
     <%= image_tag demo_avatar_url(variant: "men", id: "32"), class: "size-10 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white/90", alt: "Avatar" %>
   </div>
 
@@ -61,9 +61,9 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+<div class="border border-zinc-300/90 shadow-xs shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
   <div class="relative mb-3">
-    <%%= image_tag "https://picsum.photos/600/600", class: "rounded h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent", alt: "Property image alt tag" %>
+    <%%= image_tag "https://picsum.photos/600/600", class: "rounded-sm h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent", alt: "Property image alt tag" %>
     <%%= image_tag "path/to/avatar.png", class: "size-10 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white/90", alt: "Avatar" %>
   </div>
 
@@ -108,7 +108,7 @@
 <% content_for :haml, flush: true do %>
 .border.shadow-sm.rounded-lg.p-3.dark:focus:border-zinc-600{class: "border-zinc-300/90 shadow-zinc-300/20 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30"}
   .relative.mb-3
-    = image_tag "https://picsum.photos/600/600", class: "rounded h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent", alt: "Property image alt tag"
+    = image_tag "https://picsum.photos/600/600", class: "rounded-sm h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent", alt: "Property image alt tag"
     = image_tag "path/to/avatar.png", class: "size-10 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white/90", alt: "Avatar"
   %h3.text-lg.font-normal.text-zinc-900.dark:text-zinc-100.font-heading Cozy Mountain A-Frame
   %h4.text-sm.text-zinc-500.font-normal.dark:text-zinc-400 Nature's Nook

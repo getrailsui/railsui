@@ -1,0 +1,39 @@
+@utility btn {
+  @apply py-[9px] px-5 text-sm rounded-full font-medium font-heading text-center flex items-center transition-colors duration-200 ease-in-out justify-center border border-transparent cursor-pointer select-none focus:ring-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+}
+
+@utility btn-lg {
+  @apply py-3 px-5 text-lg;
+}
+
+@utility btn-sm {
+  @apply py-1 px-3 text-xs;
+}
+
+@utility btn-primary {
+  @apply bg-primary-500 hover:bg-primary-600 focus:ring-primary-100/70 text-white dark:focus:ring-primary-500/30;
+}
+
+@utility btn-secondary {
+  @apply bg-secondary-500 hover:bg-secondary-600 focus:ring-secondary-100/70 text-white dark:focus:ring-secondary-500/30;
+}
+
+@utility btn-dark {
+  @apply bg-zinc-800 hover:bg-zinc-900 focus:ring-zinc-800/20 text-white dark:hover:text-zinc-100 dark:hover:bg-zinc-700 dark:focus:ring-zinc-800/20;
+}
+
+@utility btn-light {
+  @apply bg-zinc-100/80 hover:bg-zinc-200/80 focus:ring-zinc-300/30 text-zinc-700;
+}
+
+@utility btn-white {
+  @apply bg-white text-zinc-800 border border-zinc-300/90 shadow-sm shadow-zinc-300/20 focus:ring-zinc-100/70 hover:bg-zinc-50/50 hover:border-zinc-400/80 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:ring-zinc-600/30 dark:hover:border-zinc-500 dark:hover:bg-zinc-700 dark:hover:text-white;
+}
+
+@utility btn-transparent {
+  @apply bg-transparent text-zinc-700 border border-transparent shadow-none focus:ring-zinc-300/20 hover:bg-zinc-100/90 hover:text-zinc-800 hover:border-zinc-300 dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-zinc-100 dark:hover:border-zinc-700 dark:focus:ring-zinc-800/20;
+}
+
+@utility btn-link {
+  @apply text-primary-600 font-medium focus:shadow-none hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500;
+}

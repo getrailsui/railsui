@@ -1,6 +1,10 @@
 /* Overrides default .border class color */
-*,
-::before,
-::after {
-  @apply border-zinc-300;
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-zinc-300, currentColor);
+  }
 }

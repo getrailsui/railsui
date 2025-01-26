@@ -10,7 +10,7 @@
         </a>
 
         <button type="button" data-action="click->railsui-nav#toggle"
-          class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+          class="md:hidden flex items-center justify-center w-12 h-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-xs group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-xs"
           role="Mobile navigation toggle">
           <%= icon "bars-3-center-left", class:  "stroke-current w-8 h-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
         </button>
@@ -41,7 +41,7 @@
                   focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
                   dark:focus:border-zinc-300/90">
 
-                  <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 w-12 h-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
+                  <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 w-12 h-12 rounded-full shrink-0 select-none pointer-events-none" %>
                 </button>
 
                 <ul data-railsui-dropdown-target="menu"

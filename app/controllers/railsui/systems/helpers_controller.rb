@@ -3,7 +3,7 @@ require_dependency "railsui/application_controller"
 module Railsui
   module Systems
     class HelpersController < ApplicationController
-      pages = %w[overview nav_link email_action email_callout spacer demo_avatar railsui_head custom_colors]
+      pages = %w[overview nav_link email_action email_callout spacer demo_avatar railsui_head]
 
       pages.each do |page|
         define_method(page) do
