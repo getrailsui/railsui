@@ -101,7 +101,7 @@
   *  http://localhost:3000/railsui/systems/forms/inputs#forms-datalists
   */
   &::-webkit-calendar-picker-indicator {
-    @apply hidden !important;
+    @apply hidden;
   }
 }
 
@@ -169,10 +169,10 @@
   @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
 
   + svg {
-    @apply block !important;
+    @apply block;
 
     + p {
-      @apply block !important;
+      @apply block;
     }
   }
 }

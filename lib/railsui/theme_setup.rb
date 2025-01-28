@@ -7,6 +7,7 @@ module Railsui
     # gems
     def install_gems
       rails_command "generate railsui_icon:install"
+      rails_command "action_text:install"
     end
 
     # Assets
@@ -126,15 +127,6 @@ module Railsui
       add_yarn_packages(theme_dependencies(theme))
     end
 
-    def install_action_text
-      if !defined?(ActionText)
-        say "Installing Action Text...", :yellow
-        rails_command "action_text:install"
-        rails_command "db:migrate"
-      else
-        say "Action Text is already installed, Skipping.", :green
-      end
-    end
 
     def remove_action_text_defaults
       say "Remove default ActionText CSS"

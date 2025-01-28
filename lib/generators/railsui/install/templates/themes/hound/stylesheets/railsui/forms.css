@@ -1,36 +1,12 @@
 @utility form-group {
-  /***************************************
-    Forms
-  ****************************************/
-
-  /**
-  * @component – Form group
-  * @section – Forms
-  * @modifiers
-    .form-group – Default form grouping with offset. Used to offset different elements within one form.
-  */
   @apply mb-6;
 }
 
 @utility form-label {
-  /**
-  * @component – Label
-  * @section – Forms > Inputs > Label
-  * @modifiers
-    .form-label – Default label styles.
-  */
   @apply block mb-2 select-none;
 }
 
 @utility form-input {
-  /**
-  * @component – Input
-  * @section – Forms > Inputs > Input
-  * @modifiers
-    .form-input – Default input styles.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-input-field
-  */
   @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400;
 
   &[disabled] {
@@ -39,31 +15,10 @@
 }
 
 @utility form-file {
-  /**
-  * @component – File
-  * @section – Forms > Inputs > File
-  * @modifiers
-    .form-input-file – A much nicer file field button design.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-file-input
-  */
-  @apply block w-full text-sm text-slate-500 dark:text-slate-400
-    file:mr-4 file:py-2 file:px-4
-    file:rounded-full file:border-0
-    file:text-sm file:font-semibold
-    file:bg-primary-50 file:text-primary-700
-    hover:file:bg-primary-100 dark:file:bg-primary-600 dark:file:text-slate-100 dark:hover:file:text-slate-100 dark:hover:file:bg-primary-700;
+  @apply block w-full text-sm text-slate-500 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 dark:file:bg-primary-600 dark:file:text-slate-100 dark:hover:file:text-slate-100 dark:hover:file:bg-primary-700;
 }
 
 @utility form-input-color {
-  /**
-  * @component – Color
-  * @section – Forms > Inputs > Color
-  * @modifiers
-    .form-input-color - Built in browser color picker with stylish controls.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-color-input
-  */
   @apply appearance-none rounded-full w-8 h-8 border border-slate-200 focus:border-slate-400 focus:shadow transition focus:ring-4 focus:ring-primary-500/10 dark:border-slate-600;
 
   &::-webkit-color-swatch-wrapper,
@@ -73,28 +28,12 @@
 }
 
 @utility form-input-datalist {
-  /**
-  * @component – Datalist
-  * @section – Forms > Inputs > Datalist
-  * @modifiers
-    .form-input-datalist – Inputs with pre-defined datalist sets.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-datalists
-  */
   &::-webkit-calendar-picker-indicator {
-    @apply hidden !important;
+    @apply hidden;
   }
 }
 
 @utility form-input-range {
-  /**
-  * @component – Range slider
-  * @section – Forms > Inputs > Range
-  * @modifiers
-    .form-input-range – Stylized range controls for range input datasets.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
-  */
   @apply appearance-none bg-transparent focus:outline-none;
 
   &::-webkit-slider-thumb {
@@ -139,34 +78,18 @@
 }
 
 @utility form-input-error {
-  /**
-  * @component – File
-  * @section – Forms > Input Groups > Form Input Error State
-  * @modifiers
-    .form-input-file – A much nicer file field button design.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-file-input
-  */
   @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
 
   + svg {
-    @apply block !important;
+    @apply block!;
 
     + p {
-      @apply block !important;
+      @apply block!;
     }
   }
 }
 
 @utility form-select {
-  /**
-  * @component – Select
-  * @section – Forms > Selects > Select
-  * @modifiers
-    .form-input-select – Use for select controls.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/selects#forms-select
-  */
   @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400 shadow-sm;
 
   &[disabled] {
@@ -175,38 +98,14 @@
 }
 
 @utility form-input-checkbox {
-  /**
-  * @component – Checkbox
-  * @section – Forms > Checkboxes & Radios > Checkboxes
-  * @modifiers
-    .form-input-checkbox – Use for all checkbox controls
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
-  */
   @apply rounded-sm border border-slate-400   checked:border-primary-500 checked:accent-primary-500 text-primary-600 dark:bg-slate-700 dark:border-slate-600 focus:ring-primary-500/30 dark:checked:border-primary-400 dark:checked:accent-primary-400;
 }
 
 @utility form-input-radio {
-  /**
-  * @component – Radio
-  * @section – Forms > Checkboxes & Radios > Radios
-  * @modifiers
-    .form-input-radio – Use for all radio inputs
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-radios
-  */
   @apply rounded-full border border-slate-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-none dark:bg-slate-700 dark:border-slate-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
 }
 
 @utility form-input-switch {
-  /**
-  * @component – Switch
-  * @section – Forms > Checkboxes & Radios > Switches
-  * @modifiers
-    .form-input-switch - Used to turn a checkbox input into a sliding switch control.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-switches
-  */
   @apply hidden;
 
   &:disabled + label {
@@ -214,7 +113,7 @@
   }
 
   &:disabled + label::after {
-    @apply !shadow-none;
+    @apply shadow-none!;
   }
 
   &:checked + label::before {
