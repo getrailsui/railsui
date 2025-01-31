@@ -369,28 +369,33 @@
 <div id="input-range">
 <%= render layout: example, locals: { heading: "Range" } do %>
 
+<div class="mb-6 prose prose-neutral dark:prose-invert">
+  <p>Range sliders need a little love to look themed. To do this you can leverage the <%= link_to "railsui-stimulus", "https://github.com/getrailsui/railsui-stimulus/blob/main/docs/range.md", target: :_blank %> library (included by default) and some custom CSS. You can find the form-input-range class in <code>app/assets/stylesheets/railsui/forms.css</code>.</p>
+  <p>In simplest terms, with CSS and JavaScript you can pass a CSS variable a property dynamically to control fill value as a percentage.</p>
+</div>
+
 <%= render preview('gray') do %>
-<div class="form-group">
+<div class="form-group" data-controller="railsui-range">
   <label for="volume" class="form-label">Volume</label>
-  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" />
+  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" data-railsui-range-target="range" data-action="input->railsui-range#onInput"/>
 </div>
 <% end %>
 
 <% content_for :example, flush: true do %>
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="form-group">
+<div class="form-group" data-controller="railsui-range">
   <label for="volume" class="form-label">Volume</label>
-  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" />
+  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" data-railsui-range-target="range" data-action="input->railsui-range#onInput"/>
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <%%= form_with model: @form do |f| %>
-  <div class="form-group">
+  <div class="form-group" data-controller="railsui-range">
     <%%= f.label :volume, class: "form-label" %>
-    <%%= f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25" %>
+    <%%= f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: { railsui_range_target: "range", action: "input->railsui-range#onInput" } %>
   </div>
 <%% end %>
 <% end %>
@@ -398,9 +403,14 @@
   <%# .haml %>
 <% content_for :haml, flush: true do %>
 = form_with model: @form do |f|
-  .form-group
-    = f.label.form-label, class: "form-label"
-    = f.range_field :volume, class: "form-input-range", max: "100", min: "2", value: "25"
+  .form-group{"data-controller" => "railsui-range"}
+    = f.label :volume, class: "form-label"
+    = f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: { railsui_range_target: "range", action: "input->railsui-range#onInput" }
+<% end %>
+
+<% content_for :js, flush: true do %>
+import { RailsuiRange } from 'railsui-stimulus'
+application.register('railsui-range', RailsuiRange)
 <% end %>
 
   <%= render_snippet %>

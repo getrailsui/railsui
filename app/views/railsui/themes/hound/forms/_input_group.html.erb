@@ -297,15 +297,15 @@
 <%= render layout: example, locals: { heading: "Input with add-on" } do %>
 
 <div class="prose dark:prose-invert mb-6 max-w-full">
-<p>Using custom offsets you can add an add-on to the beginning or end of an input. Modify the <code>w-[40px]</code> class of the add-on to account for its content. Do the same for the input padding <code>pl-[90px]</code> to adjust offset proportionally.</p>
+<p>Using custom offsets you can add an add-on to the beginning or end of an input. Modify the <code>h-10</code> class of the add-on to account for its content. Do the same for the input padding <code>pl-23!</code> to adjust offset proportionally.</p>
 </div>
 
 <%= render preview('gray') do %>
 <div class="form-group mb-0">
   <label for="website" class="form-label">Website</label>
   <div class="relative">
-    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
-    <input type="text" id="website" class="form-input pl-[90px]" placeholder="example.com" aria-label="Website">
+    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-10 text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+    <input type="text" id="website" class="form-input pl-23!" placeholder="example.com" aria-label="Website">
   </div>
 </div>
 <% end %>
@@ -315,8 +315,8 @@
 <div class="form-group">
   <label for="website" class="form-label">Website</label>
   <div class="relative">
-    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
-    <input type="text" id="website" class="form-input pl-[90px]" placeholder="example.com" aria-label="Website">
+    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-10 text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+    <input type="text" id="website" class="form-input pl-23!" placeholder="example.com" aria-label="Website">
   </div>
 </div>
 <% end %>
@@ -326,8 +326,8 @@
   <div class="form-group">
     <%%= f.label :website, class: "form-label" %>
     <div class="relative">
-      <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
-      <%%= f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website" %>
+      <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-10 text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+      <%%= f.text_field :website, class: "form-input pl-23!" placeholder: "example.com" "aria-label":"Website" %>
     </div>
   </div>
 <%% end %>
@@ -338,8 +338,8 @@
   .form-group
     = f.label :website, class: "form-label"
     .relative
-      .absolute.left-px.border-r.border-slate-300.top-px.bg-slate-100.dark:border-slate-700.dark:text-slate-200.text-base.rounded-l.flex.items-center.justify-center.px-3.text-slate-700.select-none{class: "dark:bg-slate-700/80 h-[40px]"} https://
-      = f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website"
+      .absolute.left-px.border-r.border-slate-300.top-px.bg-slate-100.dark:border-slate-700.dark:text-slate-200.text-base.rounded-l.flex.items-center.justify-center.px-3.text-slate-700.select-none.h-10{class: "dark:bg-slate-700/80"} https://
+      = f.text_field :website, class: "form-input pl-23!" placeholder: "example.com" "aria-label":"Website"
 <% end %>
 
   <%= render_snippet %>
@@ -358,7 +358,7 @@
     <label for="amount" class="form-label">Enter amount</label>
     <div class="relative">
       <span class="absolute left-3 top-[9px] text-slate-500 dark:text-slate-400">$</span>
-      <input type="text" id="amount" class="form-input pl-7" placeholder="5.00" aria-label="Website">
+      <input type="text" id="amount" class="form-input pl-7!" placeholder="5.00" aria-label="Website">
       <span class="absolute right-3 top-[11px] text-slate-500 text-sm dark:text-slate-400">USD</span>
     </div>
   </div>
@@ -366,12 +366,12 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
-<div class="form-group">
+<div class="form-group mb-0">
   <label for="amount" class="form-label">Enter amount</label>
   <div class="relative">
     <span class="absolute left-3 top-[9px] text-slate-500 dark:text-slate-400">$</span>
-    <input type="text" id="amount" class="form-input pl-7" placeholder="5.00" aria-label="Enter amount">
-    <span class="absolute right-3 top-[11px] text-slate-500 dark:text-slate-400 text-sm">USD</span>
+    <input type="text" id="amount" class="form-input pl-7!" placeholder="5.00" aria-label="Website">
+    <span class="absolute right-3 top-[11px] text-slate-500 text-sm dark:text-slate-400">USD</span>
   </div>
 </div>
 <% end %>
@@ -382,7 +382,7 @@
     <%%= f.label :amount, "Enter amount", class: "form-label" %>
     <div class="relative">
       <span class="absolute left-3 top-[9px] text-slate-500 dark:text-slate-400">$</span>
-      <%%= f.text_field :amount, class: "form-input pl-7", placeholder: "5.00", "aria-label": "Enter amount" %>
+      <%%= f.text_field :amount, class: "form-input pl-7!", placeholder: "5.00", "aria-label": "Enter amount" %>
       <span class="absolute right-3 top-[11px] text-slate-500 dark:text-slate-400 text-sm">USD</span>
     </div>
   </div>
@@ -395,7 +395,7 @@
     = f.label :amount, "Enter amount", class: "form-label"
     .relative
       %span.absolute.left-3.text-slate-500.dark:text-slate-400{class: "top-[9px]"} $
-      = f.text_field :amount, class: "form-input pl-7", placeholder: "5.00", "aria-label": "Enter amount"
+      = f.text_field :amount, class: "form-input pl-7!", placeholder: "5.00", "aria-label": "Enter amount"
       %span.absolute.right-3.top-[11px].text-slate-500.text-sm USD
 <% end %>
 
@@ -415,7 +415,7 @@
   <label for="users" class="form-label">Search users</label>
   <div class="relative">
     <%= icon "users", class:  "size-5 text-slate-500 absolute left-3 top-3" %>
-    <input type="search" id="users" class="form-input pl-10" placeholder="John Doe" aria-label="Search users" />
+    <input type="search" id="users" class="form-input pl-10!" placeholder="John Doe" aria-label="Search users" />
     <button class="rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded-sm px-4 py-2 absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:focus:ring-indigo-500/30">Search</button>
   </div>
 </div>
@@ -427,7 +427,7 @@
   <label for="users" class="form-label">Search users</label>
   <div class="relative">
     <%%= icon "users", class: "size-5 text-slate-500 absolute left-3 top-3" %>
-    <input type="search" id="users" class="form-input pl-10" placeholder="John Doe" aria-label="Search users" />
+    <input type="search" id="users" class="form-input pl-10!" placeholder="John Doe" aria-label="Search users" />
     <button class="rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded-sm px-4 py-2 absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600">Search</button>
   </div>
 </div>
@@ -439,7 +439,7 @@
     <%%= f.label :users, "Search users", class: "form-label" %>
     <div class="relative">
     <%%= icon "users", class: "size-5 text-slate-500 absolute left-3 top-3" %>
-    <%%= f.search_field :users, class: "form-input pl-10", placeholder: "John Doe", "aria-label": "Search users" %>
+    <%%= f.search_field :users, class: "form-input pl-10!", placeholder: "John Doe", "aria-label": "Search users" %>
     <%%= f.submit class: "rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded-sm px-4 py-2 absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600" %>
     </div>
   </div>
@@ -452,7 +452,7 @@
     = f.label :users, "Search users", class: "form-label"
     .relative
       = icon "users", class: "size-5 stroke-current text-slate-500 absolute left-3 top-3"
-      = f.search_field :users, class: "form-input pl-10", placeholder: "John Doe", "aria-label": "Search users"
+      = f.search_field :users, class: "form-input pl-10!", placeholder: "John Doe", "aria-label": "Search users"
     = f.submit class: "rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded-sm px-4 py-2 absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600"
 <% end %>
 

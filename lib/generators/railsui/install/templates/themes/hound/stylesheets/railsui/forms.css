@@ -1,24 +1,29 @@
-@utility form-group {
+.form-group {
   @apply mb-6;
 }
 
-@utility form-label {
+.form-label {
   @apply block mb-2 select-none;
 }
 
-@utility form-input {
-  @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400;
+.form-input {
+  @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-600 dark:focus:ring-primary-400/30 dark:focus:border-slate-500 dark:text-white dark:placeholder:text-slate-400;
 
   &[disabled] {
     @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-slate-800/90 dark:opacity-70;
   }
 }
 
-@utility form-file {
-  @apply block w-full text-sm text-slate-500 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 dark:file:bg-primary-600 dark:file:text-slate-100 dark:hover:file:text-slate-100 dark:hover:file:bg-primary-700;
+.form-file {
+  @apply block w-full text-sm text-slate-500 dark:text-slate-400
+    file:mr-4 file:py-2 file:px-4
+    file:rounded-full file:border-0
+    file:text-sm file:font-semibold
+    file:bg-primary-50 file:text-primary-700
+    hover:file:bg-primary-100 dark:file:bg-primary-600 dark:file:text-slate-100 dark:hover:file:text-slate-100 dark:hover:file:bg-primary-700;
 }
 
-@utility form-input-color {
+.form-input-color {
   @apply appearance-none rounded-full w-8 h-8 border border-slate-200 focus:border-slate-400 focus:shadow transition focus:ring-4 focus:ring-primary-500/10 dark:border-slate-600;
 
   &::-webkit-color-swatch-wrapper,
@@ -27,85 +32,41 @@
   }
 }
 
-@utility form-input-datalist {
+.form-input-datalist {
   &::-webkit-calendar-picker-indicator {
     @apply hidden;
   }
 }
 
-@utility form-input-range {
-  @apply appearance-none bg-transparent focus:outline-none;
-
-  &::-webkit-slider-thumb {
-    @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-slate-300 focus:ring-4 focus:outline-slate-400 hover:outline-slate-400 dark:bg-slate-900 dark:focus:outline-slate-600 dark:hover:outline-slate-600 dark:border-slate-500 dark:outline-slate-500;
-  }
-
-  &::-moz-range-thumb {
-    @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-slate-300 focus:ring-4 focus:outline-slate-400 hover:outline-slate-400 dark:bg-slate-900 dark:focus:outline-slate-600 dark:hover:outline-slate-600 dark:border-slate-500 dark:outline-slate-500;
-  }
-
-  &::-ms-thumb {
-    @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-slate-300 focus:ring-4 focus:outline-slate-400 hover:outline-slate-400 dark:bg-slate-900 dark:focus:outline-slate-600 dark:hover:outline-slate-600 dark:border-slate-500 dark:outline-slate-500;
-  }
-
-  &::-ms-track {
-    @apply cursor-pointer bg-transparent border-transparent text-transparent;
-  }
-
-  &::-webkit-slider-runnable-track {
-    @apply bg-slate-200 dark:bg-slate-600 rounded-lg h-4 w-full;
-  }
-
-  &::-moz-range-track {
-    @apply bg-slate-200 dark:bg-slate-600 rounded-lg h-4 w-full;
-  }
-
-  &::-ms-track {
-    @apply bg-slate-200 dark:bg-slate-600 rounded-lg h-4 w-full;
-  }
-
-  &:focus::-webkit-slider-runnable-track {
-    @apply bg-slate-200 dark:bg-slate-600;
-  }
-
-  &:focus::-moz-range-track {
-    @apply bg-slate-200 dark:bg-slate-600;
-  }
-
-  &:focus::-ms-track {
-    @apply bg-slate-200 dark:bg-slate-600;
-  }
-}
-
-@utility form-input-error {
+.form-input-error {
   @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
 
   + svg {
-    @apply block!;
+    @apply block;
 
     + p {
-      @apply block!;
+      @apply block;
     }
   }
 }
 
-@utility form-select {
-  @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400 shadow-sm;
+.form-select {
+  @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400;
 
   &[disabled] {
     @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-slate-800/90 dark:opacity-70;
   }
 }
 
-@utility form-input-checkbox {
+.form-input-checkbox {
   @apply rounded-sm border border-slate-400   checked:border-primary-500 checked:accent-primary-500 text-primary-600 dark:bg-slate-700 dark:border-slate-600 focus:ring-primary-500/30 dark:checked:border-primary-400 dark:checked:accent-primary-400;
 }
 
-@utility form-input-radio {
+.form-input-radio {
   @apply rounded-full border border-slate-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-none dark:bg-slate-700 dark:border-slate-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
 }
 
-@utility form-input-switch {
+.form-input-switch {
   @apply hidden;
 
   &:disabled + label {
@@ -113,7 +74,7 @@
   }
 
   &:disabled + label::after {
-    @apply shadow-none!;
+    @apply !shadow-none;
   }
 
   &:checked + label::before {
@@ -137,4 +98,87 @@
       @apply content-[""] block bg-white rounded-full size-4 absolute top-[4px] left-[4px] transition-transform ease-out shadow-sm;
     }
   }
+}
+
+/* Requires railsui_range_controller.js: https://github.com/getrailsui/railsui-stimulus */
+
+.form-input-range {
+  @apply relative bg-transparent appearance-none focus:outline-none;
+
+  --range-fill: 0;
+}
+
+.form-input-range::-webkit-slider-thumb {
+  @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow outline outline-gray-300 focus:ring-4 focus:outline-gray-400 hover:outline-gray-400 dark:bg-gray-800 dark:focus:outline-gray-600 dark:hover:outline-gray-600 dark:border-gray-500 dark:outline-gray-700;
+}
+
+.form-input-range::-moz-range-thumb {
+  @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow outline outline-gray-300 focus:ring-4 focus:outline-gray-400 hover:outline-gray-400 dark:bg-gray-800 dark:focus:outline-gray-600 dark:hover:outline-gray-600 dark:border-gray-500 dark:outline-gray-700;
+}
+
+.form-input-range::-ms-thumb {
+  @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow outline outline-gray-300 focus:ring-4 focus:outline-gray-400 hover:outline-gray-400 dark:bg-gray-800 dark:focus:outline-gray-600 dark:hover:outline-gray-600 dark:border-gray-500 dark:outline-gray-700;
+}
+
+.form-input-range::-webkit-slider-runnable-track {
+  @apply w-full h-1 rounded-lg cursor-pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-indigo-500) var(--range-fill),
+    var(--color-gray-300) var(--range-fill)
+  );
+
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(
+      to right,
+      var(--color-primary-500) var(--range-fill),
+      var(--color-gray-700) var(--range-fill)
+    );
+  }
+}
+
+.form-input-range::-moz-range-track {
+  @apply w-full h-1 rounded-lg cursor-pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-primary-500) var(--range-fill),
+    var(--color-gray-300) var(--range-fill)
+  );
+
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(
+      to right,
+      var(--color-primary-500) var(--range-fill),
+      var(--color-gray-700) var(--range-fill)
+    );
+  }
+}
+
+.form-input-range::-ms-track {
+  @apply w-full h-1 rounded-lg cursor-pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-primary-500) var(--range-fill),
+    var(--color-gray-300) var(--range-fill)
+  );
+
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(
+      to right,
+      var(--color-primary-500) var(--range-fill),
+      var(--color-gray-700) var(--range-fill)
+    );
+  }
+}
+
+.form-input-range:focus::-webkit-slider-runnable-track {
+  @apply bg-gray-200 dark:bg-gray-600;
+}
+
+.form-input-range:focus::-moz-range-track {
+  @apply bg-gray-200 dark:bg-gray-600;
+}
+
+.form-input-range:focus::-ms-track {
+  @apply bg-gray-200 dark:bg-gray-600;
 }
