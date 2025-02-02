@@ -1,5 +1,5 @@
 <div>
-  <div class="font-semibold">
+  <div class="rui:font-semibold">
     <%  if main_app.respond_to?(details['path'].to_sym)%>
       <%= link_to details['title'], main_app.send(details['path'].to_sym), target: :_blank, class: "hover:underline" %>
     <% else %>
@@ -7,22 +7,22 @@
     <% end %>
   </div>
 
-  <div class="prose prose-sm prose-p:text-neutral-500 dark:prose-invert dark:prose-p:text-neutral-300 leading-snug text-sm my-1">
+  <div class="rui:prose rui:prose-sm rui:prose-p:text-neutral-500 rui:dark:prose-invert rui:dark:prose-p:text-neutral-300 rui:leading-snug rui:text-sm rui:my-1">
     <p><%= details["description"] %></p>
   </div>
 
-  <div class="mt-1">
+  <div class="rui:mt-1">
     <% details['tags'].each do |tag | %>
       <%= tag_label(tag) %>
     <% end %>
   </div>
 </div>
 
-<div class="flex items-center gap-4 md:justify-between justify-end w-full md:w-auto">
+<div class="rui:flex rui:items-center rui:gap-4 rui:md:justify-between rui:justify-end rui:w-full rui:md:w-auto">
   <% if main_app.respond_to?(details['path'].to_sym) %>
-    <%= link_to main_app.send(details['path'].to_sym), class: "px-1.5 py-1.5 bg-neutral-50/20 border border-neutral-300 text-neutral-600 shadow-xs rounded-sm text-center text-sm font-medium hover:text-neutral-700 hover:border-indigo-400 hover:bg-indigo-50/50 dark:bg-neutral-800 dark:text-neutral-100 dark:border-neutral-700 dark:hover:bg-indigo-600/10 dark:hover:text-indigo-300 dark:hover:border-indigo-600 flex items-center focus:ring-4 focus:ring-neutral-50 dark:focus:ring-4 dark:focus:ring-neutral-700 group transition ease-in-out duration-200", target: :_blank do %>
+    <%= link_to main_app.send(details['path'].to_sym), class: "rui:px-1.5 rui:py-1.5 rui:bg-neutral-50/20 rui:border rui:border-neutral-300 rui:text-neutral-600 rui:shadow-xs rui:rounded-sm rui:text-center rui:text-sm rui:font-medium rui:hover:text-neutral-700 rui:hover:border-indigo-400 rui:hover:bg-indigo-50/50 rui:dark:bg-neutral-800 rui:dark:text-neutral-100 rui:dark:border-neutral-700 rui:dark:hover:bg-indigo-600/10 rui:dark:hover:text-indigo-300 rui:dark:hover:border-indigo-600 rui:flex rui:items-center rui:focus:ring-4 rui:focus:ring-neutral-50 rui:dark:focus:ring-4 rui:dark:focus:ring-neutral-700 rui:group rui:transition rui:ease-in-out rui:duration-200", target: :_blank do %>
       <span class="sr-only">View page</span>
-      <%= icon "arrow-up-right", class: "size-4 text-neutral-400 dark:text-neutral-200 group-hover:text-indigo-500 dark:group-hover:text-indigo-400" %>
+      <%= icon "arrow-up-right", class: "rui:size-4 rui:text-neutral-400 rui:dark:text-neutral-200 rui:group-hover:text-indigo-500 rui:dark:group-hover:text-indigo-400" %>
     <% end %>
   <% end %>
 </div>

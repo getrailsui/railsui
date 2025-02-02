@@ -1,7 +1,7 @@
-.config-loader {
-  @apply opacity-0 invisible z-0 transition ease-in-out duration-300 fixed inset-0 w-full h-full bg-indigo-800;
+.rui-config-loader {
+  @apply rui:opacity-0 rui:invisible rui:z-0 rui:transition-all rui:ease-in-out rui:duration-300 rui:fixed rui:inset-0 rui:w-full rui:h-full rui:bg-indigo-800;
 }
 
-.config-loader.config-loader--active {
-  @apply opacity-100 visible z-40 transition ease-in-out duration-300;
+.rui-config-loader.rui-config-loader--active {
+  @apply rui:opacity-100 rui:visible rui:z-40 rui:transition-all rui:ease-in-out rui:duration-300;
 }

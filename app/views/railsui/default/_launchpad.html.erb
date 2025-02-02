@@ -1,115 +1,108 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag "railsui/application" %>
   <%= javascript_include_tag "railsui" %>
-
-  <%# Dumb hack to avoid CSS collision %>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.remove('rui');
-    })
-  </script>
 <% end %>
 
-<div class="flex flex-col justify-center items-center h-full antialiased dark:text-white sm:py-16 py-10">
-  <div class="max-w-6xl sm:text-left text-center mx-auto rounded-3xl relative z-20 sm:px-16 sm:py-0 p-6 bg-white dark:bg-neutral-900">
-    <div class="flex flex-wrap justify-between items-end">
-      <div class="flex items-end sm:justify-start justify-center flex-1">
+<div class="rui:flex rui:flex-col rui:justify-center rui:items-center rui:h-full rui:antialiased rui:dark:text-white sm:rui:py-16 rui:py-10">
+  <div class="rui:max-w-6xl rui:sm:text-left rui:text-center rui:mx-auto rui:rounded-3xl rui:relative rui:z-20 rui:sm:px-16 rui:sm:py-0 rui:p-6 rui:bg-white rui:dark:bg-neutral-900">
+    <div class="rui:flex rui:flex-wrap rui:justify-between rui:items-end">
+      <div class="rui:flex rui:items-end rui:sm:justify-start rui:justify-center rui:flex-1">
 
-        <%= image_tag "rails-logo.svg", class: "fill-current w-36 h-auto" %>
+        <%= image_tag "rails-logo.svg", class: "rui:fill-current rui:w-36 rui:h-auto" %>
 
-        <div class="bg-[#d30001]/10 inline-flex rounded-full px-3 py-px text-[#d30001] font-semibold ml-2 text-sm">
+        <div class="rui:bg-[#d30001]/10 rui:inline-flex rui:rounded-full rui:px-3 rui:py-px rui:text-[#d30001] rui:font-semibold rui:ml-2 rui:text-sm">
           v<%= Rails.gem_version %>
         </div>
       </div>
-      <div class="sm:block hidden">
-        <%= link_to "Read The Rails Doctrine.", "https://rubyonrails.org/doctrine", target: :_blank, class: "font-medium text-[#d30001] block" %>
+      <div class="rui:sm:block rui:hidden">
+        <%= link_to "Read The Rails Doctrine.", "https://rubyonrails.org/doctrine", target: :_blank, class: "rui:font-medium rui:text-[#d30001] rui:block" %>
       </div>
     </div>
 
-    <div class="my-10 max-w-3xl">
-      <h3 class="font-extrabold text-5xl text-neutral-800 tracking-tight dark:text-white">All the tools for full-stack bliss.</h3>
-      <p class="mt-6 text-2xl text-neutral-600 dark:text-neutral-300">Optimized for developer happiness, Ruby on Rails compresses the complexity of modern web app development.</p>
-      <p class="mt-6 text-netural-700 leading-relaxed text-lg max-w-xl dark:text-neutral-400">Rails has united and cultivated a strong tribe around a wide set of heretical thoughts about the nature of programming and programmers.</p>
+    <div class="rui:my-10 rui:max-w-3xl">
+      <h3 class="rui:font-extrabold rui:text-5xl rui:text-neutral-800 rui:tracking-tight rui:dark:text-white">All the tools for full-stack bliss.</h3>
+      <p class="rui:mt-6 rui:text-2xl rui:text-neutral-600 rui:dark:text-neutral-300">Optimized for developer happiness, Ruby on Rails compresses the complexity of modern web app development.</p>
+      <p class="rui:mt-6 rui:text-neutral-600 rui:leading-relaxed rui:text-lg rui:max-w-2xl rui:dark:text-neutral-400">Rails has united and cultivated a strong tribe around a wide set of heretical thoughts about the nature of programming and programmers.</p>
     </div>
 
-    <p class="font-bold uppercase tracking-wide text-xs text-[#d30001] mb-4">Take action</p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-10 gap-0 text-lg text-neutral-600 dark:text-neutral-300 -mx-2">
-      <ul class="leading-loose space-y-3 sm:space-y-2 sm:mb-0 mb-3">
+    <p class="rui:font-bold rui:uppercase rui:tracking-wide rui:text-xs rui:text-[#d30001] rui:mb-4">Take action</p>
+    <div class="rui:grid rui:grid-cols-1 rui:sm:grid-cols-3 rui:sm:gap-10 rui:gap-0 rui:text-lg rui:text-neutral-600 rui:dark:text-neutral-300 rui:-mx-2">
+      <ul class="rui:leading-loose rui:space-y-3 rui:sm:space-y-2 rui:sm:mb-0 rui:mb-3">
         <li>
-          <%= link_to "https://guides.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-neutral-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
-                <%= icon "clipboard", class: "stroke-current size-6 group-hover:text-[#d30001]" %>
+          <%= link_to "https://guides.rubyonrails.org/", target: :_blank, class: "rui:flex rui:items-center rui:rui:justify-start rui:w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
+                <%= icon "clipboard", class: "rui:stroke-current rui:size-6 rui:group-hover:text-[#d30001]" %>
               </div>
               <span>Rails Guides</span>
             </div>
-            <%= icon "chevron-right", class: "stroke-current size-6 sm:opacity-0 opacity-100 sm:hover:translate-none  group-hover:opacity-100 text-[#d30001] translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+            <%= icon "chevron-right", class: "rui:stroke-current rui:size-6 rui:sm:opacity-0 rui:opacity-100 rui:sm:hover:translate-none  rui:group-hover:opacity-100 rui:text-[#d30001] rui:translate-x-0 rui:group-hover:translate-x-1 rui:transition rui:ease-in-out rui:duration-200" %>
           <% end %>
         </li>
 
         <li>
-          <%= link_to "https://api.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-neutral-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
-                <%= icon "code-bracket", class: "stroke-current size-6 group-hover:text-[#d30001]" %>
+          <%= link_to "https://api.rubyonrails.org/", target: :_blank, class: "rui:flex rui:items-center rui:justify-start rui:w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
+                <%= icon "code-bracket", class: "rui:stroke-current rui:size-6 rui:group-hover:text-[#d30001]" %>
               </div>
               <span>Rails API</span>
             </div>
-            <%= icon "chevron-right", class: "stroke-current size-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-[#d30001] translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+            <%= icon "chevron-right", class: "rui:stroke-current rui:size-6 rui:sm:opacity-0 rui:opacity-100 rui:group-hover:opacity-100 rui:text-[#d30001] rui:translate-x-0 rui:group-hover:translate-x-1 rui:transition rui:ease-in-out rui:duration-200" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "https://discuss.rubyonrails.org/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-neutral-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
-                <%= icon "chat-bubble-left-ellipsis", class: "stroke-current size-6 group-hover:text-[#d30001]" %>
+          <%= link_to "https://discuss.rubyonrails.org/", target: :_blank, class: "rui:flex rui:items-center rui:justify-start w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
+                <%= icon "chat-bubble-left-ellipsis", class: "rui:stroke-current rui:size-6 rui:group-hover:text-[#d30001]" %>
               </div>
               <span>Forum</span>
             </div>
-            <%= icon "chevron-right", class: "stroke-current size-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-[#d30001] translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+            <%= icon "chevron-right", class: "rui:stroke-current rui:size-6 rui:sm:opacity-0 rui:opacity-100 rui:group-hover:opacity-100 rui:text-[#d30001] rui:translate-x-0 rui:group-hover:translate-x-1 rui:transition rui:ease-in-out rui:duration-200" %>
           <% end %>
         </li>
       </ul>
-      <ul class="leading-loose space-y-3 sm:space-y-2 sm:mb-0 mb-3">
+      <ul class="rui:leading-loose rui:space-y-3 rui:sm:space-y-2 rui:sm:mb-0 rui:mb-3">
         <li>
-          <%= link_to "https://rubyonrails.org/blog/", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
-                <%= icon "book-open", class: "stroke-current size-6 group-hover:text-[#d30001]" %>
+          <%= link_to "https://rubyonrails.org/blog/", target: :_blank, class: "rui:flex rui:items-center rui:justify-start rui:w-full rui:hover:bg-slate-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
+                <%= icon "book-open", class: "rui:stroke-current rui:size-6 rui:group-hover:text-[#d30001]" %>
               </div>
               <span>Blog</span>
             </div>
-            <%= icon "chevron-right", class: "stroke-current size-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-[#d30001] translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+            <%= icon "chevron-right", class: "rui:stroke-current rui:size-6 rui:sm:opacity-0 rui:opacity-100 rui:group-hover:opacity-100 rui:text-[#d30001] rui:translate-x-0 rui:group-hover:translate-x-1 rui:transition rui:ease-in-out rui:duration-200" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "https://github.com/rails/rails", target: :_blank, class: "flex items-center justify-start w-full hover:bg-neutral-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
-                <%= icon "wrench-screwdriver", class: "text-neutral-500 size-5 group-hover:text-[#d30001]" %>
+          <%= link_to "https://github.com/rails/rails", target: :_blank, class: "rui:flex rui:items-center rui:justify-start rui:w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
+                <%= icon "wrench-screwdriver", class: "rui:text-neutral-500 rui:size-5 rui:group-hover:text-[#d30001]" %>
               </div>
               <span>Contribute</span>
             </div>
-            <%= icon "chevron-right", class: "stroke-current size-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-[#d30001] translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+            <%= icon "chevron-right", class: "rui:stroke-current rui:size-6 rui:sm:opacity-0 rui:opacity-100 rui:group-hover:opacity-100 rui:text-[#d30001] rui:translate-x-0 rui:group-hover:translate-x-1 rui:transition rui:ease-in-out rui:duration-200" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "https://rubyonrails.org/category/releases", target: :_blank, class: "flex items-center justify-start w-full hover:bg-neutral-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
-                <%= icon "hashtag", class: "stroke-current size-5 group-hover:text-[#d30001]" %>
+          <%= link_to "https://rubyonrails.org/category/releases", target: :_blank, class: "rui:flex rui:items-center rui:justify-start rui:w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
+                <%= icon "hashtag", class: "rui:stroke-current rui:size-5 rui:group-hover:text-[#d30001]" %>
               </div>
               <span>Releases</span>
             </div>
-            <%= icon "chevron-right", class: "stroke-current size-6 sm:opacity-0 opacity-100 group-hover:opacity-100 text-[#d30001] translate-x-0 group-hover:translate-x-1 transition ease-in-out duration-200" %>
+            <%= icon "chevron-right", class: "rui:stroke-current rui:size-6 rui:sm:opacity-0 rui:opacity-100 rui:group-hover:opacity-100 rui:text-[#d30001] rui:translate-x-0 rui:group-hover:translate-x-1 rui:transition rui:ease-in-out rui:duration-200" %>
           <% end %>
         </li>
       </ul>
-      <ul class="leading-loose space-y-3 sm:space-y-2 sm:mb-0 mb-3">
+      <ul class="rui:leading-loose rui:space-y-3 rui:sm:space-y-2 rui:sm:mb-0 rui:mb-3">
         <li>
-          <%= link_to "/rails/mailers", target: :_blank, class: "flex items-center justify-start w-full hover:bg-slate-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
+          <%= link_to "/rails/mailers", target: :_blank, class: "rui:flex rui:items-center rui:justify-start w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
                 <%= icon "envelope", class: "stroke-current size-5 group-hover:text-[#d30001]" %>
               </div>
               <span>Mailers</span>
@@ -118,9 +111,9 @@
           <% end %>
         </li>
         <li>
-          <%= link_to railsui.routes_path,class: "flex items-center justify-start w-full hover:bg-neutral-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
+          <%= link_to railsui.routes_path,class: "rui:flex rui:items-center rui:justify-start w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
                 <%= icon "rectangle-stack", class: "stroke-current size-5 group-hover:text-[#d30001]" %>
               </div>
               <span>Routes</span>
@@ -129,9 +122,9 @@
           <% end %>
         </li>
         <li>
-          <%= link_to railsui.root_path(anchor: "pages"), class: "flex items-center justify-start w-full hover:bg-neutral-50 dark:bg-transparent dark:hover:bg-neutral-800 rounded-sm px-2 py-2 group transition ease-in-out duration-300 sm:border-none border" do %>
-            <div class="flex-1 flex items-center space-x-2">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 dark:group-hover:bg-neutral-900">
+          <%= link_to railsui.root_path(anchor: "pages"), class: "rui:flex rui:items-center rui:justify-start w-full rui:hover:bg-neutral-50 rui:dark:bg-transparent rui:dark:hover:bg-neutral-800 rui:rounded-sm rui:px-2 rui:py-2 rui:group rui:transition rui:ease-in-out rui:duration-300 rui:sm:border-none rui:border" do %>
+            <div class="rui:flex-1 rui:flex rui:items-center rui:space-x-2">
+              <div class="rui:w-10 rui:h-10 rui:rounded-full rui:flex rui:items-center rui:justify-center rui:bg-neutral-50 rui:dark:bg-neutral-800 rui:dark:group-hover:bg-neutral-900">
                 <%= icon "window", class: "stroke-current size-5 group-hover:text-[#d30001]" %>
               </div>
               <span>Pages</span>
@@ -142,41 +135,41 @@
       </ul>
     </div>
 
-    <div class="mt-24">
-      <div class="bg-linear-to-r from-white to-neutral-50 relative p-6 -m-6 rounded-xl dark:from-neutral-800 dark:to-neutral-900">
-        <div class="grid sm:block grid-cols-3 mb-6 sm:mb-0 gap-3 sm:gap-0">
-          <%= image_tag "tailwind-shepherd-thumbnail.jpg", class: "sm:absolute -right-6 -top-6 sm:max-w-[200px] h-auto rounded-xl sm:shadow-xl z-0 hover:z-20 transition ease-in-out duration-200", alt: "Rails UI Shepherd Theme" %>
-          <%= image_tag "tailwind-hound-thumbnail.jpg", class: "sm:absolute right-0 top-0 sm:max-w-[200px] h-auto rounded-xl sm:shadow-xl z-10 transition ease-in-out duration-200 hover:z-20", alt: "Rails UI Hound Theme" %>
+    <div class="rui:mt-24">
+      <div class="rui:bg-linear-to-r rui:from-white rui:to-neutral-50 rui:relative rui:p-6 rui:-m-6 rui:rounded-xl rui:dark:from-neutral-800 rui:dark:to-neutral-900">
+        <div class="rui:grid rui:sm:block rui:grid-cols-3 rui:mb-6 rui:sm:mb-0 rui:gap-3 rui:sm:gap-0">
+          <%= image_tag "tailwind-shepherd-thumbnail.jpg", class: "rui:sm:absolute rui:-right-6 rui:-top-6 rui:sm:max-w-[200px] rui:h-auto rui:rounded-xl rui:sm:shadow-xl rui:z-0 rui:hover:z-20 rui:transition rui:ease-in-out rui:duration-200", alt: "Rails UI Shepherd Theme" %>
+          <%= image_tag "tailwind-hound-thumbnail.jpg", class: "rui:sm:absolute rui:right-0 rui:top-0 rui:sm:max-w-[200px] rui:h-auto rui:rounded-xl rui:sm:shadow-xl rui:z-10 rui:transition rui:ease-in-out rui:duration-200 rui:hover:z-20", alt: "Rails UI Hound Theme" %>
         </div>
 
-        <div class="relative z-50">
-          <%= link_to root_path, class:"text-xl tracking-tight font-black group transform text-black hover:text-black inline-flex justify-center sm:justify-start" do %>
-            <h1 class="sr-only">RailsUI</h1>
-            <%= image_tag "railsui-logo.svg", class: "w-48 h-auto dark:invert", alt: "Rails UI Logo" %>
+        <div class="rui:relative rui:z-50">
+          <%= link_to root_path, class:"rui:text-xl rui:tracking-tight rui:font-black rui:group rui:transform rui:text-black rui:hover:text-black rui:inline-flex rui:justify-center rui:sm:justify-start" do %>
+            <h1 class="rui:sr-only">RailsUI</h1>
+            <%= image_tag "railsui-logo.svg", class: "rui:w-48 rui:h-auto rui:dark:invert", alt: "Rails UI Logo" %>
           <% end %>
 
-          <div class="max-w-xl">
-            <p class="sm:text-2xl text-xl mt-6 text-neutral-700 dark:text-neutral-300 mb-4 font-semibold">UI components and templates for Ruby on Rails.</p>
+          <div class="rui:max-w-xl">
+            <p class="rui:sm:text-2xl rui:text-xl rui:mt-6 rui:text-neutral-700 rui:dark:text-neutral-300 rui:mb-4 rui:font-semibold">UI components and themes for Ruby on Rails.</p>
 
-            <p class="text-lg max-w-lg leading-relaxed text-neutral-700 dark:text-neutral-300 mb-6">Save time creating views, scaffolds, components, and making tough design decisions with the help of Rails UI.</p>
+            <p class="rui:text-lg rui:max-w-lg rui:leading-relaxed rui:text-neutral-700 rui:dark:text-neutral-300 rui:mb-6 rui:tracking-tight">Save time creating views, scaffolds, components, and making tough design decisions with the help of Rails UI.</p>
           </div>
 
-          <div class="flex flex-wrap justify-between items-center sm:space-x-4 space-y-4 sm:space-y-0 sm:mt-0 mt-6">
-            <%= link_to "https://railsui.com/docs", class: "bg-white py-2 px-4 text-center flex items-center text-neutral-800 border border-neutral-800 shadow-sm hover:shadow-none group rounded-full sm:h-[50px] sm:w-auto w-full justify-center dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-900 transition ease-in-out duration-300", target: :_blank do %>
-              <%= icon "book-open", class: "stroke-current size-6 mr-2 group-hover:text-[#d30001]" %>
-              <span class="font-medium">Read the docs</span>
+          <div class="rui:flex rui:flex-wrap rui:justify-between rui:items-center rui:sm:space-x-4 rui:space-y-4 rui:sm:space-y-0 rui:sm:mt-0 rui:mt-6">
+            <%= link_to "https://railsui.com/docs", class: "rui:bg-white rui:py-2 rui:px-4 rui:text-center rui:flex rui:items-center rui:text-neutral-800 rui:border rui:border-neutral-800 rui:shadow-sm rui:hover:shadow-none rui:group rui:rounded-full rui:sm:h-[50px] rui:sm:w-auto rui:w-full rui:justify-center rui:dark:bg-neutral-700 rui:dark:text-neutral-300 rui:dark:hover:bg-neutral-900 rui:transition rui:ease-in-out rui:duration-300", target: :_blank do %>
+              <%= icon "book-open", class: "rui:stroke-current rui:size-6 rui:mr-2 rui:group-hover:text-[#d30001]" %>
+              <span class="rui:font-medium">Read the docs</span>
             <% end %>
 
-            <%= link_to railsui.root_path, class: "py-2 pl-4 pr-3 text-center flex items-center rounded-full text-gray-800 border border-black dark:border-transparent shadow-sm hover:shadow-none group bg-[#d30001] text-white rounded-full sm:h-[50px] sm:w-auto w-full justify-center" do %>
-              <%= icon "cog-8-tooth", class: "stroke-current size-6 mr-2 font-medium text-white opacity-90 group-hover:opacity-100" %>
-              <span class="text-white font-medium pr-2">Configure your app</span>
-              <%= icon "chevron-right", class: "stroke-current size-4 opacity-80 group-hover:opacity-100 transform group-hover:translate-x-1 transition ease-linear duration-200 relative text-white top-px" %>
+            <%= link_to railsui.root_path, class: "rui:py-2 rui:pl-4 rui:pr-3 rui:text-center rui:flex rui:items-center rui:rounded-full rui:text-gray-800 rui:border rui:border-black rui:dark:border-transparent rui:shadow-sm rui:hover:shadow-none rui:group rui:bg-[#d30001] rui:text-white rui:rounded-full rui:sm:h-[50px] rui:sm:w-auto rui:w-full rui:justify-center" do %>
+              <%= icon "cog-8-tooth", class: "rui:stroke-current rui:size-6 rui:mr-2 rui:font-medium rui:text-white rui:opacity-90 rui:group-hover:opacity-100" %>
+              <span class="rui:text-white rui:font-medium rui:pr-2">Configure your app</span>
+              <%= icon "chevron-right", class: "rui:stroke-current rui:size-4 rui:opacity-80 rui:group-hover:opacity-100 rui:transform rui:group-hover:translate-x-1 rui:transition rui:ease-linear rui:duration-200 rui:relative rui:text-white rui:top-px" %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="sm:block hidden fixed bottom-3 left-3 z-50 text-xs font-mono text-neutral-700 dark:text-white text-opacity-50">
-    Made by <%= link_to "@justalever", "https://twitter.com/justalever", target: :_blank, class: "dark:text-white text-neutral-700 underline" %>. Follow <%= link_to "Rails UI", "https://twitter.com/railsui_", target: :_blank, class: "dark:text-white text-neutral-700 underline" %> on Twitter.
+  <div class="rui:sm:block rui:hidden rui:fixed rui:bottom-3 rui:left-3 rui:z-50 rui:text-xs rui:font-mono rui:text-neutral-700 rui:dark:text-white rui:text-opacity-50">
+    Made by <%= link_to "@justalever", "https://twitter.com/justalever", target: :_blank, class: "rui:dark:text-white rui:text-neutral-700 rui:underline" %>. Follow <%= link_to "Rails UI", "https://twitter.com/railsui_", target: :_blank, class: "rui:dark:text-white rui:text-neutral-700 rui:underline" %> on Twitter.
   </div>

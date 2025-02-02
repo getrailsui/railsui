@@ -1,27 +1,27 @@
 .rui-btn {
-  @apply rounded-md px-3 py-[5px] text-white ring-4 ring-transparent text-base inline-block transition-colors ease-in-out duration-300 border border-transparent disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed text-center text-[14.5px] font-semibold;
+  @apply rui:rounded-md rui:px-3 rui:py-[5px] rui:text-white rui:ring-4 rui:ring-transparent rui:text-base rui:inline-block rui:transition-colors rui:ease-in-out rui:duration-300 rui:border rui:border-transparent rui:disabled:opacity-50 rui:disabled:pointer-events-none rui:disabled:cursor-not-allowed rui:text-center rui:text-[14.5px] rui:font-semibold;
 
   &.rui-btn-lg {
-    @apply py-3 px-6 text-lg;
+    @apply rui:py-3 rui:px-6 rui:text-lg;
   }
 
   &.rui-btn-sm {
-    @apply py-0.5 px-3 text-[13.5px];
+    @apply rui:py-0.5 rui:px-3 rui:text-[13.5px];
   }
 }
 
 .rui-btn-white {
-  @apply bg-white hover:bg-neutral-50/50 hover:shadow-none shadow-xs text-neutral-800/80 border border-neutral-300/80 shadow-neutral-300/20 focus:ring-4 hover:border-neutral-600/40 focus:ring-neutral-100/70 focus:border-neutral-300/90 dark:bg-neutral-700/60 dark:text-white dark:border-neutral-500/30 dark:shadow-neutral-950/40 dark:hover:bg-neutral-800/90 dark:focus:ring-neutral-700/80 dark:focus:border-neutral-500/80;
+  @apply rui:bg-white rui:hover:bg-neutral-50/50 rui:hover:shadow-none rui:shadow-xs rui:text-neutral-800/80 rui:border rui:border-neutral-300/80 rui:shadow-neutral-300/20 rui:focus:ring-4 rui:hover:border-neutral-600/40 rui:focus:ring-neutral-100/70 rui:focus:border-neutral-300/90 rui:dark:bg-neutral-700/60 rui:dark:text-white rui:dark:border-neutral-500/30 rui:dark:shadow-neutral-950/40 rui:dark:hover:bg-neutral-800/90 rui:dark:focus:ring-neutral-700/80 rui:dark:focus:border-neutral-500/80;
 }
 
 .rui-btn-offwhite {
-  @apply bg-neutral-200/20 hover:bg-neutral-50/50 hover:shadow-none shadow-xs text-neutral-800/80 border border-neutral-300/80 shadow-neutral-300/20 focus:ring-4 hover:border-neutral-600/40 focus:ring-neutral-100/70 focus:border-neutral-300/90 dark:bg-neutral-700/60 dark:text-white dark:border-neutral-500/30 dark:shadow-neutral-950/40 dark:hover:bg-neutral-800/90 dark:focus:ring-neutral-700/80 dark:focus:border-neutral-500/80;
+  @apply rui:bg-neutral-200/20 rui:hover:bg-neutral-50/50 rui:hover:shadow-none rui:shadow-xs rui:text-neutral-800/80 rui:border rui:border-neutral-300/80 rui:shadow-neutral-300/20 rui:focus:ring-4 rui:hover:border-neutral-600/40 rui:focus:ring-neutral-100/70 rui:focus:border-neutral-300/90 rui:dark:bg-neutral-700/60 rui:dark:text-white rui:dark:border-neutral-500/30 rui:dark:shadow-neutral-950/40 rui:dark:hover:bg-neutral-800/90 rui:dark:focus:ring-neutral-700/80 rui:dark:focus:border-neutral-500/80;
 }
 
 .rui-btn-transparent {
-  @apply bg-transparent text-neutral-700 focus:ring-neutral-100/70 hover:bg-neutral-50/70 hover:text-neutral-800 dark:focus:ring-neutral-600/80 dark:hover:bg-neutral-900 focus:outline focus:outline-neutral-200/80 dark:focus:outline-neutral-700/80 dark:text-neutral-200;
+  @apply rui:bg-transparent rui:text-neutral-700 rui:focus:ring-neutral-100/70 rui:hover:bg-neutral-50/70 rui:hover:text-neutral-800 rui:dark:focus:ring-neutral-600/80 rui:dark:hover:bg-neutral-900 rui:focus:outline rui:focus:outline-neutral-200/80 rui:dark:focus:outline-neutral-700/80 rui:dark:text-neutral-200;
 }
 
 .rui-btn-black {
-  @apply bg-neutral-950 text-neutral-100 focus:ring-neutral-100/70  hover:text-neutral-50 hover:ring-4 hover:ring-black/10 focus:outline focus:outline-neutral-200/80 dark:focus:outline-neutral-700/80 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-100/80 dark:hover:text-neutral-950 dark:focus:ring-neutral-700/30;
+  @apply rui:bg-neutral-950 rui:text-neutral-100 rui:focus:ring-neutral-100/70 rui:hover:text-neutral-50 rui:hover:ring-4 rui:hover:ring-black/10 rui:focus:outline rui:focus:outline-neutral-200/80 rui:dark:focus:outline-neutral-700/80 rui:dark:bg-neutral-50 rui:dark:text-neutral-950 rui:dark:hover:bg-neutral-100/80 rui:dark:hover:text-neutral-950 rui:dark:focus:ring-neutral-700/30;
 }

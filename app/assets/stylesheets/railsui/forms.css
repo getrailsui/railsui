@@ -1,50 +1,50 @@
 .rui-form-input {
-  @apply rounded-md px-4 py-2 border border-neutral-300/80 bg-white focus:border-neutral-500/80 focus:ring-4 focus:ring-neutral-100/80 focus:shadow-none focus:outline-hidden dark:bg-neutral-800 dark:border-neutral-700/80 dark:focus:border-neutral-500 placeholder-neutral-500/60 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 font-normal antialiased font-sans w-full dark:text-neutral-50 text-neutral-800;
+  @apply rui:rounded-md rui:px-4 rui:py-2 rui:border rui:border-neutral-300/80 rui:bg-white rui:focus:border-neutral-500/80 rui:focus:ring-4 rui:focus:ring-neutral-100/80 rui:focus:shadow-none rui:focus:outline-hidden rui:dark:bg-neutral-800 rui:dark:border-neutral-700/80 rui:dark:focus:border-neutral-500 rui:placeholder-neutral-500/60 rui:dark:focus:ring-neutral-500/40 rui:dark:placeholder:text-neutral-300/60 rui:font-normal rui:antialiased rui:font-sans rui:w-full rui:dark:text-neutral-50 rui:text-neutral-800;
 }
 
 .rui-form-label {
-  @apply block mb-2 font-medium text-[14px] dark:text-white;
+  @apply rui:block rui:mb-2 rui:font-medium rui:text-[14px] rui:dark:text-white;
 }
 
 .rui-form-input-switch {
-  @apply hidden;
+  @apply rui:hidden;
 
   &:disabled + label {
-    @apply opacity-70 cursor-not-allowed;
+    @apply rui:opacity-70 rui:cursor-not-allowed;
   }
 
   &:disabled + label::after {
-    @apply shadow-none!;
+    @apply rui:shadow-none!;
   }
 
   &:checked + label::before {
-    @apply bg-neutral-800;
+    @apply rui:bg-neutral-800;
   }
 
   &:checked + label::after {
     transform: translate3d(16px, 0, 0);
     background-size: 10px 10px;
-    @apply bg-no-repeat bg-center bg-white dark:bg-zinc-200;
+    @apply rui:bg-no-repeat rui:bg-center rui:bg-white rui:dark:bg-zinc-200;
   }
 
   + label {
-    @apply inline-flex cursor-pointer text-base leading-6 select-none relative font-sans;
+    @apply rui:inline-flex rui:cursor-pointer rui:text-base rui:leading-6 rui:select-none rui:relative rui:font-sans;
 
     &:before {
-      @apply content-[""] block bg-zinc-300 rounded-full h-6 w-10 mr-2 transition-colors ease-out shrink-0 dark:bg-zinc-600;
+      @apply rui:content-[""] rui:block rui:bg-zinc-300 rui:rounded-full rui:h-6 rui:w-10 rui:mr-2 rui:transition-colors rui:ease-out rui:shrink-0 rui:dark:bg-zinc-600;
     }
 
     &:after {
-      @apply content-[""] block bg-white rounded-full size-4 absolute top-[4px] left-[4px] transition-transform ease-out shadow-xs;
+      @apply rui:content-[""] rui:block rui:bg-white rui:rounded-full rui:size-4 rui:absolute rui:top-[4px] rui:left-[4px] rui:transition-transform rui:ease-out rui:shadow-xs;
     }
   }
 }
 
 .rui-form-input-color {
-  @apply appearance-none w-8 h-8 border border-neutral-200 focus:border-neutral-400 focus:shadow-sm rounded-md transition focus:ring-4 focus:ring-neutral-500/10 dark:border-neutral-600;
+  @apply rui:appearance-none rui:w-8 rui:h-8 rui:border rui:border-neutral-200 rui:focus:border-neutral-400 rui:focus:shadow-sm rui:rounded-md rui:transition-all rui:focus:ring-4 rui:focus:ring-neutral-500/10 rui:dark:border-neutral-600;
 
   &::-webkit-color-swatch-wrapper,
   &::-webkit-color-swatch {
-    @apply p-0 rounded-sm border-2 border-white dark:border-neutral-700;
+    @apply rui:p-0 rui:rounded-sm rui:border-2 rui:border-white rui:dark:border-neutral-700;
   }
 }

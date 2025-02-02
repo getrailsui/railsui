@@ -1,16 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
-import { useTransition, useClickOutside } from 'stimulus-use'
+import { useTransition, useClickOutside } from "stimulus-use"
 
 export default class extends Controller {
-  static targets = ['container', 'content']
+  static targets = ["container", "content"]
 
   connect() {
     useTransition(this, {
-      element: this.contentTarget
+      element: this.contentTarget,
     })
 
     useClickOutside(this, {
-      element: this.contentTarget
+      element: this.contentTarget,
     })
   }
 
@@ -28,26 +28,32 @@ export default class extends Controller {
 
   clickOutside(event) {
     const action = event.target.dataset.action
-    if (action == "click->modal#open" || action == "click->modal#open:prevent") {
+    if (
+      action == "click->modal#open" ||
+      action == "click->modal#open:prevent"
+    ) {
       return
     }
     this.close(event)
   }
 
   closeWithEsc(event) {
-    if (event.keyCode === 27 && !this.containerTarget.classList.contains('hidden')) {
+    if (
+      event.keyCode === 27 &&
+      !this.containerTarget.classList.contains("rui:hidden")
+    ) {
       this.close(event)
     }
   }
 
   enableAppearance() {
-    this.containerTarget.classList.add("bg-black/80")
-    this.containerTarget.classList.remove('hidden')
+    this.containerTarget.classList.add("rui:bg-black/80")
+    this.containerTarget.classList.remove("rui:hidden")
   }
 
   disableAppearance() {
-    this.containerTarget.classList.add('hidden')
-    this.containerTarget.classList.remove("bg-black/80")
+    this.containerTarget.classList.add("rui:hidden")
+    this.containerTarget.classList.remove("rui:bg-black/80")
   }
 
   disconnect() {

@@ -31,25 +31,25 @@
     <%= yield :head %>
   </head>
 
-  <body class="railsui" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
-      data-railsui-scroll-spy-inactive-class-value="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate">
+  <body class="railsui" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="rui:text-neutral-900 rui:hover:text-neutral-950 rui:dark:hover:text-neutral-200 rui:dark:text-white rui:dark:hover:text-white rui:truncate"
+      data-railsui-scroll-spy-inactive-class-value="rui:text-neutral-500 rui:hover:text-neutral-900 rui:dark:text-neutral-400 rui:dark:hover:text-white rui:truncate">
     <%= render "railsui/shared/flash_messages" %>
-    <div class="flex flex-wrap flex-row items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
+    <div class="rui:flex rui:flex-wrap rui:flex-row rui:items-start rui:justify-between md:rui:h-[calc(100vh-2px)] rui:overflow-x-clip rui:relative">
 
-      <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.02] dark:opacity-5 z-0" %>
+      <%= image_tag "blur.png", class: "rui:absolute -rui:top-[500px] -rui:right-[500px] rui:opacity-[0.02] dark:rui:opacity-5 rui:z-0" %>
 
       <%= render "railsui/shared/global_nav" %>
 
-      <div class="md:flex-1 h-full md:pt-2 md:w-auto w-full md:overflow-y-auto scrollbar relative z-30" data-railsui-scroll-spy-target="scrollContainer">
-        <div class="max-w-7xl mx-auto md:px-10 md:pt-10 md:pb-0 p-4 flex-col flex h-full">
-          <div class="flex-1">
+      <div class="rui:md:flex-1 rui:h-full rui:md:pt-2 rui:md:w-auto rui:w-full rui:md:overflow-y-auto rui:scrollbar rui:relative rui:z-30" data-railsui-scroll-spy-target="scrollContainer">
+        <div class="rui:max-w-7xl rui:mx-auto rui:md:px-10 md:rui:pt-10 md:rui:pb-0 rui:p-4 rui:flex-col rui:flex rui:h-full">
+          <div class="rui:flex-1">
 
-            <div class="md:grid grid-cols-12 items-start gap-4">
-              <div class="pb-10 <%= content_for?(:component_nav).present? ? "col-span-9" : "col-span-12" %>">
+            <div class="rui:md:grid rui:grid-cols-12 rui:items-start rui:gap-4">
+              <div class="rui:pb-10 <%= content_for?(:component_nav).present? ? "rui:col-span-9" : "rui:col-span-12" %>">
                 <%= yield %>
               </div>
               <% if content_for?(:component_nav).present? %>
-                <div class="col-span-3 sticky top-2">
+                <div class="rui:col-span-3 rui:sticky rui:top-2">
                   <%= yield :component_nav %>
                 </div>
               <% end %>

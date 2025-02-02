@@ -5,8 +5,8 @@ export default class extends Controller {
     this.element.style.height = `${this.element.scrollHeight + 2}px`
 
     if (this.element.scrollHeight > 60) {
-      this.element.classList.remove("rounded-full")
-      this.element.classList.add("rounded-lg")
+      this.element.classList.remove("rui:rounded-full")
+      this.element.classList.add("rui:rounded-lg")
     } else {
       this.resetTextarea()
     }
@@ -18,7 +18,7 @@ export default class extends Controller {
 
   resetTextarea() {
     this.element.style.height = "auto"
-    this.element.classList.add("rounded-full")
-    this.element.classList.remove("rounded-lg")
+    this.element.classList.add("rui:rounded-full")
+    this.element.classList.remove("rui:rounded-lg")
   }
 }

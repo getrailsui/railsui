@@ -21,7 +21,7 @@ export default class extends Controller {
   start() {
     this.contentTarget.innerHTML = this.labelValue
 
-    this.savingTarget.classList.add("config-loader--active")
+    this.savingTarget.classList.add("rui-config-loader--active")
     document.body.classList.add("overflow-hidden")
   }
 
@@ -31,7 +31,7 @@ export default class extends Controller {
 
   toggleLoader() {
     // Remove loader
-    this.savingTarget.classList.remove("config-loader--active")
+    this.savingTarget.classList.remove("rui-config-loader--active")
     document.body.classList.remove("overflow-hidden")
   }
 

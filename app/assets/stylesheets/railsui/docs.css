@@ -1,12 +1,14 @@
-[data-controller="anchor"] {
-  @apply relative cursor-pointer;
-}
+.railsui {
+  [data-controller="anchor"] {
+    @apply rui:relative rui:cursor-pointer;
+  }
 
-[data-controller="anchor"]::before {
-  content: "#";
-  @apply absolute transition text-neutral-400 font-mono font-semibold text-xl -left-4 top-0 opacity-0 duration-300;
-}
+  [data-controller="anchor"]::before {
+    content: "#";
+    @apply rui:absolute rui:transition rui:text-neutral-400 rui:font-mono rui:font-semibold rui:text-xl rui:-left-4 rui:top-0 rui:opacity-0 rui:duration-300;
+  }
 
-[data-controller="anchor"]:hover::before {
-  @apply opacity-100;
+  [data-controller="anchor"]:hover::before {
+    @apply rui:opacity-100;
+  }
 }

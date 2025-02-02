@@ -15,7 +15,7 @@ export default class extends Controller {
 
   perform() {
     this.buttonTarget.textContent = "Processing..."
-    this.buttonTarget.classList.add("opacity-50", "pointer-events-none")
-    this.cancelTarget.classList.add("hidden")
+    this.buttonTarget.classList.add("rui:opacity-50", "rui:pointer-events-none")
+    this.cancelTarget.classList.add("rui:hidden")
   }
 }

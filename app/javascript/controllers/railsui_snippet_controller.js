@@ -4,39 +4,39 @@ export default class extends Controller {
   static targets = ["preview", "previewBtn", "code", "codeBtn"]
 
   ACTIVE_CLASSES = [
-    "bg-white",
-    "px-3",
-    "py-1.5",
-    "rounded-md",
-    "shadow-sm",
-    "flex",
-    "items-center",
-    "justify-center",
-    "gap-2",
-    "text-[13px]",
-    "font-semibold",
-    "focus:ring-4",
-    "focus:ring-blue-600",
-    "group",
-    "dark:bg-neutral-800/90",
-    "dark:text-neutral-100",
-    "dark:focus:ring-blue-600/50",
-    "dark:text-neutral-300",
+    "rui:bg-white",
+    "rui:px-3",
+    "rui:py-1.5",
+    "rui:rounded-md",
+    "rui:shadow-sm",
+    "rui:flex",
+    "rui:items-center",
+    "rui:justify-center",
+    "rui:gap-2",
+    "rui:text-[13px]",
+    "rui:font-semibold",
+    "rui:focus:ring-4",
+    "rui:focus:ring-blue-600",
+    "rui:group",
+    "rui:dark:bg-neutral-800/90",
+    "rui:dark:text-neutral-100",
+    "rui:dark:focus:ring-blue-600/50",
+    "rui:dark:text-neutral-300",
   ]
 
   INACTIVE_CLASSES = [
-    "bg-transparent",
-    "px-3",
-    "py-1.5",
-    "rounded-md",
-    "shadow-none",
-    "flex",
-    "items-center",
-    "justify-center",
-    "gap-2",
-    "text-[13px]",
-    "font-semibold",
-    "dark:text-neutral-300",
+    "rui:bg-transparent",
+    "rui:px-3",
+    "rui:py-1.5",
+    "rui:rounded-md",
+    "rui:shadow-none",
+    "rui:flex",
+    "rui:items-center",
+    "rui:justify-center",
+    "rui:gap-2",
+    "rui:text-[13px]",
+    "rui:font-semibold",
+    "rui:dark:text-neutral-300",
   ]
 
   togglePreview(event) {
@@ -54,24 +54,24 @@ export default class extends Controller {
     const inactiveClasses = this.INACTIVE_CLASSES
 
     if (target === "preview") {
-      if (!this.previewTarget.classList.contains("hidden")) {
+      if (!this.previewTarget.classList.contains("rui:hidden")) {
         return // Already in the desired state
       }
 
-      this.previewTarget.classList.toggle("hidden")
-      this.codeTarget.classList.add("hidden")
+      this.previewTarget.classList.toggle("rui:hidden")
+      this.codeTarget.classList.add("rui:hidden")
       this.previewBtnTarget.className = ""
       this.codeBtnTarget.className = ""
 
       activeClasses.forEach((cls) => this.previewBtnTarget.classList.add(cls))
       inactiveClasses.forEach((cls) => this.codeBtnTarget.classList.add(cls))
     } else if (target === "code") {
-      if (!this.codeTarget.classList.contains("hidden")) {
+      if (!this.codeTarget.classList.contains("rui:hidden")) {
         return // Already in the desired state
       }
 
-      this.codeTarget.classList.toggle("hidden")
-      this.previewTarget.classList.add("hidden")
+      this.codeTarget.classList.toggle("rui:hidden")
+      this.previewTarget.classList.add("rui:hidden")
 
       this.previewBtnTarget.className = ""
       this.codeBtnTarget.className = ""

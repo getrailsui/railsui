@@ -7,18 +7,17 @@ export default class extends Controller {
       let scrollpos = localStorage.getItem("scrollpos")
       if (scrollpos) this.scrollitemTarget.scrollTo(0, scrollpos)
 
-
       window.onbeforeunload = () => {
         localStorage.setItem("scrollpos", this.scrollitemTarget.scrollTop)
       }
     }
 
     if (this.hasLauncherTarget) {
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         if (window.scrollY >= 800) {
-          this.launcherTarget.classList.remove('hidden')
+          this.launcherTarget.classList.remove("rui:hidden")
         } else {
-          this.launcherTarget.classList.add('hidden')
+          this.launcherTarget.classList.add("rui:hidden")
         }
       })
     }
@@ -26,6 +25,6 @@ export default class extends Controller {
 
   scrollToTop(event) {
     event.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 }

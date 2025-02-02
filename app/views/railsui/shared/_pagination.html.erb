@@ -1,10 +1,10 @@
-<div class="flex items-center justify-between my-6">
-  <%= link_to local_assigns[:prev_path], class: "group flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-neutral-50 transition ease-in-out duration-200 dark:hover:bg-neutral-800/50" do %>
-    <%= icon "chevron-left", class: "size-3 text-neutral-500 group-hover:-translate-x-1 transition ease-in-out transform duration-200 group-hover:text-neutral-900 dark:group-hover:text-neutral-200" %>
-    <p class="font-semibold text-sm"><%= local_assigns[:prev_text] %></p>
+<div class="rui:flex rui:items-center rui:justify-between rui:my-6">
+  <%= link_to local_assigns[:prev_path], class: "rui:group rui:flex rui:items-center rui:gap-1.5 rui:px-3 rui:py-2 rui:rounded-lg rui:hover:bg-neutral-50 rui:transition rui:ease-in-out rui:duration-200 rui:dark:hover:bg-neutral-800/50" do %>
+    <%= icon "chevron-left", class: "rui:size-3 rui:text-neutral-500 rui:group-hover:-translate-x-1 rui:transition rui:ease-in-out rui:transform rui:duration-200 rui:group-hover:text-neutral-900 rui:dark:group-hover:text-neutral-200" %>
+    <p class="rui:font-semibold rui:text-sm"><%= local_assigns[:prev_text] %></p>
   <% end %>
-  <%= link_to local_assigns[:next_path], class: "group flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-neutral-50 transition ease-in-out duration-200 dark:hover:bg-neutral-800/50" do %>
-    <p class="font-semibold text-sm"><%= local_assigns[:next_text] %></p>
-    <%= icon "chevron-right", class: "size-3 text-neutral-500 group-hover:translate-x-1 transition ease-in-out transform duration-200 group-hover:text-neutral-900 dark:group-hover:text-neutral-200" %>
+  <%= link_to local_assigns[:next_path], class: "rui:group rui:flex rui:items-center rui:gap-1.5 rui:px-3 rui:py-2 rui:rounded-lg rui:hover:bg-neutral-50 rui:transition rui:ease-in-out rui:duration-200 rui:dark:hover:bg-neutral-800/50" do %>
+    <p class="rui:font-semibold rui:text-sm"><%= local_assigns[:next_text] %></p>
+    <%= icon "chevron-right", class: "rui:size-3 rui:text-neutral-500 rui:group-hover:translate-x-1 rui:transition rui:ease-in-out rui:transform rui:duration-200 rui:group-hover:text-neutral-900 rui:dark:group-hover:text-neutral-200" %>
   <% end %>
 </div>

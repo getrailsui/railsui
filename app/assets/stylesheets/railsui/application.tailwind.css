@@ -1,25 +1,29 @@
-.railsui {
-  @apply font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white antialiased dark:bg-neutral-900 dark:text-neutral-50;
+@import "tailwindcss" prefix(rui);
 
-  @import "tailwindcss";
+@import "../../stylesheets/railsui/canvas";
+@import "../../stylesheets/railsui/config";
+@import "../../stylesheets/railsui/nav";
+@import "../../stylesheets/railsui/code";
+@import "../../stylesheets/railsui/docs";
+@import "../../stylesheets/railsui/forms";
+@import "../../stylesheets/railsui/buttons";
+@import "../../stylesheets/railsui/overrides";
+@import "tippy.js/dist/tippy.css";
 
-  @import "../../stylesheets/railsui/canvas";
-  @import "../../stylesheets/railsui/config";
-  @import "../../stylesheets/railsui/nav";
-  @import "../../stylesheets/railsui/code";
-  @import "../../stylesheets/railsui/docs";
-  @import "../../stylesheets/railsui/forms";
-  @import "../../stylesheets/railsui/buttons";
-  @import "../../stylesheets/railsui/overrides";
-  @import "tippy.js/dist/tippy.css";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 
-  @layer base {
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-      border-color: var(--color-neutral-300, currentColor);
-    }
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-neutral-300, currentColor);
   }
+}
+
+/* Ensure the main app styles stay untouched */
+.railsui {
+  @apply rui:font-normal rui:leading-normal rui:text-neutral-800 rui:lg:h-screen rui:relative rui:selection:bg-neutral-300/20 rui:selection:text-neutral-900 rui:dark:selection:text-white rui:antialiased rui:dark:bg-neutral-900 rui:dark:text-neutral-50;
 }

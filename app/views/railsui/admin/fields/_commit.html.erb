@@ -1,11 +1,11 @@
 <% content_for :noscroll, true %>
 
 <div data-railsui-configuration-target="submitContainer">
-  <div class="fixed bg-white/90 backdrop-blur-xs bottom-0 md:flex-row flex flex-col items-center md:justify-between w-full md:w-[calc(100vw-280px)] md:h-16 h-28 border-t border-neutral-200/80 md:left-[280px] left-0 md:px-8 px-4 dark:bg-neutral-900/90 dark:border-neutral-700/80 md:py-0 pt-2 gap-6">
-    <p class="md:text-sm text-xs md:text-left text-center text-neutral-500 dark:text-neutral-400 md:w-auto md:order-1 order-2 md:mt-0 mt-2 md:pr-4">Saving changes will overwrite your existing configuration. Dependencies will be installed and the app will automatically restart.</p>
+  <div class="rui:fixed rui:bg-white/90 rui:backdrop-blur-xs rui:bottom-0 rui:md:flex-row rui:flex rui:flex-col rui:items-center rui:md:justify-between rui:w-full rui:md:w-[calc(100vw-280px)] rui:md:h-16 rui:h-28 rui:border-t rui:border-neutral-200/80 rui:md:left-[280px] rui:left-0 rui:md:px-8 rui:px-4 rui:dark:bg-neutral-900/90 rui:dark:border-neutral-700/80 rui:md:py-0 rui:pt-2 rui:gap-6">
+    <p class="rui:md:text-sm rui:text-xs rui:md:text-left  rui:text-center rui:text-neutral-500 rui:dark:text-neutral-400 rui:md:w-auto rui:md:order-1 rui:order-2 rui:md:mt-0 rui:mt-2 rui:md:pr-4">Saving changes will overwrite your existing configuration. Dependencies will be installed and the app will automatically restart.</p>
 
 
-    <div class="md:order-2 order-1 md:w-auto w-full">
+    <div class="rui:md:order-2 rui:order-1 rui:md:w-auto rui:w-full">
       <%= f.button "Save changes", id: "config_button", class: "rui-btn rui-btn-black md:w-auto w-full whitespace-nowrap", data: { railsui_configuration_target: "submit" } %>
     </div>
   </div>

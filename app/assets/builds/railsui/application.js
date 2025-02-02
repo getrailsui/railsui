@@ -53391,14 +53391,14 @@
     }
     saveChanges(event) {
       event.preventDefault();
-      this.savingTarget.classList.add("config-loader--active");
-      document.body.classList.add("overflow-hidden");
+      this.savingTarget.classList.add("rui-config-loader--active");
+      document.body.classList.add("rui:overflow-hidden");
       this.submitTarget.setAttribute("disabled", true);
       this.element.submit();
     }
     toggleLoader() {
-      this.savingTarget.classList.remove("config-loader--active");
-      document.body.classList.remove("overflow-hidden");
+      this.savingTarget.classList.remove("rui-config-loader--active");
+      document.body.classList.remove("rui:overflow-hidden");
     }
     removeURLParameter(param) {
       const url = new URL(window.location.href);
@@ -57282,8 +57282,8 @@
     }
     perform() {
       this.buttonTarget.textContent = "Processing...";
-      this.buttonTarget.classList.add("opacity-50", "pointer-events-none");
-      this.cancelTarget.classList.add("hidden");
+      this.buttonTarget.classList.add("rui:opacity-50", "rui:pointer-events-none");
+      this.cancelTarget.classList.add("rui:hidden");
     }
   };
   __publicField(railsui_dialog_controller_default, "targets", ["dialog", "button", "cancel"]);
@@ -57497,8 +57497,8 @@
       this.leave();
     }
     swapIcon() {
-      this.menuBarsTarget.classList.toggle("hidden");
-      this.menuCrossTarget.classList.toggle("hidden");
+      this.menuBarsTarget.classList.toggle("rui:hidden");
+      this.menuCrossTarget.classList.toggle("rui:hidden");
     }
   };
   __publicField(railsui_nav_controller_default, "targets", ["nav", "menuBars", "menuCross"]);
@@ -57524,9 +57524,9 @@
       if (this.hasLauncherTarget) {
         window.addEventListener("scroll", () => {
           if (window.scrollY >= 800) {
-            this.launcherTarget.classList.remove("hidden");
+            this.launcherTarget.classList.remove("rui:hidden");
           } else {
-            this.launcherTarget.classList.add("hidden");
+            this.launcherTarget.classList.add("rui:hidden");
           }
         });
       }
@@ -57652,38 +57652,38 @@
   // app/javascript/controllers/railsui_snippet_controller.js
   var railsui_snippet_controller_default = class extends Controller {
     ACTIVE_CLASSES = [
-      "bg-white",
-      "px-3",
-      "py-1.5",
-      "rounded-md",
-      "shadow-sm",
-      "flex",
-      "items-center",
-      "justify-center",
-      "gap-2",
-      "text-[13px]",
-      "font-semibold",
-      "focus:ring-4",
-      "focus:ring-blue-600",
-      "group",
-      "dark:bg-neutral-800/90",
-      "dark:text-neutral-100",
-      "dark:focus:ring-blue-600/50",
-      "dark:text-neutral-300"
+      "rui:bg-white",
+      "rui:px-3",
+      "rui:py-1.5",
+      "rui:rounded-md",
+      "rui:shadow-sm",
+      "rui:flex",
+      "rui:items-center",
+      "rui:justify-center",
+      "rui:gap-2",
+      "rui:text-[13px]",
+      "rui:font-semibold",
+      "rui:focus:ring-4",
+      "rui:focus:ring-blue-600",
+      "rui:group",
+      "rui:dark:bg-neutral-800/90",
+      "rui:dark:text-neutral-100",
+      "rui:dark:focus:ring-blue-600/50",
+      "rui:dark:text-neutral-300"
     ];
     INACTIVE_CLASSES = [
-      "bg-transparent",
-      "px-3",
-      "py-1.5",
-      "rounded-md",
-      "shadow-none",
-      "flex",
-      "items-center",
-      "justify-center",
-      "gap-2",
-      "text-[13px]",
-      "font-semibold",
-      "dark:text-neutral-300"
+      "rui:bg-transparent",
+      "rui:px-3",
+      "rui:py-1.5",
+      "rui:rounded-md",
+      "rui:shadow-none",
+      "rui:flex",
+      "rui:items-center",
+      "rui:justify-center",
+      "rui:gap-2",
+      "rui:text-[13px]",
+      "rui:font-semibold",
+      "rui:dark:text-neutral-300"
     ];
     togglePreview(event) {
       event.preventDefault();
@@ -57697,21 +57697,21 @@
       const activeClasses = this.ACTIVE_CLASSES;
       const inactiveClasses = this.INACTIVE_CLASSES;
       if (target === "preview") {
-        if (!this.previewTarget.classList.contains("hidden")) {
+        if (!this.previewTarget.classList.contains("rui:hidden")) {
           return;
         }
-        this.previewTarget.classList.toggle("hidden");
-        this.codeTarget.classList.add("hidden");
+        this.previewTarget.classList.toggle("rui:hidden");
+        this.codeTarget.classList.add("rui:hidden");
         this.previewBtnTarget.className = "";
         this.codeBtnTarget.className = "";
         activeClasses.forEach((cls) => this.previewBtnTarget.classList.add(cls));
         inactiveClasses.forEach((cls) => this.codeBtnTarget.classList.add(cls));
       } else if (target === "code") {
-        if (!this.codeTarget.classList.contains("hidden")) {
+        if (!this.codeTarget.classList.contains("rui:hidden")) {
           return;
         }
-        this.codeTarget.classList.toggle("hidden");
-        this.previewTarget.classList.add("hidden");
+        this.codeTarget.classList.toggle("rui:hidden");
+        this.previewTarget.classList.add("rui:hidden");
         this.previewBtnTarget.className = "";
         this.codeBtnTarget.className = "";
         activeClasses.forEach((cls) => this.codeBtnTarget.classList.add(cls));
@@ -57747,14 +57747,14 @@
     }
     start() {
       this.contentTarget.innerHTML = this.labelValue;
-      this.savingTarget.classList.add("config-loader--active");
+      this.savingTarget.classList.add("rui-config-loader--active");
       document.body.classList.add("overflow-hidden");
     }
     connect() {
       this.toggleLoader();
     }
     toggleLoader() {
-      this.savingTarget.classList.remove("config-loader--active");
+      this.savingTarget.classList.remove("rui-config-loader--active");
       document.body.classList.remove("overflow-hidden");
     }
     removeURLParameter(param) {

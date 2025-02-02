@@ -1,11 +1,11 @@
 <div>
-  <%= link_to local_assigns[:path], class: "hover:bg-neutral-50/50 block px-4 md:py-3 py-1.5 md:px-8 group dark:hover:bg-neutral-800/40" do %>
-    <div class="prose prose-neutral dark:prose-invert prose-headings:font-semibold flex items-center max-w-full">
-      <div class="flex-1">
-        <h3 class="mb-1 md:mt-4 mt-3"><%= local_assigns[:title] %></h3>
-        <p class="pt-0"><%= local_assigns[:description] %></p>
+  <%= link_to local_assigns[:path], class: "rui:hover:bg-neutral-50/50 rui:block rui:px-4 rui:md:py-3 rui:py-1.5 rui:md:px-8 rui:group rui:dark:hover:bg-neutral-800/40" do %>
+    <div class="rui:prose rui:prose-neutral rui:dark:prose-invert rui:prose-headings:font-semibold rui:flex rui:items-center rui:max-w-full">
+      <div class="rui:flex-1">
+        <h3 class="rui:mb-1 rui:md:mt-4 rui:mt-3"><%= local_assigns[:title] %></h3>
+        <p class="rui:pt-0"><%= local_assigns[:description] %></p>
       </div>
-      <%= icon "chevron-right", class: "size-6 text-neutral-300 group-hover:translate-x-1 group-hover:transform ease-in-out duration-200 group-hover:text-neutral-500 md:block hidden" %>
+      <%= icon "chevron-right", class: "rui:size-6 rui:text-neutral-300 rui:group-hover:translate-x-1 rui:group-hover:transform rui:ease-in-out rui:duration-200 rui:group-hover:text-neutral-500 rui:md:block rui:hidden" %>
     </div>
   <% end %>
 </div>

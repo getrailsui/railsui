@@ -1,12 +1,12 @@
-import { Controller } from '@hotwired/stimulus'
-import { useTransition } from 'stimulus-use'
+import { Controller } from "@hotwired/stimulus"
+import { useTransition } from "stimulus-use"
 
 export default class extends Controller {
-  static targets = ['nav', 'menuBars', 'menuCross']
+  static targets = ["nav", "menuBars", "menuCross"]
 
   connect() {
     useTransition(this, {
-      element: this.navTarget
+      element: this.navTarget,
     })
   }
 
@@ -20,7 +20,7 @@ export default class extends Controller {
   }
 
   swapIcon() {
-    this.menuBarsTarget.classList.toggle('hidden')
-    this.menuCrossTarget.classList.toggle('hidden')
+    this.menuBarsTarget.classList.toggle("rui:hidden")
+    this.menuCrossTarget.classList.toggle("rui:hidden")
   }
 }

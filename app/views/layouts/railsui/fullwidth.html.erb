@@ -29,14 +29,14 @@
   </head>
 
   <body class="railsui" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy">
-    <div class="flex flex-wrap items-start justify-between relative overflow-clip h-screen">
+    <div class="rui:flex rui:flex-wrap rui:items-start rui:justify-between rui:relative rui:overflow-clip rui:h-screen">
 
-      <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.09] dark:opacity-20 z-0" %>
+      <%= image_tag "blur.png", class: "rui:absolute rui:-top-[500px] rui:-right-[500px] rui:opacity-[0.09] rui:dark:opacity-20 z-0" %>
 
       <%= render "railsui/shared/global_nav" %>
 
-      <div class="md:flex-1 h-full md:pt-2  md:overflow-y-auto relative z-30">
-        <div class="max-w-4xl mx-auto md:px-10 md:pb-10 md:pt-6 p-4">
+      <div class="rui:md:flex-1 rui:h-full rui:md:pt-2  rui:md:overflow-y-auto rui:relative rui:z-30">
+        <div class="rui:max-w-4xl rui:mx-auto rui:md:px-10 rui:md:pb-10 rui:md:pt-6 rui:p-4">
           <%= render "railsui/shared/flash_messages" %>
           <%= yield %>
           <%= render "railsui/shared/scroll_to_top" unless content_for?(:noscroll).present? %>

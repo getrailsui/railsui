@@ -8,80 +8,80 @@
   css_content = yield :css
 %>
 
-<div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-linear-to-br from-neutral-700 to-neutral-800 rounded-lg overflow-clip dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 relative scrollbar border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
-  <div class="bg-neutral-800">
-    <ul class="flex items-center justify-start space-x-2 border-b border-neutral-700 px-3">
+<div data-controller="railsui-code" class="rui:mt-5 rui:mb-8 rui:first:mt-0 rui:last:mb-0 rui:bg-linear-to-br rui:from-neutral-700 rui:to-neutral-800 rui:rounded-lg rui:overflow-clip rui:dark:border rui:dark:border-neutral-700 rui:selection:bg-neutral-300/90 rui:selection:text-neutral-800 rui:relative rui:scrollbar rui:border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
+  <div class="rui:bg-neutral-800">
+    <ul class="rui:flex rui:items-center rui:justify-start rui:space-x-2 rui:border-b rui:border-neutral-700 rui:px-3">
       <% if content_for?(:html) %>
-        <li class="flex items-center">
+        <li class="rui:flex rui:items-center">
           <a href="#html"
           @click.prevent="active = 'html'"
-          :class="active == 'html' ? 'text-pink-400 border-pink-400' : 'border-transparent text-white/90'"
-          class="-ml-2 pl-5 pr-3 py-3 font-mono  text-sm border-b-2 hover:text-pink-400  hover:border-pink-400"><%= local_assigns[:html_filename] %></a>
-          <span class="w-px h-11 bg-linear-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+          :class="active == 'html' ? 'rui:text-pink-400 rui:border-pink-400' : 'rui:border-transparent rui:text-white/90'"
+          class="rui:-ml-2 rui:pl-5 rui:pr-3 rui:py-3 rui:font-mono  rui:text-sm rui:border-b-2 rui:hover:text-pink-400  rui:hover:border-pink-400"><%= local_assigns[:html_filename] %></a>
+          <span class="rui:w-px rui:h-11 rui:bg-linear-to-b rui:from-neutral-600 rui:to-neutral-700 rui:transform rui:rotate-[20deg] rui:block rui:ml-2"></span>
         </li>
       <% end %>
       <% if content_for?(:erb) %>
-        <li class="flex items-center">
+        <li class="rui:flex rui:items-center">
           <a href="#erb"
           @click.prevent="active = 'erb'"
-          :class="active == 'erb' ? 'text-rose-400 border-rose-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400"><%= local_assigns[:erb_filename] %></a>
-          <span class="w-px h-11 bg-linear-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+          :class="active == 'erb' ? 'rui:text-rose-400 rui:border-rose-400' : 'rui:border-transparent rui:text-white/90'"
+          class="rui:-ml-3 rui:pl-6 rui:pr-4 rui:py-3 rui:font-mono rui:text-sm rui:border-b-2 hover:text-rose-400 rui:hover:border-rose-400"><%= local_assigns[:erb_filename] %></a>
+          <span class="rui:w-px rui:h-11 rui:bg-linear-to-b rui:from-neutral-600 rui:to-neutral-700 rui:transform rui:rotate-[20deg] rui:block rui:ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for(:haml) %>
-        <li class="flex items-center">
+        <li class="rui:flex rui:items-center">
           <a href="#haml"
           @click.prevent="active = 'haml'"
-          :class="active == 'haml' ? 'text-sky-400 border-sky-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-sky-400 hover:border-sky-400"><%= local_assigns[:haml_filename] %></a>
-          <span class="w-px h-11 bg-linear-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+          :class="active == 'haml' ? 'rui:text-sky-400 rui:border-sky-400' : 'rui:border-transparent rui:text-white/90'"
+          class="rui:-ml-3 rui:pl-5 rui:pr-3 rui:py-3 rui:font-mono rui:text-sm rui:border-b-2 rui:hover:text-sky-400 hover:border-sky-400"><%= local_assigns[:haml_filename] %></a>
+          <span class="rui:w-px rui:h-11 rui:bg-linear-to-b rui:from-neutral-600 rui:to-neutral-700 rui:transform rui:rotate-[20deg] rui:block rui:ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for?(:bash) %>
-        <li class="flex items-center">
+        <li class="rui:flex rui:items-center">
           <a href="#bash"
           @click.prevent="active = 'bash'"
-          :class="active == 'bash' ? 'text-cyan-400 border-cyan-400' : 'border-transparent text-white/90'"
-          class="-ml-2 pl-5 pr-3 py-3 font-mono  text-sm border-b-2 hover:text-cyan-400  hover:border-cyan-400">bash</a>
-          <span class="w-px h-11 bg-linear-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+          :class="active == 'bash' ? 'rui:text-cyan-400 rui:border-cyan-400' : 'rui:border-transparent rui:text-white/90'"
+          class="rui:-ml-2 rui:pl-5 rui:pr-3 rui:py-3 rui:font-mono  rui:text-sm rui:border-b-2 rui:hover:text-cyan-400 hover:border-cyan-400">bash</a>
+          <span class="rui:w-px rui:h-11 rui:bg-linear-to-b rui:from-neutral-600 rui:to-neutral-700 rui:transform rui:rotate-[20deg] rui:block rui:ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for(:js) %>
-        <li class="flex items-center">
+        <li class="rui:flex rui:items-center">
           <a href="#js"
           @click.prevent="active = 'js'"
-          :class="active == 'js' ? 'text-amber-400 border-amber-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-amber-400 hover:border-amber-400"><%= local_assigns[:js_filename] %></a>
-          <span class="w-px h-11 bg-linear-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+          :class="active == 'js' ? 'rui:text-amber-400 rui:border-amber-400' : 'rui:border-transparent rui:text-white/90'"
+          class="rui:-ml-3 rui:pl-5 rui:pr-3 rui:py-3 rui:font-mono rui:text-sm rui:border-b-2 rui:hover:text-amber-400 rui:hover:border-amber-400"><%= local_assigns[:js_filename] %></a>
+          <span class="rui:w-px rui:h-11 rui:bg-linear-to-b rui:from-neutral-600 rui:to-neutral-700 rui:transform rui:rotate-[20deg] rui:block rui:ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for(:ruby) %>
-        <li class="flex items-center">
+        <li class="rui:flex rui:items-center">
           <a href="#ruby"
           @click.prevent="active = 'ruby'"
-          :class="active == 'ruby' ? 'text-rose-400 border-rose-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400"><%= local_assigns[:ruby_filename] %></a>
-          <span class="w-px h-11 bg-linear-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+          :class="active == 'ruby' ? 'rui:text-rose-400 rui:border-rose-400' : 'rui:border-transparent rui:text-white/90'"
+          class="rui:-ml-3 rui:pl-5 rui:pr-3 rui:py-3 rui:font-mono rui:text-sm rui:border-b-2 rui:hover:text-rose-400 rui:hover:border-rose-400"><%= local_assigns[:ruby_filename] %></a>
+          <span class="rui:w-px rui:h-11 rui:bg-linear-to-b rui:from-neutral-600 rui:to-neutral-700 rui:transform rui:rotate-[20deg] rui:block rui:ml-2"></span>
         </li>
       <% end %>
 
       <% if content_for?(:css) %>
-        <li class="flex items-center">
+        <li class="rui:flex rui:items-center">
           <a href="#css"
           @click.prevent="active = 'css'"
-          :class="active == 'css' ? 'text-fuchsia-400 border-fuchsia-400' : 'border-transparent text-white/90'"
-          class="-ml-2 pl-5 pr-3 py-3 font-mono text-sm border-b-2 hover:text-fuchsia-400 hover:border-fuchsia-400"><%= local_assigns[:css_filename] %></a>
-          <span class="w-px h-11 bg-linear-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+          :class="active == 'css' ? 'rui:text-fuchsia-400 rui:border-fuchsia-400' : 'rui:border-transparent rui:text-white/90'"
+          class="rui:-ml-2 rui:pl-5 rui:pr-3 rui:py-3 rui:font-mono rui:text-sm rui:border-b-2 rui:hover:text-fuchsia-400 rui:hover:border-fuchsia-400"><%= local_assigns[:css_filename] %></a>
+          <span class="rui:w-px rui:h-11 rui:bg-linear-to-b rui:from-neutral-600 rui:to-neutral-700 rui:transform rui:rotate-[20deg] rui:block rui:ml-2"></span>
         </li>
       <% end %>
     </ul>
   </div>
-  <div role="tabpanels" class="overflow-y-auto max-h-[650px] scrollbar scrollbar-track-neutral-950 scrollbar-thumb-neutral-500">
+  <div role="tabpanels" class="rui:overflow-y-auto rui:max-h-[650px] rui:scrollbar rui:scrollbar-track-neutral-950 rui:scrollbar-thumb-neutral-500">
     <% if content_for?(:html) %>
       <div role="tabpanel"
       x-show="active == 'html'"
@@ -89,9 +89,9 @@
       >
         <button
     data-action="click->railsui-clipboard#copy"
-          class="bg-white/10 backdrop-blur-xs p-1 rounded-lg absolute right-2 top-2 hover:bg-linear-to-br hover:to-pink-600 hover:from-pink-400 transition ease-in-out w-duration-200"
+          class="rui:bg-white/10 rui:backdrop-blur-xs rui:p-1 rui:rounded-lg rui:absolute rui:right-2 rui:top-2 rui:hover:bg-linear-to-br rui:hover:to-pink-600 rui:hover:from-pink-400 rui:transition rui:ease-in-out rui:duration-200"
           type="button">
-          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+          <%= icon "clipboard", class: "rui:stroke-current rui:text-white rui:select-none rui:size-5" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-html scrollbar"><%= html_content.to_param.strip %></code></pre>
       </div>
@@ -103,9 +103,9 @@
         data-controller="railsui-clipboard"
         >
         <button data-action="click->railsui-clipboard#copy"
-          class="bg-white/10 backdrop-blur-xs p-1 rounded-lg absolute right-2 top-2 hover:bg-linear-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
+          class="rui:bg-white/10 rui:backdrop-blur-xs rui:p-1 rui:rounded-lg rui:absolute rui:right-2 rui:top-2 rui:hover:bg-linear-to-br rui:hover:to-rose-600 rui:hover:from-rose-400 rui:transition rui:ease-in-out rui:w-duration-200"
           type="button">
-          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+          <%= icon "clipboard", class: "rui:stroke-current rui:text-white rui:select-none rui:size-5" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-erb scrollbar"><%= erb_content.to_param.strip %></code></pre>
       </div>
@@ -117,9 +117,9 @@
         data-controller="railsui-clipboard"
         >
         <button data-action="click->railsui-clipboard#copy"
-          class="bg-white/10 backdrop-blur-xs p-1 rounded-lg absolute right-2 top-2 hover:bg-linear-to-br hover:to-sky-600 hover:from-sky-400 transition ease-in-out w-duration-200"
+          class="rui:bg-white/10 rui:backdrop-blur-xs rui:p-1 rui:rounded-lg rui:absolute rui:right-2 rui:top-2 rui:hover:bg-linear-to-br rui:hover:to-sky-600 rui:hover:from-sky-400 rui:transition rui:ease-in-out rui:duration-200"
           type="button">
-          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+          <%= icon "clipboard", class: "rui:stroke-current rui:text-white rui:select-none rui:size-5" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-haml scrollbar"><%= haml_content.to_param.strip %></code></pre>
       </div>
@@ -131,9 +131,9 @@
         data-controller="railsui-clipboard"
         >
         <button data-action="click->railsui-clipboard#copy"
-          class="bg-white/10 backdrop-blur-xs p-1 rounded-lg absolute right-2 top-2 hover:bg-linear-to-br hover:to-cyan-600 hover:from-cyan-400 transition ease-in-out w-duration-200"
+          class="rui:bg-white/10 rui:backdrop-blur-xs rui:p-1 rui:rounded-lg rui:absolute rui:right-2 rui:top-2 rui:hover:bg-linear-to-br rui:hover:to-cyan-600 rui:hover:from-cyan-400 rui:transition rui:ease-in-out rui:duration-200"
           type="button">
-          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+          <%= icon "clipboard", class: "rui:stroke-current rui:text-white rui:select-none rui:size-5" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-bash scrollbar"><%= bash_content.to_param.strip %></code></pre>
       </div>
@@ -145,9 +145,9 @@
         data-controller="railsui-clipboard"
         >
         <button data-action="click->railsui-clipboard#copy"
-          class="bg-white/10 backdrop-blur-xs p-1 rounded-lg absolute right-2 top-2 hover:bg-linear-to-br hover:to-amber-600 hover:from-amber-400 transition ease-in-out w-duration-200"
+          class="rui:bg-white/10 rui:backdrop-blur-xs rui:p-1 rui:rounded-lg rui:absolute rui:right-2 rui:top-2 rui:hover:bg-linear-to-br rui:hover:to-amber-600 rui:hover:from-amber-400 rui:transition rui:ease-in-out rui:duration-200"
           type="button">
-          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+          <%= icon "clipboard", class: "rui:stroke-current rui:text-white rui:select-none rui:size-5" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-javascript scrollbar"><%= js_content.to_param.strip %></code></pre>
       </div>
@@ -159,9 +159,9 @@
         data-controller="railsui-clipboard"
         >
         <button data-action="click->railsui-clipboard#copy"
-          class="bg-white/10 backdrop-blur-xs p-1 rounded-lg absolute right-2 top-2 hover:bg-linear-to-br hover:to-rose-600 hover:from-rose-400 transition ease-in-out w-duration-200"
+          class="rui:bg-white/10 rui:backdrop-blur-xs rui:p-1 rui:rounded-lg rui:absolute rui:right-2 rui:top-2 rui:hover:bg-linear-to-br rui:hover:to-rose-600 rui:hover:from-rose-400 rui:transition rui:ease-in-out rui:duration-200"
           type="button">
-          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+          <%= icon "clipboard", class: "rui:stroke-current rui:text-white rui:select-none rui:size-5" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-ruby scrollbar"><%= ruby_content.to_param.strip %></code></pre>
       </div>
@@ -173,9 +173,9 @@
         data-controller="railsui-clipboard"
         >
         <button data-action="click->railsui-clipboard#copy"
-          class="bg-white/10 backdrop-blur-xs p-1 rounded-lg absolute right-2 top-2 hover:bg-linear-to-br hover:to-fuchsia-600 hover:from-fuchsia-400 transition ease-in-out w-duration-200"
+          class="rui:bg-white/10 rui:backdrop-blur-xs rui:p-1 rui:rounded-lg rui:absolute rui:right-2 rui:top-2 rui:hover:bg-linear-to-br rui:hover:to-fuchsia-600 rui:hover:from-fuchsia-400 rui:transition rui:ease-in-out rui:duration-200"
           type="button">
-          <%= icon "clipboard", class: "stroke-current text-white select-none size-5" %>
+          <%= icon "clipboard", class: "rui:stroke-current rui:text-white rui:select-none rui:size-5" %>
         </button>
         <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-css scrollbar"><%= css_content.to_param.strip %></code></pre>
       </div>

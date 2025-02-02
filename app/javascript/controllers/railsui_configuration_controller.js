@@ -22,8 +22,8 @@ export default class extends Controller {
   saveChanges(event) {
     event.preventDefault()
     // Show loading state
-    this.savingTarget.classList.add("config-loader--active")
-    document.body.classList.add("overflow-hidden")
+    this.savingTarget.classList.add("rui-config-loader--active")
+    document.body.classList.add("rui:overflow-hidden")
     // Disable button
     this.submitTarget.setAttribute("disabled", true)
     // Continue submission
@@ -32,8 +32,8 @@ export default class extends Controller {
 
   toggleLoader() {
     // Remove loader
-    this.savingTarget.classList.remove("config-loader--active")
-    document.body.classList.remove("overflow-hidden")
+    this.savingTarget.classList.remove("rui-config-loader--active")
+    document.body.classList.remove("rui:overflow-hidden")
   }
 
   removeURLParameter(param) {

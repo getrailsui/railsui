@@ -1,11 +1,11 @@
 <div class="pb-8">
-  <%= heading text: "Configuration", id: "configuration", tag: "h1", class: "lg:text-3xl text-2xl text-neutral-800 font-bold dark:text-white mb-2 tracking-tight" %>
-  <div class="prose dark:prose-invert prose-neutral max-w-full prose-lg mb-6">
+  <%= heading text: "Configuration", id: "configuration", tag: "h1", class: "rui:lg:text-3xl rui:text-2xl rui:text-neutral-800 rui:font-bold rui:dark:text-white rui:mb-2 rui:tracking-tight" %>
+  <div class="rui:prose rui:dark:prose-invert rui:prose-neutral rui:max-w-full rui:prose-lg rui:mb-6">
     <p>Choose a theme, customize colors or stick with the defaults and go build. 🚀</p>
   </div>
 </div>
 
-<%= form_with model: @config, url: configuration_path, class: "h-full block relative pb-24", data: {
+<%= form_with model: @config, url: configuration_path, class: "rui:h-full rui:block rui:relative rui:pb-24", data: {
   action: "submit->railsui-configuration#saveChanges",
   controller: "railsui-configuration railsui-loading"
   } do |f| %>
@@ -14,15 +14,15 @@
 
   <%= render "railsui/admin/fields/general", f: f %>
 
-  <hr class="mb-6 border-neutral-200/80 dark:border-neutral-700/80">
+  <hr class="rui:mb-6 rui:border-neutral-200/80 rui:dark:border-neutral-700/80">
 
   <%= render "railsui/admin/fields/theme", f: f %>
 
-  <hr class="mb-6 border-neutral-200/80 dark:border-neutral-700/80">
+  <hr class="rui:mb-6 rui:border-neutral-200/80 rui:dark:border-neutral-700/80">
 
   <%= render "railsui/admin/fields/color", f: f %>
 
-  <hr class="mb-6 border-neutral-200/80 dark:border-neutral-700/80">
+  <hr class="rui:mb-6 rui:border-neutral-200/80 rui:dark:border-neutral-700/80">
 
   <%= render "railsui/admin/fields/pages", f: f %>
 

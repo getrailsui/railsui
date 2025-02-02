@@ -41,7 +41,7 @@ module Railsui
     end
 
     def code(code)
-      content_tag :span, html_escape(code), class: "text-neutral-900 font-mono font-semibold text-[15px] dark:text-rose-400 bg-neutral-100 px-1 py-px dark:bg-transparent rounded-sm whitespace-pre"
+      content_tag :span, html_escape(code), class: "rui:text-neutral-900 rui:font-mono rui:font-semibold rui:text-[15px] rui:dark:text-rose-400 rui:bg-neutral-100 rui:px-1 rui:py-px rui:dark:bg-transparent rui:rounded-sm rui:whitespace-pre"
     end
 
     def render_snippet(options={})
@@ -79,7 +79,7 @@ module Railsui
       id = options[:id]
       classes = options[:class]
 
-      content_tag tag.to_sym, text, id: id, class: "#{classes} tracking-[-0.025em]"
+      content_tag tag.to_sym, text, id: id, class: "#{classes} rui:tracking-[-0.025em]"
     end
 
     def email_viewer(subject="A sample subject", &block)
@@ -87,19 +87,19 @@ module Railsui
     end
 
     def box_label_classes(options={})
-      "rounded-lg bg-white shadow-xs border border-slate-200 block select-none hover:shadow-none group bg-linear-to-br from-white to-slate-50 dark:from-slate-700 dark:to-slate-800 dark:border-slate-600 dark:shadow-xs #{options[:offset] == false ? "px-4 pb-4 pt-1" : "p-4" }"
+      "rui:rounded-lg rui:bg-white rui:shadow-xs rui:border rui:border-slate-200 rui:block rui:select-none rui:hover:shadow-none rui:group rui:bg-linear-to-br rui:from-white rui:to-slate-50 rui:dark:from-slate-700 rui:dark:to-slate-800 rui:dark:border-slate-600 rui:dark:shadow-xs #{options[:offset] == false ? "rui:px-4 rui:pb-4 rui:pt-1" : "rui:p-4" }"
     end
 
     def box_check_classes
-      "text-indigo-600 form-checkbox rounded focus:outline-hidden ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 size-5
-      dark:focus:ring-slate-700
-      dark:focus:ring-opacity-20
-      dark:focus:bg-slate-600  dark:bg-slate-700
-      dark:ring-transparent"
+      "rui:text-indigo-600 form-checkbox rui:rounded rui:focus:outline-hidden rui:ring-2 rui:ring-transparent rui:focus:ring-slate-100  rui:mr-2 rui:border-slate-500 rui:size-5
+      rui:dark:focus:ring-slate-700
+      rui:dark:focus:ring-opacity-20
+      rui:dark:focus:bg-slate-600 rui:dark:bg-slate-700
+      rui:dark:ring-transparent"
     end
 
     def help_text &block
-      content_tag :div, class: "prose prose-sm prose-neutral dark:prose-invert max-w-full" do
+      content_tag :div, class: "rui:prose rui:prose-sm rui:prose-neutral rui:dark:prose-invert rui:max-w-full" do
         yield
       end
     end
@@ -107,15 +107,15 @@ module Railsui
     def doc_label(type)
       case type
       when :javascript
-        content_tag :p, "JavaScript", class:"bg-yellow-300 text-black rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
+        content_tag :p, "JavaScript", class:"rui:bg-yellow-300 rui:text-black rui:rounded-full rui:px-3 rui:py-1 rui:font-semibold rui:inline-block rui:text-xs rui:mb-3"
       when :stimulus
-        content_tag :p, "Stimulus.js", class: "bg-yellow-300 text-black rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
+        content_tag :p, "Stimulus.js", class: "rui:bg-yellow-300 rui:text-black rui:rounded-full rui:px-3 rui:py-1 rui:font-semibold rui:inline-block rui:text-xs rui:mb-3"
       when :ruby
-        content_tag :p, "Ruby", class: "bg-red-700 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
+        content_tag :p, "Ruby", class: "rui:bg-red-700 rui:text-white rui:rounded-full rui:px-3 rui:py-1 rui:font-semibold rui:inline-block rui:text-xs rui:mb-3"
       when :tutorial
-        content_tag :p, "Tutorial", class: "bg-blue-500 text-white rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
+        content_tag :p, "Tutorial", class: "rui:bg-blue-500 rui:text-white rui:rounded-full rui:px-3 rui:py-1 rui:font-semibold rui:inline-block rui:text-xs rui:mb-3"
       when :demo
-        content_tag :p, "Demo", class: "bg-emerald-50 text-emerald-600 rounded-full px-3 py-1 font-semibold inline-block text-xs mb-3"
+        content_tag :p, "Demo", class: "rui:bg-emerald-50 rui:text-emerald-600 rui:rounded-full rui:px-3 rui:py-1 rui:font-semibold rui:inline-block rui:text-xs rui:mb-3"
       end
     end
 
@@ -142,37 +142,37 @@ module Railsui
 
     def quick_link(title: nil, component: nil)
       content_tag :li do
-        link_to title.capitalize, "##{component.parameterize}-#{title.parameterize}", class: "text-sm py-1 px-3 rounded-sm font-medium inline-block bg-white border border-slate-300 hover:shadow-xs hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600 dark:hover:bg-slate-700/80 transition ease-in-out duration-200", data: { action: "click->railsui-smooth#scroll" }
+        link_to title.capitalize, "##{component.parameterize}-#{title.parameterize}", class: "rui:text-sm rui:py-1 rui:px-3 rui:rounded-sm rui:font-medium rui:inline-block rui:bg-white rui:border rui:border-slate-300 rui:hover:shadow-xs rui:hover:border-slate-400 rui:dark:border-slate-700 rui:dark:bg-slate-800 rui:dark:hover:border-slate-600 rui:dark:hover:bg-slate-700/80 rui:transition rui:ease-in-out rui:duration-200", data: { action: "click->railsui-smooth#scroll" }
       end
     end
 
     def route_verb_classes(verb)
       case verb
       when "GET"
-        "bg-indigo-50 text-indigo-500 dark:bg-indigo-400/50 dark:text-indigo-100"
+        "rui:bg-indigo-50 rui:text-indigo-500 rui:dark:bg-indigo-400/50 rui:dark:text-indigo-100"
       when "PATCH"
-        "bg-cyan-50 text-cyan-500 dark:bg-cyan-400/50 dark:text-cyan-100"
+        "rui:bg-cyan-50 rui:text-cyan-500 rui:dark:bg-cyan-400/50 rui:dark:text-cyan-100"
       when "PUT"
-        "bg-amber-50 text-amber-500 dark:bg-amber-400/50 dark:text-amber-100"
+        "rui:bg-amber-50 rui:text-amber-500 rui:dark:bg-amber-400/50 rui:dark:text-amber-100"
       when "POST"
-        "bg-emerald-50 text-emerald-500 dark:bg-emerald-400/50 dark:text-emerald-100"
+        "rui:bg-emerald-50 rui:text-emerald-500 rui:dark:bg-emerald-400/50 rui:dark:text-emerald-100"
       when "DELETE"
-        "bg-rose-50 text-rose-500 dark:bg-rose-400/50 dark:text-rose-100"
+        "rui:bg-rose-50 rui:text-rose-500 rui:dark:bg-rose-400/50 rui:dark:text-rose-100"
       else
-        "bg-slate-50 text-slate-500 dark:bg-slate-700 dark:text-slate-100"
+        "rui:bg-slate-50 rui:text-slate-500 rui:dark:bg-slate-700 rui:dark:text-slate-100"
       end
     end
 
     def tag_label(tag)
-      base_classes = "rounded-sm text-xs px-1 py-px font-semibold inline-flex items-center justify-center"
+      base_classes = "rui:rounded-sm rui:text-xs rui:px-1 rui:py-px rui:font-semibold rui:inline-flex rui:items-center rui:justify-center"
 
       case tag
       when "marketing"
-        content_tag :div, tag.humanize, class: "#{base_classes} bg-indigo-50 text-indigo-500 dark:bg-indigo-500/40 dark:text-indigo-200"
+        content_tag :div, tag.humanize, class: "#{base_classes} rui:bg-indigo-50 rui:text-indigo-500 rui:dark:bg-indigo-500/40 rui:dark:text-indigo-200"
       when "admin"
-        content_tag :div, tag.humanize, class: "#{base_classes} bg-sky-50 text-sky-500 dark:bg-sky-500/40 dark:text-sky-200"
+        content_tag :div, tag.humanize, class: "#{base_classes} rui:bg-sky-50 rui:text-sky-500 rui:dark:bg-sky-500/40 rui:dark:text-sky-200"
       else
-        content_tag :div, tag.humanize, class: "#{base_classes} bg-slate-50 text-slate-500 dark:bg-slate-500/40 dark:text-slate-200"
+        content_tag :div, tag.humanize, class: "#{base_classes} rui:bg-slate-50 rui:text-slate-500 rui:dark:bg-slate-500/40 rui:dark:text-slate-200"
       end
     end
 
@@ -186,7 +186,7 @@ module Railsui
 
     def component_link(name, href)
       content_tag :li do
-        link_to name, href, class: "block py-0.5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate", data: {
+        link_to name, href, class: "rui:block rui:py-0.5 rui:text-neutral-500 rui:hover:text-neutral-900 rui:dark:text-neutral-400 rui:dark:hover:text-white truncate", data: {
           action: "click->railsui-smooth#scroll",
           railsui_scroll_spy_target: "link"
         }
@@ -194,7 +194,7 @@ module Railsui
     end
 
     def divider
-      content_tag :hr, nil, class: "my-6 dark:border-neutral-700/80 border-neutral-200/70"
+      content_tag :hr, nil, class: "rui:my-6 rui:dark:border-neutral-700/80 rui:border-neutral-200/70"
     end
 
     def system_nav_item(label:, path:)
@@ -208,17 +208,17 @@ module Railsui
     def rui_badge(label, variant: :blue)
       variant_class = case variant
         when :blue
-          "bg-blue-500 text-white"
+          "rui:bg-blue-500 rui:text-white"
         when :green
-          "bg-green-500 text-white"
+          "rui:bg-green-500 rui:text-white"
         when :red
-          "bg-red-500 text-white"
+          "rui:bg-red-500 rui:text-white"
         when :yellow
-          "bg-yellow-500 text-black"
+          "rui:bg-yellow-500 rui:text-black"
         when :gray
-          "bg-neutral-200 text-neutral-700"
+          "rui:bg-neutral-200 rui:text-neutral-700"
       end
-      content_tag :div, label, class: "#{variant_class} rounded-full px-2 py-1 text-xs font-semibold inline-flex my-0"
+      content_tag :div, label, class: "#{variant_class} rui:rounded-full rui:px-2 rui:py-1 rui:text-xs rui:font-semibold rui:inline-flex rui:my-0"
     end
   end
 end

@@ -1,42 +1,42 @@
-<div class="py-8">
-  <%= heading text: "Theme", id: "theme", tag: "h2", class: "font-bold md:text-3xl text-2xl tracking-tight mb-3" %>
+<div class="rui:py-8">
+  <%= heading text: "Theme", id: "theme", tag: "h2", class: "rui:font-bold rui:md:text-3xl rui:text-2xl rui:tracking-tight rui:mb-3" %>
 
-  <div class="prose prose-neutral dark:prose-invert mb-6">
+  <div class="rui:prose rui:prose-neutral rui:dark:prose-invert rui:mb-6">
     <p>A theme is a set of <%= link_to "pre-built components", systems_path %> and <%= link_to "optional pages", root_path(anchor: "pages"), data: { action: "click->railsui-smooth#scroll"} %> that make it easy to get a massive head start on the design of your application.</p>
-    <p>Your active theme: <span class="bg-neutral-200/80 text-neutral-800 dark:bg-neutral-600/70 dark:text-neutral-200 font-medium text-sm rounded-sm px-1 py-0.5"><%= Railsui.config.theme.humanize %></span></p>
+    <p>Your active theme: <span class="rui:bg-neutral-200/80 rui:text-neutral-800 rui:dark:bg-neutral-600/70 rui:dark:text-neutral-200 rui:font-medium rui:text-sm rui:rounded-sm rui:px-1 rui:py-0.5"><%= Railsui.config.theme.humanize %></span></p>
   </div>
 
-  <ul class="grid md:grid-cols-3 gap-6 mb-16">
+  <ul class="rui:grid rui:md:grid-cols-3 rui:gap-6 rui:mb-16">
     <% Railsui::Default::THEMES.each do |key, theme| %>
       <li>
         <% theme_id = key.to_s %>
 
-        <input type="radio" id="configuration_theme_<%= theme_id %>" value="<%= key %>" name="configuration[theme]" class="sr-only peer group" <% if theme_id == Railsui.config.theme %>checked<% end %>>
+        <input type="radio" id="configuration_theme_<%= theme_id %>" value="<%= key %>" name="configuration[theme]" class="rui:sr-only rui:peer rui:group" <% if theme_id == Railsui.config.theme %>checked<% end %>>
 
-        <label data-railsui-configuration-target="theme" for="configuration_theme_<%= theme_id %>" class="bg-white rounded-lg overflow-clip block border border-neutral-300 focus:ring-4 focus:ring-white transition duration-300 dark:bg-neutral-700 dark:border-neutral-600 hover:shadow-xl peer-checked:ring-4 peer-checked:ring-black relative peer-checked:before:content-['Selected']
-      peer-checked:before:text-sm
-      peer-checked:before:absolute
-      peer-checked:before:top-0
-      peer-checked:before:left-0
-      peer-checked:before:bg-black/95
-      dark:peer-checked:before:bg-amber-300
-      dark:peer-checked:before:text-neutral-950
-      dark:peer-checked:ring-amber-300
-      peer-checked:before:backdrop-blur-sm
-      peer-checked:before:w-20 peer-checked:before:px-1 peer-checked:before:py-0.5 peer-checked:before:text-white peer-checked:before:font-medium
-      peer-checked:before:rounded-br-lg
-      peer-checked:before:transition
-      peer-checked:before:animate-fade-in
-      peer-checked:before:text-center
-      peer-checked:shadow-xl
-      peer-checked:shadow-black/10">
+        <label data-railsui-configuration-target="theme" for="configuration_theme_<%= theme_id %>" class="rui:bg-white rui:rounded-lg rui:overflow-clip rui:block rui:border rui:border-neutral-300 rui:focus:ring-4 rui:focus:ring-white rui:transition rui:duration-300 rui:dark:bg-neutral-700 rui:dark:border-neutral-600 rui:hover:shadow-xl rui:peer-checked:ring-4 rui:peer-checked:ring-black rui:relative rui:peer-checked:before:content-['Selected']
+      rui:peer-checked:before:text-sm
+      rui:peer-checked:before:absolute
+      rui:peer-checked:before:top-0
+      rui:peer-checked:before:left-0
+      rui:peer-checked:before:bg-black/95
+      rui:dark:peer-checked:before:bg-amber-300
+      rui:dark:peer-checked:before:text-neutral-950
+      rui:dark:peer-checked:ring-amber-300
+      rui:peer-checked:before:backdrop-blur-sm
+      rui:peer-checked:before:w-20 rui:peer-checked:before:px-1 rui:rui:peer-checked:before:py-0.5 rui:peer-checked:before:text-white rui:peer-checked:before:font-medium
+      rui:peer-checked:before:rounded-br-lg
+      rui:peer-checked:before:transition
+      rui:peer-checked:before:animate-fade-in
+      rui:peer-checked:before:text-center
+      rui:peer-checked:shadow-xl
+      rui:peer-checked:shadow-black/10">
           <%= image_tag theme[:thumbnail], alt: "#{theme[:name]} theme" %>
         </label>
-        <div class="mt-4 flex items-center justify-between gap-2">
-          <p class="font-semibold text-base my-2">
+        <div class="rui:mt-4 rui:flex rui:items-center rui:justify-between rui:gap-2">
+          <p class="rui:font-semibold rui:text-base rui:my-2">
             <%= theme[:name] %>
           </p>
-          <%= link_to theme[:preview_link], target: :_blank, class: "inline-flex text-sm items-center gap-2 font-medium text-sm py-1 px-2 rounded-md border border-neutral-300 dark:border-neutral-600 hover:shadow-xs" do %>
+          <%= link_to theme[:preview_link], target: :_blank, class: "rui:inline-flex rui:text-sm rui:items-center rui:gap-2 rui:font-medium rui:text-sm rui:py-1 rui:px-2 rui:rounded-md rui:border rui:border-neutral-300 rui:dark:border-neutral-600 rui:hover:shadow-xs" do %>
             <span>Preview</span>
           <% end %>
         </div>
@@ -44,18 +44,18 @@
     <% end %>
   </ul>
 
-  <p class="py-4 tracking-wide text-neutral-500 dark:text-white">Theme FAQs</p>
+  <p class="rui:py-4 rui:tracking-wide rui:text-neutral-500 rui:dark:text-white">Theme FAQs</p>
 
-  <dl class="mt-2 divide-y divide-gray-200 dark:divide-neutral-700 mb-10">
-    <details class="group py-4">
-      <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 dark:group-open:text-neutral-400 [&::-webkit-details-marker]:hidden">
-        <div class="flex items-center gap-2">
-          Can I change my theme? <span class="bg-yellow-300 text-black rounded-sm px-1 py-px inline-flex h-4 items-center uppercase text-[9px]">New</span>
+  <dl class="rui:mt-2 rui:divide-y rui:divide-gray-200 rui:dark:divide-neutral-700 rui:mb-10">
+    <details class="rui:group rui:py-4">
+      <summary class="rui:flex rui:w-full rui:cursor-pointer rui:select-none rui:justify-between rui:text-left rui:text-base rui:font-semibold rui:leading-7 rui:text-neutral-900 rui:dark:text-neutral-200 rui:group-open:text-neutral-900 rui:dark:group-open:text-neutral-400 rui:[&::-webkit-details-marker]:hidden">
+        <div class="rui:flex rui:items-center rui:gap-2">
+          Can I change my theme? <span class="rui:bg-yellow-300 rui:text-black rui:rounded-sm rui:px-1 rui:py-px rui:inline-flex rui:h-4 rui:items-center rui:uppercase rui:text-[9px]">New</span>
         </div>
-        <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+        <svg class="rui:mt-0.5 rui:ml-4 rui:h-6 rui:w-6 rui:flex-none rui:stroke-neutral-300 rui:dark:stroke-neutral-400 rui:group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="rui:group-open:hidden" d="M12 6v12"></path></svg>
       </summary>
 
-      <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 prose-a:hover:text-neutral-500 prose-ol:list-decimal py-6">
+      <div class="rui:prose rui:prose-neutral rui:dark:prose-invert rui:max-w-none rui:prose-a:font-semibold rui:prose-a:text-neutral-600 rui:dark:prose-a:text-neutral-400 rui:prose-a:hover:text-neutral-500 rui:prose-ol:list-decimal rui:py-6">
         <p>Yes, you can change your theme at any time. We strive to make this as easy as possible but it's not without some caveats.</p>
 
         <p>Here's what happens when you change your theme:</p>
@@ -84,13 +84,13 @@
     </div>
   </details>
 
-  <details class="group py-4">
-    <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 dark:text-neutral-200 group-open:text-neutral-900 dark:group-open:text-neutral-400 [&::-webkit-details-marker]:hidden">
+  <details class="rui:group rui:py-4">
+    <summary class="rui:flex rui:w-full rui:cursor-pointer rui:select-none rui:justify-between rui:text-left rui:text-base rui:font-semibold rui:leading-7 rui:text-neutral-900 rui:dark:text-neutral-200 rui:group-open:text-neutral-900 rui:dark:group-open:text-neutral-400 rui:[&::-webkit-details-marker]:hidden">
       Do I need to use this form?
 
-      <svg class="mt-0.5 ml-4 h-6 w-6 flex-none stroke-neutral-300 dark:stroke-neutral-400 group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
+      <svg class="rui:mt-0.5 rui:ml-4 rui:h-6 rui:w-6 rui:flex-none rui:stroke-neutral-300 rui:dark:stroke-neutral-400 rui:group-open:stroke-neutral-600" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 12H6"></path><path class="group-open:hidden" d="M12 6v12"></path></svg>
     </summary>
-    <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 prose-a:hover:text-neutral-500 prose-ol:list-decimal py-6">
+    <div class="rui:prose rui:prose-neutral rui:dark:prose-invert rui:max-w-none rui:prose-a:font-semibold rui:prose-a:text-neutral-600 rui:dark:prose-a:text-neutral-400 rui:prose-a:hover:text-neutral-500 rui:prose-ol:list-decimal rui:py-6">
       <p>No, you don't need to use this form. You can change your theme, colors, or pages at any time directly in the <code>config/railsui.yml</code> file. Use the Rails UI  generators (Run <code>rails g --help | grep 'railsui:'</code> to see the list of available railsui generators) to update your configuration via the command line.</p>
 
       <p>You can check <a href="https://railsui.com/docs" target="_blank">the documentation</a> to see a list of available default colors and pages bundled with each Rails UI theme.</p>
@@ -99,7 +99,7 @@
   </details>
 </dl>
 
-<div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-neutral-600 dark:prose-a:text-neutral-400 prose-a:hover:text-neutral-500 prose-ol:list-decimal py-6">
+<div class="rui:prose rui:prose-neutral rui:dark:prose-invert rui:max-w-none rui:prose-a:font-semibold rui:prose-a:text-neutral-600 rui:dark:prose-a:text-neutral-400 rui:prose-a:hover:text-neutral-500 rui:prose-ol:list-decimal rui:py-6">
   <p>Read more about <a href="https://railsui.com/docs/themes" target="_blank">themes</a> and <a href="https://railsui.com/docs/components" target="_blank">components</a> in the Rails UI documentation.</p>
 </div>
 </div>

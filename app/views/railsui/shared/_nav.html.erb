@@ -1,107 +1,107 @@
-<div class="lg:text-sm relative text-base sm:pb-24 pb-4">
-  <ul class="rui-primary-nav leading-loose">
+<div class="rui:lg:text-sm rui:relative rui:text-base rui:sm:pb-24 rui:pb-4">
+  <ul class="rui-primary-nav rui:leading-loose">
     <li x-data="{open: window.location.pathname.includes('content') || false}" x-cloak>
-      <%= link_to systems_content_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-linear-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group" do %>
-        <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-xs flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
-          <%= icon "content", custom_path: "/content.svg", class: "stroke-current size-5 text-indigo-500 group-hover:text-indigo-700 dark:group-hover:text-indigo-300" %>
+      <%= link_to systems_content_path, class:"rui:font-semibold rui:px-4 rui:pb-2 rui:pt-4 rui:border-neutral-300 rui:bg-linear-to-b rui:from-neutral-50 rui:to-transparent rui:dark:from-neutral-800 rui:dark:to-neutral-900 rui:flex rui:items-center rui:space-x-2 rui:w-full rui:mr-px rui:hover:text-indigo-800 rui:dark:hover:text-indigo-300 rui:group" do %>
+        <div class="rui:bg-white rui:dark:bg-neutral-800 rui:dark:border-neutral-700 rui:w-7 rui:h-7 rui:rounded-lg rui:shadow-xs rui:flex rui:items-center rui:justify-center rui:border rui:border-neutral-200 rui:group-hover:shadow-indigo-200 rui:dark:group-hover:shadow-none rui:group-hover:border-neutral-600">
+          <%= icon "content", custom_path: "/content.svg", class: "rui:stroke-current rui:size-5 rui:text-indigo-500 rui:group-hover:text-indigo-700 rui:dark:group-hover:text-indigo-300" %>
         </div>
         <span>Content</span>
       <% end %>
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-neutral-100 dark:border-neutral-700">
+      <ul class="rui:lg:space-y-1 rui:space-y-3 rui:pb-3 rui:ml-7 rui:border-l rui:border-neutral-100 rui:dark:border-neutral-700">
         <li>
-          <%= nav_link_to "Typography", systems_content_typography_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent font-medium" %>
+          <%= nav_link_to "Typography", systems_content_typography_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent rui:font-medium" %>
         </li>
         <li>
-          <%= nav_link_to "Tables", systems_content_tables_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Tables", systems_content_tables_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Images", systems_content_images_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Images", systems_content_images_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Scaffolds", systems_scaffolds_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Scaffolds", systems_scaffolds_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
       </ul>
     </li>
     <li x-data="{open: window.location.pathname.includes('forms') || false}" x-cloak>
-      <%= link_to systems_forms_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-linear-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-neutral-700 "  do %>
-        <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-xs flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
-          <%= icon "forms", custom_path:"/forms.svg", class: "stroke-current size-5 text-teal-500" %>
+      <%= link_to systems_forms_path, class:"rui:font-semibold rui:px-4 rui:pb-2 rui:pt-4 rui:border-neutral-300 rui:bg-linear-to-b rui:from-neutral-50 rui:to-transparent rui:dark:from-neutral-800 rui:dark:to-neutral-900 rui:flex rui:items-center rui:space-x-2 rui:w-full rui:mr-px rui:hover:text-indigo-800 rui:dark:hover:text-indigo-300 rui:group rui:border-t rui:dark:border-neutral-700 "  do %>
+        <div class="rui:bg-white rui:dark:bg-neutral-800 rui:dark:border-neutral-700 rui:w-7 rui:h-7 rui:rounded-lg rui:shadow-xs rui:flex rui:items-center rui:justify-center rui:border rui:border-neutral-200 rui:group-hover:shadow-indigo-200 rui:dark:group-hover:shadow-none rui:group-hover:border-neutral-600">
+          <%= icon "forms", custom_path:"/forms.svg", class: "rui:stroke-current rui:size-5 rui:text-teal-500" %>
         </div>
         <span>Forms</span>
       <% end %>
 
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-neutral-100 dark:border-neutral-700">
+      <ul class="rui:lg:space-y-1 rui:space-y-3 rui:pb-3 rui:ml-7 rui:border-l rui:border-neutral-100 rui:dark:border-neutral-700">
         <li>
-          <%= nav_link_to "Inputs", systems_forms_input_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Inputs", systems_forms_input_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Input Groups", systems_forms_input_group_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Input Groups", systems_forms_input_group_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Selects", systems_forms_select_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Selects", systems_forms_select_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Checkboxes & Radios", systems_forms_checkboxes_and_radio_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Checkboxes & Radios", systems_forms_checkboxes_and_radio_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Layout", systems_forms_layout_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Layout", systems_forms_layout_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Validation", systems_forms_validation_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Validation", systems_forms_validation_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
       </ul>
     </li>
     <li x-data="{open: window.location.pathname.includes('components')}" x-cloak>
 
-      <%= link_to systems_components_path, class:"font-semibold px-4 pb-2 pt-4 border-neutral-300 bg-linear-to-b from-neutral-50 to-transparent dark:from-neutral-800 dark:to-neutral-900 flex items-center space-x-2 w-full mr-px hover:text-indigo-800 dark:hover:text-indigo-300 group border-t dark:border-neutral-700"  do %>
-        <div class="bg-white dark:bg-neutral-800 dark:border-neutral-700 w-7 h-7 rounded-lg shadow-xs flex items-center justify-center border border-neutral-200 group-hover:shadow-indigo-200 dark:group-hover:shadow-none group-hover:border-neutral-600">
-          <%= icon "components", custom_path: "/components.svg", class: "stroke-current size-5 text-rose-500" %>
+      <%= link_to systems_components_path, class:"rui:font-semibold rui:px-4 rui:pb-2 rui:pt-4 rui:border-neutral-300 rui:bg-linear-to-b rui:from-neutral-50 rui:to-transparent rui:dark:from-neutral-800 rui:dark:to-neutral-900 rui:flex rui:items-center rui:space-x-2 rui:w-full rui:mr-px rui:hover:text-indigo-800 rui:dark:hover:text-indigo-300 rui:group rui:border-t rui:dark:border-neutral-700"  do %>
+        <div class="rui:bg-white rui:dark:bg-neutral-800 rui:dark:border-neutral-700 rui:w-7 rui:h-7 rui:rounded-lg rui:shadow-xs rui:flex rui:items-center rui:justify-center rui:border rui:border-neutral-200 rui:group-hover:shadow-indigo-200 rui:dark:group-hover:shadow-none rui:group-hover:border-neutral-600">
+          <%= icon "components", custom_path: "/components.svg", class: "rui:stroke-current rui:size-5 rui:text-rose-500" %>
         </div>
         <span>Components</span>
       <% end %>
 
-      <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-neutral-100 dark:border-neutral-700">
+      <ul class="rui:lg:space-y-1 rui:space-y-3 rui:pb-3 rui:ml-7 rui:border-l rui:border-neutral-100 rui:dark:border-neutral-700">
         <li>
-          <%= nav_link_to "Accordion", systems_components_accordion_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Accordion", systems_components_accordion_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Alert", systems_components_alert_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Alert", systems_components_alert_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Badge", systems_components_badge_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Badge", systems_components_badge_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Breadcrumb", systems_components_breadcrumb_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Breadcrumb", systems_components_breadcrumb_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Button", systems_components_button_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Button", systems_components_button_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Card",systems_components_card_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Card",systems_components_card_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Dropdown", systems_components_dropdown_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Dropdown", systems_components_dropdown_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Flash", systems_components_flash_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Flash", systems_components_flash_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Modal", systems_components_modal_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Modal", systems_components_modal_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Navigation", systems_components_navigation_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Navigation", systems_components_navigation_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Pagination", systems_components_pagination_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Pagination", systems_components_pagination_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Tabs", systems_components_tabs_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Tabs", systems_components_tabs_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Toast", systems_components_toast_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Toast", systems_components_toast_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Tooltip", systems_components_tooltip_path, class:"block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Tooltip", systems_components_tooltip_path, class:"rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
       </ul>
     </li>
@@ -117,19 +117,19 @@
 
       <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-neutral-100 dark:border-neutral-700">
         <li>
-          <%= nav_link_to "Layout", systems_mailers_layout_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Layout", systems_mailers_layout_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Minimal", systems_mailers_minimal_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Minimal", systems_mailers_minimal_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Promotion", systems_mailers_promotion_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Promotion", systems_mailers_promotion_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Transactional", systems_mailers_transactional_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Transactional", systems_mailers_transactional_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Devise", systems_mailers_devise_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Devise", systems_mailers_devise_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
       </ul>
     </li>
@@ -145,22 +145,22 @@
 
       <ul class="lg:space-y-1 space-y-3 pb-3 ml-7 border-l border-neutral-100 dark:border-neutral-700">
         <li>
-          <%= nav_link_to "Sign up", systems_authentication_signup_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Sign up", systems_authentication_signup_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Sign in", systems_authentication_signin_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Sign in", systems_authentication_signin_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Reset password", systems_authentication_reset_password_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Reset password", systems_authentication_reset_password_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Confirmation", systems_authentication_confirmation_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Confirmation", systems_authentication_confirmation_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Edit account", systems_authentication_edit_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Edit account", systems_authentication_edit_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
         <li>
-          <%= nav_link_to "Unlock", systems_authentication_unlocks_path, class: "block px-6 py-1 transition-colors duration-200 ease-linear relative border-r border-transparent" %>
+          <%= nav_link_to "Unlock", systems_authentication_unlocks_path, class: "rui:block rui:px-6 rui:py-1 rui:transition-colors rui:duration-200 rui:ease-linear rui:relative rui:border-r rui:border-transparent" %>
         </li>
       </ul>
     </li>

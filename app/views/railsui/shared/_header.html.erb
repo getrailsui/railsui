@@ -1,18 +1,18 @@
-<div class="mb-6">
-  <div class="text-neutral-500 dark:text-neutral-400 text-sm md:mb-2">
-    <div class="flex items-center gap-1.5">
+<div class="rui:mb-6">
+  <div class="rui:text-neutral-500 rui:dark:text-neutral-400 rui:text-sm rui:md:mb-2">
+    <div class="rui:flex rui:items-center rui:gap-1.5">
       <% unless params[:controller] == "railsui/systems" %>
-        <p class="text-neutral-500 dark:text-neutral-400 relative text-sm"><%= params[:controller].gsub("railsui/systems/", "").titleize %></p>
+        <p class="rui:text-neutral-500 rui:dark:text-neutral-400 rui:relative rui:text-sm"><%= params[:controller].gsub("railsui/systems/", "").titleize %></p>
       <% else %>
-        <p class="text-neutral-500 dark:text-neutral-400 text-sm relative">Module</p>
+        <p class="rui:text-neutral-500 rui:dark:text-neutral-400 rui:text-sm rui:relative">Module</p>
       <% end %>
-      <%= icon "chevron-right", class: "size-3 text-neutral-500" %>
-      <div class="text-neutral-900 dark:text-white font-medium"><%= params[:action].titleize %></div>
+      <%= icon "chevron-right", class: "rui:size-3 rui:text-neutral-500" %>
+      <div class="rui:text-neutral-900 rui:dark:text-white rui:font-medium"><%= params[:action].titleize %></div>
     </div>
   </div>
-  <%= heading text: params[:action].titleize, id: params[:action], tag: "h1", class: "md:text-4xl text-3xl text-neutral-800 font-bold dark:text-neutral-100 tracking-tight relative" %>
+  <%= heading text: params[:action].titleize, id: params[:action], tag: "h1", class: "rui:md:text-4xl rui:text-3xl rui:text-neutral-800 rui:font-bold rui:dark:text-neutral-100 rui:tracking-tight rui:relative" %>
   <% if content_for?(:header_description).present? %>
-    <div class="prose prose-neutral dark:prose-invert mt-3 prose-lg prose-p:text-neutral-500 dark:prose-p:text-neutral-400">
+    <div class="rui:prose rui:prose-neutral rui:dark:prose-invert rui:mt-3 rui:prose-lg rui:prose-p:text-neutral-500 rui:dark:prose-p:text-neutral-400">
       <%= yield :header_description %>
     </div>
   <% end %>

@@ -1,15 +1,15 @@
 <div>
   <% unless current_page?(local_assigns[:path]) %>
     <%= link_to local_assigns[:path],
-      class: "text-[14px] font-medium py-2.5 px-2 -mx-2 text-neutral-800 focus:text-neutral-600 hover:text-neutral-900 flex items-center gap-2 relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/80 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group" do %>
-      <%= icon local_assigns[:icon], class: "size-5 stroke-current text-neutral-500 group-hover:text-neutral-800 dark:group-hover:text-neutral-300 dark:text-neutral-400", title: local_assigns[:label] %>
+      class: "rui:text-[14px] rui:font-medium rui:py-2.5 rui:px-2 rui:-mx-2 rui:text-neutral-800 rui:focus:text-neutral-600 rui:hover:text-neutral-900 rui:flex rui:items-center rui:gap-2 rui:relative rui:hover:transition rui:hover:duration-200 rui:hover:ease-in-out rui:dark:focus:text-white rui:hover:bg-neutral-50/80 rui:rounded-sm rui:transition rui:dark:text-neutral-200 rui:dark:hover:bg-neutral-800/70 rui:dark:hover:text-white rui:group" do %>
+      <%= icon local_assigns[:icon], class: "rui:size-5 rui:stroke-current rui:text-neutral-500 rui:group-hover:text-neutral-800 rui:dark:group-hover:text-neutral-300 rui:dark:text-neutral-400", title: local_assigns[:label] %>
       <span><%= local_assigns[:label] %></span>
     <% end %>
   <% else %>
     <%= link_to local_assigns[:path],
-      class: "text-[14px] font-medium py-2.5 px-2 -mx-2 text-neutral-900 hover:text-neutral-950 flex items-center gap-2 relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white bg-neutral-200/70 rounded-sm transition dark:text-neutral-200 dark:bg-neutral-800/70 dark:text-white group dark:hover:text-white" do %>
-      <%= icon local_assigns[:icon], class: "size-5 stroke-current text-neutral-500
-      group-hover:text-netural-800 dark:group-hover:text-neutral-300 dark:text-neutral-400", title: local_assigns[:label]  %>
+      class: "rui:text-[14px] rui:font-medium rui:py-2.5 rui:px-2 rui:-mx-2 rui:text-neutral-900 rui:hover:text-neutral-950 rui:flex rui:items-center rui:gap-2 rui:relative rui:hover:transition rui:hover:duration-200 rui:hover:ease-in-out rui:dark:focus:text-white rui:bg-neutral-200/70 rui:rounded-sm rui:transition rui:dark:text-neutral-200 rui:dark:bg-neutral-800/70 rui:dark:text-white rui:group rui:dark:hover:text-white" do %>
+      <%= icon local_assigns[:icon], class: "rui:size-5 rui:stroke-current rui:text-neutral-500
+      rui:group-hover:text-netural-800 rui:dark:group-hover:text-neutral-300 rui:dark:text-neutral-400", title: local_assigns[:label]  %>
       <span><%= local_assigns[:label] %></span>
     <% end %>
   <% end %>

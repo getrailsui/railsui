@@ -1,11 +1,11 @@
 <% if notice %>
-  <div class="bg-linear-to-br from-indigo-700 to-indigo-600 text-white text-center py-1.5 z-50 relative rounded-lg mb-3" role="alert" data-controller="railsui-flash">
+  <div class="rui:bg-linear-to-br rui:from-indigo-700 rui:to-indigo-600 rui:text-white rui:text-center rui:py-1.5 z-50 rui:relative rui:rounded-lg mb-3" role="alert" data-controller="railsui-flash">
     <p><%= sanitize notice %></p>
   </div>
 <% end %>
 
 <% if alert %>
-  <div class="bg-linear-to-br from-red-600 to-red-400 text-white text-center py-1.5 z-50 relative rounded-lg mb-3" role="alert" data-controller="railsui-flash">
+  <div class="rui:bg-linear-to-br rui:from-red-600 rui:to-red-400 rui:text-white rui:text-center rui:py-1.5 rui:z-50 rui:relative rui:rounded-lg rui:mb-3" role="alert" data-controller="railsui-flash">
     <p><%= sanitize alert %></p>
   </div>
 <% end %>

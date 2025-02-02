@@ -1,6 +1,7 @@
 <div id="table-border">
 <%= render layout: example, locals: { heading: "Border" } do %>
 
+<%= render preview 'gray' do %>
 	<table class="table-auto w-full border border-slate-300 dark:border-slate-700/80">
 		<thead>
 			<tr>
@@ -26,7 +27,7 @@
 			</tr>
 		</tbody>
 	</table>
-
+<% end %>
 
 <% content_for :example, flush: true do %>
 	<%# .html %>

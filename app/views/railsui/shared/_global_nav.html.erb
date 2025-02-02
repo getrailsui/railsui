@@ -1,20 +1,20 @@
- <nav class="text-sm md:pt-3 pt-0 bg-neutral-50/20 md:h-screen md:w-[280px] md:border-r border-neutral-200/90 flex-col flex dark:bg-neutral-900 dark:border-neutral-700/80 overflow-y-auto md:pl-3 md:pr-0! px-3 md:pb-10 overflow-x-hidden" data-railsui-scroll-target="scrollitem">
-  <div>
-    <div class="flex flex-wrap items-center gap-4 justify-between py-2 md:py-1 w-full">
-      <div class="flex items-center gap-2 md:mb-3">
-        <%= link_to main_app.root_path, class: "size-6 border border-transparent hover:border-neutral-300 dark:hover:border-neutral-500 rounded-md flex items-center justify-center hover:transition hover:ease-in-out hover:duration-300 relative -left-1", data: { controller: "railsui-tooltip", railsui_tooltip_content_value: "Back to app" } do %>
+ <nav class="rui:text-sm rui:md:pt-3 rui:pt-0 rui:bg-neutral-50/20 rui:md:h-screen rui:md:w-[280px] rui:md:border-r rui:border-neutral-200/90 rui:flex-col rui:flex rui:dark:bg-neutral-900 rui:dark:border-neutral-700/80 rui:overflow-y-auto rui:md:pl-3 rui:md:pr-0! rui:px-3 rui:md:pb-10 rui:overflow-x-hidden rui:w-full" data-railsui-scroll-target="scrollitem">
+  <div class="rui:flex-1">
+    <div class="rui:flex rui:flex-wrap rui:items-center rui:gap-4 rui:justify-between rui:py-2 rui:md:py-1 rui:w-full">
+      <div class="rui:flex rui:items-center rui:gap-2 rui:md:mb-3">
+        <%= link_to main_app.root_path, class: "rui:size-6 rui:border rui:border-transparent rui:hover:border-neutral-300 rui:dark:hover:border-neutral-500 rui:rounded-md rui:flex rui:items-center rui:justify-center rui:hover:transition rui:hover:ease-in-out rui:hover:duration-300 rui:relative rui:-left-1", data: { controller: "railsui-tooltip", railsui_tooltip_content_value: "Back to app" } do %>
 
-          <%= icon "chevron-left", class: "size-4 stroke-neutral-400 group-hover:stroke-neutral-600" %>
-          <span class="sr-only">Back to app</span>
+          <%= icon "chevron-left", class: "rui:size-4 rui:stroke-neutral-400 rui:group-hover:stroke-neutral-600" %>
+          <span class="rui:sr-only">Back to app</span>
         <% end %>
 
-        <%= link_to params[:controller].include?('systems') ? systems_path : root_path, class: "relative -left-0.5" do %>
-          <%= image_tag "railsui-logo.svg", class: "w-20 h-auto dark:invert" %>
+        <%= link_to params[:controller].include?('systems') ? systems_path : root_path, class: "rui:relative rui:-left-0.5" do %>
+          <%= image_tag "railsui-logo.svg", class: "rui:w-20 rui:h-auto rui:dark:invert" %>
         <% end %>
       </div>
 
-      <button role="toggle nav" class="md:hidden size-10 focus:ring-neutral-300/20 focus:ring-4 rounded-lg dark:focus:ring-neutral-600 flex items-center justify-center shrink-0" data-action="click->railsui-toggle#toggle">
-        <%= icon "menu", custom_path: "/menu.svg", class: "stroke-current w-7 h-7 text-neutral-600 dark:text-neutral-300" %>
+      <button role="toggle nav" class="rui:md:hidden rui:size-10 rui:focus:ring-neutral-300/20 rui:focus:ring-4 rui:rounded-lg rui:dark:focus:ring-neutral-600 rui:flex rui:items-center rui:justify-center rui:shrink-0" data-action="click->railsui-toggle#toggle">
+        <%= icon "menu", custom_path: "/menu.svg", class: "rui:stroke-current rui:w-7 rui:h-7 rui:text-neutral-600 rui:dark:text-neutral-300" %>
       </button>
     </div>
 
@@ -23,15 +23,15 @@
       <%= render "railsui/shared/global_nav_item", path: root_path, icon: "cog-6-tooth", label: "Configuration" %>
 
       <% if params[:controller].include?('admin') %>
-        <div class="pl-8 font-normal text-[14px] -mx-2 pt-px">
-          <a href="#configuration" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">General</a>
+        <div class="rui:pl-8 rui:font-normal rui:text-[14px] rui:-mx-2 rui:pt-px">
+          <a href="#configuration" data-action="click->railsui-smooth#scroll" class="rui:pl-1 rui:pr-2 rui:py-1.5 rui:block rui:relative rui:hover:transition rui:hover:duration-200 rui:hover:ease-in-out rui:dark:focus:text-white rui:hover:bg-neutral-50/90 rui:rounded-sm rui:transition rui:dark:text-neutral-200 rui:dark:hover:bg-neutral-800/70 rui:dark:hover:text-white rui:group">General</a>
 
-          <a href="#theme" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Theme</a>
+          <a href="#theme" data-action="click->railsui-smooth#scroll" class="rui:pl-1 rui:pr-2 rui:py-1.5 rui:block rui:relative rui:hover:transition rui:hover:duration-200 rui:hover:ease-in-out rui:dark:focus:text-white rui:hover:bg-neutral-50/90 rui:rounded-sm rui:transition rui:dark:text-neutral-200 rui:dark:hover:bg-neutral-800/70 rui:dark:hover:text-white rui:group">Theme</a>
 
           <% if Railsui.config.theme.present? %>
-            <a href="#color" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Color</a>
+            <a href="#color" data-action="click->railsui-smooth#scroll" class="rui:pl-1 rui:pr-2 rui:py-1.5 rui:block rui:relative rui:hover:transition rui:hover:duration-200 rui:hover:ease-in-out rui:dark:focus:text-white rui:hover:bg-neutral-50/90 rui:rounded-sm rui:transition rui:dark:text-neutral-200 rui:dark:hover:bg-neutral-800/70 rui:dark:hover:text-white rui:group">Color</a>
 
-            <a href="#pages" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded-sm transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Pages</a>
+            <a href="#pages" data-action="click->railsui-smooth#scroll" class="rui:pl-1 rui:pr-2 rui:py-1.5 rui:block rui:relative rui:hover:transition rui:hover:duration-200 rui:hover:ease-in-out rui:dark:focus:text-white rui:hover:bg-neutral-50/90 rui:rounded-sm rui:transition rui:dark:text-neutral-200 rui:dark:hover:bg-neutral-800/70 rui:dark:hover:text-white rui:group">Pages</a>
           <% end %>
         </div>
       <% end %>

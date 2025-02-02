@@ -1,11 +1,11 @@
-<div class="pb-8">
-  <%= heading text: "General", id: "theme", tag: "h3", class: "font-semibold text-xl mb-3" %>
+<div class="rui:pb-8">
+  <%= heading text: "General", id: "theme", tag: "h3", class: "rui:font-semibold rui:text-xl rui:mb-3" %>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+  <div class="rui:grid rui:grid-cols-1 rui:md:grid-cols-2 rui:gap-6 rui:mb-6">
     <div>
       <%= f.label :application_name, class: "rui-form-label" %>
-      <%= f.text_field :application_name, class: "rui-form-input w-full", placeholder: "Rails UI" %>
-      <div class="prose-sm prose-neutral dark:prose-invert mt-2 opacity-75">
+      <%= f.text_field :application_name, class: "rui-form-input rui:w-full", placeholder: "Rails UI" %>
+      <div class="prose-sm prose-neutral dark:prose-invert rui:mt-2 rui:opacity-75">
         <p>Only used for presentational purposes.</p>
       </div>
     </div>
