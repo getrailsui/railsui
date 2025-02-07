@@ -10,16 +10,16 @@
 
       <p>Adjust these colors in <code>app/assets/stylehseets/railsui/theme.css</code> or update to import your own theme. I recommend <%= link_to "this tool", "https://uicolors.app/create?ref=railsui.com", target: :_blank %> for generating colors. Hex colors are acceptable but for a wider gamut you could reach for <%= link_to "okchl", "https://oklch.com", target: :_blank %> following in the footsteps of Tailwind CSS v4.</p>
 
-    <% if File.exist?("#{Rails.root}/app/assets/stylesheets/railsui/theme.css") %>
-      <h3>theme.css</h3>
+      <% if File.exist?("#{Rails.root}/app/assets/stylesheets/railsui/theme.css") %>
+        <h3>theme.css</h3>
 
-      <p>The contents of the <code>app/assets/stylesheets/railsui/theme.css</code> file is displayed below for <strong><%= Railsui.config.theme.humanize %></strong>, your active theme. To customize this file, make a copy and update the <code>@import</code> path inside your main application css file. You can then reference Tailwind's <%= link_to "theme variables guide", "https://tailwindcss.com/docs/theme", target: :_blank %> to extend it.</p>
+        <p>The contents of the <code>app/assets/stylesheets/railsui/theme.css</code> file is displayed below for <strong><%= Railsui.config.theme.humanize %></strong>, your active theme. To customize this file, make a copy and update the <code>@import</code> path inside your main application CSS file to reference back to it. Use Tailwind's <%= link_to "theme variables guide", "https://tailwindcss.com/docs/theme", target: :_blank %> to extend this file.</p>
 
-      <div class="rui:not-prose rui:my-3">
-      <div data-controller="railsui-code" class="rui:bg-gradient-to-br rui:from-neutral-700 rui:to-neutral-800 rui:rounded-lg rui:overflow-clip rui:dark:border rui:dark:border-neutral-700 rui:selection:bg-neutral-300/90 rui:selection:text-neutral-800 rui:relative rui:scrollbar rui:border-transparent">
-        <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-css scrollbar"><%= File.read(Rails.root.join("app/assets/stylesheets/railsui/theme.css")) %></code></pre>
-      </div>
-      </div>
-    <% end %>
+        <div class="rui:not-prose rui:my-3">
+          <div data-controller="railsui-code" class="rui:bg-gradient-to-br rui:from-neutral-700 rui:to-neutral-800 rui:rounded-lg rui:overflow-clip rui:dark:border rui:dark:border-neutral-700 rui:selection:bg-neutral-300/90 rui:selection:text-neutral-800 rui:relative rui:scrollbar rui:border-transparent">
+            <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-css scrollbar"><%= File.read(Rails.root.join("app/assets/stylesheets/railsui/theme.css")) %></code></pre>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>

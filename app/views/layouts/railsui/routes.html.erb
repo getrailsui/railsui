@@ -25,16 +25,16 @@
     <%= yield :head %>
   </head>
 
-  <body class="railsui font-normal leading-normal text-netural-800 lg:h-screen relative selection:bg-neutral-100 antialiased bg-white dark:bg-neutral-900 dark:text-neutral-50 overflow-x-hidden" data-controller="railsui-toggle railsui-scroll railsui-smooth">
+  <body class="railsui rui:overflow-x-hidden rui:relative rui:antialiased rui:font-normal rui:leading-normal rui:bg-white rui:text-netural-800 rui:lg:h-screen rui:selection:bg-neutral-100 rui:dark:bg-neutral-900 rui:dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth">
 
-    <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.05] dark:opacity-20 z-10 md:block hidden" %>
+    <%= image_tag "blur.png", class: "rui:absolute rui:-top-[500px] rui:-right-[500px] rui:opacity-[0.05] rui:dark:opacity-20 rui:z-10 rui:md:block rui:hidden" %>
 
     <%= render "railsui/shared/flash_messages" %>
 
-    <div class="container mx-auto px-4 md:px-6">
+    <div class="rui:container rui:px-4 rui:mx-auto rui:md:px-6">
       <%= yield %>
 
-      <div class="pt-6">
+      <div class="rui:pt-6">
         <%= render "railsui/shared/footer" %>
       </div>
 
