@@ -1,0 +1,73 @@
+@theme {
+  --font-heading: "Lexend", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary-50: oklch(0.9694 0.0152 12.42); /* #fff1f2 */
+  --color-primary-100: oklch(0.9414 0.0298 12.58); /* #ffe4e6 */
+  --color-primary-200: oklch(0.8924 0.0559 10); /* #fecdd3 */
+  --color-primary-300: oklch(0.8097 0.1061 11.64); /* #fda4af */
+  --color-primary-400: oklch(0.7192 0.169 13.43); /* #fb7185 */
+  --color-primary-500: oklch(0.645 0.2154 16.44); /* #f43f5e */
+  --color-primary-600: oklch(0.5858 0.222 17.58); /* #e11d48 */
+  --color-primary-700: oklch(0.5143 0.1978 16.93); /* #be123c */
+  --color-primary-800: oklch(0.4546 0.1713 13.7); /* #9f1239 */
+  --color-primary-900: oklch(0.4103 0.1502 10.27); /* #881337 */
+  --color-primary-950: oklch(0.2708 0.1009 12.09); /* #4c0519 */
+
+  --color-secondary-50: oklch(0.9659 0.0151 228.96); /* #eaf6fc */
+  --color-secondary-100: oklch(0.8976 0.0451 233.81); /* #c1e3f7 */
+  --color-secondary-200: oklch(0.833 0.0747 234.25); /* #98d1f2 */
+  --color-secondary-300: oklch(0.771 0.1027 235.45); /* #6FBFED */
+  --color-secondary-400: oklch(0.7101 0.127 237.87); /* #46ACE7 */
+  --color-secondary-500: oklch(0.657 0.1467 241.5); /* #1D9AE2 */
+  --color-secondary-600: oklch(0.5676 0.1252 241.28); /* #187eb9 */
+  --color-secondary-700: oklch(0.4744 0.103 240.82); /* #126290 */
+  --color-secondary-800: oklch(0.3766 0.0791 240.27); /* #0D4667 */
+  --color-secondary-900: oklch(0.2721 0.0531 239.27); /* #082a3e */
+  --color-secondary-950: oklch(0.1558 0.024 233.9); /* #030E15 */
+
+  --animate-toast-from-right: toast-from-right 0.5s
+    cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --animate-toast-from-left: toast-from-left 0.5s
+    cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  @keyframes toast-from-right {
+    0% {
+      transform: translateX(50%);
+      opacity: 0%;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 100%;
+    }
+  }
+
+  @keyframes toast-from-left {
+    0% {
+      transform: translateX(-50%);
+      opacity: 0%;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 100%;
+    }
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-zinc-300, currentColor);
+  }
+}
+
+@plugin "@tailwindcss/typography";
+
+/* Keep: Include Rails UI content paths */
+@config "../../stylesheets/railsui/tailwind.config.js";

@@ -19,7 +19,7 @@
 <% end %>
 
 <%= render callout do %>
-  <p>Remember: If you made a resource before and then change your Rails UI theme, your old scaffolds won't change to match the new theme.</p>
+  <p><strong>Note</strong>: Changing your Rails UI theme will not automatically update existing scaffolds to match the new theme.</p>
 <% end %>
 
 <%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/index" %>

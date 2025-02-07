@@ -1,0 +1,47 @@
+@utility h1 {
+  @apply md:text-4xl text-3xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tighter;
+}
+
+@utility h2 {
+  @apply md:text-3xl text-2xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tighter;
+}
+
+@utility h3 {
+  @apply md:text-2xl text-xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}
+
+@utility h4 {
+  @apply md:text-xl text-lg font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}
+
+@utility h5 {
+  @apply md:text-lg text-base font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}
+
+@utility h6 {
+  @apply text-base font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}
+
+@utility display-1 {
+  @apply md:text-9xl text-7xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tighter;
+}
+
+@utility display-2 {
+  @apply md:text-8xl text-6xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tighter;
+}
+
+@utility display-3 {
+  @apply md:text-7xl text-6xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}
+
+@utility display-4 {
+  @apply md:text-6xl text-5xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}
+
+@utility display-5 {
+  @apply md:text-5xl text-4xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}
+
+@utility display-6 {
+  @apply md:text-4xl text-3xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight tracking-tight;
+}

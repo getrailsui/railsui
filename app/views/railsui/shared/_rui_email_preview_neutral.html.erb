@@ -1,0 +1,22 @@
+<div class="relative my-10 bg-white border rounded-lg border-neutral-200/80 dark:border-neutral-700/80 dark:bg-neutral-900">
+  <div class="flex px-6 py-4 space-x-2 text-sm border-b rounded-t-lg text-neutral-700 border-neutral-200/80 dark:text-white/80 dark:border-neutral-700/80">
+    <ul class="text-right">
+      <li>From:</li>
+      <li>To:</li>
+      <li>Date:</li>
+      <li>Subject:</li>
+    </ul>
+    <ul>
+      <li><%= Railsui.config.support_email || "john.doe@example.com" %></li>
+      <li>saasquatch@railsui.com</li>
+      <li><%= Date.today.to_formatted_s(:long) %></li>
+      <li class="font-semibold"><%= local_assigns[:subject] %></li>
+    </ul>
+  </div>
+
+  <div class="rui-mailer p-3 pb-10 min-h-[600px]">
+    <div class="absolute inline-block px-3 py-1 text-xs font-semibold rounded-full bg-neutral-300 text-neutral-800 top-4 right-4">Email preview</div>
+
+    <%= capture(&block) %>
+  </div>
+</div>

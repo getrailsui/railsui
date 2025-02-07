@@ -116,7 +116,7 @@
                   </div>
                   <span class="md:hidden text-slate-500 dark:text-slate-200 text-sm font-medium ml-2">Notifications</span>
                 </button>
-                <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y text-left dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 right-0 top-8 bg-white rounded-lg md:shadow-xl shadow-slate-900/10 border border-slate-200 md:min-w-[320px] z-50 py-1 text-sm divide-y divide-slate-200 text-left dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
@@ -180,7 +180,7 @@
                   <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" %>
                 </button>
 
-                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y divide-gray-200 md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
@@ -385,7 +385,7 @@
                   <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" %>
                 </button>
 
-                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y divide-gray-200 md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
@@ -466,7 +466,7 @@
                 <%%= nav_link_to "Settings", "#", class: "rui-nav-link" %>
               </li>
               <li data-controller="railsui-dropdown" class="relative">
-                <button class="rui-nav-link flex justify-center items-center space-x-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+                <button class="rui-nav-link flex! justify-center items-center gap-2 sm:w-auto w-full" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
                   <span>More</span>
                   <%%= icon "chevron-down", class: "size-3 text-slate-500" %>
                 </button>
@@ -588,7 +588,7 @@
                   <%%= image_tag "#", class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out" %>
                 </button>
 
-                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
+                <div class="hidden transition transform origin-to-right md:absolute right-0 top-10 bg-white rounded-lg md:shadow-xl md:shadow-slate-900/10 md:border border-slate-200 md:min-w-[200px] z-50 py-1 divide-y divide-gray-200 md:w-auto w-full md:text-sm dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-base font-medium text-slate-600 dark:text-slate-200 dark:divide-gray-600" data-railsui-dropdown-target="menu"
                 data-transition-enter-from="opacity-0 scale-95"
                 data-transition-enter-to="opacity-100 scale-100"
                 data-transition-leave-from="opacity-100 scale-100"
@@ -708,7 +708,7 @@
               %li.md:mt-0.mt-4.flex.flex-col.items-center.relative{"data-controller" => "railsui-dropdown"}
                 %button.group{"data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide", type: "button"}
                   = image_tag "#", class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover border-2 border-transparent group-hover:border-primary-600 transition duration-300 ease-in-out"
-                .hidden.transition.transform.origin-to-right.md:absolute.right-0.top-10.bg-white.rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.py-1.divide-y.md:w-auto.w-full.md:text-sm.dark:bg-slate-700.text-base.font-medium.text-slate-600.dark:text-slate-200.dark:divide-gray-600{class: "md:shadow-slate-900/10 md:min-w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                .hidden.transition.transform.origin-to-right.md:absolute.right-0.top-10.bg-white.rounded-lg.md:shadow-xl.md:border.border-slate-200.z-50.py-1.divide-y.divide-gray-200.md:w-auto.w-full.md:text-sm.dark:bg-slate-700.text-base.font-medium.text-slate-600.dark:text-slate-200.dark:divide-gray-600{class: "md:shadow-slate-900/10 md:min-w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
                   %div{role: "none"}
                     = link_to "Profile", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block"
                     = link_to "Preferences", "#", class: "px-4 py-2 md:py-[.4rem] hover:text-primary-600 dark:hover:text-primary-400 block"

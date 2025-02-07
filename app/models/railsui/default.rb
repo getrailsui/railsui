@@ -3,7 +3,7 @@ module Railsui
     THEMES = {
       hound: {
         name: "Hound",
-        preview_link: "https://hound.pages.dev/",
+        preview_link: "https://hound.railsui.com/",
         thumbnail: "tailwind-hound-thumbnail.jpg"
       },
       shepherd: {

@@ -1,7 +1,7 @@
 <div id="pagination-pagy">
 <%= render layout: example, locals: { heading: "Pagy gem", section: "Pagination" } do %>
 
-  <div class="prose prose-slate dark:!prose-invert my-6">
+  <div class="prose prose-slate dark:prose-invert my-6">
     <p><%= link_to "Pagy", "https://github.com/ddnexus/pagy", target: :_blank %> is a popular pagination solution for Ruby/Rails developers. The nav partial <%= link_to "from the gem", "https://github.com/ddnexus/pagy/tree/master/lib/templates", target: :_blank %> comes ready to use with Rails UI.</p>
 
     <p>To make use of this UI you will need to render an alternative partial containing the code below with the <code>@pagy</code> instance variable passed through as a local variable inside the partial.</p>
@@ -11,10 +11,10 @@
 <nav aria-label="pager" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300" role="navigation">
   <div class="flex flex-wrap items-center sm:justify-between justify-center">
     <span class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
-      <span class="flex justify-center items-center space-x-2 py-2 px-4 rounded sm:w-auto w-full sm:bg-transparent sm:mb-0 mb-3 pointer-events-none select-none opacity-40 dark:opacity-60">&lsaquo; Prev</span>
+      <span class="flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full sm:bg-transparent sm:mb-0 mb-3 pointer-events-none select-none opacity-40 dark:opacity-60">&lsaquo; Prev</span>
     </span>
 
-    <span class="py-2 px-4 border-t-2 border-transparent block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400">1</span>
+    <span class="py-2 px-4 border-t-2 border-transparent block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400 rounded">1</span>
     <span>
       <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#" rel="next">2</a>
   </span>
@@ -30,7 +30,7 @@
   <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">…</span>
   <span><a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#">14</a></span>
   <span class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
-    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white" href="#" rel="next" aria-label="next"> Next &rsaquo;</a>
+    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white" href="#" rel="next" aria-label="next"> Next &rsaquo;</a>
   </span>
 </nav>
 <% end %>
@@ -48,11 +48,11 @@
   <div class="flex flex-wrap items-center sm:justify-between justify-center">
   <%% if pagy.prev %>
     <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
-      <%%== link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+      <%%== link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
     </div>
   <%% else %>
     <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
-      <span class="opacity-40 dark:opacity-60 flex justify-center items-center space-x-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none">
+      <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none">
         <%%== pagy_t('pagy.nav.prev') %>
       </span>
     </div>
@@ -71,11 +71,11 @@
 
   <%% if pagy.next %>
     <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
-      <%%== link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+      <%%== link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
     </div>
   <%% else %>
     <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
-      <span class="opacity-40 dark:opacity-60 flex justify-center items-center space-x-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none">
+      <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none">
         <%%== pagy_t('pagy.nav.next') %>
       </span>
     </div>
@@ -92,10 +92,10 @@
   .flex.flex-wrap.items-center.sm:justify-between.justify-center
     - if pagy.prev
       .sm:flex-1.flex.justify-start.items-center.sm:w-auto.w-full
-        != link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"')
+        != link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"')
     - else
       .sm:flex-1.flex.justify-start.items-center.sm:w-auto.w-full
-        %span.opacity-40.dark:opacity-60.flex.justify-center.items-center.space-x-2.py-2.px-4.rounded.sm:w-auto.w-full.bg-transparent.sm:mb-0.mb-3.pointer-events-none.select-none
+        %span.opacity-40.dark:opacity-60.flex.justify-center.items-center.gap-2.py-2.px-4.rounded.sm:w-auto.w-full.bg-transparent.sm:mb-0.mb-3.pointer-events-none.select-none
           != pagy_t('pagy.nav.prev')
     / series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36]
     - pagy.series.each do |item|
@@ -107,10 +107,10 @@
         %span.py-2.px-4.block.border-t-2.border-transparent.rounded.pointer-events-none.select-none!= pagy_t('pagy.nav.gap')
     - if pagy.next
       .sm:flex-1.flex.justify-end.items-center.sm:w-auto.w-full
-        != link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"')
+        != link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"')
     - else
       .sm:flex-1.flex.justify-end.items-center.sm:w-auto.w-full
-        %span.opacity-40.dark:opacity-60.flex.justify-center.items-center.space-x-2.py-2.px-4.rounded.sm:w-auto.w-full.bg-transparent.sm:mt-0.mt-3.pointer-events-none.select-none
+        %span.opacity-40.dark:opacity-60.flex.justify-center.items-center.gap-2.py-2.px-4.rounded.sm:w-auto.w-full.bg-transparent.sm:mt-0.mt-3.pointer-events-none.select-none
           != pagy_t('pagy.nav.next')
 
 <% end %>

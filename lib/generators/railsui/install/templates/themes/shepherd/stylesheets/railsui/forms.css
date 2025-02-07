@@ -1,24 +1,8 @@
 @layer components {
-  /***************************************
-    Forms
-  ****************************************/
-
-  /**
-  * @component – Form group
-  * @section – Forms
-  * @modifiers
-    .form-group – Default form grouping with offset. Used to offset different elements within one form.
-  */
   .form-group {
     @apply mb-6;
   }
 
-  /**
-  * @component – Label
-  * @section – Forms > Inputs > Label
-  * @modifiers
-    .form-label – Default label styles.
-  */
   .form-label {
     @apply block mb-2 select-none;
 
@@ -27,46 +11,34 @@
     }
   }
 
-  /**
-  * @component – Input
-  * @section – Forms > Inputs > Input
-  * @modifiers
-    .form-input – Default input styles.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-input-field
-  */
   .form-input {
-    @apply rounded-full px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-none dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/60 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 font-normal antialiased font-sans w-full;
+    @apply rounded-full px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-hidden dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/80 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 font-normal antialiased font-sans w-full;
 
-    &[disabled] {
+    &:disabled {
       @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
     }
-  }
 
-  /**
-  * @component – Textarea
-  * @section – Forms > Inputs > Textarea
-  * @modifiers
-    .form-textarea – Default input styles.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-input-field
-  */
+    &.form-input-error {
+      @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
+
+      + svg {
+        @apply block!;
+
+        + p {
+          @apply block!;
+        }
+      }
+    }
+  }
 
   .form-textarea {
-    @apply rounded-lg px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-none dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/60 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 min-h-[100px] w-full;
-    &[disabled] {
+    @apply rounded-lg px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-hidden dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/80 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 min-h-[100px] w-full;
+
+    &:disabled {
       @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
     }
   }
 
-  /**
-  * @component – File
-  * @section – Forms > Inputs > File
-  * @modifiers
-    .form-input-file – A much nicer file field button design.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-file-input
-  */
   .form-file {
     @apply block w-full text-sm text-zinc-500 dark:text-zinc-400
     file:mr-4 file:py-2 file:px-4
@@ -76,14 +48,6 @@
     hover:file:bg-zinc-200/80 dark:file:bg-primary-600 dark:file:text-zinc-100 dark:hover:file:text-zinc-100 dark:hover:file:bg-primary-700;
   }
 
-  /**
-  * @component – Color
-  * @section – Forms > Inputs > Color
-  * @modifiers
-    .form-input-color - Built in browser color picker with stylish controls.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-color-input
-  */
   .form-input-color {
     @apply appearance-none rounded-full w-8 h-8 border border-zinc-200 focus:border-zinc-400 focus:shadow transition focus:ring-4 focus:ring-primary-500/10 dark:border-zinc-600;
 
@@ -93,57 +57,78 @@
     }
   }
 
-  /**
-  * @component – Datalist
-  * @section – Forms > Inputs > Datalist
-  * @modifiers
-    .form-input-datalist – Inputs with pre-defined datalist sets.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-datalists
-  */
   .form-input-datalist {
     &::-webkit-calendar-picker-indicator {
-      @apply hidden !important;
+      @apply hidden!;
     }
   }
 
-  /**
-  * @component – Range slider
-  * @section – Forms > Inputs > Range
-  * @modifiers
-    .form-input-range – Stylized range controls for range input datasets.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
-  */
   .form-input-range {
-    @apply appearance-none bg-transparent focus:outline-none;
+    @apply relative bg-transparent appearance-none focus:outline-hidden;
+
+    --range-fill: 0;
 
     &::-webkit-slider-thumb {
-      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-900 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-500;
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow-sm outline outline-gray-300 focus:ring-4 focus:outline-gray-400 hover:outline-gray-400 dark:bg-gray-800 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-700;
     }
 
     &::-moz-range-thumb {
-      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-900 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-500;
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow-sm outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-800 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-700;
     }
 
     &::-ms-thumb {
-      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-900 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-500;
-    }
-
-    &::-ms-track {
-      @apply cursor-pointer bg-transparent border-transparent text-transparent;
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow-sm outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-800 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-700;
     }
 
     &::-webkit-slider-runnable-track {
-      @apply bg-zinc-200 dark:bg-zinc-600 rounded-lg h-4 w-full;
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-primary-500) var(--range-fill),
+        var(--color-zinc-300) var(--range-fill)
+      );
+
+      @media (prefers-color-scheme: dark) {
+        background: linear-gradient(
+          to right,
+          var(--color-primary-500) var(--range-fill),
+          var(--color-zinc-700) var(--range-fill)
+        );
+      }
     }
 
     &::-moz-range-track {
-      @apply bg-zinc-200 dark:bg-zinc-600 rounded-lg h-4 w-full;
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-primary-500) var(--range-fill),
+        var(--color-zinc-300) var(--range-fill)
+      );
+
+      @media (prefers-color-scheme: dark) {
+        background: linear-gradient(
+          to right,
+          var(--color-primary-500) var(--range-fill),
+          var(--color-zinc-700) var(--range-fill)
+        );
+      }
     }
 
     &::-ms-track {
-      @apply bg-zinc-200 dark:bg-zinc-600 rounded-lg h-4 w-full;
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-primary-500) var(--range-fill),
+        var(--color-zinc-300) var(--range-fill)
+      );
+
+      @media (prefers-color-scheme: dark) {
+        background: linear-gradient(
+          to right,
+          var(--color-primary-500) var(--range-fill),
+          var(--color-zinc-700) var(--range-fill)
+        );
+      }
     }
 
     &:focus::-webkit-slider-runnable-track {
@@ -159,75 +144,41 @@
     }
   }
 
-  /**
-  * @component – File
-  * @section – Forms > Input Groups > Form Input Error State
-  * @modifiers
-    .form-input-file – A much nicer file field button design.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-file-input
-  */
-
-  .form-input-error {
-    @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
-
-    + svg {
-      @apply block !important;
-
-      + p {
-        @apply block !important;
-      }
-    }
-  }
-
-  /**
-  * @component – Select
-  * @section – Forms > Selects > Select
-  * @modifiers
-    .form-input-select – Use for select controls.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/selects#forms-select
-  */
   .form-select {
-    @apply px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500 rounded-full block w-full focus:outline-none focus:ring-4 focus:ring-zinc-50 focus:border-zinc-400 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-sm dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40 font-sans;
+    @apply appearance-none px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500/80 rounded-full block w-full focus:outline-hidden focus:ring-4 focus:ring-zinc-50 focus:border-zinc-400 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-xs dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40 font-sans;
 
-    &[disabled] {
+    &:disabled {
       @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
     }
+
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%2334497e' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    background-position: right calc(var(--spacing) * 2) center;
+    print-color-adjust: exact;
+
+    @variant dark {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    }
   }
 
-  /**
-  * @component – Checkbox
-  * @section – Forms > Checkboxes & Radios > Checkboxes
-  * @modifiers
-    .form-input-checkbox – Use for all checkbox controls
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
-  */
   .form-input-checkbox {
-    @apply rounded-sm border border-zinc-400   checked:border-primary-500 checked:accent-primary-500 text-primary-600 dark:bg-zinc-700 dark:border-zinc-500/80 focus:ring-zinc-500/10 dark:checked:border-primary-400 dark:checked:accent-primary-400 dark:checked:outline-zinc-700;
+    @apply rounded-sm border appearance-none border-zinc-400  checked:bg-primary-500  checked:border-primary-500 checked:ring-2 checked:ring-primary-500/10 checked:accent-primary-500 text-primary-600 dark:bg-zinc-700 dark:border-slate-600 focus:ring-primary-500/30 dark:checked:border-primary-400 dark:checked:accent-primary-400 size-4 outline-hidden;
+
+    &:checked {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3e%3c/svg%3e");
+    }
+
+    + label {
+      @apply select-none;
+    }
   }
 
-  /**
-  * @component – Radio
-  * @section – Forms > Checkboxes & Radios > Radios
-  * @modifiers
-    .form-input-radio – Use for all radio inputs
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-radios
-  */
   .form-input-radio {
-    @apply rounded-full border border-zinc-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
+    @apply rounded-full border border-zinc-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-hidden dark:bg-zinc-700 dark:border-zinc-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
   }
 
-  /**
-  * @component – Switch
-  * @section – Forms > Checkboxes & Radios > Switches
-  * @modifiers
-    .form-input-switch - Used to turn a checkbox input into a sliding switch control.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-switches
-  */
   .form-input-switch {
     @apply hidden;
 
@@ -236,7 +187,7 @@
     }
 
     &:disabled + label::after {
-      @apply !shadow-none;
+      @apply shadow-none!;
     }
 
     &:checked + label::before {
@@ -253,7 +204,7 @@
       @apply inline-flex cursor-pointer text-base leading-6 select-none relative font-sans;
 
       &:before {
-        @apply content-[""] block bg-zinc-300 rounded-full h-6 w-10 mr-2 transition-colors ease-out flex-shrink-0 dark:bg-zinc-500;
+        @apply content-[""] block bg-zinc-300 rounded-full h-6 w-10 mr-3 transition-colors ease-out flex-shrink-0 dark:bg-zinc-500;
       }
 
       &:after {

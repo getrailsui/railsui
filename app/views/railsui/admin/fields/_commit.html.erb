@@ -2,11 +2,11 @@
 
 <div data-railsui-configuration-target="submitContainer">
   <div class="fixed bg-white/90 backdrop-blur-sm bottom-0 md:flex-row flex flex-col items-center md:justify-between w-full md:w-[calc(100vw-280px)] md:h-16 h-28 border-t border-neutral-200/80 md:left-[280px] left-0 md:px-8 px-4 dark:bg-neutral-900/90 dark:border-neutral-700/80 md:py-0 pt-2 gap-6">
-    <p class="md:text-sm text-xs md:text-left text-center text-neutral-500 dark:text-neutral-400 md:w-auto md:order-1 order-2 md:mt-0 mt-2 md:pr-4">Saving will overwrite your existing configuration and pages while preserving your color settings. Any necessary dependencies will be installed, and the app will automatically restart.</p>
+    <p class="order-2 mt-2 text-xs text-center md:text-sm md:text-left text-neutral-500 dark:text-neutral-400 md:w-auto md:order-1 md:mt-0 md:pr-4">Saving will overwrite your existing configuration and pages while preserving your color settings. Any necessary dependencies will be installed, and the app will automatically restart.</p>
 
 
-    <div class="md:order-2 order-1 md:w-auto w-full">
-      <%= f.button "Save changes", id: "config_button", class: "rui-btn rui-btn-black md:w-auto w-full whitespace-nowrap", data: { railsui_configuration_target: "submit" } %>
+    <div class="order-1 w-full md:order-2 md:w-auto">
+      <%= f.button "Save changes", id: "config_button", class: "#{button_classes} md:w-auto w-full whitespace-nowrap", data: { railsui_configuration_target: "submit" } %>
     </div>
   </div>
 </div>

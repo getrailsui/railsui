@@ -20,7 +20,7 @@ You must already have node and yarn installed on your system. You will also need
 
 ### New applications
 
-The easiest install is on new Rails apps with options passed like so. For new apps, use the `-c tailwind` flag to install it. Rails UI is using `v3.4.17` of Tailwind CSS temporarily until we update for Tailwind CSS v4 support.
+The easiest install is on new Rails apps with options passed like so. For new apps, use the `-c tailwind` flag to install it.
 
 ```bash
 rails new app_name -c tailwind -j esbuild
@@ -64,7 +64,7 @@ Add the `railsui` gem to your Gemfile.
 
 ```ruby
 # Gemfile
-gem "railsui", github: "getrailsui/railsui", branch: "main"
+gem "railsui"
 ```
 
 Run the bundle install command to fetch the new gem and its assets.
@@ -154,10 +154,10 @@ gem "railsui", github: "getrailsui/railsui", branch: "v2"
 
 ### v3+
 
-Version 3 resides on the main branch.
+Version 3 resides on the main branch accessbile via the main branch and/or rubygems.org.
 
 ```ruby
-gem "railsui", github: "getrailsui/railsui", branch: "main"
+gem "railsui"
 ```
 
 ## Frequently Asked Questions

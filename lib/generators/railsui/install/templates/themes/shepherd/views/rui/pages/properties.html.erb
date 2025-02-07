@@ -19,7 +19,7 @@
           </button>
 
           <ul data-railsui-dropdown-target="menu"
-            class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-1 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[15px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+            class="hidden transition transform md:origin-top-right origin-top-left absolute right-0 md:top-12 top-20 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-1 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[15px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
             data-transition-enter-active="transition ease-out duration-300"
             data-transition-enter-from="transform opacity-0 scale-95"
             data-transition-enter-to="transform opacity-100 scale-100"
@@ -93,8 +93,8 @@
       ].each do |property| %>
 
         <!-- property -->
-        <div class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
-          <div class="relative mb-3">
+        <div class="border border-zinc-300/90 shadow-xs shadow-zinc-300/20 rounded-lg p-4 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+          <div class="relative mb-4">
             <%= image_tag property[:image], class: "rounded-lg h-[174px] w-full object-cover object-center dark:border dark:border-zinc-600/80 border-transparent", alt: "Image of #{property[:title]}" %>
 
             <%= image_tag property[:avatar], class: "w-10 h-10 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white/90", alt: "Avatar" %>
@@ -148,12 +148,12 @@
 
   <!-- LIST -->
   <div id="properties-list" data-properties-target="list">
-    <div class="text-left my-8" data-controller="select-all">
+    <div class="text-left my-8" data-controller="railsui-select-all">
       <div class="flex items-center justify-start">
         <div class="md:w-12 mb-3 md:mb-0">
           <div class="flex items-center gap-3">
             <input type="checkbox" class="form-input-checkbox" name="all_properties" id="all_properties"
-              data-select-all-target="selectAll" />
+              data-railsui-select-all-target="selectAll" />
             <label for="all_properties" class="form-label mb-0 md:hidden block text-zinc-700 dark:text-zinc-200">All
               properties</label>
           </div>
@@ -190,7 +190,7 @@
 
           <li class="flex flex-wrap items-center justify-start space-y-3 md:space-y-0 py-6 md:py-4">
             <div class="md:w-12 w-10">
-              <input type="checkbox" class="form-input-checkbox" data-select-all-target="checkbox" />
+              <input type="checkbox" class="form-input-checkbox" data-railsui-select-all-target="checkbox" />
             </div>
             <div class="md:flex-1 w-full">
               <%= link_to "#", class: "flex md:items-center items-start gap-3" do %>
@@ -211,18 +211,18 @@
             </div>
             <div class="md:w-2/12 w-1/3">
               <span class="md:hidden text-zinc-600 dark:text-zinc-400 text-sm block mb-2">Hosts</span>
-              <%= image_tag property[:avatar], class: "md:size-9 size-5 rounded-full flex-shrink-0", alt: "Avatar" %>
+              <%= image_tag property[:avatar], class: "md:size-9 size-5 rounded-full shrink-0", alt: "Avatar" %>
             </div>
             <div class="md:w-1/12 w-full md:pt-0 pt-4">
               <div data-controller="railsui-dropdown" class="relative md:flex md:justify-end justify-start">
                 <button type="button" class="flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80  hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
                   data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
 
-                  <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+                  <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
 
                   <span class="md:hidden block">Actions</span>
 
-                  <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+                  <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
                 </button>
 
                 <ul

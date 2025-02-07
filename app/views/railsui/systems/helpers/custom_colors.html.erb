@@ -16,17 +16,17 @@
 
 <%= render layout: example, locals: { heading: "custom_colors_css"} do %>
 
-  <div class="not-prose max-w-full my-6">
+  <div class="my-6 max-w-full not-prose">
     <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80">
       <% Railsui.config.colors.each do |collection, colors| %>
         <div class="py-3">
-          <h3 class="font-semibold my-3"><%= collection.capitalize %> Colors</h3>
-          <div class="grid grid-cols-1 md:grid-cols-11 gap-3 mb-8">
+          <h3 class="my-3 font-semibold"><%= collection.capitalize %> Colors</h3>
+          <div class="grid grid-cols-1 gap-3 mb-8 md:grid-cols-11">
             <% colors.each do |shade, hex| %>
-              <div class="color-item md:block flex items-center gap-2">
-                <div class="size-8 rounded-md" style="background-color: <%= hex %>;"></div>
+              <div class="flex gap-2 items-center color-item md:block">
+                <div class="rounded-md size-8" style="background-color: <%= hex %>;"></div>
 
-                <div class="text-left mt-1 leading-none">
+                <div class="mt-1 leading-none text-left">
                   <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200"><%= shade %></p>
                   <code class="font-mono text-xs text-neutral-600 selection:bg-indigo-500 selection:text-white dark:text-neutral-400"><%= hex %></code>
                 </div>
@@ -45,7 +45,6 @@
 <% content_for :example, flush: true do %>
 <% content_for :erb, flush: true do %>
 <!-- Find it inside app/views/rui/shared/_railsui_head.html.erb -->
-<%%= custom_colors_css %>
 <% end %>
 <% content_for :haml, flush: true do %>
 = custom_colors_css

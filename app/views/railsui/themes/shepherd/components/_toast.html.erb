@@ -5,16 +5,7 @@
 <div class="prose prose-neutral dark:prose-invert mb-8 max-w-full">
 
 <p>Use toasts to deliver real-time updates to a user without disrupting their flow.</p>
-<h3>Usage</h3>
 
-<div class="not-prose">
-<% content_for :js, flush: true do %>
-import { RailsuiToast } from 'railsui-stimulus'
-application.register('railsui-toast', RailsuiToast)
-<% end %>
-
-<%= render_snippet active_tab: :js, js_filename: "index.js" %>
-</div>
 
 <h3>Options</h3>
 
@@ -24,35 +15,12 @@ application.register('railsui-toast', RailsuiToast)
   </li>
 </ul>
 
-<h3>Requirements</h3>
+<h3>CSS</h3>
 
-<p>Toasts typically enter the screen from the left or right side of the viewport. This example accounts for those two variants by extending Tailwind. Extend your tailwind.config.js file as follows:</p>
+<p>Toasts typically enter the screen from the left or right side of the viewport. This example accounts for those two variants by extending your Tailwind Theme variables to include new animation-based CSS variables.
+</div>
+
 <div class="not-prose">
-<% content_for :js, flush: true do %>
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      keyframes: {
-        'toast-from-right': {
-          '0%': { transform: 'translateX(50%)', opacity: '0%' },
-          '100%': { transform: 'translateX(0)', opacity: '100%' },
-        },
-        'toast-from-left': {
-          '0%': { transform: 'translateX(-50%)', opacity: '0%' },
-          '100%': { transform: 'translateX(0)', opacity: '100%' },
-        },
-      },
-      animation: {
-        'toast-from-right': 'toast-from-right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-        'toast-from-left': 'toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-      },
-    },
-  },
-  plugins: [],
-}
-<% end %>
-
 <% content_for :html, flush: true do %>
 
 <% end %>
@@ -65,17 +33,14 @@ module.exports = {
 
 <% end %>
 
-
-<%= render_snippet active_tab: :js, js_filename: "tailwind.config.js" %>
-</div>
-
-<p>If you'd rather just add custom CSS, that's fine too:</p>
-<div class="not-prose">
 <% content_for :js, flush: true do %>
 
 <% end %>
 <% content_for :css, flush: true do %>
-/* my-stylesheet.css */
+/* Add to app/assets/stylesheets/railsui/theme.css */
+
+--animate-toast-from-right: toast-from-right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+--animate-toast-from-left: toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
 @keyframes toast-from-right {
   0% {
@@ -100,18 +65,8 @@ module.exports = {
     opacity: 100%;
   }
 }
-
-.toast-from-right {
-  animation: toast-from-right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-.toast-from-left {
-  animation: toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
 <% end %>
-<%= render_snippet active_tab: :css, css_filename: "index.css" %>
-</div>
-<hr>
+<%= render_snippet active_tab: :css, css_filename: "theme.css" %>
 </div>
 
 

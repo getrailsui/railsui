@@ -12,12 +12,10 @@ module Railsui
           application_name: "Rails UI",
           support_email: "support@example.com",
           theme: "hound",
-          colors: Railsui::Colors.theme_colors('hound'),
           pages: Railsui::Pages.get_pages('hound')
         }
 
         config = Railsui::Configuration.new(configuration_params)
-
         config.save
       end
 
@@ -35,12 +33,8 @@ module Railsui
           # Add a GUI for easier theme configuration
           copy_railsui_routes
 
-          # gems
+          # gems railsui_icon and action_text
           install_gems
-
-          # action_text
-          # Needed for the rich text editor
-          install_action_text
 
           # mailers
           update_application_helper
@@ -57,10 +51,6 @@ module Railsui
           # view related
           copy_railsui_head(@theme)
           copy_railsui_launcher(@theme)
-          # copy_railsui_shared_directory(@theme)
-
-          # tailwind related
-          update_tailwind_config(@theme)
 
           # cleanup
           remove_action_text_defaults

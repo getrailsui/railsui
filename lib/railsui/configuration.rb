@@ -8,7 +8,7 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
 
-    attr_accessor :application_name, :support_email, :theme, :colors, :body_classes
+    attr_accessor :application_name, :support_email, :theme, :body_classes
     attr_writer :pages
 
     def initialize(options = {})
@@ -18,15 +18,10 @@ module Railsui
       self.support_email ||= "support@example.com"
       self.theme
       initialize_theme_classes if self.theme
-      initialize_colors_for_theme if self.theme
     end
 
     def initialize_theme_classes
       self.body_classes ||= Railsui::Themes::body_classes(self.theme)
-    end
-
-    def initialize_colors_for_theme
-      self.colors ||= Railsui::Colors.theme_colors(self.theme)
     end
 
     def self.load!
@@ -81,14 +76,7 @@ module Railsui
 
     def self.update(params={})
       config = load!
-
-      params.each do |key, value|
-        if key == "colors"
-          config.colors = convert_keys_to_strings(value)
-        elsif config.respond_to?("#{key}=")
-          config.send("#{key}=", value)
-        end
-      end
+      config.assign_attributes(params)
       config.pages = Railsui::Pages.theme_pages.keys
       config.save
 

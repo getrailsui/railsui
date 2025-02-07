@@ -1,11 +1,12 @@
 <div id="badge-tag">
   <%= render layout: example, locals: { heading: "Tag", section: "Badge" } do %>
 
-    <div class="prose prose-neutral dark:!prose-invert mb-6">
+    <div class="prose prose-neutral dark:prose-invert mb-6">
       <p>Some applications call for custom tagging pill controls. These a bundled with a control to easily remove on click.</p>
     </div>
 
 <%= render preview 'gray' do %>
+<div class="flex items-center gap-2 flex-wrap">
 <div class="rounded bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs dark:bg-neutral-500/20 dark:text-neutral-200 pl-2 pr-1 inline-flex items-center justify-between space-x-1">
   <span class="flex-1">Gray</span>
   <a href="#" data-controller="prevent" data-action="click->prevent#prevent" class="size-4 rounded hover:bg-neutral-200 dark:hover:bg-neutral-500/40 flex items-center justify-center focus:ring-2 focus:ring-neutral-300/50 group">
@@ -83,6 +84,7 @@ dark:group-hover:text-indigo-200" %>
 dark:text-white/80 dark:group-hover:text-white/80
 " %>
   </a>
+</div>
 </div>
 <% end %>
 
@@ -265,6 +267,7 @@ dark:group-hover:text-indigo-200" %>
     <%%= icon "x-mark", class:  "size-3 flex-shrink-0 text-slate-800 hover:cursor-pointer group-hover:text-slate-700/80 dark:text-white/80 dark:group-hover:text-white/80" %>
   </a>
 </div>
+
 <% end %>
 
 <% content_for :haml, flush: true do %>

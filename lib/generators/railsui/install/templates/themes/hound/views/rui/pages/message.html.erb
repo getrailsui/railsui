@@ -82,14 +82,14 @@
             data-transition-leave-to="transform opacity-0 scale-95">
             <li>
               <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-                <%= icon "link", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= icon "link", class: "shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                 <span>Copy link</span>
               <% end %>
             </li>
 
             <li>
               <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-                <%= icon "arrow-small-right", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+                <%= icon "arrow-small-right", class: "shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
                 <span>Forward</span>
               <% end %>
             </li>
@@ -104,7 +104,7 @@
 
             <li>
               <%= link_to "#", class: "py-2 px-4 hover:text-red-600 focus:text-red-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-red-400" do %>
-                <%= icon "trash", class: "flex-shrink-0 w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
+                <%= icon "trash", class: "shrink-0 w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
                 <span>Delete</span>
               <% end %>
             </li>
@@ -123,7 +123,7 @@
     </div>
 
     <div class="sm:pl-20 mt-10">
-      <%= link_to "#", class: "inline-flex items-center space-x-2 rounded-lg py-2 px-3 hover:bg-slate-50/25 hover:border-slate-200 border focus:ring-4 focus:ring-primary-50/50 group border-slate-200/80 bg-white hover:shadow-sm transition dark:border-none dark:bg-slate-700/30 dark:text-slate-500 dark:hover:bg-slate-900/50 dark:focus:ring-slate-600/20" do %>
+      <%= link_to "#", class: "inline-flex items-center space-x-2 rounded-lg py-2 px-3 hover:bg-slate-50/25 hover:border-slate-200 border focus:ring-4 focus:ring-primary-50/50 group border-slate-200/80 bg-white hover:shadow-xs transition dark:border-none dark:bg-slate-700/30 dark:text-slate-500 dark:hover:bg-slate-900/50 dark:focus:ring-slate-600/20" do %>
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEnklEQVR4nO2b6UtVQRiH/Ve6bdAGBVFCy4eKdvrWLcu0xTSsKNojMCrTylYiooygKAPDFk2I9n2hIiwrixYrSzMzzawc9RfDfPF4zr3da/ec986c9wfz4S4c4XnOvO+cmWtCAofD4XA4HA6nC0EwAK3G1G65RokmBxr0uQRymEGfSyAHGYxstB3bZqYEarCIcIiaz2ZK0EmAMFGCbgKEaRJ0FCBMkqCrAGGKBJ0FCBMk6C5A6C7BBAFCZwmmCBC6SjBJgNBRgmkChG4STBQgdJJgqgChiwSTBQgdJJguQMS7BD8IEPEswS8CRAgJ1Px9JUA4SKDmr40AuDSo+bMA6lDfgeAZQA8BXILoQYBoUFcgLkHUob4DwTOAHgK4BHkEYeEI4FoRUP8FaPkDVD4H9q9iAZ7AXzQSaKiDY45tIZPgnx5w4ThC5nczkDaYBbgGf1p3oLkJYZO/jgW4JiAj0Q785B7razlDuAS5JGDZWLuA3Yutr2+cZgGu3YFpg+0Cjm+1vr56kgW41wN6AL9+WoE/usIlyNNV0JNbVuCdhRQ4HBl6MPwjoHA3wiYvgwW4KmDlxPAClo5hAa7PgvcVzvCbfwDTe7IA1wUczXEWIBsyQf33Vw8IBoDU/kBTg10A7wV5KOHUPruA3Lk8AzwTsG2+XcCze2q/iEuQBwKuFDr3gf2rWYDr8JN6Ao3fnAU0fQcyh3kuwV9NeFMywub5fc+Xo/4ScP2UFfj3WudtahbgAvzUAerkq2M2zADKblrfa29XW9U8A2Is4MBaK+jqSrXySR9qPyuWotZM4RIUUwFvy62QT2y39oZWYf38Rz2wapL1GrI/ZA4H1k8DtqYBOxeqZ4jVk4GkXtwDEAr+hiQrXAlbHlN2/M7eZar8dIxcMRXkATfPAB9e2SV1njWXTkR9uO+PJvzgghXW7RLn7507hP9ObZUqaywgoCAsGQW0t1khZQXVZ7JsbJwJFB8EPrxEzBLFAb/5M+B6kRXOx1eqbsszYFnnuxJZiuQJ261i4G4pUPnCXrpYQABYOhpoa+0i5Fag4Wvoz0UL8OmN6g2NnURKsSwgoJpnNJFL0/NH1IadfG5I7hP+F3Wh8viazwWkDwFK8iO7+989Awp3ASsmhL7e5lTgdVlk8OVhfxTPEGYJyEgESg8Df36Fh/StGjh7AFg+LrrrZ6cAFwuAumr7NeXfvH8eWDE+qmuaISC5D1C0F2j5HR780ztAXnpsNtxm9VM9Rh72y4czudPahevoLyA7RdXuf63NJahYzrYYDX0FzOqrlpKRJGc2OWizBMgmK5tnJJH/ERMHoM0RMGcgUPU6IvaQ+/3zBpFDNkuA/Bm5U40XLfb3d2SSAzZLQEo/+9q+uhKoeW+HL5eLcQDYLAFyuRdJKh4CM3qTwzVPgPydf31NePhvy1WfiAO45gmQY/sCtVHmlLulwNz4brr6C5Aja6p6qv3ZqH7Z/OiyeiCLA6D+EGDQSKAONQCwAHoI4BlADwJEg7oCcQmiDvUdCJ4B9BDAJYgeBIgGdQXiEkQd6jsQPAPoIYBLED0IEA3qCsThcDgcDoeToGX+ArpFl2v/8LnNAAAAAElFTkSuQmCC" alt="PDF" class="w-9">
         <div>
           <p class="font-medium text-sm dark:text-slate-400">mockup.pdf</p>
@@ -148,21 +148,21 @@
           data-transition-leave-to="transform opacity-0 scale-95">
           <li>
             <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-              <%= icon "pencil-square", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= icon "pencil-square", class: "shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               <span>Edit</span>
             <% end %>
           </li>
 
           <li>
             <%= link_to "#", class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3" do %>
-              <%= icon "link", class: "flex-shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+              <%= icon "link", class: "shrink-0 size-5 text-slate-500 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
               <span>Copy link</span>
             <% end %>
           </li>
 
           <li>
             <%= link_to "#", class: "py-2 px-4 hover:text-red-600 focus:text-red-600 flex items-center space-x-2 w-full group text-slate-600 dark:text-slate-300 dark:hover:text-red-400" do %>
-              <%= icon "trash", class: "flex-shrink-0 w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
+              <%= icon "trash", class: "shrink-0 w-6 h-5 text-slate-500 group-hover:text-red-600 dark:group-hover:text-red-400" %>
 
               <span>Delete</span>
             <% end %>
@@ -171,7 +171,7 @@
       </div>
 
       <div class="sm:flex items-start">
-        <div class="sm:-mt-4 sm:block hidden flex-shrink-0">
+        <div class="sm:-mt-4 sm:block hidden shrink-0">
           <time class="text-sm text-slate-500 sm:mt-4 mt-2 block" datetime="2023-07-02T12:03">Jul 2</time>
         </div>
         <div class="sm:pl-12 flex items-start space-x-6">
@@ -193,7 +193,7 @@
     <!-- New comment -->
     <div class="border-t mt-10 sm:py-16 py-10 sm:-mx-16 sm:px-16 -mx-6 px-6 dark:border-slate-700">
       <div class="sm:flex items-start">
-        <div class="sm:-mt-4 sm:block hidden flex-shrink-0">
+        <div class="sm:-mt-4 sm:block hidden shrink-0">
           <time class="text-sm text-slate-500 sm:mt-4 mt-2 block" datetime="2023-07-02T12:03">Jul 2</time>
         </div>
 

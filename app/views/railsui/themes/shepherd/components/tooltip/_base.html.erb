@@ -2,8 +2,10 @@
 <%= render layout: example, locals: { heading: "Base", section: "Tooltip" } do %>
 
 <%= render preview 'zinc' do %>
-<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="Hi, from the tips of tools" class="btn btn-primary">Hover here</button>
-<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="We raised over $1 billion to engineer the greatest tooltip of our lives. <strong>What's super cool</strong> is that HTML can be embedded into the tooltip for max emphasis." data-railsui-tooltip-allow-html-value="true" class="btn btn-white">and here</button>
+<div class="flex items-center gap-4">
+  <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="Hi, from the tips of tools" class="btn btn-primary">Hover here</button>
+  <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="We raised over $1 billion to engineer the greatest tooltip of our lives. <strong>What's super cool</strong> is that HTML can be embedded into the tooltip for max emphasis." data-railsui-tooltip-allow-html-value="true" class="btn btn-white">and here</button>
+</div>
 <% end %>
 
 <% content_for :example, flush: true do %>
@@ -20,35 +22,13 @@
 <% end %>
 
 <% content_for :js, flush: true do %>
-// https://github.com/getrailsui/railsui-stimulus/blob/main/src/railsui_tooltip.js
+// Docs: https://github.com/getrailsui/railsui-stimulus
 
-import { Controller } from '@hotwired/stimulus'
-import tippy from 'tippy.js'
-
-export default class extends Controller {
-  static values = {
-    content: String,
-    allowHtml: { type: Boolean, default: false },
-  }
-
-  connect() {
-    let options = {}
-    if (this.hasContentValue) {
-      options['content'] = this.contentValue
-    }
-    if (this.hasAllowHtmlValue) {
-      options['allowHTML'] = this.allowHtmlValue
-    }a
-    this.tippy = tippy(this.element, options)
-  }
-
-  disconnect() {
-    this.tippy.destroy()
-  }
-}
+import { RailsuiTooltip } from 'railsui-stimulus'
+application.register('railsui-tooltip', RailsuiTooltip)
 <% end %>
 
-<%= render_snippet js_filename: "tooltip_controller.js" %>
+<%= render_snippet js_filename: "index.js" %>
 <% end %>
 <% end %>
 </div>

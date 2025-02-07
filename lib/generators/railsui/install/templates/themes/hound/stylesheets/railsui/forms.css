@@ -1,52 +1,28 @@
 @layer components {
-  /***************************************
-    Forms
-  ****************************************/
-
-  /**
-  * @component – Form group
-  * @section – Forms
-  * @modifiers
-    .form-group – Default form grouping with offset. Used to offset different elements within one form.
-  */
   .form-group {
     @apply mb-6;
   }
 
-  /**
-  * @component – Label
-  * @section – Forms > Inputs > Label
-  * @modifiers
-    .form-label – Default label styles.
-  */
   .form-label {
     @apply block mb-2 select-none;
   }
 
-  /**
-  * @component – Input
-  * @section – Forms > Inputs > Input
-  * @modifiers
-    .form-input – Default input styles.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-input-field
-  */
   .form-input {
-    @apply px-3 py-2 border border-slate-300 shadow-inner bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400;
+    @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded-lg block w-full focus:outline-hidden focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-600 dark:focus:ring-primary-400/30 dark:focus:border-slate-500 dark:text-white dark:placeholder:text-slate-400 disabled:bg-slate-100/90 dark:disabled:bg-slate-800/90 disabled:cursor-not-allowed disabled:dark:opacity-70 shadow-xs;
 
-    &[disabled] {
-      @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-slate-800/90 dark:opacity-70;
+    &.form-input-error {
+      @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
+
+      + svg {
+        @apply block!;
+
+        + p {
+          @apply block!;
+        }
+      }
     }
   }
 
-  /**
-  * @component – File
-  * @section – Forms > Inputs > File
-  * @modifiers
-    .form-input-file – A much nicer file field button design.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-file-input
-  */
   .form-file {
     @apply block w-full text-sm text-slate-500 dark:text-slate-400
     file:mr-4 file:py-2 file:px-4
@@ -56,157 +32,50 @@
     hover:file:bg-primary-100 dark:file:bg-primary-600 dark:file:text-slate-100 dark:hover:file:text-slate-100 dark:hover:file:bg-primary-700;
   }
 
-  /**
-  * @component – Color
-  * @section – Forms > Inputs > Color
-  * @modifiers
-    .form-input-color - Built in browser color picker with stylish controls.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-color-input
-  */
-  .form-input-color {
-    @apply appearance-none rounded-full w-8 h-8 border border-slate-200 focus:border-slate-400 focus:shadow transition focus:ring-4 focus:ring-primary-500/10 dark:border-slate-600;
-
-    &::-webkit-color-swatch-wrapper,
-    &::-webkit-color-swatch {
-      @apply p-0 rounded-full border-2 border-white dark:border-slate-700;
-    }
-  }
-
-  /**
-  * @component – Datalist
-  * @section – Forms > Inputs > Datalist
-  * @modifiers
-    .form-input-datalist – Inputs with pre-defined datalist sets.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-datalists
-  */
   .form-input-datalist {
     &::-webkit-calendar-picker-indicator {
-      @apply hidden !important;
+      @apply hidden;
     }
   }
 
-  /**
-  * @component – Range slider
-  * @section – Forms > Inputs > Range
-  * @modifiers
-    .form-input-range – Stylized range controls for range input datasets.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
-  */
-  .form-input-range {
-    @apply appearance-none bg-transparent focus:outline-none;
-
-    &::-webkit-slider-thumb {
-      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-slate-300 focus:ring-4 focus:outline-slate-400 hover:outline-slate-400 dark:bg-slate-900 dark:focus:outline-slate-600 dark:hover:outline-slate-600 dark:border-slate-500 dark:outline-slate-500;
-    }
-
-    &::-moz-range-thumb {
-      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-slate-300 focus:ring-4 focus:outline-slate-400 hover:outline-slate-400 dark:bg-slate-900 dark:focus:outline-slate-600 dark:hover:outline-slate-600 dark:border-slate-500 dark:outline-slate-500;
-    }
-
-    &::-ms-thumb {
-      @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-slate-300 focus:ring-4 focus:outline-slate-400 hover:outline-slate-400 dark:bg-slate-900 dark:focus:outline-slate-600 dark:hover:outline-slate-600 dark:border-slate-500 dark:outline-slate-500;
-    }
-
-    &::-ms-track {
-      @apply cursor-pointer bg-transparent border-transparent text-transparent;
-    }
-
-    &::-webkit-slider-runnable-track {
-      @apply bg-slate-200 dark:bg-slate-600 rounded-lg h-4 w-full;
-    }
-
-    &::-moz-range-track {
-      @apply bg-slate-200 dark:bg-slate-600 rounded-lg h-4 w-full;
-    }
-
-    &::-ms-track {
-      @apply bg-slate-200 dark:bg-slate-600 rounded-lg h-4 w-full;
-    }
-
-    &:focus::-webkit-slider-runnable-track {
-      @apply bg-slate-200 dark:bg-slate-600;
-    }
-
-    &:focus::-moz-range-track {
-      @apply bg-slate-200 dark:bg-slate-600;
-    }
-
-    &:focus::-ms-track {
-      @apply bg-slate-200 dark:bg-slate-600;
-    }
-  }
-  /**
-  * @component – File
-  * @section – Forms > Input Groups > Form Input Error State
-  * @modifiers
-    .form-input-file – A much nicer file field button design.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/inputs#forms-file-input
-  */
-
-  .form-input-error {
-    @apply border-red-500 text-red-800 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
-
-    + svg {
-      @apply block !important;
-
-      + p {
-        @apply block !important;
-      }
-    }
-  }
-
-  /**
-  * @component – Select
-  * @section – Forms > Selects > Select
-  * @modifiers
-    .form-input-select – Use for select controls.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/selects#forms-select
-  */
   .form-select {
-    @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400 shadow-sm;
+    @apply appearance-none px-3 py-2 border border-slate-300 bg-white font-normal rounded-lg block w-full focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-600 dark:focus:ring-primary-500/30 dark:focus:border-slate-600 dark:text-white dark:placeholder:text-slate-400 disabled:bg-slate-100/90 dark:disabled:bg-slate-800/90 disabled:cursor-not-allowed disabled:dark:opacity-70 shadow-xs;
 
-    &[disabled] {
-      @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-slate-800/90 dark:opacity-70;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%2334497e' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    background-position: right calc(var(--spacing) * 2) center;
+    print-color-adjust: exact;
+
+    @variant dark {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
     }
   }
 
-  /**
-  * @component – Checkbox
-  * @section – Forms > Checkboxes & Radios > Checkboxes
-  * @modifiers
-    .form-input-checkbox – Use for all checkbox controls
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
-  */
   .form-input-checkbox {
-    @apply rounded-sm border border-slate-400   checked:border-primary-500 checked:accent-primary-500 text-primary-600 dark:bg-slate-700 dark:border-slate-600 focus:ring-primary-500/30 dark:checked:border-primary-400 dark:checked:accent-primary-400;
+    @apply rounded-sm border appearance-none border-slate-400  checked:bg-primary-500  checked:border-primary-500 checked:ring-2 checked:ring-primary-500/10 checked:accent-primary-500 text-primary-600 dark:bg-slate-700 dark:border-slate-600 focus:ring-primary-500/30 dark:checked:border-primary-400 dark:checked:accent-primary-400 size-4 outline-hidden;
+
+    &:checked {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3e%3c/svg%3e");
+    }
+
+    + label {
+      @apply select-none;
+    }
   }
 
-  /**
-  * @component – Radio
-  * @section – Forms > Checkboxes & Radios > Radios
-  * @modifiers
-    .form-input-radio – Use for all radio inputs
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-radios
-  */
   .form-input-radio {
-    @apply rounded-full border border-slate-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-none dark:bg-slate-700 dark:border-slate-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
+    @apply appearance-none rounded-full border border-slate-400 focus:ring-2 checked:ring-primary-200  checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-hidden dark:bg-slate-700 dark:border-slate-600 dark:checked:border-primary-400 dark:checked:accent-primary-400 size-4 checked:bg-primary-500 checked:border-primary-500;
+
+    &:checked {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3ccircle cx='10' cy='10' r='4' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    + label {
+      @apply select-none;
+    }
   }
 
-  /**
-  * @component – Switch
-  * @section – Forms > Checkboxes & Radios > Switches
-  * @modifiers
-    .form-input-switch - Used to turn a checkbox input into a sliding switch control.
-  * @rui_documentation:
-  *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-switches
-  */
   .form-input-switch {
     @apply hidden;
 
@@ -215,7 +84,7 @@
     }
 
     &:disabled + label::after {
-      @apply !shadow-none;
+      @apply shadow-none!;
     }
 
     &:checked + label::before {
@@ -232,12 +101,104 @@
       @apply inline-flex cursor-pointer text-base leading-6 select-none relative;
 
       &:before {
-        @apply content-[""] block bg-slate-300 rounded-full h-6 w-10 mr-2 transition-colors ease-out flex-shrink-0 dark:bg-slate-500;
+        @apply content-[""] block bg-slate-300 rounded-full h-6 w-10 mr-3 transition-colors ease-out flex-shrink-0 dark:bg-slate-500;
       }
 
       &:after {
         @apply content-[""] block bg-white rounded-full size-4 absolute top-[4px] left-[4px] transition-transform ease-out shadow-sm;
       }
+    }
+  }
+
+  /* Requires railsui_range_controller.js: https://github.com/getrailsui/railsui-stimulus */
+
+  .form-input-range {
+    @apply relative bg-transparent appearance-none focus:outline-hidden;
+
+    --range-fill: 0;
+
+    &::-webkit-slider-thumb {
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow-sm outline outline-gray-300 focus:ring-4 focus:outline-gray-400 hover:outline-gray-400 dark:bg-gray-800 dark:focus:outline-gray-600 dark:hover:outline-gray-600 dark:border-gray-500 dark:outline-gray-700;
+    }
+
+    &::-moz-range-thumb {
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow-sm outline outline-gray-300 focus:ring-4 focus:outline-gray-400 hover:outline-gray-400 dark:bg-gray-800 dark:focus:outline-gray-600 dark:hover:outline-gray-600 dark:border-gray-500 dark:outline-gray-700;
+    }
+
+    &::-ms-thumb {
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow-sm outline outline-gray-300 focus:ring-4 focus:outline-gray-400 hover:outline-gray-400 dark:bg-gray-800 dark:focus:outline-gray-600 dark:hover:outline-gray-600 dark:border-gray-500 dark:outline-gray-700;
+    }
+
+    &::-webkit-slider-runnable-track {
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-primary-500) var(--range-fill),
+        var(--color-gray-300) var(--range-fill)
+      );
+
+      @media (prefers-color-scheme: dark) {
+        background: linear-gradient(
+          to right,
+          var(--color-primary-500) var(--range-fill),
+          var(--color-gray-700) var(--range-fill)
+        );
+      }
+    }
+
+    &::-moz-range-track {
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-primary-500) var(--range-fill),
+        var(--color-gray-300) var(--range-fill)
+      );
+
+      @media (prefers-color-scheme: dark) {
+        background: linear-gradient(
+          to right,
+          var(--color-primary-500) var(--range-fill),
+          var(--color-gray-700) var(--range-fill)
+        );
+      }
+    }
+
+    &::-ms-track {
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-primary-500) var(--range-fill),
+        var(--color-gray-300) var(--range-fill)
+      );
+
+      @media (prefers-color-scheme: dark) {
+        background: linear-gradient(
+          to right,
+          var(--color-primary-500) var(--range-fill),
+          var(--color-gray-700) var(--range-fill)
+        );
+      }
+    }
+
+    &:focus::-webkit-slider-runnable-track {
+      @apply bg-gray-200 dark:bg-gray-600;
+    }
+
+    &:focus::-moz-range-track {
+      @apply bg-gray-200 dark:bg-gray-600;
+    }
+
+    &:focus::-ms-track {
+      @apply bg-gray-200 dark:bg-gray-600;
+    }
+  }
+
+  .form-input-color {
+    @apply appearance-none rounded-full size-8 border border-slate-200 focus:border-slate-400  transition focus:ring-4 focus:ring-primary-500/10 dark:border-slate-600;
+
+    &::-webkit-color-swatch-wrapper,
+    &::-webkit-color-swatch {
+      @apply p-0 rounded-full border-2 border-white dark:border-slate-700;
     }
   }
 }

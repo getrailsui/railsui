@@ -3,9 +3,9 @@
 
   <%= render preview "zinc" do %>
 <div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t"
-  data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
+  data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-zinc-300 bg-white dark:border-zinc-600 dark:bg-transparent">
 
-<div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
+<div class="border-zinc-300 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
   <nav role="navigation" class="-mb-px flex items-center flex-wrap font-heading">
     <a href="#"
 data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
@@ -47,9 +47,9 @@ data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 <div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t"
-data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
+data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-zinc-300 bg-white dark:border-zinc-600 dark:bg-transparent">
 
-  <div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
+  <div class="border-zinc-300 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap font-heading">
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
         class="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white rounded-t">
@@ -88,9 +88,9 @@ data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t" data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent">
+<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t" data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-zinc-300 bg-white dark:border-zinc-600 dark:bg-transparent">
 
-  <div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
+  <div class="border-zinc-300 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap font-heading">
       <%%= link_to "#", class: "py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white rounded-t", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
         <%%= icon "chat-bubble-oval-left-ellipsis", class: "size-5" %>
@@ -130,8 +130,8 @@ data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace
 <% end %>
 
 <% content_for :haml, flush: true do %>
-%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t", "data-railsui-tabs-inactive-tab" => "py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent"}
-  .border-zinc-200.border-b.text-zinc-600.dark:text-zinc-200.dark:border-zinc-600{class: "text-[15px]"}
+%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-2 px-4 border-b border-zinc-300 border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t", "data-railsui-tabs-inactive-tab" => "py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent"}
+  .border-zinc-300.border-b.text-zinc-600.dark:text-zinc-200.dark:border-zinc-600{class: "text-[15px]"}
     %nav.-mb-px.flex.items-center.flex-wrap.font-heading{role: "navigation"}
       = link_to "#", class: "py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white rounded-t", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
         = icon "chat-bubble-oval-left-ellipsis", class: "size-5"
@@ -156,6 +156,7 @@ data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace
 <% end %>
 
 <% content_for :js, flush: true do %>
+// Docs: https://github.com/getrailsui/railsui-stimulus/
 import { RailsuiTabs } from 'railsui-stimulus'
 application.register('railsui-tabs', RailsuiTabs)
 <% end %>
