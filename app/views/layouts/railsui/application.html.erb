@@ -17,23 +17,24 @@
     <%= javascript_include_tag "railsui/application" %>
     <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
 
-    <%= stylesheet_link_tag "railsui/application" %>
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "application", "railsui/railsui" %>
+
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
     <% if Railsui.config.theme.present? %>
       <%= render "railsui/themes/#{Railsui.config.theme}/fonts" %>
     <% end %>
 
-    <%= custom_colors_css %>
-
     <%= yield :head %>
   </head>
 
-  <body class="railsui font-normal leading-normal text-neutral-800 lg:h-screen relative selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white antialiased dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
+  <body class="relative antialiased font-normal leading-normal railsui text-neutral-800 lg:h-screen selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
       data-railsui-scroll-spy-inactive-class-value="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate">
     <%= render "railsui/shared/flash_messages" %>
     <div class="flex md:flex-row flex-col items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
@@ -42,16 +43,16 @@
 
       <%= render "railsui/shared/global_nav" %>
 
-      <div class="md:flex-1 h-full md:pt-2 md:w-auto w-full md:overflow-y-auto scrollbar relative z-30" data-railsui-scroll-spy-target="scrollContainer">
-        <div class="max-w-7xl mx-auto md:px-10 md:pt-10 md:pb-0 p-4 flex-col flex h-full">
+      <div class="relative z-30 w-full h-full md:flex-1 md:pt-2 md:w-auto md:overflow-y-auto scrollbar" data-railsui-scroll-spy-target="scrollContainer">
+        <div class="flex flex-col p-4 mx-auto max-w-7xl h-full md:px-10 md:pt-10 md:pb-0">
           <div class="flex-1">
 
-            <div class="md:grid grid-cols-12 items-start gap-4">
+            <div class="grid-cols-12 gap-4 items-start md:grid">
               <div class="pb-10 <%= content_for?(:component_nav).present? ? "col-span-9" : "col-span-12" %>">
                 <%= yield %>
               </div>
               <% if content_for?(:component_nav).present? %>
-                <div class="col-span-3 sticky top-2">
+                <div class="sticky top-2 col-span-3">
                   <%= yield :component_nav %>
                 </div>
               <% end %>

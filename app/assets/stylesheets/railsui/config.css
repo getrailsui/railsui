@@ -1,9 +1,20 @@
-.railsui {
-  .config-loader {
-    @apply opacity-0 invisible z-0 transition ease-in-out duration-300 fixed inset-0 w-full h-full bg-indigo-800;
-  }
+.railsui .config-loader {
+  opacity: 0;
+  visibility: invisible;
+  z-index: 0;
+  transition: ease-in-out 0.3s all;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #372aac;
+}
 
-  .config-loader.config-loader--active {
-    @apply opacity-100 visible z-40 transition ease-in-out duration-300;
-  }
+.railsui .config-loader.config-loader--active {
+  visibility: visible;
+  z-index: 40;
+  transition: ease-in-out 0.3s all;
 }

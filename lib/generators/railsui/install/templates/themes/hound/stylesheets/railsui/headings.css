@@ -1,0 +1,47 @@
+.h1 {
+  @apply text-3xl font-extrabold tracking-tighter leading-tight md:text-4xl text-slate-900 dark:text-slate-100;
+}
+
+.h2 {
+  @apply text-2xl font-extrabold tracking-tighter leading-tight md:text-3xl text-slate-900 dark:text-slate-100;
+}
+
+.h3 {
+  @apply text-xl font-extrabold tracking-tight leading-tight md:text-2xl text-slate-900 dark:text-slate-100;
+}
+
+.h4 {
+  @apply text-lg font-extrabold tracking-tight leading-tight md:text-xl text-slate-900 dark:text-slate-100;
+}
+
+.h5 {
+  @apply text-base font-extrabold tracking-tight leading-tight md:text-lg text-slate-900 dark:text-slate-100;
+}
+
+.h6 {
+  @apply text-base font-extrabold tracking-tight leading-tight text-slate-900 dark:text-slate-100;
+}
+
+.display-1 {
+  @apply text-7xl font-extrabold tracking-tighter leading-tight md:text-9xl text-slate-900 dark:text-slate-100;
+}
+
+.display-2 {
+  @apply text-6xl font-extrabold tracking-tighter leading-tight md:text-8xl text-slate-900 dark:text-slate-100;
+}
+
+.display-3 {
+  @apply text-6xl font-extrabold tracking-tight leading-tight md:text-7xl text-slate-900 dark:text-slate-100;
+}
+
+.display-4 {
+  @apply text-5xl font-extrabold tracking-tight leading-tight md:text-6xl text-slate-900 dark:text-slate-100;
+}
+
+.display-5 {
+  @apply text-4xl font-extrabold tracking-tight leading-tight md:text-5xl text-slate-900 dark:text-slate-100;
+}
+
+.display-6 {
+  @apply text-3xl font-extrabold tracking-tight leading-tight md:text-4xl text-slate-900 dark:text-slate-100;
+}

@@ -4,7 +4,6 @@ require 'railsui_icon'
 require 'meta-tags'
 
 module Railsui
-  autoload :Colors, "railsui/colors"
   autoload :Configuration, "railsui/configuration"
   autoload :Pages, "railsui/pages"
   autoload :Themes, "railsui/themes"

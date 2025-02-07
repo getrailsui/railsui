@@ -50,38 +50,6 @@ module Railsui
       end
     end
 
-    def custom_colors_css
-      return unless Railsui.config.present?
-
-      custom_css_and_html = ""
-
-      if File.exist?(Rails.root.join("config", "railsui.yml"))
-        config = Psych.safe_load_file(Rails.root.join("config", "railsui.yml"), permitted_classes: [Hash, Railsui::Configuration, Symbol])
-
-        if config.colors.present?
-          custom_css_and_html += "<style id=\"rui-custom-colors\">\n"
-          custom_css_and_html += ":root {\n"
-
-          config.colors.each do |category, values|
-            values.each do |key, color|
-              rgb_color = rgb_values(color)
-              custom_css_and_html += "  --#{category}-#{key}: #{rgb_color};\n"
-            end
-          end
-
-          custom_css_and_html += "}\n"
-          custom_css_and_html += "</style>\n"
-        end
-      end
-
-      custom_css_and_html.html_safe
-    end
-
-    def rgb_values(color)
-      color = color.to_s  # Ensure color is a string
-      color.scan(/(?!#)../).map(&:hex).join(" ")  # Convert hex color to RGB format
-    end
-
     def railsui_head
       render "rui/shared/railsui_head"
     end
