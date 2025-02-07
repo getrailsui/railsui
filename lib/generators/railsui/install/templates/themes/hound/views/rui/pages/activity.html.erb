@@ -6,7 +6,7 @@
   <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
     <nav role="messages nav">
       <ul
-        class="flex items-center justify-start sm:space-x-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100/50 scrollbar-thumb-rounded">
+        class="flex items-center justify-start sm:gap-1 py-2 text-slate-600 sm:overflow-auto overflow-y-hidden scroll-smooth snap-start">
         <li class="flex justify-center items-center sm:block">
           <%= link_to "All activity", "#", class: "py-2 px-4 bg-slate-50 dark:bg-slate-900 rounded-lg transition ease-in-out duration-300 text-primary-600 dark:text-primary-400 font-medium flex items-center space-x-2 dark:hover:bg-slate-900/80 whitespace-nowrap" %>
         </li>
@@ -28,7 +28,7 @@
     <hr class="lg:hidden block my-2 dark:border-slate-700">
 
     <div class="relative lg:w-auto w-full lg:mt-0 md:mt-0 mt-4 sm:mt-0 lg:mb-0 mb-4">
-      <%= icon "magnifying-glass", class: "size-5 text-slate-500/90  absolute left-3 top-3" %>
+      <%= icon "magnifying-glass", class: "size-5 text-slate-500/90 absolute left-3 top-3" %>
       <input type="search" placeholder="Search" class="form-input lg:w-[250px] pl-10 focus:shadow-inner">
     </div>
   </div>
@@ -40,7 +40,7 @@
   <ul class="pt-10 flex flex-col sm:pl-0 px-4 space-y-10">
     <li class="flex flex-wrap items-start justify-between">
       <div
-        class="rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 sm:size-8 size-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
+        class="rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 sm:size-8 size-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
         <%= icon "calendar", class: "size-4" %>
       </div>
       <div class="flex-1 sm:flex sm:justify-between">
@@ -70,12 +70,8 @@
         <time datetime="2023-06-30T10:30"
           class="text-sm text-slate-500/80 dark:text-slate-400/80 block sm:pt-0 pt-2">Jun 30</time>
         <div
-          class="bg-white border rounded shadow-sm shadow-slate-300 p-4 w-full max-w-xl mt-4 prose relative dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:shadow-none">
-          <p>Wow, the Product Demo for Pork Chop sounds exciting! I can't wait to see what our team has in store for
-            this event.
-            Let's make sure to prepare thoroughly and deliver a top-notch presentation. If anyone needs assistance or
-            has any ideas,
-            feel free to reach out to me. Together, we'll make it a great success!</p>
+          class="bg-white border border-gray-300 rounded p-4 w-full max-w-xl mt-4 prose relative dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600">
+          <p>Wow, the Product Demo for Pork Chop sounds exciting! I can't wait to see what our team has in store for this event. Let's make sure to prepare thoroughly and deliver a top-notch presentation. If anyone needs assistance or has any ideas, feel free to reach out to me. Together, we'll make it a great success!</p>
           <%= link_to "Post reply", "#", class: "font-semibold text-primary-600 hover:text-primary-700 absolute bottom-3 px-3 py-2 hover:bg-slate-50 rounded-lg no-underline right-4 text-sm focus:ring-4 focus:ring-primary-50 dark:text-primary-400 dark:hover:bg-slate-800 dark:hover:text-slate-300 dark:focus:ring-slate-600" %>
         </div>
       </div>
@@ -83,7 +79,7 @@
 
     <li class="flex flex-wrap items-start justify-between">
       <div
-        class="rounded-full bg-primary-600 text-white flex items-center justify-center flex-shrink-0 sm:w-8 h-6 sm:h-8 w-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
+        class="rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 sm:w-8 h-6 sm:h-8 w-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
         <%= icon "user-plus", class: "size-4" %>
       </div>
       <div class="flex-1 sm:flex sm:justify-between">
@@ -99,7 +95,7 @@
     <li class="flex flex-wrap items-start justify-between">
       <div
         class="size-4 relative flex items-center justify-center box-border border-4 border-slate-50 rounded-full bg-slate-400/50 sm:left-px -left-[7px] dark:bg-slate-300/50 dark:border-slate-700">
-        <div class="size-[3px] flex items-center bg-slate-50 rounded-full flex-shrink-0 dark:bg-slate-700">
+        <div class="size-[3px] flex items-center bg-slate-50 rounded-full shrink-0 dark:bg-slate-700">
         </div>
       </div>
 
@@ -118,15 +114,13 @@
     <li class="flex flex-wrap items-start justify-between">
       <div
         class="size-4 relative flex items-center justify-center box-border border-4 border-slate-50 rounded-full bg-slate-400/50 sm:left-px -left-[7px] dark:bg-slate-300/50 dark:border-slate-700">
-        <div class="size-[3px] flex items-center bg-slate-50 rounded-full flex-shrink-0 dark:bg-slate-700">
+        <div class="size-[3px] flex items-center bg-slate-50 rounded-full shrink-0 dark:bg-slate-700">
         </div>
       </div>
       <div class="sm:pl-6 pl-4 flex-1 sm:flex sm:justify-between -mt-2">
         <div
           class="prose prose-slate prose-a:text-primary-500 prose-a:hover:text-primary-600 prose-a:font-medium sm:pr-16 sm:w-auto w-full dark:prose-invert">
-          <p><%= link_to "Mark Davis", "#" %> updated the event <%= link_to "Sales Training Workshop", "#" %> scheduled for July
-            10, 2023, to include a new guest speaker.
-          </p>
+          <p><%= link_to "Mark Davis", "#" %> updated the event <%= link_to "Sales Training Workshop", "#" %> scheduled for July 10, 2023, to include a new guest speaker.</p>
         </div>
         <time datetime="2023-06-28T10:30"
           class="text-sm text-slate-500/80 dark:text-slate-400/80 block sm:pt-0 pt-2">Jun 28</time>
@@ -135,7 +129,7 @@
 
     <li class="flex flex-wrap items-start justify-between">
       <div
-        class="rounded-full bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 sm:w-8 sm:h-8 size-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
+        class="rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 sm:w-8 sm:h-8 size-6 box-content relative top-0 border-4 border-slate-50 -left-3 dark:border-slate-900">
         <%= icon "check", class: "size-4" %>
       </div>
       <div class="flex-1 sm:flex sm:justify-between">
@@ -144,8 +138,7 @@
           <p><%= link_to "Emily Carter", "#" %> completed the task <%= link_to "Lead Generation Research", "#" %> assigned by <%= link_to "Mark Davis", "#" %>.
           </p>
         </div>
-        <time datetime="2023-06-28T10:30"
-          class="text-sm text-slate-500/80 dark:text-slate-400/80 block sm:pt-0 pt-2">Jun 28</time>
+        <time datetime="2023-06-28T10:30" class="text-sm text-slate-500/80 dark:text-slate-400/80 block sm:pt-0 pt-2">Jun 28</time>
       </div>
     </li>
   </ul>

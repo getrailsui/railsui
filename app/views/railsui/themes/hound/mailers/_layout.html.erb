@@ -970,6 +970,10 @@ end
         %td
 <% end %>
 
+<% content_for :ruby, flush: true do %>
+
+<% end %>
+
 <%= render_snippet active_tab: "erb", erb_filename: "mailer.html.erb", haml_filename: "mailer.haml.erb" %>
 </div>
 

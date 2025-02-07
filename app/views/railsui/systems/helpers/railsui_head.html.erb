@@ -37,9 +37,6 @@
 
 <!-- Various 3rd party JavaScript if necessary -->
 
-<!-- Outputs custom colors for each Rails UI theme. This includes colors you might change by configuring the form on /railsui. -->
-<%%= custom_colors_css %>
-
 <%%= yield :head %>
 
 <% end %>
@@ -47,7 +44,7 @@
 
 <div class="prose prose-neutral dark:prose-invert">
   <h3>yield :head</h3>
-  <p>We've include a <code><%%= yield :head %></code> statement so you can add additional assets in the <code>head</code> tags inside your views as necessary</p>
+  <p>Included is a a <code><%%= yield :head %></code> statement so you can add additional assets in the <code>head</code> tags inside your views as necessary or leverage <%= link_to "Turbo morphing", "https://turbo.hotwired.dev/handbook/page_refreshes#morphing", target: :_blank %> as required.</p>
 </div>
 
 <% content_for :erb, flush: true do %>
@@ -64,4 +61,4 @@
   <% end %>
 <% end %>
 
-<%= system_pagination(prev_path: systems_helpers_demo_avatar_path, prev_text: "Demo Avatar", next_path: systems_helpers_custom_colors_path, next_text: "Custom colors") %>
+<%= system_pagination(prev_path: systems_helpers_demo_avatar_path, prev_text: "Demo Avatar", next_path: systems_path, next_text: "Design patterns") %>

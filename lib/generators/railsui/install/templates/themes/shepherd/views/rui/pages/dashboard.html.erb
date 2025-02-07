@@ -18,22 +18,22 @@
     </p>
 
     <div class="grid md:grid-cols-4 grid-cols-2 px-4 md:gap-6 gap-3 md:pt-6 pt-3 max-w-5xl mx-auto">
-      <%= link_to rui_inbox_path, class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-sm hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600" do %>
+      <%= link_to rui_inbox_path, class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-xs hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600" do %>
         <h3 class="font-normal text-base font-sans text-zinc-800/80 dark:text-zinc-300">Inbox</h3>
         <p class="font-heading text-4xl font-semibold text-zinc-800 dark:text-white">39</p>
       <% end %>
 
-      <%= link_to "#", class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-sm hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:border-zinc-600 dark:focus:ring-zinc-600/30" do %>
+      <%= link_to "#", class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-xs hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:border-zinc-600 dark:focus:ring-zinc-600/30" do %>
         <h3 class="font-normal text-base font-sans text-zinc-800/80 dark:text-zinc-300">Sched. messages</h3>
         <p class="font-heading text-4xl font-semibold text-zinc-800 dark:text-white">46</p>
       <% end %>
 
-      <%= link_to "#", class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-sm hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:border-zinc-600 dark:focus:ring-zinc-600/30" do %>
+      <%= link_to "#", class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-xs hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:border-zinc-600 dark:focus:ring-zinc-600/30" do %>
         <h3 class="font-normal text-base font-sans text-zinc-800/80 dark:text-zinc-300">Arrivals</h3>
         <p class="font-heading text-4xl font-semibold text-zinc-800 dark:text-white">2</p>
       <% end %>
 
-      <%= link_to "#", class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-sm hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:border-zinc-600 dark:focus:ring-zinc-600/30" do %>
+      <%= link_to "#", class: "bg-white border border-zinc-300 p-4 rounded-lg shadow-xs hover:shadow-none focus:ring-4 focus:ring-zinc-100/70 md:col-span-1 col-span-2 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:border-zinc-600 dark:focus:ring-zinc-600/30" do %>
         <h3 class="font-normal text-base font-sans text-zinc-800/80 dark:text-zinc-300">Departures</h3>
         <p class="font-heading text-4xl font-semibold text-zinc-800 dark:text-white">1</p>
       <% end %>
@@ -54,9 +54,9 @@
   <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8">
 
     <!-- Property user card 1 -->
-    <div class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
-      <%= image_tag "railsui/property-1.jpg", alt: "Image of Alpine Retreat Haven", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
-      <div class="flex items-center space-x-3 mt-4">
+    <div class="border border-zinc-300/90 shadow-xs shadow-zinc-300/20 rounded-lg p-4 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+      <%= image_tag "railsui/property-1.jpg", alt: "Image of Alpine Retreat Haven", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent mb-4" %>
+      <div class="flex items-center gap-3">
         <%= image_tag demo_avatar_url(variant: "men", id: "88"), class: "size-10 rounded-full object-cover", alt: "Noah Martinez" %>
         <div class="flex-1">
           <p class="font-medium dark:text-white font-heading text-zinc-900">Noah Martinez</p>
@@ -73,9 +73,9 @@
     </div>
 
     <!-- Property user card 2 -->
-    <div class="border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg p-3 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
-      <%= image_tag "railsui/property-3.jpg", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent" %>
-      <div class="flex items-center gap-3 mt-4">
+    <div class="border border-zinc-300/90 shadow-xs shadow-zinc-300/20 rounded-lg p-4 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600">
+      <%= image_tag "railsui/property-3.jpg", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent mb-4" %>
+      <div class="flex items-center gap-3">
         <%= image_tag demo_avatar_url(variant: "women", id: "78"), class: "size-10 rounded-full object-cover", alt: "Dannie White" %>
         <div class="flex-1">
           <p class="font-medium dark:text-white font-heading text-zinc-900">Dannie White</p>
@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="flex justify-between items-end pt-3">
-        <div class="flex items-center space-x-2">
+        <div class="flex items-center gap-2">
           <%= icon "clock", class: "size-5 text-zinc-500 stroke-current dark:text-zinc-300" %>
           <span class="text-zinc-600 dark:text-zinc-400 text-sm">Aug 24, 3pm</span>
         </div>
@@ -137,9 +137,9 @@
   <h3 class="mb-6 font-semibold text-zinc-700 dark:text-zinc-50">Resources</h3>
 
   <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-6 md:gap-4 gap-4">
-    <%= link_to rui_contact_path, class: "border border-zinc-300/80 shadow-sm shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 group transition ease-in-out duration-200 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30" do %>
-      <div class="size-10 rounded-full border border-primary-300/80 flex items-center justify-center bg-white flex-shrink-0 transition ease-in-out duration-200 group-hover:bg-primary-50/50 dark:bg-zinc-800/90 dark:group-hover:bg-primary-600/20 dark:border-primary-600/80">
-        <%= icon "lifebuoy", class: "size-6 text-primary-600 flex-shrink-0" %>
+    <%= link_to rui_contact_path, class: "border border-zinc-300/80 shadow-xs shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 group transition ease-in-out duration-200 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30" do %>
+      <div class="size-10 rounded-full border border-primary-300/80 flex items-center justify-center bg-white shrink-0-0 transition ease-in-out duration-200 group-hover:bg-primary-50/50 dark:bg-zinc-800/90 dark:group-hover:bg-primary-600/20 dark:border-primary-600/80">
+        <%= icon "lifebuoy", class: "size-6 text-primary-600 shrink-0-0" %>
       </div>
       <div>
         <h5 class="text-base font-medium font-heading text-zinc-700 dark:text-zinc-100 tracking-tight">Get support</h5>
@@ -147,9 +147,9 @@
       </div>
     <% end %>
 
-    <%= link_to rui_help_center_path, class: "border border-zinc-300/80 shadow-sm shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 group transition ease-in-out duration-200 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30 dark:bg-zinc-800/90" do %>
-      <div class="size-10 rounded-full border border-secondary-300/80 flex items-center justify-center bg-white flex-shrink-0 group-hover:bg-secondary-50/50 transition ease-in-out duration-200 dark:bg-zinc-800/90 dark:group-hover:bg-secondary-600/20 dark:border-secondary-600/80">
-        <%= icon "user-group", class: "size-6 flex-shrink-0 text-secondary-500" %>
+    <%= link_to rui_help_center_path, class: "border border-zinc-300/80 shadow-xs shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 group transition ease-in-out duration-200 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30 dark:bg-zinc-800/90" do %>
+      <div class="size-10 rounded-full border border-secondary-300/80 flex items-center justify-center bg-white shrink-0-0 group-hover:bg-secondary-50/50 transition ease-in-out duration-200 dark:bg-zinc-800/90 dark:group-hover:bg-secondary-600/20 dark:border-secondary-600/80">
+        <%= icon "user-group", class: "size-6 shrink-0-0 text-secondary-500" %>
       </div>
       <div>
         <h5 class="text-base font-medium font-heading text-zinc-700 dark:text-zinc-100 tracking-tight">Join the forum</h5>
@@ -157,9 +157,9 @@
       </div>
     <% end %>
 
-    <%= link_to rui_help_center_path, class: "border border-zinc-300/80 shadow-sm shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 group transition ease-in-out duration-200 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30" do %>
-      <div class="size-10 rounded-full border border-zinc-400/80 flex items-center justify-center bg-white flex-shrink-0 transition ease-in-out duration-200 group-hover:bg-zinc-50/80 dark:bg-zinc-800/90 dark:group-hover:bg-zinc-700/70">
-        <%= icon "tv", class: "text-zinc-500 size-6 flex-shrink-0 dark:group-hover:text-zinc-400" %>
+    <%= link_to rui_help_center_path, class: "border border-zinc-300/80 shadow-xs shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 group transition ease-in-out duration-200 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30" do %>
+      <div class="size-10 rounded-full border border-zinc-400/80 flex items-center justify-center bg-white shrink-0-0 transition ease-in-out duration-200 group-hover:bg-zinc-50/80 dark:bg-zinc-800/90 dark:group-hover:bg-zinc-700/70">
+        <%= icon "tv", class: "text-zinc-500 size-6 shrink-0-0 dark:group-hover:text-zinc-400" %>
       </div>
       <div>
         <h5 class="text-base font-medium font-heading text-zinc-700 dark:text-zinc-100 tracking-tight">Watch tutorials</h5>
@@ -167,9 +167,9 @@
       </div>
     <% end %>
 
-    <%= link_to rui_help_center_path, class: "border border-zinc-300/80 shadow-sm shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 transition ease-in-out duration-200 group dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30" do %>
-      <div class="size-10 rounded-full border border-violet-500/80 dark:border-violet-600/70 flex items-center justify-center bg-white flex-shrink-0 transition ease-in-out duration-200 group-hover:bg-violet-50/50 dark:bg-zinc-800/90 dark:group-hover:bg-violet-600/20">
-        <%= icon "queue-list", class: "text-violet-500 dark:group-hover:text-violet-400/80 size-6 flex-shrink-0" %>
+    <%= link_to rui_help_center_path, class: "border border-zinc-300/80 shadow-xs shadow-zinc-300/25 hover:shadow flex items-center rounded-lg px-4 py-5 space-x-3 focus:ring-4 focus:ring-zinc-100/80 transition ease-in-out duration-200 group dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 dark:shadow-zinc-950/30" do %>
+      <div class="size-10 rounded-full border border-violet-500/80 dark:border-violet-600/70 flex items-center justify-center bg-white shrink-0-0 transition ease-in-out duration-200 group-hover:bg-violet-50/50 dark:bg-zinc-800/90 dark:group-hover:bg-violet-600/20">
+        <%= icon "queue-list", class: "text-violet-500 dark:group-hover:text-violet-400/80 size-6 shrink-0-0" %>
       </div>
       <div>
         <h5 class="text-base font-medium font-heading text-zinc-700 dark:text-zinc-100 tracking-tight">Product updates</h5>

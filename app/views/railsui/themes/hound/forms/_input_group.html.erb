@@ -92,7 +92,7 @@
 
 <span class="rounded-full bg-yellow-300 px-2 py-0.5 text-xs text-black font-medium">JavaScript</span> or <span class="rounded-full bg-teal-300 text-black px-2 py-0.5 text-xs font-medium">Turbo</span> required.
 
-<div class="prose dark:!prose-invert my-6 max-w-full">
+<div class="prose dark:prose-invert my-6 max-w-full">
 <p>Add the class <code>.form-input-error</code> dynamically to display an invalid state. The icon and helper text is hidden by default but is displayed when the class gets appended.</p>
 <p>Read the <%= link_to "Icon documentation", systems_icons_path, class: "text-neutral-800 underline hover:text-neutral-900 font-medium dark:text-neutral-200 dark:hover:text-neutral-100", target: :_blank %> for the <code>icon</code> view helper as shown in the following snippet(s).</p>
 </div>
@@ -161,7 +161,7 @@
 <div id="input-group-with-browser-errors">
 <%= render layout: example, locals: { heading: "Input with browser-based error messages" } do %>
 
-<div class="prose dark:!prose-invert my-6 max-w-full">
+<div class="prose dark:prose-invert my-6 max-w-full">
 <p>Most modern browsers have invalid properties and states you can customize the design for. This type of validation uses those in lieu of reaching for JavaScript.</p>
 </div>
 
@@ -250,7 +250,7 @@
 <div id="input-group-disabled-with-label">
 <%= render layout: example, locals: { heading: "Disabled input with label", section: "Input Group" } do %>
 
-<div class="prose dark:!prose-invert mb-6">
+<div class="prose dark:prose-invert mb-6">
 <p>Adding a <code>disabled</code> attribute to the input field will automatically style disabled inputs</p>
 </div>
 
@@ -296,7 +296,7 @@
 <div id="input-group-with-add-on">
 <%= render layout: example, locals: { heading: "Input with add-on" } do %>
 
-<div class="prose dark:!prose-invert mb-6 max-w-full">
+<div class="prose dark:prose-invert mb-6 max-w-full">
 <p>Using custom offsets you can add an add-on to the beginning or end of an input. Modify the <code>w-[40px]</code> class of the add-on to account for its content. Do the same for the input padding <code>pl-[90px]</code> to adjust offset proportionally.</p>
 </div>
 
@@ -304,7 +304,7 @@
 <div class="form-group mb-0">
   <label for="website" class="form-label">Website</label>
   <div class="relative">
-    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l-lg flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
     <input type="text" id="website" class="form-input pl-[90px]" placeholder="example.com" aria-label="Website">
   </div>
 </div>
@@ -315,7 +315,7 @@
 <div class="form-group">
   <label for="website" class="form-label">Website</label>
   <div class="relative">
-    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+    <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l-lg flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
     <input type="text" id="website" class="form-input pl-[90px]" placeholder="example.com" aria-label="Website">
   </div>
 </div>
@@ -326,7 +326,7 @@
   <div class="form-group">
     <%%= f.label :website, class: "form-label" %>
     <div class="relative">
-      <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
+      <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l-lg flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
       <%%= f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website" %>
     </div>
   </div>
@@ -338,7 +338,7 @@
   .form-group
     = f.label :website, class: "form-label"
     .relative
-      .absolute.left-px.border-r.border-slate-300.top-px.bg-slate-100.dark:border-slate-700.dark:text-slate-200.text-base.rounded-l.flex.items-center.justify-center.px-3.text-slate-700.select-none{class: "dark:bg-slate-700/80 h-[40px]"} https://
+      .absolute.left-px.border-r.border-slate-300.top-px.bg-slate-100.dark:border-slate-700.dark:text-slate-200.text-base.rounded-l-lg.flex.items-center.justify-center.px-3.text-slate-700.select-none{class: "dark:bg-slate-700/80 h-[40px]"} https://
       = f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website"
 <% end %>
 
@@ -416,7 +416,7 @@
   <div class="relative">
     <%= icon "users", class:  "size-5 text-slate-500 absolute left-3 top-3" %>
     <input type="search" id="users" class="form-input pl-10" placeholder="John Doe" aria-label="Search users" />
-    <button class="rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:focus:ring-indigo-500/30">Search</button>
+    <button class="rounded-r-lg rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-[9px] absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-primary-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:focus:ring-primary-500/30 font-semibold text-[14.5px]">Search</button>
   </div>
 </div>
 <% end %>
@@ -428,7 +428,7 @@
   <div class="relative">
     <%%= icon "users", class: "size-5 text-slate-500 absolute left-3 top-3" %>
     <input type="search" id="users" class="form-input pl-10" placeholder="John Doe" aria-label="Search users" />
-    <button class="rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600">Search</button>
+    <button class="rounded-r-lg rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-[9px] absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-primary-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:focus:ring-primary-500/30 font-semibold text-[14.5px]">Search</button>
   </div>
 </div>
 <% end %>
@@ -440,7 +440,7 @@
     <div class="relative">
     <%%= icon "users", class: "size-5 text-slate-500 absolute left-3 top-3" %>
     <%%= f.search_field :users, class: "form-input pl-10", placeholder: "John Doe", "aria-label": "Search users" %>
-    <%%= f.submit class: "rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600" %>
+    <%%= f.submit class: "rounded-r-lg rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-[9px] absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-primary-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:focus:ring-primary-500/30 font-semibold text-[14.5px]" %>
     </div>
   </div>
 <%% end %>
@@ -453,7 +453,7 @@
     .relative
       = icon "users", class: "size-5 stroke-current text-slate-500 absolute left-3 top-3"
       = f.search_field :users, class: "form-input pl-10", placeholder: "John Doe", "aria-label": "Search users"
-    = f.submit class: "rounded-r rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-2 absolute right-0 shadow-sm top-0 focus:ring-4 focus:ring-indigo-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600"
+    = f.submit class: "rounded-r-lg rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-[9px] absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-primary-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:focus:ring-primary-500/30 font-semibold text-[14.5px]"
 <% end %>
 
 <%= render_snippet %>

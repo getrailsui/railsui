@@ -1,5 +1,5 @@
-<div class="relative border border-neutral-200/80 rounded-lg my-10 bg-white">
-  <div class="flex text-sm text-neutral-700 space-x-2 py-4 px-6 border-b border-neutral-200/80 rounded-t-lg">
+<div class="relative my-10 bg-white border rounded-lg border-gray-200/80 dark:border-gray-700/80 dark:bg-gray-900">
+  <div class="flex px-6 py-4 space-x-2 text-sm text-gray-700 border-b rounded-t-lg border-gray-200/80 dark:text-white dark:border-gray-700/80">
     <ul class="text-right">
       <li>From:</li>
       <li>To:</li>
@@ -15,7 +15,7 @@
   </div>
 
   <div class="rui-mailer p-3 pb-10 min-h-[600px]">
-    <div class="bg-netural-300 text-neutral-800 rounded-full px-3 py-1 font-semibold inline-block text-xs absolute top-4 right-4">Email preview</div>
+    <div class="absolute inline-block px-3 py-1 text-xs font-semibold bg-gray-300 rounded-full text-neutral-800 top-4 right-4">Email preview</div>
 
     <%= capture(&block) %>
   </div>

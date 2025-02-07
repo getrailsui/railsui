@@ -1,7 +1,7 @@
 /***************************************
   Default ActionText
 ****************************************/
-@import "https://cdn.jsdelivr.net/npm/trix@2.1.3/dist/trix.min.css";
+@import "trix/dist/trix";
 
 .trix-content .attachment-gallery > action-text-attachment,
 .trix-content .attachment-gallery > .attachment {
@@ -23,8 +23,8 @@
 }
 
 .trix-content action-text-attachment .attachment {
-  padding: 0 !important;
-  max-width: 100% !important;
+  padding: 0;
+  max-width: 100%;
 }
 
 /***************************************
@@ -35,9 +35,9 @@ trix-toolbar .trix-button-group {
   @apply border-none gap-px;
 }
 
-trix-toolbar .trix-button-row {
+/* trix-toolbar .trix-button-row {
   @apply scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-200 dark:scrollbar-track-transparent dark:scrollbar-thumb-slate-700;
-}
+} */
 
 trix-toolbar .trix-button {
   @apply border-transparent hover:bg-primary-50/50 rounded dark:hover:bg-slate-500/50 dark:hover:text-white dark:bg-transparent dark:before:invert;
@@ -51,7 +51,7 @@ trix-toolbar .trix-button {
   }
 
   &:not(:first-child) {
-    @apply border-l-0 !important;
+    @apply border-l-0;
   }
 }
 
@@ -63,20 +63,20 @@ trix-toolbar .trix-dialog__link-fields .trix-button-group {
   @apply gap-1.5;
 
   &:not(:first-child) .trix-button--dialog {
-    @apply border-l !important;
+    @apply border-l;
   }
 }
 
 trix-toolbar .trix-dialog {
-  @apply shadow-lg p-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-900 !important;
+  @apply shadow-lg p-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-900;
 }
 
 trix-toolbar .trix-input--dialog {
-  @apply px-3 py-1 text-sm border border-slate-300 shadow-inner bg-white font-normal placeholder:text-slate-500 rounded block w-full focus:outline-none focus:ring-4 pr-32 focus:ring-primary-50 focus:border-primary-500 text-slate-900 focus:shadow-none dark:border-slate-600/70 dark:placeholder:text-slate-400 dark:focus:ring-primary-500/30 dark:focus:border-primary-500/50 dark:bg-slate-800 dark:text-white !important;
+  @apply px-3 py-1 text-sm border border-slate-300 shadow-inner bg-white font-normal placeholder:text-slate-500 rounded block w-full focus:outline-hidden focus:ring-4 pr-32 focus:ring-primary-50 focus:border-primary-500 text-slate-900 focus:shadow-none dark:border-slate-600/70 dark:placeholder:text-slate-400 dark:focus:ring-primary-500/30 dark:focus:border-primary-500/50 dark:bg-slate-800 dark:text-white;
 }
 
 trix-toolbar .trix-button.trix-button--dialog {
-  @apply border-slate-300 bg-white dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-primary-500/30 dark:hover:bg-slate-800/50 text-sm text-slate-800 px-2 py-1 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 hover:bg-slate-50/50 shadow-sm font-medium dark:border-slate-600 !important;
+  @apply border-slate-300 bg-white dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-primary-500/30 dark:hover:bg-slate-800/50 text-sm text-slate-800 px-2 py-1 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 hover:bg-slate-50/50 shadow-sm font-medium dark:border-slate-600;
   border: 1px;
   border-style: solid;
 
@@ -91,7 +91,7 @@ trix-toolbar .trix-button.trix-button--dialog {
 
 /* prose style content */
 trix-editor {
-  @apply rounded border border-slate-300 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 focus-within:ring-primary-50 focus-within:border-primary-500 focus:outline-none bg-white shadow-inner p-3 text-base dark:bg-slate-800 dark:text-white dark:focus:ring-primary-500/20 dark:border-slate-700 !important;
+  @apply rounded border border-slate-300 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 focus-within:ring-primary-50 focus-within:border-primary-500 focus:outline-hidden bg-white shadow-inner p-3 text-base dark:bg-slate-800 dark:text-white dark:focus:ring-primary-500/20 dark:border-slate-700;
 }
 
 trix-editor,

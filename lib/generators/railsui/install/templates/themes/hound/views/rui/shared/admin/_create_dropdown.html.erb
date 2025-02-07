@@ -104,7 +104,7 @@
                 <%= hidden_field_tag :combobox_value, nil, data: { "combo-select-target" => "input" } %>
                 <%= text_field_tag :combobox, nil, class: "form-input sm:pr-12 shadow-sm w-full", role: "combobox", "aria-controls": "options", "aria-expanded": "false", data: { action: "keydown->combo-select#handleKeyboardNavigation click->combo-select#toggle click@window->combo-select#hide","combo-select-target": "input" }, readonly: true %>
 
-                <button type="button" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
+                <button type="button" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-hidden">
                   <%= icon "chevron-up-down", class:  "h-5 w-5 text-slate-400" %>
                 </button>
 
@@ -121,7 +121,7 @@
                 </div>
 
                 <ul
-                  class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white dark:bg-slate-800 p-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                  class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white dark:bg-slate-800 p-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm"
                   id="options" role="listbox" data-combo-select-target="options"
                   data-transition-enter-active="transition ease-out duration-300"
                   data-transition-enter-from="transform opacity-0 scale-95"

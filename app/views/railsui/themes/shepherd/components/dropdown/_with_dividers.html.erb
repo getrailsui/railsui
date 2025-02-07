@@ -1,7 +1,7 @@
 <div id="dropdown-with-dividers">
 <%= render layout: example, locals: { heading: "With dividers", section: "Dropdown" } do %>
 
-  <div class="prose dark:!prose-invert max-w-full mb-10">
+  <div class="prose dark:prose-invert max-w-full mb-10">
     <p>Divide items in a list using a <code>divide-y</code> class from Tailwind CSS.</p>
 
     <p>Depending on how your dropdown list data originates, you may need to get creative on assigning padding between the first and last items in the dropdown menu. </p>
@@ -16,7 +16,7 @@
     <%= icon "chevron-down", class: "size-3 ml-2" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 divide-y divide-zinc-200 dark:divide-zinc-600/80 font-heading"
+    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 divide-y divide-zinc-300 dark:divide-zinc-600/80 font-heading"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -45,7 +45,7 @@
     <%%= icon "chevron-down", class: "size-3 ml-2" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-sm text-base text-zinc-600 dark:text-zinc-200"
+    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 divide-y divide-zinc-300 dark:divide-zinc-600/80 font-heading"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -73,8 +73,8 @@
     <%%= icon "chevron-down", class: "size-3 ml-2" %>
   <%% end %>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-sm text-base text-zinc-600 dark:text-zinc-200"
-    data-dropdown-target="menu"
+    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 divide-y divide-zinc-300 dark:divide-zinc-600/80 font-heading"
+    data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
@@ -99,7 +99,7 @@
   = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary" do
     Dropdown with dividers
     \#{icon "chevron-down", class: "size-3 ml-2"}
-  .hidden.transition.transform.origin-top-left.absolute.left-0.top-14.bg-white.rounded-xl.shadow-xl.border.border-zinc-200.w-full.z-50.py-2.dark:bg-zinc-900.md:text-sm.text-base.text-zinc-600.dark:text-zinc-200{class: "shadow-zinc-900/10 md:w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-600/80", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+  .hidden.transition.transform.origin-top-left.absolute.left-0.top-14.bg-white.rounded-xl.shadow-xl.border.border-zinc-300.w-full.z-50.py-2.dark:bg-zinc-900.md:text-sm.text-base.text-zinc-600.dark:text-zinc-200{class: "shadow-zinc-900/10 md:w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-600/80", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
     .pb-1{role: "none"}
       = link_to "Edit", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
     .py-1{role: "none"}

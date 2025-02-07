@@ -10,6 +10,9 @@ module Railsui
       def setup_theme
         @config = Railsui::Configuration.load!
 
+
+        say @config.theme, :yellow
+
         say "Updating Rails UI config", :yellow
         # mailers
         update_railsui_mailer_layout(@config.theme)
@@ -22,12 +25,6 @@ module Railsui
         copy_theme_javascript(@config.theme)
         copy_theme_stylesheets(@config.theme)
 
-        # view related
-        # copy_railsui_shared_directory(@config.theme)
-
-        # tailwind related
-        update_tailwind_preset(@config.theme)
-
         # update body classes
         update_railsui_theme_classes
 
@@ -38,20 +35,9 @@ module Railsui
 
         @config.save
         say "✅ Configuration updated successfully", :green
-
-        output_colors(@config.theme)
       end
 
       private
-
-      def output_colors(theme)
-        default_colors = Railsui::Colors.theme_colors(theme)
-        output = default_colors
-
-        say "📌Tip: Run `bin/rails railsui:colors` to print the default colors for this theme."
-        say "🎨 Default colors for #{theme.humanize} theme:", :yellow
-        puts output.to_yaml
-      end
 
       def sync_pages
         # Remove old theme's pages. Forcefully for now.
@@ -89,30 +75,6 @@ module Railsui
 
         # Update the pages in the config
         @config.pages = new_theme_pages
-      end
-
-      def update_tailwind_preset(theme)
-        tailwind_config_path = Rails.root.join("tailwind.config.js")
-
-        if File.exist?(tailwind_config_path)
-          content = File.read(tailwind_config_path)
-
-          tailwind_preset_content = "presets: [presets.#{theme}],"
-
-          # Update the preset theme
-          if content =~ /presets: \[presets\..+\],/
-            content.gsub!(/presets: \[presets\..+\],/, tailwind_preset_content)
-            say("Updated Tailwind preset to #{theme}.", :green)
-          else
-            content.sub!("module.exports = {", "module.exports = {\n#{tailwind_preset_content}")
-            say("Added Tailwind preset #{theme}.", :green)
-          end
-
-          # Write the updated content back to the file
-          File.write(tailwind_config_path, content)
-        else
-          say("No tailwind.config.js file found.", :red)
-        end
       end
     end
   end

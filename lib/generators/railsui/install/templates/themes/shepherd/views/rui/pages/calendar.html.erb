@@ -1,7 +1,7 @@
 <div class="flex items-start justify-between sm:h-[calc(100vh-74px)] h-full w-full relative overflow-x-hidden sm:overflow-x-hidden">
   <!-- Left pane -->
   <div
-    class="sm:w-[360px] sm:h-[calc(100vh-74px)] sm:pl-4 border-r border-zinc-300/80 overflow-y-auto overflow-x-hidden block sm:pb-0 pb-16 dark:border-zinc-700 w-[90px] sm:pt-[25px] pt-[139px] sm:z-10 z-50 relative flex-shrink-0 bg-white dark:bg-zinc-900">
+    class="sm:w-[360px] sm:h-[calc(100vh-74px)] sm:pl-4 border-r border-zinc-300/80 overflow-y-auto overflow-x-hidden block sm:pb-0 pb-16 dark:border-zinc-700 w-[90px] sm:pt-[25px] pt-[139px] sm:z-10 z-50 relative shrink-0 bg-white dark:bg-zinc-900">
     <!-- Calendar search -->
     <div class="sm:flex items-center space-x-2 pr-2 hidden">
       <form action="#" class="flex items-center justify-between flex-1">
@@ -159,7 +159,7 @@
           { day: "Sun", number: "1", month: "Oct", active: false }
         ].each do |calendar_date| %>
           <% if calendar_date[:active] == true %>
-            <div class="text-center h-[64px] flex items-center justify-center flex-shrink-0 w-[64px] flex-wrap flex-col relative border-b border-zinc-300/80">
+            <div class="text-center h-[64px] flex items-center justify-center shrink-0 w-[64px] flex-wrap flex-col relative border-b border-zinc-300/80">
               <div class="flex justify-center w-full">
                 <span class="w-1 h-1 bg-primary-600 rounded-full block"></span>
               </div>
@@ -168,7 +168,7 @@
             </div>
           <% else %>
             <% if calendar_date[:month].present? %>
-              <div class="text-center h-[64px] flex items-center justify-center flex-shrink-0 w-[64px] relative border-b border-zinc-300/80 dark:border-zinc-700">
+              <div class="text-center h-[64px] flex items-center justify-center shrink-0 w-[64px] relative border-b border-zinc-300/80 dark:border-zinc-700">
                 <div>
                   <span class="text-xs uppercase font-normal text-zinc-400 block"><%= calendar_date[:month] %></span>
                   <span class="text-sm font-normal text-zinc-600 dark:text-zinc-400 block"><%= calendar_date[:number] %></span>
@@ -176,7 +176,7 @@
                 </div>
               </div>
             <% else %>
-              <div class="text-center h-[64px] flex items-center justify-center flex-shrink-0 w-[64px] border-b border-zinc-300/80 dark:border-zinc-700">
+              <div class="text-center h-[64px] flex items-center justify-center shrink-0 w-[64px] border-b border-zinc-300/80 dark:border-zinc-700">
                 <div>
                   <span class="text-sm font-normal text-zinc-600 dark:text-zinc-400 block"><%= calendar_date[:number] %></span>
                   <span class="text-xs uppercase text-zinc-400 dark:text-zinc-200 block"><%= calendar_date[:day] %></span>

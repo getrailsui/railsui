@@ -100,7 +100,7 @@
             { item: "Priority customer support" }
             ].each do |pricing| %>
           <li class="flex items-center py-3 gap-2">
-            <%= icon "check", class: "size-5 text-secondary-500 flex-shrink-0", variant: :solid %>
+            <%= icon "check", class: "size-5 text-secondary-500 shrink-0", variant: :solid %>
             <p class="leading-tight"><%= pricing[:item] %></p>
           </li>
         <% end %>
@@ -133,7 +133,7 @@
             { item: "Performance analytics dashboard" }
             ].each do |pricing| %>
           <li class="flex items-center gap-2 py-3">
-            <%= icon "check", class: "size-5 text-primary-500 flex-shrink-0", variant: :solid %>
+            <%= icon "check", class: "size-5 text-primary-500 shrink-0", variant: :solid %>
 
             <p class="leading-tight"><%= pricing[:item] %></p>
           </li>
@@ -144,7 +144,7 @@
     </div>
   </div>
   <div class="lg:w-1/3 w-full lg:pl-6 lg:mb-0 mb-10">
-    <div class="bg-white rounded-3xl border-zinc-300 border p-6 shadow-sm dark:bg-zinc-800 dark:border-zinc-600/80 relative">
+    <div class="bg-white rounded-3xl border-zinc-300 border p-6 shadow-xs dark:bg-zinc-800 dark:border-zinc-600/80 relative">
       <h3 class="h5 text-zinc-800 my-3 dark:text-zinc-200">Enterprise</h3>
       <div class="prose prose-zinc dark:prose-invert">
         <p>A tailored plan for more control.</p>
@@ -162,7 +162,7 @@
             { item: "Integration with major booking platforms" },
             ].each do |pricing| %>
           <li class="flex items-center gap-2 py-3">
-            <%= icon "check", class: "size-5 text-zinc-700 dark:text-zinc-500 flex-shrink-0", variant: :solid %>
+            <%= icon "check", class: "size-5 text-zinc-700 dark:text-zinc-500 shrink-0", variant: :solid %>
 
             <p class="leading-tight"><%= pricing[:item] %></p>
           </li>
@@ -248,7 +248,7 @@
 <div class="bg-zinc-100 lg:py-36 py-12 lg:mt-32 dark:bg-zinc-900">
   <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 relative">
     <div class="col-span-2 lg:pr-10 lg:order-1 order-2">
-      <%= icon "newspaper", class: "text-primary-500 size-8 flex-shrink-0" %>
+      <%= icon "newspaper", class: "text-primary-500 size-8 shrink-0" %>
 
       <h3 class="md:h4 h5 mt-6">Want to read more about what <br class="lg:block hidden" />
         we're up to every week?</h3>

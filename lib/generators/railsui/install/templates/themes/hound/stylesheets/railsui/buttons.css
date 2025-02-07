@@ -1,0 +1,45 @@
+@utility btn {
+  @apply py-2 px-3 text-sm rounded-md font-medium text-center inline-flex items-center justify-center transition-colors duration-300 no-underline focus:ring-4 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+}
+
+@utility btn-lg {
+  @apply py-3 px-5 text-lg;
+}
+
+@utility btn-sm {
+  @apply py-1 px-3 text-xs;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 text-white focus:ring-primary-100/70 hover:bg-primary-600 dark:ring-secondary-500/30;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 text-white focus:ring-secondary-100/70 hover:bg-secondary-600 dark:ring-secondary-500/30;
+  }
+
+  .btn-dark {
+    @apply bg-zinc-800 text-white focus:ring-zinc-800/20 hover:bg-zinc-900 dark:ring-zinc-800/20 dark:hover:bg-zinc-700 dark:hover:text-zinc-100;
+  }
+
+  .btn-light {
+    @apply bg-zinc-100 text-zinc-800 focus:ring-slate-200/70 hover:bg-zinc-50/50 hover:border-zinc-400/80 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:ring-zinc-600/30 dark:hover:border-zinc-500 dark:hover:bg-zinc-700 dark:hover:text-white;
+  }
+
+  .btn-white {
+    @apply bg-white text-zinc-800 border border-zinc-300/90 shadow-xs shadow-zinc-300/20 focus:ring-slate-100/70 hover:bg-zinc-50/50 hover:border-zinc-400/80 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:ring-zinc-600/30 dark:hover:border-zinc-500 dark:hover:bg-zinc-700 dark:hover:text-white;
+  }
+
+  .btn-transparent {
+    @apply bg-transparent text-zinc-700 border-transparent shadow-none focus:shadow-zinc-300/20 hover:bg-zinc-100/90 hover:text-zinc-800 hover:border-zinc-300 dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-zinc-100 dark:hover:border-zinc-700 dark:focus:ring-zinc-800/20 focus:ring-slate-200/70;
+  }
+
+  .btn-danger {
+    @apply bg-rose-500 text-white dark:focus:ring-rose-500/30 hover:bg-rose-600 focus:ring-rose-100/70;
+  }
+
+  .btn-link {
+    @apply text-primary-600 font-medium focus:shadow-none hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 focus:ring-transparent;
+  }
+}

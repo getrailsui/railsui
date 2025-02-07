@@ -51,7 +51,7 @@
         data-controller="railsui-date-range-picker"
 
         class="btn btn-white gap-3 inline-flex items-center">
-        <%= icon "calendar-days", class: "size-5 text-zinc-500 dark:text-zinc-300 flex-shrink-0" %>
+        <%= icon "calendar-days", class: "size-5 text-zinc-500 dark:text-zinc-300 shrink-0" %>
         <span data-railsui-date-range-picker-target="label">Select a date range</span>
         <input type="hidden" data-railsui-date-range-picker-target="input">
       </a>
@@ -64,7 +64,7 @@
         <div class="relative">
           <input id="booking[mobile_phone]" type="tel" class="form-input w-full peer pl-14" value="+1658675309">
           <span
-            class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-500/80">
+            class="w-12 h-[40px] bg-white rounded-l-full flex items-center justify-center absolute left-px top-px border-r border-zinc-300 peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-500/80">
             <%= icon "device-phone-mobile", class: "size-5" %>
           </span>
         </div>
@@ -131,7 +131,7 @@
       <label for="booking[total]" class="form-label">Total</label>
       <div class="relative">
         <span
-          class="w-12 h-[40px] bg-white rounded-l-full border-zinc-300/800 flex items-center justify-center absolute left-px top-px border-r peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 font-medium dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-500/80">$</span>
+          class="w-12 h-[40px] bg-white rounded-l-full flex items-center justify-center absolute left-px top-px border-r border-zinc-300 peer-focus:border-zinc-500 text-zinc-500 peer-focus:text-primary-600 font-medium dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-500/80">$</span>
         <input type="number" class="form-input w-full pl-16" placeholder="0.00" min="0" step=".01" value="1375.00">
       </div>
     </div>

@@ -1,0 +1,47 @@
+@utility h1 {
+  @apply text-5xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility h2 {
+  @apply text-4xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility h3 {
+  @apply text-3xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility h4 {
+  @apply text-2xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility h5 {
+  @apply text-xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility h6 {
+  @apply text-base font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility display-1 {
+  @apply text-9xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility display-2 {
+  @apply text-8xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility display-3 {
+  @apply text-7xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility display-4 {
+  @apply text-6xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility display-5 {
+  @apply text-5xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}
+
+@utility display-6 {
+  @apply text-4xl font-semibold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter font-heading;
+}

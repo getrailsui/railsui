@@ -3,18 +3,18 @@
 
 <div class="relative bg-slate-100 border-slate-200 border rounded-lg p-10 w-full min-h-[280px] dark:bg-slate-900 dark:border-slate-700 overflow-hidden">
   <div aria-live="assertive" class="pointer-events-none absolute flex items-center justify-end px-4 py-6 sm:p-6 top-0 right-0 left-0 w-full animate-toast-from-right" data-controller="toast">
-    <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-slate-950 dark:border dark:border-slate-700/80">
+    <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/10 dark:bg-slate-950 dark:border dark:border-slate-700/80">
       <div class="p-4">
         <div class="flex items-start">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <%= icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400" %>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-slate-900 dark:text-white">Successfully liked!</p>
             <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">John Doe has been notified.</p>
           </div>
-          <div class="ml-4 flex flex-shrink-0">
-            <button type="button" class="inline-flex rounded-sm bg-white text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-50 dark:bg-transparent dark:focus:ring-slate-500 dark:hover:text-slate-100
+          <div class="ml-4 flex shrink-0">
+            <button type="button" class="inline-flex rounded-sm bg-white text-slate-400 hover:text-slate-500 focus:outline-hidden focus:ring-2 focus:ring-slate-50 dark:bg-transparent dark:focus:ring-slate-500 dark:hover:text-slate-100
             dark:focus:text-slate-100" data-action="click->toast#hide">
               <span class="sr-only">Close</span>
               <%= icon "x-mark", class: "size-5 pointer-events-none" %>
@@ -29,20 +29,20 @@
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true  do %>
 <div class="relative overflow-hidden">
-  <div aria-live="assertive" class="pointer-events-none absolute flex items-center justify-end px-4 py-6 sm:p-6 top-0 right-0 left-0 w-full animate-toast-from-right" data-controller="toast">
-    <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-slate-950 dark:border dark:border-slate-700/80">
+  <div aria-live="assertive" class="pointer-events-none absolute flex items-center justify-end px-4 py-6 sm:p-6 top-0 right-0 left-0 w-full animate-toast-from-right" data-controller="railsui-toast">
+    <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/10  dark:bg-slate-950 dark:border dark:border-slate-700/80">
       <div class="p-4">
         <div class="flex items-start">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <%%= icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400" %>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-slate-900 dark:text-white">Successfully liked!</p>
             <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">John Doe has been notified.</p>
           </div>
-          <div class="ml-4 flex flex-shrink-0">
-            <button type="button" class="inline-flex rounded-sm bg-white text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-50 dark:bg-transparent dark:focus:ring-slate-500 dark:hover:text-slate-100
-            dark:focus:text-slate-100" data-action="click->toast#hide">
+          <div class="ml-4 flex shrink-0">
+            <button type="button" class="inline-flex rounded-sm bg-white text-slate-400 hover:text-slate-500 focus:outline-hidden focus:ring-2 focus:ring-slate-50 dark:bg-transparent dark:focus:ring-slate-500 dark:hover:text-slate-100
+            dark:focus:text-slate-100" data-action="click->railsui-toast#hide">
               <span class="sr-only">Close</span>
               <%%= icon "x-mark", class: "size-5" %>
             </button>
@@ -56,20 +56,20 @@
 
 <% content_for :erb, flush: true do %>
 <div class="relative overflow-hidden">
-  <div aria-live="assertive" class="pointer-events-none absolute flex items-center justify-end px-4 py-6 sm:p-6 top-0 right-0 left-0 w-full animate-toast-from-right" data-controller="toast">
-    <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-slate-950 dark:border dark:border-slate-700/80">
+  <div aria-live="assertive" class="pointer-events-none absolute flex items-center justify-end px-4 py-6 sm:p-6 top-0 right-0 left-0 w-full animate-toast-from-right" data-controller="railsui-toast">
+    <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/10  dark:bg-slate-950 dark:border dark:border-slate-700/80">
       <div class="p-4">
         <div class="flex items-start">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <%%= icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400" %>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
             <p class="text-sm font-medium text-slate-900 dark:text-white">Successfully liked!</p>
             <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">John Doe has been notified.</p>
           </div>
-          <div class="ml-4 flex flex-shrink-0">
-            <button type="button" class="inline-flex rounded-sm bg-white text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-50 dark:bg-transparent dark:focus:ring-slate-500 dark:hover:text-slate-100
-            dark:focus:text-slate-100" data-action="click->toast#hide">
+          <div class="ml-4 flex shrink-0">
+            <button type="button" class="inline-flex rounded-sm bg-white text-slate-400 hover:text-slate-500 focus:outline-hidden focus:ring-2 focus:ring-slate-50 dark:bg-transparent dark:focus:ring-slate-500 dark:hover:text-slate-100
+            dark:focus:text-slate-100" data-action="click->railsui-toast#hide">
               <span class="sr-only">Close</span>
               <%%= icon "x-mark", class: "size-5" %>
             </button>
@@ -83,17 +83,17 @@
 
 <% content_for :haml, flush: true do %>
 .relative.overflow-hidden
-  .pointer-events-none.absolute.flex.items-center.justify-end.px-4.py-6.sm:p-6.top-0.right-0.left-0.w-full.animate-toast-from-right(aria-live="assertive" data-controller="toast")
-    .pointer-events-auto.w-full.max-w-sm.overflow-hidden.rounded-md.bg-white.shadow-lg.ring-1.ring-black.ring-opacity-5.dark:bg-slate-950.dark:border(class="dark:border-slate-700/80")
+  .pointer-events-none.absolute.flex.items-center.justify-end.px-4.py-6.sm:p-6.top-0.right-0.left-0.w-full.animate-toast-from-right(aria-live="assertive" data-controller="railsui-toast")
+    .pointer-events-auto.w-full.max-w-sm.overflow-hidden.rounded-md.bg-white.shadow-lg.ring-1.ring-black.dark:bg-slate-950.dark:border(class="dark:border-slate-700/80 ring-black/10")
       .p-4
         .flex.items-start
-          .flex-shrink-0
+          .shrink-0
             = icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400"
           .ml-3.w-0.flex-1(class="pt-0.5")
             %p.text-sm.font-medium.text-slate-900.dark:text-white Successfully liked!
             %p.mt-1.text-sm.text-slate-500.dark:text-slate-300 John Doe has been notified.
-          .ml-4.flex.flex-shrink-0
-            %button.inline-flex.rounded-sm.bg-white.text-slate-400.hover:text-slate-500.focus:outline-none.focus:ring-2.focus:ring-slate-50.dark:bg-transparent.dark:focus:ring-slate-500.dark:hover:text-slate-100.dark:focus:text-slate-100(data-action="click->toast#hide" type="button")
+          .ml-4.flex.shrink-0
+            %button.inline-flex.rounded-sm.bg-white.text-slate-400.hover:text-slate-500.focus:outline-hidden.focus:ring-2.focus:ring-slate-50.dark:bg-transparent.dark:focus:ring-slate-500.dark:hover:text-slate-100.dark:focus:text-slate-100(data-action="click->railsui-toast#hide" type="button")
               %span.sr-only Close
               = icon "x-mark", class: "size-5"
 <% end %>
@@ -102,7 +102,13 @@
 
 <% end %>
 
-<%= render_snippet js_filename: "toast_controller.js" %>
+<% content_for :js, flush: true do %>
+import { RailsuiToast } from 'railsui-stimulus'
+application.register('railsui-toast', RailsuiToast)
+<% end %>
+
+<%= render_snippet js_filename: "index.js" %>
+
 <% end %>
 <% end %>
 </div>
