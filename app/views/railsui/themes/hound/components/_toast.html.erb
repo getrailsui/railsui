@@ -9,37 +9,8 @@
 
 <div class="not-prose">
 <% content_for :js, flush: true do %>
-import { Controller } from "@hotwired/stimulus"
-import { useTransition } from "stimulus-use"
-
-export default class extends Controller {
-  connect() {
-    useTransition(this, {
-      element: this.element,
-    })
-
-    // Trigger toggle
-    this.toggleTransition()
-  }
-
-  toggle() {
-    this.toggleTransition()
-  }
-
-  hide() {
-    this.leave()
-
-    let self = this
-    setTimeout(() => {
-      self.toggleTransition()
-    }, 1000)
-  }
-
-  disconnect() {
-    this.leave()
-  }
-}
-
+import { RailsuiToast } from 'railsui-stimulus'
+application.register('railsui-toast', RailsuiToast)
 <% end %>
 
 <%= render_snippet js_filename: "toast_controller.js" %>
@@ -104,8 +75,6 @@ module.exports = {
 
 <% end %>
 <% content_for :css, flush: true do %>
-/* my-stylesheet.css */
-
 @keyframes toast-from-right {
   0% {
     transform: translateX(50%);
@@ -138,7 +107,7 @@ module.exports = {
   animation: toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 <% end %>
-<%= render_snippet active_tab: :css, css_filename: "index.css" %>
+<%= render_snippet active_tab: :css, css_filename: "application.css" %>
 </div>
 <hr>
 </div>

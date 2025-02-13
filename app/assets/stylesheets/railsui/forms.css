@@ -1,6 +1,6 @@
 .railsui {
   .rui-form-input {
-    @apply rounded-md px-4 py-2 border border-neutral-300/80 bg-white focus:border-neutral-500/80 focus:ring-4 focus:ring-neutral-100/80 focus:shadow-none focus:outline-none dark:bg-neutral-800 dark:border-neutral-700/80 dark:focus:border-neutral-500 placeholder-neutral-500/60 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 font-normal antialiased font-sans w-full dark:text-neutral-50 text-neutral-800;
+    @apply rounded-md px-4 py-2 border border-neutral-300/80 bg-white focus:border-neutral-500/80 focus:ring-4 focus:ring-neutral-100/80 focus:shadow-none focus:outline-hidden dark:bg-neutral-800 dark:border-neutral-700/80 dark:focus:border-neutral-500 placeholder-neutral-500/60 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 font-normal antialiased font-sans w-full dark:text-neutral-50 text-neutral-800;
   }
 
   .rui-form-label {

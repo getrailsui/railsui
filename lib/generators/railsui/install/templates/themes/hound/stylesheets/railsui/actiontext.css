@@ -32,7 +32,7 @@
 ****************************************/
 
 trix-toolbar .trix-button-group {
-  @apply gap-px border-none;
+  @apply border-none gap-px;
 }
 
 /* trix-toolbar .trix-button-row {
@@ -40,7 +40,7 @@ trix-toolbar .trix-button-group {
 } */
 
 trix-toolbar .trix-button {
-  @apply rounded border-transparent hover:bg-primary-50/50 dark:hover:bg-slate-500/50 dark:hover:text-white dark:bg-transparent dark:before:invert;
+  @apply border-transparent hover:bg-primary-50/50 rounded dark:hover:bg-slate-500/50 dark:hover:text-white dark:bg-transparent dark:before:invert;
 
   &[disabled] {
     @apply dark:rounded dark:hover:bg-transparent dark:hover:text-slate-500/10 hover:cursor-not-allowed;
@@ -68,15 +68,15 @@ trix-toolbar .trix-dialog__link-fields .trix-button-group {
 }
 
 trix-toolbar .trix-dialog {
-  @apply p-4 rounded border shadow-lg border-slate-300 dark:border-slate-600 dark:bg-slate-900;
+  @apply shadow-lg p-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-900;
 }
 
 trix-toolbar .trix-input--dialog {
-  @apply block px-3 py-1 pr-32 w-full text-sm font-normal bg-white rounded border shadow-inner border-slate-300 placeholder:text-slate-500 focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 focus:shadow-none dark:border-slate-600/70 dark:placeholder:text-slate-400 dark:focus:ring-primary-500/30 dark:focus:border-primary-500/50 dark:bg-slate-800 dark:text-white;
+  @apply px-3 py-1 text-sm border border-slate-300 shadow-inner bg-white font-normal placeholder:text-slate-500 rounded block w-full focus:outline-hidden focus:ring-4 pr-32 focus:ring-primary-50 focus:border-primary-500 text-slate-900 focus:shadow-none dark:border-slate-600/70 dark:placeholder:text-slate-400 dark:focus:ring-primary-500/30 dark:focus:border-primary-500/50 dark:bg-slate-800 dark:text-white;
 }
 
 trix-toolbar .trix-button.trix-button--dialog {
-  @apply px-2 py-1 text-sm font-medium bg-white shadow-sm border-slate-300 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-primary-500/30 dark:hover:bg-slate-800/50 text-slate-800 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 hover:bg-slate-50/50 dark:border-slate-600;
+  @apply border-slate-300 bg-white dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-primary-500/30 dark:hover:bg-slate-800/50 text-sm text-slate-800 px-2 py-1 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 hover:bg-slate-50/50 shadow-sm font-medium dark:border-slate-600;
   border: 1px;
   border-style: solid;
 
@@ -91,15 +91,15 @@ trix-toolbar .trix-button.trix-button--dialog {
 
 /* prose style content */
 trix-editor {
-  @apply p-3 text-base bg-white rounded border shadow-inner border-slate-300 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 focus-within:ring-primary-50 focus-within:border-primary-500 focus:outline-none dark:bg-slate-800 dark:text-white dark:focus:ring-primary-500/20 dark:border-slate-700;
+  @apply rounded border border-slate-300 focus:ring-4 focus:ring-primary-50 focus:border-primary-500 focus-within:ring-primary-50 focus-within:border-primary-500 focus:outline-hidden bg-white shadow-inner p-3 text-base dark:bg-slate-800 dark:text-white dark:focus:ring-primary-500/20 dark:border-slate-700;
 }
 
 trix-editor,
 .trix-content {
-  @apply font-sans text-base leading-normal break-words;
+  @apply leading-normal font-sans text-base break-words;
 
   * {
-    @apply box-border p-0 m-0;
+    @apply box-border m-0 p-0;
   }
 
   h1 {
@@ -107,12 +107,12 @@ trix-editor,
   }
 
   blockquote {
-    @apply pl-6 ml-3 border-0 border-l-4 border-gray-300 border-solid;
+    @apply border-0 border-solid border-gray-300 border-l-4 ml-3 pl-6;
   }
 
   [dir="rtl"] blockquote,
   blockquote[dir="rtl"] {
-    @apply pr-6 mr-3 border-0 border-r-4;
+    @apply border-0 border-r-4 mr-3 pr-6;
   }
 
   li {
@@ -124,7 +124,7 @@ trix-editor,
   }
 
   pre {
-    @apply inline-block overflow-x-auto p-2 w-full font-mono text-sm align-top whitespace-pre bg-gray-200;
+    @apply inline-block w-full align-top font-mono text-sm p-2 whitespace-pre bg-gray-200 overflow-x-auto;
   }
 
   img {
@@ -143,7 +143,7 @@ trix-editor,
     @apply inline-block relative max-w-full;
 
     a {
-      @apply no-underline text-inherit;
+      @apply text-inherit no-underline;
 
       &:hover,
       &:visited:hover {
@@ -156,12 +156,12 @@ trix-editor,
     }
 
     &--file {
-      @apply p-2 m-0.5 leading-none text-gray-800 rounded-md border border-gray-400 border-solid;
+      @apply text-gray-800 leading-none m-0.5 p-2 border border-solid border-gray-400 rounded-md;
     }
   }
 
   .attachment-gallery {
-    @apply flex relative flex-wrap;
+    @apply flex flex-wrap relative;
 
     .attachment {
       @apply flex-1 basis-1/3 px-2 max-w-[33%];

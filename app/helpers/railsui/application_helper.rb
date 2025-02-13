@@ -91,7 +91,7 @@ module Railsui
     end
 
     def box_check_classes
-      "text-indigo-600 form-checkbox rounded focus:outline-none ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 size-5
+      "text-indigo-600 form-checkbox rounded focus:outline-hidden ring-2 ring-transparent focus:ring-slate-100  mr-2 border-slate-500 size-5
       focus:dark:ring-slate-700
       focus:dark:ring-opacity-20
       focus:dark:bg-slate-600  dark:bg-slate-700
@@ -222,7 +222,7 @@ module Railsui
     end
 
     def input_classes
-      "rounded-md px-4 py-2 border border-neutral-300/80 bg-white focus:border-neutral-500/80 focus:ring-4 focus:ring-neutral-100/80 focus:shadow-none focus:outline-none dark:bg-neutral-800 dark:border-neutral-700/80 dark:focus:border-neutral-500 placeholder-neutral-500/60 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 font-normal antialiased font-sans w-full dark:text-neutral-50 text-neutral-800"
+      "rounded-md px-4 py-2 border border-neutral-300/80 bg-white focus:border-neutral-500/80 focus:ring-4 focus:ring-neutral-100/80 focus:shadow-none focus:outline-hidden dark:bg-neutral-800 dark:border-neutral-700/80 dark:focus:border-neutral-500 placeholder-neutral-500/60 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 font-normal antialiased font-sans w-full dark:text-neutral-50 text-neutral-800"
     end
 
     def label_classes
@@ -230,7 +230,7 @@ module Railsui
     end
 
     def button_classes(variant: "black", size: "md")
-      base_classes = "rounded-md px-3 py-[5px] text-white ring-4 ring-transparent text-base inline-block transition-colors ease-in-out duration-300 border border-transparent disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed text-center text-[14.5px] font-semibold"
+      base_classes = "rounded-md px-3 py-[5px] ring-4 ring-transparent text-base transition-colors ease-in-out duration-300 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed text-center text-[14.5px] font-semibold inline-flex gap-2 items-center justify-center"
 
       size_classes = case size
       when "lg"
@@ -243,9 +243,9 @@ module Railsui
 
       variant_classes = case variant
       when "white"
-        "bg-white hover:bg-neutral-50/50 hover:shadow-none shadow-sm text-neutral-800/80 border border-neutral-300/80 shadow-neutral-300/20 focus:ring-4 hover:border-neutral-600/40 focus:ring-neutral-100/70 focus:border-neutral-300/90 dark:bg-neutral-700/60 dark:text-white dark:border-neutral-500/30 dark:shadow-neutral-950/40 dark:hover:bg-neutral-800/90 dark:focus:ring-neutral-700/80 dark:focus:border-neutral-500/80"
+        "bg-white hover:bg-neutral-50/50 hover:shadow-none shadow-xs text-neutral-800/80 border border-neutral-300 shadow-neutral-300/20 focus:ring-4 hover:border-neutral-600/40 focus:ring-neutral-100/70 focus:border-neutral-300/90 dark:bg-neutral-700/60 dark:text-white dark:border-neutral-500/30 dark:shadow-neutral-950/40 dark:hover:bg-neutral-800/90 dark:focus:ring-neutral-700/80 dark:focus:border-neutral-500/80"
       when "offwhite"
-        "bg-neutral-200/20 hover:bg-neutral-50/50 hover:shadow-none shadow-sm text-neutral-800/80 border border-neutral-300/80 shadow-neutral-300/20 focus:ring-4 hover:border-neutral-600/40 focus:ring-neutral-100/70 focus:border-neutral-300/90 dark:bg-neutral-700/60 dark:text-white dark:border-neutral-500/30 dark:shadow-neutral-950/40 dark:hover:bg-neutral-800/90 dark:focus:ring-neutral-700/80 dark:focus:border-neutral-500/80"
+        "bg-neutral-200/20 hover:bg-neutral-50/50 hover:shadow-none shadow-xs text-neutral-800/80 border border-neutral-300/80 shadow-neutral-300/20 focus:ring-4 hover:border-neutral-600/40 focus:ring-neutral-100/70 focus:border-neutral-300/90 dark:bg-neutral-700/60 dark:border-neutral-500/30 dark:shadow-neutral-950/40 dark:hover:bg-neutral-800/90 dark:focus:ring-neutral-700/80 dark:focus:border-neutral-500/80"
       when "transparent"
         "bg-transparent text-neutral-700 focus:ring-neutral-100/70 hover:bg-neutral-50/70 hover:text-neutral-800 dark:focus:ring-neutral-600/80 dark:hover:bg-neutral-900 focus:outline focus:outline-neutral-200/80 dark:focus:outline-neutral-700/80 dark:text-neutral-200"
       when "black"

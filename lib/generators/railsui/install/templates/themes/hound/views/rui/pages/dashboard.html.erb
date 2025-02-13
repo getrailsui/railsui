@@ -39,7 +39,7 @@
 
   <div class="grid grid-cols-12 md:gap-6 gap-4 mt-4 container mx-auto mb-24">
     <div
-      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start gap-3">
         <div class="rounded-full size-10 flex items-center justify-center bg-primary-50 dark:bg-primary-600/30">
           <%= icon "envelope-open", class: "size-5 text-primary-600 stroke-current dark:text-primary-300" %>
@@ -56,7 +56,7 @@
       </div>
     </div>
     <div
-      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start gap-3">
         <div class="rounded-full w-10 h-10 flex items-center justify-center bg-red-50 dark:bg-red-500/20">
           <%= icon "exclamation-circle", class: "size-6 text-red-600 stroke-current dark:text-red-400/90" %>
@@ -73,7 +73,7 @@
       </div>
     </div>
     <div
-      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start gap-3">
         <div class="rounded-full w-10 h-10 flex items-center justify-center bg-blue-50 dark:bg-blue-500/20">
           <%= icon "phone-arrow-up-right", class: "size-5 text-blue-600 stroke-current dark:text-blue-400/80" %>
@@ -92,7 +92,7 @@
     </div>
 
     <div
-      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
+      class="md:col-span-6 lg:col-span-3 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-4">
       <div class="flex items-start gap-3">
         <div class="rounded-full w-10 h-10 flex items-center justify-center bg-green-50 dark:bg-green-500/20">
           <%= icon "currency-dollar", class: "size-6 text-green-600 stroke-current dark:text-green-400/80" %>
@@ -116,7 +116,7 @@
     </div>
 
     <div
-      class="lg:col-span-7 md:col-span-6 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6 dark:text-slate-300">
+      class="lg:col-span-7 md:col-span-6 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6 dark:text-slate-300">
       <div class="flex items-start justify-between pb-10">
         <div class="flex-1">
           <h4 class="h6">Deal revenue forecast
@@ -146,7 +146,7 @@
     </div>
 
     <div
-      class="lg:col-span-5 md:col-span-6 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
+      class="lg:col-span-5 md:col-span-6 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between">
         <h4 class="h6">New contacts</h4>
         <%= link_to "View all", "#", class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
@@ -217,7 +217,7 @@
     </div>
 
     <div
-      class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
+      class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between mb-4">
         <h4 class="h6">Open deals</h4>
         <%= link_to "View all", rui_projects_path, class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
@@ -275,7 +275,7 @@
       </div>
     </div>
     <div
-      class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-sm border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
+      class="lg:col-span-6 md:cols-span-12 col-span-12 rounded-lg shadow-xs border border-slate-200 bg-white dark:bg-slate-800 dark:border-none p-6">
       <div class="flex items-center justify-between mb-4">
         <h4 class="h6">Recent projects</h4>
         <%= link_to "View all", rui_projects_path, class: "font-medium text-sm hover:text-primary-600 text-slate-600 dark:text-slate-400 dark:hover:text-primary-300" %>
@@ -301,7 +301,7 @@
         }
       ].each do |project| %>
           <li>
-            <%= link_to rui_project_path, class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-sm p-4 focus:ring-4 focus:ring-primary-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
+            <%= link_to rui_project_path, class: "border border-slate-300/80 hover:border-slate-400/70 rounded-lg shadow-xs p-4 focus:ring-4 focus:ring-primary-200/50 bg-white block group dark:bg-slate-700 dark:border-none dark:focus:ring-slate-500/20" do %>
               <p class="font-medium dark:group-hover:text-primary-300 group-hover:text-primary-600 line-clamp-1 mb-2"><%= project[:title] %></p>
               <p class="line-clamp-2 text-sm text-slate-500"><%= project[:description] %></p>
             <% end %>

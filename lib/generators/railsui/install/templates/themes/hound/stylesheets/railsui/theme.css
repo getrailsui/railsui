@@ -27,11 +27,6 @@
   --color-secondary-950: oklch(0.1288 0.0406 264.7); /* #020617 */
 }
 
-@plugin "@tailwindcss/typography";
-@plugin "@tailwindcss/forms";
-
-@config "../tailwind.config.js"
-
 @layer base {
   *,
   ::after,
@@ -41,3 +36,8 @@
     border-color: var(--color-gray-300, currentColor);
   }
 }
+
+@plugin "@tailwindcss/typography";
+
+/* Keep: Include Rails UI content paths */
+@config "../../stylesheets/railsui/tailwind.config.js";

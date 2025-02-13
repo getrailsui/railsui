@@ -47,7 +47,7 @@
         <%%= yield :masthead %>
       </div>
 
-      <div class="bg-white shadow-sm rounded-lg p-8 border border-slate-300/60">
+      <div class="bg-white shadow-xs rounded-lg p-8 border border-slate-300/60">
 
         <!-- Add or yield form content here -->
         <%%= yield %>
@@ -91,7 +91,7 @@
           = icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto"
       .mt-6
         = yield :masthead
-      .bg-white.shadow-sm.rounded-lg.p-8.border{class: "border-slate-300/60"}
+      .bg-white.shadow-xs.rounded-lg.p-8.border{class: "border-slate-300/60"}
         = yield
         - if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name)
           %hr.my-6/
@@ -260,7 +260,7 @@
     </div>
   </div>
 
-  <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-sm rounded-lg p-8 border border-slate-300/60">
+  <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-xs rounded-lg p-8 border border-slate-300/60">
     <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="KFz5ZtupOgfCmPUrSoPOW62TqhAxjRRUVi3LC4quDw3wQCnw7Afy_IwRpt8-SqpMsNyhT8A6NlMo3-6XQ_2sMQ" autocomplete="off">
 
     <div class="form-group">

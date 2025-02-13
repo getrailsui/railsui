@@ -36,7 +36,7 @@
   *  http://localhost:3000/railsui/systems/forms/inputs#forms-input-field
   */
   .form-input {
-    @apply rounded-full px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-none dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/60 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 font-normal antialiased font-sans w-full;
+    @apply rounded-full px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-hidden dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/60 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 font-normal antialiased font-sans w-full;
 
     &[disabled] {
       @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
@@ -53,7 +53,7 @@
   */
 
   .form-textarea {
-    @apply rounded-lg px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-none dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/60 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 min-h-[100px] w-full;
+    @apply rounded-lg px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-hidden dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/60 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 min-h-[100px] w-full;
     &[disabled] {
       @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
     }
@@ -116,7 +116,7 @@
   *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-checkboxes
   */
   .form-input-range {
-    @apply appearance-none bg-transparent focus:outline-none;
+    @apply appearance-none bg-transparent focus:outline-hidden;
 
     &::-webkit-slider-thumb {
       @apply appearance-none border-2 border-white h-6 w-6 rounded-full bg-white cursor-pointer relative -top-1 shadow outline outline-zinc-300 focus:ring-4 focus:outline-zinc-400 hover:outline-zinc-400 dark:bg-zinc-900 dark:focus:outline-zinc-600 dark:hover:outline-zinc-600 dark:border-zinc-500 dark:outline-zinc-500;
@@ -189,7 +189,7 @@
   *  http://localhost:3000/railsui/systems/forms/selects#forms-select
   */
   .form-select {
-    @apply px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500 rounded-full block w-full focus:outline-none focus:ring-4 focus:ring-zinc-50 focus:border-zinc-400 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-sm dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40 font-sans;
+    @apply px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500 rounded-full block w-full focus:outline-hidden focus:ring-4 focus:ring-zinc-50 focus:border-zinc-400 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-sm dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40 font-sans;
 
     &[disabled] {
       @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
@@ -217,7 +217,7 @@
   *  http://localhost:3000/railsui/systems/forms/checkboxes_and_radios#forms-radios
   */
   .form-input-radio {
-    @apply rounded-full border border-zinc-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
+    @apply rounded-full border border-zinc-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-hidden dark:bg-zinc-700 dark:border-zinc-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
   }
 
   /**

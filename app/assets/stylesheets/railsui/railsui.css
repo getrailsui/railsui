@@ -86,6 +86,8 @@
   display: block;
   overflow: auto !important;
   padding: 1em;
+  font-size: 16px;
+  font-family: "Fira Code", monospace;
 }
 
 .railsui code.hljs {

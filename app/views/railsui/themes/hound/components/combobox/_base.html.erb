@@ -31,7 +31,7 @@
         data-railsui-combobox-target="box"
         role="combobox"
         tabindex="0"
-        class="form-input flex items-center justify-between pr-1.5 shadow-sm">
+        class="form-input flex items-center justify-between pr-1.5 shadow-xs">
         <span id="combobox-label" class="sr-only">Select a format</span>
         <span data-railsui-combobox-target="text">Select a format...</span>
         <%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
@@ -165,7 +165,7 @@
         data-railsui-combobox-target="box"
         role="combobox"
         tabindex="0"
-        class="form-input flex items-center justify-between pr-1.5 shadow-sm">
+        class="form-input flex items-center justify-between pr-1.5 shadow-xs">
         <span id="combobox-label" class="sr-only">Select a format</span>
         <span data-railsui-combobox-target="text">Select a format...</span>
         <%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
@@ -298,7 +298,7 @@
         data-railsui-combobox-target="box"
         role="combobox"
         tabindex="0"
-        class="form-input flex items-center justify-between pr-1.5 shadow-sm">
+        class="form-input flex items-center justify-between pr-1.5 shadow-xs">
         <span id="combobox-label" class="sr-only">Select a format</span>
         <span data-railsui-combobox-target="text">Select a format...</span>
         <%%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
@@ -416,7 +416,7 @@
     / Hidden input for form submission
     %input{"data-railsui-combobox-target" => "hiddenInput", name: "selected_option", type: "hidden"}/
     / Top-level combobox button
-    .form-input.flex.items-center.justify-between.shadow-sm{"aria-controls" => "combobox-list", "aria-expanded" => "false", "aria-labelledby" => "combobox-label", class: "pr-1.5", "data-action" => "click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown", "data-railsui-combobox-target" => "box", role: "combobox", tabindex: "0"}
+    .form-input.flex.items-center.justify-between.shadow-xs{"aria-controls" => "combobox-list", "aria-expanded" => "false", "aria-labelledby" => "combobox-label", class: "pr-1.5", "data-action" => "click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown", "data-railsui-combobox-target" => "box", role: "combobox", tabindex: "0"}
       %span#combobox-label.sr-only Select a format
       %span{"data-railsui-combobox-target" => "text"} Select a format...
       = icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5"

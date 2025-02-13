@@ -3,6 +3,7 @@ pre code.hljs {
   overflow: auto !important;
   padding: 1em;
   font-family: theme("fontFamily.mono");
+  font-size: 15px !important;
 
   @apply scrollbar-track-neutral-950 scrollbar-thumb-neutral-500;
 }

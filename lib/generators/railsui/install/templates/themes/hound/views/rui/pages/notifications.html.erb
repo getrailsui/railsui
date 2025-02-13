@@ -15,78 +15,81 @@
     <%= form_tag "#" do %>
       <div class="grid grid-cols-1 sm:grid-cols-12 sm:gap-16 gap-6">
         <div class="sm:col-span-5">
-          <h3 class="h6 mb-2">Email Notifications</h3>
+          <h3 class="h5 mb-2">Email Notifications</h3>
           <div class="prose prose-slate dark:prose-invert mb-6">
             <p>What should we email you about?</p>
           </div>
 
         </div>
         <div class="sm:col-span-7 sm:pt-8">
-          <div class="form-group flex flex-wrap items-center">
-            <%= check_box_tag "emailNotification1", "", true, class: "form-input-switch", id: "emailNotification1" %>
-            <%= label_tag "emailNotification1", "New messages", class: "ml-2 font-semibold tracking-tight" %>
-
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
-              <p>Receive an email when someone messages you.</p>
+          <div class="space-y-8">
+            <div class="flex flex-wrap items-center">
+              <%= check_box_tag "emailNotification1", "", true, class: "form-input-switch", id: "emailNotification1" %>
+              <%= label_tag "emailNotification1", "New messages", class: "ml-2 font-medium tracking-tight" %>
+              <div class="pl-15 text-sm text-slate-600 dark:text-slate-400">
+                <p>Receive an email when someone messages you.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group flex flex-wrap items-center">
-            <%= check_box_tag "emailNotification2", "", false, class: "form-input-switch", id: "emailNotification2" %>
-            <%= label_tag "emailNotification2", "Account updates", class: "ml-2 font-semibold tracking-tight" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
-              <p>Receive an email when your account gets updated.</p>
+            <div class="flex flex-wrap items-center">
+              <%= check_box_tag "emailNotification2", "", false, class: "form-input-switch", id: "emailNotification2" %>
+              <%= label_tag "emailNotification2", "Account updates", class: "ml-2 font-medium tracking-tight" %>
+              <div class="pl-15 text-sm text-slate-600 dark:text-slate-400">
+                <p>Receive an email when your account gets updated.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group flex flex-wrap items-center">
-            <%= check_box_tag "emailNotification3", "", true, class: "form-input-switch", id: "emailNotification3" %>
-            <%= label_tag "emailNotification3", "Upcoming events", class: "ml-2 font-semibold tracking-tight" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
-              <p>Receive an email when upcoming events are scheduled to occur.</p>
+            <div class="flex flex-wrap items-center">
+              <%= check_box_tag "emailNotification3", "", true, class: "form-input-switch", id: "emailNotification3" %>
+              <%= label_tag "emailNotification3", "Upcoming events", class: "ml-2 font-medium tracking-tight" %>
+              <div class="pl-15 text-sm text-slate-600 dark:text-slate-400">
+                <p>Receive an email when upcoming events are scheduled to occur.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group flex flex-wrap items-center">
-            <%= check_box_tag "emailNotification4", "", true, class: "form-input-switch", id: "emailNotification4" %>
-            <%= label_tag "emailNotification4", "New mentions", class: "ml-2 font-semibold tracking-tight" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
-              <p>Receive an email when someone mentions you.</p>
+            <div class="flex flex-wrap items-center">
+              <%= check_box_tag "emailNotification4", "", true, class: "form-input-switch", id: "emailNotification4" %>
+              <%= label_tag "emailNotification4", "New mentions", class: "ml-2 font-medium tracking-tight" %>
+              <div class="pl-15 text-sm text-slate-600 dark:text-slate-400">
+                <p>Receive an email when someone mentions you.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-12 sm:gap-16 mt-10 pt-10 border-t gap-6 dark:border-slate-700">
+      <div class="grid grid-cols-1 sm:grid-cols-12 sm:gap-16 mt-10 pt-10 border-t border-slate-300/80 gap-6 dark:border-slate-700">
         <div class="sm:col-span-5">
-          <h3 class="h6 mb-2">Push Notifications</h3>
+          <h3 class="h5 mb-2">Push Notifications</h3>
           <div class="prose prose-slate dark:prose-invert mb-6">
             <p>Send push notifications to your device.</p>
           </div>
         </div>
 
         <div class="sm:col-span-7">
-          <div class="form-group flex flex-wrap items-center">
-            <%= check_box_tag "pushNotification1", "", true, class: "form-input-switch", id: "pushNotification1" %>
-            <%= label_tag "pushNotification1", "New messages", class: "ml-2 font-semibold tracking-tight" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
-              <p>Receive a device notification when someone mentions you.</p>
+          <div class="space-y-8">
+            <div class="flex flex-wrap items-center">
+              <%= check_box_tag "pushNotification1", "", true, class: "form-input-switch", id: "pushNotification1" %>
+              <%= label_tag "pushNotification1", "New messages", class: "ml-2 font-medium tracking-tight" %>
+              <div class="pl-15 text-sm text-slate-600 dark:text-slate-400">
+                <p>Receive a device notification when someone mentions you.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group flex flex-wrap items-center">
-            <%= check_box_tag "pushNotification2", "", true, class: "form-input-switch", id: "pushNotification2" %>
-            <%= label_tag "pushNotification2", "Upcoming events", class: "ml-2 font-semibold tracking-tight" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
-              <p>Receive a device notification when upcoming events you belong to are scheduled to occur.</p>
+            <div class="flex flex-wrap items-center">
+              <%= check_box_tag "pushNotification2", "", true, class: "form-input-switch", id: "pushNotification2" %>
+              <%= label_tag "pushNotification2", "Upcoming events", class: "ml-2 font-medium tracking-tight" %>
+              <div class="pl-15 text-sm text-slate-600 dark:text-slate-400">
+                <p>Receive a device notification when upcoming events you belong to are scheduled to occur.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group flex flex-wrap items-center">
-            <%= check_box_tag "pushNotification3", "", true, class: "form-input-switch", id: "pushNotification3" %>
-            <%= label_tag "pushNotification3", "New mentions", class: "ml-2 font-semibold tracking-tight" %>
-            <div class="pl-14 text-sm text-slate-600 dark:text-slate-400">
-              <p>Receive a device notification when someone mentions you.</p>
+            <div class="flex flex-wrap items-center">
+              <%= check_box_tag "pushNotification3", "", true, class: "form-input-switch", id: "pushNotification3" %>
+              <%= label_tag "pushNotification3", "New mentions", class: "ml-2 font-medium tracking-tight" %>
+              <div class="pl-15 text-sm text-slate-600 dark:text-slate-400">
+                <p>Receive a device notification when someone mentions you.</p>
+              </div>
             </div>
           </div>
         </div>

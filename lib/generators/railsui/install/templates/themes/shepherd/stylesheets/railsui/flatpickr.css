@@ -12,7 +12,7 @@
 }
 
 .flatpickr-calendar .numInput {
-  @apply focus:border-none focus:outline-none focus:appearance-none focus:shadow-none focus:border-0 focus:border-transparent focus:ring-0 focus:ring-transparent focus:outline-offset-0;
+  @apply focus:border-none focus:outline-hidden focus:appearance-none focus:shadow-none focus:border-0 focus:border-transparent focus:ring-0 focus:ring-transparent focus:outline-offset-0;
 }
 
 .flatpickr-calendar.animate.open {
@@ -385,7 +385,7 @@
 }
 
 .flatpickr-current-month .numInputWrapper {
-  @apply px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500 rounded-r-full block w-auto focus:outline-none focus:ring-4 border-l-0 focus:ring-primary-50 focus:border-primary-500 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-sm dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40;
+  @apply px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500 rounded-r-full block w-auto focus:outline-hidden focus:ring-4 border-l-0 focus:ring-primary-50 focus:border-primary-500 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-sm dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40;
 
   &[disabled] {
     @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
@@ -445,7 +445,7 @@
 }
 
 .flatpickr-current-month .flatpickr-monthDropdown-months {
-  @apply px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500 rounded-l-full block w-full focus:outline-none focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-sm dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40;
+  @apply px-4 py-2 border border-zinc-300 bg-white font-normal text-base placeholder:text-zinc-500 rounded-l-full block w-full focus:outline-hidden focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-zinc-900  dark:focus:border-zinc-600 dark:text-white dark:placeholder:text-zinc-400 shadow-sm dark:bg-zinc-800 dark:border-zinc-500 dark:focus:ring-zinc-500/40;
 
   &[disabled] {
     @apply bg-zinc-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-zinc-800/90 dark:opacity-70;
