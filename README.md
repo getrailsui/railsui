@@ -157,7 +157,7 @@ gem "railsui", github: "getrailsui/railsui", branch: "v2"
 Version 3 resides on the main branch.
 
 ```ruby
-gem "railsui", github: "railsui/railsui", branch: "main"
+gem "railsui", github: "getrailsui/railsui", branch: "main"
 ```
 
 ## Frequently Asked Questions
