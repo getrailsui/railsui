@@ -1,25 +1,39 @@
 <div class="py-8">
 
-  <div class="">
-    <div class="flex gap-2 justify-between items-center mb-6">
-      <%= heading text: "Color", id: "color", tag: "h3", class: "font-bold text-3xl tracking-tight mb-3" %>
+  <div class="flex gap-2 justify-between items-center mb-6">
+    <%= heading text: "Color", id: "color", tag: "h3", class: "font-bold text-3xl tracking-tight mb-3" %>
+  </div>
+
+  <div class="mb-6 max-w-full prose prose-neutral dark:prose-invert">
+    <p>Rails UI includes two custom colors in addtion to Tailwind CSS 4's color palette: <code>primary</code> and <code>secondary</code>.</p>
+
+    <% if File.exist?("#{Rails.root}/app/assets/stylesheets/railsui/theme.css") %>
+      <h3 class="mb-0">theme.css</h3>
+      <p class="text-sm"><code class="text-neutral-400 font-normal">app/assets/stylesheets/railsui/theme.css</code></p>
+
+      <div class="my-3 not-prose">
+        <div data-controller="railsui-code" class="relative overflow-clip bg-gradient-to-br rounded-lg border-transparent from-neutral-700 to-neutral-800 dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 max-h-[400px] overflow-y-auto">
+          <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-css scrollbar"><%= File.read(Rails.root.join("app/assets/stylesheets/railsui/theme.css")) %></code></pre>
+        </div>
+      </div>
+
+      <p>The contents of the <code>app/assets/stylesheets/railsui/theme.css</code> file is displayed above for <strong><%= Railsui.config.theme.humanize %></strong>, your active theme. To customize this file, make a copy and update the <code>@import</code> path inside your main application CSS file to reference back to it. Use Tailwind's <%= link_to "theme variables guide", "https://tailwindcss.com/docs/theme", target: :_blank %> to extend this file.</p>
+
+      <p>I recommend <%= link_to "this tool", "https://uicolors.app/create?ref=railsui.com", target: :_blank %> for generating unique colors. Hex colors are acceptable. For a wider gamut you could reach for <%= link_to "okchl", "https://oklch.com", target: :_blank %> following in the footsteps of Tailwind CSS v4.</p>
+
+    <% end %>
+  </div>
+
+  <div class="flex items-start gap-5 py-5">
+    <div class="flex-shrink-0">
+      <div class="size-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800/80">
+        <%= icon "hand-thumb-up", class: "size-5 text-neutral-600 dark:text-neutral-400" %>
+      </div>
     </div>
 
-    <div class="mb-6 max-w-full prose prose-neutral dark:prose-invert">
-      <p>Rails UI includes two custom colors in addtion to Tailwind CSS 4's color palette: <code>primary</code> and <code>secondary</code>.</p>
-
-      <p>Adjust these colors in <code>app/assets/stylehseets/railsui/theme.css</code> or update to import your own theme. I recommend <%= link_to "this tool", "https://uicolors.app/create?ref=railsui.com", target: :_blank %> for generating colors. Hex colors are acceptable but for a wider gamut you could reach for <%= link_to "okchl", "https://oklch.com", target: :_blank %> following in the footsteps of Tailwind CSS v4.</p>
-
-      <% if File.exist?("#{Rails.root}/app/assets/stylesheets/railsui/theme.css") %>
-        <h3>theme.css</h3>
-
-        <p>The contents of the <code>app/assets/stylesheets/railsui/theme.css</code> file is displayed below for <strong><%= Railsui.config.theme.humanize %></strong>, your active theme. To customize this file, make a copy and update the <code>@import</code> path inside your main application CSS file to reference back to it. Use Tailwind's <%= link_to "theme variables guide", "https://tailwindcss.com/docs/theme", target: :_blank %> to extend this file.</p>
-
-        <div class="my-3 not-prose">
-          <div data-controller="railsui-code" class="relative overflow-clip bg-gradient-to-br rounded-lg border-transparent from-neutral-700 to-neutral-800 dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 scrollbar">
-            <pre><code data-railsui-code-target="snippet" data-railsui-clipboard-target="content" class="language-css scrollbar"><%= File.read(Rails.root.join("app/assets/stylesheets/railsui/theme.css")) %></code></pre>
-          </div>
-        </div>
-      <% end %>
+    <div class="prose prose-sm max-w-full prose-neutral dark:prose-invert">
+      <h4>Best practices</h4>
+      <p>To customize this file, make a copy and update the <code>@import</code> path inside your main application CSS file to reference back to it. <strong>Changing your Rails UI theme will override this file</strong>.</p>
     </div>
   </div>
+</div>

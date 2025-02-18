@@ -112,8 +112,8 @@ export default class extends Controller {
 
         var gradient = ctx.createLinearGradient(20, 300, 240, 0)
 
-        gradient.addColorStop(1, "#4338CA")
-        gradient.addColorStop(0.05, "salmon")
+        gradient.addColorStop(1, "#27272a")
+        gradient.addColorStop(0.05, "#18181b")
 
         ctx.fillStyle = gradient
 

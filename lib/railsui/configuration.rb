@@ -76,6 +76,7 @@ module Railsui
 
     def self.update(params={})
       config = load!
+      config.assign_attributes(params)
       config.pages = Railsui::Pages.theme_pages.keys
       config.save
 

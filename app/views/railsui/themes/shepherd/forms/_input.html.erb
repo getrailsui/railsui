@@ -371,27 +371,29 @@
 <%= render layout: example, locals: { heading: "Range" } do %>
 
 <%= render preview(variant="zinc") do %>
-<div class="form-group">
+<div class="form-group" data-controller="railsui-range">
   <label for="volume" class="form-label">Volume</label>
-  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" />
+  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25"   data-railsui-range-target="range"
+  data-action="input->railsui-range#onInput" />
 </div>
 <% end %>
 
 <% content_for :example, flush: true do %>
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="form-group">
+<div class="form-group" data-controller="railsui-range">
   <label for="volume" class="form-label">Volume</label>
-  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" />
+  <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" data-railsui-range-target="range"
+  data-action="input->railsui-range#onInput" />
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <%%= form_with model: @form do |f| %>
-  <div class="form-group">
+  <div class="form-group" data-controller="railsui-range">
     <%%= f.label :volume, class: "form-label" %>
-    <%%= f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25" %>
+    <%%= f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: {  "railsui-range-target": "range", action: "input->railsui-range#onInput" } %>
   </div>
 <%% end %>
 <% end %>
@@ -399,12 +401,20 @@
   <%# .haml %>
 <% content_for :haml, flush: true do %>
 = form_with model: @form do |f|
-  .form-group
-    = f.label.form-label, class: "form-label"
-    = f.range_field :volume, class: "form-input-range", max: "100", min: "2", value: "25"
+  .form-group{"data-controller" => "railsui-range"}
+    = f.label :volume, class: "form-label"
+    = f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: {  "railsui-range-target": "range", action: "input->railsui-range#onInput" }
 <% end %>
 
-  <%= render_snippet %>
+<% content_for :js, flush: true do %>
+// For reference only: This is already included in the your application.js file.
+// https://github.com/getrailsui/railsui-stimulus/
+
+import { RailsuiRange } from 'railsui-stimulus'
+application.register('railsui-range', RailsuiRange)
+<% end %>
+
+  <%= render_snippet js_filename: "index.js" %>
 <% end %>
 <% end %>
 </div>
@@ -447,6 +457,10 @@
   .form-group
     = f.label :date, "Choose date", class: "form-label"
     = f.date_field :date, class: "form-input", "aria-label": "Choose date"
+<% end %>
+
+<% content_for :js, flush: true do %>
+
 <% end %>
 
 <%= render_snippet %>
@@ -528,14 +542,9 @@
 <% end %>
 
 <% content_for :js, flush: true do %>
-// https://github.com/getrailsui/railsui-stimulus/blob/main/docs/date_range_picker.md
-// controllers/index.js
+// For reference only: This is already included in the your application.js file.
+// https://github.com/getrailsui/railsui-stimulus/
 
-import { Application } from '@hotwired/stimulus'
-
-const application = Application.start()
-
-// Import Stimulus component
 import { RailsuiDateRangePicker } from 'railsui-stimulus'
 application.register('railsui-date-range-picker', RailsuiDateRangePicker)
 <% end %>

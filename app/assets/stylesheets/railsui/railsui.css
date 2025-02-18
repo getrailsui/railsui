@@ -29,6 +29,7 @@
 .railsui .config-loader.config-loader--active {
   visibility: visible;
   z-index: 40;
+  opacity: 1;
   transition: ease-in-out 0.3s all;
 }
 
@@ -250,7 +251,7 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: #372aac;
+  background: #27272a;
 }
 
 .railsui .config-loader.config-loader--active {
@@ -262,5 +263,3 @@
 .railsui .collapse {
   visibility: visible !important;
 }
-
-/* @import "overrides.css"; */

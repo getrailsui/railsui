@@ -14,6 +14,7 @@
   overflow: hidden;
   position: absolute;
 }
+
 .railsui .config-loader {
   opacity: 0;
   visibility: invisible;
@@ -30,6 +31,7 @@
 }
 .railsui .config-loader.config-loader--active {
   visibility: visible;
+  opacity: 1;
   z-index: 40;
   transition: all 0.3s ease-in-out;
 }

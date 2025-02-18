@@ -16,11 +16,13 @@
     <div>
       <h4 class="font-medium mb-3">Body</h4>
       <p>
-        <%= link_to "https://fonts.google.com/specimen/Inter", target: :_blank, class: button_classes(variant: "white") do %>
-          <span>Inter</span>
-          <%= icon "arrow-up-right", class:  "size-3" %>
-        <% end %>
+        <%= link_to "https://fonts.google.com/specimen/Inter", class: button_classes(variant: "white") do %>
+          <span>System</span>
       </p>
     </div>
+  </div>
+
+  <div class="prose-sm prose-neutral dark:prose-invert">
+    <p><strong>Tip</strong>: Change this theme's fonts in both <code>app/views/rui/shared/_fonts.html.erb</code> and <code>app/assets/stylesheets/railsui/theme.css</code>.</p>
   </div>
 </div>

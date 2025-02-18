@@ -57234,8 +57234,8 @@
           ctx.lineTo(cw + opt.range.x + opt.thickness, ch + opt.thickness);
           ctx.closePath();
           var gradient = ctx.createLinearGradient(20, 300, 240, 0);
-          gradient.addColorStop(1, "#4338CA");
-          gradient.addColorStop(0.05, "salmon");
+          gradient.addColorStop(1, "#27272a");
+          gradient.addColorStop(0.05, "#18181b");
           ctx.fillStyle = gradient;
           ctx.fill();
           ctx.stroke();
@@ -57619,20 +57619,6 @@
     }
   };
   __publicField(railsui_search_controller_default, "targets", ["result", "form", "resultList"]);
-
-  // app/javascript/controllers/railsui_select_all_controller.js
-  var railsui_select_all_controller_default = class extends Controller {
-    connect() {
-      this.selectAllTarget.addEventListener("change", this.selectAll.bind(this));
-    }
-    selectAll() {
-      const isChecked = this.selectAllTarget.checked;
-      this.checkboxTargets.forEach((checkbox) => {
-        checkbox.checked = isChecked;
-      });
-    }
-  };
-  __publicField(railsui_select_all_controller_default, "targets", ["checkbox", "selectAll"]);
 
   // app/javascript/controllers/railsui_smooth_controller.js
   var railsui_smooth_controller_default = class extends Controller {
@@ -60423,7 +60409,6 @@
   application.register("railsui-scroll", railsui_scroll_controller_default);
   application.register("railsui-scroll-spy", railsui_scroll_spy_controller_default);
   application.register("railsui-search", railsui_search_controller_default);
-  application.register("railsui-select-all", railsui_select_all_controller_default);
   application.register("railsui-smooth", railsui_smooth_controller_default);
   application.register("railsui-snippet", railsui_snippet_controller_default);
   application.register("railsui-pages", railsui_pages_controller_default);

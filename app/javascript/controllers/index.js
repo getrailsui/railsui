@@ -36,9 +36,6 @@ application.register("railsui-scroll-spy", RailsuiScrollSpyController)
 import RailsuiSearchController from "./railsui_search_controller.js"
 application.register("railsui-search", RailsuiSearchController)
 
-import RailsuiSelectAllController from "./railsui_select_all_controller.js"
-application.register("railsui-select-all", RailsuiSelectAllController)
-
 import RailsuiSmoothController from "./railsui_smooth_controller.js"
 application.register("railsui-smooth", RailsuiSmoothController)
 

@@ -142,15 +142,15 @@ module Railsui
     def theme_dependencies(theme)
       case theme
       when "hound"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "railsui-stimulus", "stimulus-use","tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "apexcharts", "railsui-stimulus", "stimulus-use","tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
       when "shepherd"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "flatpickr", "hotkeys-js", "photoswipe", "railsui-stimulus", "stimulus-use", "tippy.js", "tailwindcss@latest", "@tailwindcss/cli@latest"]
+        ["@tailwindcss/typography", "apexcharts", "flatpickr", "hotkeys-js", "photoswipe", "railsui-stimulus", "stimulus-use", "tippy.js", "tailwindcss@latest", "@tailwindcss/cli@latest"]
       when "retriever"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr","railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr","railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
       when "setter"
-        ["@tailwindcss/forms", "@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
       else
-        ["@tailwindcss/forms", "@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest" "tippy.js"]
+        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest" "tippy.js"]
       end
     end
 

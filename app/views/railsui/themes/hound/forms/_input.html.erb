@@ -405,7 +405,15 @@
     = f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: { railsui_range_target: "range", action: "input->railsui-range#onInput" }
 <% end %>
 
-  <%= render_snippet %>
+<% content_for :js, flush: true do %>
+// For reference only: This is already included in the your application.js file.
+// https://github.com/getrailsui/railsui-stimulus/
+
+import { RailsuiRange } from 'railsui-stimulus'
+application.register('railsui-range', RailsuiRange)
+<% end %>
+
+  <%= render_snippet js_filename: "index.js" %>
 <% end %>
 <% end %>
 </div>

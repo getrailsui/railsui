@@ -16,7 +16,6 @@ module Railsui
         }
 
         config = Railsui::Configuration.new(configuration_params)
-
         config.save
       end
 

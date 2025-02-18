@@ -1,84 +1,86 @@
 <div id="datalist-booking-list">
   <%= render layout: example, locals: { heading: "Booking list", section: "Datalist" } do %>
 
-    <%= render preview "zinc" do %>
-      <h1 class="mb:mb-0 mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Bookings</h1>
-      <div class="my-6 font-heading overflow-x-auto">
-        <table class="w-full text-left text-sm">
-          <thead>
-            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Status</th>
-            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Guests</th>
-            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Arrival</th>
-            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Departure</th>
-            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Booking date</th>
-            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Property</th>
-            <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Payout</th>
-            <th></th>
-          </thead>
-          <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
-            <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
-        status: "Upcoming",
-        guest: "Dannie White",
-        guest_counts: "3 adults, 1 child",
-        arrival: "Aug 24, #{Date.today.year + 1}",
-        departure: "Aug 28, #{Date.today.year + 1}",
-        booking_date: "June, #{Date.today.year + 1}",
-        booking_date_time: "7:38 PM CST",
-        property: "Mountain Vista Chalet",
-        price: "$1,165.45"
-      } %>
+<%= render preview "zinc" do %>
 
-            <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
-        status: "Upcoming",
-        guest: "John Smith",
-        guest_counts: "2 adults, 2 children",
-        arrival: "Sep 12, #{Date.today.year + 1}",
-        departure: "Aug 28, #{Date.today.year + 1}",
-        booking_date: "June, #{Date.today.year + 1}",
-        booking_date_time: "4:15 PM CST",
-        property: "Alpine Retreat Haven",
-        price: "$1,320.75"
-      } %>
+  <h1 class="mb:mb-0 mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Bookings</h1>
+  <div class="my-6 font-heading overflow-x-auto">
+    <table class="w-full text-left text-sm">
+      <thead>
+        <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Status</th>
+        <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Guests</th>
+        <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Arrival</th>
+        <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Departure</th>
+        <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Booking date</th>
+        <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Property</th>
+        <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Payout</th>
+        <th></th>
+      </thead>
+      <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
+        <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
+    status: "Upcoming",
+    guest: "Dannie White",
+    guest_counts: "3 adults, 1 child",
+    arrival: "Aug 24, #{Date.today.year + 1}",
+    departure: "Aug 28, #{Date.today.year + 1}",
+    booking_date: "June, #{Date.today.year + 1}",
+    booking_date_time: "7:38 PM CST",
+    property: "Mountain Vista Chalet",
+    price: "$1,165.45"
+  } %>
 
-            <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
-        status: "Upcoming",
-        guest: "Michael Brown",
-        guest_counts: "2 adults, 1 child",
-        arrival: "Nov 8, #{Date.today.year + 1}",
-        departure: "Nov 12, #{Date.today.year + 1}",
-        booking_date: "Sep 30, #{Date.today.year + 1}",
-        booking_date_time: "9:22 AM CST",
-        property: "Mountain Vista Chalet",
-        price: "$1,045.90"
-      } %>
+        <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
+    status: "Upcoming",
+    guest: "John Smith",
+    guest_counts: "2 adults, 2 children",
+    arrival: "Sep 12, #{Date.today.year + 1}",
+    departure: "Aug 28, #{Date.today.year + 1}",
+    booking_date: "June, #{Date.today.year + 1}",
+    booking_date_time: "4:15 PM CST",
+    property: "Alpine Retreat Haven",
+    price: "$1,320.75"
+  } %>
 
-            <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
-        status: "Complete",
-        guest: "James Anderson",
-        guest_counts: "3 adults, 1 child",
-        arrival: "Aug 3, #{Date.today.year + 1}",
-        departure: "Aug 10, #{Date.today.year + 1}",
-        booking_date: "May 25, #{Date.today.year + 1}",
-        booking_date_time: "10:45 AM CST",
-        property: "Mountain Vista Chalet",
-        price: "$2,846.42"
-      } %>
+        <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
+    status: "Upcoming",
+    guest: "Michael Brown",
+    guest_counts: "2 adults, 1 child",
+    arrival: "Nov 8, #{Date.today.year + 1}",
+    departure: "Nov 12, #{Date.today.year + 1}",
+    booking_date: "Sep 30, #{Date.today.year + 1}",
+    booking_date_time: "9:22 AM CST",
+    property: "Mountain Vista Chalet",
+    price: "$1,045.90"
+  } %>
 
-            <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
-        status: "Canceled",
-        guest: "Noah Hall",
-        guest_counts: "3 adults",
-        arrival: "Sep 10, #{Date.today.year + 1}",
-        departure: "Sep 12, #{Date.today.year + 1}",
-        booking_date: "Jul 18, #{Date.today.year + 1}",
-        booking_date_time: "4:30 PM CST",
-        property: "Cozy Mountain A-Frame",
-        price: "$1,326.36"
-      } %>
-          </tbody>
-        </table>
-      </div>
-    <% end %>
+        <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
+    status: "Complete",
+    guest: "James Anderson",
+    guest_counts: "3 adults, 1 child",
+    arrival: "Aug 3, #{Date.today.year + 1}",
+    departure: "Aug 10, #{Date.today.year + 1}",
+    booking_date: "May 25, #{Date.today.year + 1}",
+    booking_date_time: "10:45 AM CST",
+    property: "Mountain Vista Chalet",
+    price: "$2,846.42"
+  } %>
+
+        <%= render "railsui/themes/shepherd/components/datalist/booking_item", locals: {
+    status: "Canceled",
+    guest: "Noah Hall",
+    guest_counts: "3 adults",
+    arrival: "Sep 10, #{Date.today.year + 1}",
+    departure: "Sep 12, #{Date.today.year + 1}",
+    booking_date: "Jul 18, #{Date.today.year + 1}",
+    booking_date_time: "4:30 PM CST",
+    property: "Cozy Mountain A-Frame",
+    price: "$1,326.36"
+  } %>
+      </tbody>
+    </table>
+  </div>
+
+<% end %>
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
@@ -129,7 +131,7 @@
               <%%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
             </button>
 
-            <ul class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
+            <ul class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600 border-zinc-300"
       data-transition-enter-active="transition ease-out duration-100"
       data-transition-enter-from="transform opacity-0 scale-95"
       data-transition-enter-to="transform opacity-100 scale-100"
@@ -203,14 +205,10 @@
           <%%= icon "chevron-down", class:  "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
         </button>
 
-        <ul
-      class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
-      data-transition-enter-active="transition ease-out duration-100"
-      data-transition-enter-from="transform opacity-0 scale-95"
-      data-transition-enter-to="transform opacity-100 scale-100"
-      data-transition-leave-active="transition ease-in duration-100"
-      data-transition-leave-from="transform opacity-100 scale-100"
-      data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
+          <ul class="hidden origin-top-right absolute md:top-12 mt-3 md:mt-0 top-10 right-0 w-48 md:shadow-sm md:rounded-xl rounded-3xl py-2 shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600 border-zinc-300/80 border-zinc-300" data-transition-enter-active="transition ease-out duration-100"
+          data-transition-enter-from="transform opacity-0 scale-95"
+          data-transition-enter-to="transform opacity-100 scale-100"
+          data-transition-leave-active="transition ease-in duration-100" data-transition-leave-from="transform opacity-100 scale-100" data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
           <li>
             <%%= link_to "#", class: "px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" do %>
               <span>Go to Booking</span>

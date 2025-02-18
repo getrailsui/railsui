@@ -20,7 +20,7 @@
   }
 
   .btn-dark {
-    @apply bg-zinc-800 text-white focus:ring-zinc-800/20 hover:bg-zinc-900 dark:ring-zinc-800/20 dark:hover:bg-zinc-700 dark:hover:text--zinc-100;
+    @apply bg-zinc-800 text-white focus:ring-zinc-800/20 hover:bg-zinc-900 dark:ring-zinc-800/20 dark:hover:bg-zinc-700 dark:hover:text-zinc-100;
   }
 
   .btn-white {
