@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    railsui (0)
+    railsui (3.1.0)
       meta-tags
       psych
       rails (>= 7.0)
