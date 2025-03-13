@@ -87,18 +87,11 @@ After installing Rails UI, run your server using the `bin/dev` command and proce
 
 ## Configuration
 
-Configuration is a simple process where you configure your app's details (app name, support email), brand colors, and theme.
+Configuration is a simple process where you configure your app's details (app name, support email), and theme.
 
 Each theme comes with different pages and are designed for different niches in mind. They reside in the `app/views/rui` directory once installed and should be treated as read-only.
 
 **Updating your configuration at anytime will overwrite the pages and theme assets so if you want to keep your changes, you'll need to copy the files to your application in another directory.**
-
-### Rake tasks
-
-- `railsui:install` - Install Rails UI.
-- `railsui:colors[theme]` - Pass a theme name to output default color palette or don't pass an argument to show active colors.
-- `railsui:pages` - List all pages for the active theme.
-- `railsui:pages[theme]` - List all pages for a theme name as passed.
 
 ## Themes
 
@@ -124,9 +117,7 @@ After installing Rails UI and choosing a theme you'll find a collection of compo
 
 ### Color
 
-Each theme comes with a custom color palette built on top of the default Tailwind CSS color palette. We've added two new colors for you to use in your app using Tailwind CSS classes called `primary` and `secondary`. You can change those colors any time in your railui.yml config file or in the configuration form.
-
-Run `rails railsui:colors` to see your active colors or `rails "railsui:colors[theme]"` to see the default colors for a given theme.
+Each theme comes with a custom color palette built on top of the default Tailwind CSS v4 color palette. We've added two new colors for you to use in your app using Tailwind CSS classes called `primary` and `secondary`. You can change those colors any time in `app/assets/stylesheets/railsui/theme.css`.
 
 ### Icons
 
