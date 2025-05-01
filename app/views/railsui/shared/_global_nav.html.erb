@@ -30,14 +30,14 @@
 
           <% if Railsui.config.theme.present? %>
             <a href="#color" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Color</a>
-
-            <a href="#pages" data-action="click->railsui-smooth#scroll" class="pl-1 pr-2 py-1.5 block relative hover:transition hover:duration-200 hover:ease-in-out dark:focus:text-white hover:bg-neutral-50/90 rounded transition dark:text-neutral-200 dark:hover:bg-neutral-800/70 dark:hover:text-white group">Pages</a>
           <% end %>
         </div>
       <% end %>
 
       <% if Railsui.config.theme.present? %>
         <%= render "railsui/shared/global_nav_item", path: systems_path, icon: "cube", label:"Components" %>
+
+        <%= render "railsui/shared/global_nav_item", path: pages_url, icon: "window", label: "Pages" %>
 
         <% if params[:controller].include?('systems') %>
           <%= render "railsui/shared/system_nav" %>
