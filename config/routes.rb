@@ -7,6 +7,7 @@ Railsui::Engine.routes.draw do
   resource :routes, only: :show
   resources :mailers, only: [:index, :show]
   get :delete_page, to: "configurations#delete_page"
+  get :pages, to: "pages#show"
 
   namespace :systems do
     get :authentication

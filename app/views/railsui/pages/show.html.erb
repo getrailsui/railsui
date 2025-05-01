@@ -1,0 +1,43 @@
+<div class="py-8" data-controller="railsui-pages">
+  <%= heading text: "Pages", id: "pages", tag: "h2", class: "font-bold text-3xl tracking-tight mb-6" %>
+
+  <div class="prose prose-neutra dark:prose-invert mb-6">
+    <p>Prototype rapidly with ready-made pages that look great with the <%= theme_name.humanize %> theme.</p>
+  </div>
+
+  <div class="mb-10">
+    <div class="divide-y divide-neutral-200/80 dark:divide-neutral-700/80 py-2.5">
+      <% @theme_pages.each do |page, details| %>
+        <div class="flex flex-wrap items-start justify-between py-3">
+          <%= render "railsui/admin/fields/page", page: page, details: details %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="flex items-start gap-5 py-5">
+    <div class="flex-shrink-0">
+      <div class="size-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800/80">
+        <%= icon "document-plus", class: "size-5 text-neutral-600 dark:text-neutral-400" %>
+      </div>
+    </div>
+
+    <div class="prose prose-sm max-w-full prose-neutral dark:prose-invert">
+      <h4>Adding pages</h4>
+      <p>Installed pages are found inside the <code>app/views/rui/pages</code> folder.</p>
+    </div>
+  </div>
+
+  <div class="flex items-start gap-5 py-5">
+    <div class="flex-shrink-0">
+      <div class="size-10 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800/80">
+        <%= icon "hand-thumb-up", class: "size-5 text-neutral-600 dark:text-neutral-400" %>
+      </div>
+    </div>
+
+    <div class="prose prose-sm max-w-full prose-neutral dark:prose-invert">
+      <h4>Best practices</h4>
+      <p>Pages are a starting point. Copy them to other views you're working on and make changes there as opposed to directly inside the <code>app/views/rui/pages</code> directory. Treat this directory as read-only. <strong>Changing your Rails UI configuration will override the directory</strong>.</p>
+    </div>
+  </div>
+</div>
