@@ -37,11 +37,11 @@
       <% if Railsui.config.theme.present? %>
         <%= render "railsui/shared/global_nav_item", path: systems_path, icon: "cube", label:"Components" %>
 
-        <%= render "railsui/shared/global_nav_item", path: pages_url, icon: "window", label: "Pages" %>
-
         <% if params[:controller].include?('systems') %>
           <%= render "railsui/shared/system_nav" %>
         <% end %>
+
+        <%= render "railsui/shared/global_nav_item", path: pages_url, icon: "window", label: "Pages" %>
       <% end %>
 
       <%= render "railsui/shared/global_nav_item", path: "https://railsui.com/docs", icon: "document-magnifying-glass", label: "Docs" %>
