@@ -1,0 +1,8 @@
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="<%= file_name.dasherize %>"
+export default class extends Controller {
+  connect() {
+    console.log("<%= class_name %> Stimulus controller connected")
+  }
+}

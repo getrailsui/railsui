@@ -1,0 +1,42 @@
+<%%# locals: (label: "Button", variant: :primary, size: nil, button_type: "button", class: nil, disabled: false, tag_options: {}) %>
+
+<%%
+  variant_classes = {
+    primary: "btn-primary",
+    secondary: "btn-secondary",
+    dark: "btn-dark",
+    white: "btn-white",
+    transparent: "btn-transparent",
+    light: "btn-light",
+    danger: "btn-danger",
+    link: "btn-link"
+  }
+
+  size_classes = {
+    sm: "btn-sm",
+    lg: "btn-lg"
+  }
+
+  variant_class = variant_classes[variant] || variant.to_s
+  size_class = size_classes[size] || size.to_s
+
+  user_class = local_assigns[:class]
+  classes = ["btn", variant_class, size_class, user_class].compact.join(" ")
+
+  options = {
+    type: button_type,
+    class: classes.strip,
+    disabled: disabled,
+    "aria-disabled": disabled
+  }
+
+  options.merge!(tag_options.symbolize_keys) if tag_options.present?
+
+  begin
+    content = capture
+   rescue LocalJumpError
+    content = label
+  end
+%>
+
+<%%= tag.button content, **options %>
