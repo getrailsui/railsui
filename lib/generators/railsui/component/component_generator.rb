@@ -47,17 +47,28 @@ module Railsui
       end
 
       def destroy_component
-        relative_path = "app/views/rui/components/_#{file_name}.html.erb"
-        say_status :remove, relative_path, :red
-        FileUtils.rm(Rails.root.join(relative_path))
+        directory = options[:directory] || "app/views/rui/components"
+        relative_path = File.join(directory, "_#{file_name}.html.erb")
+        full_path = Rails.root.join(relative_path)
+
+        if File.exist?(full_path)
+          FileUtils.rm(full_path)
+          say_status :remove, relative_path, :red
+        else
+          say "ℹ️  File not found: #{relative_path}", :blue
+        end
       end
 
       def remove_stimulus_controller
         controller_path = "app/javascript/controllers/#{file_name}_controller.js"
         index_path = Rails.root.join("app/javascript/controllers/index.js")
 
-        say_status :remove, controller_path, :red
-        FileUtils.rm(controller_path)
+        if File.exist?(Rails.root.join(controller_path))
+          FileUtils.rm(controller_path)
+          say_status :remove, controller_path, :red
+        else
+          say "ℹ️ File does not exist"
+        end
       end
 
       def print_available_components

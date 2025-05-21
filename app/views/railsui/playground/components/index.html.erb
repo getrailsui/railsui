@@ -1,0 +1,15 @@
+<h1 class="text-3xl font-bold mb-8">🧪 Component Playground</h1>
+
+<% @components.each do |component| %>
+  <div class="bg-white rounded-xl shadow p-6 space-y-4 border border-slate-200">
+    <h2 class="text-xl font-semibold text-slate-800"><%= component[:name].titleize %></h2>
+
+    <div class="p-4 bg-slate-50 rounded">
+      <% begin %>
+        <%= render "rui/components/#{component[:name]}", **component[:locals] %>
+      <% rescue => e %>
+        <div class="text-red-600 text-sm">⚠️ Render error: <%= e.message %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -18,7 +18,8 @@ module Railsui
 
       Rails.logger.debug "RailsUI: rendering #{found_path}" if Rails.env.development?
 
-      render found_path, locals: locals, &block
+      content = block_given? ? capture(&block) : locals[:label]
+      render partial: found_path, locals: locals.merge(content: content)
     end
   end
 end

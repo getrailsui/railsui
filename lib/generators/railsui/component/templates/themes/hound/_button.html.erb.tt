@@ -1,4 +1,4 @@
-<%%# locals: (label: "Button", variant: :primary, size: nil, button_type: "button", class: nil, disabled: false, tag_options: {}) %>
+<%%# locals: (label: "Button", variant: :primary, size: nil, button_type: "button", class: nil, disabled: false, tag_options: {}, content: nil) %>
 
 <%%
   variant_classes = {
@@ -31,12 +31,6 @@
   }
 
   options.merge!(tag_options.symbolize_keys) if tag_options.present?
-
-  begin
-    content = capture
-   rescue LocalJumpError
-    content = label
-  end
 %>
 
 <%%= tag.button content, **options %>
