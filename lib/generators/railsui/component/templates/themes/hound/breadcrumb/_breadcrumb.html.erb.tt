@@ -1,0 +1,43 @@
+<%%# locals: (items: [], classes: nil) %>
+
+<%%#
+Breadcrumbs Component:
+
+- items: Array of hashes with keys :name and :url (optional), e.g.
+    [
+      { name: "Home", url: root_url },
+      { name: "Library", url: library_url },
+      { name: "Data" } # current page (no url)
+    ]
+- classes: Optional classes to customize the wrapper nav
+
+Usage:
+
+  rui :breadcrumbs, items: [
+    { name: "Home", url: root_url },
+    { name: "Library", url: library_url },
+    { name: "Data" }
+  ]
+%>
+
+<%%= tag.nav aria: { label: "breadcrumb" }, class: "my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm #{classes}" do %>
+  <%%= tag.ol class: "flex flex-wrap items-center space-x-3 list-none m-0 p-0" do %>
+    <%% items.each_with_index do |item, index| %>
+      <%% if index > 0 %>
+        <li class="flex space-x-3">
+          <div class="flex items-center">
+            <span class="text-slate-300 dark:text-slate-500">/</span>
+          </div>
+      <%% else %>
+        <li>
+      <%% end %>
+
+        <%% if item[:url].present? %>
+          <%%= link_to item[:name], item[:url], class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
+        <%% else %>
+          <%%= tag.span item[:name], class: "text-primary-500 dark:text-primary-500", data: { aria_current: "page" } %>
+        <%% end %>
+      </li>
+    <%% end %>
+  <%% end %>
+<%% end %>

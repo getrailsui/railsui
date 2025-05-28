@@ -31,24 +31,67 @@ module Railsui
 
       def create_component
         directory_path = options[:directory] || "app/views/rui/components"
-        folder_path = themed_component_folder_path(file_name)
+        target_folder = File.join(directory_path, file_name)
+        theme = Railsui.config.theme
+        template_dir = "themes/#{theme}/#{file_name}"
 
-        if Dir.exist?(folder_path)
-          directory folder_path, File.join(directory_path, file_name)
-        else
-          target_path = File.join(directory_path, "_#{file_name}.html.erb")
-          partial_template = themed_path("_#{file_name}.html.erb.tt") || "default_component.html.erb"
-          template partial_template, target_path
+        FileUtils.mkdir_p(target_folder)
+
+        Dir.chdir(self.class.source_root) do
+          Dir.glob("#{template_dir}/*").each do |relative_path|
+            filename = File.basename(relative_path)
+
+            # Skip .js or .js.erb files unless --stimulus is passed
+            if filename.match?(/\.js(\.erb)?$/)
+              next unless options[:stimulus]
+              next # prevent copying to views — handled in create_stimulus_controller
+            end
+
+            # Output file name (strip .erb/.tt if present)
+            target_filename = filename.sub(/\.erb$/, "").sub(/\.tt$/, "")
+            target_path = File.join(target_folder, target_filename)
+
+            if filename.end_with?(".erb") || filename.end_with?(".tt")
+              template relative_path, target_path
+            else
+              copy_file relative_path, target_path
+            end
+          end
         end
       end
 
       def create_stimulus_controller
-        controller_path = "app/javascript/controllers/#{file_name}_controller.js"
-        theme_template = themed_path("#{file_name}_controller.js.erb")
-        fallback_template = "stimulus_controller.js.erb"
+        # Check for theme-specific template first
+        theme_template = themed_path("#{file_name}/#{file_name}_controller.js.erb")
+        fallback_template = File.expand_path("templates/stimulus_controller.js.erb", __dir__)
         template_path = theme_template || fallback_template
 
-        template template_path, controller_path
+        controller_name = "#{file_name}_controller.js"
+        controller_dest = Rails.root.join("app/javascript/controllers", controller_name)
+
+        template template_path, controller_dest
+        register_stimulus_controller(file_name)
+      end
+
+      def register_stimulus_controller(name)
+        index_path = Rails.root.join("app/javascript/controllers/index.js")
+
+        import_line   = "import #{name.camelize}Controller from \"./#{name.underscore}_controller\""
+        register_line = "application.register(\"#{name.dasherize}\", #{name.camelize}Controller)"
+        full_block    = "#{import_line}\n#{register_line}"
+
+        content = File.exist?(index_path) ? File.read(index_path) : ""
+
+        return if content.include?(import_line) && content.include?(register_line)
+
+        needs_newline = !content.end_with?("\n")
+
+        File.open(index_path, "a") do |file|
+          file.write("\n") if needs_newline
+          file.write(full_block)
+        end
+
+        say_status :update, "Appended #{name}_controller to index.js", :green
       end
 
       def destroy_component
@@ -108,6 +151,11 @@ module Railsui
         theme = Railsui.config.theme
         path = File.expand_path("templates/themes/#{theme}/#{filename}", __dir__)
         File.exist?(path) ? path : nil
+      end
+
+      def themed_relative_path(name)
+        theme = Railsui.config.theme
+        "themes/#{theme}/#{name}"
       end
 
       def themed_component_folder_path(name)

@@ -1,4 +1,4 @@
-<%%# locals: (title: nil, content: nil, icon: nil, dismissable: false, classes: nil, color: :gray) %>
+<%%# locals: (title: nil, content: nil, icon: nil, dismissable: false, classes: nil, color: :neutral) %>
 
 <%%#
 
@@ -9,7 +9,7 @@ Alert Component:
 - dismissable: If true, renders a dismiss (x) button.
 - classes: Optional extra classes on alert wrapper.
 - content: Block or string content
-- color: [:primary, :secondary, or all Tailwind CSS default color schemes]
+- color: [:primary, :secondary, :red, :yellow, :orange, :amber, :lime, :green, :emerald, :teal, :cyan, :sky, :blue, :indigo, :violet, :purple, :fuchsia, :pink, :rose, :slate, :gray, :zinc, :neutral, :stone]
 
 Usage examples:
 
@@ -207,12 +207,14 @@ Usage examples:
 
   theme = color_map[color] || color_map[:primary]
   wrapper_classes = [
-    "rounded p-4 text-sm flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-start",
+    "relative rounded p-4 text-sm flex flex-col gap-2 md:flex-row md:justify-between md:items-start",
     theme[:bg], theme[:text], theme[:border], classes
   ].compact.join(" ")
+  wrapper_attrs = {}
+  wrapper_attrs[:data] = { controller: "alert" } if dismissable
 %>
 
-<div class="rounded p-4 text-sm flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-start <%%= classes %>">
+<%%= tag.div class: wrapper_classes, **wrapper_attrs.to_h do %>
   <div class="flex items-start gap-4">
     <%% if icon.present? %>
       <%%= icon icon, class: "size-5 flex-shrink-0 #{theme[:icon]}" %>
@@ -220,18 +222,18 @@ Usage examples:
 
     <div class="flex-1">
       <%% if title.present? %>
-        <p class="font-semibold"><%%= title %></p>
+        <p class="font-semibold mb-1"><%%= title %></p>
       <%% end %>
 
       <%% if content.present? %>
-        <p class="leading-snug my-1"><%%= content %></p>
+        <div><%%= content %></div>
       <%% end %>
     </div>
   </div>
 
   <%% if dismissable %>
-    <button type="button" class="absolute top-2 right-2 size-8 rounded-full transition ease-in-out duration-200 hover:bg-black/5 dark:hover:bg-white/5">
-      <%%= icon "x-mark", class: "size-5" %>
+    <button type="button" class="absolute top-2 right-2 size-8 rounded-full transition ease-in-out duration-200 hover:bg-current/5 dark:hover:bg-current/20 flex items-center justify-center shrink-0" data-action="click->alert#close">
+      <%%= icon "x-mark", class: "size-5 #{theme[:icon]} shrink-0" %>
     </button>
   <%% end %>
-</div>
+<%% end %>
