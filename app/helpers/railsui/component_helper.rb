@@ -2,10 +2,15 @@ module Railsui
   module ComponentHelper
     def rui(name, **locals, &block)
       name = name.to_s
+      content = block_given? ? capture(&block) : (locals[:content] || locals[:label])
+
+      segments = name.split("/")
+      folder = segments.first
+      partial = segments.length == 1 ? folder : segments.last
 
       paths = [
-        "rui/components/#{name}",
-        "components/#{name}"
+        "rui/components/#{folder}/#{partial}",
+        "components/#{folder}/#{partial}"
       ]
 
       found_path = paths.find do |path|
@@ -17,8 +22,6 @@ module Railsui
       end
 
       Rails.logger.debug "RailsUI: rendering #{found_path}" if Rails.env.development?
-
-      content = block_given? ? capture(&block) : locals[:label]
       render partial: found_path, locals: locals.merge(content: content)
     end
   end

@@ -1,0 +1,49 @@
+<%%# locals: (label: "Button", variant: :primary, size: nil, button_type: "button", classes: nil, disabled: false, tag_options: {}, content: nil) %>
+
+<%%# Button Component
+     locals:
+       - label: fallback text if no block is passed (default: "Button")
+       - variant: visual style, one of:
+           :primary, :secondary, :dark, :white, :transparent, :light, :danger, :link
+         (default: :primary)
+       - size: optional size, one of: :sm, :lg
+       - button_type: HTML button type (default: "button")
+       - classes: additional classes to apply
+       - disabled: true/false for disabled state (default: false)
+       - tag_options: hash of extra tag attributes (e.g., { data: { action: "..." } })
+       - content: passed automatically from `rui` block or fallback to label
+%>
+
+<%%
+  variant_classes = {
+    primary: "btn-primary",
+    secondary: "btn-secondary",
+    dark: "btn-dark",
+    white: "btn-white",
+    transparent: "btn-transparent",
+    light: "btn-light",
+    danger: "btn-danger",
+    link: "btn-link"
+  }
+
+  size_classes = {
+    sm: "btn-sm",
+    lg: "btn-lg"
+  }
+
+  variant_class = variant_classes[variant] || variant.to_s
+  size_class = size_classes[size] || size.to_s
+
+  button_classes = ["btn", variant_class, size_class, classes].compact.join(" ")
+
+  options = {
+    type: button_type,
+    class: button_classes.strip,
+    disabled: disabled,
+    "aria-disabled": disabled
+  }
+
+  options.merge!(tag_options.symbolize_keys) if tag_options.present?
+%>
+
+<%%= tag.button content, **options %>

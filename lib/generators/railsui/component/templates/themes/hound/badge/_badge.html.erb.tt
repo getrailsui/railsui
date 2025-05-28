@@ -1,13 +1,24 @@
-<%%# locals: (label: nil, color: :gray, variant: :solid, class_name: nil, content: nil) %>
+<%%# locals: (label: nil, color: :gray, variant: :solid, classes: nil, content: nil) %>
 
-<%%# Usage:
-    rui :badge, label: "Active"
-    rui :badge, label: "Error", color: :red
-    rui :badge, label: "Success", color: :green, variant: :pill
-    rui :badge, color: :blue, variant: :outline do
-      Slot Content
-    end
+<%%# Badge Component
+     locals:
+       - label: fallback text if no block is passed
+       - color: color theme, one of:
+         :gray, :red, :orange, :yellow, :green, :blue, :indigo, :purple, :pink, :white (default: :gray)
+       - variant: style variant, one of:
+         :solid, :pill, :outline (default: :solid)
+       - classes: additional classes to apply
+       - content: passed automatically from `rui` block or fallback to label
+
+     Usage examples:
+       rui :badge, label: "Active"
+       rui :badge, label: "Error", color: :red
+       rui :badge, label: "Success", color: :green, variant: :pill
+       rui :badge, color: :blue, variant: :outline do
+         Slot Content
+       end
 %>
+
 
 <%%
   base_classes = "font-medium px-2 py-1 text-xs"
@@ -53,7 +64,7 @@
   color_classes = variant_styles[color_sym] || variant_class_map[:solid][:gray]
 
   rounded_class = rounded_classes[variant_sym] || "rounded"
-  classes = [rounded_class, base_classes, color_classes, class_name].compact.join(" ")
+  badge_classes = [rounded_class, base_classes, color_classes, classes].compact.join(" ")
 %>
 
-<%%= content_tag :span, content, class: classes %>
+<%%= content_tag :span, content, class: badge_classes %>

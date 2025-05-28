@@ -31,10 +31,15 @@ module Railsui
 
       def create_component
         directory_path = options[:directory] || "app/views/rui/components"
-        target_path = File.join(directory_path, "_#{file_name}.html.erb")
-        partial_template = themed_path("_#{file_name}.html.erb.tt") || "default_component.html.erb"
+        folder_path = themed_component_folder_path(file_name)
 
-        template partial_template, target_path
+        if Dir.exist?(folder_path)
+          directory folder_path, File.join(directory_path, file_name)
+        else
+          target_path = File.join(directory_path, "_#{file_name}.html.erb")
+          partial_template = themed_path("_#{file_name}.html.erb.tt") || "default_component.html.erb"
+          template partial_template, target_path
+        end
       end
 
       def create_stimulus_controller
@@ -48,14 +53,17 @@ module Railsui
 
       def destroy_component
         directory = options[:directory] || "app/views/rui/components"
-        relative_path = File.join(directory, "_#{file_name}.html.erb")
-        full_path = Rails.root.join(relative_path)
+        folder_path = File.join(directory, file_name)
+        file_path = File.join(directory, "_#{file_name}.html.erb")
 
-        if File.exist?(full_path)
-          FileUtils.rm(full_path)
-          say_status :remove, relative_path, :red
+        if Dir.exist?(Rails.root.join(folder_path))
+          FileUtils.rm_rf(Rails.root.join(folder_path))
+          say_status :remove, folder_path, :red
+        elsif File.exist?(Rails.root.join(file_path))
+          FileUtils.rm(file_path)
+          say_status :remove, file_path, :red
         else
-          say "ℹ️  File not found: #{relative_path}", :blue
+          say "ℹ️  Component not found for deletion: #{folder_path} or #{file_path}", :blue
         end
       end
 
@@ -69,6 +77,16 @@ module Railsui
         else
           say "ℹ️ File does not exist"
         end
+
+        if File.exist?(index_path)
+          import_line = "import #{file_name.camelize}Controller from \"./#{file_name.underscore}_controller\"\n"
+          register_line = "application.register(\"#{file_name.dasherize}\", #{file_name.camelize}Controller)\n"
+
+          content = File.read(index_path)
+          content.gsub!(/#{Regexp.escape(import_line)}/, "")
+          content.gsub!(/#{Regexp.escape(register_line)}/, "")
+          File.write(index_path, content)
+        end
       end
 
       def print_available_components
@@ -76,8 +94,8 @@ module Railsui
         path = File.expand_path("templates/themes/#{theme}", __dir__)
         say "🎨 Available components for theme `#{theme}`:\n", :green
 
-        Dir.glob("#{path}/*.html.erb.tt").each do |template|
-          name = File.basename(template, ".html.erb.tt")
+        Dir.glob("#{path}/*").select { |f| File.directory?(f) }.each do |folder|
+          name = File.basename(folder)
           say "  • #{name.camelize}"
         end
       end
@@ -90,6 +108,11 @@ module Railsui
         theme = Railsui.config.theme
         path = File.expand_path("templates/themes/#{theme}/#{filename}", __dir__)
         File.exist?(path) ? path : nil
+      end
+
+      def themed_component_folder_path(name)
+        theme = Railsui.config.theme
+        File.expand_path("templates/themes/#{theme}/#{name}", __dir__)
       end
     end
   end
