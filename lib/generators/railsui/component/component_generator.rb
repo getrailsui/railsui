@@ -118,18 +118,20 @@ module Railsui
           FileUtils.rm(controller_path)
           say_status :remove, controller_path, :red
         else
-          say "ℹ️ File does not exist"
+          say "ℹ️ File does not exist", :blue
         end
 
-        if File.exist?(index_path)
-          import_line = "import #{file_name.camelize}Controller from \"./#{file_name.underscore}_controller\"\n"
-          register_line = "application.register(\"#{file_name.dasherize}\", #{file_name.camelize}Controller)\n"
+        return unless File.exist?(index_path)
 
-          content = File.read(index_path)
-          content.gsub!(/#{Regexp.escape(import_line)}/, "")
-          content.gsub!(/#{Regexp.escape(register_line)}/, "")
-          File.write(index_path, content)
-        end
+        content = File.read(index_path)
+
+        # Use regex to remove both lines regardless of spacing or order
+        import_regex = /^import #{file_name.camelize}Controller from ["']\.\/#{file_name.underscore}_controller["']\s*\n?/
+        register_regex = /^application\.register\(["']#{file_name.dasherize}["'], #{file_name.camelize}Controller\)\s*\n?/
+
+        new_content = content.gsub(import_regex, "").gsub(register_regex, "")
+        File.write(index_path, new_content)
+        say_status :update, "Removed #{file_name}_controller from index.js", :red
       end
 
       def print_available_components

@@ -1,4 +1,4 @@
-<%%# locals: ( button: { label: "More", icon: "chevron-down", classes: "btn btn-white" }, menu_classes: nil,items:, content: nil) %>
+<%%# locals: ( button: { label: "More", icon: "chevron-down", classes: "btn btn-white" }, menu_classes: nil,items:, controller: "railsui-dropdown", content: nil) %>
 
 <%%# Dropdown Component
 Props:
@@ -21,6 +21,8 @@ Props:
       - :icon (Hash, optional — same structure as button icon)
       - :method (Symbol, optional — e.g. :post)
       - :data (Hash, optional — e.g. { turbo: false })
+- controller: Pass a custom stimulus controller.
+    - Notes: This defaults to railsui-dropdown. If you used the --stimulus option pass `dropdown` here instead of `railsui-dropdown` to inherit from RailsuiDropdown from the railsui-stimulus library.
 
 Usage:
 rui :dropdown,
@@ -39,18 +41,32 @@ rui :dropdown,
       { name: "Logout", url: logout_path, method: :delete, data: { turbo: false }, icon: { name: "logout", position: :end } }
     ]
   ]
+
+With custom controller: (i.e. rails g railsui:dropdown --stimulus)
+ rui :dropdown,
+  controller: "dropdown", # pass "dropdown" controller name to extend defaults.
+  button: {
+    label: "Start Icon",
+        icon: { name: "user", classes: "size-4 text-blue-500", position: :start },
+        classes: "btn btn-white"
+      },
+  items: [
+    { name: "Dashboard", url: "#" },
+    { name: "Settings", url: "#" }
+  ]
 %>
 
 <%% is_grouped = items.first.is_a?(Array) %>
 <%% dropdown_icon = button[:icon] %>
 <%% label = button[:label] %>
 <%% button_classes = button[:classes] || "btn btn-white" %>
+<%% controller_name = local_assigns[:controller] || 'railsui-dropdown' %>
 
-<div class="relative" data-controller="railsui-dropdown">
+<div class="relative" data-controller="<%%= controller_name %>">
   <button
   type="button"
   class="<%%= button_classes %> flex gap-3 items-center <%%= dropdown_icon&.dig(:position) == :start ? "justify-start" : "justify-between" %>"
-  data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+  data-action="click-><%%= controller_name %>#toggle click@window-><%%= controller_name %>#hide">
     <%% if dropdown_icon&.dig(:position) == :start %>
       <%%= icon(dropdown_icon&.dig(:name) || "chevron-down", class: dropdown_icon&.dig(:classes) || "size-3") %>
     <%% end %>
@@ -61,7 +77,7 @@ rui :dropdown,
   </button>
 
   <div
-    data-railsui-dropdown-target="menu"
+    data-<%%= controller_name %>-target="menu"
     class="hidden <%%= menu_classes.presence || 'origin-top-left left-0 top-12 absolute dropdown-menu' %>"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
