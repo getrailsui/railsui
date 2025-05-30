@@ -49,7 +49,7 @@ rui :dropdown,
 <div class="relative" data-controller="railsui-dropdown">
   <button
   type="button"
-  class="<%%= button_classes %> flex gap-1.5 items-center <%%= dropdown_icon&.dig(:position) == :start ? "justify-start" : "justify-between" %>"
+  class="<%%= button_classes %> flex gap-3 items-center <%%= dropdown_icon&.dig(:position) == :start ? "justify-start" : "justify-between" %>"
   data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
     <%% if dropdown_icon&.dig(:position) == :start %>
       <%%= icon(dropdown_icon&.dig(:name) || "chevron-down", class: dropdown_icon&.dig(:classes) || "size-3") %>
@@ -62,7 +62,7 @@ rui :dropdown,
 
   <div
     data-railsui-dropdown-target="menu"
-    class="hidden <%%= menu_classes.presence || 'origin-top-left left-0 top-10 transition transform absolute bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200 w-full md:w-[200px]' %>"
+    class="hidden <%%= menu_classes.presence || 'origin-top-left left-0 top-12 absolute dropdown-menu' %>"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
@@ -78,17 +78,17 @@ rui :dropdown,
                   <%%== button_to item[:name], item[:url],
                     method: item[:method],
                     data: item[:data] || {},
-                    class: "w-full text-left px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+                    class: "dropdown-item" %>
                 <%% else %>
                   <%%= link_to item[:url],
-                    class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 flex items-center gap-2 #{item[:icon]&.dig(:position) == :start ? "justify-start" : "justify-between"}",
+                    class: "dropdown-item flex items-center gap-3 #{item[:icon]&.dig(:position) == :start ? "justify-start" : "justify-between"}",
                     data: item[:data] || {} do %>
                     <%% if item[:icon]&.dig(:position) == :start %>
-                      <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'mr-2 size-4') %>
+                      <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                     <%% end %>
                     <%%= item[:name] %>
                     <%% if item[:icon]&.dig(:position) == :end %>
-                      <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'ml-2 size-4') %>
+                      <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                     <%% end %>
                   <%% end %>
                 <%% end %>
@@ -105,17 +105,17 @@ rui :dropdown,
               <%%== button_to item[:name], item[:url],
                 method: item[:method],
                 data: item[:data] || {},
-                class: "w-full text-left px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+                class: "dropdown-item" %>
             <%% else %>
               <%%= link_to item[:url],
-                class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 flex items-center gap-2 #{item[:icon]&.dig(:position) == :start ? "justify-start" : "justify-between"}",
+                class: "dropdown-item flex items-center gap-2 #{item[:icon]&.dig(:position) == :start ? "justify-start" : "justify-between"}",
                 data: item[:data] || {} do %>
                 <%% if item[:icon]&.dig(:position) == :start %>
-                  <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'mr-2 size-4') %>
+                  <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                 <%% end %>
                 <%%= item[:name] %>
                 <%% if item[:icon]&.dig(:position) == :end %>
-                  <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'ml-2 size-4') %>
+                  <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                 <%% end %>
               <%% end %>
             <%% end %>

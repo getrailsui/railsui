@@ -6,9 +6,10 @@
 <% content_for :html, flush: true do %>
 <div data-controller="railsui-dropdown">
   <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">Dropdown</button>
-  <div class="hidden" data-railsui-dropdown-target="menu">
-    <a href="#">Menu list item 1</a>
-    <a href="#">Menu list item 2</a>
+  <div class="hidden dropdown-menu left-0 top-10" data-railsui-dropdown-target="menu">
+    <a href="#" class="dropdown-item">Menu list item 1</a>
+    <a href="#" class="dropdown-item">Menu list item 2</a>
+    <a href="#" class="dropdown-item dropdown-item-danger">Dangerous Menu list item 3</a>
   </div>
 </div>
 <% end %>
