@@ -1,0 +1,48 @@
+<%%# locals: (avatar_url:, name:, email: nil, phone: nil, content: nil, classes: nil) %>
+
+<%%# User Card Component
+Props:
+- avatar_url: (String, required) – Image URL for the avatar.
+- name: (String, required) – Display name.
+- email: (String, optional) – Email address.
+- phone: (String, optional) – Phone number.
+- content: (HTML-safe content, optional) – Extra slot under metadata.
+- classes: (String, optional) – Tailwind classes for customization.
+
+Usage:
+  rui :user_card, avatar_url: demo_avatar_url(id: 3, variant: :men), name: "John Doe", email: "john.doe@example.com", phone: "+1-555-555-5555"
+
+  rui :user_card, avatar_url: demo_avatar_url(id: 7, variant: :women), name: "Jane Smith" do
+    <p class="text-xs text-slate-500 mt-2">
+     Member since 2021
+    </p>
+  end
+%>
+
+<div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 py-4 px-6 flex items-center space-x-4 w-auto dark:shadow-slate-900/50 <%%= classes %>">
+  <%%= image_tag avatar_url, class: "object-cover size-14 rounded-full shrink-0" %>
+
+  <div class="flex-1 flex flex-col items-start text-slate-900 space-y-1">
+    <p class="font-bold dark:text-white"><%%= name %></p>
+
+    <%% if content.present? %>
+      <div class="flex-1 w-full"><%%= content %></div>
+    <%% else %>
+      <div class="flex flex-wrap items-center justify-between md:gap-4 gap-2 text-sm">
+      <%% if email.present? %>
+        <div class="flex items-center gap-2">
+          <%%= icon "envelope", class: "size-4 text-slate-500 dark:text-primary-400 shrink-0" %>
+          <p class="dark:text-slate-300"><%%= email %></p>
+        </div>
+      <%% end %>
+
+      <%% if phone.present? %>
+        <div class="flex items-center gap-2">
+          <%%= icon "phone", class: "size-4 text-slate-500 dark:text-primary-400 shrink-0" %>
+          <p class="dark:text-slate-300"><%%= phone %></p>
+        </div>
+      <%% end %>
+    </div>
+    <%% end %>
+  </div>
+</div>
