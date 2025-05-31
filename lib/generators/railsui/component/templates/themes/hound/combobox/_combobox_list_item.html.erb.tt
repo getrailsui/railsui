@@ -1,0 +1,59 @@
+<%%# locals: (label: "Label", value:, icon_options: nil, active: false, controller: "railsui-combobox", content: nil) %>
+
+<%%# Combobox List Item Component
+Props:
+- label: (String) – Text shown for the item
+- value: (String, required) – Value for the option, passed to hidden input
+- icon_options: (Hash, optional) – Optional icon config hash: { name:, classes:, position: :start|:end }
+- active: (Boolean, optional) – Whether this option is selected (default: false)
+- controller: (String, optional) – Stimulus controller name (default: "railsui-combobox")
+- content: (optional) – You can pass a block if you need full custom item rendering
+
+## Usage – basic as array of hashes
+
+rui :combobox,
+  name: "plan",
+  label: "Choose a plan",
+  searchable: false,
+  selected: "pro",
+  items: [
+    { label: "Free", value: "free" },
+    { label: "Pro", value: "pro" },
+    { label: "Enterprise", value: "enterprise" }
+  ]
+
+## As block with icon and active logic:
+  rui :combobox,
+    name: "File Type",
+    label: "Choose a file type" do
+    rui "combobox/combobox_list_item", label: "PDF", value: "pdf", active: true, icon_options: { name: "file", classes: "size-4", position: :start }
+    rui "combobox/combobox_list_item", label: "JPG", value: "jpg", active: false, icon_options: { name: "file", classes: "size-4", position: :start }
+  end
+%>
+
+<li
+  data-action="click-><%%= controller %>#selectOption keydown.enter-><%%= controller %>#selectOption"
+  data-<%%= controller.dasherize %>-target="option"
+  data-value="<%%= value %>"
+  role="option"
+  tabindex="0"
+  class="px-3 py-1.5 cursor-pointer flex items-center justify-between bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
+
+  <div class="flex items-center gap-3">
+    <%% if content.present? %>
+      <%%= content %>
+    <%% else %>
+      <%% if icon_options&.dig(:name) && icon_options[:position] == :start %>
+        <%%= icon icon_options[:name], class: icon_options[:classes] %>
+      <%% end %>
+      <span><%%= label %></span>
+      <%% if icon_options&.dig(:name) && icon_options[:position] == :end %>
+        <%%= icon icon_options[:name], class: icon_options[:classes] %>
+      <%% end %>
+    <%% end %>
+  </div>
+
+  <span data-<%%= controller.dasherize %>-target="checkmark" class="hidden" aria-hidden="true">
+    <%%= icon "check", class: "opacity-75 size-4 shrink-0" %>
+  </span>
+</li>

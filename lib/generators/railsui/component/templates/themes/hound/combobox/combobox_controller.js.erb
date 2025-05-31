@@ -1,0 +1,9 @@
+import { RailsuiCombobox } from 'railsui-stimulus'
+
+// Connects to data-controller="<%= file_name.dasherize %>"
+export default class <%= file_name.camelcase %> extends RailsuiCombobox {
+  connect() {
+    super.connect()
+    console.log('Inherited Rails UI Combobox connected')
+  }
+}
