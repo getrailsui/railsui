@@ -1,4 +1,4 @@
-<%%# locals: (pagy:, link_proc: nil, classes: nil) %>
+<%%# locals: (pagy:, link_proc: nil, classes: nil, content: nil) %>
 
 <%%# Pagy Component
 Props:

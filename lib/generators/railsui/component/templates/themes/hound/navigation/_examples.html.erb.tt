@@ -1,0 +1,97 @@
+<%%# Navigation Component Examples %>
+
+<%%# Basic navigation with image logo %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Basic Navigation with Image Logo</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Standard navigation with an image logo:</p>
+  
+  <%%= rui :navigation, logo: image_tag("logo.png", class: "h-6 w-auto") %>
+</div>
+
+<%%# Navigation with icon logo %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Navigation with Icon Logo</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Using an icon as the logo:</p>
+  
+  <%%= rui :navigation, logo: icon("star", class: "size-5") %>
+</div>
+
+<%%# Navigation with text logo %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Navigation with Text Logo</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Simple text-based logo:</p>
+  
+  <%%= rui :navigation, logo: content_tag(:span, "Hound", class: "text-xl font-bold") %>
+</div>
+
+<%%# Navigation with custom classes %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Styling</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Navigation with custom header classes:</p>
+  
+  <%%= rui :navigation, 
+        logo: content_tag(:span, "Custom", class: "text-xl font-bold text-blue-600"), 
+        classes: "border-b-2 border-blue-200 shadow-lg" %>
+</div>
+
+<%%# Navigation with custom controller %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Stimulus Controller</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Using a custom Stimulus controller:</p>
+  
+  <%%= rui :navigation, 
+        logo: content_tag(:span, "Custom", class: "text-xl font-bold"), 
+        controller: "custom-nav" %>
+</div>
+
+<%%# Navigation with custom content block %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Navigation Content</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Replacing default left/right navigation with custom content:</p>
+  
+  <%%= rui :navigation, logo: content_tag(:span, "H", class: "text-xl font-bold") do %>
+    <nav class="flex md:flex-row flex-col gap-4 justify-between items-center w-full">
+      <ul class="flex md:flex-row flex-col gap-4">
+        <li><%%= link_to "Home", "/", class: "rui-nav-link" %></li>
+        <li><%%= link_to "Features", "#", class: "rui-nav-link" %></li>
+        <li><%%= link_to "About", "#", class: "rui-nav-link" %></li>
+      </ul>
+
+      <ul class="flex md:flex-row flex-col gap-2">
+        <li><%%= link_to "Login", "#", class: "btn btn-transparent" %></li>
+        <li><%%= link_to "Sign Up", "#", class: "btn btn-dark" %></li>
+      </ul>
+    </nav>
+  <%% end %>
+</div>
+
+<%%# Navigation with centered logo %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Centered Logo Style</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Navigation with centered branding:</p>
+  
+  <%%= rui :navigation, 
+        logo: content_tag(:div, "BRAND", class: "text-2xl font-bold tracking-wider"), 
+        classes: "text-center" %>
+</div>
+
+<%%# Setup instructions %>
+<div class="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+  <h4 class="font-semibold text-blue-900 dark:text-blue-100 mb-2">Setup Instructions</h4>
+  <div class="text-sm text-blue-800 dark:text-blue-200 space-y-2">
+    <p>To customize navigation content, create these partials in your app:</p>
+    <ul class="list-disc list-inside space-y-1 ml-4">
+      <li><code>app/views/rui/components/navigation/_left.html.erb</code> - Left navigation links</li>
+      <li><code>app/views/rui/components/navigation/_right.html.erb</code> - Right navigation links</li>
+    </ul>
+    
+    <div class="mt-3 p-3 bg-blue-100 dark:bg-blue-800/30 rounded text-xs font-mono">
+      <div class="mb-1"># Basic usage:</div>
+      <div><%%= rui :navigation, logo: image_tag("logo.png") %></div>
+      <div class="mt-2 mb-1"># With custom content:</div>
+      <div><%%= rui :navigation, logo: "Brand" do %></div>
+      <div>&nbsp;&nbsp;<!-- Custom navigation content --></div>
+      <div><%% end %></div>
+    </div>
+  </div>
+</div>

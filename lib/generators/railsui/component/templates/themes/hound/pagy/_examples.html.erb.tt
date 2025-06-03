@@ -1,0 +1,120 @@
+<%%# Pagy Component Examples %>
+
+<%%# Setup instructions %>
+<div class="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+  <h4 class="font-semibold text-blue-900 dark:text-blue-100 mb-2">Setup Requirements</h4>
+  <div class="text-sm text-blue-800 dark:text-blue-200 space-y-2">
+    <p>To use these examples, ensure you have:</p>
+    <ul class="list-disc list-inside space-y-1 ml-4">
+      <li>Pagy gem installed and configured</li>
+      <li>@pagy object available in your controller</li>
+      <li>Pagy helper methods included in your view</li>
+    </ul>
+
+    <div class="mt-3 p-3 bg-blue-100 dark:bg-blue-800/30 rounded text-xs font-mono">
+      <div class="mb-1"># In your controller:</div>
+      <div>@pagy, @records = pagy(User.all)</div>
+      <div class="mt-2 mb-1"># In your view:</div>
+      <div><%%= rui :pagy, pagy: @pagy %></div>
+    </div>
+  </div>
+</div>
+
+<%%# Basic pagy usage %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Basic Pagination</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Standard pagination with default styling:</p>
+
+  <%%= rui :pagy, pagy: @pagy %>
+</div>
+
+<%%# Pagy with custom classes %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Styling</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Pagination with custom wrapper classes:</p>
+
+  <%%= rui :pagy, pagy: @pagy, classes: "mt-6 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg" %>
+</div>
+
+<%%# Pagy with custom link proc %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Link Styling</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Using a custom link_proc for specialized link styling:</p>
+
+  <%%
+    custom_link_proc = pagy_link_proc(@pagy) do |n|
+      link_to n, request.path + "?page=#{n}",
+        class: "text-blue-600 hover:text-blue-800 hover:underline font-semibold dark:text-blue-400 dark:hover:text-blue-300"
+    end
+  %>
+
+  <%%= rui :pagy, pagy: @pagy, link_proc: custom_link_proc %>
+</div>
+
+<%%# Compact pagination for mobile %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Mobile-Optimized</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Pagination optimized for smaller screens:</p>
+
+  <%%= rui :pagy, pagy: @pagy, classes: "sm:hidden" %>
+</div>
+
+<%%# Pagination with info %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">With Info Display</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Including pagination info alongside navigation:</p>
+
+  <div class="space-y-3">
+    <div class="text-sm text-slate-600 dark:text-slate-400">
+      Showing <%%= pagy_info(@pagy) %> results
+    </div>
+    <%%= rui :pagy, pagy: @pagy %>
+  </div>
+</div>
+
+<%%# Large dataset pagination %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Large Dataset</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Pagination for large datasets with many pages:</p>
+
+  <%%
+    # Simulate a large pagy object
+    large_pagy = Pagy.new(count: 10000, page: 50, items: 20)
+  %>
+
+  <%%= rui :pagy, pagy: large_pagy %>
+</div>
+
+<%%# Centered pagination %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Centered Layout</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Centered pagination for content focus:</p>
+
+  <div class="flex justify-center">
+    <%%= rui :pagy, pagy: @pagy, classes: "max-w-md" %>
+  </div>
+</div>
+
+<%%# Pagination with custom prev/next text %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Navigation Text</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Pagination with custom previous/next button text:</p>
+
+  <%%
+    custom_text_proc = pagy_link_proc(@pagy) do |n|
+      case n
+      when @pagy.prev
+        link_to "← Previous", request.path + "?page=#{n}",
+          class: "flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600"
+      when @pagy.next
+        link_to "Next →", request.path + "?page=#{n}",
+          class: "flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600"
+      else
+        link_to n, request.path + "?page=#{n}",
+          class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50"
+      end
+    end
+  %>
+
+  <%%= rui :pagy, pagy: @pagy, link_proc: custom_text_proc %>
+</div>

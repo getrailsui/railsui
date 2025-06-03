@@ -1,4 +1,4 @@
-<%%# locals: (prev_url: nil, next_url: nil, pages:, classes: nil, content: nil) %>
+<%%# locals: (prev_url: nil, next_url: nil, pages:, classes: nil, active_classes: nil, content: nil) %>
 
 <%%# Pagination Component
   Props:
@@ -6,15 +6,23 @@
     next_url:         # Optional URL for the "Next" link (disabled if nil)
     pages:            # Array of page items (can be Integer, String for active, or :gap)
     classes:          # Optional extra wrapper classes
+    active_classes:   # Optional custom classes for active page styling
 
   Usage examples:
 
   rui :pagination, prev_url: "#", next_url: "#", pages: [1, 2, "3", 4, :gap, 10]
 
   rui :pagination, prev_url: nil, next_url: nil, pages: [1, :gap, "5", 6, 7], classes: "mt-6"
+
+  rui :pagination, prev_url: "#", next_url: "#", pages: [1, 2, "3", 4, 5], active_classes: "bg-red-500 text-white border-red-500"
 %>
 
-<nav aria-label="Pagination" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300 <%%= classes %>">
+<%%
+  default_active_classes = "py-2 px-4 block border-t-2 border-primary-500 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30"
+  final_active_classes = active_classes.presence || default_active_classes
+%>
+
+<nav aria-label="Pagination" class="<%%= classes.presence || "text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300" %>">
   <ul class="flex flex-wrap items-center sm:justify-between justify-center">
     <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
       <%% if prev_url.present? %>
@@ -38,7 +46,7 @@
           </li>
         <%% elsif item.is_a?(String) %>
           <li>
-            <span class="py-2 px-4 block border-t-2 border-primary-500 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30">
+            <span class="<%%= final_active_classes %>">
               <%%= item %>
             </span>
           </li>
