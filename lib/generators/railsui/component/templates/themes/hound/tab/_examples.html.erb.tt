@@ -1,0 +1,225 @@
+<%%# Tab Component Examples %>
+
+<%%# Basic tabs with panels %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Basic Tabs</h3>
+  <%%= rui :tab do %>
+    <%%= rui "tab/nav", variant: :base do %>
+      <%%= rui "tab/link", label: "Activity", active: true, href: "#activity", variant: :base %>
+      <%%= rui "tab/link", label: "Account", href: "#account", variant: :base %>
+      <%%= rui "tab/link", label: "Billing", href: "#billing", variant: :base %>
+      <%%= rui "tab/link", label: "Team", href: "#team", variant: :base %>
+    <%% end %>
+
+    <%%= rui "tab/panel", id: "activity", active: true do %>
+      <p>Activity content goes here. Track your recent actions and updates.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel", id: "account" do %>
+      <p>Account settings and profile information.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel", id: "billing" do %>
+      <p>Billing information and payment methods.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel", id: "team" do %>
+      <p>Team management and member settings.</p>
+    <%% end %>
+  <%% end %>
+</div>
+
+<%%# Pill variant %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Pill Tabs</h3>
+  <%%= rui :tab, variant: :pill do %>
+    <%%= rui "tab/nav", variant: :pill do %>
+      <%%= rui "tab/link", label: "Overview", active: true, variant: :pill %>
+      <%%= rui "tab/link", label: "Analytics", variant: :pill %>
+      <%%= rui "tab/link", label: "Reports", variant: :pill %>
+    <%% end %>
+
+    <%%= rui "tab/panel", active: true do %>
+      <p>Overview dashboard with key metrics.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Detailed analytics and insights.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Generated reports and exports.</p>
+    <%% end %>
+  <%% end %>
+</div>
+
+<%%# Tabs with icons %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Tabs with Icons</h3>
+  <%%= rui :tab, variant: :with_icons do %>
+    <%%= rui "tab/nav", variant: :with_icons do %>
+      <%%= rui "tab/link", label: "Dashboard", icon: "squares-2x2", active: true, variant: :with_icons %>
+      <%%= rui "tab/link", label: "Settings", icon: "cog-6-tooth", variant: :with_icons %>
+      <%%= rui "tab/link", label: "Profile", icon: "user", variant: :with_icons %>
+      <%%= rui "tab/link", label: "Notifications", icon: "bell", variant: :with_icons %>
+    <%% end %>
+
+    <%%= rui "tab/panel", active: true do %>
+      <p>Dashboard with charts and widgets.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Application settings and preferences.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>User profile and personal information.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Notification preferences and history.</p>
+    <%% end %>
+  <%% end %>
+</div>
+
+<%%# Rounded variant %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Rounded Tabs</h3>
+  <%%= rui :tab, variant: :rounded do %>
+    <%%= rui "tab/nav", variant: :rounded do %>
+      <%%= rui "tab/link", label: "Popular", active: true, variant: :rounded %>
+      <%%= rui "tab/link", label: "Recent", variant: :rounded %>
+      <%%= rui "tab/link", label: "Trending", variant: :rounded %>
+    <%% end %>
+
+    <%%= rui "tab/panel", active: true do %>
+      <p>Most popular content and articles.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Recently published content.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Trending topics and discussions.</p>
+    <%% end %>
+  <%% end %>
+</div>
+
+<%%# Custom classes example %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Styling</h3>
+  <%%= rui :tab,
+        classes: "bg-slate-50 dark:bg-slate-900 p-4 rounded-lg",
+        active_classes: "border-b-2 border-emerald-500 text-emerald-600 font-semibold py-3 px-4",
+        inactive_classes: "text-slate-500 hover:text-slate-700 py-3 px-4" do %>
+    <%%= rui "tab/nav", variant: :base, classes: "bg-transparent border-0" do %>
+      <%%= rui "tab/link", label: "Custom Active", active: true, variant: :base %>
+      <%%= rui "tab/link", label: "Custom Inactive", variant: :base %>
+    <%% end %>
+
+    <%%= rui "tab/panel", active: true, classes: "bg-white dark:bg-slate-800 rounded-b-lg" do %>
+      <p>Custom styled tab panel with different background.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel", classes: "bg-white dark:bg-slate-800 rounded-b-lg" do %>
+      <p>Another custom panel with consistent styling.</p>
+    <%% end %>
+  <%% end %>
+</div>
+
+<%%# Matching your original markup example %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Original Markup Style</h3>
+  <%%= rui :tab do %>
+    <%%= rui "tab/nav", variant: :base do %>
+      <%%= rui "tab/link", label: "Activity", active: true, href: "#", variant: :base %>
+      <%%= rui "tab/link", label: "Account", href: "#", variant: :base %>
+      <%%= rui "tab/link", label: "Billing", href: "#", variant: :base %>
+      <%%= rui "tab/link", label: "Team", href: "#", variant: :base %>
+    <%% end %>
+
+    <%%= rui "tab/panel", classes: "p-4" do %>
+      Some activities...
+    <%% end %>
+
+    <%%= rui "tab/panel", classes: "hidden p-4" do %>
+      Account information...
+    <%% end %>
+
+    <%%= rui "tab/panel", classes: "hidden p-4" do %>
+      Billing information...
+    <%% end %>
+
+    <%%= rui "tab/panel", classes: "hidden p-4" do %>
+      Team information...
+    <%% end %>
+  <%% end %>
+</div>
+
+<%%# Tab links with custom active/inactive class overrides %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Custom Active/Inactive Classes</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Override variant defaults with custom active/inactive classes:</p>
+
+  <%%= rui :tab, active_classes: "inline-block border-b-2 border-red-500 bg-red-50 text-red-600 font-semibold py-3 px-4", inactive_classes: "inline-block text-slate-500 hover:text-red-500 py-3 px-4 border-b-2 border-transparent" do %>
+    <%%= rui "tab/nav", variant: :base do %>
+      <%%= rui "tab/link",
+            label: "Custom 1",
+            active: true,
+            variant: :base,
+            active_classes: "inline-block border-b-2 border-red-500 bg-red-50 text-red-600 font-semibold py-3 px-4",
+            inactive_classes: "inline-block text-slate-500 hover:text-red-500 py-3 px-4 border-b-2 border-transparent" %>
+      <%%= rui "tab/link",
+            label: "Custom 2",
+            variant: :base,
+            active_classes: "inline-block border-b-2 border-red-500 bg-red-50 text-red-600 font-semibold py-3 px-4",
+            inactive_classes: "inline-block text-slate-500 hover:text-red-500 py-3 px-4 border-b-2 border-transparent" %>
+      <%%= rui "tab/link",
+            label: "Custom 3",
+            variant: :base,
+            active_classes: "inline-block border-b-2 border-red-500 bg-red-50 text-red-600 font-semibold py-3 px-4",
+            inactive_classes: "inline-block text-slate-500 hover:text-red-500 py-3 px-4 border-b-2 border-transparent"%>
+    <%% end %>
+
+    <%%= rui "tab/panel", active: true do %>
+      <p>Custom 1 red styling applied to this tab.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Custom 2 red styling would be applied when active.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>Custom 3 red styling would be applied when active.</p>
+    <%% end %>
+  <%% end %>
+</div>
+
+<%%# Mixed variant and custom styling %>
+<div class="mb-8">
+  <h3 class="text-lg font-semibold mb-4">Mixed Styling Approaches</h3>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Combining variant defaults with selective custom overrides:</p>
+
+  <%%= rui :tab, variant: :pill do %>
+    <%%= rui "tab/nav", variant: :pill do %>
+      <%%= rui "tab/link", label: "Default Pill", active: true, variant: :pill %>
+      <%%= rui "tab/link", label: "Custom Purple", variant: :pill,
+            active_classes: "inline-flex items-center px-3 py-2 rounded-md text-sm font-medium bg-purple-600 text-white shadow",
+            inactive_classes: "inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-purple-500 hover:text-purple-700" %>
+      <%%= rui "tab/link", label: "Default Pill", variant: :pill %>
+    <%% end %>
+
+    <%%= rui "tab/panel", active: true do %>
+      <p>This uses the default pill variant styling.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>This tab has custom purple styling overrides.</p>
+    <%% end %>
+
+    <%%= rui "tab/panel" do %>
+      <p>This also uses the default pill variant styling.</p>
+    <%% end %>
+  <%% end %>
+</div>

@@ -1,0 +1,61 @@
+<%%# locals: (pagy:, link_proc: nil, classes: nil) %>
+
+<%%# Pagy Component
+Props:
+  pagy:        (required) Pagy object.
+  link_proc:   (optional) Precomputed pagy_link_proc(pagy). Will be computed if not provided.
+  classes:     (optional) Extra Tailwind classes for the outer nav.
+
+Usage Examples:
+rui :pagy, pagy: @pagy
+rui :pagy, pagy: @pagy, classes: "mt-4"
+
+More advanced:
+custom_proc = pagy_link_proc(@pagy) do |n|
+  link_to n, posts_path(page: n), class: "text-blue-500 hover:underline"
+end
+
+rui :pagy, pagy: @pagy, link_proc: custom_proc, classes: "mt-10"
+%>
+
+<%%# locals: (pagy:, link_proc: nil, classes: nil) %>
+<%% link_proc ||= pagy_link_proc(pagy) %>
+
+<nav aria-label="Pagination navigation" role="navigation" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300 <%%= classes %>">
+  <div class="flex flex-wrap items-center sm:justify-between justify-center">
+    <%%# Previous Button %>
+    <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
+      <%% if pagy.prev %>
+        <%%== link_proc.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="Previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+      <%% else %>
+        <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none">
+          <%%= pagy_t('pagy.nav.prev') %>
+        </span>
+      <%% end %>
+    </div>
+
+    <%%# Page Series %>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <%% pagy.series.each do |item| %>
+        <%% if item.is_a?(Integer) %>
+          <%%== link_proc.call(item, item, 'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"') %>
+        <%% elsif item.is_a?(String) %>
+          <span class="py-2 px-4 border-t-2 border-primary-500 block text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-600 dark:hover:text-white"><%= item %></span>
+        <%% elsif item == :gap %>
+          <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none"><%%= pagy_t('pagy.nav.gap') %></span>
+        <%% end %>
+      <%% end %>
+    </div>
+
+    <%%# Next Button %>
+    <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
+      <%% if pagy.next %>
+        <%%== link_proc.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="Next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+      <%% else %>
+        <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none">
+          <%%= pagy_t('pagy.nav.next') %>
+        </span>
+      <%% end %>
+    </div>
+  </div>
+</nav>

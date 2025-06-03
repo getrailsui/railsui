@@ -1,0 +1,86 @@
+<%%# locals: (label: "Tab", href: "#", active: false, icon: nil, variant: :base, classes: nil, active_classes: nil, inactive_classes: nil, tag_options: {}, content: nil) %>
+
+<%%# Tab::Link Component
+  locals:
+    - label: string text for the tab link
+    - href: string URL or anchor (default: "#")
+    - active: boolean to mark tab as active (default: false)
+    - icon: optional icon name for heroicon
+    - variant: [:base|:pill|:with_icons|:rounded] (default: :base)
+    - classes: optional string for additional link classes
+    - active_classes: optional string to override default active classes
+    - inactive_classes: optional string to override default inactive classes
+    - tag_options: hash of extra tag attributes
+
+  Usage:
+    rui "tab/link", label: "Activity", active: true, href: "#activity"
+    rui "tab/link", label: "Settings", icon: "cog-6-tooth", href: "#settings", variant: :with_icons
+    rui "tab/link", label: "Account", classes: "custom-tab", variant: :pill
+    rui "tab/link", label: "Custom", active: true, active_classes: "bg-red-500 text-white px-4 py-2"
+%>
+
+<%%
+  variant ||= :base
+
+  # Define variant-specific default classes (fallback when no Stimulus controller styling)
+  variant_configs = {
+     base: {
+      active: "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4",
+      inactive: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"
+    },
+    pill: {
+      active: "py-2 px-4 bg-primary-50 inline-block rounded-full text-primary-600 dark:bg-primary-600 dark:text-white",
+      inactive: "py-2 px-4 rounded-full inline-block dark:bg-transparent dark:text-slate-300"
+    },
+    with_icons: {
+      active: "py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t",
+      inactive: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600"
+    },
+    rounded: {
+      active: "py-2 px-4 bg-primary-50 inline-block rounded-md text-primary-600 dark:bg-primary-600 dark:text-white",
+      inactive: "py-2 px-4 rounded-md inline-block dark:bg-slate-900 dark:text-slate-300"
+    }
+  }
+
+  config = variant_configs[variant.to_sym] || variant_configs[:base]
+
+  # Use provided classes or fall back to variant defaults
+  final_active_classes = active_classes || config[:active]
+  final_inactive_classes = inactive_classes || config[:inactive]
+  default_classes = active ? final_active_classes : final_inactive_classes
+
+  # Base data attributes for Stimulus controller
+  data_attributes = {
+    action: "click->railsui-tabs#change",
+    railsui_tabs_target: "tab"
+  }
+
+  # Merge with any provided data attributes
+  if tag_options[:data].present?
+    data_attributes.merge!(tag_options[:data])
+  end
+
+  # Build final attributes hash
+  link_attributes = {
+    href: href,
+    data: data_attributes
+  }
+
+  # Combine default variant classes with custom classes
+  # Note: Stimulus controller will override these via data-railsui-tabs-active-tab/inactive-tab values.
+  # If you use custom active/inactive classes you will need to copy custom classes to _tab.html.erb
+
+  final_classes = [default_classes, classes].compact.join(" ")
+  link_attributes[:class] = final_classes if final_classes.present?
+
+  # Merge any additional tag options (excluding data since we handled it above)
+  other_options = tag_options.except(:data)
+  link_attributes.merge!(other_options) if other_options.present?
+%>
+
+<%%= link_to href, **link_attributes do %>
+  <%% if icon.present? %>
+    <%%= icon icon, class: "size-4 mr-2" %>
+  <%% end %>
+  <%%= label %>
+<%% end %>

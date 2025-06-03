@@ -1,0 +1,67 @@
+<%%# locals: (prev_url: nil, next_url: nil, pages:, classes: nil, content: nil) %>
+
+<%%# Pagination Component
+  Props:
+    prev_url:         # Optional URL for the "Previous" link (disabled if nil)
+    next_url:         # Optional URL for the "Next" link (disabled if nil)
+    pages:            # Array of page items (can be Integer, String for active, or :gap)
+    classes:          # Optional extra wrapper classes
+
+  Usage examples:
+
+  rui :pagination, prev_url: "#", next_url: "#", pages: [1, 2, "3", 4, :gap, 10]
+
+  rui :pagination, prev_url: nil, next_url: nil, pages: [1, :gap, "5", 6, 7], classes: "mt-6"
+%>
+
+<nav aria-label="Pagination" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300 <%%= classes %>">
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <%% if prev_url.present? %>
+        <%%= link_to prev_url, class: "flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" do %>
+          <%%= icon "arrow-small-left", class: "shrink-0 size-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+          <span>Previous</span>
+        <%% end %>
+      <%% else %>
+        <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none">
+          <%%= icon "arrow-small-left", class: "size-4 shrink-0" %>
+          Previous
+        </span>
+      <%% end %>
+    </li>
+
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <%% pages.each do |item| %>
+        <%% if item.is_a?(Integer) %>
+          <li>
+            <%%= link_to item.to_s, "#", class: "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+          </li>
+        <%% elsif item.is_a?(String) %>
+          <li>
+            <span class="py-2 px-4 block border-t-2 border-primary-500 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30">
+              <%%= item %>
+            </span>
+          </li>
+        <%% elsif item == :gap %>
+          <li>
+            <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+          </li>
+        <%% end %>
+      <%% end %>
+    </div>
+
+    <li class="flex-1 flex justify-end items-center sm:w-auto w-full">
+      <%% if next_url.present? %>
+        <%%= link_to next_url, class: "flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" do %>
+          <span>Next</span>
+          <%%= icon "arrow-small-right", class: "shrink-0 size-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+        <%% end %>
+      <%% else %>
+        <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none">
+          Next
+          <%%= icon "arrow-small-right", class: "size-4 shrink-0" %>
+        </span>
+      <%% end %>
+    </li>
+  </ul>
+</nav>

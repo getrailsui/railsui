@@ -3,16 +3,16 @@
 <%%# Nav Component
 Props:
   logo:         (required) Accepts an image tag, inline SVG, or plain text (e.g., image_tag, raw SVG, or span).
-  controller:   (optional) Stimulus controller name (default: "nav").
+  controller:   (optional) Stimulus controller name (default: "nav"). Ships with "Hound" theme.
   classes:      (optional) Tailwind utility classes for customizing the outer <header>.
   content:      (optional) Slot override to replace left/right nav rendering logic with your own.
 
 Subcomponents:
   nav/left      Optional partial for left-side navigation links.
-                Customize in app/views/rui/components/nav/_left.html.erb
+                Customize in app/views/rui/components/navigation/_left.html.erb
 
   nav/right     Optional partial for right-side navigation links.
-                Customize in app/views/rui/components/nav/_right.html.erb
+                Customize in app/views/rui/components/navigation/_right.html.erb
 
 Usage Examples:
 
@@ -47,7 +47,7 @@ rui :nav, logo: content_tag(:span, "Hound") do
 end
 %>
 
-<header class="relative dark:bg-slate-900 py-1 <%%= classes.presence || '' %>" data-controller="<%%= controller %>">
+<header class="relative dark:bg-slate-900 bg-white <%%= classes.presence || '' %>" data-controller="<%%= controller %>">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -82,11 +82,11 @@ end
             <%%= content %>
           <%% else %>
             <nav role="Primary navigation">
-              <%%= rui "nav/left"  %>
+              <%%= rui "navigation/left"  %>
             </nav>
 
             <nav role="Secondary navigation">
-              <%%= rui "nav/right" %>
+              <%%= rui "navigation/right" %>
             </nav>
           <%% end %>
         </div>
