@@ -4,7 +4,7 @@
 Props:
 - label: (String) – Text shown for the item
 - value: (String, required) – Value for the option, passed to hidden input
-- icon_options: (Hash, optional) – Optional icon config hash: { name:, classes:, position: :start|:end }
+- icon_options: (Hash, optional) – Optional icon config hash: { name:, classes: }
 - active: (Boolean, optional) – Whether this option is selected (default: false)
 - controller: (String, optional) – Stimulus controller name (default: "railsui-combobox")
 - content: (optional) – You can pass a block if you need full custom item rendering
@@ -26,8 +26,8 @@ rui :combobox,
   rui :combobox,
     name: "File Type",
     label: "Choose a file type" do
-    rui "combobox/combobox_list_item", label: "PDF", value: "pdf", active: true, icon_options: { name: "file", classes: "size-4", position: :start }
-    rui "combobox/combobox_list_item", label: "JPG", value: "jpg", active: false, icon_options: { name: "file", classes: "size-4", position: :start }
+    rui "combobox/item", label: "PDF", value: "pdf", active: true, icon_options: { name: "file", classes: "size-4" }
+    rui "combobox/item", label: "JPG", value: "jpg", active: false, icon_options: { name: "file", classes: "size-4" }
   end
 %>
 
@@ -40,17 +40,10 @@ rui :combobox,
   class="px-3 py-1.5 cursor-pointer flex items-center justify-between bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
 
   <div class="flex items-center gap-3">
-    <%% if content.present? %>
-      <%%= content %>
-    <%% else %>
-      <%% if icon_options&.dig(:name) && icon_options[:position] == :start %>
-        <%%= icon icon_options[:name], class: icon_options[:classes] %>
-      <%% end %>
-      <span><%%= label %></span>
-      <%% if icon_options&.dig(:name) && icon_options[:position] == :end %>
-        <%%= icon icon_options[:name], class: icon_options[:classes] %>
-      <%% end %>
+    <%% if icon_options && icon_options[:name] %>
+      <%%= icon icon_options[:name], class: ( icon_options[:classes] || "size-4") %>
     <%% end %>
+    <span><%%= label %></span>
   </div>
 
   <span data-<%%= controller.dasherize %>-target="checkmark" class="hidden" aria-hidden="true">

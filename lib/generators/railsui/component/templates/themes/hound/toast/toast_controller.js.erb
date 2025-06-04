@@ -1,0 +1,15 @@
+import { RailsuiToast } from "railsui-stimulus"
+
+// Connects to data-controller="<%= file_name.dasherize %>"
+export default class <%= file_name.camelcase %> extends RailsuiToast {
+  connect() {
+    super.connect()
+  }
+
+  // Override or extend methods as needed
+  // Example:
+  // hide() {
+  //   // Custom hide behavior
+  //   super.hide()
+  // }
+}

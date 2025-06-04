@@ -31,9 +31,9 @@ Usage – array style:
 Usage – block style:
 
   rui :combobox, name: "doc_type", selected: "pdf" do
-    rui "combobox/combobox_list_item", label: "PDF", value: "pdf", active: "pdf" == selected
-    rui "combobox/combobox_list_item", label: "CSV", value: "csv", active: "csv" == selected
-    rui "combobox/combobox_list_item", label: "ZIP", value: "zip", active: "zip" == selected
+    rui "combobox/item", label: "PDF", value: "pdf", active: "pdf" == selected
+    rui "combobox/item", label: "CSV", value: "csv", active: "csv" == selected
+    rui "combobox/item", label: "ZIP", value: "zip", active: "zip" == selected
   end
 %>
 
@@ -92,7 +92,7 @@ Usage – block style:
         <%%= content %>
       <%% else %>
         <%% items.each do |item| %>
-          <%%= rui "combobox/combobox_list_item", label: item[:label], value: item[:value], active: item[:value] == selected, controller: controller %>
+          <%%= rui "combobox/item", label: item[:label], value: item[:value], active: item[:value] == selected, controller: controller, icon_options: item[:icon_options] %>
         <%% end %>
       <%% end %>
     </ul>
