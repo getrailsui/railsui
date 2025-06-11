@@ -1,4 +1,6 @@
 require "railsui/version"
+require "railsui/configuration"
+require "railsui/form_builder"
 require "railsui/engine"
 require 'railsui_icon'
 require 'meta-tags'

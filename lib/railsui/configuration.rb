@@ -8,7 +8,7 @@ module Railsui
     include ActiveModel::Model
     include Thor::Actions
 
-    attr_accessor :application_name, :support_email, :theme, :body_classes
+    attr_accessor :application_name, :support_email, :theme, :body_classes, :form_classes, :wrapper_classes
     attr_writer :pages
 
     def initialize(options = {})
@@ -18,6 +18,8 @@ module Railsui
       self.support_email ||= "support@example.com"
       self.theme
       initialize_theme_classes if self.theme
+      @form_classes = {}
+      @wrapper_classes = {}
     end
 
     def initialize_theme_classes
@@ -125,5 +127,25 @@ module Railsui
     def template_path(filename)
       Rails.root.join("lib/templates", filename)
     end
+
+    # Method to easily override form classes
+    def override_form_classes(theme, classes_hash)
+      @form_classes[theme.to_s] ||= {}
+      @form_classes[theme.to_s].merge!(classes_hash.stringify_keys)
+    end
+
+    # Method to easily override wrapper classes
+    def override_wrapper_classes(theme, classes_hash)
+      @wrapper_classes[theme.to_s] ||= {}
+      @wrapper_classes[theme.to_s].merge!(classes_hash.stringify_keys)
+    end
+  end
+
+  def self.config
+    @config ||= Configuration.new
+  end
+
+  def self.configure
+    yield(config)
   end
 end
