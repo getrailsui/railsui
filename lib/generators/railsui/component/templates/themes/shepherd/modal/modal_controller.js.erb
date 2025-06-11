@@ -1,0 +1,14 @@
+import { RailsuiModal } from 'railsui-stimulus'
+
+// Connects to data-controller="<%= file_name.dasherize %>"
+export default class <%= file_name.camelcase %> extends RailsuiModal {
+  connect() {
+    super.connect()
+  }
+
+  handleBackdropClick(event) {
+    if (event.target === this.containerTarget) {
+      this.close(event)
+    }
+  }
+}

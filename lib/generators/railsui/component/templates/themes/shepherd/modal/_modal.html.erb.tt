@@ -1,0 +1,114 @@
+<%%# locals: (title: nil, content: nil, size: :md, dismissable: true, classes: nil, backdrop_classes: nil, controller: "railsui-modal", show: false) %>
+
+<%%# Modal Component
+Props:
+- title: (String, optional) – Modal header title
+- content: (String or block, required) – Main modal content
+- size: (Symbol, optional) – Modal size: :xs, :sm, :md, :lg, :xl, :full (default: :md)
+- dismissable: (Boolean, optional) – Show close button and allow backdrop dismiss (default: true)
+- classes: (String, optional) – Additional classes for modal dialog
+- backdrop_classes: (String, optional) – Additional classes for backdrop
+- controller: (String, optional) – Stimulus controller name (default: "railsui-modal", inherit with --stimulus option)
+- show: (Boolean, optional) – Whether modal is initially visible (default: false)
+
+Basic Usage:
+<div data-controller="railsui-modal">
+  <!-- Button component with attrs to open modal -->
+  rui :button, label: "Open Modal", variant: :primary, tag_options: { data: { action: "click->railsui-modal#open" } }
+
+  <!-- Modal (initially hidden) -->
+  rui :modal, title: "Confirmation", size: :sm do
+    <p>Are you sure you want to delete this item?</p>
+    <div class="flex gap-3 mt-4">
+      rui :button, label: "Cancel", variant: :secondary, tag_options: { data: { action: "click->railsui-modal#close" } }
+      button_to "Delete", "#", method: :delete, class: "btn btn-danger"
+    </div>
+  end
+</div>
+
+Custom "modal" controller
+(i.e. rails g railsui:component Modal --stimulus):
+<div data-controller="modal">
+  <!-- Button component with attrs to open modal -->
+  rui :button, label: "Open Modal", variant: :primary, tag_options: { data: { action: "click->modal#open" } }
+
+  <!-- Modal (initially hidden) -->
+  rui :modal, title: "Confirmation", size: :sm do
+    <p>Are you sure you want to delete this item?</p>
+    <div class="flex gap-3 mt-4">
+      rui :button, label: "Cancel", variant: :secondary, tag_options: { data: { action: "click->modal#close" } }
+      button_to "Delete", "#", method: :delete, class: "btn btn-danger"
+    </div>
+  end
+</div>
+%>
+
+<%%
+  size_classes = {
+    xs: "max-w-xs",
+    sm: "max-w-sm",
+    md: "max-w-md",
+    lg: "max-w-lg",
+    xl: "max-w-xl",
+    full: "max-w-full mx-4"
+  }
+
+  size_class = size_classes[size.to_sym] || "max-w-md"
+
+  backdrop_class = [
+    "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm",
+    backdrop_classes,
+    (show ? "block" : "hidden")
+  ].compact.join(" ")
+
+  dialog_class = [
+    "relative w-full bg-white dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-xl p-8",
+    "transform transition-all duration-200 ease-out",
+    size_class,
+    classes
+  ].compact.join(" ")
+
+  modal_controller = controller || "railsui-modal"
+%>
+
+<div
+  data-action="<%%= dismissable ? "keydown.esc@window->#{modal_controller}#closeWithEsc" : "" %>"
+  data-<%%= modal_controller.dasherize %>-target="container"
+  class="<%%= backdrop_class %>"
+  data-transition-enter-from="opacity-0"
+  data-transition-enter-to="opacity-100"
+  data-transition-leave-from="opacity-100"
+  data-transition-leave-to="opacity-0">
+
+  <div
+    data-<%%= modal_controller.dasherize %>-target="content"
+    class="<%%= dialog_class %>"
+    data-transition-enter-from="opacity-0 scale-95 translate-y-4"
+    data-transition-enter-to="opacity-100 scale-100 translate-y-0"
+    data-transition-leave-from="opacity-100 scale-100 translate-y-0"
+    data-transition-leave-to="opacity-0 scale-95 translate-y-4"
+    role="dialog"
+    aria-modal="true"
+    <%% if title.present? %>aria-labelledby="modal-%%= title.dasherize %>"<%% end %>>
+
+    <%% if title.present? || dismissable %>
+      <%% if title.present? %>
+        <h3 id="modal-<%%= title.dasherize %>" class="h4 mb-2">
+          <%%= title %>
+        </h3>
+      <%% end %>
+
+      <%% if dismissable %>
+        <button
+          type="button"
+          class="absolute top-2 right-2 size-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50"
+          data-action="click-><%%= modal_controller %>#close"
+          aria-label="Close modal">
+          <%%= icon "x-mark", class: "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
+        </button>
+      <%% end %>
+    <%% end %>
+
+    <%%= content %>
+  </div>
+</div>

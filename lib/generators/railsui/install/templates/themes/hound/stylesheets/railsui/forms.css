@@ -7,7 +7,8 @@
     @apply block mb-2 select-none;
   }
 
-  .form-input {
+  .form-input,
+  .form-textarea {
     @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded-lg block w-full focus:outline-hidden focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-600 dark:focus:ring-primary-400/30 dark:focus:border-slate-500 dark:text-white dark:placeholder:text-slate-400 disabled:bg-slate-100/90 dark:disabled:bg-slate-800/90 disabled:cursor-not-allowed disabled:dark:opacity-70 shadow-xs;
 
     &.form-input-error {

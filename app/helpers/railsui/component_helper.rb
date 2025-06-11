@@ -38,13 +38,13 @@ module Railsui
     end
 
     # Helper to create forms with RailsUI form builder
-    def rui_form_with(model: nil, **options, &block)
+    def railsui_form_with(model: nil, **options, &block)
       options[:builder] = Railsui::FormBuilder
       form_with(model: model, **options, &block)
     end
 
     # Alternative syntax
-    def rui_form_for(record, **options, &block)
+    def railsui_form_for(record, **options, &block)
       options[:builder] = Railsui::FormBuilder
       form_for(record, **options, &block)
     end

@@ -1,0 +1,13 @@
+<%%#= rui :avatar, src: "https://example.com/pic.jpg" %>
+
+<hr class="my-8">
+
+<%%= rui :avatar, demo: true %>
+
+<hr class="my-8">
+
+<%%= rui :avatar, demo: { id: 7, variant: "women" }, size: :sm, rounded: :md %>
+
+<hr class="my-8">
+
+<%%= rui :avatar, demo: { id: 23, variant: "men" }, size: :xl %>

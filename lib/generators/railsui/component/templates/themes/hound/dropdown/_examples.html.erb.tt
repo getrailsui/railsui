@@ -1,0 +1,54 @@
+<%%= rui :dropdown,
+    button: {
+      label: "Start Icon",
+      icon: { name: "user", classes: "size-4 text-blue-500", position: :start },
+      classes: "btn btn-white"
+    },
+  items: [
+    { name: "Dashboard", url: "#" },
+    { name: "Settings", url: "#" }
+  ] %>
+
+<hr class="my-8">
+
+<%%= rui :dropdown,
+  button: {
+    label: "End Icon",
+    icon: { name: "chevron-down", classes: "size-4 text-green-500", position: :end },
+    classes: "btn btn-primary"
+  },
+  menu_classes: "w-[200px] rounded-xl shadow-3xl absolute top-10 left-0 transition ease-in-out duration-300 transform py-2 bg-orange-50 z-50 border border-orange-300",
+  items: [
+    { name: "Billing", url: "#", icon: { name: "credit-card", position: :start } },
+    { name: "Support", url: "#", icon: { name: "key", position: :end } }
+  ] %>
+
+<hr class="my-8">
+
+<%%= rui :dropdown,
+  button: {
+    label: "No Icon",
+    classes: "btn btn-secondary"
+  },
+  items: [
+    { name: "Login", url: "#" },
+    { name: "Register", url: "#" }
+  ] %>
+
+<hr class="my-8">
+
+<%%= rui :dropdown,
+  button: {
+    label: "Grouped",
+    icon: { name: "bars-4", classes: "size-4", position: :end },
+    classes: "btn btn-dark"
+  },
+  items: [
+    [
+      { name: "Account", url: "#", icon: { name: "user", position: :start } },
+      { name: "Settings", url: "#" }
+    ],
+    [
+      { name: "Logout", url: "#", method: :delete, icon: { name: "user", position: :end } }
+    ]
+  ] %>

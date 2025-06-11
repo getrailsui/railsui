@@ -1,0 +1,29 @@
+<%%= rui :flash, type: :notice, content: "This is a notice." %>
+
+<hr class="my-8">
+
+<%%= rui :flash, type: :alert, content: "Something went wrong.", controller: "flash", hide_after: 6000 %>
+
+<hr class="my-8">
+
+<%%= rui :flash, type: :success, content: "Saved successfully!", controller: "flash", dismissable: true, icon_options: { name: "check-circle", classes: "size-5 mr-2", position: :start } %>
+
+<hr class="my-8">
+
+<%%= rui :flash, type: :warning, content: "Be careful next time.", controller: "flash", hide_after: 0, icon_options: { name: "exclamation-triangle", classes: "size-5 mr-2", position: :start } %>
+
+<hr class="my-8">
+
+<%%= rui :flash, type: :alert, classes: "bg-orange-500", content: "This has a custom background." %>
+
+<hr class="my-8">
+
+<%%= rui :flash, type: :success, controller: "flash", icon_options: { name: "arrow-down-tray", classes: "size-5 ml-2", position: :end } do %>
+  <%%= tag.strong("Heads up:") %> your download has started.
+<%% end %>
+
+<hr class="my-8">
+
+<%%= rui :flash, type: :notice, controller: "flash", hide_after: 0 do %>
+  <%%= tag.em("Reminder:") %> You have unsaved changes.
+<%% end %>

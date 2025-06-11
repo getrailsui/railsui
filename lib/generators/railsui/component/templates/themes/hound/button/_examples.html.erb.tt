@@ -1,0 +1,50 @@
+<div class="space-y-8">
+  <div>
+    <h2 class="font-semibold text-lg mb-4">Button Variants</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button, label: "Primary Button" %>
+      <%%= rui :button, label: "Secondary Button", variant: :secondary %>
+      <%%= rui :button, label: "Dark Button", variant: :dark %>
+      <%%= rui :button, label: "White Button", variant: :white %>
+      <%%= rui :button, label: "Transparent Button", variant: :transparent %>
+      <%%= rui :button, label: "Light Button", variant: :light %>
+      <%%= rui :button, label: "Danger Button", variant: :danger %>
+      <%%= rui :button, label: "Link Button", variant: :link %>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="font-semibold text-lg mb-4">Button Sizes</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button, label: "Small Button", size: :sm %>
+      <%%= rui :button, label: "Default Button" %>
+      <%%= rui :button, label: "Large Button", size: :lg %>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="font-semibold text-lg mb-4">Button States</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button, label: "Disabled Button", disabled: true %>
+      <%%= rui :button, label: "Submit Button", button_type: "submit" %>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="font-semibold text-lg mb-4">Button with Custom Classes and Data Attributes</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button, label: "Custom Button", classes: "custom-class", tag_options: { data: { action: "click->example#action" } } %>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="font-semibold text-lg mb-4">Button with Block Content</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button do %>
+        <span>Button with Icon</span>
+        <%%= icon "arrow-right", classes: "ml-2" %>
+      <%% end %>
+    </div>
+  </div>
+</div>
+</div>

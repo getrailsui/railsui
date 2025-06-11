@@ -1,0 +1,29 @@
+<%%# Accordion Examples %>
+
+<%%# Basic accordion %>
+<div class="mb-8">
+  <%%= rui :accordion do %>
+    <%%= rui "accordion/item", label: "This is one item", open: true do %>
+      You can return any item within 30 days.
+    <%% end %>
+
+    <%%= rui "accordion/item", label: "This is second item" do %>
+      Yes, we ship to over 50 countries.
+    <%% end %>
+  <%% end %>
+</div>
+
+<hr class="my-4">
+
+<%%# Flush accordion %>
+<div class="mb-8">
+  <%%= rui :accordion, variant: :flush do %>
+    <%%= rui "accordion/item", label: "This is one item", open: true do %>
+      You can return any item within 30 days.
+    <%% end %>
+
+    <%%= rui "accordion/item", label: "This is second item" do %>
+      Yes, we ship to over 50 countries.
+    <%% end %>
+  <%% end %>
+</div>

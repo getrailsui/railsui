@@ -1,0 +1,13 @@
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="<%= file_name.dasherize %>"
+export default class extends Controller {
+  close() {
+    this.element.classList.add(
+      "opacity-0",
+      "transition-opacity",
+      "duration-200",
+    );
+    setTimeout(() => this.element.remove(), 200);
+  }
+}

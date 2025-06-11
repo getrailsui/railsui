@@ -1,0 +1,51 @@
+<%%# locals: (variant: :base, classes: nil, content: nil) %>
+
+<%%# Tab::Nav Component
+locals:
+  - variant: [:base|:pill|:with_icons|:rounded] (default: :base)
+  - classes: optional string for additional navigation classes
+  - content: slot content containing tab links
+
+Usage:
+  rui "tab/nav", variant: :base do
+    rui "tab/link", label: "Activity", active: true
+    rui "tab/link", label: "Account"
+  end
+
+  rui "tab/nav", variant: :pill do
+    rui "tab/link", label: "Settings", icon: "cog-6-tooth"
+  end
+%>
+
+<%%
+  variant ||= :base
+
+  # Define variant-specific navigation classes
+  variant_configs = {
+    base: {
+      wrapper: "border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm",
+      nav: "-mb-px"
+    },
+    pill: {
+      wrapper: "text-slate-600 dark:text-slate-300",
+      nav: "flex items-center space-x-1 font-medium text-sm"
+    },
+    with_icons: {
+      wrapper: "border-slate-200 border-b text-slate-600 dark:text-slate-200 dark:border-slate-600 text-sm font-medium",
+      nav: "-mb-px flex items-center flex-wrap"
+    },
+    rounded: {
+      wrapper: nil,
+      nav: "flex items-center text-gray-600 space-x-1 font-medium text-sm"
+    }
+  }
+
+  tab_config = variant_configs[variant.to_sym] || variant_configs[:base]
+  wrapper_classes = [tab_config[:wrapper], classes].compact.join(" ")
+%>
+
+<div class="<%%= wrapper_classes %>">
+  <nav role="navigation" class="<%%= tab_config[:nav] %>">
+    <%%= content %>
+  </nav>
+</div>

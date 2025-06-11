@@ -5,9 +5,9 @@
 #
 # == Usage
 #
-# Use with the rui_form_with helper:
+# Use with the railui_form_with helper:
 #
-#   <%= rui_form_with model: @user do |f| %>
+#   <%= railui_form_with model: @user do |f| %>
 #     <%= f.form_group do %>
 #       <%= f.label :email %>
 #       <%= f.email_field :email, placeholder: "Enter your email" %>
@@ -81,7 +81,6 @@
 #
 #   # config/initializers/railsui.rb
 #   Railsui.configure do |config|
-#     config.theme = 'hound'
 #     config.override_form_classes('hound', {
 #       'input' => 'form-input shadow-lg',
 #       'submit' => 'btn btn-primary btn-lg'
@@ -92,7 +91,7 @@
 #
 # 1. Always use rui_form_with, not form_with:
 #    ❌ <%= form_with model: @user do |f| %>
-#    ✅ <%= rui_form_with model: @user do |f| %>
+#    ✅ <%= railui_form_with model: @user do |f| %>
 #
 # 2. Switch fields need both the switch and label:
 #    <%= f.switch :notifications %>
@@ -112,6 +111,9 @@
 # 6. Theme classes are applied automatically - you don't need to add them (but you can to overide them):
 #    ❌ <%= f.text_field :name, class: "form-input" %>
 #    ✅ <%= f.text_field :name %>
+# 7. For form_for, use railsui_form_for:
+#    ❌ <%= form_for @user do |f| %>
+#    ✅ <%= railsui_form_for @user do |f| %>
 
 module Railsui
   class FormBuilder < ActionView::Helpers::FormBuilder
@@ -187,7 +189,7 @@ module Railsui
     #   <%= f.label :notifications, "Enable notifications" %>
     def switch(method, options = {}, checked_value = "1", unchecked_value = "0")
       options = apply_theme_classes(:switch, options)
-      super(method, options, checked_value, unchecked_value)
+      check_box(method, options, checked_value, unchecked_value)
     end
 
     def submit(value = nil, options = {})
@@ -265,7 +267,19 @@ module Railsui
       mappings = {
         'hound' => {
           'input' => 'form-input',
-          'textarea' => 'form-input',
+          'textarea' => 'form-textarea',
+          'select' => 'form-select',
+          'checkbox' => 'form-input-checkbox',
+          'radio' => 'form-input-radio',
+          'file' => 'form-file',
+          'submit' => 'btn btn-primary',
+          'switch' => 'form-input-switch',
+          'button' => 'btn btn-secondary',
+          'label' => 'form-label'
+        },
+        'shepherd' => {
+          'input' => 'form-input',
+          'textarea' => 'form-textarea',
           'select' => 'form-select',
           'checkbox' => 'form-input-checkbox',
           'radio' => 'form-input-radio',
@@ -285,7 +299,8 @@ module Railsui
       theme = Railsui.config.theme || 'hound'
 
       mappings = {
-        'hound' => 'form-group'
+        'hound' => 'form-group',
+        'shepherd' => 'form-group'
       }
 
       mappings[theme] || 'form-group'
