@@ -3,6 +3,6 @@
 <hr class="my-8">
 
 <%%= rui :card, title: "Block version" do %>
-  <p>Some custom content inside the block.</p>
+  <p class="mb-4">Some custom content inside the block.</p>
   <%%= rui :button, label: "Continue", variant: :primary %>
 <%% end %>

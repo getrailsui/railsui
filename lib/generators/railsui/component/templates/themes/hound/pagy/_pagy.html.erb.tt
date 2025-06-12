@@ -40,7 +40,7 @@ rui :pagy, pagy: @pagy, link_proc: custom_proc, classes: "mt-10"
         <%% if item.is_a?(Integer) %>
           <%%== link_proc.call(item, item, 'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"') %>
         <%% elsif item.is_a?(String) %>
-          <span class="py-2 px-4 border-t-2 border-primary-500 block text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-600 dark:hover:text-white"><%= item %></span>
+          <span class="py-2 px-4 border-t-2 border-primary-500 block text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-600 dark:hover:text-white"><%%= item %></span>
         <%% elsif item == :gap %>
           <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none"><%%= pagy_t('pagy.nav.gap') %></span>
         <%% end %>

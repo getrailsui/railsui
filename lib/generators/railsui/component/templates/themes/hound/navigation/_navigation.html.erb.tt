@@ -1,6 +1,6 @@
 <%%# locals: (logo:, controller: "nav", classes: nil, content: nil) %>
 
-<%%# Nav Component
+<%%# Navigation Component
 Props:
   logo:         (required) Accepts an image tag, inline SVG, or plain text (e.g., image_tag, raw SVG, or span).
   controller:   (optional) Stimulus controller name (default: "nav"). Ships with "Hound" theme.
@@ -8,11 +8,11 @@ Props:
   content:      (optional) Slot override to replace left/right nav rendering logic with your own.
 
 Subcomponents:
-  nav/left      Optional partial for left-side navigation links.
-                Customize in app/views/rui/components/navigation/_left.html.erb
+  navigation/left      Optional partial for left-side navigation links.
+                       Customize in app/views/rui/components/navigation/_left.html.erb
 
-  nav/right     Optional partial for right-side navigation links.
-                Customize in app/views/rui/components/navigation/_right.html.erb
+  navigation/right     Optional partial for right-side navigation links.
+                       Customize in app/views/rui/components/navigation/_right.html.erb
 
 Usage Examples:
 

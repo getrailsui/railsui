@@ -23,15 +23,15 @@ Usage:
   # Define variant-specific navigation classes
   variant_configs = {
     base: {
-      wrapper: "border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm",
+      wrapper: "border-zinc-200 border-b text-zinc-600 dark:text-zinc-100 dark:border-zinc-600 font-medium text-sm",
       nav: "-mb-px"
     },
     pill: {
-      wrapper: "text-slate-600 dark:text-slate-300",
+      wrapper: "text-zinc-600 dark:text-zinc-300",
       nav: "flex items-center space-x-1 font-medium text-sm"
     },
     with_icons: {
-      wrapper: "border-slate-200 border-b text-slate-600 dark:text-slate-200 dark:border-slate-600 text-sm font-medium",
+      wrapper: "border-zinc-200 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-sm font-medium",
       nav: "-mb-px flex items-center flex-wrap"
     },
     rounded: {

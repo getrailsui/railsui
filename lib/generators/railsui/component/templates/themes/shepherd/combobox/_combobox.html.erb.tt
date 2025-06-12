@@ -1,4 +1,4 @@
-<%%# locals: (name:, label: "", placeholder: "Search...", items: [], selected: nil, no_results_text: "No results found", classes: nil, active_classes: "bg-gray-900 text-white hover:bg-gray-950", inactive_classes: "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50", dropdown_classes: nil, controller: "railsui-combobox", content: nil) %>
+<%%# locals: (name:, label: "", placeholder: "Search...", items: [], selected: nil, no_results_text: "No results found", classes: nil, active_classes: "bg-zinc-900 text-white hover:bg-zinc-950", inactive_classes: "bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-900 hover:bg-zinc-50", dropdown_classes: nil, controller: "railsui-combobox", content: nil) %>
 
 <%%# Combobox Component
 Props:
@@ -56,7 +56,7 @@ Usage – block style:
     class="form-input flex items-center justify-between pr-1.5 shadow-xs">
     <span id="combobox-label" class="sr-only"><%%= label %></span>
     <span data-<%%= controller.dasherize %>-target="text"><%%= items.find { _1[:value] == selected }&.dig(:label) || label %></span>
-    <%%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
+    <%%= icon "chevron-up-down", class: "stroke-zinc-500 pointer-events-none size-5" %>
   </div>
 
   <div
@@ -82,7 +82,7 @@ Usage – block style:
           data-<%%= controller.dasherize %>-target="input"
           data-action="input-><%%= controller %>#filter keydown-><%%= controller %>#handleKeydown"
           class="form-input text-[15px] pl-8">
-        <%%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+        <%%= icon "magnifying-glass", class: "stroke-zinc-400 size-5 absolute top-[11px] left-2" %>
       </div>
     </div>
 
@@ -99,7 +99,7 @@ Usage – block style:
 
     <div
       data-<%%= controller.dasherize %>-target="noresults"
-      class="hidden px-4 py-2 text-gray-500"
+      class="hidden px-4 py-2 text-zinc-500"
       aria-hidden="true">
       <%%= no_results_text %>
     </div>

@@ -62,7 +62,7 @@ Custom "modal" controller
   ].compact.join(" ")
 
   dialog_class = [
-    "relative w-full bg-white dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-xl p-8",
+    "relative w-full bg-white dark:bg-zinc-700 dark:text-zinc-200 rounded-lg shadow-xl p-8",
     "transform transition-all duration-200 ease-out",
     size_class,
     classes
@@ -101,10 +101,10 @@ Custom "modal" controller
       <%% if dismissable %>
         <button
           type="button"
-          class="absolute top-2 right-2 size-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50"
+          class="absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50"
           data-action="click-><%%= modal_controller %>#close"
           aria-label="Close modal">
-          <%%= icon "x-mark", class: "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
+          <%%= icon "x-mark", class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
         </button>
       <%% end %>
     <%% end %>

@@ -26,9 +26,9 @@ rui :pagy, pagy: @pagy, link_proc: custom_proc, classes: "mt-10"
     <%%# Previous Button %>
     <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
       <%% if pagy.prev %>
-        <%%== link_proc.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="Previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+        <%%== link_proc.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="Previous" class="btn btn-white flex items-center justify-center gap-2 group md:w-auto w-full md:mb-0 mb-3"') %>
       <%% else %>
-        <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none">
+        <span class="btn btn-white flex items-center justify-center gap-2 group md:w-auto w-full md:mb-0 mb-3 select-none pointer-events-none opacity-60">
           <%%= pagy_t('pagy.nav.prev') %>
         </span>
       <%% end %>
@@ -38,11 +38,11 @@ rui :pagy, pagy: @pagy, link_proc: custom_proc, classes: "mt-10"
     <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
       <%% pagy.series.each do |item| %>
         <%% if item.is_a?(Integer) %>
-          <%%== link_proc.call(item, item, 'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"') %>
+          <%%== link_proc.call(item, item, 'class="size-10 flex items-center justify-center border-t-2 border-transparent rounded hover:bg-zinc-50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200"') %>
         <%% elsif item.is_a?(String) %>
-          <span class="py-2 px-4 border-t-2 border-primary-500 block text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-600 dark:hover:text-white"><%= item %></span>
+          <span class="size-10 flex items-center justify-center border-t-2 border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-500 dark:border-primary-500 dark:hover:bg-primary-500/30"><%%= item %></span>
         <%% elsif item == :gap %>
-          <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none"><%%= pagy_t('pagy.nav.gap') %></span>
+          <span class="size-10 flex items-center justify-center border-t-2 border-transparent rounded pointer-events-none select-none"><%%= pagy_t('pagy.nav.gap') %></span>
         <%% end %>
       <%% end %>
     </div>
@@ -50,9 +50,9 @@ rui :pagy, pagy: @pagy, link_proc: custom_proc, classes: "mt-10"
     <%%# Next Button %>
     <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
       <%% if pagy.next %>
-        <%%== link_proc.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="Next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+        <%%== link_proc.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="Next" class="btn btn-white flex items-center justify-center gap-2 group md:w-auto w-full md:mt-0 mt-3"') %>
       <%% else %>
-        <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none">
+        <span class="btn btn-white flex items-center justify-center gap-2 group md:w-auto w-full md:mt-0 mt-3">
           <%%= pagy_t('pagy.nav.next') %>
         </span>
       <%% end %>
