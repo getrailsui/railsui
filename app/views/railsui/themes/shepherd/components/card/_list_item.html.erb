@@ -35,7 +35,7 @@
       </button>
 
       <ul
-        class="hidden static origin-top-right md:absolute md:top-12 mt-3 md:mt-0 right-0 md:w-48 md:shadow-xl md:rounded-xl rounded-3xl py-2 w-full shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600"
+        class="hidden static origin-top-right md:absolute md:top-12 mt-3 md:mt-0 right-0 md:w-48 dropdown-menu"
         data-transition-enter-active="transition ease-out duration-100"
         data-transition-enter-from="transform opacity-0 scale-95"
         data-transition-enter-to="transform opacity-100 scale-100"
@@ -44,14 +44,14 @@
         data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
         <li>
           <a href="#"
-            class="px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
+            class="dropdown-item" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
             <span>Edit property</span>
             <%= icon "chevron-right", class:  "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
           </a>
         </li>
         <li>
           <a href="#"
-            class="px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
+            class="dropdown-item" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
             <span>Re-sync</span>
             <%= icon "chevron-right", class:  "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
           </a>
