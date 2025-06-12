@@ -33,7 +33,7 @@
         <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
       </button>
       <ul
-        class="hidden static origin-top-right md:absolute md:top-12 mt-3 md:mt-0 right-0 md:w-48 md:shadow-xl md:rounded-xl rounded-3xl py-2 w-full shadow-zinc-300/20 z-50 bg-white md:text-[15px] text-base border border-zinc-300 dark:bg-zinc-800 dark:shadow-zinc-950/20 dark:border-zinc-600 font-heading dark:text-zinc-200"
+        class="hidden static origin-top-right md:absolute md:top-12 mt-3 md:mt-0 right-0 dropdown-menu"
         data-transition-enter-active="transition ease-out duration-100"
         data-transition-enter-from="transform opacity-0 scale-95"
         data-transition-enter-to="transform opacity-100 scale-100"
@@ -42,16 +42,14 @@
         data-transition-leave-to="transform opacity-0 scale-95" data-railsui-dropdown-target="menu">
         <li>
           <a href="#" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent"
-            class="px-4 md:py-2 py-3 flex items-center justify-between hover:text-zinc-900 text-zinc-700 dark:text-zinc-200 dark:hover:text-white">
-            <span>Edit property</span>
-            <%= icon "chevron-right", class: "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+            class="dropdown-item">
+            Edit property
           </a>
         </li>
         <li>
           <a href="#" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent"
-            class="px-4 md:py-2 py-3 flex hover:text-zinc-900 text-zinc-700 items-center justify-between dark:text-zinc-200 dark:hover:text-white">
-            <span>Re-sync</span>
-            <%= icon "chevron-right", class: "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+            class="dropdown-item">
+            Re-sync
           </a>
         </li>
       </ul>

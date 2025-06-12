@@ -8,7 +8,7 @@
     <%= icon "chevron-down", class: "size-3 ml-2" %>
   </button>
   <ul
-    class="hidden transition transform origin-top-left absolute right-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 font-heading"
+    class="hidden origin-top-right absolute right-0 top-14 dropdown-menu"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -16,13 +16,13 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <li>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Bookmark</a>
+      <a href="#" class="dropdown-item">Bookmark</a>
     </li>
     <li>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Report</a>
+      <a href="#" class="dropdown-item">Report</a>
     </li>
     <li>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Export</a>
+      <a href="#" class="dropdown-item">Export</a>
     </li>
   </ul>
 </div>
@@ -36,7 +36,7 @@
     <%%= icon "chevron-down", class: "size-3 ml-2" %>
   </button>
   <ul
-    class="hidden transition transform origin-top-right absolute right-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200"
+    class="hidden origin-top-right absolute right-0 top-14 dropdown-menu"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -44,13 +44,13 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <li>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Bookmark</a>
+      <a href="#" class="dropdown-item">Bookmark</a>
     </li>
     <li>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Report</a>
+      <a href="#" class="dropdown-item">Report</a>
     </li>
     <li>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Export</a>
+      <a href="#" class="dropdown-item">Export</a>
     </li>
   </ul>
 </div>
@@ -63,7 +63,7 @@
     <%%= icon "chevron-down", class: "size-3 ml-2" %>
   <%% end %>
   <div
-    class="hidden transition transform origin-top-right absolute right-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200"
+    class="hidden origin-top-right absolute right-0 top-14 dropdown-menu"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -71,13 +71,13 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <div>
-      <%%= link_to "Bookmark", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white" %>
+      <%%= link_to "Bookmark", "#", class: "dropdown-item" %>
     </div>
     <div>
-      <%%= link_to "Report", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white" %>
+      <%%= link_to "Report", "#", class: "dropdown-item" %>
     </div>
     <div>
-      <%%= link_to "Export", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white" %>
+      <%%= link_to "Export", "#", class: "dropdown-item" %>
     </div>
   </div>
 </div>
@@ -88,13 +88,13 @@
   = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary" do
     Right-aligned Dropdown Menu
     \#{icon "chevron-down", class: "size-3 ml-2"}
-  .hidden.transition.transform.origin-top-right.absolute.right-0.top-14.bg-white.rounded-xl.shadow-xl.border.border-zinc-300.w-full.z-50.py-2.dark:bg-zinc-900.text-base.text-zinc-600.dark:text-zinc-200{class: "shadow-zinc-900/10 md:w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+  .hidden.origin-top-right.absolute.right-0.top-14.dropdown-menu{"data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
     %div
-      = link_to "Bookmark", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
+      = link_to "Bookmark", "#", class: "dropdown-item"
     %div
-      = link_to "Report", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
+      = link_to "Report", "#", class: "dropdown-item"
     %div
-      = link_to "Export", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
+      = link_to "Export", "#", class: "dropdown-item"
 <% end %>
 
 <%= render_snippet %>

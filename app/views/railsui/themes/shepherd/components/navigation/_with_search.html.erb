@@ -50,7 +50,7 @@
                       <span class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
                     </div>
                   </button>
-                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:min-w-[360px] divide-y divide-zinc-300 dark:divide-zinc-700 hidden md:origin-top-right origin-top-left absolute right-0 top-12 dropdown-menu md:text-sm text-base w-full" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start gap-2">
@@ -115,7 +115,7 @@
                   </button>
 
                   <ul data-railsui-dropdown-target="menu"
-                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 dropdown-menu text-sm"
                       data-transition-enter-active="transition ease-out duration-300"
                       data-transition-enter-from="transform opacity-0 scale-95"
                       data-transition-enter-to="transform opacity-100 scale-100"
@@ -124,25 +124,25 @@
                       data-transition-leave-to="transform opacity-0 scale-95">
 
                     <li>
-                      <%= link_to "Inbox", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Inbox", "#", class: "dropdown-item", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li>
-                      <%= link_to "Manage properties", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Manage properties", "#", class: "dropdown-item", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li>
-                      <%= link_to "Add booking", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Add booking", "#", class: "dropdown-item", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
 
                     <li>
-                      <%= link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Account", "#", class: "dropdown-item text-sm font-light", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li>
-                      <%= link_to "Sign out", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Sign out", "#", class: "dropdown-item text-sm font-light", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
                   </ul>
                 </div>
@@ -206,7 +206,7 @@
                       <span class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
                     </div>
                   </button>
-                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 w-[360px] md:min-w-[360px] divide-y divide-zinc-300 dark:divide-zinc-700 hidden md:origin-top-right origin-top-left absolute right-0 top-12 dropdown-menu md:text-sm text-base" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start gap-2">
@@ -270,7 +270,7 @@
                     <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
                   </button>
 
-                  <ul data-railsui-dropdown-target="menu" class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                  <ul data-railsui-dropdown-target="menu" class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 dropdown-menu text-sm"
                       data-transition-enter-active="transition ease-out duration-300"
                       data-transition-enter-from="transform opacity-0 scale-95"
                       data-transition-enter-to="transform opacity-100 scale-100"
@@ -279,25 +279,25 @@
                       data-transition-leave-to="transform opacity-0 scale-95">
 
                       <li>
-                        <%= link_to "Inbox", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%= link_to "Inbox", "#", class: "dropdown-item" %>
                       </li>
 
                       <li>
-                        <%= link_to "Manage properties", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%= link_to "Manage properties", "#", class: "dropdown-item" %>
                       </li>
 
                       <li>
-                        <%= link_to "Add booking", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%= link_to "Add booking", "#", class: "dropdown-item" %>
                       </li>
 
                       <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
 
                       <li>
-                        <%= link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" %>
+                        <%= link_to "Account", "#", class: "dropdown-item text-sm font-light" %>
                       </li>
 
                       <li>
-                        <%= link_to "Sign out", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" %>
+                        <%= link_to "Sign out", "#", class: "dropdown-item text-sm font-light" %>
                       </li>
                   </ul>
                 </div>
@@ -360,7 +360,7 @@
                       <span class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
                     </div>
                   </button>
-                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:min-w-[360px] divide-y divide-zinc-300 dark:divide-zinc-700 hidden md:origin-top-right origin-top-left absolute right-0 top-12 dropdown-menu md:text-sm text-base w-full" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start gap-2">
@@ -425,7 +425,7 @@
                   </button>
 
                   <ul data-railsui-dropdown-target="menu"
-                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 dropdown-menu text-sm"
                       data-transition-enter-active="transition ease-out duration-300"
                       data-transition-enter-from="transform opacity-0 scale-95"
                       data-transition-enter-to="transform opacity-100 scale-100"
@@ -433,25 +433,25 @@
                       data-transition-leave-from="transform opacity-100 scale-100"
                       data-transition-leave-to="transform opacity-0 scale-95">
                       <li>
-                        <%%= link_to "Inbox", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%%= link_to "Inbox", "#", class: "dropdown-item" %>
                       </li>
 
                       <li>
-                        <%%= link_to "Manage properties", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%%= link_to "Manage properties", "#", class: "dropdown-item" %>
                       </li>
 
                       <li>
-                        <%%= link_to "Add booking", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                        <%%= link_to "Add booking", "#", class: "dropdown-item" %>
                       </li>
 
                       <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
 
                       <li>
-                        <%%= link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" %>
+                        <%%= link_to "Account", "#", class: "dropdown-item text-sm font-light" %>
                       </li>
 
                       <li>
-                        <%%= link_to "Sign out", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" %>
+                        <%%= link_to "Sign out", "#", class: "dropdown-item text-sm font-light" %>
                       </li>
                   </ul>
                 </div>
@@ -466,6 +466,7 @@
 <% end %>
 
 <% content_for :haml, flush: true do %>
+
 %header.bg-white.dark:bg-zinc-900.px-4.md:py-2.py-3.border-b.rounded-t-xl.relative.z-50{class: "border-zinc-300/80 dark:border-zinc-700/80", "data-controller" => "nav"}
   .md:flex.items-center.justify-between
     .md:flex.items-center.md:space-x-4.md:flex-1
@@ -494,7 +495,7 @@
                     .relative
                       = icon "bell", class: "text-zinc-500 md:w-5 md:h-5 size-6 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 dark:text-zinc-400 stroke-current"
                       %span.w-2.h-2.bg-red-500.rounded-full.hover:animate-pulse.absolute.top-0.right-0.z-20{class: "dark:bg-primary-500/95"}
-                  .origin-to-right.md:absolute.mt-2.ml-2.md:ml-0.md:mt-0.md:shadow-xl.divide-y.divide-zinc-300.text-left.dark:divide-zinc-700.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.right-0.top-12.bg-white.rounded-lg.shadow-xl.border.border-zinc-300.w-full.z-50.py-2.dark:bg-zinc-900.md:text-sm.text-base.font-medium.text-zinc-600.dark:text-zinc-200{class: "sm:w-[360px] md:min-w-[360px] shadow-zinc-900/10 md:w-[320px] dark:shadow-zinc-900/50 dark:border-zinc-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                  .origin-to-right.md:absolute.mt-2.ml-2.md:ml-0.md:mt-0.divide-y.divide-zinc-300.dark:divide-zinc-700.hidden.md:origin-top-right.origin-top-left.absolute.right-0.top-12.dropdown-menu.md:text-sm.text-base.w-full{class: "md:min-w-[360px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
                     .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                       .flex-1
                         .flex.items-start.gap-2
@@ -533,19 +534,19 @@
               %li
                 .md:flex.relative{"data-controller" => "railsui-dropdown"}
                   %button.rounded-full.md:w-10.md:h-10.size-12.border-zinc-300.border.flex.items-center.justify-center.focus:border-zinc-400.focus:ring-4.dark:border-zinc-600.dark:focus:ring-zinc-700{class: "focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:focus:border-zinc-300/90", "data-action" => "click->railsui-dropdown#toggle click@window->dropdown#hide", "data-railsui-dropdown-target" => "trigger"}
-                    %img.md:w-10.md:h-10.size-12.rounded-full.flex-shrink-0.select-none.pointer-events-none{alt: "Shepherd user", src: "https://randomuser.me/api/portraits/men/7.jpg"}/
-                  %ul.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.md:right-0.md:left-auto.right-auto.left-0.top-12.bg-white.rounded-lg.shadow-xl.border.border-zinc-300.z-50.py-2.dark:bg-zinc-900.text-base.font-normal.text-zinc-600.dark:text-zinc-200.font-heading{class: "shadow-zinc-900/10 w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
+                    %img.md:w-10.md:h-10.size-12.rounded-full.flex-shrink-0.select-none.pointer-events-none{alt: "Shepherd user", src: "https://randomuser.me/api/portraits/women/100.jpg"}/
+                  %ul.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.md:right-0.md:left-auto.right-auto.left-0.top-12.dropdown-menu.text-sm{"data-railsui-dropdown-target" => "menu", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
                     %li
-                      = link_to "Inbox", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block"
+                      = link_to "Inbox", "#", class: "dropdown-item"
                     %li
-                      = link_to "Manage properties", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block"
+                      = link_to "Manage properties", "#", class: "dropdown-item"
                     %li
-                      = link_to "Add booking", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block"
+                      = link_to "Add booking", "#", class: "dropdown-item"
                     %li.border-b{class: "border-zinc-300/80 dark:border-zinc-700/80 my-1.5"}
                     %li
-                      = link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left"
+                      = link_to "Account", "#", class: "dropdown-item text-sm font-light"
                     %li
-                      = link_to "Sign out", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left"
+                      = link_to "Sign out", "#", class: "dropdown-item text-sm font-light"
 <% end %>
 
 <% content_for :js, flush: true do %>

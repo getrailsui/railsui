@@ -1,0 +1,15 @@
+<%= rui :property_card,
+    title: "Cozy Mountain A-Frame",
+    subtitle: "Nature's Nook",
+    image_url: "https://picsum.photos/600/600",
+    avatar_url: "path/to/avatar.png",
+    image_alt: "Property image alt tag",
+    avatar_alt: "Avatar",
+    stats: [
+      { icon: "home-modern", text: "3 Listings" },
+      { icon: "arrow-path", text: "Syncing" }
+    ],
+    dropdown_items: [
+      { text: "Edit property", url: edit_property_path(@property) },
+      { text: "Re-sync", url: sync_property_path(@property) }
+    ] %>

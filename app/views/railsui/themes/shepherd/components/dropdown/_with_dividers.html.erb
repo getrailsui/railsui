@@ -16,7 +16,7 @@
     <%= icon "chevron-down", class: "size-3 ml-2" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 divide-y divide-zinc-300 dark:divide-zinc-600/80 font-heading"
+    class="hidden origin-top-left absolute left-0 top-14 dropdown-menu divide-y divide-zinc-200/90 dark:divide-zinc-700/80"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -24,14 +24,14 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <div role="none" class="pb-1">
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Edit</a>
+      <a href="#" class="dropdown-item">Edit</a>
     </div>
     <div role="none" class="py-1">
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Share</a>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Export</a>
+      <a href="#" class="dropdown-item">Share</a>
+      <a href="#" class="dropdown-item">Export</a>
     </div>
     <div role="none" class="pt-1">
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Delete</a>
+      <a href="#" class="dropdown-item">Delete</a>
     </div>
   </div>
 </div>
@@ -45,7 +45,7 @@
     <%%= icon "chevron-down", class: "size-3 ml-2" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 divide-y divide-zinc-300 dark:divide-zinc-600/80 font-heading"
+    class="hidden origin-top-left absolute left-0 top-14 dropdown-menu divide-y divide-zinc-200/90 dark:divide-zinc-700/80"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -53,14 +53,14 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <div role="none" class="pb-1">
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Edit</a>
+      <a href="#" class="dropdown-item">Edit</a>
     </div>
     <div role="none" class="py-1">
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Share</a>
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Export</a>
+      <a href="#" class="dropdown-item">Share</a>
+      <a href="#" class="dropdown-item">Export</a>
     </div>
     <div role="none" class="pt-1">
-      <a href="#" class="px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white">Delete</a>
+      <a href="#" class="dropdown-item">Delete</a>
     </div>
   </div>
 </div>
@@ -73,7 +73,7 @@
     <%%= icon "chevron-down", class: "size-3 ml-2" %>
   <%% end %>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[200px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 dark:text-zinc-200 divide-y divide-zinc-300 dark:divide-zinc-600/80 font-heading"
+    class="hidden origin-top-left absolute left-0 top-14 dropdown-menu divide-y divide-zinc-200/90 dark:divide-zinc-700/80"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -81,14 +81,14 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <div role="none" class="pb-1">
-      <%%= link_to "Edit", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white" %>
+      <%%= link_to "Edit", "#", class: "dropdown-item" %>
     </div>
     <div role="none" class="py-1">
-      <%%= link_to "Share", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white" %>
-      <%%= link_to "Export", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white" %>
+      <%%= link_to "Share", "#", class: "dropdown-item" %>
+      <%%= link_to "Export", "#", class: "dropdown-item" %>
     </div>
     <div role="none" class="pt-1">
-      <%%= link_to "Delete", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white" %>
+      <%%= link_to "Delete", "#", class: "dropdown-item dropdown-item-danger" %>
     </div>
   </div>
 </div>
@@ -99,14 +99,14 @@
   = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary" do
     Dropdown with dividers
     \#{icon "chevron-down", class: "size-3 ml-2"}
-  .hidden.transition.transform.origin-top-left.absolute.left-0.top-14.bg-white.rounded-xl.shadow-xl.border.border-zinc-300.w-full.z-50.py-2.dark:bg-zinc-900.md:text-sm.text-base.text-zinc-600.dark:text-zinc-200{class: "shadow-zinc-900/10 md:w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-600/80", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+  .hidden.origin-top-left.absolute.left-0.top-14.dropdown-menu.divide-y{class: "divide-zinc-200/90 dark:divide-zinc-700/80", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
     .pb-1{role: "none"}
-      = link_to "Edit", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
+      = link_to "Edit", "#", class: "dropdown-item"
     .py-1{role: "none"}
-      = link_to "Share", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
-      = link_to "Export", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
+      = link_to "Share", "#", class: "dropdown-item"
+      = link_to "Export", "#", class: "dropdown-item"
     .pt-1{role: "none"}
-      = link_to "Delete", "#", class: "px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white"
+      = link_to "Delete", "#", class: "dropdown-item dropdown-item-danger"
 <% end %>
 
 <%= render_snippet %>

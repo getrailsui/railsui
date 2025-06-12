@@ -38,16 +38,16 @@
                     <%= icon "chevron-down", class: "size-3 ml-2" %>
                   </button>
                   <div
-                    class="hidden transition transform origin-top absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 text-zinc-600 dark:text-zinc-100 font-heading text-[15px]"
+                    class="hidden origin-top absolute left-0 top-14 dropdown-menu"
                     data-railsui-dropdown-target="menu"
                     data-transition-enter-from="opacity-0 scale-95"
                     data-transition-enter-to="opacity-100 scale-100"
                     data-transition-leave-from="opacity-100 scale-100"
                     data-transition-leave-to="opacity-0 scale-95"
                     >
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">Bookings</a>
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">Help Center</a>
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">Changlog</a>
+                    <a href="#" class="dropdown-item" data-action="click->railsui-prevent#prevent">Bookings</a>
+                    <a href="#" class="dropdown-item" data-action="click->railsui-prevent#prevent">Help Center</a>
+                    <a href="#" class="dropdown-item" data-action="click->railsui-prevent#prevent">Changlog</a>
                   </div>
                 </div>
 
@@ -62,7 +62,7 @@
                       <span class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
                     </div>
                   </button>
-                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 dark:divide-zinc-700 hidden md:origin-top-right origin-top-left absolute right-0 top-12 dropdown-menu text-sm w-full" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start gap-2">
@@ -127,7 +127,7 @@
                   </button>
 
                   <ul data-railsui-dropdown-target="menu"
-                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                      class="hidden md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 dropdown-menu text-sm"
                       data-transition-enter-active="transition ease-out duration-300"
                       data-transition-enter-from="transform opacity-0 scale-95"
                       data-transition-enter-to="transform opacity-100 scale-100"
@@ -136,25 +136,25 @@
                       data-transition-leave-to="transform opacity-0 scale-95">
 
                      <li>
-                      <%= link_to "Inbox", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Inbox", "#", class: "dropdown-item", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li>
-                      <%= link_to "Manage properties", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Manage properties", "#", class: "dropdown-item", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li>
-                      <%= link_to "Add booking", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Add booking", "#", class: "dropdown-item", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
 
                     <li>
-                      <%= link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Account", "#", class: "dropdown-item text-sm font-light", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
 
                     <li>
-                      <%= link_to "Sign out", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
+                      <%= link_to "Sign out", "#", class: "dropdown-item text-sm font-light", data: { controller: "railsui-prevent", action: "click->railsui-prevent#prevent" } %>
                     </li>
                   </ul>
                 </div>
@@ -177,7 +177,7 @@
         <div class="flex items-center justify-between md:w-auto w-full">
           <a href="#">
             <h1>
-              <%%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
+              <%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
               <span class="sr-only">Shepherd</span>
             </h1>
           </a>
@@ -206,16 +206,16 @@
                     <%%= icon "chevron-down", class: "size-3 ml-2" %>
                   </button>
                   <div
-                    class="hidden transition transform origin-top absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 text-zinc-600 dark:text-zinc-100 font-heading text-[15px]"
+                    class="hidden origin-top absolute left-0 top-14 w-[200px] dropdown-menu"
                     data-railsui-dropdown-target="menu"
                     data-transition-enter-from="opacity-0 scale-95"
                     data-transition-enter-to="opacity-100 scale-100"
                     data-transition-leave-from="opacity-100 scale-100"
                     data-transition-leave-to="opacity-0 scale-95"
                     >
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500">Bookings</a>
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500">Help Center</a>
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500">Changlog</a>
+                    <a href="#" class="dropdown-item">Bookings</a>
+                    <a href="#" class="dropdown-item">Help Center</a>
+                    <a href="#" class="dropdown-item">Changlog</a>
                   </div>
                 </div>
 
@@ -230,7 +230,7 @@
                       <span class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
                     </div>
                   </button>
-                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 dark:divide-zinc-700 hidden md:origin-top-right origin-top-left absolute right-0 top-12 dropdown-menu text-sm w-full" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start gap-2">
@@ -285,16 +285,16 @@
               <!-- Notifications end -->
 
               <li>
-                <div data-controller="dropdown" class="md:flex relative">
-                  <button data-action="click->dropdown#toggle click@window->dropdown#hide"
-                    data-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
+                <div data-controller="railsui-dropdown" class="md:flex relative">
+                  <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
+                    data-railsui-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
                     focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
                     dark:focus:border-zinc-300/90">
                       <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), alt: "Shepherd user", class: "md:w-10 md:h-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none" %>
                   </button>
 
                   <ul data-railsui-dropdown-target="menu"
-                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 text-sm dropdown-menu text-sm"
                       data-transition-enter-active="transition ease-out duration-300"
                       data-transition-enter-from="transform opacity-0 scale-95"
                       data-transition-enter-to="transform opacity-100 scale-100"
@@ -303,25 +303,25 @@
                       data-transition-leave-to="transform opacity-0 scale-95">
 
                     <li>
-                      <%= link_to "Inbox", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      <%= link_to "Inbox", "#", class: "dropdown-item" %>
                     </li>
 
                     <li>
-                      <%= link_to "Manage properties", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      <%= link_to "Manage properties", "#", class: "dropdown-item" %>
                     </li>
 
                     <li>
-                      <%= link_to "Add booking", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" %>
+                      <%= link_to "Add booking", "#", class: "dropdown-item" %>
                     </li>
 
                     <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
 
                     <li>
-                      <%= link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" %>
+                      <%= link_to "Account", "#", class: "dropdown-item text-sm font-light" %>
                     </li>
 
                     <li>
-                      <%= link_to "Sign out", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" %>
+                      <%= link_to "Sign out", "#", class: "dropdown-item text-sm font-light" %>
                     </li>
                   </ul>
                 </div>
@@ -341,17 +341,17 @@
     <div class="md:flex items-center md:space-x-4 md:flex-1">
       <div class="md:flex items-center justify-between w-full md:space-x-3">
         <div class="flex items-center justify-between md:w-auto w-full">
-          <a href="#">
+          <%%= link_to root_path do %>
             <h1>
-              <%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
+              <%%= icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10" %>
               <span class="sr-only">Shepherd</span>
             </h1>
-          </a>
+          <%% end %>
 
           <button type="button" data-action="click->nav#toggle"
             class="md:hidden flex items-center justify-center size-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
             role="Mobile navigation toggle">
-              <%= icon "bars-3-center-left", class: "stroke-current w-8 h-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
+              <%%= icon "bars-3-center-left", class: "stroke-current w-8 h-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100" %>
           </button>
         </div>
 
@@ -364,24 +364,24 @@
           <nav role="primary navigation" class="flex-1">
             <ul class="md:flex items-center md:space-y-0 space-y-4">
               <li class="flex-1 md:flex items-center">
-                <a href="#" class="rui-nav-link">Nav link</a>
+                <%%= nav_link_to "Nav link", "#", class: "rui-nav-link" %>
 
                 <div data-controller="railsui-dropdown" class="relative inline-block">
                   <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="rui-nav-link flex items-center justify-center">
                     Dropdown
-                    <%= icon "chevron-down", class: "size-3 ml-2" %>
+                    <%%= icon "chevron-down", class: "size-3 ml-2" %>
                   </button>
                   <div
-                    class="hidden transition transform origin-top absolute left-0 top-14 bg-white rounded-xl shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-600/80 text-zinc-600 dark:text-zinc-100 font-heading text-[15px]"
+                    class="hidden transition transform origin-top absolute left-0 top-14 dropdown-menu"
                     data-railsui-dropdown-target="menu"
                     data-transition-enter-from="opacity-0 scale-95"
                     data-transition-enter-to="opacity-100 scale-100"
                     data-transition-leave-from="opacity-100 scale-100"
                     data-transition-leave-to="opacity-0 scale-95"
                     >
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500">Bookings</a>
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500">Help Center</a>
-                    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-500">Changlog</a>
+                    <%%= link_to "Bookings", "#", class: "dropdown-item" %>
+                    <%%= link_to "Help Center", "#", class: "dropdown-item" %>
+                    <%%= link_to "Changelog", "#", class: "dropdown-item" %>
                   </div>
                 </div>
 
@@ -389,14 +389,14 @@
 
               <!-- Notifications start-->
               <li>
-                <div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative" data-controller="railsui-dropdown">
+                <div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative text-sm" data-controller="railsui-dropdown">
                   <button type="button" class="rounded-full md:w-10 md:h-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400 focus:ring-4 focus:ring-zinc-100 hover:border-zinc-400/80 dark:border-zinc-600 dark:focus:ring-zinc-700 dark:focus:border-zinc-400" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
                     <div class="relative">
-                      <%= icon "bell", class: "text-zinc-500 md:w-5 md:h-5 size-6 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 dark:text-zinc-400 stroke-current" %>
+                      <%%= icon "bell", class: "text-zinc-500 md:w-5 md:h-5 size-6 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 dark:text-zinc-400 stroke-current" %>
                       <span class="w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0 right-0 z-20 dark:bg-primary-500/95"></span>
                     </div>
                   </button>
-                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-200 md:w-[320px] w-full z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-sm text-base font-medium text-zinc-600 dark:text-zinc-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
+                  <div class="origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px] md:min-w-[360px] divide-y divide-zinc-300 text-left dark:divide-zinc-700 hidden transition transform md:origin-top-right origin-top-left absolute right-0 top-12 dropdown-menu text-sm w-full" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95">
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
                       <div class="flex-1">
                         <div class="flex items-start gap-2">
@@ -408,7 +408,7 @@
                         </div>
                       </div>
                       <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-zinc-50/50 group border border-zinc-200 hover:border-zinc-300 focus:ring-4 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:border-zinc-600 dark:hover:bg-white/20">
-                        <%= icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current" %>
+                        <%%= icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current" %>
                       </button>
                     </div>
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -422,7 +422,7 @@
                         </div>
                       </div>
                       <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-zinc-50/50 group border border-zinc-200 hover:border-zinc-300 focus:ring-4 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:border-zinc-600 dark:hover:bg-white/20">
-                        <%= icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current" %>
+                        <%%= icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current" %>
                       </button>
                     </div>
                     <div class="px-4 py-3 md:py-2 flex items-center justify-between group">
@@ -436,13 +436,13 @@
                         </div>
                       </div>
                       <button class="opacity-0 group-hover:opacity-100 transition ease-in-out duration-300 flex items-center justify-center rounded-full w-7 h-7 hover:bg-zinc-50/50 group border border-zinc-200 hover:border-zinc-300 focus:ring-4 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:border-zinc-600 dark:hover:bg-white/20">
-                        <%= icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current" %>
+                        <%%= icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current" %>
                       </button>
                     </div>
                     <div>
                       <a href="#" class="flex items-center justify-between group px-4 pt-3 pb-2 hover:text-primary-500 text-sm group text-zinc-500 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-white font-heading font-normal">
                         <span>View all notifications</span>
-                        <%= icon "chevron-right", class: "group-hover:translate-x-1 transform transition ease-in-out size-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current" %>
+                        <%%= icon "chevron-right", class: "group-hover:translate-x-1 transform transition ease-in-out size-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current" %>
                       </a>
                     </div>
                   </div>
@@ -451,16 +451,15 @@
               <!-- Notifications end -->
 
               <li>
-                <div data-controller="dropdown" class="md:flex relative">
-                  <button data-action="click->dropdown#toggle click@window->dropdown#hide"
-                    data-dropdown-target="trigger" class="rounded-full md:w-10 md:h-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
+                <div data-controller="railsui-dropdown" class="md:flex relative">
+                  <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="rounded-full md:w-10 md:h-10 size-12 border-zinc-300 border flex items-center justify-center focus:border-zinc-400
                     focus:ring-4 focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:border-zinc-600 dark:focus:ring-zinc-700
                     dark:focus:border-zinc-300/90">
-                      <img alt="Shepherd user" class="md:w-10 md:h-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none" src="https://randomuser.me/api/portraits/women/81.jpg" />
+                      <%%= image_tag demo_avatar_url(id: 81, variant: "women"), class: "md:w-10 md:h-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none", alt: "User avatar" %>
                   </button>
 
                   <ul data-railsui-dropdown-target="menu"
-                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 bg-white rounded-lg shadow-xl shadow-zinc-900/10 border border-zinc-300 w-[200px] z-50 py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px] text-base font-normal text-zinc-600 dark:text-zinc-200 font-heading"
+                      class="hidden transition transform md:origin-top-right origin-top-left absolute md:right-0 md:left-auto right-auto left-0 top-12 dropdown-menu text-sm"
                       data-transition-enter-active="transition ease-out duration-300"
                       data-transition-enter-from="transform opacity-0 scale-95"
                       data-transition-enter-to="transform opacity-100 scale-100"
@@ -469,25 +468,25 @@
                       data-transition-leave-to="transform opacity-0 scale-95">
 
                     <li>
-                      <a class="md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" href="#">Inbox</a>
+                      <%%= link_to "Inbox", "#", class: "dropdown-item" %>
                     </li>
 
                     <li>
-                      <a class="md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" href="#">Manage properties</a>
+                      <%%= link_to "Manage properties", "#", class: "dropdown-item" %>
                     </li>
 
                     <li>
-                      <a class="md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block" href="#">Add booking</a>
+                      <%%= link_to "Add booking", "#", class: "dropdown-item" %>
                     </li>
 
                     <li class="border-b border-zinc-300/80 dark:border-zinc-700/80 my-1.5"></li>
 
                     <li>
-                      <a class="py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" href="#">Account</a>
+                      <%%= link_to "Account", "#", class: "dropdown-item text-sm font-light" %>
                     </li>
 
                     <li>
-                      <a class="py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left" href="#">Sign out</a>
+                      <%%= link_to "Sign out", "#", class: "dropdown-item text-sm font-light" %>
                     </li>
                   </ul>
                 </div>
@@ -499,7 +498,6 @@
     </div>
   </div>
 </header>
-
 <% end %>
 
 <% content_for :haml, flush: true do %>
@@ -508,7 +506,7 @@
     .md:flex.items-center.md:space-x-4.md:flex-1
       .md:flex.items-center.justify-between.w-full.md:space-x-3
         .flex.items-center.justify-between.md:w-auto.w-full
-          %a{href: "#"}
+          = link_to root_path do
             %h1
               = icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10"
               %span.sr-only Shepherd
@@ -518,23 +516,23 @@
           %nav.flex-1{role: "primary navigation"}
             %ul.md:flex.items-center.md:space-y-0.space-y-4
               %li.flex-1.md:flex.items-center
-                %a.rui-nav-link{href: "#"} Nav link
+                = nav_link_to "Nav link", "#", class: "rui-nav-link"
                 .relative.inline-block{"data-controller" => "railsui-dropdown"}
                   %button.rui-nav-link.flex.items-center.justify-center{"data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide", type: "button"}
                     Dropdown
                     \#{icon "chevron-down", class: "size-3 ml-2"}
-                  .hidden.transition.transform.origin-top.absolute.left-0.top-14.bg-white.rounded-xl.shadow-xl.border.border-zinc-300.z-50.py-2.dark:bg-zinc-900.text-zinc-600.dark:text-zinc-100.font-heading{class: "shadow-zinc-900/10 w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-600/80 text-[15px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-                    %a.px-4.hover:text-primary-600.block.dark:hover:text-primary-500{class: "py-[.4rem]", href: "#"} Bookings
-                    %a.px-4.hover:text-primary-600.block.dark:hover:text-primary-500{class: "py-[.4rem]", href: "#"} Help Center
-                    %a.px-4.hover:text-primary-600.block.dark:hover:text-primary-500{class: "py-[.4rem]", href: "#"} Changlog
+                  .hidden.transition.transform.origin-top.absolute.left-0.top-14.dropdown-menu{"data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                    = link_to "Bookings", "#", class: "dropdown-item"
+                    = link_to "Help Center", "#", class: "dropdown-item"
+                    = link_to "Changelog", "#", class: "dropdown-item"
               / Notifications start
               %li
-                .md:flex.justify-end.md:flex-1.md:mr-4.mr-3.relative{"data-controller" => "railsui-dropdown"}
+                .md:flex.justify-end.md:flex-1.md:mr-4.mr-3.relative.text-sm{"data-controller" => "railsui-dropdown"}
                   %button.rounded-full.md:w-10.md:h-10.size-12.border-zinc-300.border.flex.items-center.justify-center.focus:border-zinc-400.focus:ring-4.focus:ring-zinc-100.dark:border-zinc-600.dark:focus:ring-zinc-700.dark:focus:border-zinc-400{class: "hover:border-zinc-400/80", "data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide", type: "button"}
                     .relative
                       = icon "bell", class: "text-zinc-500 md:w-5 md:h-5 size-6 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 dark:text-zinc-400 stroke-current"
                       %span.w-2.h-2.bg-red-500.rounded-full.hover:animate-pulse.absolute.top-0.right-0.z-20{class: "dark:bg-primary-500/95"}
-                  .origin-to-right.md:absolute.mt-2.ml-2.md:ml-0.md:mt-0.md:shadow-xl.divide-y.divide-zinc-300.text-left.dark:divide-zinc-700.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.right-0.top-12.bg-white.rounded-lg.shadow-xl.border.border-zinc-200.w-full.z-50.py-2.dark:bg-zinc-900.md:text-sm.text-base.font-medium.text-zinc-600.dark:text-zinc-200{class: "sm:w-[360px] md:min-w-[360px] shadow-zinc-900/10 md:w-[320px] dark:shadow-zinc-900/50 dark:border-zinc-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+                  .origin-to-right.md:absolute.mt-2.ml-2.md:ml-0.md:mt-0.md:shadow-xl.divide-y.divide-zinc-300.text-left.dark:divide-zinc-700.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.right-0.top-12.dropdown-menu.text-sm.w-full{class: "sm:w-[360px] md:min-w-[360px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
                     .px-4.py-3.md:py-2.flex.items-center.justify-between.group
                       .flex-1
                         .flex.items-start.gap-2
@@ -574,21 +572,21 @@
                         = icon "chevron-right", class: "group-hover:translate-x-1 transform transition ease-in-out size-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current"
               / Notifications end
               %li
-                .md:flex.relative{"data-controller" => "dropdown"}
-                  %button.rounded-full.md:w-10.md:h-10.size-12.border-zinc-300.border.flex.items-center.justify-center.focus:border-zinc-400.focus:ring-4.dark:border-zinc-600.dark:focus:ring-zinc-700{class: "focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:focus:border-zinc-300/90", "data-action" => "click->dropdown#toggle click@window->dropdown#hide", "data-dropdown-target" => "trigger"}
-                    %img.md:w-10.md:h-10.size-12.rounded-full.flex-shrink-0.select-none.pointer-events-none{alt: "Shepherd user", src: "https://randomuser.me/api/portraits/women/37.jpg"}/
-                  %ul.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.md:right-0.md:left-auto.right-auto.left-0.top-12.bg-white.rounded-lg.shadow-xl.border.border-zinc-300.z-50.py-2.dark:bg-zinc-900.text-base.font-normal.text-zinc-600.dark:text-zinc-200.font-heading{class: "shadow-zinc-900/10 w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
+                .md:flex.relative{"data-controller" => "railsui-dropdown"}
+                  %button.rounded-full.md:w-10.md:h-10.size-12.border-zinc-300.border.flex.items-center.justify-center.focus:border-zinc-400.focus:ring-4.dark:border-zinc-600.dark:focus:ring-zinc-700{class: "focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:focus:border-zinc-300/90", "data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"}
+                    = image_tag demo_avatar_url(id: 81, variant: "women"), class: "md:w-10 md:h-10 size-12 rounded-full flex-shrink-0 select-none pointer-events-none", alt: "User avatar"
+                  %ul.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.md:right-0.md:left-auto.right-auto.left-0.top-12.dropdown-menu.text-sm{"data-railsui-dropdown-target" => "menu", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
                     %li
-                      %a.md:py-1.py-2.px-4.hover:text-primary-600.focus:text-primary-600.w-full.group.text-zinc-600.dark:text-zinc-50.dark:hover:text-zinc-300.block{href: "#"} Inbox
+                      = link_to "Inbox", "#", class: "dropdown-item"
                     %li
-                      %a.md:py-1.py-2.px-4.hover:text-primary-600.focus:text-primary-600.w-full.group.text-zinc-600.dark:text-zinc-50.dark:hover:text-zinc-300.block{href: "#"} Manage properties
+                      = link_to "Manage properties", "#", class: "dropdown-item"
                     %li
-                      %a.md:py-1.py-2.px-4.hover:text-primary-600.focus:text-primary-600.w-full.group.text-zinc-600.dark:text-zinc-50.dark:hover:text-zinc-300.block{href: "#"} Add booking
+                      = link_to "Add booking", "#", class: "dropdown-item"
                     %li.border-b{class: "border-zinc-300/80 dark:border-zinc-700/80 my-1.5"}
                     %li
-                      %a.px-4.hover:text-primary-600.focus:text-primary-600.w-full.group.text-zinc-600.dark:text-zinc-50.dark:hover:text-zinc-300.font-light.text-sm.block.text-left{class: "py-1.5", href: "#"} Account
+                      = link_to "Account", "#", class: "dropdown-item text-sm font-light"
                     %li
-                      %a.px-4.hover:text-primary-600.focus:text-primary-600.w-full.group.text-zinc-600.dark:text-zinc-50.dark:hover:text-zinc-300.font-light.text-sm.block.text-left{class: "py-1.5", href: "#"} Sign out
+                      = link_to "Sign out", "#", class: "dropdown-item text-sm font-light"
 <% end %>
 
 <% content_for :js, flush: true do %>
