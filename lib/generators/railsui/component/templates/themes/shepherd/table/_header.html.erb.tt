@@ -1,0 +1,12 @@
+<%%# locals: (headers: [], content: nil, variant: :border) %>
+<thead>
+  <%% if content.present? %>
+    <%%= content %>
+  <%% else %>
+    <tr>
+      <%% headers.each do |header| %>
+        <%%= rui "table/header_cell", header: header, variant: variant %>
+      <%% end %>
+    </tr>
+  <%% end %>
+</thead>

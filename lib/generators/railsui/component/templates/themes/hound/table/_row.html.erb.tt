@@ -1,0 +1,15 @@
+<%%# locals: (row: nil, classes: nil, content: nil, variant: :border) -%>
+
+<tr class="<%%= classes %>">
+  <%% if content.present? %>
+    <%%= content %>
+  <%% elsif row.present? %>
+    <%% if row.is_a?(Array) %>
+      <%% row.each do |cell| %>
+        <%%= rui "table/cell", cell: cell, variant: variant %>
+      <%% end %>
+    <%% else %>
+      <%%= rui "table/cell", cell: row, variant: variant %>
+    <%% end %>
+  <%% end %>
+</tr>

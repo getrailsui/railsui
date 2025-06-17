@@ -1,0 +1,10 @@
+<%%# locals: (rows: [], content: nil, variant: :border) -%>
+<tbody>
+  <%% if content.present? %>
+    <%%= content %>
+  <%% elsif rows.any? %>
+    <%% rows.each do |row| %>
+      <%%= rui "table/row", row: row, variant: variant %>
+    <%% end %>
+  <%% end %>
+</tbody>

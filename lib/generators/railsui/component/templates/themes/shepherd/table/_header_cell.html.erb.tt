@@ -1,0 +1,13 @@
+<%%# locals: (header:, classes: nil, content: nil, variant: :border) -%>
+<%%
+  header_classes = case variant
+  when :borderless
+    "text-left p-3 border-b-2 border-zinc-200 dark:border-zinc-700/80"
+  else # :border
+    "text-left p-3 border border-zinc-200 dark:border-zinc-700/80"
+  end
+%>
+
+<th scope="col" class="<%%= [header_classes, classes].compact.join(' ') %>">
+  <%%= header.is_a?(Hash) ? header[:label] : header %>
+</th>

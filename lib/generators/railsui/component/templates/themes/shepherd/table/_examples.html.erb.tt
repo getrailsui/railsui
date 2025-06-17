@@ -1,0 +1,234 @@
+<h3 class="text-lg font-semibold mb-4">Basic Border Table (Array-based)</h3>
+<%%= rui :table,
+  variant: :border,
+  headers: ["First", "Last", "Handle"],
+  rows: [
+    ["Andy", "L.", "@railsui_"],
+    ["Web", "Crunch", "@webcrunchblog"],
+    [{ content: "justalever", colspan: 2 }, "@justalever"]
+  ]
+%>
+
+<hr class="my-8">
+
+<h3 class="text-lg font-semibold mb-4">Basic Borderless Table (Array-based)</h3>
+<%%= rui :table,
+  variant: :borderless,
+  headers: ["First", "Last", "Handle"],
+  rows: [
+    ["Andy", "L.", "@railsui_"],
+    ["Web", "Crunch", "@webcrunchblog"],
+    [{ content: "justalever", colspan: 2 }, "@justalever"]
+  ]
+%>
+
+<hr class="my-8">
+
+<h3 class="text-lg font-semibold mb-4">Table with Footer (Array-based)</h3>
+<%%= rui :table,
+  variant: :border,
+  headers: ["Product", "Quantity", "Price", "Total"],
+  rows: [
+    ["MacBook Pro", "2", "$2,399", "$4,798"],
+    ["iPhone 14", "3", "$999", "$2,997"],
+    ["AirPods Pro", "1", "$249", "$249"]
+  ],
+  footer_rows: [
+    [{ content: "Grand Total", colspan: 3, classes: "font-semibold text-right" }, { content: "$8,044", classes: "font-bold" }]
+  ]
+%>
+
+<hr class="my-8">
+
+<h3 class="text-lg font-semibold mb-4">Maximum Control - Nested RUI Components (Border)</h3>
+<%%= rui :table, variant: :border do %>
+  <%%= rui "table/header" do %>
+    <%%= rui "table/header_cell", header: "Name" %>
+    <%%= rui "table/header_cell", header: "Email" %>
+    <%%= rui "table/header_cell", header: "Actions" %>
+  <%% end %>
+
+  <%%= rui "table/body" do %>
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "John Doe" %>
+      <%%= rui "table/cell", cell: "john@example.com" %>
+      <%%= rui "table/cell" do %>
+        <%%= rui :button, label: "Edit", variant: :primary, size: :sm %>
+        <%%= rui :button, label: "Delete", variant: :danger, size: :sm %>
+      <%% end %>
+    <%% end %>
+
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Jane Smith" %>
+      <%%= rui "table/cell", cell: "jane@example.com" %>
+      <%%= rui "table/cell" do %>
+        <%%= rui :button, label: "Edit", variant: :primary, size: :sm %>
+        <%%= rui :button, label: "Delete", variant: :danger, size: :sm %>
+      <%% end %>
+    <%% end %>
+  <%% end %>
+<%% end %>
+
+<hr class="my-8">
+
+<h3 class="text-lg font-semibold mb-4">Financial Report with Custom Footer</h3>
+<%%= rui :table, variant: :border do %>
+  <%%= rui "table/header" do %>
+    <%%= rui "table/header_cell", header: "Category" %>
+    <%%= rui "table/header_cell", header: "Q1" %>
+    <%%= rui "table/header_cell", header: "Q2" %>
+    <%%= rui "table/header_cell", header: "Q3" %>
+    <%%= rui "table/header_cell", header: "Q4" %>
+  <%% end %>
+
+  <%%= rui "table/body" do %>
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Revenue" %>
+      <%%= rui "table/cell", cell: "$100K" %>
+      <%%= rui "table/cell", cell: "$120K" %>
+      <%%= rui "table/cell", cell: "$110K" %>
+      <%%= rui "table/cell", cell: "$130K" %>
+    <%% end %>
+
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Expenses" %>
+      <%%= rui "table/cell", cell: "$60K" %>
+      <%%= rui "table/cell", cell: "$70K" %>
+      <%%= rui "table/cell", cell: "$65K" %>
+      <%%= rui "table/cell", cell: "$75K" %>
+    <%% end %>
+  <%% end %>
+
+  <%%= rui "table/footer" do %>
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Net Profit", classes: "font-semibold" %>
+      <%%= rui "table/cell", cell: "$40K", classes: "font-bold text-green-600" %>
+      <%%= rui "table/cell", cell: "$50K", classes: "font-bold text-green-600" %>
+      <%%= rui "table/cell", cell: "$45K", classes: "font-bold text-green-600" %>
+      <%%= rui "table/cell", cell: "$55K", classes: "font-bold text-green-600" %>
+    <%% end %>
+
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Total Annual Profit", colspan: 4, classes: "font-semibold text-right bg-zinc-50" %>
+      <%%= rui "table/cell", cell: "$190K", classes: "font-bold text-lg text-green-700 bg-zinc-50" %>
+    <%% end %>
+  <%% end %>
+<%% end %>
+
+<hr class="my-8">
+
+<h3 class="text-lg font-semibold mb-4">Borderless Table with Summary Footer</h3>
+<%%= rui :table, variant: :borderless do %>
+  <%%= rui "table/header" do %>
+    <%%= rui "table/header_cell", header: "Item" %>
+    <%%= rui "table/header_cell", header: "Qty" %>
+    <%%= rui "table/header_cell", header: "Price" %>
+    <%%= rui "table/header_cell", header: "Subtotal" %>
+  <%% end %>
+
+  <%%= rui "table/body" do %>
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Design Services" %>
+      <%%= rui "table/cell", cell: "40 hrs" %>
+      <%%= rui "table/cell", cell: "$150/hr" %>
+      <%%= rui "table/cell", cell: "$6,000" %>
+    <%% end %>
+
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Development" %>
+      <%%= rui "table/cell", cell: "80 hrs" %>
+      <%%= rui "table/cell", cell: "$125/hr" %>
+      <%%= rui "table/cell", cell: "$10,000" %>
+    <%% end %>
+
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Testing & QA" %>
+      <%%= rui "table/cell", cell: "20 hrs" %>
+      <%%= rui "table/cell", cell: "$100/hr" %>
+      <%%= rui "table/cell", cell: "$2,000" %>
+    <%% end %>
+  <%% end %>
+
+  <%%= rui "table/footer" do %>
+    <%%= rui "table/row", classes: "border-t-2 border-slate-200 dark:border-slate-700" do %>
+      <%%= rui "table/cell", cell: "Subtotal", colspan: 3, classes: "font-medium text-right pt-4" %>
+      <%%= rui "table/cell", cell: "$18,000", classes: "font-semibold pt-4" %>
+    <%% end %>
+
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Tax (8.5%)", colspan: 3, classes: "text-right" %>
+      <%%= rui "table/cell", cell: "$1,530", classes: "font-medium" %>
+    <%% end %>
+
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", cell: "Total", colspan: 3, classes: "font-bold text-right text-lg" %>
+      <%%= rui "table/cell", cell: "$19,530", classes: "font-bold text-lg" %>
+    <%% end %>
+  <%% end %>
+<%% end %>
+
+<hr class="my-8">
+
+<h3 class="text-lg font-semibold mb-4">Mixed Approach - Custom Header with Array Rows and Footer</h3>
+<%%= rui :table, variant: :border,
+  rows: [
+    ["Basic User", "user@example.com", "User"],
+    ["Admin User", "admin@example.com", "Admin"],
+    ["Super Admin", "super@example.com", "Super Admin"]
+  ],
+  footer_rows: [
+    [{ content: "Total Users: 3", colspan: 3, classes: "text-center font-medium bg-zinc-50" }]
+  ] do %>
+  <%%= rui "table/header" do %>
+    <%%= rui "table/header_cell", header: "👤 Name" %>
+    <%%= rui "table/header_cell", header: "📧 Email" %>
+    <%%= rui "table/header_cell", header: "🔐 Role" %>
+  <%% end %>
+<%% end %>
+
+<hr class="my-8">
+
+<h3 class="text-lg font-semibold mb-4">Table with Block Content in Cells</h3>
+<%%= rui :table, variant: :border do %>
+  <%%= rui "table/header" do %>
+    <%%= rui "table/header_cell", header: "User" %>
+    <%%= rui "table/header_cell", header: "Profile" %>
+    <%%= rui "table/header_cell", header: "Actions" %>
+  <%% end %>
+
+  <%%= rui "table/body" do %>
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell" do %>
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+            JD
+          </div>
+          <span class="font-medium">John Doe</span>
+        </div>
+      <%% end %>
+      <%%= rui "table/cell" do %>
+        <div>
+          <p class="text-sm font-medium">john@example.com</p>
+          <p class="text-xs text-zinc-500">Administrator</p>
+        </div>
+      <%% end %>
+      <%%= rui "table/cell" do %>
+        <div class="flex space-x-2">
+          <%%= rui :button, label: "Edit", variant: :primary, size: :sm %>
+          <%%= rui :button, label: "Delete", variant: :danger, size: :sm %>
+        </div>
+      <%% end %>
+    <%% end %>
+  <%% end %>
+
+  <%%= rui "table/footer" do %>
+    <%%= rui "table/row" do %>
+      <%%= rui "table/cell", colspan: 3, classes: "text-center text-sm text-zinc-500 bg-zinc-50" do %>
+        <div class="py-2">
+          <p>Showing 1 of 1 users</p>
+          <p class="text-xs mt-1">Last updated: <%= Date.current.strftime("%B %d, %Y") %></p>
+        </div>
+      <%% end %>
+    <%% end %>
+  <%% end %>
+<%% end %>
