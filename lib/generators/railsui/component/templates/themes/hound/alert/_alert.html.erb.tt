@@ -207,7 +207,7 @@ Usage examples:
 
   theme = color_map[color] || color_map[:primary]
   wrapper_classes = [
-    "relative rounded p-4 text-sm flex flex-col gap-2 md:flex-row md:justify-between md:items-start",
+    "relative rounded p-4 text-sm",
     theme[:bg], theme[:text], theme[:border], classes
   ].compact.join(" ")
   wrapper_attrs = {}
@@ -215,21 +215,22 @@ Usage examples:
 %>
 
 <%%= tag.div class: wrapper_classes, **wrapper_attrs.to_h do %>
-  <div class="flex items-start gap-4">
-    <%% if icon.present? %>
+  <%% if icon.present? %>
+    <div class="flex items-start gap-3 mb-1">
       <%%= icon icon, class: "size-5 flex-shrink-0 #{theme[:icon]}" %>
-    <%% end %>
-
-    <div class="flex-1">
       <%% if title.present? %>
         <p class="font-semibold mb-1"><%%= title %></p>
       <%% end %>
-
-      <%% if content.present? %>
-        <div><%%= content %></div>
-      <%% end %>
     </div>
-  </div>
+  <%% end %>
+
+  <%% if title.present? && !icon.present? %>
+    <p class="font-semibold mb-1"><%%= title %></p>
+  <%% end %>
+
+  <%% if content.present? %>
+    <div><%%= content %></div>
+  <%% end %>
 
   <%% if dismissable %>
     <button type="button" class="absolute top-2 right-2 size-8 rounded-full transition ease-in-out duration-200 hover:bg-current/5 dark:hover:bg-current/20 flex items-center justify-center shrink-0" data-action="click->alert#close">

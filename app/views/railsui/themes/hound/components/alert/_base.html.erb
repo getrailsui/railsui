@@ -1,0 +1,40 @@
+<div class="prose prose-neutral">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Alert
+
+# Generator options
+# --stimulus - Generates a new Stimulus controller for the component named alert_controller.js and registers it.
+# --directory - Specify a custom directory for the component to be placed in.
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named alert_controller.js and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+<ul>
+  <li><code>title</code>: Optional alert heading text</li>
+  <li><code>icon</code>: Optional Heroicon name for alert icon</li>
+  <li><code>dismissable</code>: Adds a close button when set to true</li>
+  <li><code>classes</code>: Additional CSS classes for alert container</li>
+  <li><code>content</code>: Alert message as string or block content</li>
+  <li><code>color</code>: Theme color variants:
+    <ul>
+      <li>Base colors: <code>:primary</code>, <code>:secondary</code></li>
+      <li>Status colors: <code>:red</code>, <code>:yellow</code>, <code>:green</code></li>
+      <li>Extended palette: <code>:orange</code>, <code>:amber</code>, <code>:lime</code>, <code>:emerald</code>, <code>:teal</code>, <code>:cyan</code>, <code>:sky</code>, <code>:blue</code>, <code>:indigo</code>, <code>:violet</code>, <code>:purple</code>, <code>:fuchsia</code>, <code>:pink</code>, <code>:rose</code></li>
+      <li>Neutral tones: <code>:slate</code>, <code>:gray</code>, <code>:zinc</code>, <code>:neutral</code>, <code>:stone</code></li>
+    </ul>
+  </li>
+</ul>
+
+
+<h2>Usage examples</h2>
+
+</div>

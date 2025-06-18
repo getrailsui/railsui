@@ -1,5 +1,7 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/alert" %>
 
+<%= render "#{path}/base" %>
+<%= divider %>
 <%= render "#{path}/with_description" %>
 <%= divider %>
 <%= render "#{path}/with_list" %>
