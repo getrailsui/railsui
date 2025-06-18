@@ -47,26 +47,10 @@
 </article>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-%article.py-6.prose.dark:prose-invert.first:pt-0{id: "#{dom_id post }"}
-  %div
-    %p.my-0.font-medium.font-heading
-      Title
-    %p.my-0
-      = post.title
-  %div
-    %p.my-0.font-medium.font-heading
-      Content
-    %p.my-0
-      = post.content
-  %time.text-zinc-600.dark:text-zinc-400.text-xs.mt-2{datetime: "#{post.created_at.to_formatted_s(:long)}"} Created
-    = time_ago_in_words(post.created_at) + " ago"
-<% end %>
 <% content_for :ruby do %>
 
 <% end %>
-<%= render_snippet active_tab: "erb", erb_filename: "_post.html.erb", haml_filename: "_post.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "_post.html.erb" %>
 <% end %>
 <% end %>
 </div>

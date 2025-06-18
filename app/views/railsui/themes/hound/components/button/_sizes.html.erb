@@ -25,11 +25,6 @@
 <%%= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm" %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg"
-= button_tag "Base Button", type: "button", class: "btn btn-primary"
-= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

@@ -80,26 +80,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.relative.md:inline-block.block.md:w-auto.w-full{"data-controller" => "railsui-dropdown"}
-  = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-3" do
-    Dropdown
-    \#{icon "chevron-down", class: "size-3"}
-  %ul.hidden.origin-top-right.absolute.left-0.top-10.dropdown-menu{"data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-    %li
-      = link_to "#", class: "dropdown-item" do
-        = icon "bookmark", class: "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0"
-        %span Bookmark
-    %li
-      = link_to "#", class: "dropdown-item" do
-        = icon "flag", class: "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0"
-        %span Report
-    %li
-      = link_to "#", class: "dropdown-item" do
-        = icon "arrow-down-tray", class: "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0"
-        %span Export
-<% end %>
-
 <%= render_snippet %>
 <% end %>
 <% end %>

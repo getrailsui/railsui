@@ -47,12 +47,6 @@
 <%%= image_tag demo_avatar_url(id: 8, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover" %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= image_tag demo_avatar_url(id: 46, variant: "men"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover"
-= image_tag demo_avatar_url(id: 46, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover"
-= image_tag demo_avatar_url(id: 8, variant: "women"), alt: "Demo Avatar", class: "size-16 rounded-full object-cover"
-<% end %>
-
 <% content_for :ruby, flush: true do %>
 def demo_avatar_url(options = {})
   id = options[:id] || "22"

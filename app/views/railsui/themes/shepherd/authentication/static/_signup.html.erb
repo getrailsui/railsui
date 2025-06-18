@@ -187,33 +187,7 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/users/registrations/new.html.erb
-= render "users/auth_layout" do
-  %h1.h3.mb-6 Sign up
-  = form_with(model: @user, method: :post) do |f|
-    = render "rui/shared/error_messages", resource: f.object
-    .form-group
-      = f.label :email, class: "form-label"
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com"
-    .form-group
-      .flex.items-center.justify-between.mb-2
-        = f.label :password, class: "form-label mb-0"
-        - if @minimum_password_length
-          .inline.prose.prose-sm.prose-zinc.dark:prose-invert
-            %p ( characters minimum)
-      = f.password_field :password, autocomplete: "new-password", class: "form-input"
-    .form-group
-      = f.label :password_confirmation, class: "form-label"
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
-    = f.submit "Sign up", class: "btn btn-primary w-full"
-- content_for :links do
-  %p
-    Already have an account?
-    %a{href: "/signin"} Sign in
-<% end %>
-
-<%= render_snippet active_tab: "erb", html_filename: "new.html", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<%= render_snippet active_tab: "erb", html_filename: "new.html", erb_filename: "new.html.erb" %>
 <% end %>
 <% end %>
 

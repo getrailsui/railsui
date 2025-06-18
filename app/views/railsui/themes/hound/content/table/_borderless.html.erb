@@ -86,27 +86,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-%table.table-auto.w-full
-  %thead
-    %tr
-      %th.text-left.p-3.border-b-2.border-slate-200(class="dark:border-slate-700/80" scope="col") First
-      %th.text-left.p-3.border-b-2.border-slate-200(class="dark:border-slate-700/80" scope="col") Last
-      %th.text-left.p-3.border-b-2.border-slate-200(class="dark:border-slate-700/80" scope="col") Handle
-  %tbody
-    %tr
-      %td.p-3.text-left Andy
-      %td.p-3.text-left L.
-      %td.p-3.text-left @railsui_
-    %tr
-      %td.p-3.text-left Web
-      %td.p-3.text-left Crunch
-      %td.p-3.text-left @webcrunchblog
-    %tr
-      %td.p-3.text-left(colspan="2") justalever
-      %td.p-3.text-left @justalever
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

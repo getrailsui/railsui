@@ -407,47 +407,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.flex.justify-center.items-center.h-32
-  .relative.w-56{"data-action" => "click@window->railsui-combobox#handleOutsideClick", "data-controller" => "railsui-combobox", "data-railsui-combobox-active-class-value" => "bg-zinc-900 text-white hover:bg-zinc-950", "data-railsui-combobox-inactive-class-value" => "bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-900 hover:bg-zinc-50"}
-    / Hidden input for form submission
-    %input{"data-railsui-combobox-target" => "hiddenInput", name: "selected_option", type: "hidden"}/
-    / Top-level combobox button
-    .form-input.flex.items-center.justify-between{"aria-controls" => "combobox-list", "aria-expanded" => "false", "aria-labelledby" => "combobox-label", class: "pr-1.5", "data-action" => "click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown", "data-railsui-combobox-target" => "box", role: "combobox", tabindex: "0"}
-      %span#combobox-label.sr-only Select a format
-      %span{"data-railsui-combobox-target" => "text"} Select a format...
-      = icon "chevron-up-down", class: "stroke-zinc-500 pointer-events-none size-5"
-    / combobox dropdown
-    .absolute.z-10.top-12.left-0.bg-white.dark:bg-zinc-800.rounded-xl.shadow-lg.border.duration-200.origin-top.hidden.w-full.overflow-hidden{"aria-labelledby" => "combobox-label", class: "border-zinc-300/80 dark:border-zinc-700/80", "data-action" => "keydown.esc->railsui-combobox#hideDropdown", "data-railsui-combobox-target" => "list", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95", role: "listbox"}
-      / Search input inside dropdown
-      .p-2
-        %label.sr-only{for: "combobox-search"} Search
-        .relative
-          %input#combobox-search.form-input.rounded-none.border-none.focus:ring-0.ring-0.px-2.py-1{"aria-autocomplete" => "list", autocomplete: "off", "data-action" => "input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown", "data-railsui-combobox-target" => "input", placeholder: "Search...", type: "text"}/
-      / List of options
-      %ul{role: "presentation"}
-        %li#option-1.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "PDF", role: "option", tabindex: "0"}
-          PDF
-          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
-            = icon "check", class: "text-zinc-100 size-4"
-        %li#option-2.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "CSV", role: "option", tabindex: "0"}
-          CSV
-          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
-            %svg.text-zinc-100.size-4{"aria-hidden" => "true", "data-slot" => "icon", fill: "none", stroke: "currentColor", "stroke-width" => "1.5", variant: "outline", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
-              %path{d: "m4.5 12.75 6 6 9-13.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
-        %li#option-3.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "Excel", role: "option", tabindex: "0"}
-          Excel
-          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
-            = icon "check", class: "text-zinc-100 size-4"
-        %li#option-4.px-3.cursor-pointer.flex.items-center.justify-between{"aria-selected" => "false", class: "py-1.5", "data-action" => "click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption", "data-railsui-combobox-target" => "option", "data-value" => "JPEG", role: "option", tabindex: "0"}
-          JPEG
-          %span.hidden{"aria-hidden" => "true", "data-railsui-combobox-target" => "checkmark"}
-            = icon "check", class: "text-zinc-100 size-4"
-      / No results message
-      .hidden.px-4.py-2.text-zinc-500{"aria-hidden" => "true", "data-railsui-combobox-target" => "noresults"}
-        No results found
-<% end %>
-
 <% content_for :js, flush: true do %>
 // requires stimulus.js to be configured
 

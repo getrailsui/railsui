@@ -85,28 +85,6 @@
 	<%% end %>
 <%% end %>
 <% end %>
-
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-= tag.table class: "table-auto w-full border border-zinc-300 dark:border-zinc-700/80" do
-  = tag.thead do
-    = tag.tr do
-      = tag.th "First", scope: "col", class: "text-left p-3 border border-zinc-200 dark:border-zinc-700/80"
-      = tag.th "Last", scope: "col", class: "text-left p-3 border border-zinc-200 dark:border-zinc-700/80"
-      = tag.th "Handle", scope: "col", class: "text-left p-3 border border-zinc-200 dark:border-zinc-700/80"
-  = tag.tbody do
-    = tag.tr do
-      = tag.td "Andy", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-      = tag.td "L.", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-      = tag.td "@railsui_", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-    = tag.tr do
-      = tag.td "Web", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-      = tag.td "Crunch", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-      = tag.td "@webcrunchblog", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-    = tag.tr do
-      = tag.td "justalever", colspan: "2", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-      = tag.td "@justalever", class: "p-3 border border-zinc-200 dark:border-zinc-700/80"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

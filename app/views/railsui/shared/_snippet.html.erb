@@ -11,21 +11,22 @@
 <div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg overflow-clip dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 relative scrollbar border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
   <div class="bg-neutral-800">
     <ul class="flex items-center justify-start space-x-2 border-b border-neutral-700 px-3">
+     <% if content_for?(:erb) %>
+        <li class="flex items-center">
+          <a href="#erb"
+          @click.prevent="active = 'erb'"
+          :class="active == 'erb' ? 'text-rose-400 border-rose-400' : 'border-transparent text-white/90'"
+          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400"><%= local_assigns[:erb_filename] %></a>
+          <span class="w-px h-11 bg-gradient-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
+        </li>
+      <% end %>
+
       <% if content_for?(:html) %>
         <li class="flex items-center">
           <a href="#html"
           @click.prevent="active = 'html'"
           :class="active == 'html' ? 'text-pink-400 border-pink-400' : 'border-transparent text-white/90'"
           class="-ml-2 pl-5 pr-3 py-3 font-mono  text-sm border-b-2 hover:text-pink-400  hover:border-pink-400"><%= local_assigns[:html_filename] %></a>
-          <span class="w-px h-11 bg-gradient-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
-        </li>
-      <% end %>
-      <% if content_for?(:erb) %>
-        <li class="flex items-center">
-          <a href="#erb"
-          @click.prevent="active = 'erb'"
-          :class="active == 'erb' ? 'text-rose-400 border-rose-400' : 'border-transparent text-white/90'"
-          class="-ml-3 pl-6 pr-4 py-3 font-mono text-sm border-b-2 hover:text-rose-400 hover:border-rose-400"><%= local_assigns[:erb_filename] %></a>
           <span class="w-px h-11 bg-gradient-to-b from-neutral-600 to-neutral-700 transform rotate-[20deg] block ml-2"></span>
         </li>
       <% end %>

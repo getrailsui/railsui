@@ -25,12 +25,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-- if notice
-  .bg-indigo-600.text-white.text-center.p-4{"data-controller" => "alert", :role => "alert"}
-    %p= sanitize notice
-<% end %>
-
 <% content_for :js, flush: true do %>
 import { Controller } from "@hotwired/stimulus"
 

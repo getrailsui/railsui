@@ -34,17 +34,7 @@ Someone famous in
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-%figure.pl-6.border-l-2.border-primary-500.py-1
-  %blockquote.text-xl.font-heading.font-light.mb-1.text-zinc-800.dark:text-zinc-100
-    %p A well-known quote, contained in a blockquote element.
-  %figcaption.text-zinc-500.text-sm.dark:text-zinc-300
-    Someone famous in
-    %cite(title="Source Title") Source Title
-<% end %>
-
-<%= render_snippet %>
+<%= render_snippet active_tab: "html" %>
 <% end %>
 
 <% end %>

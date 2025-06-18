@@ -81,23 +81,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.relative.overflow-hidden
-  .pointer-events-none.absolute.flex.items-center.justify-end.px-4.py-6.sm:p-6.top-0.right-0.left-0.w-full.animate-toast-from-right(aria-live="assertive" data-controller="railsui-toast")
-    .pointer-events-auto.w-full.max-w-sm.overflow-hidden.rounded-md.bg-white.shadow-lg.ring-1.dark:bg-zinc-950.dark:border(class="dark:border-zinc-700/80 ring-black/5")
-      .p-4
-        .flex.items-start
-          .shrink-0
-            = icon "hand-thumb-up", class: "size-6 text-blue-500 dark:text-blue-400"
-          .ml-3.w-0.flex-1(class="pt-0.5")
-            %p.text-sm.font-medium.text-zinc-900.dark:text-white Successfully liked!
-            %p.mt-1.text-sm.text-zinc-500.dark:text-zinc-300 John Doe has been notified.
-          .ml-4.flex.shrink-0
-            %button.inline-flex.rounded-sm.bg-white.text-zinc-400.hover:text-zinc-500.focus:outline-hidden.focus:ring-2.focus:ring-zinc-50.dark:bg-transparent.dark:focus:ring-zinc-500.dark:hover:text-zinc-100.dark:focus:text-zinc-100(data-action="click->railsui-toast#hide" type="button")
-              %span.sr-only Close
-              = icon "x-mark", class: "size-5"
-<% end %>
-
 <% content_for :css, flush: true do %>
 
 <% end %>

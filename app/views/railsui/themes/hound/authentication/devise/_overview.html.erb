@@ -81,31 +81,7 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/devise/_auth_layout.html.erb
-.sm:h-[calc(100vh_-_52px)].pt-10.sm:pt-0.flex.flex-col.items-center.justify-center.bg-cover.bg-center.px-4{style: "background-image: url('#{asset_url('railsui/fusion.png')}')"}
-  .sm:flex-1.flex.flex-col.justify-center.w-full{class: "sm:w-[428px]"}
-    %div
-      .flex.justify-center
-        = link_to root_path do
-          = icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto"
-      .mt-6
-        = yield :masthead
-      .bg-white.shadow-xs.rounded-lg.p-8.border{class: "border-slate-300/60"}
-        = yield
-        - if devise_mapping.omniauthable? && %w{ registrations sessions }.include?(controller_name)
-          %hr.my-6/
-          - resource_class.omniauth_providers.each do |provider|
-            .my-2
-              = button_to omniauth_authorize_path(resource_name, provider), class: "btn btn-white w-full", data: { turbo: false } do
-                = icon "#{provider.gsub(/\s+/, '').downcase}", custom_path: "/railsui/omniauth/#{provider.gsub(/\s+/, '').downcase}.svg", class: "mr-2 size-5"
-                %span
-                  Continue with #{OmniAuth::Utils.camelize(provider)}
-      .mt-4
-        = render "devise/shared/links"
-<% end %>
-<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb", haml_filename: "_auth_layout.haml.erb") %>
-
+<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb") %>
 
 
 <div class="prose prose-neutral dark:prose-invert my-6 max-w-full">
@@ -113,10 +89,6 @@
 </div>
 
 <% content_for :html, flush: true do %>
-
-<% end %>
-
-<% content_for :haml, flush: true do %>
 
 <% end %>
 
@@ -154,17 +126,8 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/devise/shared/_links
-- if devise_mapping.confirmable? && controller_name != 'confirmations'
-  .text-center.mb-1
-    = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-sm text-slate-600 hover:text-slate-800"
-- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  .text-center.mb-2
-    = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-sm text-slate-600 hover:text-slate-800"
-<% end %>
 
-<%= render_snippet(active_tab: "erb", erb_filename: "_links.html.erb", haml_filename: "_links.haml.erb") %>
+<%= render_snippet(active_tab: "erb", erb_filename: "_links.html.erb") %>
 </div>
 
 <%= divider %>
@@ -300,21 +263,7 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-- if resource.errors.any?
-  .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-rose-50.text-sm{class: "dark:bg-rose-400/10 dark:border-rose-400/20", role: "alert"}
-    .flex.items-start.gap-4
-      = icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid
-      .flex-1
-        %p.font-bold
-          = pluralize(resource.errors.count, "error")   prohibited this post from being saved:
-        %ul.list-disc.mt-3.ml-4
-          - resource.errors.each do |error|
-            %li
-            = error.full_message
-<% end %>
-
-<%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb" %>
 <% end %>
 <% end %>
 </div>

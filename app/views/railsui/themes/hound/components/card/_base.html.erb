@@ -24,12 +24,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border(class="border-slate-300/70 dark:border-slate-600/70 md:w-[350px]")
-  %h3.text-xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Create a message
-  %p.prose.prose-slate.dark:prose-invert.mt-2.mb-4 Send a message to your teammates.
-  %button.btn.btn-primary Start writing
-<% end %>
 <%= render_snippet(active_tab: :erb) %>
 <% end %>
 <% end %>

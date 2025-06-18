@@ -55,27 +55,7 @@
 <%%= email_action "Start shopping", "#", align: "center", fullwidth: true, theme: "secondary" %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/some_mailer/promotion.haml.erb
-/ Add width and height attributes to all images for maximum cross-email client support
-= image_tag "your/promotion/image.jpg", alt: "Promotional image example", width: "1200px", height: "600px"
-= spacer(16)
-%h1 Limited time offer!
-= spacer(16)
-%p Lorem ipsum dolor...
-= spacer(16)
-= email_callout do
-  %p
-    For a limited time use the coupon code
-    %strong 50OFF
-    for 50% off your first purchase.
-= spacer(16)
-%p Lorem ipsum dolor...
-= spacer(16)
-= email_action "Start shopping", "#", align: "center", fullwidth: true, theme: "secondary"
-<% end %>
-
-  <%= render_snippet active_tab: "erb", erb_filename: "promotion.html.erb", haml_filename: "promotion.haml.erb" %>
+  <%= render_snippet active_tab: "erb", erb_filename: "promotion.html.erb" %>
 <% end %>
 <% end %>
 

@@ -129,39 +129,13 @@ data-railsui-tabs-inactive-tab="py-2 px-4 flex items-center space-x-3 whitespace
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-2 px-4 border-b border-zinc-300 border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-t", "data-railsui-tabs-inactive-tab" => "py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent"}
-  .border-zinc-300.border-b.text-zinc-600.dark:text-zinc-200.dark:border-zinc-600{class: "text-[15px]"}
-    %nav.-mb-px.flex.items-center.flex-wrap.font-heading{role: "navigation"}
-      = link_to "#", class: "py-2 px-4 border-b border-primary-500 flex items-center space-x-3 bg-white whitespace-nowrap text-primary-500 dark:bg-primary-500 dark:text-white rounded-t", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "chat-bubble-oval-left-ellipsis", class: "size-5"
-        %span Activity
-      = link_to "#", class: "py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "user-circle", class: "size-5"
-        %span Account
-      = link_to "#", class: "py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "credit-card", class: "size-5"
-        %span Billing
-      = link_to "#", class: "py-2 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-white dark:border-zinc-600 dark:bg-transparent", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "users", class: "size-5"
-        %span Team
-  .p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    Some activities...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    Account information...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    Billing information...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    Team information...
-<% end %>
-
 <% content_for :js, flush: true do %>
 // Docs: https://github.com/getrailsui/railsui-stimulus/
 import { RailsuiTabs } from 'railsui-stimulus'
 application.register('railsui-tabs', RailsuiTabs)
 <% end %>
 
-  <%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "index.js" %>
+  <%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", js_filename: "index.js" %>
 <% end %>
 <% end %>
 </div>

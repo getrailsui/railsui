@@ -45,7 +45,7 @@ module Railsui
     end
 
     def render_snippet(options={})
-      active_tab = options[:active_tab] ||= "html"
+      active_tab = options[:active_tab] ||= "erb"
       html_filename = options[:html_filename] ||= ".html"
       erb_filename = options[:erb_filename] ||= ".html.erb"
       haml_filename = options[:haml_filename] ||= ".haml.erb"

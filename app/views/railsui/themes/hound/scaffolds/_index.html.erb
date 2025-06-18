@@ -85,24 +85,10 @@
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.max-w-3xl.mx-auto.px-4.my-16
-  .flex.items-center.justify-between.pb-6.border-b.dark:border-slate-700
-    %h1.h2 Posts
-    .flex.items-center.justify-end
-      = link_to "New Post", new_post_path, class: "btn btn-primary"
-  #posts.divide-y.dark:divide-slate-700.mb-10
-    - @posts.each do |post|
-      .py-3
-        = render post
-        = link_to "View post", post, class: "btn-link my-3 inline-block"
-<% end %>
-
 <% content_for :ruby, flush: true do %>
 
 <% end %>
-<%= render_snippet active_tab: "erb", erb_filename: "index.html.erb", haml_filename: "index.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "index.html.erb" %>
 <% end %>
 <% end %>
 </div>

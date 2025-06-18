@@ -1,6 +1,6 @@
 <%### input w/ label %>
 <div id="input-group-with-label">
-  <%= render layout: example, locals: { heading: "Input with label", section: "Input Group" } do %>
+<%= render layout: example, locals: { heading: "Input with label", section: "Input Group" } do %>
 
 <%= render preview('gray') do %>
   <div class="form-group mb-0">
@@ -26,20 +26,13 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group
-    = f.label :email, class: "form-label"
-    = f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email"
-<% end %>
-
 <%= render_snippet %>
 <% end %>
 <% end %>
 </div>
 
   <%### input w/ label + help text %>
-  <%= divider %>
+<%= divider %>
 
 <div id="input-group-with-help-text">
 <%= render layout: example, locals: { heading: "Input with label and help text" } do %>
@@ -69,14 +62,6 @@
     <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-1">This text helps you, right?</p>
   </div>
 <%% end %>
-<% end %>
-
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group
-    = f.label :email, class: "form-label"
-    = f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email"
-  %p.text-sm.text-slate-600.dark:text-slate-400.leading-relaxed.mt-1 This text helps you, right?
 <% end %>
 
 <%= render_snippet %>
@@ -135,22 +120,7 @@
 <%% end %>
 <% end %>
 
-  <%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group.relative
-  = email_field_tag "email", nil, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
-  = icon "exclamation-circle", class: "hidden size-5 text-slate-400 absolute left-3 top-3"
-    %p.hidden.mt-1.text-sm.text-red-700.dark:text-red-400 Please enter a valid email
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group.relative
-    = f.email_field :email, class: "form-control", "aria-label": "Email", placeholder: "john.doe@example.com"
-    = icon "exclamation-circle", class: "hidden size-5 text-slate-400 absolute left-3 top-3"
-  = f.submit class: "btn btn-primary"
-  <% end %>
-  <%= render_snippet %>
+<%= render_snippet %>
 <% end %>
 <% end %>
 </div>
@@ -218,27 +188,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group
-  = label_tag "email", "Email", class: "form-label"
-    .relative
-      = email_field_tag "email", "john.doe@", class: "form-input peer pr-10 invalid:border-red-700 invalid:text-red-700 invalid:ring-red-50 dark:invalid:border-red-400 dark:invalid:text-red-400 dark:invalid:ring-red-50/10", "aria-label": "Email", placeholder: "john.doe@example.com"
-      = icon "exclamation-circle", class: "size-5 text-red-700 dark:text-red-400 absolute right-3 top-3 invisible peer-invalid:visible"
-    %p.mt-1.text-sm.text-red-700.dark:text-red-400.invisible.peer-invalid:visible
-      Please enter a valid email
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-.form-group
-  .relative
-    = f.email_field :email, class: "form-input peer pr-10 invalid:border-red-700 invalid:text-red-700 invalid:ring-red-50 dark:invalid:border-red-400 dark:invalid:text-red-400 dark:invalid:ring-red-50/10", "aria-label": "Email", placeholder: "john.doe@example.com"
-    = icon "exclamation-circle", class: "size-5 text-red-700 dark:text-red-400 absolute right-3 top-3 invisible peer-invalid:visible"
-  %p.mt-1.text-sm.text-red-700.dark:text-red-400.invisible.peer-invalid:visible
-    Please enter a valid email
-= f.submit class: "btn btn-primary"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>
@@ -276,13 +225,6 @@
     <%%= f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email", disabled: true %>
   </div>
 <%% end %>
-<% end %>
-
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group
-    = f.label :email, class: "form-label"
-    = f.email_field :email, class: "form-input", placeholder:  "john.doe@example.com", "aria-label": "Email", disabled: true
 <% end %>
 
 <%= render_snippet %>
@@ -333,15 +275,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group
-    = f.label :website, class: "form-label"
-    .relative
-      .absolute.left-px.border-r.border-slate-300.top-px.bg-slate-100.dark:border-slate-700.dark:text-slate-200.text-base.rounded-l-lg.flex.items-center.justify-center.px-3.text-slate-700.select-none{class: "dark:bg-slate-700/80 h-[40px]"} https://
-      = f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website"
-<% end %>
-
   <%= render_snippet %>
 <% end %>
 <% end %>
@@ -389,16 +322,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group
-    = f.label :amount, "Enter amount", class: "form-label"
-    .relative
-      %span.absolute.left-3.text-slate-500.dark:text-slate-400{class: "top-[9px]"} $
-      = f.text_field :amount, class: "form-input pl-7", placeholder: "5.00", "aria-label": "Enter amount"
-      %span.absolute.right-3.top-[11px].text-slate-500.text-sm USD
-<% end %>
-
     <%= render_snippet %>
   <% end %>
 <% end %>
@@ -444,16 +367,6 @@
     </div>
   </div>
 <%% end %>
-<% end %>
-
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group
-    = f.label :users, "Search users", class: "form-label"
-    .relative
-      = icon "users", class: "size-5 stroke-current text-slate-500 absolute left-3 top-3"
-      = f.search_field :users, class: "form-input pl-10", placeholder: "John Doe", "aria-label": "Search users"
-    = f.submit class: "rounded-r-lg rounded-l-none bg-slate-100 border-slate-300 border rounded px-4 py-[9px] absolute right-0 shadow-xs top-0 focus:ring-4 focus:ring-primary-50 focus:border-slate-400 text-slate-700 dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 dark:focus:ring-primary-500/30 font-semibold text-[14.5px]"
 <% end %>
 
 <%= render_snippet %>

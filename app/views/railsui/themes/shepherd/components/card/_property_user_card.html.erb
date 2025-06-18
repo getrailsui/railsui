@@ -57,20 +57,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.border.shadow-sm.rounded-lg.p-4.dark:focus:border-zinc-600{class: "border-zinc-300/90 shadow-zinc-300/20 dark:shadow-zinc-950/50 dark:bg-zinc-800/90 dark:border-zinc-600/80 dark:focus:ring-zinc-600/30"}
-  = image_tag "https://picsum.photos/600/600", alt: "Image of Mountain Vista Chalet", class: "rounded-lg h-[174px] w-full object-cover object-center shadow dark:shadow-none dark:border dark:border-zinc-600/80 border-transparent mb-4"
-  .flex.items-center.gap-3
-    = image_tag demo_avatar_url(variant: "women", id: "78"), class: "size-10 rounded-full object-cover", alt: "Dannie White"
-    .flex-1
-      %p.font-medium.dark:text-white.font-heading.text-zinc-900 Dannie White
-      %p.font-light.text-sm.text-zinc-600.font-heading.dark:text-zinc-400 Mountain Vista Chalet
-  .flex.justify-between.items-end.pt-3
-    .flex.items-center.gap-2
-      = icon "clock", class: "size-5 text-zinc-500 stroke-current dark:text-zinc-300"
-      %span.text-zinc-600.dark:text-zinc-400.text-sm Aug 24, 3pm
-    = link_to "View", "#", class: "btn btn-white"
-<% end %>
 
 <%= render_snippet %>
 <% end %>

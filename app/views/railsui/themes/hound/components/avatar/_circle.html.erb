@@ -46,19 +46,6 @@
 <%%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-24 rounded-full object-cover" %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ size-8
-\&lt;%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-8 rounded-full object-cover" %&gt;
-/ size-12
-\&lt;%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-12 rounded-full object-cover" %&gt;
-/ size-16
-\&lt;%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-16 rounded-full object-cover" %&gt;
-/ size-20
-\&lt;%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-20 rounded-full object-cover" %&gt;
-/ size-24
-\&lt;%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-24 rounded-full object-cover" %&gt;
-<% end %>
-
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>

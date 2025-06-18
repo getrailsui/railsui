@@ -48,10 +48,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= email_callout do
-  %p This is my neat email callout.
-<% end %>
 
 <%= render_snippet active_tab: :erb %>
 <% end %>

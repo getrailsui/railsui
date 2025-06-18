@@ -58,19 +58,7 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml do %>
-/ app/views/devise/unlocks/new.html.erb
-= render "devise/auth_layout" do
-  %h1.text-3xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight.mb-6 Resend unlock instructions
-  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-    = render "rui/shared/error_messages", resource: resource
-    .form-group
-      = f.label :email, class: "form-label"
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com"
-    = f.submit "Resend unlock instructions", class: "btn btn-primary w-full"
-<% end %>
-
-<%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "devise/unlocks/new.html.erb" %>
 <% end %>
 <% end %>
 

@@ -126,31 +126,7 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/users/sessions/new.html.erb
-= render "users/auth_layout" do
-  %h1.h2.mb-6 Sign in
-  = form_for(model: @user, method: :post) do |f|
-    = render "rui/shared/error_messages", resource: f.object
-    .form-group
-      = f.label :email, class: "form-label"
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address"
-    .form-group
-      = f.label :password, class: "form-label"
-      = f.password_field :password, autocomplete: "current-password", class: "form-input"
-    .flex.flex-wrap.justify-between.items-center.form-group
-      .flex.items-center
-        = f.check_box :remember_me, class: "form-input-checkbox"
-        = f.label :remember_me, class: "form-check-label ml-2"
-      = link_to "Forgot your password?", "#", class: "btn-link text-sm"
-    = f.submit "Sign in", class: "btn btn-primary hover:cursor-pointer w-full"
-
-- content_for :links do
-  %p
-    Don't have an account? #{link_to "Sign up", "/signup"}.
-<% end %>
-
-<%= render_snippet active_tab: "erb", html_filename: "new.html", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<%= render_snippet active_tab: "erb", html_filename: "new.html", erb_filename: "new.html.erb" %>
 
 <% end %>
 <% end %>

@@ -122,19 +122,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%div{"data-controller" => "modal"}
-  %button.btn.btn-primary{"data-action" => "click->railsui-modal#open", tabindex: "0", type: "button"}
-    Open modal
-  .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "modal-title", "aria-modal" => "true", "data-action" => "keyup@window->railsui-modal#closeWithEsc", "data-railsui-modal-target" => "container", role: "dialog"}
-    .h-screen.w-full.relative.flex.items-center.justify-center
-      .rounded-xl.shadow-xl.max-w-lg.bg-white.m-1.p-8.prose.prose-zinc.prose-headings:font-heading.prose-headings:font-semibold.prose-headings:tracking-tight.origin-bottom.mx-auto.dark:prose-invert.dark:bg-zinc-800.dark:text-zinc-100{"data-railsui-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
-        %h2#modal-title Modal Title
-        %p Oops! We've run out of lorem ipsum. Time to launch some real words into this space-time continuum!
-        .flex.justify-end.items-center.flex-wrap.space-x-4
-          %button.btn.btn-primary{"data-action" => "click->railsui-modal#close"} Close
-<% end %>
-
 <% content_for :js, flush: true do %>
 import { RailsuiModal } from 'railsui-stimulus'
 application.register('railsui-modal', RailsuiModal)

@@ -83,20 +83,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.relative.inline-block{"data-controller" => "railsui-dropdown"}
-  = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary" do
-    Right-aligned Dropdown Menu
-    \#{icon "chevron-down", class: "size-3 ml-2"}
-  .hidden.origin-top-right.absolute.right-0.top-14.dropdown-menu{"data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-    %div
-      = link_to "Bookmark", "#", class: "dropdown-item"
-    %div
-      = link_to "Report", "#", class: "dropdown-item"
-    %div
-      = link_to "Export", "#", class: "dropdown-item"
-<% end %>
-
 <%= render_snippet %>
 <% end %>
 <% end %>

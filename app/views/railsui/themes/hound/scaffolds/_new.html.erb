@@ -71,27 +71,11 @@
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.max-w-3xl.mx-auto.px-4.my-16
-  .mb-4.pb-6.border-b.dark:border-slate-700
-    %nav.my-6.font-medium.flex.text-slate-500.dark:text-slate-200.text-sm{"aria-label" => "breadcrumb"}
-      %ol.flex.flex-wrap.items-center.space-x-3
-        %li
-          = link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
-        %li.flex.space-x-3
-          .flex.items-center
-            %span.text-slate-300.dark:text-slate-500 /
-          %span.text-primary-600.dark:text-primary-500{"aria-current" => "page"} New
-    %h1.h2 New Post
-  %div
-    = render "form", post: @post
-<% end %>
 
 <% content_for :ruby do %>
 
 <% end %>
-<%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "new.html.erb" %>
 <% end %>
 <% end %>
 </div>
