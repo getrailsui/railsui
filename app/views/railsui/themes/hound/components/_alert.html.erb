@@ -16,6 +16,7 @@
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Configuration", "#alert-configuration" %>
     <%= component_link "With description", "#alert-with-description" %>
 		<%= component_link "With list", "#alert-with-list" %>
 		<%= component_link "With actions", "#alert-with-actions" %>

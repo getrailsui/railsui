@@ -23,7 +23,6 @@
 <span class="rounded bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80">White</span>
 <% end %>
 
-
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 <!-- Gray -->
@@ -58,9 +57,19 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
+<!-- Standard -->
+<%%= rui :badge, label: "My Badge" %>
 
+<!-- Pass a block with more options and content -->
+<%%= rui :badge, color: :indigo, classes: "inline-flex items-center gap-2" do %>
+  <%%= icon "information-circle", class: "size-4" %>
+  <span>Information</span>
+<%% end %>
 <% end %>
 
+<% content_for :bash, flush: true do %>
+
+<% end %>
 
 <%= render_snippet %>
 <% end %>

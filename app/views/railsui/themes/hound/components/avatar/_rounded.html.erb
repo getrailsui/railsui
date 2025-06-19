@@ -30,20 +30,15 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- size-8 -->
-<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-8 rounded-md object-cover", alt: "Avatar" %>
+<!-- User avatar using ActiveStorage and ImageProcessing -->
+<%%= rui :avatar, src: current_user.avatar.variant(resize_to_limit: [64, 64]), size: :md, rounded: :md %>
 
-<!-- size-12 -->
-<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-12 rounded-md object-cover", alt: "Avatar" %>
+<!-- # demo avatar. Pass 1..100 for id and "men" or "women" for variant -->
+<%%= rui :avatar, demo: { id: 7, variant: "women" }, size: :md, rounded: :md %>
+<% end %>
 
-<!-- size-16 -->
-<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-16 rounded-md object-cover", alt: "Avatar" %>
+<% content_for :bash, flush: true do %>
 
-<!-- size-20 -->
-<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-20 rounded-md object-cover", alt: "Avatar" %>
-
-<!-- size-24 -->
-<%%= image_tag demo_avatar_url(id: 35, variant: "men"), class: "size-24 rounded-md object-cover", alt: "Avatar" %>
 <% end %>
 
 <%= render_snippet active_tab: :erb %>

@@ -1,0 +1,41 @@
+<div id="avatar-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Avatar
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named <code>avatar_controller.js</code> and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+<ul>
+  <li><code>src</code>: An ActiveStorage attachment or image URL for the avatar</li>
+  <li><code>alt</code>: Fallback alt text for accessibility (default: "Avatar")</li>
+  <li><code>demo</code>: Generate a demo avatar - can be <code>true</code> or a hash like <code>{ id: 12, variant: "men" }</code></li>
+  <li><code>size</code>: Avatar size variants:
+    <ul>
+      <li><code>:xs</code> (24px), <code>:sm</code> (32px), <code>:md</code> (40px), <code>:lg</code> (48px), <code>:xl</code> (64px), <code>:"2xl"</code> (80px)</li>
+      <li>Default: <code>:md</code></li>
+    </ul>
+  </li>
+  <li><code>rounded</code>: Border radius variants:
+    <ul>
+      <li><code>:sm</code>, <code>:md</code>, <code>:lg</code>, <code>:xl</code>, <code>:full</code></li>
+      <li>Default: <code>:full</code></li>
+      <li>Set to <code>false</code> to disable rounded corners</li>
+    </ul>
+  </li>
+  <li><code>classes</code>: Additional CSS classes for avatar styling</li>
+  <li><code>content</code>: Unused but required local, passed automatically from <code>rui</code> helper</li>
+</ul>
+
+
+<h2>Usage examples</h2>
+
+</div>

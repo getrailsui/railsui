@@ -57,6 +57,17 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
+<!-- Pill -->
+<%%= rui :badge, label: "My Badge", color: :primary, variant: :pill %>
+
+<!-- Pass a block with more options and content -->
+<%%= rui :badge, color: :primary, classes: "inline-flex items-center gap-2", variant: :pill do %>
+  <%%= icon "information-circle", class: "size-4" %>
+  <span>Information</span>
+<%% end %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
 
 <% end %>
 

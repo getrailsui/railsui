@@ -1,11 +1,7 @@
-<div class="prose prose-neutral">
+<div id="alert-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
 <div class="not-prose">
 <% content_for :bash, flush: true do %>
 rails g railsui:component Alert
-
-# Generator options
-# --stimulus - Generates a new Stimulus controller for the component named alert_controller.js and registers it.
-# --directory - Specify a custom directory for the component to be placed in.
 <% end %>
 <%= render_snippet active_tab: :bash %>
 </div>

@@ -57,8 +57,20 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
+<!-- Outline -->
+<%%= rui :badge, label: "My Badge", color: :orange, variant: :outline %>
+
+<!-- Pass a block with more options and content -->
+<%%= rui :badge, color: :indigo, classes: "inline-flex items-center gap-2", variant: :outline do %>
+  <%%= icon "information-circle", class: "size-4" %>
+  <span>Information</span>
+<%% end %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
 
 <% end %>
+
 <%= render_snippet %>
 <% end %>
 <% end %>
