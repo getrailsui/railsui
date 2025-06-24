@@ -20,9 +20,13 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<%%= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg" %>
-<%%= button_tag "Base Button", type: "button", class: "btn btn-primary" %>
-<%%= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm" %>
+<%%= rui :button, label: "Small Button", size: :sm %>
+<%%= rui :button, label: "Default Button" %>
+<%%= rui :button, label: "Large Button", size: :lg %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
 <% end %>
 
 <%= render_snippet %>

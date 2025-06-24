@@ -31,20 +31,53 @@
   </div>
 
   <div>
+    <h2 class="font-semibold text-lg mb-4">Link Buttons</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button, label: "Primary Link", as: :link, href: "#", variant: :primary %>
+      <%%= rui :button, label: "Secondary Link", as: :link, href: "#", variant: :secondary %>
+      <%%= rui :button, label: "Danger Link", as: :link, href: "#", variant: :danger %>
+      <%%= rui :button, label: "Disabled Link", as: :link, href: "#", disabled: true, classes: "[&.disabled]:opacity-50 [&.disabled]:cursor-not-allowed" %>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="font-semibold text-lg mb-4">Link Button Sizes</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button, label: "Small Link", as: :link, href: "#", size: :sm %>
+      <%%= rui :button, label: "Default Link", as: :link, href: "#" %>
+      <%%= rui :button, label: "Large Link", as: :link, href: "#", size: :lg %>
+    </div>
+  </div>
+
+  <div>
     <h2 class="font-semibold text-lg mb-4">Button with Custom Classes and Data Attributes</h2>
     <div class="flex flex-wrap gap-4 items-center">
       <%%= rui :button, label: "Custom Button", classes: "custom-class", tag_options: { data: { action: "click->example#action" } } %>
+      <%%= rui :button, label: "Custom Link", as: :link, href: "#", classes: "custom-class", tag_options: { data: { action: "click->example#linkAction" } } %>
     </div>
   </div>
 
   <div>
     <h2 class="font-semibold text-lg mb-4">Button with Block Content</h2>
     <div class="flex flex-wrap gap-4 items-center">
-      <%%= rui :button do %>
+      <%%= rui :button, classes: "flex items-center gap-3" do %>
         <span>Button with Icon</span>
-        <%%= icon "arrow-right", classes: "ml-2" %>
+        <%%= icon "arrow-right", class: "size-4 shrink-0" %>
+      <%% end %>
+      <%%= rui :button, as: :link, variant: :dark, href: "#", classes: "flex items-center gap-3" do %>
+        <%%= icon "link", class: "size-4 shrink-0" %>
+        <span>Link with Icon</span>
       <%% end %>
     </div>
   </div>
-</div>
+
+  <div>
+    <h2 class="font-semibold text-lg mb-4">Mixed Button and Link Examples</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <%%= rui :button, label: "Save Changes", variant: :primary, button_type: "submit" %>
+      <%%= rui :button, label: "Cancel", as: :link, href: "#", variant: :secondary %>
+      <%%= rui :button, label: "Delete", variant: :danger, tag_options: { data: { confirm: "Are you sure?" } } %>
+      <%%= rui :button, label: "View Details", as: :link, href: "#", variant: :transparent %>
+    </div>
+  </div>
 </div>

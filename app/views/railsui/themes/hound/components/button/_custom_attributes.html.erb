@@ -1,0 +1,21 @@
+<div id="button-custom-attributes">
+
+<%= heading text: "Custom Attributes", class: "text-neutral-900 text-xl font-semibold dark:text-white scroll-mt-20 tracking-tight relative mb-6" %>
+
+<div class="prose prose-neutral dark:prose-invert mb-6"><p>Add custom html attributes as you would normally do in rails with the <code>tag_options</code> option.</p></div>
+
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= rui :button, label: "Custom Button", classes: "custom-class", tag_options: { data: { action: "click->example#action" } } %>
+<%%= rui :button, label: "Custom Link", as: :link, href: "#", classes: "custom-class", tag_options: { data: { action: "click->example#linkAction" } } %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
+<% end %>
+<%= render_snippet %>
+</div>

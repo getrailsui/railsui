@@ -1,0 +1,33 @@
+<div id="button-types">
+
+<%= heading text: "Types", class: "text-neutral-900 text-xl font-semibold dark:text-white scroll-mt-20 tracking-tight relative mb-6" %>
+
+<div class="prose prose-neutral dark:prose-invert mb-6">
+<p>Choose between <code>button</code>, <code>submit</code>, and <code>link</code> types. Additional us <code>as: :link</code> to change the element type to a normal link.</p>
+</div>
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- Regular button -->
+<%%= rui :button, label: "Save Changes", variant: :dark %>
+
+<!-- Button as submit -->
+<%%= rui :button, label: "Save Changes", variant: :primary, button_type: "submit", tag_options: { data: { turbo: false } } %>
+
+<!-- Button as reset -->
+<%%= rui :button, label: "Reset", variant: :secondary, button_type: "reset" %>
+
+<!-- Button as link -->
+<%%= rui :button, label: "Cancel", variant: :white,  as: :link, href: "#" %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
+
+</div>

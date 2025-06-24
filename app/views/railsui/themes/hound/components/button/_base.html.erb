@@ -1,42 +1,74 @@
-<div id="button-base">
-<%= render layout: example, locals: { heading: "Base", section: "Button" } do %>
+<div id="button-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Button
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
 
-<%= render preview('gray') do %>
-  <div class="flex items-center gap-3 flex-wrap">
-  <button type="button" class="btn btn-primary">Primary</button>
-  <button type="button" class="btn btn-secondary">Secondary</button>
-  <button type="button" class="btn btn-dark">Dark</button>
-  <button type="button" class="btn btn-light">Light</button>
-  <button type="button" class="btn btn-white">White</button>
-  <button type="button" class="btn btn-transparent">Transparent</button>
-  <button type="button" class="btn btn-danger">Danger</button>
-  <button type="button" class="btn btn-link">Link</button>
-  </div>
-<% end %>
+<h3>Generator Options</h3>
 
-<% content_for :example, flush: true do %>
-<% content_for :html, flush: true do %>
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-dark">Dark</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-white">White</button>
-<button type="button" class="btn btn-transparent">Transparent</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-link">Link</button>
-<% end %>
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named <code>button_controller.js</code> and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
 
-<% content_for :erb, flush: true do %>
-<%%= button_tag "Primary", type: "button", class: "btn btn-primary" %>
-<%%= button_tag "Secondary", type: "button", class: "btn btn-secondary" %>
-<%%= button_tag "Dark", type: "button", class: "btn btn-dark" %>
-<%%= button_tag "Light", type: "button", class: "btn btn-light" %>
-<%%= button_tag "Light", type: "button", class: "btn btn-white" %>
-<%%= button_tag "Danger", type: "button", class: "btn btn-danger" %>
-<%%= button_tag "Link", type: "button", class: "btn btn-link" %>
-<% end %>
+<h3>Component Properties</h3>
+<ul>
+  <li><code>label</code>: Fallback text if no block content is passed (default: <code>"Button"</code>)</li>
+  <li><code>variant</code>: Visual style variants:
+    <ul>
+      <li><code>:primary</code>, <code>:secondary</code>, <code>:dark</code>, <code>:white</code>, <code>:transparent</code>, <code>:light</code>, <code>:danger</code>, <code>:link</code></li>
+      <li>Default: <code>:primary</code></li>
+    </ul>
+  </li>
+  <li><code>size</code>: Optional size variants:
+    <ul>
+      <li><code>:sm</code> (small), <code>:lg</code> (large)</li>
+      <li>Default: standard size (no class applied)</li>
+    </ul>
+  </li>
+  <li><code>as</code>: Render type:
+    <ul>
+      <li><code>:button</code> (renders as HTML button element), <code>:link</code> (renders as HTML anchor element)</li>
+      <li>Default: <code>:button</code></li>
+    </ul>
+  </li>
+  <li><code>href</code>: URL for link destination:
+    <ul>
+      <li>Required when <code>as: :link</code></li>
+      <li>Can be any valid URL or Rails path helper</li>
+    </ul>
+  </li>
+  <li><code>button_type</code>: HTML button type attribute:
+    <ul>
+      <li><code>"button"</code>, <code>"submit"</code>, <code>"reset"</code></li>
+      <li>Default: <code>"button"</code></li>
+      <li>Only applies when <code>as: :button</code></li>
+    </ul>
+  </li>
+  <li><code>disabled</code>: Boolean for disabled state:
+    <ul>
+      <li><code>true</code> or <code>false</code></li>
+      <li>Default: <code>false</code></li>
+      <li>For buttons: adds <code>disabled</code> and <code>aria-disabled</code> attributes</li>
+      <li>For links: adds <code>disabled</code> class, <code>aria-disabled</code>, <code>tabindex="-1"</code>, and prevents navigation</li>
+    </ul>
+  </li>
+  <li><code>classes</code>: Additional CSS classes for custom styling</li>
+  <li><code>tag_options</code>: Hash of extra HTML attributes (e.g., data attributes, IDs, etc.)</li>
+  <li><code>content</code>: Passed automatically from <code>rui</code> block or fallback to label</li>
+</ul>
 
-<%= render_snippet %>
-<% end %>
-<% end %>
+<h3>Notes</h3>
+<ul>
+  <li>All buttons and links include a base <code>btn</code> class plus variant-specific classes like <code>btn-primary</code>, <code>btn-secondary</code>, etc.</li>
+  <li>Size classes (<code>btn-sm</code>, <code>btn-lg</code>) are applied in addition to variant classes</li>
+  <li>The component uses Rails' <code>tag.button</code> helper for buttons and <code>link_to</code> helper for links</li>
+  <li>Both buttons and links maintain the same visual styling through shared CSS classes</li>
+  <li>Disabled links are handled differently than disabled buttons for proper accessibility</li>
+  <li>Custom data attributes and other HTML attributes can be passed via <code>tag_options</code></li>
+</ul>
+
+<h2>Usage examples</h2>
 </div>

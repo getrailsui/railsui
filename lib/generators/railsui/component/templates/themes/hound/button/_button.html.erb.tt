@@ -1,4 +1,4 @@
-<%%# locals: (label: "Button", variant: :primary, size: nil, button_type: "button", classes: nil, disabled: false, tag_options: {}, content: nil) %>
+<%%# locals: (label: "Button", variant: :primary, size: nil, button_type: "button", classes: nil, disabled: false, tag_options: {}, content: nil, as: :button, href: nil) %>
 
 <%%# Button Component
     locals:
@@ -7,11 +7,13 @@
           :primary, :secondary, :dark, :white, :transparent, :light, :danger, :link
         (default: :primary)
       - size: optional size, one of: :sm, :lg
-      - button_type: HTML button type (default: "button")
+      - button_type: HTML button type (default: "button") - only used when as: :button
       - classes: additional classes to apply
       - disabled: true/false for disabled state (default: false)
       - tag_options: hash of extra tag attributes (e.g., { data: { action: "..." } })
       - content: passed automatically from `rui` block or fallback to label
+      - as: render as :button or :link (default: :button)
+      - href: URL for link (required when as: :link)
 
     Usage:
       Basic button:
@@ -28,6 +30,15 @@
 
       As a submit button:
       rui :button, "Submit Form", button_type: "submit"
+
+      As a link:
+      rui :button, "Go to Dashboard", as: :link, href: dashboard_path
+
+      As a link with variant:
+      rui :button, "View Profile", as: :link, href: profile_path, variant: :secondary
+
+      Disabled link:
+      rui :button, "Unavailable", as: :link, href: "#", disabled: true
 
       With a block:
       rui :button do
@@ -57,14 +68,38 @@
 
   button_classes = ["btn", variant_class, size_class, classes].compact.reject(&:empty?).join(" ")
 
-  options = {
-    type: button_type,
-    class: button_classes.strip,
-    disabled: disabled,
-    "aria-disabled": disabled
-  }
-
-  options.merge!(tag_options.symbolize_keys) if tag_options.present?
+  # Default to :button if as is not specified
+  as ||= :button
 %>
 
-<%%= tag.button content, **options %>
+<%% if as == :link %>
+  <%%
+    link_options = {
+      class: button_classes.strip
+    }
+
+    # Handle disabled state for links
+    if disabled
+      link_options[:class] += " disabled"
+      link_options[:"aria-disabled"] = true
+      link_options[:tabindex] = -1
+      # For disabled links, we might want to prevent navigation
+      link_options[:onclick] = "return false;"
+    end
+
+    link_options.merge!(tag_options.symbolize_keys) if tag_options.present?
+  %>
+  <%%= link_to content, (href || "#"), **link_options %>
+<%% else %>
+  <%%
+    button_options = {
+      type: button_type,
+      class: button_classes.strip,
+      disabled: disabled,
+      "aria-disabled": disabled
+    }
+
+    button_options.merge!(tag_options.symbolize_keys) if tag_options.present?
+  %>
+  <%%= tag.button content, **button_options %>
+<%% end %>

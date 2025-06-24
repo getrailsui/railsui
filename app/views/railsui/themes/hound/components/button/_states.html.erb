@@ -1,0 +1,27 @@
+<div id="button-states">
+<%= render layout: example, locals: { heading: "States", section: "Button" } do %>
+
+<div class="prose prose-neutral dark:prose-invert mb-6">
+<p>Use the <code>disabled</code> attribute to prevent a button from being clicked.</p>
+</div>
+
+<%= render preview 'gray' do %>
+<button class="btn btn-primary" type="button" disabled>Disabled button</button>
+<button class="btn btn-primary" type="submit" disabled>Submit button</button>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<button class="btn btn-primary" type="button" disabled>Disabled button</button>
+<button class="btn btn-primary" type="submit" disabled>Submit button</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= rui :button, label: "Disabled Button", disabled: true %>
+<%%= rui :button, label: "Submit Button", button_type: "submit", disabled: true %>
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

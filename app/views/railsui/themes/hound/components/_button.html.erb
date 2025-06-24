@@ -1,16 +1,27 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/button" %>
 
 <%= render "#{path}/base" %>
+<% divider %>
+<%= render "#{path}/default" %>
+<% divider %>
 <%= render "#{path}/sizes" %>
-<%= render "#{path}/expanded" %>
+<% divider %>
+<%= render "#{path}/states" %>
+<%= divider %>
+<%= render "#{path}/custom_attributes" %>
+<%= divider %>
+<%= render "#{path}/types" %>
 
 <%= system_pagination(prev_path: systems_components_breadcrumb_path, prev_text: "Breadcrumb", next_path: systems_components_card_path, next_text: "Card") %>
 
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
-    <%= component_link "Base", "#button-base" %>
+    <%= component_link "Configuration", "#button-configuration" %>
+    <%= component_link "Defaults", "#button-default" %>
 		<%= component_link "Sizes", "#button-sizes" %>
-    <%= component_link "Expanded display", "#button-expanded" %>
+    <%= component_link "States", "#button-states" %>
+    <%= component_link "Custom Attributes", "#button-custom-attributes" %>
+    <%= component_link "Types", "#button-types" %>
   <% end %>
 <% end %>
