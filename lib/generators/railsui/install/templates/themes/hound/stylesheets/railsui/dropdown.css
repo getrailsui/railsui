@@ -4,7 +4,7 @@
   }
 
   .dropdown-item {
-    @apply py-2 px-3 block font-medium text-slate-800 text-sm hover:text-primary-500 dark:text-slate-300;
+    @apply py-2 px-3 block font-medium text-slate-800 text-sm hover:text-primary-500 dark:text-slate-300 flex items-center gap-2.5;
 
     &.dropdown-item-danger {
       @apply text-rose-500 hover:text-rose-600;

@@ -2,13 +2,16 @@
 
 <%= render "#{path}/base" %>
 <%= divider %>
+<%= render "#{path}/default" %>
+<%= divider %>
 <%= render "#{path}/contained" %>
 
 <%= system_pagination(prev_path: systems_components_badge_path, prev_text: "Badge", next_path: systems_components_button_path, next_text: "Button") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
-    <%= component_link "Base", "#breadcrumb-base" %>
+  <%= component_link "Configuration", "#breadcrumb-configuration" %>
+    <%= component_link "Base", "#breadcrumb-default" %>
 		<%= component_link "Contained", "#breadcrumb-pill" %>
   <% end %>
 <% end %>

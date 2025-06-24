@@ -1,9 +1,8 @@
 <%%= rui :breadcrumb, items: [
-  { name: "Home", url: root_path },
-  { name: "Docs", url: "#" },
+  { icon: "home", name: "Home", url: root_path },
+  { icon: "book-open", name: "Docs", url: "#" },
   {
     name: "More",
-    icon: "chevron-down",
     dropdown: [
       { name: "Blog", url: "#" },
       { name: "Changelog", url: "#" }
@@ -11,3 +10,18 @@
   },
   { name: "Current Page", active: true }
 ], classes: "mb-4" %>
+
+<hr>
+
+<%%= rui :breadcrumb, items: [
+  { name: "Home", url: root_path },
+  { name: "Docs", url: "#" },
+  {
+    name: "More",
+    dropdown: [
+      { icon: "document-text", name: "Blog", url: "#" },
+      { icon: "clock", name: "Changelog", url: "#" }
+    ]
+  },
+  { name: "Current Page", active: true, icon: "star" }
+], classes: "mb-4", variant: :contained %>
