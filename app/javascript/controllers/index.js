@@ -48,6 +48,9 @@ application.register("railsui-pages", RailsuiPagesController)
 import RailsuiLoadingController from "./railsui_loading_controller.js"
 application.register("railsui-loading", RailsuiLoadingController)
 
+import FlashController from "./flash_controller.js"
+application.register("flash", FlashController)
+
 // Import components adhoc.
 import {
   RailsuiClipboard,

@@ -57754,6 +57754,29 @@
     label: { type: String, default: "Loading..." }
   });
 
+  // app/javascript/controllers/flash_controller.js
+  var flash_controller_default = class extends Controller {
+    connect() {
+      if (this.hideAfterValue > 0) {
+        this.timeout = setTimeout(() => this.dismiss(), this.hideAfterValue);
+      }
+    }
+    dismiss() {
+      this.element.classList.add(...this.leaveClassValue.split(" "));
+      setTimeout(() => this.element.remove(), 300);
+    }
+    disconnect() {
+      clearTimeout(this.timeout);
+    }
+  };
+  __publicField(flash_controller_default, "values", {
+    hideAfter: { type: Number, default: 4e3 },
+    leaveClass: {
+      type: String,
+      default: "transition ease-in duration-300 opacity-0 scale-95"
+    }
+  });
+
   // node_modules/railsui-stimulus/dist/railsui-stimulus.module.js
   var oi = Object.defineProperty;
   var ai = (t, n, e) => n in t ? oi(t, n, { enumerable: true, configurable: true, writable: true, value: e }) : t[n] = e;
@@ -60413,6 +60436,7 @@
   application.register("railsui-snippet", railsui_snippet_controller_default);
   application.register("railsui-pages", railsui_pages_controller_default);
   application.register("railsui-loading", railsui_loading_controller_default);
+  application.register("flash", flash_controller_default);
   application.register("railsui-clipboard", un);
   application.register("railsui-count-up", fn);
   application.register("railsui-combobox", $t);

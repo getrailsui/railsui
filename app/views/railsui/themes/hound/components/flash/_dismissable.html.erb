@@ -1,0 +1,89 @@
+<div id="flash-dismissable">
+<%= render layout: example, locals: { heading: "Dismissable", section: "Flash" } do %>
+  <div class="prose dark:prose-invert max-w-full mb-6">
+    <p>For some flash messages you may want to have them hide after a brief period. Generate the component with the --stimulus option for built-in dismiss functionality.</p>
+  </div>
+
+<%= render preview 'gray' do %>
+<div class="bg-slate-600 text-white relative text-center p-4 flex items-center justify-center gap-2 transition ease-in-out duration-300" role="alert" data-controller="flash"
+data-flash-hide-after-value="0"
+data-flash-leave-class-value="transition ease-in duration-300 opacity-0 scale-95">
+  <%= icon "lock-closed", class: "size-5 mr-2" %>
+  <p>Successfully locked!</p>
+  <button type="button" data-action="click->flash#dismiss" class="absolute size-6 right-2 inset-y-0 my-auto text-white hover:opacity-90 flex items-center justify-center z-20" aria-label="Dismiss">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="size-5 shrink-0" variant="outline">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+<% end %>
+
+
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="bg-slate-600 text-slate-200 relative text-center p-4 flex items-center justify-center gap-2 transition ease-in-out duration-300" role="alert" data-controller="flash"
+data-flash-hide-after-value="0"
+data-flash-leave-class-value="transition ease-in duration-300 opacity-0 scale-95">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="size-5 mr-2" variant="outline">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+  </svg>
+  <p>Saved successfully!</p>
+  <button type="button" data-action="click->flash#dismiss" class="absolute size-6 right-2 inset-y-0 my-auto text-white hover:opacity-90 flex items-center justify-center z-20" aria-label="Dismiss">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="size-5 shrink-0" variant="outline">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- Example 1: Custom styled banner with dismissable button that only hides on click -->
+<%%= rui :flash, type: :success, classes: "bg-slate-600 text-slate-200 p-4", content: "Successfully locked!", controller: "flash", dismissable: true, hide_after: 0, icon_options: { name: "lock-closed", classes: "size-5 mr-2", position: :end } %>
+
+
+<!-- Example 2: Success banner with dismissable button that auto-hides after 4 seconds -->
+<%%= rui :flash, type: :success, content: "Saved successfully!", controller: "flash", dismissable: true, hide_after: 4000, icon_options: { name: "check-circle", classes: "size-5 mr-2", position: :start } %>
+<% end %>
+
+
+<% content_for :js, flush: true do %>
+// This file and its contents generates when you use the. --stimulus flag when generating a component.
+
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static values = {
+    hideAfter: { type: Number, default: 4000 },
+    leaveClass: {
+      type: String,
+      default: "transition ease-in duration-300 opacity-0 scale-95",
+    },
+  }
+
+  connect() {
+    if (this.hideAfterValue > 0) {
+      this.timeout = setTimeout(() => this.dismiss(), this.hideAfterValue)
+    }
+  }
+
+  dismiss() {
+    this.element.classList.add(...this.leaveClassValue.split(" "))
+
+    setTimeout(() => this.element.remove(), 300) // match your transition
+  }
+
+  disconnect() {
+    clearTimeout(this.timeout)
+  }
+}
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render_snippet active_tab: "erb", js_filename: "flash_controller.js" %>
+<% end %>
+<% end %>
+</div>

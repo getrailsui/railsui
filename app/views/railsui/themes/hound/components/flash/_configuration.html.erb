@@ -1,2 +1,43 @@
-<div id="flash-configuration">
+<div id="flash-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Flash --stimulus
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named flash_controller.js and registers it for enhanced interactivity. Generate this for dimissable features.</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+
+<ul>
+  <li><code>type</code>: Flash message type (Symbol, default: :notice)
+    <ul>
+      <li><code>:notice</code>: Blue primary color</li>
+      <li><code>:alert</code>: Red error color</li>
+      <li><code>:success</code>: Green success color</li>
+      <li><code>:warning</code>: Yellow warning color</li>
+    </ul>
+  </li>
+  <li><code>content</code>: Flash message text or block content (String or block)</li>
+  <li><code>hide_after</code>: Auto-dismiss timeout in milliseconds (Integer, default: 4000, set to 0 to disable)</li>
+  <li><code>controller</code>: Stimulus controller name for enhanced functionality (String, optional)</li>
+  <li><code>dismissable</code>: Show close button for manual dismissal (Boolean, default: false, requires controller)</li>
+  <li><code>classes</code>: Override default background color classes (String, optional)</li>
+  <li><code>icon_options</code>: Icon configuration (Hash, optional): Displays an icon alongside the message.
+    <ul>
+      <li><code>:name</code>: Icon name (String, required)</li>
+      <li><code>:classes</code>: Icon CSS classes (String, optional)</li>
+      <li><code>:position</code>: Icon placement - <code>:start</code> or <code>:end</code> (Symbol, default: :start)</li>
+    </ul>
+  </li>
+  <li><code>fade_out_classes</code>: Override default fade-out animation classes (String, optional)</li>
+</ul>
+
+<h2>Usage examples</h2>
 </div>

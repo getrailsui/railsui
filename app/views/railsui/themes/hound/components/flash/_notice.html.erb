@@ -15,11 +15,11 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<%% if notice %>
-<div class="bg-primary-600 text-white text-center p-4" role="alert">
-  <p><%%= sanitize notice %></p>
-</div>
-<%% end %>
+<%%= rui :flash, type: :notice, content: "A message commonly displayed after something changes." %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
 <% end %>
 
 <%= render_snippet %>

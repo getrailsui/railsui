@@ -13,16 +13,16 @@ Props:
 %>
 
 <%% default_colors = {
-  notice: "bg-primary-600",
-  alert: "bg-rose-600",
-  success: "bg-emerald-600",
-  warning: "bg-yellow-500"
+  notice: "bg-primary-600 text-white ",
+  alert: "bg-rose-600 text-white ",
+  success: "bg-emerald-600 text-white",
+  warning: "bg-yellow-500 text-black"
 } %>
 
 <%% bg_class = classes.presence || default_colors[type.to_sym] || "bg-gray-800" %>
 
 <%% attrs = {
-  class: "#{bg_class} text-white relative text-center p-4 flex items-center justify-center gap-2 transition ease-in-out duration-300",
+  class: "#{bg_class} relative text-center p-4 flex items-center justify-center gap-2 transition ease-in-out duration-300",
   role: "alert"
 } %>
 
@@ -39,7 +39,7 @@ Props:
     <%%= icon icon_options[:name], class: icon_options[:classes] %>
   <%% end %>
 
-  <p class="text-sm"><%%= content.presence || content %></p>
+  <p><%%= content.presence || content %></p>
 
   <%% if icon_options&.dig(:name) && icon_options[:position] == :end %>
     <%%= icon icon_options[:name], class: icon_options[:classes] %>
