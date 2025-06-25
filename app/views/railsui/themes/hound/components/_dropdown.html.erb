@@ -1,6 +1,8 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown" %>
 
+<%= render "#{path}/configuration" %>
 <%= render "#{path}/tutorial/tutorial" %>
+<%= divider %>
 <%= render "#{path}/base" %>
 <%= divider %>
 <%= render "#{path}/with_icons" %>

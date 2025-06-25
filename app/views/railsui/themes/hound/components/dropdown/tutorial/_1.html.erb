@@ -25,7 +25,7 @@ const application = Application.start()
 import { RailsuiDropdown } from 'railsui-stimulus'
 application.register('railsui-dropdown', RailsuiDropdown)
 <% end %>
-<%= render_snippet %>
+<%= render_snippet(active_tab: "html") %>
 </div>
 
 <% content_for :html, flush: true do %>

@@ -1,0 +1,77 @@
+<div id="dropdown-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Dropdown
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named dropdown_controller.js and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+
+<h4>Dropdown Button Configuration</h4>
+<ul>
+  <li><code>button</code>: Hash containing button configuration:
+    <ul>
+      <li><code>:label</code>: Button text (String, optional)</li>
+      <li><code>:classes</code>: CSS classes for button styling (String, optional, defaults to "btn btn-white")</li>
+      <li><code>:icon</code>: Hash for button icon configuration:
+        <ul>
+          <li><code>:name</code>: Heroicon name (String, required)</li>
+          <li><code>:classes</code>: Icon CSS classes (String, optional, defaults to "size-3")</li>
+          <li><code>:variant</code>: Icon style - <code>:solid</code> or <code>:outline</code> (Symbol, optional)</li>
+          <li><code>:position</code>: Icon placement - <code>:start</code> or <code>:end</code> (Symbol, default: :end)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Dropdown Menu Configuration</h4>
+<ul>
+  <li><code>menu_classes</code>: Additional Tailwind classes for dropdown menu positioning and styling (String, optional)</li>
+  <li><code>controller</code>: Custom Stimulus controller name (String, defaults to "railsui-dropdown")</li>
+</ul>
+
+<h4>Dropdown Items Configuration</h4>
+<ul>
+  <li><code>items</code>: Array of dropdown menu items. Supports two formats:
+    <ul>
+      <li><strong>Flat list:</strong> <code>[item, item, item]</code></li>
+      <li><strong>Grouped list:</strong> <code>[[item, item], [item]]</code> - dividers display between groups</li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Dropdown Item Properties</h4>
+<ul>
+  <li><code>:name</code>: Display text for the menu item (String, required)</li>
+  <li><code>:url</code>: Link destination (String, optional)</li>
+  <li><code>:html_options</code>: Hash of HTML attributes for the link or button (Hash, optional):
+    <ul>
+      <li><code>:method</code>: HTTP method for form submission (Symbol - e.g. :post, :delete)</li>
+      <li><code>:data</code>: Data attributes (Hash - e.g. { turbo: false, confirm: "Are you sure?" })</li>
+      <li><code>:class</code>: Additional CSS classes (String)</li>
+      <li><code>:target</code>: Link target (String - e.g. "_blank")</li>
+      <li><code>:rel</code>: Link relationship (String - e.g. "noopener")</li>
+      <li>Any other valid HTML attributes</li>
+    </ul>
+  </li>
+  <li><code>:icon</code>: Icon configuration (Hash, optional):
+    <ul>
+      <li><code>:name</code>: Heroicon name (String, required)</li>
+      <li><code>:classes</code>: Icon CSS classes (String, optional)</li>
+      <li><code>:position</code>: Icon placement - <code>:start</code> or <code>:end</code> (Symbol, default: :start)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Usage examples</h2>
+
+</div>

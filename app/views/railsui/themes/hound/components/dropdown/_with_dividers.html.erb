@@ -8,7 +8,7 @@
     <%= icon "chevron-down", class: "size-3 shrink-0" %>
   </button>
   <div
-    class="hidden origin-top-left absolute left-0 top-10 dropdown-menu divide-y divide-slate-300/80 dark:divide-slate-500/75"
+    class="hidden origin-top absolute left-0 top-12 dropdown-menu divide-y divide-slate-300/80 dark:divide-slate-500/75"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -37,7 +37,7 @@
     <%%= icon "chevron-down", class: "size-3 shrink-0" %>
   </button>
   <div
-    class="hidden origin-top-left absolute left-0 top-10 dropdown-menu divide-y divide-slate-300/80 dark:divide-slate-500/75"
+    class="hidden origin-top absolute left-0 top-12 dropdown-menu divide-y divide-slate-300/80 dark:divide-slate-500/75"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -59,31 +59,13 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="railsui-dropdown" class="relative inline-block">
-  <%%= button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-3" do %>
-    Dropdown with dividers
-    <%%= icon "chevron-down", class: "size-3 shrink-0" %>
-  <%% end %>
-  <div
-    class="hidden origin-top-left absolute left-0 top-10 dropdown-menu divide-y divide-slate-300/80 dark:divide-slate-500/75"
-    data-railsui-dropdown-target="menu"
-    data-transition-enter-from="opacity-0 scale-95"
-    data-transition-enter-to="opacity-100 scale-100"
-    data-transition-leave-from="opacity-100 scale-100"
-    data-transition-leave-to="opacity-0 scale-95"
-    >
-    <div role="none">
-      <%%= link_to "Edit", "#", class: "dropdown-item" %>
-    </div>
-    <div role="none">
-      <%%= link_to "Share", "#", class: "dropdown-item" %>
-      <%%= link_to "Export", "#", class: "dropdown-item" %>
-    </div>
-    <div role="none">
-      <%%= link_to "Delete", "#", class: "dropdown-item dropdown-item-danger" %>
-    </div>
-  </div>
-</div>
+<%%= rui :dropdown,
+    button: { label: "Dropdown with dividers", icon: nil },
+    items: [
+      [{ name: "Editss", url: "#" }],
+      [{ name: "Share", url: "#" }, { name: "Export", url: "#" }],
+      [{ name: "Delete", url: "#", html_options: {  class: "dropdown-item-danger", method: :delete } }]
+    ] %>
 <% end %>
 
 <%= render_snippet %>

@@ -1,9 +1,9 @@
-<%%# locals: (class_name: nil, variant: :contained, content: nil) %>
+<%%# locals: (classes: nil, variant: :contained, content: nil) %>
 
 <%%# Accordion Component
     locals:
       - variant: :contained | :flush (default: :contained)
-      - class_name: optional string
+      - classes: optional string
       - content: block content
 
     Usage:
@@ -27,7 +27,7 @@
   }
 
   base_classes = "my-6 divide-y divide-slate-100 dark:divide-slate-700"
-  wrapper_class = [base_classes, variant_classes[variant.to_sym], class_name].compact.join(" ")
+  wrapper_class = [base_classes, variant_classes[variant.to_sym], classes].compact.join(" ")
 %>
 
 <dl class="<%%= wrapper_class %>">

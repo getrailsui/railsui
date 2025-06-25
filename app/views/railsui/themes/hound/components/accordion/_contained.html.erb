@@ -85,7 +85,6 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- generate accordion via rails g railsui:component Accordion -->
 <%%= rui :accordion do %>
   <%%= rui "accordion/item", label: "This is one item", open: true do %>
     You can return any item within 30 days.
@@ -95,6 +94,10 @@
     Yes, we ship to over 50 countries.
   <%% end %>
 <%% end %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
 <% end %>
 
 <%= render_snippet %>

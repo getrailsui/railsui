@@ -1,0 +1,39 @@
+<div id="accordion-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Accordion
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named accordion_controller.js and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+
+<h4>Accordion Container</h4>
+<ul>
+  <li><code>variant</code>: Visual style variants:
+    <ul>
+      <li><code>:contained</code>: Default style with rounded borders and shadow</li>
+      <li><code>:flush</code>: Clean style without borders or shadow</li>
+    </ul>
+  </li>
+  <li><code>classes</code>: Additional CSS classes for accordion container</li>
+  <li><code>content</code>: Block content containing accordion items</li>
+</ul>
+
+<h4>Accordion Item</h4>
+<ul>
+  <li><code>label</code>: Title text for the accordion item</li>
+  <li><code>open</code>: Boolean to set initial open state (default: false)</li>
+  <li><code>content</code>: Block content for the accordion item body</li>
+</ul>
+
+<h2>Usage examples</h2>
+
+</div>

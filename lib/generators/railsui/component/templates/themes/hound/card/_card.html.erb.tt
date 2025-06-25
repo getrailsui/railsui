@@ -1,4 +1,4 @@
-<%%# locals: (title:, content: nil, actions: nil, classes: nil) %>
+<%%# locals: (title: nil, content: nil, actions: nil, classes: nil) %>
 
 <%%# Card Component
 Props:
@@ -18,7 +18,9 @@ Usage:
 %>
 
 <div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 <%%= classes %>">
-  <h3 class="h4"><%%= title %></h3>
+  <%% if title.present? %>
+    <h3 class="h4"><%%= title %></h3>
+  <%% end %>
 
   <%% if content.present? %>
     <div class="mt-2 mb-4"><%%= content %></div>

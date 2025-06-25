@@ -36,24 +36,55 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="railsui-dropdown" class="relative inline-block">
-  <%%= button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do %>
-    Dropdown
-    <%%= icon "chevron-down", class: "size-3" %>
-  <%% end %>
-  <div
-    class="hidden origin-top-left absolute left-0 top-10 dropdown-menu"
-    data-railsui-dropdown-target="menu"
-    data-transition-enter-from="opacity-0 scale-95"
-    data-transition-enter-to="opacity-100 scale-100"
-    data-transition-leave-from="opacity-100 scale-100"
-    data-transition-leave-to="opacity-0 scale-95"
-    >
-    <%%= link_to "Bookmark", "#", class: "dropdown-item" %>
-    <%%= link_to "Report", "#", class: "dropdown-item" %>
-    <%%= link_to "Export", "#", class: "dropdown-item" %>
-  </div>
-</div>
+
+<!-- Primary -->
+<%%= rui :dropdown,
+  button: { label: "Dropdown", classes: "btn btn-primary" },
+  items: [
+    { name: "Bookmark", url: "#" },
+    { name: "Report", url: "#" },
+    { name: "Export", url: "#" }
+  ] %>
+
+<!-- Secondary -->
+<%%= rui :dropdown,
+  button: { label: "Dropdown", classes: "btn btn-secondary" },
+  items: [
+    { name: "Bookmark", url: "#" },
+    { name: "Report", url: "#" },
+    { name: "Export", url: "#" }
+  ] %>
+
+<!-- Dark -->
+<%%= rui :dropdown,
+  button: { label: "Dropdown", classes: "btn btn-dark" },
+  items: [
+    { name: "Bookmark", url: "#" },
+    { name: "Report", url: "#" },
+    { name: "Export", url: "#" }
+  ] %>
+
+<!-- Light -->
+<%%= rui :dropdown,
+  button: { label: "Dropdown", classes: "btn btn-light" },
+  items: [
+    { name: "Bookmark", url: "#" },
+    { name: "Report", url: "#" },
+    { name: "Export", url: "#" }
+  ] %>
+
+<!-- White -->
+<%%= rui :dropdown,
+  button: { label: "Dropdown" },
+  items: [
+    { name: "Bookmark", url: "#" },
+    { name: "Report", url: "#" },
+    { name: "Export", url: "#" }
+  ] %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
 <% end %>
 
 <%= render_snippet %>

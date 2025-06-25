@@ -19,7 +19,7 @@
   },
   menu_classes: "w-[200px] rounded-xl shadow-3xl absolute top-10 left-0 transition ease-in-out duration-300 transform py-2 bg-orange-50 z-50 border border-orange-300",
   items: [
-    { name: "Billing", url: "#", icon: { name: "credit-card", position: :start } },
+    { name: "Billing", url: "#", icon: { name: "credit-card" } }, # defaults to :start position
     { name: "Support", url: "#", icon: { name: "key", position: :end } }
   ] %>
 
@@ -45,10 +45,48 @@
   },
   items: [
     [
-      { name: "Account", url: "#", icon: { name: "user", position: :start } },
+      { name: "Account", url: "#", icon: { name: "user" } }, # defaults to :start position
       { name: "Settings", url: "#" }
     ],
     [
-      { name: "Logout", url: "#", method: :delete, icon: { name: "user", position: :end } }
+      { name: "Logout", url: "#", html_options: { method: :delete }, icon: { name: "arrow-right-on-rectangle", position: :end } }
+    ]
+  ] %>
+
+<hr class="my-8">
+
+<%%= rui :dropdown,
+  button: {
+    label: "HTML Options",
+    icon: { name: "ellipsis-vertical", classes: "size-4" },
+    classes: "btn btn-outline"
+  },
+  items: [
+    { name: "Edit", url: "#", icon: { name: "pencil" } },
+    { name: "Delete", url: "#", html_options: { method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-600" }, icon: { name: "trash" } },
+    { name: "External Link", url: "https://example.com", html_options: { target: "_blank", rel: "noopener", class: "text-blue-600" }, icon: { name: "arrow-top-right-on-square", position: :end } }
+  ] %>
+
+<hr class="my-8">
+
+<%%= rui :dropdown,
+  button: {
+    label: "Advanced Example",
+    icon: { name: "chevron-down", classes: "size-3" },
+    classes: "btn btn-primary"
+  },
+  menu_classes: "right-0 top-full mt-1 w-56",
+  items: [
+    [
+      { name: "Dashboard", url: "#", icon: { name: "home", classes: "size-4 text-green-500" } },
+      { name: "Profile", url: "#", icon: { name: "user", classes: "size-4" } }
+    ],
+    [
+      { name: "Settings", url: "#", icon: { name: "cog-6-tooth" } },
+      { name: "Billing", url: "#", icon: { name: "credit-card" }, html_options: { class: "font-semibold" } }
+    ],
+    [
+      { name: "Help", url: "#", icon: { name: "question-mark-circle" } },
+      { name: "Sign Out", url: "#", html_options: { method: :delete, data: { turbo: false, confirm: "Are you sure you want to sign out?" }, class: "text-red-600" }, icon: { name: "arrow-right-on-rectangle" } }
     ]
   ] %>

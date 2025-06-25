@@ -20,7 +20,7 @@
     Dropdown
     <%%= icon "chevron-down", class:  "size-3" %>
   </button>
-  <ul class="hidden origin-top-right absolute left-0 top-10 dropdown-menu" data-railsui-dropdown-target="menu"
+  <ul class="hidden origin-top absolute left-0 top-12 dropdown-menu" data-railsui-dropdown-target="menu"
   data-transition-enter-from="opacity-0 scale-95"
   data-transition-enter-to="opacity-100 scale-100"
   data-transition-leave-from="opacity-100 scale-100"
@@ -48,36 +48,17 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="railsui-dropdown" class="relative md:inline-block block md:w-auto w-full">
-  <%%= button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-3" do %>
-    Dropdown
-    <%%= icon "chevron-down", class: "size-3" %>
-  <%% end %>
-  <ul class="hidden origin-top-right absolute left-0 top-10 dropdown-menu" data-railsui-dropdown-target="menu"
-  data-transition-enter-from="opacity-0 scale-95"
-  data-transition-enter-to="opacity-100 scale-100"
-  data-transition-leave-from="opacity-100 scale-100"
-  data-transition-leave-to="opacity-0 scale-95">
-    <li>
-      <%%= link_to "#", class: "dropdown-item" do %>
-        <%%= icon "bookmark", class: "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0" %>
-        <span>Bookmark</span>
-      <%% end %>
-    </li>
-    <li>
-      <%%= link_to "#", class: "dropdown-item" do %>
-        <%%= icon "flag", class: "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0" %>
-        <span>Report</span>
-      <%% end %>
-    </li>
-    <li>
-      <%%= link_to "#", class: "dropdown-item" do %>
-        <%%= icon "arrow-down-tray", class: "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0" %>
-        <span>Export</span>
-      <%% end %>
-    </li>
-  </ul>
-</div>
+<%%= rui :dropdown,
+    button: { label: "Dropdown", icon: nil },
+    items: [
+      { name: "Bookmark", url: "#", icon: { name: "bookmark" } },
+      { name: "Report", url: "#", icon: { name: "flag" } },
+      { name: "Export", url: "#", icon: { name: "arrow-down-tray" } }
+    ] %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
 <% end %>
 
 <%= render_snippet %>

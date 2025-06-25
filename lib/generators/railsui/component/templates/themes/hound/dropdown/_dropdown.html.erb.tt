@@ -1,9 +1,9 @@
-<%%# locals: ( button: { label: "More", icon: "chevron-down", classes: "btn btn-white" }, menu_classes: nil,items:, controller: "railsui-dropdown", content: nil) %>
+<%%# locals: ( button: { label: "More", icon: "chevron-down", classes: "btn btn-white" }, menu_classes: nil, wrapper_classes: nil, items:, controller: "railsui-dropdown", content: nil) %>
 
 <%%# Dropdown Component
 Props:
 - button: (Hash) Button config.
-    - :label (String, required)
+    - :label (String, optional)
     - :icon (Hash, optional)
         - :name (String, required)
         - :classes (String, optional)
@@ -18,11 +18,11 @@ Props:
     Each item supports:
       - :name (String, required)
       - :url (String, optional)
-      - :icon (Hash, optional — same structure as button icon)
-      - :method (Symbol, optional — e.g. :post)
-      - :data (Hash, optional — e.g. { turbo: false })
+      - :icon (Hash, optional — same structure as button icon, defaults to :start position)
+      - :html_options (Hash, optional — e.g. { method: :delete, data: { turbo: false }, class: "text-red-500" })
 - controller: Pass a custom stimulus controller.
     - Notes: This defaults to railsui-dropdown. If you used the --stimulus option pass `dropdown` here instead of `railsui-dropdown` to inherit from RailsuiDropdown from the railsui-stimulus library.
+- wrapper_classes: Additional CSS classes for the dropdown wrapper container (String, optional)
 
 Usage:
 rui :dropdown,
@@ -34,11 +34,11 @@ rui :dropdown,
   menu_classes: "right-0 top-full",
   items: [
     [
-      { name: "Profile", url: profile_path, icon: { name: "user", position: :start } },
+      { name: "Profile", url: profile_path, icon: { name: "user" } }, # defaults to :start
       { name: "Settings", url: settings_path }
     ],
     [
-      { name: "Logout", url: logout_path, method: :delete, data: { turbo: false }, icon: { name: "logout", position: :end } }
+      { name: "Logout", url: logout_path, html_options: { method: :delete, data: { turbo: false, confirm: "Are you sure?" } }, icon: { name: "logout", position: :end } }
     ]
   ]
 
@@ -52,7 +52,7 @@ With custom controller: (i.e. rails g railsui:dropdown --stimulus)
       },
   items: [
     { name: "Dashboard", url: "#" },
-    { name: "Settings", url: "#" }
+    { name: "Settings", url: "#", html_options: { class: "font-bold" } }
   ]
 %>
 
@@ -62,7 +62,8 @@ With custom controller: (i.e. rails g railsui:dropdown --stimulus)
 <%% button_classes = button[:classes] || "btn btn-white" %>
 <%% controller_name = local_assigns[:controller] || 'railsui-dropdown' %>
 
-<div class="relative" data-controller="<%%= controller_name %>">
+<%% wrapper_class = ["relative", wrapper_classes].compact.join(" ") %>
+<div class="<%%= wrapper_class %>" data-controller="<%%= controller_name %>">
   <button
   type="button"
   class="<%%= button_classes %> flex gap-3 items-center <%%= dropdown_icon&.dig(:position) == :start ? "justify-start" : "justify-between" %>"
@@ -90,20 +91,21 @@ With custom controller: (i.e. rails g railsui:dropdown --stimulus)
           <ul>
             <%% group.each do |item| %>
               <li>
-                <%% if item[:method] %>
-                  <%%== button_to item[:name], item[:url],
-                    method: item[:method],
-                    data: item[:data] || {},
-                    class: "dropdown-item" %>
+                <%% html_options = item[:html_options] || {} %>
+                <%% if html_options[:method] %>
+                  <%% button_classes = ["dropdown-item"] %>
+                  <%% button_classes << html_options[:class] if html_options[:class] %>
+                  <%%== button_to item[:name], item[:url], html_options.except(:class).merge(class: button_classes.join(" ")) %>
                 <%% else %>
-                  <%%= link_to item[:url],
-                    class: "dropdown-item flex items-center gap-3 #{item[:icon]&.dig(:position) == :start ? "justify-start" : "justify-between"}",
-                    data: item[:data] || {} do %>
-                    <%% if item[:icon]&.dig(:position) == :start %>
+                  <%% link_classes = ["dropdown-item", "flex", "items-center", "gap-3"] %>
+                  <%% link_classes << ((item[:icon]&.dig(:position) || :start) == :start ? "justify-start" : "justify-between") %>
+                  <%% link_classes << html_options[:class] if html_options[:class] %>
+                  <%%= link_to item[:url], html_options.except(:class).merge(class: link_classes.join(" ")) do %>
+                    <%% if item[:icon] && (item[:icon]&.dig(:position) || :start) == :start %>
                       <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                     <%% end %>
                     <%%= item[:name] %>
-                    <%% if item[:icon]&.dig(:position) == :end %>
+                    <%% if item[:icon] && (item[:icon]&.dig(:position) || :start) == :end %>
                       <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                     <%% end %>
                   <%% end %>
@@ -117,20 +119,21 @@ With custom controller: (i.e. rails g railsui:dropdown --stimulus)
       <ul>
         <%% items.each do |item| %>
           <li>
-            <%% if item[:method] %>
-              <%%== button_to item[:name], item[:url],
-                method: item[:method],
-                data: item[:data] || {},
-                class: "dropdown-item" %>
+            <%% html_options = item[:html_options] || {} %>
+            <%% if html_options[:method] %>
+              <%% button_classes = ["dropdown-item"] %>
+              <%% button_classes << html_options[:class] if html_options[:class] %>
+              <%%== button_to item[:name], item[:url], html_options.except(:class).merge(class: button_classes.join(" ")) %>
             <%% else %>
-              <%%= link_to item[:url],
-                class: "dropdown-item flex items-center gap-2 #{item[:icon]&.dig(:position) == :start ? "justify-start" : "justify-between"}",
-                data: item[:data] || {} do %>
-                <%% if item[:icon]&.dig(:position) == :start %>
+              <%% link_classes = ["dropdown-item", "flex", "items-center", "gap-2"] %>
+              <%% link_classes << ((item[:icon]&.dig(:position) || :start) == :start ? "justify-start" : "justify-between") %>
+              <%% link_classes << html_options[:class] if html_options[:class] %>
+              <%%= link_to item[:url], html_options.except(:class).merge(class: link_classes.join(" ")) do %>
+                <%% if item[:icon] && (item[:icon]&.dig(:position) || :start) == :start %>
                   <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                 <%% end %>
                 <%%= item[:name] %>
-                <%% if item[:icon]&.dig(:position) == :end %>
+                <%% if item[:icon] && (item[:icon]&.dig(:position) || :start) == :end %>
                   <%%= icon(item[:icon][:name], class: item[:icon][:classes] || 'shrink-0 size-4') %>
                 <%% end %>
               <%% end %>

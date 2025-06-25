@@ -2,6 +2,8 @@
 
 <%= render "#{path}/base" %>
 <%= divider %>
+<%= render "#{path}/default" %>
+<%= divider %>
 <%= render "#{path}/with_header" %>
 <%= divider %>
 <%= render "#{path}/with_action" %>
@@ -16,7 +18,8 @@
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
-    <%= component_link "Base", "#card-base" %>
+    <%= component_link "Configuration", "#card-configuration" %>
+    <%= component_link "Default", "#card-default" %>
 		<%= component_link "With header", "#card-with-header" %>
 		<%= component_link "With action", "#card-with-action" %>
     <%= component_link "User card", "#card-user-card" %>
