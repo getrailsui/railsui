@@ -1,11 +1,11 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/button" %>
 
+<%= render "#{path}/configuration" %>
+<%= divider %>
 <%= render "#{path}/base" %>
-<% divider %>
-<%= render "#{path}/default" %>
-<% divider %>
+<%= divider %>
 <%= render "#{path}/sizes" %>
-<% divider %>
+<%= divider %>
 <%= render "#{path}/states" %>
 <%= divider %>
 <%= render "#{path}/custom_attributes" %>
@@ -18,7 +18,7 @@
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
     <%= component_link "Configuration", "#button-configuration" %>
-    <%= component_link "Defaults", "#button-default" %>
+    <%= component_link "Base", "#button-base" %>
 		<%= component_link "Sizes", "#button-sizes" %>
     <%= component_link "States", "#button-states" %>
     <%= component_link "Custom Attributes", "#button-custom-attributes" %>

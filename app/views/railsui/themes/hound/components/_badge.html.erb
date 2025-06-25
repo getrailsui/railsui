@@ -1,8 +1,8 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/badge" %>
 
-<%= render "#{path}/base" %>
+<%= render "#{path}/configuration" %>
 <%= divider %>
-<%= render "#{path}/basic" %>
+<%= render "#{path}/base" %>
 <%= divider %>
 <%= render "#{path}/pill" %>
 <%= divider %>
@@ -15,7 +15,7 @@
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
     <%= component_link "Configuration", "#badge-configuration" %>
-    <%= component_link "Basic", "#badge-basic" %>
+    <%= component_link "Base", "#badge-base" %>
 		<%= component_link "Pill", "#badge-pill" %>
 		<%= component_link "Outline", "#badge-outline" %>
     <%= component_link "Tag", "#badge-tag" %>

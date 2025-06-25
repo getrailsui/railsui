@@ -1,0 +1,53 @@
+<div id="card-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Card
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named <code>card_controller.js</code> and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+<ul>
+  <li><code>title</code>: The main heading of the card (String, optional)</li>
+  <li><code>content</code>: Body content for the card:
+    <ul>
+      <li>Can be a String or HTML-safe content</li>
+      <li>When present, renders in a <code>prose prose-slate dark:prose-invert mt-2 mb-4</code> wrapper div</li>
+      <li>When passing a block, it renders content directly ignoring <code>content</code> argument.</li>
+    </ul>
+  </li>
+  <li><code>actions</code>: Slot for buttons, links, or other interactive elements:
+    <ul>
+      <li>Accepts HTML-safe content</li>
+      <li>Optional - typically used for buttons or action links</li>
+      <li>Renders at the bottom of the card when present</li>
+    </ul>
+  </li>
+  <li><code>classes</code>: Additional Tailwind CSS classes for custom styling:
+    <ul>
+      <li>Applied to the main card wrapper div</li>
+      <li>Useful for spacing, sizing, or color modifications</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>The card uses a clean, modern design with rounded corners and subtle borders</li>
+  <li>Includes built-in dark mode support with appropriate color variants</li>
+  <li>The title is styled as an <code>h3</code> element with <code>h4</code> class for consistent typography</li>
+  <li>Content and actions are conditionally rendered only when present</li>
+  <li>Uses semantic HTML structure for better accessibility</li>
+  <li>Default styling includes white background, padding, and border with dark mode variants</li>
+</ul>
+
+<h2>Usage examples</h2>
+
+</div>

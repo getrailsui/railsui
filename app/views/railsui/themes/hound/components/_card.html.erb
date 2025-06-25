@@ -1,8 +1,8 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/card" %>
 
-<%= render "#{path}/base" %>
+<%= render "#{path}/configuration" %>
 <%= divider %>
-<%= render "#{path}/default" %>
+<%= render "#{path}/base" %>
 <%= divider %>
 <%= render "#{path}/with_header" %>
 <%= divider %>
@@ -19,9 +19,9 @@
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
     <%= component_link "Configuration", "#card-configuration" %>
-    <%= component_link "Default", "#card-default" %>
-		<%= component_link "With header", "#card-with-header" %>
-		<%= component_link "With action", "#card-with-action" %>
+    <%= component_link "Base", "#card-base" %>
+    <%= component_link "With header", "#card-with-header" %>
+    <%= component_link "With action", "#card-with-action" %>
     <%= component_link "User card", "#card-user-card" %>
     <%= component_link "User card with actions", "#card-user-card-with-actions" %>
     <%= component_link "User card with dropdown", "#card-user-card-with-dropdown" %>

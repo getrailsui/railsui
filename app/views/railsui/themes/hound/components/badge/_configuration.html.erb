@@ -1,0 +1,49 @@
+<div id="badge-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Badge
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named <code>badge_controller.js</code> and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+<ul>
+  <li><code>label</code>: Fallback text if no block content is passed</li>
+  <li><code>color</code>: Color theme variants:
+    <ul>
+      <li><code>:primary</code>, <code>:secondary</code>, <code>:gray</code>, <code>:red</code>, <code>:orange</code>, <code>:yellow</code>, <code>:green</code>, <code>:blue</code>, <code>:indigo</code>, <code>:purple</code>, <code>:pink</code>, <code>:white</code></li>
+      <li>Default: <code>:gray</code></li>
+    </ul>
+  </li>
+  <li><code>variant</code>: Style variants:
+    <ul>
+      <li><code>:solid</code> (filled background), <code>:pill</code> (rounded full), <code>:outline</code> (border style), <code>:tag</code> (dismissible tag with X button)</li>
+      <li>Default: <code>:solid</code></li>
+    </ul>
+  </li>
+  <li><code>dismissible</code>: Adds dismiss button to tag variant only:
+    <ul>
+      <li>Defaults to <code>true</code> for <code>:tag</code> variant.</li>
+      <li>Set to <code>false</code> to disable dismiss button on tags. The X icon will still display.</li>
+    </ul>
+  </li>
+  <li><code>classes</code>: Additional CSS classes for badge styling</li>
+  <li><code>content</code>: Passed automatically from <code>rui</code> block or fallback to label</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>The <code>:tag</code> variant is dismissible by default and requires <code>badge_controller.js</code> for functionality. Run <code>rails g railsui:component Badge --stimulus</code> to generate the accompanying Stimulus controller with some boilerplate code.</li>
+  <li>Dismiss functionality uses client-side JavaScript to fade out and remove the badge. You'll need to persist this to the database.</li>
+</ul>
+
+<h2>Usage examples</h2>
+
+</div>

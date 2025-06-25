@@ -1,0 +1,48 @@
+<div id="breadcrumb-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Breadcrumb
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named <code>breadcrumb_controller.js</code> and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+<ul>
+  <li><code>items</code>: Array of hashes describing each breadcrumb item. Each item supports:
+    <ul>
+      <li><code>:name</code> (String, required): Label to display for the breadcrumb item</li>
+      <li><code>:url</code> (String, optional): URL if the item should be linkable</li>
+      <li><code>:active</code> (Boolean, optional): Highlights as current page (alternative to omitting <code>:url</code>)</li>
+      <li><code>:dropdown</code> (Array, optional): Nested dropdown items.    <ul>
+        <li><code>name: </code>(String, required): Label to display for dropdown item</li>
+        <li><code>icon: </code>(String, optional): Icon name for dropdown item</li>
+        <li><code>url: </code>(String, optional): URL if the item should be linkable</li>
+      </ul>
+      </li>
+      <li><code>:icon</code> (String, optional): Icon name for dropdown items (defaults to <code>"chevron-down"</code>)</li>
+    </ul>
+  </li>
+  <li><code>classes</code>: Additional Tailwind CSS classes to apply to the wrapper <code><nav></code> element</li>
+  <li><code>dropdown_classes</code>: Custom Tailwind CSS classes to override default dropdown styling (defaults to <code>"origin-top-left left-0 top-8 dropdown-menu"</code>)</li>
+  <li><code>content</code>: Passed automatically from <code>rui</code> block to render properly.</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>Breadcrumb items without a <code>:url</code> or with <code>active: true</code> are rendered as non-clickable current page indicators</li>
+  <li>Dropdown functionality requires the <code>railsui-dropdown</code> Stimulus controller for interactive menus. This is loaded automatically if you're using the <code>railsui-stimulus</code> Stimulus library.</li>
+  <li>The component automatically adds separators (<code>/</code>) between breadcrumb items</li>
+  <li>Supports both light and dark mode styling with appropriate color variants</li>
+  <li>Uses semantic HTML with proper ARIA labels for accessibility</li>
+</ul>
+
+<h2>Usage examples</h2>
+
+</div>
