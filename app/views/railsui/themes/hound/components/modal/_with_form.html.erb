@@ -4,10 +4,10 @@
     <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-slate-800 dark:border-t dark:border-x dark:border-slate-600">
       <div class="rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
         <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50">
-          <%= icon "x-mark", class:  "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
+          <%= icon "x-mark", class: "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
         </button>
 
-        <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
+        <h3 id="modal-with-form" class="h4 mb-2">Subscribe</h3>
         <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
           <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
         </div>
@@ -21,12 +21,12 @@
             <label for="reason_demo" class="form-label">Reason for joining</label>
             <textarea name="reason" id="reason_demo" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
           </div>
-        </form>
 
-        <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
-          <button class="btn btn-primary">Subscribe</button>
-          <button class="btn btn-white">Cancel</button>
-        </div>
+          <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+            <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -62,7 +62,7 @@
               <%= icon "x-mark", class:  "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
             </button>
 
-            <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
+            <h3 id="modal-with-form" class="h4 mb-2">Subscribe</h3>
             <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
               <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
             </div>
@@ -76,12 +76,12 @@
                 <label for="reason_demo" class="form-label">Reason for joining</label>
                 <textarea name="reason" id="reason_demo" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
               </div>
-            </form>
 
-            <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
-              <button class="btn btn-primary">Subscribe</button>
-              <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
-            </div>
+              <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+                <button class="btn btn-primary" type="submit">Subscribe</button>
+                <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ class="hidden rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom 
           <%%= icon "x-mark", class:  "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
         </button>
 
-        <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
+        <h3 id="modal-with-form" class="h4 mb-2">Subscribe</h3>
 
         <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
           <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
@@ -123,25 +123,55 @@ class="hidden rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom 
             <label for="reason_demo" class="form-label">Reason for joining</label>
             <textarea name="reason" id="reason_demo" class="form-input" placeholder="In a couple sentences let us know your reason for joining the Rails UI community"></textarea>
           </div>
-        </form>
 
-        <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
-          <button class="btn btn-primary">Subscribe</button>
-          <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
-        </div>
+          <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+            <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 <% end %>
 
-<% content_for :js, flush: true do %>
-import { RailsuiModal } from 'railsui-stimulus'
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-modal">
+  <!-- Trigger button -->
+  <%%= rui :button, label: "Open Modal", tag_options: { data: { action: "click->railsui-modal#open" } } %>
 
-application.register('railsui-modal', RailsuiModal)
+  <!-- Modal -->
+  <%%= rui :modal, size: :lg, title: "Subscribe" do %>
+    <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+      <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
+    </div>
+
+    <%%= railsui_form_with model: Subscriber.new,  url: "#" do |f| %>
+
+      <%%= f.form_group do %>
+        <%%= f.label :email %>
+        <%%= f.email_field :email, placeholder: "saasquatch@example.com" %>
+      <%% end %>
+
+      <%%= f.form_group do %>
+        <%%= f.label :reason %>
+        <%%= f.text_area :reason, placeholder: "In a couple sentences let us know your reason for joining the Rails UI community" %>
+      <%% end %>
+
+      <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+        <%%= rui :button, label: "Subscribe", button_type: "submit" %>
+        <%%= rui :button, label: "Cancel", variant: :white, tag_options: { data: { action: "click->railsui-modal#close" } } %>
+      </div>
+    <%% end %>
+  <%% end %>
+</div>
 <% end %>
 
-<%= render_snippet(js_filename: "index.js") %>
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
 <% end %>
 <% end %>
 </div>

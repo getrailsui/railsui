@@ -1,16 +1,17 @@
 <div id="modal-single-action">
 <%= render layout: example, locals: { heading: "Single action", section: "Modal" } do %>
+
 <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-slate-800 dark:border-t dark:border-x dark:border-slate-600">
   <div class="rounded mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
     <div class="flex justify-center">
-      <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
+      <div class="size-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
         <%= icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0" %>
       </div>
     </div>
 
-    <h3 id="single-action-modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Time to launch</h3>
+    <h3 id="single-action-modal-title" class="h4 mb-2 text-center">Time to launch</h3>
 
-    <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+    <div class="prose prose-slate dark:prose-invert mt-2 mb-6 text-center">
       <p>Are you ready to deploy your changes to production? This action cannot be undone.</p>
     </div>
     <button class="btn btn-primary w-full">Launch away</button>
@@ -45,12 +46,12 @@
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
         <div class="flex justify-center">
-          <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
+          <div class="size-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
             <%= icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0" %>
           </div>
         </div>
 
-        <h3 id="single-action-modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Time to launch</h3>
+        <h3 id="single-action-modal-title" class="h4 mb-2 text-center">Time to launch</h3>
 
         <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
           <p>Are you ready to deploy your changes to production? This action cannot be undone.</p>
@@ -88,7 +89,7 @@
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded mx-auto shadow-xl max-w-xs bg-white m-1 p-8 origin-bottom text-center dark:bg-slate-700 dark:text-slate-200 text-slate-600">
         <div class="flex justify-center">
-          <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
+          <div class="size-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
             <%%= icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0" %>
           </div>
         </div>
@@ -106,13 +107,37 @@
 </div>
 <% end %>
 
-<% content_for :js, flush: true do %>
-import { RailsuiModal } from 'railsui-stimulus'
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-modal">
+  <!-- Trigger button -->
+  <%%= rui :button, label: "Open Modal", tag_options: { data: { action: "click->railsui-modal#open" } } %>
 
-application.register('railsui-modal', RailsuiModal)
+  <!-- Modal -->
+  <%%= rui :modal, size: :xs, dismissable: false do %>
+    <div class="flex justify-center">
+      <div class="size-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3">
+        <%%= icon "rocket-launch", class: "size-6 text-emerald-600 flex-shrink-0" %>
+      </div>
+    </div>
+
+    <h3 id="single-action-modal-title" class="h4 mb-2 text-center">Time to launch</h3>
+
+    <div class="prose prose-slate dark:prose-invert mt-2 mb-6 text-center">
+      <p>Are you ready to deploy your changes to production? This action cannot be undone.</p>
+    </div>
+
+    <div class="flex gap-3 justify-center mt-4">
+      <%%= rui :button, label: "Launch away", classes: "w-full", tag_options: { data: { action: "click->railsui-modal#close" } } %>
+    </div>
+  <%% end %>
+</div>
 <% end %>
 
-<%= render_snippet(js_filename: "index.js") %>
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
 <% end %>
 <% end %>
 </div>

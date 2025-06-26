@@ -69,11 +69,12 @@ Custom "modal" controller
   ].compact.join(" ")
 
   modal_controller = controller || "railsui-modal"
+  controller_dashed = modal_controller.tr("_", "-")
 %>
 
 <div
   data-action="<%%= dismissable ? "keydown.esc@window->#{modal_controller}#closeWithEsc" : "" %>"
-  data-<%%= modal_controller.dasherize %>-target="container"
+  data-<%%= controller_dashed %>-target="container"
   class="<%%= backdrop_class %>"
   data-transition-enter-from="opacity-0"
   data-transition-enter-to="opacity-100"
@@ -81,7 +82,7 @@ Custom "modal" controller
   data-transition-leave-to="opacity-0">
 
   <div
-    data-<%%= modal_controller.dasherize %>-target="content"
+    data-<%%= controller_dashed %>-target="content"
     class="<%%= dialog_class %>"
     data-transition-enter-from="opacity-0 scale-95 translate-y-4"
     data-transition-enter-to="opacity-100 scale-100 translate-y-0"
@@ -89,11 +90,11 @@ Custom "modal" controller
     data-transition-leave-to="opacity-0 scale-95 translate-y-4"
     role="dialog"
     aria-modal="true"
-    <%% if title.present? %>aria-labelledby="modal-%%= title.dasherize %>"<%% end %>>
+    <%% if title.present? %>aria-labelledby="modal-<%%= title.tr(" ", "-").downcase %>"<%% end %>>
 
     <%% if title.present? || dismissable %>
       <%% if title.present? %>
-        <h3 id="modal-<%%= title.dasherize %>" class="h4 mb-2">
+        <h3 id="modal-<%%= title.tr(" ", "-").downcase %>" class="h4 mb-2">
           <%%= title %>
         </h3>
       <%% end %>

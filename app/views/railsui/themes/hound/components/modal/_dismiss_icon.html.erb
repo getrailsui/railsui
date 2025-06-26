@@ -11,13 +11,13 @@
     </div>
 
     <div class="flex-1">
-      <h3 class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Delete account</h3>
+      <h3 class="h4 mb-2">Delete account</h3>
 
-      <div class="prose prose-slate dark:prose-invert mb-6 mt-2 pr-6">
+      <div class="prose prose-slate dark:prose-invert mb-6 mt-2">
         <p>Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
       </div>
 
-      <div class="flex justify-end items-center space-x-3">
+      <div class="flex justify-end items-center gap-3">
         <button class="btn btn-light">Cancel</button>
         <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-slate-600/10">Delete</button>
       </div>
@@ -52,7 +52,7 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 p-6 origin-bottom md:flex items-start relative gap-4 dark:bg-slate-700 dark:text-slate-200">
-        <div class="flex items-start">
+        <div class="flex items-start gap-4">
           <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50" data-action="click->railsui-modal#close">
             <%= icon "x-mark", class: "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
           </button>
@@ -61,13 +61,12 @@
           </div>
 
           <div class="flex-1">
-            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Delete account</h3>
-
-            <div class="prose prose-slate dark:prose-invert mb-6 mt-2 pr-6">
+            <h3 class="h4 mb-2">Delete account</h3>
+            <div class="prose prose-slate dark:prose-invert mb-6 mt-2">
               <p>Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
             </div>
 
-            <div class="flex justify-end items-center space-x-3">
+            <div class="flex gap-3 justify-end items-center">
               <button class="btn btn-light" data-action="click->railsui-modal#close">Cancel</button>
               <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-slate-600/10">Delete</button>
             </div>
@@ -101,7 +100,7 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded mx-auto shadow-xl sm:w-full sm:max-w-lg bg-white m-1 p-6 origin-bottom md:flex items-start relative gap-4 dark:bg-slate-700 dark:text-slate-200">
-        <div class="flex items-start">
+        <div class="flex items-start gap-4">
           <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50" data-action="click->railsui-modal#close">
             <%%= icon "x-mark", class: "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
           </button>
@@ -110,13 +109,13 @@
           </div>
 
           <div class="flex-1">
-            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Delete account</h3>
+            <h3 class="h4 mb-2">Delete account</h3>
 
-            <div class="prose prose-slate dark:prose-invert mb-6 mt-2 pr-6">
+            <div class="prose prose-slate dark:prose-invert mb-6 mt-2">
               <p>Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
             </div>
 
-            <div class="flex justify-end items-center space-x-3">
+            <div class="flex gap-3 justify-end items-center">
               <button class="btn btn-light" data-action="click->railsui-modal#close">Cancel</button>
               <button class="btn bg-red-600 text-white focus:ring-red-100 hover:bg-red-700 hover:shadow-sm hover:shadow-slate-600/10">Delete</button>
             </div>
@@ -128,13 +127,39 @@
 </div>
 <% end %>
 
-<% content_for :js, flush: true do %>
-import { RailsuiModal } from 'railsui-stimulus'
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-modal">
+  <!-- Trigger button -->
+  <%%= rui :button, label: "Open Modal", tag_options: { data: { action: "click->railsui-modal#open" } } %>
 
-application.register('railsui-modal', RailsuiModal)
+  <!-- Modal -->
+  <%%= rui :modal, size: :lg do %>
+    <div class="flex items-start gap-4">
+      <div class="size-8 rounded-full bg-red-50 flex items-center justify-center dark:bg-red-500/30">
+        <%%= icon "exclamation-circle", class: "size-6 text-red-600 flex-shrink-0 dark:text-red-300" %>
+      </div>
+
+      <div class="flex-1">
+        <h3 class="h4 mb-2">Delete account</h3>
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <p>Once your account is deleted it is gone for good. There is no data saved that we keep on hand. Are you sure you want to continue?</p>
+        </div>
+
+        <div class="flex gap-3 justify-end items-center">
+          <%%= rui :button, label: "Cancel", variant: :light, tag_options: { data: { action: "click->railsui-modal#close" } } %>
+          <%%= button_to "Delete", "#", class: "btn btn-danger", method: :delete %>
+        </div>
+      </div>
+    </div>
+  <%% end %>
+</div>
 <% end %>
 
-<%= render_snippet(js_filename: "index.js") %>
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
 <% end %>
 <% end %>
 </div>

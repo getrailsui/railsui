@@ -1,0 +1,40 @@
+<div id="modal-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Modal
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named modal_controller.js and registers it for enhanced interactivity</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+
+<ul>
+  <li><code>title</code>: Modal header title (String, optional)</li>
+  <li><code>content</code>: Main modal content as string or block (String or block, required)</li>
+  <li><code>size</code>: Modal width size (Symbol, default: :md)
+    <ul>
+      <li><code>:xs</code>: Extra small modal (max-w-xs)</li>
+      <li><code>:sm</code>: Small modal (max-w-sm)</li>
+      <li><code>:md</code>: Medium modal (max-w-md)</li>
+      <li><code>:lg</code>: Large modal (max-w-lg)</li>
+      <li><code>:xl</code>: Extra large modal (max-w-xl)</li>
+      <li><code>:full</code>: Full width modal with margins (max-w-full mx-4)</li>
+    </ul>
+  </li>
+  <li><code>dismissable</code>: Show close button and allow backdrop dismiss (Boolean, default: true)</li>
+  <li><code>classes</code>: Additional CSS classes for modal dialog (String, optional)</li>
+  <li><code>backdrop_classes</code>: Additional CSS classes for backdrop overlay (String, optional)</li>
+  <li><code>controller</code>: Stimulus controller name (String, default: "railsui-modal")</li>
+  <li><code>show</code>: Whether modal is initially visible (Boolean, default: false)</li>
+</ul>
+
+<h2>Usage examples</h2>
+
+</div>

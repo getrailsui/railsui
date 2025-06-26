@@ -1,5 +1,7 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/modal" %>
 
+<%= render "#{path}/configuration" %>
+<%= divider %>
 <%= render "#{path}/base" %>
 <%= divider %>
 <%= render "#{path}/single_action" %>
@@ -15,6 +17,7 @@
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Configuration", "#modal-configuration" %>
     <%= component_link "Base", "#modal-base" %>
 		<%= component_link "Single action", "#modal-single-action" %>
 		<%= component_link "Centered dual action", "#modal-centered-dual-action" %>

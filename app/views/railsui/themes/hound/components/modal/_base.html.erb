@@ -3,17 +3,18 @@
 
 <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-slate-800 dark:border-t dark:border-x dark:border-slate-600">
   <div class="rounded shadow-xl max-w-lg bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200">
-    <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Hang on one sec</h3>
+    <h3 id="modal-title" class="h4 mb-2">Hang on one sec</h3>
 
     <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
       <p>Review and accept our updated terms of service before continuing. These changes help protect you and our service.</p>
     </div>
 
-    <div class="flex justify-end items-center flex-wrap gap-4">
+    <div class="flex gap-3 justify-end mt-4">
       <button class="btn btn-primary">Close</button>
     </div>
   </div>
 </div>
+
 
 <div data-controller="railsui-modal">
   <div class="flex justify-center p-6 border-x border-b border-slate-200 rounded-b-lg relative dark:bg-slate-700 dark:border-slate-600 dark:border-t">
@@ -43,13 +44,13 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded shadow-xl max-w-lg bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200">
-        <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Hang on one sec</h3>
+        <h3 id="modal-title" class="h4 mb-2">Hang on one sec</h3>
 
         <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
           <p>Review and accept our updated terms of service before continuing. These changes help protect you and our service.</p>
         </div>
 
-        <div class="flex justify-end items-center flex-wrap gap-4">
+        <div class="flex gap-3 justify-end mt-4">
           <button class="btn btn-primary" data-action="click->railsui-modal#close">Close</button>
         </div>
       </div>
@@ -82,13 +83,13 @@
       data-transition-leave-from="transform opacity-100 scale-100"
       data-transition-leave-to="transform opacity-0 scale-95"
       class="hidden rounded shadow-xl max-w-lg bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200">
-        <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Hang on one sec</h3>
+        <h3 id="modal-title" class="h4 mb-2">Hang on one sec</h3>
 
         <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
           <p>Review and accept our updated terms of service before continuing. These changes help protect you and our service.</p>
         </div>
 
-        <div class="flex justify-end items-center flex-wrap gap-4">
+        <div class="flex gap-3 justify-end mt-4">
           <button class="btn btn-primary" data-action="click->railsui-modal#close">Close</button>
         </div>
       </div>
@@ -97,13 +98,29 @@
 </div>
 <% end %>
 
-<% content_for :js, flush: true do %>
-import { RailsuiModal } from 'railsui-stimulus'
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-modal">
+  <!-- Trigger button -->
+  <%%= rui :button, label: "Open Modal", tag_options: { data: { action: "click->railsui-modal#open" } } %>
 
-application.register('railsui-modal', RailsuiModal)
+  <!-- Modal -->
+  <%%= rui :modal, title: "Hang on one sec", size: :lg, dismissable: false do %>
+    <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+      <p>Review and accept our updated terms of service before continuing. These changes help protect you and our service.</p>
+    </div>
+
+    <div class="flex gap-3 justify-end mt-4">
+      <%%= rui :button, label: "Close", tag_options: { data: { action: "click->railsui-modal#close" } } %>
+    </div>
+  <%% end %>
+</div>
 <% end %>
 
-<%= render_snippet(js_filename: "index.js") %>
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
 <% end %>
 <% end %>
 </div>
