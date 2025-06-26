@@ -1,6 +1,31 @@
-<ul class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base text-lg md:leading-normal leading-relaxed space-y-1 md:space-y-0">
-  <li>
-    <%%= nav_link_to "Menu item", "#", class: "rui-nav-link" %>
-  </li>
-  <!-- Add more links here -->
-</ul>
+<%%# locals: (content: nil) %>
+
+<%%# Navigation::Right Component
+Props:
+- content: (String or block, optional) Custom navigation links content
+
+Usage:
+# Default links
+rui "navigation/right"
+
+# Custom content as block
+rui "navigation/right" do
+  <ul class="flex md:flex-row flex-col gap-2">
+    <li>link_to "Login", login_path, class: "btn btn-transparent"</li>
+    <li>link_to "Sign Up", signup_path, class: "btn btn-primary"</li>
+  </ul>
+end
+%>
+
+<%% if content.present? %>
+  <%%= content %>
+<%% else %>
+  <ul class="md:flex block items-center flex-wrap space-x-0 md:space-x-2 md:text-base text-lg md:leading-normal leading-relaxed space-y-1 md:space-y-0">
+    <li>
+      <%%= link_to "Login", "#", class: "btn btn-transparent" %>
+    </li>
+    <li>
+      <%%= link_to "Sign Up", "#", class: "btn btn-primary" %>
+    </li>
+  </ul>
+<%% end %>

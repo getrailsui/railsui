@@ -10,7 +10,7 @@ module Railsui
       url = url_for(options)
       starts_with = html_options.delete(:starts_with)
       html_options[:class] = Array.wrap(html_options[:class])
-      active_class = html_options.delete(:active_class) || "nav-link-active"
+      active_class = html_options.delete(:active_class) || "rui-nav-link-active"
       inactive_class = html_options.delete(:inactive_class) || ""
 
       active = if (paths = Array.wrap(starts_with)) && paths.present?

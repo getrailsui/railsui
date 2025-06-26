@@ -1,0 +1,83 @@
+<div id="navigation-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Navigation
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--stimulus</code>: Generates a new Stimulus controller named nav_controller.js and registers it for enhanced mobile menu functionality</li>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+</ul>
+
+<h3>Component Properties</h3>
+
+<ul>
+  <li><code>logo</code>: Logo content - accepts image tags, inline SVG, or plain text (String or HTML, required)</li>
+  <li><code>controller</code>: Stimulus controller name for mobile menu functionality (String, default: "nav")</li>
+  <li><code>classes</code>: Additional CSS classes for the outer header element (String, optional)</li>
+  <li><code>content</code>: Custom navigation content to replace default left/right subcomponents (String or block, optional)</li>
+</ul>
+
+<h3>Subcomponents</h3>
+
+<p>The navigation component includes two optional subcomponents that can be customized. These subcomponents now support both default content and custom block content:</p>
+
+<ul>
+  <li><code>navigation/left</code>: Left-side navigation links
+    <ul>
+      <li>Default: Renders placeholder menu items</li>
+      <li>With block: Accepts custom content for left navigation</li>
+    </ul>
+  </li>
+  <li><code>navigation/right</code>: Right-side navigation links
+    <ul>
+      <li>Default: Renders Login/Sign Up buttons</li>
+      <li>With block: Accepts custom content for right navigation</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Usage Patterns</h3>
+
+<p>The navigation component supports three levels of customization:</p>
+
+<ol>
+  <li><strong>Default subcomponents:</strong> Use built-in left/right navigation with default content</li>
+  <li><strong>Custom subcomponent blocks:</strong> Override individual left/right sections while maintaining structure</li>
+  <li><strong>Complete override:</strong> Replace entire navigation content with custom block</li>
+</ol>
+
+<div class="not-prose">
+<% content_for :erb, flush: true do %>
+<!-- Pattern 1: Default subcomponents -->
+<%%= rui :navigation, logo: image_tag("logo.png") %>
+
+<!-- Pattern 2: Custom subcomponent blocks -->
+<%%= rui :navigation, logo: content_tag(:span, "Brand") do %>
+  <%%= rui "navigation/left" do %>
+    <!-- Custom left navigation -->
+  <%% end %>
+  <%%= rui "navigation/right" do %>
+    <!-- Custom right navigation -->
+  <%% end %>
+<%% end %>
+
+<!-- Pattern 3: Complete override -->
+<%%= rui :navigation, logo: content_tag(:span, "Brand") do %>
+  <!-- Completely custom navigation structure -->
+<%% end %>
+<% end %>
+
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render_snippet active_tab: :erb %>
+</div>
+
+<h2>Usage examples</h2>
+</div>

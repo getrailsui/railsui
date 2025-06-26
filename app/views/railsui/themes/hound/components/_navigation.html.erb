@@ -1,5 +1,7 @@
 <% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/navigation" %>
 
+<%= render "#{path}/configuration" %>
+<%= divider %>
 <%= render "#{path}/base" %>
 <%= divider %>
 <%= render "#{path}/with_search" %>
