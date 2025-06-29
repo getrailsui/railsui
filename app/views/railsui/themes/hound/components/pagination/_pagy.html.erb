@@ -5,6 +5,8 @@
     <p><%= link_to "Pagy", "https://github.com/ddnexus/pagy", target: :_blank %> is a popular pagination solution for Ruby/Rails developers. The nav partial <%= link_to "from the gem", "https://github.com/ddnexus/pagy/tree/master/lib/templates", target: :_blank %> comes ready to use with Rails UI.</p>
 
     <p>To make use of this UI you will need to render an alternative partial containing the code below with the <code>@pagy</code> instance variable passed through as a local variable inside the partial.</p>
+
+    <p>There are two snippets included below. One leverages regular ERB/HTML for max customization and the other leverages a prebuilt rui <code>:pagination</code> component.</p>
   </div>
 
 <%= render preview 'gray' do %>
@@ -14,7 +16,7 @@
       <span class="flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full sm:bg-transparent sm:mb-0 mb-3 pointer-events-none select-none opacity-40 dark:opacity-60">&lsaquo; Prev</span>
     </span>
 
-    <span class="py-2 px-4 border-t-2 border-transparent block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400 rounded">1</span>
+    <span class="py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400">1</span>
     <span>
       <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#" rel="next">2</a>
   </span>
@@ -41,6 +43,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
+<!-- Using regular ERB -->
 <!-- Source: https://github.com/ddnexus/pagy/blob/master/lib/templates/nav.html.erb -->
 
 <%% link = pagy_link_proc(pagy) %>
@@ -85,6 +88,64 @@
 <% end %>
 
 <%= render_snippet active_tab: "erb" %>
+
+
+
+<% content_for :ruby, flush: true do %>
+class PostsController < ApplicationController
+  def index
+    @posts = Post.all
+    @pagy, @posts = pagy(@posts)
+
+    # Build pagination data for Rails UI component
+    build_pagination_data
+  end
+
+  private
+
+  # This is probably worth extracting to a concern for reuse in other controllers
+  def build_pagination_data
+    # Build the pages array from Pagy's series
+    @pagination_pages = @pagy.series.map do |item|
+      case item
+      when Integer
+        item == @pagy.page ? item.to_s : item  # Current page as string, others as integers
+      when String
+        item  # Already a string (current page)
+      when :gap
+        :gap  # Gap symbol
+      end
+    end
+
+    # Build navigation URLs
+    @pagination_prev_url = @pagy.prev ? posts_path(page: @pagy.prev) : nil
+    @pagination_next_url = @pagy.next ? posts_path(page: @pagy.next) : nil
+  end
+end
 <% end %>
+
+
+<% content_for :erb, flush: true do %>
+<!-- In app/views/posts/index.html.erb -->
+<div class="posts">
+  <%% @posts.each do |post| %>
+    <div class="post">
+      <%%= post.title %>
+    </div>
+  <%% end %>
+</div>
+
+<!-- Cleaner pagination component usage -->
+<%%= rui :pagination,  prev_url: @pagination_prev_url,  next_url: @pagination_next_url, pages: @pagination_pages %>
+
+<% end %>
+<% end %>
+
+<div class="prose prose-neutral dark:prose-invert my-6">
+  <h4>Rails UI Pagination component</h4>
+  <p>Pairing the pagination component with pagy requires a little setup to get the URLs and pages array just right. See the code example below for details.</p>
+</div>
+<%= render_snippet active_tab: :erb, erb_filename: "posts/index.html.erb", ruby_filename: "posts_controller.rb" %>
+
 <% end %>
 </div>
