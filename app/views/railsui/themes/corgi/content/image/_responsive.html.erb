@@ -1,0 +1,28 @@
+<div id="image-responsive">
+<%= render layout: example, locals: { heading: "Responsive" } do %>
+
+<div class="prose prose-neutral dark:prose-invert mb-6">
+  <p>Display images that scale proportionally relative to browser widths.</p>
+</div>
+
+<img src="https://picsum.photos/1600/900" class="max-w-full h-auto">
+
+<% content_for :example, flush: true do %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+  <img src="#" class="max-w-full h-auto">
+<% end %>
+
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+  <%%= image_tag "...", class: "max-w-full", alt:"..." %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+  %img.max-w-full{:alt => "...", :src => "..."}
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

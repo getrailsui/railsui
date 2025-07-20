@@ -300,3 +300,104 @@ shepherd:
       - admin
     path: rui_account_preferences_path
     add_to_nav: false
+corgi:
+  home:
+    title: Home
+    description: A simple home page.
+    tags:
+      - marketing
+    path: rui_home_path
+    add_to_nav: false
+  pricing:
+    title: Pricing
+    description: SaaS-like pricing; 3 plans types by default.
+    tags:
+      - marketing
+    path: rui_pricing_path
+    add_to_nav: false
+  features:
+    title: Features
+    description: A features page with a list of features.
+    tags:
+      - marketing
+    path: rui_features_path
+    add_to_nav: false
+  blog:
+    title: Blog
+    description: A blog index page with a list of articles.
+    tags:
+      - marketing
+    path: rui_blog_path
+    add_to_nav: false
+  blog_show:
+    title: Blog Show
+    description: A blog article detail view.
+    tags:
+      - marketing
+    path: rui_blog_show_path
+    add_to_nav: false
+  blog_category:
+    title: Blog Category
+    description: A blog category index page.
+    tags:
+      - marketing
+    path: rui_blog_category_path
+    add_to_nav: false
+  about:
+    title: About
+    description: Company or organization about page.
+    tags:
+      - marketing
+    path: rui_about_path
+    add_to_nav: false
+  terms:
+    title: Terms
+    description: A simple template for Terms of Service.
+    tags:
+      - marketing
+    path: rui_terms_path
+    add_to_nav: false
+  privacy_policy:
+    title: Privacy Policy
+    description: A simple template for a privacy policy.
+    tags:
+      - marketing
+    path: rui_privacy_policy_path
+    add_to_nav: false
+  signup:
+    title: Signup
+    description: A signup page for new users.
+    tags:
+      - authentication
+    path: rui_signup_path
+    add_to_nav: false
+  login:
+    title: Login
+    description: A login page for existing users.
+    tags:
+      - authentication
+    path: rui_login_path
+    add_to_nav: false
+  help:
+    title: Help
+    description: A help page with FAQs and support links.
+    tags:
+      - marketing
+    path: rui_help_path
+    add_to_nav: false
+  chat_new:
+    title: Chat New
+    description: A new chat page with a chat interface.
+    tags:
+      - admin
+    path: rui_chat_new_path
+    add_to_nav: false
+    namespace: admin
+  chat_show:
+    title: Chat Show
+    description: A chat show page with a chat interface.
+    tags:
+      - admin
+    path: rui_chat_show_path
+    add_to_nav: false
+    namespace: admin

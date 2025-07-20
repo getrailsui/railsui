@@ -2,3 +2,5 @@ hound:
   body_classes: antialiased h-full bg-slate-50 dark:bg-slate-900 dark:text-slate-100 text-slate-800
 shepherd:
   body_classes: h-full antialiased text-zinc-800 leading-normal selection:bg-primary-100 selection:text-primary-700 dark:bg-zinc-900 bg-white dark:text-zinc-50 dark:selection:bg-zinc-500/40 dark:selection:text-zinc-200
+corgi:
+  body_classes: h-screen antialiased text-neutral-800 dark:text-neutral-50 dark:bg-neutral-900 bg-neutral-50

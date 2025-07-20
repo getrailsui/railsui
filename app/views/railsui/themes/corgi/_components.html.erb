@@ -1,0 +1,7 @@
+<%= render layout: "railsui/shared/linkables" do %>
+  <% components = ["Accordion", "Alert", "Badge", "Breadcrumb", "Button", "Card", "Dropdown", "Flash", "Modal", "Navigation", "Pagination", "Tab", "Toast", "Tooltip"] %>
+
+  <% components.each do |component| %>
+    <%= render "railsui/shared/linkable", path: eval("systems_components_#{component.downcase}_path"), title: component, description: "Documentation and examples for the #{component.downcase.singularize} component." %>
+  <% end %>
+<% end %>

@@ -1,0 +1,54 @@
+<div id="tooltip-base">
+<%= render layout: example, locals: { heading: "Base", section: "Tooltip" } do %>
+
+<%= render preview 'gray' do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="Hi, from the tips of tools" class="btn btn-primary">Hover here</button>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="We raised over $1 billion to engineer the greatest tooltip of our lives. <strong>What's super cool</strong> is that HTML can be embedded into the tooltip for max emphasis." data-railsui-tooltip-allow-html-value="true" class="btn btn-white">and here</button>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true  do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+<% end %>
+
+<% content_for :erb, flush: true  do %>
+<%%= button_tag "#", class: "btn btn-primary", data: { controller: "railsui-tooltip", railsui_tooltip_content_value: "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!", railsui_tooltip_allow_html_value: "true" } %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%button.btn.btn-primary{"data-controller" => "railsui-tooltip", "data-railsui-tooltip-allow-html-value" => "true", "data-railsui-tooltip-content-value" => "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!"} Tooltip with HTML demo
+<% end %>
+
+<% content_for :js, flush: true do %>
+// https://github.com/getrailsui/railsui-stimulus/blob/main/src/railsui_tooltip.js
+
+import { Controller } from '@hotwired/stimulus'
+import tippy from 'tippy.js'
+
+export default class extends Controller {
+  static values = {
+    content: String,
+    allowHtml: { type: Boolean, default: false },
+  }
+
+  connect() {
+    let options = {}
+    if (this.hasContentValue) {
+      options['content'] = this.contentValue
+    }
+    if (this.hasAllowHtmlValue) {
+      options['allowHTML'] = this.allowHtmlValue
+    }
+    this.tippy = tippy(this.element, options)
+  }
+
+  disconnect() {
+    this.tippy.destroy()
+  }
+}
+<% end %>
+
+<%= render_snippet js_filename: "tooltip_controller.js" %>
+<% end %>
+<% end %>
+</div>

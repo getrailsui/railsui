@@ -1,0 +1,14 @@
+<%# locals: (label: "Label", nav_icon: "cog-6-tooth") %>
+
+<button type="button"
+  data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
+  class="flex items-center w-full gap-3 p-2 text-sm transition-colors duration-100 rounded-lg whitespace-nowrap hover:bg-neutral-100 dark:hover:bg-neutral-700/80 dark:backdrop-blur-sm">
+
+  <div class="flex items-center justify-center size-5">
+    <%= icon nav_icon "size-5 stroke-current" %>
+  </div>
+
+  <span class="truncate">
+    <%= label %>
+  </span>
+</button>

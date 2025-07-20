@@ -1,0 +1,166 @@
+<div class="text-[14px] relative pb-4 pl-4">
+  <ul>
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mb-1 text-[14px]">Content</p>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Typography", path:  systems_content_typography_path) %>
+
+        <%= system_nav_item(label: "Table", path:  systems_content_table_path) %>
+
+        <%= system_nav_item(label: "Icon", path:  systems_icons_path) %>
+
+        <%= system_nav_item(label: "Image", path:  systems_content_image_path) %>
+
+        <%= system_nav_item(label: "Scaffold", path:  systems_scaffolds_path) %>
+      </ul>
+    </li>
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Forms</p>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+
+        <%= system_nav_item(label: "Input", path:  systems_forms_input_path) %>
+
+        <%= system_nav_item(label: "Input Group", path:  systems_forms_input_group_path) %>
+
+        <%= system_nav_item(label: "Select", path:  systems_forms_select_path) %>
+
+        <%= system_nav_item(label: "Checkbox", path:  systems_forms_checkbox_path) %>
+
+        <%= system_nav_item(label: "Radio", path:  systems_forms_radio_path) %>
+
+        <%= system_nav_item(label: "Switch", path:  systems_forms_switch_path) %>
+
+        <%= system_nav_item(label: "ActionText", path:  systems_forms_action_text_path) %>
+
+        <%= system_nav_item(label: "Validation", path:  systems_forms_validation_path) %>
+      </ul>
+    </li>
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Components</p>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+
+        <%= system_nav_item(label: "Accordion", path:  systems_components_accordion_path) %>
+
+        <%= system_nav_item(label: "Alert", path:  systems_components_alert_path) %>
+
+        <%= system_nav_item(label: "Avatar", path:  systems_components_avatar_path) %>
+
+        <%= system_nav_item(label: "Badge", path:  systems_components_badge_path) %>
+
+        <%= system_nav_item(label: "Breadcrumb", path:  systems_components_breadcrumb_path) %>
+
+        <%= system_nav_item(label: "Button", path:  systems_components_button_path) %>
+
+        <%= system_nav_item(label: "Card", path:  systems_components_card_path) %>
+
+        <%= system_nav_item(label: "Combobox", path:  systems_components_combobox_path) %>
+
+        <%= system_nav_item(label: "Dropdown", path:  systems_components_dropdown_path) %>
+
+        <%= system_nav_item(label: "Flash", path:  systems_components_flash_path) %>
+
+        <%= system_nav_item(label: "Modal", path:  systems_components_modal_path) %>
+
+        <%= system_nav_item(label: "Navigation", path:  systems_components_navigation_path) %>
+
+        <%= system_nav_item(label: "Pagination", path:  systems_components_pagination_path) %>
+
+        <%= system_nav_item(label: "Tab", path:  systems_components_tab_path) %>
+
+        <%= system_nav_item(label: "Toast", path:  systems_components_toast_path) %>
+
+        <%= system_nav_item(label: "Tooltip", path:  systems_components_tooltip_path) %>
+      </ul>
+    </li>
+
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Authentication</p>
+
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Overview", path:  systems_authentication_overview_path) %>
+      </ul>
+
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <details class="marker:content-[''] group" <%= "open" if controller_name == "devise" %>>
+          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between dark:hover:bg-neutral-700/80">
+            <p class="font-medium">Devise</p>
+            <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
+            <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>
+          </summary>
+          <ul class="ml-2">
+            <%= system_nav_item(label: "Overview", path:  systems_authentication_devise_overview_path) %>
+
+            <%= system_nav_item(label: "Sign up", path:  systems_authentication_devise_signup_path) %>
+
+            <%= system_nav_item(label: "Sign in", path:  systems_authentication_devise_signin_path) %>
+
+            <%= system_nav_item(label: "Change password", path:  systems_authentication_devise_change_password_path) %>
+
+            <%= system_nav_item(label: "Reset password", path: systems_authentication_devise_reset_password_path) %>
+
+            <%= system_nav_item(label: "Confirmation", path:  systems_authentication_devise_confirmation_path) %>
+
+            <%= system_nav_item(label: "Edit account", path:  systems_authentication_devise_edit_path) %>
+
+            <%= system_nav_item(label: "Unlock", path:  systems_authentication_devise_unlocks_path) %>
+          </ul>
+        </details>
+
+        <details class="marker:content-[''] group" <%= "open" if controller_name == "static" %>>
+          <summary class="py-2 px-3 hover:bg-neutral-100/80 flex items-center justify-between dark:hover:bg-neutral-700/80">
+            <p class="font-medium">Static</p>
+            <%= icon "plus", class: "size-4 stroke-neutral-400 group-open:hidden" %>
+            <%= icon "minus", class: "size-4 stroke-neutral-400 hidden group-open:block" %>
+          </summary>
+          <ul class="ml-2">
+            <%= system_nav_item(label: "Overview", path:  systems_authentication_static_overview_path) %>
+
+            <%= system_nav_item(label: "Sign up", path:  systems_authentication_static_signup_path) %>
+
+            <%= system_nav_item(label: "Sign in", path:  systems_authentication_static_signin_path) %>
+
+            <%= system_nav_item(label: "Change password", path:  systems_authentication_static_change_password_path) %>
+
+            <%= system_nav_item(label: "Reset password", path: systems_authentication_static_reset_password_path) %>
+
+            <%= system_nav_item(label: "Confirmation", path:  systems_authentication_static_confirmation_path) %>
+
+            <%= system_nav_item(label: "Edit account", path:  systems_authentication_static_edit_path) %>
+
+            <%= system_nav_item(label: "Unlock", path:  systems_authentication_static_unlocks_path) %>
+          </ul>
+        </details>
+      </ul>
+    </li>
+
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Mailers</p>
+
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Overview", path:  systems_mailers_overview_path) %>
+
+        <%= system_nav_item(label: "Layout", path:  systems_mailers_layout_path) %>
+
+        <%= system_nav_item(label: "Minimal", path:  systems_mailers_minimal_path) %>
+
+        <%= system_nav_item(label: "Promotion", path:  systems_mailers_promotion_path) %>
+
+        <%= system_nav_item(label: "Transactional", path:  systems_mailers_transactional_path) %>
+
+        <%= system_nav_item(label: "Devise", path:  systems_mailers_devise_path) %>
+      </ul>
+    </li>
+    <li>
+      <p class="font-medium px-3 py-2 dark:text-neutral-200 mt-4 mb-1 text-[14px]">Helpers</p>
+      <ul class="border-neutral-300/90 border-l dark:border-neutral-700 ml-3">
+        <%= system_nav_item(label: "Overview", path:  systems_helpers_overview_path) %>
+        <%= system_nav_item(label: "Icon", path:  systems_helpers_icon_path) %>
+        <%= system_nav_item(label: "Nav Link", path:  systems_helpers_nav_link_path) %>
+        <%= system_nav_item(label: "Email Action", path:  systems_helpers_email_action_path) %>
+        <%= system_nav_item(label: "Email Callout", path:  systems_helpers_email_callout_path) %>
+        <%= system_nav_item(label: "Email Spacer", path:  systems_helpers_spacer_path) %>
+        <%= system_nav_item(label: "Demo Avatar", path:  systems_helpers_demo_avatar_path) %>
+        <%= system_nav_item(label: "Rails UI Head", path:  systems_helpers_railsui_head_path) %>
+    </li>
+  </ul>
+</div>

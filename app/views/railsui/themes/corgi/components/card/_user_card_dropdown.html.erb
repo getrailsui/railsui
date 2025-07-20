@@ -1,0 +1,134 @@
+<div id="card-user-card-with-dropdown">
+<%= render layout: example, locals: { heading: "User card with dropdown", section: "Card" } do %>
+<div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 dark:shadow-slate-900/50">
+<div class="flex flex-wrap items-center gap-4">
+  <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: :men), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+<div class="flex-1 flex flex-col items-start space-y-px text-slate-900 dark:text-white">
+  <p class="font-bold">Jared Doe</p>
+  <p class="dark:text-slate-400 text-sm"><%= Time.zone.now.strftime("%B %e at  %l:%M %p") %></p>
+</div>
+<div data-controller="railsui-dropdown" class="relative">
+  <button type="button" data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200 dark:focus:border-slate-700 dark:hover:bg-slate-700/80 dark:hover:border-slate-700 dark:focus:ring-slate-400/50">
+    <%= icon "ellipsis-vertical", class:  "size-6 text-slate-500 group-hover:text-primary-500 dark:text-slate-200 dark:group-hover:text-primary-300" %>
+  </button>
+  <ul
+  class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[200px] z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-sm font-medium text-slate-600 dark:text-slate-200"
+  data-railsui-dropdown-target="menu"
+  data-transition-enter-from="opacity-0 scale-95"
+  data-transition-enter-to="opacity-100 scale-100"
+  data-transition-leave-from="opacity-100 scale-100"
+  data-transition-leave-to="opacity-0 scale-95"
+  >
+    <li>
+      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Follow</a>
+    </li>
+    <li>
+      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Save for later</a>
+    </li>
+    <li>
+      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Mute</a>
+    </li>
+  </ul>
+</div>
+</div>
+<div class="prose dark:prose-invert mt-4">
+<p>Just wanted to share my thoughts on the new product launch. The attention to detail and user experience is fantastic. The interface is intuitive and the performance improvements are noticeable. Great work by the entire team on this milestone achievement!</p>
+</div>
+</div>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 dark:shadow-slate-900/50">
+  <div class="flex flex-wrap items-center gap-4">
+    <%= image_tag demo_avatar_url(id: "49"), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+    <div class="flex-1 flex flex-col items-start space-y-px text-slate-900 dark:text-white">
+      <p class="font-bold">Jared Doe</p>
+      <p class="dark:text-slate-400 text-sm"><%%= Time.zone.now.strftime("%B %e at  %l:%M %p") %></p>
+    </div>
+    <div data-controller="dropdown" class="relative">
+      <button type="button" data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200 dark:focus:border-slate-700 dark:hover:bg-slate-700/80 dark:hover:border-slate-700 dark:focus:ring-slate-400/50">
+        <%%= icon "ellipsis-vertical", class:  "size-6 text-slate-500 group-hover:text-primary-500 dark:text-slate-200 dark:group-hover:text-primary-300" %>
+      </button>
+      <ul class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[200px] z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-sm font-medium text-slate-600 dark:text-slate-200"
+  data-railsui-dropdown-target="menu"
+  data-transition-enter-from="opacity-0 scale-95"
+  data-transition-enter-to="opacity-100 scale-100"
+  data-transition-leave-from="opacity-100 scale-100"
+  data-transition-leave-to="opacity-0 scale-95">
+        <li>
+          <%%= link_to "Follow", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+        </li>
+        <li>
+          <%%= link_to "Save for later", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+        </li>
+        <li>
+          <%%= link_to "Mute", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+        </li>
+      </ul>
+    </div>
+    <div class="prose dark:prose-invert mt-4">
+      <p>Just wanted to share my thoughts on the new product launch. The attention to detail and user experience is fantastic. The interface is intuitive and the performance improvements are noticeable. Great work by the entire team on this milestone achievement!</p>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border(class="border-slate-300/70 dark:border-slate-600/70 dark:shadow-slate-900/50")
+  .flex.flex-wrap.items-center.gap-4
+    %img.object-cover.size-14.rounded-full.flex-shrink-0(src="https://randomuser.me/api/portraits/men/49.jpg")/
+    .flex-1.flex.flex-col.items-start.space-y-px.text-slate-900.dark:text-white
+      %p.font-bold Jared Doe
+      %p.dark:text-slate-400.text-sm= Time.zone.now.strftime("%B %e at  %l:%M %p")
+      .relative(data-controller="dropdown")
+        %button.relative.group.border-transparent.border.transition.ease-in-out.focus:ring-4.w-8.h-8.flex.items-center.justify-center.rounded-lg.hover:border-slate-200.focus:ring-slate-50.hover:bg-white.hover:shadow-sm.focus:border-slate-200.dark:focus:border-slate-700.dark:hover:border-slate-700(class="dark:hover:bg-slate-700/80 dark:focus:ring-slate-400/50" data-action="dropdown#toggle click@window->dropdown#hide" type="button")
+          = icon "ellipsis-vertical", class:  "size-6 text-slate-500 group-hover:text-primary-500 dark:text-slate-200 dark:group-hover:text-primary-300"
+        %ul.hidden.transition.transform.origin-to-right.absolute.right-0.top-9.bg-white.rounded-lg.shadow-xl.border.border-slate-200.z-50.py-2.dark:bg-slate-700.text-sm.font-medium.text-slate-600.dark:text-slate-200(class="shadow-slate-900/10 min-w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60" data-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95")
+          %li
+            = link_to "Follow", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+          %li
+            = link_to "Save for later", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+          %li
+            = link_to "Mute", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+      .prose.dark:prose-invert.mt-4
+        %p Just wanted to share my thoughts on the new product launch. The attention to detail and user experience is fantastic. The interface is intuitive and the performance improvements are noticeable. Great work by the entire team on this milestone achievement!
+<% end %>
+
+<% content_for :js, flush: true do %>
+// app/javascript/controllers/dropdown_controller.js
+
+import { Controller } from '@hotwired/stimulus'
+import { useTransition } from 'stimulus-use'
+
+export default class extends Controller {
+  static targets = ['menu', 'trigger']
+
+  connect() {
+    useTransition(this, {
+      element: this.menuTarget,
+    })
+  }
+
+  toggle() {
+    this.toggleTransition()
+  }
+
+  hide(event) {
+    if (
+      !this.element.contains(event.target) &&
+      !this.menuTarget.classList.contains('hidden')
+    ) {
+      this.leave()
+    }
+  }
+}
+<% end %>
+
+<%= render_snippet js_filename: "dropdown_controller.js", active_tab: :erb %>
+<% end %>
+<% end %>
+</div>

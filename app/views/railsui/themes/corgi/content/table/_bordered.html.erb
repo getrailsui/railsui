@@ -1,0 +1,114 @@
+<div id="table-border">
+<%= render layout: example, locals: { heading: "Border" } do %>
+
+	<table class="table-auto w-full border border-slate-300 dark:border-slate-700/80">
+		<thead>
+			<tr>
+				<th scope="col" class="text-left p-3 border border-slate-200 dark:border-slate-700/80">First</th>
+				<th scope="col" class="text-left p-3 border border-slate-200 dark:border-slate-700/80">Last</th>
+				<th scope="col" class="text-left p-3 border border-slate-200 dark:border-slate-700/80">Handle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-3 border border-slate-200 dark:border-slate-700/80">Andy</td>
+				<td class="p-3 border border-slate-200 dark:border-slate-700/80">L.</td>
+				<td class="p-3 border border-slate-200 dark:border-slate-700/80">@railsui_</td>
+			</tr>
+			<tr>
+				<td class="p-3 border border-slate-200 dark:border-slate-700/80">Web</td>
+				<td class="p-3 border border-slate-200 dark:border-slate-700/80">Crunch</td>
+				<td class="p-3 border border-slate-200 dark:border-slate-700/80">@webcrunchblog</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="p-3 border border-slate-200 dark:border-slate-700/80">justalever</td>
+				<td class="p-3 border border-slate-200 dark:border-slate-700/80">@justalever</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+<% content_for :example, flush: true do %>
+	<%# .html %>
+<% content_for :html, flush: true do %>
+<table class="table-auto w-full border border-slate-300 dark:border-slate-700/80">
+  <thead>
+	  <tr>
+		  <th scope="col" class="text-left p-3 border border-slate-200 dark:border-slate-700/80">First</th>
+		  <th scope="col" class="text-left p-3 border border-slate-200 dark:border-slate-700/80">Last</th>
+		  <th scope="col" class="text-left p-3 border border-slate-200 dark:border-slate-700/80">Handle</th>
+	  </tr>
+  </thead>
+  <tbody>
+	  <tr>
+		  <td class="p-3 border border-slate-200 dark:border-slate-700/80">Andy</td>
+		  <td class="p-3 border border-slate-200 dark:border-slate-700/80">L.</td>
+		  <td class="p-3 border border-slate-200 dark:border-slate-700/80">@railsui_</td>
+	  </tr>
+	  <tr>
+		  <td class="p-3 border border-slate-200 dark:border-slate-700/80">Web</td>
+		  <td class="p-3 border border-slate-200 dark:border-slate-700/80">Crunch</td>
+		  <td class="p-3 border border-slate-200 dark:border-slate-700/80">@webcrunchblog</td>
+	  </tr>
+	  <tr>
+		  <td colspan="2" class="p-3 border border-slate-200 dark:border-slate-700/80">justalever</td>
+		  <td class="p-3 border border-slate-200 dark:border-slate-700/80">@justalever</td>
+	  </tr>
+  </tbody>
+</table>
+<% end %>
+
+	<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= tag.table class: "table-auto w-full border border-slate-300 dark:border-slate-700/80" do %>
+	<%%= tag.thead do %>
+		<%%= tag.tr do %>
+			<%%= tag.th "First", scope: "col", class: "text-left p-3 border border-slate-200 dark:border-slate-700/80" %>
+			<%%= tag.th "Last", scope: "col", class: "text-left p-3 border border-slate-200 dark:border-slate-700/80" %>
+			<%%= tag.th "Handle", scope: "col", class: "text-left p-3 border border-slate-200 dark:border-slate-700/80" %>
+		<%% end %>
+	<%% end %>
+	<%%= tag.tbody do %>
+		<%%= tag.tr do %>
+			<%%= tag.td "Andy", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+			<%%= tag.td "L.", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+			<%%= tag.td "@railsui_", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+		<%% end %>
+		<%%= tag.tr do %>
+			<%%= tag.td "Web", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+			<%%= tag.td "Crunch", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+			<%%= tag.td "@webcrunchblog", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+		<%% end %>
+		<%%= tag.tr do %>
+			<%%= tag.td "justalever", colspan: "2", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+			<%%= tag.td "@justalever", class: "p-3 border border-slate-200 dark:border-slate-700/80" %>
+		<%% end %>
+	<%% end %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+%table.table-auto.w-full.border.border-slate-300(class="dark:border-slate-700/80")
+  %thead
+    %tr
+      %th.text-left.p-3.border.border-slate-200(class="dark:border-slate-700/80" scope="col") First
+      %th.text-left.p-3.border.border-slate-200(class="dark:border-slate-700/80" scope="col") Last
+      %th.text-left.p-3.border.border-slate-200(class="dark:border-slate-700/80" scope="col") Handle
+  %tbody
+    %tr
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") Andy
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") L.
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") @railsui_
+    %tr
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") Web
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") Crunch
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") @webcrunchblog
+    %tr
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80" colspan="2") justalever
+      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") @justalever
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

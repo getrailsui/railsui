@@ -1,0 +1,116 @@
+<div id="forms-select-base">
+<%= render layout: example, locals: { heading: "Base", section: "Select" } do %>
+
+<%= render preview('gray') do %>
+<label for="select-example" class="form-label">Select one</label>
+<select id="select-example" class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+<% end %>
+
+
+<% content_for :example, flush: true do %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<label for="select-example" class="form-label">Select one</label>
+<select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+<% end %>
+
+  <%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormTagHelper -->
+<%%= tag.label "Select one", class: "form-label" %>
+<%%= tag.select class: "form-select", "aria-label": "Default select example" do %>
+  <%%= tag.option "Open this select menu", selected: true %>
+  <%%= tag.option "One", value: "1" %>
+  <%%= tag.option "Two", value: "2" %>
+  <%%= tag.option "Three", value: "3" %>
+<%% end %>
+
+<!-- ActionView::Helpers::FormHelper -->
+<%%= form_with model: @form do |f| %>
+  <%%= f.label :select_1, "Select example", class: "form-label" %>
+  <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" } %>
+<%% end %>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+/ ActionView::Helpers::FormHelper
+= form_with model: @form do |f|
+.mb-3
+  = f.label :select_1, "Select example", class:  "form-label"
+  = f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" }
+= f.submit class: "btn btn-primary"
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>
+
+<div id="forms-select-multi">
+<%= render layout: example, locals: { heading: "Multi-select", section: "Select" } do %>
+
+<%= render preview('gray') do %>
+  <label for="data" class="form-label">Date</label>
+  <div class="flex items-center space-x-3 max-w-sm">
+    <%= select_day Date.today.day, {}, { class: "form-select" }  %>
+    <%= select_month Date.today.month, {}, { class: "form-select" }%>
+    <%= select_year Date.today.year, {}, { class: "form-select" } %>
+  </div>
+<% end %>
+
+
+<% content_for :example, flush: true do %>
+<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="flex items-center space-x-3 max-w-sm">
+  <select id="date_month" name="data[month]" class="form-select">
+      <!-- options -->
+  </select>
+  <select id="date_day" name="data[day]" class="form-select">
+      <!-- options -->
+  </select>
+  <select id="date_year" name="data[year]" class="form-select">
+      <!-- options -->
+  </select>
+</div>
+<% end %>
+
+  <%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="form-group flex items-center space-x-3 max-w-sm">
+  <%%= select_day Date.today.day, {}, { class: "form-select" }  %>
+  <%%= select_month Date.today.month, {}, { class: "form-select" }%>
+  <%%= select_year Date.today.year, {}, { class: "form-select" } %>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.form-group.flex.items-center.space-x-3.max-w-sm
+  = select_day Date.today.day, {}, { class: "form-select" }  %>
+  = select_month Date.today.month, {}, { class: "form-select" }%>
+  = select_year Date.today.year, {}, { class: "form-select" } %>
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>
+
+<%= system_pagination(prev_path: systems_forms_input_group_path, prev_text: "Input Group", next_path: systems_forms_checkbox_path, next_text: "Checkbox") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Base", "#select-base" %>
+    <%= component_link "Multi-select", "#select-mutli" %>
+  <% end %>
+<% end %>

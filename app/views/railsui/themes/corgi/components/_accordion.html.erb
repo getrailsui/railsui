@@ -1,0 +1,17 @@
+<% path = "railsui/themes/hound/components/accordion" %>
+
+<div class="prose prose-neutral md:prose-lg dark:prose-invert">
+  <p>While not a <em>true</em> accordion we favor the  <code>details</code> and <code>summary</code> HTML tags to produce a <em>good enough</em> solution to a similar problem traditional accordions solve.</p>
+</div>
+
+<%= render "#{path}/contained" %>
+<%= render "#{path}/flush" %>
+
+<%= system_pagination(prev_path: systems_forms_validation_path, prev_text: "Validation", next_path: systems_components_alert_path, next_text: "Alert") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Contained", "#accordion-contained" %>
+    <%= component_link "Flush", "#accordion-flush" %>
+  <% end %>
+<% end %>

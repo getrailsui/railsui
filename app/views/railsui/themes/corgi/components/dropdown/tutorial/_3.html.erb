@@ -1,0 +1,16 @@
+  <h2>3. Defining the menu</h2>
+
+  <p>Each dropdown has a corresponding menu that gets hidden by default. The menu requires the following attribute to function <code>data-railsui-dropdown-target="menu"</code>. The element the target is appended to also requires the class name <code>class='hidden'</code> to be present.</p>
+
+<div class="not-prose mb-6">
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-dropdown">
+  <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">Dropdown</button>
+  <div class="hidden" data-railsui-dropdown-target="menu">
+    <a href="#">Menu list item 1</a>
+    <a href="#">Menu list item 2</a>
+  </div>
+</div>
+<% end %>
+<%= render_snippet %>
+</div>

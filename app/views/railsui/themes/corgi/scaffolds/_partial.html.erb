@@ -1,0 +1,72 @@
+<div id="scaffolds-partial">
+<%= render layout: example, locals: { heading: "Partial", section: "Scaffolds" } do %>
+
+<%= render preview('gray') do %>
+<article id="post_1" class="py-6 prose dark:prose-invert">
+  <div>
+    <p class="mb-0 font-semibold">
+      Title
+    </p>
+    <p class="my-0">
+      Example post title 2
+    </p>
+  </div>
+  <div>
+    <p class="mb-0 font-semibold">
+      Content
+    </p>
+    <p class="my-0">
+      Example post content 2
+    </p>
+  </div>
+  <time class="text-slate-600 dark:text-slate-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
+</article>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<article id="<%%= dom_id post %>" class="py-6 prose dark:prose-invert">
+  <div>
+    <p class="mb-0 font-semibold">
+      Title
+    </p>
+    <p class="mt-0">
+      <%%= post.title %>
+    </p>
+  </div>
+  <div>
+    <p class="mb-0 font-semibold">
+      Content
+    </p>
+    <p class="my-0">
+      <%%= post.content %>
+    </p>
+  </div>
+  <time class="text-slate-600 dark:text-slate-400 text-xs mt-2" datetime="<%%= post.created_at.to_formatted_s(:long) %>">Created <%%= time_ago_in_words(post.created_at) + " ago" %></time>
+</article>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+%article.py-6.prose.dark:prose-invert{id: "#{dom_id post }"}
+  %div
+    %p.mb-0.font-semibold
+      Title
+    %p.mt-0
+      = post.title
+  %div
+    %p.mb-0.font-semibold
+      Content
+    %p.my-0
+      = post.content
+  %time.text-slate-600.dark:text-slate-400.text-xs.mt-2{datetime: "#{post.created_at.to_formatted_s(:long)}"} Created
+    = time_ago_in_words(post.created_at) + " ago"
+<% end %>
+<% content_for :ruby do %>
+
+<% end %>
+<%= render_snippet active_tab: "erb", erb_filename: "_post.html.erb", haml_filename: "_post.haml.erb" %>
+<% end %>
+<% end %>
+</div>

@@ -1,0 +1,16 @@
+<h2>2. Triggering a dropdown</h2>
+
+<p>To trigger a dropdown to appear you will need some form of actionable target like a <code>button</code> or <code>a</code> element. Append the following attributes to your target. <code>data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide"</code> (see the base example below for a complete concept).</p>
+
+<div class="not-prose">
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-dropdown">
+  <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">Dropdown</button>
+  <div>
+    <a href="#">Menu list item 1</a>
+    <a href="#">Menu list item 2</a>
+  </div>
+</div>
+<% end %>
+<%= render_snippet %>
+</div>

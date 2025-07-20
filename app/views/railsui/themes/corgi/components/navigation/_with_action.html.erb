@@ -1,0 +1,300 @@
+<div id="navigation-with-action">
+<%= render layout: example, locals: { heading: "With action", section: "Navigation" } do %>
+
+<%= render "railsui/themes/hound/components/navigation/nav_preview", flush: true do %>
+<header class="relative dark:bg-slate-900 bg-white rounded-t" data-controller="railsui-nav">
+  <div class="container mx-auto px-4">
+    <div class="md:flex items-center flex-wrap md:space-x-2">
+      <div class="md:block flex items-center justify-between">
+        <a href="/" class="size-12 flex justify-center">
+          <!-- Hound logo -->
+          <svg
+            class="fill-current w-5 h-auto text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out
+            dark:hover:text-primary-500"
+            width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z" />
+          </svg>
+          <span class="sr-only"><%= Railsui.config.theme.humanize %></span>
+        </a>
+
+        <button
+          id="base-nav-toggle"
+          data-action="click->railsui-nav#toggle"
+          class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+          <div role="none" data-railsui-nav-target="menuBars">
+            <%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600
+            dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          </div>
+          <div role="none" data-railsui-nav-target="menuCross" class="hidden">
+            <%= icon "x-mark", class: "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          </div>
+        </button>
+      </div>
+      <div id="base-navigation" class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40" data-railsui-nav-target="nav"
+        data-transition-enter-active="transition ease-out duration-200"
+        data-transition-enter-from="opacity-0 scale-95"
+        data-transition-enter-to="opacity-100 scale-100"
+        data-transition-leave-from="opacity-100 scale-100"
+        data-transition-leave-active="transition ease-in duration-200"
+        data-transition-leave-to="opacity-0 scale-95">
+        <div class="md:flex-1 md:flex flex-wrap items-center justify-between lg:text-left text-center">
+          <nav role="Primary navigation">
+            <ul class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base text-lg md:leading-normal leading-relaxed space-y-1 md:space-y-0 sm:mb-0 mb-4">
+              <li>
+                <a href="#" class="rui-nav-link rui-nav-link-active">Dashboard</a>
+              </li>
+              <li>
+                <a href="#" class="rui-nav-link">Metrics</a>
+              </li>
+              <li>
+                <a href="#" class="rui-nav-link">Settings</a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav role="Secondary navigation">
+            <ul class="flex flex-wrap items-center md:justify-center justify-between md:space-x-4 md:mt-0 mt-3">
+              <li class="w-full md:w-auto">
+                <a href="#" class="btn btn-primary md:w-auto w-full">Create project</a>
+              </li>
+              <li class="md:pt-0 pt-6">
+                <a href="#" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="block group">
+                  <%= icon "bell", class: "text-slate-400 md:w-6 w-7 md:h-6 h-7 group-hover:text-primary-600" %>
+                </a>
+              </li>
+              <li class="md:pt-0 pt-6">
+                <a href="#" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
+                  <%= image_tag demo_avatar_url(id: "32", variant: "men"), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover" %>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<% end %>
+
+<% content_for :example,  flush: true do %>
+<% content_for :html, flush: true do %>
+<header class="relative dark:bg-slate-900" data-controller="nav">
+  <div class="container mx-auto px-4">
+    <div class="md:flex items-center flex-wrap md:space-x-2">
+      <div class="md:block flex items-center justify-between">
+        <a href="/" class="size-12 flex justify-center">
+          <!-- Hound logo -->
+          <svg
+            class="fill-current w-5 h-auto text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out
+            dark:hover:text-primary-500"
+            width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z" />
+          </svg>
+          <span class="sr-only"><%= Railsui.config.theme.humanize %></span>
+        </a>
+
+        <button id="action-nav-toggle"
+        data-action="click->nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+          <div role="none" data-nav-target="menuBars">
+            <%%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600
+            dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          </div>
+          <div role="none" data-nav-target="menuCross" class="hidden">
+            <%%= icon "x-mark", class: "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          </div>
+        </button>
+      </div>
+      <div id="action-navigation" class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40" data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200"
+      data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100"
+      data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-200"
+      data-transition-leave-to="opacity-0 scale-95">
+        <div class="md:flex-1 md:flex flex-wrap items-center justify-between lg:text-left text-center">
+          <nav role="Primary navigation">
+            <ul
+              class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base text-lg md:leading-normal leading-relaxed space-y-1 md:space-y-0 sm:mb-0 mb-4">
+              <li>
+                <a href="#" class="rui-nav-link rui-nav-link-active">Dashboard</a>
+              </li>
+              <li>
+                <a href="#" class="rui-nav-link">Metrics</a>
+              </li>
+              <li>
+                <a href="#" class="rui-nav-link">Settings</a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav role="Secondary navigation">
+            <ul class="flex flex-wrap items-center md:justify-center justify-between md:space-x-4 md:mt-0 mt-3">
+              <li class="w-full md:w-auto">
+                <a href="#" class="btn btn-primary md:w-auto w-full">Create project</a>
+              </li>
+              <li class="md:pt-0 pt-6">
+                <a href="#" data-controller="prevent" data-action="click->prevent#prevent" class="block group">
+                  <%%= icon "bell", class: "text-slate-400 md:w-6 w-7 md:h-6 h-7 group-hover:text-primary-600" %>
+                </a>
+              </li>
+              <li class="md:pt-0 pt-6">
+                <a href="#" data-controller="prevent" data-action="click->prevent#prevent">
+                  <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men","women"].sample), class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover" %>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<header class="relative dark:bg-slate-900" data-controller="nav">
+  <div class="container mx-auto px-4">
+    <div class="md:flex items-center flex-wrap md:space-x-2">
+      <div class="md:block flex items-center justify-between">
+        <%%= link_to root_path, class: "size-12 flex justify-center" do %>
+          <!-- Hound logo -->
+          <svg
+            class="fill-current w-5 h-auto text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out
+            dark:hover:text-primary-500"
+            width="39" height="50" viewBox="0 0 39 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z" />
+          </svg>
+          <span class="sr-only"><%= Railsui.config.theme.humanize %></span>
+        <%% end %>
+
+        <button id="action-nav-toggle" data-action="click->nav#toggle" class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700">
+          <div role="none" data-nav-target="menuBars">
+            <%%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600
+            dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          </div>
+          <div role="none" data-nav-target="menuCross" class="hidden">
+            <%%= icon "x-mark", class: "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+          </div>
+        </button>
+      </div>
+      <div id="action-navigation" class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40" data-nav-target="nav" data-transition-enter-active="transition ease-out duration-200"
+      data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100"
+      data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-active="transition ease-in duration-200"
+      data-transition-leave-to="opacity-0 scale-95">
+        <div class="md:flex-1 md:flex flex-wrap items-center justify-between lg:text-left text-center">
+          <nav role="Primary navigation">
+            <ul
+              class="md:flex block items-center flex-wrap space-x-0 md:space-x-3 md:text-base text-lg md:leading-normal leading-relaxed space-y-1 md:space-y-0 sm:mb-0 mb-4">
+              <li>
+                <%%= nav_link_to "Dashboard", "#", class: "rui-nav-link" %>
+              </li>
+              <li>
+                <%%= nav_link_to "Metrics", "#", class: "rui-nav-link" %>
+              </li>
+              <li>
+                <%%= nav_link_to "Settings", "#", class: "rui-nav-link" %>
+              </li>
+            </ul>
+          </nav>
+
+          <nav role="Secondary navigation">
+            <ul class="flex flex-wrap items-center md:justify-center justify-between md:space-x-4 md:mt-0 mt-3">
+              <li class="w-full md:w-auto">
+                <%%= link_to "Create project", "#", class: "btn btn-primary md:w-auto w-full" %>
+              </li>
+              <li class="md:pt-0 pt-6">
+                <%%= link_to "#", class: "block group" do %>
+                  <%%= icon "bell", class: "text-slate-400 md:w-6 w-7 md:h-6 h-7 group-hover:text-primary-600" %>
+                <%% end %>
+              </li>
+              <li class="md:pt-0 pt-6">
+                <%%= link_to "#" do %>
+                  <%%= image_tag "#", class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover" %>
+                <%% end %>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%header.relative.dark:bg-slate-900{"data-controller" => "nav"}
+  .container.mx-auto.px-4
+    .md:flex.items-center.flex-wrap.md:space-x-2
+      .md:block.flex.items-center.justify-between
+        = link_to root_path, class: "size-12 flex justify-center" do
+          / Hound logo
+          %svg.fill-current.w-5.h-auto.text-primary-600.hover:text-primary-700.duration-300.transition.ease-in-out.dark:hover:text-primary-500{fill: "none", height: "50", viewbox: "0 0 39 50", width: "39", xmlns: "http://www.w3.org/2000/svg"}
+            %path{"clip-rule" => "evenodd", d: "M8.55264 0C3.82915 0 0 3.82915 0 8.55265V26.1842C0 30.9077 3.82915 34.7368 8.55264 34.7368C13.2761 34.7368 17.1053 30.9077 17.1053 26.1842V8.55264C17.1053 3.82915 13.2761 0 8.55264 0ZM29.6053 0C24.8818 0 21.0527 3.82915 21.0527 8.55264V41.4474C21.0527 46.1709 24.8818 50 29.6053 50C34.3288 50 38.1579 46.1708 38.1579 41.4474V8.55264C38.1579 3.82915 34.3288 0 29.6053 0Z", "fill-rule" => "evenodd"}
+          %span.sr-only Hound
+        %button#action-nav-toggle.md:hidden.block.p-1.rounded.focus:ring-4.focus:ring-slate-100.active:bg-white.group.dark:focus:bg-slate-800.dark:focus:ring-slate-700{class: "focus:bg-white/50", "data-action" => "click->nav#toggle"}
+          %div{"data-nav-target" => "menuBars", role: "none"}
+            = icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600 |
+              dark:text-slate-400 dark:group-focus:text-slate-100"                                  |
+          .hidden{"data-nav-target" => "menuCross", role: "none"}
+            = icon "x-mark", class: "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100"
+      #action-navigation.md:flex-1.md:block.hidden.md:static.absolute.top-14.left-0.w-full.bg-white.dark:bg-slate-900.md:bg-transparent.transform.origin-top.p-4.md:p-0.lg:p-0.rounded-b.md:shadow-none.shadow-xl.z-40{"data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+        .md:flex-1.md:flex.flex-wrap.items-center.justify-between.lg:text-left.text-center
+          %nav{role: "Primary navigation"}
+            %ul.md:flex.block.items-center.flex-wrap.space-x-0.md:space-x-3.md:text-base.text-lg.md:leading-normal.leading-relaxed.space-y-1.md:space-y-0.sm:mb-0.mb-4
+              %li
+                = nav_link_to "Dashboard", "#", class: "rui-nav-link"
+              %li
+                = nav_link_to "Metrics", "#", class: "rui-nav-link"
+              %li
+                = nav_link_to "Settings", "#", class: "rui-nav-link"
+          %nav{role: "Secondary navigation"}
+            %ul.flex.flex-wrap.items-center.md:justify-center.justify-between.md:space-x-4.md:mt-0.mt-3
+              %li.w-full.md:w-auto
+                = link_to "Create project", "#", class: "btn btn-primary md:w-auto w-full"
+              %li.md:pt-0.pt-6
+                = link_to "#", class: "block group" do
+                  = icon "bell", class: "text-slate-400 md:w-6 w-7 md:h-6 h-7 group-hover:text-primary-600"
+              %li.md:pt-0.pt-6
+                = link_to "#" do
+                  = image_tag "#", class: "rounded-full md:w-10 w-12 md:h-10 h-12 object-cover"
+<% end %>
+
+<% content_for :js, flush: true do %>
+// app/javascript/controllers/nav_controller.js
+
+import { Controller } from '@hotwired/stimulus'
+import { useTransition } from 'stimulus-use'
+
+export default class extends Controller {
+  static targets = ['nav', 'menuBars', 'menuCross']
+
+  connect() {
+    useTransition(this, {
+      element: this.navTarget
+    })
+  }
+
+  toggle() {
+    this.toggleTransition()
+    this.swapIcon()
+  }
+
+  disconnect() {
+    this.leave()
+  }
+
+  swapIcon() {
+    this.menuBarsTarget.classList.toggle('hidden')
+    this.menuCrossTarget.classList.toggle('hidden')
+  }
+}
+<% end %>
+
+<%= render_snippet(html_filename: "nav.html", erb_filename: "_nav.html.erb", haml_filename: "_nav.haml.erb", js_filename: "nav_controller.js") %>
+<% end %>
+<% end %>
+</div>

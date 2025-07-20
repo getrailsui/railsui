@@ -1,0 +1,77 @@
+<%= render "railsui/shared/usage_guide", title: "Tooltips usage guide" do %>
+
+<p>The short-form tutorial below represents how to pair Rails UI, Stimulus.js, and Tippy.js together.</p>
+
+<h2>1. Initializing the Stimulus.js controller</h2>
+
+<p>Leverage the Railsui Tooltip Stimulus controller from <a href="https://github.com/getrailsui/railsui-stimulus" target="_blank">railsui-stimulus</a> for drop-in tooltips.</p>
+
+<div class="not-prose">
+<%= content_for :js, flush: true do %>
+// Import components adhoc.
+import { RailsuiTooltip } from 'railsui-stimulus'
+application.register('railsui-tooltip', RailsuiTooltip)
+<% end %>
+  <%= render_snippet active_tab: "js", js_filename: "index.js" %>
+</div>
+
+<h2>2. Initialize the controller in your views</h2>
+
+<p>Add the data attribute <code>data-controller='railsui-tooltip'</code> to an HTML element.</p>
+
+<div class="not-prose">
+<% content_for :js, flush: true do %>
+
+<% end %>
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" class="btn btn-primary">Tooltip demo</button>
+<% end %>
+  <%= render_snippet %>
+</div>
+
+<h2>3. Pass content to the tooltip</h2>
+
+<p>Add the data attribute <code>data-tooltip-content-value='Your content here'</code> to an HTML element. Inside the data attribute you may pass as much copy as you like.</p>
+
+<div class="not-prose">
+  <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+  <% content_for :js, flush: true do %>
+
+  <% end %>
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the content inside my tooltip!" class="btn btn-primary">Tooltip demo</button>
+<% end %>
+  <%= render_snippet %>
+</div>
+
+<h3>(optional) 4. Allow HTML in content</h3>
+
+<p>Add the data attribute <code>data-tooltip-allow-html-value="true"</code> to an HTML element. Inside the data attribute pass <code>true</code> to enable the option <code>allowHTML</code> for the tippy.js library.</p>
+
+<div class="not-prose">
+  <button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+
+<% content_for :html, flush: true do %>
+<button data-controller="railsui-tooltip" data-railsui-tooltip-content-value="This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!" data-railsui-tooltip-allow-html-value="true" class="btn btn-primary">Tooltip with HTML demo</button>
+<% end %>
+
+<%= render_snippet %>
+</div>
+<% end %>
+
+<% path = "railsui/themes/#{Railsui.config.theme}/components/tooltip" %>
+
+<%= render "#{path}/base" %>
+
+<%= system_pagination(prev_path: systems_components_toast_path, prev_text: "Toast", next_path: systems_authentication_overview_path, next_text: "Authentication") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Base", "#tooltip-base" %>
+  <% end %>
+<% end %>

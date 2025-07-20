@@ -1,0 +1,44 @@
+<h2>1. Initializing a dropdown</h2>
+
+<div class="prose prose-neutral max-w-full dark:prose-invert my-6">
+  <p>Use the <code>'data-controller="dropdown"</code> attribute to initialize a new dropdown component using <%= link_to "Stimulus.js", "https://stimulus.hotwired.dev/", target: :_blank %>.</p>
+</div>
+
+<div class="not-prose mt-6">
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-dropdown">
+  <button>Dropdown</button>
+  <div>
+    <a href="#">Menu list item 1</a>
+    <a href="#">Menu list item 2</a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :js, flush: true do %>
+// Start Stimulus
+import { Application } from '@hotwired/stimulus'
+
+const application = Application.start()
+
+// Import component
+import { RailsuiDropdown } from 'railsui-stimulus'
+application.register('railsui-dropdown', RailsuiDropdown)
+<% end %>
+<%= render_snippet %>
+</div>
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+<div class="not-prose">
+  <%= render_snippet(active_tab: "js") %>
+</div>
+
+<div class="prose prose-neutral max-w-full dark:prose-invert my-6">
+  <p>Be sure the controller is registered inside <code>app/javascript/controllers/index.js</code>. (This should already be the case when you installed the <%= Railsui.config.theme.humanize %> theme.)</p>
+</div>

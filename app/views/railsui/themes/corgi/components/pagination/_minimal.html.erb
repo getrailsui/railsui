@@ -1,0 +1,164 @@
+<div id="pagination-minimal">
+<%= render layout: example, locals: { heading: "Simple", section: "Pagination" } do %>
+
+<%= render preview 'gray' do %>
+<nav aria-label="Page navgiation" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300">
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">
+        <%= icon "arrow-small-left", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+        <span>Previous</span>
+      </a>
+    </li>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <li>
+        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">1</a>
+      </li>
+      <li>
+        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30">2</a>
+      </li>
+      <li>
+        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">3</a>
+      </li>
+      <li>
+        <span href="#" class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+      </li>
+       <li>
+        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">8</a>
+      </li>
+       <li>
+        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">9</a>
+      </li>
+       <li>
+        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">10</a>
+      </li>
+
+    </div>
+    <li class="flex-1 flex justify-end items-center">
+      <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">
+        <span>Next</span>
+        <%= icon "arrow-small-right", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true  do %>
+<nav aria-label="Page navgiation" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300">
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <a href="#" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">
+        <%%= icon "arrow-small-left", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+        <span>Previous</span>
+      </a>
+    </li>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">1</a>
+      </li>
+      <li>
+        <a href="#" class="py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30">2</a>
+      </li>
+      <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">3</a>
+      </li>
+      <li>
+        <span href="#" class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+      </li>
+       <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">8</a>
+      </li>
+       <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">9</a>
+      </li>
+       <li>
+        <a href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">10</a>
+      </li>
+
+    </div>
+    <li class="flex-1 flex justify-end items-center">
+      <a href="#" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200">
+        <span>Next</span>
+        <%%= icon "arrow-small-right", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<nav aria-label="Page navgiation" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300">
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <%%= link_to "#", class: "flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+        <%%= icon "arrow-small-left", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+        <span>Previous</span>
+      <%% end %>
+    </li>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <li>
+        <%%= link_to "1", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+      </li>
+      <li>
+        <%%= link_to "2", "#", class:"py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30" %>
+      </li>
+      <li>
+        <%%= link_to "3", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+      </li>
+      <li>
+        <span href="#" class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
+      </li>
+      <li>
+        <%%= link_to "8", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+      </li>
+      <li>
+        <%%= link_to "9", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+      </li>
+      <li>
+        <%%= link_to "10", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" %>
+      </li>
+    </div>
+    <li class="flex-1 flex justify-end items-center">
+      <%%= link_to "#", class: "flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" do %>
+        <span>Next</span>
+        <%%= icon "arrow-small-right", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200" %>
+      <%% end %>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%nav.text-slate-500.sm:text-sm.text-base.font-medium.dark:text-slate-300{"aria-label" => "Page navgiation"}
+  %ul.flex.flex-wrap.items-center.sm:justify-between.justify-center
+    %li.flex-1.flex.justify-start.items-center.sm:w-auto.w-full
+      = link_to "#", class: "flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+        = icon "arrow-small-left", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200"
+        %span Previous
+    .flex.items-center.justify-center.sm:w-auto.w-full.sm:text-sm.text-lg
+      %li
+        = link_to "1", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+      %li
+        = link_to "2", "#", class:"py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30"
+      %li
+        = link_to "3", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+      %li
+        %span.py-2.px-4.block.border-t-2.border-transparent.rounded.pointer-events-none.select-none{href: "#"} …
+      %li
+        = link_to "8", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+      %li
+        = link_to "9", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+      %li
+        = link_to "10", "#", class:"py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+    %li.flex-1.flex.justify-end.items-center
+      = link_to "#", class: "flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+        %span Next
+        = icon "arrow-small-right", class: "w-4 h-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200"
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

@@ -1,0 +1,44 @@
+<!--
+  # confirmation_instructions.html.erb
+  # email_changed.html.erb
+  # password_change.html.erb
+  # reset_password_instructions.html.erb
+  # unlock_instructions.html.erb
+-->
+<% theme_path = "railsui/themes/#{Railsui.config.theme.downcase}/mailers/devise" %>
+
+<div class="mb-16 mt-6">
+  <div class="prose dark:prose-invert mb-10 max-w-full">
+     <p>If you use Devise, you can generate views to customize. Those views include mailer templates. Below are snippets you can use after having run <code>rails generate devise:views</code>. The snippets below assume you're using <%= link_to "the customized Rails UI layout file", systems_mailers_layout_path %> for emails.</p>
+  </div>
+</div>
+
+<%= render "#{theme_path}/confirmation_instructions" %>
+
+<%= divider %>
+
+<%= render "#{theme_path}/email_changed" %>
+
+<%= divider %>
+
+<%= render "#{theme_path}/password_changed" %>
+
+<%= divider %>
+
+<%= render "#{theme_path}/reset_password_instructions" %>
+
+<%= divider %>
+
+<%= render "#{theme_path}/unlock_instructions" %>
+
+<%= system_pagination(prev_path: systems_mailers_transactional_path, prev_text: "Transactional", next_path: systems_path, next_text: "Design patterns") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Confirmation instructions", "#devise-confirmation-instructions" %>
+    <%= component_link "Email changed", "#devise-email-changed" %>
+    <%= component_link "Password changed", "#devise-password-changed" %>
+    <%= component_link "Reset password", "#devise-reset-password" %>
+    <%= component_link "Unlock instructions", "#devise-unlock-instructions" %>
+  <% end %>
+<% end %>

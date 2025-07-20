@@ -1,0 +1,17 @@
+<%= render layout: "railsui/shared/linkables" do %>
+  <%= render "railsui/shared/linkable", path: systems_forms_input_path, title: "Input", description: "The building blocks of any given form." %>
+
+  <%= render "railsui/shared/linkable", path: systems_forms_input_group_path, title: "Input Group", description: "Group inputs together for tailored user experiences." %>
+
+  <%= render "railsui/shared/linkable", path: systems_forms_select_path, title: "Select", description: "Fancy select fields ready for action." %>
+
+  <%= render "railsui/shared/linkable", path: systems_forms_checkbox_path, title: "Checkbox".html_safe, description: "Enhance your forms with additional controls." %>
+
+  <%= render "railsui/shared/linkable", path: systems_forms_radio_path, title: "Radio".html_safe, description: "Switch between multiple named options with radios." %>
+
+  <%= render "railsui/shared/linkable", path: systems_forms_switch_path, title: "Switch".html_safe, description: "A nicer version of a checkbox." %>
+
+  <%= render "railsui/shared/linkable", path: systems_forms_action_text_path, title: "ActionText", description: "Custom-themed ActionText UI for your rich text needs." %>
+
+  <%= render "railsui/shared/linkable", path: systems_forms_validation_path, title: "Validation", description: "Error handling UI is taken care of with Rails UI." %>
+<% end %>

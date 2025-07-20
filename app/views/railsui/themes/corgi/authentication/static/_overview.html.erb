@@ -1,0 +1,279 @@
+<div id="auth-prerequisites">
+   <div class="prose prose-neutral dark:prose-invert mb-6">
+    <h3>Prerequisites</h3>
+
+    <p>In the version 3 of Rails UI, direct integration with <a href="https://rubygems.org/gems/devise/" target="_blank">Devise</a> was dropped in favor of a more flexible approach that is based on code snippets you copy and paste into your app.</p>
+
+    <p>These snippets should give you a head start on a lot of authentication edge cases. Using Devise? Check out the <%= link_to "Devise version", systems_authentication_devise_overview_path %>.</p>
+
+    <p>Here are the pages you'll find in the static authentication system:</p>
+
+    <ul>
+      <li><%= link_to("Sign up", systems_authentication_static_signup_path) %></li>
+      <li><%= link_to("Sign in", systems_authentication_static_signin_path) %></li>
+      <li><%= link_to("Change password", systems_authentication_static_change_password_path) %></li>
+      <li><%= link_to("Reset password", path: systems_authentication_static_reset_password_path) %></li>
+      <li><%= link_to("Confirmation", systems_authentication_static_confirmation_path) %></li>
+      <li><%= link_to("Edit account", systems_authentication_static_edit_path) %></li>
+      <li><%= link_to("Unlock", systems_authentication_static_unlocks_path) %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="auth-global-layout" class="py-6">
+
+  <div class="prose prose-neutral dark:prose-invert my-6">
+    <h3>Main Layout</h3>
+    <p>Consider extracting this to a reusable partial. For the example snippets below, it's assumed you have a directory called <code>users</code> in <code>app/views/users</code>. You will need to either create this directory and file or use whatever you're already leveraging for authentication.</p>
+  </div>
+
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<!-- Hound theme: app/views/devise/_auth_layout.html.erb -->
+<div class="sm:h-[calc(100vh_-_52px)] pt-10 sm:pt-0 flex flex-col items-center justify-center bg-cover bg-center px-4" style="background-image: url('<%%= asset_url('railsui/fusion.png') %>')" >
+  <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
+    <div>
+      <div class="flex justify-center">
+        <%%= link_to root_path do %>
+          <%%= icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto" %>
+        <%% end %>
+      </div>
+
+      <div class="mt-6">
+        <%%= yield :masthead %>
+      </div>
+
+      <div class="bg-white shadow-xs rounded-lg p-8 border border-slate-300/60">
+        <%%= yield %>
+      </div>
+
+      <div class="mt-4">
+        <%%= yield :links %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/users/_auth_layout.html.erb
+.sm:h-[calc(100vh_-_52px)].pt-10.sm:pt-0.flex.flex-col.items-center.justify-center.bg-cover.bg-center.px-4{style: "background-image: url('#{asset_url('railsui/fusion.png')}')"}
+  .sm:flex-1.flex.flex-col.justify-center.w-full{class: "sm:w-[428px]"}
+    %div
+      .flex.justify-center
+        = link_to root_path do
+          = icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto"
+      .mt-6
+        = yield :masthead
+      .bg-white.shadow-xs.rounded-lg.p-8.border{class: "border-slate-300/60"}
+        = yield
+      .mt-4
+        = yield :links
+<% end %>
+<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb", haml_filename: "_auth_layout.haml.erb") %>
+
+
+<div class="prose prose-neutral dark:prose-invert my-6 max-w-full">
+  <p>Then in dedicated Devise views you can render the main meat and potatoes. Remember to include <code>content_for</code> blocks as necessary.</p>
+</div>
+
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= render "users/auth_layout" do
+  / Add or yield form content here
+
+%= content_for :masthead do
+  / Add any masthead content here
+
+%= content_for :links do
+  / Add any links to other authentication pages here
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= render "users/auth_layout" do %>
+  <!-- Add or yield form content here -->
+<%% end %>
+
+<%%= content_for :masthead do %>
+  <!-- Add any masthead content here -->
+<%% end %>
+
+<%%= content_for :links do %>
+  <!-- Add any links to other authentication pages here -->
+<%% end %>
+<% end %>
+
+<%= render_snippet(active_tab: "erb") %>
+</div>
+
+<%= divider %>
+
+<div id="auth-omniauth-ui" class="py-6">
+<div class="prose prose-neutral dark:prose-invert my-6 max-w-full">
+
+<h3>OmniAuth</h3>
+<p>The <%= theme_name.humanize %> theme has support for themed and branded Omniauth provider icons. Icons for those providers are rendered from <code>app/assets/images/railsui/omniauth</code>.</p>
+
+<%= render callout do %>
+  <%= link_to "OmniAuth", "https://github.com/omniauth/omniauth", target: :_blank %> will need to be installed and configured to work with the <%= theme_name.humanize %> theme.
+<% end %>
+
+<p>Here's an example of the UI with various providers:</p>
+
+<%= render preview('zinc') do %>
+<div class="flex flex-col gap-4 items-center justify-center max-w-xs mx-auto">
+  <button class="btn btn-white w-full">
+    <div class="flex items-center gap-2">
+      <%= icon "google", custom_path: "/railsui/omniauth/google.svg", class: "size-4 text-[#4285f4] fill-current" %>
+      <span>Continue with Google</span>
+    </div>
+  </button>
+
+   <button class="btn btn-white w-full">
+    <div class="flex items-center gap-2">
+      <%= icon "github", custom_path: "/railsui/omniauth/github.svg", class: "size-4 text-zinc-900 fill-current" %>
+      <span>Continue with GitHub</span>
+    </div>
+  </button>
+
+  <button class="btn btn-white w-full">
+    <div class="flex items-center gap-2">
+      <%= icon "x", custom_path: "/railsui/omniauth/x.svg", class: "size-4 text-zinc-900 fill-current" %>
+      <span>Continue with X</span>
+    </div>
+  </button>
+
+  <button class="btn btn-white w-full">
+    <div class="flex items-center gap-2">
+      <%= icon "linkedin", custom_path: "/railsui/omniauth/linkedin.svg", class: "size-4 text-[#0a66c2] fill-current" %>
+      <span>Continue with LinkedIn</span>
+    </div>
+  </button>
+</div>
+<% end %>
+</div>
+</div>
+
+<%= divider %>
+
+
+<div id="auth-error-messages" class="py-6">
+<%= render layout: example, locals: { heading: "_error_messages partial" } do %>
+
+<div class="prose prose-neutral dark:prose-invert my-6">
+  <p>By default Rails UI copies over a pre-styled error partial made to work out of the box and save you time during development.</p>
+
+  <p>This file is called <code>_error_messages.html.erb</code>. Unlike what ships with Devise, this partial lives in the root view directory within <code>app/views/rui/shared</code> and is used throughout the app.</p>
+
+  <p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent.</p>
+</div>
+
+<%= render preview 'gray' do %>
+<div class="sm:h-[700px] -m-8 flex flex-col items-center justify-center bg-cover bg-center px-4 pointer-events-none select-none" style="background-image: url('<%= asset_url('themes/hound/fusion.png') %>')">
+  <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
+    <div>
+      <div class="flex justify-center">
+        <%= link_to "#", class: "size-12 flex justify-center" do %>
+          <%= icon Railsui.config.theme, custom_path: engine_icon_path("themes/#{Railsui.config.theme}/logo.svg"), class: "w-10 h-auto fill-current text-primary-600 hover:text-primary-700 duration-300 transition ease-in-out dark:hover:text-primary-500", variant: :solid %>
+          <span class="sr-only"><%= Railsui.config.application_name %></span>
+        <% end %>
+      </div>
+
+      <div class="mt-6">
+        <div class="text-center">
+          <h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight my-3">Forget your password?</h1>
+          <p class="mb-6 text-slate-700 dark:text-slate-200">Reset it in an instant</p>
+        </div>
+        <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
+          <div class="flex items-start space-x-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6 text-rose-700 flex-shrink-0" role="img" aria-labelledby="ahy3wv9uxy3kdaua336c963si7vkifdy"><title id="ahy3wv9uxy3kdaua336c963si7vkifdy">Shield exclamation</title>
+          <path fill-rule="evenodd" d="M11.484 2.17a.75.75 0 011.032 0 11.209 11.209 0 007.877 3.08.75.75 0 01.722.515 12.74 12.74 0 01.635 3.985c0 5.942-4.064 10.933-9.563 12.348a.749.749 0 01-.374 0C6.314 20.683 2.25 15.692 2.25 9.75c0-1.39.223-2.73.635-3.985a.75.75 0 01.722-.516l.143.001c2.996 0 5.718-1.17 7.734-3.08zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zM12 15a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75v-.008a.75.75 0 00-.75-.75H12z" clip-rule="evenodd"></path>
+        </svg>
+
+        <div class="flex-1">
+          <p class="font-bold">1 error prohibited this post from being saved:</p>
+          <ul class="list-disc mt-3 ml-4">
+              <li>Email can't be blank</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-xs rounded-lg p-8 border border-slate-300/60">
+    <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="KFz5ZtupOgfCmPUrSoPOW62TqhAxjRRUVi3LC4quDw3wQCnw7Afy_IwRpt8-SqpMsNyhT8A6NlMo3-6XQ_2sMQ" autocomplete="off">
+
+    <div class="form-group">
+      <div class="field_with_errors"><label class="form-label" for="user_email">Email</label></div>
+      <div class="relative">
+        <div class="field_with_errors">
+        <input autocomplete="email" class="form-input peer focus:pl-10 transition pointer-events-none " pattern="[^@ ]+@[^@ ]+.[^@ ]+" title="Invalid email address" type="email" value="" name="user[email]" id="user_email"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="size-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-indigo-400" role="img" aria-labelledby="aq0uefjmpwf07vill1w6vyecgmjpab2q"><title id="aq0uefjmpwf07vill1w6vyecgmjpab2q">Envelope</title>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
+      </svg>
+      </div>
+    </div>
+          <input type="submit" name="commit" value="Send me reset password instructions" class="btn btn-primary w-full pointer-events-none" data-disable-with="Send me reset password instructions">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%= content_for :erb, flush: true do %>
+<%% if resource.errors.any? %>
+<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
+  <div class="flex items-start gap-4">
+    <%%= icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid %>
+    <div class="flex-1">
+      <p class="font-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+      <ul class="list-disc mt-3 ml-4">
+        <%% resource.errors.each do |error| %>
+          <li><%%= error.full_message %></li>
+        <%% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<%% end %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+- if resource.errors.any?
+  .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-rose-50.text-sm{class: "dark:bg-rose-400/10 dark:border-rose-400/20", role: "alert"}
+    .flex.items-start.gap-4
+      = icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid
+      .flex-1
+        %p.font-bold
+          = pluralize(resource.errors.count, "error")   prohibited this post from being saved:
+        %ul.list-disc.mt-3.ml-4
+          - resource.errors.each do |error|
+            %li
+            = error.full_message
+<% end %>
+
+<%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>
+<% end %>
+<% end %>
+</div>
+
+<%= system_pagination(prev_path: systems_authentication_devise_unlocks_path, prev_text: "Devise: Unlocks", next_path: systems_authentication_static_signup_path, next_text: "Sign up") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Prerequisites", "#auth-prerequisites" %>
+    <%= component_link "Global auth layout", "#auth-global-layout" %>
+    <%= component_link "Links partial", "#auth-links-partial" %>
+    <%= component_link "OmniAuth UI", "#auth-omniauth-ui" %>
+    <%= component_link "Error messages", "#auth-error-messages" %>
+  <% end %>
+<% end %>
