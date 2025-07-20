@@ -8,11 +8,11 @@
     - content: slot content for the panel
 
   Usage:
-    rui "tab/panel", id: "activity", active: true do
+    rui "tabs/panel", id: "activity", active: true do
       <p>Activity content goes here...</p>
     end
 
-    rui "tab/panel", id: "account", classes: "custom-panel" do
+    rui "tabs/panel", id: "account", classes: "custom-panel" do
       <p>Account settings...</p>
     end
 %>
@@ -21,14 +21,14 @@
   base_classes = "p-4"
   visibility_class = active ? "" : "hidden"
   panel_classes = [base_classes, visibility_class, classes].compact.join(" ")
-  
+
   panel_attributes = {
     class: panel_classes,
     data: {
       railsui_tabs_target: "panel"
     }
   }
-  
+
   panel_attributes[:id] = id if id.present?
 %>
 

@@ -1,0 +1,133 @@
+<div id="tab-configuration" class="dark:prose-invert dark:prose-code:text-red-500 prose prose-neutral prose-code:text-red-700 prose-code:font-bold prose-code:after:content-[''] prose-code:before:content-['']">
+<div class="not-prose">
+<% content_for :bash, flush: true do %>
+rails g railsui:component Tabs
+<% end %>
+<%= render_snippet active_tab: :bash %>
+</div>
+
+<h3>Generator Options</h3>
+
+<ul>
+  <li><code>--directory</code>: Customize the component location (defaults to <code>app/views/rui/components</code>)</li>
+  <li><code>--stimulus</code>: Include Stimulus controller named <code>tabs_controller.js</code> which inherits from <code>railsui_tabs_controller.js</code></li>
+</ul>
+
+<h3>Component Properties</h3>
+
+<h4>Main Tab Container</h4>
+<ul>
+  <li><code>variant</code>: Tab style variant (Symbol, optional, defaults to <code>:base</code>)
+    <ul>
+      <li><code>:base</code> - Standard tabs with bottom border</li>
+      <li><code>:pill</code> - Rounded pill-style tabs</li>
+      <li><code>:with_icons</code> - Tabs designed to work with icons</li>
+      <li><code>:rounded</code> - Rounded rectangular tabs</li>
+    </ul>
+  </li>
+  <li><code>classes</code>: Additional Tailwind classes for the tab wrapper (String, optional)</li>
+  <li><code>active_classes</code>: Custom CSS classes to override default active tab styling (String, optional)</li>
+  <li><code>inactive_classes</code>: Custom CSS classes to override default inactive tab styling (String, optional)</li>
+  <li><code>content</code>: Block content containing tab navigation and panels (Block, required)</li>
+</ul>
+
+<h4>Sub-components</h4>
+
+<details class="mb-4">
+  <summary class="cursor-pointer font-medium text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400">
+    <code>tabs/nav</code> - Navigation container for tab links
+  </summary>
+  <div class="mt-3 ml-4 space-y-2">
+    <p class="text-sm text-gray-600 dark:text-gray-400">Container component that wraps tab navigation links with variant-specific styling.</p>
+
+    <h5 class="font-medium text-sm">Locals:</h5>
+    <ul class="text-sm space-y-1">
+      <li><code>variant</code>: Tab style variant (Symbol, optional, defaults to <code>:base</code>)
+        <ul class="ml-4 mt-1 space-y-1">
+          <li><code>:base</code> - Standard navigation with bottom border</li>
+          <li><code>:pill</code> - Horizontal layout with spacing for pill tabs</li>
+          <li><code>:with_icons</code> - Flex layout optimized for icon tabs</li>
+          <li><code>:rounded</code> - Flex layout with spacing for rounded tabs</li>
+        </ul>
+      </li>
+      <li><code>classes</code>: Additional Tailwind classes for the navigation wrapper (String, optional)</li>
+      <li><code>content</code>: Block content containing tab links (Block, required)</li>
+    </ul>
+
+    <h5 class="font-medium text-sm mt-3">Usage:</h5>
+    <pre class="text-xs bg-gray-100 dark:bg-gray-800 p-2 rounded"><code>rui "tabs/nav", variant: :base do
+  rui "tabs/link", label: "Activity", active: true
+  rui "tabs/link", label: "Account"
+end</code></pre>
+  </div>
+</details>
+
+<details class="mb-4">
+  <summary class="cursor-pointer font-medium text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400">
+    <code>tabs/link</code> - Individual tab navigation links
+  </summary>
+  <div class="mt-3 ml-4 space-y-2">
+    <p class="text-sm text-gray-600 dark:text-gray-400">Interactive tab link component with Stimulus integration for tab switching functionality.</p>
+
+    <h5 class="font-medium text-sm">Locals:</h5>
+    <ul class="text-sm space-y-1">
+      <li><code>label</code>: Text content for the tab link (String, required)</li>
+      <li><code>href</code>: URL or anchor for the link (String, optional, defaults to <code>"#"</code>)</li>
+      <li><code>active</code>: Whether the tab is currently active (Boolean, optional, defaults to <code>false</code>)</li>
+      <li><code>icon</code>: Optional Heroicon name to display before label (String, optional)</li>
+      <li><code>variant</code>: Tab style variant (Symbol, optional, defaults to <code>:base</code>)
+        <ul class="ml-4 mt-1 space-y-1">
+          <li><code>:base</code> - Standard tabs with bottom border styling</li>
+          <li><code>:pill</code> - Rounded pill-style tabs</li>
+          <li><code>:with_icons</code> - Tabs optimized for icon display</li>
+          <li><code>:rounded</code> - Rounded rectangular tabs</li>
+        </ul>
+      </li>
+      <li><code>classes</code>: Additional CSS classes for the link (String, optional)</li>
+      <li><code>active_classes</code>: Custom classes to override default active styling (String, optional)</li>
+      <li><code>inactive_classes</code>: Custom classes to override default inactive styling (String, optional)</li>
+      <li><code>tag_options</code>: Hash of additional HTML attributes (Hash, optional)</li>
+      <li><code>content</code>: Block content for custom link content (Block, optional)</li>
+    </ul>
+
+    <h5 class="font-medium text-sm mt-3">Usage:</h5>
+
+<div class="not-prose">
+<% content_for :erb, flush: true do %>
+rui "tabs/link", label: "Activity", active: true, href: "#activity"
+rui "tabs/link", label: "Settings", icon: "cog-6-tooth", href: "#settings", variant: :with_icons
+rui "tabs/link", label: "Account", classes: "custom-tab", variant: :pill
+<% end %>
+  <%= render_snippet active_tab: :erb %>
+</div>
+  </div>
+</details>
+
+<details class="mb-4">
+  <summary class="cursor-pointer font-medium text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400">
+    <code>tabs/panel</code> - Content panels for each tab
+  </summary>
+  <div class="mt-3 ml-4 space-y-2">
+    <p class="text-sm text-gray-600 dark:text-gray-400">Content container that displays tab-specific content, controlled by the Stimulus tabs controller.</p>
+
+    <h5 class="font-medium text-sm">Locals:</h5>
+    <ul class="text-sm space-y-1">
+      <li><code>id</code>: Unique identifier for the panel, used for targeting (String, optional)</li>
+      <li><code>active</code>: Whether the panel is visible by default (Boolean, optional, defaults to <code>false</code>)</li>
+      <li><code>classes</code>: Additional CSS classes for the panel container (String, optional)</li>
+      <li><code>content</code>: Block content for the panel (Block, required)</li>
+    </ul>
+
+    <h5 class="font-medium text-sm mt-3">Usage:</h5>
+    <pre class="text-xs bg-gray-100 dark:bg-gray-800 p-2 rounded"><code>rui "tabs/panel", id: "activity", active: true do
+  <p>Activity content goes here...</p>
+end
+
+rui "tabs/panel", id: "account", classes: "custom-panel" do
+  <p>Account settings...</p>
+end</code></pre>
+  </div>
+</details>
+
+<h2>Usage Examples</h2>
+</div>

@@ -9,25 +9,25 @@
   - content: block content containing tab navigation and panels
 
   Usage:
-  rui :tab do
-    rui "tab/nav", variant: :base do
-      rui "tab/link", label: "Activity", active: true, href: "#activity"
-      rui "tab/link", label: "Account", href: "#account"
+  rui :tabs do
+    rui "tabs/nav", variant: :base do
+      rui "tabs/link", label: "Activity", active: true, href: "#activity"
+      rui "tabs/link", label: "Account", href: "#account"
     end
 
-    rui "tab/panel", id: "activity", active: true do
+    rui "tabs/panel", id: "activity", active: true do
       <p>Activity content...</p>
     end
-    rui "tab/panel", id: "account" do
+    rui "tabs/panel", id: "account" do
       <p>Account content...</p>
     end
   end
 
-  rui :tab, variant: :pill do
-    rui "tab/nav", variant: :pill do
-      rui "tab/link", label: "Settings", icon: "cog-6-tooth"
+  rui :tabs, variant: :pill do
+    rui "tabs/nav", variant: :pill do
+      rui "tabs/link", label: "Settings", icon: "cog-6-tooth"
     end
-    rui "tab/panel", active: true do
+    rui "tabs/panel", active: true do
       <p>Settings content</p>
     end
   end

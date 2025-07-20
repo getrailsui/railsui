@@ -79,7 +79,7 @@ Railsui::Engine.routes.draw do
       get :modal
       get :navigation
       get :pagination
-      get :tab
+      get :tabs
       get :toast
       get :tooltip
     end

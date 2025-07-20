@@ -13,10 +13,10 @@
     - tag_options: hash of extra tag attributes
 
   Usage:
-    rui "tab/link", label: "Activity", active: true, href: "#activity"
-    rui "tab/link", label: "Settings", icon: "cog-6-tooth", href: "#settings", variant: :with_icons
-    rui "tab/link", label: "Account", classes: "custom-tab", variant: :pill
-    rui "tab/link", label: "Custom", active: true, active_classes: "bg-red-500 text-white px-4 py-2"
+    rui "tabs/link", label: "Activity", active: true, href: "#activity"
+    rui "tabs/link", label: "Settings", icon: "cog-6-tooth", href: "#settings", variant: :with_icons
+    rui "tabs/link", label: "Account", classes: "custom-tab", variant: :pill
+    rui "tabs/link", label: "Custom", active: true, active_classes: "bg-red-500 text-white px-4 py-2"
 %>
 
 <%%

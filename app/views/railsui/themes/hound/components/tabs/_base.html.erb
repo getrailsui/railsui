@@ -61,32 +61,30 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="railsui-tabs"
-    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4"
-    data-railsui-tabs-inactive-tab="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">
-  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
-    <nav role="navigation" class="-mb-px">
-      <%%= link_to "Activity", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4" %>
-      <%%= link_to "Account", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4" %>
-      <%%= link_to "Billing", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4" %>
-      <%%= link_to "Team", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4" %>
-    </nav>
-  </div>
-   <div class="p-4" data-railsui-tabs-target="panel">
-    Some activities...
-  </div>
+<%%= rui :tabs do %>
+  <%%= rui "tabs/nav", variant: :base do %>
+    <%%= rui "tabs/link", label: "Activity", active: true, href: "#activity", variant: :base %>
+    <%%= rui "tabs/link", label: "Account", href: "#account", variant: :base %>
+    <%%= rui "tabs/link", label: "Billing", href: "#billing", variant: :base %>
+    <%%= rui "tabs/link", label: "Team", href: "#team", variant: :base %>
+  <%% end %>
 
-  <div class="hidden p-4" data-railsui-tabs-target="panel">
-    Account information...
-  </div>
+  <%%= rui "tabs/panel", id: "activity", active: true do %>
+    <p>Activity content goes here. Track your recent actions and updates.</p>
+  <%% end %>
 
-  <div class="hidden p-4" data-railsui-tabs-target="panel">
-    Billing information...
-  </div>
-  <div class="hidden p-4" data-railsui-tabs-target="panel">
-    Team information...
-  </div>
-</div>
+  <%%= rui "tabs/panel", id: "account" do %>
+    <p>Account settings and profile information.</p>
+  <%% end %>
+
+  <%%= rui "tabs/panel", id: "billing" do %>
+    <p>Billing information and payment methods.</p>
+  <%% end %>
+
+  <%%= rui "tabs/panel", id: "team" do %>
+    <p>Team management and member settings.</p>
+  <%% end %>
+<%% end %>
 <% end %>
 
 <% content_for :js, flush: true do %>

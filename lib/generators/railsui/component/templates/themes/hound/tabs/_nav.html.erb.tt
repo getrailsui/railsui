@@ -7,13 +7,13 @@ locals:
   - content: slot content containing tab links
 
 Usage:
-  rui "tab/nav", variant: :base do
+  rui "tabs/nav", variant: :base do
     rui "tab/link", label: "Activity", active: true
     rui "tab/link", label: "Account"
   end
 
-  rui "tab/nav", variant: :pill do
-    rui "tab/link", label: "Settings", icon: "cog-6-tooth"
+  rui "tabs/nav", variant: :pill do
+    rui "tabs/link", label: "Settings", icon: "cog-6-tooth"
   end
 %>
 
