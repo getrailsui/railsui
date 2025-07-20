@@ -1,0 +1,42 @@
+
+<div id="scaffolds-overview" class="prose dark:prose-invert my-6 max-w-full">
+  <p>Rails UI supplies pre-designed scaffolds in addition to the Rails defaults. To accomplish this you can run an alternative generator when scaffolding a new resource.</p>
+
+  <h3>Custom scaffold generator</h3>
+  <div class="not-prose">
+    <% content_for :bash, flush: true do %>
+    rails generate railsui:scaffold ModelName
+    <% end %>
+    <%= render_snippet active_tab: "bash" %>
+  </div>
+
+  <p>The custom scaffold generator performs the same function as the default but uses alternative view templates when generating. Below is an example of each template for the <%= Railsui.config.theme.humanize %> theme.</p>
+
+</div>
+
+<% content_for :bash, flush: true do %>
+
+<% end %>
+
+<%= render callout do %>
+  <p><strong>Note</strong>: Changing your Rails UI theme will not automatically update existing scaffolds to match the new theme.</p>
+<% end %>
+
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/index" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/show" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/new" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/edit" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/scaffolds/partial" %>
+
+<%= system_pagination(prev_path: systems_content_image_path, prev_text: "Image", next_path: systems_forms_path, next_text: "Forms") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Overview", "#scaffolds-overview" %>
+    <%= component_link "Index", "#scaffolds-index" %>
+		<%= component_link "Show", "#scaffolds-show" %>
+    <%= component_link "New", "#scaffolds-new" %>
+    <%= component_link "Edit", "#scaffolds-edit" %>
+    <%= component_link "Partial", "#scaffolds-partial" %>
+  <% end %>
+<% end %>

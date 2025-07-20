@@ -1,0 +1,101 @@
+<div id="typography-headings">
+  <%= render layout: example, locals: { heading: "Headings", section: "Typography" } do %>
+
+    <div class="mb-4">
+      <h1 class="h1">A quick brown fox jumps over <br />
+        the lazy dog.</h1>
+      <%= help_text do %>
+        <p>h1</p>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
+      <%= help_text do %>
+        <p>h2</p>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
+      <%= help_text do %>
+        <p>h3</p>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
+      <%= help_text do %>
+        <p>h4</p>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <h5 class="h5">A quick brown fox jumps over the lazy dog.</h5>
+      <%= help_text do %>
+        <p>h5</p>
+      <% end %>
+    </div>
+
+    <div>
+      <h6 class="h6">A quick brown fox jumps over the lazy dog.</h6>
+      <%= help_text do %>
+        <p>h6</p>
+      <% end %>
+    </div>
+
+<% content_for :example do %>
+<%# snippet content :html %>
+<% content_for :html, flush: true do %>
+<h1 class="h1">A quick brown fox jumps over the lazy dog.</h1>
+<h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
+<h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
+<h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
+<h5 class="h5">A quick brown fox jumps over the lazy dog.</h5>
+<h6 class="h6">A quick brown fox jumps over the lazy dog.</h6>
+<% end %>
+<%# snippet content :erb %>
+<% content_for :erb, flush: true do %>
+<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "h1" %>
+<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "h2" %>
+<%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "h3" %>
+<%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "h4" %>
+<%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "h5" %>
+<%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "h6" %>
+<% end %>
+<%# snippet content :haml %>
+<% content_for :haml, flush: true do %>
+%h1.h1 A quick brown fox jumps over the lazy dog.
+%h2.h2 A quick brown fox jumps over the lazy dog.
+%h3.h3 A quick brown fox jumps over the lazy dog.
+%h4.h4 A quick brown fox jumps over the lazy dog.
+%h5.h5 A quick brown fox jumps over the lazy dog.
+%h6.h6 A quick brown fox jumps over the lazy dog.
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>
+
+<%= divider %>
+
+<div id="typography-responsive" class="prose prose-netural dark:prose-invert max-w-full prose-headings:tracking-tight">
+<h3>Responsive heading design</h3>
+<p>Change heading sizes relative to viewports with Tailwind CSS responsive utilities.</p>
+
+<div class="not-prose">
+<% content_for :html, flush: true do %>
+  <h1 class="md:h1 h2">My sample title</h1>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<%= render_snippet %>
+</div>
+</div>

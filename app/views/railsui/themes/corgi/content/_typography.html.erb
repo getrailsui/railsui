@@ -1,0 +1,47 @@
+<% path = "railsui/themes/hound/content/typography" %>
+
+
+<%= render "#{path}/fonts" %>
+
+<%= divider %>
+
+<%= render "#{path}/headings" %>
+
+<%= divider %>
+
+<%= render "#{path}/display_headings" %>
+
+<%= divider %>
+
+<%= render "#{path}/blockquote" %>
+
+<%= divider %>
+
+<%= render "#{path}/lists" %>
+
+<%= divider %>
+
+<%= render "#{path}/lead_paragraph" %>
+
+<%= divider %>
+
+<%= render "#{path}/paragraphs" %>
+
+<%= divider %>
+
+<%= render "#{path}/inline_formatting" %>
+
+<%= system_pagination(prev_path: systems_content_path, prev_text: "Content", next_path: systems_content_table_path, next_text: "Table") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Fonts", "#typography-fonts" %>
+    <%= component_link "Headings", "#typography-headings" %>
+    <%= component_link "Display Headings", "#typography-display-headings" %>
+    <%= component_link "Blockquote", "#typography-blockquote" %>
+    <%= component_link "Lists", "#typography-lists" %>
+    <%= component_link "Lead paragraph", "#typography-lead-paragraph" %>
+    <%= component_link "Paragraphs", "#typography-paragraphs" %>
+    <%= component_link "Inline formatting", "#typography-inline-formatting" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,25 @@
+<div id="dropdown-usage">
+<%= render "railsui/shared/usage_guide", title: "Dropdown usage guide" do %>
+  <p class="pt-10">The short-form tutorial below represents how to pair Rails UI, Stimulus.js, and Ruby on Rails together to achieve a dropdown pattern using a set of elements working together.</p>
+
+  <% tutorial_path = "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/tutorial" %>
+
+  <%= render "#{tutorial_path}/dependencies" %>
+
+  <hr class="border-zinc-200/50">
+
+  <%= render "#{tutorial_path}/1" %>
+
+  <hr class="border-zinc-200/50">
+
+  <%= render "#{tutorial_path}/2" %>
+
+  <hr class="border-zinc-200/50">
+
+  <%= render "#{tutorial_path}/3" %>
+
+  <hr class="border-zinc-200/50">
+
+  <%= render "#{tutorial_path}/4" %>
+<% end %>
+</div>

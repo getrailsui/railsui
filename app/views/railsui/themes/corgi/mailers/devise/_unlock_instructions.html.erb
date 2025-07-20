@@ -1,0 +1,40 @@
+<div id="devise-unlock-instructions">
+<%= render layout: example, locals: { heading: "Unlock Instructions", section: "Mailers / Devise" } do %>
+
+<%= email_viewer("Unlock instructions") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+
+<p>Hi John Doe,</p>
+
+<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+
+<p>Click the button below to unlock your account:</p>
+
+<%= email_action "Unlock my account", "#" %>
+  <% end %>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/mailer/unlock_instructions.html.erb -->
+<p>Hi <%%= @resource.email %>,</p>
+
+<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+
+<p>Click the link below to unlock your account:</p>
+
+<%%= email_action "Unlock account", unlock_url(@resource, unlock_token: @token) %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/devise/mailer/unlock_instructions.html.erb
+%p
+  Hi #{@resource.email},
+%p Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+%p Click the link below to unlock your account:
+= email_action "Unlock account", unlock_url(@resource, unlock_token: @token)
+<% end %>
+<%= render_snippet active_tab: "erb", erb_filename: "unlock_instructions.html.erb", haml_filename: "unlock_instructions.haml.erb" %>
+<% end %>
+<% end %>
+</div>

@@ -1,0 +1,11 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/navigation" %>
+
+<%= render "#{path}/base" %>
+<%= divider %>
+<%= render "#{path}/with_search" %>
+<%= divider %>
+<%= render "#{path}/with_action" %>
+<%= divider %>
+<%= render "#{path}/with_dropdowns" %>
+
+<%= system_pagination(prev_path: systems_components_modal_path, prev_text: "Modal", next_path: systems_components_pagination_path, next_text: "Pagination") %>

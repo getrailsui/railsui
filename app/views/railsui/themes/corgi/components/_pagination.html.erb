@@ -1,0 +1,18 @@
+<% path = "railsui/themes/#{Railsui.config.theme.downcase}/components/pagination" %>
+
+<%= render "#{path}/minimal" %>
+<%= divider %>
+<%= render "#{path}/contained" %>
+<%= divider %>
+<%= render "#{path}/pagy" %>
+
+<%= system_pagination(prev_path: systems_components_navigation_path, prev_text: "Navigation", next_path: systems_components_tab_path, next_text: "Tab") %>
+
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Minimal", "#pagination-minimal" %>
+    <%= component_link "Contained", "#pagination-contained" %>
+		<%= component_link "Pagy", "#pagination-pagy" %>
+  <% end %>
+<% end %>

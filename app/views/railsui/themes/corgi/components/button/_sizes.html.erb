@@ -1,0 +1,36 @@
+<div id="button-sizes">
+<%= render layout: example, locals: { heading: "Sizes", section: "Button" } do %>
+
+  <div class="prose prose-neutral dark:prose-invert mb-6"><p>Choose from two additional buttons sizes outside of the default <code>.btn</code> class (<code>.btn-lg</code>, <code>.btn-sm</code>) or customize size with additional Tailwind CSS classes.</p></div>
+
+<%= render preview 'gray' do %>
+  <div class="flex items-center gap-2">
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+    <button type="button" class="btn btn-primary">Base button</button>
+    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  </div>
+<% end %>
+
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<button type="button" class="btn btn-primary btn-lg">Large button</button>
+<button type="button" class="btn btn-primary">Base button</button>
+<button type="button" class="btn btn-primary btn-sm">Small button</button>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<%%= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg" %>
+<%%= button_tag "Base Button", type: "button", class: "btn btn-primary" %>
+<%%= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg"
+= button_tag "Base Button", type: "button", class: "btn btn-primary"
+= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm"
+<% end %>
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

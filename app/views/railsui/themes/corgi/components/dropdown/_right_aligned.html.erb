@@ -1,0 +1,96 @@
+<div id="dropdown-right-aligned">
+  <%= render layout: example, locals: { heading: "Right aligned", section: "Dropdown" } do %>
+
+<%= render preview 'gray' do %>
+  <div data-controller="railsui-dropdown" class="relative md:inline-block block w-full md:w-auto">
+    <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="btn btn-white pr-2.5 gap-2">
+      Right-aligned Dropdown Menu
+      <%= icon "chevron-down", class:  "size-3" %>
+    </button>
+    <ul
+class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+data-railsui-dropdown-target="menu"
+data-transition-enter-from="opacity-0 scale-95"
+data-transition-enter-to="opacity-100 scale-100"
+data-transition-leave-from="opacity-100 scale-100"
+data-transition-leave-to="opacity-0 scale-95"
+>
+      <li>
+        <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Bookmark</a>
+      </li>
+      <li>
+        <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Report</a>
+      </li>
+      <li>
+        <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-dropdown" class="relative inline-block">
+  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="btn btn-white pr-2.5 gap-2">
+    Right-aligned Dropdown Menu
+    <%%= icon "chevron-down", class:  "size-3 ml-2" %>
+  </button>
+  <ul class="hidden transition transform origin-top-right absolute -left-1 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[200px] z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-sm font-medium text-slate-600 dark:text-slate-200" data-railsui-dropdown-target="menu"
+    data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95">
+    <li>
+      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Bookmark</a>
+    </li>
+    <li>
+      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Report</a>
+    </li>
+    <li>
+      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+    </li>
+  </ul>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-dropdown" class="relative inline-block">
+  <%%= button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do %>
+    Right-aligned Dropdown Menu
+    <%%= icon "chevron-down", class:  "size-3" %>
+  <%% end %>
+  <div class="hidden transition transform origin-top-right absolute -left-1 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[200px] z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-sm font-medium text-slate-600 dark:text-slate-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
+  data-transition-enter-to="opacity-100 scale-100"
+  data-transition-leave-from="opacity-100 scale-100"
+  data-transition-leave-to="opacity-0 scale-95">
+    <div>
+      <%%= link_to "Bookmark", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+    </div>
+    <div>
+      <%%= link_to "Report", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+    </div>
+    <div>
+      <%%= link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.relative.inline-block{"data-controller" => "railsui-dropdown"}
+  = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5"
+    Right-aligned Dropdown Menu
+    = icon "chevron-down", class:  "size-3"
+  %ul
+    .hidden.transition.transform.origin-top-right.absolute.-left-1.top-10.bg-white.rounded-lg.shadow-xl.border.border-slate-200.z-50.py-2.dark:bg-slate-700.text-sm.font-medium.text-slate-600.dark:text-slate-200{class: "shadow-slate-900/10 min-w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+    %li
+      = link_to "Bookmark", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+    %li
+      = link_to "Report", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+    %li
+      = link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+<% end %>
+
+  <%= render_snippet %>
+<% end %>
+<% end %>
+</div>

@@ -1,0 +1,42 @@
+<div id="devise-confirmation-instructions">
+<%= render layout: example, locals: { heading: "Confirmation Instructions", section: "Mailers / Devise" } do %>
+
+<%= email_viewer("Confirmation instructions") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+
+    <p>Hi john.doe@example.com,</p>
+
+    <p>Thanks for signing up at ACME.xyz! Before you access your new account we want to make sure it's really you.</p>
+
+    <p>Confirm your account by clicking the button below.</p>
+
+    <%= email_action "Confirm my account", "#" %>
+  <% end %>
+<% end %>
+
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<!-- app/views/devise/mailer/confirmation_instructions.html.erb -->
+<p>Hi <%%= @email %>,</p>
+
+<p>Thanks for signing up at ACME.xyz! Before you access your new account we want to make sure it's really you.</p>
+
+<p>Confirm your account by clicking the button below.</p>
+
+<%%= email_action "Confirm my account", confirmation_url(@resource, confirmation_token: @token) %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/devise/mailer/confirmation_instructions.html.erb
+%p
+  Hi #{@email},
+%p Thanks for signing up at ACME.xyz! Before you access your new account we want to make sure it's really you.
+%p Confirm your account by clicking the button below.
+= email_action "Confirm my account", confirmation_url(@resource, confirmation_token: @token)
+<% end %>
+
+<%= render_snippet active_tab: "erb", erb_filename: "confirmation_instructions.html.erb", haml_filename: "confirmation_instructions.haml.erb" %>
+<% end %>
+<% end %>
+</div>

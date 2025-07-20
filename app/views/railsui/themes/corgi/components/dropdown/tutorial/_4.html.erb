@@ -1,0 +1,27 @@
+<h2>4. Adding transitions and effects</h2>
+
+<p>Stimulus.js doesn't provide help in the context of animation and transitions so we reached for <%= link_to "stimulus-use", "https://stimulus-use.github.io/stimulus-use/", target: :_blank %> to help.</p>
+
+<p>Using the library you can leverage data attributes to add specific effects provided by Tailwind CSS classes at different states of a dropdown transition.</p>
+
+<div class="not-prose mb-6">
+<% content_for :js, flush: true do %>
+
+<% end %>
+
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-dropdown">
+  <button data-action="click->railsui-dropdown#toggle click@window->dropdown#hide">Dropdown</button>
+  <div
+    class="hidden"
+    data-railsui-dropdown-target="menu"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95">
+    <a href="#">Menu list item 1</a>
+    <a href="#">Menu list item 2</a>
+  </div>
+</div>
+<% end %>
+<%= render_snippet %>

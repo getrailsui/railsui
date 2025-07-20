@@ -1,0 +1,74 @@
+<div id="card-user-card-with-actions">
+<%= render layout: example, locals: { heading: "User card with actions", section: "Card" } do %>
+
+<div class="py-4 px-6 flex flex-wrap items-center w-auto dark:shadow-slate-900/50 rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 gap-4" data-controller="railsui-prevent">
+<%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: :women), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+  <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
+    <p class="font-bold dark:text-white">Jane Doe</p>
+    <p class="text-sm dark:text-slate-300">Software Architect at <a href="#" class="btn-link" data-action="click->railsui-prevent#prevent">Amazon</a></p>
+  </div>
+  <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
+    <a data-action="click->railsui-prevent#prevent" href="#" class="btn btn-white flex items-center gap-2">
+      <%= icon "phone", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <span>Phone</span>
+    </a>
+    <a data-action="click->railsui-prevent#prevent" href="#" class="btn btn-white flex items-center gap-2">
+      <%= icon "envelope", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <span>Email</span>
+    </a>
+  </div>
+</div>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+
+<% content_for :erb, flush: true do %>
+<div class="py-4 px-6 flex flex-wrap items-center w-auto dark:shadow-slate-900/50 rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 gap-4">
+<%= image_tag demo_avatar_url(id: "32", variant: :women), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+  <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
+    <p class="font-bold dark:text-white">Jane Doe</p>
+    <p class="text-sm dark:text-slate-300">Software Architect at <%= link_to "Amazon", "#", class: "btn-link" %></p>
+  </div>
+  <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
+    <%%= link_to "#", class: "btn btn-white flex items-center gap-2 group" do %>
+      <%%= icon "phone", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <span>Phone</span>
+    <%% end %>
+
+    <!-- * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit -->
+    <%% mail_content = capture do %>
+      <%%= icon "envelope", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <span>Email</span>
+    <%% end %>
+
+    <%%= mail_to "railsui@example.com", mail_content, class: "btn btn-white flex items-center gap-2 group" %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.py-4.px-6.flex.flex-wrap.items-center.w-auto.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border.gap-4(class="dark:shadow-slate-900/50 border-slate-300/70 dark:border-slate-600/70")
+  %img.object-cover.size-14.rounded-full.flex-shrink-0(src="https://randomuser.me/api/portraits/women/32.jpg")/
+  .flex-1.flex.flex-col.items-start.space-y-px.text-slate-900
+    %p.font-bold.dark:text-white Jane Doe
+    %p.text-sm.dark:text-slate-300
+      Software Architect at
+      %a.btn-link(href="#") Amazon
+  .grid.gap-3.grid-cols-2.lg:pt-0.pt-3.w-full.lg:w-auto
+    = link_to "#", class: "btn btn-white flex items-center gap-2 group" do
+      = icon "phone", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
+      %span Phone
+    / * The mail_to helper doesn't play too nicely with blocks so we have to rig it up a bit
+    - mail_content = capture do
+      = icon "envelope", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400"
+      %span Email
+    = mail_to "railsui@example.com", mail_content, class: "btn btn-white flex items-center gap-2 group"
+<% end %>
+
+<%= render_snippet(active_tab: :erb) %>
+<% end %>
+<% end %>
+</div>

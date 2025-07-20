@@ -1,0 +1,27 @@
+<div data-controller="railsui-dropdown" class="relative md:inline-block block md:w-auto w-full">
+  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="btn <%= local_assigns[:class] %> pr-2.5 gap-2">
+    <%= local_assigns[:label] %>
+    <%= icon "chevron-down", class:  "size-3" %>
+  </button>
+  <div
+    class="hidden transition transform origin-top-right absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+    data-railsui-dropdown-target="menu"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95"
+    >
+    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3">
+      <%= icon "bookmark", class:  "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0" %>
+      <span>Bookmark</span>
+    </a>
+    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3">
+      <%= icon "flag", class:  "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0" %>
+      <span>Report</span>
+    </a>
+    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-300 group flex items-center justify-start gap-3">
+      <%= icon "arrow-down-tray", class:  "size-4 dark:text-slate-200 text-slate-600 group-hover:text-primary-600 dark:group-hover:text-primary-300 flex-shrink-0" %>
+      <span>Export</span>
+    </a>
+  </div>
+</div>

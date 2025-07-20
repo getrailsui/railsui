@@ -1,0 +1,73 @@
+<%= render layout: example, locals: { heading: "Minimal", section: "Mailers" } do %>
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>The <%= Railsui.config.theme.humanize %> theme's minimal email template provides an excellent foundation for text-centric HTML emails. This streamlined design incorporates <%= link_to "email-compatible HTML elements", "https://www.caniemail.com/features/", target: :_blank %>, ensuring your message renders correctly across various email clients.</p>
+  </div>
+
+<%= email_viewer("A minimal template") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+    <h1>Welcome to the Byte Side of Life!</h1>
+
+    <p>Congratulations! You've successfully subscribed to our monthly dose of digital delirium.</p>
+
+    <ul>
+      <li>New feature: Automatic bug generator (because who doesn't love a challenge?)</li>
+      <li>Upcoming webinar: "How to turn coffee into code" - A programmer's guide to caffeine-driven development</li>
+      <li>Customer spotlight: How Company X increased their "404 Not Found" errors by 300%</li>
+    </ul>
+
+    <p>We value your feedback almost as much as we value semicolons. If you have any questions, suggestions, or have finally figured out how to exit Vim, please don't hesitate to contact our support team. They're like Stack Overflow, but with more patience and fewer downvotes.</p>
+
+    <p>We value your laughter and are constantly working to make our services more ridiculous. If you have any complaints or want to share a good joke, please hesitate to reach out to our support team. We're probably napping.</p>
+
+    <%= spacer(16) %>
+
+    <%= email_action "Read more", "https://railsui.com" %>
+  <% end %>
+<% end %>
+
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<!-- app/views/some_mailer/minimal.html.erb -->
+
+<h1>This is a heading</h1>
+
+<%%= spacer(16) %>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
+
+<%%= spacer(16) %>
+
+<ul>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ul>
+
+
+<%%= spacer(16) %>
+
+<%%= link_to "Learn more", "https://railsui.com" %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/some_mailer/minimal.haml.erb
+%h1 This is a heading
+= spacer(16)
+%p Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.
+= spacer(16)
+%ul
+  %li List item 1
+  %li List item 2
+  %li List item 3
+= spacer(16)
+%p Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.
+= spacer(16)
+= link_to "Learn more", "https://railsui.com"
+<% end %>
+
+<%= render_snippet active_tab: "erb", erb_filename: "minimal.html.erb", haml_filename: "minimal.haml.erb" %>
+
+<% end %>
+<% end %>
+<%= system_pagination(prev_path: systems_mailers_layout_path, prev_text: "Layouts", next_path: systems_mailers_promotion_path, next_text: "Promotion") %>

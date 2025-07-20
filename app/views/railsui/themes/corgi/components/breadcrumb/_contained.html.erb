@@ -1,0 +1,86 @@
+<div id="breadcrumb-contained">
+  <%= render layout: example, locals: { heading: "Contained" } do %>
+
+    <%= render preview("gray") do %>
+      <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 text-sm bg-white rounded items-center border-slate-300/80 border overflow-hidden sm:py-0 py-4 dark:bg-slate-800/70 dark:border-slate-700">
+        <ol class="flex items-center justify-star space-x-6 px-4 list-none">
+          <li class="sm:h-12 flex items-center justify-center">
+            <a href="#" class="hover:underline hover:text-slate-600 inline-block pl-2 group" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
+              <%= icon "home", class:  "size-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200" %>
+              <span class="sr-only">Home</span>
+            </a>
+          </li>
+          <li class="sm:h-12 flex items-center space-x-2 justify-center">
+            <span class="transform rotate-[20deg] h-14 w-px bg-slate-300/50 dark:bg-slate-600/80 flex-shrink-0 sm:block hidden"></span>
+            <a href="#" class="hover:text-slate-700 sm:pl-4 dark:hover:text-slate-200 text-slate-600 dark:text-slate-300" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">Library</a>
+          </li>
+          <li class="sm:h-12 flex items-center space-x-2 justify-center">
+            <span class="transform rotate-[20deg] h-14 w-px bg-slate-300/50 dark:bg-slate-600/80 flex-shrink-0 sm:block hidden"></span>
+            <a href="#" aria-current="page" class="text-indigo-600 dark:text-indigo-400 sm:pl-4" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">Data</a>
+          </li>
+        </ol>
+      </nav>
+    <% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 text-sm bg-white rounded items-center border-slate-300/80 border overflow-hidden sm:py-0 py-4 dark:bg-slate-800/70 dark:border-slate-700">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
+    <li class="sm:h-12 flex items-center justify-center">
+      <a href="#" class="hover:underline hover:text-slate-600 inline-block pl-2 group">
+        <%%= icon "home", class:  "size-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200" %>
+        <span class="sr-only">Home</span>
+      </a>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+      <span class="transform rotate-[20deg] h-14 w-px bg-slate-300/50 dark:bg-slate-600/80 flex-shrink-0 sm:block hidden"></span>
+      <a href="#" class="hover:text-slate-700 sm:pl-4 dark:hover:text-slate-200 text-slate-600 dark:text-slate-300">Library</a>
+    </li>
+    <li class="sm:h-12 flex items-center space-x-2 justify-center">
+      <span class="transform rotate-[20deg] h-14 w-px bg-slate-300/50 dark:bg-slate-600/80 flex-shrink-0 sm:block hidden"></span>
+      <a href="#" aria-current="page" class="text-indigo-600 dark:text-indigo-400 sm:pl-4">Data</a>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 text-sm bg-white rounded items-center border-slate-300/80 border overflow-hidden sm:py-0 py-4 dark:bg-slate-800/70 dark:border-slate-700">
+  <ol class="flex items-center justify-star space-x-6 px-4 list-none">
+    <li class="sm:h-12 flex items-center justify-center">
+      <%%= link_to "#", class: "hover:underline hover:text-slate-600 inline-block pl-2 group" do %>
+        <%%= icon "home", class:  "size-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200" %>
+        <span class="sr-only">Home</span>
+        <%% end %>
+      </li>
+      <li class="sm:h-12 flex items-center space-x-2 justify-center">
+        <span class="transform rotate-[20deg] h-14 w-px bg-slate-300/50 dark:bg-slate-600/80 flex-shrink-0 sm:block hidden"></span>
+        <%%= link_to  "Library", "#", class: "hover:text-slate-700 sm:pl-4 dark:hover:text-slate-200 text-slate-600 dark:text-slate-300" %>
+      </li>
+      <li class="sm:h-12 flex items-center space-x-2 justify-center">
+        <span class="transform rotate-[20deg] h-14 w-px bg-slate-300/50 dark:bg-slate-600/80 flex-shrink-0 sm:block hidden"></span>
+        <a href="#" aria-current="page" class="text-indigo-600 dark:text-indigo-400 sm:pl-4">Data</a>
+      </li>
+    </ol>
+  </nav>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+  %nav.my-6.font-medium.flex.text-slate-500.text-sm.bg-white.rounded.items-center.border.overflow-hidden.sm:py-0.py-4.dark:border-slate-700(aria-label="breadcrumb" class="border-slate-300/80 dark:bg-slate-800/70")
+    %ol.flex.items-center.justify-star.space-x-6.px-4.list-none
+      %li.sm:h-12.flex.items-center.justify-center
+        = link_to "#", class: "hover:underline hover:text-slate-600 inline-block pl-2 group" do
+          = icon "home", class:  "size-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200"
+          %span.sr-only Home
+      %li.sm:h-12.flex.items-center.space-x-2.justify-center
+        %span.transform.h-14.w-px.flex-shrink-0.sm:block.hidden(class="rotate-[20deg] bg-slate-300/50 dark:bg-slate-600/80")
+        = link_to  "Library", "#", class: "hover:text-slate-700 sm:pl-4 dark:hover:text-slate-200 text-slate-600 dark:text-slate-300"
+      %li.sm:h-12.flex.items-center.space-x-2.justify-center
+        %span.transform.h-14.w-px.flex-shrink-0.sm:block.hidden(class="rotate-[20deg] bg-slate-300/50 dark:bg-slate-600/80")
+        %a.text-indigo-600.dark:text-indigo-400.sm:pl-4(aria-current="page" href="#") Data
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

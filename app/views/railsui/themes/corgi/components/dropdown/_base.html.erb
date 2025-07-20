@@ -1,0 +1,73 @@
+<div id="dropdown-base">
+<%= render layout: example, locals: { heading: "Base", section: "Dropdown" } do %>
+
+<%= render preview('gray') do %>
+<div class="flex md:flex-row flex-col flex-wrap items-center justify-start md:space-x-3 space-x-0 space-y-3 md:space-y-0">
+<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-primary" %>
+
+<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-dark" %>
+
+<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-light" %>
+
+<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-white" %>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-dropdown" class="relative inline-block">
+  <button type="button" data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="btn btn-primary pr-2.5 gap-2">
+    Dropdown
+    <%%= icon "chevron-down", class: "size-3" %>
+  </button>
+  <div
+    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+    data-railsui-dropdown-target="menu"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95"
+    >
+    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Bookmark</a>
+    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Report</a>
+    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-dropdown" class="relative inline-block">
+  <%%= button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do %>
+    Dropdown
+    <%%= icon "chevron-down", class: "size-3" %>
+  <%% end %>
+  <div
+    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+    data-railsui-dropdown-target="menu"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95"
+    >
+    <%%= link_to "Bookmark", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+    <%%= link_to "Report", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+    <%%= link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.relative.inline-block{"data-controller" => "railsui-dropdown"}
+  = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary gap-2 pr-2.5" do
+    Dropdown
+    \#{icon "chevron-down", class: "size-3"}
+  .hidden.transition.transform.origin-top-left.absolute.left-0.top-10.bg-white.rounded-lg.shadow-xl.border.border-slate-200.w-full.z-50.py-2.dark:bg-slate-700.md:text-sm.text-base.font-medium.text-slate-600.dark:text-slate-200{class: "shadow-slate-900/10 md:w-[200px] dark:shadow-slate-900/50 dark:border-slate-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
+    = link_to "Bookmark", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+    = link_to "Report", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+    = link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300"
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

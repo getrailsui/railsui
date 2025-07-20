@@ -1,0 +1,175 @@
+<%= render layout: example, locals: { heading: "Transactional", section: "Mailers" } do %>
+
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>The Rails UI transactional offers a design for those user-specific situations that often require an action.</p>
+  </div>
+
+<%= email_viewer("A transactional template") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+
+    <p>Hey Andy,</p>
+
+    <p>Thanks for subscribing to Rails UI. This email contains the receipt from your purchase.</p>
+
+    <p>The purchase will appear as <code>RAILSUI</code> on your credit card statement for the card ending in <code>1234</code>. You may <%= link_to "update your payment information", "#" %> at any time. Below you'll find the details of your order:</p>
+
+    <%= spacer(16) %>
+
+    <table class="mb-0">
+      <tbody>
+        <tr>
+          <td>
+            Order #2345
+          </td>
+          <td align="right">
+            01/01/23
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <table>
+      <thead>
+        <th align="left">Description</th>
+        <th align="right">Amount</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to "Rails UI", "https://railsui.com", target: :_blank %>
+            <p class="small mb-0">Renews annually. Next charge on 01/01/24.</p>
+          </td>
+          <td align="right">
+            $1,000,000.00
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td align="right">
+            <strong>Total: $1,000,000.00</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= spacer(16) %>
+
+    <p>If you have any questions about this receipt or Rails UI, please reply to this email or reach out to our support team for help. Someone will get back to you within a few hours.</p>
+
+    <%= email_action("View receipt", "https://media4.giphy.com/media/3o7btXiWjYvDFkQEQ8/giphy.gif?cid=790b76111901e8fe756c91d0a70f7b4cb769affbc8c93779&rid=giphy.gif&ct=g", theme: "secondary") %>
+  <% end %>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<!-- app/views/some_mailer/transactional.html.erb -->
+<p>Hey Andy,</p>
+
+<p>Thanks for subscribing to Rails UI. This email contains the receipt from your purchase.</p>
+
+<p>The purchase will appear as <code>RAILSUI</code> on your credit card statement for the card ending in <code>1234</code>. You may <%%= link_to "update your payment information", "#" %> at any time. Below you'll find the details of your order:</p>
+
+<%%= spacer(16) %>
+
+<table class="mb-0">
+  <tbody>
+    <tr>
+      <td>
+        Order #2345
+      </td>
+      <td align="right">
+        01/01/23
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <th align="left">Description</th>
+    <th align="right">Amount</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%%= link_to "Rails UI", "https://railsui.com", target: :_blank %>
+        <p class="small mb-0">Renews annually. Next charge on 01/01/24.</p>
+      </td>
+      <td align="right">
+        $1,000,000.00
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="right">
+        <strong>Total: $1,000,000.00</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%%= spacer(16) %>
+
+<p>If you have any questions about this receipt or Rails UI, please reply to this email or reach out to our support team for help. Someone will get back to you within a few hours.</p>
+
+<%%= email_action("View receipt", "#", theme: "secondary") %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/some_mailer/transactional.haml.erb
+%p Hey Andy,
+%p Thanks for subscribing to Rails UI. This email contains the receipt from your purchase.
+%p
+  The purchase will appear as
+  %code RAILSUI
+  on your credit card statement for the card ending in
+  = succeed "." do
+    %code 1234
+  = link_to "update your payment information", "#"
+  at any time. Below you'll find the details of your order:
+= spacer(16)
+%table.mb-0
+  %tbody
+    %tr
+      %td
+        Order #2345
+      %td{align: "right"}
+        01/01/23
+%hr/
+%table
+  %thead
+    %th{align: "left"} Description
+    %th{align: "right"} Amount
+  %tbody
+    %tr
+      %td
+        = link_to "Rails UI", "https://railsui.com", target: :_blank
+        %p.small.mb-0 Renews annually. Next charge on 01/01/24.
+      %td{align: "right"}
+        $1,000,000.00
+    %tr
+      %td  
+    %tr
+      %td
+      %td{align: "right"}
+        %strong Total: $1,000,000.00
+= spacer(16)
+%p If you have any questions about this receipt or Rails UI, please reply to this email or reach out to our support team for help. Someone will get back to you within a few hours.
+= email_action("View receipt", "#", theme: "secondary")
+<% end %>
+
+  <%= render_snippet active_tab: "erb", erb_filename: "transactional.html.erb", haml_filename: "transactional.haml.erb" %>
+<% end %>
+<% end %>
+
+<%= system_pagination(prev_path: systems_mailers_promotion_path, prev_text: "Promotion", next_path: systems_mailers_devise_path, next_text: "Devise") %>

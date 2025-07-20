@@ -1,0 +1,78 @@
+<% path = "railsui/themes/#{Railsui.config.theme}/components/toast" %>
+
+<%= render "#{path}/base" %>
+
+<div class="prose prose-neutral dark:prose-invert mb-8 max-w-full">
+
+<p>Use toasts to deliver real-time updates to a user without disrupting their flow.</p>
+
+<h3>Options</h3>
+
+<ul>
+  <li>
+    <code>triggerOnLoad</code>(<code>data-railsui-toast-trigger-on-load-value="true"</code>): Make the toast notification appear as soon as initialized. Defaults to <code>false</code>.
+  </li>
+</ul>
+
+<h3>CSS</h3>
+
+<p>Toasts typically enter the screen from the left or right side of the viewport. This example accounts for those two variants by extending your Tailwind Theme variables to include new animation-based CSS variables.
+</div>
+
+<div class="not-prose">
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+
+<% end %>
+
+<% content_for :haml, flush: true do %>
+
+<% end %>
+
+<% content_for :js, flush: true do %>
+
+<% end %>
+<% content_for :css, flush: true do %>
+/* Add to app/assets/stylesheets/railsui/theme.css */
+
+--animate-toast-from-right: toast-from-right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+--animate-toast-from-left: toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+@keyframes toast-from-right {
+  0% {
+    transform: translateX(50%);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes toast-from-left {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+<% end %>
+<%= render_snippet active_tab: :css, css_filename: "theme.css" %>
+</div>
+
+
+<%= system_pagination(prev_path: systems_components_tab_path, prev_text: "Tab", next_path: systems_components_tooltip_path, next_text: "Tooltip") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Simple", "#toast-simple" %>
+  <% end %>
+<% end %>

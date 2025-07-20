@@ -1,0 +1,118 @@
+<div id="tab-base">
+<%= render layout: example, locals: { heading: "Base", section: "Tab" } do %>
+
+<%= render preview 'gray' do %>
+<div data-controller="railsui-tabs"
+    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4"
+    data-railsui-tabs-inactive-tab="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">
+  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
+    <nav role="navigation" class="-mb-px">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">Account</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">Billing</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">Team</a>
+    </nav>
+  </div>
+   <div class="p-4" data-railsui-tabs-target="panel">
+    Some activities...
+  </div>
+
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Account information...
+  </div>
+
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Billing information...
+  </div>
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Team information...
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div data-controller="railsui-tabs"
+    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4"
+    data-railsui-tabs-inactive-tab="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">
+  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
+    <nav role="navigation" class="-mb-px">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4">Activity</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">Account</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">Billing</a>
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">Team</a>
+    </nav>
+  </div>
+   <div class="p-4" data-railsui-tabs-target="panel">
+    Some activities...
+  </div>
+
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Account information...
+  </div>
+
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Billing information...
+  </div>
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Team information...
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-tabs"
+    data-railsui-tabs-active-tab="border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4"
+    data-railsui-tabs-inactive-tab="border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4">
+  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
+    <nav role="navigation" class="-mb-px">
+      <%%= link_to "Activity", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4" %>
+      <%%= link_to "Account", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4" %>
+      <%%= link_to "Billing", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4" %>
+      <%%= link_to "Team", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4" %>
+    </nav>
+  </div>
+   <div class="p-4" data-railsui-tabs-target="panel">
+    Some activities...
+  </div>
+
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Account information...
+  </div>
+
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Billing information...
+  </div>
+  <div class="hidden p-4" data-railsui-tabs-target="panel">
+    Team information...
+  </div>
+</div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4", "data-railsui-tabs-inactive-tab" => "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"}
+  .border-slate-200.border-b.text-slate-600.dark:text-slate-100.dark:border-slate-600.font-medium.text-sm
+    %nav.-mb-px{role: "navigation"}
+      = link_to "Activity", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4"
+      = link_to "Account", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"
+      = link_to "Billing", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab"}, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"
+      = link_to "Team", "#", data: { action: "click-railsui-tabs#change", railsui_tabs_target: "tab" }, class: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"
+  .p-4{"data-railsui-tabs-target" => "panel"}
+    Some activities...
+  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
+    Account information...
+  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
+    Billing information...
+  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
+    Team information...
+<% end %>
+
+<% content_for :js, flush: true do %>
+import { RailsuiTabs } from 'railsui-stimulus'
+application.register('railsui-tabs', RailsuiTabs)
+<% end %>
+
+<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "index.js" %>
+<% end %>
+<% end %>
+</div>

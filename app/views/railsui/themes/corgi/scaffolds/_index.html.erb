@@ -1,0 +1,108 @@
+<div id="scaffolds-index">
+<%= render layout: example, locals: { heading: "Index", section: "Scaffolds" } do %>
+
+<%= render preview('gray') do %>
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="flex items-center justify-between pb-6 border-b dark:border-slate-700 border-gray-200/90">
+    <h1 class="h2">Posts</h1>
+    <div class="flex items-center justify-end">
+      <a href="#" class="btn btn-primary">New Post</a>
+    </div>
+  </div>
+  <div id="posts" class="divide-y divide-slate-200/90 dark:divide-slate-700 mb-10">
+    <!-- post 1 content -->
+    <div class="py-3">
+      <article id="post_1" class="py-6 prose dark:prose-invert">
+        <div>
+          <p class="mb-0 font-semibold">
+            Title
+          </p>
+          <p class="my-0">
+            Example post title
+          </p>
+        </div>
+        <div>
+          <p class="mb-0 font-semibold">
+            Content
+          </p>
+          <p class="my-0">
+            Example post content
+          </p>
+        </div>
+        <time class="text-slate-600 dark:text-slate-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
+      </article>
+
+      <a href="#" class="btn-link my-3 inline-block">View post</a>
+    </div>
+    <!-- post 2 content -->
+    <div class="py-3">
+      <article id="post_2" class="py-6 prose dark:prose-invert">
+        <div>
+          <p class="mb-0 font-semibold">
+            Title
+          </p>
+          <p class="my-0">
+            Example post title 2
+          </p>
+        </div>
+        <div>
+          <p class="mb-0 font-semibold">
+            Content
+          </p>
+          <p class="my-0">
+            Example post content 2
+          </p>
+        </div>
+        <time class="text-slate-600 dark:text-slate-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
+      </article>
+
+      <a href="#" class="btn-link my-3 inline-block">View post</a>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="max-w-3xl mx-auto px-4 my-16">
+  <div class="flex items-center justify-between pb-6 border-b dark:border-slate-700">
+    <h1 class="h2">Posts</h1>
+    <div class="flex items-center justify-end">
+      <%%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div id="posts" class="divide-y divide-slate-200/90 dark:divide-slate-700 mb-10">
+    <%% @posts.each do |post| %>
+      <div class="py-3">
+        <%%= render post %>
+
+        <%%= link_to "View post", post, class: "btn-link my-3 inline-block" %>
+      </div>
+    <%% end %>
+  </div>
+</div>
+<% end %>
+
+<%# .haml %>
+<% content_for :haml, flush: true do %>
+.max-w-3xl.mx-auto.px-4.my-16
+  .flex.items-center.justify-between.pb-6.border-b.dark:border-slate-700
+    %h1.h2 Posts
+    .flex.items-center.justify-end
+      = link_to "New Post", new_post_path, class: "btn btn-primary"
+  #posts.divide-y.dark:divide-slate-700.mb-10
+    - @posts.each do |post|
+      .py-3
+        = render post
+        = link_to "View post", post, class: "btn-link my-3 inline-block"
+<% end %>
+
+<% content_for :ruby, flush: true do %>
+
+<% end %>
+<%= render_snippet active_tab: "erb", erb_filename: "index.html.erb", haml_filename: "index.haml.erb" %>
+<% end %>
+<% end %>
+</div>

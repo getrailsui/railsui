@@ -1,0 +1,81 @@
+<%= render layout: example, locals: { heading: "Promotion", section: "Mailers" } do %>
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>The Rails UI promotional template gives you a good starting point for a sales-based email template. Using a short and sweet heading, callouts, and larger buttons incentivizes users to take more action.</p>
+  </div>
+
+<%= email_viewer("A promotional template") do %>
+  <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
+
+    <%= image_tag "https://picsum.photos/1200/800", alt: "Promotional image example", class: "object-cover max-h-[400px]", height: 280, width: 600 %>
+
+    <%= spacer(16) %>
+
+    <h1>Summer Sale Extravaganza!</h1>
+
+    <p>Get ready for the hottest deals of the season! Our Summer Sale Extravaganza is here, bringing you incredible discounts on all your favorite items. From stylish beachwear to must-have accessories, we've got everything you need to make this summer unforgettable.</p>
+
+    <%= email_callout do %>
+      <p>For a limited time use the coupon code <strong>SUMMER25</strong> for 25% off your entire purchase!</p>
+    <% end %>
+
+    <p>Don't miss out on this opportunity to refresh your summer wardrobe and grab those items you've been eyeing. With prices this low, you can treat yourself and your loved ones to something special. But hurry, these amazing deals won't last forever!</p>
+
+    <%= email_action "Shop Now", "#", align: "center", fullwidth: true %>
+  <% end %>
+<% end %>
+
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<!-- app/views/some_mailer/promotion.html.erb -->
+
+<!-- Add width and height attributes to all images for maximum cross email client support -->
+<%%= image_tag "promotion-image.jpg", alt: "Promotional image example", width: 600, height: 280 %>
+
+<%%= spacer(16) %>
+
+<h1>Summer Sale Extravaganza!</h1>
+
+<%%= spacer(16) %>
+
+ <p>Get ready for the hottest deals of the season! Our Summer Sale Extravaganza is here, bringing you incredible discounts on all your favorite items. From stylish beachwear to must-have accessories, we've got everything you need to make this summer unforgettable.</p>
+
+<%%= spacer(16) %>
+
+<%%= email_callout do %>
+  <p>For a limited time use the coupon code <strong>SUMMER25</strong> for 25% off your entire purchase!</p>
+<%% end %>
+
+<%%= spacer(16) %>
+
+<p>Don't miss out on this opportunity to refresh your summer wardrobe and grab those items you've been eyeing. With prices this low, you can treat yourself and your loved ones to something special. But hurry, these amazing deals won't last forever!</p>
+
+<%%= spacer(16) %>
+
+<%%= email_action "Start shopping", "#", align: "center", fullwidth: true %>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+/ app/views/some_mailer/promotion.haml.erb
+/ Add width and height attributes to all images for maximum cross-email client support
+= image_tag "your/promotion/image.jpg", alt: "Promotional image example", width: 600, height: 280
+= spacer(16)
+%h1 Limited time offer!
+= spacer(16)
+%p Lorem ipsum dolor...
+= spacer(16)
+= email_callout do
+  %p
+    For a limited time use the coupon code
+    %strong 50OFF
+    for 50% off your first purchase.
+= spacer(16)
+%p Lorem ipsum dolor...
+= spacer(16)
+= email_action "Start shopping", "#", align: "center", fullwidth: true
+<% end %>
+
+  <%= render_snippet active_tab: "erb", erb_filename: "promotion.html.erb", haml_filename: "promotion.haml.erb" %>
+<% end %>
+<% end %>
+<%= system_pagination(prev_path: systems_mailers_minimal_path, prev_text: "Minimal", next_path: systems_mailers_transactional_path, next_text: "Transactional") %>

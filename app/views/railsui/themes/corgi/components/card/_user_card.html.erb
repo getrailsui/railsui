@@ -1,0 +1,62 @@
+<div id="card-user-card">
+<%= render layout: example, locals: { heading: "User card", section: "Card" } do %>
+
+  <div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 py-4 px-6 flex items-center space-x-4 w-auto dark:shadow-slate-900/50">
+  <%= image_tag demo_avatar_url(id: rand(1..10).to_s, variant: [:men, :women].sample), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+  <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
+    <p class="font-bold dark:text-white mb-1">John Doe</p>
+      <div class="flex flex-wrap items-center md:gap-4 gap-0">
+        <div class="flex items-center gap-2 pb-0.5">
+          <%= icon "envelope", class: "size-4 text-slate-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-slate-300">john.doe@example.com</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <%= icon "phone", class: "size-4 text-slate-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-slate-300">+1-555-555-5555</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+
+<% end %>
+
+<% content_for :erb, flush: true do %>
+ <div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 py-4 px-6 flex items-center space-x-4 w-auto dark:shadow-slate-900/50">
+  <%%= image_tag demo_avatar_url(id: rand(1..10).to_s, variant: [:men, :women].sample), class: "object-cover size-14 rounded-full flex-shrink-0" %>
+  <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
+    <p class="font-bold dark:text-white mb-1">John Doe</p>
+      <div class="flex flex-wrap items-center md:gap-4 gap-0">
+        <div class="flex items-center gap-2 pb-0.5">
+          <%%= icon "envelope", class: "size-4 text-slate-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-slate-300">john.doe@example.com</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <%%= icon "phone", class: "size-4 text-slate-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-slate-300">+1-555-555-5555</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :haml, flush: true do %>
+.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border.py-4.px-6.flex.items-center.space-x-4.w-auto(class="border-slate-300/70 dark:border-slate-600/70 dark:shadow-slate-900/50")
+  = image_tag demo_avatar_url(id: rand(1..10).to_s, variant: [:men, :women].sample), class: "object-cover size-14 rounded-full flex-shrink-0"
+  .flex-1.flex.flex-col.items-start.space-y-px.text-slate-900
+    %p.font-bold.dark:text-white.mb-1 John Doe
+    .flex.flex-wrap.items-center.md:gap-4.gap-0
+      .flex.items-center.gap-2(class="pb-0.5")
+        = icon "envelope", class: "size-4 text-slate-500 dark:text-primary-400"
+        %p.text-sm.dark:text-slate-300 john.doe@example.com
+      .flex.items-center.gap-2
+        = icon "phone", class: "size-4 text-slate-500 dark:text-primary-400"
+        %p.text-sm.dark:text-slate-300 +1-555-555-5555
+<% end %>
+
+<%= render_snippet(active_tab: :erb) %>
+<% end %>
+<% end %>
+</div>
