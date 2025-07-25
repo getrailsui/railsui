@@ -9,7 +9,7 @@
 
     <% if File.exist?("#{Rails.root}/app/assets/stylesheets/railsui/theme.css") %>
       <h3 class="mb-0">theme.css</h3>
-      <p class="text-sm"><code class="text-neutral-400 font-normal">app/assets/stylesheets/railsui/theme.css</code></p>
+      <p class="text-sm"><code class="text-neutral-400 font-normal">app/assets/stylesheets/railsui/theme.css</code> (imported into <code>app/assets/tailwind/application.css</code>)</p>
 
       <div class="my-3 not-prose">
         <div data-controller="railsui-code" class="relative overflow-clip bg-gray-900 rounded-lg border-transparent  dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 max-h-[400px] overflow-y-auto">
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <p>The contents of the <code>app/assets/stylesheets/railsui/theme.css</code> file is displayed above for <strong><%= Railsui.config.theme.humanize %></strong>, your active theme. To customize this file, make a copy and update the <code>@import</code> path inside your main application CSS file to reference back to it. Use Tailwind's <%= link_to "theme variables guide", "https://tailwindcss.com/docs/theme", target: :_blank %> to extend this file.</p>
+      <p>The contents of the <code>app/assets/stylesheets/railsui/theme.css</code> file is displayed above for <strong><%= Railsui.config.theme.humanize %></strong>, your active theme. This file gets imported into <code>app/assets/tailwind/application.css</code>. To customize this file, make a copy and update the <code>@import</code> path inside your main application CSS file to reference back to it. Use Tailwind's <%= link_to "theme variables guide", "https://tailwindcss.com/docs/theme", target: :_blank %> to extend this file.</p>
 
       <p>I recommend <%= link_to "this tool", "https://uicolors.app/create?ref=railsui.com", target: :_blank %> for generating unique colors. Hex colors are acceptable. For a wider gamut you could reach for <%= link_to "okchl", "https://oklch.com", target: :_blank %> following in the footsteps of Tailwind CSS v4.</p>
 

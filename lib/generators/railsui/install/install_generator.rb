@@ -16,7 +16,7 @@ module Railsui
         }
 
         config = Railsui::Configuration.new(configuration_params)
-        config.save
+        config.save(build_css: false)
       end
 
       def install_dependencies
@@ -24,48 +24,46 @@ module Railsui
 
         @theme = Railsui.config.theme
 
-        if File.exist?("#{Rails.root}/config/importmap.rb")
-          say "❌ Detected importmaps which is unfortunately not supported by Rails UI. For best results, please use another bundling solution from jsbundling-rails (i.e., esbuild, bun) before installing", :yellow
-        else
-          say "🔥 Installing default theme: #{@theme.humanize} 🐶. Don't worry, you can change this."
+        say "🔥 Installing default theme: #{@theme.humanize} 🐶. Don't worry, you can change this."
 
-          # Add engine routes
-          # Add a GUI for easier theme configuration
-          copy_railsui_routes
+        # Add engine routes
+        # Add a GUI for easier theme configuration
+        copy_railsui_routes
 
-          # gems railsui_icon and action_text
-          install_gems
+        # gems railsui_icon and action_text
+        install_gems
 
-          # mailers
-          update_application_helper
-          update_railsui_mailer_layout(@theme)
-          generate_sample_mailers(@theme)
+        # mailers
+        update_application_helper
+        update_railsui_mailer_layout(@theme)
+        generate_sample_mailers(@theme)
 
-          # rails ui deps
-          install_theme_dependencies(@theme)
+        # rails ui deps
+        install_theme_dependencies(@theme)
 
-          # assets
-          copy_theme_javascript(@theme)
-          copy_theme_stylesheets(@theme)
+        # assets
+        copy_theme_javascript(@theme)
+        copy_theme_stylesheets(@theme)
 
-          # view related
-          copy_railsui_head(@theme)
-          copy_railsui_launcher(@theme)
+        # view related
+        copy_railsui_head(@theme)
+        copy_railsui_launcher(@theme)
 
-          # cleanup
-          remove_action_text_defaults
+        # cleanup
+        remove_action_text_defaults
 
-          # Copy the pages related files.
-          copy_railsui_pages_routes
-          copy_railsui_page_controller(@theme)
-          copy_railsui_images(@theme)
-          copy_railsui_pages(@theme)
+        # Copy the pages related files.
+        copy_railsui_pages_routes
+        copy_railsui_page_controller(@theme)
+        copy_railsui_images(@theme)
+        copy_railsui_pages(@theme)
 
-          # migrate
-          rails_command "db:migrate"
+        # migrate
+        rails_command "db:migrate"
 
-          config.save
-say "
+        config.save(build_css: false)
+
+        say "
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMWXOxooodOXMMMMMMMMMMWXxxXMMMMMMMMMMMMMMMMMMMMMM
@@ -90,11 +88,10 @@ MMMMMMMMMNxldk0XNWMMMMMWNKkl,.  .lKWMMMMMXo. ,xNMMMMMMMMMMMM
 MMMMMMMMMWWMMMMMMMMMMMMMMMMMW0kkKWMMMMMMMMWKONMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 "
-          say "✅ Install complete", :green
-          say "--"
-          say "🔥 Rails UI is now installed. You can access your configuration at /railsui"
-          say "Read documentation at https://railsui.com/docs for FAQs, guides, and more."
-        end
+        say "✅ Install complete", :green
+        say "--"
+        say "🔥 Rails UI is now installed. You can access your configuration at /railsui"
+        say "Read documentation at https://railsui.com/docs for FAQs, guides, and more."
       end
     end
   end

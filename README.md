@@ -20,43 +20,37 @@ You must already have node and yarn installed on your system. You will also need
 
 ### New applications
 
-The easiest install is on new Rails apps with options passed like so. For new apps, use the `-c tailwind` flag to install it.
+The easiest install is on new Rails apps. Rails UI now uses `tailwindcss-rails` for CSS management, which is automatically installed when you run the Rails UI installer.
 
 ```bash
-rails new app_name -c tailwind -j esbuild
+rails new app_name -j esbuild
 ```
-
-It's recommended to use the `-j` flag to one of the bundling solutions from the [`jsbundling-rails`](https://github.com/rails/jsbundling-rails) gem (bun, esbuild rollup, webpack) for max compatibility.
-
-Support for [importmaps](https://github.com/rails/importmap-rails) or [propshaft](https://github.com/rails/propshaft) is untested at this time.
 
 ### Existing applications
 
-#### CSS
+Rails UI now uses `tailwindcss-rails` for CSS management, which provides a simpler and more integrated approach to Tailwind CSS in Rails applications.
 
-For an existing app you need to first install Tailwind if you haven't. If you are using another CSS framework, like Bootstrap, remove that first for best results.
-
-```bash
-./bin/bundle add cssbundling-rails
-./bin/rails css:install:tailwind
-```
-
-Note: There are several ways to approach adding Tailwind CSS support. We find the easiest way is using [cssbundling-rails](https://github.com/rails/cssbundling-rails) gem for max control. If you were to scaffold a new rails application, this gem is the one used when passing `-c` or `-css`.
-
-Adding Tailwind CSS to an existing app _may_ result in CSS class name conflicts. We've done our best to make it integrate with your existing setup but there's always a chance.
+If you're migrating from an existing setup, Rails UI will automatically install `tailwindcss-rails` during the installation process.
 
 #### JavaScript
 
-Rails UI works best combined with the [jsbundling-rails](https://github.com/rails/jsbundling-rails) gem.
-
-When ready, install jsbundling-rails using the gem and the installer task. Choose the build tool you prefer.
+Rails UI works best with JavaScript bundling. You can use any of the supported bundling solutions:
 
 ```bash
-./bin/bundle add jsbundling-rails
-./bin/rails javascript:install:[bun|esbuild|rollup|webpack]
+# For esbuild (recommended)
+./bin/rails javascript:install:esbuild
+
+# For webpack
+./bin/rails javascript:install:webpack
+
+# For rollup
+./bin/rails javascript:install:rollup
+
+# For bun
+./bin/rails javascript:install:bun
 ```
 
-Most of the JavaScript used in Rails UI is based on Stimulus.js. This code can likely work fine alongside something like importmaps or propshaft but we have not tested this theory just yet.
+Most of the JavaScript used in Rails UI is based on Stimulus.js and will work with any of these bundling solutions.
 
 ## Installation
 
@@ -75,7 +69,7 @@ bundle install
 
 The gem includes several tasks and generators. Run the `install` task to kick things off.
 
-This task is responsible for setting the foundation for Rails UI, which includes assets, themes, theme-driven pages, and more.
+This task is responsible for setting the foundation for Rails UI, which includes assets, themes, theme-driven pages, and more. It will automatically install `tailwindcss-rails` if it's not already present.
 
 The default theme for Rails UI is [Hound](https://railsui.com/themes/hound). It will install when you install Rails UI. You can change it any time.
 
@@ -117,7 +111,7 @@ After installing Rails UI and choosing a theme you'll find a collection of compo
 
 ### Color
 
-Each theme comes with a custom color palette built on top of the default Tailwind CSS v4 color palette. We've added two new colors for you to use in your app using Tailwind CSS classes called `primary` and `secondary`. You can change those colors any time in `app/assets/stylesheets/railsui/theme.css`.
+Each theme comes with a custom color palette built on top of the default Tailwind CSS v4 color palette. We've added two new colors for you to use in your app using Tailwind CSS classes called `primary` and `secondary`. You can change those colors any time in `app/assets/stylesheets/railsui/theme.css` (which gets imported into `app/assets/tailwind/application.css`).
 
 ### Icons
 

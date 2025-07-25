@@ -85,7 +85,7 @@ module Railsui
       # Define paths
       source_path = "themes/#{theme}/stylesheets/railsui"
       destination_path = "app/assets/stylesheets/railsui"
-      application_css_path = Rails.root.join("app/assets/stylesheets/application.tailwind.css")
+      application_css_path = Rails.root.join("app/assets/tailwind/application.css")
 
       # Empty the destination directory before copying
       FileUtils.rm_rf(Dir.glob("#{destination_path}/*"))
@@ -102,37 +102,94 @@ module Railsui
         "@import \"../stylesheets/railsui/#{File.basename(file, '.css')}\";"
       end.join("\n")
 
-      # Read the existing application.tailwind.css content
+      # Read the existing application.css content
       application_css_content = File.exist?(application_css_path) ? File.read(application_css_path) : ""
 
-      # Remove old @tailwind directives and import statements for tailwindcss and railsui stylesheets
+      # Remove old import statements for railsui stylesheets
       cleaned_css_content = application_css_content
-      cleaned_css_content = cleaned_css_content.gsub(/@import "tailwindcss";\n*/, "")
       cleaned_css_content = cleaned_css_content.gsub(/@import "\.\.\/stylesheets\/railsui\/.*";\n*/, "")
 
-      # Add the new import statements in the correct order
+      # Ensure tailwindcss import is present
+      unless cleaned_css_content.include?('@import "tailwindcss"')
+        cleaned_css_content = "@import \"tailwindcss\";\n" + cleaned_css_content
+      end
+
+      # Add the new import statements
       new_application_css_content = [
-        '@import "tailwindcss";',
         cleaned_css_content.strip,  # Preserving existing content
         import_statements
       ].join("\n")
 
-      # Write the updated content back to application.tailwind.css
+      # Ensure the directory exists before writing
+      FileUtils.mkdir_p(File.dirname(application_css_path))
+
+      # Write the updated content back to application.css
       File.write(application_css_path, new_application_css_content)
-      say("Updated app/assets/stylesheets/application.tailwind.css successfully.", :green)
+      say("Updated app/assets/tailwind/application.css successfully.", :green)
     end
 
     def install_theme_dependencies(theme)
       say("Installing dependencies", :yellow)
+
+      # Add tailwindcss-rails gems to Gemfile if not already present
+      gemfile_path = Rails.root.join("Gemfile")
+      gemfile_content = File.read(gemfile_path)
+
+      unless gemfile_content.include?('tailwindcss-rails')
+        say("Adding tailwindcss-rails gems to Gemfile", :yellow)
+        append_to_file gemfile_path, "\ngem \"tailwindcss-rails\"\ngem \"tailwindcss-ruby\"\n"
+        run "bundle install"
+
+        # Reload Rails environment to pick up new generators
+        Rails.application.load_generators
+      end
+
+      # Install tailwindcss-rails if not already installed
+      unless File.exist?("#{Rails.root}/app/assets/tailwind/application.css")
+        say("Installing tailwindcss-rails", :yellow)
+        begin
+          rails_command "tailwindcss:install"
+        rescue => e
+          say("Creating basic Tailwind CSS setup manually...", :yellow)
+
+          # Create the basic Tailwind CSS structure manually
+          FileUtils.mkdir_p("#{Rails.root}/app/assets/tailwind")
+          File.write("#{Rails.root}/app/assets/tailwind/application.css", "@import \"tailwindcss\";\n")
+        end
+      end
+
+      # Update Procfile.dev for development (tailwindcss-rails creates/updates it first)
+      procfile_path = "#{Rails.root}/Procfile.dev"
+      if File.exist?(procfile_path)
+        # Update existing Procfile.dev to include our customizations
+        procfile_content = File.read(procfile_path)
+
+        # Add js build if not present
+        unless procfile_content.include?('js: yarn build --watch')
+          procfile_content += "\njs: yarn build --watch"
+        end
+
+        File.write(procfile_path, procfile_content)
+      else
+        # Create our custom Procfile.dev if tailwindcss-rails didn't create one
+        copy_file "Procfile.dev", procfile_path, force: true
+      end
+
+      # Install additional theme-specific packages
       add_yarn_packages(theme_dependencies(theme))
+
+      # Copy theme-specific tailwind.config.js to include Rails UI gem files
+      copy_theme_tailwind_config(theme)
     end
 
 
     def remove_action_text_defaults
       say "Remove default ActionText CSS"
       # remove import from application.tailwind.css if present as we add it to another imported css file.
-
-      gsub_file "app/assets/stylesheets/application.tailwind.css", /@import 'actiontext.css';/, ""
+      tailwind_css_path = "#{Rails.root}/app/assets/tailwind/application.css"
+      if File.exist?(tailwind_css_path)
+        gsub_file tailwind_css_path, /@import 'actiontext.css';/, ""
+      end
     end
 
     def humanize_theme(theme)
@@ -142,20 +199,35 @@ module Railsui
     def theme_dependencies(theme)
       case theme
       when "hound"
-        ["@tailwindcss/typography", "apexcharts", "railsui-stimulus", "stimulus-use","tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "apexcharts", "railsui-stimulus", "stimulus-use", "tippy.js"]
       when "shepherd"
-        ["@tailwindcss/typography", "apexcharts", "flatpickr", "hotkeys-js", "photoswipe", "railsui-stimulus", "stimulus-use", "tippy.js", "tailwindcss@latest", "@tailwindcss/cli@latest"]
+        ["@tailwindcss/typography", "apexcharts", "flatpickr", "hotkeys-js", "photoswipe", "railsui-stimulus", "stimulus-use", "tippy.js"]
       when "retriever"
-        ["@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr","railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "railsui-stimulus", "stimulus-use", "tippy.js"]
       when "setter"
-        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tippy.js"]
       else
-        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest" "tippy.js"]
+        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tippy.js"]
       end
     end
 
     def add_yarn_packages(packages)
-      run "yarn add #{packages.join(' ')} --latest"
+      run "yarn add #{packages.join(' ')}"
+    end
+
+    def copy_theme_tailwind_config(theme)
+      say("Copying theme-specific tailwind.config.js", :yellow)
+
+      # Copy the tailwind.config.js from the copied stylesheets directory to app root
+      source_config = Rails.root.join("app/assets/stylesheets/railsui/tailwind.config.js")
+      destination_config = Rails.root.join("tailwind.config.js")
+
+      if File.exist?(source_config)
+        copy_file source_config, destination_config, force: true
+        say("Updated tailwind.config.js to include Rails UI gem files", :green)
+      else
+        say("Warning: No tailwind.config.js found for theme #{theme}", :yellow)
+      end
     end
 
     # Mailers
