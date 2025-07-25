@@ -62,7 +62,7 @@ module Railsui
       Rails.root.join("config", "railsui.yml")
     end
 
-    def save
+    def save(build_css: true)
       # Create config/railsui.yml
       File.write(self.class.config_path, to_yaml)
 
@@ -71,7 +71,7 @@ module Railsui
 
       sleep 1
 
-      Railsui.build_css
+      Railsui.build_css if build_css
     end
 
     def self.update(params={})

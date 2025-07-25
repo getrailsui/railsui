@@ -26,15 +26,12 @@ module Railsui
   end
 
   def self.build_css
-    if File.exist?("#{Rails.root}/package.json")
-      package_json = JSON.parse(File.read("#{Rails.root}/package.json"))
-      if package_json["scripts"] && package_json["scripts"]["build:css"]
-        run_command "yarn build:css"
-      else
-        puts "'build:css' script not found in package.json, skipping"
-      end
-    else
-      puts "package.json not found in the application root, skipping"
+    # Use tailwindcss-rails build command
+    begin
+      run_command "rails tailwindcss:build"
+    rescue => e
+      puts "Warning: tailwindcss:build command not found. CSS may not be compiled."
+      puts "You may need to restart your Rails server or run 'rails tailwindcss:build' manually."
     end
   end
 
