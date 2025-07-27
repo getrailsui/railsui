@@ -1,0 +1,94 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:dropdown, 
+#   button: { label: "Options", classes: "btn-secondary" },
+#   items: [
+#     { label: "Edit", href: edit_path },
+#     { label: "Delete", href: delete_path, method: :delete },
+#     { divider: true },
+#     { label: "Cancel", href: "#" }
+#   ]
+# ) %>
+#
+# With icons and badges:
+# <%= rui(:dropdown,
+#   button: { label: "User Menu", icon: "user" },
+#   items: [
+#     { label: "Profile", href: profile_path, icon: "person" },
+#     { label: "Messages", href: messages_path, badge: "3" },
+#     { label: "Settings", href: settings_path, icon: "cog" },
+#     { divider: true },
+#     { label: "Logout", href: logout_path, method: :delete, icon: "logout" }
+#   ],
+#   position: :right
+# ) %>
+#
+# Options:
+# - button: Hash with button options
+#   - label: Button text (default: "Dropdown")
+#   - icon: Icon to show in button
+#   - classes: Additional button classes
+# - items: Array of menu items
+#   - label: Item text
+#   - href: Link URL
+#   - icon: Icon name
+#   - badge: Badge text/number
+#   - method: HTTP method for link
+#   - divider: true to show divider instead of item
+# - position: :left (default) or :right
+# - menu_classes: Additional menu container classes
+# - classes: Additional wrapper classes
+# - **tag_options: Additional HTML attributes
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    button: {},
+    items: [],
+    menu_classes: nil,
+    position: :left,
+    classes: nil,
+    **tag_options
+  )
+    @button = button
+    @items = items
+    @menu_classes = menu_classes
+    @position = position.to_sym
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :button, :items, :menu_classes, :position, :classes, :tag_options
+
+  def wrapper_classes
+    css_classes("relative inline-block", classes)
+  end
+  
+  def button_label
+    button[:label] || "Dropdown"
+  end
+  
+  def button_classes
+    default_classes = "btn btn-primary gap-3"
+    css_classes(default_classes, button[:classes])
+  end
+  
+  def dropdown_menu_classes
+    base_classes = "hidden origin-top-left absolute dropdown-menu"
+    position_classes = case position
+    when :right
+      "right-0 top-10"
+    else
+      "left-0 top-10"
+    end
+    
+    css_classes(base_classes, position_classes, menu_classes)
+  end
+  
+  def controller_name
+    self.class.name.demodulize.underscore.dasherize
+  end
+  end
+end

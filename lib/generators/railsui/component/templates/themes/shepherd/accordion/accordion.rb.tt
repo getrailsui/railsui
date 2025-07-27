@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  renders_many :accordion_items, "Railsui::UI::AccordionItem"
+
+  def initialize(
+    variant: :contained,
+    class_name: nil,
+    **tag_options
+  )
+    @variant = variant.to_sym
+    @class_name = class_name
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :variant, :class_name, :tag_options
+
+  def wrapper_classes
+    base_classes = "my-6 divide-y divide-zinc-100 dark:divide-zinc-700"
+    css_classes(base_classes, variant_class, class_name)
+  end
+  
+  def wrapper_attributes
+    attrs = { class: wrapper_classes }
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def variant_class
+    variant_classes[variant] || ""
+  end
+  
+  def variant_classes
+    {
+      contained: "rounded-lg shadow-xl shadow-zinc-100/50 border border-zinc-200 dark:border-zinc-700 dark:shadow-black/20",
+      flush: ""
+    }
+  end
+end

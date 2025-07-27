@@ -1,0 +1,53 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:accordion, variant: :contained) do |accordion| %>
+#   <% accordion.with_item(title: "First Section", open: true) do %>
+#     Content for the first section
+#   <% end %>
+#   
+#   <% accordion.with_item(title: "Second Section") do %>
+#     Content for the second section
+#   <% end %>
+# <% end %>
+#
+# Options:
+# - variant: :contained (default) or :flush
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Child component options (with_item):
+# - title: Section title text
+# - open: Whether section is expanded by default (default: false)
+# - classes: Additional CSS classes for the item
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+    renders_many :items, Railsui::AccordionItemComponent
+
+  def initialize(
+    variant: :contained,
+    classes: nil,
+    **tag_options
+  )
+    @variant = variant.to_sym
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :variant, :classes, :tag_options
+
+  def wrapper_classes
+    base_classes = "my-6 divide-y divide-slate-100 dark:divide-slate-700"
+    variant_classes = case variant
+    when :flush
+      ""
+    else # :contained
+      "rounded-lg border shadow border-slate-200 shadow-slate-100/50 dark:border-slate-700 dark:shadow-black/20"
+    end
+    
+    css_classes(base_classes, variant_classes, classes)
+  end
+  end
+end

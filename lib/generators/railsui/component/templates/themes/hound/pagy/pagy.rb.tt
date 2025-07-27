@@ -1,0 +1,100 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:pagy, pagy: @pagy) %>
+#
+# With custom link proc:
+# <%= rui(:pagy, 
+#   pagy: @pagy,
+#   link_proc: ->(page_number, text, extra) { 
+#     link_to(text, url_for(page: page_number), extra) 
+#   }
+# ) %>
+#
+# With custom classes:
+# <%= rui(:pagy, pagy: @pagy, classes: "my-custom-pagination") %>
+#
+# In a Turbo Frame:
+# <%= rui(:pagy, pagy: @pagy, data: { turbo_frame: "results" }) %>
+#
+# Options:
+# - pagy: Pagy instance object (required)
+# - link_proc: Custom proc for generating links (optional)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Notes:
+# - This component is designed to work with the Pagy gem
+# - Automatically handles prev/next navigation and page numbers
+# - Responsive design with full-width buttons on mobile
+# - Uses the pagy_link_proc helper if no custom link_proc is provided
+# - Supports all standard Pagy navigation features (gaps, etc.)
+#
+# Example Pagy setup in controller:
+# @pagy, @records = pagy(User.all)
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    pagy:,
+    link_proc: nil,
+    classes: nil,
+    **tag_options
+  )
+    @pagy = pagy
+    @link_proc = link_proc
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :pagy, :link_proc, :classes, :tag_options
+
+  def nav_classes
+    base_classes = "text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300"
+    css_classes(base_classes, classes)
+  end
+  
+  def nav_attributes
+    attrs = {
+      class: nav_classes,
+      "aria-label": "Pagination navigation",
+      role: "navigation"
+    }
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def computed_link_proc
+    link_proc || pagy_link_proc(pagy)
+  end
+  
+  def prev_link_classes
+    'aria-label="Previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"'
+  end
+  
+  def prev_disabled_classes
+    "opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none"
+  end
+  
+  def next_link_classes
+    'aria-label="Next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"'
+  end
+  
+  def next_disabled_classes
+    "opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none"
+  end
+  
+  def page_link_classes
+    'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"'
+  end
+  
+  def active_page_classes
+    "py-2 px-4 border-t-2 border-primary-500 block text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-600 dark:hover:text-white"
+  end
+  
+  def gap_classes
+    "py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none"
+  end
+  end
+end

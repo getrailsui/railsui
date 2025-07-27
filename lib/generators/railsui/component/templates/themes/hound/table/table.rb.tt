@@ -1,0 +1,90 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:table, variant: :border) do |table| %>
+#   <% table.with_table_header do |header| %>
+#     <% header.with_row do |row| %>
+#       <% row.with_header_cell { "Name" } %>
+#       <% row.with_header_cell { "Email" } %>
+#       <% row.with_header_cell { "Status" } %>
+#     <% end %>
+#   <% end %>
+#   
+#   <% table.with_table_body do |body| %>
+#     <% body.with_row do |row| %>
+#       <% row.with_cell { "John Doe" } %>
+#       <% row.with_cell { "john@example.com" } %>
+#       <% row.with_cell { "Active" } %>
+#     <% end %>
+#   <% end %>
+#   
+#   <% table.with_table_footer do |footer| %>
+#     <% footer.with_row do |row| %>
+#       <% row.with_cell(colspan: 3) { "Total: 1 record" } %>
+#     <% end %>
+#   <% end %>
+# <% end %>
+#
+# Options:
+# - variant: :border (default), :hover, :striped, or :simple
+# - headers: Array of header strings (shorthand for simple tables)
+# - rows: Array of row arrays (shorthand for simple tables)
+# - footer_rows: Array of footer row arrays (shorthand)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Child components:
+# - with_table_header: Contains header rows
+# - with_table_body: Contains data rows
+# - with_table_footer: Contains footer rows
+# Each section can contain:
+# - with_row: Table row
+#   - with_header_cell: Header cell (in header section)
+#   - with_cell: Data cell (in body/footer sections)
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+    renders_one :table_header, Railsui::TableHeaderComponent
+    renders_one :table_body, Railsui::TableBodyComponent  
+    renders_one :table_footer, Railsui::TableFooterComponent
+
+  def initialize(
+    variant: :border,
+    headers: [],
+    rows: [],
+    footer_rows: [],
+    classes: nil,
+    **tag_options
+  )
+    @variant = variant.to_sym
+    @headers = headers
+    @rows = rows
+    @footer_rows = footer_rows
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :variant, :headers, :rows, :footer_rows, :classes, :tag_options
+
+  def table_classes
+    base_classes = "table-auto w-full"
+    variant_classes = case variant
+    when :borderless
+      ""
+    else # :border (default)
+      "border border-slate-200 dark:border-slate-700/80"
+    end
+    
+    css_classes(base_classes, variant_classes, classes)
+  end
+  
+  def table_attributes
+    merge_attributes({ class: table_classes }, **tag_options)
+  end
+  
+  def has_slot_content?
+    table_header.present? || table_body.present? || table_footer.present?
+  end
+  end
+end

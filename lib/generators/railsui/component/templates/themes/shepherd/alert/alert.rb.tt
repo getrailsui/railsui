@@ -1,0 +1,235 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    title: nil,
+    icon: nil,
+    dismissable: false,
+    classes: nil,
+    color: :neutral,
+    controller: "railsui-alert",
+    **tag_options
+  )
+    @title = title
+    @icon = icon
+    @dismissable = dismissable
+    @classes = classes
+    @color = color.to_sym
+    @controller = controller
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :icon, :dismissable, :classes, :color, :controller, :tag_options
+
+  def wrapper_classes
+    base_classes = "relative rounded p-4 text-sm flex flex-col gap-2 md:flex-row md:justify-between md:items-start"
+    theme_classes = [theme_config[:bg], theme_config[:text], theme_config[:border]].join(" ")
+    css_classes(base_classes, theme_classes, classes)
+  end
+  
+  def wrapper_attributes
+    attrs = { class: wrapper_classes }
+    attrs["data-controller"] = controller if dismissable
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def icon_classes
+    "size-5 flex-shrink-0 #{theme_config[:icon]}"
+  end
+  
+  def title_classes
+    "font-semibold mb-1"
+  end
+  
+  def dismiss_button_classes
+    "absolute top-2 right-2 size-8 rounded-full transition ease-in-out duration-200 hover:bg-current/5 dark:hover:bg-current/20 flex items-center justify-center shrink-0"
+  end
+  
+  def dismiss_icon_classes
+    "size-5 #{theme_config[:icon]} shrink-0"
+  end
+  
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+  
+  def theme_config
+    color_map[color] || color_map[:neutral]
+  end
+  
+  def color_map
+    {
+      primary: {
+        bg: "bg-primary-50/90 dark:bg-primary-50/10",
+        text: "text-primary-700 dark:text-primary-100",
+        title: "text-primary-800 dark:text-primary-300",
+        icon: "text-primary-500 dark:text-primary-400",
+        border: "dark:border dark:border-primary-400/30"
+      },
+      secondary: {
+        bg: "bg-secondary-50/90 dark:bg-secondary-800/20",
+        text: "text-secondary-700 dark:text-secondary-200",
+        title: "text-secondary-800 dark:text-white",
+        icon: "text-secondary-500 dark:text-secondary-300",
+        border: "dark:border dark:border-secondary-400/30"
+      },
+      red: {
+        bg: "bg-red-50/90 dark:bg-red-400/10",
+        text: "text-red-700 dark:text-red-50",
+        title: "text-red-800 dark:text-red-300",
+        icon: "text-red-500 dark:text-red-400",
+        border: "dark:border dark:border-red-400/30"
+      },
+      yellow: {
+        bg: "bg-yellow-50/90 dark:bg-yellow-300/10",
+        text: "text-yellow-700 dark:text-yellow-50",
+        title: "text-yellow-800 dark:text-yellow-400/90",
+        icon: "text-yellow-400 dark:text-yellow-400/90",
+        border: "dark:border dark:border-yellow-400/30"
+      },
+      orange: {
+        bg: "bg-orange-50/90 dark:bg-orange-500/10",
+        text: "text-orange-700 dark:text-orange-50",
+        title: "text-orange-800 dark:text-orange-300",
+        icon: "text-orange-500 dark:text-orange-400",
+        border: "dark:border dark:border-orange-400/30"
+      },
+      amber: {
+        bg: "bg-amber-50/90 dark:bg-amber-500/10",
+        text: "text-amber-700 dark:text-amber-50",
+        title: "text-amber-800 dark:text-amber-300",
+        icon: "text-amber-500 dark:text-amber-400",
+        border: "dark:border dark:border-amber-400/30"
+      },
+      lime: {
+        bg: "bg-lime-50/90 dark:bg-lime-500/10",
+        text: "text-lime-700 dark:text-lime-50",
+        title: "text-lime-800 dark:text-lime-300",
+        icon: "text-lime-500 dark:text-lime-400",
+        border: "dark:border dark:border-lime-400/30"
+      },
+      green: {
+        bg: "bg-green-50/90 dark:bg-green-500/10",
+        text: "text-green-700 dark:text-green-50",
+        title: "text-green-800 dark:text-green-300",
+        icon: "text-green-500 dark:text-green-400",
+        border: "dark:border dark:border-green-400/30"
+      },
+      emerald: {
+        bg: "bg-emerald-50/90 dark:bg-emerald-500/10",
+        text: "text-emerald-700 dark:text-emerald-50",
+        title: "text-emerald-800 dark:text-emerald-300",
+        icon: "text-emerald-500 dark:text-emerald-400",
+        border: "dark:border dark:border-emerald-400/30"
+      },
+      teal: {
+        bg: "bg-teal-50/90 dark:bg-teal-500/10",
+        text: "text-teal-700 dark:text-teal-50",
+        title: "text-teal-800 dark:text-teal-300",
+        icon: "text-teal-500 dark:text-teal-400",
+        border: "dark:border dark:border-teal-400/30"
+      },
+      cyan: {
+        bg: "bg-cyan-50/90 dark:bg-cyan-500/10",
+        text: "text-cyan-700 dark:text-cyan-50",
+        title: "text-cyan-800 dark:text-cyan-300",
+        icon: "text-cyan-500 dark:text-cyan-400",
+        border: "dark:border dark:border-cyan-400/30"
+      },
+      sky: {
+        bg: "bg-sky-50/90 dark:bg-sky-500/10",
+        text: "text-sky-700 dark:text-sky-50",
+        title: "text-sky-800 dark:text-sky-300",
+        icon: "text-sky-500 dark:text-sky-400",
+        border: "dark:border dark:border-sky-400/30"
+      },
+      blue: {
+        bg: "bg-blue-50/90 dark:bg-blue-500/10",
+        text: "text-blue-700 dark:text-blue-50",
+        title: "text-blue-800 dark:text-blue-300",
+        icon: "text-blue-500 dark:text-blue-400",
+        border: "dark:border dark:border-blue-400/30"
+      },
+      indigo: {
+        bg: "bg-indigo-50/90 dark:bg-indigo-500/10",
+        text: "text-indigo-700 dark:text-indigo-50",
+        title: "text-indigo-800 dark:text-indigo-300",
+        icon: "text-indigo-500 dark:text-indigo-400",
+        border: "dark:border dark:border-indigo-400/30"
+      },
+      violet: {
+        bg: "bg-violet-50/90 dark:bg-violet-500/10",
+        text: "text-violet-700 dark:text-violet-50",
+        title: "text-violet-800 dark:text-violet-300",
+        icon: "text-violet-500 dark:text-violet-400",
+        border: "dark:border dark:border-violet-400/30"
+      },
+      purple: {
+        bg: "bg-purple-50/90 dark:bg-purple-500/10",
+        text: "text-purple-700 dark:text-purple-50",
+        title: "text-purple-800 dark:text-purple-300",
+        icon: "text-purple-500 dark:text-purple-400",
+        border: "dark:border dark:border-purple-400/30"
+      },
+      fuchsia: {
+        bg: "bg-fuchsia-50/90 dark:bg-fuchsia-500/10",
+        text: "text-fuchsia-700 dark:text-fuchsia-50",
+        title: "text-fuchsia-800 dark:text-fuchsia-300",
+        icon: "text-fuchsia-500 dark:text-fuchsia-400",
+        border: "dark:border dark:border-fuchsia-400/30"
+      },
+      pink: {
+        bg: "bg-pink-50/90 dark:bg-pink-500/10",
+        text: "text-pink-700 dark:text-pink-50",
+        title: "text-pink-800 dark:text-pink-300",
+        icon: "text-pink-500 dark:text-pink-400",
+        border: "dark:border dark:border-pink-400/30"
+      },
+      rose: {
+        bg: "bg-rose-50/90 dark:bg-rose-500/10",
+        text: "text-rose-700 dark:text-rose-50",
+        title: "text-rose-800 dark:text-rose-300",
+        icon: "text-rose-500 dark:text-rose-400",
+        border: "dark:border dark:border-rose-400/30"
+      },
+      slate: {
+        bg: "bg-slate-50/90 dark:bg-slate-500/10",
+        text: "text-slate-700 dark:text-slate-50",
+        title: "text-slate-800 dark:text-slate-300",
+        icon: "text-slate-500 dark:text-slate-400",
+        border: "dark:border dark:border-slate-400/30"
+      },
+      gray: {
+        bg: "bg-gray-50/90 dark:bg-gray-500/10",
+        text: "text-gray-700 dark:text-gray-50",
+        title: "text-gray-800 dark:text-gray-300",
+        icon: "text-gray-500 dark:text-gray-400",
+        border: "dark:border dark:border-gray-400/30"
+      },
+      zinc: {
+        bg: "bg-zinc-50/90 dark:bg-zinc-500/10",
+        text: "text-zinc-700 dark:text-zinc-50",
+        title: "text-zinc-800 dark:text-zinc-300",
+        icon: "text-zinc-500 dark:text-zinc-400",
+        border: "dark:border dark:border-zinc-400/30"
+      },
+      neutral: {
+        bg: "bg-neutral-50/90 dark:bg-neutral-500/10",
+        text: "text-neutral-700 dark:text-neutral-50",
+        title: "text-neutral-800 dark:text-neutral-300",
+        icon: "text-neutral-500 dark:text-neutral-400",
+        border: "dark:border dark:border-neutral-400/30"
+      },
+      stone: {
+        bg: "bg-stone-50/90 dark:bg-stone-500/10",
+        text: "text-stone-700 dark:text-stone-50",
+        title: "text-stone-800 dark:text-stone-300",
+        icon: "text-stone-500 dark:text-stone-400",
+        border: "dark:border dark:border-stone-400/30"
+      }
+    }
+  end
+end

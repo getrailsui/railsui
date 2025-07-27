@@ -65,9 +65,10 @@ Add the `railsui` gem to your Gemfile.
 ```ruby
 # Gemfile
 gem "railsui"
+gem "view_component" # Required for UI components
 ```
 
-Run the bundle install command to fetch the new gem and its assets.
+Run the bundle install command to fetch the new gem and its dependencies.
 
 ```bash
 bundle install
@@ -84,6 +85,22 @@ rails railsui:install
 ```
 
 After installing Rails UI, run your server using the `bin/dev` command and proceed to the configuration screen to customize your install (i.e. `localhost:3000/railsui` for new apps).
+
+## Quick Start
+
+Once installed, you can immediately start using Rails UI components in your views:
+
+```erb
+<!-- In any view file -->
+<%= rui :button, label: "Get Started", variant: :primary %>
+<%= rui :alert, message: "Welcome to Rails UI!", variant: :success %>
+
+<!-- Generate your own components -->
+<%= rui :card do %>
+  <h3>Custom Card</h3>
+  <p>Built with ViewComponent for better performance.</p>
+<% end %>
+```
 
 ## Configuration
 
@@ -113,7 +130,81 @@ Each theme comes with a collection of assets to help you get started. Much of th
 
 ### UI components
 
-After installing Rails UI and choosing a theme you'll find a collection of components and best practices for real-world applications at your disposal.
+Rails UI components are built with [ViewComponent](https://viewcomponent.org/) for better performance, testability, and maintainability. After installing Rails UI and choosing a theme you'll find a collection of professionally designed components ready for use.
+
+#### Using Components
+
+Rails UI provides a minimal `rui` helper for clean, readable templates:
+
+```erb
+<!-- Button variations -->
+<%= rui :button, label: "Save Changes", variant: :primary %>
+<%= rui :button, label: "Cancel", variant: :secondary %>
+<%= rui :button, label: "Delete", variant: :danger %>
+
+<!-- With custom styling -->
+<%= rui :button, label: "Custom", classes: "my-custom-class" %>
+
+<!-- As a link -->
+<%= rui :button, label: "View Details", href: post_path(@post) %>
+
+<!-- With block content -->
+<%= rui :button, variant: :primary do %>
+  <%= icon "arrow-right" %>
+  <span>Next Step</span>
+<% end %>
+
+<!-- Modal component -->
+<%= rui :modal, title: "Confirm Action", size: :sm do %>
+  <p>Are you sure you want to delete this item?</p>
+  <div class="flex gap-3 mt-4">
+    <%= rui :button, label: "Cancel", variant: :secondary %>
+    <%= rui :button, label: "Delete", variant: :danger %>
+  </div>
+<% end %>
+```
+
+#### Creating Custom Components
+
+Generate new components with the Rails UI generator:
+
+```bash
+# Generate a new component
+rails g railsui:component Alert
+
+# With Stimulus controller
+rails g railsui:component Modal --stimulus
+
+# List available components
+rails g railsui:component --list
+```
+
+This creates a ViewComponent class at `app/components/ui/alert.rb` and template at `app/components/ui/alert.html.erb` that automatically integrates with your chosen theme.
+
+#### Advanced Usage
+
+You can also use ViewComponents directly for better IDE support:
+
+```erb
+<%= render Railsui::Button.new(label: "Save", variant: :primary) %>
+<%= render Railsui::Modal.new(title: "Confirm") do %>
+  <!-- modal content -->
+<% end %>
+```
+
+Components automatically respect your active theme and include built-in accessibility features, responsive design, and Stimulus.js integration.
+
+#### Component Benefits
+
+Rails UI's ViewComponent architecture provides several advantages over traditional partials:
+
+- **⚡ Performance**: ViewComponents are compiled and cached, making them significantly faster than partials
+- **🧪 Testability**: Unit test components in isolation with ViewComponent's test helpers
+- **🔧 Maintainability**: Encapsulated logic and templates make components easier to understand and modify
+- **🎨 Theme Integration**: Components automatically adapt to your selected theme
+- **♿ Accessibility**: Built-in ARIA attributes and keyboard navigation
+- **📱 Responsive**: Mobile-first design with Tailwind CSS
+- **⚡ IDE Support**: Better autocomplete and go-to-definition with Ruby classes
 
 ### Color
 
@@ -125,7 +216,22 @@ Bundled with Rails UI is a gem called [railsui_icon](https://github.com/getrails
 
 ### JavaScript
 
-All Rails UI components are built on top of Stimulus.js. A theme includes custom Stimulus controllers and our own JavaScript library called [railsui-stimulus](https://github.com/getrailsui/railsui-stimulus) which is just an extraction of components we find ourselves using in our own apps and between themes.
+All Rails UI components are built on top of Stimulus.js with ViewComponent architecture. A theme includes custom Stimulus controllers and our own JavaScript library called [railsui-stimulus](https://github.com/getrailsui/railsui-stimulus) which is just an extraction of components we find ourselves using in our own apps and between themes.
+
+Interactive components automatically include their Stimulus controllers:
+
+```erb
+<!-- Modal with built-in Stimulus behavior -->
+<div data-controller="railsui-modal">
+  <%= rui :button, label: "Open Modal", data: { action: "click->railsui-modal#open" } %>
+  <%= rui :modal, title: "Example" do %>
+    <p>This modal has keyboard navigation and backdrop clicks built-in.</p>
+  <% end %>
+</div>
+
+<!-- Generate components with custom Stimulus controllers -->
+<%= rui :dropdown, items: @menu_items %>
+```
 
 ## Updates
 

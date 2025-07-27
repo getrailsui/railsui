@@ -1,0 +1,1 @@
+<%%= image_tag avatar_src, <%%= tag.attributes(merge_attributes({ class: avatar_classes, alt: alt }, **tag_options)) %> %>

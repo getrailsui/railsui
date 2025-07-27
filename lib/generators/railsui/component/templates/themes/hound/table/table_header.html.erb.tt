@@ -1,0 +1,17 @@
+<thead>
+  <%% if header_cells.any? %>
+    <tr>
+      <%% header_cells.each do |cell| %>
+        <%%= cell %>
+      <%% end %>
+    </tr>
+  <%% elsif content.present? %>
+    <%%= content %>
+  <%% else %>
+    <tr>
+      <%% headers.each do |header| %>
+        <%%= render Railsui::UI::TableHeaderCell.new(header: header, variant: variant) %>
+      <%% end %>
+    </tr>
+  <%% end %>
+</thead>

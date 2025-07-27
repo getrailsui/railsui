@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+
+module Railsui
+  class TableHeaderCellComponent < RailsuiComponent
+  def initialize(
+    header: nil,
+    classes: nil,
+    variant: :border,
+    **tag_options
+  )
+    @header = header
+    @classes = classes
+    @variant = variant.to_sym
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :header, :classes, :variant, :tag_options
+  
+  def header_classes
+    base_classes = case variant
+    when :borderless
+      "text-left p-3 border-b-2 border-slate-200 dark:border-slate-700/80"
+    else # :border
+      "text-left p-3 border border-slate-200 dark:border-slate-700/80"
+    end
+    
+    css_classes(base_classes, classes)
+  end
+  
+  def header_content
+    header.is_a?(Hash) ? header[:label] : header
+  end
+  
+  def header_attributes
+    merge_attributes({ scope: "col", class: header_classes }, **tag_options)
+  end
+  end
+end

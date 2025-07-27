@@ -1,0 +1,51 @@
+<nav <%%= tag.attributes(merge_attributes({ "aria-label": "breadcrumb", class: nav_classes }, **tag_options)) %>>
+  <ol class="<%%= ol_classes %>">
+    <%% items.each_with_index do |item, index| %>
+      <li <%%= "class=flex gap-3".html_safe if index > 0 %>>
+        <%% if index > 0 %>
+          <div class="flex items-center">
+            <span class="<%%= separator_classes %>"><%%= separator %></span>
+          </div>
+        <%% end %>
+        
+        <%% if item[:active] %>
+          <span class="<%%= active_classes %>" data-aria-current="page"><%%= item[:name] %></span>
+        <%% elsif item[:dropdown] %>
+          <div class="relative" data-controller="railsui-dropdown">
+            <button type="button" 
+                    class="<%%= dropdown_button_classes %>" 
+                    data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide"
+                    aria-haspopup="true" 
+                    aria-expanded="false">
+              <%%= item[:name] %>
+              <%%= icon "chevron-down", class: "size-3 shrink-0" %>
+            </button>
+            
+            <div data-railsui-dropdown-target="menu" 
+                 class="origin-top-left left-0 top-8 dropdown-menu hidden"
+                 data-transition-enter-from="opacity-0 scale-95"
+                 data-transition-enter-to="opacity-100 scale-100"
+                 data-transition-leave-from="opacity-100 scale-100"
+                 data-transition-leave-to="opacity-0 scale-95"
+                 aria-hidden="true">
+              <ul>
+                <%% item[:dropdown].each do |dropdown_item| %>
+                  <li>
+                    <a class="dropdown-item" href="<%%= dropdown_item[:url] %>"><%%= dropdown_item[:name] %></a>
+                  </li>
+                <%% end %>
+              </ul>
+            </div>
+          </div>
+        <%% else %>
+          <a class="<%%= link_classes %>" href="<%%= item[:url] %>">
+            <%% if item[:icon] %>
+              <%%= icon item[:icon], class: "size-4 shrink-0" %>
+            <%% end %>
+            <span><%%= item[:name] %></span>
+          </a>
+        <%% end %>
+      </li>
+    <%% end %>
+  </ol>
+</nav>

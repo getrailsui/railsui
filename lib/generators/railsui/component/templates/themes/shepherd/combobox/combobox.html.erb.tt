@@ -1,0 +1,39 @@
+<div <%= html_attributes(wrapper_attributes) %>>
+  <input <%= html_attributes(hidden_input_attributes) %> />
+
+  <div <%= html_attributes(combobox_attributes) %>>
+    <span id="combobox-label" class="sr-only"><%= label %></span>
+    <span data-<%= controller_dashed %>-target="text"><%= selected_label %></span>
+    <%= icon "chevron-up-down", class: chevron_icon_classes %>
+  </div>
+
+  <div <%= html_attributes(dropdown_attributes) %>>
+    <div class="p-2">
+      <label for="combobox-search" class="sr-only">Search</label>
+      <div class="relative">
+        <input <%= html_attributes(search_input_attributes) %> />
+        <%= icon "magnifying-glass", class: search_icon_classes %>
+      </div>
+    </div>
+
+    <ul role="presentation">
+      <% if has_items_slot? %>
+        <%= render(items) %>
+      <% elsif render_items_array? %>
+        <% items_array.each do |item| %>
+          <%= render(ItemComponent.new(
+            label: item[:label], 
+            value: item[:value], 
+            active: item[:value] == selected, 
+            controller: controller, 
+            icon_options: item[:icon_options]
+          )) %>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <div <%= html_attributes(no_results_attributes) %>>
+      <%= no_results_text %>
+    </div>
+  </div>
+</div>

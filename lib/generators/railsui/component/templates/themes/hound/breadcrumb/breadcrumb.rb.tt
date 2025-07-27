@@ -1,0 +1,74 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:breadcrumb, items: [
+#   { label: "Home", href: root_path },
+#   { label: "Products", href: products_path },
+#   { label: "Electronics", href: category_path("electronics") },
+#   { label: "Laptops", active: true }
+# ]) %>
+#
+# With custom separator:
+# <%= rui(:breadcrumb, items: breadcrumb_items, separator: ">") %>
+#
+# With icons in items:
+# <%= rui(:breadcrumb, items: [
+#   { label: "Dashboard", href: dashboard_path, icon: "home" },
+#   { label: "Settings", active: true }
+# ]) %>
+#
+# Options:
+# - items: Array of breadcrumb items with :label, :href, :icon, and :active keys
+# - separator: Separator character between items (default: "/")
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Item options:
+# - label: Text to display (required)
+# - href: Link URL (omit for current/active page)
+# - icon: Icon name to display before label
+# - active: Mark as current page (default: false, auto-set for last item without href)
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    items: [],
+    separator: "/",
+    classes: nil,
+    **tag_options
+  )
+    @items = items
+    @separator = separator
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :items, :separator, :classes, :tag_options
+
+  def nav_classes
+    base_classes = "my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm"
+    css_classes(base_classes, classes)
+  end
+  
+  def ol_classes
+    "flex flex-wrap items-center gap-3 list-none m-0 p-0"
+  end
+  
+  def link_classes
+    "hover:underline hover:text-slate-600 dark:hover:text-slate-400 flex items-center gap-2.5"
+  end
+  
+  def separator_classes
+    "text-slate-300 dark:text-slate-500"
+  end
+  
+  def active_classes
+    "text-primary-500 dark:text-primary-500"
+  end
+  
+  def dropdown_button_classes
+    "hover:underline hover:text-slate-600 dark:hover:text-slate-400 flex gap-1.5 items-center"
+  end
+  end
+end

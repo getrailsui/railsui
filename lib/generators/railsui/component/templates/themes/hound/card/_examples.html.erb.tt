@@ -1,8 +1,0 @@
-<%%= rui :card, title: "Create a message", content: "Send a message to your teammates.", actions: button_tag("Start writing", class: "btn btn-primary") %>
-
-<hr class="my-8">
-
-<%%= rui :card, title: "Block version" do %>
-  <p>Some custom content inside the block.</p>
-  <%%= rui :button, label: "Continue", variant: :primary %>
-<%% end %>

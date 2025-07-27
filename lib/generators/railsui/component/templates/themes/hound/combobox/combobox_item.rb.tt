@@ -1,0 +1,54 @@
+# frozen_string_literal: true
+
+module Railsui
+  class ComboboxItemComponent < RailsuiComponent
+  def initialize(
+    label: "Label",
+    value:,
+    icon_options: nil,
+    active: false,
+    controller: "railsui-combobox",
+    **tag_options
+  )
+    @label = label
+    @value = value
+    @icon_options = icon_options
+    @active = active
+    @controller = controller
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :label, :value, :icon_options, :active, :controller, :tag_options
+
+  def item_classes
+    base_classes = "px-3 py-1.5 cursor-pointer flex items-center justify-between"
+    state_classes = "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50"
+    css_classes(base_classes, state_classes)
+  end
+  
+  def item_attributes
+    {
+      "data-action": "click->#{controller}#selectOption keydown.enter->#{controller}#selectOption",
+      "data-#{controller_dashed}-target": "option",
+      "data-value": value,
+      role: "option",
+      tabindex: "0",
+      class: item_classes
+    }
+  end
+  
+  def icon_name
+    icon_options&.dig(:name)
+  end
+  
+  def icon_classes
+    icon_options&.dig(:classes) || "size-4"
+  end
+  
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+  end
+end

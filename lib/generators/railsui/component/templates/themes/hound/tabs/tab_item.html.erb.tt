@@ -1,0 +1,10 @@
+<a <%%= tag.attributes(link_attributes) %>>
+  <%% if icon.present? %>
+    <%%= icon icon, class: "size-5" %>
+  <%% end %>
+  <%% if label.present? %>
+    <span><%%= label %></span>
+  <%% else %>
+    <%%= content %>
+  <%% end %>
+</a>

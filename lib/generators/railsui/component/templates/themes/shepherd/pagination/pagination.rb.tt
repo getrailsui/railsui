@@ -1,0 +1,70 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    prev_url: nil,
+    next_url: nil,
+    pages:,
+    classes: nil,
+    active_classes: nil,
+    **tag_options
+  )
+    @prev_url = prev_url
+    @next_url = next_url
+    @pages = pages
+    @classes = classes
+    @active_classes = active_classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :prev_url, :next_url, :pages, :classes, :active_classes, :tag_options
+
+  def wrapper_classes
+    base_classes = "text-zinc-500 sm:text-sm text-base font-medium dark:text-zinc-300"
+    css_classes(base_classes, classes)
+  end
+
+  def wrapper_attributes
+    attrs = { "aria-label": "Pagination", class: wrapper_classes }
+    merge_attributes(attrs, **tag_options)
+  end
+
+  def prev_button_classes
+    "flex items-center justify-center w-full pl-3 mb-3 space-x-2 btn btn-white group md:w-auto md:mb-0"
+  end
+
+  def prev_disabled_classes
+    "btn btn-white flex items-center justify-center gap-2 group md:w-auto w-full md:mb-0 mb-3 select-none pointer-events-none opacity-60"
+  end
+
+  def next_button_classes
+    "flex items-center justify-center w-full pl-3 mb-3 space-x-2 btn btn-white group md:w-auto md:mb-0"
+  end
+
+  def next_disabled_classes
+    "btn btn-white flex items-center justify-center gap-2 group md:w-auto w-full md:mt-0 mt-3 select-none pointer-events-none opacity-60"
+  end
+
+  def page_link_classes
+    "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-zinc-50/50 dark:hover:bg-zinc-500/30 dark:hover:text-zinc-200"
+  end
+
+  def active_page_classes
+    default_classes = "size-10 flex items-center justify-center border-t-2 border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-500 dark:border-primary-500 dark:hover:bg-primary-500/30"
+    active_classes.presence || default_classes
+  end
+
+  def gap_classes
+    "py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none"
+  end
+
+  def prev_icon_classes
+    "shrink-0 size-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200"
+  end
+
+  def next_icon_classes
+    "shrink-0 size-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200"
+  end
+end

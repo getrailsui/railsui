@@ -1,0 +1,85 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:navigation, brand: "My App", variant: :light) do |nav| %>
+#   <% nav.with_left do %>
+#     <%= link_to "Home", root_path, class: "nav-link" %>
+#     <%= link_to "About", about_path, class: "nav-link" %>
+#   <% end %>
+#   
+#   <% nav.with_right do %>
+#     <%= link_to "Login", login_path, class: "btn btn-primary" %>
+#   <% end %>
+# <% end %>
+#
+# Options:
+# - brand: Brand name or logo text
+# - brand_url: URL for brand link (default: "/")
+# - variant: :light (default) or :dark
+# - sticky: Whether navigation sticks to top (default: false)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Child components:
+# - with_left: Left side navigation items
+# - with_right: Right side navigation items
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+    renders_one :left_navigation, "Railsui::NavigationLeftComponent"
+    renders_one :right_navigation, "Railsui::NavigationRightComponent"
+
+  def initialize(
+    logo:,
+    controller: "railsui-nav",
+    classes: nil,
+    **tag_options
+  )
+    @logo = logo
+    @controller = controller
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :logo, :controller, :classes, :tag_options
+
+  def header_classes
+    base_classes = "relative dark:bg-slate-900 bg-white"
+    css_classes(base_classes, classes)
+  end
+  
+  def header_attributes
+    attrs = {
+      class: header_classes,
+      "data-controller": controller
+    }
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+  
+  def mobile_button_classes
+    "md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700"
+  end
+  
+  def logo_link_classes
+    "size-12 flex justify-center items-center"
+  end
+  
+  def menu_bars_classes
+    "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100"
+  end
+  
+  def nav_container_classes
+    "md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40"
+  end
+  
+  def nav_wrapper_classes
+    "md:flex-1 md:flex flex-wrap items-center justify-between lg:text-left text-center"
+  end
+  end
+end

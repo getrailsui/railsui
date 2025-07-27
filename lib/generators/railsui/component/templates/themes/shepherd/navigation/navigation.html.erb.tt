@@ -1,0 +1,38 @@
+<header <%= html_attributes(wrapper_attributes) %>>
+  <div class="md:flex items-center justify-between">
+    <div class="md:flex items-center md:space-x-4 md:flex-1">
+      <div class="md:flex items-center justify-between w-full md:space-x-3">
+        <div class="flex items-center justify-between md:w-auto w-full">
+          <%= link_to root_path do %>
+            <h1>
+              <%= logo %><span class="sr-only"><%= application_name %></span>
+            </h1>
+          <% end %>
+
+          <button type="button" 
+                  data-action="<%= toggle_action %>"
+                  class="<%= toggle_button_classes %>"
+                  role="Mobile navigation toggle">
+            <%= icon "bars-3-center-left", class: toggle_icon_classes %>
+          </button>
+        </div>
+
+        <div <%= html_attributes(nav_container_attributes) %>>
+          <nav role="primary navigation" class="flex-1">
+            <div class="md:flex items-center md:space-y-0 space-y-4">
+              <div class="flex-1">
+                <% if content %>
+                  <%= content %>
+                <% elsif has_slot? %>
+                  <%= render(slot) %>
+                <% else %>
+                  <%= render(SlotComponent.new) %>
+                <% end %>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,3 @@
+<%% if resolved_src.present? %>
+  <%%= image_tag resolved_src, **avatar_attributes %>
+<%% end %>

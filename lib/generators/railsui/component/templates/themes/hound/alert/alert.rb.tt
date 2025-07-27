@@ -1,0 +1,153 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:alert, title: "Success!", variant: :success) %>
+# <%= rui(:alert, title: "Warning", description: "Please check your input", variant: :warning) %>
+# <%= rui(:alert, dismissible: true) do %>
+#   Custom alert content here
+# <% end %>
+#
+# Options:
+# - title: Alert title text
+# - description: Additional description text
+# - variant: :info (default), :success, :warning, :danger
+# - dismissible: Show close button (default: false)
+# - icon: Show variant icon (default: true)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+
+  def initialize(
+    title: nil,
+    icon: nil,
+    dismissable: false,
+    classes: nil,
+    color: :neutral,
+    **tag_options
+  )
+    @title = title
+    @icon = icon
+    @dismissable = dismissable
+    @classes = classes
+    @color = color.to_sym
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :icon, :dismissable, :classes, :color, :tag_options
+
+  def wrapper_classes
+    theme_colors = color_theme(color)
+    css_classes(
+      "relative rounded p-4 text-sm",
+      theme_colors[:bg],
+      theme_colors[:text], 
+      theme_colors[:border],
+      classes
+    )
+  end
+
+  def wrapper_attributes
+    merge_attributes(
+      { class: wrapper_classes },
+      dismissible_attributes,
+      **tag_options
+    )
+  end
+
+  def theme_colors
+    @theme_colors ||= color_theme(color)
+  end
+
+  def title_classes
+    css_classes("font-semibold mb-1", theme_colors[:title])
+  end
+
+  def icon_classes
+    css_classes("size-5 flex-shrink-0", theme_colors[:icon])
+  end
+
+  def dismiss_icon_classes
+    css_classes("size-5 shrink-0", theme_colors[:icon])
+  end
+
+  def content_container_classes
+    return "" unless icon.present?
+    "flex items-start gap-3 mb-1"
+  end
+
+  def has_icon_and_title?
+    icon.present? && title.present?
+  end
+
+  def has_title_without_icon?
+    title.present? && !icon.present?
+  end
+  
+  def color_theme(color)
+    color_map[color.to_sym] || color_map[:neutral]
+  end
+  
+  def color_map
+    {
+      primary: {
+        bg: "bg-primary-50/90 dark:bg-primary-50/10",
+        text: "text-primary-700 dark:text-primary-100",
+        title: "text-primary-800 dark:text-primary-300",
+        icon: "text-primary-500 dark:text-primary-400",
+        border: "dark:border dark:border-primary-400/30"
+      },
+      red: {
+        bg: "bg-red-50/90 dark:bg-red-400/10",
+        text: "text-red-700 dark:text-red-50",
+        title: "text-red-800 dark:text-red-300",
+        icon: "text-red-500 dark:text-red-400",
+        border: "dark:border dark:border-red-400/30"
+      },
+      yellow: {
+        bg: "bg-yellow-50/90 dark:bg-yellow-300/10",
+        text: "text-yellow-700 dark:text-yellow-50",
+        title: "text-yellow-800 dark:text-yellow-400/90",
+        icon: "text-yellow-400 dark:text-yellow-400/90",
+        border: "dark:border dark:border-yellow-400/30"
+      },
+      green: {
+        bg: "bg-green-50/90 dark:bg-green-500/10",
+        text: "text-green-700 dark:text-green-50",
+        title: "text-green-800 dark:text-green-300",
+        icon: "text-green-500 dark:text-green-400",
+        border: "dark:border dark:border-green-400/30"
+      },
+      blue: {
+        bg: "bg-blue-50/90 dark:bg-blue-500/10",
+        text: "text-blue-700 dark:text-blue-50",
+        title: "text-blue-800 dark:text-blue-300",
+        icon: "text-blue-500 dark:text-blue-400",
+        border: "dark:border dark:border-blue-400/30"
+      },
+      neutral: {
+        bg: "bg-neutral-50/90 dark:bg-neutral-500/10",
+        text: "text-neutral-700 dark:text-neutral-50",
+        title: "text-neutral-800 dark:text-neutral-300",
+        icon: "text-neutral-500 dark:text-neutral-400",
+        border: "dark:border dark:border-neutral-400/30"
+      }
+    }
+  end
+  
+  def dismissible_attributes
+    return {} unless dismissable
+    { data: { controller: "railsui-#{component_controller}" } }
+  end
+
+  def component_controller
+    self.class.name.demodulize.underscore.dasherize
+  end
+
+  def dismiss_button_classes
+    "absolute top-2 right-2 size-8 rounded-full transition ease-in-out duration-200 hover:bg-current/5 dark:hover:bg-current/20 flex items-center justify-center shrink-0"
+  end
+  end
+end

@@ -1,0 +1,12 @@
+<li <%%= tag.attributes(merge_attributes(item_attributes, **tag_options)) %>>
+  <div class="flex items-center gap-3">
+    <%% if icon_name %>
+      <%%= icon icon_name, class: icon_classes %>
+    <%% end %>
+    <span><%%= label %></span>
+  </div>
+
+  <span data-<%%= controller_dashed %>-target="checkmark" class="hidden" aria-hidden="true">
+    <%%= icon "check", class: "opacity-75 size-4 shrink-0" %>
+  </span>
+</li>

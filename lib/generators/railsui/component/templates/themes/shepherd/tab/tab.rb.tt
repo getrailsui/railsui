@@ -1,0 +1,275 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  renders_many :navs, "NavComponent"
+  renders_many :links, "LinkComponent"
+  renders_many :panels, "PanelComponent"
+
+  def initialize(
+    variant: :base,
+    classes: nil,
+    active_classes: nil,
+    inactive_classes: nil,
+    controller: "railsui-tabs",
+    **tag_options
+  )
+    @variant = variant.to_sym
+    @classes = classes
+    @active_classes = active_classes
+    @inactive_classes = inactive_classes
+    @controller = controller
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :variant, :classes, :active_classes, :inactive_classes, :controller, :tag_options
+
+  def wrapper_attributes
+    attrs = {
+      "data-controller": controller,
+      "data-#{controller_dashed}-active-tab": final_active_classes,
+      "data-#{controller_dashed}-inactive-tab": final_inactive_classes,
+      class: wrapper_classes
+    }
+    merge_attributes(attrs, **tag_options)
+  end
+
+  def wrapper_classes
+    css_classes(classes)
+  end
+
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+
+  def final_active_classes
+    active_classes || variant_config[:active]
+  end
+
+  def final_inactive_classes
+    inactive_classes || variant_config[:inactive]
+  end
+
+  def variant_config
+    variant_configs[variant] || variant_configs[:base]
+  end
+
+  def variant_configs
+    {
+      base: {
+        active: "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4",
+        inactive: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"
+      },
+      pill: {
+        active: "py-2 px-4 bg-primary-50 inline-block rounded-full text-primary-600 dark:bg-primary-600 dark:text-white",
+        inactive: "py-2 px-4 rounded-full inline-block dark:bg-transparent dark:text-slate-300"
+      },
+      with_icons: {
+        active: "py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t",
+        inactive: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600"
+      },
+      rounded: {
+        active: "py-2 px-4 bg-primary-50 inline-block rounded-md text-primary-600 dark:bg-primary-600 dark:text-white",
+        inactive: "py-2 px-4 rounded-md inline-block dark:bg-slate-900 dark:text-slate-300"
+      }
+    }
+  end
+
+  class NavComponent < Railsui::UI::Component
+    def initialize(
+      variant: :base,
+      classes: nil,
+      **tag_options
+    )
+      @variant = variant.to_sym
+      @classes = classes
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :variant, :classes, :tag_options
+
+    def wrapper_classes
+      css_classes(variant_config[:wrapper], classes)
+    end
+
+    def wrapper_attributes
+      attrs = { class: wrapper_classes }
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def nav_classes
+      variant_config[:nav]
+    end
+
+    def variant_config
+      variant_configs[variant] || variant_configs[:base]
+    end
+
+    def variant_configs
+      {
+        base: {
+          wrapper: "border-zinc-200 border-b text-zinc-600 dark:text-zinc-100 dark:border-zinc-600 font-medium text-sm",
+          nav: "-mb-px"
+        },
+        pill: {
+          wrapper: "text-zinc-600 dark:text-zinc-300",
+          nav: "flex items-center space-x-1 font-medium text-sm"
+        },
+        with_icons: {
+          wrapper: "border-zinc-200 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-sm font-medium",
+          nav: "-mb-px flex items-center flex-wrap"
+        },
+        rounded: {
+          wrapper: nil,
+          nav: "flex items-center text-gray-600 space-x-1 font-medium text-sm"
+        }
+      }
+    end
+  end
+
+  class LinkComponent < Railsui::UI::Component
+    def initialize(
+      label: "Tab",
+      href: "#",
+      active: false,
+      icon: nil,
+      variant: :base,
+      classes: nil,
+      active_classes: nil,
+      inactive_classes: nil,
+      controller: "railsui-tabs",
+      **tag_options
+    )
+      @label = label
+      @href = href
+      @active = active
+      @icon = icon
+      @variant = variant.to_sym
+      @classes = classes
+      @active_classes = active_classes
+      @inactive_classes = inactive_classes
+      @controller = controller
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :label, :href, :active, :icon, :variant, :classes, 
+                :active_classes, :inactive_classes, :controller, :tag_options
+
+    def link_attributes
+      data_attrs = {
+        action: "click->#{controller_dashed}#change",
+        "#{controller.tr('-', '_')}_target": "tab"
+      }
+      
+      # Merge custom data attributes if provided
+      if tag_options[:data].present?
+        data_attrs.merge!(tag_options[:data])
+      end
+
+      attrs = {
+        href: href,
+        class: link_classes,
+        data: data_attrs
+      }
+
+      # Merge other tag options (excluding data since we handled it)
+      other_options = tag_options.except(:data)
+      merge_attributes(attrs, **other_options)
+    end
+
+    def link_classes
+      default_classes = active ? final_active_classes : final_inactive_classes
+      css_classes(default_classes, classes)
+    end
+
+    def icon_classes
+      "size-4 mr-2"
+    end
+
+    def controller_dashed
+      controller.tr("_", "-")
+    end
+
+    def final_active_classes
+      active_classes || variant_config[:active]
+    end
+
+    def final_inactive_classes
+      inactive_classes || variant_config[:inactive]
+    end
+
+    def variant_config
+      variant_configs[variant] || variant_configs[:base]
+    end
+
+    def variant_configs
+      {
+        base: {
+          active: "border-b border-primary-600 inline-block bg-white text-primary-600 dark:bg-transparent dark:text-white dark:border-primary-400 py-3 px-4",
+          inactive: "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"
+        },
+        pill: {
+          active: "py-2 px-4 bg-primary-50 inline-block rounded-full text-primary-600 dark:bg-primary-600 dark:text-white",
+          inactive: "py-2 px-4 rounded-full inline-block dark:bg-transparent dark:text-slate-300"
+        },
+        with_icons: {
+          active: "py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t",
+          inactive: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600"
+        },
+        rounded: {
+          active: "py-2 px-4 bg-primary-50 inline-block rounded-md text-primary-600 dark:bg-primary-600 dark:text-white",
+          inactive: "py-2 px-4 rounded-md inline-block dark:bg-slate-900 dark:text-slate-300"
+        }
+      }
+    end
+
+    def has_icon?
+      icon.present?
+    end
+  end
+
+  class PanelComponent < Railsui::UI::Component
+    def initialize(
+      id: nil,
+      active: false,
+      classes: nil,
+      controller: "railsui-tabs",
+      **tag_options
+    )
+      @id = id
+      @active = active
+      @classes = classes
+      @controller = controller
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :id, :active, :classes, :controller, :tag_options
+
+    def wrapper_attributes
+      data_attrs = {
+        "#{controller.tr('-', '_')}_target": "panel"
+      }
+
+      attrs = {
+        class: wrapper_classes,
+        data: data_attrs
+      }
+      
+      attrs[:id] = id if id.present?
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def wrapper_classes
+      base_classes = "p-4"
+      visibility_class = active ? "" : "hidden"
+      css_classes(base_classes, visibility_class, classes)
+    end
+  end
+end

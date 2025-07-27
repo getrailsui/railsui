@@ -1,0 +1,128 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    button: { label: "More", icon: "chevron-down", classes: "btn btn-white" },
+    menu_classes: nil,
+    items:,
+    controller: "railsui-dropdown",
+    **tag_options
+  )
+    @button = button
+    @menu_classes = menu_classes
+    @items = items
+    @controller = controller
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :button, :menu_classes, :items, :controller, :tag_options
+
+  def wrapper_classes
+    "relative"
+  end
+  
+  def wrapper_attributes
+    attrs = {
+      class: wrapper_classes,
+      "data-controller": controller
+    }
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def button_classes
+    base_classes = "flex gap-3 items-center"
+    position_class = dropdown_icon&.dig(:position) == :start ? "justify-start" : "justify-between"
+    css_classes(button_config[:classes], base_classes, position_class)
+  end
+  
+  def button_attributes
+    {
+      type: "button",
+      class: button_classes,
+      "data-action": "click->#{controller_dashed}#toggle click@window->#{controller_dashed}#hide"
+    }
+  end
+  
+  def menu_container_classes
+    default_classes = "origin-top-left left-0 top-12 absolute dropdown-menu"
+    css_classes("hidden", menu_classes.presence || default_classes)
+  end
+  
+  def menu_attributes
+    {
+      "data-#{controller_dashed}-target": "menu",
+      class: menu_container_classes,
+      "data-transition-enter-from": "opacity-0 scale-95",
+      "data-transition-enter-to": "opacity-100 scale-100",
+      "data-transition-leave-from": "opacity-100 scale-100",
+      "data-transition-leave-to": "opacity-0 scale-95"
+    }
+  end
+  
+  def is_grouped?
+    items.first.is_a?(Array)
+  end
+  
+  def dropdown_icon
+    button[:icon]
+  end
+  
+  def button_config
+    {
+      label: button[:label] || "More",
+      classes: button[:classes] || "btn btn-white"
+    }
+  end
+  
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+  
+  def icon_name
+    dropdown_icon&.dig(:name) || "chevron-down"
+  end
+  
+  def icon_classes
+    dropdown_icon&.dig(:classes) || "size-3"
+  end
+  
+  def show_start_icon?
+    dropdown_icon&.dig(:position) == :start
+  end
+  
+  def show_end_icon?
+    dropdown_icon.nil? || dropdown_icon[:position] != :start
+  end
+  
+  def grouped_wrapper_classes
+    "divide-y divide-slate-200 dark:divide-slate-700"
+  end
+  
+  def dropdown_item_classes
+    "dropdown-item"
+  end
+  
+  def dropdown_link_base_classes
+    "dropdown-item flex items-center gap-3"
+  end
+  
+  def item_link_classes(item)
+    position_class = item[:icon]&.dig(:position) == :start ? "justify-start" : "justify-between"
+    css_classes(dropdown_link_base_classes, position_class)
+  end
+  
+  def item_icon_classes(item)
+    item[:icon][:classes] || "shrink-0 size-4"
+  end
+  
+  def item_has_start_icon?(item)
+    item[:icon]&.dig(:position) == :start
+  end
+  
+  def item_has_end_icon?(item)
+    item[:icon]&.dig(:position) == :end
+  end
+end

@@ -33,7 +33,7 @@ module Railsui
           # Add a GUI for easier theme configuration
           copy_railsui_routes
 
-          # gems railsui_icon and action_text
+          # gems railsui_icon, action_text, and ViewComponent setup
           install_gems
 
           # mailers

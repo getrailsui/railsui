@@ -1,0 +1,10 @@
+<%% if content? %>
+  <%%= content %>
+<%% else %>
+  <ul <%%= tag.attributes(list_attributes) %>>
+    <li>
+      <%%= nav_link_to "Menu item", "#", class: "rui-nav-link" %>
+    </li>
+    <!-- Add more links here -->
+  </ul>
+<%% end %>

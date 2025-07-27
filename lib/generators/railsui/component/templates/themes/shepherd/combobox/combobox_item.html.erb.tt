@@ -1,0 +1,12 @@
+<li <%= html_attributes(wrapper_attributes) %>>
+  <div class="flex items-center gap-3">
+    <% if has_icon? %>
+      <%= icon icon_options[:name], class: icon_classes %>
+    <% end %>
+    <span><%= label %></span>
+  </div>
+
+  <span <%= html_attributes(checkmark_attributes) %>>
+    <%= icon "check", class: checkmark_icon_classes %>
+  </span>
+</li>

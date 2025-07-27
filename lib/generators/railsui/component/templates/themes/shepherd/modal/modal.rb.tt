@@ -1,0 +1,113 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    title: nil,
+    size: :md,
+    dismissable: true,
+    classes: nil,
+    backdrop_classes: nil,
+    controller: "railsui-modal",
+    show: false,
+    **tag_options
+  )
+    @title = title
+    @size = size.to_sym
+    @dismissable = dismissable
+    @classes = classes
+    @backdrop_classes = backdrop_classes
+    @controller = controller
+    @show = show
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :size, :dismissable, :classes, :backdrop_classes, :controller, :show, :tag_options
+
+  def backdrop_classes_computed
+    base_classes = "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+    visibility_class = show ? "block" : "hidden"
+    css_classes(base_classes, backdrop_classes, visibility_class)
+  end
+  
+  def backdrop_attributes
+    attrs = {
+      class: backdrop_classes_computed,
+      "data-#{controller_dashed}-target": "container",
+      "data-transition-enter-from": "opacity-0",
+      "data-transition-enter-to": "opacity-100",
+      "data-transition-leave-from": "opacity-100",
+      "data-transition-leave-to": "opacity-0"
+    }
+    
+    if dismissable
+      attrs["data-action"] = "keydown.esc@window->#{controller}#closeWithEsc"
+    end
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def dialog_classes
+    base_classes = "relative w-full bg-white dark:bg-zinc-700 dark:text-zinc-200 rounded-lg shadow-xl p-8 transform transition-all duration-200 ease-out"
+    css_classes(base_classes, size_class, classes)
+  end
+  
+  def dialog_attributes
+    attrs = {
+      class: dialog_classes,
+      "data-#{controller_dashed}-target": "content",
+      "data-transition-enter-from": "opacity-0 scale-95 translate-y-4",
+      "data-transition-enter-to": "opacity-100 scale-100 translate-y-0",
+      "data-transition-leave-from": "opacity-100 scale-100 translate-y-0",
+      "data-transition-leave-to": "opacity-0 scale-95 translate-y-4",
+      role: "dialog",
+      "aria-modal": "true"
+    }
+    
+    if title.present?
+      attrs["aria-labelledby"] = "modal-#{title.dasherize}"
+    end
+    
+    attrs
+  end
+  
+  def size_class
+    size_classes[size] || "max-w-md"
+  end
+  
+  def size_classes
+    {
+      xs: "max-w-xs",
+      sm: "max-w-sm",
+      md: "max-w-md",
+      lg: "max-w-lg",
+      xl: "max-w-xl",
+      full: "max-w-full mx-4"
+    }
+  end
+  
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+  
+  def title_id
+    "modal-#{title.dasherize}" if title.present?
+  end
+  
+  def title_classes
+    "h4 mb-2"
+  end
+  
+  def close_button_classes
+    "absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50"
+  end
+  
+  def close_icon_classes
+    "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400"
+  end
+  
+  def show_header?
+    title.present? || dismissable
+  end
+end

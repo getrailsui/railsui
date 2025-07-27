@@ -1,0 +1,17 @@
+<div <%%= tag.attributes(merge_attributes(wrapper_attributes, **tag_options)) %>>
+  <%% if tab_items.any? %>
+    <div class="<%%= nav_wrapper_classes %>">
+      <nav role="navigation" class="<%%= nav_classes %>">
+        <%% tab_items.each do |tab_item| %>
+          <%%= tab_item %>
+        <%% end %>
+      </nav>
+    </div>
+    
+    <%% tab_panels.each do |panel| %>
+      <%%= panel %>
+    <%% end %>
+  <%% else %>
+    <%%= content %>
+  <%% end %>
+</div>

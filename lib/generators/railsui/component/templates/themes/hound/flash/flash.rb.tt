@@ -1,0 +1,121 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:flash, type: :notice) do %>
+#   Your changes have been saved successfully!
+# <% end %>
+#
+# <%= rui(:flash, type: :alert, dismissable: true) do %>
+#   There was an error processing your request.
+# <% end %>
+#
+# With icon:
+# <%= rui(:flash, type: :success, 
+#   icon_options: { name: "check-circle", position: :start }
+# ) do %>
+#   Payment processed successfully!
+# <% end %>
+#
+# With auto-hide:
+# <%= rui(:flash, type: :notice, hide_after: 5000, controller: "railsui-flash") do %>
+#   This message will disappear in 5 seconds.
+# <% end %>
+#
+# Options:
+# - type: :notice (default), :alert, :success, :warning
+# - hide_after: Milliseconds before auto-hiding (default: 4000)
+# - controller: Stimulus controller name for auto-hide functionality
+# - dismissable: Show dismiss button (default: false)
+# - icon_options: Hash with icon configuration
+#   - name: Icon name to display
+#   - position: :start or :end
+#   - classes: Icon CSS classes (default: "size-5")
+# - fade_out_classes: CSS classes for fade out animation
+# - classes: Override default background/text colors
+# - **tag_options: Additional HTML attributes
+#
+# Notes:
+# - Default colors: notice=primary, alert=red, success=green, warning=yellow
+# - Auto-hide requires a Stimulus controller to be specified
+# - Use dismissable for messages users should explicitly close
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    type: :notice,
+    hide_after: 4000,
+    controller: nil,
+    dismissable: false,
+    classes: nil,
+    icon_options: nil,
+    fade_out_classes: nil,
+    **tag_options
+  )
+    @type = type.to_sym
+    @hide_after = hide_after
+    @controller = controller
+    @dismissable = dismissable
+    @classes = classes
+    @icon_options = icon_options
+    @fade_out_classes = fade_out_classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :type, :hide_after, :controller, :dismissable, :classes, 
+              :icon_options, :fade_out_classes, :tag_options
+
+  def flash_classes
+    base_classes = "relative text-center p-4 flex items-center justify-center gap-2 transition ease-in-out duration-300"
+    background_class = classes.presence || default_colors[type] || "bg-gray-800"
+    css_classes(background_class, base_classes)
+  end
+  
+  def flash_attributes
+    attrs = { class: flash_classes, role: "alert" }
+    
+    if controller.present?
+      attrs[:data] = {
+        controller: controller,
+        "#{controller_dashed}-hide-after-value": hide_after,
+        "#{controller_dashed}-leave-class-value": fade_out_classes || "transition ease-in duration-300 opacity-0 scale-95"
+      }
+    end
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def default_colors
+    {
+      notice: "bg-primary-600 text-white",
+      alert: "bg-rose-600 text-white",
+      success: "bg-emerald-600 text-white",
+      warning: "bg-yellow-500 text-black"
+    }
+  end
+  
+  def controller_dashed
+    controller&.tr("_", "-")
+  end
+  
+  def show_start_icon?
+    icon_options&.dig(:name) && icon_options[:position] == :start
+  end
+  
+  def show_end_icon?
+    icon_options&.dig(:name) && icon_options[:position] == :end
+  end
+  
+  def icon_name
+    icon_options&.dig(:name)
+  end
+  
+  def icon_classes
+    icon_options&.dig(:classes) || "size-5"
+  end
+  
+  def dismiss_button_classes
+    "absolute size-6 right-2 inset-y-0 my-auto text-white hover:opacity-90 flex items-center justify-center z-20"
+  end
+  end
+end

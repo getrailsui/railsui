@@ -1,0 +1,12 @@
+<details <%%= tag.attributes(details_attributes) %>>
+  <summary class="<%%= summary_classes %>">
+    <%%= label %>
+    <%%= icon "plus", class: plus_icon_classes %>
+    <%%= icon "minus", class: minus_icon_classes %>
+  </summary>
+  <div class="<%%= content_wrapper_classes %>">
+    <div class="<%%= content_classes %>">
+      <%%= content %>
+    </div>
+  </div>
+</details>

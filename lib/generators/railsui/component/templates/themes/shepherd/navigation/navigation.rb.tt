@@ -1,0 +1,110 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  renders_one :slot, "SlotComponent"
+
+  def initialize(
+    logo:,
+    controller: "nav",
+    classes: nil,
+    **tag_options
+  )
+    @logo = logo
+    @controller = controller
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :logo, :controller, :classes, :tag_options
+
+  def wrapper_classes
+    base_classes = "bg-white dark:bg-zinc-900 px-4 md:py-2 py-3 border-b border-zinc-300/80 relative z-20 dark:border-zinc-700/80"
+    css_classes(base_classes, classes)
+  end
+
+  def wrapper_attributes
+    attrs = {
+      class: wrapper_classes,
+      "data-controller": controller
+    }
+    merge_attributes(attrs, **tag_options)
+  end
+
+  def toggle_button_classes
+    "md:hidden flex items-center justify-center size-12 rounded-full focus:ring-4 focus:ring-zinc-50 focus:bg-white focus:shadow-sm group dark:focus:bg-zinc-800 dark:focus:ring-zinc-600 dark:focus:shadow-sm"
+  end
+
+  def toggle_icon_classes
+    "stroke-current size-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100"
+  end
+
+  def nav_container_attributes
+    {
+      "data-#{controller}-target": "nav",
+      "data-transition-enter-active": "transition ease-out duration-200",
+      "data-transition-enter-from": "opacity-0 scale-95",
+      "data-transition-enter-to": "opacity-100 scale-100",
+      "data-transition-leave-from": "opacity-100 scale-100",
+      "data-transition-leave-active": "transition ease-in duration-200",
+      "data-transition-leave-to": "opacity-0 scale-95",
+      class: nav_container_classes
+    }
+  end
+
+  def nav_container_classes
+    "origin-top md:flex items-center hidden w-full"
+  end
+
+  def toggle_action
+    "click->#{controller}#toggle"
+  end
+
+  def application_name
+    Railsui.config.application_name.humanize || "Brand"
+  end
+
+  def has_slot?
+    slot.present?
+  end
+
+  class SlotComponent < Railsui::UI::Component
+    def initialize(**tag_options)
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :tag_options
+
+    def wrapper_classes
+      "md:flex items-center gap-4"
+    end
+
+    def wrapper_attributes
+      attrs = { class: wrapper_classes }
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def nav_link_classes
+      "rui-nav-link"
+    end
+
+    def dropdown_button_classes
+      "rui-nav-link flex items-center justify-center"
+    end
+
+    def dropdown_icon_classes
+      "size-3 ml-2"
+    end
+
+    def dropdown_menu_classes
+      "hidden transition transform origin-top absolute left-0 top-14 dropdown-menu"
+    end
+
+    def dropdown_item_classes
+      "dropdown-item"
+    end
+  end
+end

@@ -1,0 +1,106 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:button, label: "Click me", variant: :primary) %>
+# <%= rui(:button, label: "Submit", button_type: "submit", size: :lg) %>
+# <%= rui(:button, href: "/path", label: "Link Button") %>
+# 
+# With block content:
+# <%= rui(:button, variant: :secondary) do %>
+#   <i class="fas fa-plus"></i> Add Item
+# <% end %>
+#
+# Options:
+# - label: Button text (default: "Button", can also use block content)
+# - variant: :primary (default), :secondary, :dark, :white, :transparent, :light, :danger, :link
+# - size: :sm, :lg (default: base size if nil)
+# - button_type: "button" (default), "submit", "reset"
+# - disabled: Disable the button (default: false)
+# - href: URL to link to (converts button to link)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+    def initialize(
+      label: "Button",
+      variant: :primary,
+      size: nil,
+      button_type: "button",
+      classes: nil,
+      disabled: false,
+      href: nil,
+      **tag_options
+    )
+      @label = label
+      @variant = variant
+      @size = size
+      @button_type = button_type
+      @classes = classes
+      @disabled = disabled
+      @href = href
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :label, :variant, :size, :button_type, :classes, :disabled, :href, :tag_options
+
+  
+  def button_classes
+    base_class = "btn"
+    css_classes(base_class, variant_class, size_class, classes)
+  end
+  
+  def link?
+    href.present?
+  end
+  
+  def element_attributes
+    base_attrs = { class: button_classes.strip }
+    
+    if link?
+      # Link attributes
+      base_attrs[:href] = href
+      base_attrs[:role] = "button" # For accessibility
+      base_attrs[:class] += " disabled" if disabled
+      base_attrs["aria-disabled"] = disabled if disabled
+    else
+      # Button attributes
+      base_attrs[:type] = button_type
+      base_attrs[:disabled] = disabled
+      base_attrs["aria-disabled"] = disabled
+    end
+    
+    merge_attributes(base_attrs, **tag_options)
+  end
+  
+  def variant_class
+    variant_classes[variant] || variant.to_s
+  end
+  
+  def size_class
+    return "" unless size
+    size_classes[size] || size.to_s
+  end
+  
+  def variant_classes
+    {
+      primary: "btn-primary",
+      secondary: "btn-secondary",
+      dark: "btn-dark",
+      white: "btn-white",
+      transparent: "btn-transparent",
+      light: "btn-light",
+      danger: "btn-danger",
+      link: "btn-link"
+    }
+  end
+  
+  def size_classes
+    {
+      sm: "btn-sm",
+      lg: "btn-lg"
+    }
+  end
+  end
+end

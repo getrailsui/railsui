@@ -1,0 +1,12 @@
+<%% if content? %>
+  <%%= content %>
+<%% else %>
+  <ul <%%= tag.attributes(list_attributes) %>>
+    <li>
+      <%%= link_to "Login", "#", class: "btn btn-transparent" %>
+    </li>
+    <li>
+      <%%= link_to "Sign Up", "#", class: "btn btn-primary" %>
+    </li>
+  </ul>
+<%% end %>

@@ -1,0 +1,12 @@
+<details <%%= tag.attributes(merge_attributes({ class: item_classes }, **tag_options)) %> <%%= "open" if open %>>
+  <summary class="<%%= summary_classes %>">
+    <%%= title %>
+    <%%= icon "plus", class: plus_icon_classes %>
+    <%%= icon "minus", class: minus_icon_classes %>
+  </summary>
+  <div class="<%%= content_wrapper_classes %>">
+    <div class="<%%= content_classes %>">
+      <%%= content %>
+    </div>
+  </div>
+</details>

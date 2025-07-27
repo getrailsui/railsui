@@ -1,0 +1,65 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    items: [],
+    classes: nil,
+    dropdown_classes: nil,
+    **tag_options
+  )
+    @items = items
+    @classes = classes
+    @dropdown_classes = dropdown_classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :items, :classes, :dropdown_classes, :tag_options
+
+  def nav_classes
+    base_classes = "my-6 font-medium flex text-zinc-500 dark:text-zinc-200 text-sm"
+    css_classes(base_classes, classes)
+  end
+  
+  def nav_attributes
+    attrs = {
+      class: nav_classes,
+      "aria-label": "breadcrumb"
+    }
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def ol_classes
+    "flex flex-wrap items-center gap-3"
+  end
+  
+  def link_classes
+    "hover:underline hover:text-zinc-600 dark:hover:text-zinc-400"
+  end
+  
+  def dropdown_button_classes
+    "hover:underline hover:text-zinc-600 dark:hover:text-zinc-400 flex gap-1.5 items-center"
+  end
+  
+  def dropdown_menu_classes
+    dropdown_classes.present? ? dropdown_classes : "origin-top-left left-0 top-8 dropdown-menu"
+  end
+  
+  def active_classes
+    "text-primary-500 dark:text-primary-500"
+  end
+  
+  def separator_classes
+    "text-zinc-300 dark:text-zinc-500"
+  end
+  
+  def dropdown_item_classes
+    "dropdown-item"
+  end
+  
+  def icon_classes
+    "size-3 shrink-0"
+  end
+end

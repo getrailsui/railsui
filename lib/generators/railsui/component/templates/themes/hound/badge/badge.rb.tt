@@ -1,0 +1,112 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:badge, label: "New", variant: :primary) %>
+# <%= rui(:badge, label: "5", variant: :danger, rounded: true) %>
+# <%= rui(:badge, size: :lg) do %>
+#   <%= icon "star", class: "size-5" %>
+#   Featured
+# <% end %>
+#
+# Options:
+# - label: Badge text (can also use block content)
+# - variant: :primary (default), :secondary, :success, :danger, :warning, :info, :light, :dark
+# - size: :sm (default), :base, :lg
+# - rounded: Use fully rounded style (default: false)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    label: nil,
+    color: :neutral,
+    variant: :default,
+    classes: nil,
+    **tag_options
+  )
+    @label = label
+    @color = color.to_sym
+    @variant = variant.to_sym
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :label, :color, :variant, :classes, :tag_options
+
+  def badge_classes
+    base_classes = "font-medium px-2 py-1 text-xs"
+
+    variant_classes = case variant
+    when :pill
+      "rounded-full"
+    when :tag
+      "rounded-none"
+    when :outline
+      "rounded border-2 bg-transparent"
+    else
+      "rounded"
+    end
+
+    color_classes = case variant
+    when :outline
+      outline_color_classes
+    else
+      solid_color_classes
+    end
+
+    css_classes(base_classes, variant_classes, color_classes, classes)
+  end
+
+  def solid_color_classes
+    case color
+    when :red
+      "bg-red-100 text-red-800 dark:bg-red-500/20 dark:text-red-300"
+    when :orange
+      "bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-300"
+    when :yellow
+      "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-300"
+    when :green
+      "bg-green-100 text-green-800 dark:bg-green-500/20 dark:text-green-300"
+    when :blue
+      "bg-blue-100 text-blue-800 dark:bg-blue-500/20 dark:text-blue-300"
+    when :indigo
+      "bg-indigo-100 text-indigo-800 dark:bg-indigo-500/20 dark:text-indigo-300"
+    when :purple
+      "bg-purple-100 text-purple-800 dark:bg-purple-500/20 dark:text-purple-300"
+    when :pink
+      "bg-pink-100 text-pink-800 dark:bg-pink-500/20 dark:text-pink-300"
+    when :white
+      "bg-white-100 text-slate-800 border border-slate-200 dark:border-none dark:bg-white/10 dark:text-white/80"
+    else # neutral/gray
+      "bg-neutral-100 text-neutral-800 dark:bg-neutral-500/20 dark:text-neutral-200"
+    end
+  end
+
+  def outline_color_classes
+    case color
+    when :red
+      "border-red-300 text-red-700 dark:border-red-500 dark:text-red-300"
+    when :orange
+      "border-orange-300 text-orange-700 dark:border-orange-500 dark:text-orange-300"
+    when :yellow
+      "border-yellow-300 text-yellow-700 dark:border-yellow-500 dark:text-yellow-300"
+    when :green
+      "border-green-300 text-green-700 dark:border-green-500 dark:text-green-300"
+    when :blue
+      "border-blue-300 text-blue-700 dark:border-blue-500 dark:text-blue-300"
+    when :indigo
+      "border-indigo-300 text-indigo-700 dark:border-indigo-500 dark:text-indigo-300"
+    when :purple
+      "border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300"
+    when :pink
+      "border-pink-300 text-pink-700 dark:border-pink-500 dark:text-pink-300"
+    when :white
+      "border-slate-300 text-slate-700 dark:border-white/20 dark:text-white/80"
+    else # neutral/gray
+      "border-neutral-300 text-neutral-700 dark:border-neutral-500 dark:text-neutral-200"
+    end
+  end
+  end
+end

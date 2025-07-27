@@ -1,0 +1,3 @@
+<div <%= html_attributes(wrapper_attributes) %>>
+  <%= content %>
+</div>

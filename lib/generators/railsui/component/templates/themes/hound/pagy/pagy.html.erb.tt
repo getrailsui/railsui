@@ -1,0 +1,38 @@
+<nav <%%= tag.attributes(nav_attributes) %>>
+  <div class="flex flex-wrap items-center sm:justify-between justify-center">
+    <%% # Previous Button %>
+    <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
+      <%% if pagy.prev %>
+        <%%== computed_link_proc.call(pagy.prev, pagy_t('pagy.nav.prev'), prev_link_classes) %>
+      <%% else %>
+        <span class="<%%= prev_disabled_classes %>">
+          <%%= pagy_t('pagy.nav.prev') %>
+        </span>
+      <%% end %>
+    </div>
+
+    <%% # Page Series %>
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <%% pagy.series.each do |item| %>
+        <%% if item.is_a?(Integer) %>
+          <%%== computed_link_proc.call(item, item, page_link_classes) %>
+        <%% elsif item.is_a?(String) %>
+          <span class="<%%= active_page_classes %>"><%%= item %></span>
+        <%% elsif item == :gap %>
+          <span class="<%%= gap_classes %>"><%%= pagy_t('pagy.nav.gap') %></span>
+        <%% end %>
+      <%% end %>
+    </div>
+
+    <%% # Next Button %>
+    <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
+      <%% if pagy.next %>
+        <%%== computed_link_proc.call(pagy.next, pagy_t('pagy.nav.next'), next_link_classes) %>
+      <%% else %>
+        <span class="<%%= next_disabled_classes %>">
+          <%%= pagy_t('pagy.nav.next') %>
+        </span>
+      <%% end %>
+    </div>
+  </div>
+</nav>

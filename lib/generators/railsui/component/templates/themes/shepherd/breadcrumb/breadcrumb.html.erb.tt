@@ -1,0 +1,51 @@
+<nav <%%= tag.attributes(nav_attributes) %>>
+  <ol class="<%%= ol_classes %>">
+    <%% items.each_with_index do |item, index| %>
+      <%% if index > 0 %>
+        <li class="flex gap-3">
+          <div class="flex items-center">
+            <span class="<%%= separator_classes %>">/</span>
+          </div>
+      <%% else %>
+        <li>
+      <%% end %>
+
+        <%% if item[:active] || (!item[:url] && !item[:dropdown]) %>
+          <span class="<%%= active_classes %>" data-aria-current="page">
+            <%%= item[:name] %>
+          </span>
+
+        <%% elsif item[:dropdown].present? %>
+          <div class="relative" data-controller="railsui-dropdown">
+            <button
+              type="button"
+              class="<%%= dropdown_button_classes %>"
+              data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+              <%%= item[:name] %>
+              <%%= icon (item[:icon] || "chevron-down"), class: icon_classes %>
+            </button>
+
+            <div
+              data-railsui-dropdown-target="menu"
+              class="hidden <%%= dropdown_menu_classes %>"
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95">
+              <ul>
+                <%% item[:dropdown].each do |subitem| %>
+                  <li>
+                    <%%= link_to subitem[:name], subitem[:url], class: dropdown_item_classes %>
+                  </li>
+                <%% end %>
+              </ul>
+            </div>
+          </div>
+
+        <%% elsif item[:url].present? %>
+          <%%= link_to item[:name], item[:url], class: link_classes %>
+        <%% end %>
+      </li>
+    <%% end %>
+  </ol>
+</nav>

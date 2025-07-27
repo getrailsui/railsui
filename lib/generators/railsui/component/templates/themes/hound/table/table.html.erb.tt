@@ -1,0 +1,21 @@
+<table <%%= tag.attributes(table_attributes) %>>
+  <%% if has_slot_content? %>
+    <%%= table_header if table_header %>
+    <%%= table_body if table_body %>
+    <%%= table_footer if table_footer %>
+  <%% else %>
+    <%% if headers.any? %>
+      <%%= render Railsui::UI::TableHeader.new(headers: headers, variant: variant) %>
+    <%% end %>
+
+    <%% if content.present? %>
+      <%%= content %>
+    <%% elsif rows.any? %>
+      <%%= render Railsui::UI::TableBody.new(rows: rows, variant: variant) %>
+    <%% end %>
+
+    <%% if footer_rows.any? %>
+      <%%= render Railsui::UI::TableFooter.new(rows: footer_rows, variant: variant) %>
+    <%% end %>
+  <%% end %>
+</table>

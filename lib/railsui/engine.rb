@@ -6,6 +6,7 @@ module Railsui
       config.before_initialize do
         Railsui.config = Railsui::Configuration.load!
       end
+      
 
       initializer "railsui.theme_helper" do
         ActiveSupport.on_load :action_controller do
@@ -24,6 +25,18 @@ module Railsui
         app.config.assets.paths << root.join("builds").to_s
         app.config.assets.precompile << "railsui/application.css"
         app.config.assets.precompile << %w[*.svg]
+      end
+      
+      config.to_prepare do
+        # Eagerly load base component to ensure it's available
+        base_component_path = Rails.root.join("app/components/railsui/base_component.rb")
+        if File.exist?(base_component_path)
+          begin
+            require_dependency base_component_path
+          rescue LoadError => e
+            Rails.logger.debug "Rails UI: Could not load #{base_component_path}: #{e.message}"
+          end
+        end
       end
    end
  end

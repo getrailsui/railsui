@@ -1,0 +1,69 @@
+<div <%%= tag.attributes(wrapper_attributes) %>>
+  <button <%%= tag.attributes(button_attributes) %>>
+    <%% if show_start_icon? %>
+      <%%= icon icon_name, class: icon_classes %>
+    <%% end %>
+    <%%= button_config[:label] %>
+    <%% if show_end_icon? %>
+      <%%= icon icon_name, class: icon_classes %>
+    <%% end %>
+  </button>
+
+  <div <%%= tag.attributes(menu_attributes) %>>
+    <%% if is_grouped? %>
+      <div class="<%%= grouped_wrapper_classes %>">
+        <%% items.each do |group| %>
+          <ul>
+            <%% group.each do |item| %>
+              <li>
+                <%% if item[:method] %>
+                  <%%== button_to item[:name], item[:url],
+                    method: item[:method],
+                    data: item[:data] || {},
+                    class: dropdown_item_classes %>
+                <%% else %>
+                  <%%= link_to item[:url],
+                    class: item_link_classes(item),
+                    data: item[:data] || {} do %>
+                    <%% if item_has_start_icon?(item) %>
+                      <%%= icon item[:icon][:name], class: item_icon_classes(item) %>
+                    <%% end %>
+                    <%%= item[:name] %>
+                    <%% if item_has_end_icon?(item) %>
+                      <%%= icon item[:icon][:name], class: item_icon_classes(item) %>
+                    <%% end %>
+                  <%% end %>
+                <%% end %>
+              </li>
+            <%% end %>
+          </ul>
+        <%% end %>
+      </div>
+    <%% else %>
+      <ul>
+        <%% items.each do |item| %>
+          <li>
+            <%% if item[:method] %>
+              <%%== button_to item[:name], item[:url],
+                method: item[:method],
+                data: item[:data] || {},
+                class: dropdown_item_classes %>
+            <%% else %>
+              <%%= link_to item[:url],
+                class: item_link_classes(item),
+                data: item[:data] || {} do %>
+                <%% if item_has_start_icon?(item) %>
+                  <%%= icon item[:icon][:name], class: item_icon_classes(item) %>
+                <%% end %>
+                <%%= item[:name] %>
+                <%% if item_has_end_icon?(item) %>
+                  <%%= icon item[:icon][:name], class: item_icon_classes(item) %>
+                <%% end %>
+              <%% end %>
+            <%% end %>
+          </li>
+        <%% end %>
+      </ul>
+    <%% end %>
+  </div>
+</div>

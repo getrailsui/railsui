@@ -1,0 +1,3 @@
+<div <%%= tag.attributes(panel_attributes) %>>
+  <%%= content %>
+</div>

@@ -1,0 +1,105 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:combobox, placeholder: "Select an option", searchable: true) do |combo| %>
+#   <% combo.with_item(value: "1", label: "Option 1") %>
+#   <% combo.with_item(value: "2", label: "Option 2", selected: true) %>
+#   <% combo.with_item(value: "3", label: "Option 3") %>
+# <% end %>
+#
+# Options:
+# - name: Form field name
+# - placeholder: Placeholder text
+# - searchable: Enable search functionality (default: false)
+# - multiple: Allow multiple selections (default: false)
+# - disabled: Disable the combobox (default: false)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Child component options (with_item):
+# - value: Option value
+# - label: Display text
+# - selected: Whether option is selected (default: false)
+# - disabled: Whether option is disabled (default: false)
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+    renders_many :combobox_items, Railsui::ComboboxItemComponent
+
+  def initialize(
+    name:,
+    label: "",
+    placeholder: "Search...",
+    items: [],
+    selected: nil,
+    no_results_text: "No results found",
+    classes: nil,
+    active_classes: "bg-gray-900 text-white hover:bg-gray-950",
+    inactive_classes: "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50",
+    dropdown_classes: nil,
+    controller: "railsui-combobox",
+    **tag_options
+  )
+    @name = name
+    @label = label
+    @placeholder = placeholder
+    @items = items
+    @selected = selected
+    @no_results_text = no_results_text
+    @classes = classes
+    @active_classes = active_classes
+    @inactive_classes = inactive_classes
+    @dropdown_classes = dropdown_classes
+    @controller = controller
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :name, :label, :placeholder, :items, :selected, :no_results_text, 
+              :classes, :active_classes, :inactive_classes, :dropdown_classes, 
+              :controller, :tag_options
+
+  def wrapper_classes
+    css_classes("relative", classes.presence || "w-56")
+  end
+  
+  def wrapper_attributes
+    {
+      class: wrapper_classes,
+      "data-controller": controller,
+      "data-action": "click@window->#{controller}#handleOutsideClick",
+      "data-#{controller_dashed}-active-class-value": active_classes,
+      "data-#{controller_dashed}-inactive-class-value": inactive_classes
+    }
+  end
+  
+  def combobox_classes
+    "form-input flex items-center justify-between pr-1.5 shadow-xs"
+  end
+  
+  def combobox_attributes
+    {
+      "aria-expanded": "false",
+      "aria-controls": "combobox-list",
+      "aria-labelledby": "combobox-label",
+      "data-action": "click->#{controller}#toggleDropdown keydown.enter->#{controller}#toggleDropdown",
+      "data-#{controller_dashed}-target": "box",
+      role: "combobox",
+      tabindex: "0",
+      class: combobox_classes
+    }
+  end
+  
+  def dropdown_list_classes
+    dropdown_classes.presence || "absolute z-10 top-12 left-0 dropdown-menu w-full origin-top"
+  end
+  
+  def selected_label
+    items.find { |item| item[:value] == selected }&.dig(:label) || label
+  end
+  
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+  end
+end

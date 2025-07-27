@@ -1,0 +1,17 @@
+<%% if link? %>
+  <%%= link_to href, **element_attributes do %>
+    <%% if label.present? %>
+      <%%= label %>
+    <%% else %>
+      <%%= content %>
+    <%% end %>
+  <%% end %>
+<%% else %>
+  <button <%%= tag.attributes(element_attributes) %>>
+    <%% if label.present? %>
+      <%%= label %>
+    <%% else %>
+      <%%= content %>
+    <%% end %>
+  </button>
+<%% end %>

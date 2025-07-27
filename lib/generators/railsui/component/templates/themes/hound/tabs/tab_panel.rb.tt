@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+
+module Railsui
+  class TabPanelComponent < RailsuiComponent
+  def initialize(
+    id: nil,
+    active: false,
+    classes: nil,
+    **tag_options
+  )
+    @id = id
+    @active = active
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :id, :active, :classes, :tag_options
+
+  def panel_classes
+    base_classes = "p-4"
+    visibility_class = active ? "" : "hidden"
+    css_classes(base_classes, visibility_class, classes)
+  end
+  
+  def panel_attributes
+    attrs = {
+      class: panel_classes,
+      "data-railsui-tabs-target": "panel"
+    }
+    
+    attrs[:id] = id if id.present?
+    merge_attributes(attrs, **tag_options)
+  end
+  end
+end

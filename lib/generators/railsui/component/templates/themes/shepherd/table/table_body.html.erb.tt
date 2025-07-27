@@ -1,0 +1,9 @@
+<tbody <%= html_attributes(wrapper_attributes) %>>
+  <% if has_content? %>
+    <%= content %>
+  <% elsif has_rows? %>
+    <% rows.each do |row| %>
+      <%= render(parent.class::RowComponent.new(row: row, variant: variant)) %>
+    <% end %>
+  <% end %>
+</tbody>

@@ -1,0 +1,140 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    title: nil,
+    message: nil,
+    icon: nil,
+    variant: :success,
+    controller: "railsui-toast",
+    classes: nil,
+    trigger_on_load: false,
+    placement: :right,
+    **tag_options
+  )
+    @title = title
+    @message = message
+    @icon = icon
+    @variant = variant.to_sym
+    @controller = controller
+    @classes = classes
+    @trigger_on_load = trigger_on_load
+    @placement = placement.to_sym
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :message, :icon, :variant, :controller, :classes, 
+              :trigger_on_load, :placement, :tag_options
+
+  def wrapper_classes
+    css_classes("relative", classes)
+  end
+
+  def wrapper_attributes
+    attrs = { 
+      class: wrapper_classes,
+      "data-controller": controller 
+    }
+    
+    if trigger_on_load
+      attrs["data-#{controller_dashed}-trigger-on-load-value"] = trigger_on_load
+    end
+    
+    merge_attributes(attrs, **tag_options)
+  end
+
+  def toast_container_classes
+    base_classes = "pointer-events-none absolute flex items-center px-4 py-6 sm:p-6 top-0 right-0 left-0 w-full"
+    visibility_classes = trigger_on_load ? "" : "hidden"
+    css_classes(base_classes, placement_class, visibility_classes)
+  end
+
+  def toast_classes
+    base_classes = "pointer-events-auto w-full max-w-sm overflow-hidden rounded-md shadow-lg"
+    css_classes(base_classes, variant_config[:bg], variant_config[:border])
+  end
+
+  def icon_classes
+    "size-6 #{variant_config[:icon_color]}"
+  end
+
+  def title_classes
+    "text-sm font-medium text-zinc-900 dark:text-white"
+  end
+
+  def message_classes
+    base_classes = "text-sm text-zinc-500 dark:text-zinc-300"
+    title_spacing = title ? "mt-1" : ""
+    css_classes(base_classes, title_spacing)
+  end
+
+  def close_button_classes
+    "inline-flex rounded-sm bg-white text-zinc-400 hover:text-zinc-500 focus:outline-hidden focus:ring-2 focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 dark:hover:text-zinc-100 dark:focus:text-zinc-100"
+  end
+
+  def close_icon_classes
+    "size-5 pointer-events-none"
+  end
+
+  def close_action
+    "click->#{controller_dashed}#hide"
+  end
+
+  def content_wrapper_classes
+    toast_icon ? "ml-3 w-0 flex-1 pt-0.5" : "w-0 flex-1 pt-0.5"
+  end
+
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+
+  def placement_class
+    placement_configs[placement] || placement_configs[:right]
+  end
+
+  def placement_configs
+    {
+      right: "justify-end animate-toast-from-right",
+      left: "justify-start animate-toast-from-left"
+    }
+  end
+
+  def variant_config
+    variant_configs[variant] || variant_configs[:success]
+  end
+
+  def variant_configs
+    {
+      success: {
+        bg: "bg-white dark:bg-zinc-950",
+        border: "ring-1 ring-black/10 dark:border dark:border-zinc-700/80",
+        icon_color: "text-green-500 dark:text-green-400",
+        default_icon: "check-circle"
+      },
+      error: {
+        bg: "bg-white dark:bg-zinc-950",
+        border: "ring-1 ring-red-200/50 dark:border dark:border-red-700/50",
+        icon_color: "text-red-500 dark:text-red-400",
+        default_icon: "x-circle"
+      },
+      warning: {
+        bg: "bg-white dark:bg-zinc-950",
+        border: "ring-1 ring-yellow-200/50 dark:border dark:border-yellow-700/50",
+        icon_color: "text-yellow-500 dark:text-yellow-400",
+        default_icon: "exclamation-triangle"
+      },
+      info: {
+        bg: "bg-white dark:bg-zinc-950",
+        border: "ring-1 ring-primary-200/50 dark:border dark:border-primary-700/50",
+        icon_color: "text-primary-500 dark:text-primary-400",
+        default_icon: "information-circle"
+      }
+    }
+  end
+
+  def toast_icon
+    icon || variant_config[:default_icon]
+  end
+end

@@ -1,0 +1,214 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  renders_many :items, "ItemComponent"
+
+  def initialize(
+    name:,
+    label: "",
+    placeholder: "Search...",
+    items: [],
+    selected: nil,
+    no_results_text: "No results found",
+    classes: nil,
+    active_classes: "bg-zinc-900 text-white hover:bg-zinc-950",
+    inactive_classes: "bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-900 hover:bg-zinc-50",
+    dropdown_classes: nil,
+    controller: "railsui-combobox",
+    **tag_options
+  )
+    @name = name
+    @label = label
+    @placeholder = placeholder
+    @items_array = items
+    @selected = selected
+    @no_results_text = no_results_text
+    @classes = classes
+    @active_classes = active_classes
+    @inactive_classes = inactive_classes
+    @dropdown_classes = dropdown_classes
+    @controller = controller
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :name, :label, :placeholder, :items_array, :selected, :no_results_text,
+              :classes, :active_classes, :inactive_classes, :dropdown_classes, 
+              :controller, :tag_options
+
+  def wrapper_classes
+    base_classes = "relative"
+    default_classes = "w-56"
+    css_classes(base_classes, classes.presence || default_classes)
+  end
+
+  def wrapper_attributes
+    attrs = {
+      class: wrapper_classes,
+      "data-controller": controller,
+      "data-action": "click@window->#{controller_dashed}#handleOutsideClick",
+      "data-#{controller_dashed}-active-class-value": active_classes,
+      "data-#{controller_dashed}-inactive-class-value": inactive_classes
+    }
+    merge_attributes(attrs, **tag_options)
+  end
+
+  def hidden_input_attributes
+    {
+      type: "hidden",
+      name: name,
+      value: selected,
+      "data-#{controller_dashed}-target": "hiddenInput"
+    }
+  end
+
+  def combobox_attributes
+    {
+      "aria-expanded": "false",
+      "aria-controls": "combobox-list",
+      "aria-labelledby": "combobox-label",
+      "data-action": "click->#{controller_dashed}#toggleDropdown keydown.enter->#{controller_dashed}#toggleDropdown",
+      "data-#{controller_dashed}-target": "box",
+      role: "combobox",
+      tabindex: "0",
+      class: combobox_classes
+    }
+  end
+
+  def combobox_classes
+    "form-input flex items-center justify-between pr-1.5 shadow-xs"
+  end
+
+  def dropdown_attributes
+    {
+      "data-#{controller_dashed}-target": "list",
+      "data-transition-enter-from": "opacity-0 scale-95",
+      "data-transition-enter-to": "opacity-100 scale-100",
+      "data-transition-leave-from": "opacity-100 scale-100",
+      "data-transition-leave-to": "opacity-0 scale-95",
+      "data-action": "keydown.esc->#{controller_dashed}#hideDropdown",
+      class: dropdown_classes_computed,
+      role: "listbox",
+      "aria-labelledby": "combobox-label"
+    }
+  end
+
+  def dropdown_classes_computed
+    dropdown_classes.presence || "absolute z-10 top-12 left-0 dropdown-menu w-full origin-top"
+  end
+
+  def search_input_attributes
+    {
+      id: "combobox-search",
+      type: "text",
+      placeholder: placeholder,
+      autocomplete: "off",
+      "aria-autocomplete": "list",
+      "data-#{controller_dashed}-target": "input",
+      "data-action": "input->#{controller_dashed}#filter keydown->#{controller_dashed}#handleKeydown",
+      class: search_input_classes
+    }
+  end
+
+  def search_input_classes
+    "form-input text-[15px] pl-8"
+  end
+
+  def search_icon_classes
+    "stroke-zinc-400 size-5 absolute top-[11px] left-2"
+  end
+
+  def chevron_icon_classes
+    "stroke-zinc-500 pointer-events-none size-5"
+  end
+
+  def no_results_attributes
+    {
+      "data-#{controller_dashed}-target": "noresults",
+      class: "hidden px-4 py-2 text-zinc-500",
+      "aria-hidden": "true"
+    }
+  end
+
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+
+  def selected_label
+    return label if selected.blank?
+    
+    selected_item = items_array.find { |item| item[:value] == selected }
+    selected_item&.dig(:label) || label
+  end
+
+  def has_items_slot?
+    items.any?
+  end
+
+  def render_items_array?
+    items_array.any? && !has_items_slot?
+  end
+
+  class ItemComponent < Railsui::UI::Component
+    def initialize(
+      label: "Label",
+      value:,
+      icon_options: nil,
+      active: false,
+      controller: "railsui-combobox",
+      **tag_options
+    )
+      @label = label
+      @value = value
+      @icon_options = icon_options
+      @active = active
+      @controller = controller
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :label, :value, :icon_options, :active, :controller, :tag_options
+
+    def wrapper_attributes
+      attrs = {
+        "data-action": "click->#{controller_dashed}#selectOption keydown.enter->#{controller_dashed}#selectOption",
+        "data-#{controller_dashed}-target": "option",
+        "data-value": value,
+        role: "option",
+        tabindex: "0",
+        class: wrapper_classes
+      }
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def wrapper_classes
+      "px-3 py-1.5 cursor-pointer flex items-center justify-between bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-900 hover:bg-zinc-50"
+    end
+
+    def icon_classes
+      icon_options[:classes] || "size-4"
+    end
+
+    def checkmark_attributes
+      {
+        "data-#{controller_dashed}-target": "checkmark",
+        class: "hidden",
+        "aria-hidden": "true"
+      }
+    end
+
+    def checkmark_icon_classes
+      "opacity-75 size-4 shrink-0"
+    end
+
+    def controller_dashed
+      controller.tr("_", "-")
+    end
+
+    def has_icon?
+      icon_options && icon_options[:name]
+    end
+  end
+end

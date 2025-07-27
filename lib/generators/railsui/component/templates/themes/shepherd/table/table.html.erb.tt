@@ -1,0 +1,15 @@
+<table <%= html_attributes(wrapper_attributes) %>>
+  <% if has_headers? %>
+    <%= render(HeaderComponent.new(headers: headers, variant: variant)) %>
+  <% end %>
+
+  <% if has_content? %>
+    <%= content %>
+  <% elsif has_rows? %>
+    <%= render(BodyComponent.new(rows: rows, variant: variant)) %>
+  <% end %>
+
+  <% if has_footer_rows? %>
+    <%= render(FooterComponent.new(rows: footer_rows, variant: variant)) %>
+  <% end %>
+</table>

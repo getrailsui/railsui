@@ -1,9 +1,12 @@
 import { RailsuiDropdown } from 'railsui-stimulus'
 
-// Connects to data-controller="<%= file_name.dasherize %>"
+// Connects to data-controller="railsui-<%= file_name.dasherize %>"
 export default class <%= file_name.camelcase %> extends RailsuiDropdown {
   connect() {
     super.connect()
-    console.log('Inherited Rails UI dropdown connected')
+    console.log('Rails UI <%= file_name %> component connected')
   }
+  
+  // Override or extend base functionality here
+  // For theme-specific customizations
 }

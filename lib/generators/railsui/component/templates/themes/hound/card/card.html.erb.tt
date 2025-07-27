@@ -1,0 +1,35 @@
+<div <%%= tag.attributes(merge_attributes({ class: card_classes }, **tag_options)) %>>
+  <%% if header.present? %>
+    <div class="card-header mb-4">
+      <%%= header %>
+    </div>
+  <%% end %>
+  
+  <%% if title.present? %>
+    <h3 class="<%%= title_classes %>"><%%= title %></h3>
+  <%% end %>
+  
+  <%% if content.present? %>
+    <div class="<%%= content_classes %>">
+      <%% if content.is_a?(String) %>
+        <p><%%= content %></p>
+      <%% else %>
+        <%%= content %>
+      <%% end %>
+    </div>
+  <%% elsif content %>
+    <%%= content %>
+  <%% end %>
+  
+  <%% if actions.present? %>
+    <div class="card-actions mt-4">
+      <%%= actions %>
+    </div>
+  <%% end %>
+  
+  <%% if footer.present? %>
+    <div class="card-footer mt-4">
+      <%%= footer %>
+    </div>
+  <%% end %>
+</div>

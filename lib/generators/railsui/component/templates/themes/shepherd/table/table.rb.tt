@@ -1,0 +1,276 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  renders_one :header, "HeaderComponent"
+  renders_one :body, "BodyComponent"
+  renders_one :footer, "FooterComponent"
+  renders_many :rows, "RowComponent"
+  renders_many :cells, "CellComponent"
+  renders_many :header_cells, "HeaderCellComponent"
+
+  def initialize(
+    variant: :border,
+    headers: [],
+    rows: [],
+    footer_rows: [],
+    classes: nil,
+    **tag_options
+  )
+    @variant = variant.to_sym
+    @headers = headers
+    @rows = rows
+    @footer_rows = footer_rows
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :variant, :headers, :rows, :footer_rows, :classes, :tag_options
+
+  def wrapper_attributes
+    attrs = { class: wrapper_classes }
+    merge_attributes(attrs, **tag_options)
+  end
+
+  def wrapper_classes
+    base_classes = "table-auto w-full"
+    variant_classes = case variant
+    when :borderless
+      ""
+    else # :border (default)
+      "border border-slate-300 dark:border-slate-700/80"
+    end
+    css_classes(base_classes, variant_classes, classes)
+  end
+
+  def has_headers?
+    headers.any?
+  end
+
+  def has_content?
+    content.present?
+  end
+
+  def has_rows?
+    rows.any?
+  end
+
+  def has_footer_rows?
+    footer_rows.any?
+  end
+
+  class HeaderComponent < Railsui::UI::Component
+    def initialize(
+      headers: [],
+      variant: :border,
+      **tag_options
+    )
+      @headers = headers
+      @variant = variant.to_sym
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :headers, :variant, :tag_options
+
+    def wrapper_attributes
+      attrs = {}
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def has_content?
+      content.present?
+    end
+
+    def has_headers?
+      headers.any?
+    end
+  end
+
+  class BodyComponent < Railsui::UI::Component
+    def initialize(
+      rows: [],
+      variant: :border,
+      **tag_options
+    )
+      @rows = rows
+      @variant = variant.to_sym
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :rows, :variant, :tag_options
+
+    def wrapper_attributes
+      attrs = {}
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def has_content?
+      content.present?
+    end
+
+    def has_rows?
+      rows.any?
+    end
+  end
+
+  class FooterComponent < Railsui::UI::Component
+    def initialize(
+      rows: [],
+      variant: :border,
+      **tag_options
+    )
+      @rows = rows
+      @variant = variant.to_sym
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :rows, :variant, :tag_options
+
+    def wrapper_attributes
+      attrs = {}
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def has_content?
+      content.present?
+    end
+
+    def has_rows?
+      rows.any?
+    end
+  end
+
+  class RowComponent < Railsui::UI::Component
+    def initialize(
+      row: nil,
+      classes: nil,
+      variant: :border,
+      **tag_options
+    )
+      @row = row
+      @classes = classes
+      @variant = variant.to_sym
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :row, :classes, :variant, :tag_options
+
+    def wrapper_attributes
+      attrs = { class: classes }
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def has_content?
+      content.present?
+    end
+
+    def has_row?
+      row.present?
+    end
+
+    def row_is_array?
+      row.is_a?(Array)
+    end
+  end
+
+  class CellComponent < Railsui::UI::Component
+    def initialize(
+      cell: nil,
+      classes: nil,
+      colspan: nil,
+      variant: :border,
+      **tag_options
+    )
+      @cell = cell
+      @classes = classes
+      @colspan = colspan
+      @variant = variant.to_sym
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :cell, :classes, :colspan, :variant, :tag_options
+
+    def wrapper_attributes
+      attrs = { 
+        class: wrapper_classes
+      }
+      attrs[:colspan] = cell_colspan if cell_colspan
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def wrapper_classes
+      css_classes(cell_classes, classes)
+    end
+
+    def cell_classes
+      case variant
+      when :borderless
+        "p-3 text-left"
+      else # :border
+        "p-3 border border-slate-200 dark:border-slate-700/80"
+      end
+    end
+
+    def cell_content
+      content || (cell.is_a?(Hash) ? cell[:content] : cell)
+    end
+
+    def cell_colspan
+      colspan || (cell.is_a?(Hash) ? cell[:colspan] : nil)
+    end
+  end
+
+  class HeaderCellComponent < Railsui::UI::Component
+    def initialize(
+      header:,
+      classes: nil,
+      variant: :border,
+      **tag_options
+    )
+      @header = header
+      @classes = classes
+      @variant = variant.to_sym
+      @tag_options = tag_options
+    end
+
+    private
+
+    attr_reader :header, :classes, :variant, :tag_options
+
+    def wrapper_attributes
+      attrs = { 
+        scope: "col",
+        class: wrapper_classes 
+      }
+      merge_attributes(attrs, **tag_options)
+    end
+
+    def wrapper_classes
+      css_classes(header_classes, classes)
+    end
+
+    def header_classes
+      case variant
+      when :borderless
+        "text-left p-3 border-b-2 border-zinc-200 dark:border-zinc-700/80"
+      else # :border
+        "text-left p-3 border border-zinc-200 dark:border-zinc-700/80"
+      end
+    end
+
+    def header_content
+      header.is_a?(Hash) ? header[:label] : header
+    end
+  end
+end

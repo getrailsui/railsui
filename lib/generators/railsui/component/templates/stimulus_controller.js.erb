@@ -1,8 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="<%= file_name.dasherize %>"
+// Connects to data-controller="railsui-<%= file_name.dasherize %>"
 export default class extends Controller {
+  static targets = []
+  static values = {}
+  
   connect() {
-    console.log("<%= class_name %> Stimulus controller connected")
+    console.log('Rails UI <%= file_name %> component connected')
   }
+  
+  disconnect() {
+    // Cleanup when controller disconnects
+  }
+  
+  // Add your controller methods here
 }

@@ -1,0 +1,34 @@
+# frozen_string_literal: true
+
+module Railsui
+  class TableRowComponent < RailsuiComponent
+    renders_many :table_cells, Railsui::TableCellComponent
+
+  def initialize(
+    row: [],
+    variant: :border,
+    classes: nil,
+    **tag_options
+  )
+    @row = row
+    @variant = variant.to_sym
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :row, :variant, :classes, :tag_options
+  
+  def row_classes
+    base_classes = case variant
+    when :borderless
+      ""
+    else # :border
+      "border-b border-slate-200 dark:border-slate-700/80"
+    end
+    
+    css_classes(base_classes, classes)
+  end
+  end
+end

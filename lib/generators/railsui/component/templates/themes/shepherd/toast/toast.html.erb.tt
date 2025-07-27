@@ -1,0 +1,37 @@
+<div <%= html_attributes(wrapper_attributes) %>>
+  <div aria-live="assertive" class="<%= toast_container_classes %>">
+    <div class="<%= toast_classes %>">
+      <div class="p-4">
+        <% if content %>
+          <%= content %>
+        <% else %>
+          <div class="flex items-start">
+            <% if toast_icon %>
+              <div class="shrink-0">
+                <%= icon toast_icon, class: icon_classes %>
+              </div>
+            <% end %>
+
+            <div class="<%= content_wrapper_classes %>">
+              <% if title %>
+                <p class="<%= title_classes %>"><%= title %></p>
+              <% end %>
+              <% if message %>
+                <p class="<%= message_classes %>"><%= message %></p>
+              <% end %>
+            </div>
+
+            <div class="ml-4 flex shrink-0">
+              <button type="button" 
+                      class="<%= close_button_classes %>" 
+                      data-action="<%= close_action %>">
+                <span class="sr-only">Close</span>
+                <%= icon "x-mark", class: close_icon_classes %>
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

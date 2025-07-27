@@ -1,0 +1,108 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:avatar, src: user.avatar_url, alt: user.name) %>
+# <%= rui(:avatar, src: "/images/profile.jpg", size: :lg) %>
+# <%= rui(:avatar, demo: { id: 1, variant: "women" }) %>
+#
+# With custom rounding:
+# <%= rui(:avatar, src: avatar_path, rounded: :md) %>
+#
+# Options:
+# - src: Image source URL
+# - alt: Alternative text for the image (default: "Avatar")
+# - size: :xs, :sm, :md (default), :lg, :xl, :xxl
+# - rounded: :none, :sm, :md, :lg, :xl, :full (default)
+# - demo: Hash with demo avatar options { id: 1, variant: "men" or "women" }
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Notes:
+# - The demo option generates placeholder avatars for development/testing
+# - Size options: xs=24px, sm=32px, md=48px, lg=64px, xl=80px, xxl=96px
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    src: nil,
+    alt: "Avatar",
+    size: :md,
+    rounded: :full,
+    demo: nil,
+    classes: nil,
+    **tag_options
+  )
+    @src = src
+    @alt = alt
+    @size = size.to_sym
+    @rounded = rounded.to_sym
+    @demo = demo
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :src, :alt, :size, :rounded, :demo, :classes, :tag_options
+
+  def avatar_classes
+    base_classes = "object-cover"
+    size_classes = size_class_for(size)
+    rounded_classes = rounded_class_for(rounded)
+
+    css_classes(base_classes, size_classes, rounded_classes, classes)
+  end
+
+  def avatar_src
+    return src if src.present?
+    return demo_avatar_url if demo.present?
+    nil
+  end
+
+  def demo_avatar_url
+    return nil unless demo.is_a?(Hash)
+
+    id = options[:id] || "22"
+    variant = options[:variant] || "men"
+
+    "https://randomuser.me/api/portraits/#{variant}/#{id}.jpg"
+  end
+
+  def size_class_for(size)
+    case size
+    when :xs
+      "size-6"
+    when :sm
+      "size-8"
+    when :md
+      "size-12"
+    when :lg
+      "size-16"
+    when :xl
+      "size-20"
+    when :xxl
+      "size-24"
+    else
+      "size-12"
+    end
+  end
+
+  def rounded_class_for(rounded)
+    case rounded
+    when :none
+      "rounded-none"
+    when :sm
+      "rounded-sm"
+    when :md
+      "rounded-md"
+    when :lg
+      "rounded-lg"
+    when :xl
+      "rounded-xl"
+    when :full
+      "rounded-full"
+    else
+      "rounded-full"
+    end
+  end
+  end
+end

@@ -1,0 +1,51 @@
+<nav <%%= tag.attributes(nav_attributes) %>>
+  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
+    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
+      <%% if prev_url.present? %>
+        <%%= link_to prev_url, class: prev_link_classes do %>
+          <%%= icon "arrow-small-left", class: arrow_icon_classes %>
+          <span>Previous</span>
+        <%% end %>
+      <%% else %>
+        <span class="<%%= prev_disabled_classes %>">
+          <%%= icon "arrow-small-left", class: static_arrow_classes %>
+          Previous
+        </span>
+      <%% end %>
+    </li>
+
+    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg">
+      <%% pages.each do |item| %>
+        <%% if item.is_a?(Integer) %>
+          <li>
+            <%%= link_to item.to_s, "#", class: page_link_classes %>
+          </li>
+        <%% elsif item.is_a?(String) %>
+          <li>
+            <span class="<%%= final_active_classes %>">
+              <%%= item %>
+            </span>
+          </li>
+        <%% elsif item == :gap %>
+          <li>
+            <span class="<%%= gap_classes %>">&hellip;</span>
+          </li>
+        <%% end %>
+      <%% end %>
+    </div>
+
+    <li class="flex-1 flex justify-end items-center sm:w-auto w-full">
+      <%% if next_url.present? %>
+        <%%= link_to next_url, class: next_link_classes do %>
+          <span>Next</span>
+          <%%= icon "arrow-small-right", class: arrow_icon_classes %>
+        <%% end %>
+      <%% else %>
+        <span class="<%%= next_disabled_classes %>">
+          Next
+          <%%= icon "arrow-small-right", class: static_arrow_classes %>
+        </span>
+      <%% end %>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,11 @@
+<div <%%= tag.attributes(card_attributes) %>>
+  <h3 class="<%%= title_classes %>"><%%= title %></h3>
+
+  <%% if content? %>
+    <div class="<%%= content_classes %>"><%%= content %></div>
+  <%% end %>
+
+  <%% if actions.present? %>
+    <div><%%= actions %></div>
+  <%% end %>
+</div>

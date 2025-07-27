@@ -1,0 +1,30 @@
+<div <%%= tag.attributes(merge_attributes({ class: wrapper_classes, data: { controller: "railsui-#{controller_name}" } }, **tag_options)) %>>
+  <button 
+    type="button" 
+    class="<%%= button_classes %>"
+    data-action="click->railsui-<%%= controller_name %>#toggle click@window->railsui-<%%= controller_name %>#hide">
+    <%%= button_label %>
+    <%%= icon "chevron-down", class: "size-3" %>
+  </button>
+  
+  <div
+    class="<%%= dropdown_menu_classes %>"
+    data-railsui-<%%= controller_name %>-target="menu"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95">
+    
+    <%% items.each do |item| %>
+      <%% if item[:divider] %>
+        <div class="dropdown-divider"></div>
+      <%% else %>
+        <%%= link_to item[:name], item[:url] || "#", class: "dropdown-item" %>
+      <%% end %>
+    <%% end %>
+    
+    <%% if content.present? %>
+      <%%= content %>
+    <%% end %>
+  </div>
+</div>

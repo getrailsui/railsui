@@ -1,0 +1,5 @@
+<div <%= html_attributes(wrapper_attributes) %>>
+  <nav role="navigation" class="<%= nav_classes %>">
+    <%= content %>
+  </nav>
+</div>

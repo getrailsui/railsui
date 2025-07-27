@@ -1,0 +1,7 @@
+<th <%%= tag.attributes(header_attributes) %>>
+  <%% if header_content.present? %>
+    <%%= header_content %>
+  <%% else %>
+    <%%= content %>
+  <%% end %>
+</th>

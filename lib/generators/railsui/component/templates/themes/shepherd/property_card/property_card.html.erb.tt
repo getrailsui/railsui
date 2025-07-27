@@ -1,0 +1,54 @@
+<div <%= html_attributes(wrapper_attributes) %>>
+  <% if image_url.present? %>
+    <div class="relative mb-4">
+      <%= image_tag image_url, class: image_classes, alt: computed_image_alt %>
+      <% if avatar_url.present? %>
+        <%= image_tag avatar_url, class: avatar_classes, alt: computed_avatar_alt %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <h3 class="<%= title_classes %>"><%= title %></h3>
+
+  <% if subtitle.present? %>
+    <h4 class="<%= subtitle_classes %>"><%= subtitle %></h4>
+  <% end %>
+
+  <div class="flex items-center pt-6">
+    <% if stats.present? %>
+      <div class="flex-1 flex items-center gap-4">
+        <% stats.each do |stat| %>
+          <div class="flex items-center gap-2">
+            <%= icon stat[:icon], class: stat_icon_classes(stat) %>
+            <span class="<%= stat_text_classes(stat) %>"><%= stat[:text] %></span>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if dropdown_items.present? %>
+      <div data-controller="<%= controller %>" class="relative">
+        <button class="<%= dropdown_button_classes %>" data-action="<%= dropdown_action %>">
+          <%= icon "ellipsis-horizontal", class: dropdown_icon_classes %>
+        </button>
+        <ul class="<%= dropdown_menu_classes %>" 
+            data-transition-enter-active="transition ease-out duration-100" 
+            data-transition-enter-from="transform opacity-0 scale-95" 
+            data-transition-enter-to="transform opacity-100 scale-100" 
+            data-transition-leave-active="transition ease-in duration-100" 
+            data-transition-leave-from="transform opacity-100 scale-100" 
+            data-transition-leave-to="transform opacity-0 scale-95" 
+            data-<%= dropdown_target %>="menu">
+          <% dropdown_items.each do |item| %>
+            <li>
+              <%= link_to item[:url], class: dropdown_item_classes(item) do %>
+                <span><%= item[:text] %></span>
+                <%= icon "chevron-right", class: chevron_icon_classes %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

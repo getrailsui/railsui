@@ -1,0 +1,64 @@
+<div <%%= tag.attributes(merge_attributes(wrapper_attributes, **tag_options)) %>>
+  <input type="hidden" name="<%%= name %>" value="<%%= selected %>" data-<%%= controller_dashed %>-target="hiddenInput" />
+
+  <div <%%= tag.attributes(combobox_attributes) %>>
+    <span id="combobox-label" class="sr-only"><%%= label %></span>
+    <span data-<%%= controller_dashed %>-target="text"><%%= selected_label %></span>
+    <%%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
+  </div>
+
+  <div
+    data-<%%= controller_dashed %>-target="list"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95"
+    data-action="keydown.esc-><%%= controller %>#hideDropdown"
+    class="<%%= dropdown_list_classes %>"
+    role="listbox"
+    aria-labelledby="combobox-label">
+
+    <div class="p-2">
+      <label for="combobox-search" class="sr-only">Search</label>
+      <div class="relative">
+        <input
+          id="combobox-search"
+          type="text"
+          placeholder="<%%= placeholder %>"
+          autocomplete="off"
+          aria-autocomplete="list"
+          data-<%%= controller_dashed %>-target="input"
+          data-action="input-><%%= controller %>#filter keydown-><%%= controller %>#handleKeydown"
+          class="form-input text-[15px] pl-8">
+        <%%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+      </div>
+    </div>
+
+    <ul role="presentation">
+      <%% if combobox_items.any? %>
+        <%% combobox_items.each do |item| %>
+          <%%= item %>
+        <%% end %>
+      <%% elsif content.present? %>
+        <%%= content %>
+      <%% else %>
+        <%% items.each do |item| %>
+          <%%= render Railsui::UI::ComboboxItem.new(
+            label: item[:label], 
+            value: item[:value], 
+            active: item[:value] == selected, 
+            controller: controller, 
+            icon_options: item[:icon_options]
+          ) %>
+        <%% end %>
+      <%% end %>
+    </ul>
+
+    <div
+      data-<%%= controller_dashed %>-target="noresults"
+      class="hidden px-4 py-2 text-gray-500"
+      aria-hidden="true">
+      <%%= no_results_text %>
+    </div>
+  </div>
+</div>

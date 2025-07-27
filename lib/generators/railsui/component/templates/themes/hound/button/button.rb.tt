@@ -1,0 +1,92 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:button, label: "Click me", variant: :primary) %>
+# <%= rui(:button, label: "Submit", type: "submit", size: :lg) %>
+# <%= rui(:button, href: "/path", label: "Link Button") %>
+# 
+# With block content:
+# <%= rui(:button, variant: :secondary) do %>
+#   <i class="fas fa-plus"></i> Add Item
+# <% end %>
+#
+# Options:
+# - label: Button text (can also use block content)
+# - variant: :primary (default), :secondary, :success, :danger, :warning, :info, :light, :dark, :link
+# - size: :xs, :sm, :md (default), :lg, :xl
+# - type: "button" (default), "submit", "reset"
+# - disabled: Disable the button (default: false)
+# - href: URL to link to (converts button to link)
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+      def initialize(
+        label: nil,
+        variant: :primary,
+        size: :md,
+        type: "button",
+        disabled: false,
+        href: nil,
+        classes: nil,
+        **tag_options
+      )
+        @label = label
+        @variant = variant.to_sym
+        @size = size.to_sym
+        @type = type
+        @disabled = disabled
+        @href = href
+        @classes = classes
+        @tag_options = tag_options
+      end
+
+      private
+
+      attr_reader :label, :variant, :size, :type, :disabled, :href, :classes, :tag_options
+
+      def button_classes
+        base_classes = "btn"
+        variant_classes = "btn-#{variant}"
+        size_classes = size_class_for(size)
+        
+        css_classes(base_classes, variant_classes, size_classes, classes)
+      end
+      
+      def size_class_for(size)
+        case size
+        when :xs
+          "btn-xs"
+        when :sm
+          "btn-sm"
+        when :lg
+          "btn-lg"
+        when :xl
+          "btn-xl"
+        else
+          "" # default/md size
+        end
+      end
+      
+      def link?
+        href.present?
+      end
+      
+      def element_attributes
+        base_attrs = { class: button_classes }
+        
+        if link?
+          # Link attributes
+          base_attrs[:href] = href
+          base_attrs[:role] = "button" # For accessibility
+          base_attrs[:class] += " disabled" if disabled
+        else
+          # Button attributes
+          base_attrs[:type] = type
+          base_attrs[:disabled] = true if disabled
+        end
+        
+        merge_attributes(base_attrs, **tag_options)
+      end
+  end
+end

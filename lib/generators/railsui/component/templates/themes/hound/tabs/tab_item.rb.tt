@@ -1,0 +1,42 @@
+# frozen_string_literal: true
+
+module Railsui
+  class TabItemComponent < RailsuiComponent
+  def initialize(
+    label: nil,
+    icon: nil,
+    href: "#",
+    active: false,
+    classes: nil,
+    **tag_options
+  )
+    @label = label
+    @icon = icon
+    @href = href
+    @active = active
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :label, :icon, :href, :active, :classes, :tag_options
+
+  def link_classes
+    base_classes = active ? parent.send(:final_active_classes) : parent.send(:final_inactive_classes)
+    css_classes(base_classes, classes)
+  end
+  
+  def link_attributes
+    attrs = {
+      href: href,
+      class: link_classes,
+      "data-action": "click->railsui-tabs#switch",
+      "data-railsui-tabs-tab-param": href.gsub('#', '')
+    }
+    
+    attrs["aria-current"] = "page" if active
+    merge_attributes(attrs, **tag_options)
+  end
+  end
+end

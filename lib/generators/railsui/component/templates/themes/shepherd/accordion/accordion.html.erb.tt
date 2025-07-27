@@ -1,0 +1,9 @@
+<dl <%%= tag.attributes(wrapper_attributes) %>>
+  <%% if content? %>
+    <%%= content %>
+  <%% else %>
+    <%% accordion_items.each do |item| %>
+      <%%= item %>
+    <%% end %>
+  <%% end %>
+</dl>

@@ -1,0 +1,47 @@
+<header <%%= tag.attributes(header_attributes) %>>
+  <div class="container mx-auto px-4">
+    <div class="md:flex items-center flex-wrap md:space-x-2">
+      <div class="md:block flex items-center justify-between">
+        <%%= link_to root_path, class: logo_link_classes do %>
+          <%%= logo %>
+        <%% end %>
+
+        <button
+          data-action="click-><%%= controller_dashed %>#toggle"
+          class="<%%= mobile_button_classes %>">
+          <div role="none" data-<%%= controller_dashed %>-target="menuBars">
+            <%%= icon "bars-3-center-left", class: menu_bars_classes %>
+          </div>
+          <div role="none" data-<%%= controller_dashed %>-target="menuCross" class="hidden">
+            <%%= icon "x-mark", class: menu_bars_classes %>
+          </div>
+        </button>
+      </div>
+
+      <div id="base-navigation"
+        class="<%%= nav_container_classes %>"
+        data-<%%= controller_dashed %>-target="nav"
+        data-transition-enter-active="transition ease-out duration-200"
+        data-transition-enter-from="opacity-0 scale-95"
+        data-transition-enter-to="opacity-100 scale-100"
+        data-transition-leave-from="opacity-100 scale-100"
+        data-transition-leave-active="transition ease-in duration-200"
+        data-transition-leave-to="opacity-0 scale-95">
+
+        <div class="<%%= nav_wrapper_classes %>">
+          <%% if content? %>
+            <%%= content %>
+          <%% else %>
+            <nav role="Primary navigation">
+              <%%= left_navigation if left_navigation? %>
+            </nav>
+
+            <nav role="Secondary navigation">
+              <%%= right_navigation if right_navigation? %>
+            </nav>
+          <%% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

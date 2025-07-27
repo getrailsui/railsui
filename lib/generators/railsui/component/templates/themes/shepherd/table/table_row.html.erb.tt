@@ -1,0 +1,13 @@
+<tr <%= html_attributes(wrapper_attributes) %>>
+  <% if has_content? %>
+    <%= content %>
+  <% elsif has_row? %>
+    <% if row_is_array? %>
+      <% row.each do |cell| %>
+        <%= render(parent.class::CellComponent.new(cell: cell, variant: variant)) %>
+      <% end %>
+    <% else %>
+      <%= render(parent.class::CellComponent.new(cell: row, variant: variant)) %>
+    <% end %>
+  <% end %>
+</tr>

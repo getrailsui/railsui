@@ -1,0 +1,145 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:modal, title: "Edit Profile", size: :lg) do %>
+#   <%= form_with model: @user do |f| %>
+#     <!-- Form fields -->
+#   <% end %>
+# <% end %>
+#
+# With trigger button:
+# <button data-action="click->railsui-modal#open">Open Modal</button>
+# <%= rui(:modal, title: "Confirm Delete", dismissable: true) do %>
+#   <p>Are you sure you want to delete this item?</p>
+#   <div class="flex gap-2 mt-4">
+#     <%= link_to "Delete", delete_path, method: :delete, class: "btn btn-danger" %>
+#     <button data-action="click->railsui-modal#close" class="btn btn-secondary">Cancel</button>
+#   </div>
+# <% end %>
+#
+# Initially visible modal:
+# <%= rui(:modal, title: "Welcome", show: true) do %>
+#   <p>Welcome to our application!</p>
+# <% end %>
+#
+# Options:
+# - title: Modal title text
+# - size: :xs, :sm, :md (default), :lg, :xl, :full
+# - dismissable: Allow closing with ESC key (default: true)
+# - show: Initially show modal (default: false)
+# - controller: Stimulus controller name (default: "railsui-modal")
+# - backdrop_classes: Additional backdrop classes
+# - classes: Additional modal dialog classes
+# - **tag_options: Additional HTML attributes
+#
+# Notes:
+# - Requires Stimulus controller for opening/closing functionality
+# - Use data-action="click->railsui-modal#open" on trigger elements
+# - Use data-action="click->railsui-modal#close" on close buttons
+# - Size :full takes full width with margins
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    title: nil,
+    size: :md,
+    dismissable: true,
+    show: false,
+    classes: nil,
+    backdrop_classes: nil,
+    controller: "railsui-modal",
+    **tag_options
+  )
+    @title = title
+    @size = size.to_sym
+    @dismissable = dismissable
+    @show = show
+    @classes = classes
+    @backdrop_classes = backdrop_classes
+    @controller = controller
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :size, :dismissable, :show, :classes, :backdrop_classes, :controller, :tag_options
+
+  def backdrop_classes
+    base_classes = "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+    visibility_class = show ? "block" : "hidden"
+    css_classes(base_classes, visibility_class, @backdrop_classes)
+  end
+  
+  def dialog_classes
+    base_classes = "relative w-full bg-white dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-xl p-8 transform transition-all duration-200 ease-out"
+    size_class = size_class_for(size)
+    css_classes(base_classes, size_class, classes)
+  end
+  
+  def backdrop_attributes
+    attrs = {
+      class: backdrop_classes,
+      "data-transition-enter-from": "opacity-0",
+      "data-transition-enter-to": "opacity-100", 
+      "data-transition-leave-from": "opacity-100",
+      "data-transition-leave-to": "opacity-0"
+    }
+    
+    attrs["data-#{controller_dashed}-target"] = "container"
+    attrs["data-action"] = "keydown.esc@window->#{controller}#closeWithEsc" if dismissable
+    
+    attrs
+  end
+  
+  def dialog_attributes
+    attrs = {
+      class: dialog_classes,
+      role: "dialog",
+      "aria-modal": "true",
+      "data-transition-enter-from": "opacity-0 scale-95 translate-y-4",
+      "data-transition-enter-to": "opacity-100 scale-100 translate-y-0",
+      "data-transition-leave-from": "opacity-100 scale-100 translate-y-0", 
+      "data-transition-leave-to": "opacity-0 scale-95 translate-y-4"
+    }
+    
+    attrs["data-#{controller_dashed}-target"] = "content"
+    attrs["aria-labelledby"] = "modal-#{title.tr(' ', '-').downcase}" if title.present?
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def controller_dashed
+    controller.tr("_", "-")
+  end
+  
+  def close_button_classes
+    "absolute top-2 right-2 size-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50"
+  end
+  
+  def close_icon_classes
+    "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400"
+  end
+  
+  def title_id
+    "modal-#{title.tr(' ', '-').downcase}" if title.present?
+  end
+  
+  def size_class_for(size)
+    case size
+    when :xs
+      "max-w-xs"
+    when :sm
+      "max-w-sm"
+    when :md
+      "max-w-md"
+    when :lg
+      "max-w-lg"
+    when :xl
+      "max-w-xl"
+    when :full
+      "max-w-full mx-4"
+    else
+      "max-w-md"
+    end
+  end
+  end
+end

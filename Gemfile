@@ -11,3 +11,5 @@ gem "standard", "~> 1.3"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "railsui_icon"
+
+gem "view_component", "~> 3.23"

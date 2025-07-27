@@ -1,0 +1,47 @@
+# frozen_string_literal: true
+
+module Railsui
+  class AccordionItemComponent < RailsuiComponent
+  def initialize(
+    title: nil,
+    label: nil, # alias for title
+    open: false,
+    classes: nil,
+    **tag_options
+  )
+    @title = title || label
+    @open = open
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :open, :classes, :tag_options
+
+  def item_classes
+    base_classes = "group p-4 marker:content-['']"
+    css_classes(base_classes, classes)
+  end
+  
+  def summary_classes
+    "flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white"
+  end
+  
+  def content_wrapper_classes
+    "pt-6 pb-6"
+  end
+  
+  def content_classes
+    "prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300"
+  end
+  
+  def plus_icon_classes
+    "size-5 ml-4 mt-0.5 text-slate-600 dark:text-slate-300 group-open:hidden block group-open:text-primary-500 dark:group-open:text-primary-400"
+  end
+  
+  def minus_icon_classes
+    "size-5 ml-4 mt-0.5 text-slate-600 dark:text-slate-300 hidden group-open:block group-open:text-primary-500 dark:group-open:text-primary-400"
+  end
+  end
+end

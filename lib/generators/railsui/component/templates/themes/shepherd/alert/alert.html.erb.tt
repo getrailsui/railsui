@@ -1,0 +1,25 @@
+<div <%%= tag.attributes(wrapper_attributes) %>>
+  <div class="flex items-start gap-4">
+    <%% if icon.present? %>
+      <%%= icon icon, class: icon_classes %>
+    <%% end %>
+
+    <div class="flex-1">
+      <%% if title.present? %>
+        <p class="<%%= title_classes %>"><%%= title %></p>
+      <%% end %>
+
+      <%% if content? %>
+        <div><%%= content %></div>
+      <%% end %>
+    </div>
+  </div>
+
+  <%% if dismissable %>
+    <button type="button" 
+            class="<%%= dismiss_button_classes %>" 
+            data-action="click-><%%= controller_dashed %>#close">
+      <%%= icon "x-mark", class: dismiss_icon_classes %>
+    </button>
+  <%% end %>
+</div>

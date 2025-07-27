@@ -1,0 +1,50 @@
+# frozen_string_literal: true
+
+module Railsui
+  class TableCellComponent < RailsuiComponent
+  def initialize(
+    content: nil,
+    cell: nil,
+    colspan: nil,
+    classes: nil,
+    variant: :border,
+    **tag_options
+  )
+    @content = content
+    @cell = cell
+    @colspan = colspan
+    @classes = classes
+    @variant = variant.to_sym
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :content, :cell, :colspan, :classes, :variant, :tag_options
+  
+  def cell_classes
+    base_classes = case variant
+    when :borderless
+      "p-3 text-left"
+    else # :border
+      "p-3 border border-slate-200 dark:border-slate-700/80"
+    end
+    
+    css_classes(base_classes, classes)
+  end
+  
+  def cell_content
+    content || (cell.is_a?(Hash) ? cell[:content] : cell)
+  end
+  
+  def cell_colspan
+    colspan || (cell.is_a?(Hash) ? cell[:colspan] : nil)
+  end
+  
+  def cell_attributes
+    attrs = { class: cell_classes }
+    attrs[:colspan] = cell_colspan if cell_colspan
+    merge_attributes(attrs, **tag_options)
+  end
+  end
+end

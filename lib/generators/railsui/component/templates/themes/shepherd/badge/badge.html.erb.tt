@@ -1,0 +1,1 @@
+<%%= content_tag :span, display_content, **badge_attributes %>

@@ -1,0 +1,13 @@
+<tfoot>
+  <%% if footer_rows.any? %>
+    <%% footer_rows.each do |row| %>
+      <%%= row %>
+    <%% end %>
+  <%% elsif content.present? %>
+    <%%= content %>
+  <%% elsif rows.any? %>
+    <%% rows.each do |row| %>
+      <%%= render Railsui::UI::TableRow.new(row: row, variant: variant) %>
+    <%% end %>
+  <%% end %>
+</tfoot>

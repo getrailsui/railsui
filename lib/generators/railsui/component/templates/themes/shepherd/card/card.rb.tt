@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    title:,
+    actions: nil,
+    classes: nil,
+    **tag_options
+  )
+    @title = title
+    @actions = actions
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :actions, :classes, :tag_options
+
+  def card_classes
+    base_classes = "rounded-lg shadow-xs shadow-zinc-400/20 bg-white p-6 dark:bg-zinc-800 dark:text-white border border-zinc-300 dark:border-zinc-600/80 dark:shadow-zinc-950/40 border-zinc-300"
+    css_classes(base_classes, classes)
+  end
+  
+  def card_attributes
+    attrs = { class: card_classes }
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def title_classes
+    "h4"
+  end
+  
+  def content_classes
+    "mt-2 mb-4"
+  end
+end

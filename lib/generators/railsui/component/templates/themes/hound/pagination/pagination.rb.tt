@@ -1,0 +1,126 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:pagination,
+#   prev_url: users_path(page: @page - 1),
+#   next_url: users_path(page: @page + 1),
+#   pages: [
+#     { number: 1, url: users_path(page: 1) },
+#     { number: 2, url: users_path(page: 2), active: true },
+#     { number: 3, url: users_path(page: 3) },
+#     { gap: true },
+#     { number: 10, url: users_path(page: 10) }
+#   ]
+# ) %>
+#
+# With disabled prev/next:
+# <%= rui(:pagination,
+#   prev_url: nil,  # Disabled when nil
+#   next_url: users_path(page: 2),
+#   pages: [
+#     { number: 1, url: users_path(page: 1), active: true },
+#     { number: 2, url: users_path(page: 2) }
+#   ]
+# ) %>
+#
+# With custom active styles:
+# <%= rui(:pagination,
+#   prev_url: @prev_page_url,
+#   next_url: @next_page_url,
+#   pages: @page_links,
+#   active_classes: "bg-primary-500 text-white"
+# ) %>
+#
+# Options:
+# - prev_url: URL for previous page (nil to disable)
+# - next_url: URL for next page (nil to disable)
+# - pages: Array of page items (required)
+#   - number: Page number to display
+#   - url: Link URL for the page
+#   - active: Mark as current page (default: false)
+#   - gap: Show "..." gap indicator instead of page number
+# - active_classes: Custom classes for active page
+# - classes: Additional CSS classes for nav element
+# - **tag_options: Additional HTML attributes
+#
+# Notes:
+# - Responsive design shows prev/next as full-width buttons on mobile
+# - Gap indicators (ellipsis) are non-clickable
+# - Active page has distinctive border and color styling
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    prev_url: nil,
+    next_url: nil,
+    pages:,
+    classes: nil,
+    active_classes: nil,
+    **tag_options
+  )
+    @prev_url = prev_url
+    @next_url = next_url
+    @pages = pages
+    @classes = classes
+    @active_classes = active_classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :prev_url, :next_url, :pages, :classes, :active_classes, :tag_options
+
+  def nav_classes
+    default_classes = "text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300"
+    css_classes(classes || default_classes)
+  end
+  
+  def nav_attributes
+    attrs = {
+      class: nav_classes,
+      "aria-label": "Pagination"
+    }
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def final_active_classes
+    active_classes.presence || default_active_classes
+  end
+  
+  def default_active_classes
+    "py-2 px-4 block border-t-2 border-primary-500 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30"
+  end
+  
+  def prev_link_classes
+    "flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+  end
+  
+  def prev_disabled_classes
+    "opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none"
+  end
+  
+  def next_link_classes
+    "flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+  end
+  
+  def next_disabled_classes
+    "opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none"
+  end
+  
+  def page_link_classes
+    "py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"
+  end
+  
+  def gap_classes
+    "py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none"
+  end
+  
+  def arrow_icon_classes
+    "shrink-0 size-4 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200"
+  end
+  
+  def static_arrow_classes
+    "size-4 shrink-0"
+  end
+  end
+end

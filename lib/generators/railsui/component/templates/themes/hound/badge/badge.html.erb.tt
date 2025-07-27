@@ -1,0 +1,7 @@
+<span <%%= tag.attributes(merge_attributes({ class: badge_classes }, **tag_options)) %>>
+  <%% if label.present? %>
+    <%%= label %>
+  <%% else %>
+    <%%= content %>
+  <%% end %>
+</span>

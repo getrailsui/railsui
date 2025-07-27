@@ -1,0 +1,3 @@
+<th <%= html_attributes(wrapper_attributes) %>>
+  <%= header_content %>
+</th>

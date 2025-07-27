@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+module Railsui
+  class TableBodyComponent < RailsuiComponent
+    renders_many :table_rows, Railsui::TableRowComponent
+
+  def initialize(
+    rows: [],
+    variant: :border,
+    **tag_options
+  )
+    @rows = rows
+    @variant = variant.to_sym
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :rows, :variant, :tag_options
+  end
+end

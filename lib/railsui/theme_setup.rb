@@ -6,8 +6,80 @@ module Railsui
   module ThemeSetup
     # gems
     def install_gems
+      # Check and add ViewComponent gem first
+      ensure_view_component_gem
+
+      # Run bundle install if gem was added
+      if @view_component_added
+        say "📦 Installing ViewComponent gem...", :yellow
+        run "bundle install"
+      end
+
+      # Create base components for ViewComponent
+      ensure_base_components
+
+      # Install other required gems
       rails_command "generate railsui_icon:install"
       rails_command "action_text:install"
+    end
+
+    def ensure_view_component_gem
+      gemfile_path = Rails.root.join("Gemfile")
+      gemfile_content = File.read(gemfile_path)
+
+      @view_component_added = false
+
+      unless gemfile_content.include?('gem "view_component"') || gemfile_content.include?("gem 'view_component'")
+        say "⚠️  ViewComponent gem not found in Gemfile", :yellow
+        say "Adding ViewComponent to your Gemfile...", :green
+
+        Railsui.run_command("bundle add view_component")
+
+        say "✅ Added ViewComponent gem to Gemfile", :green
+        @view_component_added = true
+      else
+        say "✅ ViewComponent gem already present in Gemfile", :green
+      end
+    end
+
+    def ensure_base_components
+      # Create RailsuiComponent base class
+      component_path = Rails.root.join("app/components/railsui_component.rb")
+
+      unless File.exist?(component_path)
+        say "Creating base RailsuiComponent...", :green
+
+        FileUtils.mkdir_p(Rails.root.join("app/components"))
+
+        File.write(component_path, <<~RUBY)
+          # frozen_string_literal: true
+
+          # Base component class for Rails UI components
+          # This avoids conflicts with existing ApplicationComponent if you have one.
+          class RailsuiComponent < ViewComponent::Base
+            private
+
+            def theme
+              @theme ||= Railsui.config.theme || 'hound'
+            end
+
+            def css_classes(*classes)
+              classes.flatten.compact.reject(&:empty?).join(" ")
+            end
+
+            def merge_attributes(defaults = {}, **options)
+              merged = defaults.dup
+
+              if options[:class] && merged[:class]
+                merged[:class] = css_classes(merged[:class], options[:class])
+              end
+
+              merged.merge(options.except(:class))
+            end
+          end
+        RUBY
+      end
+
     end
 
     # Assets
@@ -124,7 +196,7 @@ module Railsui
 
     def install_theme_dependencies(theme)
       say("Installing dependencies", :yellow)
-      add_yarn_packages(theme_dependencies(theme))
+      add_packages(theme_dependencies(theme))
     end
 
 
@@ -154,8 +226,44 @@ module Railsui
       end
     end
 
-    def add_yarn_packages(packages)
-      run "yarn add #{packages.join(' ')} --latest"
+    def add_packages(packages)
+      package_manager = detect_package_manager
+      say "Using #{package_manager} to install packages...", :green
+
+      case package_manager
+      when "yarn"
+        run "yarn add #{packages.join(' ')}"
+      when "npm"
+        run "npm install #{packages.join(' ')}"
+      when "pnpm"
+        run "pnpm add #{packages.join(' ')}"
+      when "bun"
+        run "bun add #{packages.join(' ')}"
+      else
+        # Fallback to yarn if no package manager detected
+        say "No package manager detected, falling back to yarn", :yellow
+        run "yarn add #{packages.join(' ')}"
+      end
+    end
+
+    def detect_package_manager
+      # Check for lock files in order of preference
+      if File.exist?(Rails.root.join("yarn.lock"))
+        "yarn"
+      elsif File.exist?(Rails.root.join("package-lock.json"))
+        "npm"
+      elsif File.exist?(Rails.root.join("pnpm-lock.yaml"))
+        "pnpm"
+      elsif File.exist?(Rails.root.join("bun.lockb"))
+        "bun"
+      else
+        # Check for package.json to determine if we should use npm as default
+        if File.exist?(Rails.root.join("package.json"))
+          "npm" # Default to npm if package.json exists but no lock file
+        else
+          "yarn" # Fallback to yarn
+        end
+      end
     end
 
     # Mailers

@@ -1,0 +1,21 @@
+<div <%%= tag.attributes(flash_attributes) %>>
+  <%% if show_start_icon? %>
+    <%%= icon icon_name, class: icon_classes %>
+  <%% end %>
+
+  <p class="<%%= message_classes %>"><%%= content %></p>
+
+  <%% if show_end_icon? %>
+    <%%= icon icon_name, class: icon_classes %>
+  <%% end %>
+
+  <%% if controller.present? && dismissable %>
+    <button
+      type="button"
+      class="<%%= dismiss_button_classes %>"
+      aria-label="Dismiss"
+      data-action="<%%= controller %>#remove">
+      <%%= icon "x-mark", class: dismiss_icon_classes %>
+    </button>
+  <%% end %>
+</div>

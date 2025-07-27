@@ -1,0 +1,47 @@
+# frozen_string_literal: true
+
+class Railsui::UI::AccordionItem < Railsui::UI::Component
+  def initialize(
+    label: "Title",
+    open: false,
+    **tag_options
+  )
+    @label = label
+    @open = open
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :label, :open, :tag_options
+
+  def details_classes
+    "group p-4 marker:content-['']"
+  end
+  
+  def details_attributes
+    attrs = { class: details_classes }
+    attrs[:open] = true if open
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def summary_classes
+    "flex w-full cursor-pointer select-none justify-between text-left text-base font-medium font-heading leading-7 text-zinc-900 group-open:text-primary-500 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white"
+  end
+  
+  def plus_icon_classes
+    "size-5 flex-none ml-4 mt-0.5 text-zinc-600 dark:text-zinc-300 group-open:text-primary-600 dark:group-open:text-primary-400 group-open:hidden block"
+  end
+  
+  def minus_icon_classes
+    "size-5 flex-none ml-4 mt-0.5 text-zinc-600 dark:text-zinc-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden"
+  end
+  
+  def content_wrapper_classes
+    "pt-6 pb-6"
+  end
+  
+  def content_classes
+    "prose prose-zinc dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300"
+  end
+end

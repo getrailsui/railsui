@@ -1,0 +1,82 @@
+# frozen_string_literal: true
+
+class Railsui::UI::<%= class_name %> < Railsui::UI::Component
+  def initialize(
+    src: nil,
+    alt: "Avatar",
+    classes: nil,
+    demo: false,
+    size: :md,
+    rounded: :full,
+    **tag_options
+  )
+    @src = src
+    @alt = alt
+    @classes = classes
+    @demo = demo
+    @size = size.to_sym
+    @rounded = rounded
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :src, :alt, :classes, :demo, :size, :rounded, :tag_options
+
+  def avatar_classes
+    base_class = "object-cover"
+    css_classes(size_class, rounded_class, base_class, classes)
+  end
+  
+  def avatar_attributes
+    attrs = {
+      class: avatar_classes,
+      alt: alt
+    }
+    
+    merge_attributes(attrs, **tag_options)
+  end
+  
+  def resolved_src
+    if src.respond_to?(:attached?) && src.attached?
+      url_for(src)
+    elsif src.is_a?(String)
+      src
+    elsif demo.present?
+      demo_config = demo.is_a?(Hash) ? demo.symbolize_keys : {}
+      demo_id = demo_config[:id] || 32
+      demo_variant = demo_config[:variant] || "men"
+      demo_avatar_url(id: demo_id, variant: demo_variant)
+    end
+  end
+  
+  def size_class
+    size_classes[size] || "size-10"
+  end
+  
+  def rounded_class
+    return nil if rounded == false
+    rounded_classes[rounded.to_sym] || "rounded-full"
+  end
+  
+  def size_classes
+    {
+      xs: "size-6",
+      sm: "size-8",
+      md: "size-10",
+      lg: "size-12",
+      xl: "size-16",
+      "2xl": "size-20"
+    }
+  end
+  
+  def rounded_classes
+    {
+      sm: "rounded-sm",
+      md: "rounded-md",
+      lg: "rounded-lg",
+      xl: "rounded-xl",
+      full: "rounded-full"
+    }
+  end
+end

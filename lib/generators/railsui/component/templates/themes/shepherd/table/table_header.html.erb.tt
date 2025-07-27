@@ -1,0 +1,11 @@
+<thead <%= html_attributes(wrapper_attributes) %>>
+  <% if has_content? %>
+    <%= content %>
+  <% else %>
+    <tr>
+      <% headers.each do |header| %>
+        <%= render(parent.class::HeaderCellComponent.new(header: header, variant: variant)) %>
+      <% end %>
+    </tr>
+  <% end %>
+</thead>

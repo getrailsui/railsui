@@ -1,0 +1,9 @@
+<dl <%%= tag.attributes(merge_attributes({ class: wrapper_classes }, **tag_options)) %>>
+  <%% if items.any? %>
+    <%% items.each do |item| %>
+      <%%= item %>
+    <%% end %>
+  <%% else %>
+    <%%= content %>
+  <%% end %>
+</dl>

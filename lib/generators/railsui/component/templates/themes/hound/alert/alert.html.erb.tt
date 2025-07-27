@@ -1,0 +1,27 @@
+<div <%%= tag.attributes(wrapper_attributes) %>>
+  <%% if icon.present? %>
+    <div class="<%%= content_container_classes %>">
+      <%%= icon icon, class: icon_classes %>
+      <%% if title.present? %>
+        <p class="<%%= title_classes %>"><%%= title %></p>
+      <%% end %>
+    </div>
+  <%% end %>
+
+  <%% if has_title_without_icon? %>
+    <p class="<%%= title_classes %>"><%%= title %></p>
+  <%% end %>
+
+  <%% if content.present? %>
+    <div><%%= content %></div>
+  <%% end %>
+
+  <%% if dismissable %>
+    <button 
+      type="button" 
+      class="<%%= dismiss_button_classes %>" 
+      data-action="click->railsui-<%%= component_controller %>#close">
+      <%%= icon "x-mark", class: dismiss_icon_classes %>
+    </button>
+  <%% end %>
+</div>

@@ -1,0 +1,23 @@
+<div <%%= tag.attributes(backdrop_attributes) %>>
+  <div <%%= tag.attributes(dialog_attributes) %>>
+    <%% if show_header? %>
+      <%% if title.present? %>
+        <h3 id="<%%= title_id %>" class="<%%= title_classes %>">
+          <%%= title %>
+        </h3>
+      <%% end %>
+
+      <%% if dismissable %>
+        <button
+          type="button"
+          class="<%%= close_button_classes %>"
+          data-action="click-><%%= controller %>#close"
+          aria-label="Close modal">
+          <%%= icon "x-mark", class: close_icon_classes %>
+        </button>
+      <%% end %>
+    <%% end %>
+
+    <%%= content %>
+  </div>
+</div>

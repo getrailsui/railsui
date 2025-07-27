@@ -1,0 +1,13 @@
+<tr <%%= tag.attributes(merge_attributes({ class: row_classes }, **tag_options)) %>>
+  <%% if table_cells.any? %>
+    <%% table_cells.each do |cell| %>
+      <%%= cell %>
+    <%% end %>
+  <%% elsif content.present? %>
+    <%%= content %>
+  <%% elsif row.any? %>
+    <%% row.each do |cell_data| %>
+      <%%= render Railsui::UI::TableCell.new(content: cell_data, variant: variant) %>
+    <%% end %>
+  <%% end %>
+</tr>

@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+module Railsui
+  class TableHeaderComponent < RailsuiComponent
+    renders_many :header_cells, Railsui::TableHeaderCellComponent
+
+  def initialize(
+    headers: [],
+    variant: :border,
+    **tag_options
+  )
+    @headers = headers
+    @variant = variant.to_sym
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :headers, :variant, :tag_options
+  end
+end

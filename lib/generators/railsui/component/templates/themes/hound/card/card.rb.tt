@@ -1,0 +1,75 @@
+# frozen_string_literal: true
+
+# Usage:
+# <%= rui(:card, title: "Card Title", content: "Card content goes here") %>
+# <%= rui(:card, title: "User Profile") do %>
+#   <p>Custom card content</p>
+#   <img src="avatar.jpg" alt="Avatar">
+# <% end %>
+#
+# With header, content, and footer:
+# <%= rui(:card,
+#   header: -> { content_tag(:h3, "Card Header") },
+#   footer: -> { link_to "View More", "#", class: "text-primary-500" }
+# ) do %>
+#   Main card content
+# <% end %>
+#
+# With actions:
+# <%= rui(:card, title: "Product", actions: -> { 
+#   link_to "Edit", edit_path, class: "btn btn-sm btn-primary" 
+# }) do %>
+#   Product details here
+# <% end %>
+#
+# Options:
+# - title: Card title text
+# - content: Card content (can also use block)
+# - actions: Lambda/Proc for action buttons (displayed in header area)
+# - header: Lambda/Proc for custom header content
+# - footer: Lambda/Proc for custom footer content  
+# - classes: Additional CSS classes
+# - **tag_options: Additional HTML attributes
+#
+# Notes:
+# - Use blocks for complex card content
+# - Actions are displayed alongside the title in the header
+# - Header and footer accept lambdas for custom content
+module Railsui
+  class <%= class_name %>Component < RailsuiComponent
+  def initialize(
+    title: nil,
+    content: nil,
+    actions: nil,
+    header: nil,
+    footer: nil,
+    classes: nil,
+    **tag_options
+  )
+    @title = title
+    @content = content
+    @actions = actions
+    @header = header
+    @footer = footer
+    @classes = classes
+    @tag_options = tag_options
+  end
+
+  private
+
+  attr_reader :title, :content, :actions, :header, :footer, :classes, :tag_options
+
+  def card_classes
+    base_classes = "rounded-lg bg-white dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 p-6"
+    css_classes(base_classes, classes)
+  end
+  
+  def title_classes
+    "text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight"
+  end
+  
+  def content_classes
+    "prose prose-slate dark:prose-invert mt-2 mb-4"
+  end
+  end
+end

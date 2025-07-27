@@ -1,0 +1,7 @@
+<td <%%= tag.attributes(cell_attributes) %>>
+  <%% if cell_content.present? %>
+    <%%= cell_content %>
+  <%% else %>
+    <%%= content %>
+  <%% end %>
+</td>

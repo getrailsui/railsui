@@ -1,0 +1,6 @@
+<%= link_to href, link_attributes do %>
+  <% if has_icon? %>
+    <%= icon icon, class: icon_classes %>
+  <% end %>
+  <%= label %>
+<% end %>
