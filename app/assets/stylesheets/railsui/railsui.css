@@ -59,7 +59,7 @@
 }
 
 .railsui .rui-primary-nav ul li a.nav-link-active:after {
-  content: "";
+  content: '';
   background: none;
 }
 
@@ -88,7 +88,7 @@
   overflow: auto !important;
   padding: 1em;
   font-size: 16px;
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
 }
 
 .railsui code.hljs {
@@ -219,12 +219,12 @@
   font-style: italic;
 }
 
-.railsui [data-controller="anchor"] {
+.railsui [data-controller='anchor'] {
   @apply relative cursor-pointer;
 }
 
-.railsui [data-controller="anchor"]::before {
-  content: "#";
+.railsui [data-controller='anchor']::before {
+  content: '#';
   position: absolute;
   top: 0;
   left: -16px;
@@ -235,7 +235,7 @@
   color: #a1a1a1;
 }
 
-.railsui [data-controller="anchor"]:hover::before {
+.railsui [data-controller='anchor']:hover::before {
   @apply opacity-100;
 }
 
@@ -294,4 +294,22 @@
 
 .animate-toast-from-left {
   animation: toast-from-left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.railsui .flash {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.railsui .flash-notice {
+  background-color: navy;
+}
+
+.railsui .flash-alert {
+  background-color: red;
 }

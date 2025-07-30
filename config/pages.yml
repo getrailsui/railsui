@@ -300,7 +300,7 @@ shepherd:
       - admin
     path: rui_account_preferences_path
     add_to_nav: false
-corgi:
+corgie:
   home:
     title: Home
     description: A simple home page.
