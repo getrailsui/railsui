@@ -1,14 +1,20 @@
 module Railsui
   module Pages
-    CONFIG_FILE = Railsui::Engine.root.join("config", "pages.yml")
-    VIEWS_FOLDER = Rails.root.join("app/views/rui/pages")
+    CONFIG_FILE = Railsui::Engine.root.join('config', 'pages.yml')
+    VIEWS_FOLDER = Rails.root.join('app/views/rui/pages')
 
     def self.all_pages
       @all_pages ||= load_pages_config
     end
 
     def self.theme_pages
-      all_pages[Railsui.config.theme]
+      theme = Railsui.config.theme
+      return {} if theme.nil?
+
+      pages = all_pages[theme]
+      return {} if pages.nil?
+
+      pages
     end
 
     def self.get_pages(theme)
@@ -24,10 +30,14 @@ module Railsui
     end
 
     def self.all_pages_installed?
+      return false if theme_pages.nil? || theme_pages.empty?
+
       theme_pages.keys.all? { |page| page_exists?(page) }
     end
 
     def self.installed_pages
+      return {} if theme_pages.nil?
+
       theme_pages.select { |page, details| page_enabled?(page) && page_exists?(page) }
     end
 
