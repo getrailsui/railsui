@@ -17,7 +17,7 @@
       peer-checked:before:absolute
       peer-checked:before:top-0
       peer-checked:before:left-0
-      peer-checked:before:bg-black/95
+      peer-checked:before:bg-green-500/95
       dark:peer-checked:before:bg-amber-300
       dark:peer-checked:before:text-neutral-950
       dark:peer-checked:ring-amber-300
@@ -31,13 +31,19 @@
       peer-checked:shadow-black/10">
           <%= image_tag theme[:thumbnail], alt: "#{theme[:name]} theme" %>
         </label>
-        <div class="mt-4 flex items-center justify-between gap-2">
-          <p class="font-semibold text-base my-2">
-            <%= theme[:name] %>
-          </p>
-          <%= link_to theme[:preview_link], target: :_blank, class: "inline-flex text-sm items-center gap-2 font-medium text-sm py-1 px-2 rounded-md border border-neutral-300 dark:border-neutral-600 hover:shadow-sm" do %>
-            <span>Preview</span>
-          <% end %>
+        <div class="mt-4">
+          <div class="flex flex-col gap-1">
+            <p class="font-semibold text-base mb-1">
+              <%= theme[:name] %>
+            </p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+              <%= theme[:category] %>
+            </p>
+            <%= link_to theme[:preview_link], target: :_blank, class: "text-sm font-medium hover:underline flex items-center gap-1.5"  do %>
+              <p>Preview</p>
+              <%= icon "arrow-up-right", class: "size-3 stroke-neutral-400" %>
+            <% end %>
+           </div>
         </div>
       </li>
     <% end %>

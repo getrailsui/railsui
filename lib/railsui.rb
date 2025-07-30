@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "railsui/version"
 require "railsui/engine"
-require 'railsui_icon'
-require 'meta-tags'
+require "railsui_icon"
+require "meta-tags"
 
 module Railsui
   autoload :Configuration, "railsui/configuration"
@@ -41,10 +43,10 @@ module Railsui
   def self.theme_logo_url
     theme = Railsui.config.theme
     file_extension = if defined?(Rails.application) && Rails.application.config.action_mailer
-                     "png"
-                   else
-                     "svg"
-                   end
+                       "png"
+                     else
+                       "svg"
+                     end
     "https://f001.backblazeb2.com/file/railsui/themes/#{theme}/logo.#{file_extension}"
   end
 

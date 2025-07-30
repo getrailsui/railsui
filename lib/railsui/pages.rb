@@ -35,6 +35,7 @@ module Railsui
 
     def self.load_pages_config
       return {} unless File.exist?(CONFIG_FILE)
+
       YAML.safe_load_file(CONFIG_FILE)
     end
   end
