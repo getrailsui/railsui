@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'fileutils'
+require "fileutils"
 
 module Railsui
   module ThemeSetup
@@ -36,7 +36,8 @@ module Railsui
         controller_name = File.basename(file, ".js").sub("_controller", "")
         import_name = controller_name.camelize
         registration_name = controller_name.dasherize
-        "import #{import_name}Controller from \"./#{File.basename(file, '.js')}\";\napplication.register(\"#{registration_name}\", #{import_name}Controller);"
+        "import #{import_name}Controller from \"./#{File.basename(file,
+                                                                  ".js")}\";\napplication.register(\"#{registration_name}\", #{import_name}Controller);"
       end.join("\n")
 
       js_content = <<-JAVASCRIPT.strip_heredoc
@@ -61,25 +62,26 @@ module Railsui
       railsui_index_content += "\n\n#{js_content}"
 
       # Write the railsui/index.js file
-      create_file railsui_index_js_path, "import { application } from \"../application\"\n\n#{railsui_index_content}", force: true
+      create_file railsui_index_js_path, "import { application } from \"../application\"\n\n#{railsui_index_content}",
+                  force: true
 
       # Read the existing main index.js content
       index_js_content = File.exist?(index_js_path) ? File.read(index_js_path) : ""
 
       # Remove old import statements for railsui controllers
-      new_index_js_content = index_js_content.gsub(/import .* from "\.\/railsui\/.*";\n*/, "")
+      new_index_js_content = index_js_content.gsub(%r{import .* from "\./railsui/.*";\n*}, "")
 
       # Add the new import statement for railsui/index.js if not already present
-      unless new_index_js_content.include?('import "./railsui"')
-        new_index_js_content += "import \"./railsui\"\n"
-      end
+      new_index_js_content += "import \"./railsui\"\n" unless new_index_js_content.include?('import "./railsui"')
 
       # Write the updated content back to main index.js
       create_file index_js_path, new_index_js_content, force: true
-      say("Updated app/javascript/controllers/index.js and created app/javascript/controllers/railsui/index.js successfully.", :green)
+      say(
+        "Updated app/javascript/controllers/index.js and created app/javascript/controllers/railsui/index.js successfully.", :green
+      )
     end
 
-   def copy_theme_stylesheets(theme)
+    def copy_theme_stylesheets(theme)
       say("Copying theme-specific stylesheets", :yellow)
 
       # Define paths
@@ -99,7 +101,7 @@ module Railsui
 
       # Generate import statements for stylesheets
       import_statements = stylesheet_files.map do |file|
-        "@import \"../stylesheets/railsui/#{File.basename(file, '.css')}\";"
+        "@import \"../stylesheets/railsui/#{File.basename(file, ".css")}\";"
       end.join("\n")
 
       # Read the existing application.tailwind.css content
@@ -108,12 +110,12 @@ module Railsui
       # Remove old @tailwind directives and import statements for tailwindcss and railsui stylesheets
       cleaned_css_content = application_css_content
       cleaned_css_content = cleaned_css_content.gsub(/@import "tailwindcss";\n*/, "")
-      cleaned_css_content = cleaned_css_content.gsub(/@import "\.\.\/stylesheets\/railsui\/.*";\n*/, "")
+      cleaned_css_content = cleaned_css_content.gsub(%r{@import "\.\./stylesheets/railsui/.*";\n*}, "")
 
       # Add the new import statements in the correct order
       new_application_css_content = [
         '@import "tailwindcss";',
-        cleaned_css_content.strip,  # Preserving existing content
+        cleaned_css_content.strip, # Preserving existing content
         import_statements
       ].join("\n")
 
@@ -126,7 +128,6 @@ module Railsui
       say("Installing dependencies", :yellow)
       add_yarn_packages(theme_dependencies(theme))
     end
-
 
     def remove_action_text_defaults
       say "Remove default ActionText CSS"
@@ -142,20 +143,59 @@ module Railsui
     def theme_dependencies(theme)
       case theme
       when "hound"
-        ["@tailwindcss/typography", "apexcharts", "railsui-stimulus", "stimulus-use","tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "apexcharts", "railsui-stimulus", "stimulus-use", "tailwindcss@latest",
+         "@tailwindcss/cli@latest", "tippy.js"]
       when "shepherd"
-        ["@tailwindcss/typography", "apexcharts", "flatpickr", "hotkeys-js", "photoswipe", "railsui-stimulus", "stimulus-use", "tippy.js", "tailwindcss@latest", "@tailwindcss/cli@latest"]
+        ["@tailwindcss/typography", "apexcharts", "flatpickr", "hotkeys-js", "photoswipe", "railsui-stimulus",
+         "stimulus-use", "tippy.js", "tailwindcss@latest", "@tailwindcss/cli@latest"]
       when "retriever"
-        ["@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr","railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "apexcharts", "autoprefixer", "flatpickr", "railsui-stimulus", "stimulus-use",
+         "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
       when "setter"
-        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js"]
+        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest",
+         "@tailwindcss/cli@latest", "tippy.js"]
       else
-        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest" "tippy.js"]
+        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest",
+         "@tailwindcss/cli@latesttippy.js"]
       end
     end
 
     def add_yarn_packages(packages)
-      run "yarn add #{packages.join(' ')} --latest"
+      package_manager = detect_package_manager
+      say "Using #{package_manager} to install packages...", :green
+
+      case package_manager
+      when "yarn"
+        run "yarn add #{packages.join(" ")}"
+      when "npm"
+        run "npm install #{packages.join(" ")}"
+      when "pnpm"
+        run "pnpm add #{packages.join(" ")}"
+      when "bun"
+        run "bun add #{packages.join(" ")}"
+      else
+        # Fallback to yarn if no package manager detected
+        say "No package manager detected, falling back to yarn", :yellow
+        run "yarn add #{packages.join(" ")}"
+      end
+    end
+
+    def detect_package_manager
+      # Check for lock files in order of preference
+      if File.exist?(Rails.root.join("yarn.lock"))
+        "yarn"
+      elsif File.exist?(Rails.root.join("package-lock.json"))
+        "npm"
+      elsif File.exist?(Rails.root.join("pnpm-lock.yaml"))
+        "pnpm"
+      elsif File.exist?(Rails.root.join("bun.lockb"))
+        "bun"
+      elsif File.exist?(Rails.root.join("package.json"))
+        # Check for package.json to determine if we should use npm as default
+        "npm" # Default to npm if package.json exists but no lock file
+      else
+        "yarn" # Fallback to yarn
+      end
     end
 
     # Mailers
@@ -164,12 +204,13 @@ module Railsui
 
       rails_command "generate mailer Railsui minimal promotion transactional"
 
-combined_mailer_setup = <<-RUBY
+      combined_mailer_setup = <<-RUBY
   layout "rui/railsui_mailer"
   helper :application
-RUBY
+      RUBY
 
-      insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, combined_mailer_setup, after: "class RailsuiMailer < ApplicationMailer\n"
+      insert_into_file Rails.root.join("app/mailers/railsui_mailer.rb").to_s, combined_mailer_setup,
+                       after: "class RailsuiMailer < ApplicationMailer\n"
 
       copy_sample_mailers(theme)
     end
@@ -181,16 +222,14 @@ RUBY
     end
 
     def update_railsui_mailer_layout(theme)
-      source_file = Rails.root.join('app/views/layouts/rui/railsui_mailer.html.erb')
-      if File.exist?(source_file)
-        remove_file source_file
-      end
+      source_file = Rails.root.join("app/views/layouts/rui/railsui_mailer.html.erb")
+      remove_file source_file if File.exist?(source_file)
 
       copy_file "themes/#{theme}/views/layouts/rui/railsui_mailer.html.erb", source_file, force: true
     end
 
     def update_application_helper
-content = <<-RUBY
+      content = <<-RUBY
   def spacer(amount = 16)
     render "rui/shared/email_spacer", amount: amount
   end
@@ -205,7 +244,7 @@ content = <<-RUBY
   def email_callout(&block)
     render "rui/shared/email_callout", block: block
   end
-RUBY
+      RUBY
 
       insert_into_file "#{Rails.root}/app/helpers/application_helper.rb", content, after: "module ApplicationHelper\n"
     end
@@ -236,7 +275,7 @@ RUBY
     end
 
     def copy_railsui_pages_routes
-      routes_file = Rails.root.join('config/routes.rb')
+      routes_file = Rails.root.join("config/routes.rb")
 
       # Define the regex pattern for the `rui` namespace block
       namespace_pattern = /^\s*namespace :rui do.*?end\n/m
@@ -253,17 +292,17 @@ RUBY
       route_content = File.read(routes_file)
 
       # Remove the existing `rui` namespace block if present
-      updated_content = route_content.gsub(namespace_pattern, '')
+      updated_content = route_content.gsub(namespace_pattern, "")
 
       # Append the new routes block after the initial `Rails.application.routes.draw do` line
       updated_content.sub!("Rails.application.routes.draw do\n", "Rails.application.routes.draw do\n#{routes_block}")
 
       # Write the updated content back to the routes file
-      File.open(routes_file, 'w') { |file| file.write(updated_content) }
+      File.write(routes_file, updated_content)
     end
 
     # Pages
-    def copy_railsui_page_controller(theme)
+    def copy_railsui_page_controller(_theme)
       copy_file "controllers/pages_controller.rb", "app/controllers/rui/pages_controller.rb", force: true
     end
 
@@ -275,28 +314,28 @@ RUBY
       directory "themes/#{theme}/views/layouts/rui", "app/views/layouts/rui", force: true
     end
 
-    def copy_railsui_head(theme)
+    def copy_railsui_head(_theme)
       layout_file = "app/views/layouts/application.html.erb"
       return unless File.exist?(layout_file)
 
-      unless File.read(layout_file).include?('<%= railsui_head %>')
-    content = <<-ERB
+      return if File.read(layout_file).include?("<%= railsui_head %>")
+
+      content = <<-ERB
     <%= railsui_head %>
-    ERB
-        insert_into_file layout_file, "\n#{content}", before: '</head>'
-      end
+      ERB
+      insert_into_file layout_file, "\n#{content}", before: "</head>"
     end
 
-    def copy_railsui_launcher(theme)
+    def copy_railsui_launcher(_theme)
       layout_file = "app/views/layouts/application.html.erb"
       return unless File.exist?(layout_file)
 
-      unless File.read(layout_file).include?('<%= railsui_launcher if Rails.env.development? %>')
-    content = <<-ERB
+      return if File.read(layout_file).include?("<%= railsui_launcher if Rails.env.development? %>")
+
+      content = <<-ERB
     <%= railsui_launcher if Rails.env.development? %>
-    ERB
-        insert_into_file layout_file, "\n#{content}", before: '</body>'
-      end
+      ERB
+      insert_into_file layout_file, "\n#{content}", before: "</body>"
     end
 
     def copy_railsui_images(theme)
@@ -317,7 +356,7 @@ RUBY
         FileUtils.rm_rf(directory_path)
         say("Removed existing #{thing} in #{directory_path}")
       end
-    rescue => e
+    rescue StandardError => e
       say("Error removing directory #{directory_path}: #{e.message}", :red)
       raise e
     end
@@ -327,10 +366,10 @@ RUBY
       route_content = File.read(file)
 
       # Remove route associated with railsui/pages#<page>
-      route_content.gsub!(/^\s*get\s+'#{page}',\s+to:\s+'railsui\/pages##{page}'\s*$/, '')
+      route_content.gsub!(%r{^\s*get\s+'#{page}',\s+to:\s+'railsui/pages##{page}'\s*$}, "")
 
       # Write the updated content back to the file
-      File.open(file, 'w') { |f| f.write(route_content) }
+      File.write(file, route_content)
     end
   end
 end

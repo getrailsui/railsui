@@ -1,13 +1,13 @@
 Railsui::Engine.routes.draw do
   resource :admin, only: :show
-  resource :configuration, only: [:create, :update] do
+  resource :configuration, only: %i[create update] do
     get 'reset_colors', on: :collection
   end
   resource :systems, only: :show
   resource :routes, only: :show
-  resources :mailers, only: [:index, :show]
-  get :delete_page, to: "configurations#delete_page"
-  get :pages, to: "pages#show"
+  resources :mailers, only: %i[index show]
+  get :delete_page, to: 'configurations#delete_page'
+  get :pages, to: 'pages#show'
 
   namespace :systems do
     get :authentication
@@ -111,5 +111,5 @@ Railsui::Engine.routes.draw do
     get :start
   end
 
-  root to: "admin#show"
+  root to: 'admin#show'
 end

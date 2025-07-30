@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :railsui do
-  desc "Show Rails UI theme pages"
+  desc 'Show Rails UI theme pages'
   task :pages, [:theme] => :environment do |t, args|
     # Default to Railsui.config.theme if no argument is provided
     theme = args.theme || Railsui.config.theme

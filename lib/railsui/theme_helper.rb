@@ -16,10 +16,10 @@ module Railsui
       inactive_class = html_options.delete(:inactive_class) || ""
 
       active = if (paths = Array.wrap(starts_with)) && paths.present?
-        paths.any? { |path| request.path.start_with?(path) }
-      else
-        request.path == url
-      end
+                 paths.any? { |path| request.path.start_with?(path) }
+               else
+                 request.path == url
+               end
 
       classes = active ? active_class : inactive_class
       html_options[:class] << classes unless classes.empty?
@@ -42,11 +42,11 @@ module Railsui
       "https://randomuser.me/api/portraits/#{variant}/#{id}.jpg"
     end
 
-    def conditional_link_to(route_helper, options = {}, &block)
+    def conditional_link_to(route_helper, options = {}, &)
       if Rails.application.routes.url_helpers.method_defined?(route_helper)
-        link_to send(route_helper), options, &block
+        link_to(send(route_helper), options, &)
       else
-        content_tag(:div, options, &block)
+        content_tag(:div, options, &)
       end
     end
 
@@ -68,7 +68,7 @@ module Railsui
       content_classes = content_for(:body_classes).to_s.strip
 
       # Combine existing Railsui config classes with any additional classes
-      combined_classes = [Railsui.config.body_classes.to_s.strip, content_classes].reject(&:empty?).join(' ')
+      combined_classes = [Railsui.config.body_classes.to_s.strip, content_classes].reject(&:empty?).join(" ")
 
       # Return the combined classes or an empty string if none
       combined_classes.presence || ""

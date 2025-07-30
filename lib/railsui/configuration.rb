@@ -16,18 +16,19 @@ module Railsui
       assign_attributes(options)
       self.application_name ||= "Rails UI"
       self.support_email ||= "support@example.com"
-      self.theme
-      initialize_theme_classes if self.theme
+      theme
+      initialize_theme_classes if theme
     end
 
     def initialize_theme_classes
-      self.body_classes ||= Railsui::Themes::body_classes(self.theme)
+      self.body_classes ||= Railsui::Themes.body_classes(theme)
     end
 
     def self.load!
       if File.exist?(config_path)
         config = Psych.load_file(config_path, permitted_classes: [Hash, Railsui::Configuration])
         return config if config.is_a?(Railsui::Configuration)
+
         new(config)
       else
         new
@@ -74,7 +75,7 @@ module Railsui
       Railsui.build_css
     end
 
-    def self.update(params={})
+    def self.update(params = {})
       config = load!
       config.assign_attributes(params)
       config.pages = Railsui::Pages.theme_pages.keys
@@ -85,25 +86,25 @@ module Railsui
 
     def self.synchronize_pages
       config_path = Rails.root.join("config", "railsui.yml")
-      if File.exist?(config_path)
-        loaded_config = Psych.safe_load_file(config_path, permitted_classes: [Hash, Railsui::Configuration])
+      return unless File.exist?(config_path)
 
-        # Ensure that the loaded configuration is an instance of Railsui::Configuration
-        config = loaded_config.is_a?(Railsui::Configuration) ? loaded_config : new(loaded_config)
+      loaded_config = Psych.safe_load_file(config_path, permitted_classes: [Hash, Railsui::Configuration])
 
-        existing_pages_in_dir = Dir[File.join(Railsui::Pages::VIEWS_FOLDER, '*.html.erb')].map do |filepath|
-          File.basename(filepath, '.html.erb')
-        end
+      # Ensure that the loaded configuration is an instance of Railsui::Configuration
+      config = loaded_config.is_a?(Railsui::Configuration) ? loaded_config : new(loaded_config)
 
-        # Combine and sort the pages
-        combined_pages = (config.pages + existing_pages_in_dir).uniq.sort
-
-        # Update the configuration instance
-        config.pages = combined_pages
-
-        # Save the updated configuration back to the file
-        File.write(config_path, config.to_yaml)
+      existing_pages_in_dir = Dir[File.join(Railsui::Pages::VIEWS_FOLDER, "*.html.erb")].map do |filepath|
+        File.basename(filepath, ".html.erb")
       end
+
+      # Combine and sort the pages
+      combined_pages = (config.pages + existing_pages_in_dir).uniq.sort
+
+      # Update the configuration instance
+      config.pages = combined_pages
+
+      # Save the updated configuration back to the file
+      File.write(config_path, config.to_yaml)
     end
 
     def self.convert_keys_to_strings(hash)
@@ -117,9 +118,9 @@ module Railsui
     private
 
     def copy_template(filename)
-      unless File.exist?(Rails.root.join(filename))
-        FileUtils.cp template_path(filename), Rails.root.join(filename)
-      end
+      return if File.exist?(Rails.root.join(filename))
+
+      FileUtils.cp template_path(filename), Rails.root.join(filename)
     end
 
     def template_path(filename)

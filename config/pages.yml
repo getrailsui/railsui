@@ -205,7 +205,7 @@ shepherd:
     path: rui_new_booking_path
     add_to_nav: false
   booking:
-    title: "Booking"
+    title: 'Booking'
     description: Booking show view
     namespace: admin
     tags:
@@ -269,32 +269,32 @@ shepherd:
     path: rui_contact_path
     add_to_nav: false
   account_payment_methods:
-    title: "Account: Payment Methods"
-    description: "Payment method UI for the user profile"
+    title: 'Account: Payment Methods'
+    description: 'Payment method UI for the user profile'
     namespace: admin
     tags:
       - admin
     path: rui_account_payment_methods_path
     add_to_nav: false
   account_payouts:
-    title: "Account: Payouts"
-    description: "Payouts UI for the user profile"
+    title: 'Account: Payouts'
+    description: 'Payouts UI for the user profile'
     namespace: admin
     tags:
       - admin
     path: rui_account_payouts_path
     add_to_nav: false
   account_notifications:
-    title: "Account: Notifications"
-    description: "Notifications settings for the user profile"
+    title: 'Account: Notifications'
+    description: 'Notifications settings for the user profile'
     namespace: admin
     tags:
       - admin
     path: rui_account_notifications_path
     add_to_nav: false
   account_preferences:
-    title: "Account: Preferences"
-    description: "Preferences settings for the user profile"
+    title: 'Account: Preferences'
+    description: 'Preferences settings for the user profile'
     namespace: admin
     tags:
       - admin
@@ -317,7 +317,7 @@ corgi:
     add_to_nav: false
   features:
     title: Features
-    description: A features page with a list of features.
+    description: A features page with a list of AI-powered features.
     tags:
       - marketing
     path: rui_features_path
