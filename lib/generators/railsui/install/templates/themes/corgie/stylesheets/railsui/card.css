@@ -1,0 +1,9 @@
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-sm overflow-hidden outline-1 outline-neutral-300/80 p-6 dark:bg-neutral-800 dark:text-neutral-50 dark:outline-neutral-600/80;
+  }
+
+  .card-muted {
+    @apply p-4 dark:bg-neutral-800 rounded-xl bg-neutral-50 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-950 transition-all text-left duration-200;
+  }
+}

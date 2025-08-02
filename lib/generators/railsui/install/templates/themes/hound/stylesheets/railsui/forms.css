@@ -23,6 +23,18 @@
     }
   }
 
+  .form-help {
+    @apply text-sm mt-2 text-slate-600/80 dark:text-slate-500/90;
+  }
+
+  .form-textarea {
+    @apply px-3 py-2 border border-slate-300 bg-white font-normal text-base placeholder:text-slate-500 rounded-lg block w-full focus:outline-hidden focus:ring-4 focus:ring-primary-50 focus:border-primary-500 text-slate-900 dark:bg-slate-800 dark:border-slate-600 dark:focus:ring-primary-400/30 dark:focus:border-slate-500 dark:text-white dark:placeholder:text-slate-400 disabled:bg-slate-100/90 dark:disabled:bg-slate-800/90 disabled:cursor-not-allowed disabled:dark:opacity-70 shadow-xs min-h-[100px];
+
+    &:disabled {
+      @apply bg-slate-100/90 pointer-events-none select-none shadow-none cursor-not-allowed dark:bg-slate-800/90 dark:opacity-70;
+    }
+  }
+
   .form-file {
     @apply block w-full text-sm text-slate-500 dark:text-slate-400
     file:mr-4 file:py-2 file:px-4
@@ -59,8 +71,9 @@
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3e%3c/svg%3e");
     }
 
-    + label {
-      @apply select-none;
+    + label,
+    + .form-label {
+      @apply mb-0 select-none;
     }
   }
 
@@ -71,8 +84,9 @@
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3ccircle cx='10' cy='10' r='4' fill='%23fff'/%3e%3c/svg%3e");
     }
 
-    + label {
-      @apply select-none;
+    + label,
+    + .form-label {
+      @apply mb-0 select-none;
     }
   }
 

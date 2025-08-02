@@ -1,0 +1,15 @@
+/* Sidebar state classes */
+.sidebar-expanded .sidebar-collapsed-only {
+  display: none;
+}
+
+.sidebar-collapsed .sidebar-chat-history,
+.sidebar-collapsed .sidebar-expanded-only {
+  display: none;
+}
+
+.sidebar-collapsed {
+  justify-content: start;
+  align-items: center;
+  flex: none;
+}

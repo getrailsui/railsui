@@ -1,0 +1,63 @@
+<% content_for :header_description do %>
+<p>An optional Form Builder that applys consistent styling to your elements.</p>
+<% end %>
+
+<%= render "railsui/shared/header" %>
+
+
+
+<div class="prose dark:prose-invert">
+  <p>The Rails UI Form Builder extends the Ruby on Rails default form builder to automatically apply theme-appropriate CSS classes to all form elements based on your active theme (your active theme is <code><%= Railsui.config.theme.humanize %></code>). It provides a consistent, accessible, and beautiful form experience across your application with less key strokes and more consistency.</p>
+
+  <h4>Features</h4>
+  <ul>
+    <li>Automatic styling of all standard form inputs</li>
+    <li>Built-in error state handling</li>
+    <li>Label and help text support</li>
+    <li>Required field indicators</li>
+    <li>Custom form controls (switches, button toggles, etc.)</li>
+    <li>Full theme integration</li>
+  </ul>
+
+  <h2>Setup</h2>
+  <p>The Rails UI Form Builder is available when Rails UI is installed. Simply pass it as the <code>builder</code> parameter to your forms.</p>
+
+  <h2>Basic Usage</h2>
+  <p>Add <code>builder: Railsui::FormBuilder</code> to your <code>form_with</code> helper to apply automatic styling:</p>
+
+
+<div class="not-prose">
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.text_field :name, label: "Full Name" %>
+  <%%= f.email_field :email, help: "We'll never share your email" %>
+  <%%= f.submit %>
+<%% end %>
+<% end %>
+
+<%= render_snippet active_tab: :erb %>
+</div>
+
+  <h2>Flexibility</h2>
+  <p>You can choose when to use the Rails UI styling. Forms without the builder parameter will use standard Rails styling:</p>
+
+<div class="not-prose">
+<% content_for :erb, flush: true do %>
+  <!-- With Rails UI styling -->
+<%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.text_field :name, label: "Full Name" %>
+<%% end %>
+
+<!-- Standard Rails styling -->
+<%%= form_with model: @user do |f| %>
+  <%%= f.text_field :name %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+</div>
+
+
+<h2>Examples</h2>
+</div>
+
+<%= render "railsui/themes/#{Railsui.config.theme}/forms/form_builder" %>

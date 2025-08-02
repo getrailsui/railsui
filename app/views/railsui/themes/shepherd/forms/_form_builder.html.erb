@@ -1,0 +1,417 @@
+<div id="form-builder-examples">
+
+<!-- Basic Form Example -->
+<%= render layout: example, locals: { heading: "Basic Form" } do %>
+
+<%= render preview('gray') do %>
+  <form>
+    <div class="form-group">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-input" placeholder="John Doe">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input type="email" class="form-input" placeholder="john@example.com">
+      <p class="form-help">We'll never share your email with anyone else.</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Biography</label>
+      <textarea class="form-textarea" placeholder="Tell us about yourself..." rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Profile</button>
+  </form>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- Rails UI Form Builder with builder parameter -->
+<%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.text_field :name, label: "Full Name", placeholder: "John Doe" %>
+  <%%= f.email_field :email, label: "Email Address", placeholder: "john@example.com", help: "We'll never share your email with anyone else." %>
+  <%%= f.text_area :bio, label: "Biography", placeholder: "Tell us about yourself...", rows: 4 %>
+  <%%= f.submit "Save Profile" %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+
+<!-- All Input Types -->
+<%= render layout: example, locals: { heading: "All Input Types" } do %>
+
+<%= render preview('gray') do %>
+  <form>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="form-group">
+        <label class="form-label">Text Field</label>
+        <input type="text" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Field</label>
+        <input type="email" class="form-input" placeholder="john.doe@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password Field</label>
+        <input type="password" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Number Field</label>
+        <input type="number" class="form-input" min="0" max="100">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Website URL</label>
+        <input type="url" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Time</label>
+        <input type="time" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Color Picker</label>
+        <input type="color" class="form-input-color">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Search</label>
+        <input type="search" class="form-input" placeholder="Search...">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">File Upload</label>
+      <input type="file" class="form-file">
+    </div>
+    <div class="form-group" data-controller="railsui-range">
+      <label class="form-label">Volume</label>
+      <input
+        type="range"
+        id="volume"
+        class="form-input-range"
+        data-railsui-range-target="range"
+        data-action="input->railsui-range#onInput"
+        min="2"
+        max="100"
+        value="25">
+    </div>
+  </form>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @model, builder: Railsui::FormBuilder do |f| %>
+  <!-- Text inputs -->
+  <%%= f.text_field :text, label: "Text Field" %>
+  <%%= f.email_field :email, label: "Email Field", placeholder: "john.doe@example.com" %>
+  <%%= f.password_field :password, label: "Password Field" %>
+  <%%= f.number_field :number, label: "Number Field", min: 0, max: 100 %>
+  <%%= f.telephone_field :phone, label: "Phone Number" %>
+  <%%= f.url_field :website, label: "Website URL" %>
+
+  <!-- Date/Time inputs -->
+  <%%= f.date_field :date, label: "Date" %>
+  <%%= f.time_field :time, label: "Time" %>
+
+  <!-- Special inputs -->
+  <%%= f.color_field :color, label: "Color Picker" %>
+  <%%= f.search_field :search, label: "Search", placeholder: "Search..." %>
+  <%%= f.file_field :file, label: "File Upload" %>
+  <%%= f.range_field :volume, label: "Volume", min: 0, max: 100, value: 25 %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+
+<!-- Select and Textarea -->
+<%= render layout: example, locals: { heading: "Select & Textarea" } do %>
+
+<%= render preview('gray') do %>
+  <form>
+    <div class="form-group">
+      <label class="form-label">Country</label>
+      <select class="form-select">
+        <option>Choose a country</option>
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+        <option value="mx">Mexico</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" placeholder="Enter your message here..." rows="5"></textarea>
+      <p class="form-help">Maximum 500 characters</p>
+    </div>
+  </form>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @model, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.select :country,
+        options_for_select([["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]]),
+        { prompt: "Choose a country" },
+        { label: "Country" } %>
+
+  <%%= f.text_area :message,
+        label: "Message",
+        placeholder: "Enter your message here...",
+        rows: 5,
+        help: "Maximum 500 characters" %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+
+<!-- Checkboxes and Radio Buttons -->
+<%= render layout: example, locals: { heading: "Checkboxes & Radio Buttons" } do %>
+
+<%= render preview('gray') do %>
+  <form>
+    <div class="form-group">
+      <h4 class="h5 mb-2">Preferences</h4>
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <input type="checkbox" class="form-input-checkbox" id="newsletter">
+          <label for="newsletter" class="form-label">Subscribe to newsletter</label>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="checkbox" class="form-input-checkbox" id="notifications">
+          <label for="notifications" class="form-label">Email notifications</label>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="checkbox" class="form-input-checkbox" id="marketing">
+          <label for="marketing" class="form-label">Marketing emails</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h4 class="h5 mb-2">Plan</h4>
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <input type="radio" class="form-input-radio" name="plan" value="free" id="plan_free">
+          <label for="plan_free" class="form-label">Free Plan</label>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="radio" class="form-input-radio" name="plan" value="pro" id="plan_pro">
+          <label for="plan_pro" class="form-label">Pro Plan ($9/month)</label>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="radio" class="form-input-radio" name="plan" value="enterprise" id="plan_enterprise">
+          <label for="plan_enterprise" class="form-label">Enterprise Plan (Contact us)</label>
+        </div>
+      </div>
+    </div>
+  </form>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @model, builder: Railsui::FormBuilder do |f| %>
+  <div class="form-group">
+    <h4 class="h5 mb-2">Preferences</h4>
+    <!-- Checkboxes -->
+    <div class="space-y-2">
+      <%%= f.check_box :newsletter, label: "Subscribe to newsletter" %>
+      <%%= f.check_box :notifications, label: "Email notifications" %>
+      <%%= f.check_box :marketing, label: "Marketing emails" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <h4 class="h5 mb-2">Plan</h4>
+    <!-- Radio buttons -->
+    <div class="space-y-2">
+      <%%= f.radio_button :plan, "free", label: "Free Plan" %>
+      <%%= f.radio_button :plan, "pro", label: "Pro Plan ($9/month)" %>
+      <%%= f.radio_button :plan, "enterprise", label: "Enterprise Plan (Contact us)" %>
+    </div>
+  </div>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+
+<!-- Custom Controls -->
+<%= render layout: example, locals: { heading: "Custom Controls" } do %>
+
+<%= render preview('gray') do %>
+  <form>
+    <div class="form-group">
+      <input type="checkbox" class="form-input-switch" id="dark_mode">
+      <label for="dark_mode">Enable dark mode</label>
+    </div>
+    <div>
+      <input type="checkbox" class="form-input-switch" id="auto_save">
+      <label for="auto_save">Auto-save drafts</label>
+    </div>
+  </form>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @model, builder: Railsui::FormBuilder do |f| %>
+  <!-- Switch toggles -->
+  <%%= f.switch_field :dark_mode, label: "Enable dark mode" %>
+  <%%= f.switch_field :auto_save, label: "Auto-save drafts" %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+
+<!-- Form with Validation Errors -->
+<%= render layout: example, locals: { heading: "Validation & Errors" } do %>
+
+<%= render preview('gray') do %>
+  <form>
+    <div class="form-group">
+      <label class="form-label form-label-required">Full Name</label>
+      <input type="text" class="form-input form-input-error" value="">
+      <p class="mt-1 text-sm text-red-600 dark:text-red-400">can't be blank</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input type="email" class="form-input form-input-error" value="invalid-email">
+      <p class="mt-1 text-sm text-red-600 dark:text-red-400">is not a valid email address</p>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- The form builder automatically handles error states -->
+<%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.text_field :name, label: "Full Name" %>
+  <%%= f.email_field :email, label: "Email Address" %>
+  <%%= f.submit "Submit" %>
+<%% end %>
+
+<!-- Errors are automatically displayed when present on the model -->
+<!-- Required fields get asterisks when using presence validators -->
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+
+<!-- Comparison: With vs Without Form Builder -->
+<%= render layout: example, locals: { heading: "With vs Without Form Builder" } do %>
+
+<%= render preview('gray') do %>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div>
+      <h4 class="text-lg font-semibold mb-4">With Rails UI Form Builder</h4>
+      <form>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="john@example.com">
+          <p class="form-help">Automatically styled with theme classes</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Standard Rails Form</h4>
+      <form>
+        <div class="mb-3">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<!-- WITH Rails UI Form Builder -->
+<%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.email_field :email, label: "Email Address", placeholder: "john@example.com", help: "Automatically styled with theme classes" %>
+  <%%= f.submit "Submit" %>
+<%% end %>
+
+<!-- WITHOUT Rails UI Form Builder (standard Rails) -->
+<%%= form_with model: @user do |f| %>
+  <div class="mb-3">
+    <%%= f.label :email, "Email Address" %>
+    <%%= f.email_field :email, placeholder: "john@example.com" %>
+  </div>
+  <%%= f.submit "Submit" %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+
+<!-- Advanced Options -->
+<%= render layout: example, locals: { heading: "Advanced Options" } do %>
+
+<%= render preview('gray') do %>
+  <form>
+    <div class="form-group max-w-md">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-input" placeholder="johndoe">
+      <p class="form-help">Display helpful text using the 'help' option and extend the wrapper class.</p>
+    </div>
+
+    <div class="form-group">
+      <input type="email" class="form-input" placeholder="Enter your email">
+      <p class="form-help">Skip displaying label</p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label font-medium text-sm text-blue-600">Website</label>
+      <input type="text" class="form-input text-lg" placeholder="https://">
+      <p class="form-help">Customize label and input classes</p>
+    </div>
+  </form>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @model, builder: Railsui::FormBuilder do |f| %>
+  <!-- With help text and wrapper class -->
+  <%%= f.text_field :username,
+        label: "Username",
+        placeholder: "johndoe",
+        help: "Display helpful text using the 'help' option and extend the wrapper class",
+        wrapper: { class: "max-w-md" } %>
+
+  <!-- Skip label (i.e. don't display labels) -->
+  <%%= f.email_field :email,
+        label: false,
+        placeholder: "Enter your email",
+        help: "Skip displaying label",
+        skip_label: true %>
+
+  <!-- Custom label options and input class -->
+  <%%= f.text_field :website,
+        label: "Website",
+        placeholder: "https://",
+        label_options: { class: "form-label font-medium text-sm text-blue-600" },
+        class: "form-input text-lg" %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+</div>

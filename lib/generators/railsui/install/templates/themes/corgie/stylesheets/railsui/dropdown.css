@@ -1,0 +1,9 @@
+@layer components {
+  .dropdown-menu {
+    @apply absolute bg-white backdrop-blur-md rounded-2xl shadow-xl shadow-neutral-800/10 z-50 w-[320px] md:w-[220px] dark:bg-neutral-900/90 dark:backdrop-blur-sm dark:shadow-neutral-900/40 p-0.5 duration-200 outline-1 outline-neutral-300/80 dark:outline-neutral-600/90;
+  }
+
+  .dropdown-item {
+    @apply py-2 px-3 text-neutral-800 text-[15px] hover:text-neutral-900 dark:text-neutral-100 flex items-center gap-2.5 hover:bg-neutral-50 dark:hover:bg-neutral-700/90 dark:hover:text-neutral-100 rounded-xl duration-200 transition-colors;
+  }
+}

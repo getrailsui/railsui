@@ -14,6 +14,7 @@ module Railsui
       end
     end
 
+
     initializer "railsui.setup" do |app|
       config.assets.precompile << "railsui_manifest.js" if Rails.env.development?
     end

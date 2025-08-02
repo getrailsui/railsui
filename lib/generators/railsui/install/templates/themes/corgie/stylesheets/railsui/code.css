@@ -1,0 +1,231 @@
+[data-controller="snippet"] code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
+
+/* Smooth transitions for state changes */
+[data-controller="snippet"] .transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Focus states for accessibility */
+[data-controller="snippet"] button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Code block scrollbar styling */
+[data-controller="snippet"] .overflow-auto::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-controller="snippet"] .overflow-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-controller="snippet"] .overflow-auto::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-controller="snippet"] .overflow-auto::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+  }
+}
+
+[data-controller="snippet"] .overflow-auto::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-controller="snippet"] .overflow-auto::-webkit-scrollbar-thumb:hover {
+    background-color: #6b7280;
+  }
+}
+
+/* Github inspired theme */
+
+@media (prefers-color-scheme: light) {
+  .hljs {
+    background: var(--color-white);
+    color: var(--color-neutral-800);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    line-height: 1.5em;
+  }
+
+  .hljs-doctag,
+  .hljs-keyword,
+  .hljs-meta .hljs-keyword,
+  .hljs-template-tag,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-variable.language_ {
+    color: #d73a49;
+  }
+  .hljs-title,
+  .hljs-title.class_,
+  .hljs-title.class_.inherited__,
+  .hljs-title.function_ {
+    color: #6f42c1;
+  }
+  .hljs-attr,
+  .hljs-attribute,
+  .hljs-literal,
+  .hljs-meta,
+  .hljs-number,
+  .hljs-operator,
+  .hljs-selector-attr,
+  .hljs-selector-class,
+  .hljs-selector-id,
+  .hljs-variable {
+    color: #005cc5;
+  }
+  .hljs-meta .hljs-string,
+  .hljs-regexp,
+  .hljs-string {
+    color: #032f62;
+  }
+  .hljs-built_in,
+  .hljs-symbol {
+    color: #e36209;
+  }
+  .hljs-code,
+  .hljs-comment,
+  .hljs-formula {
+    color: #6a737d;
+  }
+  .hljs-name,
+  .hljs-quote,
+  .hljs-selector-pseudo,
+  .hljs-selector-tag {
+    color: #22863a;
+  }
+  .hljs-subst {
+    color: #24292e;
+  }
+  .hljs-section {
+    color: #005cc5;
+    font-weight: 700;
+  }
+  .hljs-bullet {
+    color: #735c0f;
+  }
+  .hljs-emphasis {
+    color: #24292e;
+    font-style: italic;
+  }
+  .hljs-strong {
+    color: #24292e;
+    font-weight: 700;
+  }
+  .hljs-addition {
+    color: #22863a;
+    background-color: #f0fff4;
+  }
+  .hljs-deletion {
+    color: #b31d28;
+    background-color: #ffeef0;
+  }
+}
+
+/* Dark mode highlight.js theme override */
+@media (prefers-color-scheme: dark) {
+  .hljs {
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-100);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    line-height: 1.5em;
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: #8b949e !important;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-subst {
+    color: #ff7b72 !important;
+  }
+
+  .hljs-number,
+  .hljs-literal,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-tag .hljs-attr {
+    color: #79c0ff !important;
+  }
+
+  .hljs-string,
+  .hljs-doctag {
+    color: #a5d6ff !important;
+  }
+
+  .hljs-title,
+  .hljs-section,
+  .hljs-selector-id {
+    color: #d2a8ff !important;
+  }
+
+  .hljs-type,
+  .hljs-class .hljs-title,
+  .hljs-tag {
+    color: #ffa657 !important;
+  }
+
+  .hljs-regexp,
+  .hljs-link {
+    color: #7ee787 !important;
+  }
+
+  .hljs-meta {
+    color: #8b949e !important;
+  }
+
+  .hljs-built_in,
+  .hljs-builtin-name {
+    color: #ffa657 !important;
+  }
+
+  .hljs-attr,
+  .hljs-attribute {
+    color: #79c0ff !important;
+  }
+
+  .hljs-addition {
+    background-color: #238636 !important;
+    color: #aff5b4 !important;
+  }
+
+  .hljs-deletion {
+    background-color: #da3633 !important;
+    color: #ffdcd7 !important;
+  }
+}
+
+/* Fix scrolling issues */
+.flex.h-full {
+  max-height: 100vh;
+}
+
+.flex-1.min-h-0 {
+  overflow-y: auto;
+}
+
+/* Ensure markdown content doesn't break layout */
+[data-controller="markdown"] {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+[data-controller="markdown"] pre {
+  overflow-x: auto;
+  max-width: 100%;
+}

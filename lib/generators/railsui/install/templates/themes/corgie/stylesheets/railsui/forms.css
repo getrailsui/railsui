@@ -1,0 +1,319 @@
+@layer components {
+  .form-group {
+    @apply mb-6;
+  }
+
+  .form-label {
+    @apply block mb-1.5 select-none font-medium text-sm text-neutral-700 dark:text-neutral-100;
+
+    &.form-label-required {
+      @apply after:content-['*'] after:absolute after:text-red-600 after:top-0 relative after:pl-px;
+    }
+  }
+
+  .form-input {
+    @apply rounded-md px-3 py-1.5 border border-neutral-300 bg-white focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 focus:outline-none dark:bg-neutral-800 dark:focus:border-neutral-600 placeholder-neutral-600/80 dark:focus:ring-neutral-600/30 dark:placeholder:text-neutral-200/50 font-normal antialiased font-sans w-full shadow-neutral-200/30 dark:shadow-neutral-900/20 dark:border-neutral-600/80 shadow-xs;
+
+    &:disabled {
+      @apply shadow-none cursor-not-allowed pointer-events-none select-none bg-neutral-100/90 dark:bg-neutral-800/90 dark:opacity-70;
+    }
+  }
+
+  .form-input-sm {
+    @apply text-sm;
+  }
+
+  .form-textarea {
+    @apply rounded-md px-3 py-1.5 border border-neutral-300 bg-white shadow-xs focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 focus:outline-none dark:bg-neutral-800 dark:border-neutral-500/80 dark:focus:border-neutral-500 placeholder-neutral-600/80 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 min-h-[100px] w-full;
+
+    &:disabled {
+      @apply shadow-none cursor-not-allowed pointer-events-none select-none bg-neutral-100/90 dark:bg-neutral-800/90 dark:opacity-70;
+    }
+  }
+
+  .form-file {
+    @apply block w-full text-sm text-neutral-500 dark:text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-neutral-100 file:text-neutral-700 hover:file:bg-neutral-200/80 dark:file:bg-neutral-600 dark:file:text-neutral-100 dark:hover:file:text-neutral-100 dark:hover:file:bg-neutral-700;
+  }
+
+  .form-input-color {
+    @apply transition border rounded-full appearance-none size-8 border-neutral-200 focus:border-neutral-400 focus:shadow focus:ring-4 focus:ring-neutral-400/10 dark:border-neutral-600;
+
+    &::-webkit-color-swatch-wrapper,
+    &::-webkit-color-swatch {
+      @apply p-0 border-2 border-white rounded-full dark:border-neutral-700;
+    }
+  }
+
+  .form-input-datalist {
+    &::-webkit-calendar-picker-indicator {
+      @apply hidden!;
+    }
+  }
+
+  /* Requires range_controller.js */
+  .form-input-range {
+    @apply relative bg-transparent appearance-none focus:outline-none;
+
+    --range-fill: 0;
+
+    &::-webkit-slider-thumb {
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow outline-1 outline-neutral-300 focus:ring-4 focus:outline-neutral-400 hover:outline-neutral-400 dark:bg-neutral-800 dark:focus:outline-neutral-600 dark:hover:outline-neutral-600 dark:border-neutral-500 dark:outline-neutral-700;
+    }
+
+    &::-moz-range-thumb {
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow outline-1 outline-neutral-300 focus:ring-4 focus:outline-neutral-400 hover:outline-neutral-400 dark:bg-neutral-800 dark:focus:outline-neutral-600 dark:hover:outline-neutral-600 dark:border-neutral-500 dark:outline-neutral-700;
+    }
+
+    &::-ms-thumb {
+      @apply appearance-none border-2 border-white h-4 w-4 rounded-full bg-white cursor-pointer relative -top-1.5 shadow outline-1 outline-neutral-300 focus:ring-4 focus:outline-neutral-400 hover:outline-neutral-400 dark:bg-neutral-800 dark:focus:outline-neutral-600 dark:hover:outline-neutral-600 dark:border-neutral-500 dark:outline-neutral-700;
+    }
+
+    &::-webkit-slider-runnable-track {
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-emerald-500) var(--range-fill),
+        var(--color-neutral-300) var(--range-fill)
+      );
+
+      @variant dark {
+        background: linear-gradient(
+          to right,
+          var(--color-emerald-500) var(--range-fill),
+          var(--color-neutral-700) var(--range-fill)
+        );
+      }
+    }
+
+    &::-moz-range-track {
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-emerald-500) var(--range-fill),
+        var(--color-neutral-300) var(--range-fill)
+      );
+
+      @variant dark {
+        background: linear-gradient(
+          to right,
+          var(--color-emerald-500) var(--range-fill),
+          var(--color-neutral-700) var(--range-fill)
+        );
+      }
+    }
+
+    &::-ms-track {
+      @apply w-full h-1 rounded-lg cursor-pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-emerald-500) var(--range-fill),
+        var(--color-neutral-300) var(--range-fill)
+      );
+
+      @variant dark {
+        background: linear-gradient(
+          to right,
+          var(--color-emerald-500) var(--range-fill),
+          var(--color-neutral-700) var(--range-fill)
+        );
+      }
+    }
+
+    &:focus::-webkit-slider-runnable-track {
+      @apply bg-neutral-200 dark:bg-neutral-600;
+    }
+
+    &:focus::-moz-range-track {
+      @apply bg-neutral-200 dark:bg-neutral-600;
+    }
+
+    &:focus::-ms-track {
+      @apply bg-neutral-200 dark:bg-neutral-600;
+    }
+  }
+
+  .form-input-error {
+    @apply text-red-800 border-red-500 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
+
+    + svg {
+      @apply block!;
+
+      + p {
+        @apply block!;
+      }
+    }
+  }
+
+  .form-select {
+    @apply appearance-none px-3 py-1.5 border border-neutral-300 bg-white font-normal placeholder:text-neutral-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-neutral-400/10 focus:border-neutral-400/80 text-neutral-900 dark:focus:border-neutral-600 dark:text-white dark:placeholder:text-neutral-400 shadow-xs dark:bg-neutral-800 dark:focus:ring-neutral-500/40 font-sans dark:shadow-neutral-900/20 dark:border-neutral-600/80;
+
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23a6a09b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    background-position: right calc(var(--spacing) * 2) center;
+    print-color-adjust: exact;
+
+    @variant dark {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23a6a09b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    }
+
+    &:disabled {
+      @apply shadow-none cursor-not-allowed pointer-events-none select-none bg-neutral-100/90 dark:bg-neutral-800/90 dark:opacity-70;
+    }
+
+    &.form-select-sort {
+      @apply border-none shadow-none appearance-none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none'%3E%3Cpath d='M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9' stroke='%23d6d3d1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+
+      @variant dark {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctitle%3Echevron-up-down%3C/title%3E%3Cg fill='none'%3E%3Cpath d='M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9' stroke='%23d6d3d1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+      }
+    }
+
+    &.form-select-minimal {
+      @apply text-base border-0 shadow-none outline-none ring-0 min-w-24 hover:bg-neutral-50 dark:hover:bg-neutral-700/90 dark:bg-neutral-900/90;
+    }
+  }
+
+  .form-datetime-select {
+    @apply flex items-center gap-2.5 text-neutral-300;
+
+    select {
+      @apply appearance-none px-3 py-1.5 border border-neutral-300 bg-white font-normal placeholder:text-neutral-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-neutral-400/10 focus:border-neutral-400/80 text-neutral-900 dark:focus:border-neutral-600 dark:text-white dark:placeholder:text-neutral-400 shadow-xs dark:bg-neutral-800 dark:focus:ring-neutral-500/40 font-sans dark:shadow-neutral-900/20 dark:border-neutral-600/80;
+
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23a6a09b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      background-position: right calc(var(--spacing) * 2) center;
+      print-color-adjust: exact;
+
+      @variant dark {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23a6a09b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      }
+    }
+  }
+
+  .form-input-checkbox {
+    @apply border rounded-sm appearance-none border-neutral-400 checked:bg-neutral-800 checked:border-neutral-500 checked:ring-2 checked:ring-neutral-500/10 checked:accent-neutral-500 text-neutral-600 dark:bg-neutral-600 dark:border-neutral-600 focus:ring-neutral-500/30 dark:checked:border-neutral-400 dark:checked:accent-neutral-400 size-4 outline-hidden;
+
+    + label,
+    + .form-label {
+      @apply mb-0 select-none;
+    }
+
+    &:checked {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3e%3c/svg%3e");
+    }
+
+    &:indeterminate {
+      @apply bg-neutral-500 border-neutral-500 accent-neutral-400 ring-neutral-500/10 ring-2;
+
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+    }
+  }
+
+  .form-input-radio {
+    @apply border rounded-full appearance-none border-neutral-400 focus:ring-2 checked:ring-neutral-200 checked:shadow-neutral-600 text-neutral-600 focus-visible:text-neutral-600 focus-visible:ring-neutral-200 focus-visible:outline-hidden dark:bg-neutral-700 dark:border-neutral-600 dark:checked:border-neutral-400 dark:checked:accent-neutral-400 size-4 checked:bg-neutral-500 checked:border-neutral-500;
+
+    &:checked {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3ccircle cx='10' cy='10' r='4' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    + label,
+    + .form-label {
+      @apply mb-0 select-none;
+    }
+  }
+
+  .form-input-switch {
+    @apply hidden;
+
+    &:disabled + label {
+      @apply cursor-not-allowed opacity-70;
+    }
+
+    &:disabled + label::after {
+      @apply shadow-none!;
+    }
+
+    &:checked + label::before {
+      @apply dark:bg-emerald-600 bg-neutral-900;
+    }
+
+    &:checked + label::after {
+      transform: translate3d(16px, 0, 0);
+      background-size: 10px 10px;
+      @apply bg-white bg-center bg-no-repeat;
+    }
+
+    + label {
+      @apply inline-flex cursor-pointer leading-6 select-none relative font-normal text-[15px];
+
+      &:before {
+        @apply content-[""] block bg-neutral-300 rounded-full h-6 w-10 mr-3 transition-colors ease-out flex-shrink-0 dark:bg-neutral-700;
+      }
+
+      &:after {
+        @apply content-[""] block bg-white rounded-full size-4 absolute top-[4px] left-[4px] transition-transform ease-out shadow-md;
+      }
+    }
+  }
+
+  .form-help {
+    @apply mt-1 text-xs text-neutral-500 dark:text-neutral-400;
+  }
+
+  /* Button Toggle - A fancier UI for grouped checkboxes or radio buttons */
+  .form-input-button-toggle {
+    @apply hidden;
+
+    + label {
+      @apply inline-flex items-center gap-1.5 justify-center px-3 py-1.5 text-sm rounded-full transition-all duration-200 cursor-pointer select-none font-medium bg-white shadow-xs outline-1 outline-neutral-300/90 text-neutral-900 hover:bg-neutral-100 focus:outline-neutral-300/90 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-950 shadow-neutral-300/20 dark:outline-neutral-600/90 dark:hover:outline-neutral-600 dark:shadow-none;
+    }
+
+    &:checked + label {
+      @apply text-neutral-800 bg-neutral-200/50 hover:bg-neutral-200 hover:outline-neutral-400/70 dark:bg-neutral-900 dark:text-neutral-50 dark:hover:bg-neutral-950 dark:focus:ring-neutral-500/30;
+    }
+
+    &:disabled + label {
+      @apply opacity-50 cursor-not-allowed;
+    }
+
+    &:focus + label {
+      @apply ring-4 ring-neutral-500/10 dark:ring-neutral-500/30;
+    }
+  }
+
+  /* Button Toggle variants */
+  .form-input-button-toggle-sm {
+    + label {
+      @apply px-2.5 py-1 text-xs;
+    }
+  }
+
+  .form-input-button-toggle-lg {
+    + label {
+      @apply px-6 py-3 text-base;
+    }
+  }
+
+  .form-input-button-toggle-ghost {
+    + label {
+      @apply bg-transparent text-neutral-700 hover:bg-neutral-100 focus:outline-none focus:ring-4 focus:ring-neutral-500/20 dark:text-neutral-100 dark:hover:bg-neutral-700;
+    }
+
+    &:checked + label {
+      @apply text-white bg-neutral-900 hover:bg-neutral-950 focus:outline-none focus:ring-4 focus:ring-neutral-600/20 dark:bg-neutral-900 dark:border dark:border-neutral-600/80 dark:text-neutral-50 dark:hover:bg-neutral-950 dark:hover:shadow-sm dark:focus:ring-neutral-500/30;
+    }
+  }
+
+  .form-input-button-toggle-muted {
+    + label {
+      @apply shadow-xs bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus:outline-none focus:ring-4 focus:ring-neutral-500/20 dark:bg-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-600 outline-1 outline-neutral-300/90 dark:outline-neutral-700/90 dark:bg-neutral-800 shadow-neutral-300/20;
+    }
+
+    &:checked + label {
+      @apply text-white bg-neutral-900 hover:bg-neutral-950 focus:outline-none focus:ring-4 focus:ring-neutral-600/20 dark:bg-neutral-900 dark:border dark:border-neutral-600/80 dark:text-neutral-50 dark:hover:bg-neutral-950 dark:hover:shadow-sm dark:focus:ring-neutral-500/30;
+    }
+  }
+}

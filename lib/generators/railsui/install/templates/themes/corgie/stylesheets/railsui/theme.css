@@ -1,0 +1,76 @@
+@theme {
+  --font-sans: "TikTok Sans", sans-serif;
+  --font-mono:
+    "IBM Plex Mono", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
+    Consolas, "Courier New", monospace;
+
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-pulse-subtle: pulse-subtle 2s ease-in-out infinite;
+
+  /* Ken burns effect on auth pages */
+  --animate-auth-ambient: auth-ambient 20s ease-in-out infinite;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes auth-ambient {
+    0%,
+    100% {
+      transform: scale(1.05) translate(0px, 0px);
+      rotate: 0deg;
+    }
+    25% {
+      transform: scale(1.08) translate(-2px, -1px);
+      rotate: 1deg;
+    }
+    50% {
+      transform: scale(1.06) translate(1px, -2px);
+      rotate: 2deg;
+    }
+    75% {
+      transform: scale(1.07) translate(-1px, 1px);
+      rotate: 1deg;
+    }
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-neutral-200, currentColor);
+  }
+}
+
+@plugin "@tailwindcss/typography";
+@config "../tailwind.config.js";
