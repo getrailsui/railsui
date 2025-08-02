@@ -54,6 +54,7 @@ Railsui::Engine.routes.draw do
     namespace :forms do
       get :action_text
       get :checkbox
+      get :form_builder
       get :input_group
       get :input
       get :layout

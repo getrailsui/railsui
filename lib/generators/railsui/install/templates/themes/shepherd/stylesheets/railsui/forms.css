@@ -31,6 +31,10 @@
     }
   }
 
+  .form-help {
+    @apply mt-1 text-sm text-zinc-500 dark:text-zinc-400;
+  }
+
   .form-textarea {
     @apply rounded-lg px-4 py-2 border border-zinc-300/80 bg-white focus:border-zinc-500/80 focus:ring-4 focus:ring-zinc-50 focus:shadow-none focus:outline-hidden dark:bg-zinc-800 dark:border-zinc-500/80 dark:focus:border-zinc-500 placeholder-zinc-500/80 dark:focus:ring-zinc-500/40 dark:placeholder:text-zinc-300/60 invalid:focus:border-primary-300 invalid:focus:text-primary-600 invalid:focus:ring-primary-50 min-h-[100px] w-full;
 
@@ -170,13 +174,19 @@
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3e%3c/svg%3e");
     }
 
-    + label {
-      @apply select-none;
+    + label,
+    + .form-label {
+      @apply mb-0 select-none;
     }
   }
 
   .form-input-radio {
     @apply rounded-full border border-zinc-400 focus:ring-2 checked:ring-primary-200 checked:border-primary-600 checked:accent-primary-600 checked:shadow-primary-600 text-primary-600 focus-visible:text-primary-600 focus-visible:ring-primary-200 focus-visible:outline-hidden dark:bg-zinc-700 dark:border-zinc-600 dark:checked:border-primary-400 dark:checked:accent-primary-400;
+
+    + label,
+    + .form-label {
+      @apply mb-0 select-none;
+    }
   }
 
   .form-input-switch {

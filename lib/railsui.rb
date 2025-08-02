@@ -11,6 +11,7 @@ module Railsui
   autoload :Themes, "railsui/themes"
   autoload :ThemeHelper, "railsui/theme_helper"
   autoload :ThemeSetup, "railsui/theme_setup"
+  autoload :FormBuilder, "railsui/form_builder"
 
   mattr_accessor :config
   @@config = Railsui::Configuration.new

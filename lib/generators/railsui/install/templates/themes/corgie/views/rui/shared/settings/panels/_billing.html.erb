@@ -1,0 +1,120 @@
+<section class="relative text-sm md:min-h-[380px]">
+  <%= render "rui/shared/settings/panels/title", title: "Billing" %>
+
+  <!-- Current Plan -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Current Plan</label>
+        <p class="form-help">Pro Plan - $20/month</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="rounded bg-green-100 text-green-800 font-medium px-1.5 py-0.5 text-xs dark:text-green-300 dark:bg-green-500/20 inline-flex items-center gap-1">
+          Active
+        </span>
+        <button class="btn btn-primary">
+          Change Plan
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage This Month -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Usage This Month</label>
+        <p class="form-help">2,450 / 10,000 messages used</p>
+      </div>
+      <div class="w-32">
+        <div class="w-full h-2 rounded-full bg-neutral-200 dark:bg-neutral-700">
+          <div class="h-2 bg-blue-600 rounded-full" style="width: 24.5%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Next Billing Date -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <label class="w-1/3 form-label">Next Billing Date</label>
+      <span class="text-neutral-600 dark:text-neutral-400">March 15, 2024</span>
+    </div>
+  </div>
+
+  <!-- Payment Method -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Payment Method</label>
+        <p class="form-help">•••• •••• •••• 4242 (Visa)</p>
+      </div>
+      <button class="btn btn-ghost">
+        Update
+      </button>
+    </div>
+  </div>
+
+  <!-- Billing Address -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Billing Address</label>
+        <p class="form-help">123 Main St, San Francisco, CA 94105</p>
+      </div>
+      <button class="btn btn-ghost">
+        Edit
+      </button>
+    </div>
+  </div>
+
+  <!-- Auto-renewal -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Auto-renewal</label>
+        <p class="form-help">Automatically renew your subscription</p>
+      </div>
+      <input type="checkbox" id="auto-renewal" class="form-input-switch" checked>
+      <label for="auto-renewal"></label>
+    </div>
+  </div>
+
+  <!-- Billing Notifications -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Billing Notifications</label>
+        <p class="form-help">Receive email notifications for billing events</p>
+      </div>
+      <input type="checkbox" id="billing-notifications" class="form-input-switch" checked>
+      <label for="billing-notifications"></label>
+    </div>
+  </div>
+
+  <!-- Invoice History -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Invoice History</label>
+        <p class="form-help">View and download past invoices</p>
+      </div>
+      <button class="flex items-center gap-2 rounded-md btn btn-ghost">
+        View History
+      </button>
+    </div>
+  </div>
+
+  <!-- Cancel Subscription -->
+  <div class="py-3">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="text-red-600 form-label dark:text-red-400">Cancel Subscription</label>
+        <p class="form-help">Cancel your subscription and downgrade</p>
+      </div>
+      <button class="btn btn-danger">
+        Cancel
+      </button>
+    </div>
+  </div>
+</section>
