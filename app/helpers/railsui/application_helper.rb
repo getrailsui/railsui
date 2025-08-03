@@ -13,7 +13,8 @@ module Railsui
       active_class = html_options.delete(:active_class) || "nav-link-active"
       inactive_class = html_options.delete(:inactive_class) || ""
 
-      active = if (paths = Array.wrap(starts_with)) && paths.present?
+      active =
+      if (paths = Array.wrap(starts_with)) && paths.present?
         paths.any? { |path| request.path.start_with?(path) }
       else
         request.path == url
@@ -98,7 +99,7 @@ module Railsui
       dark:ring-transparent"
     end
 
-    def help_text &block
+    def help_text _
       content_tag :div, class: "prose prose-sm prose-neutral dark:prose-invert max-w-full" do
         yield
       end
@@ -206,7 +207,8 @@ module Railsui
     end
 
     def rui_badge(label, variant: :blue)
-      variant_class = case variant
+      variant_class =
+        case variant
         when :blue
           "bg-blue-500 text-white"
         when :green
@@ -217,7 +219,7 @@ module Railsui
           "bg-yellow-500 text-black"
         when :gray
           "bg-neutral-200 text-neutral-700"
-      end
+        end
       content_tag :div, label, class: "#{variant_class} rounded-full px-2 py-1 text-xs font-semibold inline-flex my-0"
     end
 
@@ -232,16 +234,18 @@ module Railsui
     def button_classes(variant: "black", size: "md")
       base_classes = "rounded-md px-3 py-[5px] ring-4 ring-transparent text-base transition-colors ease-in-out duration-300 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed text-center text-[14.5px] font-semibold inline-flex gap-2 items-center justify-center"
 
-      size_classes = case size
-      when "lg"
-        "py-3 px-6 text-lg"
-      when "sm"
-        "py-0.5 px-3 text-[13.5px]"
-      else # md
-        "py-[5px] px-3 text-[14.5px]"
-      end
+      size_classes =
+        case size
+        when "lg"
+          "py-3 px-6 text-lg"
+        when "sm"
+          "py-0.5 px-3 text-[13.5px]"
+        else # md
+          "py-[5px] px-3 text-[14.5px]"
+        end
 
-      variant_classes = case variant
+      variant_classes =
+      case variant
       when "white"
         "bg-white hover:bg-neutral-50/50 hover:shadow-none shadow-xs text-neutral-800/80 border border-neutral-300 shadow-neutral-300/20 focus:ring-4 hover:border-neutral-600/40 focus:ring-neutral-100/70 focus:border-neutral-300/90 dark:bg-neutral-700/60 dark:text-white dark:border-neutral-500/30 dark:shadow-neutral-950/40 dark:hover:bg-neutral-800/90 dark:focus:ring-neutral-700/80 dark:focus:border-neutral-500/80"
       when "offwhite"
@@ -257,7 +261,7 @@ module Railsui
 
 
     def snippet_classes(variant: "active")
-      case variant_classes = variant
+      case variant
       when "active"
         "bg-white px-3 py-1.5 rounded-md shadow flex items-center justify-center gap-2 text-[13px] font-semibold focus:ring-4 focus:ring-blue-600 group dark:bg-neutral-800/90 dark:text-neutral-100 dark:focus:ring-blue-600/50 dark:text-neutral-300"
       when "inactive"

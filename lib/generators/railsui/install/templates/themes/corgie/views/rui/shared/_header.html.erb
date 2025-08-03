@@ -1,0 +1,16 @@
+<%# locals:(title:) %>
+<header class="px-6 py-3">
+  <div class="max-w-4xl mx-auto flex items-center justify-between">
+    <div class="flex items-center space-x-3 md:-ml-12">
+      <%= link_to root_path, class: "btn btn-ghost btn-sm flex items-center gap-3 size-8" do %>
+        <%= icon "arrow-left", class: "size-5 shrink-0" %>
+        <span class="sr-only">Back to Chat</span>
+      <% end %>
+      <h1 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100"><%= title %></h1>
+    </div>
+    <div class="flex items-center gap-2">
+      {{> user_dropdown currentPage=title}}
+      <%=
+    </div>
+  </div>
+</header>

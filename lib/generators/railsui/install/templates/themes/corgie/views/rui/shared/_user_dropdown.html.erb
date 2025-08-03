@@ -1,0 +1,46 @@
+<!-- User Profile Dropdown -->
+<div class="relative top-1" data-controller="railsui-dropdown">
+  <button type="button"
+    class="size-7 focus:ring-4 focus:ring-neutral-200/80 dark:focus:ring-neutral-500/80 transition-colors ease-in-out duration-100 rounded-full overflow-hidden"
+    data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+    <%= image_tag demo_avatar_url(id: 32, variant: :men), alt: "John Doe", class: "size-7 object-cover select-none" %>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div class="absolute right-0 dropdown-menu top-10 md:w-[250px]" data-railsui-dropdown-target="menu"
+    data-transition-enter="transition-all duration-200 ease-out"
+    data-transition-enter-from="opacity-0 scale-95 transform" data-transition-enter-to="opacity-100 scale-100 transform"
+    data-transition-leave="transition-all duration-150 ease-in"
+    data-transition-leave-from="opacity-100 scale-100 transform"
+    data-transition-leave-to="opacity-0 scale-95 transform">
+    <!-- Menu Items -->
+    <div class="p-1">
+      <button type="button" class="dropdown-item w-full"
+        data-action="click->railsui-modal#open">
+        <%= icon "user-circle", class: "size-5 text-neutral-600 dark:text-neutral-300" %>
+        andy@example.com
+      </button>
+      <button type="button" class="dropdown-item w-full"
+        data-action="click->railsui-modal#open">
+        <%= icon "credit-card", class: "size-5 text-neutral-600 dark:text-neutral-300" %>
+        Billing
+      </button>
+      <button type="button" class="dropdown-item w-full"
+        data-action="click->railsui-modal#open">
+        <%= icon "cog-6-tooth", class: "size-5 text-neutral-600 dark:text-neutral-300" %>
+        Settings
+      </button>
+      <hr class="my-1 -mx-1.5 dark:border-neutral-600/90" />
+
+      <%= link_to rui_help_path, class: "dropdown-item #{"bg-neutral-50" if current_page?(rui_help_path) }" do %>
+        <%= icon "question-mark-circle", class: "size-5 text-neutral-600 dark:text-neutral-300" %>
+        Help & Support
+      <% end %>
+
+      <%= button_to "#", class: "w-full dropdown-item text-left" do %>
+        <%= icon "arrow-right-on-rectangle", class: "size-5 text-neutral-600 dark:text-neutral-300" %>
+        Sign out
+      <% end %>
+    </div>
+  </div>
+</div>

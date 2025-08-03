@@ -1,0 +1,17 @@
+<%# locals:(href: , active: false, title: "Chat title") %>
+
+<%= link_to href, class: "group flex items-center p-2 text-sm text-neutral-700 rounded-lg hover:bg-neutral-200 transition-colors dark:text-neutral-100 dark:hover:bg-neutral-900 gap-3 #{ "bg-neutral-200 dark:bg-neutral-700" if active }", data: { sidebar_target:"chatLink" } do %>
+  <span class="flex-1 truncate transition-opacity duration-200" data-sidebar-target="chatTitle"><%= title %></span>
+
+  <div class="opacity-0 group-hover:opacity-100 transition-opacity shrink-0 flex gap-1" data-sidebar-target="chatActions">
+    <%= link_to "#", class: "p-1 hover:bg-neutral-300 dark:hover:bg-neutral-600 rounded text-neutral-600 dark:text-neutral-400" do %>
+      <%= icon "pencil-square", class: "size-3.5" %>
+      <span class="sr-only">Edit</span>
+    <% end %>
+
+    <%= button_to "#", method: :delte, class: "p-1 hover:bg-neutral-300 dark:hover:bg-neutral-600 rounded text-neutral-600 dark:text-neutral-400"  do %>
+      <%= icon "trash", class: "size-3.5" %>
+      <span class="sr-only">Delete</span>
+    </button>
+  </div>
+<% end %>

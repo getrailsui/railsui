@@ -1,0 +1,16 @@
+<%# locals:(name:, role:, description:, image_url:) %>
+
+<div class="card">
+  <div class="flex justify-center">
+    <%= image_tag image_url, alt: name, class: "mb-6 rounded-full size-20" %>
+  </div>
+  <div class="text-center">
+    <h3 class="mb-2 h5"><%= name %></h3>
+    <p class="mb-4 text-neutral-600 dark:text-neutral-400"><%= role %></p>
+    <div class="prose-sm prose prose-neutral dark:prose-invert">
+      <p>
+        <%= description %>
+      </p>
+    </div>
+  </div>
+</div>
