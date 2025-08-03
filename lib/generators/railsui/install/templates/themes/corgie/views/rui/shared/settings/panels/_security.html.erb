@@ -1,0 +1,98 @@
+<section class="relative text-sm md:min-h-[380px]">
+  <%= render "rui/shared/settings/panels/title", title: "Security" %>
+
+  <!-- Two-Factor Authentication -->
+  <div class="border-b border-neutral-200 dark:border-neutral-700 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex-1">
+        <label class="form-label">Two-Factor Authentication</label>
+        <p class="form-help">Add an extra layer of security to your account</p>
+      </div>
+      <button type="button" class="btn btn-primary">
+        Enable
+      </button>
+    </div>
+  </div>
+
+  <!-- Change Password -->
+  <div class="border-b border-neutral-200 dark:border-neutral-700 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex-1">
+        <label class="form-label">Password</label>
+        <p class="form-help">Last changed 3 months ago</p>
+      </div>
+      <button type="button" class="btn btn-ghost">
+        Change
+      </button>
+    </div>
+  </div>
+
+  <!-- Session Management -->
+  <div class="border-b border-neutral-200 dark:border-neutral-700 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex-1">
+        <label class="form-label">Active Sessions</label>
+        <p class="form-help">Manage devices signed into your account</p>
+      </div>
+      <button type="button" class="btn btn-ghost">
+        Manage
+      </button>
+    </div>
+  </div>
+
+  <!-- Login Alerts -->
+  <div class="border-b border-neutral-200 dark:border-neutral-700 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex-1">
+        <label class="form-label">Login Alerts</label>
+        <p class="form-help">Get notified when someone signs into your account</p>
+      </div>
+      <input type="checkbox" id="login-alerts" class="form-input-switch" checked>
+      <label for="login-alerts"></label>
+    </div>
+  </div>
+
+  <!-- Privacy Mode -->
+  <div class="border-b border-neutral-200 dark:border-neutral-700 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex-1">
+        <label class="form-label">Privacy Mode</label>
+        <p class="form-help">Hide sensitive information in conversations</p>
+      </div>
+      <input type="checkbox" id="privacy-mode" class="form-input-switch">
+      <label for="privacy-mode"></label>
+    </div>
+  </div>
+
+  <!-- Data Encryption -->
+  <div class="border-b border-neutral-200 dark:border-neutral-700 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex-1">
+        <div class="flex items-center gap-2">
+          <label class="form-label mb-0">End-to-End Encryption</label>
+          <span class="rounded bg-green-100 text-green-800 font-medium px-1.5 py-0.5 text-xs dark:text-green-300 dark:bg-green-500/20 inline-flex items-center gap-1">
+            Active
+          </span>
+        </div>
+        <p class="form-help">Encrypt conversations with your personal key</p>
+
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" class="btn btn-ghost">
+          Configure
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Deletion -->
+  <div class="py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex-1">
+        <label class="form-label text-red-600 dark:text-red-400">Delete Account</label>
+        <p class="form-help">Permanently delete account and all associated data</p>
+      </div>
+      <%= button_to "Delete", "#", method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+</section>

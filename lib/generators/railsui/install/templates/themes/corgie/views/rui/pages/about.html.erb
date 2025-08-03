@@ -1,0 +1,282 @@
+<div class="relative min-h-screen bg-white dark:bg-neutral-900">
+  <!-- Navigation -->
+  <%= render "rui/shared/marketing/nav" %>
+
+  <!-- Hero Section -->
+  <div class="px-6 py-16">
+    <div class="max-w-4xl mx-auto text-center">
+
+      <div class="flex items-center justify-center mb-6">
+        <%= icon "logo.svg", custom_path: "./logo.svg", class: "size-8 dark:fill-neutral-100 fill-neutral-800" %>
+      </div>
+
+      <h1 class="mb-6 h1">
+        About
+      </h1>
+      <p class="max-w-2xl mx-auto prose prose-xl prose-neutral dark:prose-invert">
+        We're building the future of AI conversation, making intelligent assistance accessible and helpful for everyone.
+      </p>
+    </div>
+  </div>
+
+  <!-- Mission Section -->
+  <div class="px-6 py-16 bg-neutral-50 dark:bg-neutral-800/50">
+    <div class="text-center">
+      <h2 class="mb-6 h2">
+        Our mission
+      </h2>
+      <div class="mx-auto prose prose-neutral dark:prose-invert">
+        <p>
+          At Corgie AI, we believe that artificial intelligence should enhance human creativity and productivity, not replace it. Our mission is to create AI tools that understand context, process information intelligently, and help people think through complex problems.
+        </p>
+        <p>
+          We're committed to building technology that's not just powerful, but also ethical, transparent, and accessible to everyone who wants to harness the potential of AI in their daily work and creative pursuits.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Values Section -->
+  <div class="px-6 py-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 h2">Our values</h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          The principles that guide everything we do
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+            <%= icon "shield-check", class: "size-8 text-neutral-700 dark:text-neutral-100 dark:text-neutral-100" %>
+          </div>
+          <h3 class="mb-4 h5">Privacy First</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>Your conversations and data belong to you. We use enterprise-grade encryption and never share your information.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+            <%= icon "heart", class: "size-8 text-neutral-700 dark:text-neutral-100" %>
+          </div>
+          <h3 class="mb-4 h5">Human-Centered</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>We design AI that augments human intelligence rather than replacing it, keeping people at the center of every decision.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+            <%= icon "academic-cap", class: "size-8 text-neutral-700 dark:text-neutral-100" %>
+          </div>
+          <h3 class="mb-4 h5">Continuous Learning</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>We're constantly improving our AI models and capabilities based on user feedback and the latest research.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+            <%= icon "users", class: "size-8 text-neutral-700 dark:text-neutral-100" %>
+          </div>
+          <h3 class="mb-4 h5">Accessibility</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>Powerful AI tools should be available to everyone, regardless of technical expertise or background.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+            <%= icon "beaker", class: "size-8 text-neutral-700 dark:text-neutral-100" %>
+          </div>
+          <h3 class="mb-4 h5">Transparency</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>We're open about how our AI works, what data we use, and how we're working to address potential biases.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+            <%= icon "globe-alt", class: "size-8 text-neutral-700 dark:text-neutral-100" %>
+          </div>
+          <h3 class="mb-4 h5">Global Impact</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>We're building AI that can help solve real-world problems and create positive change at scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Section -->
+  <div class="px-6 py-20 bg-neutral-50 dark:bg-neutral-900/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 h2">Meet the team</h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          The people behind Corgie AI
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Team Member 1 -->
+        <%= render "rui/shared/marketing/team_member_card",
+            name: "Alex Sullivan",
+            image_url: demo_avatar_url(variant: :men, id: 35),
+            description: "Former machine learning researcher at Google, passionate about making AI accessible to everyone.",
+            role: "CTO & Co-founder" %>
+
+        <!-- Team Member 2 -->
+        <%= render "rui/shared/marketing/team_member_card",
+            name: "Maya Rodriguez",
+            image_url: demo_avatar_url(variant: :women, id: 95),
+            description: "AI systems architect with 15 years of experience building scalable machine learning platforms.",
+            role: "CTO & Co-founder" %>
+
+        <!-- Team Member 3 -->
+        <%= render "rui/shared/marketing/team_member_card",
+            name: "Jordan Lee",
+            image_url: demo_avatar_url(variant: :men, id: 51),
+            description: "Product design leader focused on creating intuitive AI experiences that feel natural and helpful.",
+            role: "Head of Product" %>
+
+        <!-- Team Member 4 -->
+        <%= render "rui/shared/marketing/_team_member_card",
+            name: "Sarah Kim",
+            image_url: demo_avatar_url(variant: :women, id: 51),
+            description: "PhD in Natural Language Processing, specializing in conversational AI and context understanding.",
+            role: "Lead AI Researcher" %>
+
+        <!-- Team Member 5 -->
+        <%= render "rui/shared/marketing/team_member_card",
+            name: "David Song",
+            image_url: demo_avatar_url(variant: :men, id: 67),
+            description: "Full-stack engineer with expertise in distributed systems and real-time AI model deployment.",
+            role: "Head of Engineering" %>
+
+        <!-- Team Member 6 -->
+        <%= render "rui/shared/marketing/team_member_card",
+            name: "Emma Martinez",
+            image_url: demo_avatar_url(variant: :women, id: 68),
+            description: "User experience designer passionate about making complex AI interactions feel simple and delightful.",
+            role: "Head of Design" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Careers Section -->
+  <div class="px-6 py-20 bg-neutral-50 dark:bg-neutral-900/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 h2">Join our team</h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          Help us build the future of AI conversation
+        </p>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <div class="space-y-4">
+          <%= render "rui/marketing/career",
+            title: "Senior AI Engineer",
+            location: "San Francisco, CA",
+            role_type: "Remote",
+            href: "#" %>
+
+          <%= render "rui/marketing/career",
+            title: "Product Designer",
+            location: "New York, NY",
+            role_type: "Hybrid",
+            href: "#" %>
+
+          <%= render "rui/marketing/career",
+            title: "DevOps Engineer",
+            location: "Austin, TX",
+            role_type: "Remote",
+            href: "#" %>
+
+          <%= render "rui/marketing/career",
+            title: "Data Scientist",
+            location: "Seattle, WA",
+            role_type: "Remote",
+            href: "#" %>
+
+          <%= render "rui/marketing/career",
+            title: "Marketing Manager",
+            location: "Global",
+            role_type: "Remote",
+            href: "#" %>
+
+          <%= render "rui/marketing/career",
+            title: "Customer Success",
+            location: "Chicago, IL",
+            role_type: "Hybrid",
+            href: "#" %>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <h3 class="mb-4 h4">Don't see a perfect fit?</h3>
+        <p class="mb-6 text-neutral-600 dark:text-neutral-400">
+          We're always looking for talented people who share our passion for AI and human-centered design.
+        </p>
+        <%= link_to "Send us your resume", "#", class: "btn btn-white" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Company Stats -->
+  <div class="px-6 py-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 h2">Growing with our community</h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          We're proud to serve users around the world
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="text-center">
+          <div class="mb-4 text-4xl font-bold text-neutral-900 dark:text-white">50K+</div>
+          <div class="text-neutral-600 dark:text-neutral-400">Active users</div>
+        </div>
+        <div class="text-center">
+          <div class="mb-4 text-4xl font-bold text-neutral-900 dark:text-white">1M+</div>
+          <div class="text-neutral-600 dark:text-neutral-400">Conversations</div>
+        </div>
+        <div class="text-center">
+          <div class="mb-4 text-4xl font-bold text-neutral-900 dark:text-white">150+</div>
+          <div class="text-neutral-600 dark:text-neutral-400">Countries</div>
+        </div>
+        <div class="text-center">
+          <div class="mb-4 text-4xl font-bold text-neutral-900 dark:text-white">99.9%</div>
+          <div class="text-neutral-600 dark:text-neutral-400">Uptime</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="px-6 py-20 bg-neutral-50 dark:bg-neutral-900/50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="mb-6 h2">
+        Join us on this journey
+      </h2>
+      <p class="mb-8 text-xl text-neutral-600 dark:text-neutral-400">
+        Whether you're a user, investor, or potential team member, we'd love to hear from you.
+      </p>
+      <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+        <%= link_to "Get in touch", "#", class: "btn btn-primary" %>
+        <%= link_to "View careers", "#", class: "btn btn-white" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<%= render "rui/shared/footer" %>
+
+<!-- Search -->
+<%= render "rui/shared/search" %>

@@ -1,0 +1,9 @@
+<%# locals: (title:, location:, role_type:, href: "#") %>
+
+<div class="flex items-center justify-between py-4 border-b border-neutral-200 dark:border-neutral-700">
+  <div>
+    <h3 class="font-semibold text-neutral-900 dark:text-white"><%= title %></h3>
+    <p class="text-sm text-neutral-600 dark:text-neutral-400"><%= location %> &bull; <%= role_type %></p>
+  </div>
+  <%= link_to "Apply Now", href, class: "btn btn-primary btn-sm", target: :_blank %>
+</div>

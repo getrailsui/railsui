@@ -1,5 +1,6 @@
 <div id="form-builder-examples">
 
+<div id="form-builder-basic-form">
 <!-- Basic Form Example -->
 <%= render layout: example, locals: { heading: "Basic Form" } do %>
 
@@ -36,7 +37,9 @@
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
+</div>
 
+<div id="form-builder-all-inputs">
 <!-- All Input Types -->
 <%= render layout: example, locals: { heading: "All Input Types" } do %>
 
@@ -129,7 +132,10 @@
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
+</div>
 
+
+<div id="form-builder-select-textarea">
 <!-- Select and Textarea -->
 <%= render layout: example, locals: { heading: "Select & Textarea" } do %>
 
@@ -171,7 +177,9 @@
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
+</div>
 
+<div id="form-builder-checkboxes-radios">
 <!-- Checkboxes and Radio Buttons -->
 <%= render layout: example, locals: { heading: "Checkboxes & Radio Buttons" } do %>
 
@@ -243,9 +251,12 @@
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
+</div>
 
-<!-- Custom Controls -->
-<%= render layout: example, locals: { heading: "Custom Controls" } do %>
+
+<div id="form-builder-switches">
+<!-- Switch Controls -->
+<%= render layout: example, locals: { heading: "Switches" } do %>
 
 <%= render preview('gray') do %>
   <form>
@@ -272,6 +283,10 @@
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
+</div>
+
+
+<div id="form-builder-validation-errors">
 
 <!-- Form with Validation Errors -->
 <%= render layout: example, locals: { heading: "Validation & Errors" } do %>
@@ -308,6 +323,10 @@
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
+</div>
+
+
+<div id="form-builder-comparison">
 
 <!-- Comparison: With vs Without Form Builder -->
 <%= render layout: example, locals: { heading: "With vs Without Form Builder" } do %>
@@ -360,6 +379,9 @@
 <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
+</div>
+
+<div id="form-builder-advanced">
 
 <!-- Advanced Options -->
 <%= render layout: example, locals: { heading: "Advanced Options" } do %>
@@ -415,3 +437,21 @@
 <% end %>
 <% end %>
 </div>
+</div>
+
+<%= system_pagination(prev_path: systems_scaffolds_path, prev_text: "Scaffolds", next_path: systems_forms_input_path, next_text: "Input") %>
+
+<%= content_for :component_nav do %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Setup", "#form-builder-setup" %>
+    <%= component_link "Field Options", "#form-builder-field-options" %>
+    <%= component_link "Basic form", "#form-builder-basic-form" %>
+    <%= component_link "All Input types", "#form-builder-all-inputs" %>
+    <%= component_link "Select & Textarea", "#form-builder-select-textarea" %>
+    <%= component_link "Checkboxes & Radios", "#form-builder-checkboxes-radios" %>
+    <%= component_link "Switches", "#form-builder-switches" %>
+    <%= component_link "Validation & Errors", "#form-builder-validation-errors" %>
+    <%= component_link "Vanilla Rails Comparison", "#form-builder-comparison" %>
+    <%= component_link "Advanced", "#form-builder-advanced" %>
+  <% end %>
+<% end %>

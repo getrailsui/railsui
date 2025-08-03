@@ -1,0 +1,57 @@
+<nav class="w-full px-6 py-6" data-controller="railsui-toggle">
+  <div class="flex items-center justify-between mx-auto max-w-7xl">
+    <%= link_to root_path, class: "flex items-center gap-2" do %>
+      <%= icon "logo.svg", custom_path: "./logo.svg", class: "size-6 shrink-0 fill-current dark:fill-neutral-100" %>
+      <span class="text-xl font-semibold text-neutral-900 dark:text-white"><%= Railsui.config.application_name || "Corgie" %></span>
+    <% end %>
+
+    <!-- Desktop Navigation -->
+    <div class="items-center hidden gap-4 md:flex">
+      <%= nav_link_to "Features", rui_features_path, class: "btn btn-link", active_class: "btn btn-muted" %>
+      <%= nav_link_to "Pricing", rui_pricing_path, class: "btn btn-link", active_class: "btn btn-muted" %>
+      <%= nav_link_to "Blog", rui_blog_path, class: "btn btn-link", active_class: "btn-muted" %>
+      <%= nav_link_to "About", rui_about_path, class: "btn btn-link", active_class: "btn btn-muted" %>
+      <%= nav_link_to "Log in", rui_login_path, class: "btn btn-link", active_class: "btn btn-muted" %>
+
+      <%= link_to "Try Corgie", rui_chat_new_path, class: "btn btn-dark" %>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="flex flex-col items-center justify-center md:hidden size-8 group"
+      data-action="click->railsui-toggle#toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span
+        class="w-5 h-0.5 bg-neutral-800 dark:bg-neutral-200 transition-all duration-300 group-aria-expanded:rotate-45 group-aria-expanded:translate-y-1.5"></span>
+      <span
+        class="w-5 h-0.5 bg-neutral-800 dark:bg-neutral-200 transition-all duration-300 mt-1 group-aria-expanded:opacity-0"></span>
+      <span
+        class="w-5 h-0.5 bg-neutral-800 dark:bg-neutral-200 transition-all duration-300 mt-1 group-aria-expanded:-rotate-45 group-aria-expanded:-translate-y-1.5"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="hidden md:hidden relative z-20" data-railsui-toggle-target="toggleable" aria-hidden="true">
+    <% base_mobile_classes = "block px-3 py-2 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-lg transition-colors" %>
+    <% active_mobile_classes = "#{base_mobile_classes} bg-neutral-100 dark:bg-neutral-700" %>
+
+    <div
+      class="px-6 py-4 mt-4 bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-xl">
+      <div class="space-y-2">
+
+        <%= nav_link_to "Features", rui_features_path, class: base_mobile_classes, active_class: active_mobile_classes %>
+
+        <%= nav_link_to "Pricing", rui_pricing_path, class: base_mobile_classes, active_class: active_mobile_classes %>
+
+        <%= nav_link_to "Blog", rui_blog_path, class: base_mobile_classes, active_class: active_mobile_classes %>
+
+        <%= nav_link_to "About", rui_about_path, class: base_mobile_classes, active_class: active_mobile_classes %>
+
+        <div class="pt-2 mt-4 border-t border-neutral-200 dark:border-neutral-700">
+
+          <%= nav_link_to "Log in", rui_login_path, class: base_mobile_classes, active_class: active_mobile_classes %>
+
+          <%= link_to "Try Corgie", rui_chat_new_path, class: "btn btn-primary btn-lg w-full mt-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

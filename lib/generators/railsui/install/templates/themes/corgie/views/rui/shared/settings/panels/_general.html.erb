@@ -1,0 +1,92 @@
+<section class="relative text-sm md:min-h-[380px]">
+  <%= render "rui/shared/settings/panels/title", title: "Settings" %>
+
+  <!-- Theme Setting -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between">
+      <label for="theme" class="w-1/2 md:w-1/3 form-label">Theme</label>
+      <select id="theme" class="pr-8 text-center truncate w-24 form-select form-select-minimal text-sm">
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Language Setting -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between">
+      <label for="language" class="w-1/2 md:w-1/3 form-label">Language</label>
+      <select id="language" class="w-24 pr-8 text-center truncate  form-select form-select-minimal text-sm">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="ru">Русский</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="ar">العربية</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Spoken Language Setting -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between">
+      <label for="spoken-language" class="w-1/2 md:w-1/3 form-label">Spoken language</label>
+      <select id="spoken-language"
+        class="w-32 pr-8 text-center truncate md:w-24 form-select form-select-minimal text-sm">
+        <option value="auto">Auto</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="ru">Русский</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="ar">العربية</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
+    <p class="form-help">For best results, select the language you mainly speak. If it's not listed, it may still be
+      supported via auto-detection.</p>
+  </div>
+
+  <!-- Voice Setting -->
+  <div class="items-center py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between">
+      <label for="voice" class="w-1/2 mb-0 md:w-1/3 form-label">Voice</label>
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
+          <button class="flex items-center gap-2 rounded-full btn btn-ghost">
+            Play
+            <%= icon "play", class: "size-4 stroke-current" %>
+          </button>
+        </div>
+        <div>
+          <select id="voice" class="w-24 pr-8 text-center truncate md:w-16 form-select form-select-minimal text-sm">
+            <option value="en">Emma</option>
+            <option value="es">Leo</option>
+            <option value="fr">Marie</option>
+            <option value="de">Hans</option>
+            <option value="it">Sofia</option>
+            <option value="pt">João</option>
+            <option value="ru">Anastasia</option>
+            <option value="zh">Wei</option>
+            <option value="ja">Yuki</option>
+            <option value="ko">Min-ji</option>
+            <option value="ar">Ahmed</option>
+            <option value="hi">Priya</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

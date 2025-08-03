@@ -1,0 +1,69 @@
+<section class="relative text-sm md:min-h-[380px]">
+  <%= render "rui/shared/settings/panels/title", title: "Data Controls" %>
+
+  <!-- Data Export -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Export Data</label>
+        <p class="form-help">Download all your data in JSON format</p>
+      </div>
+      <button class="flex items-center gap-2 rounded-md btn btn-ghost">
+        Export
+      </button>
+    </div>
+  </div>
+
+  <!-- Data Retention -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <label for="data-retention" class="w-1/2 form-label md:w-1/3">Data Retention</label>
+      <select id="data-retention" class="w-32 pr-8 text-center truncate form-select form-select-minimal text-sm">
+        <option value="30">30 days</option>
+        <option value="90">90 days</option>
+        <option value="180">6 months</option>
+        <option value="365">1 year</option>
+        <option value="forever">Forever</option>
+      </select>
+    </div>
+    <p class="form-help">How long to keep your conversation history</p>
+  </div>
+
+  <!-- Auto-delete Conversations -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Auto-remove old conversations</label>
+        <p class="form-help">Remove conversations older than retention period</p>
+      </div>
+      <input type="checkbox" id="auto-delete" class="form-input-switch">
+      <label for="auto-delete"></label>
+    </div>
+  </div>
+
+  <!-- Clear All Data -->
+  <div class="py-3 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="text-red-600 form-label dark:text-red-400">Clear All Data</label>
+        <p class="form-help">Permanently delete all conversations and settings</p>
+      </div>
+      <button
+        class="flex items-center gap-2 text-red-600 rounded-md btn btn-ghost dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20">
+        Clear
+      </button>
+    </div>
+  </div>
+
+  <!-- Data Sharing -->
+  <div class="py-3">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex-1">
+        <label class="form-label">Share usage data for improvements</label>
+        <p class="form-help">Help improve the service by sharing anonymous usage statistics</p>
+      </div>
+      <input type="checkbox" id="data-sharing" class="form-input-switch" checked>
+      <label for="data-sharing"></label>
+    </div>
+  </div>
+</section>

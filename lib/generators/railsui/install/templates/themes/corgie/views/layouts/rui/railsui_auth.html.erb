@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      <%= Railsui.config.application_name || "Rails UI" %>
+    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <%= railsui_head %>
+  </head>
+
+  <body class="<%= railsui_body_classes %>">
+    <div class="flex min-h-screen bg-white dark:bg-neutral-900">
+      <%= render "rui/shared/flash" %>
+      <div class="flex items-center justify-center w-full px-6 lg:w-5/12">
+        <div class="w-full max-w-sm space-y-8">
+          <div class="flex flex-col items-center justify-center gap-4">
+            <%= link_to root_path, class: "flex items-center gap-2.5 shrink-0" %>
+              <!-- Corgie logo -->
+              <%= icon "logo.svg", custom_path: "/logo.svg", class: "size-6 fill-current", variant: :solid %>
+
+              <span class="h4"><%= Railsui.config.application_name || "Corgie" %></span>
+            <% end %>
+
+            <% if title %>
+              <p class="text-neutral-500 dark:text-neutral-400"><%= title %></p>
+            <% end %>
+          </div>
+          <%= yield %>
+        </div>
+      </div>
+      <div class="relative hidden overflow-hidden lg:flex lg:w-7/12 bg-neutral-950">
+        <%= image_tag "auth-bg.jpg", alt: "Authentication visual with pulse animation", class: "absolute inset-0 object-cover w-full h-full opacity-20 animate-auth-ambient" %>
+      </div>
+    </div>
+    <%= railsui_launcher if Rails.env.development? %>
+  </body>
+</html>

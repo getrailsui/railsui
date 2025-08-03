@@ -1,0 +1,24 @@
+<!-- Action Buttons -->
+<div class="px-4 w-full space-y-2 mb-4">
+  <!-- New Chat Button -->
+  <%= link_to rui_chat_new_path, class: "rounded-md w-full p-2 text-sm hover:bg-neutral-200/80 flex items-center gap-3 group dark:hover:bg-neutral-900 transition-all duration-200 sidebar-collapsed:justify-center" do %>
+    <div class="flex items-center gap-3 min-w-0 flex-1 sidebar-collapsed:flex-none">
+      <%= icon "plus", class: "size-5 stroke-current text-neutral-700 dark:text-neutral-100 shrink-0" %>
+      <span class="sidebar-expanded-only transition-opacity duration-200 truncate">New chat</span>
+    </div>
+    <span class="sidebar-expanded-only opacity-0 group-hover:opacity-100 duration-200 transition-opacity shrink-0">
+      <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-700 rounded text-neutral-600 dark:text-neutral-300 font-mono text-xs">⇧ ⌘ O</kbd>
+    </span>
+  <% end %>
+
+  <!-- Search chats button -->
+  <button class="rounded-md w-full p-2 text-sm hover:bg-neutral-200/80 flex items-center gap-3 group dark:hover:bg-neutral-900 transition-all duration-200 sidebar-collapsed:justify-center" data-action="click->search#open">
+    <div class="flex items-center gap-3 min-w-0 flex-1 sidebar-collapsed:flex-none">
+      <%= icon "magnifying-glass", class: "size-5 stroke-current text-neutral-700 dark:text-neutral-100 shrink-0" %>
+      <span class="sidebar-expanded-only transition-opacity duration-200 truncate">Search chats</span>
+    </div>
+    <span class="sidebar-expanded-only opacity-0 group-hover:opacity-100 duration-200 transition-opacity shrink-0">
+      <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-700 rounded text-neutral-600 dark:text-neutral-300 font-mono text-xs">⌘ K</kbd>
+    </span>
+  </button>
+</div>

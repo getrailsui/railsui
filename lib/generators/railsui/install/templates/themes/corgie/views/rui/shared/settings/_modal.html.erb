@@ -26,24 +26,24 @@
               data-action="click->railsui-modal#close"
               class="flex items-center justify-center rounded-full size-8 hover:bg-neutral-200 dark:hover:bg-neutral-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               aria-label="Close">
-              <%= icon "x-mark" "md:size-5 size-7 stroke-current" %>
+              <%= icon "x-mark" class: "md:size-5 size-7 stroke-current" %>
             </button>
           </div>
 
           <!-- Navigation Tabs -->
           <nav
             class="flex items-center px-2 pb-2 overflow-x-auto md:block md:py-0 md:space-y-1 md:flex-1 snap-x snap-mandatory shadow-transparent">
-            <%= render "shared/settings/nav_item", label: "General", nav_icon: "cog-6-tooth" %>
+            <%= render "rui/shared/settings/nav_item", label: "General", nav_icon: "cog-6-tooth" %>
 
-            <%= render "shared/settings/nav_item", label: "Billing", nav_icon: "credit-card" %>
+            <%= render "rui/shared/settings/nav_item", label: "Billing", nav_icon: "credit-card" %>
 
-            <%= render "shared/settings/nav_item", label: "Notifications", nav_icon: "bell" %>
+            <%= render "rui/shared/settings/nav_item", label: "Notifications", nav_icon: "bell" %>
 
-            <%= render "shared/settings/nav_item", label: "Personalization", nav_icon: "user-circle" %>
+            <%= render "rui/shared/settings/nav_item", label: "Personalization", nav_icon: "user-circle" %>
 
-            <%= render "shared/settings/nav_item", label: "Data controls", nav_icon: "circle-stack" %>
+            <%= render "rui/shared/settings/nav_item", label: "Data controls", nav_icon: "circle-stack" %>
 
-            <%= render "shared/settings/nav_item", label: "Security", nav_icon: "lock-closed" %>
+            <%= render "rui/shared/settings/nav_item", label: "Security", nav_icon: "lock-closed" %>
           </nav>
         </div>
 
@@ -54,32 +54,32 @@
 
             <!-- General Tab -->
             <div data-railsui-tabs-target="panel" class="p-4 md:p-6">
-              <%= render "shared/settings/general" %>
+              <%= render "rui/shared/settings/general" %>
             </div>
 
             <!-- Billing Tab -->
             <div data-railsui-tabs-target="panel" class="p-4 md:p-6">
-              <%= render "shared/settings/billing" %>
+              <%= render "rui/shared/settings/billing" %>
             </div>
 
             <!-- Notifications Tab -->
             <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
-              <%= render "shared/settings/notifications" %>
+              <%= render "rui/shared/settings/notifications" %>
             </div>
 
             <!-- Personalization Tab -->
             <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
-              <%= render "shared/settings/personalization" %>
+              <%= render "rui/shared/settings/personalization" %>
             </div>
 
             <!-- Data Controls Tab -->
             <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
-              <%= render "shared/settings/data_controls" %>
+              <%= render "rui/shared/settings/data_controls" %>
             </div>
 
             <!-- Security Tab -->
             <div data-railsui-tabs-target="panel" class="hidden px-4 py-6">
-              <%= render "shared/settings/security" %>
+              <%= render "rui/shared/settings/security" %>
             </div>
           </div>
         </div>

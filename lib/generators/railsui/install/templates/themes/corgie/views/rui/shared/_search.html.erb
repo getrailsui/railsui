@@ -1,0 +1,32 @@
+<!-- Search Modal -->
+<div class="fixed inset-0 z-50 items-center justify-center hidden transition duration-300 transform bg-black/70 backdrop-blur-sm" data-search-target="modal" data-action="click->search#close">
+  <div class="bg-white dark:bg-neutral-800 rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[80vh] overflow-hidden" data-action="click->search#preventClose">
+
+    <!-- Search Header -->
+    <div class="p-4 border-b border-neutral-200 dark:border-neutral-700">
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        <input type="text" class="w-full py-3 pl-10 pr-4 text-lg bg-transparent border-0 focus:ring-0 focus:outline-none placeholder-neutral-500" placeholder="Search conversations or type a command..." data-search-target="input" data-action="input->search#handleInput keydown->search#handleKeydown">
+      </div>
+    </div>
+
+    <div class="overflow-y-auto max-h-96" data-search-target="results">
+      <!-- Search Results. See app/controllers/railui/search_controller.js -->
+    </div>
+
+    <!-- Search Footer -->
+    <div class="p-4 border-t border-neutral-200 bg-neutral-50 dark:border-neutral-700/80 dark:bg-neutral-700">
+      <div class="flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-300">
+        <div class="flex items-center space-x-4">
+          <span>Press <kbd class="px-1.5 py-0.5 bg-white border border-neutral-300 rounded text-neutral-600 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100">↵</kbd> to select</span>
+          <span>Press <kbd class="px-1.5 py-0.5 bg-white border border-neutral-300 rounded text-neutral-600 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100">↑↓</kbd> to navigate</span>
+        </div>
+        <span>Press <kbd class="px-1.5 py-0.5 bg-white border border-neutral-300 rounded text-neutral-600 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100">Esc</kbd> to close</span>
+      </div>
+    </div>
+  </div>
+</div>

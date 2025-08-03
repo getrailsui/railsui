@@ -18,7 +18,7 @@
     <%= railsui_head %>
   </head>
 
-  <body class="<%= railsui_body_classes %>">
+  <body class="<%= railsui_body_classes %>" data-controller="search railsui-modal">
     <%= render "rui/shared/flash" %>
     <% if content_for(:header).present? %>
       <%= yield :header %>
@@ -29,6 +29,7 @@
 
 
     <%= render "rui/shared/footer" %>
+    <%= render "rui/shared/settings/modal" %>
     <%= railsui_launcher if Rails.env.development? %>
   </body>
 </html

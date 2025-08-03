@@ -4,27 +4,15 @@
 
 <%= render "railsui/shared/header" %>
 
-
-
 <div class="prose dark:prose-invert">
   <p>The Rails UI Form Builder extends the Ruby on Rails default form builder to automatically apply theme-appropriate CSS classes to all form elements based on your active theme (your active theme is <code><%= Railsui.config.theme.humanize %></code>). It provides a consistent, accessible, and beautiful form experience across your application with less key strokes and more consistency.</p>
-
-  <h4>Features</h4>
-  <ul>
-    <li>Automatic styling of all standard form inputs</li>
-    <li>Built-in error state handling</li>
-    <li>Label and help text support</li>
-    <li>Required field indicators</li>
-    <li>Custom form controls (switches, button toggles, etc.)</li>
-    <li>Full theme integration</li>
-  </ul>
 
   <h2>Setup</h2>
   <p>The Rails UI Form Builder is available when Rails UI is installed. Simply pass it as the <code>builder</code> parameter to your forms.</p>
 
+
   <h2>Basic Usage</h2>
   <p>Add <code>builder: Railsui::FormBuilder</code> to your <code>form_with</code> helper to apply automatic styling:</p>
-
 
 <div class="not-prose">
 <% content_for :erb, flush: true do %>
@@ -34,30 +22,145 @@
   <%%= f.submit %>
 <%% end %>
 <% end %>
-
 <%= render_snippet active_tab: :erb %>
 </div>
 
-  <h2>Flexibility</h2>
-  <p>You can choose when to use the Rails UI styling. Forms without the builder parameter will use standard Rails styling:</p>
+
+<div id="form-builder-field-options">
+<h2>Field Options</h2>
+<p>Rails UI Form Builder fields accept various options to customize their appearance and behavior:</p>
+
+<h3>Universal Options</h3>
+<p>These options are available for all field types:</p>
 
 <div class="not-prose">
-<% content_for :erb, flush: true do %>
-  <!-- With Rails UI styling -->
-<%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
-  <%%= f.text_field :name, label: "Full Name" %>
-<%% end %>
-
-<!-- Standard Rails styling -->
-<%%= form_with model: @user do |f| %>
-  <%%= f.text_field :name %>
-<%% end %>
-<% end %>
-<%= render_snippet active_tab: :erb %>
+<table class="table-auto w-full border-collapse border border-neutral-300 dark:border-neutral-600 text-sm">
+  <thead>
+    <tr class="bg-neutral-50 dark:bg-neutral-800">
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Option</th>
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Type</th>
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Description</th>
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>label</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">String or false</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Sets label text or hides label</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>label: "Full Name"</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>placeholder</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">String</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Input placeholder text</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>placeholder: "John Doe"</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>help</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">String</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Help text below field</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>help: "We'll never share this"</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>class</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">String</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Custom CSS classes for input</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>class: "form-input text-lg"</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>wrapper</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Hash</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Options for wrapper div</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>wrapper: { class: "max-w-md" }</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>label_options</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Hash</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Options for label element</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>label_options: { class: "text-blue-600" }</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>skip_label</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Boolean</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Skip rendering label entirely</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>skip_label: true</code></td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
+<h3>Field-Specific Options</h3>
+
+<div class="not-prose">
+<table class="table-auto w-full border-collapse border border-neutral-300 dark:border-neutral-600 text-sm">
+  <thead>
+    <tr class="bg-neutral-50 dark:bg-neutral-800">
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Field Type</th>
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Additional Options</th>
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>text_area</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>rows</code> - Number of visible lines</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>rows: 4</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>number_field</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>min</code>, <code>max</code> - Value limits</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>min: 0, max: 100</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>range_field</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>min</code>, <code>max</code>, <code>value</code> - Range settings</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>min: 0, max: 100, value: 25</code></td>
+    </tr>
+    <tr>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>select</code></td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2">Standard Rails select parameters plus Rails UI options</td>
+      <td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>{ prompt: "Choose..." }, { label: "Country" }</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Default CSS Classes</h3>
+
+<div class="not-prose">
+<table class="table-auto w-full border-collapse border border-neutral-300 dark:border-neutral-600 text-sm">
+  <thead>
+    <tr class="bg-neutral-50 dark:bg-neutral-800">
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Field Type</th>
+      <th class="border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-left font-semibold">Default CSS Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>text_field</code>, <code>email_field</code>, <code>password_field</code>, etc.</td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>text_area</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-textarea</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>select</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-select</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>check_box</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input-checkbox</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>radio_button</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input-radio</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>switch_field</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input-switch</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>file_field</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-file</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>range_field</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input-range</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>color_field</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input-color</code></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Automatic Features:</strong></p>
+<ul>
+  <li>Error states automatically add <code>form-input-error</code> class</li>
+  <li>Required fields (with presence validators) get required styling</li>
+  <li>Labels automatically use <code>form-label</code> class</li>
+  <li>Help text automatically uses <code>form-help</code> class</li>
+  <li>Wrapper divs automatically use <code>form-group</code> class</li>
+</ul>
 
 <h2>Examples</h2>
+</div>
 </div>
 
 <%= render "railsui/themes/#{Railsui.config.theme}/forms/form_builder" %>
