@@ -1,0 +1,47 @@
+<!-- Abstract Background SVG -->
+<div class="absolute inset-0 overflow-hidden delay-100 pointer-events-none animate-slide-up z-10">
+  <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="fadeGradientLight" x1="0%" y1="0%" x2="70%" y2="100%">
+        <stop offset="0%" style="stop-color:#4338ca;stop-opacity:0.10" />
+        <stop offset="30%" style="stop-color:#4338ca;stop-opacity:0.09" />
+        <stop offset="70%" style="stop-color:#4338ca;stop-opacity:0.062" />
+        <stop offset="100%" style="stop-color:#4338ca;stop-opacity:0" />
+      </linearGradient>
+      <linearGradient id="fadeGradientDark" x1="0%" y1="0%" x2="70%" y2="100%">
+        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.12" />
+        <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.08" />
+        <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.04" />
+        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+      </linearGradient>
+    </defs>
+
+    <!-- Light mode lines -->
+    <g class="dark:hidden">
+      <path d="M-100,150 Q200,120 400,160 T800,140 T1200,180" stroke="url(#fadeGradientLight)" stroke-width="2"
+        fill="none" opacity="0.6" />
+      <path d="M-150,220 Q150,180 350,210 T750,200 T1150,240" stroke="url(#fadeGradientLight)" stroke-width="1.5"
+        fill="none" opacity="0.4" />
+      <path d="M-80,300 Q220,260 420,290 T820,280 T1220,320" stroke="url(#fadeGradientLight)" stroke-width="1"
+        fill="none" opacity="0.3" />
+      <path d="M-120,380 Q180,340 380,370 T780,360 T1180,400" stroke="url(#fadeGradientLight)" stroke-width="1"
+        fill="none" opacity="0.2" />
+      <path d="M-60,460 Q240,420 440,450 T840,440 T1240,480" stroke="url(#fadeGradientLight)" stroke-width="0.8"
+        fill="none" opacity="0.15" />
+    </g>
+
+    <!-- Dark mode lines -->
+    <g class="hidden dark:block">
+      <path d="M-100,150 Q200,120 400,160 T800,140 T1200,180" stroke="url(#fadeGradientDark)" stroke-width="2"
+        fill="none" opacity="0.6" />
+      <path d="M-150,220 Q150,180 350,210 T750,200 T1150,240" stroke="url(#fadeGradientDark)" stroke-width="1.5"
+        fill="none" opacity="0.4" />
+      <path d="M-80,300 Q220,260 420,290 T820,280 T1220,320" stroke="url(#fadeGradientDark)" stroke-width="1"
+        fill="none" opacity="0.3" />
+      <path d="M-120,380 Q180,340 380,370 T780,360 T1180,400" stroke="url(#fadeGradientDark)" stroke-width="1"
+        fill="none" opacity="0.2" />
+      <path d="M-60,460 Q240,420 440,450 T840,440 T1240,480" stroke="url(#fadeGradientDark)" stroke-width="0.8"
+        fill="none" opacity="0.15" />
+    </g>
+  </svg>
+</div>

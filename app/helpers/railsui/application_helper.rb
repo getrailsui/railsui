@@ -99,7 +99,7 @@ module Railsui
       dark:ring-transparent"
     end
 
-    def help_text _
+    def help_text
       content_tag :div, class: "prose prose-sm prose-neutral dark:prose-invert max-w-full" do
         yield
       end

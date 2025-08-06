@@ -1,0 +1,17 @@
+<!-- Feature Card Component -->
+<div class="text-center">
+  <div class="flex items-center justify-center mx-auto mb-6 {{iconContainerClass}} {{#if rounded}}rounded-2xl{{else}}rounded-lg{{/if}}">
+    {{{icon iconName iconClass}}}
+  </div>
+  <h3 class="{{#if titleClass}}{{titleClass}}{{else}}mb-4 h5{{/if}}">{{title}}</h3>
+  {{#if prose}}
+  <div class="prose text-center prose-neutral dark:prose-invert">
+    <p>{{description}}</p>
+  </div>
+  {{else}}
+  <p class="{{#if descriptionClass}}{{descriptionClass}}{{else}}text-sm text-neutral-500 dark:text-neutral-400 mb-4{{/if}}">{{description}}</p>
+  {{/if}}
+  {{#if buttonText}}
+  <button class="{{#if buttonClass}}{{buttonClass}}{{else}}btn btn-primary{{/if}}">{{buttonText}}</button>
+  {{/if}}
+</div>
