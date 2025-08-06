@@ -1,0 +1,398 @@
+<div class="bg-white dark:bg-neutral-900">
+  <%= render "rui/shared/waves" %>
+  <!-- Navigation -->
+  <%= render "rui/shared/marketing/nav" %>
+
+  <!-- Hero Section -->
+  <div class="px-6 py-24 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="display-4 md:display-3 mb-3">
+        Simple, transparent pricing
+      </h1>
+      <p class="max-w-2xl mx-auto prose prose-xl prose-neutral dark:prose-invert">Choose the plan that fits your needs.
+        Start free and upgrade as you grow.</p>
+    </div>
+  </div>
+
+  <div class="pt-10 px-6 pb-20 relative z-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid gap-8 lg:grid-cols-3">
+
+        <div
+          class="relative flex flex-col gap-6 p-8 bg-white border border-neutral-300 dark:bg-neutral-800 dark:border-neutral-700 rounded-2xl items-between">
+          <div class="flex-1">
+            <div class="mb-8">
+              <h3 class="mb-2 text-2xl font-semibold text-neutral-900 dark:text-white">Free</h3>
+              <p class="text-neutral-600 dark:text-neutral-400">Perfect for getting started</p>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex items-baseline">
+                <span class="text-4xl font-bold text-neutral-900 dark:text-white">$0</span>
+                <span class="ml-1 text-neutral-600 dark:text-neutral-400">/month</span>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Up to 10 conversations per day</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Basic AI responses</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Text file upload (up to 1MB)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Community support</span>
+              </div>
+            </div>
+          </div>
+
+          <%= link_to "Get started free", rui_signup_path, class: "w-full btn btn-lg btn-primary btn-rounded" do %>
+            <%= icon "arrow-up-right", "size-3 stroke-current" %>
+          <% end %>
+        </div>
+
+        <div
+          class="relative flex flex-col justify-between gap-6 p-8 bg-white border-2 border-neutral-500 dark:bg-neutral-800 rounded-2xl">
+
+          <div class="absolute transform -translate-x-1/2 -top-4 left-1/2">
+            <span class="px-4 py-1 text-sm font-medium text-white rounded-full bg-neutral-800 dark:bg-indigo-700">
+              Most popular
+            </span>
+          </div>
+
+          <div class="flex-1">
+            <div class="mb-8">
+              <h3 class="mb-2 text-2xl font-semibold text-left text-neutral-900 dark:text-white">Plus</h3>
+              <p class="text-neutral-600 dark:text-neutral-400">For professionals and teams</p>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex items-baseline">
+                <span class="text-4xl font-bold text-neutral-900 dark:text-white">$20</span>
+                <span class="ml-1 text-neutral-600 dark:text-neutral-400">/month</span>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Unlimited conversations</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Advanced AI responses</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">File upload up to 25MB</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Priority support</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Custom conversation history</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Export conversations</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <%= link_to "Start Plus trial", rui_signup_path(plan: :pro), class: "w-full btn btn-lg btn-primary btn-rounded" do %>
+              <%= icon "arrow-up-right", "size-3 stroke-current" %>
+            <% end %>
+          </div>
+        </div>
+
+        <div
+          class="relative flex flex-col justify-between gap-6 p-8 bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-2xl">
+          <div class="flex-1">
+            <div class="mb-8">
+              <h3 class="mb-2 text-2xl font-semibold text-neutral-900 dark:text-white">Pro</h3>
+              <p class="text-neutral-600 dark:text-neutral-400">For power users and enterprises</p>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex items-baseline">
+                <span class="text-4xl font-bold text-neutral-900 dark:text-white">$50</span>
+                <span class="ml-1 text-neutral-600 dark:text-neutral-400">/month</span>
+              </div>
+            </div>
+
+            <div class="mb-6 space-y-4">
+              <div class="flex gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Everything in Plus</span>
+              </div>
+              <div class="flex gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Premium AI models</span>
+              </div>
+              <div class="flex gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">File upload up to 100MB</span>
+              </div>
+              <div class="flex gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Team collaboration</span>
+              </div>
+              <div class="flex gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Advanced analytics</span>
+              </div>
+              <div class="flex gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Dedicated support</span>
+              </div>
+              <div class="flex gap-3">
+                <%= icon "check", "size-5 text-green-500" %>
+                <span class="text-neutral-700 dark:text-neutral-300">Custom integrations</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <%= link_to "Contact sales","#", class: "w-full btn btn-primary btn-lg btn-rounded" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-6 py-20 bg-neutral-50 dark:bg-neutral-900/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 h2">Compare features</h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          See what's included in each plan
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-xl">
+          <thead>
+            <tr class="border-b border-neutral-200 dark:border-neutral-700">
+              <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+                Features
+              </th>
+              <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+                Free
+              </th>
+              <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+                <div class="flex items-center justify-start gap-2">
+                  Plus
+                  <span class="px-2 py-1 text-xs text-white rounded-3xl bg-neutral-900">Popular</span>
+                </div>
+              </th>
+              <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+                Pro
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+            <tr>
+              <td class="px-6 py-4 font-medium text-left text-neutral-900 dark:text-white">
+                Daily conversations
+              </td>
+              <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+                10
+              </td>
+              <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+                Unlimited
+              </td>
+              <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+                Unlimited
+              </td>
+            </tr>
+
+            <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                AI models
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                Basic
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                Advanced
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                Premium
+              </td>
+            </tr>
+
+            <tr>
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                File upload limit
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                1MB
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                25MB
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                100MB
+              </td>
+            </tr>
+
+            <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                Support
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                Community
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                Priority
+              </td>
+              <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+                Dedicated
+              </td>
+            </tr>
+
+            <tr>
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                Conversation history
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "check", class: "size-5 text-green-500" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "check", class: "size-5 text-green-500" %>
+              </td>
+            </tr>
+
+            <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                Export conversations
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+
+                <%= icon "check", class: "size-5 text-green-500" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "check", class: "size-5 text-green-500" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                Team collaboration
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "check", class: "size-5 text-green-500" %>
+              </td>
+            </tr>
+
+            <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                Advanced analytics
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "check", class: "size-5 text-green-500" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+                Custom integrations
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-green-500" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "x-mark", class: "size-5 text-green-500" %>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <%= icon "check", class: "size-5 text-green-500" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-6 py-20">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-16 text-center">
+        <h2 class="mb-4 h2">Frequently asked questions</h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          Everything you need to know about our pricing
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        <%= render "rui/shared/faq", title: "Can I change my plan at any time?" do %>
+          <p>Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any billing adjustments.</p>
+        <% end %>
+
+        <%= render "rui/shared/faq", title: "Is there a free trial for paid plans?" do %>
+          <p>Yes, we offer a 14-day free trial for both Plus and Pro plans. No credit card required to start your trial.
+          </p>
+        <% end %>
+
+        <%= render "rui/shared/faq", title: "What payment methods do you accept?" do %>
+          <p>We accept all major credit cards (Visa, MasterCard, American Express) and PayPal. Annual plans can also be paid via bank transfer.</p>
+        <% end %>
+
+        <%= render "rui/shared/faq", title: "Do you offer discounts for annual plans?" do %>
+          <p>Yes, we offer a 20% discount when you pay annually. This applies to both Plus and Pro plans.</p>
+        <% end %>
+
+        <%= render "rui/shared/faq", title: "Is my data secure?" do %>
+          <p>Absolutely. We use enterprise-grade encryption and never store your conversations or files longer than
+            necessary. Pro plans include additional security features and compliance options.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="px-6 py-20 bg-neutral-50 dark:bg-neutral-900/50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="mb-6 h2">
+        Ready to get started?
+      </h2>
+      <p class="mb-8 text-xl text-neutral-600 dark:text-neutral-400">
+        Join thousands of professionals already using Corgie AI to enhance their productivity.
+      </p>
+      <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+        <%= link_to "Start free trial", rui_signup_path, class: "btn btn-white" %>
+        <%= link_to "Contact sales", "#", class: "btn btn-white" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/footer" %>
+<%= render "rui/shared/search" %>
