@@ -13,11 +13,13 @@
             <p class="text-lg text-neutral-600 dark:text-neutral-300 mb-8">Find answers, get support, or explore our features</p>
 
             <!-- Enhanced Search Box -->
-            <div class="relative max-w-2xl mx-auto"  data-controller="help-search">
+            <div class="relative max-w-2xl mx-auto"
+                 data-controller="help-search">
               <div class="relative group">
                 <input type="search"
                   class="w-full py-4 pl-12 pr-6 text-lg border border-neutral-300/80 dark:border-neutral-700 rounded-2xl focus:border-neutral-500/25 focus:ring-4 focus:ring-neutral-100 dark:focus:ring-neutral-900/30 transition-all duration-200 bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md"
-                  placeholder="Search help articles, guides, and FAQs..." data-help-search-target="input"
+                  placeholder="Search help articles, guides, and FAQs..."
+                  data-help-search-target="input"
                   data-action="input->help-search#handleInput focus->help-search#handleFocus blur->help-search#handleBlur keydown->help-search#handleKeydown">
 
                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -39,9 +41,9 @@
           </div>
         </div>
 
-        {{> help/quick_actions }}
-        {{> help/faq }}
-        {{> help/categories }}
+        <%= render "rui/shared/help/quick_actions" %>
+        <%= render "rui/shared/help/faq" %>
+        <%= render "rui/shared/help/categories" %>
 
         <div class="py-12 border-t border-neutral-200 dark:border-neutral-700">
           <div class="text-center mb-8">
@@ -54,7 +56,7 @@
             <div class="card text-center hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
               <div
                 class="size-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                {{{icon "envelope" "size-8 text-blue-600 dark:text-blue-400"}}}
+                  <%= icon "envelope", class: "size-8 text-blue-600 dark:text-blue-400" %>
               </div>
               <h3 class="h6 mb-2">Email Support</h3>
               <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">Get detailed help via email<br>Response
@@ -65,7 +67,7 @@
             <div class="card text-center hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
               <div
                 class="size-16 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                {{{icon "chat-bubble-left-right" "size-8 text-green-600 dark:text-green-400"}}}
+                  <%= icon "chat-bubble-left-right", class: "size-8 text-green-600 dark:text-green-400" %>
               </div>
               <h3 class="h6 mb-2">Live Chat</h3>
               <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">Chat with our team in
@@ -76,7 +78,7 @@
             <div class="card text-center hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
               <div
                 class="size-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                {{{icon "book-open" "size-8 text-purple-600 dark:text-purple-400"}}}
+                <%= icon "book-open", class: "size-8 text-purple-600 dark:text-purple-400" %>
               </div>
               <h3 class="h6 mb-2">Documentation</h3>
               <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">Comprehensive guides and API
@@ -92,7 +94,7 @@
               <div>
                 <div
                   class="size-12 bg-white dark:bg-neutral-800 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  {{{icon "envelope" "size-6 text-indigo-600"}}}
+                    <%= icon "envelope", class: "size-6 text-indigo-600" %>
                 </div>
                 <h4 class="font-semibold mb-1">Email</h4>
                 <p class="text-sm text-neutral-600 dark:text-neutral-400">support@corgie.ai</p>
@@ -100,7 +102,7 @@
               <div>
                 <div
                   class="size-12 bg-white dark:bg-neutral-800 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  {{{icon "globe-americas" "size-6 text-indigo-600"}}}
+                  <%= icon "globe-americas", class: "size-6 text-indigo-600" %>
                 </div>
                 <h4 class="font-semibold mb-1">Website</h4>
                 <p class="text-sm text-neutral-600 dark:text-neutral-400">www.corgie.ai</p>
@@ -108,7 +110,7 @@
               <div>
                 <div
                   class="size-12 bg-white dark:bg-neutral-800 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  {{{icon "clock" "size-6 text-indigo-600"}}}
+                  <%= icon "clock", class: "size-6 text-indigo-600" %>
                 </div>
                 <h4 class="font-semibold mb-1">Support Hours</h4>
                 <p class="text-sm text-neutral-600 dark:text-neutral-400">9 AM - 6 PM EST<br>Monday - Friday</p>
