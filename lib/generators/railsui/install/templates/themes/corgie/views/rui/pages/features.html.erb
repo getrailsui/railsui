@@ -1,0 +1,358 @@
+<div class="bg-white dark:bg-neutral-900">
+  <%= render "rui/shared/marketing/nav" %>
+
+  <%= render "rui/shared/waves" %>
+
+  <div class="relative py-16  md:py-32">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="display-4 md:display-3 mb-3">
+          Features
+        </h1>
+        <div class="mx-auto prose prose-xl text-center prose-neutral dark:prose-invert [text-wrap:balance]">
+          <p>
+            Discover what makes Corgie AI the most secure and powerful AI assistant for modern professionals
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Security First Section -->
+  <div class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-neutral-900 dark:to-blue-950/20">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div
+          class="inline-flex items-center justify-center p-3 mb-6 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-600/25">
+          <%= icon "shield-check", class: "size-8 text-blue-600 dark:text-blue-400" %>
+        </div>
+        <h2 class="md:h2 h3 font-normal mb-4">Security & Privacy First</h2>
+        <div class="mx-auto prose prose-lg prose-neutral dark:prose-invert [text-wrap:pretty]">
+          <p>
+            Your data, conversations, and privacy are protected with enterprise-grade security measures that never
+            compromise on performance.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
+            <%= icon "lock-closed", class: "size-6 text-blue-600 dark:text-blue-400" %>
+          </div>
+          <h3 class="mb-4 h5">End-to-End Encryption</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>
+              All conversations are encrypted using AES-256 encryption, ensuring your data remains private and secure at
+              all times.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-12 bg-green-100 dark:bg-green-900/30 rounded-xl">
+            <%= icon "eye-slash", class: "size-6 text-green-600 dark:text-green-400" %>
+          </div>
+          <h3 class="mb-4 h5">Zero Data Retention</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>
+              We don't store your conversations or personal data. Once your session ends, your information is
+              permanently
+              deleted.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="flex items-center justify-center mb-6 size-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl">
+            <%= icon "user-group", class: "size-6 text-purple-600 dark:text-purple-400" %>
+          </div>
+          <h3 class="mb-4 h5">SOC 2 Compliant</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>
+              Our infrastructure meets the highest security standards with SOC 2 Type II compliance and regular audits.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Features Section -->
+  <div class="py-16 bg-white dark:bg-neutral-900">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="md:h2 h3 font-normal mb-4">Powerful AI Capabilities</h2>
+        <div class="mx-auto prose prose-lg prose-neutral dark:prose-invert [text-wrap:pretty]">
+          <p>
+            Experience next-generation AI that understands context, processes complex information, and adapts to your
+            workflow.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Natural Conversation -->
+        <div class="flex flex-col lg:flex-row gap-8 items-center">
+          <div class="flex-1 order-2 lg:order-1">
+            <div
+              class="inline-flex items-center justify-center p-2 mb-4 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+                <%= icon "chat-bubble-left-right", class: "size-6 text-white shrink-0" %>
+            </div>
+            <h3 class="h4 mb-4">Natural Conversation</h3>
+            <div class="prose prose-neutral dark:prose-invert">
+              <p>
+                Engage in flowing, contextual conversations that feel natural and productive. Corgie AI remembers the
+                context throughout your entire session, making every interaction more meaningful.
+              </p>
+              <ul>
+                <li>Contextual memory across conversations</li>
+                <li>Multi-turn reasoning and analysis</li>
+                <li>Adaptive communication style</li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex-1 order-1 lg:order-2">
+            <div
+              class="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-2xl">
+              <div class="space-y-4">
+                <div class="flex gap-3">
+                  <div class="size-8 bg-blue-500 rounded-full flex items-center justify-center">
+                    <span class="text-white text-xs font-semibold">U</span>
+                  </div>
+                  <div class="flex-1 p-3 bg-white dark:bg-neutral-800 rounded-lg shadow-sm">
+                    <p class="text-sm">Can you help me analyze this quarterly report?</p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <div
+                    class="size-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <span class="text-white text-xs font-semibold">C</span>
+                  </div>
+                  <div class="flex-1 p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
+                    <p class="text-sm">I'd be happy to analyze your report. Please upload the file and I'll provide
+                      insights on key metrics, trends, and recommendations.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- File Processing -->
+        <div class="flex flex-col lg:flex-row gap-8 items-center">
+          <div class="flex-1">
+            <div
+              class="p-6 bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-950/20 dark:to-teal-950/20 rounded-2xl">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 bg-white dark:bg-neutral-800 rounded-lg shadow-sm">
+                  <div class="flex items-center gap-2 mb-2">
+                    <%= icon "document-text", class: "size-4 text-red-500 shrink-0" %>
+                    <span class="text-xs font-medium">report.pdf</span>
+                  </div>
+                  <div class="w-full bg-green-200 rounded-full h-1">
+                    <div class="bg-green-500 h-1 rounded-full w-full"></div>
+                  </div>
+                </div>
+                <div class="p-4 bg-white dark:bg-neutral-800 rounded-lg shadow-sm">
+                  <div class="flex items-center gap-2 mb-2">
+                    <div class="size-4 bg-green-500 rounded"></div>
+                    <span class="text-xs font-medium">data.xlsx</span>
+                  </div>
+                  <div class="w-full bg-green-200 rounded-full h-1">
+                    <div class="bg-green-500 h-1 rounded-full w-3/4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div
+              class="inline-flex items-center justify-center p-2 mb-4 rounded-lg bg-gradient-to-br from-green-500 to-teal-600">
+              <%= icon "document-text", class: "size-6 text-white" %>
+            </div>
+            <h3 class="h4 mb-4">Advanced File Processing</h3>
+            <div class="prose prose-neutral dark:prose-invert">
+              <p>
+                Upload and analyze documents, images, spreadsheets, and more with intelligent processing that extracts
+                insights and answers your questions.
+              </p>
+              <ul>
+                <li>Support for 50+ file formats</li>
+                <li>OCR for image and PDF text extraction</li>
+                <li>Data analysis and visualization</li>
+                <li>Secure file handling with automatic deletion</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Features Section -->
+  <div class="py-24 bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-neutral-900 dark:to-green-950/20">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div
+          class="inline-flex items-center justify-center p-3 mb-6 rounded-full bg-green-100 border border-green-600/25 dark:bg-green-900/30">
+            <%= icon "user-circle", class: "size-8 text-green-600 dark:text-green-400" %>
+        </div>
+        <h2 class="md:h2 h3 font-normal mb-4">Your Privacy, Our Priority</h2>
+        <div class="mx-auto prose prose-lg prose-neutral dark:prose-invert [text-wrap:pretty]">
+          <p>
+            We believe privacy is a fundamental right. That's why we've built Corgie AI with privacy-by-design
+            principles.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="grid gap-8 md:grid-cols-2">
+          <div class="card">
+            <div class="flex items-start gap-4">
+              <div
+                class="flex items-center justify-center size-10 bg-green-100 dark:bg-green-900/30 rounded-full shrink-0">
+                <%= icon "globe-alt", class: "size-5 text-green-600 dark:text-green-400" %>
+              </div>
+              <div>
+                <h3 class="h6 mb-3">No Third-Party Tracking</h3>
+                <div class="prose prose-sm prose-neutral dark:prose-invert">
+                  <p>
+                    Zero analytics, cookies, or tracking scripts. Your interactions remain completely private and
+                    anonymous.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="flex items-start gap-4">
+              <div
+                class="flex items-center justify-center size-10 bg-blue-100 dark:bg-blue-900/30 rounded-full shrink-0">
+                <%= icon "server", class: "size-5 text-blue-600 dark:text-blue-400" %>
+              </div>
+              <div>
+                <h3 class="h6 mb-3">On-Premise Options</h3>
+                <div class="prose prose-sm prose-neutral dark:prose-invert">
+                  <p>Deploy Corgie AI within your own infrastructure for maximum security and compliance control.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="flex items-start gap-4">
+              <div class="flex items-center justify-center size-10 bg-purple-100 dark:bg-purple-900/30 rounded-full shrink-0">
+                <%= icon "finger-print", class: "size-5 text-purple-600 dark:text-purple-400" %>
+              </div>
+              <div>
+                <h3 class="h6 mb-3">GDPR & CCPA Compliant</h3>
+                <div class="prose prose-sm prose-neutral dark:prose-invert">
+                  <p>
+                    Full compliance with global privacy regulations including GDPR, CCPA, and other data protection
+                    laws.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="flex items-start gap-4">
+              <div class="flex items-center justify-center size-10 bg-red-100 dark:bg-red-900/30 rounded-full shrink-0">
+                <%= icon "trash", class: "size-5 text-red-600 dark:text-red-400" %>
+              </div>
+              <div>
+                <h3 class="h6 mb-3">Automatic Data Deletion</h3>
+                <div class="prose prose-sm prose-neutral dark:prose-invert">
+                  <p>
+                    All data is automatically purged after each session. No long-term storage, no data mining, no
+                    profiling.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Advanced Capabilities -->
+  <div class="py-24 bg-white dark:bg-neutral-900">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="md:h2 h3 font-normal mb-4">Advanced Capabilities</h2>
+        <div class="mx-auto prose prose-lg prose-neutral dark:prose-invert [text-wrap:pretty]">
+          <p>
+            Go beyond basic chat with sophisticated reasoning, analysis, and problem-solving capabilities.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-3">
+        <div class="text-center">
+          <div
+            class="flex items-center justify-center mx-auto mb-6 size-16 bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-950/30 dark:to-red-950/30 rounded-2xl">
+            <%= icon "light-bulb", class: "size-8 text-orange-600 dark:text-orange-400" %>
+          </div>
+          <h3 class="mb-4 h5">Deep Reasoning</h3>
+          <div class="prose text-center prose-neutral dark:prose-invert">
+            <p>
+              Complex reasoning and analysis for problems that require careful consideration and multi-step thinking.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="flex items-center justify-center mx-auto mb-6 size-16 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-2xl">
+            <%= icon "chart-bar", class: "size-8 text-indigo-600 dark:text-indigo-400" %>
+          </div>
+          <h3 class="mb-4 h5">Data Analysis</h3>
+          <div class="prose text-center prose-neutral dark:prose-invert">
+            <p>
+              Upload datasets and get instant insights, visualizations, and recommendations based on your data.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="flex items-center justify-center mx-auto mb-6 size-16 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-950/30 dark:to-teal-950/30 rounded-2xl">
+            <%= icon "code-bracket", class: "size-8 text-green-600 dark:text-green-400" %>
+          </div>
+          <h3 class="mb-4 h5">Code Understanding</h3>
+          <div class="prose text-center prose-neutral dark:prose-invert">
+            <p>
+              Review, debug, and optimize code across multiple programming languages with expert-level analysis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="py-16 bg-neutral-50 dark:bg-neutral-800">
+    <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8 text-center">
+      <h2 class="md:h2 h3 font-normal mb-4">
+        Ready to experience secure AI?
+      </h2>
+      <div class="prose prose-lg prose-neutral dark:prose-invert mx-auto mb-8">
+        <p>
+          Join thousands of professionals who trust Corgie AI for their most important work.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <%= link_to "Start Free Trial", rui_signup_path, class: "btn btn-white" %>
+
+        <%= link_to "View Pricing", rui_pricing_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/footer" %>
