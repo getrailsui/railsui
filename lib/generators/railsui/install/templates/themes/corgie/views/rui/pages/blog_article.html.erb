@@ -1,0 +1,431 @@
+<div class="bg-white dark:bg-neutral-900">
+  <%= render "rui/shared/marketing/nav" %>
+</div>
+
+<!-- Article Header -->
+<div class="relative pt-16 bg-white dark:bg-neutral-900">
+  <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <nav class="flex mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center gap-2 md:gap-3">
+        <li class="inline-flex items-center">
+          <%= link_to root_path, class: "inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group" do %>
+            <%= icon "home", class:"size-5 stroke-current stroke-neutral-500 dark:stroke-neutral-400
+            dark:group-hover:stroke-neutral-300 group-hover:stroke-neutral-600" %>
+          <% end %>
+        </li>
+        <li>
+          <div class="flex items-center gap-3">
+            <%= icon "chevron-right", class:"size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+            <%= link_to "Blog", rui_blog_path, class: "inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group" %>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center gap-3">
+            <%= icon "chevron-right", class:"size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+            <span
+              class="text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 truncate flex-1 md:w-full w-40">The Future of AI Assistants: What's Coming Next</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Article Meta -->
+    <div class="mb-8">
+      <div class="flex items-center mb-4 text-sm text-neutral-500">
+        <span class="px-3 py-1 text-xs font-medium rounded-full text-neutral-800 bg-neutral-100">Technology</span>
+        <span class="mx-2">&bull;</span>
+        <time datetime="2024-01-15">January 15, 2024</time>
+        <span class="mx-2">&bull;</span>
+        <span>10 min read</span>
+      </div>
+
+      <h1 class="my-6 md:display-3 display-5">
+        The Future of AI Assistants: What's Coming Next
+      </h1>
+
+      <div class="mb-10 prose-xl prose-neutral dark:prose-invert">
+        <p>
+          Explore the cutting-edge developments in AI technology and how they're shaping the next generation of
+          intelligent assistants. From improved reasoning to multimodal capabilities, discover what's on the horizon.
+        </p>
+      </div>
+
+      <!-- Author Info -->
+      <div class="flex items-center pb-8 mb-8 border-b border-neutral-200 dark:border-neutral-700/80 gap-6">
+          <%= image_tag demo_avatar_path(variant: :men, id: 31), alt: "John Rodgers" %>
+        <div class="flex-1">
+          <p class="text-lg font-medium text-neutral-900 dark:text-white">John Rodgers</p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-400">AI Research Lead</p>
+          <p class="mt-1 text-xs text-neutral-500">PhD in Computer Science, Stanford University</p>
+        </div>
+        <div class="flex ml-auto gap-4">
+          <%= link_to "#", class: "text-neutral-400 hover:text-neutral-500" do %>
+            <span class="sr-only">X</span>
+            <%= icon "x", custom_path: "/social/x.svg", class: "size-5", variant: :solid %>
+          <% end %>
+
+          <%= link_to "#", class: "text-neutral-400 hover:text-neutral-500" do %>
+            <span class="sr-only">LinkedIn</span>
+            <%= icon "linkedin", custom_path: "/social/linkedin.svg", class: "size-5", variant: :solid %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Featured Image -->
+  <div class="max-w-6xl px-4 mx-auto mb-12 sm:px-6 lg:px-8">
+    <div class="overflow-hidden rounded-3xl aspect-video shadow-xl shadow-neutral-300/50 dark:shadow-neutral-950/50">
+      <%= image_tag "railsui/blog-feature.jpg", class: "object-cover w-full h-full" %>
+    </div>
+    <p class="mt-4 text-sm text-center text-neutral-500">The future of AI technology continues to evolve rapidly</p>
+  </div>
+
+  <!-- Article Content -->
+  <div class="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
+    <div class="blog-content">
+      <h2>The Current State of AI Assistants</h2>
+
+      <p>
+        Artificial Intelligence assistants have come a long way since their inception. Today's AI systems can engage in
+        natural conversations, understand context, and help with a wide variety of tasks. But we're just scratching the
+        surface of what's possible.
+      </p>
+
+      <p>
+        At Corgie AI, we've been working on the next generation of conversational AI that goes beyond simple
+        question-and-answer interactions. Our goal is to create AI that truly understands and assists with complex,
+        multi-step tasks.
+      </p>
+
+      <blockquote>
+        <p>"The future of AI isn't about replacing human intelligence, but augmenting it in ways that make us more
+          creative, productive, and capable."</p>
+      </blockquote>
+
+      <h2>Emerging Capabilities</h2>
+
+      <h3>Multimodal Understanding</h3>
+
+      <p>
+        One of the most exciting developments in AI is the ability to process and understand multiple types of input
+        simultaneously. This means AI assistants can:
+      </p>
+
+      <ul>
+        <li>Analyze images and provide detailed descriptions</li>
+        <li>Process documents and extract key information</li>
+        <li>Understand charts, graphs, and data visualizations</li>
+        <li>Work with audio and video content</li>
+      </ul>
+
+      <div
+        class="p-4 my-8 text-sm border-l-4 rounded-r-sm border-neutral-400 bg-neutral-50 not-prose dark:bg-neutral-700 dark:text-neutral-100">
+        <p>
+          <strong>Pro Tip:</strong> When working with multimodal AI, try combining different types of input for more
+          comprehensive analysis. For example, upload a chart and ask questions about the data it represents.
+        </p>
+      </div>
+
+      <h3>Advanced Reasoning</h3>
+
+      <p>
+        Future AI systems will demonstrate more sophisticated reasoning capabilities, including:
+      </p>
+
+      <ol>
+        <li><strong>Causal reasoning:</strong> Understanding cause-and-effect relationships</li>
+        <li><strong>Analogical thinking:</strong> Drawing parallels between different concepts</li>
+        <li><strong>Strategic planning:</strong> Breaking down complex goals into actionable steps</li>
+        <li><strong>Metacognition:</strong> Thinking about thinking and understanding limitations</li>
+      </ol>
+
+      <h2>Real-World Applications</h2>
+
+      <p>
+        These advances translate into practical benefits across numerous domains:
+      </p>
+
+      <h3>Healthcare</h3>
+
+      <p>
+        AI assistants will help healthcare professionals by analyzing medical images, suggesting treatment options, and
+        managing patient data more effectively. They'll also assist patients in understanding their conditions and
+        treatment plans.
+      </p>
+
+      <h3>Education</h3>
+
+      <p>
+        Personalized tutoring systems will adapt to individual learning styles, provide instant feedback, and create
+        customized learning paths. Students will have access to AI tutors available 24/7.
+      </p>
+
+      <h3>Creative Industries</h3>
+
+      <p>
+        AI will become a powerful creative partner, helping writers overcome writer's block, assisting designers with
+        ideation, and enabling musicians to explore new compositions.
+      </p>
+
+      <div class="pt-6 my-8 rounded-3xl bg-neutral-900 text-neutral-100 not-prose overflow-hidden relative">
+        <div class="inset-0 rounded-3xl h-full w-full bg-linear-to-r from-blue-600 to-pink-400 z-0 absolute opacity-20">
+        </div>
+        <div class="relative z-10">
+          <p class="text-white text-center font-medium text-sm pb-6 border-b border-neutral-700/60">Key Statistics
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 md:divide-x divide-neutral-700/80 items-start">
+            <div class="text-center p-4">
+              <div class="text-3xl font-bold text-neutral-100 mb-2">85%</div>
+              <div class="text-sm text-neutral-300">Improvement in speed</div>
+            </div>
+            <div class="text-center p-4">
+              <div class="text-3xl font-bold text-neutral-100 mb-2">12x</div>
+              <div class="text-sm text-neutral-300">Faster information processing</div>
+            </div>
+            <div class="text-center p-4">
+              <div class="text-3xl font-bold text-neutral-100 mb-2">94%</div>
+              <div class="text-sm text-neutral-300">User satisfaction rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Challenges and Considerations</h2>
+
+      <p>
+        While the future of AI assistants is bright, there are important challenges to address:
+      </p>
+
+      <h3>Privacy and Security</h3>
+
+      <p>
+        As AI systems become more capable and handle more sensitive information, ensuring robust privacy protection and
+        security measures becomes paramount. We must build systems that users can trust with their personal and
+        professional data.
+      </p>
+
+      <h3>Ethical AI Development</h3>
+
+      <p>
+        Developing AI responsibly means considering the societal impact, ensuring fairness across different groups, and
+        maintaining transparency in how AI systems make decisions.
+      </p>
+
+      <h3>Human-AI Collaboration</h3>
+
+      <p>
+        The goal isn't to replace human intelligence but to create systems that complement and enhance human
+        capabilities. Finding the right balance between automation and human oversight is crucial.
+      </p>
+
+      <h2>What's Next for Corgie AI</h2>
+
+      <p>
+        At Corgie AI, we're committed to pushing the boundaries of what's possible while maintaining our focus on
+        safety, reliability, and user benefit. Our roadmap includes:
+      </p>
+
+      <ul>
+        <li>Enhanced multimodal capabilities for richer interactions</li>
+        <li>Improved reasoning and problem-solving abilities</li>
+        <li>Better context understanding for longer conversations</li>
+        <li>Specialized tools for specific professional domains</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+
+      <p>
+        The future of AI assistants is incredibly promising. As these systems become more capable, they'll transform how
+        we work, learn, and create. The key is ensuring that this transformation benefits everyone and enhances rather
+        than replaces human potential.
+      </p>
+
+      <p>
+        We're excited to be part of this journey and look forward to sharing more insights as we continue to develop the
+        next generation of AI assistance.
+      </p>
+
+      <div class="not-prose">
+        <div
+          class="p-6 my-8 rounded-3xl outline-1 outline-neutral-300/80 bg-neutral-50 shadow-xs dark:bg-neutral-700/80 dark:outline-neutral-600">
+          <h4 class="font-semibold text-xl">Try Corgie AI Today</h4>
+
+          <div class="prose prose-neutral mb-4 mt-2 dark:prose-invert">
+            <p>Experience the future of AI assistance with our advanced conversational AI system.</p>
+          </div>
+
+          <%= link_to rui_chat_new_path, class: "btn btn-primary group" do %>
+            Start Chatting
+            <%= icon "arrow-right", "size-3 stroke-current group-hover:translate-x-0.5 transition ease-in duration-200" %>
+          <% end %>>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Article Footer -->
+  <div class="max-w-4xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
+
+    <!-- Tags -->
+    <div class="mb-8">
+      <h3 class="mb-4 text-sm font-semibold tracking-wide uppercase text-neutral-500">Tags</h3>
+      <div class="flex flex-wrap gap-2">
+        <span
+          class="inline-flex items-center px-3 py-1 text-sm rounded-full text-neutral-800 bg-neutral-100 dark:bg-neutral-600 dark:text-neutral-100">#artificial-intelligence</span>
+        <span
+          class="inline-flex items-center px-3 py-1 text-sm rounded-full text-neutral-800 bg-neutral-100 dark:bg-neutral-600 dark:text-neutral-100">#machine-learning</span>
+        <span
+          class="inline-flex items-center px-3 py-1 text-sm rounded-full text-neutral-800 bg-neutral-100 dark:bg-neutral-600 dark:text-neutral-100">#conversational-ai</span>
+        <span
+          class="inline-flex items-center px-3 py-1 text-sm rounded-full text-neutral-800 bg-neutral-100 dark:bg-neutral-600 dark:text-neutral-100">#technology</span>
+        <span
+          class="inline-flex items-center px-3 py-1 text-sm rounded-full text-neutral-800 bg-neutral-100 dark:bg-neutral-600 dark:text-neutral-100">#future-tech</span>
+      </div>
+    </div>
+
+    <!-- Share buttons -->
+    <div class="pt-8 mb-8 border-t border-neutral-200 dark:border-neutral-700/80">
+      <h3 class="mb-4 text-sm font-semibold tracking-wide uppercase text-neutral-500">Share this article</h3>
+      <div class="flex gap-4">
+        <%= link_to "#", class: "btn btn-white" do %>
+          <span class="sr-only">X</span>
+          <%= icon "x", custom_path: "/social/x.svg", class: "size-5 fill-current fill-neutral-600 dark:fill-neutral-400", variant: :solid %>
+        <% end %>
+
+        <%= link_to "#", class: "btn btn-white" do %>
+          <span class="sr-only">LinkedIn</span>
+          <%= icon "linkedin", custom_path: "/social/linkedin.svg", class: "size-5 fill-current fill-neutral-600 dark:fill-neutral-400", variant: :solid %>
+        <% end %>
+
+        <%= link_to "#", class: "btn btn-white" do %>
+          <span class="sr-only">GitHub</span>
+          <%= icon "github", custom_path: "/social/github.svg", class: "size-5 fill-current fill-neutral-600 dark:fill-neutral-400", variant: :solid %>
+        <% end %>
+
+        <button type="button" class="btn btn-white" data-controller="railsui-clipboard" data-action="click->railsui-clipboard#copy">
+          <%= icon "link", "size-5 stroke-current stroke-neutral-600 dark:stroke-neutral-400" %>
+          <span class="sr-only">Copy Link</span>
+          <input type="hidden" value="/blog/article/index.html">
+        </button>
+      </div>
+    </div>
+
+    <!-- Author bio -->
+    <div class="mb-10 pt-6">
+      <div class="flex items-start">
+          <%= image_tag demo_avatar_path(variant: :men, id: 31), alt: "John Rogers" %>
+        <div class="ml-4">
+          <h4 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">John Rogers</h4>
+          <p class="mb-2 text-sm text-neutral-600">AI Research Lead</p>
+
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>John leads our AI research team and has over 10 years of experience in machine learning and natural
+              language processing. He holds a PhD from Stanford University and has published numerous papers on
+              conversational AI.</p>
+          </div>
+          <div class="flex mt-3 gap-4">
+            <%= link_to "#", class: "text-neutral-500 hover:text-neutral-500" do %>
+              <span class="sr-only">X</span>
+              <%= icon "x", custom_path: "/social/x.svg", class: "size-5", variant: :solid %>
+            <% end %>
+
+            <%= link_to "#", class: "text-neutral-500 hover:text-neutral-500" do %>
+              <span class="sr-only">LinkedIn</span>
+              <%= icon "linkedin", custom_path: "/social/linkedin.svg", class: "size-5", variant: :solid %>
+            <% end %>
+
+            <%= link_to "#", class: "text-neutral-500 hover:text-neutral-500" do %>
+              <span class="sr-only">GitHub</span>
+              <%= icon "github", custom_path: "/social/github.svg", class: "size-5", variant: :solid %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to blog -->
+  <div class="max-w-4xl mx-auto px-6 mb-16 flex items-center gap-6">
+    <%= link_to rui_blog_path, class: "inline-flex items-center font-medium text-neutral-600 hover:text-neutral-700 gap-2 dark:text-neutral-100 dark:hover:text-neutral-200 group" do %>
+      <%= icon "arrow-left", class: "size-4 stroke-current group-hover:-translate-x-1 duration-200 ease-in-out" %>
+      Back to all articles
+    <% end %>
+    <div class="h-px bg-linear-to-r from-neutral-200 dark:from-neutral-700 flex-1"></div>
+  </div>
+
+  <!-- Related Articles -->
+  <div class="py-16 bg-neutral-50 dark:bg-neutral-800">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <h2 class="h2">Related Articles</h2>
+        <div class="prose prose-neutral dark:prose-invert my-4 mx-auto text-center">
+          <p>Continue reading about AI and technology</p>
+        </div>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+      <%
+        articles = [
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog1.jpg",
+            category_name: "Technology",
+            category_path: rui_blog_category_path,
+            title: "Understanding Neural Networks: A Beginner's Guide",
+            excerpt: "Dive into the fundamentals of neural networks and learn how they power modern AI systems like Corgie AI.",
+            avatar_path: demo_avatar_url(variant: :women, id: 3),
+            author: "Sarah Wilson",
+            published_at: "May 12, 2025",
+            total_minutes: "7"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog2.jpg",
+            category_name: "Tutorials",
+            category_path: rui_blog_category_path,
+            title: "Getting Started with Corgie AI",
+            excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
+            avatar_path: demo_avatar_url(variant: :men, id: 49),
+            author: "Alex Chen",
+            published_at: "May 11, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog3.jpg",
+            category_name: "Tutorials",
+            category_path: rui_blog_category_path,
+            title: "Getting Started with Corgie AI",
+            excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
+            avatar_path: demo_avatar_url(variant: :men, id: 62),
+            author: "John Slamith",
+            published_at: "May 11, 2025",
+            total_minutes: "5"
+          }
+        ]
+      %>
+
+      <% articles.each do |article| %>
+        <%= render "rui/shared/blog/article",
+          path: article[:path],
+          image_name: article[:image_name],
+          category_name: article[:category_name],
+          category_path: article[:category_path],
+          title: article[:title],
+          excerpt: article[:excerpt],
+          avatar_path: article[:avatar_path],
+          author: article[:author],
+          published_at: article[:published_at],
+          total_minutes: article[:total_minutes]
+        %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/footer" %>

@@ -1,0 +1,280 @@
+<%= render "rui/shared/marketing_nav" %>
+
+<%= render "rui/shared/waves" %>
+
+<div class="relative py-16 sm:py-24">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="display-1">
+        Blog
+      </h1>
+      <div class="mx-auto prose prose-xl text-center prose-neutral dark:prose-invert">
+        <p>
+          Insights, tutorials, and updates from the world of AI and intelligent conversation
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Article -->
+<div class="py-16 dark:bg-neutral-900">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="container mx-auto">
+      <article
+        class="relative grid grid-cols-1 gap-0 overflow-hidden bg-white shadow-sm md:grid-cols-3 dark:bg-neutral-900 rounded-3xl outline-1 outline-neutral-300/60 dark:outline-neutral-700/80">
+        <div class="col-span-1">
+        <%= link_to rui_blog_show_path, class: "w-full h-full block" do %>
+          <%= image_tag "railsui/blog-feature.jpg", class: "object-cover h-full", alt: "Featured Article" %>
+        <% end %>
+        </div>
+        <div class="col-span-2 p-8 sm:p-12">
+          <div class="flex items-center mb-4 text-sm text-neutral-500 dark:text-neutral-400">
+            <span
+              class="px-3 py-1 text-xs font-medium rounded-full dark:text-neutral-200 dark:bg-neutral-600">Featured</span>
+            <span class="mx-2">•</span>
+            <time datetime="2024-01-15">January 15, 2024</time>
+            <span class="mx-2">•</span>
+            <span>10 min read</span>
+          </div>
+          <h3 class="mb-4 h3">
+            <%= link_to "The Future of AI Assistants: What's Coming Next", rui_blog_show_path, class: "transition-colors dark:text-neutral-100 text-neutral-800 dark:hover:text-white" %>
+          </h3>
+          <div class="mb-6 prose prose-neutral dark:prose-invert [text-wrap:balance]">
+            <p>
+              Explore the cutting-edge developments in AI technology and how they're shaping the next generation of
+              intelligent assistants. From improved reasoning to multimodal capabilities.
+            </p>
+          </div>
+          <div class="flex items-center">
+            <%= image_tag demo_avatar_url(variant: :men, id: 31), alt: "John Rogers" %>
+            <div class="ml-4">
+              <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">John Rogers</p>
+              <p class="text-sm text-neutral-500">AI Research Lead</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Categories -->
+<div class="py-12">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <button
+        class="px-6 py-2 text-sm font-medium text-white transition-colors rounded-full bg-neutral-900 dark:bg-neutral-800 dark:neutral-100">
+        All Posts
+      </button>
+      <button
+        class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
+        Technology
+      </button>
+      <button
+        class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
+        Tutorials
+      </button>
+      <button
+        class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
+        Features
+      </button>
+      <button
+        class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
+        Research
+      </button>
+      <button
+        class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
+        Company
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Grid -->
+<div class="py-16 bg-white dark:bg-neutral-900">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+      <%
+        articles = [
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog1.jpg",
+            category_name: "Technology",
+            category_path: rui_blog_category_path,
+            title: "Understanding Neural Networks: A Beginner's Guide",
+            excerpt: "Dive into the fundamentals of neural networks and learn how they power modern AI systems like Corgie AI.",
+            avatar_path: demo_avatar_url(variant: :women, id: 3),
+            author: "Sarah Wilson",
+            published_at: "May 12, 2025",
+            total_minutes: "7"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog2.jpg",
+            category_name: "Tutorials",
+            category_path: rui_blog_category_path,
+            title: "Getting Started with Corgie AI",
+            excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
+            avatar_path: demo_avatar_url(variant: :men, id: 49),
+            author: "Alex Chen",
+            published_at: "May 11, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog3.jpg",
+            category_name: "Tutorials",
+            category_path: rui_blog_category_path,
+            title: "Getting Started with Corgie AI",
+            excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
+            avatar_path: demo_avatar_url(variant: :men, id: 62),
+            author: "John Slamith",
+            published_at: "May 11, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog4.jpg",
+            category_name: "Features",
+            category_path: rui_blog_category_path,
+            title: "Introducing Multimodal AI Capabilities",
+            excerpt: "Discover how our latest update enables image analysis, document processing, and more interactive conversations.",
+            avatar_path: demo_avatar_url(variant: :women, id: 62),
+            author: "Audrey Massy",
+            published_at: "May 10, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog5.jpg",
+            category_name: "Features",
+            category_path: rui_blog_category_path,
+            title: "Introducing Advanced Context Memory",
+            excerpt: "Our latest update brings persistent conversation context that remembers your preferences, past discussions, and project details across sessions for truly personalized AI assistance.",
+            avatar_path: demo_avatar_url(variant: :women, id: 22),
+            author: "Sable Jones",
+            published_at: "May 9, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog6.jpg",
+            category_name: "Research",
+            category_path: rui_blog_category_path,
+            title: "AI Safety and Responsible Development",
+            excerpt: "Learn about our commitment to building safe, reliable, and beneficial AI systems.",
+            avatar_path: demo_avatar_url(variant: :women, id: 33),
+            author: "Samantha Bates",
+            published_at: "May 8, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog7.jpg",
+            category_name: "Company",
+            category_path: rui_blog_category_path,
+            title: "Growing Our AI Research Team",
+            excerpt: "We're excited to welcome new researchers and engineers to help advance the state of AI conversation.",
+            avatar_path: demo_avatar_url(variant: :men, id: 61),
+            author: "Ricardo Sloan",
+            published_at: "May 8, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog8.jpg",
+            category_name: "Company",
+            category_path: rui_blog_category_path,
+            title: "Building the Future of AI-Human Collaboration",
+            excerpt: "How we're designing AI systems that enhance human creativity and decision-making rather than replacing it, creating meaningful partnerships between people and technology.",
+            avatar_path: demo_avatar_url(variant: :men, id: 31),
+            author: "James Edwin",
+            published_at: "May 6, 2025",
+            total_minutes: "12"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog9.jpg",
+            category_name: "Company",
+            category_path: rui_blog_category_path,
+            title: "Our Journey to Carbon Neutral AI",
+            excerpt: "Learn about our initiatives and commitments to make our AI infrastructure environmentally sustainable.",
+            avatar_path: demo_avatar_url(variant: :women, id: 45),
+            author: "Emma Thompson",
+            published_at: "May 5, 2025",
+            total_minutes: "6"
+          }
+        ]
+      %>
+
+      <% articles.each do |article| %>
+        <%= render "rui/shared/blog/article",
+          path: article[:path],
+          image_name: article[:image_name],
+          category_name: article[:category_name],
+          category_path: article[:category_path],
+          title: article[:title],
+          excerpt: article[:excerpt],
+          avatar_path: article[:avatar_path],
+          author: article[:author],
+          published_at: article[:published_at],
+          total_minutes: article[:total_minutes]
+        %>
+      <% end %>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-16">
+      <nav class="flex gap-2 items-center" aria-label="Pagination">
+        <%= link_to "#", class: "btn btn-white size-10" do %>
+          <span class="sr-only">Previous</span>
+          <%= icon "chevron-left", class: "size-5" %>
+        <% end %>
+
+        <%= link_to "1", class: "btn btn-primary dark:bg-black dark:shadow-sm size-10" %>
+
+        <%= link_to "2", "#", class: "btn btn-white size-10" %>
+        <%= link_to "3", "#", class: "btn btn-white size-10" %>
+
+        <span class="btn btn-white size-10 pointer-events-none cursor-none">...</span>
+        <%= link_to "8", "#", class: "btn btn-white size-10" %>
+        <%= link_to "#", class: "btn btn-white size-10" do %>
+          <span class="sr-only">Next</span>
+          <%= icon "chevron-right", class: "size-5" %>
+        <% end %>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter Signup -->
+<div class="bg-white border-t border-neutral-300/80 dark:border-neutral-700/80 dark:bg-transparent">
+  <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8 md:flex flex-wrap items-center">
+    <div class="flex-1">
+      <h2 class="h3 mb-3">
+        Stay up to date
+      </h2>
+      <div class="prose prose-neutral dark:prose-invert">
+        <p>
+          Get the latest AI insights, tutorials, and Corgie AI updates delivered to your inbox.
+        </p>
+      </div>
+    </div>
+    <div class="mt-8 lg:mt-0 lg:ml-8">
+      <form class="md:w-[400px] w-full">
+        <label for="email-address" class="sr-only">Email address</label>
+        <div class="flex items-center gap-4">
+          <input id="email-address" name="email-address" type="email" autocomplete="email" required class="form-input"
+            placeholder="Enter your email">
+          <button type="submit" class="btn btn-primary py-2">
+            Subscribe
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/footer" %>
