@@ -1,0 +1,39 @@
+<%# locals: (path: rui_blog_show_path, image_name:, category_name:, category_path:, title: , excerpt:, avatar_path:, author:, published_at:, total_minutes:) %>
+
+<article
+  class="flex flex-col overflow-hidden transition-shadow shadow-sm rounded-3xl outline-1 outline-neutral-300/80 dark:outline-neutral-600/70 hover:shadow-xl dark:shadow-md dark:shadow-black/40">
+    <%= link_to path, class: "shrink-0" do %>
+      <%= image_tag image_name, class: "object-cover w-full h-48", alt: title %>
+    <% end %>
+  <div class="flex flex-col justify-between flex-1 p-6 bg-white dark:bg-neutral-900">
+    <div class="flex-1">
+      <p class="mb-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+        <%= link_to category_name, category_path %>
+      </p>
+
+      <%= link_to path, class: "block" do %>
+        <h3 class="mb-3 h4 line-clamp-2"><%= title %></h3>
+        <div class="prose prose-neutral dark:prose-invert">
+          <p><%= excerpt %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="flex items-center mt-6">
+      <%= image_tag avatar_path, class: "w-10 h-10 rounded-full shrink-0 object-cover", alt: author %>
+
+      <div class="ml-3">
+        <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+          <%= author %>
+        </p>
+        <div class="flex space-x-1 text-sm text-neutral-500 dark:text-neutral-400">
+          <time datetime="#">
+            <%= published_at || Date.today.strftime('%B %d, %Y') %>
+          </time>
+
+          <span aria-hidden="true">&middot;</span>
+          <span><%= total_minutes %> min read</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
