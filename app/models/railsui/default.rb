@@ -32,7 +32,7 @@ module Railsui
                 profile project projects settings team],
       shepherd: %w[about account_notifications account_payment_methods account_payouts account_preferences api booking
                    bookings calendar changelog contact dashboard edit_booking help_center inbox insights new_booking pricing privacy_policy properties terms],
-      corgie: %w[home pricing features blog blog_show blog_new blog_category about terms privacy_policy signup login help chat_new chat_show]
+      corgie: %w[home pricing features blog blog_show blog_category about terms privacy_policy signup signin help chat_new chat_show]
     }
 
     BODY_CLASSES = {

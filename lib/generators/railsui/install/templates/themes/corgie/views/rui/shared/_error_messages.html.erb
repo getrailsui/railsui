@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <div class="bg-rose-50 text-rose-700 sm:px-9 p-4 rounded-2xl mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
+    <p class="font-semibold"><%= pluralize(resource.errors.count, "error") %> prohibited this <%= resource.class.name.downcase %> from being saved:</p>
+    <ul class="list-disc">
+      <% resource.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

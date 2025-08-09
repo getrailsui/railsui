@@ -7,6 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -20,13 +21,8 @@
 
   <body class="<%= railsui_body_classes %>" data-controller="search railsui-modal">
     <%= render "rui/shared/flash" %>
-    <% if content_for(:header).present? %>
-      <%= yield :header %>
-    <% else %>
-      <%= render "rui/shared/nav" %>
-    <% end %>
-    <%= yield %>
 
+    <%= yield %>
 
     <%= render "rui/shared/footer" %>
     <%= render "rui/shared/settings/modal" %>
