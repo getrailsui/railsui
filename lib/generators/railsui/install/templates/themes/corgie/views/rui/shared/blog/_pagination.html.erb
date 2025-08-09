@@ -1,0 +1,21 @@
+<!-- Pagination -->
+<div class="flex justify-center mt-16">
+  <nav class="flex gap-2 items-center" aria-label="Pagination">
+    <%= link_to "#", class: "btn btn-white size-10" do %>
+      <span class="sr-only">Previous</span>
+      <%= icon "chevron-left", class: "size-5" %>
+    <% end %>
+
+    <%= link_to "1", class: "btn btn-primary dark:bg-black dark:shadow-sm size-10" %>
+
+    <%= link_to "2", "#", class: "btn btn-white size-10" %>
+    <%= link_to "3", "#", class: "btn btn-white size-10" %>
+
+    <span class="btn btn-white size-10 pointer-events-none cursor-none">...</span>
+    <%= link_to "8", "#", class: "btn btn-white size-10" %>
+    <%= link_to "#", class: "btn btn-white size-10" do %>
+      <span class="sr-only">Next</span>
+      <%= icon "chevron-right", class: "size-5" %>
+    <% end %>
+  </nav>
+</div>

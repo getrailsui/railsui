@@ -1,16 +1,15 @@
-<%= render "rui/shared/marketing_nav" %>
+<%= render "rui/shared/marketing/nav" %>
 
 <%= render "rui/shared/waves" %>
 
 <div class="relative py-16 sm:py-24">
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="text-center">
-      <h1 class="display-1">
-        Blog
-      </h1>
+      <h1 class="display-1">Artificial Intelligence</h1>
       <div class="mx-auto prose prose-xl text-center prose-neutral dark:prose-invert">
         <p>
-          Insights, tutorials, and updates from the world of AI and intelligent conversation
+          Explore the latest developments in artificial intelligence, from cutting-edge research to practical
+          applications
         </p>
       </div>
     </div>
@@ -20,13 +19,17 @@
 <!-- Featured Article -->
 <div class="py-16 dark:bg-neutral-900">
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="h4">Featured Article</h2>
+    </div>
+
     <div class="container mx-auto">
       <article
-        class="relative grid grid-cols-1 gap-0 overflow-hidden bg-white shadow-sm md:grid-cols-3 dark:bg-neutral-900 rounded-3xl outline-1 outline-neutral-300/60 dark:outline-neutral-700/80">
+        class="relative grid grid-cols-1 gap-0 overflow-hidden bg-white md:grid-cols-3 transition-shadow shadow-sm rounded-3xl outline-1 outline-neutral-300/80 dark:outline-neutral-600/70 hover:shadow-xl dark:shadow-md dark:shadow-black/40 dark:bg-neutral-900">
         <div class="col-span-1">
-        <%= link_to rui_blog_show_path, class: "w-full h-full block" do %>
-          <%= image_tag "railsui/blog-feature.jpg", class: "object-cover h-full", alt: "Featured Article" %>
-        <% end %>
+          <%= link_to rui_blog_article_path, class: "w-full h-full block" do %>
+            <%= image_tag "railsui/blog-feature.jpg", class: "w-full h-full object-cover", alt: "Feature article" %>
+          <% end %>
         </div>
         <div class="col-span-2 p-8 sm:p-12">
           <div class="flex items-center mb-4 text-sm text-neutral-500 dark:text-neutral-400">
@@ -38,7 +41,7 @@
             <span>10 min read</span>
           </div>
           <h3 class="mb-4 h3">
-            <%= link_to "The Future of AI Assistants: What's Coming Next", rui_blog_show_path, class: "transition-colors dark:text-neutral-100 text-neutral-800 dark:hover:text-white" %>
+            <%= link_to "The Future of AI Assistants: What's Coming Next", rui_blog_path, class: "transition-colors dark:text-neutral-100 text-neutral-800 dark:hover:text-white" %>
           </h3>
           <div class="mb-6 prose prose-neutral dark:prose-invert [text-wrap:balance]">
             <p>
@@ -47,7 +50,7 @@
             </p>
           </div>
           <div class="flex items-center">
-            <%= image_tag demo_avatar_url(variant: :men, id: 31), alt: "John Rogers" %>
+            <%= image_tag demo_avatar_url(variant: :men, id: 31), class: "w-12 h-12 rounded-full", alt: "John Rogers" %>
             <div class="ml-4">
               <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">John Rogers</p>
               <p class="text-sm text-neutral-500">AI Research Lead</p>
@@ -63,30 +66,30 @@
 <div class="py-12">
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="flex flex-wrap justify-center gap-4">
-      <button
-        class="px-6 py-2 text-sm font-medium text-white transition-colors rounded-full bg-neutral-900 dark:bg-neutral-800 dark:neutral-100">
+      <a href="#"
+        class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
         All Posts
-      </button>
-      <button
+      </a>
+      <a href="#"
+        class="px-6 py-2 text-sm font-medium text-white transition-colors rounded-full bg-neutral-900 dark:bg-neutral-800 dark:neutral-100">
+        Artificial Intelligence
+      </a>
+      <a href="#"
         class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
-        Technology
-      </button>
-      <button
+        Machine Learning
+      </a>
+      <a href="#"
         class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
-        Tutorials
-      </button>
-      <button
+        Neural Networks
+      </a>
+      <a href="#"
         class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
-        Features
-      </button>
-      <button
+        Deep Learning
+      </a>
+      <a href="#"
         class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
-        Research
-      </button>
-      <button
-        class="px-6 py-2 text-sm font-medium transition-colors rounded-full text-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
-        Company
-      </button>
+        AI Ethics
+      </a>
     </div>
   </div>
 </div>
@@ -95,13 +98,12 @@
 <div class="py-16 bg-white dark:bg-neutral-900">
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
       <%
         articles = [
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog1.jpg",
-            category_name: "Technology",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Understanding Neural Networks: A Beginner's Guide",
             excerpt: "Dive into the fundamentals of neural networks and learn how they power modern AI systems like Corgie AI.",
@@ -113,7 +115,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog2.jpg",
-            category_name: "Tutorials",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Getting Started with Corgie AI",
             excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
@@ -125,7 +127,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog3.jpg",
-            category_name: "Tutorials",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Getting Started with Corgie AI",
             excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
@@ -137,7 +139,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog4.jpg",
-            category_name: "Features",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Introducing Multimodal AI Capabilities",
             excerpt: "Discover how our latest update enables image analysis, document processing, and more interactive conversations.",
@@ -149,7 +151,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog5.jpg",
-            category_name: "Features",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Introducing Advanced Context Memory",
             excerpt: "Our latest update brings persistent conversation context that remembers your preferences, past discussions, and project details across sessions for truly personalized AI assistance.",
@@ -161,7 +163,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog6.jpg",
-            category_name: "Research",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "AI Safety and Responsible Development",
             excerpt: "Learn about our commitment to building safe, reliable, and beneficial AI systems.",
@@ -173,7 +175,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog7.jpg",
-            category_name: "Company",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Growing Our AI Research Team",
             excerpt: "We're excited to welcome new researchers and engineers to help advance the state of AI conversation.",
@@ -185,7 +187,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog8.jpg",
-            category_name: "Company",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Building the Future of AI-Human Collaboration",
             excerpt: "How we're designing AI systems that enhance human creativity and decision-making rather than replacing it, creating meaningful partnerships between people and technology.",
@@ -197,7 +199,7 @@
           {
             path: rui_blog_show_path,
             image_name: "railsui/blog9.jpg",
-            category_name: "Company",
+            category_name: "Artificial Intelligence",
             category_path: rui_blog_category_path,
             title: "Our Journey to Carbon Neutral AI",
             excerpt: "Learn about our initiatives and commitments to make our AI infrastructure environmentally sustainable.",
@@ -230,25 +232,26 @@
 </div>
 
 <!-- Newsletter Signup -->
-<div class="bg-white border-t border-neutral-300/80 dark:border-neutral-700/80 dark:bg-transparent">
-  <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8 md:flex flex-wrap items-center">
-    <div class="flex-1">
-      <h2 class="h3 mb-3">
+<div class="bg-blue-600">
+  <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center">
+    <div class="lg:w-0 lg:flex-1">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
         Stay up to date
       </h2>
-      <div class="prose prose-neutral dark:prose-invert">
-        <p>
-          Get the latest AI insights, tutorials, and Corgie AI updates delivered to your inbox.
-        </p>
-      </div>
+      <p class="max-w-3xl mt-3 text-lg leading-6 text-blue-200">
+        Get the latest artificial intelligence insights, research updates, and cutting-edge AI developments delivered to
+        your inbox.
+      </p>
     </div>
     <div class="mt-8 lg:mt-0 lg:ml-8">
-      <form class="md:w-[400px] w-full">
+      <form class="sm:flex">
         <label for="email-address" class="sr-only">Email address</label>
-        <div class="flex items-center gap-4">
-          <input id="email-address" name="email-address" type="email" autocomplete="email" required class="form-input"
-            placeholder="Enter your email">
-          <button type="submit" class="btn btn-primary py-2">
+        <input id="email-address" name="email-address" type="email" autocomplete="email" required
+          class="w-full px-5 py-3 border border-transparent rounded-md placeholder-neutral-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-700 focus:ring-white focus:border-white sm:max-w-xs"
+          placeholder="Enter your email">
+        <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+          <button type="submit"
+            class="w-full px-5 py-3 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-700 focus:ring-white">
             Subscribe
           </button>
         </div>
@@ -256,5 +259,3 @@
     </div>
   </div>
 </div>
-
-<%= render "rui/shared/footer" %>

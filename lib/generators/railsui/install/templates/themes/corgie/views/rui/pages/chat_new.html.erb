@@ -1,0 +1,68 @@
+<div class="flex h-full" data-controller="sidebar">
+
+  <%= render "rui/shared/sidebar" %>
+
+  <div class="flex flex-col flex-1 min-w-0">
+    <header class="p-6 shrink-0 md:static sticky top-0">
+      <div class="flex items-center justify-between md:justify-end gap-6">
+        <aside class="md:hidden flex items-center justify-between gap-6 flex-1">
+
+          <%= link_to root_path, class: "block shrink-0" do %>
+            <%= icon "logo", custom_path: "/logo.svg", class: "size-6 shrink-0 fill-current dark:fill-neutral-100" %>
+          <% end %>
+
+          <div class="flex items-center gap-4">
+            <%= link_to rui_chat_new_path, class: "rounded-full size-8 focus:bg-neutral-200 flex items-center justify-center focus:ring-4 focus:ring-neutral-200/80 dark:focus:ring-neutral-700/90" do %>
+              <%= icon "pencil-square", class: "size-6 shrink-0" %>
+            <% end %>
+
+            <div data-controller="railsui-dropdown">
+              <button data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="rounded-full size-8 focus:bg-neutral-200 flex items-center justify-center focus:ring-4 focus:ring-neutral-200/80
+              dark:focus:ring-neutral-700/90">
+                <%= icon "queue-list", class: "size-6 shrink-0" %>
+              </button>
+
+              <ul
+                class="hidden fixed inset-0 h-full w-full bg-neutral-100/80 backdrop-blur-lg z-10 pt-10 overflow-y-auto pb-32 dark:bg-neutral-900/90"
+                data-railsui-dropdown-target="menu"
+                data-transition-enter-active="transition ease-out duration-50"
+                data-transition-enter-from="transform opacity-0 scale-95"
+                data-transition-enter-to="transform opacity-100 scale-100"
+                data-transition-leave-active="transition ease-in duration-100"
+                data-transition-leave-from="transform opacity-100 scale-100"
+                data-transition-leave-to="transform opacity-0 scale-95"
+              >
+                <button data-action="click->railsui-dropdown#toggle" class="absolute top-4 right-4 z-40">
+                  <%= icon "x-mark", class: "size-8 stroke-current stroke-neutral-600 dark:stroke-neutral-400" %>
+                </button>
+                <div class="overflow-y-auto">
+                  <%= render "rui/shared/chat/history" %>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </aside>
+        <%= render "rui/shared/account_dropdown" %>
+      </div>
+    </header>
+
+    <div class="flex flex-col justify-center flex-1 min-h-0">
+      <div class="flex flex-col justify-center flex-1">
+        <div class="flex justify-center mb-10">
+          <%= link_to root_path, class: "flex items-center gap-3" do %>
+            <%= icon "logo", custom_path: "./logo.svg", class: "size-7", variant: :solid %>
+            <span class="text-3xl font-semibold text-neutral-900 dark:text-white">Corgie</span>
+          <% end %>
+        </div>
+
+        <%= render "rui/shared/chat/form", hints: true %>
+      </div>
+
+      <div class="flex items-center justify-center w-full px-6 py-6 text-center">
+        <%= render "rui/shared/chat/disclaimer" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/search" %>

@@ -1,0 +1,22 @@
+<!-- Social Auth Buttons -->
+<div class="space-y-3">
+  <%= button_to "#", class: "w-full gap-3 btn btn-white btn-lg" do %>
+    <%= icon "google", custom_path: "/social/google.svg", class: "size-4 fill-current" %>
+    Continue with Google
+  <% end %>
+
+  <%= button_to "#", class: "w-full gap-3 btn btn-white btn-lg" do %>
+    <%= icon "github", custom_path: "/social/github.svg", class: "size-4 fill-current" %>
+    Continue with GitHub
+  <% end %>
+</div>
+
+<!-- Divider -->
+<div class="relative">
+  <div class="absolute inset-0 flex items-center">
+    <div class="w-full border-t border-neutral-300 dark:border-neutral-600"></div>
+  </div>
+  <div class="relative flex justify-center text-sm">
+    <span class="px-2 bg-white text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">Or continue with email</span>
+  </div>
+</div>

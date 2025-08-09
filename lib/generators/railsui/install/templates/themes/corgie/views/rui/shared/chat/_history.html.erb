@@ -1,0 +1,35 @@
+<!-- Chat History -->
+<div class="sidebar-chat-history flex-1 overflow-y-auto px-4 text-sm">
+  <div class="space-y-2 pb-4">
+    <!-- Today -->
+    <div class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-3 px-2">
+      Today
+    </div>
+
+    <div class="space-y-1">
+      <%= render "rui/shared/chat/link", title: "How to optimize Rails performance?", active: true %>
+
+      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Explain machine learning concepts" }}
+    </div>
+
+    <!-- Yesterday -->
+    <div class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mt-6 mb-3 px-2">
+      Yesterday
+    </div>
+
+    <div class="space-y-1">
+      {{> sidebar/sidebar_link href="/chat/show/index.html" title="CSS Grid vs Flexbox comparison" }}
+      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Best practices for API design" }}
+    </div>
+
+    <!-- Previous 7 Days -->
+    <div class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mt-6 mb-3 px-2">
+      Previous 7 Days
+    </div>
+
+    <div class="space-y-1">
+      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Python data structures explained" }}
+      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Docker containerization tutorial" }}
+    </div>
+  </div>
+</div>

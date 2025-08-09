@@ -148,7 +148,7 @@ module Railsui
         ["@tailwindcss/typography", "apexcharts", "flatpickr", "hotkeys-js", "photoswipe", "railsui-stimulus",
          "stimulus-use", "tippy.js", "tailwindcss@latest", "@tailwindcss/cli@latest"]
       when "corgie"
-        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js", "marked", "highlight.js"]
+        ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest", "@tailwindcss/cli@latest", "tippy.js", "marked", "highlight.js", "sanitize-html"]
       else
         ["@tailwindcss/typography", "railsui-stimulus", "stimulus-use", "tailwindcss@latest",
          "@tailwindcss/cli@latest", "tippy.js"]

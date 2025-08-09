@@ -1,0 +1,62 @@
+<%# locals: (hints: false, menu_position: "up") %>
+<!-- Chat Input Form -->
+<div
+  class="fixed bottom-0 left-0 right-0 md:static md:bg-none bg-linear-to-b to-neutral-50 dark:from-transparent dark:to-neutral-950 md:dark:bg-none"
+  data-controller="chat" data-chat-character-count-outlet="#character-count-element">
+  <div id="character-count-element" data-controller="character-count" data-character-count-max-value="3000"
+    data-character-count-warn-at-value="2500">
+    <div class="max-w-2xl mx-auto md:p-0 p-4">
+      <div class="chat-shell">
+        <textarea class="chat-input" placeholder="Type something" data-controller="auto-resize"
+          data-action="keydown->chat#handleKeydown input->chat#setupInputHandling" data-character-count-target="input"
+          data-chat-target="input"></textarea>
+
+        <div class="absolute bottom-2.5 right-2.5 flex items-center gap-3">
+          <div class="flex justify-end">
+            <%= render "rui/shared/chat/model_select", menu_position: menu_position %>
+          </div>
+
+          <!-- Send Button -->
+          <button
+            type="button"
+            class="flex items-center justify-center text-white transition-all duration-200 rounded-full size-10 bg-neutral-950 hover:bg-neutral-900 disabled:bg-neutral-300 focus:ring-4 focus:ring-neutral-300/80 dark:focus:ring-neutral-700/80 dark:disabled:bg-neutral-600 disabled:opacity-50 disabled:cursor-not-allowed"
+            data-chat-target="send" data-action="click->chat#sendMessage" disabled>
+            <%= icon "arrow-up", class: "size-4" %>
+          </button>
+        </div>
+
+        <!-- Attachment Buttons -->
+        <div class="flex items-start gap-3">
+          <div>
+            <input type="file" id="attachment" class="hidden appearance-none">
+            <label for="attachment"
+              class="btn btn-white dark:bg-neutral-800 btn-rounded dark:hover:bg-neutral-900 dark:outline-neutral-600">
+              <%= icon "paper-clip", class: "size-4" %>
+              <span class="hidden text-neutral-800 dark:text-neutral-200 md:block">Attach</span>
+            </label>
+          </div>
+
+          <div>
+            <input type="checkbox" id="search" class="form-input-button-toggle peer">
+            <label for="search" class="peer-checked:text-green-500">
+              <%= icon "globe-americas", class: "size-4" %>
+              <span class="hidden text-neutral-800 dark:text-neutral-200 md:block">Search</span>
+            </label>
+          </div>
+
+          <div>
+            <input type="checkbox" id="think" class="form-input-button-toggle peer">
+            <label for="think" class="peer-checked:text-amber-500">
+              <%= icon "light-bulb", class: "size-4" %>
+              <span class="hidden text-neutral-800 dark:text-neutral-200 md:block">Think</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <% if hints %>
+        <%= render "rui/shared/chat/key_legend" %>
+      <% end %>>
+    </div>
+  </div>
+</div>

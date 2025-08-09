@@ -1,0 +1,183 @@
+<%= render "rui/shared/marketing/nav" %>
+
+<div class="min-h-screen bg-neutral-50 dark:bg-neutral-900">
+  <div class="max-w-4xl px-6 py-16 mx-auto">
+    <div class="prose prose-neutral dark:prose-invert max-w-none">
+
+      <h1>Terms of Service</h1>
+
+      <p class="mb-8 text-xl text-neutral-600 dark:text-neutral-300">
+        Last updated: <%= Date.today.strftime('%B %d, %Y') %>
+      </p>
+
+      <p>
+        Welcome to Corgi AI. These Terms of Service ("Terms") govern your use of our AI conversation service and
+        website. By accessing or using our service, you agree to be bound by these Terms.
+      </p>
+
+      <h2>1. Acceptance of Terms</h2>
+
+      <p>
+        By creating an account or using our service, you acknowledge that you have read, understood, and agree to be
+        bound by these Terms and our <%= link_to "Privacy Policy", rui_privacy_path %>. If you do not agree to these Terms, please do not
+        use our service.
+      </p>
+
+      <h2>2. Description of Service</h2>
+
+      <p>
+        Corgi AI provides an AI-powered conversation platform that enables users to engage in intelligent dialogue,
+        process files, and receive assistance with various tasks. Our service includes:
+      </p>
+      <ul>
+        <li>Natural language conversation with AI</li>
+        <li>File upload and processing capabilities</li>
+        <li>Contextual understanding and reasoning</li>
+        <li>Personalized assistance and recommendations</li>
+      </ul>
+
+      <h2>3. User Accounts</h2>
+
+      <h3>Account Creation</h3>
+      <p>
+        To access our service, you must create an account and provide accurate, complete information. You are
+        responsible for maintaining the confidentiality of your account credentials and for all activities that occur
+        under your account.
+      </p>
+
+      <h3>Account Responsibilities</h3>
+      <p>
+        You agree to:
+      </p>
+      <ul>
+        <li>Provide accurate and up-to-date information</li>
+        <li>Keep your password secure and confidential</li>
+        <li>Notify us immediately of any unauthorized use</li>
+        <li>Use the service only for lawful purposes</li>
+      </ul>
+
+      <h2>4. Acceptable Use</h2>
+
+      <p>
+        You may use our service only for lawful purposes and in accordance with these Terms. You agree not to use the
+        service:
+      </p>
+      <ul>
+        <li>To violate any applicable laws or regulations</li>
+        <li>To transmit harmful, offensive, or inappropriate content</li>
+        <li>To impersonate others or provide false information</li>
+        <li>To interfere with or disrupt the service</li>
+        <li>To attempt to gain unauthorized access to our systems</li>
+        <li>To use the service for competitive intelligence or reverse engineering</li>
+      </ul>
+
+      <h2>5. Content and Intellectual Property</h2>
+
+      <h3>Your Content</h3>
+      <p>
+        You retain ownership of any content you submit to our service. However, you grant us a limited license to use,
+        process, and store your content solely to provide our service. We do not claim ownership of your conversations
+        or uploaded files.
+      </p>
+
+      <h3>Our Content</h3>
+      <p>
+        The service and its original content, features, and functionality are owned by Corgi AI and are protected by
+        copyright, trademark, and other intellectual property laws.
+      </p>
+
+      <h2>6. Privacy and Data Protection</h2>
+
+      <p>
+        Your privacy is important to us. Our collection and use of personal information is governed by our <%= link_to "Privacy Policy", rui_privacy_path %>. By using our service, you consent to the collection and use of your information
+        as described in our Privacy Policy.
+      </p>
+
+      <h2>7. Subscription and Payment</h2>
+
+      <h3>Subscription Plans</h3>
+      <p>
+        We offer various subscription plans with different features and usage limits. Current pricing and plan details
+        are available on our <%= link_to "pricing page", rui_pricing_path %>.
+      </p>
+
+      <h3>Payment Terms</h3>
+      <p>
+        Subscription fees are billed in advance on a recurring basis. You authorize us to charge your payment method for
+        all applicable fees. Fees are non-refundable except as required by law.
+      </p>
+
+      <h3>Cancellation</h3>
+      <p>
+        You may cancel your subscription at any time through your account settings. Cancellation will take effect at the
+        end of your current billing period.
+      </p>
+
+      <h2>8. Service Availability</h2>
+
+      <p>
+        We strive to maintain high service availability, but we cannot guarantee uninterrupted access. We may
+        temporarily suspend or restrict access for maintenance, updates, or other operational reasons.
+      </p>
+
+      <h2>9. Limitation of Liability</h2>
+
+      <p>
+        To the fullest extent permitted by law, Corgi AI shall not be liable for any indirect, incidental, special,
+        consequential, or punitive damages arising from your use of the service, including but not limited to loss of
+        data, profits, or business opportunities.
+      </p>
+
+      <h2>10. Disclaimers</h2>
+
+      <p>
+        Our service is provided "as is" without warranties of any kind. We do not warrant that the service will be
+        error-free, secure, or continuously available. AI responses are generated based on training data and may not
+        always be accurate or appropriate.
+      </p>
+
+      <h2>11. Indemnification</h2>
+
+      <p>
+        You agree to indemnify and hold harmless Corgi AI from any claims, damages, or expenses arising from your use of
+        the service, violation of these Terms, or infringement of any third-party rights.
+      </p>
+
+      <h2>12. Termination</h2>
+
+      <p>
+        We may terminate or suspend your account and access to the service at our sole discretion, without notice, for
+        any reason, including if you breach these Terms. Upon termination, your right to use the service will cease
+        immediately.
+      </p>
+
+      <h2>13. Changes to Terms</h2>
+
+      <p>
+        We reserve the right to modify these Terms at any time. We will notify you of significant changes by posting the
+        updated Terms on our website and updating the "Last updated" date. Your continued use of the service after
+        changes constitutes acceptance of the new Terms.
+      </p>
+
+      <h2>14. Governing Law</h2>
+
+      <p>
+        These Terms are governed by and construed in accordance with the laws of the State of California, without regard
+        to its conflict of law principles. Any disputes will be resolved in the courts of California.
+      </p>
+
+      <h2>15. Contact Information</h2>
+
+      <p>
+        If you have any questions about these Terms, please contact us at:
+      </p>
+      <ul>
+        <li>Email: <a href="#">legal@corgi-ai.com</a></li>
+        <li>Address: <a href="#">123 AI Street, Tech City, TC 12345</a></li>
+        <li>Phone: <a href="#">+1 (555) 123-4567</a></li>
+      </ul>
+
+    </div>
+  </div>
+  <%= render "rui/shared/footer" %>
+</div>
