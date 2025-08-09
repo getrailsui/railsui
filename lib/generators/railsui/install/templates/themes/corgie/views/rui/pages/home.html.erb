@@ -1,0 +1,254 @@
+<div class="relative flex flex-col min-h-screen">
+  <%= render "rui/shared/marketing/nav" %>
+
+  <div class="flex items-center justify-center flex-1 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="mb-6 h1">
+        Intelligent conversation simplified
+      </h1>
+
+      <p class="max-w-3xl mx-auto mb-16 prose prose-xl prose-neutral dark:prose-invert">
+        Experience AI assistance that understands context, processes files, and helps you think through complex
+        problems.
+      </p>
+
+      <!-- Chat Input Integration -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <%= render "rui/shared/chat/form" %>
+      </div>
+    </div>
+  </div>
+
+  <%= render "rui/shared/waves" %>
+</div>
+
+<!-- Capabilities Section -->
+<div id="learn-more" class="px-6 py-32 border-t border-neutral-200 dark:border-neutral-700/90">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-20 text-center">
+      <h2 class="mb-6 h2">
+        Built for how you work
+      </h2>
+      <div class="mx-auto prose prose-lg prose-neutral dark:prose-invert [text-wrap:pretty]">
+        <p>
+          Corgie AI adapts to your workflow with powerful capabilities designed for modern productivity.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid gap-12 md:grid-cols-3">
+      <div class="text-center">
+        <div class="flex items-center justify-center mx-auto mb-6 size-16 bg-neutral-200/60 rounded-2xl">
+          <%= icon "chat-bubble-left-right", class: "size-8 text-neutral-700" %>
+        </div>
+        <h3 class="mb-4 h5">Natural conversation</h3>
+        <div class="prose text-center prose-neutral dark:prose-invert">
+          <p>
+            Engage in flowing, contextual conversations that feel natural and productive.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="flex items-center justify-center mx-auto mb-6 size-16 bg-neutral-200/60 rounded-2xl">
+          <%= icon "document-text", class: "size-8 text-neutral-700" %>
+        </div>
+        <h3 class="mb-4 h5">File processing</h3>
+        <div class="prose text-center prose-neutral dark:prose-invert">
+          <p>
+            Upload and analyze documents, images, and data with intelligent processing.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="flex items-center justify-center mx-auto mb-6 size-16 bg-neutral-200/60 rounded-2xl">
+          <%= icon "light-bulb", class: "size-8 text-neutral-700" %>
+        </div>
+        <h3 class="mb-4 h5">Deep thinking</h3>
+        <div class="prose text-center prose-neutral dark:prose-invert">
+          <p>
+            Complex reasoning and analysis for problems that require careful consideration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="px-6 py-32 bg-neutral-50 dark:bg-neutral-900/50">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-20 text-center">
+      <h2 class="mb-6 h2">
+        Trusted by professionals
+      </h2>
+      <div class="mx-auto prose prose-lg prose-neutral dark:prose-invert [text-wrap:pretty]">
+        <p>
+          See how teams and individuals are using Corgie AI to transform their daily workflows.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="p-8 bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-2xl">
+        <div class="mb-6">
+          <div class="flex items-center mb-1">
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+          </div>
+          <blockquote>
+            &ldquo;Corgie AI has completely changed how I approach research. It understands context better than any tool
+            I've used before.&rdquo;
+          </blockquote>
+        </div>
+        <div class="flex items-center gap-3">
+          <div
+            class="flex items-center justify-center rounded-full size-10 bg-gradient-to-br from-blue-500 to-purple-600">
+            <span class="text-sm font-semibold text-white">SM</span>
+          </div>
+          <div>
+            <div class="font-semibold text-neutral-900 dark:text-white">Sarah Martinez</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-400">Product Manager</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-8 bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-2xl">
+        <div class="mb-6">
+          <div class="flex items-center mb-1">
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+          </div>
+
+          <blockquote>
+            <p>
+              &ldquo;The file processing capabilities are incredible. I can upload contracts and get instant analysis
+              with actionable insights.&rdquo;
+            </p>
+          </blockquote>
+        </div>
+        <div class="flex items-center gap-3">
+          <div
+            class="flex items-center justify-center rounded-full size-10 bg-gradient-to-br from-green-500 to-teal-600">
+            <span class="text-sm font-semibold text-white">DK</span>
+          </div>
+          <div>
+            <div class="font-semibold text-neutral-900 dark:text-white">David Kim</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-400">Legal Consultant</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-8 bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-2xl">
+        <div class="mb-6">
+          <div class="flex items-center mb-1">
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+            <%= icon "star", class: "size-5 text-yellow-400", variant: :solid %>
+          </div>
+          <blockquote>
+            &ldquo;Finally, an AI that actually helps me think through complex problems instead of just giving generic
+            answers.&rdquo;
+          </blockquote>
+        </div>
+        <div class="flex items-center gap-3">
+          <div
+            class="flex items-center justify-center rounded-full size-10 bg-gradient-to-br from-purple-500 to-pink-600">
+            <span class="text-sm font-semibold text-white">AR</span>
+          </div>
+          <div>
+            <div class="font-semibold text-neutral-900 dark:text-white">Alex Rivera</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-400">UX Designer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Simple Blog Preview -->
+<div class="px-6 py-32 bg-neutral-50 dark:bg-neutral-900">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-wrap gap-6 items-center justify-between mb-16">
+      <div>
+        <h2 class="mb-4 h2">Latest insights</h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-200">Updates and thoughts from our team</p>
+      </div>
+      <%= link_to rui_blog_path, class: "flex items-center gap-2 btn btn-white" do %>
+        View all
+        <%= icon "arrow-right", class: "size-3" %>
+      <% end %>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <%
+        articles = [
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog1.jpg",
+            category_name: "Technology",
+            category_path: rui_blog_category_path,
+            title: "Understanding Neural Networks: A Beginner's Guide",
+            excerpt: "Dive into the fundamentals of neural networks and learn how they power modern AI systems like Corgie AI.",
+            avatar_path: demo_avatar_url(variant: :women, id: 3),
+            author: "Sarah Wilson",
+            published_at: "May 12, 2025",
+            total_minutes: "7"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog2.jpg",
+            category_name: "Tutorials",
+            category_path: rui_blog_category_path,
+            title: "Getting Started with Corgie AI",
+            excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
+            avatar_path: demo_avatar_url(variant: :men, id: 49),
+            author: "Alex Chen",
+            published_at: "May 11, 2025",
+            total_minutes: "5"
+          },
+          {
+            path: rui_blog_show_path,
+            image_name: "railsui/blog3.jpg",
+            category_name: "Tutorials",
+            category_path: rui_blog_category_path,
+            title: "Getting Started with Corgie AI",
+            excerpt: "Learn how to use Corgie AI for your business needs with our step-by-step guide.",
+            avatar_path: demo_avatar_url(variant: :men, id: 62),
+            author: "John Slamith",
+            published_at: "May 11, 2025",
+            total_minutes: "5"
+          }
+        ]
+      %>
+
+      <% articles.each do |article| %>
+        <%= render "rui/shared/blog/article",
+          path: article[:path],
+          image_name: article[:image_name],
+          category_name: article[:category_name],
+          category_path: article[:category_path],
+          title: article[:title],
+          excerpt: article[:excerpt],
+          avatar_path: article[:avatar_path],
+          author: article[:author],
+          published_at: article[:published_at],
+          total_minutes: article[:total_minutes]
+        %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "rui/shared/footer" %>
+
+<%= render "rui/shared/search" %>

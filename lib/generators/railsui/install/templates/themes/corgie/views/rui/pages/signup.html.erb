@@ -1,0 +1,48 @@
+<%= render "rui/shared/common/social_auth_buttons" %>
+
+<!-- Email Form -->
+<form>
+  <div class="form-group">
+    <label for="email" class="form-label form-label-required">
+      Email address
+    </label>
+    <input id="email" name="email" type="email" autocomplete="email" required class="form-input" placeholder="Enter your email">
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="form-label form-label-required">
+      Password
+    </label>
+    <input id="password" name="password" type="password" autocomplete="new-password" required class="form-input" placeholder="Create a password">
+    <p class="text-xs form-help">Must be at least 8 characters long</p>
+  </div>
+
+  <div class="form-group">
+    <label for="password_confirmation" class="form-label form-label-required">
+      Confirm password
+    </label>
+    <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="form-input" placeholder="Confirm your password">
+  </div>
+
+  <div class="flex items-center form-group">
+    <input id="terms" name="terms" type="checkbox" required class="form-input-checkbox">
+    <label for="terms" class="ml-3 text-sm text-neutral-600 dark:text-neutral-400">
+      I agree to the
+      <%= link_to "Terms", rui_terms_path, class: "font-medium underline text-neutral-900 dark:text-white hover:text-neutral-700 dark:hover:text-neutral-200" %>
+      and
+      <%= link_to "Privacy Policy", rui_privacy_path, class: "font-medium underline text-neutral-900 dark:text-white hover:text-neutral-700 dark:hover:text-neutral-200" %>
+    </label>
+  </div>
+
+  <button type="submit" class="w-full btn btn-lg btn-primary">
+    Create account
+  </button>
+</form>
+
+<!-- Sign in link -->
+<div class="text-center">
+  <p class="text-sm text-neutral-600 dark:text-neutral-400">
+    Already have an account?
+    <%= link_to "Sign in", rui_signin_path, class: "font-medium underline text-neutral-900 dark:text-white hover:text-neutral-700 dark:hover:text-neutral-200" %>
+  </p>
+</div>

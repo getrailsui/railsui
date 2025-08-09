@@ -1,0 +1,152 @@
+<div class="flex h-full overflow-hidden" data-controller="sidebar">
+  <!-- Sidebar -->
+  <%= render "rui/shared/sidebar" %>
+
+  <!-- Main Content -->
+  <div class="flex flex-col flex-1 min-w-0 overflow-auto">
+
+    <%= render "rui/shared/chat/header" %>
+
+    <div class="relative min-h-0 mt-4">
+      <div class="relative w-full max-w-2xl mx-auto space-y-6 md:px-0 px-6 md:pb-16 pb-32">
+        <div class="relative flex-1 pb-24 space-y-8">
+          <%= render "rui/shared/chat/message", user: true do %>
+          <p>Give me a basic tutorial on ruby on rails</p>
+          <% end %>
+
+
+          <%= render "rui/shared/chat/message" do %>
+
+          Here's a concise tutorial on getting started with [Ruby on Rails](https://rubyonrails.org), a popular web
+          development framework built on the Ruby programming language. This guide assumes you have basic knowledge of
+          programming and focuses on setting up a simple Rails application.
+
+          ------
+
+          ### Ruby on Rails Tutorial: Building a Simple Blog
+
+          ## 1. Prerequisites
+
+          Before starting, ensure you have the following installed:
+
+          - **Ruby** (version 3.0 or later): Check with `ruby -v`.
+          - **Rails** (version 7.0 or later): Check with `rails -v`.
+          - **SQLite3**: Rails uses SQLite by default for development.
+          - **Node.js** and **Yarn**: For JavaScript and asset management.
+          Install Ruby and Rails if you haven't already:
+
+          ```bash
+          # Install Ruby (use a version manager like rbenv or rvm)
+          $ gem install rails
+          ```
+
+          Verify installation:
+
+          ```bash
+          rails -v
+          # Should output something like: Rails 7.x.x
+          ```
+
+          ---
+
+          ## 2. Create a New Rails Application
+
+          Run the following command to create a new Rails app called `blog`:
+
+          ```bash
+          rails new blog
+          cd blog
+          ```
+
+          This generates a directory called `blog` with all necessary files for a Rails app.
+
+          ---
+
+          ## 3. Start the Rails Server
+
+          Start the development server to confirm everything is set up:
+
+          ```bash
+          rails server
+          # or
+          rails s
+          ```
+
+          Open your browser and go to `http://localhost:3000`. You should see the Rails welcome page.
+
+          ---
+
+          ## 4. Create a Model, Controller, and Routes
+
+          Let’s create a simple blog with posts that have a `title` and `body`.
+
+          ### Generate a Model
+
+          Run the following command to create a `Post` model with `title` (string) and `body` (text):
+
+          ```bash
+          rails generate model Post title:string body:text
+          ```
+
+          This creates:
+
+          - A `Post` model in `app/models/post.rb`.
+          - A migration file in `db/migrate/` to create the `posts` table.
+
+          Run the migration to create the table in the database:
+
+          ```bash
+          rails db:migrate
+          ```
+
+          ### Generate a Controller
+
+          Create a controller to handle requests for posts:
+
+          ```bash
+          rails generate controller Posts index show new create edit update destroy
+          ```
+
+          This creates a `PostsController` in `app/controllers/posts_controller.rb` with actions for CRUD (Create, Read,
+          Update, Delete) operations.
+
+          ### Set Up Routes
+
+          Edit `config/routes.rb` to define routes for the `Posts` resource:
+
+          ```ruby
+          Rails.application.routes.draw do
+          resources :posts
+          root 'posts#index'
+          end
+          ```
+
+          The `resources :posts` line creates RESTful routes for posts (e.g., `/posts`, `/posts/new`, `/posts/:id`). The
+          `root` line sets the homepage to the `index` action.
+          <% end %>
+
+          <%= render "rui/shared/chat/message", user: true do %>
+          <p>How do I approach front end more easily?</p>
+          <% end %>>
+
+          <%= render "rui/shared/chat/message" do %>
+          Front-end technologies like HTML, CSS, and JavaScript are essential for building the user interface of a web
+          application. To approach front-end development more easily, consider the following steps:
+
+          1. Use [Rails UI](https://github.com/heartcombo/rails_ui).
+          2. Build to market faster.
+          3. Profit 💰
+          <% end %>
+        </div>
+        <div class="sticky bottom-0 w-full pb-5">
+          <div class="relative z-50">
+            <%= render "rui/shared/chat/form", hints: false, menu_position: "up" %>
+          </div>
+          <!-- Cover content effect below chat input -->
+          <div class="absolute bottom-0 left-0 z-30 block w-full h-12 bg-neutral-50 dark:bg-neutral-900"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%= render "rui/shared/search" %>

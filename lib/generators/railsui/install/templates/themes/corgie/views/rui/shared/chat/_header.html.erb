@@ -1,0 +1,47 @@
+<!-- Header -->
+<header
+  class="sticky top-0 z-20 p-4 shrink-0 bg-neutral-50/90 backdrop-blur-sm dark:bg-neutral-900/80 flex items-center justify-between gap-3 md:border-none border-b border-neutral-300/60">
+  <div>
+    <%= icon "logo", custom_path: "/railsui/logo.svg", class: "size-6  dark:fill-neutral-100 fill-neutral-900 shrink-0 lg:hidden block", variant: :solid %>
+  </div>
+  <div class="flex items-center justify-end gap-3">
+    <%= link_to rui_chat_new_path, class: "btn btn-rounded btn-ghost size-8" do %>
+      <%= icon "pencil-square", class: "size-5 stroke-current shrink-0" %>
+      <span class="sr-only">New Chat</span>
+    <% end %>
+
+    <button type="button" class="btn-rounded btn btn-ghost size-8">
+      <%= icon "bookmark", class: "size-5 shrink-0" %>
+      <span class="sr-only">Bookmark</span>
+    </button>
+
+    <div data-controller="railsui-dropdown" class="relative">
+      <button data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide" type="button"
+        class="btn-rounded btn btn-ghost size-8">
+        <%= icon "ellipsis-vertical", class: "size-5 shrink-0 stroke-current" %>
+      </button>
+      <span class="sr-only">More</span>
+      <ul data-railsui-dropdown-target="menu"
+        class="absolute md:right-0 right-auto -left-[164px] z-10 transition origin-top dropdown-menu top-10"
+        data-transition-enter-active="transition ease-out duration-50"
+        data-transition-enter-from="transform opacity-0 scale-95"
+        data-transition-enter-to="transform opacity-100 scale-100"
+        data-transition-leave-active="transition ease-in duration-100"
+        data-transition-leave-from="transform opacity-100 scale-100"
+        data-transition-leave-to="transform opacity-0 scale-95">
+          <li><%= link_to "Move to project", "#", class: "dropdown-item" %></li>
+          <li><%= button_to "Delete", "#", class: "text-red-500 dropdown-item dark:text-red-600" %></li>
+        </li>
+      </ul>
+    </div>
+
+    <button type="button" class="btn-rounded btn btn-white" data-controller="railsui-clipboard"
+      data-action="railsui-clipboard#copy">
+      <%= icon "arrow-up-tray", class: "size-4 shrink-0" %>
+      Share
+      <input type="hidden" id="share" value="https://railsui.com/chat/XDRSLG" data-railsui-clipboard-target="content"
+        class="hidden" readonly>
+    </button>
+    <%= render "rui/shared/account_dropdown" %>
+  </div>
+</header>
