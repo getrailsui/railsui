@@ -53,7 +53,7 @@
 
       <!-- Author Info -->
       <div class="flex items-center pb-8 mb-8 border-b border-neutral-200 dark:border-neutral-700/80 gap-6">
-          <%= image_tag demo_avatar_path(variant: :men, id: 31), alt: "John Rodgers" %>
+        <%= image_tag demo_avatar_url(variant: :men, id: 31), alt: "John Rodgers", class: "object-cover rounded-full size-16" %>
         <div class="flex-1">
           <p class="text-lg font-medium text-neutral-900 dark:text-white">John Rodgers</p>
           <p class="text-sm text-neutral-500 dark:text-neutral-400">AI Research Lead</p>
@@ -259,8 +259,8 @@
 
           <%= link_to rui_chat_new_path, class: "btn btn-primary group" do %>
             Start Chatting
-            <%= icon "arrow-right", "size-3 stroke-current group-hover:translate-x-0.5 transition ease-in duration-200" %>
-          <% end %>>
+            <%= icon "arrow-right", class: "size-3 stroke-current group-hover:translate-x-0.5 transition ease-in duration-200" %>
+          <% end %>
         </div>
       </div>
 
@@ -307,9 +307,9 @@
         <% end %>
 
         <button type="button" class="btn btn-white" data-controller="railsui-clipboard" data-action="click->railsui-clipboard#copy">
-          <%= icon "link", "size-5 stroke-current stroke-neutral-600 dark:stroke-neutral-400" %>
+          <%= icon "link", class: "size-5 stroke-current stroke-neutral-600 dark:stroke-neutral-400" %>
           <span class="sr-only">Copy Link</span>
-          <input type="hidden" value="/blog/article/index.html">
+          <input type="hidden" value="<%= rui_blog_show_url %>">
         </button>
       </div>
     </div>
@@ -317,7 +317,7 @@
     <!-- Author bio -->
     <div class="mb-10 pt-6">
       <div class="flex items-start">
-          <%= image_tag demo_avatar_path(variant: :men, id: 31), alt: "John Rogers" %>
+        <%= image_tag demo_avatar_url(variant: :men, id: 31), alt: "John Rogers", class: "object-cover rounded-full size-16" %>
         <div class="ml-4">
           <h4 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">John Rogers</h4>
           <p class="mb-2 text-sm text-neutral-600">AI Research Lead</p>
@@ -427,5 +427,3 @@
     </div>
   </div>
 </div>
-
-<%= render "rui/shared/footer" %>

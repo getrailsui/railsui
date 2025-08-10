@@ -3,7 +3,7 @@
     <div class="grid gap-12 md:grid-cols-4">
       <div class="md:col-span-1">
         <%= link_to root_path, class: "flex items-center mb-6 gap-2" do %>
-          <%= icon "logo.svg", custom_path: "./logo.svg", class: "size-6 shrink-0 fill-current dark:fill-neutral-100" %>
+          <%= icon "logo.svg", custom_path: "/railsui/logo.svg", class: "size-6 shrink-0 fill-current dark:fill-neutral-100" %>
           <span class="text-xl font-semibold text-neutral-900 dark:text-neutral-100"><%= Railsui.config.application_name || "Corgie" %></span>
         <% end %>
         <p class="leading-relaxed text-neutral-600 dark:text-neutral-400">
@@ -15,10 +15,10 @@
         <h4 class="mb-4 font-semibold text-neutral-900 dark:text-white">Product</h4>
         <ul class="space-y-3">
           <li>
-            <%= link_to "Chat", rui_chat_new_path, class "transition-colors text-neutral-600 hover:text-neutral-900 dark:text-neutral-400" %>
+            <%= link_to "Chat", rui_chat_new_path, class: "transition-colors text-neutral-600 hover:text-neutral-900 dark:text-neutral-400" %>
           </li>
           <li>
-            <%= link_to "Features", rui_features_path, class "transition-colors text-neutral-600 hover:text-neutral-900 dark:text-neutral-400" %>
+            <%= link_to "Features", rui_features_path, class: "transition-colors text-neutral-600 hover:text-neutral-900 dark:text-neutral-400" %>
           </li>
           <li>
             <%= link_to "Pricing", rui_pricing_path, class: "transition-colors text-neutral-600 hover:text-neutral-900 dark:text-neutral-400" %>
@@ -63,7 +63,7 @@
         &copy; <%= Date.today.year %> <%= Railsui.config.application_name || "Corgie" %>. All rights reserved.
       </p>
       <div class="flex items-center mt-4 space-x-6 md:mt-0">
-        <%= link_to "Privacy", rui_privacy_path, class: "text-sm transition-colors text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-500" %>
+        <%= link_to "Privacy", rui_privacy_policy_path, class: "text-sm transition-colors text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-500" %>
         <%= link_to "Terms", rui_terms_path, class: "text-sm transition-colors text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-500" %>
         <%= link_to "Security", "#", class: "text-sm transition-colors text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-500" %>
       </div>

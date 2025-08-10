@@ -7,7 +7,7 @@
     <div class="max-w-4xl mx-auto text-center">
 
       <div class="flex items-center justify-center mb-6">
-        <%= icon "logo.svg", custom_path: "./logo.svg", class: "size-8 dark:fill-neutral-100 fill-neutral-800" %>
+        <%= icon "logo.svg", custom_path: "/railsui/logo.svg", class: "size-8 dark:fill-neutral-100 fill-neutral-800" %>
       </div>
 
       <h1 class="mb-6 h1">
@@ -144,7 +144,7 @@
             role: "Head of Product" %>
 
         <!-- Team Member 4 -->
-        <%= render "rui/shared/marketing/_team_member_card",
+        <%= render "rui/shared/marketing/team_member_card",
             name: "Sarah Kim",
             image_url: demo_avatar_url(variant: :women, id: 51),
             description: "PhD in Natural Language Processing, specializing in conversational AI and context understanding.",
@@ -179,37 +179,37 @@
 
       <div class="max-w-2xl mx-auto">
         <div class="space-y-4">
-          <%= render "rui/marketing/career",
+          <%= render "rui/shared/marketing/career",
             title: "Senior AI Engineer",
             location: "San Francisco, CA",
             role_type: "Remote",
             href: "#" %>
 
-          <%= render "rui/marketing/career",
+          <%= render "rui/shared/marketing/career",
             title: "Product Designer",
             location: "New York, NY",
             role_type: "Hybrid",
             href: "#" %>
 
-          <%= render "rui/marketing/career",
+          <%= render "rui/shared/marketing/career",
             title: "DevOps Engineer",
             location: "Austin, TX",
             role_type: "Remote",
             href: "#" %>
 
-          <%= render "rui/marketing/career",
+          <%= render "rui/shared/marketing/career",
             title: "Data Scientist",
             location: "Seattle, WA",
             role_type: "Remote",
             href: "#" %>
 
-          <%= render "rui/marketing/career",
+          <%= render "rui/shared/marketing/career",
             title: "Marketing Manager",
             location: "Global",
             role_type: "Remote",
             href: "#" %>
 
-          <%= render "rui/marketing/career",
+          <%= render "rui/shared/marketing/career",
             title: "Customer Success",
             location: "Chicago, IL",
             role_type: "Hybrid",
@@ -275,8 +275,4 @@
   </div>
 </div>
 
-<!-- Footer -->
-<%= render "rui/shared/footer" %>
-
-<!-- Search -->
 <%= render "rui/shared/search" %>

@@ -1,47 +1,94 @@
 @utility h1 {
-  @apply text-5xl font-normal text-neutral-800 dark:text-neutral-50;
+  @apply text-5xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
 }
 
 @utility h2 {
-  @apply text-4xl font-normal text-neutral-800 dark:text-neutral-50;
+  @apply text-4xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
 }
 
 @utility h3 {
-  @apply text-2xl font-semibold text-neutral-800 dark:text-neutral-50;
+  @apply text-2xl font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
 }
 
 @utility h4 {
-  @apply text-xl font-semibold text-neutral-800 dark:text-neutral-50;
+  @apply text-xl font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
 }
 
 @utility h5 {
-  @apply text-lg font-semibold text-neutral-800 dark:text-neutral-50;
+  @apply text-lg font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
 }
 
 @utility h6 {
-  @apply text-base font-semibold text-neutral-800 dark:text-neutral-50;
+  @apply text-base font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
 }
 
 @utility display-1 {
-  @apply font-normal leading-tight md:text-9xl text-7xl [text-wrap:balance];
+  @apply font-normal leading-tight md:text-9xl text-7xl [text-wrap:balance] font-tiktok;
 }
 
 @utility display-2 {
-  @apply text-6xl font-normal leading-tight md:text-8xl [text-wrap:balance];
+  @apply text-6xl font-normal leading-tight md:text-8xl [text-wrap:balance] font-tiktok;
 }
 
 @utility display-3 {
-  @apply text-6xl font-normal leading-tight md:text-7xl [text-wrap:balance];
+  @apply text-6xl font-normal leading-tight md:text-7xl [text-wrap:balance] font-tiktok;
 }
 
 @utility display-4 {
-  @apply text-5xl font-normal leading-tight md:text-6xl [text-wrap:balance];
+  @apply text-5xl font-normal leading-tight md:text-6xl [text-wrap:balance] font-tiktok;
 }
 
 @utility display-5 {
-  @apply text-4xl font-normal leading-tight md:text-5xl [text-wrap:balance];
+  @apply text-4xl font-normal leading-tight md:text-5xl [text-wrap:balance] font-tiktok;
 }
 
 @utility display-6 {
-  @apply text-3xl font-medium leading-tight md:text-4xl [text-wrap:balance];
+  @apply text-3xl font-medium leading-tight md:text-4xl [text-wrap:balance] font-tiktok;
+}
+@utility h1 {
+  @apply text-5xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
+}
+
+@utility h2 {
+  @apply text-4xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
+}
+
+@utility h3 {
+  @apply text-2xl font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
+}
+
+@utility h4 {
+  @apply text-xl font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
+}
+
+@utility h5 {
+  @apply text-lg font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
+}
+
+@utility h6 {
+  @apply text-base font-semibold text-neutral-800 dark:text-neutral-50 font-tiktok;
+}
+
+@utility display-1 {
+  @apply font-normal leading-tight md:text-9xl text-7xl [text-wrap:balance] font-tiktok;
+}
+
+@utility display-2 {
+  @apply text-6xl font-normal leading-tight md:text-8xl [text-wrap:balance] font-tiktok;
+}
+
+@utility display-3 {
+  @apply text-6xl font-normal leading-tight md:text-7xl [text-wrap:balance] font-tiktok;
+}
+
+@utility display-4 {
+  @apply text-5xl font-normal leading-tight md:text-6xl [text-wrap:balance] font-tiktok;
+}
+
+@utility display-5 {
+  @apply text-4xl font-normal leading-tight md:text-5xl [text-wrap:balance] font-tiktok;
+}
+
+@utility display-6 {
+  @apply text-3xl font-medium leading-tight md:text-4xl [text-wrap:balance] font-tiktok;
 }

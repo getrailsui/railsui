@@ -3,4 +3,4 @@ hound:
 shepherd:
   body_classes: h-full antialiased text-zinc-800 leading-normal selection:bg-primary-100 selection:text-primary-700 dark:bg-zinc-900 bg-white dark:text-zinc-50 dark:selection:bg-zinc-500/40 dark:selection:text-zinc-200
 corgie:
-  body_classes: h-screen antialiased text-neutral-800 dark:text-neutral-50 dark:bg-neutral-900 bg-neutral-50
+  body_classes: h-screen antialiased text-neutral-800 dark:text-neutral-50 dark:bg-neutral-900 bg-neutral-50 font-tiktok

@@ -1,7 +1,7 @@
 <nav class="w-full px-6 py-6" data-controller="railsui-toggle">
   <div class="flex items-center justify-between mx-auto max-w-7xl">
     <%= link_to root_path, class: "flex items-center gap-2" do %>
-      <%= icon "logo.svg", custom_path: "./logo.svg", class: "size-6 shrink-0 fill-current dark:fill-neutral-100" %>
+      <%= icon "logo.svg", custom_path: "/railsui/logo.svg", class: "size-6 shrink-0 fill-current dark:fill-neutral-100" %>
       <span class="text-xl font-semibold text-neutral-900 dark:text-white"><%= Railsui.config.application_name || "Corgie" %></span>
     <% end %>
 
@@ -11,7 +11,7 @@
       <%= nav_link_to "Pricing", rui_pricing_path, class: "btn btn-link", active_class: "btn btn-muted" %>
       <%= nav_link_to "Blog", rui_blog_path, class: "btn btn-link", active_class: "btn-muted" %>
       <%= nav_link_to "About", rui_about_path, class: "btn btn-link", active_class: "btn btn-muted" %>
-      <%= nav_link_to "Log in", rui_login_path, class: "btn btn-link", active_class: "btn btn-muted" %>
+      <%= nav_link_to "Sign in", rui_signin_path, class: "btn btn-link", active_class: "btn btn-muted" %>
 
       <%= link_to "Try Corgie", rui_chat_new_path, class: "btn btn-dark" %>
     </div>
@@ -47,7 +47,7 @@
 
         <div class="pt-2 mt-4 border-t border-neutral-200 dark:border-neutral-700">
 
-          <%= nav_link_to "Log in", rui_login_path, class: base_mobile_classes, active_class: active_mobile_classes %>
+          <%= nav_link_to "Sign in", rui_signin_path, class: base_mobile_classes, active_class: active_mobile_classes %>
 
           <%= link_to "Try Corgie", rui_chat_new_path, class: "btn btn-primary btn-lg w-full mt-2" %>
         </div>
