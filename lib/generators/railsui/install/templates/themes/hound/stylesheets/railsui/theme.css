@@ -1,6 +1,7 @@
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --color-primary-50: oklch(0.962 0.0179 272.31); /* #eef2ff */
   --color-primary-100: oklch(0.93 0.0334 272.79); /* #e0e7ff */

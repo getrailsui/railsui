@@ -35,26 +35,27 @@
 
             <div class="space-y-4">
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Up to 10 conversations per day</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Basic AI responses</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Text file upload (up to 1MB)</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Community support</span>
               </div>
             </div>
           </div>
 
-          <%= link_to "Get started free", rui_signup_path, class: "w-full btn btn-lg btn-primary btn-rounded" do %>
-            <%= icon "arrow-up-right", "size-3 stroke-current" %>
+          <%= link_to rui_signup_path, class: "w-full btn btn-lg btn-primary btn-rounded" do %>
+            Get started free
+            <%= icon "arrow-up-right", class: "size-3 stroke-current" %>
           <% end %>
         </div>
 
@@ -82,35 +83,36 @@
 
             <div class="space-y-4">
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Unlimited conversations</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Advanced AI responses</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">File upload up to 25MB</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Priority support</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Custom conversation history</span>
               </div>
               <div class="flex items-center gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Export conversations</span>
               </div>
             </div>
           </div>
 
           <div>
-            <%= link_to "Start Plus trial", rui_signup_path(plan: :pro), class: "w-full btn btn-lg btn-primary btn-rounded" do %>
-              <%= icon "arrow-up-right", "size-3 stroke-current" %>
+            <%= link_to rui_signup_path(plan: :pro), class: "w-full btn btn-lg btn-primary btn-rounded" do %>
+              Start Plus trial
+              <%= icon "arrow-up-right", class: "size-3 stroke-current" %>
             <% end %>
           </div>
         </div>
@@ -132,31 +134,31 @@
 
             <div class="mb-6 space-y-4">
               <div class="flex gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Everything in Plus</span>
               </div>
               <div class="flex gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Premium AI models</span>
               </div>
               <div class="flex gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">File upload up to 100MB</span>
               </div>
               <div class="flex gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Team collaboration</span>
               </div>
               <div class="flex gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Advanced analytics</span>
               </div>
               <div class="flex gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Dedicated support</span>
               </div>
               <div class="flex gap-3">
-                <%= icon "check", "size-5 text-green-500" %>
+                <%= icon "check", class: "size-5 text-green-500" %>
                 <span class="text-neutral-700 dark:text-neutral-300">Custom integrations</span>
               </div>
             </div>
@@ -392,5 +394,4 @@
   </div>
 </div>
 
-<%= render "rui/shared/footer" %>
 <%= render "rui/shared/search" %>

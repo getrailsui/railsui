@@ -1,5 +1,5 @@
 @theme {
-  --font-sans: "TikTok Sans", sans-serif;
+  --font-tiktok: "TikTok Sans", sans-serif;
   --font-mono:
     "IBM Plex Mono", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
     Consolas, "Courier New", monospace;
@@ -73,4 +73,5 @@
 }
 
 @plugin "@tailwindcss/typography";
-@config "../../tailwind.config.js";
+/* Keep: Include Rails UI content paths */
+@config "../../stylesheets/railsui/tailwind.config.js";

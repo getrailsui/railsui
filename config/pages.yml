@@ -205,7 +205,7 @@ shepherd:
     path: rui_new_booking_path
     add_to_nav: false
   booking:
-    title: 'Booking'
+    title: "Booking"
     description: Booking show view
     namespace: admin
     tags:
@@ -269,32 +269,32 @@ shepherd:
     path: rui_contact_path
     add_to_nav: false
   account_payment_methods:
-    title: 'Account: Payment Methods'
-    description: 'Payment method UI for the user profile'
+    title: "Account: Payment Methods"
+    description: "Payment method UI for the user profile"
     namespace: admin
     tags:
       - admin
     path: rui_account_payment_methods_path
     add_to_nav: false
   account_payouts:
-    title: 'Account: Payouts'
-    description: 'Payouts UI for the user profile'
+    title: "Account: Payouts"
+    description: "Payouts UI for the user profile"
     namespace: admin
     tags:
       - admin
     path: rui_account_payouts_path
     add_to_nav: false
   account_notifications:
-    title: 'Account: Notifications'
-    description: 'Notifications settings for the user profile'
+    title: "Account: Notifications"
+    description: "Notifications settings for the user profile"
     namespace: admin
     tags:
       - admin
     path: rui_account_notifications_path
     add_to_nav: false
   account_preferences:
-    title: 'Account: Preferences'
-    description: 'Preferences settings for the user profile'
+    title: "Account: Preferences"
+    description: "Preferences settings for the user profile"
     namespace: admin
     tags:
       - admin
@@ -371,13 +371,15 @@ corgie:
       - authentication
     path: rui_signup_path
     add_to_nav: false
-  login:
-    title: Login
-    description: A login page for existing users.
+    layout: auth
+  signin:
+    title: Sign in
+    description: A sign in page for existing users.
     tags:
       - authentication
-    path: rui_login_path
+    path: rui_signin_path
     add_to_nav: false
+    layout: auth
   help:
     title: Help
     description: A help page with FAQs and support links.
@@ -392,7 +394,7 @@ corgie:
       - admin
     path: rui_chat_new_path
     add_to_nav: false
-    namespace: admin
+    layout: admin
   chat_show:
     title: Chat Show
     description: A chat show page with a chat interface.
@@ -400,4 +402,4 @@ corgie:
       - admin
     path: rui_chat_show_path
     add_to_nav: false
-    namespace: admin
+    layout: admin

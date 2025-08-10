@@ -1,8 +1,7 @@
 <div class="flex h-full overflow-hidden" data-controller="sidebar">
-  <!-- Sidebar -->
+
   <%= render "rui/shared/sidebar" %>
 
-  <!-- Main Content -->
   <div class="flex flex-col flex-1 min-w-0 overflow-auto">
 
     <%= render "rui/shared/chat/header" %>
@@ -14,8 +13,9 @@
           <p>Give me a basic tutorial on ruby on rails</p>
           <% end %>
 
-
           <%= render "rui/shared/chat/message" do %>
+
+          <%# FYI: I'd highly recommend using something Ruby-driven for markdown processing, like Redcarpet or Kramdown instead of a JS solution but it's important to note that these libraries require additional setup and configuration for either case. What you see here get's you started. %>
 
           Here's a concise tutorial on getting started with [Ruby on Rails](https://rubyonrails.org), a popular web
           development framework built on the Ruby programming language. This guide assumes you have basic knowledge of

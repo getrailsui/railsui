@@ -21,11 +21,9 @@
 
   <body class="<%= railsui_body_classes %>" data-controller="search railsui-modal">
     <%= render "rui/shared/flash" %>
-    <%= render "rui/shared/admin/nav_menu" %>
 
     <%= yield %>
 
-    <%= render "rui/shared/footer" %>
     <%= render "rui/shared/settings/modal" %>
     <%= railsui_launcher if Rails.env.development? %>
   </body>
