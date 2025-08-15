@@ -2,23 +2,23 @@
   <%= render layout: example, locals: { heading: "With icons", section: "Tab" } do %>
 
     <%= render preview('neutral') do %>
-<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t" data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600">
-  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-200 dark:border-slate-600 text-sm font-medium">
+<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t" data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-neutral-600">
+  <div class="border-neutral-200 border-b text-neutral-600 dark:text-neutral-200 dark:border-neutral-600 text-sm font-medium font-tiktok">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap">
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
         class="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t">
         <%= icon "chat-bubble-oval-left-ellipsis", class:  "size-5" %>
         <span>Activity</span>
       </a>
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600">
         <%= icon "user-circle", class:  "size-5" %>
         <span>Account</span>
       </a>
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600">
         <%= icon "credit-card", class:  "size-5" %>
         <span>Billing</span>
       </a>
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600">
         <%= icon "users", class:  "size-5" %>
         <span>Team</span>
       </a>
@@ -43,23 +43,23 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
-<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t" data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600">
-  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-200 dark:border-slate-600 text-sm font-medium">
+<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t" data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-neutral-600">
+  <div class="border-neutral-200 border-b text-neutral-600 dark:text-neutral-200 dark:border-neutral-600 text-sm font-medium">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap">
       <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change"
         class="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t">
         <%%= icon "chat-bubble-oval-left-ellipsis", class: "size-5" %>
         <span>Activity</span>
       </a>
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600">
         <%%= icon "user-circle", class: "size-5" %>
         <span>Account</span>
       </a>
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600">
         <%%= icon "credit-card", class:  "size-5" %>
         <span>Billing</span>
       </a>
-      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600">
+      <a href="#" data-railsui-tabs-target="tab" data-action="click->railsui-tabs#change" class="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600">
         <%%= icon "users", class: "size-5" %>
         <span>Team</span>
       </a>
@@ -83,25 +83,25 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t" data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600">
-  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-200 dark:border-slate-600 text-sm font-medium">
+<div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t" data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-neutral-600">
+  <div class="border-neutral-200 border-b text-neutral-600 dark:text-neutral-200 dark:border-neutral-600 text-sm font-medium">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap">
       <%%= link_to "#", class: "py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
         <%%= icon "chat-bubble-oval-left-ellipsis", class: "size-5" %>
         <span>Activity</span>
       <%% end %>
 
-      <%%= link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap   border-b bg-transparent dark:bg-transparent dark:border-slate-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
+      <%%= link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap   border-b bg-transparent dark:bg-transparent dark:border-neutral-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
         <%%= icon "user-circle", class: "size-5" %>
         <span>Account</span>
       <%% end %>
 
-      <%%= link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
+      <%%= link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
         <%%= icon "credit-card", class: "size-5" %>
         <span>Billing</span>
       <%% end %>
 
-      <%%= link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
+      <%%= link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-neutral-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do %>
         <%%= icon "users", class: "size-5" %>
         <span>Team</span>
       <%% end %>

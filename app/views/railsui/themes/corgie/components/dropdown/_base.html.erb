@@ -2,7 +2,7 @@
 <%= render layout: example, locals: { heading: "Base", section: "Dropdown" } do %>
 
 <%= render preview('neutral') do %>
-<div class="flex md:flex-row flex-col flex-wrap items-center justify-start md:space-x-3 space-x-0 space-y-3 md:space-y-0">
+<div class="flex md:flex-row flex-col flex-wrap items-center justify-start md:space-x-3 space-x-0 space-y-3 md:space-y-0 font-tiktok">
 <%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-primary" %>
 
 <%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-dark" %>
@@ -21,7 +21,7 @@
     <%%= icon "chevron-down", class: "size-3" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -42,7 +42,7 @@
     <%%= icon "chevron-down", class: "size-3" %>
   <%% end %>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"

@@ -59,7 +59,7 @@
 
 <%= render preview('neutral') do %>
   <label for="data" class="form-label">Date</label>
-  <div class="flex items-center space-x-3 max-w-sm">
+  <div class="flex items-center space-x-3 max-w-sm font-tiktok">
     <%= select_day Date.today.day, {}, { class: "form-select" }  %>
     <%= select_month Date.today.month, {}, { class: "form-select" }%>
     <%= select_year Date.today.year, {}, { class: "form-select" } %>

@@ -6,7 +6,7 @@
 
 <%= render preview('neutral') do %>
   <form>
-    <div class="form-group">
+    <div class="form-group font-tiktok">
       <label class="form-label">Full Name</label>
       <input type="text" class="form-input" placeholder="John Doe">
     </div>
@@ -45,7 +45,7 @@
 
 <%= render preview('neutral') do %>
   <form>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-tiktok">
       <div class="form-group">
         <label class="form-label">Text Field</label>
         <input type="text" class="form-input">
@@ -141,7 +141,7 @@
 
 <%= render preview('neutral') do %>
   <form>
-    <div class="form-group">
+    <div class="form-group font-tiktok">
       <label class="form-label">Country</label>
       <select class="form-select">
         <option>Choose a country</option>
@@ -184,7 +184,7 @@
 <%= render layout: example, locals: { heading: "Rich Text Area (ActionText)" } do %>
 <%= render preview('neutral') do %>
   <form>
-    <div class="form-group">
+    <div class="form-group font-tiktok">
       <label class="form-label">Article Content</label>
       <div class="trix-content">
         <trix-editor placeholder="Write your article content here..." class="trix-content"></trix-editor>
@@ -214,7 +214,7 @@
 
 <%= render preview('neutral') do %>
   <form>
-    <div class="form-group">
+    <div class="form-group font-tiktok">
       <h4 class="h5 mb-2">Preferences</h4>
       <div class="space-y-2">
         <div class="flex items-center gap-2">
@@ -289,7 +289,7 @@
 
 <%= render preview('neutral') do %>
   <form>
-    <div class="form-group">
+    <div class="form-group font-tiktok">
       <input type="checkbox" class="form-input-switch" id="dark_mode">
       <label for="dark_mode">Enable dark mode</label>
     </div>
@@ -322,7 +322,7 @@
 
 <%= render preview('neutral') do %>
   <form>
-    <div class="form-group">
+    <div class="form-group font-tiktok">
       <label class="form-label form-label-required">Full Name</label>
       <input type="text" class="form-input form-input-error" value="">
       <p class="mt-1 text-sm text-red-600 dark:text-red-400">can't be blank</p>
@@ -361,7 +361,7 @@
 <%= render layout: example, locals: { heading: "With vs Without Form Builder" } do %>
 
 <%= render preview('neutral') do %>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 font-tiktok">
     <div>
       <h4 class="text-lg font-semibold mb-4">With Rails UI Form Builder</h4>
       <form>
@@ -417,7 +417,7 @@
 
 <%= render preview('neutral') do %>
   <form>
-    <div class="form-group max-w-md">
+    <div class="form-group max-w-md font-tiktok">
       <label class="form-label">Username</label>
       <input type="text" class="form-input" placeholder="johndoe">
       <p class="form-help">Display helpful text using the 'help' option and extend the wrapper class.</p>

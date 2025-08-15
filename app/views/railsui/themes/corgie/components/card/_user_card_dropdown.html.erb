@@ -1,18 +1,18 @@
 <div id="card-user-card-with-dropdown">
 <%= render layout: example, locals: { heading: "User card with dropdown", section: "Card" } do %>
-<div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 dark:shadow-slate-900/50">
+<div class="rounded-md bg-white p-6 dark:bg-neutral-800 dark:text-white border border-neutral-300/70 dark:border-neutral-600/70 dark:shadow-neutral-900/50">
 <div class="flex flex-wrap items-center gap-4">
   <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: :men), class: "object-cover size-14 rounded-full flex-shrink-0" %>
-<div class="flex-1 flex flex-col items-start space-y-px text-slate-900 dark:text-white">
+<div class="flex-1 flex flex-col items-start space-y-px text-neutral-900 dark:text-white">
   <p class="font-bold">Jared Doe</p>
-  <p class="dark:text-slate-400 text-sm"><%= Time.zone.now.strftime("%B %e at  %l:%M %p") %></p>
+  <p class="dark:text-neutral-400 text-sm"><%= Time.zone.now.strftime("%B %e at  %l:%M %p") %></p>
 </div>
 <div data-controller="railsui-dropdown" class="relative">
-  <button type="button" data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200 dark:focus:border-slate-700 dark:hover:bg-slate-700/80 dark:hover:border-slate-700 dark:focus:ring-slate-400/50">
-    <%= icon "ellipsis-vertical", class:  "size-6 text-slate-500 group-hover:text-primary-500 dark:text-slate-200 dark:group-hover:text-primary-300" %>
+  <button type="button" data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-neutral-200 focus:ring-neutral-50 hover:bg-white hover:shadow-sm focus:border-neutral-200 dark:focus:border-neutral-700 dark:hover:bg-neutral-700/80 dark:hover:border-neutral-700 dark:focus:ring-neutral-400/50">
+    <%= icon "ellipsis-vertical", class:  "size-6 text-neutral-500 group-hover:text-primary-500 dark:text-neutral-200 dark:group-hover:text-primary-300" %>
   </button>
   <ul
-  class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[200px] z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-sm font-medium text-slate-600 dark:text-slate-200"
+  class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 min-w-[200px] z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 text-sm font-medium text-neutral-600 dark:text-neutral-200"
   data-railsui-dropdown-target="menu"
   data-transition-enter-from="opacity-0 scale-95"
   data-transition-enter-to="opacity-100 scale-100"
@@ -42,18 +42,18 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 dark:shadow-slate-900/50">
+<div class="rounded-md bg-white p-6 dark:bg-neutral-800 dark:text-white border border-neutral-300/70 dark:border-neutral-600/70 dark:shadow-neutral-900/50">
   <div class="flex flex-wrap items-center gap-4">
     <%= image_tag demo_avatar_url(id: "49"), class: "object-cover size-14 rounded-full flex-shrink-0" %>
-    <div class="flex-1 flex flex-col items-start space-y-px text-slate-900 dark:text-white">
+    <div class="flex-1 flex flex-col items-start space-y-px text-neutral-900 dark:text-white">
       <p class="font-bold">Jared Doe</p>
-      <p class="dark:text-slate-400 text-sm"><%%= Time.zone.now.strftime("%B %e at  %l:%M %p") %></p>
+      <p class="dark:text-neutral-400 text-sm"><%%= Time.zone.now.strftime("%B %e at  %l:%M %p") %></p>
     </div>
     <div data-controller="dropdown" class="relative">
-      <button type="button" data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200 dark:focus:border-slate-700 dark:hover:bg-slate-700/80 dark:hover:border-slate-700 dark:focus:ring-slate-400/50">
-        <%%= icon "ellipsis-vertical", class:  "size-6 text-slate-500 group-hover:text-primary-500 dark:text-slate-200 dark:group-hover:text-primary-300" %>
+      <button type="button" data-action="railsui-dropdown#toggle click@window->railsui-dropdown#hide" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-neutral-200 focus:ring-neutral-50 hover:bg-white hover:shadow-sm focus:border-neutral-200 dark:focus:border-neutral-700 dark:hover:bg-neutral-700/80 dark:hover:border-neutral-700 dark:focus:ring-neutral-400/50">
+        <%%= icon "ellipsis-vertical", class:  "size-6 text-neutral-500 group-hover:text-primary-500 dark:text-neutral-200 dark:group-hover:text-primary-300" %>
       </button>
-      <ul class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 min-w-[200px] z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 text-sm font-medium text-slate-600 dark:text-slate-200"
+      <ul class="hidden transition transform origin-to-right absolute right-0 top-9 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 min-w-[200px] z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 text-sm font-medium text-neutral-600 dark:text-neutral-200"
   data-railsui-dropdown-target="menu"
   data-transition-enter-from="opacity-0 scale-95"
   data-transition-enter-to="opacity-100 scale-100"

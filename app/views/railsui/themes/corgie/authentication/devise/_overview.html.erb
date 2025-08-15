@@ -47,7 +47,7 @@
         <%%= yield :masthead %>
       </div>
 
-      <div class="bg-white shadow-xs rounded-lg p-8 border border-slate-300/60">
+      <div class="bg-white shadow-xs rounded-lg p-8 border border-neutral-300/60">
 
         <!-- Add or yield form content here -->
         <%%= yield %>
@@ -117,13 +117,13 @@
 <!-- app/views/devise/shared/_links -->
 <%% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <div class="text-center mb-1">
-    <%%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-sm text-slate-600 hover:text-slate-800" %>
+    <%%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-sm text-neutral-600 hover:text-neutral-800" %>
   </div>
 <%% end %>
 
 <%% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <div class="text-center mb-2">
-    <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-sm text-slate-600 hover:text-slate-800" %>
+    <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-sm text-neutral-600 hover:text-neutral-800" %>
   </div>
 <%% end %>
 <% end %>
@@ -147,7 +147,7 @@
 <p>Here's an example of the UI with various providers:</p>
 
 <%= render preview("neutral") do %>
-<div class="flex flex-col gap-4 items-center justify-center max-w-xs mx-auto">
+<div class="flex flex-col gap-4 items-center justify-center max-w-xs mx-auto font-tiktok">
   <button class="btn btn-white w-full">
     <div class="flex items-center gap-2">
       <%= icon "google", custom_path: "/railsui/omniauth/google.svg", class: "size-4 text-[#4285f4] fill-current" %>
@@ -157,14 +157,14 @@
 
    <button class="btn btn-white w-full">
     <div class="flex items-center gap-2">
-      <%= icon "github", custom_path: "/railsui/omniauth/github.svg", class: "size-4 text-zinc-900 fill-current" %>
+      <%= icon "github", custom_path: "/railsui/omniauth/github.svg", class: "size-4 text-neutral-900 fill-current" %>
       <span>Continue with GitHub</span>
     </div>
   </button>
 
   <button class="btn btn-white w-full">
     <div class="flex items-center gap-2">
-      <%= icon "x", custom_path: "/railsui/omniauth/x.svg", class: "size-4 text-zinc-900 fill-current" %>
+      <%= icon "x", custom_path: "/railsui/omniauth/x.svg", class: "size-4 text-neutral-900 fill-current" %>
       <span>Continue with X</span>
     </div>
   </button>
@@ -195,7 +195,7 @@
 
 <%= render preview('neutral') do %>
 <div class="sm:h-[700px] -m-8 flex flex-col items-center justify-center bg-cover bg-center px-4 pointer-events-none select-none" style="background-image: url('<%= asset_url('themes/hound/fusion.png') %>')">
-  <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full">
+  <div class="sm:flex-1 flex flex-col justify-center sm:w-[428px] w-full font-tiktok">
     <div>
       <div class="flex justify-center">
         <%= link_to "#", class: "size-12 flex justify-center" do %>
@@ -206,8 +206,8 @@
 
       <div class="mt-6">
         <div class="text-center">
-          <h1 class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight my-3">Forget your password?</h1>
-          <p class="mb-6 text-slate-700 dark:text-slate-200">Reset it in an instant</p>
+          <h1 class="text-3xl font-extrabold text-neutral-900 dark:text-neutral-100 tracking-tight my-3">Forget your password?</h1>
+          <p class="mb-6 text-neutral-700 dark:text-neutral-200">Reset it in an instant</p>
         </div>
         <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
           <div class="flex items-start space-x-4">
@@ -225,7 +225,7 @@
     </div>
   </div>
 
-  <div class="bg-white dark:bg-slate-900/50  dark:border-slate-700/80 shadow-xs rounded-lg p-8 border border-slate-300/60">
+  <div class="bg-white dark:bg-neutral-900/50  dark:border-neutral-700/80 shadow-xs rounded-lg p-8 border border-neutral-300/60">
     <form class="new_user" id="new_user" action="#" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="KFz5ZtupOgfCmPUrSoPOW62TqhAxjRRUVi3LC4quDw3wQCnw7Afy_IwRpt8-SqpMsNyhT8A6NlMo3-6XQ_2sMQ" autocomplete="off">
 
     <div class="form-group">
@@ -233,7 +233,7 @@
       <div class="relative">
         <div class="field_with_errors">
         <input autocomplete="email" class="form-input peer focus:pl-10 transition pointer-events-none " pattern="[^@ ]+@[^@ ]+.[^@ ]+" title="Invalid email address" type="email" value="" name="user[email]" id="user_email"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="size-5 absolute translate-x-0 top-3 text-slate-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:translate-x-3 dark:peer-focus:text-indigo-400" role="img" aria-labelledby="aq0uefjmpwf07vill1w6vyecgmjpab2q"><title id="aq0uefjmpwf07vill1w6vyecgmjpab2q">Envelope</title>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="size-5 absolute tranneutral-x-0 top-3 text-neutral-300 peer-focus:text-indigo-500/80 opacity-0 transition transform peer-focus:opacity-100 peer-focus:tranneutral-x-3 dark:peer-focus:text-indigo-400" role="img" aria-labelledby="aq0uefjmpwf07vill1w6vyecgmjpab2q"><title id="aq0uefjmpwf07vill1w6vyecgmjpab2q">Envelope</title>
         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
       </svg>
       </div>

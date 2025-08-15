@@ -7,7 +7,7 @@
 
 
 <%= render preview('neutral') do %>
-  <div class="flex items-center justify-center">
+  <div class="flex items-center justify-center font-tiktok">
     <img src="https://picsum.photos/900/700" alt="" class="object-scale-down h-48 w-96 rounded-xl shadow-xl bg-blue-100">
   </div>
 <% end %>
@@ -16,14 +16,14 @@
 <% content_for :example, flush: true do %>
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="bg-slate-50...">
+<div class="bg-neutral-50...">
   <img src="#" class="object-scale-down h-48 w-96">
 </div>
 <% end %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
-<div class="bg-slate-50...">
+<div class="bg-neutral-50...">
   <%%= image_tag "#", class: "object-scale-down h-48 w-96" %>
 </div>
 <% end %>

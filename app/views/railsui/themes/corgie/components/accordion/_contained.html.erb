@@ -2,14 +2,14 @@
 <%= render layout: example, locals: { heading: "Contained", section: "Accordion" } do %>
 
 <%= render preview('neutral') do %>
-<dl class="my-6 divide-y divide-neutral-100 rounded-lg shadow-xl shadow-neutral-100/50 border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 dark:shadow-black/20">
+<dl class="font-tiktok my-6 divide-y divide-neutral-100 rounded-lg shadow-xl shadow-neutral-100/50 border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 dark:shadow-black/20">
   <details class="group p-4 marker:content-['']">
     <summary class="flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white">
       This is the first accordion item
       <%= icon "plus", class: "size-5 flex-none ml-4 mt-0.5 text-neutral-600 dark:text-neutral-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:hidden block" %>
       <%= icon "minus", class: "size-5 flex-none ml-4 mt-0.5 text-neutral-600 dark:text-neutral-300 group-open:text-primary-500 dark:group-open:text-primary-400 group-open:block hidden" %>
     </summary>
-    <div class="pt-6 pb-6">
+    <div class="pt-6 pb-6 font-tiktok">
       <div class="prose prose-neutral dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary-600 hover:prose-a:text-primary-500 dark:prose-a:text-primary-400 dark:hover:prose-a:text-primary-300">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque explicabo voluptates odio atque reiciendis, dolore magni quos quibusdam numquam, ad distinctio minima reprehenderit nemo harum, in perferendis delectus tempora.
       </div>

@@ -2,7 +2,7 @@
   <%= render layout: example, locals: { heading: "With search", section: "Navigation" } do %>
 
 <%= render "railsui/themes/hound/components/navigation/nav_preview", flush: true do %>
-<header class="relative bg-white dark:bg-slate-900 rounded-t" data-controller="railsui-nav railsui-prevent">
+<header class="relative bg-white dark:bg-neutral-900 rounded-t" data-controller="railsui-nav railsui-prevent">
   <div class="container mx-auto px-4">
     <div class="md:flex items-center flex-wrap md:space-x-2">
       <div class="md:block flex items-center justify-between">
@@ -15,18 +15,18 @@
         </a>
 
         <button id="search-nav-toggle" data-action="click->railsui-nav#toggle"
-          class="md:hidden block p-1 rounded focus:ring-4 focus:ring-slate-100 active:bg-white group focus:bg-white/50 dark:focus:bg-slate-800 dark:focus:ring-slate-700"
+          class="md:hidden block p-1 rounded focus:ring-4 focus:ring-neutral-100 active:bg-white group focus:bg-white/50 dark:focus:bg-neutral-800 dark:focus:ring-neutral-700"
           role="Mobile navigation toggle">
           <div role="none" data-railsui-nav-target="menuBars">
-            <%= icon "bars-3-center-left", class: "size-8 text-slate-600 group-focus:text-primary-600
-      dark:text-slate-400 dark:group-focus:text-slate-100" %>
+            <%= icon "bars-3-center-left", class: "size-8 text-neutral-600 group-focus:text-primary-600
+      dark:text-neutral-400 dark:group-focus:text-neutral-100" %>
           </div>
           <div role="none" data-railsui-nav-target="menuCross" class="hidden">
-            <%= icon "x-mark", class: "size-8 text-slate-600 group-focus:text-primary-600 dark:text-slate-400 dark:group-focus:text-slate-100" %>
+            <%= icon "x-mark", class: "size-8 text-neutral-600 group-focus:text-primary-600 dark:text-neutral-400 dark:group-focus:text-neutral-100" %>
           </div>
         </button>
       </div>
-      <div id="search-navigation" class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-slate-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40" data-railsui-nav-target="nav"
+      <div id="search-navigation" class="md:flex-1 md:block hidden md:static absolute top-14 left-0 w-full bg-white dark:bg-neutral-900 md:bg-transparent transform origin-top p-4 md:p-0 lg:p-0 rounded-b md:shadow-none shadow-xl z-40" data-railsui-nav-target="nav"
       data-transition-enter-active="transition ease-out duration-200"
       data-transition-enter-from="opacity-0 scale-95"
       data-transition-enter-to="opacity-100 scale-100"
@@ -53,7 +53,7 @@
               <form action="#" data-action="submit->railsui-prevent#prevent">
                 <div class="relative">
                   <input type="search" placeholder="Search" class="form-input w-full py-2 shadow-none sm:text-sm pl-8 peer">
-                  <%= icon "magnifying-glass", class:  "size-5 text-slate-400 absolute left-2 sm:top-2 top-3 peer-focus:text-primary-500" %>
+                  <%= icon "magnifying-glass", class:  "size-5 text-neutral-400 absolute left-2 sm:top-2 top-3 peer-focus:text-primary-500" %>
                 </div>
               </form>
             </div>
@@ -78,7 +78,7 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
-<header class="relative bg-slate-900" data-controller="nav">
+<header class="relative bg-neutral-900" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="sm:flex items-center flex-wrap sm:space-x-2">
       <div class="sm:block flex items-center justify-between">
@@ -89,16 +89,16 @@
           <span class="sr-only"><%= Railsui.config.theme.humanize %></span>
         </a>
 
-        <button id="search-nav-toggle" data-action="click->nav#toggle" class="sm:hidden block p-1 rounded focus:ring-4 group focus:bg-slate-800 focus:ring-slate-700">
+        <button id="search-nav-toggle" data-action="click->nav#toggle" class="sm:hidden block p-1 rounded focus:ring-4 group focus:bg-neutral-800 focus:ring-neutral-700">
           <div role="none" data-nav-target="menuBars">
-            <%%= icon "bars-3-center-left", class: "size-8 text-slate-300 group-focus:text-slate-200" %>
+            <%%= icon "bars-3-center-left", class: "size-8 text-neutral-300 group-focus:text-neutral-200" %>
           </div>
           <div role="none" data-nav-target="menuCross" class="hidden">
-            <%%= icon "x-mark", class: "size-8 text-slate-300 group-focus:text-slate-200" %>
+            <%%= icon "x-mark", class: "size-8 text-neutral-300 group-focus:text-neutral-200" %>
           </div>
         </button>
       </div>
-      <div id="search-navigation" class="sm:flex-1 sm:block hidden sm:static absolute top-14 left-0 w-full bg-slate-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
+      <div id="search-navigation" class="sm:flex-1 sm:block hidden sm:static absolute top-14 left-0 w-full bg-neutral-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
       data-nav-target="nav"
       data-transition-enter-active="transition ease-out duration-200"
       data-transition-enter-from="opacity-0 scale-95"
@@ -124,17 +124,17 @@
           <nav role="Secondary navigation">
             <ul class="sm:flex flex-wrap items-center justify-center grid grid-cols-2 sm:gap-0 gap-4 sm:mt-0 mt-6">
               <li class="sm:pr-5">
-                <a href="#" class="group sm:border-none border rounded sm:bg-transparent bg-slate-900 border-slate-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-800">
+                <a href="#" class="group sm:border-none border rounded sm:bg-transparent bg-neutral-900 border-neutral-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-neutral-800">
                   <%%= icon "question-mark-circle", class:  "fill-current size-5 text-primary-500 group-hover:text-primary-600 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-600", variant: :solid %>
                 </a>
               </li>
               <li class="sm:pr-3">
-                <a href="#" class="group sm:border-none border rounded sm:bg-transparent bg-slate-900 border-slate-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-800">
+                <a href="#" class="group sm:border-none border rounded sm:bg-transparent bg-neutral-900 border-neutral-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-neutral-800">
                   <%%= icon "book-open", class:  "fill-current size-5 text-primary-500 group-hover:text-primary-600 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-600", variant: :solid %>
                 </a>
               </li>
               <li class="sm:block hidden sm:px-2">
-                <span class="h-6 w-px block bg-slate-600"></span>
+                <span class="h-6 w-px block bg-neutral-600"></span>
               </li>
               <li class="w-full sm:w-auto sm:mb-0 col-span-2">
                 <a href="#" class="btn btn-dark sm:w-auto w-full">Sign in</a>
@@ -152,7 +152,7 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<header class="relative bg-slate-900" data-controller="nav">
+<header class="relative bg-neutral-900" data-controller="nav">
   <div class="container mx-auto px-4">
     <div class="sm:flex items-center flex-wrap sm:space-x-2">
       <div class="sm:block flex items-center justify-between">
@@ -163,16 +163,16 @@
          <span class="sr-only"><%= Railsui.config.theme.humanize %></span>
        <%% end %>
       <button id="search-nav-toggle"
-      data-action="click->nav#toggle" class="sm:hidden block p-1 rounded focus:ring-4 group focus:bg-slate-800 focus:ring-slate-700" role="Mobile navigation toggle">
+      data-action="click->nav#toggle" class="sm:hidden block p-1 rounded focus:ring-4 group focus:bg-neutral-800 focus:ring-neutral-700" role="Mobile navigation toggle">
         <div role="none" data-nav-target="menuBars">
-          <%%= icon "bars-3-center-left", class:  "w-8 h-8 text-slate-300 group-focus:text-slate-200" %>
+          <%%= icon "bars-3-center-left", class:  "w-8 h-8 text-neutral-300 group-focus:text-neutral-200" %>
         </div>
         <div role="none" data-nav-target="menuCross" class="hidden">
-          <%%= icon "x-mark", class:  "w-8 h-8 text-slate-300 group-focus:text-slate-200" %>
+          <%%= icon "x-mark", class:  "w-8 h-8 text-neutral-300 group-focus:text-neutral-200" %>
         </div>
       </button>
     </div>
-    <div id="search-navigation" class="sm:flex-1 sm:block hidden sm:static absolute top-14 left-0 w-full bg-slate-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
+    <div id="search-navigation" class="sm:flex-1 sm:block hidden sm:static absolute top-14 left-0 w-full bg-neutral-900 sm:bg-transparent transform origin-top sm:p-0 p-4 rounded-b sm:shadow-none shadow-xl z-30"
     data-nav-target="nav"
     data-transition-enter-active="transition ease-out duration-200"
     data-transition-enter-from="opacity-0 scale-95"
@@ -198,17 +198,17 @@
         <nav role="Secondary navigation">
           <ul class="sm:flex flex-wrap items-center justify-center grid grid-cols-2 sm:gap-0 gap-4 sm:mt-0 mt-6">
             <li class="sm:pr-5">
-              <%%= link_to "#", class: "group sm:border-none border rounded sm:bg-transparent bg-slate-900 border-slate-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-800" do
+              <%%= link_to "#", class: "group sm:border-none border rounded sm:bg-transparent bg-neutral-900 border-neutral-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-neutral-800" do
                 <%= icon "question-mark-circle", class:  "fill-current size-5 text-primary-500 group-hover:text-primary-600 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-600", variant: :solid %>
               <%% end %>
             </li>
             <li class="sm:pr-3">
-              <%%= link_to "#", class: "group sm:border-none border rounded sm:bg-transparent bg-slate-900 border-slate-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-slate-800" do %>
+              <%%= link_to "#", class: "group sm:border-none border rounded sm:bg-transparent bg-neutral-900 border-neutral-700 flex justify-center items-center sm:py-0 py-2 sm:px-0 px-3 sm:block sm:focus:ring-none focus:ring-4 focus:ring-neutral-800" do %>
                 <%%= icon "book-open", class:  "fill-current size-5 text-primary-500 group-hover:text-primary-600 transition ease-in-out duration-300 dark:text-primary-500 dark:group-hover:text-primary-600", variant: :solid %>
                 <%% end %>
               </li>
               <li class="sm:block hidden sm:px-2">
-                <span class="h-6 w-px block bg-slate-600"></span>
+                <span class="h-6 w-px block bg-neutral-600"></span>
               </li>
               <li class="w-full sm:w-auto sm:mb-0 col-span-2">
                 <%%= link_to "Sign in", new_user_session_path, class: "btn btn-dark sm:w-auto w-full" %>
