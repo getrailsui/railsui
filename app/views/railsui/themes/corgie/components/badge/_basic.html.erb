@@ -2,6 +2,7 @@
 <%= render layout: example, locals: { heading: "Basic", section: "Badge" } do %>
 
 <%= render preview('neutral') do %>
+<div class="font-tiktok">
 <span class="rounded bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs dark:bg-neutral-500/20 dark:text-neutral-200">Gray</span>
 
 <span class="rounded bg-red-100 text-red-800 font-medium px-2 py-1 text-xs dark:bg-red-500/20 dark:text-red-300">Red</span>
@@ -20,7 +21,8 @@
 
 <span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs dark:text-pink-300 dark:bg-pink-500/20">Pink</span>
 
-<span class="rounded bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80">White</span>
+<span class="rounded bg-white-100 text-neutral-800 border border-neutral-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80">White</span>
+</div>
 <% end %>
 
 
@@ -54,7 +56,7 @@
 <span class="rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs dark:text-pink-300 dark:bg-pink-500/20">Pink</span>
 
 <!-- White -->
-<span class="rounded bg-white-100 text-slate-800 border border-slate-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80">White</span>
+<span class="rounded bg-white-100 text-neutral-800 border border-neutral-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80">White</span>
 <% end %>
 
 <% content_for :erb, flush: true do %>

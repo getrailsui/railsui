@@ -2,9 +2,9 @@
 <%= render layout: example, locals: { heading: "Base", section: "Card" } do %>
 
 <%= render preview('neutral') do %>
-<div class="flex justify-center items-center">
-  <div class="rounded-lg bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 md:w-[350px]">
-    <h3 class="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Create a message</h3>
+<div class="flex justify-center items-center font-tiktok">
+  <div class="card md:w-[350px]">
+    <h3 class="h4">Create a message</h3>
     <p class="prose prose-slate dark:prose-invert mt-2 mb-4">Send a message to your teammates.</p>
     <button class="btn btn-primary">Start writing</button>
   </div>
@@ -17,8 +17,8 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 md:w-[350px]">
-  <h3 class="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Create a message</h3>
+<div class="card md:w-[350px]">
+  <h3 class="h4">Create a message</h3>
   <p class="prose prose-slate dark:prose-invert mt-2 mb-4">Send a message to your teammates.</p>
   <button class="btn btn-primary">Start writing</button>
 </div>

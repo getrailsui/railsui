@@ -2,7 +2,7 @@
 <%= render layout: example, locals: { heading: "Circle", section: "Avatar" } do %>
 
 <%= render preview("neutral") do %>
-<div class="flex items-center gap-8">
+<div class="flex items-center gap-8 font-tiktok">
   <%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-8 rounded-full object-cover" %>
   <%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-12 rounded-full object-cover" %>
   <%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-16 rounded-full object-cover" %>

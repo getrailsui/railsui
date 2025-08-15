@@ -2,7 +2,7 @@
 <%= render layout: example, locals: { heading: "Input" } do %>
 
 <%= render preview('neutral') do %>
-  <div class="form-group">
+  <div class="form-group font-tiktok">
     <label for="input_1" class="form-label">Email address</label>
     <input type="email" class="form-input" id="input_1" placeholder="name@example.com">
   </div>
@@ -53,7 +53,7 @@
 <%= render layout: example, locals: { heading: "Textarea" } do %>
 
 <%= render preview('neutral') do %>
-<div class="form-group">
+<div class="form-group font-tiktok">
   <label for="textarea" class="form-label">Speak your mind</label>
   <textarea class="form-input" id="textarea" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
 </div>
@@ -104,7 +104,7 @@
 <%= render layout: example, locals: { heading: "File", section: "Input" } do %>
 
 <%= render preview('neutral') do %>
-<div class="flex items-center space-x-6 form-group">
+<div class="flex items-center space-x-6 form-group font-tiktok">
   <div class="shrink-0">
     <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "h-16 w-16 object-cover rounded-full border-2 border-neutral-100 dark:border-neutral-600 shadow-inner", alt: "current profile photo" %>
   </div>
@@ -166,7 +166,7 @@
 <%= render layout: example, locals: { heading: "Color" } do %>
 
 <%= render preview('neutral') do %>
-<div class="form-group">
+<div class="form-group font-tiktok">
   <label for="color" class="form-label">Choose a color</label>
   <input class="form-input-color" type="color" id="color" value="#fb7185" title="Color picker">
 </div>
@@ -217,7 +217,7 @@
 <%= render layout: example, locals: { heading: "Datalist" } do %>
 
 <%= render preview('neutral') do %>
-<div class="form-group">
+<div class="form-group font-tiktok">
   <label for="datalist" class="form-label">Datalist example</label>
   <div class="relative">
     <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >

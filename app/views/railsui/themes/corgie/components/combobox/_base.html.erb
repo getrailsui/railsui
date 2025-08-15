@@ -11,131 +11,80 @@
 <%= render layout: example, locals: { heading: "Base", section: "Combobox" } do %>
 
 <%= render preview("neutral") do %>
-<div class="flex justify-center items-center h-32">
-  <div
-    class="relative w-56"
-    data-controller="railsui-combobox"
-    data-action="click@window->railsui-combobox#handleOutsideClick"
-    data-railsui-combobox-active-class-value="bg-gray-900 text-white hover:bg-gray-950"
-    data-railsui-combobox-inactive-class-value="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
+<div class="flex items-center justify-center pt-16">
+  <div class="relative flex justify-center w-56 font-tiktok" data-controller="railsui-combobox" data-action="click@window->railsui-combobox#handleOutsideClick" data-railsui-combobox-active-class-value="bg-white cursor-pointer text-neutral-800 dark:hover:bg-neutral-800 dark:bg-neutral-700 dark:text-neutral-100" data-railsui-combobox-inactive-class-value="bg-white cursor-pointer text-neutral-800 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100">
 
-      <!-- Hidden input for form submission -->
-      <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
+    <!-- Hidden input for form submission -->
+    <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
 
-      <!-- Top-level combobox button -->
-      <div
-        aria-expanded="false"
-        aria-controls="combobox-list"
-        aria-labelledby="combobox-label"
-        data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown"
-        data-railsui-combobox-target="box"
-        role="combobox"
-        tabindex="0"
-        class="form-input flex items-center justify-between pr-1.5 shadow-xs">
-        <span id="combobox-label" class="sr-only">Select a format</span>
-        <span data-railsui-combobox-target="text">Select a format...</span>
-        <%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
-      </div>
+    <!-- Top-level combobox button -->
+    <div aria-expanded="false" aria-controls="combobox-list" aria-labelledby="combobox-label" data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown" data-railsui-combobox-target="box" role="combobox" tabindex="0" class="form-input w-56 flex items-center justify-between">
+      <span id="combobox-label" class="sr-only">Corg 3</span>
+      <span data-railsui-combobox-target="text">Corg 3</span>
+      <%= icon "chevron-down", class: "size-4 stroke-current" %>
+    </div>
+
 
     <!-- combobox dropdown -->
-    <div
-      data-railsui-combobox-target="list"
-      data-transition-enter-from="opacity-0 scale-95"
-      data-transition-enter-to="opacity-100 scale-100"
-      data-transition-leave-from="opacity-100 scale-100"
-      data-transition-leave-to="opacity-0 scale-95"
-      data-action="keydown.esc->railsui-combobox#hideDropdown"
-      class="absolute z-10 top-12 left-0 border border-gray-300/80 dark:border-gray-700/80 shadow-lg duration-200 origin-top hidden w-full rounded-md overflow-hidden"
-      role="listbox"
-      aria-labelledby="combobox-label">
+    <div data-railsui-combobox-target="list" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95" data-action="keydown.esc->railsui-combobox#hideDropdown" class="origin-top md:top-10 md:bottom-auto bottom-10 shadow-lg dark:bg-neutral-800 rounded-3xl outline outline-neutral-300/80 dark:outline-neutral-600/80 max-h-50 absolute z-10 hidden w-full mt-1 overflow-y-auto transition duration-200 ease-in-out bg-white" role="listbox" aria-labelledby="combobox-label">
 
       <!-- Search input inside dropdown -->
       <div class="p-2">
         <label for="combobox-search" class="sr-only">Search</label>
         <div class="relative">
-          <input
-            id="combobox-search"
-            type="text"
-            placeholder="Search..."
-            autocomplete="off"
-            aria-autocomplete="list"
-            data-railsui-combobox-target="input"
-            data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown"
-            class="form-input text-[15px] pl-8">
-            <%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+          <input id="combobox-search" type="text" placeholder="Search..." autocomplete="off" aria-autocomplete="list" data-railsui-combobox-target="input" data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown" class="rounded-3xl pr-3 pl-8 py-1.5 border border-neutral-400/40 bg-white dark:bg-neutral-800 dark:text-neutral-100 focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 dark:border-neutral-700/80 dark:focus:ring-neutral-600/10 dark:placeholder:text-neutral-500 focus:shadow-none focus:outline-none placeholder-neutral-600/80 font-normal antialiased font-sans w-full shadow-neutral-200/30 shadow-sm dark:shadow-none">
+          <svg class="absolute stroke-neutral-400 size-4 top-3 left-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <title>magnifying-glass</title>
+            <g fill="none">
+              <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
         </div>
       </div>
 
       <!-- List of options -->
       <ul role="presentation">
-        <li
-          id="option-1"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="PDF"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
-          tabindex="0"
-          >
-          PDF
+        <li id="option-1" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-railsui-combobox-target="option" data-value="corg-3" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer text-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" role="option" tabindex="0">
+          Corg 3
 
           <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
+            <svg class="stroke-current text-neutral-500 dark:text-neutral-50 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <g fill="none">
+                <path d="M4.5 12.75l6 6 9-13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </g>
+            </svg>
           </span>
         </li>
-        <li
-          id="option-2"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-value="CSV"
-          data-railsui-combobox-target="option"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
-          tabindex="0">
-          CSV
+        <li id="option-2" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-value="corg-3.5" data-railsui-combobox-target="option" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer text-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" role="option" tabindex="0">
+          Corg 3.5
 
           <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
+            <svg class="stroke-current text-neutral-500 dark:text-neutral-50 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <g fill="none">
+                <path d="M4.5 12.75l6 6 9-13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </g>
+            </svg>
           </span>
         </li>
-        <li
-          id="option-3"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="Excel"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
-          tabindex="0"
-          role="option"
-          >
-          Excel
+        <li id="option-3" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-railsui-combobox-target="option" data-value="corg-4" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer hover:bg-neutral-100 text-neutral-800 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" tabindex="0" role="option">
+          Corg 4
 
           <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
-          </span>
-        </li>
-        <li
-          id="option-4"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="JPEG"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
-          tabindex="0"
-          role="option"
-          >
-          JPEG
+            <svg class="stroke-current text-neutral-500 dark:text-neutral-50 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 
-          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
+              <g fill="none">
+                <path d="M4.5 12.75l6 6 9-13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </g>
+            </svg>
           </span>
         </li>
       </ul>
 
       <!-- No results message -->
-      <div
-        data-railsui-combobox-target="noresults"
-        class="hidden px-4 py-2 text-gray-500"
-        aria-hidden="true">
+      <div data-railsui-combobox-target="noresults" class="hidden px-4 py-2 text-neutral-500" aria-hidden="true">
         No results found
       </div>
     </div>
@@ -145,264 +94,141 @@
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
-<div class="flex justify-center items-center h-32">
-  <div
-    class="relative w-56"
-    data-controller="railsui-combobox"
-    data-action="click@window->railsui-combobox#handleOutsideClick"
-    data-railsui-combobox-active-class-value="bg-gray-900 text-white hover:bg-gray-950"
-    data-railsui-combobox-inactive-class-value="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
+  <div class="flex items-center justify-center pt-16">
+    <div class="relative flex justify-center w-56 font-tiktok" data-controller="railsui-combobox" data-action="click@window->railsui-combobox#handleOutsideClick" data-railsui-combobox-active-class-value="bg-white cursor-pointer text-neutral-800 dark:hover:bg-neutral-800 dark:bg-neutral-700 dark:text-neutral-100" data-railsui-combobox-inactive-class-value="bg-white cursor-pointer text-neutral-800 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100">
 
       <!-- Hidden input for form submission -->
       <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
 
       <!-- Top-level combobox button -->
-      <div
-        aria-expanded="false"
-        aria-controls="combobox-list"
-        aria-labelledby="combobox-label"
-        data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown"
-        data-railsui-combobox-target="box"
-        role="combobox"
-        tabindex="0"
-        class="form-input flex items-center justify-between pr-1.5 shadow-xs">
-        <span id="combobox-label" class="sr-only">Select a format</span>
-        <span data-railsui-combobox-target="text">Select a format...</span>
-        <%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
+      <div aria-expanded="false" aria-controls="combobox-list" aria-labelledby="combobox-label" data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown" data-railsui-combobox-target="box" role="combobox" tabindex="0" class="form-input w-56 flex items-center justify-between">
+        <span id="combobox-label" class="sr-only">Corg 3</span>
+        <span data-railsui-combobox-target="text">Corg 3</span>
+        <%= icon "chevron-down", class: "size-4 stroke-current" %>
       </div>
 
-    <!-- combobox dropdown -->
-    <div
-      data-railsui-combobox-target="list"
-      data-transition-enter-from="opacity-0 scale-95"
-      data-transition-enter-to="opacity-100 scale-100"
-      data-transition-leave-from="opacity-100 scale-100"
-      data-transition-leave-to="opacity-0 scale-95"
-      data-action="keydown.esc->railsui-combobox#hideDropdown"
-      class="absolute z-10 top-12 left-0 border border-gray-300/80 dark:border-gray-700/80 shadow-lg duration-200 origin-top hidden w-full rounded-md"
-      role="listbox"
-      aria-labelledby="combobox-label">
 
-      <!-- Search input inside dropdown -->
-      <div class="p-2">
-        <label for="combobox-search" class="sr-only">Search</label>
-        <div class="relative">
-          <input
-            id="combobox-search"
-            type="text"
-            placeholder="Search..."
-            autocomplete="off"
-            aria-autocomplete="list"
-            data-railsui-combobox-target="input"
-            data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown"
-            class="form-input text-[15px] pl-8">
-            <%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+      <!-- combobox dropdown -->
+      <div data-railsui-combobox-target="list" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95" data-action="keydown.esc->railsui-combobox#hideDropdown" class="origin-top md:top-10 md:bottom-auto bottom-10 shadow-lg dark:bg-neutral-800 rounded-3xl outline outline-neutral-300/80 dark:outline-neutral-600/80 max-h-50 absolute z-10 hidden w-full mt-1 overflow-y-auto transition duration-200 ease-in-out bg-white" role="listbox" aria-labelledby="combobox-label">
+
+        <!-- Search input inside dropdown -->
+        <div class="p-2">
+          <label for="combobox-search" class="sr-only">Search</label>
+          <div class="relative">
+            <input id="combobox-search" type="text" placeholder="Search..." autocomplete="off" aria-autocomplete="list" data-railsui-combobox-target="input" data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown" class="rounded-3xl pr-3 pl-8 py-1.5 border border-neutral-400/40 bg-white dark:bg-neutral-800 dark:text-neutral-100 focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 dark:border-neutral-700/80 dark:focus:ring-neutral-600/10 dark:placeholder:text-neutral-500 focus:shadow-none focus:outline-none placeholder-neutral-600/80 font-normal antialiased font-sans w-full shadow-neutral-200/30 shadow-sm dark:shadow-none">
+            <svg class="absolute stroke-neutral-400 size-4 top-3 left-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <title>magnifying-glass</title>
+              <g fill="none">
+                <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </svg>
+          </div>
         </div>
-      </div>
 
-      <!-- List of options -->
-      <ul role="presentation">
-        <li
-          id="option-1"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="PDF"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
-          tabindex="0"
-          >
-          PDF
+        <!-- List of options -->
+        <ul role="presentation">
+          <li id="option-1" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-railsui-combobox-target="option" data-value="corg-3" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer text-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" role="option" tabindex="0">
+            Corg 3
 
-          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
-          </span>
-        </li>
-        <li
-          id="option-2"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-value="CSV"
-          data-railsui-combobox-target="option"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
-          tabindex="0">
-          CSV
+            <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+              <svg class="stroke-current text-neutral-500 dark:text-neutral-50 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <g fill="none">
+                  <path d="M4.5 12.75l6 6 9-13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  </path>
+                </g>
+              </svg>
+            </span>
+          </li>
+          <li id="option-2" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-value="corg-3.5" data-railsui-combobox-target="option" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer text-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" role="option" tabindex="0">
+            Corg 3.5
 
-          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
-          </span>
-        </li>
-        <li
-          id="option-3"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="Excel"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
-          tabindex="0"
-          role="option"
-          >
-          Excel
+            <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+              <svg class="stroke-current text-neutral-500 dark:text-neutral-50 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <g fill="none">
+                  <path d="M4.5 12.75l6 6 9-13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  </path>
+                </g>
+              </svg>
+            </span>
+          </li>
+          <li id="option-3" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-railsui-combobox-target="option" data-value="corg-4" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer hover:bg-neutral-100 text-neutral-800 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" tabindex="0" role="option">
+            Corg 4
 
-          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
-          </span>
-        </li>
-        <li
-          id="option-4"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="JPEG"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
-          tabindex="0"
-          role="option"
-          >
-          JPEG
+            <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
+              <svg class="stroke-current text-neutral-500 dark:text-neutral-50 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 
-          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%= icon "check", class: "text-gray-100 size-4" %>
-          </span>
-        </li>
-      </ul>
+                <g fill="none">
+                  <path d="M4.5 12.75l6 6 9-13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  </path>
+                </g>
+              </svg>
+            </span>
+          </li>
+        </ul>
 
-      <!-- No results message -->
-      <div
-        data-railsui-combobox-target="noresults"
-        class="hidden px-4 py-2 text-gray-500"
-        aria-hidden="true">
-        No results found
+        <!-- No results message -->
+        <div data-railsui-combobox-target="noresults" class="hidden px-4 py-2 text-neutral-500" aria-hidden="true">
+          No results found
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<div class="flex justify-center items-center h-32">
-  <div
-    class="relative w-56"
-    data-controller="railsui-combobox"
-    data-action="click@window->railsui-combobox#handleOutsideClick"
-    data-railsui-combobox-active-class-value="bg-gray-900 text-white hover:bg-gray-950"
-    data-railsui-combobox-inactive-class-value="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 dark:hover:bg-gray-900 hover:bg-gray-50">
+<div class="flex items-center justify-center pt-16">
+  <div class="relative flex justify-center w-56 font-tiktok" data-controller="railsui-combobox" data-action="click@window->railsui-combobox#handleOutsideClick" data-railsui-combobox-active-class-value="bg-white cursor-pointer text-neutral-800 dark:hover:bg-neutral-800 dark:bg-neutral-700 dark:text-neutral-100" data-railsui-combobox-inactive-class-value="bg-white cursor-pointer text-neutral-800 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100">
 
-      <!-- Hidden input for form submission -->
-      <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
+    <!-- Hidden input for form submission -->
+    <input type="hidden" name="selected_option" data-railsui-combobox-target="hiddenInput" />
 
-      <!-- Top-level combobox button -->
-      <div
-        aria-expanded="false"
-        aria-controls="combobox-list"
-        aria-labelledby="combobox-label"
-        data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown"
-        data-railsui-combobox-target="box"
-        role="combobox"
-        tabindex="0"
-        class="form-input flex items-center justify-between pr-1.5 shadow-xs">
-        <span id="combobox-label" class="sr-only">Select a format</span>
-        <span data-railsui-combobox-target="text">Select a format...</span>
-        <%%= icon "chevron-up-down", class: "stroke-gray-500 pointer-events-none size-5" %>
-      </div>
+    <!-- Top-level combobox button -->
+    <div aria-expanded="false" aria-controls="combobox-list" aria-labelledby="combobox-label" data-action="click->railsui-combobox#toggleDropdown keydown.enter->railsui-combobox#toggleDropdown" data-railsui-combobox-target="box" role="combobox" tabindex="0" class="form-input w-56 flex items-center justify-between">
+      <span id="combobox-label" class="sr-only">Corg 3</span>
+      <span data-railsui-combobox-target="text">Corg 3</span>
+      <%%= icon "chevron-down", class: "size-4 stroke-current" %>
+    </div>
+
 
     <!-- combobox dropdown -->
-    <div
-      data-railsui-combobox-target="list"
-      data-transition-enter-from="opacity-0 scale-95"
-      data-transition-enter-to="opacity-100 scale-100"
-      data-transition-leave-from="opacity-100 scale-100"
-      data-transition-leave-to="opacity-0 scale-95"
-      data-action="keydown.esc->railsui-combobox#hideDropdown"
-      class="absolute z-10 top-12 left-0 border border-gray-300/80 dark:border-gray-700/80 shadow-lg duration-200 origin-top hidden w-full rounded-md overflow-hidden"
-      role="listbox"
-      aria-labelledby="combobox-label">
+    <div data-railsui-combobox-target="list" data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100" data-transition-leave-from="opacity-100 scale-100" data-transition-leave-to="opacity-0 scale-95" data-action="keydown.esc->railsui-combobox#hideDropdown" class="origin-top md:top-10 md:bottom-auto bottom-10 shadow-lg dark:bg-neutral-800 rounded-3xl outline outline-neutral-300/80 dark:outline-neutral-600/80 max-h-50 absolute z-10 hidden w-full mt-1 overflow-y-auto transition duration-200 ease-in-out bg-white" role="listbox" aria-labelledby="combobox-label">
 
       <!-- Search input inside dropdown -->
       <div class="p-2">
         <label for="combobox-search" class="sr-only">Search</label>
         <div class="relative">
-          <input
-            id="combobox-search"
-            type="text"
-            placeholder="Search..."
-            autocomplete="off"
-            aria-autocomplete="list"
-            data-railsui-combobox-target="input"
-            data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown"
-            class="form-input text-[15px] pl-8">
-            <%%= icon "magnifying-glass", class: "stroke-gray-400 size-5 absolute top-[11px] left-2" %>
+          <input id="combobox-search" type="text" placeholder="Search..." autocomplete="off" aria-autocomplete="list" data-railsui-combobox-target="input" data-action="input->railsui-combobox#filter keydown->railsui-combobox#handleKeydown" class="rounded-3xl pr-3 pl-8 py-1.5 border border-neutral-400/40 bg-white dark:bg-neutral-800 dark:text-neutral-100 focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 dark:border-neutral-700/80 dark:focus:ring-neutral-600/10 dark:placeholder:text-neutral-500 focus:shadow-none focus:outline-none placeholder-neutral-600/80 font-normal antialiased font-sans w-full shadow-neutral-200/30 shadow-sm dark:shadow-none">
+          <%%= icon "magnifying-glass", class: "absolute stroke-neutral-400 size-4 top-3 left-3" %>
         </div>
       </div>
 
       <!-- List of options -->
       <ul role="presentation">
-        <li
-          id="option-1"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="PDF"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
-          tabindex="0"
-          >
-          PDF
+        <li id="option-1" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-railsui-combobox-target="option" data-value="corg-3" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer text-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" role="option" tabindex="0">
+          Corg 3
 
           <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%%= icon "check", class: "text-gray-100 size-4" %>
+            <%%= icon "check", class: "text-neutral-500 dark:text-neutral-50 size-4" %>
           </span>
         </li>
-        <li
-          id="option-2"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-value="CSV"
-          data-railsui-combobox-target="option"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between" role="option"
-          tabindex="0">
-          CSV
+        <li id="option-2" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-value="corg-3.5" data-railsui-combobox-target="option" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer text-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" role="option" tabindex="0">
+          Corg 3.5
 
           <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%%= icon "check", class: "text-gray-100 size-4" %>
+            <%%= icon "check", class: "text-neutral-500 dark:text-neutral-50 size-4" %>
           </span>
         </li>
-        <li
-          id="option-3"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="Excel"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
-          tabindex="0"
-          role="option"
-          >
-          Excel
+        <li id="option-3" aria-selected="false" data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption" data-railsui-combobox-target="option" data-value="corg-4" class="flex items-center justify-between px-4 py-2 bg-white cursor-pointer hover:bg-neutral-100 text-neutral-800 dark:hover:bg-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 aria-selected:dark:hover:bg-neutral-900 arias-selected:dark:bg-neutral-900 aria-selected:dark:text-neutral-100" tabindex="0" role="option">
+          Corg 4
 
           <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%%= icon "check", class: "text-gray-100 size-4" %>
-          </span>
-        </li>
-        <li
-          id="option-4"
-          aria-selected="false"
-          data-action="click->railsui-combobox#selectOption keydown.enter->railsui-combobox#selectOption"
-          data-railsui-combobox-target="option"
-          data-value="JPEG"
-          class="px-3 py-1.5 cursor-pointer flex items-center justify-between"
-          tabindex="0"
-          role="option"
-          >
-          JPEG
-
-          <span data-railsui-combobox-target="checkmark" class="hidden" aria-hidden="true">
-            <%%= icon "check", class: "text-gray-100 size-4" %>
+            <%%= icon "check", class: "text-neutral-500 dark:text-neutral-50 size-4" %>
           </span>
         </li>
       </ul>
 
       <!-- No results message -->
-      <div
-        data-railsui-combobox-target="noresults"
-        class="hidden px-4 py-2 text-gray-500"
-        aria-hidden="true">
+      <div data-railsui-combobox-target="noresults" class="hidden px-4 py-2 text-neutral-500" aria-hidden="true">
         No results found
       </div>
     </div>

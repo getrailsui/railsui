@@ -1,18 +1,18 @@
 <div id="card-user-card">
 <%= render layout: example, locals: { heading: "User card", section: "Card" } do %>
 
-  <div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 py-4 px-6 flex items-center space-x-4 w-auto dark:shadow-slate-900/50">
+  <div class="rounded-md bg-white p-6 dark:bg-neutral-800 dark:text-white border border-neutral-300/70 dark:border-neutral-600/70 py-4 px-6 flex items-center space-x-4 w-auto dark:shadow-neutral-900/50">
   <%= image_tag demo_avatar_url(id: rand(1..10).to_s, variant: [:men, :women].sample), class: "object-cover size-14 rounded-full flex-shrink-0" %>
-  <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
+  <div class="flex-1 flex flex-col items-start space-y-px text-neutral-900">
     <p class="font-bold dark:text-white mb-1">John Doe</p>
       <div class="flex flex-wrap items-center md:gap-4 gap-0">
         <div class="flex items-center gap-2 pb-0.5">
-          <%= icon "envelope", class: "size-4 text-slate-500 dark:text-primary-400" %>
-          <p class="text-sm dark:text-slate-300">john.doe@example.com</p>
+          <%= icon "envelope", class: "size-4 text-neutral-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-neutral-300">john.doe@example.com</p>
         </div>
         <div class="flex items-center gap-2">
-          <%= icon "phone", class: "size-4 text-slate-500 dark:text-primary-400" %>
-          <p class="text-sm dark:text-slate-300">+1-555-555-5555</p>
+          <%= icon "phone", class: "size-4 text-neutral-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-neutral-300">+1-555-555-5555</p>
         </div>
       </div>
     </div>
@@ -24,18 +24,18 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
- <div class="rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70 py-4 px-6 flex items-center space-x-4 w-auto dark:shadow-slate-900/50">
+ <div class="rounded-md bg-white p-6 dark:bg-neutral-800 dark:text-white border border-neutral-300/70 dark:border-neutral-600/70 py-4 px-6 flex items-center space-x-4 w-auto dark:shadow-neutral-900/50">
   <%%= image_tag demo_avatar_url(id: rand(1..10).to_s, variant: [:men, :women].sample), class: "object-cover size-14 rounded-full flex-shrink-0" %>
-  <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
+  <div class="flex-1 flex flex-col items-start space-y-px text-neutral-900">
     <p class="font-bold dark:text-white mb-1">John Doe</p>
       <div class="flex flex-wrap items-center md:gap-4 gap-0">
         <div class="flex items-center gap-2 pb-0.5">
-          <%%= icon "envelope", class: "size-4 text-slate-500 dark:text-primary-400" %>
-          <p class="text-sm dark:text-slate-300">john.doe@example.com</p>
+          <%%= icon "envelope", class: "size-4 text-neutral-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-neutral-300">john.doe@example.com</p>
         </div>
         <div class="flex items-center gap-2">
-          <%%= icon "phone", class: "size-4 text-slate-500 dark:text-primary-400" %>
-          <p class="text-sm dark:text-slate-300">+1-555-555-5555</p>
+          <%%= icon "phone", class: "size-4 text-neutral-500 dark:text-primary-400" %>
+          <p class="text-sm dark:text-neutral-300">+1-555-555-5555</p>
         </div>
       </div>
     </div>

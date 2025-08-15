@@ -3,7 +3,7 @@
   <%= render layout: example, locals: { heading: "Input with label", section: "Input Group" } do %>
 
 <%= render preview('neutral') do %>
-  <div class="form-group mb-0">
+  <div class="form-group mb-0 font-tiktok">
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email">
   </div>
@@ -46,7 +46,7 @@
 <%= render layout: example, locals: { heading: "Input with label and help text" } do %>
 
 <%= render preview('neutral') do %>
-<div class="form-group mb-0">
+<div class="form-group mb-0 font-tiktok">
 <label for="email" class="form-label">Email</label>
 <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email">
 <p class="form-help">This text helps you, right?</p>
@@ -99,7 +99,7 @@
 </div>
 
 <%= render preview('neutral') do %>
-<div class="form-group relative mb-0">
+<div class="form-group relative mb-0 font-tiktok">
   <input type="email" class="form-input form-input-error pr-10" placeholder="john.doe@example.com" aria-label="Email" value="john.doe@">
 
   <%= icon "exclamation-circle", class: "hidden size-5 text-red-600 dark:text-red-400 absolute right-3 top-3" %>
@@ -160,7 +160,7 @@
 </div>
 
 <%= render preview('neutral') do %>
-<div class="form-group mb-0">
+<div class="form-group mb-0 font-tiktok">
   <label for="email" class="form-label">Email</label>
   <div class="relative">
     <input type="email" class="form-input peer pr-10 invalid:border-red-700 invalid:text-red-700 invalid:ring-red-50 dark:invalid:border-red-400 dark:invalid:text-red-400 dark:invalid:ring-red-50/10" placeholder="john.doe@example.com" aria-label="Email" value="john.doe@">
@@ -235,7 +235,7 @@
 </div>
 
 <%= render preview('neutral') do %>
-<div class="form-group mb-0">
+<div class="form-group mb-0 font-tiktok">
   <label for="email" class="form-label">Email</label>
   <input type="email" class="form-input" placeholder="john.doe@example.com" aria-label="Email" disabled>
 </div>
@@ -282,7 +282,7 @@
 </div>
 
 <%= render preview('neutral') do %>
-<div class="form-group mb-0">
+<div class="form-group mb-0 font-tiktok">
   <label for="website" class="form-label">Website</label>
   <div class="relative">
     <div class="absolute left-px border-r border-neutral-300 top-px bg-neutral-100 dark:bg-neutral-700/80 dark:border-neutral-700 dark:text-neutral-200 h-[36px] text-base rounded-l-md flex items-center justify-center px-3 text-neutral-700 select-none">https://</div>
@@ -341,7 +341,7 @@
 <%= render layout: example, locals: { heading: "Input with leading inline and trailing add-ons", section: "Input Group" } do %>
 
 <%= render preview('neutral') do %>
-  <div class="form-group mb-0">
+  <div class="form-group mb-0 font-tiktok">
     <label for="amount" class="form-label">Enter amount</label>
     <div class="relative">
       <span class="absolute left-3 top-[7px] text-neutral-500 dark:text-neutral-400">$</span>
@@ -403,7 +403,7 @@
 <%= render layout: example, locals: { heading: "Input with add-on and trailing button", section: "Input Group" } do %>
 
 <%= render preview('neutral') do %>
-<div class="form-group mb-0">
+<div class="form-group mb-0 font-tiktok">
   <label for="users" class="form-label">Search users</label>
   <div class="relative">
     <%= icon "users", class:  "size-4 text-neutral-500 absolute left-3 top-3" %>

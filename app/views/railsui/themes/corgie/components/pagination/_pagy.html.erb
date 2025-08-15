@@ -8,29 +8,29 @@
   </div>
 
 <%= render preview('neutral') do %>
-<nav aria-label="pager" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300" role="navigation">
-  <div class="flex flex-wrap items-center sm:justify-between justify-center">
+<nav aria-label="pager" class="text-neutral-500 sm:text-sm text-base font-medium dark:text-neutral-300" role="navigation">
+  <div class="flex flex-wrap items-center sm:justify-between justify-center font-tiktok">
     <span class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
       <span class="flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full sm:bg-transparent sm:mb-0 mb-3 pointer-events-none select-none opacity-40 dark:opacity-60">&lsaquo; Prev</span>
     </span>
 
     <span class="py-2 px-4 border-t-2 border-transparent block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400 rounded">1</span>
     <span>
-      <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#" rel="next">2</a>
+      <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200" href="#" rel="next">2</a>
   </span>
   <span>
-    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#">3</a>
+    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200" href="#">3</a>
   </span>
   <span>
-    <a data-controller="vprevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#">4</a>
+    <a data-controller="vprevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200" href="#">4</a>
   </span>
   <span>
-    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#">5</a>
+    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200" href="#">5</a>
   </span>
   <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">…</span>
-  <span><a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200" href="#">14</a></span>
+  <span><a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200" href="#">14</a></span>
   <span class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
-    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white" href="#" rel="next" aria-label="next"> Next &rsaquo;</a>
+    <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-neutral-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-neutral-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white" href="#" rel="next" aria-label="next"> Next &rsaquo;</a>
   </span>
 </nav>
 <% end %>
@@ -44,11 +44,11 @@
 <!-- Source: https://github.com/ddnexus/pagy/blob/master/lib/templates/nav.html.erb -->
 
 <%% link = pagy_link_proc(pagy) %>
-<nav aria-label="pager" class="text-slate-500 sm:text-sm text-base font-medium" role="navigation">
+<nav aria-label="pager" class="text-neutral-500 sm:text-sm text-base font-medium" role="navigation">
   <div class="flex flex-wrap items-center sm:justify-between justify-center">
   <%% if pagy.prev %>
     <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
-      <%%== link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+      <%%== link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-neutral-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-neutral-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
     </div>
   <%% else %>
     <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
@@ -61,7 +61,7 @@
   <!-- series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36]  -->
   <%% pagy.series.each do |item| %>
     <%% if item.is_a?(Integer) %>
-      <%%== link.call(item, item, 'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"') %>
+      <%%== link.call(item, item, 'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200"') %>
     <%% elsif item.is_a?(String) %>
       <span class="py-2 px-4 border-t-2 border-transparent block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400"><%%= item %></span>
     <%% elsif item == :gap %>
@@ -71,7 +71,7 @@
 
   <%% if pagy.next %>
     <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
-      <%%== link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
+      <%%== link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-neutral-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-neutral-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
     </div>
   <%% else %>
     <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
