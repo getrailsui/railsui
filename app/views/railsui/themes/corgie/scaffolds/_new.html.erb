@@ -1,19 +1,19 @@
 <div id="scaffolds-new">
 <%= render layout: example, locals: { heading: "New", section: "Scaffolds" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
-  <div class="mb-4 pb-6 border-b border-gray-200/90 dark:border-slate-700">
-    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+  <div class="mb-6 pb-6 border-b border-neutral-200/90 dark:border-neutral-700">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-neutral-500 dark:text-neutral-200 text-sm">
       <ol class="flex flex-wrap items-center space-x-3">
         <li>
-          <a class="hover:underline hover:text-slate-600 dark:hover:text-slate-400" href="#">Posts</a>
+          <a class="hover:underline hover:text-neutral-600 dark:hover:text-neutral-400" href="#">Posts</a>
         </li>
         <li class="flex space-x-3">
           <div class="flex items-center">
-            <span class="text-slate-300 dark:text-slate-500">/</span>
+            <span class="text-neutral-300 dark:text-neutral-500">/</span>
           </div>
-          <span class="text-primary-600 dark:text-primary-500" aria-current="page">New</span>
+          <span class="text-neutral-600 dark:text-neutral-500" aria-current="page">New</span>
         </li>
       </ol>
     </nav>
@@ -37,7 +37,7 @@
         <div class="sm:flex-1 sm:mb-0 mb-6">
           <input type="submit" name="commit" value="Create Post" class="btn btn-primary">
         </div>
-          <a class="btn btn-light" href="#">Cancel</a>
+          <a class="btn btn-white" href="#">Cancel</a>
       </div>
     </form>
   </div>
@@ -48,17 +48,17 @@
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
-  <div class="mb-4 pb-6 border-b border-gray-200/90 dark:border-slate-700">
-    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+  <div class="mb-6 pb-6 border-b border-neutral-200/90 dark:border-neutral-700">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-neutral-500 dark:text-neutral-200 text-sm">
       <ol class="flex flex-wrap items-center space-x-3">
         <li>
-          <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
+          <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-neutral-600 dark:hover:text-neutral-400" %>
         </li>
         <li class="flex space-x-3">
           <div class="flex items-center">
-            <span class="text-slate-300 dark:text-slate-500">/</span>
+            <span class="text-neutral-300 dark:text-neutral-500">/</span>
           </div>
-          <span class="text-primary-600 dark:text-primary-500" aria-current="page">New</span>
+          <span class="text-neutral-600 dark:text-neutral-500" aria-current="page">New</span>
         </li>
       </ol>
     </nav>
@@ -69,23 +69,6 @@
     <%%= render "form", post: @post %>
   </div>
 </div>
-<% end %>
-
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.max-w-3xl.mx-auto.px-4.my-16
-  .mb-4.pb-6.border-b.dark:border-slate-700
-    %nav.my-6.font-medium.flex.text-slate-500.dark:text-slate-200.text-sm{"aria-label" => "breadcrumb"}
-      %ol.flex.flex-wrap.items-center.space-x-3
-        %li
-          = link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
-        %li.flex.space-x-3
-          .flex.items-center
-            %span.text-slate-300.dark:text-slate-500 /
-          %span.text-primary-600.dark:text-primary-500{"aria-current" => "page"} New
-    %h1.h2 New Post
-  %div
-    = render "form", post: @post
 <% end %>
 
 <% content_for :ruby do %>

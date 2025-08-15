@@ -179,6 +179,35 @@
 <% end %>
 </div>
 
+<div id="form-builder-rich-text">
+<!-- Rich Text Area -->
+<%= render layout: example, locals: { heading: "Rich Text Area (ActionText)" } do %>
+<%= render preview('gray') do %>
+  <form>
+    <div class="form-group">
+      <label class="form-label">Article Content</label>
+      <div class="trix-content">
+        <trix-editor placeholder="Write your article content here..." class="trix-content"></trix-editor>
+      </div>
+      <p class="form-help">Supports rich text formatting with images and attachments</p>
+    </div>
+  </form>
+<% end %>
+<% content_for :example, flush: true do %>
+<%# .erb %>
+<% content_for :erb, flush: true do %>
+<%%= form_with model: @article, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.rich_text_area :content,
+        label: "Article Content",
+        placeholder: "Write your article content here...",
+        help: "Supports rich text formatting with images and attachments" %>
+<%% end %>
+<% end %>
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+</div>
+
 <div id="form-builder-checkboxes-radios">
 <!-- Checkboxes and Radio Buttons -->
 <%= render layout: example, locals: { heading: "Checkboxes & Radio Buttons" } do %>
@@ -448,6 +477,7 @@
     <%= component_link "Basic form", "#form-builder-basic-form" %>
     <%= component_link "All Input types", "#form-builder-all-inputs" %>
     <%= component_link "Select & Textarea", "#form-builder-select-textarea" %>
+    <%= component_link "Rich Text Area", "#form-builder-rich-text" %>
     <%= component_link "Checkboxes & Radios", "#form-builder-checkboxes-radios" %>
     <%= component_link "Switches", "#form-builder-switches" %>
     <%= component_link "Validation & Errors", "#form-builder-validation-errors" %>

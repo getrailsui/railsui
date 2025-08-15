@@ -1,8 +1,8 @@
 <div id="input-input">
 <%= render layout: example, locals: { heading: "Input" } do %>
 
-<%= render preview('gray') do %>
-  <div class="mb-3">
+<%= render preview('neutral') do %>
+  <div class="form-group">
     <label for="input_1" class="form-label">Email address</label>
     <input type="email" class="form-input" id="input_1" placeholder="name@example.com">
   </div>
@@ -11,7 +11,7 @@
 <% content_for :example, flush: true do %>
 <%# .html %>
 <% content_for :html, flush: true do %>
-<div class="mb-3">
+<div class="form-group">
   <label for="input_1" class="form-label">Email address</label>
   <input type="email" class="form-input" id="input_1" placeholder="name@example.com">
 </div>
@@ -20,36 +20,28 @@
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <!-- ActionView::Helpers::FormTagHelper -->
-<%%= tag.div class: "mb-3" do %>
+<%%= tag.div class: "form-group" do %>
   <%%= label_tag :input_1, "Email address", class: "form-label" %>
   <%%= email_field_tag "input_1", "name@example.com", class: "form-input" %>
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_with model: @form do |f| %>
-  <%% tag.div class: "mb-3" do %>
-    <%%= f.label :input_1, "File input example", class: "form-label" %>
-    <%%= f.email_field :input_1, placeholder: "The quick brown fox jumps over the lazy dog.", class: "form-input" %>
+  <%% tag.div class: "form-group" do %>
+    <%%= f.label :input_1, "Email address", class: "form-label" %>
+    <%%= f.email_field :input_1, placeholder: "name@example.com", class: "form-input" %>
   <%% end %>
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.email_field :input_1, label: "Email address", placeholder: "name@example.com" %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-  .mb-3
-    = label_tag :input_1, "Email address", class: "form-label"
-    = email_field_tag :input_1, "name@example.com", class: "form-input"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .mb-3
-    = f.label :input_1, "Email address", class: "form-label"
-    = f.email_field :input_1, placeholder: "name@example.com", class: "form-input"
-  = f.submit class: "btn btn-primary"
-<% end %>
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>
@@ -60,7 +52,7 @@
 <div id="input-textarea">
 <%= render layout: example, locals: { heading: "Textarea" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="form-group">
   <label for="textarea" class="form-label">Speak your mind</label>
   <textarea class="form-input" id="textarea" placeholder="The quick brown fox jumps over the lazy dog."></textarea>
@@ -85,31 +77,22 @@
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
-<%%= form_with with: @form do |f| %>
+<%%= form_with model: @form do |f| %>
   <%% tag.div class: "form-group" do %>
     <%%= f.label :textarea, "Speak your mind", class: "form-label" %>
-    <%%= f.text_area :textarea, class: "form-input" %>
+    <%%= f.text_area :textarea, class: "form-textarea", placeholder: "The quick brown fox jumps over the lazy dog." %>
   <%% end %>
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.text_area :textarea, label: "Speak your mind", placeholder: "The quick brown fox jumps over the lazy dog." %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group
-  = label_tag :textarea, "Speak your mind", class: "form-label"
-  = text_area_tag :textarea, class: "form-input"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    = f.label :textarea, "Speak your mind", class: "form-label"
-    = f.text_area :textarea, class: "form-input"
-  = f.submit class: "btn btn-primary"
-<% end %>
-
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>
@@ -120,10 +103,10 @@
 <div id="input-file">
 <%= render layout: example, locals: { heading: "File", section: "Input" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="flex items-center space-x-6 form-group">
   <div class="shrink-0">
-    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "h-16 w-16 object-cover rounded-full border-2 border-slate-100 dark:border-slate-600 shadow-inner", alt: "current profile photo" %>
+    <%= image_tag demo_avatar_url(id: rand(1..100).to_s, variant: ["men", "women"].sample), class: "h-16 w-16 object-cover rounded-full border-2 border-neutral-100 dark:border-neutral-600 shadow-inner", alt: "current profile photo" %>
   </div>
 
   <label class="block">
@@ -156,31 +139,22 @@
 
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_with model: @form do |f| %>
-  <%%= tag.div class:"form-group" do %>
+  <%%= tag.div class: "form-group" do %>
     <%%= tag.label class: "block" do %>
-      <%%= file_field_tag :file, class: "form-file" %>
+      <%%= f.file_field :file, class: "form-file" %>
     <%% end %>
   <%% end %>
   <%%= f.submit class: "btn btn-primary" %>
-  <%% end %>
+<%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.file_field :file, label: "Choose profile photo" %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group
-  = label_tag :file, "File input label", class: "form-label"
-  = file_field_tag :file, class: "form-input"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    = f.label :file, "File input label", class: "form-label"
-    = f.file_field :file, class: "form-file"
-  = f.submit class: "btn btn-primary"
-<% end %>
-
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>
@@ -191,7 +165,7 @@
 <div id="input-color">
 <%= render layout: example, locals: { heading: "Color" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="form-group">
   <label for="color" class="form-label">Choose a color</label>
   <input class="form-input-color" type="color" id="color" value="#fb7185" title="Color picker">
@@ -216,31 +190,22 @@
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
-<%%= form_for model: @form do |f| %>
+<%%= form_with model: @form do |f| %>
   <%% tag.div class: "form-group" do %>
     <%%= f.label :color, "Choose a color", class: "form-label" %>
     <%%= f.color_field :color, value: "#fb7185", class: "form-input-color" %>
   <%% end %>
-  <%% f.submit class: "btn btn-primary" %>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.color_field :color, label: "Choose a color", value: "#fb7185" %>
+  <%%= f.submit %>
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-  / ActionView::Helpers::FormTagHelper
-.form-group
-  = label_tag :color, "Choose a color", class: "form-label"
-  = color_field_tag :color, "#fb7185", class: "form-input-color"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    = f.label :color, "Choose a color", class: "form-label"
-    = f.color_field :color, value: "#fb7185", class: "form-input-color"
-  = f.submit class: "btn btn-primary"
-<% end %>
-
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>
@@ -251,12 +216,12 @@
 <div id="input-datalist">
 <%= render layout: example, locals: { heading: "Datalist" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="form-group">
   <label for="datalist" class="form-label">Datalist example</label>
   <div class="relative">
     <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >
-    <%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-slate-500 dark:text-slate-300" %>
+    <%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-neutral-500 dark:text-neutral-300" %>
   </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
@@ -275,7 +240,7 @@
   <label for="datalist" class="form-label">Datalist example</label>
   <div class="relative">
     <input class="form-input form-input-datalist" list="datalistOptions" placeholder="Type to search" id="datalist" >
-    <%%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-slate-500" %>
+    <%%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-neutral-500" %>
   </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
@@ -294,7 +259,7 @@
   <%%= label_tag :datalist, "Datalist example", class: "form-label" %>
   <div class="relative">
     <%%= text_field_tag :datalist, "Type to search", class: "form-input form-input-data-list", list: "datalistOptions" %>
-    <%%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-slate-500" %>
+    <%%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-neutral-500" %>
   </div>
   <datalist id="datalistOptions">
     <option value="San Francisco">
@@ -306,12 +271,12 @@
 <%% end %>
 
 <!-- ActionView::Helpers::FormHelper -->
-<%%= form_for @form do |f| %>
+<%%= form_with model: @form do |f| %>
   <div class="form-group">
     <%%= f.label :datalist, "Datalist example", class: "form-label" %>
     <div class="relative">
-      <%%= f.text_field :datalist, "Type to search", class: "form-control", list: "datalistOptions" %>
-      <%%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-slate-500" %>
+      <%%= f.text_field :datalist, placeholder: "Type to search", class: "form-input form-input-datalist", list: "datalistOptions" %>
+      <%%= icon "chevron-down", class: "size-4 absolute top-3 right-3 text-neutral-500" %>
     </div>
     <datalist id="datalistOptions">
       <option value="San Francisco">
@@ -321,43 +286,24 @@
       <option value="Chicago">
     </datalist>
   </div>
-
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.text_field :datalist, label: "Datalist example", placeholder: "Type to search", list: "datalistOptions" %>
+  <!-- Note: Datalist requires manual HTML for options -->
+  <datalist id="datalistOptions">
+    <option value="San Francisco">
+    <option value="New York">
+    <option value="Seattle">
+    <option value="Los Angeles">
+    <option value="Chicago">
+  </datalist>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
-
-  <%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group
-  %label.form-label{:for => "datalist"} Datalist example
-  .relative
-    %input#datalist.form-input.form-input-datalist{:list => "datalistOptions", :placeholder => "Type to search"}/
-    = icon "chevron-down", class: "sizr-4 absolute top-3 right-3 text-slate-500"
-  %datalist#datalistOptions
-    %option{:value => "San Francisco"}
-    %option{:value => "New York"}
-    %option{:value => "Seattle"}
-    %option{:value => "Los Angeles"}
-    %option{:value => "Chicago"}
-
-/ ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  .form-group
-    = f.label :datalist, "Datalist example", class: "form-label"
-    .relative
-      = f.text_field :datalist, class: "form-input form-input-datalist", list: "datalistOptions", placeholder: "Type to search"
-      = icon "chevron-down", class: "size-4 absolute top-3 right-3 text-slate-500"
-    %datalist#datalistOptions
-      %option{:value => "San Francisco"}
-      %option{:value => "New York"}
-      %option{:value => "Seattle"}
-      %option{:value => "Los Angeles"}
-      %option{:value => "Chicago"}
-  = f.submit class: "btn btn-primary"
-<% end %>
-
-  <%= render_snippet %>
+  <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>
@@ -369,7 +315,7 @@
 <div id="input-range">
 <%= render layout: example, locals: { heading: "Range" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="form-group" data-controller="railsui-range">
   <label for="volume" class="form-label">Volume</label>
   <input type="range" id="volume" class="form-input-range" min="2" max="100" value="25" data-railsui-range-target="range"
@@ -389,20 +335,20 @@
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
+<!-- ActionView::Helpers::FormHelper -->
 <%%= form_with model: @form do |f| %>
   <div class="form-group" data-controller="railsui-range">
     <%%= f.label :volume, class: "form-label" %>
-    <%%= f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: { railsui_range_target: "range", action: "input->railsui-range#onInput" } %>
+    <%%= f.range_field :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: { railsui_range_target: "range", action: "input->railsui-range#onInput" } %>
   </div>
+  <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
-<% end %>
 
-  <%# .haml %>
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group{"data-controller" => "railsui-range"}
-    = f.label :volume, class: "form-label"
-    = f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: { railsui_range_target: "range", action: "input->railsui-range#onInput" }
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.range_field :volume, label: "Volume", min: 2, max: 100, value: 25 %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
 <% content_for :js, flush: true do %>

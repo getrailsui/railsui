@@ -5,19 +5,14 @@
       <p>Extend form errors to leverage Rails UI + Tailwind CSS.</p>
     </div>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
   <form action="#">
-    <div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
-      <div class="flex items-start space-x-4">
-        <%= icon "shield-exclamation", class:  "size-6 text-rose-700 flex-shrink-0 dark:text-rose-400", variant: :solid %>
-        <div class="flex-1">
-          <p class="font-bold">3 errors prohibited this post from being saved:</p>
-          <ul class="list-disc mt-3 ml-4">
-            <li>Title can't be blank</li>
-            <li>Body can't be blank</li>
-          </ul>
-        </div>
-      </div>
+    <div class="bg-neutral-50 text-neutral-700 px-6 py-4 rounded-2xl mb-6 dark:bg-neutral-400/10 dark:border dark:border-neutral-400/20 dark:text-neutral-50 text-sm" role="alert">
+      <p class="font-semibold">3 errors prohibited this post from being saved:</p>
+      <ul class="list-disc mt-3 ml-4">
+        <li>Title can't be blank</li>
+        <li>Body can't be blank</li>
+      </ul>
     </div>
     <div class="form-group">
       <label for="validation_1" class="form-label">Example field</label>
@@ -32,37 +27,17 @@
 <!-- app/views/rui/shared/_error_messages.html.erb -->
 
 <%% if resource.errors.any? %>
-<div class="bg-rose-50 text-rose-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-rose-400/10 dark:border dark:border-rose-400/20 dark:text-rose-50 text-sm" role="alert">
-  <div class="flex items-start space-x-4">
-    <%%= icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid %>
-    <div class="flex-1">
-      <p class="font-bold"><%%= pluralize(resource.errors.count, "error") %> prohibited this <%%= resource.class.name.downcase %> from being saved:</p>
-      <ul class="list-disc mt-3 ml-4">
-        <%% resource.errors.each do |error| %>
-          <li><%%= error.full_message %></li>
-          <%% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <%% end %>
+<div class="bg-neutral-50 text-neutral-700 px-6 py-4 rounded-2xl mb-6 dark:bg-neutral-400/10 dark:border dark:border-neutral-400/20 dark:text-neutral-50 text-sm" role="alert">
+  <p class="font-semibold"><%%= pluralize(resource.errors.count, "error") %> prohibited this <%%= resource.class.name.downcase %> from being saved:</p>
+  <ul class="list-disc mt-3 ml-4">
+    <%% resource.errors.each do |error| %>
+      <li><%%= error.full_message %></li>
+    <%% end %>
+  </ul>
+</div>
+<%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/rui/shared/_error_messages.html.erb
-
-- if resource.errors.any?
-  .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-rose-50.text-sm{class: "dark:bg-rose-400/10 dark:border-rose-400/20", role: "alert"}
-    .flex.items-start.space-x-4
-      = icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid
-      .flex-1
-        %p.font-bold
-          = pluralize(resource.errors.count, "error")
-          prohibited this #{resource.class.name.downcase} from being saved:
-        %ul.list-disc.mt-3.ml-4
-          - resource.errors.each do |error|
-            %li= error.full_message
-<% end %>
 <%= render_snippet active_tab: "erb" %>
 <% end %>
 <% end %>

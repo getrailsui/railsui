@@ -5,7 +5,7 @@
   <p>A corresponding <code>label</code> element must be present <strong>after</strong> the input in order for the switch UI to display.</p>
 </div>
 
-<%= render preview 'gray' do %>
+<%= render preview 'neutral' do %>
 <div class="form-group mb-0">
   <input class="form-input-switch" type="checkbox" role="switch" id="switch_default">
   <label class="form-label mb-0" for="switch_default">Default switch checkbox input</label>
@@ -37,18 +37,15 @@
   </div>
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.switch_field :switch_default, label: "Default switch checkbox input" %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    = f.check_box :switch_default, class: "form-input-switch"
-    = f.label :switch_default, class: "form-label mb-0"
-  = f.submit class: "btn btn-primary"
-<% end %>
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 

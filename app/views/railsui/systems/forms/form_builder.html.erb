@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+<% end %>
+
 <% content_for :header_description do %>
 <p>An optional Form Builder that applys consistent styling to your elements.</p>
 <% end %>
@@ -139,6 +143,7 @@
   <tbody>
     <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>text_field</code>, <code>email_field</code>, <code>password_field</code>, etc.</td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input</code></td></tr>
     <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>text_area</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-textarea</code></td></tr>
+    <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>rich_text_area</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>trix-content</code></td></tr>
     <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>select</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-select</code></td></tr>
     <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>check_box</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input-checkbox</code></td></tr>
     <tr><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>radio_button</code></td><td class="border border-neutral-300 dark:border-neutral-600 px-4 py-2"><code>form-input-radio</code></td></tr>

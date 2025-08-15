@@ -1,7 +1,7 @@
 <div id="forms-checkbox">
 <%= render layout: example, locals: { heading: "Base", section: "Checkbox" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="flex items-center gap-3">
   <input class="form-input-checkbox" type="checkbox" value="1" id="check_default">
   <label for="check_default">
@@ -38,18 +38,15 @@
   <%% end %>
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.check_box :check_default, label: "Default checkbox" %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .flex.items-center.gap-3
-    = f.check_box :check_default, class: "form-input-checkbox"
-    = f.label :check_default, "Default checkbox"
-  = f.submit class: "btn btn-primary"
-<% end %>
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>

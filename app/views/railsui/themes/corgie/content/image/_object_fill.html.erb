@@ -5,7 +5,7 @@
   <p>Stretch an element's content to fit its container <code>.object-fill</code>.</p>
 </div>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
   <div class="flex items-center justify-center">
     <img src="https://picsum.photos/900/700" alt="" class="object-fill h-48 w-96 rounded-lg shadow-xl bg-blue-100">
   </div>
@@ -26,11 +26,6 @@
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.bg-slate-50
-  image_tag "#", class: "object-fill h-48 w-96"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

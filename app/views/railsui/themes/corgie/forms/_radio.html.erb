@@ -1,7 +1,7 @@
 <div id="form-radio">
 <%= render layout: example, locals: { heading: "Base" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="form-group mb-0">
   <div class="mb-2 flex items-center">
     <input class="form-input-radio" type="radio" name="radio_default" id="radio_default_1">
@@ -57,34 +57,28 @@
 <%%= form_with model: @form do |f| %>
   <div class="form-group">
     <div class="mb-2 flex items-center">
-      <%%= f.radio_button_tag "radio_default", "1", false, class: "form-input-radio" %>
+      <%%= f.radio_button :radio_default, "1", class: "form-input-radio" %>
       <%%= f.label :radio_default_1, "Default radio", class: "ml-2" %>
     </div>
 
     <div class="flex items-center">
-      <%%= f.radio_button_tag "radio_default", "2", true, class: "form-input-radio" %>
+      <%%= f.radio_button :radio_default, "2", class: "form-input-radio" %>
       <%%= f.label :radio_default_2, "Default checked radio", class: "ml-2" %>
     </div>
   </div>
 
   <%%= f.submit class: "btn btn-primary" %>
 <%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.radio_button :radio_default, "1", label: "Default radio" %>
+  <%%= f.radio_button :radio_default, "2", label: "Default checked radio" %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    .mb-2.flex.items-center
-      = f.radio_button_tag "radio_default", "1", false, class: "form-input-radio"
-      = f.label :radio_default_1, "Default radio", class: "ml-2"
-    .flex.items-center
-      = f.radio_button_tag "radio_default", "2", true, class: "form-input-radio"
-      = f.label :radio_default_2, "Default checked radio", class: "ml-2"
-  = f.submit class: "btn btn-primary"
-<% end %>
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>

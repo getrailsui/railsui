@@ -1,18 +1,18 @@
 <div id="scaffolds-show">
 <%= render layout: example, locals: { heading: "Show", section: "Scaffolds" } do %>
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
-  <div class="pb-6 border-b border-gray-200/90 dark:border-slate-700">
-    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+  <div class="pb-6 border-b border-neutral-200/90 dark:border-neutral-700">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-neutral-500 dark:text-neutral-200 text-sm">
       <ol class="flex flex-wrap items-center gap-3">
         <li>
-          <a href="#" class="hover:underline hover:text-slate-600 dark:hover:text-slate-400">Posts</a>
+          <a href="#" class="hover:underline hover:text-neutral-600 dark:hover:text-neutral-400">Posts</a>
         </li>
         <li class="flex gap-3">
           <div class="flex items-center">
-            <span class="text-slate-300 dark:text-slate-500">/</span>
+            <span class="text-neutral-300 dark:text-neutral-500">/</span>
           </div>
-          <span class="text-primary-600 dark:text-primary-500" aria-current="page">
+          <span class="text-neutral-600 dark:text-neutral-500" aria-current="page">
             #1
           </span>
         </li>
@@ -20,7 +20,7 @@
     </nav>
     <div class="flex items-center justify-between">
       <h1 class="h2 flex-1">post #1</h1>
-      <a href="#" class="btn btn-light">Edit</a>
+      <a href="#" class="btn btn-white">Edit</a>
     </div>
   </div>
 
@@ -41,28 +41,27 @@
         Example post content 2
       </p>
     </div>
-    <time class="text-slate-600 dark:text-slate-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
+    <time class="text-neutral-600 dark:text-neutral-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
   </article>
 </div>
 <% end %>
-
 
 <% content_for :example, flush: true do %>
 
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
-  <div class="pb-6 border-b border-gray-200/90 dark:border-slate-700">
-    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+  <div class="pb-6 border-b border-neutral-200/90 dark:border-neutral-700">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-neutral-500 dark:text-neutral-200 text-sm">
       <ol class="flex flex-wrap items-center gap-3">
         <li>
-          <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
+          <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-neutral-600 dark:hover:text-neutral-400" %>
         </li>
         <li class="flex gap-3">
           <div class="flex items-center">
-            <span class="text-slate-300 dark:text-slate-500">/</span>
+            <span class="text-neutral-300 dark:text-neutral-500">/</span>
           </div>
-          <span class="text-primary-600 dark:text-primary-500" aria-current="page">
+          <span class="text-neutral-600 dark:text-neutral-500" aria-current="page">
             #<%%= @post.id %>
           </span>
         </li>
@@ -70,32 +69,13 @@
     </nav>
     <div class="flex items-center justify-between">
       <h1 class="h2 flex-1">post #<%%= @post.id %></h1>
-      <%%= link_to "Edit", edit_post_path(@post), class: "btn btn-light" %>
+      <%%= link_to "Edit", edit_post_path(@post), class: "btn btn-white" %>
     </div>
   </div>
   <%%= render @post %>
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.max-w-3xl.mx-auto.px-4.my-16
-  .pb-6.border-b.dark:border-slate-700{class: "border-gray-200/90"}
-    %nav.my-6.font-medium.flex.text-slate-500.dark:text-slate-200.text-sm{"aria-label" => "breadcrumb"}
-      %ol.flex.flex-wrap.items-center.gap-3
-        %li
-          = link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
-        %li.flex.gap-3
-          .flex.items-center
-            %span.text-slate-300.dark:text-slate-500 /
-          %span.text-primary-600.dark:text-primary-500{"aria-current" => "page"}
-            \##{@post.id}
-    .flex.items-center.justify-between
-      %h1.h2.flex-1
-        post ##{@post.id}
-      = link_to "Edit", edit_post_path(@post), class: "btn btn-light"
-  = render @post
-<% end %>
 <% content_for :ruby do %>
 
 <% end %>
