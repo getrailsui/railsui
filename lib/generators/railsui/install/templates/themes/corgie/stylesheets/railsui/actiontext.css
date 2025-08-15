@@ -1,0 +1,173 @@
+/***************************************
+  Default ActionText
+****************************************/
+@import "trix/dist/trix";
+
+.trix-content .attachment-gallery > action-text-attachment,
+.trix-content .attachment-gallery > .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+}
+
+.trix-content
+  .attachment-gallery.attachment-gallery--2
+  > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
+.trix-content
+  .attachment-gallery.attachment-gallery--4
+  > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.trix-content action-text-attachment .attachment {
+  padding: 0;
+  max-width: 100%;
+}
+
+/***************************************
+  Custom ActionText
+****************************************/
+
+trix-toolbar .trix-button-group {
+  @apply border-none gap-px;
+}
+
+/* trix-toolbar .trix-button-row {
+  @apply scrollbar-thin scrollbar-track-white scrollbar-thumb-neutral-200 dark:scrollbar-track-transparent dark:scrollbar-thumb-neutral-700;
+} */
+
+trix-toolbar .trix-button {
+  @apply border-transparent hover:bg-neutral-50/50 rounded dark:hover:bg-neutral-500/50 dark:hover:text-white dark:bg-transparent dark:before:invert;
+
+  &[disabled] {
+    @apply dark:rounded dark:hover:bg-transparent dark:hover:text-neutral-500/10 hover:cursor-not-allowed;
+  }
+
+  &:before {
+    @apply dark:hover:opacity-100 dark:hover:text-white;
+  }
+
+  &:not(:first-child) {
+    @apply border-l-0;
+  }
+}
+
+trix-toolbar .trix-button.trix-active {
+  @apply bg-neutral-500/25 dark:bg-neutral-500/30 dark:before:text-neutral-50;
+}
+
+trix-toolbar .trix-dialog__link-fields .trix-button-group {
+  @apply gap-1.5;
+
+  &:not(:first-child) .trix-button--dialog {
+    @apply border-l;
+  }
+}
+
+trix-toolbar .trix-dialog {
+  @apply shadow-lg p-4 rounded border border-neutral-300 dark:border-neutral-600 dark:bg-neutral-900;
+}
+
+trix-toolbar .trix-input--dialog {
+  @apply px-3 py-1 text-sm border border-neutral-300 shadow-inner bg-white font-normal placeholder:text-neutral-500 rounded block w-full focus:outline-hidden focus:ring-4 pr-32 focus:ring-neutral-50 focus:border-neutral-500 text-neutral-900 focus:shadow-none dark:border-neutral-600/70 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-500/30 dark:focus:border-neutral-500/50 dark:bg-neutral-800 dark:text-white;
+}
+
+trix-toolbar .trix-button.trix-button--dialog {
+  @apply border-neutral-300 bg-white dark:bg-neutral-900 dark:text-neutral-100 dark:focus:ring-neutral-500/30 dark:hover:bg-neutral-800/50 text-sm text-neutral-800 px-2 py-1 focus:ring-4 focus:ring-neutral-50 focus:border-neutral-500 hover:bg-neutral-50/50 shadow-sm font-medium dark:border-neutral-600;
+  border: 1px;
+  border-style: solid;
+
+  &:first-of-type {
+    @apply rounded-l;
+  }
+
+  &:last-child {
+    @apply rounded-r;
+  }
+}
+
+/* prose style content */
+trix-editor {
+  @apply rounded border border-neutral-300 focus:ring-4 focus:ring-neutral-50 focus:border-neutral-500 focus-within:ring-neutral-50 focus-within:border-neutral-500 focus:outline-hidden bg-white shadow-inner p-3 text-base dark:bg-neutral-800 dark:text-white dark:focus:ring-neutral-500/20 dark:border-neutral-700;
+}
+
+trix-editor,
+.trix-content {
+  @apply leading-normal font-sans text-base break-words p-4;
+
+  h1 {
+    @apply text-4xl leading-tight font-extrabold -tracking-[0.03em];
+  }
+
+  blockquote {
+    @apply border-0 border-solid border-gray-300 border-l-4 ml-3 pl-6;
+  }
+
+  [dir="rtl"] blockquote,
+  blockquote[dir="rtl"] {
+    @apply border-0 border-r-4 mr-3 pr-6;
+  }
+
+  li {
+    @apply ml-4;
+  }
+
+  [dir="rtl"] li {
+    @apply mr-4;
+  }
+
+  pre {
+    @apply inline-block w-full align-top font-mono text-sm p-2 whitespace-pre bg-gray-200 overflow-x-auto;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  .attachment__caption {
+    @apply mt-2 text-center;
+
+    .attachment__name + .attachment__size::before {
+      content: " \2022 ";
+    }
+  }
+
+  .attachment {
+    @apply inline-block relative max-w-full;
+
+    a {
+      @apply text-inherit no-underline;
+
+      &:hover,
+      &:visited:hover {
+        @apply text-inherit;
+      }
+    }
+
+    &--preview {
+      @apply w-full text-center;
+    }
+
+    &--file {
+      @apply text-gray-800 leading-none m-0.5 p-2 border border-solid border-gray-400 rounded-md;
+    }
+  }
+
+  .attachment-gallery {
+    @apply flex flex-wrap relative;
+
+    .attachment {
+      @apply flex-1 basis-1/3 px-2 max-w-[33%];
+    }
+
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
+      .attachment {
+        @apply basis-1/2 max-w-[50%];
+      }
+    }
+  }
+}

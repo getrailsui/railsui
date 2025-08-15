@@ -1,9 +1,9 @@
 <div id="typography-lists">
 <%= render layout: example, locals: { heading: "Lists", section: "Typography" } do %>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 font-tiktok">
   <div>
-    <p class="text-sm text-slate-600 mt-2 dark:text-slate-400">Standard</p>
-    <ul class="list-disc">
+    <p class="text-sm text-neutral-600 mt-2 dark:text-neutral-400">Standard</p>
+    <ul class="list-disc font-tiktok">
       <li>A quick brown</li>
       <li>fox jumps over</li>
       <li>the lazy dog</li>
@@ -11,8 +11,8 @@
   </div>
 
   <div>
-    <p class="text-sm text-slate-600 mt-2 dark:text-slate-400">Unstyled</p>
-    <ul class="list-reset">
+    <p class="text-sm text-neutral-600 mt-2 dark:text-neutral-400">Unstyled</p>
+    <ul class="list-reset font-tiktok">
       <li>A quick brown</li>
       <li>fox jumps over</li>
       <li>the lazy dog</li>
@@ -20,8 +20,8 @@
   </div>
 
   <div>
-    <p class="text-sm text-slate-600 mt-2 dark:text-slate-400">Decimal</p>
-    <ol class="list-decimal">
+    <p class="text-sm text-neutral-600 mt-2 dark:text-neutral-400">Decimal</p>
+    <ol class="list-decimal font-tiktok">
       <li>A quick brown</li>
       <li>fox jumps over</li>
       <li>the lazy dog</li>
@@ -74,24 +74,6 @@
   <%%= tag.li "fox jumps over" %>
   <%%= tag.li "the lazy dog" %>
 <%% end %>
-<% end %>
-
-  <%# .haml %>
-<% content_for :haml, flush: true do %>
-%ul.list-disc
-  %li A quick brown
-  %li fox jumps over
-  %li the lazy dog
-/ Reset
-%ul.list-reset
-  %li A quick brown
-  %li fox jumps over
-  %li the lazy dog
-/ Decimal
-%ol.list-decimal
-  %li A quick brown
-  %li fox jumps over
-  %li the lazy dog
 <% end %>
 
 <%= render_snippet %>

@@ -1,7 +1,7 @@
 <div id="forms-select-base">
 <%= render layout: example, locals: { heading: "Base", section: "Select" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <label for="select-example" class="form-label">Select one</label>
 <select id="select-example" class="form-select" aria-label="Default select example">
   <option selected>Open this select menu</option>
@@ -38,20 +38,18 @@
 <!-- ActionView::Helpers::FormHelper -->
 <%%= form_with model: @form do |f| %>
   <%%= f.label :select_1, "Select example", class: "form-label" %>
-  <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" } %>
+  <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "2"], ["Three", "3"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" } %>
+  <%%= f.submit class: "btn btn-primary" %>
+<%% end %>
+
+<!-- Railsui::FormBuilder -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.select :select_1, options_for_select([["One", "1"], ["Two", "2"], ["Three", "3"]]), { prompt: "Open this select menu" }, { label: "Select example" } %>
+  <%%= f.submit %>
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-.mb-3
-  = f.label :select_1, "Select example", class:  "form-label"
-  = f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" }
-= f.submit class: "btn btn-primary"
-<% end %>
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>
@@ -59,7 +57,7 @@
 <div id="forms-select-multi">
 <%= render layout: example, locals: { heading: "Multi-select", section: "Select" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
   <label for="data" class="form-label">Date</label>
   <div class="flex items-center space-x-3 max-w-sm">
     <%= select_day Date.today.day, {}, { class: "form-select" }  %>
@@ -87,21 +85,25 @@
 
   <%# .erb %>
 <% content_for :erb, flush: true do %>
-<div class="form-group flex items-center space-x-3 max-w-sm">
-  <%%= select_day Date.today.day, {}, { class: "form-select" }  %>
-  <%%= select_month Date.today.month, {}, { class: "form-select" }%>
-  <%%= select_year Date.today.year, {}, { class: "form-select" } %>
+<!-- ActionView::Helpers::DateHelper -->
+<div class="form-group">
+  <label class="form-label">Date</label>
+  <div class="flex items-center space-x-3 max-w-sm">
+    <%%= select_day Date.today.day, {}, { class: "form-select" } %>
+    <%%= select_month Date.today.month, {}, { class: "form-select" } %>
+    <%%= select_year Date.today.year, {}, { class: "form-select" } %>
+  </div>
 </div>
+
+<!-- Railsui::FormBuilder -->
+<!-- Note: For date selects, use date_field for simpler implementation -->
+<%%= form_with model: @form, builder: Railsui::FormBuilder do |f| %>
+  <%%= f.date_field :date, label: "Date" %>
+  <%%= f.submit %>
+<%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.form-group.flex.items-center.space-x-3.max-w-sm
-  = select_day Date.today.day, {}, { class: "form-select" }  %>
-  = select_month Date.today.month, {}, { class: "form-select" }%>
-  = select_year Date.today.year, {}, { class: "form-select" } %>
-<% end %>
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>

@@ -1,4 +1,4 @@
-<article id="<%%= dom_id <%= singular_name %> %>" class="py-6 prose prose-zinc dark:prose-invert">
+<article id="<%%= dom_id <%= singular_name %> %>" class="py-6 prose prose-neutral dark:prose-invert">
   <%- attributes.reject(&:password_digest?).each do |attribute| -%>
   <%- if attribute.attachment? -%>
     <%= singular_name %>.<%= attribute.column_name %>.filename, <%= singular_name %>.<%= attribute.column_name %> if <%= singular_name %>.<%= attribute.column_name %>.attached? %>
@@ -7,7 +7,7 @@
     <div><%= attribute.singular_name %>.filename, <%= attribute.singular_name %></div>
     <%% end %>
   <%- else -%>
-    <p class="mb-0 font-heading font-medium">
+    <p class="mb-0 font-medium">
       <%= attribute.human_name %>
     </p>
     <p class="my-0">
@@ -16,9 +16,7 @@
     <%- end -%>
   <%- end -%>
 
-   <p>
-    <%%= link_to "View <%= singular_name.humanize %>", <%= model_resource_name(singular_table_name) %>, class: "underline" %>
-  </p>
+  <time class="text-neutral-600 dark:text-neutral-400 text-xs" datetime="<%%= <%= singular_name %>.created_at.to_formatted_s(:long) %>">Created <%%= time_ago_in_words(<%= singular_name %>.created_at) + " ago" %></time>
 
-  <time class="text-zinc-600 dark:text-zinc-400 text-xs" datetime="<%%= <%= singular_name %>.created_at.to_formatted_s(:long) %>">Created <%%= time_ago_in_words(<%= singular_name %>.created_at) + " ago" %></time>
+  <%%= link_to "View <%= singular_name.humanize %>", <%= model_resource_name(singular_table_name) %>, class: "btn btn-primary my-3" %>
 </article>

@@ -1,8 +1,8 @@
 <div id="scaffolds-partial">
 <%= render layout: example, locals: { heading: "Partial", section: "Scaffolds" } do %>
 
-<%= render preview('gray') do %>
-<article id="post_1" class="py-6 prose dark:prose-invert">
+<%= render preview('neutral') do %>
+<article id="post_1" class="py-6 prose prose-neutral dark:prose-invert">
   <div>
     <p class="mb-0 font-semibold">
       Title
@@ -19,7 +19,7 @@
       Example post content 2
     </p>
   </div>
-  <time class="text-slate-600 dark:text-slate-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
+  <time class="text-neutral-600 dark:text-neutral-400 text-xs mt-2" datetime="February 23, 2023 12:37">Created 1 minute ago</time>
 </article>
 <% end %>
 
@@ -43,26 +43,10 @@
       <%%= post.content %>
     </p>
   </div>
-  <time class="text-slate-600 dark:text-slate-400 text-xs mt-2" datetime="<%%= post.created_at.to_formatted_s(:long) %>">Created <%%= time_ago_in_words(post.created_at) + " ago" %></time>
+  <time class="text-neutral-600 dark:text-neutral-400 text-xs mt-2" datetime="<%%= post.created_at.to_formatted_s(:long) %>">Created <%%= time_ago_in_words(post.created_at) + " ago" %></time>
 </article>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-%article.py-6.prose.dark:prose-invert{id: "#{dom_id post }"}
-  %div
-    %p.mb-0.font-semibold
-      Title
-    %p.mt-0
-      = post.title
-  %div
-    %p.mb-0.font-semibold
-      Content
-    %p.my-0
-      = post.content
-  %time.text-slate-600.dark:text-slate-400.text-xs.mt-2{datetime: "#{post.created_at.to_formatted_s(:long)}"} Created
-    = time_ago_in_words(post.created_at) + " ago"
-<% end %>
 <% content_for :ruby do %>
 
 <% end %>

@@ -1,25 +1,25 @@
 <div id="scaffolds-edit">
 <%= render layout: example, locals: { heading: "Edit", section: "Scaffolds" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
-  <div class="mb-4 pb-6 border-b dark:border-slate-700 border-gray-200/90">
-    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+  <div class="mb-6 pb-6 border-b dark:border-neutral-700 border-gray-200/90">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-neutral-500 dark:text-neutral-200 text-sm">
       <ol class="flex flex-wrap items-center space-x-3">
         <li>
-          <a class="hover:underline hover:text-slate-600 dark:hover:text-slate-400" href="/posts">Posts</a>
+          <a class="hover:underline hover:text-neutral-600 dark:hover:text-neutral-400" href="/posts">Posts</a>
         </li>
         <li class="flex space-x-3">
           <div class="flex items-center">
-            <span class="text-slate-300 dark:text-slate-500">/</span>
+            <span class="text-neutral-300 dark:text-neutral-500">/</span>
           </div>
-          <span class="text-primary-600 dark:text-primary-500" aria-current="page">Edit</span>
+          <span class="text-neutral-600 dark:text-neutral-500" aria-current="page">Edit</span>
         </li>
       </ol>
     </nav>
     <div class="flex items-center justify-between">
       <h1 class="h2">Edit Post</h1>
-        <form data-turbo-confirm="Are you sure?" class="button_to" method="post" action="#"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="btn btn-light" type="submit">Delete</button><input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
+        <form data-turbo-confirm="Are you sure?" class="button_to" method="post" action="#"><input type="hidden" name="_method" value="delete" autocomplete="off"><button class="btn btn-white" type="submit">Delete</button><input type="hidden" name="authenticity_token" value="#" autocomplete="off"></form>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
         <input type="submit" name="commit" value="Update Post" class="btn btn-primary" data-disable-with="Update Post">
       </div>
 
-      <a class="btn btn-light" href="#">Cancel</a>
+      <a class="btn btn-white" href="#">Cancel</a>
     </div>
   </form>
   </div>
@@ -53,23 +53,23 @@
 <%# .erb %>
 <% content_for :erb, flush: true do %>
 <div class="max-w-3xl mx-auto px-4 my-16">
-  <div class="mb-4 pb-6 border-b border-gray-200/90 dark:border-slate-700">
-    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+  <div class="mb-6 pb-6 border-b border-gray-200/90 dark:border-neutral-700">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-neutral-500 dark:text-neutral-200 text-sm">
       <ol class="flex flex-wrap items-center space-x-3">
         <li>
-          <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
+          <%%= link_to "Posts", posts_path, class: "hover:underline hover:text-neutral-600 dark:hover:text-neutral-400" %>
         </li>
         <li class="flex space-x-3">
           <div class="flex items-center">
-            <span class="text-slate-300 dark:text-slate-500">/</span>
+            <span class="text-neutral-300 dark:text-neutral-500">/</span>
           </div>
-          <span class="text-primary-600 dark:text-primary-500" aria-current="page">Edit</span>
+          <span class="text-neutral-600 dark:text-neutral-500" aria-current="page">Edit</span>
         </li>
       </ol>
     </nav>
     <div class="flex items-center justify-between">
       <h1 class="h2">Edit Post</h1>
-      <%%= button_to "Delete", @post, method: :delete, class: "btn btn-light", form: { data: { turbo_confirm: "Are you sure?" } } %>
+      <%%= button_to "Delete", @post, method: :delete, class: "btn btn-white", form: { data: { turbo_confirm: "Are you sure?" } } %>
     </div>
   </div>
 
@@ -79,24 +79,6 @@
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.max-w-3xl.mx-auto.px-4.my-16
-  .mb-4.pb-6.border-b.dark:border-slate-700{class: "border-gray-200/90"}
-    %nav.my-6.font-medium.flex.text-slate-500.dark:text-slate-200.text-sm{"aria-label" => "breadcrumb"}
-      %ol.flex.flex-wrap.items-center.space-x-3
-        %li
-          = link_to "Posts", posts_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
-        %li.flex.space-x-3
-          .flex.items-center
-            %span.text-slate-300.dark:text-slate-500 /
-          %span.text-primary-600.dark:text-primary-500{"aria-current" => "page"} Edit
-    .flex.items-center.justify-between
-      %h1.h2 Edit Post
-      = button_to "Delete", @post, method: :delete, class: "btn btn-light", form: { data: { turbo_confirm: "Are you sure?" } }
-  %div
-    = render "form", post: @post
-<% end %>
 <% content_for :ruby do %>
 
 <% end %>

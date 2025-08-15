@@ -161,6 +161,14 @@ module Railsui
       end
     end
 
+    def rich_text_area(method, options = {})
+      field_wrapper(method, options) do
+        add_default_class!(options, "trix-content")
+        add_error_class!(options) if has_error?(method)
+        super(method, options)
+      end
+    end
+
     def range_field(method, options = {})
       # Extract wrapper options and add stimulus controller to the form group
       wrapper_options = options.delete(:wrapper) || {}
