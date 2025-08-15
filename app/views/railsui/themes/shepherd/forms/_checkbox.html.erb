@@ -39,15 +39,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group.flex.items-center
-    = f.check_box :check_default, class: "form-input-checkbox"
-    = f.label :check_default, "Default checkbox", class: "ml-2"
-  = f.submit class: "btn btn-primary"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

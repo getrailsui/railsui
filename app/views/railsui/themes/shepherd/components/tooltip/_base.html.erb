@@ -17,9 +17,6 @@
 <%%= button_tag "#", class: "btn btn-primary", data: { controller: "railsui-tooltip", railsui_tooltip_content_value: "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!", railsui_tooltip_allow_html_value: "true" } %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%button.btn.btn-primary{"data-controller" => "railsui-tooltip", "data-railsui-tooltip-allow-html-value" => "true", "data-railsui-tooltip-content-value" => "This is the <strong>bold</strong> and <u>underlined</u> content inside my tooltip!"} Tooltip with HTML demo
-<% end %>
 
 <% content_for :js, flush: true do %>
 // Docs: https://github.com/getrailsui/railsui-stimulus

@@ -24,12 +24,6 @@
 
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.rounded-lg.shadow-xs.bg-white.p-6.dark:bg-zinc-800.dark:text-white.border.border-zinc-300{class: "shadow-zinc-400/20 border-zinc-300 dark:border-zinc-600/80 dark:shadow-zinc-950/40"}
-  %h4.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Card title
-  .prose.prose-zinc.my-2.dark:prose-invert.max-w-full
-    %p Some quick example text to build on the card title and make up the bulk of the card's content.
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

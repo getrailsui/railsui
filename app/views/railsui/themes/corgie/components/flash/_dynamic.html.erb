@@ -4,7 +4,7 @@
     <p>For some flash messages you may want to have them hide after a brief period. This requires JavaScript but is fairly simple to implement with Stimulus.js or Vanilla JavaScript.</p>
   </div>
 
-<%= render preview 'gray' do %>
+<%= render preview('neutral') do %>
 <div class="bg-primary-600 text-white text-center p-4" role="alert" data-controller="alert">
    <p>A message commonly displayed after something changes.</p>
 </div>
@@ -25,11 +25,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-- if notice
-  .bg-primary-600.text-white.text-center.p-4{"data-controller" => "alert", :role => "alert"}
-    %p= sanitize notice
-<% end %>
 
 <% content_for :js, flush: true do %>
 import { Controller } from "@hotwired/stimulus"

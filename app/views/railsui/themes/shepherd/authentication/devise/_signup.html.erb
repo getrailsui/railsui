@@ -95,33 +95,8 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/devise/registrations/new.html.erb
-= render "devise/auth_layout" do
-  %h1.h3.mb-6 Sign up
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = render "rui/shared/error_messages", resource: resource
-    .form-group
-      = f.label :email, class: "form-label"
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com"
-    .form-group
-      .flex.items-center.justify-between.mb-2
-        = f.label :password, class: "form-label mb-0"
-        - if @minimum_password_length
-          .inline.prose.prose-sm.prose-zinc.dark:prose-invert
-            %p
-              (#{@minimum_password_length} characters minimum)
-      = f.password_field :password, autocomplete: "new-password", class: "form-input"
-    .form-group
-      = f.label :password_confirmation, class: "form-label"
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
-    = f.submit "Sign up", class: "btn btn-primary w-full"
-    .prose.prose-sm.text-center.prose-zinc.mt-6
-      %p
-        Already have an account? #{link_to "Sign in", new_session_path(resource_name)}
-<% end %>
 
-<%= render_snippet active_tab: "erb", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "new.html.erb" %>
 <% end %>
 <% end %>
 

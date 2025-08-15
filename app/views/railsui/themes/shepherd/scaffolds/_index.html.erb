@@ -79,21 +79,11 @@
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.max-w-3xl.mx-auto.px-4.my-16
-  .flex.items-center.justify-between.pb-6.border-b.dark:border-zinc-700.border-zinc-200
-    %h1.h2 Posts
-    .flex.items-center.justify-end
-      = link_to "New Post", new_post_path, class: "btn btn-primary"
-  #posts.divide-y.divide-zinc-200.dark:divide-zinc-700
-    = render @posts
-<% end %>
 
 <% content_for :ruby, flush: true do %>
 
 <% end %>
-<%= render_snippet active_tab: "erb", erb_filename: "index.html.erb", haml_filename: "index.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "index.html.erb" %>
 <% end %>
 <% end %>
 </div>

@@ -59,22 +59,7 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/users/_auth_layout.html.erb
-.sm:h-[calc(100vh_-_52px)].pt-10.sm:pt-0.flex.flex-col.items-center.justify-center.bg-cover.bg-center.px-4{style: "background-image: url('#{asset_url('railsui/fusion.png')}')"}
-  .sm:flex-1.flex.flex-col.justify-center.w-full{class: "sm:w-[428px]"}
-    %div
-      .flex.justify-center
-        = link_to root_path do
-          = icon "logo", custom_path: "/railsui/logo.svg", class: "w-10 h-auto"
-      .mt-6
-        = yield :masthead
-      .bg-white.shadow-xs.rounded-lg.p-8.border{class: "border-slate-300/60"}
-        = yield
-      .mt-4
-        = yield :links
-<% end %>
-<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb", haml_filename: "_auth_layout.haml.erb") %>
+<%= render_snippet(active_tab: "erb", erb_filename: "_auth_layout.html.erb") %>
 
 
 <div class="prose prose-neutral dark:prose-invert my-6 max-w-full">
@@ -85,16 +70,6 @@
 
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= render "users/auth_layout" do
-  / Add or yield form content here
-
-%= content_for :masthead do
-  / Add any masthead content here
-
-%= content_for :links do
-  / Add any links to other authentication pages here
-<% end %>
 
 <% content_for :erb, flush: true do %>
 <%%= render "users/auth_layout" do %>
@@ -247,21 +222,8 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-- if resource.errors.any?
-  .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-rose-50.text-sm{class: "dark:bg-rose-400/10 dark:border-rose-400/20", role: "alert"}
-    .flex.items-start.gap-4
-      = icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid
-      .flex-1
-        %p.font-bold
-          = pluralize(resource.errors.count, "error")   prohibited this post from being saved:
-        %ul.list-disc.mt-3.ml-4
-          - resource.errors.each do |error|
-            %li
-            = error.full_message
-<% end %>
 
-<%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb", haml_filename: "_error_messages.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "_error_messages.html.erb" %>
 <% end %>
 <% end %>
 </div>

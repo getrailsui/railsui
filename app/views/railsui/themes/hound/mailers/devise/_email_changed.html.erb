@@ -26,19 +26,7 @@
 <%%= email_action "View account", edit_user_registration_url %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/devise/mailer/email_changed.haml.erb
-%p
-  Hi #{@email},
-- if @resource.try(:unconfirmed_email?)
-  %p
-    We're contacting you to notify you that your email is being changed to #{@resource.unconfirmed_email}.
-- else
-  %p
-    We're contacting you to notify you that your email has been changed to #{@resource.email}.
-= email_action "View account", edit_user_registration_url
-<% end %>
-<%= render_snippet active_tab: "erb", erb_filename: "email_changed.html.erb", haml_filename: "email_changed.haml.erb"  %>
+<%= render_snippet active_tab: "erb", erb_filename: "email_changed.html.erb"  %>
 <% end %>
 <% end %>
 </div>

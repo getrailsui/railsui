@@ -5,7 +5,7 @@
     <p>If you need a button to span fullwidth add the appropriate Tailwind CSS width and margin classes to existing button classes.</p>
   </div>
 
-<%= render preview 'gray' do %>
+<%= render preview('neutral') do %>
   <button class="btn btn-primary w-full justify-center" type="button">Expanded button</button>
 <% end %>
 
@@ -18,9 +18,6 @@
 <%%= button_tag "Expanded button", type: "button", class: "btn btn-primary w-full justify-center" %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= button_tag "Expanded button", type: "button", class: "btn btn-primary w-full justify-center"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

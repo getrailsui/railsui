@@ -70,20 +70,6 @@
 </nav>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%nav.my-6.font-medium.flex.text-slate-500.dark:text-slate-200.text-sm{"aria-label" => "breadcrumb"}
-  %ol.flex.flex-wrap.items-center.space-x-3.list-none.m-0.p-0
-    %li
-      = link_to "Home", "#", class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
-    %li.flex.space-x-3
-      .flex.items-center
-        %span.text-slate-300.dark:text-slate-500 /
-        = link_to "Library", "#", class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
-    %li.flex.space-x-3
-      .flex.items-center
-        %span.text-slate-300.dark:text-slate-500 /
-        = link_to "Data", "#", class: "text-primary-500 dark:text-primary-500", data: { "aria-current": "page" }
-<% end %>
 
 <%= render_snippet %>
 <% end %>

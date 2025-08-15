@@ -89,30 +89,13 @@ data-railsui-tabs-inactive-tab="py-2 px-4 rounded-full dark:hover:bg-zinc-800/75
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white", "data-railsui-tabs-inactive-tab" => "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"}
-  .text-zinc-600.dark:text-zinc-300
-    %nav.flex.items-center.space-x-1.font-heading.font-normal{class: "text-[15px]", role: "navigation"}
-      = link_to "Activity", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 bg-primary-50 rounded-full text-primary-500 dark:bg-primary-500 dark:text-white transition duration-200 ease-in-out"
-      = link_to "Account", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
-      = link_to "Billing", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
-      = link_to "Team", "#", data: { action: "click->railsui-tabs#change", railsui_tabs_target: "tab" }, class: "py-2 px-4 rounded-full dark:hover:bg-zinc-800/75 transition duration-200 ease-in-out"
-  .p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    %p Some activities...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    %p Account information...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    %p Billing information...
-  .hidden.p-4.prose.prose-zinc.dark:prose-invert{"data-railsui-tabs-target" => "panel"}
-    %p Team information...
-<% end %>
 
 <% content_for :js, flush: true do %>
 import { RailsuiTabs } from 'railsui-stimulus'
 application.register('railsui-tabs', RailsuiTabs)
 <% end %>
 
-<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "index.js" %>
+<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", js_filename: "index.js" %>
 <% end %>
 <% end %>
 </div>

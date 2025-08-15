@@ -39,14 +39,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.text-primary-700.rounded.p-4.text-sm.flex.justify-between.items-center.dark:text-primary-100{class: "bg-primary-50/90 dark:bg-primary-50/10"}
-  .flex-1
-    %p.text-primary-800.dark:text-primary-300.font-semibold A dismissible notice
-    %p.leading-snug.my-1.pr-4 Your account settings have been successfully updated. The changes will take effect immediately.
-  %button.size-8.rounded-full.bg-transparent.hover:bg-primary-700.transition.ease-in-out.duration-300.flex.items-center.justify-center.group.dark:hover:bg-primary-500{type: "button"}
-    = icon "x-mark", class: "size-5 text-primary-700 group-hover:text-primary-100 dark:text-primary-300 dark:group-hover:text-primary-100", title: "Dismiss"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

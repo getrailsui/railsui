@@ -72,27 +72,10 @@
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.max-w-3xl.mx-auto.px-4.my-16
-  .pb-6.border-b.dark:border-zinc-700.border-zinc-200
-    %nav.my-6.font-heading.flex.text-zinc-500.dark:text-zinc-200.text-sm(aria-label="breadcrumb")
-      %ol.flex.flex-wrap.items-center.space-x-3.list-none.m-0.p-0
-        %li
-          = link_to "Posts", "#", class: "hover:underline text-primary-600 dark:text-primary-500"
-        %li.flex.space-x-3
-          .flex.items-center
-            %span.text-zinc-300.dark:text-zinc-500 /
-          = link_to "##{@post.id}", "#", class: "text-zinc-600 dark:text-zinc-100", "aria-current": "page"
-    .flex.items-center.justify-between
-      %h1.h1.flex-1 Post &lt;%= @post.id %&gt;
-      = link_to "Edit", "#", class: "btn btn-white"
-  = render @post
-<% end %>
 <% content_for :ruby do %>
 
 <% end %>
-<%= render_snippet active_tab: "erb", erb_filename: "show.html.erb", haml_filename: "show.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "show.html.erb" %>
 <% end %>
 <% end %>
 </div>

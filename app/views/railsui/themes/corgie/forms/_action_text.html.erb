@@ -40,12 +40,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= form_with model: message do |form| %>
-  .form-group
-    = form.label :content, class: "form-label"
-    = form.rich_text_area :content
-<% end %>
 <%= render_snippet active_tab: "erb" %>
 <% end %>
 <% end %>

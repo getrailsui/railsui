@@ -87,27 +87,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-%table.table-auto.w-full.border.border-slate-300(class="dark:border-slate-700/80")
-  %thead
-    %tr
-      %th.text-left.p-3.border.border-slate-200(class="dark:border-slate-700/80" scope="col") First
-      %th.text-left.p-3.border.border-slate-200(class="dark:border-slate-700/80" scope="col") Last
-      %th.text-left.p-3.border.border-slate-200(class="dark:border-slate-700/80" scope="col") Handle
-  %tbody
-    %tr
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") Andy
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") L.
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") @railsui_
-    %tr
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") Web
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") Crunch
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") @webcrunchblog
-    %tr
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80" colspan="2") justalever
-      %td.p-3.border.border-slate-200(class="dark:border-slate-700/80") @justalever
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

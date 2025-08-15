@@ -3,7 +3,7 @@
 
   <div class="prose prose-neutral dark:prose-invert mb-6"><p>Choose from two additional buttons sizes outside of the default <code>.btn</code> class (<code>.btn-lg</code>, <code>.btn-sm</code>) or customize size with additional Tailwind CSS classes.</p></div>
 
-<%= render preview 'gray' do %>
+<%= render preview('neutral') do %>
   <div class="flex items-center gap-2">
     <button type="button" class="btn btn-primary btn-lg">Large button</button>
     <button type="button" class="btn btn-primary">Base button</button>
@@ -25,11 +25,6 @@
 <%%= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm" %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= button_tag "Large button", type: "button", class: "btn btn-primary btn-lg"
-= button_tag "Base Button", type: "button", class: "btn btn-primary"
-= button_tag "Small button", type: "button", class: "btn btn-primary btn-sm"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

@@ -1,7 +1,7 @@
 <div id="button-base">
 <%= render layout: example, locals: { heading: "Base", section: "Button" } do %>
 
-<%= render preview('gray') do %>
+<%= render preview('neutral') do %>
   <div class="flex items-center gap-3 flex-wrap">
   <button type="button" class="btn btn-primary">Primary</button>
   <button type="button" class="btn btn-secondary">Secondary</button>
@@ -36,16 +36,6 @@
 <%%= button_tag "Link", type: "button", class: "btn btn-link" %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-= button_tag "Primary", type: "button", class: "btn btn-primary"
-= button_tag "Secondary", type: "button", class: "btn btn-secondary"
-= button_tag "Light", type: "button", class: "btn btn-light"
-= button_tag "Dark", type: "button", class: "btn btn-dark"
-= button_tag "White", type: "button", class: "btn btn-white"
-= button_tag "Transparent", type: "button", class: "btn btn-transparent"
-= button_tag "Danger", type: "button", class: "btn btn-danger"
-= button_tag "Link", type: "button", class: "btn btn-link"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

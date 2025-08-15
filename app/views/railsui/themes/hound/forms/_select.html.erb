@@ -42,15 +42,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-.mb-3
-  = f.label :select_1, "Select example", class:  "form-label"
-  = f.select :select_1, options_for_select([["One", "1"], ["Two", "1"], ["Three", "1"]]), { prompt: "Open this select menu" }, { class: "form-select", "aria-label": "Default select example" }
-= f.submit class: "btn btn-primary"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>
@@ -94,13 +85,6 @@
 </div>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-.form-group.flex.items-center.space-x-3.max-w-sm
-  = select_day Date.today.day, {}, { class: "form-select" }  %>
-  = select_month Date.today.month, {}, { class: "form-select" }%>
-  = select_year Date.today.year, {}, { class: "form-select" } %>
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

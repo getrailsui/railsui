@@ -1,7 +1,7 @@
 <div id="tab-with-icons">
   <%= render layout: example, locals: { heading: "With icons", section: "Tab" } do %>
 
-    <%= render preview 'gray' do %>
+    <%= render preview('neutral') do %>
 <div data-controller="railsui-tabs" data-railsui-tabs-active-tab="py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t" data-railsui-tabs-inactive-tab="py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600">
   <div class="border-slate-200 border-b text-slate-600 dark:text-slate-200 dark:border-slate-600 text-sm font-medium">
     <nav role="navigation" class="-mb-px flex items-center flex-wrap">
@@ -126,38 +126,13 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%div{"data-controller" => "railsui-tabs", "data-railsui-tabs-active-tab" => "py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t", "data-railsui-tabs-inactive-tab" => "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b border-transparent dark:border-slate-600"}
-  .border-slate-200.border-b.text-slate-600.dark:text-slate-200.dark:border-slate-600.text-sm.font-medium
-    %nav.-mb-px.flex.items-center.flex-wrap{role: "navigation"}
-      = link_to "#", class: "py-3 px-4 border-b border-primary-500 flex items-center space-x-3 whitespace-nowrap text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-t", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "chat-bubble-oval-left-ellipsis", class: "size-5"
-        %span Activity
-      = link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap   border-b bg-transparent dark:bg-transparent dark:border-slate-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "user-circle", class: "size-5"
-        %span Account
-      = link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "credit-card", class: "size-5"
-        %span Billing
-      = link_to "#", class: "py-3 px-4 flex items-center space-x-3 whitespace-nowrap border-b bg-transparent dark:bg-transparent dark:border-slate-600", data: { railsui_tabs_target: "tab", action: "click->railsui-tabs#change" } do
-        = icon "users", class: "size-5"
-        %span Team
-  .p-4{"data-railsui-tabs-target" => "panel"}
-    Some activities...
-  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
-    Account information...
-  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
-    Billing information...
-  .hidden.p-4{"data-railsui-tabs-target" => "panel"}
-    Team information...
-<% end %>
 
 <% content_for :js, flush: true do %>
 import { RailsuiTabs } from 'railsui-stimulus'
 application.register('railsui-tabs', RailsuiTabs)
 <% end %>
 
-<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", haml_filename: "_tabs.html.haml", js_filename: "index.js" %>
+<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", js_filename: "index.js" %>
 <% end %>
 <% end %>
 </div>

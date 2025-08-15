@@ -65,20 +65,6 @@
 </nav>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%nav.my-6.font-medium.flex.text-zinc-500.text-sm.bg-white.rounded.items-center.border.overflow-hidden.sm:py-0.py-4.dark:border-zinc-700(aria-label="breadcrumb" class="border-zinc-300/80 dark:bg-zinc-800/70")
-  %ol.flex.items-center.justify-star.space-x-6.px-4.list-none
-    %li.sm:h-12.flex.items-center.justify-center
-    = link_to "#", class: "hover:underline hover:text-zinc-600 inline-block pl-2 group" do
-      = icon "home", class:  "size-5 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200"
-      %span.sr-only Home
-    %li.sm:h-12.flex.items-center.space-x-2.justify-center
-      %span.transform.h-14.w-px.flex-shrink-0.sm:block.hidden(class="rotate-[20deg] bg-zinc-300/50 dark:bg-zinc-600/80")
-      = link_to  "Library", "#", class: "hover:text-zinc-700 sm:pl-4 dark:hover:text-zinc-200 text-zinc-600 dark:text-zinc-300"
-    %li.sm:h-12.flex.items-center.space-x-2.justify-center
-      %span.transform.h-14.w-px.flex-shrink-0.sm:block.hidden(class="rotate-[20deg] bg-zinc-300/50 dark:bg-zinc-600/80")
-      = link_to "Data", "#", class: "text-primary-500 dark:text-primary-500 sm:pl-4", "aria-current": "page"
-<% end %>
 
 <%= render_snippet %>
 <% end %>

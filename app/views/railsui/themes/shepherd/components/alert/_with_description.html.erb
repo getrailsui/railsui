@@ -30,13 +30,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.text-amber-800.py-4.px-6.rounded-xl.flex.items-start.justify-between.space-x-3.text-sm.dark:border.dark:text-amber-50(class="bg-amber-100/60 dark:bg-amber-300/10 dark:border-amber-400/30 dark:selection:bg-amber-50/10")
-  = icon "exclamation-triangle", class: "text-amber-500/90 size-5 flex-shrink-0 dark:text-amber-400/90", variant: :solid
-  .flex-1
-    %p.text-amber-900.font-medium.font-heading(class="dark:text-amber-400/90") Update Your Account Settings
-    %p.leading-snug.my-1 Your account security settings need to be updated. Please log in and change your password within the next 7 days to ensure continued access to your account.
-<% end %>
 
 <%= render_snippet %>
 <% end %>
