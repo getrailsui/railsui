@@ -135,49 +135,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border(class="border-slate-300/70 dark:border-slate-600/70")
-  .-mx-6.border-b.border-slate-200.dark:border-slate-700.px-6.pb-4.mb-4
-    %h3.text-2xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Job postings
-    %p.prose.prose-slate.dark:prose-invert.mt-2.mb-4 Lorem ipsum dolor sit amet, consectetur adipisicin.
-  %ul.divide-y.last-child:pb-0.pointer-events-none.select-none(class="divide-slate-300/70 dark:divide-slate-600/70")
-    %li.flex.justify-between.items-start.py-3.-mx-6.px-6
-      %div
-        = link_to "Ruby developer", "#", class: "btn-link"
-        .flex.items-center.gap-3.text-slate-500.text-sm.py-1.dark:text-slate-400
-          .flex.items-center.gap-2
-            = icon "users", class: "size-4 text-slate-400"
-            %p Engineering
-          .flex.items-center.gap-2
-            = icon "map", class: "size-4 text-slate-400"
-            %p Remote
-      %div
-        %span.rounded.bg-green-100.text-green-800.font-medium.px-2.py-1.text-xs.dark:text-green-300(class="dark:bg-green-500/20") Full-time
-    %li.flex.justify-between.items-start.py-3.-mx-6.px-6
-      %div
-        = link_to "Front-end developer", "#", class: "btn-link"
-        .flex.items-center.gap-3.text-slate-500.text-sm.py-1.dark:text-slate-400
-          .flex.items-center.gap-2
-            = icon "users", class: "size-4 text-slate-400"
-            %p Design
-          .flex.items-center.gap-2
-            = icon "map", class: "size-4 text-slate-400"
-            %p Remote
-      %div
-        %span.rounded.bg-green-100.text-green-800.font-medium.px-2.py-1.text-xs.dark:text-green-300(class="dark:bg-green-500/20") Full-time
-    %li.flex.justify-between.items-start.py-3.-mx-6.px-6
-      %div
-        = link_to "UX Designer", "#", class: "btn-link"
-        .flex.items-center.gap-3.text-slate-500.text-sm.py-1.dark:text-slate-400
-          .flex.items-center.gap-2
-            = icon "users", class: "size-4 text-slate-400"
-            %p Design
-          .flex.items-center.gap-2
-            = icon "map", class: "size-4 text-slate-400"
-            %p Remote
-      %div
-        %span.rounded.bg-green-100.text-green-800.font-medium.px-2.py-1.text-xs.dark:text-green-300(class="dark:bg-green-500/20") Full-time
-<% end %>
 <%= render_snippet(active_tab: :erb) %>
 <% end %>
 <% end %>

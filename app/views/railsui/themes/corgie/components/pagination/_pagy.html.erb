@@ -7,7 +7,7 @@
     <p>To make use of this UI you will need to render an alternative partial containing the code below with the <code>@pagy</code> instance variable passed through as a local variable inside the partial.</p>
   </div>
 
-<%= render preview 'gray' do %>
+<%= render preview('neutral') do %>
 <nav aria-label="pager" class="text-slate-500 sm:text-sm text-base font-medium dark:text-slate-300" role="navigation">
   <div class="flex flex-wrap items-center sm:justify-between justify-center">
     <span class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
@@ -84,36 +84,6 @@
 </nav>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ Source: https://github.com/ddnexus/pagy/blob/master/lib/templates/nav.html.erb
-
-- link = pagy_link_proc(pagy)
-%nav.text-slate-500.sm:text-sm.text-base.font-medium{"aria-label" => "pager", role: "navigation"}
-  .flex.flex-wrap.items-center.sm:justify-between.justify-center
-    - if pagy.prev
-      .sm:flex-1.flex.justify-start.items-center.sm:w-auto.w-full
-        != link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"')
-    - else
-      .sm:flex-1.flex.justify-start.items-center.sm:w-auto.w-full
-        %span.opacity-40.dark:opacity-60.flex.justify-center.items-center.gap-2.py-2.px-4.rounded.sm:w-auto.w-full.bg-transparent.sm:mb-0.mb-3.pointer-events-none.select-none
-          != pagy_t('pagy.nav.prev')
-    / series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36]
-    - pagy.series.each do |item|
-      - if item.is_a?(Integer)
-        != link.call(item, item, 'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"')
-      - elsif item.is_a?(String)
-        %span.py-2.px-4.border-t-2.border-transparent.block.border-primary-500.text-primary-600.dark:hover:bg-primary-600.dark:hover:text-white.dark:hover:border-primary-600.dark:text-primary-400{class: "hover:bg-primary-50/50"}= item
-      - elsif item == :gap
-        %span.py-2.px-4.block.border-t-2.border-transparent.rounded.pointer-events-none.select-none!= pagy_t('pagy.nav.gap')
-    - if pagy.next
-      .sm:flex-1.flex.justify-end.items-center.sm:w-auto.w-full
-        != link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"')
-    - else
-      .sm:flex-1.flex.justify-end.items-center.sm:w-auto.w-full
-        %span.opacity-40.dark:opacity-60.flex.justify-center.items-center.gap-2.py-2.px-4.rounded.sm:w-auto.w-full.bg-transparent.sm:mt-0.mt-3.pointer-events-none.select-none
-          != pagy_t('pagy.nav.next')
-
-<% end %>
 <%= render_snippet active_tab: "erb" %>
 <% end %>
 <% end %>

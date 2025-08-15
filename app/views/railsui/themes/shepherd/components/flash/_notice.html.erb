@@ -22,11 +22,6 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-- if notice
-  .bg-secondary-600.text-white.text-center.p-4{:role => "alert"}
-    %p= sanitize notice
-<% end %>
 
 <%= render_snippet %>
 <% end %>

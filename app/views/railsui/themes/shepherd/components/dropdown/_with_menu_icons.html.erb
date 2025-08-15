@@ -74,22 +74,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.relative.inline-block{"data-controller" => "railsui-dropdown"}
-  = button_tag data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }, class: "btn btn-primary" do
-    Dropdown
-    \#{icon "chevron-down", class: "size-3 ml-2"}
-  .hidden.transition.transform.origin-top-left.absolute.left-0.top-14.bg-white.rounded-xl.shadow-xl.border.border-zinc-200.w-full.z-50.py-2.dark:bg-zinc-900.text-base.text-zinc-600.dark:text-zinc-100.font-heading{class: "shadow-zinc-900/10 md:w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-600/80 md:text-[15px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-    = link_to, class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-500 group flex items-center justify-start gap-3" do
-    = icon "bookmark", class: "size-4 text-zinc-600 group-hover:text-primary-600 flex-shrink-0"
-    %span Bookmark
-    = link_to, class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-500 group flex items-center justify-start gap-3" do
-    = icon "flag", class: "size-4 text-zinc-600 group-hover:text-primary-600 flex-shrink-0"
-    %span Report
-    = link_to, class: "px-4 py-[.4rem] hover:text-primary-600 dark:hover:text-primary-500 group flex items-center justify-start gap-3" do
-    = icon "arrow-down-tray", class: "size-4 text-zinc-600 group-hover:text-primary-600 flex-shrink-0"
-    %span Export
-<% end %>
 
 <%= render_snippet %>
 <% end %>

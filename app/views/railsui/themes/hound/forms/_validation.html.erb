@@ -48,21 +48,6 @@
   <%% end %>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/rui/shared/_error_messages.html.erb
-
-- if resource.errors.any?
-  .bg-rose-50.text-rose-700.sm:px-9.sm:py-6.px-6.py-6.rounded-lg.mb-6.dark:border.dark:text-rose-50.text-sm{class: "dark:bg-rose-400/10 dark:border-rose-400/20", role: "alert"}
-    .flex.items-start.space-x-4
-      = icon "shield-exclamation", class: "size-6 text-rose-700 flex-shrink-0", variant: :solid
-      .flex-1
-        %p.font-bold
-          = pluralize(resource.errors.count, "error")
-          prohibited this #{resource.class.name.downcase} from being saved:
-        %ul.list-disc.mt-3.ml-4
-          - resource.errors.each do |error|
-            %li= error.full_message
-<% end %>
 <%= render_snippet active_tab: "erb" %>
 <% end %>
 <% end %>

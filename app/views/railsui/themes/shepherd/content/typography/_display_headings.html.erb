@@ -64,15 +64,6 @@
 <%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "display-6" %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "display-1"
-= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "display-2"
-= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "display-3"
-= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "display-4"
-= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "display-5"
-= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "display-6"
-<% end %>
 
 <%= render_snippet %>
 <% end %>

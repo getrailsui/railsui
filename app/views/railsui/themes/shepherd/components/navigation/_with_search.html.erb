@@ -465,88 +465,6 @@
 </header>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%header.bg-white.dark:bg-zinc-900.px-4.md:py-2.py-3.border-b.rounded-t-xl.relative.z-50{class: "border-zinc-300/80 dark:border-zinc-700/80", "data-controller" => "nav"}
-  .md:flex.items-center.justify-between
-    .md:flex.items-center.md:space-x-4.md:flex-1
-      .md:flex.items-center.justify-between.w-full.md:space-x-3
-        .flex.items-center.justify-between.md:w-auto.w-full
-          = link_to "#" do
-            %h1
-              = icon "logo", custom_path: "/railsui/logo.svg", class: "text-zinc-900 dark:text-white fill-current size-10"
-              %span.sr-only Shepherd
-          %button.md:hidden.flex.items-center.justify-center.size-12.rounded-full.focus:ring-4.focus:ring-zinc-50.focus:bg-white.focus:shadow-sm.group.dark:focus:bg-zinc-800.dark:focus:ring-zinc-600.dark:focus:shadow-sm{"data-action" => "click->nav#toggle", role: "Mobile navigation toggle", type: "button"}
-            = icon "bars-3-center-left", class: "stroke-current size-8 text-zinc-500 group-focus:text-primary-500 dark:text-zinc-400 dark:group-focus:text-zinc-100"
-        .origin-top.md:flex.items-center.hidden.w-full{"data-nav-target" => "nav", "data-transition-enter-active" => "transition ease-out duration-200", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-200", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-          %nav.flex-1{role: "primary navigation"}
-            %ul.md:flex.items-center.md:space-y-0.space-y-4
-              .flex-1.md:flex.items-center
-                = nav_link_to "Nav link", "#"
-              / Search start
-              %li
-                = form_tag url:"#" do
-                  = search_field_tag :query, class: "form-input", class: "form-input", placeholder: "Search"
-              / Search end
-              / Notifications start
-              %li
-                .md:flex.justify-end.md:flex-1.md:mr-4.mr-3.relative{"data-controller" => "railsui-dropdown"}
-                  %button.rounded-full.md:w-10.md:h-10.size-12.border-zinc-300.border.flex.items-center.justify-center.focus:border-zinc-400.focus:ring-4.focus:ring-zinc-100.dark:border-zinc-600.dark:focus:ring-zinc-700.dark:focus:border-zinc-400{class: "hover:border-zinc-400/80", "data-action" => "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide", type: "button"}
-                    .relative
-                      = icon "bell", class: "text-zinc-500 md:w-5 md:h-5 size-6 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 dark:text-zinc-400 stroke-current"
-                      %span.w-2.h-2.bg-red-500.rounded-full.hover:animate-pulse.absolute.top-0.right-0.z-20{class: "dark:bg-primary-500/95"}
-                  .origin-to-right.md:absolute.mt-2.ml-2.md:ml-0.md:mt-0.md:shadow-xl.divide-y.divide-zinc-300.text-left.dark:divide-zinc-700.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.right-0.top-12.bg-white.rounded-lg.shadow-xl.border.border-zinc-300.w-full.z-50.py-2.dark:bg-zinc-900.md:text-sm.text-base.font-medium.text-zinc-600.dark:text-zinc-200{class: "sm:w-[360px] md:min-w-[360px] shadow-zinc-900/10 md:w-[320px] dark:shadow-zinc-900/50 dark:border-zinc-500/60", "data-railsui-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95"}
-                    .px-4.py-3.md:py-2.flex.items-center.justify-between.group
-                      .flex-1
-                        .flex.items-start.gap-2
-                          = image_tag demo_avatar_url(id: "10", variant: "men"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1"
-                          .flex-1
-                            %p.truncate
-                              John D. replied to #{link_to "your comment", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"}
-                            %p.text-xs.text-zinc-500.dark:text-zinc-400 Just now
-                      %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.size-7.group.border.border-zinc-200.hover:border-zinc-300.focus:ring-4.dark:border-zinc-600{class: "hover:bg-zinc-50/50 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:hover:bg-white/20"}
-                        = icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current"
-                    .px-4.py-3.md:py-2.flex.items-center.justify-between.group
-                      .flex-1
-                        .flex.items-start.gap-2
-                          = image_tag demo_avatar_url(id: "14", variant: "women"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Avatar"
-                          .flex-1
-                            %p
-                              Jane D. posted #{link_to "an update", "#", class: "underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"}
-                            %p.text-xs.text-zinc-500.dark:text-zinc-400 15 mins ago
-                      %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.size-7.group.border.border-zinc-200.hover:border-zinc-300.focus:ring-4.dark:border-zinc-600{class: "hover:bg-zinc-50/50 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:hover:bg-white/20"}
-                        = icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current"
-                    .px-4.py-3.md:py-2.flex.items-center.justify-between.group
-                      .flex-1
-                        .flex.items-start.gap-2
-                          = image_tag demo_avatar_url(id:"24", variant: "men"), class: "size-6 object-cover rounded-full flex-shrink-0 mt-1", alt: "Avatar"
-                          .flex-1
-                            %p
-                              Scotty P. shared #{link_to "a repository", "#", class:"underline text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"}
-                            %p.text-xs.text-zinc-500.dark:text-zinc-400 2 hours ago
-                      %button.opacity-0.group-hover:opacity-100.transition.ease-in-out.duration-300.flex.items-center.justify-center.rounded-full.size-7.group.border.border-zinc-200.hover:border-zinc-300.focus:ring-4.dark:border-zinc-600{class: "hover:bg-zinc-50/50 focus:ring-zinc-100/75 bg-white/50 dark:bg-zinc-700/75 dark:focus:ring-zinc-100/10 dark:hover:bg-white/20"}
-                        = icon "x-mark", class: "size-3 text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-zinc-100 dark:text-zinc-50 stroke-current"
-                    %div
-                      = link_to "#", class: "flex items-center justify-between group px-4 pt-3 pb-2 hover:text-primary-500 text-sm group text-zinc-500 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-white font-heading font-normal" do
-                        %span View all notifications
-                        = icon "chevron-right", class: "group-hover:translate-x-1 transform transition ease-in-out size-4 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-primary-200 stroke-current"
-              / Notifications end
-              %li
-                .md:flex.relative{"data-controller" => "railsui-dropdown"}
-                  %button.rounded-full.md:w-10.md:h-10.size-12.border-zinc-300.border.flex.items-center.justify-center.focus:border-zinc-400.focus:ring-4.dark:border-zinc-600.dark:focus:ring-zinc-700{class: "focus:ring-zinc-200/80 hover:border-zinc-300/90 dark:focus:border-zinc-300/90", "data-action" => "click->railsui-dropdown#toggle click@window->dropdown#hide", "data-railsui-dropdown-target" => "trigger"}
-                    %img.md:w-10.md:h-10.size-12.rounded-full.flex-shrink-0.select-none.pointer-events-none{alt: "Shepherd user", src: "https://randomuser.me/api/portraits/men/7.jpg"}/
-                  %ul.hidden.transition.transform.md:origin-top-right.origin-top-left.absolute.md:right-0.md:left-auto.right-auto.left-0.top-12.bg-white.rounded-lg.shadow-xl.border.border-zinc-300.z-50.py-2.dark:bg-zinc-900.text-base.font-normal.text-zinc-600.dark:text-zinc-200.font-heading{class: "shadow-zinc-900/10 w-[200px] dark:shadow-zinc-900/50 dark:border-zinc-500/60 md:text-[14px]", "data-railsui-dropdown-target" => "menu", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
-                    %li
-                      = link_to "Inbox", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block"
-                    %li
-                      = link_to "Manage properties", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block"
-                    %li
-                      = link_to "Add booking", "#", class: "md:py-1 py-2 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 block"
-                    %li.border-b{class: "border-zinc-300/80 dark:border-zinc-700/80 my-1.5"}
-                    %li
-                      = link_to "Account", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left"
-                    %li
-                      = link_to "Sign out", "#", class: "py-1.5 px-4 hover:text-primary-600 focus:text-primary-600 w-full group text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 font-light text-sm block text-left"
-<% end %>
 
 <% content_for :js, flush: true do %>
 // app/javascript/controllers/nav_controller.js
@@ -573,7 +491,7 @@ export default class extends Controller {
 }
 <% end %>
 
-<%= render_snippet(html_filename: "nav.html", erb_filename: "_nav.html.erb", haml_filename: "_nav.haml.erb", js_filename: "nav_controller.js") %>
+<%= render_snippet(html_filename: "nav.html", erb_filename: "_nav.html.erb", js_filename: "nav_controller.js") %>
 <% end %>
 <% end %>
 </div>

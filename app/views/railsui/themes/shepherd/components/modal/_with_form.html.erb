@@ -194,29 +194,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%div{"data-controller" => "modal"}
-  = button_tag "Open modal with form", type: "button", class: "btn btn-primary", data: { action: "click->modal#open" }, "tabindex": "0"
-  .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "modal-with-form", "aria-modal" => "true", "data-action" => "keyup@window->modal#closeWithEsc", "data-modal-target" => "container", role: "dialog"}
-    .h-screen.w-full.relative.flex.items-center.justify-center
-      .hidden.rounded-xl.shadow-xl.mx-auto.max-w-lg.bg-white.m-1.p-8.origin-bottom.relative.dark:bg-zinc-800.dark:text-zinc-200{"data-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
-        = button_tag type: "button", class: "absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" do
-          = icon "x-mark", class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400"
-        .mb-4
-          %h2#modal-with-form.text-3xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Subscribe
-          .prose.prose-zinc.my-4.dark:prose-invert
-            %p Interested in learning more about real estate investing and development? Enter your information below and one of our team members will be in touch.
-        \&lt;%= form_with(model: subscriber) do |form| %&gt;
-        .form-group
-          = form.label :email, class: "form-label"
-          = form.text_field :email, class: "form-input", placeholder: "saasquatch@railsui.com"
-        .form-group
-          = form.label :reason, class: "form-label"
-          = form.text_area :reason, class: "form-textarea", placeholder: "In a couple sentences let us know your reason for joining the Shepherd community"
-        .mt-6.flex.justify-start.items-center.flex-wrap.space-x-3
-          = form.submit "Subscribe", class: "btn btn-primary"
-          = link_to "Skip for now", "#", class: "btn btn-transparent", data: { action: "click->modal#close" }
-<% end %>
 
 <% content_for :js, flush: true do %>
 import { RailsuiModal } from 'railsui-stimulus'

@@ -197,46 +197,8 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/users/registrations/edit.html.erb
-.max-w-4xl.mx-auto.px-4.my-10
-  %h1.h2 Account
-  .my-6
-    %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Profile
-    %p.text-sm.text-slate-600.dark:text-slate-400 This information will often be displayed publically.
-  = form_with model: @user, method: :put do |f|
-    = render "rui/shared/error_messages", resource: resource
-    .py-10.mt-6.border-t.border-slate-200.dark:border-slate-700
-      %h2.font-normal.text-lg.text-slate-700.dark:text-slate-200.mb-2 Personal details
-      %p.text-sm.text-slate-600.dark:text-slate-400 This information will not be displayed publically.
-    .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
-      %div
-        = f.label :email, class: "form-label"
-        = f.email_field :email, autocomplete: "email", class: "form-input"
-      %div
-        = f.label :password, class: "form-label"
-        = f.password_field :password, autocomplete: "new-password", class: "form-input"
-        %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Leave this blank if you don't want to change it
-        - if @minimum_password_length
-          %p.text-xs.text-slate-700.dark:text-slate-400
-            = @minimum_password_length
-            characters minimum
-    .grid.grid-cols-1.sm:grid-cols-2.sm:gap-10.gap-4.items-start.form-group
-      %div
-        = f.label :password_confirmation, class: "form-label"
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
-      %div
-        = f.label :current_password, class: "form-label"
-        = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
-        %p.text-xs.text-slate-700.my-1.dark:text-slate-400 Your current password is required to update your account.
-    .flex.items-center.space-x-4.pt-10.border-t.mt-10.border-slate-200.dark:border-slate-700
-      = f.submit "Update", class: "btn btn-primary"
-      = link_to "Cancel", root_path, class: "btn btn-white", data: { turbo: false }
-  .flex.justify-end
-    = button_to "Cancel account", "/users", data: { confirm: "Are you sure?" }, method: :delete, class: "text-slate-400 hover:text-slate-600 font-semibold text-sm relative -top-8"
-<% end %>
 
-<%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb" %>
 
 <% end %>
 <% end %>

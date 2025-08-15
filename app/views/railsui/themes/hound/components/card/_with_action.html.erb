@@ -42,19 +42,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.rounded-md.bg-white.p-6.dark:bg-slate-800.dark:text-white.border(class="border-slate-300/70 dark:border-slate-600/70")
-  .-mx-6.border-b.border-slate-200.dark:border-slate-700.px-6.pb-4.mb-4.flex.items-center.justify-between.flex-wrap
-    %h1.text-2xl.font-extrabold.text-slate-900.dark:text-slate-100.tracking-tight Posts
-    = link_to "New post", "#", class: "btn btn-primary"
-  %ul.last-child:pb-0.pointer-events-none.select-none(class="divide-slate-300/70 dark:divide-slate-600/70")
-    %li.py-3.-mx-6.px-6
-      = link_to "Post title 1", "#", class: "btn-link"
-      %p.text-slate-700.dark:text-slate-400 Lorem ipsum dolor sit amet consectetur...
-    %li.pt-3.-mx-6.px-6
-      = link_to "Post title 2", "#", class: "btn-link"
-      %p.text-slate-700.dark:text-slate-400 Lorem ipsum dolor sit amet consectetur...
-<% end %>
 
 <%= render_snippet(active_tab: :erb) %>
 <% end %>

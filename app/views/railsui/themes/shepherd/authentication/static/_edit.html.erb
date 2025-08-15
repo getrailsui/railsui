@@ -479,74 +479,8 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-/ app/views/users/registrations/edit.html.erb
-.relative.md:py-10.py-8.border-b{class: "min-h-[160px] border-zinc-200/80 dark:border-zinc-700/80"}
-  .opacity-5.blur-4xl.absolute.inset-0.w-full.h-full.bg-gradient-to-r.from-white.z-0{class: "via-primary-500/40 via-[24.79%] to-[#177BB5]"}
-  .relative.z-20
-    %h1.h2.text-center Account
-    %p.font-light.font-heading.text-center.py-4.text-zinc-700.dark:text-zinc-300 Manage everything in one convenient place.
-.container.mx-auto.px-4.md:pb-16.pb-6.mb-24
-  / Dynamic tabs relative to what pages are installed
-  = render "rui/shared/account/tabs"
-  = form_with(model: @user, method: :put) do |f|
-    .max-w-xl.mx-auto
-      = render "rui/shared/error_messages", resource: f.object
-      %h2.mt-6.mb-3.h3 Profile
-      .prose.prose-zinc.mb-6.pb-3.dark:prose-invert
-        %p Edit your profile details.
-      / Email
-      .form-group
-        = f.label :email, class: "form-label form-label-required"
-        = f.email_field :email, autocomplete: "email", class: "form-input"
-      .form-group
-        = f.label :password, class: "form-label"
-        = f.password_field :password, autocomplete: "new-password", class: "form-input"
-        .flex.justify-between.items-center.prose.prose-sm.text-xs.prose-zinc.dark:prose-invert.prose-p:m-0.my-2.max-w-full
-          - if @minimum_password_length
-            %p
-              = @minimum_password_length
-              characters minimum
-          %p Leave this blank if you don't want to change it
-      .form-group
-        = f.label :password_confirmation, class: "form-label"
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
-      .from-group
-        = f.label :current_password, class: "form-label form-label-required"
-        = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
-        .flex.justify-between.items-center.prose.prose-sm.text-xs.prose-zinc.dark:prose-invert.prose-p:m-0.my-2.max-w-full
-          %p Your current password is required to update your account.
-      %h4.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight.pt-10 Social media
-      .prose.prose-zinc.dark:prose-invert.mb-6
-        %p You could optionally add social media accounts in this section.
-      .form-group
-        %label.form-label.sr-only{for: "user[x]"} X
-        .relative
-          %input.form-input.w-full.pl-14{id: "user[x]", placeholder: "https://x.com/username", type: "text"}/
-          %span.w-12.bg-white.rounded-l-full.border-zinc-300.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] dark:border-zinc-600/80"}
-            = icon "x", custom_path: "/railsui/social/x.svg", class: "size-5", variant: :solid
-      .form-group
-        %label.form-label.sr-only{for: "user[facebook]"} Facebook
-        .relative
-          %input.form-input.w-full.pl-14{id: "user[facebook]", placeholder: "https://facebook.com/username", type: "text"}/
-          %span.w-12.bg-white.rounded-l-full.border-zinc-300.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] dark:border-zinc-600/80"}
-            = icon "facebook", custom_path: "/railsui/social/facebook.svg", class:  "size-5 fill-current"
-      .form-group
-        %label.form-label.sr-only{for: "user[github]"} GitHub
-        .relative
-          %input.form-input.w-full.pl-14{id: "user[github]", placeholder: "https://github.com/username", type: "text"}/
-          %span.w-12.bg-white.rounded-l-full.border-zinc-300.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] dark:border-zinc-600/80"}
-            = icon "github", custom_path: "/railsui/social/github.svg", class: "size-5 fill-current"
-      .form-group
-        %label.form-label.sr-only{for: "user[linkedin]"} LinkedIn
-        .relative
-          %input.form-input.w-full.pl-14{id: "user[linkedin]", placeholder: "https://linkedin.com/in/username", type: "text"}/
-          %span.w-12.bg-white.rounded-l-full.border-zinc-300.flex.items-center.justify-center.absolute.left-px.top-px.border-r.peer-focus:border-zinc-500.text-zinc-500.peer-focus:text-primary-600.dark:bg-zinc-800.dark:text-zinc-400{class: "h-[40px] dark:border-zinc-600/80"}
-            = icon "linkedin", custom_path: "/railsui/social/linkedin.svg", class: "size-5 fill-current"
-      = f.submit "Save changes", class:"btn btn-primary"
-<% end %>
 
-<%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb", haml_filename: "edit.haml.erb" %>
+<%= render_snippet active_tab: "erb", erb_filename: "edit.html.erb" %>
 <% end %>
 <% end %>
 

@@ -125,37 +125,6 @@
   </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.flex.flex-wrap.md:justify-between.justify-center.items-center.space-y-2
-  %p.text-zinc-600.dark:text-zinc-200.text-sm.block.w-full.md:w-auto.md:text-left.text-center
-    Viewing page
-  %strong 1
-    with
-  %strong 24
-    results per page
-  %nav.text-zinc-600.dark:text-zinc-200.text-base.w-auto.flex.font-medium{"aria-label" => "Page navgiation", class: "md:text-sm"}
-    %ul.flex.flex-wrap.items-center.justify-center.w-auto.divide-x.divide-zinc-300{class: "dark:divide-zinc-600/80"}
-      %li.flex.justify-start.items-center
-        %a.bg-white.rounded-l-xl.flex.items-center.justify-center.border-l.border-y.border-zinc-300.hover:bg-zinc-50.dark:bg-zinc-800.dark:hover:bg-zinc-700.dark:border-zinc-600.font-heading.w-10.h-10.group{href: "#"}
-        = icon "chevron-left", class:  "size-5 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200", title: "Previous"
-      %li
-        = link_to "1", "#", class: "bg-primary-500 border-primary-500 text-white flex items-center justify-center hover:bg-primary-600 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:border-zinc-600 size-10"
-      %li
-        = link_to "2", "#", class: "bg-white flex items-center justify-center border-y border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:border-zinc-600 size-10"
-      %li
-        = link_to "3", "#", class: "bg-white flex items-center justify-center border-y border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:border-zinc-600 size-10"
-      %li.md:block.hidden
-        %span.bg-white.flex.items-center.justify-center.border-y.border-zinc-300.hover:bg-zinc-50.dark:bg-zinc-800.dark:hover:bg-zinc-700.dark:border-zinc-600.font-heading.w-10.h-10 …
-      %li
-        = link_to "8", "#", class: "bg-white flex items-center justify-center border-y border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:border-zinc-600 size-10"
-      %li
-        = link_to "9", "#", class: "bg-white flex items-center justify-center border-y border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:border-zinc-600 size-10"
-      %li
-        = link_to "10", "#", class: "bg-white flex items-center justify-center border-y border-zinc-300 hover:bg-zinc-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:border-zinc-600 size-10"
-      %li.flex.justify-end.items-center
-        = link_to "#", class: "bg-white flex justify-center items-center rounded-r-xl hover:bg-zinc-50 group hover:text-primary-600 border-y border-r border-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:border-zinc-600 size-10 text-center" do
-          = icon "chevron-right", class: "size-5 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200", title: "Next"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

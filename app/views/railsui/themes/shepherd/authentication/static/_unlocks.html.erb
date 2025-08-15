@@ -89,23 +89,8 @@
 <%% end %>
 <% end %>
 
-<% content_for :haml do %>
-/ app/views/users/unlocks/new.html.erb
-= render "users/auth_layout" do
-  %h1.text-3xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight.mb-6 Resend unlock instructions
-  = form_with(model: @user, method: :post) do |f| do |f|
-    = render "rui/shared/error_messages", resource: resource
-    .form-group
-      = f.label :email, class: "form-label"
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", pattern: "[^@\s]+@[^@\s]+\.[^@\s]+", title: "Invalid email address", placeholder: "john.doe@example.com"
-    = f.submit "Resend unlock instructions", class: "btn btn-primary w-full"
 
-- content_for :links do
-  %p
-    = link_to "Didn't recieve confirmation instructions?", "#"
-<% end %>
-
-<%= render_snippet active_tab: "erb", html_filename: "new.html", erb_filename: "new.html.erb", haml_filename: "new.haml.erb" %>
+<%= render_snippet active_tab: "erb", html_filename: "new.html", erb_filename: "new.html.erb" %>
 <% end %>
 <% end %>
 

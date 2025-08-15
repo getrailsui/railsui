@@ -36,14 +36,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.text-secondary-700.rounded-xl.py-4.px-6.flex.justify-between.items-center.dark:text-secondary-100.relative(class="bg-secondary-50/90 dark:bg-secondary-50/10")
-  .flex-1
-    %p.text-secondary-800.font-heading.dark:text-secondary-300.font-medium A dismissible notice
-    %p.my-1.pr-4 This alert contains important information. Please read it carefully and take any necessary actions before dismissing.
-  %button.w-8.h-8.rounded-full.bg-transparent.transition.ease-in-out.duration-300.flex.items-center.justify-center.absolute.top-2.right-2.group(class="hover:bg-secondary-700/80 dark:hover:bg-secondary-500/80" type="button")
-    = icon "x-mark", class: "size-5 text-secondary-700 group-hover:text-secondary-100 dark:text-secondary-300 dark:group-hover:text-secondary-100", title: "Dismiss"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

@@ -83,13 +83,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-.rounded-lg.shadow-xs.bg-white.p-6.dark:bg-zinc-800.dark:text-white.border{class: "shadow-zinc-400/20 dark:border-zinc-600/80 dark:shadow-zinc-950/40 border-zinc-300"}
-  .pb-6.mb-4.flex.items-center.justify-between.flex-wrap
-    %h1.text-4xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Posts
-    = link_to "New post", "#", class: "btn btn-primary"
-  / content
-<% end %>
 
 <%= render_snippet %>
 <% end %>

@@ -36,27 +36,6 @@
 <%%= tag.p tag.em "This line rendered as italicized text." %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-%p
-  You can use the mark tag to
-  %mark highlight
-  text.
-%p
-  %del This line of text is meant to be treated as deleted text.
-%p
-  %s This line of text is meant to be treated as no longer accurate.
-%p
-  %ins This line of text is meant to be treated as an addition to the document.
-%p
-  %u This line of text will render as underlined.
-%p
-  %small This line of text is meant to be treated as fine print.
-%p
-  %strong This line rendered as bold text.
-%p
-  %em This line rendered as italicized text.
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

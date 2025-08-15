@@ -35,20 +35,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-  .mb-3
-    = label_tag :input_1, "Email address", class: "form-label"
-    = email_field_tag :input_1, "name@example.com", class: "form-input"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .mb-3
-    = f.label :input_1, "Email address", class: "form-label"
-    = f.email_field :input_1, placeholder: "name@example.com", class: "form-input"
-  = f.submit class: "btn btn-primary"
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>
@@ -94,20 +80,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group
-  = label_tag :textarea, "Speak your mind", class: "form-label"
-  = text_area_tag :textarea, class: "form-input"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    = f.label :textarea, "Speak your mind", class: "form-label"
-    = f.text_area :textarea, class: "form-textarea"
-  = f.submit class: "btn btn-primary"
-<% end %>
 
 <%= render_snippet %>
 <% end %>
@@ -165,20 +137,6 @@
   <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group
-  = label_tag :file, "File input label", class: "form-label"
-  = file_field_tag :file, class: "form-input"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    = f.label :file, "File input label", class: "form-label"
-    = f.file_field :file, class: "form-file"
-  = f.submit class: "btn btn-primary"
-<% end %>
 
 <%= render_snippet %>
 <% end %>
@@ -226,20 +184,6 @@
 <%% end %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-  / ActionView::Helpers::FormTagHelper
-.form-group
-  = label_tag :color, "Choose a color", class: "form-label"
-  = color_field_tag :color, "#fb7185", class: "form-input-color"
-
-/ ActionView::Helpers::FormHelper
-= form_with model: @form do |f|
-  .form-group
-    = f.label :color, "Choose a color", class: "form-label"
-    = f.color_field :color, value: "#fb7185", class: "form-input-color"
-  = f.submit class: "btn btn-primary"
-<% end %>
 
 <%= render_snippet %>
 <% end %>
@@ -327,36 +271,6 @@
 <%% end %>
 <% end %>
 
-  <%# .haml %>
-<% content_for :haml, flush: true do %>
-/ ActionView::Helpers::FormTagHelper
-.form-group
-  %label.form-label{:for => "datalist"} Datalist example
-  .relative
-    %input#datalist.form-input.form-input-datalist{:list => "datalistOptions", :placeholder => "Type to search"}/
-    = icon "chevron-down", class: "size-4 absolute top-3 right-3 stroke-current text-zinc-500"
-  %datalist#datalistOptions
-    %option{:value => "San Francisco"}
-    %option{:value => "New York"}
-    %option{:value => "Seattle"}
-    %option{:value => "Los Angeles"}
-    %option{:value => "Chicago"}
-
-/ ActionView::Helpers::FormHelper
-= form_with @form do |f|
-  .form-group
-    = f.label :datalist, "Datalist example", class: "form-label"
-    .relative
-      = f.text_field :datalist, class: "form-input form-input-datalist", list: "datalistOptions", placeholder: "Type to search"
-      = icon "chevron-down", class: "size-4 absolute top-3 right-3 stroke-current text-zinc-500"
-    %datalist#datalistOptions
-      %option{:value => "San Francisco"}
-      %option{:value => "New York"}
-      %option{:value => "Seattle"}
-      %option{:value => "Los Angeles"}
-      %option{:value => "Chicago"}
-  = f.submit class: "btn btn-primary"
-<% end %>
 
   <%= render_snippet %>
   <% end %>
@@ -398,13 +312,6 @@
 <%% end %>
 <% end %>
 
-  <%# .haml %>
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group{"data-controller" => "railsui-range"}
-    = f.label :volume, class: "form-label"
-    = f.range_field: :volume, class: "form-input-range", max: "100", min: "2", value: "25", data: {  "railsui-range-target": "range", action: "input->railsui-range#onInput" }
-<% end %>
 
 <% content_for :js, flush: true do %>
 // For reference only: This is already included in the your application.js file.
@@ -452,12 +359,6 @@ application.register('railsui-range', RailsuiRange)
 <% end %>
 
 
-<% content_for :haml, flush: true do %>
-= form_with model: @form do |f|
-  .form-group
-    = f.label :date, "Choose date", class: "form-label"
-    = f.date_field :date, class: "form-input", "aria-label": "Choose date"
-<% end %>
 
 <% content_for :js, flush: true do %>
 
@@ -497,20 +398,6 @@ application.register('railsui-range', RailsuiRange)
   <input type="hidden" data-railsui-date-range-picker-target="input">
 </button>
     <% end %>
-    <% content_for :haml, flush: true do %>
-
-    <% end %>
-    <%= render_snippet(active_tab: "erb") %>
-  </div>
-
-<%= render preview(variant="zinc") do %>
-<button type="button" data-controller="railsui-date-range-picker"
-  class="btn btn-white sm:w-[188px] gap-3 flex items-center whitespace-nowrap w-full justify-center">
-  <%= icon "calendar-days", class: "size-5 text-zinc-500 dark:text-zinc-400" %>
-  <span data-railsui-date-range-picker-target="label"></span>
-  <input type="hidden" data-railsui-date-range-picker-target="input">
-</button>
-<% end %>
 
 
 <% content_for :example, flush: true do %>
@@ -534,12 +421,6 @@ application.register('railsui-range', RailsuiRange)
 <% end %>
 
 
-<% content_for :haml, flush: true do %>
-%button.btn.btn-white.space-x-3.flex.items-center.whitespace-nowrap.w-full.justify-center(class="sm:w-[188px]" data-controller="railsui-date-range-picker" type="button")
-  = icon "calendar-days", class: "size-5 text-zinc-500 dark:text-zinc-400"
-  %span(data-railsui-date-range-picker-target="label")
-  %input(data-railsui-date-range-picker-target="input" type="hidden")/
-<% end %>
 
 <% content_for :js, flush: true do %>
 // For reference only: This is already included in the your application.js file.

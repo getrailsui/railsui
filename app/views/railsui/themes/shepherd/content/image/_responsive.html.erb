@@ -18,10 +18,6 @@
   <%%= image_tag "...", class: "max-w-full", alt:"..." %>
 <% end %>
 
-<%# .haml %>
-<% content_for :haml, flush: true do %>
-  %img.max-w-full{:alt => "...", :src => "..."}
-<% end %>
 <%= render_snippet %>
 <% end %>
 <% end %>

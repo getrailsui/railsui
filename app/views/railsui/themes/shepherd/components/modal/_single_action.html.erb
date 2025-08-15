@@ -140,20 +140,6 @@
 </div>
 <% end %>
 
-<% content_for :haml, flush: true do %>
-%div{"data-controller" => "railsui-modal"}
-  = button_tag "Open single action", type: "button", class: "btn btn-primary", data: { action: "click->modal#open:prevent" }
-  .hidden.fixed.inset-0.z-50.overflow-y-auto{"aria-labelledby" => "single-action-modal-title", "aria-modal" => "true", "data-railsui-modal-target" => "container", role: "dialog"}
-    .h-screen.w-full.relative.flex.items-center.justify-center
-      .hidden.rounded-xl.mx-auto.shadow-xl.max-w-xs.bg-white.m-1.p-8.origin-bottom.text-center.dark:bg-zinc-800.dark:text-zinc-200.text-zinc-600{"data-action" => "keyup@window->railsui-modal#closeWithEsc", "data-railsui-modal-target" => "content", "data-transition-enter-active" => "transition ease-out duration-300", "data-transition-enter-from" => "transform opacity-0 scale-95", "data-transition-enter-to" => "transform opacity-100 scale-100", "data-transition-leave-active" => "transition ease-in duration-300", "data-transition-leave-from" => "transform opacity-100 scale-100", "data-transition-leave-to" => "transform opacity-0 scale-95"}
-        .flex.justify-center
-          .size-12.rounded-full.bg-emerald-50.flex.items-center.justify-center.mb-3{class: "dark:bg-emerald-600/10"}
-            = icon "rocket-launch", class: "size-6 text-emerald-600 dark:text-emerald-500 flex-shrink-0"
-        %h3#single-action-modal-title.text-2xl.font-semibold.font-heading.text-zinc-900.dark:text-zinc-100.tracking-tight Time to launch
-        .prose.prose-zinc.my-4.dark:prose-invert
-          %p Your project is ready to go live. Double-check all settings before launching.
-        = button_tag "Launch away", type: "button", class: "btn btn-primary w-full", data: { action: "click->railsui-modal#close" }
-<% end %>
 
 <% content_for :js, flush: true do %>
 import { RailsuiModal } from 'railsui-stimulus'
