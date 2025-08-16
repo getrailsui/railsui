@@ -2,9 +2,11 @@
 <%= render layout: example, locals: { heading: "Pagy gem", section: "Pagination" } do %>
 
   <div class="prose prose-slate dark:prose-invert my-6">
-    <p><%= link_to "Pagy", "https://github.com/ddnexus/pagy", target: :_blank %> is a popular pagination solution for Ruby/Rails developers. The nav partial <%= link_to "from the gem", "https://github.com/ddnexus/pagy/tree/master/lib/templates", target: :_blank %> comes ready to use with Rails UI.</p>
+    <p><%= link_to "Pagy", "https://github.com/ddnexus/pagy", target: :_blank %> is a popular pagination solution for Ruby/Rails developers. This implementation uses Pagy's default <code>pagy_nav</code> helper with custom CSS styling to match the Rails UI design system.</p>
 
-    <p>To make use of this UI you will need to render an alternative partial containing the code below with the <code>@pagy</code> instance variable passed through as a local variable inside the partial.</p>
+    <p>To use this design, include the CSS styles in your stylesheet and use the simple ERB snippet below. The <code>@pagy</code> instance variable should be passed to your view from the controller.</p>
+    
+    <p>The CSS overrides Pagy's default styling using Tailwind's <code>@apply</code> directive to apply Rails UI classes while maintaining all of Pagy's built-in functionality.</p>
   </div>
 
 <%= render preview 'gray' do %>
@@ -41,50 +43,53 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
-<!-- Source: https://github.com/ddnexus/pagy/blob/master/lib/templates/nav.html.erb -->
-
-<%% link = pagy_link_proc(pagy) %>
-<nav aria-label="pager" class="text-slate-500 sm:text-sm text-base font-medium" role="navigation">
-  <div class="flex flex-wrap items-center sm:justify-between justify-center">
-  <%% if pagy.prev %>
-    <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
-      <%%== link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mb-0 mb-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
-    </div>
-  <%% else %>
-    <div class="sm:flex-1 flex justify-start items-center sm:w-auto w-full">
-      <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mb-0 mb-3 pointer-events-none select-none">
-        <%%== pagy_t('pagy.nav.prev') %>
-      </span>
-    </div>
-  <%% end %>
-
-  <!-- series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36]  -->
-  <%% pagy.series.each do |item| %>
-    <%% if item.is_a?(Integer) %>
-      <%%== link.call(item, item, 'class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200"') %>
-    <%% elsif item.is_a?(String) %>
-      <span class="py-2 px-4 border-t-2 border-transparent block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400"><%%= item %></span>
-    <%% elsif item == :gap %>
-      <span class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none"><%%== pagy_t('pagy.nav.gap') %></span>
-    <%% end %>
-  <%% end %>
-
-  <%% if pagy.next %>
-    <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
-      <%%== link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next" class="flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-slate-50 sm:mt-0 mt-3 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white"') %>
-    </div>
-  <%% else %>
-    <div class="sm:flex-1 flex justify-end items-center sm:w-auto w-full">
-      <span class="opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded sm:w-auto w-full bg-transparent sm:mt-0 mt-3 pointer-events-none select-none">
-        <%%== pagy_t('pagy.nav.next') %>
-      </span>
-    </div>
-  <%% end %>
-  </div>
-</nav>
+<%%== pagy_nav(pagy) %>
 <% end %>
 
-<%= render_snippet active_tab: "erb" %>
+<% content_for :css, flush: true do %>
+/* Custom Pagy Styles - Override defaults with hound theme design */
+.pagy nav {
+  @apply text-slate-500 text-sm font-medium dark:text-slate-300;
+}
+
+.pagy nav > div {
+  @apply flex flex-wrap items-center justify-between;
+}
+
+/* Previous/Next buttons */
+.pagy nav > div > span:first-child,
+.pagy nav > div > span:last-child {
+  @apply flex-1 flex justify-start items-center w-auto;
+}
+
+.pagy nav > div > span:last-child {
+  @apply justify-end;
+}
+
+.pagy nav a[aria-label*="prev"],
+.pagy nav a[aria-label*="next"] {
+  @apply flex justify-center items-center gap-2 py-2 px-4 rounded hover:bg-slate-50/50 group hover:text-primary-600 w-auto bg-transparent mb-0 mt-0 dark:hover:bg-primary-600 dark:hover:text-white dark:bg-primary-600 dark:text-white;
+}
+
+.pagy nav span:disabled {
+  @apply opacity-40 dark:opacity-60 flex justify-center items-center gap-2 py-2 px-4 rounded w-auto bg-transparent mb-0 mt-0 pointer-events-none select-none;
+}
+
+/* Page number links */
+.pagy nav a:not([aria-label]) {
+  @apply py-2 px-4 block border-t-2 border-transparent rounded hover:bg-slate-50/50 dark:hover:bg-slate-500/30 dark:hover:text-slate-200;
+}
+
+.pagy nav a.current {
+  @apply py-2 px-4 border-t-2 border-transparent block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:border-primary-600 dark:text-primary-400;
+}
+
+.pagy nav span.gap {
+  @apply py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none;
+}
+<% end %>
+
+<%= render_snippet active_tab: "css" %>
 <% end %>
 <% end %>
 </div>
