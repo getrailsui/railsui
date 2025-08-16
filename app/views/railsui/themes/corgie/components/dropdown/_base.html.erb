@@ -3,13 +3,11 @@
 
 <%= render preview('neutral') do %>
 <div class="flex md:flex-row flex-col flex-wrap items-center justify-start md:space-x-3 space-x-0 space-y-3 md:space-y-0 font-tiktok">
-<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-primary" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown", label: "Dropdown", class: "btn-primary" %>
 
-<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-dark" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown", label: "Dropdown", class: "btn-ghost" %>
 
-<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-light" %>
-
-<%= render "railsui/themes/hound/components/dropdown/dropdown", label: "Dropdown", class: "btn-white" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown", label: "Dropdown", class: "btn-white" %>
 </div>
 <% end %>
 
@@ -21,16 +19,16 @@
     <%%= icon "chevron-down", class: "size-3" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200"
+    class="hidden dropdown-menu top-10"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95"
     >
-    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Bookmark</a>
-    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Report</a>
-    <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+    <a href="#" class="dropdown-item">Bookmark</a>
+    <a href="#" class="dropdown-item">Report</a>
+    <a href="#" class="dropdown-item">Export</a>
   </div>
 </div>
 <% end %>
@@ -42,22 +40,22 @@
     <%%= icon "chevron-down", class: "size-3" %>
   <%% end %>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200"
+    class="hidden dropdown-menu top-10"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95"
     >
-    <%%= link_to "Bookmark", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
-    <%%= link_to "Report", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
-    <%%= link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+    <%%= link_to "Bookmark", "#", class: "dropdown-item" %>
+    <%%= link_to "Report", "#", class: "dropdown-item" %>
+    <%%= link_to "Export", "#", class: "dropdown-item" %>
   </div>
 </div>
 <% end %>
 
 
-<%= render_snippet %>
+<%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>

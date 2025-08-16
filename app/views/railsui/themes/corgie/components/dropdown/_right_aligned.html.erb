@@ -8,7 +8,7 @@
       <%= icon "chevron-down", class:  "size-3" %>
     </button>
     <ul
-class="hidden transition transform origin-top-right absolute right-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200"
+class="hidden dropdown-menu top-10 right-0"
 data-railsui-dropdown-target="menu"
 data-transition-enter-from="opacity-0 scale-95"
 data-transition-enter-to="opacity-100 scale-100"
@@ -16,13 +16,13 @@ data-transition-leave-from="opacity-100 scale-100"
 data-transition-leave-to="opacity-0 scale-95"
 >
       <li>
-        <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Bookmark</a>
+        <a href="#" class="dropdown-item">Bookmark</a>
       </li>
       <li>
-        <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Report</a>
+        <a href="#" class="dropdown-item">Report</a>
       </li>
       <li>
-        <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+        <a href="#" class="dropdown-item">Export</a>
       </li>
     </ul>
   </div>
@@ -35,18 +35,18 @@ data-transition-leave-to="opacity-0 scale-95"
     Right-aligned Dropdown Menu
     <%%= icon "chevron-down", class:  "size-3 ml-2" %>
   </button>
-  <ul class="hidden transition transform origin-top-right absolute -left-1 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 min-w-[200px] z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 text-sm font-medium text-neutral-600 dark:text-neutral-200" data-railsui-dropdown-target="menu"
+  <ul class="hidden dropdown-menu top-10 right-0" data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95" data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95">
     <li>
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Bookmark</a>
+      <a href="#" class="dropdown-item">Bookmark</a>
     </li>
     <li>
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Report</a>
+      <a href="#" class="dropdown-item">Report</a>
     </li>
     <li>
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+      <a href="#" class="dropdown-item">Export</a>
     </li>
   </ul>
 </div>
@@ -58,25 +58,25 @@ data-transition-leave-to="opacity-0 scale-95"
     Right-aligned Dropdown Menu
     <%%= icon "chevron-down", class:  "size-3" %>
   <%% end %>
-  <div class="hidden transition transform origin-top-right absolute -left-1 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 min-w-[200px] z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 text-sm font-medium text-neutral-600 dark:text-neutral-200" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
+  <div class="hidden dropdown-menu top-10 right-0" data-railsui-dropdown-target="menu" data-transition-enter-from="opacity-0 scale-95"
   data-transition-enter-to="opacity-100 scale-100"
   data-transition-leave-from="opacity-100 scale-100"
   data-transition-leave-to="opacity-0 scale-95">
     <div>
-      <%%= link_to "Bookmark", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+      <%%= link_to "Bookmark", "#", class: "dropdown-item" %>
     </div>
     <div>
-      <%%= link_to "Report", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+      <%%= link_to "Report", "#", class: "dropdown-item" %>
     </div>
     <div>
-      <%%= link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300" %>
+      <%%= link_to "Export", "#", class: "dropdown-item" %>
     </div>
   </div>
 </div>
 <% end %>
 
 
-  <%= render_snippet %>
+  <%= render_snippet active_tab: :erb %>
 <% end %>
 <% end %>
 </div>
