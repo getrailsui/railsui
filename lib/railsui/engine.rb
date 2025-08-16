@@ -14,6 +14,12 @@ module Railsui
       end
     end
 
+    initializer "my_engine.view_helpers" do
+      ActiveSupport.on_load(:action_view) do
+        # automatic main_app where it counts
+        include Railsui::HostRouteFallbackHelper
+      end
+    end
 
     initializer "railsui.setup" do |app|
       config.assets.precompile << "railsui_manifest.js" if Rails.env.development?
