@@ -1,47 +1,24 @@
-<div id="pagination-minimal">
+<div id="pagination-simple">
 <%= render layout: example, locals: { heading: "Simple", section: "Pagination" } do %>
 
 <%= render preview('neutral') do %>
-<nav aria-label="Page navgiation" class="text-neutral-500 sm:text-sm text-base font-medium dark:text-neutral-300">
-  <ul class="flex flex-wrap items-center sm:justify-between justify-center">
-    <li class="flex-1 flex justify-start items-center sm:w-auto w-full">
-      <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-neutral-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-neutral-50 sm:mb-0 mb-3 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200">
-        <%= icon "arrow-small-left", class: "w-4 h-4 text-neutral-400 group-hover:text-primary-500 dark:group-hover:text-neutral-200" %>
-        <span>Previous</span>
-      </a>
-    </li>
-    <div class="flex items-center justify-center sm:w-auto w-full sm:text-sm text-lg font-tiktok">
-      <li>
-        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200">1</a>
-      </li>
-      <li>
-        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 border-t-2 block border-primary-500 hover:bg-primary-50/50 text-primary-600 dark:text-primary-400 dark:border-primary-400 dark:hover:bg-primary-500/30">2</a>
-      </li>
-      <li>
-        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200">3</a>
-      </li>
-      <li>
-        <span href="#" class="py-2 px-4 block border-t-2 border-transparent rounded pointer-events-none select-none">&hellip;</span>
-      </li>
-       <li>
-        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200">8</a>
-      </li>
-       <li>
-        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200">9</a>
-      </li>
-       <li>
-        <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="py-2 px-4 block border-t-2 border-transparent rounded hover:bg-neutral-50/50 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200">10</a>
-      </li>
-
-    </div>
-    <li class="flex-1 flex justify-end items-center">
-      <a data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent" href="#" class="flex justify-center items-center space-x-2 py-2 px-4 rounded hover:bg-neutral-50/50 group hover:text-primary-600 sm:w-auto w-full sm:bg-transparent bg-neutral-50 sm:mt-0 mt-3 dark:hover:bg-neutral-500/30 dark:hover:text-neutral-200">
-        <span>Next</span>
-        <%= icon "arrow-small-right", class: "w-4 h-4 text-neutral-400 group-hover:text-primary-500 dark:group-hover:text-neutral-200" %>
-      </a>
-    </li>
-  </ul>
-</nav>
+<div class="flex justify-center mt-16">
+  <nav class="flex gap-2 items-center" aria-label="Pagination">
+    <a href="#" class="btn btn-white size-10">
+      <span class="sr-only">Previous</span>
+      <%= icon "chevron-left", class: "size-5" %>
+    </a>
+    <a href="#" class="btn btn-primary dark:bg-black dark:shadow-sm size-10">1</a>
+    <a href="#" class="btn btn-white size-10">2</a>
+    <a href="#" class="btn btn-white size-10">3</a>
+    <span class="btn btn-white size-10 pointer-events-none cursor-none">...</span>
+    <a href="#" class="btn btn-white size-10">8</a>
+    <a href="#" class="btn btn-white size-10">
+      <span class="sr-only">Next</span>
+      <%= icon "chevron-right", class: "size-5" %>
+    </a>
+  </nav>
+</div>
 <% end %>
 
 <% content_for :example, flush: true do %>
