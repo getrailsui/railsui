@@ -7,9 +7,9 @@
     </div>
 
     <div class="space-y-1">
-      <%= render "rui/shared/chat/link", title: "How to optimize Rails performance?", active: true %>
+      <%= render "rui/shared/sidebar/link", href: rui_chat_show_path, title: "How to optimize Rails performance", active: true %>
 
-      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Explain machine learning concepts" }}
+      <%= render "rui/shared/sidebar/link", href: rui_chat_show_path, title: "Explain machine learning concepts" %>
     </div>
 
     <!-- Yesterday -->
@@ -18,8 +18,9 @@
     </div>
 
     <div class="space-y-1">
-      {{> sidebar/sidebar_link href="/chat/show/index.html" title="CSS Grid vs Flexbox comparison" }}
-      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Best practices for API design" }}
+      <%= render "rui/shared/sidebar/link", href: rui_chat_show_path, title: "CSS Grid vs Flexbox comparison" %>
+
+      <%= render "rui/shared/sidebar/link", href: rui_chat_show_path, title: "Best practices for API design" %>
     </div>
 
     <!-- Previous 7 Days -->
@@ -28,8 +29,8 @@
     </div>
 
     <div class="space-y-1">
-      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Python data structures explained" }}
-      {{> sidebar/sidebar_link href="/chat/show/index.html" title="Docker containerization tutorial" }}
+      <%= render "rui/shared/sidebar/link", href: rui_chat_show_path, title: "Python data structures explained" %>
+      <%= render "rui/shared/sidebar/link", href: rui_chat_show_path, title: "Docker containerization tutorial" %>
     </div>
   </div>
 </div>

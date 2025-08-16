@@ -91,19 +91,19 @@ trix-toolbar .trix-button.trix-button--dialog {
 
 /* prose style content */
 trix-editor {
-  @apply rounded border border-neutral-300 focus:ring-4 focus:ring-neutral-50 focus:border-neutral-500 focus-within:ring-neutral-50 focus-within:border-neutral-500 focus:outline-hidden bg-white shadow-inner p-3 text-base dark:bg-neutral-800 dark:text-white dark:focus:ring-neutral-500/20 dark:border-neutral-700;
+  @apply rounded border border-neutral-300 focus:ring-4 focus:ring-neutral-50 focus:border-neutral-500 focus-within:ring-neutral-50 focus-within:border-neutral-500 focus:outline-hidden bg-white shadow-inner p-3 text-base dark:bg-neutral-800 dark:text-white dark:focus:ring-neutral-500/20 dark:border-neutral-700 font-tiktok;
 }
 
 trix-editor,
 .trix-content {
-  @apply leading-normal font-sans text-base break-words p-4;
+  @apply leading-normal font-sans text-base break-words p-4 font-tiktok;
 
   h1 {
-    @apply text-4xl leading-tight font-extrabold -tracking-[0.03em];
+    @apply text-4xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok tracking-tight;
   }
 
   blockquote {
-    @apply border-0 border-solid border-gray-300 border-l-4 ml-3 pl-6;
+    @apply border-0 border-solid border-neutral-300 border-l-4 ml-3 pl-6;
   }
 
   [dir="rtl"] blockquote,
@@ -120,7 +120,7 @@ trix-editor,
   }
 
   pre {
-    @apply inline-block w-full align-top font-mono text-sm p-2 whitespace-pre bg-gray-200 overflow-x-auto;
+    @apply inline-block w-full align-top font-mono text-sm p-2 whitespace-pre bg-neutral-200 overflow-x-auto;
   }
 
   img {
@@ -152,7 +152,7 @@ trix-editor,
     }
 
     &--file {
-      @apply text-gray-800 leading-none m-0.5 p-2 border border-solid border-gray-400 rounded-md;
+      @apply text-neutral-800 leading-none m-0.5 p-2 border border-solid border-neutral-400 rounded-md;
     }
   }
 

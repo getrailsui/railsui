@@ -4,7 +4,7 @@
   }
 
   .form-label {
-    @apply block mb-1.5 select-none font-medium text-sm text-neutral-700 dark:text-neutral-100;
+    @apply block mb-1.5 select-none font-medium text-sm text-neutral-700 dark:text-neutral-100 font-tiktok;
 
     &.form-label-required {
       @apply after:content-['*'] after:absolute after:text-red-600 after:top-0 relative after:pl-px;
@@ -12,7 +12,7 @@
   }
 
   .form-input {
-    @apply rounded-md px-3 py-1.5 border border-neutral-300 bg-white focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 focus:outline-none dark:bg-neutral-800 dark:focus:border-neutral-600 placeholder-neutral-600/80 dark:focus:ring-neutral-600/30 dark:placeholder:text-neutral-200/50 font-normal antialiased font-sans w-full shadow-neutral-200/30 dark:shadow-neutral-900/20 dark:border-neutral-600/80 shadow-xs;
+    @apply rounded-md px-3 py-1.5 border border-neutral-300 bg-white focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 focus:outline-none dark:bg-neutral-800 dark:focus:border-neutral-600 placeholder-neutral-600/80 dark:focus:ring-neutral-600/30 dark:placeholder:text-neutral-200/50 font-normal antialiased font-sans w-full shadow-neutral-200/30 dark:shadow-neutral-900/20 dark:border-neutral-600/80 shadow-xs font-tiktok;
 
     &:disabled {
       @apply shadow-none cursor-not-allowed pointer-events-none select-none bg-neutral-100/90 dark:bg-neutral-800/90 dark:opacity-70;
@@ -24,7 +24,7 @@
   }
 
   .form-textarea {
-    @apply rounded-md px-3 py-1.5 border border-neutral-300 bg-white shadow-xs focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 focus:outline-none dark:bg-neutral-800 dark:border-neutral-500/80 dark:focus:border-neutral-500 placeholder-neutral-600/80 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 min-h-[100px] w-full;
+    @apply rounded-md px-3 py-1.5 border border-neutral-300 bg-white shadow-xs focus:border-neutral-400/80 focus:ring-4 focus:ring-neutral-400/10 focus:outline-none dark:bg-neutral-800 dark:border-neutral-500/80 dark:focus:border-neutral-500 placeholder-neutral-600/80 dark:focus:ring-neutral-500/40 dark:placeholder:text-neutral-300/60 min-h-[100px] w-full font-tiktok;
 
     &:disabled {
       @apply shadow-none cursor-not-allowed pointer-events-none select-none bg-neutral-100/90 dark:bg-neutral-800/90 dark:opacity-70;
@@ -32,11 +32,11 @@
   }
 
   .form-file {
-    @apply block w-full text-sm text-neutral-500 dark:text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-neutral-100 file:text-neutral-700 hover:file:bg-neutral-200/80 dark:file:bg-neutral-600 dark:file:text-neutral-100 dark:hover:file:text-neutral-100 dark:hover:file:bg-neutral-700;
+    @apply block w-full text-sm text-neutral-500 dark:text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-neutral-100 file:text-neutral-700 hover:file:bg-neutral-200/80 dark:file:bg-neutral-600 dark:file:text-neutral-100 dark:hover:file:text-neutral-100 dark:hover:file:bg-neutral-700 font-tiktok;
   }
 
   .form-input-color {
-    @apply transition border rounded-full appearance-none size-8 border-neutral-200 focus:border-neutral-400 focus:shadow focus:ring-4 focus:ring-neutral-400/10 dark:border-neutral-600;
+    @apply transition border rounded-full appearance-none size-8 border-neutral-200 focus:border-neutral-400 focus:shadow focus:ring-4 focus:ring-neutral-400/10 dark:border-neutral-600 font-tiktok;
 
     &::-webkit-color-swatch-wrapper,
     &::-webkit-color-swatch {
@@ -45,6 +45,8 @@
   }
 
   .form-input-datalist {
+    @apply font-tiktok;
+
     &::-webkit-calendar-picker-indicator {
       @apply hidden!;
     }
@@ -133,7 +135,7 @@
   }
 
   .form-input-error {
-    @apply text-red-800 border-red-500 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20;
+    @apply text-red-800 border-red-500 focus:ring-red-50 focus:border-red-400 dark:border-red-400 dark:text-red-300 dark:focus:ring-red-300/20 font-tiktok;
 
     + svg {
       @apply block!;
@@ -145,7 +147,7 @@
   }
 
   .form-select {
-    @apply appearance-none px-3 py-1.5 border border-neutral-300 bg-white font-normal placeholder:text-neutral-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-neutral-400/10 focus:border-neutral-400/80 text-neutral-900 dark:focus:border-neutral-600 dark:text-white dark:placeholder:text-neutral-400 shadow-xs dark:bg-neutral-800 dark:focus:ring-neutral-500/40 font-sans dark:shadow-neutral-900/20 dark:border-neutral-600/80;
+    @apply appearance-none px-3 py-1.5 border border-neutral-300 bg-white font-normal placeholder:text-neutral-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-neutral-400/10 focus:border-neutral-400/80 text-neutral-900 dark:focus:border-neutral-600 dark:text-white dark:placeholder:text-neutral-400 shadow-xs dark:bg-neutral-800 dark:focus:ring-neutral-500/40 font-sans dark:shadow-neutral-900/20 dark:border-neutral-600/80 font-tiktok;
 
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23a6a09b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
@@ -176,10 +178,10 @@
   }
 
   .form-datetime-select {
-    @apply flex items-center gap-2.5 text-neutral-300;
+    @apply flex items-center gap-2.5 text-neutral-300 font-tiktok;
 
     select {
-      @apply appearance-none px-3 py-1.5 border border-neutral-300 bg-white font-normal placeholder:text-neutral-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-neutral-400/10 focus:border-neutral-400/80 text-neutral-900 dark:focus:border-neutral-600 dark:text-white dark:placeholder:text-neutral-400 shadow-xs dark:bg-neutral-800 dark:focus:ring-neutral-500/40 font-sans dark:shadow-neutral-900/20 dark:border-neutral-600/80;
+      @apply appearance-none px-3 py-1.5 border border-neutral-300 bg-white font-normal placeholder:text-neutral-500 rounded-md block w-full focus:outline-none focus:ring-4 focus:ring-neutral-400/10 focus:border-neutral-400/80 text-neutral-900 dark:focus:border-neutral-600 dark:text-white dark:placeholder:text-neutral-400 shadow-xs dark:bg-neutral-800 dark:focus:ring-neutral-500/40 font-sans dark:shadow-neutral-900/20 dark:border-neutral-600/80 font-tiktok;
 
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23a6a09b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
       background-repeat: no-repeat;
@@ -247,7 +249,7 @@
     }
 
     + label {
-      @apply inline-flex cursor-pointer leading-6 select-none relative font-normal text-[15px];
+      @apply inline-flex cursor-pointer leading-6 select-none relative font-normal text-[15px] font-tiktok;
 
       &:before {
         @apply content-[""] block bg-neutral-300 rounded-full h-6 w-10 mr-3 transition-colors ease-out flex-shrink-0 dark:bg-neutral-700;
@@ -260,7 +262,7 @@
   }
 
   .form-help {
-    @apply mt-1 text-xs text-neutral-500 dark:text-neutral-400;
+    @apply mt-1 text-xs text-neutral-500 dark:text-neutral-400 font-tiktok;
   }
 
   /* Button Toggle - A fancier UI for grouped checkboxes or radio buttons */
@@ -268,7 +270,7 @@
     @apply hidden;
 
     + label {
-      @apply inline-flex items-center gap-1.5 justify-center px-3 py-1.5 text-sm rounded-full transition-all duration-200 cursor-pointer select-none font-medium bg-white shadow-xs outline-1 outline-neutral-300/90 text-neutral-900 hover:bg-neutral-100 focus:outline-neutral-300/90 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-950 shadow-neutral-300/20 dark:outline-neutral-600/90 dark:hover:outline-neutral-600 dark:shadow-none;
+      @apply inline-flex items-center gap-1.5 justify-center px-3 py-1.5 text-sm rounded-full transition-all duration-200 cursor-pointer select-none font-medium bg-white shadow-xs outline-1 outline-neutral-300/90 text-neutral-900 hover:bg-neutral-100 focus:outline-neutral-300/90 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-950 shadow-neutral-300/20 dark:outline-neutral-600/90 dark:hover:outline-neutral-600 dark:shadow-none font-tiktok;
     }
 
     &:checked + label {
@@ -299,7 +301,7 @@
 
   .form-input-button-toggle-ghost {
     + label {
-      @apply bg-transparent text-neutral-700 hover:bg-neutral-100 focus:outline-none focus:ring-4 focus:ring-neutral-500/20 dark:text-neutral-100 dark:hover:bg-neutral-700;
+      @apply bg-transparent text-neutral-700 hover:bg-neutral-100 focus:outline-none focus:ring-4 focus:ring-neutral-500/20 dark:text-neutral-100 dark:hover:bg-neutral-700 font-tiktok;
     }
 
     &:checked + label {
@@ -309,7 +311,7 @@
 
   .form-input-button-toggle-muted {
     + label {
-      @apply shadow-xs bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus:outline-none focus:ring-4 focus:ring-neutral-500/20 dark:bg-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-600 outline-1 outline-neutral-300/90 dark:outline-neutral-700/90 dark:bg-neutral-800 shadow-neutral-300/20;
+      @apply shadow-xs bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus:outline-none focus:ring-4 focus:ring-neutral-500/20 dark:bg-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-600 outline-1 outline-neutral-300/90 dark:outline-neutral-700/90 dark:bg-neutral-800 shadow-neutral-300/20 font-tiktok;
     }
 
     &:checked + label {

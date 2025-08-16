@@ -1,17 +1,23 @@
+<%# locals:(icon_name: "code-bracket", icon_class: "size-5 text-green-600", icon_container_class: "size-12 bg-green-100", title: nil, title_class: "h6 my-1",
+description: nil,  button_text: "View Docs", button_class: "btn btn-primary", button_url: "#") %>
+
 <!-- Feature Card Component -->
 <div class="text-center">
-  <div class="flex items-center justify-center mx-auto mb-6 {{iconContainerClass}} {{#if rounded}}rounded-2xl{{else}}rounded-lg{{/if}}">
-    {{{icon iconName iconClass}}}
+  <div class="flex items-center justify-center mx-auto mb-6 rounded-lg <%= icon_container_class %>">
+    <%= icon icon_name, class: icon_class %>
   </div>
-  <h3 class="{{#if titleClass}}{{titleClass}}{{else}}mb-4 h5{{/if}}">{{title}}</h3>
-  {{#if prose}}
-  <div class="prose text-center prose-neutral dark:prose-invert">
-    <p>{{description}}</p>
-  </div>
-  {{else}}
-  <p class="{{#if descriptionClass}}{{descriptionClass}}{{else}}text-sm text-neutral-500 dark:text-neutral-400 mb-4{{/if}}">{{description}}</p>
-  {{/if}}
-  {{#if buttonText}}
-  <button class="{{#if buttonClass}}{{buttonClass}}{{else}}btn btn-primary{{/if}}">{{buttonText}}</button>
-  {{/if}}
+
+  <% if title %>
+  <h3 class="<%= title_class %>"><%= title %></h3>
+  <% end %>
+
+  <% if description %>
+    <div class="prose-sm prose-neutral dark:prose-invert mb-4 text-center">
+      <p><%= description %></p>
+    </div>
+  <% end %>
+
+  <% if button_url %>
+    <%= link_to button_text, button_url, class: button_class %>
+  <% end %>
 </div>

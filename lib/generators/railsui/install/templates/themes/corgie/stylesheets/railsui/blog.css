@@ -1,6 +1,6 @@
 @layer components {
   .blog-content {
-    @apply prose prose-lg prose-neutral dark:prose-invert;
+    @apply prose prose-lg prose-neutral dark:prose-invert font-tiktok;
 
     h1 {
       @apply h1;
