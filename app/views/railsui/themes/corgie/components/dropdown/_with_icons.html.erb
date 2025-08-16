@@ -3,13 +3,11 @@
 
 <%= render preview('neutral') do %>
 <div class="flex md:flex-row flex-col flex-wrap items-center justify-start md:space-x-3 space-x-0 space-y-3 md:space-y-0 w-full font-tiktok">
-<%= render "railsui/themes/hound/components/dropdown/dropdown_w_icon", label: "Dropdown", class: "btn-primary" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown_w_icon", label: "Dropdown", class: "btn-primary" %>
 
-<%= render "railsui/themes/hound/components/dropdown/dropdown_w_icon", label: "Dropdown", class: "btn-dark" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown_w_icon", label: "Dropdown", class: "btn-ghost" %>
 
-<%= render "railsui/themes/hound/components/dropdown/dropdown_w_icon", label: "Dropdown", class: "btn-light" %>
-
-<%= render "railsui/themes/hound/components/dropdown/dropdown_w_icon", label: "Dropdown", class: "btn-white" %>
+<%= render "railsui/themes/#{Railsui.config.theme.downcase}/components/dropdown/dropdown_w_icon", label: "Dropdown", class: "btn-white" %>
 </div>
 <% end %>
 

@@ -8,7 +8,7 @@
     <%= icon "chevron-down", class: "size-3" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-300/80 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200 divide-y divide-neutral-300/80 dark:divide-neutral-500/75"
+    class="hidden dropdown-menu top-10 divide-y divide-neutral-200 dark:divide-neutral-500/75"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -16,14 +16,14 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <div role="none" class="pb-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Edit</a>
+      <a href="#" class="dropdown-item">Edit</a>
     </div>
     <div role="none" class="py-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Share</a>
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Export</a>
+      <a href="#" class="dropdown-item">Share</a>
+      <a href="#" class="dropdown-item">Export</a>
     </div>
     <div role="none" class="pt-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block dark:hover:text-primary-300">Delete</a>
+      <a href="#" class="dropdown-item">Delete</a>
     </div>
   </div>
 </div>
@@ -37,7 +37,7 @@
     <%%= icon "chevron-down", class: "size-3" %>
   </button>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200 divide-y dark:divide-neutral-500/75"
+    class="hidden dropdown-menu top-10 divide-y divide-neutral-200 dark:divide-neutral-500/75"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -45,14 +45,14 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <div role="none" class="pb-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Edit</a>
+      <a href="#" class="dropdown-item">Edit</a>
     </div>
     <div role="none" class="py-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Share</a>
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Export</a>
+      <a href="#" class="dropdown-item">Share</a>
+      <a href="#" class="dropdown-item">Export</a>
     </div>
     <div role="none" class="pt-1">
-      <a href="#" class="px-4 py-[.4rem] hover:text-primary-600 block">Delete</a>
+      <a href="#" class="dropdown-item">Delete</a>
     </div>
   </div>
 </div>
@@ -65,7 +65,7 @@
     <%%= icon "chevron-down", class: "size-3" %>
   <%% end %>
   <div
-    class="hidden transition transform origin-top-left absolute left-0 top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200 divide-y dark:divide-neutral-500/75"
+    class="hidden dropdown-menu top-10 divide-y divide-neutral-200 dark:divide-neutral-500/75"
     data-railsui-dropdown-target="menu"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
@@ -73,14 +73,14 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <div role="none" class="pb-1">
-      <%%= link_to "Edit", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
+      <%%= link_to "Edit", "#", class: "dropdown-item" %>
     </div>
     <div role="none" class="py-1">
-      <%%= link_to "Share", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
-      <%%= link_to "Export", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
+      <%%= link_to "Share", "#", class: "dropdown-item" %>
+      <%%= link_to "Export", "#", class: "dropdown-item" %>
     </div>
     <div role="none" class="pt-1">
-      <%%= link_to "Delete", "#", class: "px-4 py-[.4rem] hover:text-primary-600 block" %>
+      <%%= link_to "Delete", "#", class: "dropdown-item" %>
     </div>
   </div>
 </div>

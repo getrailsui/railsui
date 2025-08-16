@@ -7,19 +7,19 @@
 }
 
 @utility h3 {
-  @apply text-2xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
+  @apply text-2xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok tracking-tight;
 }
 
 @utility h4 {
-  @apply text-xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
+  @apply text-xl font-normal text-neutral-800 dark:text-neutral-50 font-tiktok tracking-tight;
 }
 
 @utility h5 {
-  @apply text-lg font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
+  @apply text-lg font-normal text-neutral-800 dark:text-neutral-50 font-tiktok tracking-tight;
 }
 
 @utility h6 {
-  @apply text-base font-normal text-neutral-800 dark:text-neutral-50 font-tiktok;
+  @apply text-base font-normal text-neutral-800 dark:text-neutral-50 font-tiktok tracking-tight;
 }
 
 @utility display-1 {
