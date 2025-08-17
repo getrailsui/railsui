@@ -32,8 +32,10 @@
               <span class="h4"><%= Railsui.config.application_name || "Corgie" %></span>
             <% end %>
 
-            <% if title %>
-              <p class="text-neutral-500 dark:text-neutral-400"><%= title %></p>
+            <% if content_for?(:title) %>
+              <p class="text-neutral-500 dark:text-neutral-400">
+                <%= yield :title %>
+              </p>
             <% end %>
           </div>
           <%= yield %>

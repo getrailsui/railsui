@@ -112,6 +112,8 @@ module Railsui
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
       wrapper_options = options.delete(:wrapper) || {}
       label_text = options.delete(:label)
+      label_class = options.delete(:label_class) || "form-label"
+      is_required = options.delete(:required) || false
 
       # Set default flex layout for the wrapper
       wrapper_class = "flex items-center justify-start gap-2"
@@ -123,7 +125,9 @@ module Railsui
 
         if label_text
           check_box_html = super(method, options, checked_value, unchecked_value)
-          label_html = label(method, label_text, class: "form-label")
+          label_options = { class: label_class }
+          label_options[:required] = true if is_required
+          label_html = label(method, label_text, label_options)
           safe_join([check_box_html, label_html])
         else
           super(method, options, checked_value, unchecked_value)
@@ -217,7 +221,9 @@ module Railsui
 
     def label(method, text = nil, options = {})
       add_default_class!(options, "form-label")
-      options[:class] += " form-label-required" if required_field?(method)
+      # Check both the required option and model validators
+      is_required = options.delete(:required) || required_field?(method)
+      options[:class] += " form-label-required" if is_required
       super(method, text, options)
     end
 
@@ -233,6 +239,11 @@ module Railsui
       content_tag(:div, class: "form-group #{options[:class]}", &block)
     end
 
+    def form_help(text, options = {})
+      add_default_class!(options, "form-help text-xs")
+      content_tag(:p, text, options)
+    end
+
     def submit(value = nil, options = {})
       add_default_class!(options, "btn btn-primary")
       super(value, options)
@@ -245,6 +256,7 @@ module Railsui
       label_text = options.delete(:label)
       help_text = options.delete(:help)
       skip_label = options.delete(:skip_label) || false
+      is_required = options[:required] || false
 
       form_group(method, wrapper_options) do
         elements = []
@@ -252,6 +264,8 @@ module Railsui
         # Add label unless skipped
         unless skip_label
           label_options = options.delete(:label_options) || {}
+          # Pass the required flag to the label
+          label_options[:required] = is_required if is_required
           elements << label(method, label_text, label_options) if label_text != false
         end
 
