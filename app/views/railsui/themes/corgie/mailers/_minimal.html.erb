@@ -3,21 +3,24 @@
     <p>The <%= Railsui.config.theme.humanize %> theme's minimal email template provides an excellent foundation for text-centric HTML emails. This streamlined design incorporates <%= link_to "email-compatible HTML elements", "https://www.caniemail.com/features/", target: :_blank %>, ensuring your message renders correctly across various email clients.</p>
   </div>
 
-<%= email_viewer("A minimal template") do %>
+<%= email_viewer("A minimal template", variant: "neutral") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
-    <h1>Welcome to the Byte Side of Life!</h1>
+    <h1>Your workspace is ready</h1>
 
-    <p>Congratulations! You've successfully subscribed to our monthly dose of digital delirium.</p>
+    <p>Hi Sarah,</p>
+
+    <p>Great news! Your team's workspace has been provisioned and is ready to go. Here's what we've set up for you:</p>
 
     <ul>
-      <li>New feature: Automatic bug generator (because who doesn't love a challenge?)</li>
-      <li>Upcoming webinar: "How to turn coffee into code" - A programmer's guide to caffeine-driven development</li>
-      <li>Customer spotlight: How Company X increased their "404 Not Found" errors by 300%</li>
+      <li><strong>Custom domain:</strong> team.yourcompany.io is live</li>
+      <li><strong>Team members:</strong> 5 seats activated with SSO enabled</li>
+      <li><strong>Storage:</strong> 100GB allocated with automatic backups</li>
+      <li><strong>Integrations:</strong> Slack, GitHub, and Jira connected</li>
     </ul>
 
-    <p>We value your feedback almost as much as we value semicolons. If you have any questions, suggestions, or have finally figured out how to exit Vim, please don't hesitate to contact our support team. They're like Stack Overflow, but with more patience and fewer downvotes.</p>
+    <p>Your trial includes all premium features for the next 30 days. No credit card required, and you can upgrade or downgrade anytime.</p>
 
-    <p>We value your laughter and are constantly working to make our services more ridiculous. If you have any complaints or want to share a good joke, please hesitate to reach out to our support team. We're probably napping.</p>
+    <p>P.S. Our data shows teams that complete onboarding in the first week are 3x more likely to achieve their goals. Let's make it happen!</p>
 
     <%= spacer(16) %>
 
@@ -30,24 +33,26 @@
 <% content_for :erb, flush: true do %>
 <!-- app/views/some_mailer/minimal.html.erb -->
 
-<h1>This is a heading</h1>
+<h1>Your workspace is ready</h1>
 
-<%%= spacer(16) %>
+<p>Hi Sarah,</p>
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nulla rem ipsam, praesentium quisquam quidem laboriosam nihil cumque, molestias vero enim corrupti corporis quibusdam mollitia! Dolores ipsum eos animi facere.</p>
-
-<%%= spacer(16) %>
+<p>Great news! Your team's workspace has been provisioned and is ready to go. Here's what we've set up for you:</p>
 
 <ul>
-  <li>List item 1</li>
-  <li>List item 2</li>
-  <li>List item 3</li>
+  <li><strong>Custom domain:</strong> team.yourcompany.io is live</li>
+  <li><strong>Team members:</strong> 5 seats activated with SSO enabled</li>
+  <li><strong>Storage:</strong> 100GB allocated with automatic backups</li>
+  <li><strong>Integrations:</strong> Slack, GitHub, and Jira connected</li>
 </ul>
 
+<p>Your trial includes all premium features for the next 30 days. No credit card required, and you can upgrade or downgrade anytime.</p>
+
+<p>P.S. Our data shows teams that complete onboarding in the first week are 3x more likely to achieve their goals. Let's make it happen!</p>
 
 <%%= spacer(16) %>
 
-<%%= link_to "Learn more", "https://railsui.com" %>
+<%%= email_action "Read more", "https://railsui.com" %>
 <% end %>
 
 

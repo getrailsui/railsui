@@ -1,0 +1,54 @@
+<div id="card-feature">
+<%= render layout: example, locals: { heading: "Feature", section: "Card" } do %>
+<div class="w-[377px]">
+  <div class="card">
+    <div class="flex items-center justify-center mb-6 size-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
+      <%= icon "lock-closed", class: "size-6 text-blue-600 dark:text-blue-400" %>
+    </div>
+    <h3 class="mb-4 h5">End-to-End Encryption</h3>
+    <div class="prose prose-neutral dark:prose-invert">
+      <p>
+        All conversations are encrypted using AES-256 encryption, ensuring your data remains private and secure at
+        all times.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="card">
+  <div class="flex items-center justify-center mb-6 size-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
+    <%= icon "lock-closed", class: "size-6 text-blue-600 dark:text-blue-400" %>
+  </div>
+  <h3 class="mb-4 h5">End-to-End Encryption</h3>
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>
+      All conversations are encrypted using AES-256 encryption, ensuring your data remains private and secure at
+      all times.
+    </p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="card">
+  <div class="flex items-center justify-center mb-6 size-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
+    <%%= icon "lock-closed", class: "size-6 text-blue-600 dark:text-blue-400" %>
+  </div>
+  <h3 class="mb-4 h5">End-to-End Encryption</h3>
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>
+      All conversations are encrypted using AES-256 encryption, ensuring your data remains private and secure at
+      all times.
+    </p>
+  </div>
+</div>
+<% end %>
+
+
+<%= render_snippet(active_tab: :erb) %>
+<% end %>
+<% end %>
+</div>

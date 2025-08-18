@@ -1,0 +1,145 @@
+<div id="tab-vertical">
+<%= render layout: example, locals: { heading: "Vertical", section: "Tab" } do %>
+
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <p>Vertical tabs are in use in the settings modal</p>
+  </div>
+
+<%= render preview('neutral') do %>
+<div class="flex" data-controller="railsui-tabs"
+  data-railsui-tabs-active-tab="p-2 whitespace-nowrap flex items-center gap-3 rounded-lg bg-neutral-200/90 dark:bg-neutral-700/80 hover:bg-neutral-100 dark:hover:bg-neutral-700/80 w-full text-sm dark:backdrop-blur-sm transition-colors duration-100"
+  data-railsui-tabs-inactive-tab="p-2 whitespace-nowrap flex items-center gap-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700/80 dark:backdrop-blur-sm w-full text-sm transition-colors duration-100">
+
+  <!-- Sidebar Navigation -->
+  <div
+    class="flex flex-col w-full border-r bg-neutral-50 dark:bg-neutral-800/50 border-neutral-200 dark:border-neutral-700 shrink-0 md:w-45 pt-2">
+    <!-- Navigation Tabs -->
+    <nav
+      class="flex items-center px-2 pb-2 overflow-x-auto md:block md:py-0 md:space-y-1 md:flex-1 snap-x snap-mandatory shadow-transparent">
+      <%= render "rui/shared/settings/nav_item", nav_icon: "cog-6-tooth", label: "General" %>
+
+      <%= render "rui/shared/settings/nav_item", nav_icon: "credit-card", label: "Billing" %>
+
+      <%= render "rui/shared/settings/nav_item", nav_icon: "bell", label: "Notifications" %>
+
+      <%= render "rui/shared/settings/nav_item", nav_icon: "user-circle", label: "Personalization" %>
+
+      <%= render "rui/shared/settings/nav_item", nav_icon: "circle-stack", label: "Data controls" %>
+
+      <%= render "rui/shared/settings/nav_item", nav_icon: "lock-closed", label: "Security" %>
+    </nav>
+  </div>
+
+  <!-- Content Area -->
+  <div class="flex flex-col flex-1 md:overflow-hidden">
+    <!-- Tab Content -->
+    <div class="overflow-y-auto md:flex-1">
+
+      <!-- General Tab -->
+      <div data-railsui-tabs-target="panel" class="p-4 md:p-6">
+        <%= render "rui/shared/settings/panels/general" %>
+      </div>
+
+      <!-- Billing Tab -->
+      <div data-railsui-tabs-target="panel" class="p-4 md:p-6">
+        <%= render "rui/shared/settings/panels/billing" %>
+      </div>
+
+      <!-- Notifications Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
+        <%= render "rui/shared/settings/panels/notifications" %>
+      </div>
+
+      <!-- Personalization Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
+        <%= render "rui/shared/settings/panels/personalization" %>
+      </div>
+
+      <!-- Data Controls Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
+        <%= render "rui/shared/settings/panels/data_controls" %>
+      </div>
+
+      <!-- Security Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden px-4 py-6">
+        <%= render "rui/shared/settings/panels/security" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :erb, flush: true do %>
+<div class="flex" data-controller="railsui-tabs"
+  data-railsui-tabs-active-tab="p-2 whitespace-nowrap flex items-center gap-3 rounded-lg bg-neutral-200/90 dark:bg-neutral-700/80 hover:bg-neutral-100 dark:hover:bg-neutral-700/80 w-full text-sm dark:backdrop-blur-sm transition-colors duration-100"
+  data-railsui-tabs-inactive-tab="p-2 whitespace-nowrap flex items-center gap-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700/80 dark:backdrop-blur-sm w-full text-sm transition-colors duration-100">
+
+  <!-- Sidebar Navigation -->
+  <div
+    class="flex flex-col w-full border-r bg-neutral-50 dark:bg-neutral-800/50 border-neutral-200 dark:border-neutral-700 shrink-0 md:w-45 pt-2">
+    <!-- Navigation Tabs -->
+    <nav
+      class="flex items-center px-2 pb-2 overflow-x-auto md:block md:py-0 md:space-y-1 md:flex-1 snap-x snap-mandatory shadow-transparent">
+      <%%= render "rui/shared/settings/nav_item", nav_icon: "cog-6-tooth", label: "General" %>
+
+      <%%= render "rui/shared/settings/nav_item", nav_icon: "credit-card", label: "Billing" %>
+
+      <%%= render "rui/shared/settings/nav_item", nav_icon: "bell", label: "Notifications" %>
+
+      <%%= render "rui/shared/settings/nav_item", nav_icon: "user-circle", label: "Personalization" %>
+
+      <%%= render "rui/shared/settings/nav_item", nav_icon: "circle-stack", label: "Data controls" %>
+
+      <%%= render "rui/shared/settings/nav_item", nav_icon: "lock-closed", label: "Security" %>
+    </nav>
+  </div>
+
+  <!-- Content Area -->
+  <div class="flex flex-col flex-1 md:overflow-hidden">
+    <!-- Tab Content -->
+    <div class="overflow-y-auto md:flex-1">
+
+      <!-- General Tab -->
+      <div data-railsui-tabs-target="panel" class="p-4 md:p-6">
+        <%%= render "rui/shared/settings/panels/general" %>
+      </div>
+
+      <!-- Billing Tab -->
+      <div data-railsui-tabs-target="panel" class="p-4 md:p-6">
+        <%%= render "rui/shared/settings/panels/billing" %>
+      </div>
+
+      <!-- Notifications Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
+        <%%= render "rui/shared/settings/panels/notifications" %>
+      </div>
+
+      <!-- Personalization Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
+        <%%= render "rui/shared/settings/panels/personalization" %>
+      </div>
+
+      <!-- Data Controls Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden p-4 md:p-6">
+        <%%= render "rui/shared/settings/panels/data_controls" %>
+      </div>
+
+      <!-- Security Tab -->
+      <div data-railsui-tabs-target="panel" class="hidden px-4 py-6">
+        <%%= render "rui/shared/settings/panels/security" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% content_for :js, flush: true do %>
+import { RailsuiTabs } from 'railsui-stimulus'
+application.register('railsui-tabs', RailsuiTabs)
+<% end %>
+
+<%= render_snippet html_filename: "tabs.html", erb_filename: "_tabs.html.erb", js_filename: "index.js" %>
+<% end %>
+<% end %>
+</div>

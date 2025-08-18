@@ -1,0 +1,494 @@
+<div id="table-comparison">
+<%= render layout: example, locals: { heading: "Comparison" } do %>
+
+<div class="overflow-x-auto">
+  <table class="w-full bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-xl">
+    <thead>
+      <tr class="border-b border-neutral-200 dark:border-neutral-700">
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Features
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Free
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          <div class="flex items-center justify-start gap-2">
+            Plus
+            <span class="px-2 py-1 text-xs text-white rounded-3xl bg-neutral-900">Popular</span>
+          </div>
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Pro
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+      <tr>
+        <td class="px-6 py-4 font-medium text-left text-neutral-900 dark:text-white">
+          Daily conversations
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          10
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          Unlimited
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          Unlimited
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          AI models
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Basic
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Advanced
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Premium
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          File upload limit
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          1MB
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          25MB
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          100MB
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Support
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Community
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Priority
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Dedicated
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Conversation history
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Export conversations
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Team collaboration
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Advanced analytics
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Custom integrations
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<% content_for :example, flush: true do %>
+	<%# .html %>
+<% content_for :html, flush: true do %>
+<div class="overflow-x-auto">
+  <table class="w-full bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-xl">
+    <thead>
+      <tr class="border-b border-neutral-200 dark:border-neutral-700">
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Features
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Free
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          <div class="flex items-center justify-start gap-2">
+            Plus
+            <span class="px-2 py-1 text-xs text-white rounded-3xl bg-neutral-900">Popular</span>
+          </div>
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Pro
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+      <tr>
+        <td class="px-6 py-4 font-medium text-left text-neutral-900 dark:text-white">
+          Daily conversations
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          10
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          Unlimited
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          Unlimited
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          AI models
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Basic
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Advanced
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Premium
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          File upload limit
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          1MB
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          25MB
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          100MB
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Support
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Community
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Priority
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Dedicated
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Conversation history
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Export conversations
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Team collaboration
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Advanced analytics
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Custom integrations
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% end %>
+
+	<%# .erb %>
+<% content_for :erb, flush: true do %>
+<div class="overflow-x-auto">
+  <table class="w-full bg-white border border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 rounded-xl">
+    <thead>
+      <tr class="border-b border-neutral-200 dark:border-neutral-700">
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Features
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Free
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          <div class="flex items-center justify-start gap-2">
+            Plus
+            <span class="px-2 py-1 text-xs text-white rounded-3xl bg-neutral-900">Popular</span>
+          </div>
+        </th>
+        <th class="px-6 py-4 font-semibold text-left text-neutral-900 dark:text-white">
+          Pro
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+      <tr>
+        <td class="px-6 py-4 font-medium text-left text-neutral-900 dark:text-white">
+          Daily conversations
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          10
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          Unlimited
+        </td>
+        <td class="px-6 py-4 text-left text-neutral-600 dark:text-neutral-400">
+          Unlimited
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          AI models
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Basic
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Advanced
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Premium
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          File upload limit
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          1MB
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          25MB
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          100MB
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Support
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Community
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Priority
+        </td>
+        <td class="px-6 py-4 text-neutral-600 dark:text-neutral-400">
+          Dedicated
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Conversation history
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Export conversations
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Team collaboration
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr class="bg-neutral-50/50 dark:bg-neutral-800/50">
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Advanced analytics
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 font-medium text-neutral-900 dark:text-white">
+          Custom integrations
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "x-mark", class: "size-5 text-neutral-400" %>
+        </td>
+        <td class="px-6 py-4 text-center">
+          <%%= icon "check", class: "size-5 text-green-500" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% end %>
+
+<%= render_snippet %>
+<% end %>
+<% end %>
+</div>

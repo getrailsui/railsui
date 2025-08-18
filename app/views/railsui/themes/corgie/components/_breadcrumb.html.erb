@@ -2,13 +2,13 @@
 
 <%= render "#{path}/base" %>
 <%= divider %>
-<%= render "#{path}/contained" %>
+<%= render "#{path}/article" %>
 
 <%= system_pagination(prev_path: systems_components_badge_path, prev_text: "Badge", next_path: systems_components_button_path, next_text: "Button") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
     <%= component_link "Base", "#breadcrumb-base" %>
-		<%= component_link "Contained", "#breadcrumb-pill" %>
+		<%= component_link "Article", "#breadcrumb-article" %>
   <% end %>
 <% end %>

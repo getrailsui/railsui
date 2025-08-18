@@ -3,7 +3,7 @@
     <p>The Rails UI promotional template gives you a good starting point for a sales-based email template. Using a short and sweet heading, callouts, and larger buttons incentivizes users to take more action.</p>
   </div>
 
-<%= email_viewer("A promotional template") do %>
+<%= email_viewer("A promotional template", variant: "neutral") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
 
     <%= image_tag "https://picsum.photos/1200/800", alt: "Promotional image example", class: "object-cover max-h-[400px]", height: 280, width: 600 %>

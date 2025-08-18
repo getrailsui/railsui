@@ -1,5 +1,62 @@
-<div class="relative my-10 bg-white border rounded-lg border-gray-200/80 dark:border-gray-700/80 dark:bg-gray-900">
-  <div class="flex px-6 py-4 space-x-2 text-sm text-gray-700 border-b rounded-t-lg border-gray-200/80 dark:text-white dark:border-gray-700/80">
+<%
+  # Map variant to color scheme
+  variant_color = local_assigns[:variant] || "gray"
+
+  # Define color classes based on variant
+  color_classes = case variant_color
+  when "neutral"
+    {
+      bg: "bg-white dark:bg-neutral-900",
+      border: "border-neutral-200/80 dark:border-neutral-700/80",
+      text: "text-neutral-700 dark:text-white",
+      badge_bg: "bg-neutral-300",
+      badge_text: "text-neutral-800"
+    }
+  when "gray"
+    {
+      bg: "bg-white dark:bg-gray-900",
+      border: "border-gray-200/80 dark:border-gray-700/80",
+      text: "text-gray-700 dark:text-white",
+      badge_bg: "bg-gray-300",
+      badge_text: "text-neutral-800"
+    }
+  when "stone"
+    {
+      bg: "bg-white dark:bg-stone-900",
+      border: "border-stone-200/80 dark:border-stone-700/80",
+      text: "text-stone-700 dark:text-white",
+      badge_bg: "bg-stone-300",
+      badge_text: "text-stone-800"
+    }
+  when "zinc"
+    {
+      bg: "bg-white dark:bg-zinc-900",
+      border: "border-zinc-200/80 dark:border-zinc-700/80",
+      text: "text-zinc-700 dark:text-white",
+      badge_bg: "bg-zinc-300",
+      badge_text: "text-zinc-800"
+    }
+  when "slate"
+    {
+      bg: "bg-white dark:bg-slate-900",
+      border: "border-slate-200/80 dark:border-slate-700/80",
+      text: "text-slate-700 dark:text-white",
+      badge_bg: "bg-slate-300",
+      badge_text: "text-slate-800"
+    }
+  else # Default to gray
+    {
+      bg: "bg-white dark:bg-gray-900",
+      border: "border-gray-200/80 dark:border-gray-700/80",
+      text: "text-gray-700 dark:text-white",
+      badge_bg: "bg-gray-300",
+      badge_text: "text-neutral-800"
+    }
+  end
+%>
+
+<div class="relative my-10 <%= color_classes[:bg] %> border rounded-lg <%= color_classes[:border] %>">
+  <div class="flex px-6 py-4 space-x-2 text-sm <%= color_classes[:text] %> border-b rounded-t-lg <%= color_classes[:border] %>">
     <ul class="text-right">
       <li>From:</li>
       <li>To:</li>
@@ -15,7 +72,7 @@
   </div>
 
   <div class="rui-mailer p-3 pb-10 min-h-[600px]">
-    <div class="absolute inline-block px-3 py-1 text-xs font-semibold bg-gray-300 rounded-full text-neutral-800 top-4 right-4">Email preview</div>
+    <div class="absolute inline-block px-3 py-1 text-xs font-semibold <%= color_classes[:badge_bg] %> rounded-full <%= color_classes[:badge_text] %> top-4 right-4">Email preview</div>
 
     <%= capture(&block) %>
   </div>

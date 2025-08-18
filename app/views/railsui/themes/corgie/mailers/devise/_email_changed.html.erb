@@ -1,7 +1,7 @@
 <div id="devise-email-changed">
 <%= render layout: example, locals: { heading: "Email Changed", section: "Mailers / Devise" } do %>
 
-<%= email_viewer("Email changed") do %>
+<%= email_viewer("Email changed", variant: "neutral") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
 
     <p>Hi john.doe@example.com,</p>

@@ -1,0 +1,88 @@
+<div id="breadcrumb-article">
+  <%= render layout: example, locals: { heading: "Article" } do %>
+
+<%= render preview("neutral") do %>
+<!-- Breadcrumb -->
+<nav class="flex mb-8" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center gap-2 md:gap-3">
+    <li class="inline-flex items-center">
+      <a href="#" class="inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group">
+        <%= icon "home", class: "size-5 stroke-current stroke-neutral-500 dark:stroke-neutral-400 dark:group-hover:stroke-neutral-300 group-hover:stroke-neutral-600" %>
+        Home
+      </a>
+    </li>
+    <li>
+      <div class="flex items-center gap-3">
+        <%= icon "chevron-right", class: "size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+        <a href="#" class="inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group">Blog</a>
+      </div>
+    </li>
+    <li>
+      <div class="flex items-center gap-3">
+        <%= icon "chevron-right", class: "size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+        <span
+          class="text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 truncate flex-1 md:w-full w-40">The Future of AI Assistants: What's Coming Next</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<nav class="flex mb-8" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center gap-2 md:gap-3">
+    <li class="inline-flex items-center">
+      <a href="#" class="inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group">
+        <%%= icon "home", class: "size-5 stroke-current stroke-neutral-500 dark:stroke-neutral-400 dark:group-hover:stroke-neutral-300 group-hover:stroke-neutral-600" %>
+        Home
+      </a>
+    </li>
+    <li>
+      <div class="flex items-center gap-3">
+        <%%= icon "chevron-right", class: "size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+        <a href="#" class="inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group">Blog</a>
+      </div>
+    </li>
+    <li>
+      <div class="flex items-center gap-3">
+        <%%= icon "chevron-right", class: "size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+        <span
+          class="text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 truncate flex-1 md:w-full w-40">The Future of AI Assistants: What's Coming Next</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<nav class="flex mb-8" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center gap-2 md:gap-3">
+    <li class="inline-flex items-center">
+      <%%= link_to "#", class: "inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group" do %>
+        <%%= icon "home", class: "size-5 stroke-current stroke-neutral-500 dark:stroke-neutral-400 dark:group-hover:stroke-neutral-300 group-hover:stroke-neutral-600" %>
+        Home
+      <%% end %>
+    </li>
+    <li>
+      <div class="flex items-center gap-3">
+        <%%= icon "chevron-right", class: "size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+        <%%= link_to "Blog", "#", class: "inline-flex items-center gap-3 text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 group" %>
+      </div>
+    </li>
+    <li>
+      <div class="flex items-center gap-3">
+        <%%= icon "chevron-right", class: "size-4 stroke-current stroke-neutral-400 dark:stroke-neutral-500" %>
+        <span
+          class="text-sm font-medium text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300 truncate flex-1 md:w-full w-40">The Future of AI Assistants: What's Coming Next</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+<% end %>
+
+
+<%= render_snippet active_tab: :erb %>
+<% end %>
+<% end %>
+</div>

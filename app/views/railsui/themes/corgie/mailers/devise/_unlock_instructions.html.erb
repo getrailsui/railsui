@@ -1,7 +1,7 @@
 <div id="devise-unlock-instructions">
 <%= render layout: example, locals: { heading: "Unlock Instructions", section: "Mailers / Devise" } do %>
 
-<%= email_viewer("Unlock instructions") do %>
+<%= email_viewer("Unlock instructions", variant: "neutral") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
 
 <p>Hi John Doe,</p>

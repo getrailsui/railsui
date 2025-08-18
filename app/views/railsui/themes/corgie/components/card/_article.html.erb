@@ -1,0 +1,119 @@
+<div id="card-article">
+<%= render layout: example, locals: { heading: "Article", section: "Card" } do %>
+  <div class="w-[377px]">
+  <article
+    class="flex flex-col overflow-hidden transition-shadow shadow-sm rounded-3xl outline-1 outline-neutral-300/80 dark:outline-neutral-600/70 hover:shadow-xl dark:shadow-md dark:shadow-black/40">
+    <%= link_to "#", class: "shrink-0" do %>
+      <%= image_tag "railsui/blog1.jpg", class: "object-cover w-full h-48" %>
+    <% end %>
+    <div class="flex flex-col justify-between flex-1 p-6 bg-white dark:bg-neutral-900">
+      <div class="flex-1">
+        <p class="mb-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+          <a href="#">Technology</a>
+        </p>
+        <a href="#" class="block">
+          <h3 class="mb-3 h4 line-clamp-2">Understanding Neural Networks: A Beginner's Guide</h3>
+          <div class="prose prose-neutral dark:prose-invert">
+            <p>Dive into the fundamentals of neural networks and learn how they power modern AI systems like Corgie AI.</p>
+          </div>
+        </a>
+      </div>
+      <div class="flex items-center mt-6">
+        <div class="shrink-0">
+          <%= image_tag demo_avatar_url(variant: :women, id: 3), alt: "Sarah Wilson", class: "w-10 h-10 rounded-full shrink-0 object-cover" %>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">Sarah Wilson</p>
+          <div class="flex space-x-1 text-sm text-neutral-500 dark:text-neutral-400">
+            <time datetime="<%= DateTime.now.iso8601 %>"><%= DateTime.now.strftime('%B %d, %Y') %></time>
+
+            <span aria-hidden="true">&middot;</span>
+            <span>7 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<article
+  class="flex flex-col overflow-hidden transition-shadow shadow-sm rounded-3xl outline-1 outline-neutral-300/80 dark:outline-neutral-600/70 hover:shadow-xl dark:shadow-md dark:shadow-black/40">
+  <%= link_to "#", class: "shrink-0" do %>
+    <%= image_tag "railsui/blog1.jpg", class: "object-cover w-full h-48" %>
+  <% end %>
+  <div class="flex flex-col justify-between flex-1 p-6 bg-white dark:bg-neutral-900">
+    <div class="flex-1">
+      <p class="mb-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+        <a href="#">Technology</a>
+      </p>
+      <a href="#" class="block">
+        <h3 class="mb-3 h4 line-clamp-2">Understanding Neural Networks: A Beginner's Guide</h3>
+        <div class="prose prose-neutral dark:prose-invert">
+          <p>Dive into the fundamentals of neural networks and learn how they power modern AI systems like Corgie AI.</p>
+        </div>
+      </a>
+    </div>
+    <div class="flex items-center mt-6">
+      <div class="shrink-0">
+        <%= image_tag demo_avatar_url(variant: :women, id: 3), alt: "Sarah Wilson", class: "w-10 h-10 rounded-full shrink-0 object-cover" %>
+      </div>
+      <div class="ml-3">
+        <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">Sarah Wilson</p>
+        <div class="flex space-x-1 text-sm text-neutral-500 dark:text-neutral-400">
+          <time datetime="<%= DateTime.now.iso8601 %>"><%= DateTime.now.strftime('%B %d, %Y') %></time>
+
+          <span aria-hidden="true">&middot;</span>
+          <span>7 min read</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<article
+  class="flex flex-col overflow-hidden transition-shadow shadow-sm rounded-3xl outline-1 outline-neutral-300/80 dark:outline-neutral-600/70 hover:shadow-xl dark:shadow-md dark:shadow-black/40">
+  <%%= link_to "#", class: "shrink-0" do %>
+    <%%= image_tag "railsui/blog1.jpg", class: "object-cover w-full h-48" %>
+  <%% end %>
+  <div class="flex flex-col justify-between flex-1 p-6 bg-white dark:bg-neutral-900">
+    <div class="flex-1">
+      <p class="mb-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+        <%%= link_to "Technology", rui_blog_category_path %>
+      </p>
+
+      <%%= link_to rui_blog_show_path do %>
+        <h3 class="mb-3 h4 line-clamp-2">Understanding Neural Networks: A Beginner's Guide</h3>
+        <div class="prose prose-neutral dark:prose-invert">
+          <p>Dive into the fundamentals of neural networks and learn how they power modern AI systems like Corgie AI.</p>
+        </div>
+      <%% end %>
+    </div>
+
+    <div class="flex items-center mt-6">
+      <div class="shrink-0">
+        <%%= image_tag demo_avatar_url(variant: :women, id: 3), alt: "Sarah Wilson", class: "w-10 h-10 rounded-full shrink-0 object-cover" %>
+      </div>
+      <div class="ml-3">
+        <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">Sarah Wilson</p>
+        <div class="flex space-x-1 text-sm text-neutral-500 dark:text-neutral-400">
+          <time datetime="<%%= DateTime.now.iso8601 %>"><%%= DateTime.now.strftime('%B %d, %Y') %></time>
+
+          <span aria-hidden="true">&middot;</span>
+          <span>7 min read</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<% end %>
+
+
+<%= render_snippet(active_tab: :erb) %>
+<% end %>
+<% end %>
+</div>
