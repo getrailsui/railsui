@@ -1,0 +1,54 @@
+<div id="card-value">
+<%= render layout: example, locals: { heading: "Value", section: "Card" } do %>
+<div class="w-[377px]">
+  <div class="card">
+    <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+      <%= icon "shield-check", class:"size-8 text-neutral-700 dark:text-neutral-100 dark:text-neutral-100" %>
+    </div>
+    <h3 class="mb-4 h5">Privacy First</h3>
+    <div class="prose prose-neutral dark:prose-invert">
+      <p>
+        Your conversations and data belong to you. We use enterprise-grade encryption and never share your
+        information.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :example, flush: true do %>
+<% content_for :html, flush: true do %>
+<div class="card">
+  <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+    <%= icon "shield-check", class:"size-8 text-neutral-700 dark:text-neutral-100 dark:text-neutral-100" %>
+  </div>
+  <h3 class="mb-4 h5">Privacy First</h3>
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>
+      Your conversations and data belong to you. We use enterprise-grade encryption and never share your
+      information.
+    </p>
+  </div>
+</div>
+<% end %>
+
+<% content_for :erb, flush: true do %>
+<div class="card">
+  <div class="flex items-center justify-center mb-6 size-16 bg-neutral-200/60 rounded-2xl dark:bg-neutral-900">
+    <%%= icon "shield-check", class:"size-8 text-neutral-700 dark:text-neutral-100 dark:text-neutral-100" %>
+  </div>
+  <h3 class="mb-4 h5">Privacy First</h3>
+  <div class="prose prose-neutral dark:prose-invert">
+    <p>
+      Your conversations and data belong to you. We use enterprise-grade encryption and never share your
+      information.
+    </p>
+  </div>
+</div>
+<% end %>
+
+
+<%= render_snippet(active_tab: :erb) %>
+<% end %>
+<% end %>
+</div>

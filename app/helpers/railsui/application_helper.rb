@@ -83,8 +83,9 @@ module Railsui
       content_tag tag.to_sym, text, id: id, class: "#{classes} tracking-[-0.025em]"
     end
 
-    def email_viewer(subject="A sample subject", &block)
-      render "railsui/shared/rui_email_preview", subject: subject, block: block, flush: true
+    def email_viewer(subject="A sample subject", variant: nil, &block)
+      variant ||= "gray" # Default to gray if no variant specified
+      render "railsui/shared/rui_email_preview", subject: subject, variant: variant, block: block, flush: true
     end
 
     def box_label_classes(options={})

@@ -9,6 +9,8 @@
 <%= render "#{path}/dismiss_icon" %>
 <%= divider %>
 <%= render "#{path}/with_form" %>
+<%= divider %>
+<%= render "#{path}/settings" %>
 
 <%= system_pagination(prev_path: systems_components_flash_path, prev_text: "Flash", next_path: systems_components_navigation_path, next_text: "Navigation") %>
 
@@ -20,5 +22,6 @@
 		<%= component_link "Centered dual action", "#modal-centered-dual-action" %>
     <%= component_link "With dismiss button", "#modal-with-dismiss-button" %>
     <%= component_link "With form", "#modal-with-form" %>
+    <%= component_link "Settings", "#modal-settings" %>
   <% end %>
 <% end %>

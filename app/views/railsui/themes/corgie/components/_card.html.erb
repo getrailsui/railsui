@@ -2,25 +2,22 @@
 
 <%= render "#{path}/base" %>
 <%= divider %>
-<%= render "#{path}/with_header" %>
+<%= render "#{path}/article" %>
 <%= divider %>
-<%= render "#{path}/with_action" %>
+<%= render "#{path}/value" %>
 <%= divider %>
-<%= render "#{path}/user_card" %>
+<%= render "#{path}/team_member" %>
 <%= divider %>
-<%= render "#{path}/user_card_with_actions" %>
-<%= divider %>
-<%= render "#{path}/user_card_dropdown" %>
+<%= render "#{path}/feature" %>
 
 <%= system_pagination(prev_path: systems_components_button_path, prev_text: "Button", next_path: systems_components_combobox_path, next_text: "Combobox") %>
 
 <%= content_for :component_nav do %>
   <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
     <%= component_link "Base", "#card-base" %>
-		<%= component_link "With header", "#card-with-header" %>
-		<%= component_link "With action", "#card-with-action" %>
-    <%= component_link "User card", "#card-user-card" %>
-    <%= component_link "User card with actions", "#card-user-card-with-actions" %>
-    <%= component_link "User card with dropdown", "#card-user-card-with-dropdown" %>
+		<%= component_link "Article", "#card-article" %>
+		<%= component_link "Value", "#card-value" %>
+		<%= component_link "Team Member", "#card-team-member" %>
+		<%= component_link "Feature", "#card-feature" %>
   <% end %>
 <% end %>

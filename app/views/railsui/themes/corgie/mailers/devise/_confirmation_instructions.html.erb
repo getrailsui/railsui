@@ -1,7 +1,7 @@
 <div id="devise-confirmation-instructions">
 <%= render layout: example, locals: { heading: "Confirmation Instructions", section: "Mailers / Devise" } do %>
 
-<%= email_viewer("Confirmation instructions") do %>
+<%= email_viewer("Confirmation instructions", variant: "neutral") do %>
   <%= render layout: "railsui/themes/#{Railsui.config.theme.downcase}/mailers/mailer_preview" do %>
 
     <p>Hi john.doe@example.com,</p>
