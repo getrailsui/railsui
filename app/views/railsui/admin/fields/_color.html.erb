@@ -5,7 +5,12 @@
   </div>
 
   <div class="mb-6 max-w-full prose prose-neutral dark:prose-invert">
-    <p>Rails UI includes two custom colors in addtion to Tailwind CSS 4's color palette: <code>primary</code> and <code>secondary</code>.</p>
+
+    <% if Railsui.config.theme == "corgie" %>
+      <p><strong>Corgie</strong> uses default Tailwind colors for its brand. You can add more custom colors inside <code>@theme</code> if necessary. Read the <%= link_to "Tailwind CSS documentation", "https://tailwindcss.com/docs/theme", target: :_blank %> for examples.</p>
+    <% else %>
+      <p>Rails UI includes two custom colors in addtion to Tailwind CSS 4's color palette: <code>primary</code> and <code>secondary</code>.</p>
+    <% end %>
 
     <% if File.exist?("#{Rails.root}/app/assets/stylesheets/railsui/theme.css") %>
       <h3 class="mb-0">theme.css</h3>
