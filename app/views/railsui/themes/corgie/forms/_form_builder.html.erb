@@ -29,8 +29,15 @@
 <!-- Rails UI Form Builder with builder parameter -->
 <%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
   <%%= f.text_field :name, label: "Full Name", placeholder: "John Doe" %>
-  <%%= f.email_field :email, label: "Email Address", placeholder: "john@example.com", help: "We'll never share your email with anyone else." %>
-  <%%= f.text_area :bio, label: "Biography", placeholder: "Tell us about yourself...", rows: 4 %>
+
+  <%%= f.form_group do %>
+    <%%= f.email_field :email, label: "Email Address", placeholder: "john@example.com", help: "We'll never share your email with anyone else." %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.text_area :bio, label: "Biography", placeholder: "Tell us about yourself...", rows: 4 %>
+  <%% end %>
+
   <%%= f.submit "Save Profile" %>
 <%% end %>
 <% end %>
@@ -112,21 +119,52 @@
 <%%= form_with model: @model, builder: Railsui::FormBuilder do |f| %>
   <!-- Text inputs -->
   <%%= f.text_field :text, label: "Text Field" %>
-  <%%= f.email_field :email, label: "Email Field", placeholder: "john.doe@example.com" %>
-  <%%= f.password_field :password, label: "Password Field" %>
-  <%%= f.number_field :number, label: "Number Field", min: 0, max: 100 %>
-  <%%= f.telephone_field :phone, label: "Phone Number" %>
-  <%%= f.url_field :website, label: "Website URL" %>
+
+  <%%= f.form_group do %>
+    <%%= f.email_field :email, label: "Email Field", placeholder: "john.doe@example.com" %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.password_field :password, label: "Password Field" %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.number_field :number, label: "Number Field", min: 0, max: 100 %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.telephone_field :phone, label: "Phone Number" %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.url_field :website, label: "Website URL" %>
+  <%% end %>
 
   <!-- Date/Time inputs -->
-  <%%= f.date_field :date, label: "Date" %>
-  <%%= f.time_field :time, label: "Time" %>
+  <%%= f.form_group do %>
+    <%%= f.date_field :date, label: "Date" %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.time_field :time, label: "Time" %>
+  <%% end %>
 
   <!-- Special inputs -->
-  <%%= f.color_field :color, label: "Color Picker" %>
-  <%%= f.search_field :search, label: "Search", placeholder: "Search..." %>
-  <%%= f.file_field :file, label: "File Upload" %>
-  <%%= f.range_field :volume, label: "Volume", min: 0, max: 100, value: 25 %>
+  <%%= f.form_group do %>
+    <%%= f.color_field :color, label: "Color Picker" %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.search_field :search, label: "Search", placeholder: "Search..." %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.file_field :file, label: "File Upload" %>
+  <%% end %>
+
+  <%%= f.form_group do %>
+    <%%= f.range_field :volume, label: "Volume", min: 0, max: 100, value: 25 %>
+  <%% end %>
 <%% end %>
 <% end %>
 <%= render_snippet active_tab: :erb %>
@@ -167,11 +205,13 @@
         { prompt: "Choose a country" },
         { label: "Country" } %>
 
-  <%%= f.text_area :message,
-        label: "Message",
-        placeholder: "Enter your message here...",
-        rows: 5,
-        help: "Maximum 500 characters" %>
+  <%%= f.form_group do %>
+    <%%= f.text_area :message,
+          label: "Message",
+          placeholder: "Enter your message here...",
+          rows: 5,
+          help: "Maximum 500 characters" %>
+  <%% end %>
 <%% end %>
 <% end %>
 <%= render_snippet active_tab: :erb %>
@@ -306,7 +346,10 @@
 <%%= form_with model: @model, builder: Railsui::FormBuilder do |f| %>
   <!-- Switch toggles -->
   <%%= f.switch_field :dark_mode, label: "Enable dark mode" %>
-  <%%= f.switch_field :auto_save, label: "Auto-save drafts" %>
+
+  <%%= f.form_group do %>
+    <%%= f.switch_field :auto_save, label: "Auto-save drafts" %>
+  <%% end %>
 <%% end %>
 <% end %>
 <%= render_snippet active_tab: :erb %>
@@ -342,7 +385,11 @@
 <!-- The form builder automatically handles error states -->
 <%%= form_with model: @user, builder: Railsui::FormBuilder do |f| %>
   <%%= f.text_field :name, label: "Full Name" %>
-  <%%= f.email_field :email, label: "Email Address" %>
+
+  <%%= f.form_group do %>
+    <%%= f.email_field :email, label: "Email Address" %>
+  <%% end %>
+
   <%%= f.submit "Submit" %>
 <%% end %>
 
@@ -448,18 +495,22 @@
         wrapper: { class: "max-w-md" } %>
 
   <!-- Skip label (i.e. don't display labels) -->
-  <%%= f.email_field :email,
-        label: false,
-        placeholder: "Enter your email",
-        help: "Skip displaying label",
-        skip_label: true %>
+  <%%= f.form_group do %>
+    <%%= f.email_field :email,
+          label: false,
+          placeholder: "Enter your email",
+          help: "Skip displaying label",
+          skip_label: true %>
+  <%% end %>
 
   <!-- Custom label options and input class -->
-  <%%= f.text_field :website,
-        label: "Website",
-        placeholder: "https://",
-        label_options: { class: "form-label font-medium text-sm text-blue-600" },
-        class: "form-input text-lg" %>
+  <%%= f.form_group do %>
+    <%%= f.text_field :website,
+          label: "Website",
+          placeholder: "https://",
+          label_options: { class: "form-label font-medium text-sm text-blue-600" },
+          class: "form-input text-lg" %>
+  <%% end %>
 <%% end %>
 <% end %>
 <%= render_snippet active_tab: :erb %>
