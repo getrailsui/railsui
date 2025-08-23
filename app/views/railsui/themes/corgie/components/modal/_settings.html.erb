@@ -188,6 +188,10 @@
 </div>
 <% end %>
 
+<% content_for :html, flush: true do %>
+
+<% end %>
+
 <% content_for :js, flush: true do %>
 import { RailsuiModal, RailsuiTabs } from 'railsui-stimulus'
 
@@ -195,7 +199,7 @@ application.register('railsui-modal', RailsuiModal)
 application.register('railsui-tabls', RailsuiTabs)
 <% end %>
 
-<%= render_snippet(js_filename: "index.js") %>") %>
+<%= render_snippet(js_filename: "index.js", active_tab: :erb) %>
 <% end %>
 <% end %>
 </div>

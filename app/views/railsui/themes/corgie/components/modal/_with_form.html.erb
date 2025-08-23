@@ -135,6 +135,52 @@ class="hidden rounded-2xl shadow-xl max-w-lg bg-white m-1 p-8 origin-bottom mx-a
 </div>
 <% end %>
 
+<% content_for :erb, flush: true do %>
+<div data-controller="railsui-modal">
+  <button type="button" data-action="click->railsui-modal#open" class="btn btn-primary" tabindex="0">
+    Open modal with form
+  </button>
+
+  <div aria-labelledby="modal-with-form" aria-modal="true" data-railsui-modal-target="container" data-action="keyup@window->railsui-modal#closeWithEsc" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog">
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div data-railsui-modal-target="content"
+data-transition-enter-active="transition ease-out duration-300"
+data-transition-enter-from="transform opacity-0 scale-95"
+data-transition-enter-to="transform opacity-100 scale-100"
+data-transition-leave-active="transition ease-in duration-300"
+data-transition-leave-from="transform opacity-100 scale-100"
+data-transition-leave-to="transform opacity-0 scale-95"
+class="hidden rounded-2xl shadow-xl max-w-lg bg-white m-1 p-8 origin-bottom mx-auto dark:bg-neutral-700 dark:text-neutral-200 relative">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-neutral-50 flex items-center justify-center rounded-full group dark:hover:bg-neutral-50/50" data-action="click->railsui-modal#close">
+          <%%= icon "x-mark", class:  "text-neutral-400 size-6 group-hover:text-neutral-500 pointer-events-none dark:group-hover:text-neutral-800 dark:text-neutral-400" %>
+        </button>
+
+        <h3 id="modal-with-form" class="h3">Subscribe</h3>
+
+        <div class="prose prose-neutral dark:prose-invert mt-2 mb-6">
+          <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
+        </div>
+
+        <%%= form_with model: @subcriber, builder: Railsui::FormBuilder do |f| %>
+          <%%= f.form_group do %>
+            <%%= f.email_field :email, placeholder: "saasquatch@railsui.com", label: "E-mail" %>
+          <%% end %>
+          
+          <%%= f.form_group do %>
+            <%%= f.text_area :reason, placeholder: "In a couple sentences let us know your reason for joining the Rails UI community", label: "Reason for joining" %>
+          <%% end %> 
+
+          <div class="mt-8 flex justify-start items-center flex-wrap bg-neutral-50 px-8 py-4 -mx-8 -mb-8 border-t border-neutral-300 rounded-b-2xl shadow-inner space-x-4 dark:bg-neutral-700 dark:text-neutral-200 dark:border-neutral-600/70">
+            <%%= f.submit "Subscribe" %>
+            <%%= link_to "Cancel", "#", class: "btn btn-white", data: { action: "click->railsui-modal#close" } %>
+          </div>
+         <%% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
 
 <% content_for :js, flush: true do %>
 import { RailsuiModal } from 'railsui-stimulus'
