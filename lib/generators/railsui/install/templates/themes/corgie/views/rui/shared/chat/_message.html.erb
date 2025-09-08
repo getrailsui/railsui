@@ -4,7 +4,7 @@
 <article class="relative group">
   <div class="flex justify-end mb-1">
     <div class="chat">
-      <div class="prose prose-neutral dark:prose-invert" data-controller="markdown hightlight code-block" data-markdown-target="content">
+      <div class="prose prose-neutral dark:prose-invert border-neutral-300/80 dark:border-neutral-700/80 prose-pre:border dark:prose-pre:border-neutral-700/80" data-controller="markdown code-block" data-markdown-target="content">
         <%= yield %>
       </div>
     </div>
@@ -22,7 +22,6 @@
     </button>
   </div>
 </article>
-
 <% else %>
 <article class="relative w-full group">
   <div class="absolute top-0 flex flex-col transition-opacity duration-300 opacity-0 -left-10 group-hover:opacity-100">
@@ -32,7 +31,7 @@
       <span class="sr-only">Copy</span>
     </button>
   </div>
-  <div class="max-w-full pb-2 mb-2 prose prose-neutral dark:prose-invert border-neutral-300/80 dark:border-neutral-700/80 prose-pre:p-0 prose-pre:bg-transparent prose-pre:border dark:prose-pre:border-neutral-700/80" data-controller="markdown highlight code-block" data-markdown-target="content" data-highlight-target="code">
+  <div class="max-w-full pb-2 mb-2 prose prose-neutral dark:prose-invert border-neutral-300/80 dark:border-neutral-700/80 prose-pre:border dark:prose-pre:border-neutral-700/80" data-controller="markdown code-block" data-markdown-target="content">
     <%= yield %>
   </div>
 
