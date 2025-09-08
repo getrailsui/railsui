@@ -101,7 +101,7 @@ module Railsui
 
       # Generate import statements for stylesheets
       import_statements = stylesheet_files.map do |file|
-        "@import \"../stylesheets/railsui/#{File.basename(file, ".css")}\";"
+        "@import \"./railsui/#{File.basename(file, ".css")}\";"
       end.join("\n")
 
       # Read the existing application.tailwind.css content
@@ -111,6 +111,8 @@ module Railsui
       cleaned_css_content = application_css_content
       cleaned_css_content = cleaned_css_content.gsub(/@import "tailwindcss";\n*/, "")
       cleaned_css_content = cleaned_css_content.gsub(%r{@import "\.\./stylesheets/railsui/.*";\n*}, "")
+      cleaned_css_content = cleaned_css_content.gsub(%r{@import "railsui/.*";\n*}, "")
+      cleaned_css_content = cleaned_css_content.gsub(%r{@import "\./railsui/.*";\n*}, "")
 
       # Add the new import statements in the correct order
       new_application_css_content = [
