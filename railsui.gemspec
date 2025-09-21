@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'psych'
   spec.add_dependency 'meta-tags'
   spec.add_dependency 'railsui_icon'
+  spec.add_dependency 'view_component', '~> 3.0'
 end

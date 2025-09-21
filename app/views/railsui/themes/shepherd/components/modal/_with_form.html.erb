@@ -1,196 +1,88 @@
 <div id="modal-with-form">
-<%= render layout: example, locals: { heading: "With form", section: "Modal" } do %>
+  <%= render layout: example, locals: { heading: "With form", section: "Modal" } do %>
 
-<div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-zinc-900 dark:border-t dark:border-x dark:border-zinc-600">
-  <div class="rounded-xl shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-zinc-800 dark:text-zinc-200">
-    <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
-        <%= icon "x-mark", class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
-    </button>
-    <div class="mb-4">
-      <h2 id="modal-with-form" class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Subscribe</h2>
-      <div class="prose prose-zinc my-4 dark:prose-invert">
-        <p>Interested in learning more about real estate investing and development? Enter your information below and one of our team members will be in touch.</p>
-      </div>
-    </div>
-
-    <form action="#">
-      <div class="form-group">
-        <label for="email_demo" class="form-label">E-mail</label>
-        <input id="email_demo" type="email" class="form-input" placeholder="saasquatch@railsui.com">
-      </div>
-      <div class="form-group">
-        <label for="reason_demo" class="form-label">Reason for joining</label>
-        <textarea name="reason" id="reason_demo" class="form-textarea" placeholder="In a couple sentences let us know your reason for joining the Shepherd community"></textarea>
-      </div>
-    </form>
-
-    <div class="mt-6 flex justify-start items-center flex-wrap space-x-3">
-      <button class="btn btn-primary">Subscribe</button>
-      <button class="btn btn-transparent" data-action="click->railsui-modal#close">Skip for now</button>
-    </div>
-  </div>
-</div>
-
-<div data-controller="railsui-modal">
-  <div class="flex justify-center p-6 border-x border-b border-zinc-200 rounded-b-lg relative dark:bg-zinc-800 dark:border-zinc-600 dark:border-t">
-    <div class="absolute top-4 left-4">
-      <%= doc_label :demo %>
-    </div>
-    <button type="button" data-action="click->railsui-modal#open" class="btn btn-primary" tabindex="0">
-      Open modal with form
-    </button>
-  </div>
-
-  <div
-    aria-labelledby="modal-with-form"
-    aria-modal="true"
-    data-railsui-modal-target="container"
-    data-action="keyup@window->railsui-modal#closeWithEsc"
-    class="hidden fixed inset-0 z-50 overflow-y-auto"
-    role="dialog"
-    >
-    <div class="h-screen w-full relative flex items-center justify-center">
-      <div
-      data-railsui-modal-target="content"
-      data-transition-enter-active="transition ease-out duration-300"
-      data-transition-enter-from="transform opacity-0 scale-95"
-      data-transition-enter-to="transform opacity-100 scale-100"
-      data-transition-leave-active="transition ease-in duration-300"
-      data-transition-leave-from="transform opacity-100 scale-100"
-      data-transition-leave-to="transform opacity-0 scale-95"
-      class="hidden rounded-xl shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-zinc-800 dark:text-zinc-200">
-        <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
-          <%= icon "x-mark", class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
+    <div class="bg-black/80 flex items-center jusity-center p-10 rounded-t-lg dark:bg-slate-800 dark:border-t dark:border-x dark:border-slate-600">
+      <div class="rounded shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-slate-700 dark:text-slate-200">
+        <button type="button" class="absolute top-2 right-2 w-8 h-8 bg-transparent hover:bg-slate-50 flex items-center justify-center rounded-full group dark:hover:bg-slate-50/50">
+          <%= icon "x-mark", class:  "text-slate-400 size-6 group-hover:text-slate-500 pointer-events-none dark:group-hover:text-slate-800 dark:text-slate-400" %>
         </button>
-        <div class="mb-4">
-          <h2 id="modal-with-form" class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Subscribe</h2>
-          <div class="prose prose-zinc my-4 dark:prose-invert">
-            <p>Interested in learning more about real estate investing and development? Enter your information below and one of our team members will be in touch.</p>
-          </div>
+
+        <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
         </div>
 
-        <form action="#">
-          <div class="form-group">
-            <label for="email_demo" class="form-label">E-mail</label>
-            <input id="email_demo" type="email" class="form-input" placeholder="saasquatch@railsui.com">
-          </div>
-          <div class="form-group">
-            <label for="reason_demo" class="form-label">Reason for joining</label>
-            <textarea name="reason" id="reason_demo" class="form-textarea" placeholder="In a couple sentences let us know your reason for joining the Shepherd community"></textarea>
-          </div>
+        <%= form_with(url: "#", builder: Railsui::FormBuilder) do |form| %>
+          <%= form.email_field :email, label: "E-mail", placeholder: "saasquatch@railsui.com" %>
+          <%= form.text_area :reason, label: "Reason for joining", placeholder: "In a couple sentences let us know your reason for joining the Rails UI community" %>
+        <% end %>
 
-           <div class="mt-6 flex justify-start items-center flex-wrap space-x-3">
-            <a class="btn btn-primary cursor-pointer">Subscribe</a>
-            <a class="btn btn-transparent cursor-pointer" data-action="click->railsui-modal#close">Skip for now</a>
-          </div>
-        </form>
+        <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+          <button class="btn btn-primary">Subscribe</button>
+          <button class="btn btn-white">Cancel</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <div data-controller="railsui-modal">
+      <div class="flex justify-center p-6 border-x border-b border-slate-200 rounded-b-lg relative dark:bg-slate-700 dark:border-slate-600 dark:border-t">
+        <div class="absolute top-4 left-4">
+          <%= doc_label :demo %>
+        </div>
+        <button type="button" data-action="click->railsui-modal#open" data-railsui-modal-target-param="form-modal" class="btn btn-primary" tabindex="0">
+          Open modal with form
+        </button>
+      </div>
+
+      <%= rui :modal, id: "form-modal", title: "Subscribe" do |modal| %>
+        <% modal.with_header do %>
+          <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
+          <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+            <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
+          </div>
+        <% end %>
+
+        <%= form_with(url: "#", builder: Railsui::FormBuilder) do |form| %>
+          <%= form.email_field :email, label: "E-mail", placeholder: "saasquatch@railsui.com" %>
+          <%= form.text_area :reason, label: "Reason for joining", placeholder: "In a couple sentences let us know your reason for joining the Rails UI community" %>
+        <% end %>
+
+        <% modal.with_footer do %>
+          <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+            <button class="btn btn-primary">Subscribe</button>
+            <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
 <% content_for :example, flush: true do %>
 <% content_for :html, flush: true do %>
 <div data-controller="railsui-modal">
-  <button type="button" data-action="click->railsui-modal#open" class="btn btn-primary" tabindex="0">Open modal with form</button>
+  <button type="button" data-action="click->railsui-modal#open" data-railsui-modal-target-param="form-modal" class="btn btn-primary" tabindex="0">
+    Open modal with form
+  </button>
 
-  <div
-    aria-labelledby="modal-with-form"
-    aria-modal="true"
-    data-railsui-modal-target="container"
-    data-action="keyup@window->railsui-modal#closeWithEsc"
-    class="hidden fixed inset-0 z-50 overflow-y-auto"
-    role="dialog">
-    <div class="h-screen w-full relative flex items-center justify-center">
-      <div
-      data-railsui-modal-target="content"
-      data-transition-enter-active="transition ease-out duration-300"
-      data-transition-enter-from="transform opacity-0 scale-95"
-      data-transition-enter-to="transform opacity-100 scale-100"
-      data-transition-leave-active="transition ease-in duration-300"
-      data-transition-leave-from="transform opacity-100 scale-100"
-      data-transition-leave-to="transform opacity-0 scale-95"
-      class="hidden rounded-xl shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-zinc-800 dark:text-zinc-200">
-        <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
-          <%%= icon "x-mark", class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
-        </button>
-        <div class="mb-4">
-          <h2 id="modal-with-form" class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Subscribe</h2>
-          <div class="prose prose-zinc my-4 dark:prose-invert">
-            <p>Interested in learning more about real estate investing and development? Enter your information below and one of our team members will be in touch.</p>
-          </div>
-        </div>
-
-        <form action="#">
-          <div class="form-group">
-            <label for="email_demo" class="form-label">E-mail</label>
-            <input id="email_demo" type="email" class="form-input" placeholder="saasquatch@railsui.com">
-          </div>
-          <div class="form-group">
-            <label for="reason_demo" class="form-label">Reason for joining</label>
-            <textarea name="reason" id="reason_demo" class="form-textarea" placeholder="In a couple sentences let us know your reason for joining the Shepherd community"></textarea>
-          </div>
-
-          <div class="mt-6 flex justify-start items-center flex-wrap space-x-3">
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-            <a class="btn btn-transparent" data-action="click->railsui-modal#close">Skip for now</a>
-          </div>
-        </form>
+  <%%= rui :modal, id: "form-modal", title: "Subscribe" do |modal| %>
+    <%% modal.with_header do %>
+      <h3 id="modal-with-form" class="mb-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Subscribe</h3>
+      <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+        <p>Join our community to get early access to new features, exclusive content, and connect with other developers.</p>
       </div>
-    </div>
-  </div>
-</div>
-<% end %>
+    <%% end %>
 
-<% content_for :erb, flush: true do %>
-<div data-controller="railsui-modal">
-  <%%= button_tag "Open modal with form", type: "button", class: "btn btn-primary", data: { action: "click->railsui-modal#open" }, "tabindex": "0" %>
+    <%%= form_with(url: "#", builder: Railsui::FormBuilder) do |form| %>
+      <%%= form.email_field :email, label: "E-mail", placeholder: "saasquatch@railsui.com" %>
+      <%%= form.text_area :reason, label: "Reason for joining", placeholder: "In a couple sentences let us know your reason for joining the Rails UI community" %>
+    <%% end %>
 
-  <div
-    aria-labelledby="modal-with-form"
-    aria-modal="true"
-    data-railsui-modal-target="container"
-    data-action="keyup@window->railsui-modal#closeWithEsc"
-    class="hidden fixed inset-0 z-50 overflow-y-auto"
-    role="dialog">
-    <div class="h-screen w-full relative flex items-center justify-center">
-      <div
-      data-railsui-modal-target="content"
-      data-transition-enter-active="transition ease-out duration-300"
-      data-transition-enter-from="transform opacity-0 scale-95"
-      data-transition-enter-to="transform opacity-100 scale-100"
-      data-transition-leave-active="transition ease-in duration-300"
-      data-transition-leave-from="transform opacity-100 scale-100"
-      data-transition-leave-to="transform opacity-0 scale-95"
-      class="hidden rounded-xl shadow-xl mx-auto max-w-lg bg-white m-1 p-8 origin-bottom relative dark:bg-zinc-800 dark:text-zinc-200">
-        <%%= button_tag type: "button", class: "absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" do %>
-          <%%= icon "x-mark", class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400" %>
-        <%% end %>
-        <div class="mb-4">
-          <h2 id="modal-with-form" class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Subscribe</h2>
-          <div class="prose prose-zinc my-4 dark:prose-invert">
-            <p>Interested in learning more about real estate investing and development? Enter your information below and one of our team members will be in touch.</p>
-          </div>
-        </div>
-
-        <%%= form_with(model: subscriber) do |form| %>
-          <div class="form-group">
-            <%%= form.label :email, class: "form-label" %>
-            <%%= form.text_field :email, class: "form-input", placeholder: "saasquatch@railsui.com" %>
-          </div>
-          <div class="form-group">
-            <%%= form.label :reason, class: "form-label" %>
-            <%%= form.text_area :reason, class: "form-textarea", placeholder: "In a couple sentences let us know your reason for joining the Shepherd community" %>
-          </div>
-
-          <div class="mt-6 flex justify-start items-center flex-wrap space-x-3">
-            <%%= form.submit "Subscribe", class: "btn btn-primary" %>
-            <%%= link_to "Skip for now", "#", class: "btn btn-transparent", data: { action: "click->railsui-modal#close" } %>
-          </div>
-        <%% end %>
+    <%% modal.with_footer do %>
+      <div class="mt-8 flex justify-start items-center flex-wrap bg-gray-50 px-8 py-4 -mx-8 -mb-8 border-t border-slate-300 rounded-b shadow-inner space-x-4 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600/70">
+        <button class="btn btn-primary">Subscribe</button>
+        <button class="btn btn-white" data-action="click->railsui-modal#close">Cancel</button>
       </div>
-    </div>
-  </div>
+    <%% end %>
+  <%% end %>
 </div>
 <% end %>
 

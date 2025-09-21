@@ -1,0 +1,14 @@
+<%# Basic Usage %>
+&lt;%= rui :button, "Click me" %&gt;
+&lt;%= rui :button, "Primary", variant: :primary %&gt;
+&lt;%= rui :button, "Large", variant: :primary, size: :lg %&gt;
+
+<%# With Block Content %>
+&lt;%= rui :button, variant: :primary do %&gt;
+  &lt;%= icon "plus", class: "size-4" %&gt;
+  Add Item
+&lt;% end %&gt;
+
+<%# With HTML Attributes %>
+&lt;%= rui :button, "Submit", variant: :primary, type: "submit",
+    class: "w-full", disabled: false %&gt;

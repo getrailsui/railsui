@@ -1,0 +1,57 @@
+<div id="<%= @id %>"
+     aria-labelledby="<%= @id %>-title"
+     aria-modal="true"
+     data-railsui-modal-target="container"
+     data-action="keyup@window->railsui-modal#closeWithEsc"
+     class="hidden fixed inset-0 z-50 overflow-y-auto"
+     role="dialog"
+     <%= tag.attributes(html_attributes) %>>
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <!-- Modal content -->
+      <div data-railsui-modal-target="content"
+           data-transition-enter-active="transition ease-out duration-300"
+           data-transition-enter-from="transform opacity-0 scale-95"
+           data-transition-enter-to="transform opacity-100 scale-100"
+           data-transition-leave-active="transition ease-in duration-300"
+           data-transition-leave-from="transform opacity-100 scale-100"
+           data-transition-leave-to="transform opacity-0 scale-95"
+           class="<%= modal_content_classes %>">
+
+        <!-- Header -->
+        <% if header? %>
+          <%= header %>
+        <% elsif @title %>
+          <div>
+            <h3 id="<%= @id %>-title"
+                class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
+              <%= @title %>
+            </h3>
+            <% if @closeable %>
+              <button type="button"
+                      class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:text-slate-300 dark:hover:text-slate-100"
+                      data-action="click->railsui-modal#close">
+                <%= icon "x-mark", class: "size-6" %>
+              </button>
+            <% end %>
+          </div>
+        <% end %>
+
+        <!-- Body -->
+        <div class="prose prose-slate dark:prose-invert mt-2 mb-6">
+          <%= content %>
+        </div>
+
+        <!-- Footer -->
+        <% if footer? %>
+          <%= footer %>
+        <% else %>
+          <div class="flex justify-end items-center flex-wrap gap-4">
+            <button class="btn btn-primary"
+                    data-action="click->railsui-modal#close">
+              Close
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>

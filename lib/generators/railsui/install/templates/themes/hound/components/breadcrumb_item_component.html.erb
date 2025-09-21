@@ -1,0 +1,5 @@
+<% if @href && !@current %>
+  <%= link_to @label, @href, class: link_classes, **html_attributes %>
+<% else %>
+  <span class="<%= current_classes %>" <%= aria_html %> <%= tag.attributes(html_attributes) %>><%= @label %></span>
+<% end %>

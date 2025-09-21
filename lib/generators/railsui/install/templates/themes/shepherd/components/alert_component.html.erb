@@ -1,0 +1,21 @@
+<div class="<%= alert_classes %>" <%= tag.attributes(html_attributes) %>>
+  <% if icon_name %>
+    <%= icon icon_name, class: icon_classes, variant: :solid %>
+  <% end %>
+
+  <div class="flex-1">
+    <% if @title %>
+      <p class="<%= title_classes %>"><%= @title %></p>
+    <% end %>
+
+    <% if @description %>
+      <p class="leading-snug my-1"><%= @description %></p>
+    <% end %>
+
+    <%= content %>
+
+    <% if actions? %>
+      <%= actions %>
+    <% end %>
+  </div>
+</div>

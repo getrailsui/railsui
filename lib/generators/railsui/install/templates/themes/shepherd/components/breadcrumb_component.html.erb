@@ -1,0 +1,18 @@
+<nav aria-label="breadcrumb" class="<%= nav_classes %>" <%= tag.attributes(html_attributes) %>>
+  <ol class="flex flex-wrap items-center space-x-3 list-none m-0 p-0">
+    <% items.each_with_index do |item, index| %>
+      <% if index == 0 %>
+        <li><%= item %></li>
+      <% else %>
+        <li class="flex space-x-3">
+          <% if @separator.present? %>
+            <div class="flex items-center">
+              <span class="text-slate-300 dark:text-slate-500"><%= @separator %></span>
+            </div>
+          <% end %>
+          <%= item %>
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>

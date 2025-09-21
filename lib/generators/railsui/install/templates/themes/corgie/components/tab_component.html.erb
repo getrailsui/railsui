@@ -1,0 +1,30 @@
+<div data-controller="railsui-tabs"
+     data-railsui-tabs-active-tab="<%= active_tab_classes %>"
+     data-railsui-tabs-inactive-tab="<%= inactive_tab_classes %>"
+     class="<%= tab_classes %>"
+     <%= tag.attributes(html_attributes) %>>
+
+  <!-- Tab Navigation -->
+  <div class="border-slate-200 border-b text-slate-600 dark:text-slate-100 dark:border-slate-600 font-medium text-sm">
+    <nav role="navigation" class="-mb-px">
+      <% tabs.each_with_index do |tab, index| %>
+        <a href="#"
+           data-railsui-tabs-target="tab"
+           data-action="click->railsui-tabs#change"
+           class="<%= tab_link_classes(index) %>"
+           <%= tag.attributes(tab.html_attributes) %>>
+          <%= tab.label %>
+        </a>
+      <% end %>
+    </nav>
+  </div>
+
+  <!-- Tab Panels -->
+  <% panels.each_with_index do |panel, index| %>
+    <div data-railsui-tabs-target="panel"
+         class="<%= panel_div_classes(index) %>"
+         <%= tag.attributes(panel.html_attributes) %>>
+      <%= panel.content %>
+    </div>
+  <% end %>
+</div>

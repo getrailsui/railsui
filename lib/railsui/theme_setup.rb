@@ -11,6 +11,31 @@ module Railsui
     end
 
     # Assets
+    # ViewComponents
+    def copy_theme_components(theme)
+      say("Installing ViewComponents for #{theme} theme", :yellow)
+
+      # Copy base component
+      copy_file "components/base_component.rb", "app/components/rui/base_component.rb"
+
+      # Copy theme components
+      source_path = "themes/#{theme}/components"
+      destination_path = "app/components/rui"
+
+      # Clear existing components (except base)
+      Dir.glob("#{destination_path}/*_component.rb").each do |file|
+        remove_file file unless file.include?("base_component")
+      end
+
+      # Copy new theme components
+      directory source_path, destination_path, force: true
+
+      # Copy the helper
+      copy_file "helpers/rui/components_helper.rb", "app/helpers/rui/components_helper.rb"
+
+      say("✅ ViewComponents installed successfully", :green)
+    end
+
     def copy_theme_javascript(theme)
       say("Adding theme-specific stimulus.js controllers", :yellow)
 

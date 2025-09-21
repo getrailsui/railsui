@@ -1,0 +1,28 @@
+<div class="<%= card_classes %>" <%= tag.attributes(html_attributes) %>>
+  <% if header? || @title %>
+    <div class="<%= header_classes %>">
+      <% if header? %>
+        <%= header %>
+      <% elsif @title %>
+        <h3 class="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
+          <%= @title %>
+        </h3>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="<%= body_classes %>">
+    <% if @description %>
+      <p class="prose prose-slate dark:prose-invert mt-2 mb-4">
+        <%= @description %>
+      </p>
+    <% end %>
+    <%= content %>
+  </div>
+
+  <% if footer? %>
+    <div class="<%= footer_classes %>">
+      <%= footer %>
+    </div>
+  <% end %>
+</div>

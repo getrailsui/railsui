@@ -9,6 +9,8 @@ Railsui::Engine.routes.draw do
   get :delete_page, to: 'configurations#delete_page'
   get :pages, to: 'pages#show'
 
+  resources :playground, only: [:index, :show], param: :component
+
   namespace :systems do
     get :authentication
     get :components

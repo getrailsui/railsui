@@ -1,0 +1,40 @@
+<!-- Button Variants -->
+<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Variants</h3>
+  <div class="flex flex-wrap gap-3">
+    <%= rui :button, "Primary", variant: :primary %>
+    <%= rui :button, "Secondary", variant: :secondary %>
+    <%= rui :button, "Dark", variant: :dark %>
+    <%= rui :button, "Light", variant: :light %>
+    <%= rui :button, "White", variant: :white %>
+    <%= rui :button, "Transparent", variant: :transparent %>
+    <%= rui :button, "Danger", variant: :danger %>
+    <%= rui :button, "Link", variant: :link %>
+  </div>
+</div>
+
+<!-- Button Sizes -->
+<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Sizes</h3>
+  <div class="flex flex-wrap items-center gap-3">
+    <%= rui :button, "Small", variant: :primary, size: :sm %>
+    <%= rui :button, "Medium", variant: :primary, size: :md %>
+    <%= rui :button, "Large", variant: :primary, size: :lg %>
+  </div>
+</div>
+
+<!-- Button with Icons -->
+<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">With Content</h3>
+  <div class="flex flex-wrap gap-3">
+    <%= rui :button, variant: :primary do %>
+      <%= icon "plus", class: "size-4" %>
+      Add Item
+    <% end %>
+
+    <%= rui :button, variant: :secondary do %>
+      Download
+      <%= icon "arrow-down-tray", class: "size-4" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!-- Basic Card -->
+<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Basic Card</h3>
+  <div class="max-w-sm">
+    <%= rui :card, title: "Welcome", description: "This is a basic card example." do %>
+      <%= rui :button, "Get Started", variant: :primary %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Card with Header and Footer -->
+<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">With Slots</h3>
+  <div class="max-w-sm">
+    <%= rui :card do |card| %>
+      <% card.with_header do %>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Project Settings</h3>
+          <%= icon "cog-6-tooth", class: "size-5 text-slate-400" %>
+        </div>
+      <% end %>
+
+      <p class="text-slate-600 dark:text-slate-300">Configure your project settings and preferences.</p>
+
+      <% card.with_footer do %>
+        <div class="flex justify-end gap-2">
+          <%= rui :button, "Cancel", variant: :secondary, size: :sm %>
+          <%= rui :button, "Save", variant: :primary, size: :sm %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Card Padding Options -->
+<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Padding Variants</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <%= rui :card, title: "Small", padding: :small do %>
+      Small padding card
+    <% end %>
+
+    <%= rui :card, title: "Normal", padding: :normal do %>
+      Normal padding card
+    <% end %>
+
+    <%= rui :card, title: "Large", padding: :large do %>
+      Large padding card
+    <% end %>
+  </div>
+</div>

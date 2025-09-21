@@ -1,0 +1,61 @@
+<% content_for :title, "Component Playground" %>
+
+<div class="railsui-wrapper">
+  <%= render "railsui/shared/header" %>
+
+  <main class="railsui-content">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">Component Playground</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-300">Interactive preview and testing environment for Rails UI ViewComponents.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% @components.each do |component| %>
+          <div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6 hover:shadow-lg transition-shadow">
+            <%= link_to railsui_playground_path(component[:name]), class: "block group" do %>
+              <div class="flex items-start justify-between mb-4">
+                <h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  <%= component[:title] %>
+                </h3>
+                <%= icon "arrow-top-right-on-square", class: "size-5 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" %>
+              </div>
+
+              <p class="text-slate-600 dark:text-slate-300 mb-4">
+                <%= component[:description] %>
+              </p>
+
+              <div class="flex items-center text-sm text-primary-600 dark:text-primary-400 font-medium">
+                View Examples
+                <%= icon "chevron-right", class: "size-4 ml-1" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="mt-12 bg-slate-50 dark:bg-slate-800/50 rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Getting Started</h2>
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p>The Component Playground lets you test and preview all Rails UI ViewComponents with the <code>rui()</code> helper syntax.</p>
+
+          <h3>Basic Usage</h3>
+          <pre><code>&lt;%= rui :button, "Click me", variant: :primary %&gt;
+&lt;%= rui :card, title: "Hello World" do %&gt;
+  Card content here
+&lt;% end %&gt;</code></pre>
+
+          <h3>Features</h3>
+          <ul>
+            <li>Live component previews with real data</li>
+            <li>Interactive parameter testing</li>
+            <li>Copy-paste ready code examples</li>
+            <li>Theme-aware rendering</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%= render "railsui/shared/footer" %>
+</div>

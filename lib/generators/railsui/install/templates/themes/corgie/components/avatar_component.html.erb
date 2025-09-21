@@ -1,0 +1,11 @@
+<% if @src %>
+  <%= image_tag @src, alt: @alt, class: avatar_classes, **html_attributes %>
+<% elsif @initials %>
+  <div class="<%= initials_classes %>" <%= tag.attributes(html_attributes) %>>
+    <span class="<%= initials_text_class %>"><%= @initials %></span>
+  </div>
+<% else %>
+  <div class="<%= placeholder_classes %>" <%= tag.attributes(html_attributes) %>>
+    <%= icon "user", class: placeholder_icon_class %>
+  </div>
+<% end %>

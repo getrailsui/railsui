@@ -108,6 +108,63 @@ export default class extends Controller {
 }
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<!-- Extended CardComponent for user with dropdown actions -->
+class UserCardDropdownComponent < Rui::CardComponent
+  def initialize(user:, actions: [], **options)
+    @user = user
+    @actions = actions
+    super(padding: :normal, **options)
+  end
+
+  private
+
+  def card_classes
+    "#{super} dark:shadow-slate-900/50"
+  end
+end
+
+<!-- app/views/components/user_card_dropdown_component.html.erb -->
+<div class="<%%= card_classes %>" <%%= html_attributes %>>
+  <div class="flex flex-wrap items-center gap-4">
+    <%%= image_tag @user.avatar_url, class: "object-cover size-14 rounded-full flex-shrink-0" %>
+    <div class="flex-1 flex flex-col items-start space-y-px text-slate-900 dark:text-white">
+      <p class="font-bold"><%%= @user.name %></p>
+      <p class="dark:text-slate-400 text-sm"><%%= @user.last_seen_at.strftime("%B %e at %l:%M %p") %></p>
+    </div>
+
+    <%%= rui :dropdown do |dropdown| %>
+      <%% dropdown.with_trigger do %>
+        <button type="button" class="relative group border-transparent border transition ease-in-out focus:ring-4 w-8 h-8 flex items-center justify-center rounded-lg hover:border-slate-200 focus:ring-slate-50 hover:bg-white hover:shadow-sm focus:border-slate-200 dark:focus:border-slate-700 dark:hover:bg-slate-700/80 dark:hover:border-slate-700 dark:focus:ring-slate-400/50">
+          <%%= icon "ellipsis-vertical", class: "size-6 text-slate-500 group-hover:text-primary-500 dark:text-slate-200 dark:group-hover:text-primary-300" %>
+        </button>
+      <%% end %>
+
+      <%% @actions.each do |action| %>
+        <%% dropdown.with_item(href: action[:href], label: action[:label]) %>
+      <%% end %>
+    <%% end %>
+  </div>
+</div>
+
+<!-- Usage: -->
+<%%= render UserCardDropdownComponent.new(
+  user: current_user,
+  actions: [
+    { href: follow_user_path(user), label: "Follow" },
+    { href: "#", label: "Save for later" },
+    { href: "#", label: "Mute" }
+  ]
+) %>
+
+<!-- Or with base card and dropdown component: -->
+<%%= rui :card do %>
+  <div class="flex flex-wrap items-center gap-4">
+    <!-- User content with dropdown -->
+  </div>
+<%% end %>
+<% end %>
+
 <%= render_snippet js_filename: "dropdown_controller.js", active_tab: :erb %>
 <% end %>
 <% end %>

@@ -24,6 +24,33 @@
 </div>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :card, title: "Create a message", description: "Send a message to your teammates.", class: "md:w-[350px]" do %>
+  <%%= rui :button, "Start writing", variant: :primary %>
+<%% end %>
+
+<!-- Extension Example: Create specialized cards -->
+<!--
+class UserCardComponent < Rui::CardComponent
+  def initialize(user:, **options)
+    @user = user
+    super(**options)
+  end
+end
+
+<!-- user_card_component.html.erb -->
+<div class="<%%= card_classes %>" <%%= html_attributes %>>
+  <div class="flex items-center space-x-4">
+    <%%= image_tag @user.avatar, class: "size-12 rounded-full" %>
+    <div>
+      <h3><%%= @user.name %></h3>
+      <p><%%= @user.email %></p>
+    </div>
+  </div>
+</div>
+-->
+<% end %>
+
 <%= render_snippet(active_tab: :erb) %>
 <% end %>
 <% end %>

@@ -44,6 +44,9 @@ module Railsui
           # rails ui deps
           install_theme_dependencies(@theme)
 
+          # ViewComponents
+          copy_theme_components(@theme)
+
           # assets
           copy_theme_javascript(@theme)
           copy_theme_stylesheets(@theme)

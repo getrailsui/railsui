@@ -1,0 +1,93 @@
+<% content_for :title, "#{@component_name.humanize} Component" %>
+
+<div class="railsui-wrapper">
+  <%= render "railsui/shared/header" %>
+
+  <main class="railsui-content">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+      <!-- Breadcrumb -->
+      <nav class="mb-8">
+        <%= link_to "← Back to Playground", railsui_playground_index_path, class: "text-primary-600 dark:text-primary-400 hover:underline" %>
+      </nav>
+
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <%= @component_name.humanize %> Component
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-300">
+          Interactive preview and examples for the <%= @component_name.humanize %> component.
+        </p>
+      </div>
+
+      <!-- Component Examples Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- Basic Examples -->
+        <div class="space-y-8">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Examples</h2>
+
+          <% case @component_name %>
+          <% when 'button' %>
+            <%= render 'button_examples' %>
+          <% when 'card' %>
+            <%= render 'card_examples' %>
+          <% when 'alert' %>
+            <%= render 'alert_examples' %>
+          <% when 'badge' %>
+            <%= render 'badge_examples' %>
+          <% when 'avatar' %>
+            <%= render 'avatar_examples' %>
+          <% when 'dropdown' %>
+            <%= render 'dropdown_examples' %>
+          <% when 'modal' %>
+            <%= render 'modal_examples' %>
+          <% when 'accordion' %>
+            <%= render 'accordion_examples' %>
+          <% when 'breadcrumb' %>
+            <%= render 'breadcrumb_examples' %>
+          <% when 'pagination' %>
+            <%= render 'pagination_examples' %>
+          <% when 'tab' %>
+            <%= render 'tab_examples' %>
+          <% when 'toast' %>
+            <%= render 'toast_examples' %>
+          <% when 'tooltip' %>
+            <%= render 'tooltip_examples' %>
+          <% else %>
+            <%= render 'generic_examples' %>
+          <% end %>
+        </div>
+
+        <!-- Code Examples -->
+        <div class="space-y-8">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Code Examples</h2>
+
+          <div class="bg-slate-900 rounded-lg overflow-hidden">
+            <div class="bg-slate-800 px-4 py-2 border-b border-slate-700">
+              <span class="text-slate-300 text-sm font-medium">rui() Helper Syntax</span>
+            </div>
+            <div class="p-4">
+              <pre class="text-sm text-slate-300 overflow-x-auto"><code><%= render "#{@component_name}_code" %></code></pre>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Available Parameters</h3>
+            <%= render "#{@component_name}_params" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usage Guide -->
+      <div class="mt-12 bg-slate-50 dark:bg-slate-800/50 rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Usage Guide</h2>
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <%= render "#{@component_name}_guide" %>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%= render "railsui/shared/footer" %>
+</div>

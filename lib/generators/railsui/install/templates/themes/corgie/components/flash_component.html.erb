@@ -1,0 +1,19 @@
+<div class="<%= flash_classes %>" <%= tag.attributes(html_attributes) %>>
+  <div class="flex items-center justify-center gap-2">
+    <% if icon_name %>
+      <%= icon icon_name, class: "size-5 flex-shrink-0" %>
+    <% end %>
+
+    <div class="flex-1">
+      <% if @message %>
+        <%= sanitize @message %>
+      <% else %>
+        <%= content %>
+      <% end %>
+    </div>
+
+    <% if actions? %>
+      <%= actions %>
+    <% end %>
+  </div>
+</div>

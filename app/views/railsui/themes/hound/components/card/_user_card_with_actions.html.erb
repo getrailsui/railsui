@@ -49,6 +49,49 @@
 </div>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<!-- Extended CardComponent for user profile with actions -->
+class UserCardWithActionsComponent < Rui::CardComponent
+  def initialize(user:, **options)
+    @user = user
+    super(padding: :none, **options)
+  end
+
+  private
+
+  def card_classes
+    "#{super} py-4 px-6 flex flex-wrap items-center gap-4"
+  end
+end
+
+<!-- app/views/components/user_card_with_actions_component.html.erb -->
+<div class="<%%= card_classes %>" <%%= html_attributes %>>
+  <%%= image_tag @user.avatar_url, class: "object-cover size-14 rounded-full flex-shrink-0" %>
+  <div class="flex-1 flex flex-col items-start space-y-px text-slate-900">
+    <p class="font-bold dark:text-white"><%%= @user.name %></p>
+    <p class="text-sm dark:text-slate-300"><%%= @user.title %> at <%%= link_to @user.company, "#", class: "btn-link" %></p>
+  </div>
+  <div class="grid gap-3 grid-cols-2 lg:pt-0 pt-3 w-full lg:w-auto">
+    <%%= rui :button, href: "tel:#{@user.phone}", variant: :white, class: "flex items-center gap-2 group" do %>
+      <%%= icon "phone", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <span>Phone</span>
+    <%% end %>
+
+    <%%= rui :button, href: "mailto:#{@user.email}", variant: :white, class: "flex items-center gap-2 group" do %>
+      <%%= icon "envelope", class: "size-4 text-slate-500 dark:text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400" %>
+      <span>Email</span>
+    <%% end %>
+  </div>
+</div>
+
+<!-- Usage: -->
+<%%= render UserCardWithActionsComponent.new(user: current_user) %>
+
+<!-- Or with base card: -->
+<%%= rui :card, padding: :none, class: "py-4 px-6 flex flex-wrap items-center gap-4" do %>
+  <!-- User profile content with action buttons -->
+<%% end %>
+<% end %>
 
 <%= render_snippet(active_tab: :erb) %>
 <% end %>

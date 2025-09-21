@@ -1,0 +1,11 @@
+<% if @responsive %>
+  <div class="<%= wrapper_classes %>">
+<% end %>
+
+<table <%= tag.attributes(html_attributes) %>>
+  <%= content %>
+</table>
+
+<% if @responsive %>
+  </div>
+<% end %>
