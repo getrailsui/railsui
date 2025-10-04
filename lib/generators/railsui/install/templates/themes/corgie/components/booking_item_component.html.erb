@@ -1,0 +1,30 @@
+<tr>
+  <td>
+    <span class="badge badge-<%= status.downcase %>">
+      <%= status %>
+    </span>
+  </td>
+  <td>
+    <p><%= link_to guest, "#" %></p>
+    <p><small class="text-muted"><%= guest_counts %></small></p>
+  </td>
+  <td><%= arrival %></td>
+  <td><%= departure %></td>
+  <td>
+    <p><%= booking_date %></p>
+    <p><small class="text-muted"><%= booking_date_time %></small></p>
+  </td>
+  <td><%= link_to property, "#" %></td>
+  <td><%= price %></td>
+  <td>
+    <%= rui :dropdown do |dropdown| %>
+      <% dropdown.with_trigger do %>
+        <%= icon "ellipsis-horizontal" %>
+        <span class="sr-only">Actions</span>
+      <% end %>
+      <% dropdown.with_item(href: "#") do %>
+        Go to Booking
+      <% end %>
+    <% end %>
+  </td>
+</tr>

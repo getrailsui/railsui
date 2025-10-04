@@ -140,8 +140,8 @@ module Rui
         }
       when :white
         {
-          basic: "bg-white text-slate-800 border border-slate-200 dark:border-none dark:bg-white/10 dark:text-white/80",
-          outline: "border-slate-200 text-slate-800 dark:border-white/30 dark:text-white/80"
+          basic: "bg-white text-neutral-800 border border-neutral-200 dark:border-none dark:bg-white/10 dark:text-white/80",
+          outline: "border-neutral-200 text-neutral-800 dark:border-white/30 dark:text-white/80"
         }
       else # :gray
         {

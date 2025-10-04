@@ -61,7 +61,7 @@ module Rui
     private
 
     def card_classes
-      base_classes = "rounded-lg bg-white dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70"
+      base_classes = "card"
       custom_classes = @html_options[:class]
 
       [base_classes, custom_classes].compact.join(" ")
@@ -72,11 +72,11 @@ module Rui
     end
 
     def header_classes
-      "px-6 py-4 border-b border-slate-200 dark:border-slate-700"
+      "px-6 py-4 border-b border-neutral-200 dark:border-neutral-700"
     end
 
     def footer_classes
-      "px-6 py-4 border-t border-slate-200 dark:border-slate-700"
+      "px-6 py-4 border-t border-neutral-200 dark:border-neutral-700"
     end
 
     def html_attributes

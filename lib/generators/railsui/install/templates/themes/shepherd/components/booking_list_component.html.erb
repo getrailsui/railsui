@@ -1,0 +1,19 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(html_attributes) %>>
+  <table class="<%= table_classes %>">
+    <thead>
+      <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Status</th>
+      <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Guests</th>
+      <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Arrival</th>
+      <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Departure</th>
+      <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Booking date</th>
+      <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Property</th>
+      <th class="text-zinc-600 dark:text-zinc-300 font-sans font-medium md:whitespace-normal whitespace-nowrap md:px-0 p-4">Payout</th>
+      <th></th>
+    </thead>
+    <tbody class="text-zinc-800 divide-y divide-zinc-200/80 dark:divide-zinc-700">
+      <% bookings.each do |booking| %>
+        <%= booking %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

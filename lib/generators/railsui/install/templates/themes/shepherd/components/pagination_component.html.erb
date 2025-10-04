@@ -1,16 +1,16 @@
 <div class="<%= pagination_wrapper_classes %>" <%= tag.attributes(html_attributes) %>>
   <% if @total_count %>
-    <p class="text-slate-600 dark:text-slate-200 text-sm block w-full md:w-auto md:text-left text-center">
+    <p class="text-zinc-600 dark:text-zinc-200 text-sm block w-full md:w-auto md:text-left text-center">
       Viewing page <strong><%= @current_page %></strong> with <strong><%= @per_page %></strong> results per page
     </p>
   <% end %>
 
-  <nav aria-label="Page navigation" class="text-slate-500 dark:text-slate-200 md:text-sm text-base font-medium w-auto flex">
+  <nav aria-label="Page navigation" class="text-zinc-500 dark:text-zinc-200 md:text-sm text-base font-medium w-auto flex">
     <ul class="<%= pagination_list_classes %>">
       <!-- Previous Link -->
       <li class="flex justify-start items-center">
         <a href="#" class="<%= previous_link_classes %>" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
-          <%= icon "arrow-small-left", class: "w-5 h-5 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200", title: "Previous" %>
+          <%= icon "arrow-small-left", class: "w-5 h-5 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200", title: "Previous" %>
         </a>
       </li>
 
@@ -33,7 +33,7 @@
       <!-- Next Link -->
       <li class="flex justify-end items-center">
         <a href="#" class="<%= next_link_classes %>" data-controller="railsui-prevent" data-action="click->railsui-prevent#prevent">
-          <%= icon "arrow-small-right", class: "w-5 h-5 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200", title: "Next" %>
+          <%= icon "arrow-small-right", class: "w-5 h-5 text-zinc-400 group-hover:text-primary-500 dark:group-hover:text-zinc-200", title: "Next" %>
         </a>
       </li>
     </ul>

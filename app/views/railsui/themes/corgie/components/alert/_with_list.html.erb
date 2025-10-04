@@ -39,6 +39,15 @@
 <%% end %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :danger, icon: "shield-exclamation" do %>
+  <%%= tag.p "There was 1 error trying to process your request.", class: "font-semibold" %>
+  <%%= tag.ul class: "list-disc pl-4 mt-1" do %>
+    <%%= tag.li "Your name must be as cool as Andy" %>
+  <%% end %>
+<%% end %>
+<% end %>
+
 
     <%= render_snippet %>
   <% end %>

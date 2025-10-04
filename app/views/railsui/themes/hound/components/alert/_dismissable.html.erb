@@ -39,6 +39,10 @@
 <%% end %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :primary, title: "A dismissible notice", description: "Your account settings have been successfully updated. The changes will take effect immediately.", dismissible: true %>
+<% end %>
+
 <%= render_snippet %>
 <% end %>
 <% end %>

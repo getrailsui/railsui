@@ -64,7 +64,7 @@ module Rui
     end
 
     def inactive_tab_classes
-      "border-b border-slate-200 inline-block bg-white text-slate-600 dark:bg-transparent dark:text-slate-100 dark:border-slate-600 py-3 px-4"
+      "border-b border-zinc-200 inline-block bg-white text-zinc-600 dark:bg-transparent dark:text-zinc-100 dark:border-zinc-600 py-3 px-4"
     end
 
     def tab_link_classes(index)

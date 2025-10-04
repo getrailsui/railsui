@@ -45,9 +45,9 @@ module Rui
     def accordion_classes
       base_classes = case @style
       when :flush
-        "divide-y divide-slate-100 dark:divide-slate-700"
+        "divide-y divide-neutral-100 dark:divide-neutral-700"
       else # :contained
-        "my-6 divide-y divide-slate-100 rounded-lg shadow-xl shadow-slate-100/50 border border-slate-200 dark:divide-slate-700 dark:border-slate-700 dark:shadow-black/20"
+        "my-6 divide-y divide-neutral-100 rounded-lg shadow-xl shadow-neutral-100/50 border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 dark:shadow-black/20"
       end
 
       custom_classes = @html_options[:class]
@@ -76,7 +76,7 @@ module Rui
       end
 
       def summary_classes
-        "flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-slate-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white"
+        "flex w-full cursor-pointer select-none justify-between text-left text-base font-semibold leading-7 text-neutral-900 group-open:text-primary-600 [&::-webkit-details-marker]:hidden dark:group-open:text-primary-300 dark:text-white"
       end
 
       def content_classes

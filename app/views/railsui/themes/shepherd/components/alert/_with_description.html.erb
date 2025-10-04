@@ -30,6 +30,9 @@
 </div>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :warning, title: "Update Your Account Settings", description: "Your account security settings need to be updated. Please log in and change your password within the next 7 days to ensure continued access to your account.", icon: "exclamation-triangle" %>
+<% end %>
 
 <%= render_snippet %>
 <% end %>

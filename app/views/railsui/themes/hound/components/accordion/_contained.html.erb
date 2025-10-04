@@ -84,6 +84,23 @@
 </dl>
 <% end %>
 
+<% content_for :erb, flush: true do %>
+# ERB implementation would go here
+<% end %>
+
+<% content_for :rui, flush: true do %>
+<%%= rui :accordion, variant: :contained do %>
+  <%%= rui :accordion_item, title: "This is the first accordion item" do %>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque explicabo voluptates odio atque reiciendis, dolore magni quos quibusdam numquam, ad distinctio minima reprehenderit nemo harum, in perferendis delectus tempora.
+  <%% end %>
+  <%%= rui :accordion_item, title: "This is the second accordion item" do %>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates maxime temporibus porro aut quis adipisci aliquid vitae labore modi harum facere, commodi molestiae repellat dicta eos officiis enim quae ullam.
+  <%% end %>
+  <%%= rui :accordion_item, title: "This is the third accordion item" do %>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus excepturi aliquam quod deleniti sit mollitia at? Voluptates suscipit, perspiciatis fuga nesciunt atque, repellat minus distinctio iure cupiditate tenetur ipsam voluptatem?
+  <%% end %>
+<%% end %>
+<% end %>
 
 <%= render_snippet %>
 <% end %>

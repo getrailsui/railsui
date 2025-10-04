@@ -226,6 +226,14 @@
 </div>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :booking_list, title: "Bookings" do %>
+  <%%= rui :booking_item, status: "Upcoming", guest: "Dannie White", guest_counts: "3 adults, 1 child", arrival: "Aug 24, 2025", departure: "Aug 28, 2025", booking_date: "June, 2025", booking_time: "7:38 PM CST", property: "Mountain Vista Chalet", price: "$1,165.45" %>
+  <%%= rui :booking_item, status: "Upcoming", guest: "John Smith", guest_counts: "2 adults, 2 children", arrival: "Sep 12, 2025", departure: "Sep 16, 2025", booking_date: "June, 2025", booking_time: "4:15 PM CST", property: "Alpine Retreat Haven", price: "$1,320.75" %>
+  <%%= rui :booking_item, status: "Complete", guest: "James Anderson", guest_counts: "3 adults, 1 child", arrival: "Aug 3, 2025", departure: "Aug 10, 2025", booking_date: "May 25, 2025", booking_time: "10:45 AM CST", property: "Mountain Vista Chalet", price: "$2,846.42" %>
+  <%%= rui :booking_item, status: "Canceled", guest: "Noah Hall", guest_counts: "3 adults", arrival: "Sep 10, 2025", departure: "Sep 12, 2025", booking_date: "Jul 18, 2025", booking_time: "4:30 PM CST", property: "Cozy Mountain A-Frame", price: "$1,326.36" %>
+<%% end %>
+<% end %>
 
 <% content_for :js, flush: true do %>
 

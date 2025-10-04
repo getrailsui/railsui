@@ -39,6 +39,9 @@
 <%% end %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :danger, title: "There was 1 error trying to process your request.", list: ["Your name must be as cool as Andy."], icon: "shield-exclamation" %>
+<% end %>
 
     <%= render_snippet %>
   <% end %>

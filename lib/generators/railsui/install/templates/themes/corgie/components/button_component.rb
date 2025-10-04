@@ -12,7 +12,7 @@
 #
 # Options:
 #   text: String - Button text (can also be passed as first argument)
-#   variant: Symbol - :primary, :secondary, :dark, :light, :white, :transparent, :danger, :link (default: :primary)
+#   variant: Symbol - :primary, :dark, :white, :ghost, :danger, :link (default: :primary)
 #   size: Symbol - :sm, :md, :lg (default: :md)
 #   type: String - Button type attribute (default: "button")
 #   href: String - If provided, renders as <a> tag instead of <button>
@@ -61,13 +61,15 @@ module Rui
     def variant_class
       case @variant
       when :primary then "btn-primary"
-      when :secondary then "btn-secondary"
       when :dark then "btn-dark"
-      when :light then "btn-light"
       when :white then "btn-white"
-      when :transparent then "btn-transparent"
+      when :ghost then "btn-ghost"
       when :danger then "btn-danger"
       when :link then "btn-link"
+      # Legacy support for old variants
+      when :secondary then "btn-dark"
+      when :light then "btn-white"
+      when :transparent then "btn-ghost"
       else "btn-primary"
       end
     end

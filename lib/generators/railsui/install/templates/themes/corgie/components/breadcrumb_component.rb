@@ -43,7 +43,7 @@ module Rui
     private
 
     def nav_classes
-      base_classes = "my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm"
+      base_classes = "my-6 font-medium flex text-neutral-500 dark:text-neutral-200 text-sm"
       custom_classes = @html_options[:class]
 
       [base_classes, custom_classes].compact.join(" ")
@@ -70,7 +70,7 @@ module Rui
       private
 
       def link_classes
-        "hover:underline hover:text-slate-600 dark:hover:text-slate-400"
+        "hover:underline hover:text-neutral-600 dark:hover:text-neutral-400"
       end
 
       def current_classes

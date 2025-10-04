@@ -58,7 +58,7 @@ module Rui
     end
 
     def menu_classes
-      base_classes = "hidden transition transform origin-top-left absolute top-10 bg-white rounded-lg shadow-xl shadow-slate-900/10 border border-slate-200 md:w-[200px] w-full z-50 py-2 dark:bg-slate-700 dark:shadow-slate-900/50 dark:border-slate-500/60 md:text-sm text-base font-medium text-slate-600 dark:text-slate-200"
+      base_classes = "hidden transition transform origin-top-left absolute top-10 bg-white rounded-lg shadow-xl shadow-neutral-900/10 border border-neutral-200 md:w-[200px] w-full z-50 py-2 dark:bg-neutral-700 dark:shadow-neutral-900/50 dark:border-neutral-500/60 md:text-sm text-base font-medium text-neutral-600 dark:text-neutral-200"
       position_class = case @position
       when :right then "right-0"
       else "left-0" # :left

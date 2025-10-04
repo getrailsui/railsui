@@ -23,12 +23,12 @@
         <% elsif @title %>
           <div>
             <h3 id="<%= @id %>-title"
-                class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
+                class="text-2xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
               <%= @title %>
             </h3>
             <% if @closeable %>
               <button type="button"
-                      class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:text-slate-300 dark:hover:text-slate-100"
+                      class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-100"
                       data-action="click->railsui-modal#close">
                 <%= icon "x-mark", class: "size-6" %>
               </button>

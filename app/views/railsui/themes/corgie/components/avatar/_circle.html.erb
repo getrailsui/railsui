@@ -46,6 +46,14 @@
 <%%= image_tag demo_avatar_url(id: 50, variant: "women"), class: "size-24 rounded-full object-cover" %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :avatar, src: demo_avatar_url(id: 50, variant: "women"), size: :xs, shape: :circle %>
+<%%= rui :avatar, src: demo_avatar_url(id: 50, variant: "women"), size: :sm, shape: :circle %>
+<%%= rui :avatar, src: demo_avatar_url(id: 50, variant: "women"), size: :md, shape: :circle %>
+<%%= rui :avatar, src: demo_avatar_url(id: 50, variant: "women"), size: :lg, shape: :circle %>
+<%%= rui :avatar, src: demo_avatar_url(id: 50, variant: "women"), size: :xl, shape: :circle %>
+<% end %>
+
 
 <%= render_snippet active_tab: :erb %>
 <% end %>

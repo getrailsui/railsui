@@ -50,6 +50,19 @@
 <%% end %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :primary, icon: "star" do %>
+  <%%= tag.div class: "flex-1" do %>
+    <%%= tag.p "Your response is requested", class: "font-semibold" %>
+    <%%= tag.p "Vote for your favorite dog breed today." %>
+  <%% end %>
+  <%%= tag.div class: "flex items-center space-x-6 sm:pt-0 pt-3" do %>
+    <%%= link_to "Vote now", "#", class: "btn-link" %>
+    <%%= link_to "Dismiss", "#", class: "btn-link" %>
+  <%% end %>
+<%% end %>
+<% end %>
+
 
     <%= render_snippet %>
   <% end %>

@@ -39,6 +39,13 @@
 <%% end %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :primary, dismissible: true do %>
+  <%%= tag.p "A dismissible notice", class: "font-semibold" %>
+  <%%= tag.p "Your account settings have been successfully updated. The changes will take effect immediately." %>
+<%% end %>
+<% end %>
+
 <%= render_snippet %>
 <% end %>
 <% end %>

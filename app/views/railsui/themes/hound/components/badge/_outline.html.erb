@@ -60,6 +60,18 @@
 
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :badge, "Gray", variant: :gray, outline: true %>
+<%%= rui :badge, "Red", variant: :red, outline: true %>
+<%%= rui :badge, "Orange", variant: :orange, outline: true %>
+<%%= rui :badge, "Yellow", variant: :yellow, outline: true %>
+<%%= rui :badge, "Green", variant: :green, outline: true %>
+<%%= rui :badge, "Blue", variant: :blue, outline: true %>
+<%%= rui :badge, "Indigo", variant: :indigo, outline: true %>
+<%%= rui :badge, "Purple", variant: :purple, outline: true %>
+<%%= rui :badge, "Pink", variant: :pink, outline: true %>
+<%%= rui :badge, "White", variant: :white, outline: true %>
+<% end %>
 
 <%= render_snippet %>
 <% end %>

@@ -60,7 +60,29 @@
 <% end %>
 
 <% content_for :erb, flush: true do %>
+<%%= tag.span "Gray", class: "rounded bg-neutral-100 text-neutral-800 font-medium px-2 py-1 text-xs dark:bg-neutral-500/20 dark:text-neutral-200" %>
+<%%= tag.span "Red", class: "rounded bg-red-100 text-red-800 font-medium px-2 py-1 text-xs dark:bg-red-500/20 dark:text-red-300" %>
+<%%= tag.span "Orange", class: "rounded bg-orange-100 text-orange-700 font-medium px-2 py-1 text-xs dark:bg-orange-500/20 dark:text-orange-300" %>
+<%%= tag.span "Yellow", class: "rounded bg-yellow-100 text-yellow-700 font-medium px-2 py-1 text-xs dark:text-yellow-300 dark:bg-yellow-500/20" %>
+<%%= tag.span "Green", class: "rounded bg-green-100 text-green-800 font-medium px-2 py-1 text-xs dark:text-green-300 dark:bg-green-500/20" %>
+<%%= tag.span "Blue", class: "rounded bg-blue-100 text-blue-800 font-medium px-2 py-1 leading-tight text-xs dark:text-blue-300 dark:bg-blue-500/20" %>
+<%%= tag.span "Indigo", class: "rounded bg-indigo-100 text-indigo-800 font-medium px-2 py-1 leading-tight text-xs dark:text-indigo-300 dark:bg-indigo-500/20" %>
+<%%= tag.span "Purple", class: "rounded bg-purple-100 text-purple-800 font-medium px-2 py-1 leading-tight text-xs dark:text-purple-300 dark:bg-purple-500/20" %>
+<%%= tag.span "Pink", class: "rounded bg-pink-100 text-pink-800 font-medium px-2 py-1 leading-tight text-xs dark:text-pink-300 dark:bg-pink-500/20" %>
+<%%= tag.span "White", class: "rounded bg-white-100 text-neutral-800 border border-neutral-200 font-medium px-2 py-1 leading-tight text-xs dark:border-none dark:bg-white/10 dark:text-white/80" %>
+<% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :badge, "Gray", variant: :gray %>
+<%%= rui :badge, "Red", variant: :red %>
+<%%= rui :badge, "Orange", variant: :orange %>
+<%%= rui :badge, "Yellow", variant: :yellow %>
+<%%= rui :badge, "Green", variant: :green %>
+<%%= rui :badge, "Blue", variant: :blue %>
+<%%= rui :badge, "Indigo", variant: :indigo %>
+<%%= rui :badge, "Purple", variant: :purple %>
+<%%= rui :badge, "Pink", variant: :pink %>
+<%%= rui :badge, "White", variant: :white %>
 <% end %>
 
 

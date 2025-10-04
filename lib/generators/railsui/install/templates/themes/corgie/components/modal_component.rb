@@ -65,7 +65,7 @@ module Rui
     end
 
     def modal_content_classes
-      base_classes = "hidden rounded shadow-xl bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200"
+      base_classes = "hidden rounded shadow-xl bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-neutral-700 dark:text-neutral-200"
       size_classes = size_class
       custom_classes = @html_options[:class]
 

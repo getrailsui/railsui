@@ -1,0 +1,13 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(html_attributes) %>>
+  <% if @selectable %>
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" name="all_properties" id="all_properties" />
+      <label for="all_properties" class="form-check-label">Select All Properties</label>
+    </div>
+  <% end %>
+  <ul class="list-unstyled">
+    <% properties.each do |property| %>
+      <%= property %>
+    <% end %>
+  </ul>
+</div>

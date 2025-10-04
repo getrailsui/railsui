@@ -32,6 +32,15 @@
 <%%= button_tag "Link", type: "button", class: "btn btn-link" %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :button, "Primary", variant: :primary %>
+<%%= rui :button, "Dark", variant: :dark %>
+<%%= rui :button, "White", variant: :white %>
+<%%= rui :button, "Ghost", variant: :ghost %>
+<%%= rui :button, "Danger", variant: :danger %>
+<%%= rui :button, "Link", variant: :link %>
+<% end %>
+
 <%= render_snippet %>
 <% end %>
 <% end %>

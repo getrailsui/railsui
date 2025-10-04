@@ -1,0 +1,19 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(html_attributes) %>>
+  <table class="<%= table_classes %>">
+    <thead>
+      <th>Status</th>
+      <th>Guests</th>
+      <th>Arrival</th>
+      <th>Departure</th>
+      <th>Booking date</th>
+      <th>Property</th>
+      <th>Payout</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% bookings.each do |booking| %>
+        <%= booking %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

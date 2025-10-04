@@ -58,7 +58,7 @@ module Rui
       when :minimal
         "flex flex-wrap items-center justify-center w-auto gap-2"
       else # :contained
-        "flex flex-wrap items-center justify-center w-auto divide-x divide-slate-300 shadow-xs dark:divide-slate-600"
+        "flex flex-wrap items-center justify-center w-auto divide-x divide-neutral-300 shadow-xs dark:divide-neutral-600"
       end
     end
 
@@ -66,9 +66,9 @@ module Rui
     def previous_link_classes
       case @style
       when :minimal
-        "inline-flex justify-center items-center p-2 rounded hover:bg-slate-50/50 group hover:text-primary-600"
+        "inline-flex justify-center items-center p-2 rounded hover:bg-neutral-50/50 group hover:text-primary-600"
       else # :contained
-        "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-slate-50/50 group hover:text-primary-600 md:w-auto w-full border-y border-l border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
+        "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-l hover:bg-neutral-50/50 group hover:text-primary-600 md:w-auto w-full border-y border-l border-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:border-neutral-600"
       end
     end
 
@@ -134,9 +134,9 @@ module Rui
       else
         case @style
         when :minimal
-          "inline-flex items-center py-2 px-4 hover:bg-slate-50/50 rounded"
+          "inline-flex items-center py-2 px-4 hover:bg-neutral-50/50 rounded"
         else # :contained
-          "bg-white inline-flex items-center py-2 px-4 border-y border-slate-300 hover:bg-slate-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
+          "bg-white inline-flex items-center py-2 px-4 border-y border-neutral-300 hover:bg-neutral-50/50 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:border-neutral-600"
         end
       end
     end
@@ -154,7 +154,7 @@ module Rui
       when :minimal
         "inline-flex items-center py-2 px-3 select-none pointer-events-none"
       else # :contained
-        "bg-white inline-flex items-center py-2 px-3 border-y border-slate-300 select-none pointer-events-none dark:bg-slate-800 dark:border-slate-600"
+        "bg-white inline-flex items-center py-2 px-3 border-y border-neutral-300 select-none pointer-events-none dark:bg-neutral-800 dark:border-neutral-600"
       end
     end
 
@@ -165,7 +165,7 @@ module Rui
           data: link_data
         ) do
           icon("arrow-small-right",
-            class: "w-5 h-5 text-slate-400 group-hover:text-primary-500 dark:group-hover:text-slate-200",
+            class: "w-5 h-5 text-neutral-400 group-hover:text-primary-500 dark:group-hover:text-neutral-200",
             title: "Next"
           )
         end
@@ -175,9 +175,9 @@ module Rui
     def next_link_classes
       case @style
       when :minimal
-        "inline-flex justify-center items-center p-2 rounded hover:bg-slate-50/50 group hover:text-primary-600"
+        "inline-flex justify-center items-center p-2 rounded hover:bg-neutral-50/50 group hover:text-primary-600"
       else # :contained
-        "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-slate-50/50 group hover:text-primary-600 md:w-auto w-full border-y border-r border-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-600"
+        "bg-white inline-flex justify-center items-center md:py-2 py-[.63rem] px-2 rounded-r hover:bg-neutral-50/50 group hover:text-primary-600 md:w-auto w-full border-y border-r border-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:border-neutral-600"
       end
     end
 

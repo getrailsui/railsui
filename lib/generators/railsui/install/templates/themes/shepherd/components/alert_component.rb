@@ -69,7 +69,7 @@ module Rui
     private
 
     def alert_classes
-      base_classes = "p-4 rounded flex items-start gap-3 text-sm"
+      base_classes = "py-4 px-6 rounded-xl flex items-start justify-between space-x-3 text-sm"
       variant_classes = variant_class
       border_classes = @border_accent ? "border-l-4" : ""
       custom_classes = @html_options[:class]
@@ -92,10 +92,10 @@ module Rui
         }
       when :warning
         {
-          background: "bg-yellow-50/90 text-yellow-700 dark:bg-yellow-300/10 dark:border dark:border-yellow-400/30 dark:text-yellow-50",
+          background: "bg-amber-100/60 text-amber-800 dark:bg-amber-300/10 dark:border dark:border-amber-400/30 dark:text-amber-50 dark:selection:bg-amber-50/10",
           icon_name: "exclamation-triangle",
-          icon_class: "text-yellow-400 size-5 flex-shrink-0 dark:text-yellow-400/90",
-          title_class: "text-yellow-800 dark:text-yellow-400/90 font-semibold"
+          icon_class: "text-amber-500/90 size-5 flex-shrink-0 dark:text-amber-400/90",
+          title_class: "text-amber-900 dark:text-amber-400/90 font-medium font-heading"
         }
       when :danger, :error
         {

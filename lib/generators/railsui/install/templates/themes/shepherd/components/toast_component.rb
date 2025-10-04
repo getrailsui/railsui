@@ -86,7 +86,7 @@ module Rui
       when :info
         "bg-blue-50 ring-blue-200 dark:bg-blue-950 dark:ring-blue-800"
       else # :success
-        "bg-white ring-black/10 dark:bg-slate-950 dark:border dark:border-slate-700/80"
+        "bg-white ring-black/10 dark:bg-zinc-950 dark:border dark:border-zinc-700/80"
       end
       custom_classes = @html_options[:class]
 

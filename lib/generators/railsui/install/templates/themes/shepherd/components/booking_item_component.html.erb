@@ -1,0 +1,40 @@
+<tr class="md:whitespace-normal whitespace-nowrap">
+  <td class="align-top md:px-0 p-4 md:whitespace-normal whitespace-nowrap">
+    <span class="text-xs font-medium rounded-full font-sans px-2 py-1 tracking-tight <%= status_classes %>">
+      <%= status %>
+    </span>
+  </td>
+  <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+    <p><%= link_to guest, "#", class: "hover:underline" %></p>
+    <p><small class="text-zinc-500 dark:text-zinc-400 font-sans"><%= guest_counts %></small></p>
+  </td>
+  <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+    <%= arrival %>
+  </td>
+  <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+    <%= departure %>
+  </td>
+  <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+    <p><%= booking_date %></p>
+    <p><small class="text-zinc-500"><%= booking_date_time %></small></p>
+  </td>
+  <td class="align-top md:px-0 p-4 dark:text-zinc-100">
+    <%= link_to property, "#", class: "hover:underline" %>
+  </td>
+  <td class="align-top md:px-0 p-4 dark:text-zinc-100 font-sans">
+    <%= price %>
+  </td>
+  <td class="align-top pt-2">
+    <%= rui :dropdown do |dropdown| %>
+      <% dropdown.with_trigger do %>
+        <%= icon "ellipsis-horizontal", class: "md:block hidden stroke-current size-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200" %>
+        <span class="md:hidden block">Actions</span>
+        <%= icon "chevron-down", class: "md:hidden block size-4 stroke-current flex-shrink-0 text-zinc-600/80 dark:text-zinc-400" %>
+      <% end %>
+      <% dropdown.with_item(href: "#") do %>
+        <span>Go to Booking</span>
+        <%= icon "chevron-right", class: "md:hidden block size-5 stroke-current text-zinc-500/60 dark:text-zinc-400" %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

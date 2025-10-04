@@ -34,6 +34,9 @@
 <%% end %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :warning, title: "Action required", description: "Your account password will expire in 3 days. Please update your password to maintain access to your account.", icon: "exclamation-triangle" %>
+<% end %>
 
 <%= render_snippet %>
 <% end %>

@@ -1,0 +1,12 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(html_attributes) %>>
+  <table class="<%= table_classes %>">
+    <%= content %>
+    <% if items.any? %>
+      <tbody class="text-neutral-800 divide-y divide-neutral-200/80 dark:divide-neutral-700">
+        <% items.each do |item| %>
+          <%= item %>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>

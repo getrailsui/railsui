@@ -1,0 +1,22 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(html_attributes) %>>
+  <div class="flex items-center justify-start">
+    <% if @selectable %>
+      <div class="md:w-12 mb-3 md:mb-0">
+        <div class="flex items-center space-x-3">
+          <input type="checkbox" class="form-input-checkbox" name="all_properties" id="all_properties"
+          data-railsui-select-all-target="selectAll" />
+          <label for="all_properties" class="form-label mb-0 md:hidden block text-zinc-700 dark:text-zinc-200">All properties</label>
+        </div>
+      </div>
+    <% end %>
+    <div class="font-medium md:w-auto md:block hidden flex-1">Property</div>
+    <div class="font-medium md:w-2/12 md:block hidden">Sync</div>
+    <div class="font-medium md:w-2/12 md:block hidden">Hosts</div>
+    <div class="md:w-1/12 md:block hidden"></div>
+  </div>
+  <ul class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
+    <% properties.each do |property| %>
+      <%= property %>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,36 @@
+<li class="property-item d-flex align-items-center py-3">
+  <% if selectable %>
+    <div class="form-check me-3">
+      <input type="checkbox" class="form-check-input" />
+    </div>
+  <% end %>
+  <div class="flex-fill">
+    <%= link_to "#", class: "d-flex align-items-center text-decoration-none" do %>
+      <%= image_tag property_image, alt: "Property", class: "rounded me-3", style: "width: 64px; height: 40px; object-fit: cover;" %>
+      <div>
+        <h6 class="mb-0"><%= title %></h6>
+        <small class="text-muted"><%= subtitle %></small>
+      </div>
+    <% end %>
+  </div>
+  <div class="text-center px-3">
+    <%= icon "arrow-path", class: "text-muted" %>
+  </div>
+  <div class="text-center px-3">
+    <%= image_tag avatar_url, alt: avatar_alt, class: "rounded-circle", style: "width: 32px; height: 32px;" %>
+  </div>
+  <div class="text-end">
+    <%= rui :dropdown do |dropdown| %>
+      <% dropdown.with_trigger do %>
+        <%= icon "ellipsis-horizontal" %>
+        <span class="sr-only">Actions</span>
+      <% end %>
+      <% dropdown.with_item(href: "#") do %>
+        Edit property
+      <% end %>
+      <% dropdown.with_item(href: "#") do %>
+        Re-sync
+      <% end %>
+    <% end %>
+  </div>
+</li>

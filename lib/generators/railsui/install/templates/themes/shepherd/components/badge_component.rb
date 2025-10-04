@@ -140,13 +140,13 @@ module Rui
         }
       when :white
         {
-          basic: "bg-white text-slate-800 border border-slate-200 dark:border-none dark:bg-white/10 dark:text-white/80",
-          outline: "border-slate-200 text-slate-800 dark:border-white/30 dark:text-white/80"
+          basic: "bg-white text-zinc-800 border border-zinc-200 dark:border-none dark:bg-white/10 dark:text-white/80",
+          outline: "border-zinc-200 text-zinc-800 dark:border-white/30 dark:text-white/80"
         }
       else # :gray
         {
-          basic: "bg-neutral-100 text-neutral-800 dark:bg-neutral-500/20 dark:text-neutral-200",
-          outline: "border-neutral-200 text-neutral-800 dark:border-neutral-500/50 dark:text-neutral-200"
+          basic: "bg-zinc-100 text-zinc-800 dark:bg-zinc-500/20 dark:text-zinc-200",
+          outline: "border-zinc-200 text-zinc-800 dark:border-zinc-500/50 dark:text-zinc-200"
         }
       end
 

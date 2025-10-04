@@ -25,6 +25,11 @@
 <%% end %>
 <% end %>
 
+<% content_for :rui, flush: true do %>
+<%%= rui :alert, variant: :info, title: "Upcoming maintenance alert", description: "We'll be undergoing routine maintenance on Jan 1, 2024 that affects your account.", border_accent: true do %>
+  <%%= link_to "Read more about the update here", "#", class: "font-semibold underline text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-500" %>.
+<%% end %>
+<% end %>
 
 <%= render_snippet %>
 <% end %>
