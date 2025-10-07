@@ -17,8 +17,12 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <% if Railsui.config.build_mode == "build" %>
+      <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <% else %>
+      <%= javascript_importmap_tags %>
+    <% end %>
 
     <%= railsui_head %>
   </head>

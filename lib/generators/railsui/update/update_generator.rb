@@ -9,21 +9,34 @@ module Railsui
 
       def setup_theme
         @config = Railsui::Configuration.load!
+        @build_mode = @config.build_mode
 
+        say "Updating theme: #{@config.theme} (#{@build_mode} mode)", :yellow
 
-        say @config.theme, :yellow
+        # Migrate old CSS path to new tailwindcss-rails v4 location if needed
+        migrate_css_path_if_needed
 
         say "Updating Rails UI config", :yellow
         # mailers
         update_railsui_mailer_layout(@config.theme)
         copy_sample_mailers(@config.theme)
 
-        # rails ui deps
-        install_theme_dependencies(@config.theme)
+        # Install dependencies based on build mode
+        if @build_mode == "nobuild"
+          install_js_dependencies_nobuild(@config.theme)
+        else
+          install_js_dependencies_build(@config.theme)
+        end
+
+        # CSS dependencies (unified for both modes)
+        install_css_dependencies
 
         # themed assets
         copy_theme_javascript(@config.theme)
         copy_theme_stylesheets(@config.theme)
+
+        # Update Procfile for current mode
+        copy_procfile
 
         # update body classes
         update_railsui_theme_classes
@@ -33,11 +46,34 @@ module Railsui
 
         Railsui::Configuration.synchronize_pages
 
+        # Run bundle install to ensure all gems are available
+        say "Running bundle install...", :yellow
+        run "bundle install"
+
         @config.save
-        say "✅ Configuration updated successfully", :green
+        say "✅ Configuration updated successfully for #{@build_mode} mode", :green
       end
 
       private
+
+      def migrate_css_path_if_needed
+        old_path = Rails.root.join("app/assets/stylesheets/application.tailwind.css")
+        new_path = Rails.root.join("app/assets/tailwind/application.css")
+
+        # If using old path and new path doesn't exist, migrate
+        if File.exist?(old_path) && !File.exist?(new_path)
+          say "📦 Migrating CSS to tailwindcss-rails v4 location...", :yellow
+
+          # Create new directory
+          FileUtils.mkdir_p(Rails.root.join("app/assets/tailwind"))
+
+          # Move the file
+          FileUtils.mv(old_path, new_path)
+
+          say "✓ Moved #{old_path.relative_path_from(Rails.root)} → #{new_path.relative_path_from(Rails.root)}", :green
+          say "  Layouts will now use stylesheet_link_tag 'tailwind' instead of 'application'", :cyan
+        end
+      end
 
       def sync_pages
         # Remove old theme's pages. Forcefully for now.

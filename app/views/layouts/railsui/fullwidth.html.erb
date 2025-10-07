@@ -14,10 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= favicon_link_tag "favicon.svg" %>
-    <%= javascript_include_tag "railsui/application" %>
-    <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
 
-    <%= stylesheet_link_tag "railsui/railsui", "application" %>
+    <%= render "railsui/shared/cdn_dependencies" %>
+
+    <%= stylesheet_link_tag "railsui/railsui", "tailwind" %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="relative antialiased font-normal leading-normal railsui text-neutral-800 lg:h-screen selection:bg-neutral-800/80 selection:text-neutral-100 dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy">
+  <body class="relative antialiased font-normal leading-normal railsui text-neutral-800 lg:h-screen selection:bg-neutral-800/80 selection:text-neutral-100 dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy railsui-code">
     <div class="flex md:flex-row flex-col items-start justify-between md:h-[calc(100vh-2px)] overflow-x-clip relative">
 
       <%= image_tag "blur.png", class: "absolute -top-[500px] -right-[500px] opacity-[0.09] dark:opacity-20 z-0" %>

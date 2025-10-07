@@ -1,0 +1,121 @@
+<!-- Stylesheets -->
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/atom-one-dark.min.css" />
+<style>
+  /* Custom styles for ERB/HAML code blocks using Ruby syntax */
+  .railsui .language-erb .hljs-comment,
+  .railsui .language-haml .hljs-comment {
+    color: #637777 !important;
+    font-style: italic;
+  }
+  /* Style HTML-like tags in ERB when they're not highlighted */
+  .railsui .language-erb code,
+  .railsui .language-haml code {
+    /* Ensure base text is visible */
+    color: #f5f5f5;
+  }
+
+  /* Ensure highlight.js styles aren't overridden */
+  .hljs {
+    background: transparent !important;
+    color: #abb2bf !important;
+  }
+
+  /* CSS syntax highlighting colors */
+  .language-css .hljs-attribute {
+    color: #e06c75 !important;
+  }
+  .language-css .hljs-number,
+  .language-css .hljs-literal {
+    color: #d19a66 !important;
+  }
+  .language-css .hljs-selector-class,
+  .language-css .hljs-selector-tag {
+    color: #e5c07b !important;
+  }
+  .language-css .hljs-built_in,
+  .language-css .hljs-title {
+    color: #61afef !important;
+  }
+  .language-css .hljs-comment {
+    color: #5c6370 !important;
+    font-style: italic;
+  }
+  .language-css .hljs-string {
+    color: #98c379 !important;
+  }
+</style>
+
+<!-- Import map for ES modules (required for railsui-stimulus package) -->
+<script type="importmap">
+{
+  "imports": {
+    "@hotwired/stimulus": "https://unpkg.com/@hotwired/stimulus@3.2.2/dist/stimulus.js",
+    "tippy.js": "https://unpkg.com/tippy.js@6.3.7/dist/tippy.esm.js"
+  }
+}
+</script>
+
+<!-- Core Dependencies -->
+<script src="https://unpkg.com/@hotwired/stimulus@3.2.2/dist/stimulus.umd.js"></script>
+<script src="https://unpkg.com/stimulus-use@0.52.2/dist/index.umd.js"></script>
+
+<!-- UI Libraries -->
+<script src="https://unpkg.com/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+<%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
+
+<!-- Syntax Highlighting -->
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/ruby.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/javascript.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/bash.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/css.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/xml.min.js"></script>
+<script>
+  // Ensure hljs is available globally
+  window.hljs = window.hljs || hljs;
+
+  // Register ERB as an alias for Ruby (better syntax highlighting for embedded Ruby)
+  // Register HAML as an alias for Ruby as well
+  if (window.hljs) {
+    hljs.registerAliases(['erb'], {languageName: 'ruby'})
+    hljs.registerAliases(['haml'], {languageName: 'ruby'})
+
+    // Highlight all code blocks on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      hljs.highlightAll();
+    });
+
+    // Also run immediately in case DOMContentLoaded already fired
+    if (document.readyState === 'loading') {
+      // Still loading, wait for DOMContentLoaded
+    } else {
+      // DOM already loaded, run now
+      hljs.highlightAll();
+    }
+  }
+</script>
+
+<!-- Initialize Stimulus and register controllers -->
+<script>
+  (function() {
+    // Capture Stimulus globals before reassigning
+    const StimulusController = Stimulus.Controller
+    const StimulusApplication = Stimulus.Application
+
+    const application = StimulusApplication.start()
+
+    // Expose both application and Controller base class
+    window.Stimulus = {
+      application: application,
+      Controller: StimulusController,
+      Application: StimulusApplication
+    }
+
+    const hljs = window.hljs
+    const { useTransition, useClickOutside } = window.StimulusUse || {}
+
+    <%= render partial: "railsui/shared/inline_controllers" %>;
+  })()
+</script>

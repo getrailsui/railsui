@@ -8,7 +8,29 @@
   css_content = yield :css
 %>
 
-<div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg overflow-clip dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 relative scrollbar border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }">
+<div data-controller="railsui-code" class="mt-5 mb-8 first:mt-0 last:mb-0 bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg overflow-clip dark:border dark:border-neutral-700 selection:bg-neutral-300/90 selection:text-neutral-800 relative scrollbar border-transparent" x-data="{ active: '<%= local_assigns[:active_tab] %>' }" x-init="
+  // Highlight visible code on load
+  setTimeout(() => {
+    const codeElements = $el.querySelectorAll('pre code');
+    codeElements.forEach(el => {
+      if (el.offsetParent !== null && typeof hljs !== 'undefined' && !el.classList.contains('hljs')) {
+        hljs.highlightElement(el);
+      }
+    });
+  }, 100);
+
+  // Watch for tab changes and highlight new code
+  $watch('active', () => {
+    setTimeout(() => {
+      const codeElements = $el.querySelectorAll('pre code');
+      codeElements.forEach(el => {
+        if (el.offsetParent !== null && typeof hljs !== 'undefined' && !el.classList.contains('hljs')) {
+          hljs.highlightElement(el);
+        }
+      });
+    }, 50);
+  });
+">
   <div class="bg-neutral-800">
     <ul class="flex items-center justify-start space-x-2 border-b border-neutral-700 px-3">
       <% if content_for?(:html) %>

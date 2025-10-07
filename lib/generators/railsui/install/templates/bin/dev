@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Exit if any command fails
+set -e
+
+# Check if Procfile.dev exists
+if [ ! -f Procfile.dev ]; then
+  echo "Procfile.dev not found!"
+  exit 1
+fi
+
+# Check for foreman/overmind, otherwise try to install foreman
+if command -v overmind &> /dev/null; then
+  exec overmind start -f Procfile.dev "$@"
+elif command -v foreman &> /dev/null; then
+  exec foreman start -f Procfile.dev "$@"
+else
+  echo "Installing foreman..."
+  gem install foreman
+  exec foreman start -f Procfile.dev "$@"
+fi

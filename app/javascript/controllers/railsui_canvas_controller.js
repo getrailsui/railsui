@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-export default class extends Controller {
+export default class extends Stimulus.Controller {
   connect() {
     if (this.element) {
       var c = this.element,

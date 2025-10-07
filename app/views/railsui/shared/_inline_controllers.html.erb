@@ -1,0 +1,498 @@
+// railsui-code
+(function() {
+  const controller = class extends Stimulus.Controller {
+    connect() {
+      if (typeof hljs !== 'undefined' && hljs.highlightElement) {
+        this.snippetTargets.forEach((el) => {
+          if (!el.classList.contains('hljs')) {
+            hljs.highlightElement(el)
+          }
+        })
+      }
+    }
+  }
+  controller.targets = ["snippet"]
+  Stimulus.application.register("railsui-code", controller)
+})();
+
+// railsui-modal
+(function() {
+  const controller = class extends Stimulus.Controller {
+    connect() {
+      if (useTransition) useTransition(this, { element: this.contentTarget })
+      if (useClickOutside) useClickOutside(this, { element: this.contentTarget })
+    }
+    open(event) {
+      event.preventDefault()
+      this.enableAppearance()
+      if (this.toggleTransition) this.toggleTransition()
+    }
+    close(event) {
+      event.preventDefault()
+      if (this.leave) this.leave()
+      this.disableAppearance()
+    }
+    clickOutside(event) {
+      const action = event.target.dataset.action
+      if (action == "click->modal#open" || action == "click->modal#open:prevent") return
+      this.close(event)
+    }
+    closeWithEsc(event) {
+      if (event.keyCode === 27 && !this.containerTarget.classList.contains('hidden')) {
+        this.close(event)
+      }
+    }
+    enableAppearance() {
+      this.containerTarget.classList.add("bg-black/80")
+      this.containerTarget.classList.remove('hidden')
+    }
+    disableAppearance() {
+      this.containerTarget.classList.add('hidden')
+      this.containerTarget.classList.remove("bg-black/80")
+    }
+    disconnect() {
+      if (this.toggleTransition) this.toggleTransition()
+    }
+  }
+  controller.targets = ['container', 'content']
+  Stimulus.application.register("railsui-modal", controller)
+})();
+
+// railsui-nav
+(function() {
+  const controller = class extends Stimulus.Controller {
+    connect() {
+      if (useTransition) useTransition(this, { element: this.navTarget })
+    }
+    toggle() {
+      if (this.toggleTransition) this.toggleTransition()
+      this.swapIcon()
+    }
+    disconnect() {
+      if (this.leave) this.leave()
+    }
+    swapIcon() {
+      this.menuBarsTarget.classList.toggle('hidden')
+      this.menuCrossTarget.classList.toggle('hidden')
+    }
+  }
+  controller.targets = ['nav', 'menuBars', 'menuCross']
+  Stimulus.application.register("railsui-nav", controller)
+})();
+
+// railsui-prevent
+Stimulus.application.register("railsui-prevent", class extends Stimulus.Controller {
+  prevent(event) { event.preventDefault() }
+});
+
+// railsui-loading
+Stimulus.application.register("railsui-loading", class extends Stimulus.Controller {
+  load() { this.element.classList.add("opacity-50", "pointer-events-none") }
+});
+
+// railsui-flash
+Stimulus.application.register("railsui-flash", class extends Stimulus.Controller {
+  connect() {
+    if (this.element) setTimeout(() => { this.element.remove() }, 4000)
+  }
+});
+
+// railsui-pages
+(function() {
+  const controller = class extends Stimulus.Controller {
+    checkAll() {
+      const checkAllCheckbox = this.checkboxTargets[0]
+      const checkboxes = this.checkboxTargets.slice(1)
+      checkboxes.forEach((checkbox) => { checkbox.checked = !checkbox.checked })
+      checkAllCheckbox.checked = checkboxes.every((checkbox) => checkbox.checked)
+    }
+  }
+  controller.targets = ["checkbox"]
+  Stimulus.application.register("railsui-pages", controller)
+})();
+
+// railsui-search
+(function() {
+  const controller = class extends Stimulus.Controller {
+    connect() {
+      this.currentResults = this.resultListTarget.innerHTML
+    }
+    search(event) {
+      this.filterList(event)
+    }
+    clear(event) {
+      event.target.value = ""
+      this._resetList()
+    }
+    filterList(event) {
+      this.resultTargets.forEach((result) => {
+        if (result.dataset.searchRouteValue.includes(event.target.value)) {
+          result.style.cssText = "display: block !important"
+        } else {
+          result.style.cssText = "display: none !important"
+        }
+      })
+    }
+    _resetList() {
+      this.resultListTarget.innerHTML = this.currentResults
+    }
+  }
+  controller.targets = ["result", "form", "resultList"]
+  Stimulus.application.register("railsui-search", controller)
+})();
+
+// railsui-snippet
+(function() {
+  const controller = class extends Stimulus.Controller {
+    get ACTIVE_CLASSES() {
+      return ["bg-white", "px-3", "py-1.5", "rounded-md", "shadow", "flex", "items-center",
+        "justify-center", "gap-2", "text-[13px]", "font-semibold", "focus:ring-4",
+        "focus:ring-blue-600", "group", "dark:bg-neutral-800/90", "dark:text-neutral-100",
+        "dark:focus:ring-blue-600/50", "dark:text-neutral-300"]
+    }
+    get INACTIVE_CLASSES() {
+      return ["bg-transparent", "px-3", "py-1.5", "rounded-md", "shadow-none", "flex",
+        "items-center", "justify-center", "gap-2", "text-[13px]", "font-semibold", "dark:text-neutral-300"]
+    }
+    togglePreview(event) {
+      event.preventDefault()
+      this.toggle("preview")
+    }
+    toggleCode(event) {
+      event.preventDefault()
+      this.toggle("code")
+      this.highlightCode()
+    }
+    toggle(target) {
+      const activeClasses = this.ACTIVE_CLASSES
+      const inactiveClasses = this.INACTIVE_CLASSES
+      if (target === "preview") {
+        if (!this.previewTarget.classList.contains("hidden")) return
+        this.previewTarget.classList.toggle("hidden")
+        this.codeTarget.classList.add("hidden")
+        this.previewBtnTarget.className = ""
+        this.codeBtnTarget.className = ""
+        activeClasses.forEach((cls) => this.previewBtnTarget.classList.add(cls))
+        inactiveClasses.forEach((cls) => this.codeBtnTarget.classList.add(cls))
+      } else if (target === "code") {
+        if (!this.codeTarget.classList.contains("hidden")) return
+        this.codeTarget.classList.toggle("hidden")
+        this.previewTarget.classList.add("hidden")
+        this.previewBtnTarget.className = ""
+        this.codeBtnTarget.className = ""
+        activeClasses.forEach((cls) => this.codeBtnTarget.classList.add(cls))
+        inactiveClasses.forEach((cls) => this.previewBtnTarget.classList.add(cls))
+      }
+    }
+    highlightCode() {
+      if (typeof hljs !== 'undefined' && this.hasCodeTarget) {
+        const codeElements = this.codeTarget.querySelectorAll('pre code')
+        codeElements.forEach((el) => {
+          if (!el.classList.contains('hljs')) {
+            hljs.highlightElement(el)
+          }
+        })
+      }
+    }
+  }
+  controller.targets = ["preview", "previewBtn", "code", "codeBtn"]
+  Stimulus.application.register("railsui-snippet", controller)
+})();
+
+// railsui-canvas
+Stimulus.application.register("railsui-canvas", class extends Stimulus.Controller {
+  connect() {
+    if (!this.element) return
+    var c = this.element, ctx = c.getContext("2d"), cw = (c.width = window.innerWidth),
+        ch = (c.height = window.innerHeight), points = [], tick = 0,
+        opt = { count: 5, range: { x: 40, y: 80 }, duration: { min: 40, max: 100 },
+                thickness: 0, strokeColor: "transparent", level: 0.65, curved: true },
+        rand = (min, max) => Math.floor(Math.random() * (max - min + 1) + min),
+        ease = (t, b, c, d) => {
+          if ((t /= d / 2) < 1) return (c / 2) * t * t + b
+          return (-c / 2) * (--t * (t - 2) - 1) + b
+        }
+    ctx.lineJoin = "round"; ctx.lineWidth = opt.thickness; ctx.strokeStyle = opt.strokeColor
+    var Point = function (config) {
+      this.anchorX = config.x; this.anchorY = config.y; this.x = config.x; this.y = config.y
+      this.setTarget()
+    }
+    Point.prototype.setTarget = function () {
+      this.initialX = this.x; this.initialY = this.y
+      this.targetX = this.anchorX + rand(0, opt.range.x * 2) - opt.range.x
+      this.targetY = this.anchorY + rand(0, opt.range.y * 2) - opt.range.y
+      this.tick = 0; this.duration = rand(opt.duration.min, opt.duration.max)
+    }
+    Point.prototype.update = function () {
+      var dx = this.targetX - this.x, dy = this.targetY - this.y, dist = Math.sqrt(dx * dx + dy * dy)
+      if (Math.abs(dist) <= 0) {
+        this.setTarget()
+      } else {
+        var t = this.tick, b = this.initialY, c = this.targetY - this.initialY, d = this.duration
+        this.y = ease(t, b, c, d); b = this.initialX; c = this.targetX - this.initialX; d = this.duration
+        this.x = ease(t, b, c, d); this.tick++
+      }
+    }
+    Point.prototype.render = function () {
+      ctx.beginPath(); ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false); ctx.fillStyle = "#000"; ctx.fill()
+    }
+    var updatePoints = () => { var i = points.length; while (i--) points[i].update() }
+    var renderShape = () => {
+      ctx.beginPath(); var pointCount = points.length; ctx.moveTo(points[0].x, points[0].y)
+      for (var i = 0; i < pointCount - 1; i++) {
+        var c = (points[i].x + points[i + 1].x) / 2, d = (points[i].y + points[i + 1].y) / 2
+        ctx.quadraticCurveTo(points[i].x, points[i].y, c, d)
+      }
+      ctx.lineTo(-opt.range.x - opt.thickness, ch + opt.thickness)
+      ctx.lineTo(cw + opt.range.x + opt.thickness, ch + opt.thickness); ctx.closePath()
+      var gradient = ctx.createLinearGradient(20, 300, 240, 0)
+      gradient.addColorStop(1, "#27272a"); gradient.addColorStop(0.05, "#18181b")
+      ctx.fillStyle = gradient; ctx.fill(); ctx.stroke()
+    }
+    var clear = () => ctx.clearRect(0, 0, cw, ch)
+    var loop = () => { window.requestAnimFrame(loop, c); tick++; clear(); updatePoints(); renderShape() }
+    var i = opt.count + 2, spacing = (cw + opt.range.x * 2) / (opt.count - 1)
+    while (i--) points.push(new Point({ x: spacing * (i - 1) - opt.range.x, y: ch - ch * opt.level }))
+    window.requestAnimFrame = (() => {
+      return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+             window.mozRequestAnimationFrame || window.oRequestAnimationFrame ||
+             window.msRequestAnimationFrame || ((a) => window.setTimeout(a, 1e3 / 60))
+    })()
+    loop()
+  }
+});
+
+// railsui-scroll
+(function() {
+  const controller = class extends Stimulus.Controller {
+    connect() {
+      if (this.hasScrollitemTarget) {
+        let scrollpos = localStorage.getItem("scrollpos")
+        if (scrollpos) this.scrollitemTarget.scrollTo(0, scrollpos)
+
+        window.onbeforeunload = () => {
+          localStorage.setItem("scrollpos", this.scrollitemTarget.scrollTop)
+        }
+      }
+
+      if (this.hasLauncherTarget) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY >= 800) {
+            this.launcherTarget.classList.remove('hidden')
+          } else {
+            this.launcherTarget.classList.add('hidden')
+          }
+        })
+      }
+    }
+    scrollToTop(event) {
+      event.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+  controller.targets = ["scrollitem", "launcher"]
+  Stimulus.application.register("railsui-scroll", controller)
+})();
+
+// railsui-scroll-spy
+(function() {
+  const controller = class extends Stimulus.Controller {
+    connect() {
+      if (this.hasScrollContainerTarget) {
+        this.scrollHandler = this.scrollHandler.bind(this)
+        this.scrollContainerTarget.addEventListener("scroll", this.scrollHandler)
+      }
+    }
+    disconnect() {
+      this.scrollContainerTarget.removeEventListener("scroll", this.scrollHandler)
+    }
+    scrollHandler() {
+      const scrollPosition = this.scrollContainerTarget.scrollTop
+
+      this.linkTargets.forEach((link) => {
+        const targetId = link.getAttribute("href")
+        if (!targetId) return
+
+        const targetElement = document.querySelector(targetId)
+        if (targetElement) {
+          const targetPosition = targetElement.offsetTop
+          const targetHeight = targetElement.offsetHeight
+
+          if (scrollPosition >= targetPosition && scrollPosition < targetPosition + targetHeight) {
+            this.activateLink(link)
+          } else {
+            this.deactivateLink(link)
+          }
+        }
+      })
+    }
+    activateLink(link) {
+      const activeClasses = this.activeClassValue.split(" ")
+      activeClasses.forEach((className) => link.classList.add(className))
+
+      const inactiveClasses = this.inactiveClassValue.split(" ")
+      inactiveClasses.forEach((className) => link.classList.remove(className))
+    }
+    deactivateLink(link) {
+      const activeClasses = this.activeClassValue.split(" ")
+      activeClasses.forEach((className) => link.classList.remove(className))
+
+      const inactiveClasses = this.inactiveClassValue.split(" ")
+      inactiveClasses.forEach((className) => link.classList.add(className))
+    }
+  }
+  controller.targets = ["link", "scrollContainer"]
+  controller.values = { activeClass: String, inactiveClass: String }
+  Stimulus.application.register("railsui-scroll-spy", controller)
+})();
+
+// railsui-smooth
+Stimulus.application.register("railsui-smooth", class extends Stimulus.Controller {
+  scroll(event) {
+    event.preventDefault()
+    const target = document.querySelector(event.currentTarget.hash)
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" })
+      const href = event.currentTarget.getAttribute("href")
+      if (href) history.pushState({}, "", href)
+    }
+  }
+});
+
+// railsui-toggle (empty placeholder - full version available as railsui-toggle-external from railsui-stimulus)
+Stimulus.application.register("railsui-toggle", class extends Stimulus.Controller {});
+
+// railsui-dialog
+(function() {
+  const controller = class extends Stimulus.Controller {
+    launch(event) {
+      event.preventDefault()
+      this.dialogTarget.showModal()
+    }
+    cancel(event) {
+      event.preventDefault()
+      this.dialogTarget.close()
+    }
+    perform() {
+      this.buttonTarget.textContent = "Processing..."
+      this.buttonTarget.classList.add("opacity-50", "pointer-events-none")
+      this.cancelTarget.classList.add("hidden")
+    }
+  }
+  controller.targets = ["dialog", "button", "cancel"]
+  Stimulus.application.register("railsui-dialog", controller)
+})();
+
+// railsui-anchor
+(function() {
+  const controller = class extends Stimulus.Controller {
+    copy(event) {
+      event.preventDefault()
+      navigator.clipboard.writeText(this.urlValue + `#${this.element.id}`)
+    }
+  }
+  controller.values = { url: String }
+  Stimulus.application.register("railsui-anchor", controller)
+})();
+
+// railsui-helper
+(function() {
+  const controller = class extends Stimulus.Controller {
+    togglePath(event) {
+      event.preventDefault()
+      this.extensionTargets.forEach(t => { t.textContent = this.pathValue })
+    }
+    toggleUrl(event) {
+      event.preventDefault()
+      this.extensionTargets.forEach(t => { t.textContent = this.urlValue })
+    }
+  }
+  controller.targets = ["extension"]
+  controller.values = { path: String, url: String }
+  Stimulus.application.register("railsui-helper", controller)
+})();
+
+// railsui-configuration
+(function() {
+  const controller = class extends Stimulus.Controller {
+    initialize() {
+      const urlParams = new URLSearchParams(window.location.search)
+      if (urlParams.get("update") === "true") {
+        setTimeout(() => {
+          this.removeURLParameter("update")
+          window.location.reload()
+        }, 3000)
+      }
+    }
+    connect() {
+      this.toggleLoader()
+    }
+    saveChanges(event) {
+      event.preventDefault()
+      this.savingTarget.classList.add("config-loader--active")
+      document.body.classList.add("overflow-hidden")
+      this.submitTarget.setAttribute("disabled", true)
+      this.element.submit()
+    }
+    toggleLoader() {
+      this.savingTarget.classList.remove("config-loader--active")
+      document.body.classList.remove("overflow-hidden")
+    }
+    removeURLParameter(param) {
+      const url = new URL(window.location.href)
+      url.searchParams.delete(param)
+      window.history.replaceState({}, "", url)
+    }
+  }
+  controller.targets = ["submit", "submitContainer", "saving"]
+  Stimulus.application.register("railsui-configuration", controller)
+})();
+
+// railsui-auto-expand-text-area
+Stimulus.application.register("railsui-auto-expand-text-area", class extends Stimulus.Controller {
+  expand() {
+    this.element.style.height = `${this.element.scrollHeight + 2}px`
+    if (this.element.scrollHeight > 60) {
+      this.element.classList.remove("rounded-full")
+      this.element.classList.add("rounded-lg")
+    } else {
+      this.resetTextarea()
+    }
+    if (this.element.value.trim() === "") {
+      this.resetTextarea()
+    }
+  }
+  resetTextarea() {
+    this.element.style.height = "auto"
+    this.element.classList.add("rounded-full")
+    this.element.classList.remove("rounded-lg")
+  }
+});
+
+// ============================================================================
+// External Controllers from railsui-stimulus package
+// https://github.com/getrailsui/railsui-stimulus
+// ============================================================================
+// These controllers are loaded as ES modules after Stimulus is initialized.
+// Note: railsui-modal-external and railsui-toggle-external are renamed to
+// avoid conflicts with inline versions above.
+if (typeof window.railsuiStimulusLoaded === 'undefined') {
+  window.railsuiStimulusLoaded = true;
+  import('https://unpkg.com/railsui-stimulus@1.1.2/dist/railsui-stimulus.module.js').then(module => {
+    Stimulus.application.register("railsui-clipboard", module.RailsuiClipboard);
+    Stimulus.application.register("railsui-count-up", module.RailsuiCountUp);
+    Stimulus.application.register("railsui-combobox", module.RailsuiCombobox);
+    Stimulus.application.register("railsui-date-range-picker", module.RailsuiDateRangePicker);
+    Stimulus.application.register("railsui-dropdown", module.RailsuiDropdown);
+    Stimulus.application.register("railsui-modal-external", module.RailsuiModal);
+    Stimulus.application.register("railsui-password-toggle", module.RailsuiPasswordToggle);
+    Stimulus.application.register("railsui-range", module.RailsuiRange);
+    Stimulus.application.register("railsui-read-more", module.RailsuiReadMore);
+    Stimulus.application.register("railsui-select-all", module.RailsuiSelectAll);
+    Stimulus.application.register("railsui-tabs", module.RailsuiTabs);
+    Stimulus.application.register("railsui-toast", module.RailsuiToast);
+    Stimulus.application.register("railsui-toggle-external", module.RailsuiToggle);
+    Stimulus.application.register("railsui-tooltip", module.RailsuiTooltip);
+  });
+}
+

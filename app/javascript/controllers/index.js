@@ -1,4 +1,5 @@
-import { application } from "./application"
+// Use global Stimulus from CDN
+const application = window.Stimulus
 
 import RailsuiAnchorController from "./railsui_anchor_controller.js"
 application.register("railsui-anchor", RailsuiAnchorController)
@@ -48,33 +49,4 @@ application.register("railsui-pages", RailsuiPagesController)
 import RailsuiLoadingController from "./railsui_loading_controller.js"
 application.register("railsui-loading", RailsuiLoadingController)
 
-// Import components adhoc.
-import {
-  RailsuiClipboard,
-  RailsuiCountUp,
-  RailsuiCombobox,
-  RailsuiDateRangePicker,
-  RailsuiDropdown,
-  RailsuiModal,
-  RailsuiRange,
-  RailsuiReadMore,
-  RailsuiSelectAll,
-  RailsuiTabs,
-  RailsuiToast,
-  RailsuiToggle,
-  RailsuiTooltip,
-} from "railsui-stimulus"
-
-application.register("railsui-clipboard", RailsuiClipboard)
-application.register("railsui-count-up", RailsuiCountUp)
-application.register("railsui-combobox", RailsuiCombobox)
-application.register("railsui-date-range-picker", RailsuiDateRangePicker)
-application.register("railsui-dropdown", RailsuiDropdown)
-application.register("railsui-modal", RailsuiModal)
-application.register("railsui-range", RailsuiRange)
-application.register("railsui-read-more", RailsuiReadMore)
-application.register("railsui-select-all", RailsuiSelectAll)
-application.register("railsui-tabs", RailsuiTabs)
-application.register("railsui-toast", RailsuiToast)
-application.register("railsui-toggle", RailsuiToggle)
-application.register("railsui-tooltip", RailsuiTooltip)
+// railsui-stimulus components are loaded via CDN and auto-register

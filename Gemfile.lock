@@ -6,6 +6,7 @@ PATH
       psych
       rails (>= 7.0)
       railsui_icon
+      tailwindcss-rails (>= 2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -222,6 +223,10 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.1)
+    tailwindcss-rails (4.3.0)
+      railties (>= 7.0.0)
+      tailwindcss-ruby (~> 4.0)
+    tailwindcss-ruby (4.1.13-arm64-darwin)
     thor (1.3.2)
     timeout (0.4.1)
     tzinfo (2.0.6)

@@ -14,12 +14,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= favicon_link_tag "favicon.svg" %>
-    <%= javascript_include_tag "railsui/application" %>
-    <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
 
-    <%= stylesheet_link_tag "application", "railsui/railsui" %>
+    <%= render "railsui/shared/cdn_dependencies" %>
 
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+    <%= stylesheet_link_tag "railsui/application" %>
+
+    <% if main_app_asset_exists?("tailwind") %>
+      <%= stylesheet_link_tag "tailwind" %>
+    <% end %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +32,7 @@
     <% end %>
 
     <%= yield :head %>
-  </head>
+  </head> 
 
   <body class="relative antialiased font-normal leading-normal railsui text-neutral-800 lg:h-screen selection:bg-neutral-300/20 selection:text-neutral-900 dark:selection:text-white dark:bg-neutral-900 dark:text-neutral-50" data-controller="railsui-toggle railsui-scroll railsui-smooth railsui-scroll-spy" data-railsui-scroll-spy-active-class-value="text-neutral-900 hover:text-neutral-950 dark:hover:text-neutral-200 dark:text-white dark:hover:text-white truncate"
       data-railsui-scroll-spy-inactive-class-value="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white truncate">

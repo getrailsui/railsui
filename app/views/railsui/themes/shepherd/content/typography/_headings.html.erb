@@ -43,42 +43,44 @@
     <% end %>
   </div>
 
-
-<% content_for :example do %>
-<%# snippet content :html %>
-<% content_for :html, flush: true do %>
+  <% content_for :example do %>
+    <%# snippet content :html %>
+    <% content_for :html, flush: true do %>
 <h1 class="h1">A quick brown fox jumps over the lazy dog.</h1>
 <h2 class="h2">A quick brown fox jumps over the lazy dog.</h2>
 <h3 class="h3">A quick brown fox jumps over the lazy dog.</h3>
 <h4 class="h4">A quick brown fox jumps over the lazy dog.</h4>
 <h5 class="h5">A quick brown fox jumps over the lazy dog.</h5>
 <h6 class="h6">A quick brown fox jumps over the lazy dog.</h6>
-<% end %>
-<%# snippet content :erb %>
-  <% content_for :erb, flush: true do %>
-<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "text-5xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 -tracking-[0.03em]" %>
-<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight" %>
+    <% end %>
+    <%# snippet content :erb %>
+    <% content_for :erb, flush: true do %>
+<%%= content_tag :h1, "A quick brown fox jumps over the lazy dog.", class: "h1" %>
+<%%= content_tag :h2, "A quick brown fox jumps over the lazy dog.", class: "h2" %>
 <%%= content_tag :h3, "A quick brown fox jumps over the lazy dog.", class: "h3" %>
 <%%= content_tag :h4, "A quick brown fox jumps over the lazy dog.", class: "h4" %>
 <%%= content_tag :h5, "A quick brown fox jumps over the lazy dog.", class: "h5" %>
 <%%= content_tag :h6, "A quick brown fox jumps over the lazy dog.", class: "h6" %>
+    <% end %>
   <% end %>
+
+  <%= render_snippet %>
+<% end %>
 </div>
 
 <div id="typography-responsive" class="prose prose-netural dark:prose-invert max-w-full prose-headings:tracking-tight">
-<h3>Responsive heading design</h3>
-<p>Change heading sizes relative to viewports with Tailwind CSS responsive utilities.</p>
+  <h3>Responsive heading design</h3>
+  <p>Change heading sizes relative to viewports with Tailwind CSS responsive utilities.</p>
 
-<div class="not-prose">
-<% content_for :html, flush: true do %>
-  <h1 class="md:h1 h2">My sample title</h1>
-<% end %>
+  <div class="not-prose">
+    <% content_for :html, flush: true do %>
+      <h1 class="md:h1 h2">My sample title</h1>
+    <% end %>
 
+    <% content_for :erb, flush: true do %>
+      <%%= content_tag :h1, "My sample title", class: "md:h1 h2" %>
+    <% end %>
 
-<% content_for :erb, flush: true do %>
-
-<% end %>
-
-<%= render_snippet %>
-</div>
+    <%= render_snippet %>
+  </div>
 </div>

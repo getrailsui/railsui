@@ -1,0 +1,1 @@
+css: bin/rails tailwindcss:watch

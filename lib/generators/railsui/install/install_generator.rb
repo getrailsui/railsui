@@ -7,65 +7,149 @@ module Railsui
 
       source_root File.expand_path("templates", __dir__)
 
+      class_option :build, type: :boolean, default: false, desc: "Install with JS bundler (esbuild, bun, webpack, rollup)"
+
+      def check_build_mode_requirements
+        # If --build flag is used, verify jsbundling-rails is installed BEFORE doing anything
+        if options[:build]
+          unless gem_installed?('jsbundling-rails')
+            say ""
+            say "=" * 70, :red
+            say "❌ Build mode requires jsbundling-rails", :red
+            say "=" * 70, :red
+            say ""
+            say "You've used the --build flag, but jsbundling-rails is not installed.", :yellow
+            say ""
+            say "Please install a JS bundler first:", :cyan
+            say ""
+            say "  bundle add jsbundling-rails", :cyan
+            say "  rails javascript:install:[bun|esbuild|rollup|webpack]", :cyan
+            say "  rails railsui:install --build", :cyan
+            say ""
+            say "Or use importmap mode (no --build flag needed):", :cyan
+            say ""
+            say "  rails railsui:install", :cyan
+            say ""
+            say "📚 See README for more details on installation modes", :cyan
+            say ""
+            exit(1)
+          end
+
+          # Also verify a JS bundler is configured
+          bundler = detect_js_bundler
+          if bundler == "unknown" || bundler == "importmap"
+            say ""
+            say "=" * 70, :red
+            say "❌ Build mode requires a configured JS bundler", :red
+            say "=" * 70, :red
+            say ""
+            say "jsbundling-rails is installed, but no bundler is configured.", :yellow
+            say ""
+            say "Install one with:", :cyan
+            say ""
+            say "  rails javascript:install:[bun|esbuild|rollup|webpack]", :cyan
+            say "  rails railsui:install --build", :cyan
+            say ""
+            say "Or use importmap mode (no --build flag needed):", :cyan
+            say ""
+            say "  rails railsui:install", :cyan
+            say ""
+            say "📚 See README for more details on installation modes", :cyan
+            say ""
+            exit(1)
+          end
+        end
+      end
+
       def create_config
+        build_mode = options[:build] ? "build" : "nobuild"
+
         configuration_params = {
           application_name: "Rails UI",
           support_email: "support@example.com",
           theme: "hound",
-          pages: Railsui::Pages.get_pages('hound')
+          pages: Railsui::Pages.get_pages('hound'),
+          build_mode: build_mode
         }
 
         config = Railsui::Configuration.new(configuration_params)
-        config.save
+        config.save(skip_build: true) # Skip CSS build - file doesn't exist yet
       end
 
       def install_dependencies
+        # Detect and warn about existing setup
+        detect_and_warn_about_setup
+
         config = Railsui::Configuration.load!
 
         @theme = Railsui.config.theme
+        @build_mode = config.build_mode
 
-        if File.exist?("#{Rails.root}/config/importmap.rb")
-          say "❌ Detected importmaps which is unfortunately not supported by Rails UI. For best results, please use another bundling solution from jsbundling-rails (i.e., esbuild, bun) before installing", :yellow
+        mode_label = @build_mode == "nobuild" ? "no-build (importmap)" : "build"
+        say "🔥 Installing default theme: #{@theme.humanize} 🐶 in #{mode_label} mode. Don't worry, you can change this."
+
+        # Add engine routes
+        # Add a GUI for easier theme configuration
+        copy_railsui_routes
+
+        # gems railsui_icon and action_text
+        install_gems
+
+        # Install CSS dependencies (unified for both modes)
+        install_css_dependencies
+
+        # mailers
+        update_application_helper
+        update_railsui_mailer_layout(@theme)
+        generate_sample_mailers(@theme)
+
+        # Install JS dependencies based on build mode
+        if @build_mode == "nobuild"
+          install_js_dependencies_nobuild(@theme)
         else
-          say "🔥 Installing default theme: #{@theme.humanize} 🐶. Don't worry, you can change this."
+          install_js_dependencies_build(@theme)
+        end
 
-          # Add engine routes
-          # Add a GUI for easier theme configuration
-          copy_railsui_routes
+        # assets
+        copy_theme_javascript(@theme)
+        copy_theme_stylesheets(@theme)
 
-          # gems railsui_icon and action_text
-          install_gems
+        # view related
+        copy_railsui_head(@theme)
+        copy_railsui_launcher(@theme)
 
-          # mailers
-          update_application_helper
-          update_railsui_mailer_layout(@theme)
-          generate_sample_mailers(@theme)
+        # cleanup
+        remove_action_text_defaults
 
-          # rails ui deps
-          install_theme_dependencies(@theme)
+        # Copy the pages related files.
+        copy_railsui_pages_routes
+        copy_railsui_page_controller(@theme)
+        copy_railsui_images(@theme)
+        copy_railsui_pages(@theme)
 
-          # assets
-          copy_theme_javascript(@theme)
-          copy_theme_stylesheets(@theme)
+        # Copy Procfile for the correct mode
+        copy_procfile
 
-          # view related
-          copy_railsui_head(@theme)
-          copy_railsui_launcher(@theme)
+        # Copy bin/dev script
+        copy_bin_dev
 
-          # cleanup
-          remove_action_text_defaults
+        # Run bundle install to ensure all gems are available
+        say "Running bundle install...", :yellow
+        run "bundle install"
 
-          # Copy the pages related files.
-          copy_railsui_pages_routes
-          copy_railsui_page_controller(@theme)
-          copy_railsui_images(@theme)
-          copy_railsui_pages(@theme)
+        # migrate
+        rails_command "db:migrate"
 
-          # migrate
-          rails_command "db:migrate"
+        # Build JavaScript if in build mode (after all packages are installed)
+        if @build_mode == "build"
+          say "Building JavaScript...", :yellow
+          run "yarn build"
+          say "✓ JavaScript built successfully", :green
+        end
 
-          config.save
-say "
+        config.save
+
+        say "
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMWXOxooodOXMMMMMMMMMMWXxxXMMMMMMMMMMMMMMMMMMMMMM
@@ -90,11 +174,13 @@ MMMMMMMMMNxldk0XNWMMMMMWNKkl,.  .lKWMMMMMXo. ,xNMMMMMMMMMMMM
 MMMMMMMMMWWMMMMMMMMMMMMMMMMMW0kkKWMMMMMMMMWKONMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 "
-          say "✅ Install complete", :green
-          say "--"
-          say "🔥 Rails UI is now installed. You can access your configuration at /railsui"
-          say "Read documentation at https://railsui.com/docs for FAQs, guides, and more."
-        end
+        say "✅ Install complete", :green
+        say ""
+        say "Next steps:", :cyan
+        say "  1. Run: bin/dev", :cyan
+        say "  2. Visit: http://localhost:3000/railsui", :cyan
+        say ""
+        say "📚 Documentation: https://railsui.com/docs"
       end
     end
   end

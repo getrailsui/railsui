@@ -18,7 +18,6 @@
   </div>
 </div>
 
-
 <div id="auth-global-layout" class="py-6">
 
   <div class="prose prose-neutral dark:prose-invert my-6">
@@ -188,17 +187,18 @@
   </div>
 <%% end %>
 <% end %>
-
+<%= render_snippet active_tab: :erb %>
 <% end %>
 </div>
 
 <%= system_pagination(prev_path: systems_authentication_devise_unlocks_path, prev_text: "Devise: Unlocks", next_path: systems_authentication_static_signup_path, next_text: "Sign up") %>
 
 <%= content_for :component_nav do %>
-<%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
-<%= component_link "Prerequisites", "#auth-prerequisites" %>
-<%= component_link "Layout", "#auth-global-layout" %>
-<%= component_link "OmniAuth", "#auth-omniauth-ui" %>
-<%= component_link "Error messages", "#auth-error-messages" %>
-<% end %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Prerequisites", "#auth-prerequisites" %>
+    <%= component_link "Layout", "#auth-global-layout" %>
+    <%= component_link "OmniAuth", "#auth-omniauth-ui" %>
+    <%= component_link "Error messages", "#auth-error-messages" %>
+    <% end %>
+  <% end %>
 <% end %>

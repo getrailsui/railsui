@@ -1,7 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
-import tippy from 'tippy.js'
+// Use globals from CDN
+// Use Stimulus.Controller from CDN
+const tippy = window.tippy
 
-export default class extends Controller {
+export default class extends Stimulus.Controller {
   static values = {
     url: String,
   }

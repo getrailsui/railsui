@@ -122,6 +122,8 @@
 <%% end %>
 <% end %>
 
+<%= render_snippet %>
+<% end %>
 <% end %>
 </div>
 
@@ -270,7 +272,7 @@
     <%%= f.label :website, class: "form-label" %>
     <div class="relative">
       <div class="absolute left-px border-r border-slate-300 top-px bg-slate-100 dark:bg-slate-700/80 dark:border-slate-700 dark:text-slate-200 h-[40px] text-base rounded-l-lg flex items-center justify-center px-3 text-slate-700 select-none">https://</div>
-      <%%= f.text_field :website, class: "form-input pl-[90px]" placeholder: "example.com" "aria-label":"Website" %>
+      <%%= f.text_field :website, class: "form-input pl-[90px]", placeholder: "example.com", "aria-label": "Website" %>
     </div>
   </div>
 <%% end %>

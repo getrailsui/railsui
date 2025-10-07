@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-export default class extends Controller {
+export default class extends Stimulus.Controller {
   static targets = ["content", "saving"]
   static values = {
     label: { type: String, default: "Loading..." },
