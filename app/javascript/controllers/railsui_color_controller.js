@@ -3,7 +3,7 @@ import "vanilla-colorful/hex-input.js"
 
 import { Controller } from "@hotwired/stimulus"
 
-export default class extends Controller {
+export default class extends Stimulus.Controller {
   static targets = ["picker"]
   connect() {
     this.pickerTargets.forEach((picker) => {

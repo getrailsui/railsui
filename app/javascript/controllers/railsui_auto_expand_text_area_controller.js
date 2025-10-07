@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-export default class extends Controller {
+export default class extends Stimulus.Controller {
   expand() {
     this.element.style.height = `${this.element.scrollHeight + 2}px`
 

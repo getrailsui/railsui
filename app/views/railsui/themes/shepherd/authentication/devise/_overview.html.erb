@@ -13,7 +13,7 @@
       <li><%= link_to("Sign up", systems_authentication_devise_signup_path) %></li>
       <li><%= link_to("Sign in", systems_authentication_devise_signin_path) %></li>
       <li><%= link_to("Change password", systems_authentication_devise_change_password_path) %></li>
-      <li><%= link_to("Reset password", path: systems_authentication_devise_reset_password_path) %></li>
+      <li><%= link_to("Reset password", systems_authentication_devise_reset_password_path) %></li>
       <li><%= link_to("Confirmation", systems_authentication_devise_confirmation_path) %></li>
       <li><%= link_to("Edit account", systems_authentication_devise_edit_path) %></li>
       <li><%= link_to("Unlock", systems_authentication_devise_unlocks_path) %></li>
@@ -94,7 +94,7 @@
 <% content_for :erb, flush: true do %>
 <%%= render "devise/auth_layout" do %>
   <!-- Add or yield form content here -->
-<%%% end %>
+<%% end %>
 <% end %>
 
 <%= render_snippet(active_tab: "erb") %>
@@ -112,9 +112,9 @@
 
 <% content_for :erb, flush: true do %>
 <!-- app/views/devise/shared/_links -->
-<%#- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-<%#= link_to "Forgot your password?", new_password_path(resource_name) %>
-<%# end %>
+<%%#- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%%#= link_to "Forgot your password?", new_password_path(resource_name) %>
+<%%# end %>
 
 <%% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <div class="prose prose-sm prose-zinc dark:prose-invert py-3 text-center">
@@ -127,7 +127,6 @@
     <%%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
   </div>
 <%% end %>
-
 <% end %>
 
 
@@ -187,37 +186,40 @@
 
 <div id="auth-error-messages" class="py-6">
 <%= render layout: example, locals: { heading: "_error_messages partial" } do %>
-<div class="prose prose-neutral dark:prose-invert mb-6">
-<p>By default Rails UI copies over a pre-styled error partial made to work out of the box and save you time during development. This file is called <code>_error_messages.html.erb</code>.</p>
+  <div class="prose prose-neutral dark:prose-invert mb-6">
+    <p>By default Rails UI copies over a pre-styled error partial made to work out of the box and save you time during development. This file is called <code>_error_messages.html.erb</code>.</p>
 
-<p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent.</p>
+    <p>The <%= theme_name.humanize %> theme leverages this partial for all form error rendering to keep the error/validation handling experience consistent.</p>
 
-<p>You may optionally swap the default Devise error_messages partial for this one.</p>
-</div>
+    <p>You may optionally swap the default Devise error_messages partial for this one.</p>
+  </div>
 
-<%= render preview 'zinc' do %>
+  <%= render preview 'zinc' do %>
 <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
   <p class="font-semibold font-heading">1 error prohibited this post from being saved:</p>
   <ul class="list-disc mt-3 ml-4">
     <li>Title must exist</li>
   </ul>
 </div>
-<% end %>
+  <% end %>
 
-<% content_for :example, flush: true do %>
-<%= content_for :erb, flush: true do %>
+  <% content_for :example, flush: true do %>
+    <%= content_for :erb, flush: true do %>
 <!-- app/views/rui/shared/_error_messages.html.erb -->
 <%% if resource.errors.any? %>
-<div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
-  <p class="font-semibold font-heading"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
-  <ul class="list-disc mt-3 ml-4">
-    <%% resource.errors.each do |error| %>
-      <li><%%= error.full_message %></li>
+  <div class="bg-primary-50/50 text-primary-700 sm:px-9 sm:py-6 px-6 py-6 rounded-lg mb-6 dark:bg-primary-400/10 dark:border dark:border-primary-400/20 dark:text-primary-50 text-sm" role="alert">
+    <p class="font-semibold font-heading"><%%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:</p>
+    <ul class="list-disc mt-3 ml-4">
+      <%% resource.errors.each do |error| %>
+        <li><%%= error.full_message %></li>
       <%% end %>
     </ul>
   </div>
 <%% end %>
-<% end %>
+    <% end %>
+
+    <%= render_snippet active_tab: :erb %>
+  <% end %>
 
 <% end %>
 </div>
@@ -225,11 +227,11 @@
 <%= system_pagination(prev_path: systems_components_tooltip_path, prev_text: "Tooltip", next_path: systems_authentication_devise_signup_path, next_text: "Sign up") %>
 
 <%= content_for :component_nav do %>
-<%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
-<%= component_link "Prerequisites", "#auth-prerequisites" %>
-<%= component_link "Main layout", "#auth-global-layout" %>
-<%= component_link "Links partial", "#auth-links-partial" %>
-<%= component_link "OmniAuth", "#auth-omniauth-ui" %>
-<%= component_link "Error messages", "#auth-error-messages" %>
-<% end %>
+  <%= render layout: "railsui/shared/component_nav", locals: { title: "On this page" } do %>
+    <%= component_link "Prerequisites", "#auth-prerequisites" %>
+    <%= component_link "Main layout", "#auth-global-layout" %>
+    <%= component_link "Links partial", "#auth-links-partial" %>
+    <%= component_link "OmniAuth", "#auth-omniauth-ui" %>
+    <%= component_link "Error messages", "#auth-error-messages" %>
+  <% end %>
 <% end %>

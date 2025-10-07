@@ -1,7 +1,6 @@
 /***************************************
   Default ActionText
 ****************************************/
-@import "trix/dist/trix";
 
 .trix-content .attachment-gallery > action-text-attachment,
 .trix-content .attachment-gallery > .attachment {

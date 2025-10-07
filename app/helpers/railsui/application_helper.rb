@@ -270,5 +270,17 @@ module Railsui
       end
     end
 
+    def main_app_asset_exists?(asset_name)
+      # Check if the host app has the specified compiled asset
+      # tailwindcss-rails puts compiled CSS in app/assets/builds/
+      builds_path = Rails.root.join("app/assets/builds/#{asset_name}.css")
+      return true if File.exist?(builds_path)
+
+      # Fallback to checking Sprockets for other assets
+      Rails.application.assets.resolver.resolve("#{asset_name}.css").present?
+    rescue
+      false
+    end
+
   end
 end

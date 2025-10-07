@@ -1,7 +1,8 @@
-import { Controller } from '@hotwired/stimulus'
-import { useTransition } from 'stimulus-use'
+// Use globals from CDN
+// Use Stimulus.Controller from CDN
+const { useTransition } = window.StimulusUse
 
-export default class extends Controller {
+export default class extends Stimulus.Controller {
   static targets = ['nav', 'menuBars', 'menuCross']
 
   connect() {

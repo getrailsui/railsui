@@ -10,3 +10,5 @@
 .DS_Store
 /app/assets/builds/railsui/*
 .vscode
+.claude
+.yarn

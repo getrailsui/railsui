@@ -4,6 +4,7 @@ require "railsui/version"
 require "railsui/engine"
 require "railsui_icon"
 require "meta-tags"
+require "tailwindcss-rails"
 
 module Railsui
   autoload :Configuration, "railsui/configuration"
@@ -29,15 +30,17 @@ module Railsui
   end
 
   def self.build_css
-    if File.exist?("#{Rails.root}/package.json")
-      package_json = JSON.parse(File.read("#{Rails.root}/package.json"))
-      if package_json["scripts"] && package_json["scripts"]["build:css"]
-        run_command "yarn build:css"
-      else
-        puts "'build:css' script not found in package.json, skipping"
+    # Use tailwindcss-rails gem for all CSS compilation (unified approach)
+    if defined?(Tailwindcss)
+      run_command "rails tailwindcss:build"
+
+      # Touch the built CSS file to update its timestamp and bust browser cache
+      css_file = Rails.root.join("app/assets/builds/tailwind.css")
+      if File.exist?(css_file)
+        FileUtils.touch(css_file)
       end
     else
-      puts "package.json not found in the application root, skipping"
+      puts "tailwindcss-rails gem not found. Please install it to build CSS."
     end
   end
 

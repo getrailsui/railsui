@@ -14,11 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= favicon_link_tag "favicon.svg" %>
-    <%= javascript_include_tag "railsui/application" %>
-    <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
 
-    <%= stylesheet_link_tag "railsui/application" %>
-    <%= stylesheet_link_tag "application" %>
+    <%= render "railsui/shared/cdn_dependencies" %>
+
+    <%= stylesheet_link_tag "railsui/application", "tailwind" %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

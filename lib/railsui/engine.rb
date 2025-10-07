@@ -26,9 +26,24 @@ module Railsui
     end
 
     initializer "railsui.assets.precompile" do |app|
+      # Add engine builds path
       app.config.assets.paths << root.join("builds").to_s
+
+      # Add engine JavaScript path for propshaft to serve
+      app.config.assets.paths << root.join("app/javascript").to_s
+
+      # Precompile Rails UI assets
       app.config.assets.precompile << "railsui/application.css"
       app.config.assets.precompile << %w[*.svg]
+
+      # Support for both importmap and JS bundling modes
+      # Importmap: JavaScript loaded via importmap pins (no precompilation needed)
+      # Build mode: JavaScript bundled via jsbundling-rails (handled by bundler)
+
+      # Ensure propshaft compatibility (Rails 7+)
+      if defined?(Propshaft)
+        app.config.assets.excluded_paths << Rails.root.join("node_modules")
+      end
     end
   end
 end
