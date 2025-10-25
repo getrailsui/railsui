@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    railsui (3.2.7)
+    railsui (3.3.0)
       meta-tags
       psych
       rails (>= 7.0)
@@ -227,6 +227,8 @@ GEM
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
     tailwindcss-ruby (4.1.13-arm64-darwin)
+    tailwindcss-ruby (4.1.13-x86_64-darwin)
+    tailwindcss-ruby (4.1.13-x86_64-linux-gnu)
     thor (1.3.2)
     timeout (0.4.1)
     tzinfo (2.0.6)
