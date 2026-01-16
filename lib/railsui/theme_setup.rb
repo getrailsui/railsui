@@ -337,7 +337,6 @@ module Railsui
       end
 
       pin_importmap_dependencies(theme)
-      add_importmap_css_dependencies(theme)
     end
 
     # Legacy method for backward compatibility
@@ -461,37 +460,6 @@ module Railsui
         "controllers/railsui_pages_controller" => "controllers/railsui_pages_controller.js",
         "controllers/railsui_loading_controller" => "controllers/railsui_loading_controller.js"
       }
-    end
-
-    def add_importmap_css_dependencies(theme)
-      application_css_path = Rails.root.join("app/assets/tailwind/application.css")
-      return unless File.exist?(application_css_path)
-
-      css_content = File.read(application_css_path)
-
-      # Required CSS dependencies for railsui-stimulus components
-      css_imports = []
-      css_imports << '@import "https://unpkg.com/tippy.js@6.3.7/dist/tippy.css";'
-
-      # Add flatpickr CSS for themes that use date picker
-      if ["shepherd"].include?(theme)
-        css_imports << '@import "https://unpkg.com/flatpickr@4.6.13/dist/flatpickr.min.css";'
-      end
-
-      css_imports.each do |import_statement|
-        unless css_content.include?(import_statement)
-          # Add after @import "tailwindcss" if it exists, otherwise at the top
-          if css_content.include?('@import "tailwindcss"')
-            css_content.sub!('@import "tailwindcss";', "@import \"tailwindcss\";\n#{import_statement}")
-          else
-            css_content = "#{import_statement}\n#{css_content}"
-          end
-          say "✓ Added CSS import: #{import_statement}", :green
-        end
-      end
-
-      File.write(application_css_path, css_content)
-      say "✅ CSS dependencies added for importmap mode", :green
     end
 
     def add_yarn_packages(packages)
