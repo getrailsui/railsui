@@ -252,11 +252,18 @@ module Railsui
     private
 
     def field_wrapper(method, options = {}, &block)
-      wrapper_options = options.delete(:wrapper) || {}
+      wrapper_options = options.delete(:wrapper)
       label_text = options.delete(:label)
       help_text = options.delete(:help)
       skip_label = options.delete(:skip_label) || false
       is_required = options[:required] || false
+
+      # If wrapper is explicitly false, just return the field without wrapping
+      if wrapper_options == false
+        return capture(&block)
+      end
+
+      wrapper_options ||= {}
 
       form_group(method, wrapper_options) do
         elements = []
