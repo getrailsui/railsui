@@ -108,12 +108,20 @@ module Railsui
         super(method, choices, options, html_options)
       end
     end
-
+    
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
-      wrapper_options = options.delete(:wrapper) || {}
+      wrapper_options = options.delete(:wrapper)
       label_text = options.delete(:label)
       label_class = options.delete(:label_class) || "form-label"
       is_required = options.delete(:required) || false
+
+      # If wrapper is explicitly false, return just the checkbox without wrapping
+      if wrapper_options == false
+        add_error_class!(options) if has_error?(method)
+        return super(method, options, checked_value, unchecked_value)
+      end
+
+      wrapper_options ||= {}
 
       # Set default flex layout for the wrapper
       wrapper_class = "flex items-center justify-start gap-2"
@@ -136,8 +144,16 @@ module Railsui
     end
 
     def radio_button(method, tag_value, options = {})
-      wrapper_options = options.delete(:wrapper) || {}
+      wrapper_options = options.delete(:wrapper)
       label_text = options.delete(:label)
+
+      # If wrapper is explicitly false, return just the radio button without wrapping
+      if wrapper_options == false
+        add_error_class!(options) if has_error?(method)
+        return super(method, tag_value, options)
+      end
+
+      wrapper_options ||= {}
 
       # Set default flex layout for the wrapper
       wrapper_class = "flex items-center justify-start gap-2"
@@ -192,16 +208,24 @@ module Railsui
 
 
     def switch_field(method, options = {})
+      wrapper_options = options.delete(:wrapper)
       label_text = options.delete(:label) || method.to_s.humanize
 
-      field_wrapper(method, options.merge(label: false)) do
-        add_default_class!(options, "form-input-switch")
-        add_error_class!(options) if has_error?(method)
+      add_default_class!(options, "form-input-switch")
+      add_error_class!(options) if has_error?(method)
 
-        # Create switch input without hidden field
-        switch_html = @template.check_box(@object_name, method, objectify_options(options.merge(include_hidden: false)), "1", "0")
-        label_html = label(method, label_text)
-        safe_join([switch_html, label_html])
+      # Create switch input without hidden field
+      switch_html = @template.check_box(@object_name, method, objectify_options(options.merge(include_hidden: false)), "1", "0")
+      label_html = label(method, label_text, class: "")
+      switch_content = safe_join([switch_html, label_html])
+
+      # If wrapper is explicitly false, return just the switch without wrapping
+      if wrapper_options == false
+        return switch_content
+      end
+
+      field_wrapper(method, { wrapper: wrapper_options, label: false }) do
+        switch_content
       end
     end
 
@@ -240,7 +264,7 @@ module Railsui
     end
 
     def form_help(text, options = {})
-      add_default_class!(options, "form-help text-xs")
+      add_default_class!(options, "form-help")
       content_tag(:p, text, options)
     end
 
@@ -302,6 +326,16 @@ module Railsui
     def has_error?(method)
       @object.respond_to?(:errors) && @object.errors[method].present?
     end
+
+    def required_field?(method)
+      return false unless @object.class.respond_to?(:validators_on)
+
+      @object.class.validators_on(method).any? do |validator|
+        validator.is_a?(ActiveModel::Validations::PresenceValidator)
+      end
+    end
+
+    private
 
     def required_field?(method)
       return false unless @object.class.respond_to?(:validators_on)
