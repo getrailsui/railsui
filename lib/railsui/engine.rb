@@ -11,6 +11,7 @@ module Railsui
     initializer "railsui.theme_helper" do
       ActiveSupport.on_load :action_controller do
         helper Railsui::ThemeHelper
+        helper Railsui::MetaTagsHelper
       end
     end
 
