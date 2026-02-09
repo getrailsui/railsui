@@ -3,7 +3,6 @@
 require "railsui/version"
 require "railsui/engine"
 require "railsui_icon"
-require "meta-tags"
 require "tailwindcss-rails"
 
 module Railsui
@@ -11,6 +10,7 @@ module Railsui
   autoload :Pages, "railsui/pages"
   autoload :Themes, "railsui/themes"
   autoload :ThemeHelper, "railsui/theme_helper"
+  autoload :MetaTagsHelper, "railsui/meta_tags_helper"
   autoload :ThemeSetup, "railsui/theme_setup"
   autoload :FormBuilder, "railsui/form_builder"
 
