@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    railsui (3.3.4)
-      meta-tags
+    railsui (3.4.0)
       psych
       rails (>= 7.0)
       railsui_icon
@@ -114,8 +113,6 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    meta-tags (2.22.0)
-      actionpack (>= 6.0.0, < 8.1)
     mini_mime (1.1.5)
     minitest (5.25.1)
     net-imap (0.4.16)
