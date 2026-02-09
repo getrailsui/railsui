@@ -39,8 +39,8 @@ module Railsui
         tag.meta(name: "twitter:description", content: opts[:description]),
         tag.meta(name: "twitter:image", content: card_image_url),
         # Favicons
-        tag.link(rel: "icon", href: image_path("railsui/meta/favicon.svg"), type: "image/svg+xml"),
-        tag.link(rel: "apple-touch-icon", href: image_path("railsui/meta/apple-touch-icon.png"))
+        tag.link(rel: "icon", href: image_url("railsui/meta/favicon.svg"), type: "image/svg+xml"),
+        tag.link(rel: "apple-touch-icon", href: image_url("railsui/meta/apple-touch-icon.png"))
       ].compact, "\n")
     end
   end
