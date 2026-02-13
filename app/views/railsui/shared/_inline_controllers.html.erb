@@ -2,10 +2,11 @@
 (function() {
   const controller = class extends Stimulus.Controller {
     connect() {
-      if (typeof hljs !== 'undefined' && hljs.highlightElement) {
+      // Use Shiki for syntax highlighting
+      if (window.shikiHighlight) {
         this.snippetTargets.forEach((el) => {
-          if (!el.classList.contains('hljs')) {
-            hljs.highlightElement(el)
+          if (!el.dataset.shikiHighlighted) {
+            window.shikiHighlight.highlightElement(el)
           }
         })
       }
@@ -185,11 +186,11 @@ Stimulus.application.register("railsui-flash", class extends Stimulus.Controller
       }
     }
     highlightCode() {
-      if (typeof hljs !== 'undefined' && this.hasCodeTarget) {
-        const codeElements = this.codeTarget.querySelectorAll('pre code')
+      if (window.shikiHighlight && this.hasCodeTarget) {
+        const codeElements = this.codeTarget.querySelectorAll('pre code[class*=language-]')
         codeElements.forEach((el) => {
-          if (!el.classList.contains('hljs')) {
-            hljs.highlightElement(el)
+          if (!el.dataset.shikiHighlighted) {
+            window.shikiHighlight.highlightElement(el)
           }
         })
       }

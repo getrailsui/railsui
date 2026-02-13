@@ -1,48 +1,21 @@
 <!-- Stylesheets -->
 <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
-<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/atom-one-dark.min.css" />
 <style>
-  /* Custom styles for ERB/HAML code blocks using Ruby syntax */
-  .railsui .language-erb .hljs-comment,
-  .railsui .language-haml .hljs-comment {
-    color: #637777 !important;
-    font-style: italic;
-  }
-  /* Style HTML-like tags in ERB when they're not highlighted */
-  .railsui .language-erb code,
-  .railsui .language-haml code {
-    /* Ensure base text is visible */
-    color: #f5f5f5;
-  }
-
-  /* Ensure highlight.js styles aren't overridden */
-  .hljs {
+  /* Shiki code block styles */
+  .shiki {
     background: transparent !important;
-    color: #abb2bf !important;
+    padding: 1rem;
+    overflow-x: auto;
   }
-
-  /* CSS syntax highlighting colors */
-  .language-css .hljs-attribute {
-    color: #e06c75 !important;
+  .shiki code {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1rem;
+    line-height: 1.7;
   }
-  .language-css .hljs-number,
-  .language-css .hljs-literal {
-    color: #d19a66 !important;
-  }
-  .language-css .hljs-selector-class,
-  .language-css .hljs-selector-tag {
-    color: #e5c07b !important;
-  }
-  .language-css .hljs-built_in,
-  .language-css .hljs-title {
-    color: #61afef !important;
-  }
-  .language-css .hljs-comment {
-    color: #5c6370 !important;
-    font-style: italic;
-  }
-  .language-css .hljs-string {
-    color: #98c379 !important;
+  /* Dark theme adjustments */
+  pre code {
+    background: transparent !important;
   }
 </style>
 
@@ -65,35 +38,93 @@
 <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
 <%= javascript_include_tag "https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js", defer: true %>
 
-<!-- Syntax Highlighting -->
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/ruby.min.js"></script>
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/javascript.min.js"></script>
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/bash.min.js"></script>
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/css.min.js"></script>
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/xml.min.js"></script>
-<script>
-  // Ensure hljs is available globally
-  window.hljs = window.hljs || hljs;
+<!-- Syntax Highlighting with Shiki -->
+<script type="module">
+  import { codeToHtml, bundledLanguages } from 'https://esm.sh/shiki@1.22.0';
 
-  // Register ERB as an alias for Ruby (better syntax highlighting for embedded Ruby)
-  // Register HAML as an alias for Ruby as well
-  if (window.hljs) {
-    hljs.registerAliases(['erb'], {languageName: 'ruby'})
-    hljs.registerAliases(['haml'], {languageName: 'ruby'})
+  // Language mapping for code blocks
+  const languageMap = {
+    'language-ruby': 'ruby',
+    'language-erb': 'erb',
+    'language-html': 'html',
+    'language-javascript': 'javascript',
+    'language-js': 'javascript',
+    'language-bash': 'bash',
+    'language-shell': 'bash',
+    'language-css': 'css',
+    'language-xml': 'xml',
+    'language-haml': 'ruby'
+  };
 
-    // Highlight all code blocks on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      hljs.highlightAll();
-    });
+  // Highlight a single code element
+  async function highlightElement(codeEl) {
+    if (codeEl.dataset.shikiHighlighted) return;
 
-    // Also run immediately in case DOMContentLoaded already fired
-    if (document.readyState === 'loading') {
-      // Still loading, wait for DOMContentLoaded
-    } else {
-      // DOM already loaded, run now
-      hljs.highlightAll();
+    const classNames = Array.from(codeEl.classList);
+    const langClass = classNames.find(c => c.startsWith('language-'));
+    const lang = languageMap[langClass] || 'text';
+
+    // Check if language is available
+    const availableLang = bundledLanguages[lang] ? lang : 'text';
+
+    try {
+      const code = codeEl.textContent;
+      const html = await codeToHtml(code, {
+        lang: availableLang,
+        theme: 'material-theme-palenight'
+      });
+
+      // Replace pre>code with Shiki output
+      const preEl = codeEl.parentElement;
+      if (preEl && preEl.tagName === 'PRE') {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = html;
+        const shikiPre = wrapper.firstChild;
+        const shikiCode = shikiPre.querySelector('code');
+
+        // Preserve original pre classes
+        preEl.classList.forEach(c => shikiPre.classList.add(c));
+
+        // Transfer data attributes for clipboard functionality
+        if (shikiCode) {
+          Array.from(codeEl.attributes).forEach(attr => {
+            if (attr.name.startsWith('data-')) {
+              shikiCode.setAttribute(attr.name, attr.value);
+            }
+          });
+          // Store original text for clipboard
+          shikiCode.dataset.clipboardText = code;
+        }
+
+        preEl.replaceWith(shikiPre);
+      }
+      codeEl.dataset.shikiHighlighted = 'true';
+    } catch (e) {
+      console.warn('Shiki highlighting failed for', lang, e);
     }
+  }
+
+  // Highlight all visible code blocks
+  async function highlightAll() {
+    const codeElements = document.querySelectorAll('pre code[class*="language-"]');
+    for (const el of codeElements) {
+      if (el.offsetParent !== null) {
+        await highlightElement(el);
+      }
+    }
+  }
+
+  // Expose for use by Alpine.js tab switching
+  window.shikiHighlight = {
+    highlightElement,
+    highlightAll
+  };
+
+  // Initial highlight on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', highlightAll);
+  } else {
+    highlightAll();
   }
 </script>
 
@@ -113,7 +144,6 @@
       Application: StimulusApplication
     }
 
-    const hljs = window.hljs
     const { useTransition, useClickOutside } = window.StimulusUse || {}
 
     <%= render partial: "railsui/shared/inline_controllers" %>;
