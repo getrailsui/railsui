@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    railsui (3.4.0)
+    railsui (3.4.1)
       psych
       rails (>= 7.0)
       railsui_icon
