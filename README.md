@@ -201,7 +201,7 @@ After installation, visit `localhost:3000/railsui` to configure:
 
 ### Important Notes
 
-Each theme comes with pages in `app/views/rui` that are treated as read-only. Updating your configuration will overwrite these files. To customize pages, copy them to your app:
+Each app kit comes with pages in `app/views/rui` that are treated as read-only. Updating your configuration will overwrite these files. To customize pages, copy them to your app:
 
 ```bash
 cp app/views/rui/pages/dashboard.html.erb app/views/pages/dashboard.html.erb
