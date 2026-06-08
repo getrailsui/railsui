@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.version = Railsui::VERSION
   spec.authors = ["Andy Leverenz"]
   spec.email = ["railsui@justalever.com"]
-  spec.summary = "Plug and play UI for Rails"
-  spec.description = "Professionally designed UI components and templates for Ruby on Rails."
+  spec.summary = "The product UI system for Rails SaaS builders"
+  spec.description = "Rails UI is the product UI system for Rails SaaS builders. Complete app kits and the Rails-native components behind them, in clean ERB and Tailwind, so you ship a finished product instead of a blank page."
   spec.homepage = "https://railsui.com"
   spec.metadata = {
     "homepage_uri" => "https://railsui.com",
