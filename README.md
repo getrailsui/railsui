@@ -2,7 +2,7 @@
 
 # Rails UI
 
-Professionally designed themes and components for Ruby on Rails. Leverage breath-taking UI to fast-track your next idea.
+The product UI system for Rails SaaS builders. Complete app kits and the Rails-native components behind them, in clean ERB and Tailwind, so you ship a finished product instead of a blank page.
 
 ### Links
 
@@ -207,11 +207,13 @@ Each theme comes with pages in `app/views/rui` that are treated as read-only. Up
 cp app/views/rui/pages/dashboard.html.erb app/views/pages/dashboard.html.erb
 ```
 
-## Themes
+## App kits
 
-Themes are the core of Rails UI, combining UI components, pages, assets, JavaScript, and color palettes to help you create a professionally designed, niche application. The UI can adapt based on how you implement it.
+App kits are the core of Rails UI: complete product surfaces for a kind of SaaS, combining real screens, UI components, assets, JavaScript, and color palettes. Pick the app kit closest to what you are building, keep the screens that fit, and customize the rest.
 
-Themes serve as a starting point for your app, with reusable components extracted for flexibility. These components are ready for use inside your application when you install Rails UI.
+> Note: on railsui.com these are called app kits. Inside the gem and its config they are still referred to as themes (for example `Railsui.config.theme` and `app/assets/stylesheets/railsui/theme.css`), so you will see both terms.
+
+App kits serve as a starting point for your app, with reusable components extracted for flexibility. These components are ready for use inside your application when you install Rails UI.
 
 ### Pages
 
@@ -223,23 +225,23 @@ More pages will be added over time.
 
 ### Included assets
 
-Each theme comes with a collection of assets to help you get started. Much of these are placeholders and are not meant to be used in production. We strive to still create realistic examples for you to use as a starting point.
+Each app kit comes with a collection of assets to help you get started. Much of these are placeholders and are not meant to be used in production. We strive to still create realistic examples for you to use as a starting point.
 
 ### UI components
 
-After installing Rails UI and choosing a theme you'll find a collection of components and best practices for real-world applications at your disposal.
+After installing Rails UI and choosing an app kit you'll find a collection of components and best practices for real-world applications at your disposal.
 
 ### Color
 
-Each theme comes with a custom color palette built on top of the default Tailwind CSS v4 color palette you can customize in `app/assets/stylesheets/railsui/theme.css`.
+Each app kit comes with a custom color palette built on top of the default Tailwind CSS v4 color palette you can customize in `app/assets/stylesheets/railsui/theme.css`.
 
 ### Icons
 
-Bundled with Rails UI is a gem called [railsui_icon](https://github.com/getrailsui/railsui_icon). This gem includes a collection of icons that are used in all themes. Right now it's based soley on [heroicons](https://heroicons.com) and will be expanded to include more icons in the future.
+Bundled with Rails UI is a gem called [railsui_icon](https://github.com/getrailsui/railsui_icon). This gem includes a collection of icons that are used in all app kits. Right now it's based soley on [heroicons](https://heroicons.com) and will be expanded to include more icons in the future.
 
 ### JavaScript
 
-All Rails UI components are built on top of Stimulus.js. A theme includes custom Stimulus controllers and our own JavaScript library called [railsui-stimulus](https://github.com/getrailsui/railsui-stimulus) which is just an extraction of components we find ourselves using in our own apps and between themes.
+All Rails UI components are built on top of Stimulus.js. An app kit includes custom Stimulus controllers and our own JavaScript library called [railsui-stimulus](https://github.com/getrailsui/railsui-stimulus) which is just an extraction of components we find ourselves using in our own apps and between app kits.
 
 ## Updates
 
@@ -249,7 +251,7 @@ Run `bundle update railsui` from within your project and it should fetch the mos
 
 Version 2 of Rails UI has since been sunset. Unfortunately, there is no upgrade path we can share.
 
-Version 3 was a rewrite of the gem and how Rails UI works to enable better flexibility. Version 3 offers the ability to swap themes, install on new and existing rails apps, and countless other smaller features. We chose this direction to enable more efficient development in the future and allow folks with existing apps the ability to use Rails UI.
+Version 3 was a rewrite of the gem and how Rails UI works to enable better flexibility. Version 3 offers the ability to swap app kits, install on new and existing rails apps, and countless other smaller features. We chose this direction to enable more efficient development in the future and allow folks with existing apps the ability to use Rails UI.
 
 You can find version 2 on a dedicated branch on the Github repo. If you're an active user of this version be sure to update your Gemfile with the appropriate branch.
 
