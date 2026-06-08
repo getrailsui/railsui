@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    railsui (3.4.2)
+    railsui (3.4.3)
       psych
       rails (>= 7.0)
       railsui_icon
@@ -244,6 +244,7 @@ PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
   arm64-darwin-23
+  arm64-darwin-25
   x86_64-darwin-20
   x86_64-linux
 
